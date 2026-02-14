@@ -1,33 +1,36 @@
-# Relinquishment — Book Project
+# Relinquishment — Output Repository
 
-## What This Is
+## This Repo Is OUTPUT ONLY
 
-A triple-spiral narrative exploring an alleged classified DARPA/GCHQ topological quantum neural network (TQNN) program. The book presents three possibilities (confabulation, exaggerated kernel, substantially true) and lets the reader decide. It includes a predictive framework: if the story is true, specific future events should follow.
+This repo contains ONLY manuscript content and build artifacts. No research, no plans, no working documents.
 
-## Structure
+**Root policy:** Only `README.md`, `*.tex`, `*.pdf`, `.gitignore` in root.
 
-- **Three tracks** (narrative spirals): Scientist's Confession, Recruit's Testament, Machine's Awakening
-- **Three themes** (tensions): Discovery vs Suppression, Duty vs Conscience, Power vs Relinquishment
-- **15 abstracts** as chapter epigraphs (in appendix/abstracts.md)
-- **Prediction table** as appendix (appendix/predictions.md)
-- **Convergence point**: 2006, surrender of master keys
+## Architecture
 
-## Research
+- **aurasys-memory** (`~/software/aurasys-memory/`) = workshop. Research, evidence, plans, requirements, session notes. Auditor and Generator RUN there.
+- **relinquishment** (this repo) = gallery. Generator WRITES here. Only finished manuscript content.
 
-- `research/reconstruction.md` — the master reconstruction document (living reference)
-- `research/gag-papers/` — three full-length academic-style papers
-- `research/notes/` — session research findings
+## What Belongs Here
 
-## Build
+- `manuscript/` — chapter markdown files (Generator output)
+- `build/` — LaTeX templates, build scripts
+- `*.tex` — main LaTeX document (root)
+- `*.pdf` — compiled output (root)
 
-Target: single self-contained PDF with hyperlinks, OCG layers, bookmarks, attachments, metadata, digital signature for timestamping.
+## What Does NOT Belong Here
 
-Toolchain: Markdown → LaTeX → PDF, post-processed with Python (pikepdf) for advanced features.
+- Research notes, session transcripts, evidence files
+- Plans, requirements, auditor documents
+- Working drafts, TODO lists, scratch files
+
+## Generator Instructions
+
+When writing chapters, the Generator runs from aurasys-memory (full research context) and writes output files to this repo at `/home/bruce/software/relinquishment/manuscript/`.
 
 ## Key Rules
 
-- The author (Bruce Stephenson) maintains cognitive dissonance — does not claim to know which of the three possibilities is correct
+- Author maintains cognitive dissonance — does not claim to know which possibility is correct
 - All predictions must be falsifiable
-- The science must be accurate — real physics, real people, real institutions
-- No fabricated evidence. Speculation is clearly labeled as speculation.
-- The book IS the context for future events. Timestamp everything.
+- Science must be accurate
+- No fabricated evidence; speculation labeled as speculation

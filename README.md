@@ -1,16 +1,15 @@
 # Relinquishment
 
-Private repository. Book project.
+Output repository. Manuscript content and build artifacts only.
 
 ## Root Policy
 
-Root contains ONLY: `README.md`, `*.tex`, `*.pdf`, `.gitignore`. Everything else in subdirectories.
+Root contains ONLY: `README.md`, `*.tex`, `*.pdf`, `.gitignore`.
 
 ## Structure
 
 ```
-plans/              Auditor plans, requirements, generator prompts
-manuscript/         Chapter content (markdown source)
+manuscript/
   00-front/           Title, preface
   track-1-confession/ The Scientist's Confession
   track-2-testament/  The Recruit's Testament
@@ -18,19 +17,19 @@ manuscript/         Chapter content (markdown source)
   convergence/        The center: 2006
   appendix/           Predictions, three possibilities, abstracts
   99-back/            About the author
-research/           Reconstruction document, gag papers, notes
-build/              LaTeX templates, build scripts, toolchain
-.claude/            Claude configuration
+build/
+  (LaTeX templates, build scripts)
+.claude/
+  CLAUDE.md
 ```
 
-## Workflow (Triad Protocol)
+## Architecture
 
-1. Auditor writes plan in `plans/` referencing `plans/requirements.md`
-2. User copies plan to Generator shell
-3. Generator implements to spec
-4. Auditor verifies PASS/FAIL against requirements
-5. Repeat until all requirements PASS
+- **aurasys-memory** = workshop (research, plans, requirements, evidence)
+- **relinquishment** = gallery (manuscript output only)
+
+Generator runs from aurasys-memory, writes to this repo.
 
 ## Target
 
-Single self-contained PDF. Hyperlinks, OCG layers, bookmarks, digital signature for timestamping.
+Single self-contained PDF. Hyperlinks, OCG layers, bookmarks, digital signature.
