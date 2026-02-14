@@ -1,0 +1,12 @@
+*.pdf
+*.aux
+*.log
+*.out
+*.toc
+*.fls
+*.fdb_latexmk
+*.synctex.gz
+build/output/
+.DS_Store
+*.swp
+*~
