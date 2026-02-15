@@ -22,6 +22,15 @@
 \tikzexternalize[prefix=build/tikz-cache/]
 \usepackage{graphicx}
 
+% --- Table of Contents styling ---
+\usepackage[titles]{tocloft}
+\setlength{\cftbeforechapskip}{1.5em}        % generous space between chapter entries
+\renewcommand{\cftchapfont}{\large\bfseries}  % larger chapter titles in TOC
+\renewcommand{\cftchappagefont}{\large}        % match page numbers
+\setlength{\cftbeforesecskip}{0.4em}          % tighter section entries
+\renewcommand{\cftsecfont}{\small}            % smaller section entries
+\renewcommand{\cftsecpagefont}{\small}
+
 % --- Glossary (loads amsmath via datatool dependency — must come before cleveref) ---
 \usepackage{glossaries}
 \makeglossaries

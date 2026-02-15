@@ -72,7 +72,7 @@
 - All three are presented with equal rhetorical weight — no thumb on the scale
 - The author's stated position ("can't tell which is closest to true") appears
 - The reader is explicitly invited to decide
-- The three possibilities appear in both the preface and a dedicated appendix section
+- The three possibilities appear in the preface (brief) and as the full opening chapter (Pos 1 per Plan 0007)
 
 **FAIL if:** The text favors one option, dismisses another, or resolves the ambiguity.
 
@@ -169,7 +169,7 @@
 **PASS if:**
 - All three tracks have complete chapter drafts (not outlines)
 - Preface complete
-- All appendix sections complete (predictions, three possibilities, abstracts, sources)
+- All appendix sections complete (predictions, abstracts, glossary, timeline, sources)
 - Convergence chapter complete
 - Word count: minimum 60,000 words (short book) to 120,000 words (full)
 - No placeholder text, TODO markers, or skeleton chapters in final output
@@ -359,12 +359,11 @@
   5. Table of Contents (clickable, per R9)
   6. Preface (author's voice, three possibilities introduced)
 - **Back matter (in order):**
-  1. Appendix A: The Three Possibilities (full treatment, per R4)
-  2. Appendix B: Predictive Framework (full table, per R5)
-  3. Appendix C: Spiral Abstracts (all 15, per R3)
-  4. Appendix D: Glossary — definitions of all technical terms, acronyms, people. Popup annotations (R14) link here.
-  5. Appendix E: Chronological Timeline — all events in date order across all tracks (the TIME navigation route from R14)
-  6. Appendix F: Sources & References
+  1. Appendix A: Predictive Framework (full table, per R5)
+  2. Appendix B: Spiral Abstracts (all 15, per R3)
+  3. Appendix C: Glossary — definitions of all technical terms, acronyms, people. Popup annotations (R14) link here.
+  4. Appendix D: Chronological Timeline — all events in date order across all tracks (the TIME navigation route from R14)
+  5. Appendix E: Sources & References
   7. Verification page (per R15)
   8. Colophon (toolchain, build date, version, archival statement)
 - All front/back matter sections are bookmarked and appear in TOC
