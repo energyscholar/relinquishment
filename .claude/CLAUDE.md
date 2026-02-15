@@ -1,32 +1,34 @@
-# Relinquishment — Output Repository
-
-## This Repo Is OUTPUT ONLY
-
-This repo contains ONLY manuscript content and build artifacts. No research, no plans, no working documents.
-
-**Root policy:** Only `README.md`, `*.tex`, `*.pdf`, `.gitignore` in root.
+# Relinquishment — Self-Contained Project Repository
 
 ## Architecture
 
-- **aurasys-memory** (`~/software/aurasys-memory/`) = workshop. Research, evidence, plans, requirements, session notes. Auditor and Generator RUN there.
-- **relinquishment** (this repo) = gallery. Generator WRITES here. Only finished manuscript content.
+- **relinquishment** (this repo) = the project. Plans, requirements, build system, manuscript, output.
+- **aurasys-memory** (`~/software/aurasys-memory/`) = workshop. Research, evidence, session notes. Reference material, not build input.
 
 ## What Belongs Here
 
-- `manuscript/` — chapter markdown files (Generator output)
-- `build/` — LaTeX templates, build scripts
-- `*.tex` — main LaTeX document (root)
-- `*.pdf` — compiled output (root)
+- `plans/` — Serial-numbered generator plans (0001-name.md), requirements.md
+- `manuscript/` — Chapter `.tex` files (LaTeX source, Generator output)
+- `build/` — Makefile, preamble, Dockerfile, images, validation scripts
+- `main.tex` — Root LaTeX document (root)
+- `*.pdf` — Compiled output (root, .gitignore'd)
 
 ## What Does NOT Belong Here
 
-- Research notes, session transcripts, evidence files
-- Plans, requirements, auditor documents
+- Research notes, session transcripts, evidence files (those live in aurasys-memory)
 - Working drafts, TODO lists, scratch files
 
-## Generator Instructions
+## Write Permissions
 
-When writing chapters, the Generator runs from aurasys-memory (full research context) and writes output files to this repo at `/home/bruce/software/relinquishment/manuscript/`.
+- **Auditor** writes to: `plans/` only
+- **Generator** writes to: `manuscript/`, `build/`, `main.tex`, root `.tex` files
+- Neither modifies the other's territory without a plan
+
+## Plan Convention
+
+Plans are serial-numbered: `plans/0001-name.md`, `plans/0002-name.md`, etc.
+Running all non-superseded plans sequentially from an empty directory reproduces the project.
+Each plan is self-contained — no external dependencies.
 
 ## Key Rules
 

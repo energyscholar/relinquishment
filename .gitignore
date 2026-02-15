@@ -10,6 +10,7 @@
 *.gls
 *.glg
 *.ist
+*.auxlock
 
 # Build artifacts
 build/tikz-cache/
