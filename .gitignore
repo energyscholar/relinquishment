@@ -1,12 +1,27 @@
-*.pdf
+# LaTeX aux files (land in repo root — lualatex doesn't support aux-directory)
 *.aux
 *.log
-*.out
 *.toc
+*.out
 *.fls
 *.fdb_latexmk
 *.synctex.gz
+*.glo
+*.gls
+*.glg
+*.ist
+
+# Build artifacts
+build/tikz-cache/
+build/flags.tex
+build/gitinfo.tex
+build/validation.json
+build/images/*.pdf
 build/output/
+main.pdf
+*.md.archive
+
+# OS/editor
 .DS_Store
 *.swp
 *~

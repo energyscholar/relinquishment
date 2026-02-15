@@ -1,0 +1,90 @@
+% Preamble — all packages and macros
+% Loaded by main.tex after \documentclass
+
+% --- Geometry (conditional) ---
+\usepackage{geometry}
+\ifdefined\PRINT
+  \input{build/print.tex}
+\else
+  \input{build/screen.tex}
+\fi
+
+% --- Fonts (LuaLaTeX native — NOT fontenc, NOT cmap) ---
+\usepackage{fontspec}
+
+% --- Colors ---
+\usepackage{xcolor}
+\input{build/palette.tex}
+
+% --- Graphics ---
+\usepackage{tikz}
+\usetikzlibrary{external}
+\tikzexternalize[prefix=build/tikz-cache/]
+\usepackage{graphicx}
+
+% --- Glossary (loads amsmath via datatool dependency — must come before cleveref) ---
+\usepackage{glossaries}
+\makeglossaries
+
+% --- Hyperlinks and cross-references ---
+\usepackage{hyperref}
+\hypersetup{
+  pdftitle={Relinquishment: A Triple Spiral},
+  pdfauthor={Bruce Stephenson},
+  pdfsubject={Topological quantum neural networks, relinquishment, Guardian},
+  pdfkeywords={TQNN, Guardian, relinquishment, SFI, DARPA, predictions},
+  colorlinks=true,
+  linkcolor=linkblue,
+  urlcolor=linkblue,
+}
+\usepackage{bookmark}
+\usepackage{cleveref}
+
+% --- Optional Content Groups (graphics toggle) ---
+\usepackage{ocgx2}
+\newcommand{\graphicsonly}[1]{%
+  \begin{ocg}[printocg=always,exportocg=always]{Graphics}{graphics}{1}#1\end{ocg}%
+}
+
+% --- Headers/footers with track-colored margin stripes ---
+\usepackage{fancyhdr}
+\setlength{\headheight}{16.1pt}
+\addtolength{\topmargin}{-4.1pt}
+
+\newcommand{\currenttrackcolor}{bodytext}
+\newcommand{\settrack}[1]{\renewcommand{\currenttrackcolor}{#1}}
+
+\fancypagestyle{trackpage}{%
+  \fancyhf{}%
+  \fancyhead[RO,LE]{\textcolor{\currenttrackcolor}{\rule{4pt}{\headheight}}}%
+  \fancyfoot[C]{\thepage}%
+}
+\pagestyle{trackpage}
+
+% Redefine 'plain' style — book class forces \thispagestyle{plain}
+% on chapter-opening pages. Without this, chapter first pages have no stripe.
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[RO,LE]{\textcolor{\currenttrackcolor}{\rule{4pt}{\headheight}}}%
+  \fancyfoot[C]{\thepage}%
+}
+
+% --- Full-page backgrounds (cover) ---
+\usepackage{eso-pic}
+
+% --- Git info ---
+\input{build/gitinfo.tex}
+
+% --- Placeholder image macro (non-TikZ — avoids externalization conflicts) ---
+\newcommand{\placeholderimage}[3]{%
+  % #1 = width, #2 = height, #3 = label text
+  \begin{center}
+    \setlength{\fboxsep}{0pt}%
+    \setlength{\fboxrule}{1pt}%
+    \fcolorbox{phfill}{phfill!20}{%
+      \begin{minipage}[c][#2][c]{#1}
+        \centering\small\textsf{#3}
+      \end{minipage}%
+    }
+  \end{center}
+}
