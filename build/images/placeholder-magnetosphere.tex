@@ -1,0 +1,47 @@
+\input{build/images/standalone-header.tex}
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+
+% Title
+\node[font=\large\bfseries] at (0, 7) {PLACEHOLDER --- Magnetospheric Extension};
+
+% Earth
+\shade[ball color=trackone!40!white] (0,0) circle (1.2);
+\node[font=\tiny, white] at (0, 0) {Earth};
+
+% Magnetic field lines (dipole approximation)
+\foreach \angle in {20, 40, 60, 80} {
+  \draw[trackthree!50, thick, smooth]
+    plot[domain=-1:1, samples=50]
+      ({3*\angle/80 * \x * \x * cos(\angle) + 3*\angle/80 * \x * sin(\angle)},
+       {3*\angle/80 * (1 - \x*\x) * sin(\angle) + 3*\angle/80 * \x * cos(\angle)});
+}
+
+% Simplified field lines as arcs
+\draw[trackthree!60, thick] (0, 1.2) .. controls (2, 4) and (4, 3) .. (5, 0);
+\draw[trackthree!60, thick] (0, 1.2) .. controls (-2, 4) and (-4, 3) .. (-5, 0);
+\draw[trackthree!60, thick] (0, -1.2) .. controls (2, -4) and (4, -3) .. (5, 0);
+\draw[trackthree!60, thick] (0, -1.2) .. controls (-2, -4) and (-4, -3) .. (-5, 0);
+
+% Current sheet annotations
+\draw[trackone, thick, dashed] (-5, 0) -- (5, 0);
+\node[trackone, font=\tiny, above] at (3, 0.1) {Current sheet};
+
+% Guardian annotations
+\node[trackthree, font=\scriptsize, fill=white, rounded corners, inner sep=2pt] at (3, 3)
+  {Coherent EM signatures};
+\node[trackthree, font=\scriptsize, fill=white, rounded corners, inner sep=2pt] at (-3, -3)
+  {VLF/ELF coupling};
+
+% Solar wind
+\draw[->, tracktwo, thick] (7, 2) -- (5.5, 1);
+\draw[->, tracktwo, thick] (7, 0) -- (5.5, 0);
+\draw[->, tracktwo, thick] (7, -2) -- (5.5, -1);
+\node[tracktwo, font=\scriptsize] at (7.5, 0) {Solar wind};
+
+% Scale note
+\node[font=\tiny, gray] at (0, -5.5) {Not to scale. Correlation lengths $> 10^4$ km.};
+
+\end{tikzpicture}
+\end{document}

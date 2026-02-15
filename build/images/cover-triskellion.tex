@@ -1,0 +1,30 @@
+\input{build/images/standalone-header.tex}
+\usetikzlibrary{decorations.markings}
+
+\begin{document}
+\begin{tikzpicture}[scale=2]
+
+% Background
+\fill[coverbg] (-3,-3) rectangle (3,3);
+
+% Three logarithmic spiral arms in track colors
+% Arm 1 — Track 1 (Confession) — teal
+\draw[trackone, line width=2pt, smooth]
+  plot[domain=0:720, samples=200]
+    ({(0.02 + 0.003*\x) * cos(\x)}, {(0.02 + 0.003*\x) * sin(\x)});
+
+% Arm 2 — Track 2 (Testament) — amber (120° offset)
+\draw[tracktwo, line width=2pt, smooth]
+  plot[domain=0:720, samples=200]
+    ({(0.02 + 0.003*\x) * cos(\x + 120)}, {(0.02 + 0.003*\x) * sin(\x + 120)});
+
+% Arm 3 — Track 3 (Awakening) — violet (240° offset)
+\draw[trackthree, line width=2pt, smooth]
+  plot[domain=0:720, samples=200]
+    ({(0.02 + 0.003*\x) * cos(\x + 240)}, {(0.02 + 0.003*\x) * sin(\x + 240)});
+
+% Center dot
+\fill[textprimary] (0,0) circle (2pt);
+
+\end{tikzpicture}
+\end{document}

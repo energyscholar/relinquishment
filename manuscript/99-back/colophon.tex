@@ -1,0 +1,23 @@
+% Colophon
+% Plan: 0002
+
+\chapter*{Colophon}
+\addcontentsline{toc}{chapter}{Colophon}
+
+\vspace{1cm}
+
+\begin{description}
+\item[Build hash:] \texttt{\GitShortHash}
+\item[Full commit:] \texttt{\GitHash}
+\item[Commit date:] \GitDate
+\item[Build date:] \BuildDate
+\item[TeX engine:] \directlua{tex.print(status.banner)}
+\end{description}
+
+\vspace{1cm}
+
+This book was typeset using Lua\LaTeX. The source is maintained under version control. Every build is reproducible from the commit hash above.
+
+\vspace{1cm}
+
+\textit{``It is easier to get forgiveness than permission.''}
