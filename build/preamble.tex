@@ -38,6 +38,7 @@
   urlcolor=linkblue,
 }
 \usepackage{bookmark}
+\bookmarksetup{depth=1, open=false}
 \usepackage{cleveref}
 
 % --- Optional Content Groups (graphics toggle) ---
@@ -54,10 +55,27 @@
 \newcommand{\currenttrackcolor}{bodytext}
 \newcommand{\settrack}[1]{\renewcommand{\currenttrackcolor}{#1}}
 
+% --- Screen navigation (suppressed in print) ---
+\ifdefined\PRINT
+  \newcommand{\toclink}{}%
+  \newcommand{\chapterreturn}{}%
+\else
+  \newcommand{\toclink}{%
+    {\footnotesize\hyperref[toc]{\textcolor{linkblue}{TOC}}}%
+  }%
+  \newcommand{\chapterreturn}{%
+    \par\vfill
+    \begin{center}
+      \small\hyperref[toc]{\textcolor{linkblue}{$\triangleleft$\enspace Return to Table of Contents}}
+    \end{center}
+  }%
+\fi
+
 \fancypagestyle{trackpage}{%
   \fancyhf{}%
   \fancyhead[RO,LE]{\textcolor{\currenttrackcolor}{\rule{4pt}{\headheight}}}%
   \fancyfoot[C]{\thepage}%
+  \fancyfoot[RE,LO]{\toclink}%
 }
 \pagestyle{trackpage}
 
@@ -67,6 +85,7 @@
   \fancyhf{}%
   \fancyhead[RO,LE]{\textcolor{\currenttrackcolor}{\rule{4pt}{\headheight}}}%
   \fancyfoot[C]{\thepage}%
+  \fancyfoot[RE,LO]{\toclink}%
 }
 
 % --- Full-page backgrounds (cover) ---
