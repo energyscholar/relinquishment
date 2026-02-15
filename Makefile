@@ -5,6 +5,8 @@ SHELL := /bin/bash
 SOURCE_DATE_EPOCH := $(shell git log -1 --pretty=%ct 2>/dev/null || date +%s)
 export SOURCE_DATE_EPOCH
 
+JOBNAME := Relinquishment_by_Bruce_Stephenson
+
 TIKZ_SRCS := $(filter-out build/images/standalone-header.tex, $(wildcard build/images/*.tex))
 TIKZ_PDFS := $(TIKZ_SRCS:.tex=.pdf)
 
@@ -14,25 +16,25 @@ TIKZ_PDFS := $(TIKZ_SRCS:.tex=.pdf)
 dev: gitinfo
 	@echo "" > build/flags.tex
 	@mkdir -p build/tikz-cache
-	latexmk -r build/.latexmkrc main.tex
+	latexmk -r build/.latexmkrc -jobname=$(JOBNAME) main.tex
 
 # --- Final build (Docker required) ---
 final:
 	@command -v docker >/dev/null 2>&1 || { echo "ERROR: Docker required for final builds. Not installed on this host."; exit 1; }
 	@echo "\\def\\FINAL{1}" > build/flags.tex
-	docker run --rm -v "$(CURDIR)":/src -w /src relinquishment-build latexmk -r build/.latexmkrc main.tex
+	docker run --rm -v "$(CURDIR)":/src -w /src relinquishment-build latexmk -r build/.latexmkrc -jobname=$(JOBNAME) main.tex
 
 # --- Screen layout (landscape, Docker required) ---
 screen:
 	@command -v docker >/dev/null 2>&1 || { echo "ERROR: Docker required for screen builds. Not installed on this host."; exit 1; }
 	@echo "\\def\\FINAL{1}" > build/flags.tex
-	docker run --rm -v "$(CURDIR)":/src -w /src relinquishment-build latexmk -r build/.latexmkrc main.tex
+	docker run --rm -v "$(CURDIR)":/src -w /src relinquishment-build latexmk -r build/.latexmkrc -jobname=$(JOBNAME) main.tex
 
 # --- Print layout (portrait, Docker required) ---
 print:
 	@command -v docker >/dev/null 2>&1 || { echo "ERROR: Docker required for print builds. Not installed on this host."; exit 1; }
 	@echo "\\def\\FINAL{1}\\def\\PRINT{1}" > build/flags.tex
-	docker run --rm -v "$(CURDIR)":/src -w /src relinquishment-build latexmk -r build/.latexmkrc main.tex
+	docker run --rm -v "$(CURDIR)":/src -w /src relinquishment-build latexmk -r build/.latexmkrc -jobname=$(JOBNAME) main.tex
 
 # --- Compile standalone TikZ images ---
 images: $(TIKZ_PDFS)
@@ -46,7 +48,9 @@ validate:
 
 # --- Clean all generated files ---
 clean:
-	latexmk -r build/.latexmkrc -C main.tex 2>/dev/null || true
+	latexmk -r build/.latexmkrc -jobname=$(JOBNAME) -C main.tex 2>/dev/null || true
+	rm -f $(JOBNAME).pdf $(JOBNAME).aux $(JOBNAME).log $(JOBNAME).toc $(JOBNAME).out $(JOBNAME).fls $(JOBNAME).fdb_latexmk
+	rm -f $(JOBNAME).glo $(JOBNAME).gls $(JOBNAME).glg $(JOBNAME).ist $(JOBNAME).synctex.gz $(JOBNAME).bbl $(JOBNAME).blg
 	rm -f main.pdf main.aux main.log main.toc main.out main.fls main.fdb_latexmk
 	rm -f main.glo main.gls main.glg main.ist main.synctex.gz main.bbl main.blg
 	rm -rf build/tikz-cache/*
@@ -75,11 +79,11 @@ manifest:
 # --- Size report ---
 size-report:
 	@echo "=== Size Report ==="
-	@if [ -f main.pdf ]; then \
-		echo "PDF: $$(ls -lh main.pdf | awk '{print $$5}')"; \
-		pdfinfo main.pdf 2>/dev/null | grep -E "^(Pages|File size)" || true; \
+	@if [ -f $(JOBNAME).pdf ]; then \
+		echo "PDF: $$(ls -lh $(JOBNAME).pdf | awk '{print $$5}')"; \
+		pdfinfo $(JOBNAME).pdf 2>/dev/null | grep -E "^(Pages|File size)" || true; \
 	else \
-		echo "No main.pdf found. Run 'make dev' first."; \
+		echo "No $(JOBNAME).pdf found. Run 'make dev' first."; \
 	fi
 	@echo ""
 	@echo "--- TeX source files ---"
