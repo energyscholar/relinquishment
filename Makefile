@@ -13,7 +13,7 @@ TIKZ_PDFS := $(TIKZ_SRCS:.tex=.pdf)
 .PHONY: dev final screen print images validate clean clean-cache manifest size-report gitinfo
 
 # --- Dev build (host, no tagging) ---
-dev: gitinfo
+dev: gitinfo images
 	@echo "" > build/flags.tex
 	@mkdir -p build/tikz-cache
 	latexmk -r build/.latexmkrc -jobname=$(JOBNAME) main.tex

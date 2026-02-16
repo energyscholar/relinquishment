@@ -26,19 +26,19 @@ At its peak, roughly ten thousand people worked there. Ten thousand. Mathematici
 
 Every single one of them kept the secret.
 
-Not for a year. Not for the duration of the war. For thirty years.
+Not for a year. Not for the duration of the war. For more than thirty years.
 
-The Ultra Secret — as the intelligence was codenamed — remained classified until 1974, when a former RAF officer named F.W. Winterbotham published a book about it. That book didn't even mention Alan Turing by name. Thirty years of silence. Ten thousand people. In a democracy, with a free press, with family members asking "what did you do in the war?" — ten thousand people said nothing.
+The Ultra Secret — as the intelligence was codenamed — remained classified until 1974, when a former RAF officer named F.W. Winterbotham published a book about it. That book didn't even mention Alan Turing by name. More than thirty years of silence. Ten thousand people. In a democracy, with a free press, with family members asking "what did you do in the war?" — ten thousand people said nothing.
 
 Some of them carried the secret to their graves. They died without ever telling their children, their spouses, their closest friends. Not because they were threatened with violence — though the Official Secrets Act carried real penalties — but because they'd been told the secret mattered, and they believed it, and they kept their word.
 
 This is the most important correction. Not because it makes a better movie, but because it answers a question people always ask: "Could a secret that big really be kept?"
 
-Yes. It could. It was. It is historical fact. Ten thousand people, thirty years, one of the most consequential secrets in the history of warfare. Kept.
+Yes. It could. It was. It is historical fact. Ten thousand people, more than thirty years, one of the most consequential secrets in the history of warfare. Kept.
 
 ### 2. Churchill Let Coventry Burn
 
-On November 14, 1940, the Luftwaffe bombed the city of Coventry. Five hundred and sixty-eight people died. The great medieval church of St Michael's — elevated to cathedral status only in 1918 — was destroyed in a single night.
+On November 14, 1940, the Luftwaffe bombed the city of Coventry. An estimated five hundred and sixty-eight people died. The great medieval church of St Michael's — elevated to cathedral status only in 1918 — was destroyed in a single night.
 
 Winston Churchill had advance warning. British intelligence, using Ultra decrypts, knew a major raid was coming. Intelligence pointed to Coventry. Churchill knew enough.
 
@@ -96,17 +96,17 @@ This was more than a biological insight. Turing saw the connection to his own ea
 
 A brain is a biological neural network. It grew itself through morphogenesis. If you understood morphogenesis — if you could build a system that computed the way biology computes — you could grow an artificial brain. Not program it. Grow it. The way nature does.
 
-Turing couldn't prove this. The mathematics was too hard. His body was being poisoned by the hormones the government forced on him. His body was being altered by the very institution he had saved. He was, in his own words, "morally certain" that he was right. But he couldn't finish the work.
+Turing couldn't prove this. The mathematics was too hard. His body was being poisoned by the hormones the government forced on him. His body was being altered by the very institution he had saved. He was convinced he was right. But he couldn't finish the work.
 
 He died on June 7, 1954. A half-eaten apple beside his bed. Cyanide in his body. The inquest ruled suicide.
 
 The thread didn't die with him.
 
-In the decades after Turing's death, other scientists picked up the same questions. Stuart Kauffman studied autocatalysis — self-organizing chemical systems that spontaneously cross a threshold into life-like behavior. The kind of process Turing had described in his morphogenesis paper, but taken further: not just pattern formation, but the emergence of self-sustaining order from chaos.
+In the decades after Turing's death, other scientists picked up the same questions. Stuart Kauffman studied autocatalytic sets — networks of chemical reactions that collectively catalyze each other, spontaneously achieving self-sustaining order beyond a critical threshold of complexity. The kind of process Turing had described in his morphogenesis paper, but taken further: not just pattern formation, but the emergence of self-sustaining order from chaos.
 
 Stephen Wolfram studied cellular automata — systems where simple rules, applied repeatedly across a grid, generate astonishingly complex behavior. Wolfram showed that some of these systems are computationally universal. That means they can compute anything a computer can compute. Simple rules. Complex outcomes. Computation embedded in the structure of the system itself.
 
-Kauffman and Wolfram didn't know each other's work was converging. They came from different fields, asked different questions, used different methods. But they were both extending the same thread that Turing had started: the deep connection between computation and biology. Between mathematical rules and living systems. Between simple processes and the staggering complexity of the natural world.
+Kauffman and Wolfram came from different fields, asked different questions, used different methods. But they were both extending the same thread that Turing had started: the deep connection between computation and biology. Between mathematical rules and living systems. Between simple processes and the staggering complexity of the natural world.
 
 ---
 
@@ -120,7 +120,7 @@ Here is the pattern, stated plainly:
 4. Years or decades later, the public world independently "discovers" the same principles.
 5. When the secret finally emerges, history has to be rewritten.
 
-This pattern is not theory. It is documented history. It happened with Ultra at Bletchley Park — secret for thirty years. It happened with public-key cryptography at GCHQ — secret for twenty-four years. Twice, at the same institution and its direct successor, on the same subject — cryptography and computation.
+This pattern is not theory. It is documented history. It happened with Ultra at Bletchley Park — secret for more than thirty years. It happened with public-key cryptography at GCHQ — secret for twenty-four years. Twice, at the same institution and its direct successor, on the same subject — cryptography and computation.
 
 Now: what if this pattern repeated a third time?
 
@@ -138,7 +138,7 @@ That is the claim at the center of this book. It may be true. It may not be. But
 
 This section isn't asking you to believe anything. Not yet. It's asking you to acknowledge three facts:
 
-First: large-scale cryptographic secrets have been kept for decades. This is proven. Ten thousand people at Bletchley Park. Thirty years of silence. It happened.
+First: large-scale cryptographic secrets have been kept for decades. This is proven. Ten thousand people at Bletchley Park. More than thirty years of silence. It happened.
 
 Second: the same agencies have done this more than once. GCHQ invented the foundation of internet security in the early 1970s and kept it secret until 1997. Same pattern. Same agencies. Proven.
 

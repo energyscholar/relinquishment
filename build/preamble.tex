@@ -56,13 +56,32 @@
   \begin{ocg}[printocg=always,exportocg=always]{Graphics}{graphics}{1}#1\end{ocg}%
 }
 
-% --- Headers/footers with track-colored margin stripes ---
+% --- Headers/footers ---
 \usepackage{fancyhdr}
 \setlength{\headheight}{16.1pt}
 \addtolength{\topmargin}{-4.1pt}
 
+% --- Track identification system ---
+% Single source of truth: \settrack{trackone} sets both color and label.
+% Label appears as rotated text in right margin; stripe runs full page height.
 \newcommand{\currenttrackcolor}{bodytext}
-\newcommand{\settrack}[1]{\renewcommand{\currenttrackcolor}{#1}}
+\let\currenttracklabel\empty
+
+% Track color → label mapping (pgfkeys — TikZ already loaded)
+\pgfkeys{
+  /track/label/.store in=\currenttracklabel,
+  /track/trackone/.style={/track/label=CONFESSION},
+  /track/tracktwo/.style={/track/label=TESTAMENT},
+  /track/trackthree/.style={/track/label=AWAKENING},
+  /track/trackconv/.style={/track/label=CONVERGENCE},
+  /track/trackbridge/.style={/track/label=BRIDGE},
+  /track/bodytext/.style={/track/label={}},
+}
+
+\newcommand{\settrack}[1]{%
+  \renewcommand{\currenttrackcolor}{#1}%
+  \pgfkeys{/track/#1}%
+}
 
 % --- Screen navigation (suppressed in print) ---
 \ifdefined\PRINT
@@ -80,25 +99,43 @@
   }%
 \fi
 
+% --- Page styles (footer only — track stripe handled by eso-pic) ---
 \fancypagestyle{trackpage}{%
   \fancyhf{}%
-  \fancyhead[RO,LE]{\textcolor{\currenttrackcolor}{\rule{4pt}{\headheight}}}%
   \fancyfoot[C]{\thepage}%
   \fancyfoot[RE,LO]{\toclink}%
 }
 \pagestyle{trackpage}
 
-% Redefine 'plain' style — book class forces \thispagestyle{plain}
-% on chapter-opening pages. Without this, chapter first pages have no stripe.
 \fancypagestyle{plain}{%
   \fancyhf{}%
-  \fancyhead[RO,LE]{\textcolor{\currenttrackcolor}{\rule{4pt}{\headheight}}}%
   \fancyfoot[C]{\thepage}%
   \fancyfoot[RE,LO]{\toclink}%
 }
 
 % --- Full-page backgrounds (cover) ---
 \usepackage{eso-pic}
+
+% --- Full-height track stripe + rotated label (right margin) ---
+% No stripe on pages before first \settrack call (front matter, TOC, etc.)
+\AddToShipoutPictureBG{%
+  \ifx\currenttracklabel\empty\else
+    \colorlet{@trackstripe}{\currenttrackcolor}%
+    \colorlet{@tracklabel}{\currenttrackcolor!40!white}%
+    % Colored stripe — 8pt wide, full page height, right edge
+    \AtPageUpperLeft{%
+      \put(\LenToUnit{\paperwidth-10pt},\LenToUnit{-\paperheight}){%
+        \textcolor{@trackstripe}{\rule{8pt}{\paperheight}}%
+      }%
+    }%
+    % Rotated track label — centered vertically, right margin
+    \AtPageUpperLeft{%
+      \put(\LenToUnit{\paperwidth-22pt},\LenToUnit{-0.5\paperheight}){%
+        \rotatebox[origin=c]{90}{\textcolor{@tracklabel}{\sffamily\footnotesize\currenttracklabel}}%
+      }%
+    }%
+  \fi
+}
 
 % --- Git info ---
 \input{build/gitinfo.tex}

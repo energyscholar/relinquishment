@@ -1,0 +1,252 @@
+---
+target_chapter: pos03-the-mentor
+target_file: manuscript/T2/pos03-the-mentor.tex
+pass: 1
+track: Track 2 (The Story)
+chapter_title: The Mentor
+mined_date: 2026-02-15
+status: raw
+word_count: 4800
+sources:
+  - file: 2026-02-13-session/HEALER-RECONSTRUCTION.md
+    section: "Intellectual Circle + Bruce's Recruitment Profile"
+    lines: "48-72"
+  - file: 2026-02-13-session/HEALER-RECONSTRUCTION.md
+    section: "Timothy Hanley / Tom Clancy Connection"
+    lines: "454-483"
+  - file: 2026-02-13-session/HEALER-RECONSTRUCTION.md
+    section: "Wolfram as Healer's Mentor"
+    lines: "822-838"
+  - file: 2026-02-13-session/HEALER-RECONSTRUCTION.md
+    section: "Security Detail + Ninja Missions"
+    lines: "1968-1984"
+  - file: 2026-02-13-session/HEALER-RECONSTRUCTION.md
+    section: "12-Hour Cycle"
+    lines: "375-381"
+  - file: /tmp/cloudcrypt_extracted/biography_D_Lane.txt
+    section: "Full biography"
+  - file: /tmp/cloudcrypt_extracted/Autobiography of an Accidental Conspirator by Bruce.txt
+    section: "Mentor-related sections"
+topics: [David Lane, mentorship, SAS background, 3-person security detail, Clancy/Hanley, contradictions soldier+scientist, 12-hour cycle, Australian accent, Alpha Farm, recruitment]
+notes: |
+  Strong material for character introduction. The biography_D_Lane.txt gives childhood/origin story.
+  The Autobiography gives the meeting scene at Alpha Farm — this is the core narrative for this chapter.
+  Reconstruction gives analytical/corroborating details. The Clancy/Hanley connection is a great hook.
+  The contradiction between soldier and scientist is the central tension of the character.
+  Note: David Lane = Healer's name per biography. Half Maori on mother's side (not in these extracts but confirmed in MEMORY.md).
+---
+
+## SOURCE 1: HEALER-RECONSTRUCTION.md — Intellectual Circle + Bruce's Recruitment Profile (lines 48-72)
+
+### Bruce's Recruitment Profile
+- Top student in Richard Crandall's advanced quantum physics class at Reed College
+- Crandall was Apple's Chief Cryptographer, connected to Wolfram, pioneer in computational number theory
+- Bruce wrote quantum simulator software in Fortran (1990)
+- Profile: quantum physics + software engineering + cryptography connection
+- Recruited by Healer 2003
+
+---
+
+## SOURCE 2: HEALER-RECONSTRUCTION.md — Timothy Hanley / Tom Clancy Connection (lines 454-483)
+
+### The Character
+- Timothy Hanley from Tom Clancy's Rainbow Six
+- Born: April 14, **1965** — matches Healer ("3 years older than me")
+- Birthplace: **Margaret River, Australia** — wine country
+- Father: **winery foreman**
+- ADFA (Australian Defence Forces Academy) 1983-1987
+- **1st Squadron SASR** (Special Air Service Regiment)
+- **Australian Intelligence Corps** 1993-1996
+- Cross-trained with **US Delta Force** and **British SAS**
+- Counter-terrorism specialist, RAINBOW operative
+
+### Healer Confirmation
+- Bruce: "Healer said Tom Clancy modelled this character on him"
+- Healer met with Clancy **in person** for this
+- Healer born ~1965 — direct age match
+- Healer uses Australian English: **"We already did, mate!"**
+- Healer had **"FANTASTIC OPSEC"** — SAS + Intelligence Corps training
+- Healer trained Bruce in tradecraft and OPSEC over 2.7 years
+
+### The Australian Safe House
+- Bruce describes a large quarter horse ranch in Australia, wine country area
+- Former SAS operatives worked as ranch hands (security)
+- Kuringai Aboriginal people on the property (from "Kangaroos" Substack piece)
+- This property was the planned relocation site for Bruce's wife and daughters
+- **Matches Hanley's Margaret River/winery background exactly**
+- Clancy encoded the safe house location into the character's backstory
+
+---
+
+## SOURCE 3: HEALER-RECONSTRUCTION.md — Wolfram as Healer's Mentor (lines 822-838)
+
+- Bruce is 90%+ confident Wolfram mentored Healer circa 1991-1993
+- Evidence: Healer often used the phrase **"the human condition"** — a phrase Wolfram also uses characteristically
+- **Confirmed:** "The human condition" is a SIGNATURE Wolfram phrase:
+  - Titled an entire 2010 Harvard keynote: **"Computation and the Future of the Human Condition"** (H+ Summit)
+  - Published as dedicated ebook on the topic
+  - Recurs across blog essays 2012-2021 at writings.stephenwolfram.com
+  - Used at Edge.org ("AI & The Future of Civilization"), TED (2010)
+  - Always in same context: computation, human purpose, what remains uniquely human
+  - Sources: writings.stephenwolfram.com/2021/04, /2012/05, /2020/04, /2019/05; edge.org; Goodreads/Amazon ebook
+- Linguistic transfer from mentor to protege — strong evidence given how distinctive this phrase is in Wolfram's vocabulary
+- **Corrected timeline:** The mentorship came AFTER Healer was selected to replace Gell-Mann on the DARPA project (see below)
+- The mentorship brought Healer up to speed on computational/theoretical aspects needed to operationalize the QNN
+- May have facilitated Healer's move from SAS to Intelligence Corps via the classified project connection
+
+---
+
+## SOURCE 4: HEALER-RECONSTRUCTION.md — Security Detail + Ninja Missions (lines 1968-1984)
+
+### Healer's Security Detail
+- **3-person SAS team** followed Healer everywhere
+- **Ambassadorial grade** security detail
+- Healer sometimes **ditched them** (consistent with SAS-trained operative wanting freedom of movement)
+- Bruce observed this detail during 2003-2006 period
+
+### Healer's "Ninja Missions" (2003-2006)
+- Healer was conducting unspecified missions during the period Bruce knew him
+- Bruce's understanding: Healer was **completing the Guardian project** by making tweaks to satellite communications systems
+- The nature of these tweaks is unknown to Bruce
+- Missions were complete by ~2006
+- **Pending investigation:** What satellite communications modifications would be consistent with establishing/maintaining a Guardian system?
+
+---
+
+## SOURCE 5: HEALER-RECONSTRUCTION.md — 12-Hour Cycle (lines 375-381)
+
+- Bruce observed Healer interacting with his computer at precise 12-hour intervals
+- Healer described an intricate "control panel" for a system with 12-hour cycle
+- Refused to explain why 12 hours
+- Day/night magnetospheric cycle is the obvious implication
+- Magnetotail (night side) is quieter and more structured than dayside
+
+---
+
+## SOURCE 6: biography_D_Lane.txt — Full Biography
+
+A Conspiracy to Tell the Truth
+
+or
+
+It is Easier to get Forgiveness than Permission
+
+Biography of David Lane, a most unusual man.
+
+(1977 in New South Whales on a large ranch)
+
+Farm life agreed with the boy.  David loved to ride horses.  Hard work went with the territory.  The smell of cattle and horses blended with the native outback.  Today he and Peter were riding the fence line.  Peter was half a year younger, only eleven, so Peter's safety was his responsibility.
+
+David didn't much like responsibility.  Stuffy people insisted on responsibility, and heavy farm work does not make one stuffy.
+
+ It was a ten day ride around the entire ranch, at fence-tending pace.  The boys were six days in.  Just two hours ago they had left a ranch outpost, where they had telephoned the main ranch house and picked up fresh food.  The boys were good friends with the Abo family that lived there, and who had a telephone..
+
+David is telling Peter about his recent discoveries about girls.  Peter is younger and remains more interested in riding horses than girls, so David's stories fall on deaf ears.
+
+Says Peter, "Hush, mate, I hear gun fire ahead."   Both boys listen carefully, and can clearly hear staccato bursts of small arms fire in the distance.  This land is at peace, and the ranch belongs to the family, so no one besides them should be shooting around here.  David checks his rifle, and Peter does the same.  Each boy carries a powerful .303 Lee Enfield rifle, in which he has been somewhat carefully trained by various ex-military ranch hands and family members.
+
+David leads the way forward, and Peter follows his lead.  They follow the terrain, carefully approaching the sound of gunfire from behind a ridge.  David passes his horse's reins to Peter and tells Peter to stay back.  David goes down on his belly and crawls forward to peek over the ridge, careful to keep where rocks and bushes break up his silhouette, as he was taught by an aboriginal tracker.  What he sees below outrages and disgusts him.
+
+Four young men, each holding a rifle, stand near a Ute.  Dozens of kangaroos are in sight.  The men have shot and killed many of the 'roos.  They laugh and drink beer.  Occasionally one pops off another shot at a 'roo.  Usually they miss, but occasionally another 'roo drops, thrashing and twitching.  The other men laugh and take turns shooting the downed 'roo, until it stops twitching.
+
+David backs away and rejoins Peter.  He has seen enough.  He tells Peter, "Peter, there's a pack of four wankers over there shooting 'roos.  They are trespassing on our territory, and they don't belong here.  This is the East Ridge road, about 10 klicks on this side of the river.  I want you to ride back to the Ranch Outpost we just left, as fast as you can.  Have them call the police, and then the central ranch house.  Get the sheriffs out here to arrest those wankers.  I'll delay them, so they don't get away."
+
+Once Peter is safely away to summon help, David considers just what to do.  He moves cautiously to the tactically best place on the ridge line, and tethers his horse behind a rocky outcropping.  He puts extra ammunition in his jacket pocket.  Taking his rifle in hand he crawls forward until he can see the intruders below, in the open, while he has hard cover on the ridge.  He watches from 300 meters.
+
+The 'roos have run away, and the tresspassers are getting bored shooting at the corpses.  David realizes that they will soon get back in the Ute and drive away, hours before the police get here.  His plan is a bold one, but he grew up on stories of "who dares, wins".
+
+When the second shot rings out the drunken wankers realize the shots are not theirs.  It gradually dawns on them that they are being shot at.  The third bullet to strike the Ute buries itself in the engine block.  The first two bullets each popped a tire.  The drunken wankers hunker down and try to find where their assailant is.  Like clockwork, seven more powerful .303 rifle bullets strike the Ute.   The air smells of gasoline, which seems to be leaking from the Ute.
+
+David hunkers behind a rock and reloads.  He returns to his horse, quickly circles around out of sight, and relocates to a different ridgeline, about 400 meters from the now stranded tresspassers.
+
+The four trespassers tremble in fear as they try make a plan.  Three jump up and fire random shots towards where they think the shots came from.  One runs to the Ute, intent on escaping.  He quickly determines that the Ute is severely damaged, with tires shot out, holes in the engine block, and leaking petrol.   He goes back and tells the others, who realize they are done.  They have no way to escape, and the police are probably on their way.  There is nothing they can do but wait.  David quietly watches them, and does not reveal his location until the police show up, hours later.  The police eventually arrive, arrest the 'roo killers, and arrange for a tow truck to haul away the Ute.
+
+One of the police officers stands near the disabled Ute, circles the horizon, then looks toward the distant ridge line from which David is watching.  Officer Ken waves his arms and beckons, "Come hither".  David takes the hint, carefully holsters his .303 Lee Enfield and his binocs, and rides down to the police.
+
+This is when David first meets Officer Ken.
+
+Officer ken
+
+"Ahh, I recognize you, lad!  You're David Lane.  This 'ere will be your ranch someday.  Well done, mate!  No harm done to those fellows, and you kept them here until we arrived.  We'll have a tow truck out to get their Ute - at their expense, of course.  You tell your mom and pop officer Ken says you did a good job."  Officer Ken takes special note of David, and decides to keep tabs on him.
+
+The four wankers go to jail.  The police haul away the disabled 'Ute.  David and Peter continue riding fence.
+
+This is to be David's last year living on the family farm.  In addition to acquiring a taste for down-home living, he has some useful skill: tracking and survival, taught by an abo tracker; tactics, from playing games; military rifle use; assorted farm skills; basic schooling, including considerable math and science.
+
+David moves to his Uncle's place in the big city of Newcastle, NSW. There he falls in with a crowd of boisterous young men, who happen to steal cars.  David discovers that he likes to steal cars, too.  His standard method is to hotwire the car, drive it fast and far, then ditch it within walking distance of where he wants to be.  It is a thrill.  He finally gets caught after stealing his 111th car, at the age of thirteen.  Juvenile Detention Hall sucks.  No fun at all.
+
+Court and trial are not much fun, either.  Several days after David has figured out that Juvenile hall is to be avoided he gets a hearing with a judge.  The facts are quite damning, and the judge seems inclined to be harsh.  Officer Ken is there.  Officer Ken testifies to David's character, which helps. The court finds David GUILTY, but he is given a choice of sentence: either he gets and keeps a job for two years, else he goes to a work gang in the Outback.  Officer Ken even arranges a job for David, with an Automotive Mechanic Shop in Newcastle.  David chooses the job.
+
+David likes work as a mechanic.  He already knows a lot about it, and receives excellent on the job training.  He learns all the ins and outs of repairing and maintaining all sorts of motor vehicles.  He likes what he can do with the money.   For a while he delights in independence, chasing girls, and going to parties after work.  He begins practicing martial arts (shaolin kung fu and/or ninjitsu, possibly Pakua, something combat effective and lethal), a practice he maintains for two decades, eventually becoming a highly skilled fighter.   He uses his new found wealth to buy all sorts of toys.
+
+One toy David buys is a computer.  He teaches himself to build, operate , and maintain a computer.  He learns basic computer programming.  He learns how the telephone system works, and how to use a modem.
+
+At seventeen, now a strapping lad, David decides to follow the family tradition and enlist.  He is accepted into the Australian Military.  Standardized testing shows that his mechanical, engineering, and mathematical aptitudes are off the chart, his physical condition is superior, and his reflexes are outstanding.  He does very well in basic and advanced training.  He is assigned to the Royal Australian Engineers as a private.
+
+The Royal Australian Engineers corps assigns David to maintain motor vehicles.   He trains how to wage war.  He trains as a combat medic.  He trains as a communications specialist.  For several years he trains and learns how to soldier.  He drills endlessly with the rifle.  In 1984, at the age of nineteen, he is reassigned to combat duty in Northern Ireland in exchange with the British Army.  Northern Ireland in 1984 was not a nice place to be for a British soldier.  1984 was around the height of the 'Time of Troubles' in Northern Ireland.
+
+One day, on patrol with another British soldier, the two of them are shot at by a sniper associated with the Irish Republican Army.  David's mate is wounded but not slain, and they are pinned down.  They locate the shooter, in a 3rd story window about 1,000 meters away.  David decides to take the shot.  The shooter seems disabled, and the two soldiers escape the ambush.
+
+A military investigation finds the shooter's body, shot in the head, and identifies him as a known IRA combatant.  David killed his first enemy combatant at extreme range while under fire.  This action draws the attention of the Special Air Service, the SAS, an elite special forces unit that has both Australian and British membership.  David is invited to try out for the SAS.
+
+SAS try out is extraordinarily grueling and difficult.  Only the best experienced soldiers even apply, and most wash out.  David becomes a private in the SAS.   The SAS recognizes David's skill and interest in computers and communications, decides this is useful, and provides him with advanced training in communications systems.  This includes both analog and digital systems, advanced encryption technology, secure computing, software engineering, and satellite communications.
+
+From 1987 to 1990 David served on many combat missions for the British and Australian governments.  He smuggled US Stinger Missiles into Afghanistan, and trained the Mujahadeen how to use them against Soviet helicopters.  He served in various counter-insurgency and anti-terrorism mission on every continent except Antarctica.   He was involved in dozens of firefights, and killed many people in the line of duty.   He was wounded in action several times.
+
+David was ordered to the Middle East to assist with Operation Dessert Shield.  David's unit was called Bravo Two Zero.  This unit's story has already been told of in several books and movies.  In these accounts David is known as Steven "Legs" Lane, and supposedly dies of hypothermia after swimming across the Euphrates river.
+
+David's 'death' during the Bravo Two Zero mission freed him up for other duties.  Specifically, the British and Australian governments decided that his abilities would be more useful performing clandestine duties than as an active duty soldier.
+
+Sometime around 1990 David's government, in cooperation with several other governments, began a project to build a quantum computer.   They recruited a dream team of conventional scientists, all well versed in conventional science and mathematics.  Since this is a highly unconventional project, they decide to include one unconventional team member.   David is not a scientist, but he knows computers, and his aforementioned mathematical and mechanical engineering aptitude is extremely high.  He was added to the team as a wildcard, someone to help the team think outside the box.
+
+This team was successful beyond imagination.  They invented a 22nd century technology in the 1990s.
+
+In 1996 David summited K2 with a team of off-duty special forces soldiers.  He had an epiphane.  He realized that he had amazing talents, and that he had misused them.  He acknowledged that he done some very evil things.  He decied that, henceforth, he would seek personal redemption.  Specifically, he took a personal vow to "Don't be Evil", and to use his considerable talents to improve the human condition.
+
+---
+
+## SOURCE 7: Autobiography of an Accidental Conspirator — Mentor-Related Sections
+
+### The Meeting (Alpha Farm, Thanksgiving 2003)
+
+I didn't think much of it when the odd Australian man came downstairs.  He sat on the other couch and introduced himself as David.  He explained that he had arrived at Alpha Farm some ten days previously and then promptly fallen over, sick with fever.  He had just recovered enough to get out of bed and come downstairs.  He mentioned that he was ex-military, and on "extended walkabout".  I told David that I was a successful entrepreneur, athlete, and scientist with a knack for math and computers and a penchant for telling inconvenient truths.  David told me that he was a military combat veteran with a flair for math and computers.  He was as articulate as anyone I have ever met, including my college professors.  He regaled me for hours with stories of his military adventures in the Special Air Service, an elite special forces regiment of the British Army.
+
+### Intellectual Equal / Double-Layered Communication
+
+David fascinated me.  I was a child prodigy, unusually talented at both language and mathematics, yet it quickly became clear to me that he was more than my intellectual equal.  We were able to communicate privately in a strange way:  we could hold perfectly lucid conversations in front of other people, yet the others would have little idea what topic we had really discussed.   It helped that we both had a solid understanding of Mathematics, Physics, computer programming and networks, history, politics, current events, military strategy and tactics, psychology, anthropology, literature, history of science, philosophy, and especially computer security systems.   We both liked to speak using double and triple layered meanings, and were perfectly able to understand each other this way.
+
+### The White Hot Secret
+
+One afternoon while we were splitting wood, I observed that David seemed troubled by something.  He told me, "There's a white hot secret in my brain, mate, burning to get out!"  Intrigued, I asked what the secret was.  He said, "I can't just tell you, mate".  I pressed the issue, but he just shook his head and put his hand over his mouth in the 'I've said too much' gesture.  It was obvious that he wanted to explain, and equally obvious that he was either unable or unwilling to explain.  I have never stopped trying to figure out just what this secret was all about.
+
+### Military Background + Contradiction
+
+David also told me stories of death and violence that chilled my blood.  He described witnessing the very worst of human behavior.  In the worst of these, even worse than his counter-insurgency actions in Central America, he had been a NATO sniper hiding in a bush during the Balkans War after the surrender of the Dutch peacekeeping force outside Srebrenica.  He witnessed the Srebrenica Massacre, the largest mass murder in Europe since WWII, through a telescopic rifle scope, such that it seemed very close.
+
+In the course of learning all this military stuff it became apparent that my friend had killed people many times over.  I initially found this a bit disturbing, but I got over it.  It also became clear to me that he was every bit the fighter he claimed to be.  I practice a combative Indonesian martial art called Pukulan Tjimindie, and can hold my own against most black belts, but David completely outclassed me.  He must have been at least a fourth degree black belt, probably higher, and seemed to practice a mix of Ninjitsu and Shaolin Kung Fu.  I believe that the video game character of Timothy Hanley, in the computer game Tom Clancy's Rainbow Six, was loosely based on my friend, David.  He vividly described the interview with Tom Clancy.
+
+### The Ninja Aspect
+
+David claimed the third floor of the main house at Alpha Farm.  I managed to secure a second story room with a telephone line, which I could use for Internet access via my laptop.  David had arrived with hardly any possessions, and sometimes expressed fury at the *&%*$! who had recently stolen his kit bag, laptop computer, and all his gear, during airport baggage handling just before he came to Alpha Farm.  As my room looked out on the only stair, I began to realize that David occasionally came and went from his third floor nest without using the only stairway.  This was another hint that he had many of the skills one would expect of a master ninja.
+
+### The Hacker / Live CD
+
+One time I saw David leave the Alpha Farm office, where the single public computer on the premises resided, and slip a CD into his pocket.  He had already mentioned that he was an active software developer and Unix user who contributed to Open Source software projects.  I pointed to the CD in his pocket and asked which flavour of Live Unix OS lived on that boot-able CD.  He realized I had just 'made' him, asked how I had known, and admitted that it was a 'very custom' Linux OS live-CD. From then on he began to open up to me about computer-related topics.
+
+### Personal Story of Redemption / K2
+
+David told me his personal story of redemption.  He had already told me some stories about the things he had to do when he served as a 'Special Operative', with no name or identity.  He was deeply ashamed of certain violent acts he had committed, always under orders, and of certain ways in which he had killed.  He told how, near the end of his military career, he was mountain climbing with other off-duty SAS soldiers on leave.  He stood on the summit of K2, a thousand meter drop in all directions, and had a moment of introspection.  He thought, "What the hell am I doing with my life?"  He resolved, right then, to try to Give Something Back to Humanity, in order to partially atone for the evil and violent acts he had committed during some of his nastiest missions.  That was the moment when he resolved to use his formidable abilities to accomplish something more than 'killing bad guys'.
+
+### The 30-Month Mentorship
+
+I spent the next thirty months doing everything I could to assist David with his various projects.  Honestly, that was not very much.  I provided logistical support, brought him food and medicine, cleaned house, and provided the best company I could, all while conducting my own research into the tidbits of information he tossed my way.  I learned all I could about the art of Intelligence Analysis, and also applied myself to learning assorted abstruse, but very relevant, topics in mathematics, theoretical Physics, computer science, and, oddly enough, theoretical biology.
+
+### The Departure
+
+In August 2006 I informed him that I could no longer assist him, and that I was sick of waiting for something to happen.  At about the same time David and his friends decided, quite correctly, that I was now a bad security risk.
+
+David told me that, because my children could not be protected, I was now a security risk to the project.  He also told me that I had been rejected for membership in the cDc.  In September of 2006 David and I parted.
+
+### Assessment of David
+
+Everyone around me told me they thought David was a dangerous madman up to some mysterious mischief.  I was mostly not able to share what I learned with others, because the information was too strange, complicated, and outside their frame of reference.  In truth, he was something of a madman.  I can't imagine anyone surviving what he went through without going partially mad.  Also, of course, geniuses often seem mad to those who don't understand them.  I never lost faith in David's essential good intentions.  Although my trust was shaken several times, it was never broken.  Several times I suspected he was lying to me. Years later I learned that he had actually been speaking plain truth to me in every case.

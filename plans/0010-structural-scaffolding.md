@@ -1,10 +1,71 @@
 # Plan 0010: Structural Scaffolding for Pedagogical Spiral
 
 **Serial:** 0010
-**Date:** 2026-02-15
+**Date:** 2026-02-15 (revised after red team)
 **Status:** READY FOR GENERATOR
 **Depends:** 0001, 0002, 0007, 0008
 **Purpose:** Create the 35-file chapter structure defined by Plan 0007's pedagogical spiral. Creates `bridge/` directory, adds bridge track color, renames 5 existing chapter files to positional naming, copies three-possibilities content to Pos 1, creates 29 new chapter stubs, and rewrites main.tex mainmatter section with all 35 `\include` lines in pedagogical order. No prose content is written — this is structural scaffolding only.
+
+**Execution chain:** 0001 → 0002 → 0003 → 0004 → 0008 → **0010**. Plans 0005, 0006, 0007, 0009 are reference/design documents, not Generator plans.
+
+---
+
+## Phase 0: Preconditions
+
+Before executing any phase, verify the expected pre-state. If ANY check fails, STOP and report the failure — do NOT proceed.
+
+### 0a. Verify Plan 0008 has been executed
+
+```bash
+git log --oneline | grep '0008'
+```
+
+Must return at least one result. If not: "Plan 0008 has not been executed. Run Plan 0008 first."
+
+### 0b. Verify source files exist (plan has NOT been executed yet)
+
+All five of these files must exist:
+
+```bash
+ls manuscript/track-2-testament/ch01.tex \
+   manuscript/track-2-testament/ch03.tex \
+   manuscript/track-1-confession/ch01.tex \
+   manuscript/track-3-awakening/ch01.tex \
+   manuscript/convergence/convergence.tex
+```
+
+If any file is missing: "Source file(s) missing — Plan 0010 may have already been partially executed. Run `git checkout -- manuscript/ main.tex build/` to restore pre-0010 state, then re-run."
+
+### 0c. Verify target files do NOT exist
+
+```bash
+ls manuscript/bridge/pos01-three-possibilities.tex 2>/dev/null \
+   manuscript/track-2-testament/pos02-alpha-farm.tex 2>/dev/null
+```
+
+If either file exists: "Target files already exist — Plan 0010 has already been executed. Do NOT re-run without first restoring pre-0010 state."
+
+### 0d. Verify bridge directory does not exist
+
+```bash
+ls -d manuscript/bridge 2>/dev/null
+```
+
+If the directory exists: "bridge/ directory already exists — Plan 0010 may have been partially executed. Restore pre-0010 state before re-running."
+
+---
+
+## Rollback Procedure
+
+If any phase fails mid-execution, do NOT commit. Run:
+
+```bash
+git checkout HEAD -- manuscript/ main.tex build/palette.tex
+git clean -f manuscript/track-1-confession/pos*.tex manuscript/track-2-testament/pos*.tex manuscript/track-3-awakening/pos*.tex manuscript/convergence/pos*.tex
+rm -rf manuscript/bridge
+```
+
+Line 1 restores all tracked files to their committed state (undoes renames). Line 2 removes newly created untracked stub files. Line 3 removes the bridge directory and everything in it. After this, re-run Phase 0 preconditions to verify clean state.
 
 ---
 
@@ -45,11 +106,13 @@ All paths relative to `manuscript/`. Naming convention: `posNN-slug.tex`.
 | 10 | `pos10-the-braid.tex` | `bridge/` | The Braid | `trackbridge` | NEW | — |
 | 11 | `pos11-the-experiment.tex` | `bridge/` | The Experiment | `trackbridge` | NEW | — |
 | 12 | `pos12-the-threshold.tex` | `bridge/` | The Threshold | `trackbridge` | NEW | — |
-| 13 | `pos13-the-convergence.tex` | `track-1-confession/` | Genesis: The Edge of Chaos (1988--1992) | `trackone` | RENAME | `track-1-confession/ch01.tex` |
+| 13 | `pos13-genesis.tex` | `track-1-confession/` | Genesis: The Edge of Chaos (1988--1992) | `trackone` | RENAME | `track-1-confession/ch01.tex` |
 | 14 | `pos14-growing-a-mind.tex` | `bridge/` | Growing a Mind | `trackbridge` | NEW | — |
 | 15 | `pos15-first-light.tex` | `track-1-confession/` | First Light | `trackone` | NEW | — |
 | 16 | `pos16-the-thermal-ladder.tex` | `track-1-confession/` | The Thermal Ladder | `trackone` | NEW | — |
 | 17 | `pos17-the-capability.tex` | `track-1-confession/` | The Capability | `trackone` | NEW | — |
+
+**Pos 13 note:** Plan 0007 design name is "The Convergence" but existing chapter title is "Genesis: The Edge of Chaos (1988--1992)". Filename slug uses `genesis` to match the existing title. The title may change when the chapter is rewritten — that is a content decision, not a scaffolding decision.
 
 ### PASS 3: THE MECHANISM (Positions 18–27)
 
@@ -71,6 +134,8 @@ All paths relative to `manuscript/`. Naming convention: `posNN-slug.tex`.
 | Pos | Filename | Directory | Chapter Title | Color | Action | Old Path |
 |-----|----------|-----------|---------------|-------|--------|----------|
 | 28 | `pos28-surrender.tex` | `convergence/` | 2006: Surrender | `trackconv` | RENAME | `convergence/convergence.tex` |
+
+**Pos 28 note:** Plan 0007 design name is "The Surrender of the Master Keys." Existing chapter title is "2006: Surrender" and is preserved per constraints. The full title may be adopted when the chapter is drafted — that is a content decision, not a scaffolding decision.
 
 ### PASS 4: THE QUESTION (Positions 29–35)
 
@@ -124,13 +189,13 @@ git mv manuscript/track-2-testament/ch03.tex manuscript/track-2-testament/pos05-
 
 Edit: add `\label{pos05:the-stories}` on the line after the existing `\label{ch:t2-stories}`.
 
-### 2c. Pos 13: The Convergence
+### 2c. Pos 13: Genesis
 
 ```bash
-git mv manuscript/track-1-confession/ch01.tex manuscript/track-1-confession/pos13-the-convergence.tex
+git mv manuscript/track-1-confession/ch01.tex manuscript/track-1-confession/pos13-genesis.tex
 ```
 
-Edit: add `\label{pos13:the-convergence}` on the line after the existing `\label{t1:ch01:genesis}`.
+Edit: add `\label{pos13:genesis}` on the line after the existing `\label{t1:ch01:genesis}`.
 
 ### 2d. Pos 24: Instantiation
 
@@ -152,9 +217,7 @@ Edit: add `\label{pos28:surrender}` on the line after the existing `\label{conv:
 
 ## Phase 3: Create Pos 1 from Appendix
 
-Create `manuscript/bridge/pos01-three-possibilities.tex` based on the content of `manuscript/appendix/three-possibilities.tex`.
-
-Read the appendix file. Create the new file with these modifications:
+Create `manuscript/bridge/pos01-three-possibilities.tex` by copying `manuscript/appendix/three-possibilities.tex` and applying these modifications:
 
 1. Replace the comment header with:
    ```latex
@@ -165,7 +228,7 @@ Read the appendix file. Create the new file with these modifications:
 
 2. Add `\settrack{trackbridge}` before the `\chapter` line.
 
-3. Keep the existing `\label{app:three-possibilities}` and add `\label{pos01:three-possibilities}` on the next line.
+3. Replace the existing `\label{app:three-possibilities}` with `\label{pos01:three-possibilities}`. Do NOT keep the `app:` label — it would create a duplicate label conflict if the appendix file were ever re-included.
 
 4. Keep ALL content between `\label` and end of file exactly as-is.
 
@@ -238,9 +301,13 @@ Source references (from Plan 0007):
 
 ---
 
-## Phase 5: Rewrite main.tex Mainmatter Section
+## Phase 5: Rewrite main.tex
 
-Replace everything between `\mainmatter` and `\appendix` (inclusive of both lines) in `main.tex` with the following. Keep frontmatter and backmatter sections exactly as they are.
+Replace everything between `\mainmatter` and `\appendix` (inclusive of both lines) in `main.tex` with the content below. Keep all other sections (frontmatter, backmatter, preamble) exactly as they are, EXCEPT:
+
+- Update line 3: change `% \includeonly{manuscript/track-1-confession/ch01}` to `% \includeonly{manuscript/track-1-confession/pos13-genesis}`
+
+Mainmatter replacement:
 
 ```latex
 \mainmatter
@@ -261,7 +328,7 @@ Replace everything between `\mainmatter` and `\appendix` (inclusive of both line
 \include{manuscript/bridge/pos10-the-braid}
 \include{manuscript/bridge/pos11-the-experiment}
 \include{manuscript/bridge/pos12-the-threshold}
-\include{manuscript/track-1-confession/pos13-the-convergence}
+\include{manuscript/track-1-confession/pos13-genesis}
 \include{manuscript/bridge/pos14-growing-a-mind}
 \include{manuscript/track-1-confession/pos15-first-light}
 \include{manuscript/track-1-confession/pos16-the-thermal-ladder}
@@ -309,11 +376,11 @@ After all phases complete, run:
 3. `ls manuscript/track-2-testament/pos*.tex | wc -l` — must return **10** (Pos 2, 3, 5, 7, 19, 23, 29, 31, 33, 34).
 4. `ls manuscript/track-3-awakening/pos*.tex | wc -l` — must return **5** (Pos 24, 25, 27, 30, 32).
 5. `ls manuscript/convergence/pos*.tex | wc -l` — must return **2** (Pos 28, 35).
-6. `grep -c '\\include{manuscript/' main.tex` — must return **35** mainmatter includes (appendix/front/back includes are separate).
+6. `sed -n '/^\\mainmatter/,/^\\appendix/p' main.tex | grep -c '\\include{manuscript/'` — must return **35** (counts only mainmatter includes, excluding front/back/appendix).
 7. `ls manuscript/track-2-testament/ch01.tex manuscript/track-2-testament/ch03.tex manuscript/track-1-confession/ch01.tex manuscript/track-3-awakening/ch01.tex manuscript/convergence/convergence.tex 2>&1 | grep -c "No such file"` — must return **5** (all old files renamed).
 8. `grep 'trackbridge' build/palette.tex` — must return the color definition.
-9. `make` — full build must succeed with no errors. Expected: ~70+ pages (35 chapters, mostly stubs).
-10. `grep -c 'label{pos' manuscript/bridge/*.tex manuscript/track-*/*.tex manuscript/convergence/*.tex` — every file must have exactly 1 positional label (renamed files also have their old label, but the `pos` label must exist in all 35).
+9. `make clean && make` — full build must succeed with no errors (warnings are acceptable on first build). Expected: ~70+ pages (35 chapters, mostly stubs).
+10. `grep -rL 'label{pos' manuscript/bridge/*.tex manuscript/track-1-confession/pos*.tex manuscript/track-2-testament/pos*.tex manuscript/track-3-awakening/pos*.tex manuscript/convergence/pos*.tex` — must return **empty** (every file has a positional label).
 
 ---
 
@@ -321,7 +388,7 @@ After all phases complete, run:
 
 - Do NOT modify or delete `manuscript/appendix/three-possibilities.tex`.
 - Do NOT modify any other appendix files.
-- Do NOT modify front matter or back matter files.
+- Do NOT modify front matter or back matter files (except main.tex line 3 `\includeonly` comment).
 - Do NOT write chapter prose — stubs contain only the template placeholder text.
 - Do NOT change existing `\chapter{}` titles in renamed files. New stub files use Plan 0007 titles.
 - Do NOT remove existing `\label{}` lines in renamed files — add positional labels alongside them.
@@ -334,8 +401,10 @@ After all phases complete, run:
 
 ## Handoff Prompt
 
-You are the Generator. Read the plan at `~/software/relinquishment/plans/0010-structural-scaffolding.md`. Execute all 5 phases in order: (1) create bridge/ directory and add trackbridge color to palette.tex, (2) rename 5 existing chapter files with git mv and add positional labels, (3) create Pos 1 from appendix/three-possibilities.tex copy, (4) create 29 new chapter stubs using the template, (5) rewrite main.tex mainmatter section with all 35 includes. Run all 10 verification checks. One commit: `Plan 0010: Structural scaffolding for pedagogical spiral`.
+**PLAN 0010 — GENERATOR PROMPT**
+
+You are the Generator executing Plan 0010 (Structural Scaffolding). Read the plan at `~/software/relinquishment/plans/0010-structural-scaffolding.md`. Execute Phase 0 preconditions first — if any fail, STOP and report. Then execute Phases 1-5 in order: (1) create bridge/ directory and add trackbridge color to palette.tex, (2) rename 5 existing chapter files with git mv and add positional labels, (3) create Pos 1 by copying appendix/three-possibilities.tex with modifications, (4) create 29 new chapter stubs using the template, (5) rewrite main.tex mainmatter section with all 35 includes and update line 3 includeonly comment. Run `make clean && make` and all 10 verification checks. If any phase fails, do NOT commit — follow the rollback procedure. One commit: `Plan 0010: Structural scaffolding for pedagogical spiral`.
 
 ---
 
-*Nightstalker, 2026-02-15*
+*Nightstalker, 2026-02-15 (revised after red team)*

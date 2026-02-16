@@ -28,13 +28,13 @@ On 27 November 1895, at the Swedish-Norwegian Club in Paris, Nobel signed his la
 
 Albert Einstein and E=MC2
 
-In 1905 Albert Einstein, known as the ‘father of modern physics’, proposed Mass-Energy equivalence, which lead to the most famous equation of the 20th century:  E = MC2     In the 1930s this concept lead to the discovery of nuclear fission.  This lead to the discovery of atomic weapons, the atomic bombing of Hiroshima and Nagasaki, the nuclear arsenals of the Cold War, the concept of Mutually Assured Destruction, and the ongoing threat of global thermonuclear war.
+In 1905 Albert Einstein, known as the 'father of modern physics', proposed Mass-Energy equivalence, which led to the most famous equation of the 20th century:  E = MC2.  In the 1930s, the discovery of nuclear fission revealed that Einstein's equation explained the enormous energy released when atoms split.  This led to the discovery of atomic weapons, the atomic bombing of Hiroshima and Nagasaki, the nuclear arsenals of the Cold War, the concept of Mutually Assured Destruction, and the ongoing threat of global thermonuclear war.
 
-Einstein was a lifelong pacifist.  He had this to say about war and soldiering:
+Einstein was a committed pacifist for most of his life, though he made a pragmatic exception when confronted with the existential threat of Nazi Germany.  He had this to say about war and soldiering:
 
 "He who joyfully marches to music rank and file, has already earned my contempt. He has been given a large brain by mistake, since for him the spinal cord would surely suffice. This disgrace to civilization should be done away with at once. Heroism at command, how violently I hate all this, how despicable and ignoble war is; I would rather be torn to shreds than be a part of so base an action. It is my conviction that killing under the cloak of war is nothing but an act of murder." - Albert Einstein
 
-Einstein was deeply opposed to anything to do with nuclear weapons.  Einstein was not invited to participate in military-related projects, including the Manhattan Project to develop atomic weapons, because his activities and sentiments made him a ‘bad security risk’.  Einstein had this to say about nuclear war:
+Einstein was deeply opposed to anything to do with nuclear weapons.  Although his 1939 letter to President Roosevelt helped initiate the Manhattan Project, Einstein himself was denied a security clearance to participate in the program, because his pacifist views and associations made him a security risk in the eyes of the military.  Einstein had this to say about nuclear war:
 
 "I know not with what weapons World War III will be fought, but World War IV will be fought with sticks and stones." - Albert Einstein
 
