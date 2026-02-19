@@ -28,7 +28,7 @@ Execute Phase 1 in this order:
 - 1-HOW: Append "A note for researchers" subsection to manuscript/00-front/how-to-read.tex per plan
 - 1-GEN: Create manuscript/00-front/genevieve-preface.tex from content in the plan
 - 1-PREFACE: Strip A/B/C detail from manuscript/00-front/preface.tex per plan instructions
-- 1-COPYRIGHT: Narrow AI disclosure in manuscript/00-front/copyright.tex per plan instructions
+- 1-COPYRIGHT: ALREADY DONE — verify copyright.tex builds correctly, do NOT modify it
 - 1-TITLE: Update byline in manuscript/00-front/title.tex to "Written by Bruce Stephenson with Genevieve Prentice"
 - 1-MAIN: Replace front matter includes in main.tex with the EXACT sequence in the plan (Gen preface → Bruce preface → not-claimed → introduction → corrections)
 - 1A: Create manuscript/00-front/introduction.tex from content in the plan (includes "A Warning About Certainty" section). Convert to first-person voice throughout — use "I" and "my mentor", not "Bruce" or "Bruce's mentor". Do NOT modify main.tex — 1-MAIN already handles the include order.
