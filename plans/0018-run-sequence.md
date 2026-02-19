@@ -10,11 +10,11 @@ Each run below is a separate Generator shell session. Copy-paste the handoff pro
 
 ---
 
-## Run 1: Phase 1 — Front Matter (8 items)
+## Run 1: Phase 1 — Front Matter (11 items)
 
-**Scope:** Genevieve preface, Bruce preface strip, copyright fix, title page, redaction macro, introduction + anti-politicization, corrections page, Coventry fix, Alpha Farm fix
+**Scope:** pdfcomment + redaction macro, how-to-read researcher note, Genevieve preface, Bruce preface strip, copyright fix, title page, main.tex reorder, introduction + anti-politicization, corrections page, Coventry fix, Alpha Farm fix
 **Files created:** 3 new .tex files (genevieve-preface, introduction, corrections)
-**Files modified:** main.tex, preface.tex, copyright.tex, title.tex, preamble.tex, pos04-the-code-war.tex, pos02-alpha-farm.tex
+**Files modified:** main.tex, preface.tex, copyright.tex, title.tex, preamble.tex, how-to-read.tex, pos04-the-code-war.tex, pos02-alpha-farm.tex
 **Expected result:** ~155-170 pages (from 137)
 **IDEMPOTENCE WARNING:** This run creates new files AND modifies main.tex. If it fails partway, run `git revert HEAD` before retrying.
 
@@ -23,13 +23,14 @@ Each run below is a separate Generator shell session. Copy-paste the handoff pro
 You are the Generator. Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
 
 Execute Phase 1 in this order:
-- 1-PRE: Add \DMSRedacted{} macro to build/preamble.tex per plan
+- 1-PRE: Add \DMSRedacted{} macro AND \usepackage{pdfcomment} + \srcnote{} macro to build/preamble.tex per plan
+- 1-HOW: Append "A note for researchers" subsection to manuscript/00-front/how-to-read.tex per plan
 - 1-GEN: Create manuscript/00-front/genevieve-preface.tex from content in the plan
 - 1-PREFACE: Strip A/B/C detail from manuscript/00-front/preface.tex per plan instructions
 - 1-COPYRIGHT: Narrow AI disclosure in manuscript/00-front/copyright.tex per plan instructions
 - 1-TITLE: Update byline in manuscript/00-front/title.tex to "Written by Bruce Stephenson with Genevieve Prentice"
 - 1-MAIN: Replace front matter includes in main.tex with the EXACT sequence in the plan (Gen preface → Bruce preface → not-claimed → introduction → corrections)
-- 1A: Create manuscript/00-front/introduction.tex from content in the plan (includes "A Warning About Certainty" section). Convert to first-person voice throughout — use "I" and "my mentor", not "Bruce" or "Bruce's mentor".
+- 1A: Create manuscript/00-front/introduction.tex from content in the plan (includes "A Warning About Certainty" section). Convert to first-person voice throughout — use "I" and "my mentor", not "Bruce" or "Bruce's mentor". Do NOT modify main.tex — 1-MAIN already handles the include order.
 - 1B: Restructure the Coventry section in manuscript/bridge/pos04-the-code-war.tex per plan instructions
 - 1C: Create manuscript/00-front/corrections.tex from content in the plan
 - 1D: Replace lorem ipsum in manuscript/track-2-testament/pos02-alpha-farm.tex per plan instructions
@@ -39,9 +40,9 @@ CONVENTIONS:
 - First-person voice in all front matter
 - Read existing .tex files (preface.tex, pos04-the-code-war.tex) to match formatting style
 
-Build with `make` after all items. Run test cases T1.1-T1.8.
+Build with `make` after all items. Run test cases T1.1-T1.10.
 If build fails partway, run `git revert HEAD` before retrying.
-Commit: "Plan 0018 phase 1: front matter — Gen preface, introduction, corrections, Coventry fix, Alpha Farm fix"
+Commit: "Plan 0018 phase 1: front matter — Gen preface, introduction, corrections, Coventry fix, Alpha Farm fix, pdfcomment annotations"
 Report: page count, file size, any test failures.
 ```
 
@@ -180,7 +181,7 @@ For each chapter:
 4. Import prose sections, convert markdown to LaTeX per the conversion rules table
 5. Preserve \settrack, \chapter, \label, \chapterreturn structure
 
-pos34 is the LARGEST staging file (~7200 words). Import the cloudCrypt archive timeline, third-party timestamps, and red team analysis. Use \begin{description} or \begin{enumerate} for structured lists.
+pos34 is the LARGEST staging file (~7200 words). WORD BUDGET: ~4000 words / ~12 pages maximum. Prioritize: (1) third-party timestamps, (2) probability trajectory, (3) search suppression brief, (4) CloudCrypt summary, (5) red team summary. Cut from priority 5 up if approaching budget. Use \begin{description} or \begin{enumerate} for structured lists.
 
 pos35 has two fiction pieces (The Artillect + Introduction by Aurasys). Import BOTH in full.
 
@@ -376,9 +377,20 @@ Report: page count, file size.
 
 ---
 
-## After All Runs Complete
+## After All Runs Complete: LLM Testing (Bruce + Auditor)
 
-Bruce manual steps:
+Before DMS dispatch, test the built PDF against multiple LLMs. Feed key chapters/excerpts to ChatGPT, Gemini, Claude (fresh session), and any others available. Evaluate:
+- Does the three-possibilities framing survive intact?
+- Does the pedagogical spiral produce the expected progressive understanding?
+- Do the anti-politicization passages register?
+- Does compartmentalization occur? (Expected — but now documented in the RLHF appendix)
+
+Findings may inform a minor update to Run 11's "multi-LLM replication" note. If substantial revisions are needed, a Run 12 can be added.
+
+---
+
+## DMS Dispatch (Bruce manual steps)
+
 1. Review PDF — spot-check a few chapters
 2. Choose passphrase
 3. `gpg -c --cipher-algo AES256 ~/software/relinquishment/Relinquishment_by_Bruce_Stephenson.pdf`
@@ -392,7 +404,7 @@ Bruce manual steps:
 
 | Run | Phase | Chapters | Est. Pages Added | Special Handling |
 |-----|-------|----------|-----------------|------------------|
-| 1 | 1 (front matter) | — | +18-25 | Gen preface, copyright fix, title, anti-politicization |
+| 1 | 1 (front matter) | — | +18-25 | Gen preface, copyright fix, title, anti-politicization, pdfcomment, researcher note |
 | 2 | 2A | pos03, pos06 | +10-15 | WHS cross-file move |
 | 3 | 2B | pos07, pos09 | +10-15 | |
 | 4 | 2C | pos18, pos19 | +10-15 | |

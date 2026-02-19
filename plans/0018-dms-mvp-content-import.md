@@ -25,7 +25,7 @@ The 26 stubs make the PDF feel empty. 25 of them have corresponding staging file
 
 **4 phases. Build and verify after each phase. Commit after each phase.**
 
-### Phase 1: Front Matter (3 items)
+### Phase 1: Front Matter (11 items)
 ### Phase 2: Priority Content Import (10 chapters — the ones with the most importable prose)
 ### Phase 3: Secondary Content Import (15 chapters — lighter touch)
 ### Phase 4: Build, Verify, Hash
@@ -42,7 +42,9 @@ The 26 stubs make the PDF feel empty. 25 of them have corresponding staging file
 
 **Recovery protocol for Runs 1, 5, 11:** These runs create new .tex files AND modify main.tex. If a run fails partway, run `git revert HEAD` before retrying. Do NOT re-run on top of partial state.
 
-### 1-PRE. Add Redaction Macro to Preamble
+**Source annotations (pdfcomment):** At every point where staging content is imported into a chapter .tex file, add a PDF annotation using `\srcnote{}` (defined in preamble.tex). Format: `\srcnote{filename | staging/raw/posNN-name.md | YYYY-MM-DD | brief description}`. These annotations are invisible to casual readers but accessible via any PDF viewer's annotation panel. They provide provenance metadata for researchers. Place the `\srcnote{}` call at the START of each imported block, before the first line of imported text.
+
+### 1-PRE. Add Redaction Macro and Source Annotations to Preamble
 
 Add the following to `build/preamble.tex` (after existing macro definitions):
 
@@ -56,6 +58,29 @@ Add the following to `build/preamble.tex` (after existing macro definitions):
 ```
 
 Both Run 5 (pos29) and Run 8 (pos20) use this macro for consistent redaction formatting.
+
+Also add source annotation support to `build/preamble.tex` (after the `\usepackage{cleveref}` line):
+
+```latex
+% Source provenance annotations — hidden PDF notes at import points
+% Visible in PDF viewer annotation panels; invisible to casual readers
+\usepackage{pdfcomment}
+\newcommand{\srcnote}[1]{\pdfcomment[icon=Note,color=yellow]{#1}}
+```
+
+### 1-HOW. Add Source Annotations Note to How-to-Read
+
+Append the following to `manuscript/00-front/how-to-read.tex`, after the existing track-stripe itemize block:
+
+```latex
+\vspace{1cm}
+
+\subsection*{A note for researchers}
+
+This PDF contains hidden annotations at every point where source material was imported. These annotations record the original filename, archive location, date, and a brief description. In most PDF viewers, you can access them through the annotations or comments panel. They are invisible during normal reading.
+
+If you are investigating the provenance of any passage, the annotation at that location will tell you where the text came from.
+```
 
 ### 1-GEN. Add Genevieve Prentice's Preface
 
@@ -133,12 +158,7 @@ This produces the reading order: Genevieve's preface → Bruce's preface → Wha
 
 Create `manuscript/00-front/introduction.tex` with the content below. This is the book summary written for Genevieve Prentice that Bruce approved as "That's the intro!"
 
-Add it to `main.tex` between the preface and not-claimed includes:
-```
-\include{manuscript/00-front/preface}
-\include{manuscript/00-front/introduction}
-\include{manuscript/00-front/not-claimed}
-```
+**Do NOT modify main.tex here — 1-MAIN already handles the include order.** The introduction appears in the sequence: not-claimed → introduction → corrections (per 1-MAIN).
 
 **Content for introduction.tex** (convert from the markdown below to LaTeX):
 
@@ -240,11 +260,7 @@ Replace lines 43-56 (from `\subsection*{2. Churchill Let Coventry Burn}` through
 
 ### 1C. Add Corrections Page (2026 Pedagogy Statement)
 
-Create `manuscript/00-front/corrections.tex`. Add to `main.tex` after not-claimed:
-```
-\include{manuscript/00-front/not-claimed}
-\include{manuscript/00-front/corrections}
-```
+Create `manuscript/00-front/corrections.tex`. **Do NOT modify main.tex here — 1-MAIN already handles the include order.**
 
 **Title:** "What I Got Wrong"
 
@@ -304,15 +320,17 @@ Keep the existing epigraph (Healer's HALO jump flash-forward) and the `\graphics
 | # | Test | Pass Criteria |
 |---|------|---------------|
 | T1.1 | `make` succeeds | Zero LaTeX errors, PDF generated |
-| T1.2 | Introduction appears in TOC | Between "Preface" and "What This Book Does Not Claim" |
+| T1.2 | Introduction appears in TOC | After "What This Book Does Not Claim", before "What I Got Wrong" |
 | T1.3 | Introduction content | All 5 sections present: What happened, Three possibilities, What the book does, What the book is for, What the book is not |
 | T1.4 | Corrections page appears in TOC | After "What This Book Does Not Claim" |
 | T1.5 | Corrections page has all 7 items | B20, Coventry, Obscure Images, Coventry analogy, Fahd/Faisal, Lane name, EO 13026 |
 | T1.6 | Coventry section in pos04 restructured | Scholarly consensus appears BEFORE the myth claim, not after |
 | T1.7 | No lorem ipsum in PDF | Search the .tex file — zero instances of "Lorem ipsum" |
 | T1.8 | Page count increased | Should be ~150-160 pages (was 137) |
+| T1.9 | pdfcomment package loads | `make` succeeds with pdfcomment in preamble |
+| T1.10 | How-to-read has researcher note | "A note for researchers" subsection present |
 
-**Commit after Phase 1:** `Plan 0018 phase 1: front matter — introduction, Coventry fix, Alpha Farm fix`
+**Commit after Phase 1:** `Plan 0018 phase 1: front matter — Gen preface, introduction, corrections, Coventry fix, Alpha Farm fix, pdfcomment annotations`
 
 ---
 
@@ -328,7 +346,8 @@ For each chapter below:
 4. **Identify analytical sections** — bullet points, source line references, RECONSTRUCTION excerpts. These are NOT importable as prose but may be imported as structured source notes.
 5. **Preserve the .tex structure:** Keep `\settrack{...}`, `\chapter{...}`, `\label{...}`, `\chapterreturn` exactly as they are.
 6. **Add a DMS comment** at the top: `% DMS MVP import from staging/raw/ — not final prose`
-7. **Convert markdown to LaTeX** following these rules:
+7. **Add `\srcnote{}` annotations** at each import point per the Generator Conventions above.
+8. **Convert markdown to LaTeX** following these rules:
 
 ### LaTeX Conversion Rules
 
@@ -460,10 +479,10 @@ For each chapter below:
 **Content type:** Rich prose — autobiography excerpts
 
 **Import instructions:**
-- SOURCE 1 (Autobiography post-departure): Import the full passage. This is Bruce's first-person prose about the five years of silence, WikiLeaks, and his assessment of David.
+- SOURCE 1 (Autobiography post-departure): Import the silence/isolation narrative and Bruce's assessment of David. **STRIP all WikiLeaks/Assange references** — see "Special Instructions: pos29-the-silence" below.
 - SOURCE 2 (Bruce's Statement): "This story will be my life's work." Import as chapter ending.
-- SOURCE 3 (Journalistic Source Protection): Import the disclaimer section and the Media Consolidation story. These provide context.
-- SOURCE 4 (Media Consolidation and Leaks): Import the Plame Affair narrative and the "Speak Truth to Power" section.
+- **SKIP SOURCE 3** (Journalistic Source Protection) — WikiLeaks-adjacent. Replace with `\DMSRedacted{Content relating to subsequent transparency initiatives has been removed from this edition. See the chapter titled ``WikiLeaks'' for the author's note on this deferral.}`
+- **SKIP SOURCE 4** (Media Consolidation and Leaks) — contains Plame Affair / WikiLeaks origin material. Same redaction marker.
 - Note in staging: "This chapter will need significant new writing to fill the emotional interior of the silence years." For DMS, the existing autobiography excerpts are sufficient.
 
 ### Chapter 2.9: pos34-the-research (Track 2)
@@ -547,11 +566,9 @@ The 15 chapters + 1 deferral:
 The staging file contains the "Nobel Prize Hat Trick" letter (from forJoe.txt). This has the most specific claims in the entire book. Handle as follows:
 
 1. **Import the Nobel Hat Trick content** (Turing Award, Nobel Physics, Nobel Peace sections) but **wrap in three-possibilities framing**: "Under Option C, these accomplishments would merit..." or similar.
-2. **SKIP the Plame/WikiLeaks/Media Consolidation paragraphs.** Replace them with a visible redaction marker:
+2. **SKIP the Plame/WikiLeaks/Media Consolidation paragraphs.** Replace them with:
    ```latex
-   \begin{quote}
-   \textit{[REDACTED — Content relating to subsequent transparency initiatives has been removed from this edition. See the chapter titled ``WikiLeaks'' for the author's note on this deferral.]}
-   \end{quote}
+   \DMSRedacted{Content relating to subsequent transparency initiatives has been removed from this edition. See the chapter titled ``WikiLeaks'' for the author's note on this deferral.}
    ```
 3. Make clear that content WAS there and was deliberately redacted. Do not silently omit.
 
@@ -678,8 +695,8 @@ Bruce manual steps (NOT Generator tasks):
 
 ### Genevieve Prentice Credit
 
-**DEFERRED for DMS MVP.** Title page remains "Bruce Stephenson" only. Genevieve is writing her own foreword/blurb. When ready, a single Generator run updates title.tex, copyright.tex, and adds her foreword before the preface. The "with Genevieve Prentice" alternate is ready to swap in.
+**INCLUDED.** Genevieve provided her preface (Section 1-GEN) and gave explicit YES for "with Genevieve Prentice" credit. Title page updated in 1-TITLE. Preface added in 1-GEN. If she later reverses: remove 1-GEN from build, revert 1-TITLE byline.
 
 ---
 
-*Plan by Nightstalker (Auditor), 2026-02-19. Red-teamed 2x: initial (LaTeX failures, content duplication, time pressure, editorial overreach) + strategic (hash mismatch, WikiLeaks sensitivity, pos20 legal exposure, pos34 length, Genevieve credit timing). All findings addressed.*
+*Plan by Nightstalker (Auditor), 2026-02-19. Red-teamed 4x: initial (LaTeX failures, content duplication, time pressure, editorial overreach) + strategic (hash mismatch, WikiLeaks sensitivity, pos20 legal exposure, pos34 length, Genevieve credit timing) + consistency v1 (pdfcomment layer added, 1A/1-MAIN ordering contradiction fixed, Genevieve credit status corrected, Run 1 scope aligned) + consistency v2 (Phase 1 header count, T1.2 TOC position, 1C stale main.tex snippet, commit message sync, pos29 Chapter 2.8 WikiLeaks contradiction, pos20 DMSRedacted macro, srcnote reminder in Phase 2). All findings addressed.*
