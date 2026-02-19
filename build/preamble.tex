@@ -50,6 +50,11 @@
 \bookmarksetup{depth=1, open=false}
 \usepackage{cleveref}
 
+% Source provenance annotations — hidden PDF notes at import points
+% Visible in PDF viewer annotation panels; invisible to casual readers
+\usepackage{pdfcomment}
+\newcommand{\srcnote}[1]{\pdfcomment[icon=Note,color=yellow]{#1}}
+
 % --- Optional Content Groups (graphics toggle) ---
 \usepackage{ocgx2}
 \newcommand{\graphicsonly}[1]{%
@@ -152,4 +157,11 @@
       \end{minipage}%
     }
   \end{center}
+}
+
+% DMS redaction marker — used for WikiLeaks-sensitive content
+\newcommand{\DMSRedacted}[1]{%
+  \begin{quote}
+  \textit{[REDACTED --- #1]}
+  \end{quote}
 }
