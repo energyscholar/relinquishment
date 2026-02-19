@@ -250,11 +250,12 @@ Findings may inform a minor update to the RLHF appendix "multi-LLM replication" 
 ## DMS Dispatch (Bruce manual steps)
 
 1. Review PDF — spot-check a few chapters
-2. Choose passphrase
-3. `gpg -c --cipher-algo AES256 ~/software/relinquishment/Relinquishment_by_Bruce_Stephenson.pdf`
-4. Email .gpg to Schneier (draft: `dms/holder-email-schneier.md`) and Doctorow (draft: `dms/holder-email-doctorow.md`)
-5. Send passphrase via separate channel (template: `dms/passphrase-message-template.md`)
-6. `git push` when DNS works
+2. Install qpdf: `sudo apt install qpdf`
+3. Password-protect: `qpdf --encrypt relinquishment relinquishment 256 -- Relinquishment_by_Bruce_Stephenson.pdf Relinquishment_by_Bruce_Stephenson_protected.pdf`
+4. Email protected PDF to Schneier and Doctorow (drafts: `dms/holder-email-schneier.md`, `dms/holder-email-doctorow.md`). Password is in the email — no separate channel needed.
+5. `git push` when DNS works
+
+Note: The password ("relinquishment") is a psychological barrier, not security. It prevents accidental publication from an email forward. Both holders are trusted and welcome to read the document.
 
 ---
 

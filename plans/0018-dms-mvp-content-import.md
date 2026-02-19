@@ -630,7 +630,7 @@ When importing pos29 staging content:
 |---|------|---------------|
 | T4.1 | PDF opens in viewer | All pages render |
 | T4.2 | TOC lists all 36 chapters + front/back matter | No missing entries (35 original + WikiLeaks deferral) |
-| T4.3 | File size under 5MB | Must fit Gmail attachment (25MB limit with encryption overhead) |
+| T4.3 | File size under 5MB | Must fit Gmail attachment (25MB limit) |
 | T4.4 | SHA-256 recorded | Hash in SHA256SUM.txt matches actual hash |
 | T4.5 | Holder email hashes updated | Hash in both dms/holder-email-*.md matches SHA256SUM.txt |
 
@@ -641,10 +641,11 @@ When importing pos29 staging content:
 ## After Generator Completes
 
 Bruce manual steps (NOT Generator tasks):
-1. Choose a strong passphrase (6+ random words or long phrase)
-2. Run: `gpg -c --cipher-algo AES256 ~/software/relinquishment/Relinquishment_by_Bruce_Stephenson.pdf`
-3. Email the `.pdf.gpg` file to Schneier and Doctorow (drafts in `dms/holder-email-schneier.md` and `dms/holder-email-doctorow.md`)
-4. Send passphrase to each holder via a SEPARATE channel (Signal, in-person, etc.) — template in `dms/passphrase-message-template.md`
+1. Install qpdf: `sudo apt install qpdf`
+2. Password-protect: `qpdf --encrypt relinquishment relinquishment 256 -- Relinquishment_by_Bruce_Stephenson.pdf Relinquishment_by_Bruce_Stephenson_protected.pdf`
+3. Email the protected PDF to Schneier and Doctorow (drafts in `dms/holder-email-*.md`). Password is in the email — no separate channel needed.
+
+Note: The password ("relinquishment") is a psychological barrier, not security. It prevents accidental publication from an email forward. Both holders are trusted and welcome to read the document.
 
 ---
 
