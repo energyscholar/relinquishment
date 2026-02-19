@@ -125,7 +125,55 @@ Replace lines 43-56 (from `\subsection*{2. Churchill Let Coventry Burn}` through
 **Do NOT change the subsection title** — "Churchill Let Coventry Burn" is how the myth is known, and the chapter corrects it.
 
 
-### 1C. Fix pos02 Alpha Farm
+### 1C. Add Corrections Page (2026 Pedagogy Statement)
+
+Create `manuscript/00-front/corrections.tex`. Add to `main.tex` after not-claimed:
+```
+\include{manuscript/00-front/not-claimed}
+\include{manuscript/00-front/corrections}
+```
+
+**Title:** "What I Got Wrong"
+
+**Purpose:** Preempt the "gotcha" attack where someone finds errors in Bruce's 2012-era documents and uses them to discredit the entire narrative. By acknowledging errors upfront, with corrections and analysis of what each error means for the three possibilities, Bruce demonstrates epistemic rigor and moves the reader past the errors to the substance.
+
+**Content for corrections.tex** (convert to LaTeX):
+
+```
+\chapter*{What I Got Wrong}
+\addcontentsline{toc}{chapter}{What I Got Wrong}
+```
+
+Then the following content:
+
+---BEGIN CORRECTIONS CONTENT---
+
+The source material in this book spans twenty years. Some of my earlier writing contains errors — factual claims I stated with confidence that turned out to be wrong, or details that drifted in my memory over two decades. A careful reader, or a hostile one, will find them.
+
+This page lists the errors I have identified as of February 2026. I prefer you find them here rather than discover them yourself and wonder what else I got wrong.
+
+**1. Bravo Two Zero patrol composition.** In my earlier documents, I stated the B20 patrol had six members and that two escaped (Chris Ryan and Healer). All published accounts — McNab, Ryan, Asher, Coburn — agree the patrol had eight members and that one escaped (Ryan). No published source supports either a six-man patrol or a second escapee. SAS does not publish official operational histories, so the published accounts are contested personal narratives, not authoritative records. But the weight of available evidence contradicts my claim. I acknowledge this error. The core claim — that Healer was in the patrol — is separate from the patrol size and is not affected by this correction.
+
+**2. The Coventry myth.** In earlier drafts, I repeated F.W. Winterbotham's claim that Churchill had specific advance intelligence that Coventry was the Luftwaffe target on November 14, 1940, and chose not to act in order to protect Ultra. The majority of modern historians (Hinsley, R.V. Jones, GCHQ's own published account) reject this. Churchill may have known a major raid was coming but probably did not know Coventry was the specific target. The corrected version appears in this book's Chapter 4. The broader point — that Ultra secrecy was considered so important that historians take seriously whether a leader would sacrifice a city to protect it — stands. The specific anecdote I used to illustrate it was wrong.
+
+**3. Obscure Images identification.** I previously identified Healer's Cult of the Dead Cow handle as "Obscure Images." Stylometric analysis of the Obscure Images corpus revealed an art-saturated voice from Northern Illinois University — a consistent creative identity spanning 1989-1996. When confronted with this, I confirmed that Healer was "totally not art-aware." The dominant Obscure Images voice is not Healer. The handle may have been shared (cDc is known for shared handles — Oxblood Ruffin is publicly admitted as one), or I may have been wrong about the identification entirely.
+
+**4. Churchill / Coventry as analogy precedent.** See #2. I used this as a key analogy for "what governments do to protect cryptographic secrets." The analogy is valid — the Coventry *debate* proves the point — but I stated the myth as near-fact in early drafts. Corrected.
+
+**5. King Fahd / King Faisal.** In verbal accounts of the Battle of Baghdad, I said "King Faisal" called President Bush to cancel the Iraq invasion. King Faisal died in 1975. The correct name is King Fahd bin Abdulaziz Al Saud. My archive has the correct name. This was a memory slip in conversation, not an error in my written documents.
+
+**6. "David Lane" as Healer's name.** My earlier documents use the name "David Lane" for Healer. Lane is not his real name. I used it in my documents for the same reason I use "Healer" here — to tell the story without exposing his actual identity. Where earlier documents present "Lane" as a real name, that was a pseudonym.
+
+**7. EO 13026 timeline.** In earlier analysis, I implied the November 1996 executive order relaxing PKC export controls was a direct response to Shor's 1994 algorithm. The classified program predated Shor by approximately five years. The correct parallel is structural: GCHQ had PKC ~1973, public discovery 1976-78 (gap: ~4 years). Classified program had quantum factoring ~1987-1989, Shor published 1994 (gap: ~5-7 years). Shor's role maps to Diffie-Hellman's: independent public rediscovery of something that already existed in classified channels. The EO 13026 connection needs re-verification.
+
+**What these errors tell you.** Under Option A (confabulation), these errors are cracks in a fabrication — details the fabricator didn't research carefully enough. Under Option B (exaggerated kernel), they are the kind of drift you'd expect as a real story grows and blurs over twenty years. Under Option C (substantially true), they are memory degradation: the architecture of events stays intact while specific details shift. All three possibilities predict errors. The question is whether the errors are structural (contradicting the core narrative) or peripheral (details that drifted). Every error listed above is peripheral. None contradicts the core claims: the program, the technology, the relinquishment, the Guardian.
+
+If I had perfect recall of every detail from twenty years ago, that would be more suspicious, not less.
+
+---END CORRECTIONS CONTENT---
+
+
+### 1D. Fix pos02 Alpha Farm
 
 Replace the lorem ipsum text (lines 26-36 of pos02-alpha-farm.tex) with a brief scene-setting note. The autobiography meeting scene belongs in pos03 (The Mentor), not here. pos02 needs Bruce to write the arrival-at-Alpha-Farm scene. For DMS MVP, insert:
 
@@ -145,9 +193,11 @@ Keep the existing epigraph (Healer's HALO jump flash-forward) and the `\graphics
 | T1.1 | `make` succeeds | Zero LaTeX errors, PDF generated |
 | T1.2 | Introduction appears in TOC | Between "Preface" and "What This Book Does Not Claim" |
 | T1.3 | Introduction content | All 5 sections present: What happened, Three possibilities, What the book does, What the book is for, What the book is not |
-| T1.4 | Coventry section restructured | Scholarly consensus appears BEFORE the myth claim, not after |
-| T1.5 | No lorem ipsum in PDF | Search the .tex file — zero instances of "Lorem ipsum" |
-| T1.6 | Page count increased | Should be ~145-155 pages (was 137) |
+| T1.4 | Corrections page appears in TOC | After "What This Book Does Not Claim" |
+| T1.5 | Corrections page has all 7 items | B20, Coventry, Obscure Images, Coventry analogy, Fahd/Faisal, Lane name, EO 13026 |
+| T1.6 | Coventry section in pos04 restructured | Scholarly consensus appears BEFORE the myth claim, not after |
+| T1.7 | No lorem ipsum in PDF | Search the .tex file — zero instances of "Lorem ipsum" |
+| T1.8 | Page count increased | Should be ~150-160 pages (was 137) |
 
 **Commit after Phase 1:** `Plan 0018 phase 1: front matter — introduction, Coventry fix, Alpha Farm fix`
 
@@ -439,7 +489,19 @@ Bruce manual steps (NOT Generator tasks):
 
 **Must do:** Phase 1 (front matter) + Phase 2 (10 chapters) + Phase 4 (build)
 **Should do:** Phase 3 (15 chapters)
-**Build between every phase and after every batch of 3-4 chapter imports.**
+**Build between every phase and after every batch of 2-3 chapter imports within Phase 2.**
+
+### Additional strategic failure points
+
+5. **Phase 3 underspecification.** The 15 secondary chapters have no per-chapter extraction instructions. The Generator must make editorial decisions about what to import. Mitigation: if Phase 3 quality is uncertain, skip it entirely — Phase 2 alone produces a DMS-worthy PDF.
+
+6. **White Hot Secret cross-file move.** Instructions say: read pos03 staging, extract WHS section, import into pos06 .tex. Generator must read TWO staging files while working on one chapter. Mitigation: process pos03 BEFORE pos06. When doing pos03, SET ASIDE the WHS content. When doing pos06, use it.
+
+7. **biography_D_Lane content may reference "Steven 'Legs' Lane."** This contradicts the correction that "Lane is not his real name." The corrections page (Phase 1C) handles this — but the Generator should NOT edit Bruce's source documents to remove the name. Import as-is. The corrections page does the epistemic work.
+
+8. **Context exhaustion.** 25 files × (read staging + read stub + write chapter) = 75 file operations. Generator may run out of context on a single-pass attempt. Mitigation: batch in groups of 3-4, build between batches. Phase 2 (10 chapters) might need 2-3 Generator sessions. Phase 3 (15 chapters) might need another 2-3.
+
+9. **Genevieve summary length.** The introduction content included in Phase 1A is ~1500 words. In LaTeX with proper formatting, that's ~4-5 pages. Verify it doesn't overwhelm the front matter.
 
 ---
 
