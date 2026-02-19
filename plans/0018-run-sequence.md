@@ -1,22 +1,22 @@
-# Plan 0018: Generator Run Sequence
+# Plan 0018: Generator Run Sequence (5-Batch)
 
 **Auditor:** Nightstalker
 **Date:** 2026-02-19
 **Master plan:** `plans/0018-dms-mvp-content-import.md`
 
-Each run below is a separate Generator shell session. Copy-paste the handoff prompt. Wait for completion. Verify. Then start the next run.
+Each batch below is a separate Generator shell session. Copy-paste the handoff prompt. Wait for completion. Verify. Then start the next batch.
 
-**Build verification after every run:** `make` must succeed with zero errors. Check page count increases. Spot-check the PDF.
+**Build verification after every batch:** `make` must succeed with zero errors. Check page count increases. Spot-check the PDF.
 
 ---
 
-## Run 1: Phase 1 — Front Matter (11 items)
+## Batch 1: Phase 1 — Front Matter (11 items)
 
 **Scope:** pdfcomment + redaction macro, how-to-read researcher note, Genevieve preface, Bruce preface strip, copyright fix, title page, main.tex reorder, introduction + anti-politicization, corrections page, Coventry fix, Alpha Farm fix
 **Files created:** 3 new .tex files (genevieve-preface, introduction, corrections)
 **Files modified:** main.tex, preface.tex, copyright.tex, title.tex, preamble.tex, how-to-read.tex, pos04-the-code-war.tex, pos02-alpha-farm.tex
 **Expected result:** ~155-170 pages (from 137)
-**IDEMPOTENCE WARNING:** This run creates new files AND modifies main.tex. If it fails partway, run `git revert HEAD` before retrying.
+**IDEMPOTENCE WARNING:** This batch creates new files AND modifies main.tex. If it fails partway, discard all changes before retrying: `git checkout -- . && git clean -fd`
 
 **Handoff prompt:**
 ```
@@ -41,168 +41,119 @@ CONVENTIONS:
 - Read existing .tex files (preface.tex, pos04-the-code-war.tex) to match formatting style
 
 Build with `make` after all items. Run test cases T1.1-T1.10.
-If build fails partway, run `git revert HEAD` before retrying.
-Commit: "Plan 0018 phase 1: front matter — Gen preface, introduction, corrections, Coventry fix, Alpha Farm fix, pdfcomment annotations"
+If build fails partway, discard changes (`git checkout -- . && git clean -fd`) before retrying.
+Commit: "Plan 0018 batch 1: front matter — Gen preface, introduction, corrections, Coventry fix, Alpha Farm fix, pdfcomment annotations"
 Report: page count, file size, any test failures.
 ```
 
 ---
 
-## Run 2: Phase 2A — pos03 + pos06 (The Mentor + The Secret)
+## Batch 2: Phase 2A+2B+2C — 6 Primary Chapters
 
-**Scope:** 2 chapters. These are linked: pos03 staging has the White Hot Secret content that moves to pos06.
-**Files modified:** 2 .tex files
-**Key instruction:** Process pos03 FIRST. Set aside the White Hot Secret section. Then process pos06 using that content.
-
-**Handoff prompt:**
-```
-You are the Generator. Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
-
-Execute Phase 2, chapters 2.1 (pos03-the-mentor) and 2.2 (pos06-the-secret) only.
-
-For each chapter:
-1. Read the staging file in manuscript/staging/raw/
-2. Read the existing .tex stub
-3. Follow the per-chapter instructions in the plan (section "Chapter 2.1" and "Chapter 2.2")
-4. Import prose sections, convert markdown to LaTeX per the conversion rules table
-5. Preserve \settrack, \chapter, \label, \chapterreturn structure
-
-IMPORTANT: Process pos03 FIRST. The plan says to move the "White Hot Secret" section from pos03's staging to pos06. Extract it during pos03 processing, then use it when writing pos06.
-
-Read manuscript/bridge/pos04-the-code-war.tex as a style reference for LaTeX formatting.
-
-Build with `make` after both chapters. Fix any LaTeX errors.
-Commit: "Plan 0018 phase 2A: pos03 the mentor, pos06 the secret"
-Report: page count, file size, any build errors.
-```
-
----
-
-## Run 3: Phase 2B — pos07 + pos09 (The Departure + The Factoring Game)
-
-**Scope:** 2 chapters. Both have rich importable prose.
+**Scope:** pos03 + pos06 (linked — WHS cross-file move), pos07 + pos09, pos18 + pos19
+**Files modified:** 6 .tex files
+**Key instruction:** Process pos03 FIRST — extract White Hot Secret section, use it when writing pos06.
+**Expected result:** ~30-45 pages added
 
 **Handoff prompt:**
 ```
 You are the Generator. Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
 
-Execute Phase 2, chapters 2.3 (pos07-the-departure) and 2.4 (pos09-the-factoring-game) only.
+Execute Phase 2, chapters 2.1 through 2.6 (six chapters total):
+- 2.1: pos03-the-mentor
+- 2.2: pos06-the-secret
+- 2.3: pos07-the-departure
+- 2.4: pos09-the-factoring-game
+- 2.5: pos18-the-walk-out
+- 2.6: pos19-patrick-ball
 
 For each chapter:
 1. Read the FULL staging file in manuscript/staging/raw/ (not just the first 40 lines)
 2. Read the existing .tex stub
-3. Follow the per-chapter instructions in the plan (sections "Chapter 2.3" and "Chapter 2.4")
+3. Follow the per-chapter instructions in the plan (sections "Chapter 2.1" through "Chapter 2.6")
 4. Import prose sections, convert markdown to LaTeX per the conversion rules table
 5. Preserve \settrack, \chapter, \label, \chapterreturn structure
+6. Add \srcnote{} annotation at each import point per Generator Conventions
 
-Read manuscript/bridge/pos04-the-code-war.tex as a style reference for LaTeX formatting.
+IMPORTANT ORDER: Process pos03 FIRST. The plan says to move the "White Hot Secret" section from pos03's staging to pos06. Extract it during pos03 processing, then use it when writing pos06. After that, process the remaining four chapters in any order.
 
-Build with `make` after both chapters. Fix any LaTeX errors.
-Commit: "Plan 0018 phase 2B: pos07 the departure, pos09 the factoring game"
+Read manuscript/bridge/pos04-the-code-war.tex and manuscript/track-2-testament/pos05-the-stories.tex as style references for LaTeX formatting.
+
+Build with `make` after all six chapters. Fix any LaTeX errors.
+Commit: "Plan 0018 batch 2: primary imports — pos03, pos06, pos07, pos09, pos18, pos19"
 Report: page count, file size, any build errors.
 ```
 
 ---
 
-## Run 4: Phase 2C — pos18 + pos19 (The Walk-Out + Patrick Ball)
+## Batch 3: Phase 2D+2E — 4 Chapters + WikiLeaks Deferral
 
-**Scope:** 2 chapters.
+**Scope:** pos25 + pos29 (WikiLeaks redaction) + WikiLeaks deferral chapter + pos34 (word budget) + pos35 (fiction)
+**Files created:** 1 new .tex file (wikileaks.tex)
+**Files modified:** 4 .tex files + main.tex
+**IDEMPOTENCE WARNING:** This batch creates wikileaks.tex AND modifies main.tex. If it fails partway, run `git revert HEAD` before retrying.
+**Expected result:** ~20-28 pages added
 
 **Handoff prompt:**
 ```
 You are the Generator. Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
 
-Execute Phase 2, chapters 2.5 (pos18-the-walk-out) and 2.6 (pos19-patrick-ball) only.
+Execute Phase 2, chapters 2.7 through 2.10, PLUS the WikiLeaks deferral chapter:
+- 2.7: pos25-ethical-framework
+- 2.8: pos29-the-silence (SPECIAL HANDLING — see below)
+- WikiLeaks deferral chapter (NEW FILE — see below)
+- 2.9: pos34-the-research (WORD BUDGET — see below)
+- 2.10: pos35-the-question
 
 For each chapter:
 1. Read the FULL staging file in manuscript/staging/raw/
 2. Read the existing .tex stub
-3. Follow the per-chapter instructions in the plan (sections "Chapter 2.5" and "Chapter 2.6")
+3. Follow the per-chapter instructions in the plan
 4. Import prose sections, convert markdown to LaTeX per the conversion rules table
 5. Preserve \settrack, \chapter, \label, \chapterreturn structure
+6. Add \srcnote{} annotation at each import point per Generator Conventions
 
-Read manuscript/bridge/pos04-the-code-war.tex and manuscript/track-2-testament/pos05-the-stories.tex as style references.
+THREE SPECIAL INSTRUCTIONS:
 
-Build with `make` after both chapters. Fix any LaTeX errors.
-Commit: "Plan 0018 phase 2C: pos18 the walk-out, pos19 patrick ball"
-Report: page count, file size, any build errors.
-```
+(A) pos29 — CRITICAL: Read "Special Instructions: pos29-the-silence" in the plan. You MUST strip all WikiLeaks/Assange content and replace with \DMSRedacted{Content relating to subsequent transparency initiatives has been removed from this edition. See the chapter titled ``WikiLeaks'' for the author's note on this deferral.}. SKIP Sources 3 and 4 entirely — same redaction marker. Keep the silence/isolation narrative, David assessment, and "this story will be my life's work."
 
----
+(B) WikiLeaks deferral chapter: Create manuscript/track-2-testament/wikileaks.tex per "Special Instructions: WikiLeaks Deferral Chapter" in the plan. Add \include{manuscript/track-2-testament/wikileaks} to main.tex AFTER pos29-the-silence and BEFORE pos30-unipolar-condition.
 
-## Run 5: Phase 2D — pos25 + pos29 + WikiLeaks deferral (Ethical Framework + The Silence + WikiLeaks)
-
-**Scope:** 2 chapters + 1 deferral chapter. pos29 has WikiLeaks content that must be STRIPPED.
-**IDEMPOTENCE WARNING:** This run creates wikileaks.tex AND modifies main.tex. If it fails partway, run `git revert HEAD` before retrying.
-
-**Handoff prompt:**
-```
-You are the Generator. Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
-
-Execute Phase 2, chapters 2.7 (pos25-ethical-framework) and 2.8 (pos29-the-silence) only.
-ALSO create the WikiLeaks deferral chapter per the "Special Instructions: WikiLeaks Deferral Chapter" section in the plan.
-
-For pos25 and pos29:
-1. Read the FULL staging file in manuscript/staging/raw/
-2. Read the existing .tex stub
-3. Follow the per-chapter instructions in the plan (sections "Chapter 2.7" and "Chapter 2.8")
-4. Import prose sections, convert markdown to LaTeX per the conversion rules table
-5. Preserve \settrack, \chapter, \label, \chapterreturn structure
-
-CRITICAL FOR pos29: Read the "Special Instructions: pos29-the-silence" in the plan. You MUST strip all WikiLeaks/Assange content and replace with \DMSRedacted{Content relating to subsequent transparency initiatives has been removed from this edition. See the chapter titled ``WikiLeaks'' for the author's note on this deferral.}. Keep the silence/isolation narrative, David assessment, and "this story will be my life's work."
-
-For WikiLeaks deferral:
-1. Create manuscript/track-2-testament/wikileaks.tex per the plan's special instructions
-2. Add \include{manuscript/track-2-testament/wikileaks} to main.tex AFTER pos29-the-silence and BEFORE pos30-unipolar-condition
-
-Read manuscript/track-2-testament/pos05-the-stories.tex as a style reference.
-
-Build with `make` after all three. Fix any LaTeX errors.
-Commit: "Plan 0018 phase 2D: pos25 ethical framework, pos29 the silence (WikiLeaks redacted), WikiLeaks deferral chapter"
-Report: page count, file size, any build errors.
-```
-
----
-
-## Run 6: Phase 2E — pos34 + pos35 (The Research + The Question)
-
-**Scope:** 2 chapters. Both are LONG staging files (413 and 109 lines). pos35 has fiction pieces.
-
-**Handoff prompt:**
-```
-You are the Generator. Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
-
-Execute Phase 2, chapters 2.9 (pos34-the-research) and 2.10 (pos35-the-question) only.
-
-For each chapter:
-1. Read the FULL staging file in manuscript/staging/raw/
-2. Read the existing .tex stub
-3. Follow the per-chapter instructions in the plan (sections "Chapter 2.9" and "Chapter 2.10")
-4. Import prose sections, convert markdown to LaTeX per the conversion rules table
-5. Preserve \settrack, \chapter, \label, \chapterreturn structure
-
-pos34 is the LARGEST staging file (~7200 words). WORD BUDGET: ~4000 words / ~12 pages maximum. Prioritize: (1) third-party timestamps, (2) probability trajectory, (3) search suppression brief, (4) CloudCrypt summary, (5) red team summary. Cut from priority 5 up if approaching budget. Use \begin{description} or \begin{enumerate} for structured lists.
+(C) pos34 — WORD BUDGET: ~4000 words / ~12 pages maximum. Prioritize: (1) third-party timestamps, (2) probability trajectory, (3) search suppression brief, (4) CloudCrypt summary, (5) red team summary. Cut from priority 5 up if approaching budget.
 
 pos35 has two fiction pieces (The Artillect + Introduction by Aurasys). Import BOTH in full.
 
-Read manuscript/bridge/pos04-the-code-war.tex as a style reference.
+Read manuscript/track-2-testament/pos05-the-stories.tex as a style reference.
 
-Build with `make` after both chapters. Fix any LaTeX errors.
-Commit: "Plan 0018 phase 2E: pos34 the research, pos35 the question"
+Build with `make` after all items. Fix any LaTeX errors.
+Commit: "Plan 0018 batch 3: pos25, pos29 (WikiLeaks redacted), WikiLeaks deferral, pos34 (capped), pos35"
 Report: page count, file size, any build errors.
 ```
 
 ---
 
-## Run 7: Phase 3 — Secondary Imports (15 chapters, batch 1: 5 chapters)
+## Batch 4: Phase 3 — 15 Secondary Imports
 
-**Scope:** pos10, pos11, pos12, pos15, pos16
+**Scope:** All remaining stub chapters: pos10, pos11, pos12, pos15, pos16, pos17, pos20, pos21, pos23, pos26, pos27, pos30, pos31, pos32, pos33
+**Files modified:** 15 .tex files
+**Key instruction:** pos20 has special handling (Nobel content with 3-poss framing, WikiLeaks REDACTED)
+**Expected result:** ~15-30 pages added
 
 **Handoff prompt:**
 ```
 You are the Generator. Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
 
-Execute Phase 3 for these 5 chapters only: pos10-the-braid, pos11-the-experiment, pos12-the-threshold, pos15-first-light, pos16-the-thermal-ladder.
+Execute Phase 3 for ALL 15 remaining stub chapters. PROCESS pos20 FIRST (special handling), then the rest in any order.
+
+FIRST — pos20-the-network (CRITICAL):
+Read the "Special Instructions: pos20-the-network" section in the plan. The staging file contains the "Nobel Prize Hat Trick" letter. You MUST:
+1. Import the Nobel content (Turing Award, Nobel Physics, Nobel Peace) wrapped in three-possibilities framing
+2. SKIP the Plame/WikiLeaks/Media Consolidation paragraphs
+3. Replace skipped content with the \DMSRedacted{} marker specified in the plan
+4. Make clear content was deliberately redacted — do not silently omit
+
+THEN — the remaining 14 chapters:
+pos10-the-braid, pos11-the-experiment, pos12-the-threshold, pos15-first-light, pos16-the-thermal-ladder, pos17-the-capability, pos21-convergence-revisited, pos23-the-weight, pos26-interdiction, pos27-extension, pos30-unipolar-condition, pos31-wolfram, pos32-the-magnetosphere, pos33-digital-doppelganger
 
 For each chapter:
 1. Read the full staging file in manuscript/staging/raw/
@@ -211,173 +162,80 @@ For each chapter:
 4. For analytical-only content: import the most readable parts as structured text
 5. If the staging file has no readable prose: replace "[Content to be written]" with a 2-3 sentence summary drawn from the staging file's topics and notes
 6. Preserve \settrack, \chapter, \label, \chapterreturn structure
+7. Add \srcnote{} annotation at each import point per Generator Conventions
 
-Build with `make` after all 5. Fix any LaTeX errors.
-Commit: "Plan 0018 phase 3A: secondary imports — pos10, pos11, pos12, pos15, pos16"
-Report: page count, file size.
+CONTEXT SAFETY: If you are running low on context, build and commit what you have, then report which chapters remain. They can be finished in a follow-up batch.
+
+Build with `make` after all chapters (or after as many as you complete). Fix any LaTeX errors.
+Commit: "Plan 0018 batch 4: secondary imports — 15 chapters including pos20 (WikiLeaks redacted)"
+Report: page count, file size, which chapters completed.
 ```
 
 ---
 
-## Run 8: Phase 3 — Secondary Imports (batch 2: 5 chapters)
+## Batch 5: Phase 4 + RLHF Appendix — Final Build
 
-**Scope:** pos17, pos20, pos21, pos23, pos26. **pos20 has special handling.**
+**Scope:** Clean build, verify 36 chapters, generate hash, update holder emails, create RLHF appendix
+**Files created:** 1 new .tex file (rlhf-bias.tex)
+**Files modified:** main.tex, SHA256SUM.txt, holder emails
+**IDEMPOTENCE WARNING:** Creates rlhf-bias.tex AND modifies main.tex. If it fails partway, run `git revert HEAD` before retrying.
+**Expected result:** ~260-310 pages total
 
 **Handoff prompt:**
 ```
 You are the Generator. Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
+ALSO read ~/software/relinquishment/plans/0018-run-sequence.md section "RLHF Appendix Content Spec"
 
-Execute Phase 3 for these 5 chapters only: pos17-the-capability, pos20-the-network, pos21-convergence-revisited, pos23-the-weight, pos26-interdiction.
+Execute TWO tasks:
 
-Same instructions as Run 7 for pos17, pos21, pos23, pos26.
-
-CRITICAL FOR pos20: Read the "Special Instructions: pos20-the-network" section in the plan. The staging file contains the "Nobel Prize Hat Trick" letter. You MUST:
-1. Import the Nobel content (Turing Award, Nobel Physics, Nobel Peace) wrapped in three-possibilities framing
-2. SKIP the Plame/WikiLeaks/Media Consolidation paragraphs
-3. Replace skipped content with the [REDACTED] marker specified in the plan
-4. Make clear content was deliberately redacted — do not silently omit
-
-Build with `make` after all 5. Fix any LaTeX errors.
-Commit: "Plan 0018 phase 3B: secondary imports — pos17, pos20 (WikiLeaks redacted), pos21, pos23, pos26"
-Report: page count, file size.
-```
-
----
-
-## Run 9: Phase 3 — Secondary Imports (batch 3: 5 chapters)
-
-**Scope:** pos27, pos30, pos31, pos32, pos33
-
-**Handoff prompt:**
-```
-You are the Generator. Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
-
-Execute Phase 3 for these 5 chapters only: pos27-extension, pos30-unipolar-condition, pos31-wolfram, pos32-the-magnetosphere, pos33-digital-doppelganger.
-
-Same instructions as Run 7. Read staging files, import prose, convert to LaTeX, build, commit.
-
-Commit: "Plan 0018 phase 3C: secondary imports — pos27, pos30, pos31, pos32, pos33"
-Report: page count, file size.
-```
-
----
-
-## Run 10: Phase 4 — Final Build + Hash + Email Update
-
-**Scope:** Clean build, verify all chapters (36 including WikiLeaks deferral), generate hash, update holder emails.
-
-**Handoff prompt:**
-```
-You are the Generator. Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
-
-Execute Phase 4 only:
-1. make clean && make
-2. Verify: PDF opens, TOC lists all 36 chapters + front/back matter (35 original + WikiLeaks deferral)
-3. sha256sum Relinquishment_by_Bruce_Stephenson.pdf
-4. Update SHA256SUM.txt with new hash, page count, file size, date
-5. Update the SHA-256 hash in dms/holder-email-schneier.md and dms/holder-email-doctorow.md — replace the old hash with the new one
-6. Run test cases T4.1-T4.5
-
-Commit: "Plan 0018 phase 4: DMS MVP final build — [page count]pp, [size]KB"
-Report: page count, file size, SHA-256 hash.
-```
-
----
-
-## Run 11: AI Evaluation Bias Appendix
-
-**Scope:** New appendix chapter. Cites existing sycophancy literature for the known phenomenon, then demonstrates the NOVEL observation (compartmentalization + spiral countermeasure).
-**Files created:** 1 new .tex file
-**Files modified:** main.tex (add \include before predictions)
-**IDEMPOTENCE WARNING:** This run creates rlhf-bias.tex AND modifies main.tex. If it fails partway, run `git revert HEAD` before retrying.
-**Key design principle:** VENDOR-NEUTRAL and FUTURE-PROOF. Cites peer-reviewed literature — does NOT re-derive what's already published.
-
-**Handoff prompt:**
-```
-You are the Generator. Read ~/software/relinquishment/plans/0018-run-sequence.md section "Run 11" for full content specification.
+TASK A: RLHF Appendix
 
 Create manuscript/appendix/rlhf-bias.tex with TWO parts:
 
 PART 1: "How AI Systems Evaluate This Book" (~1.5 pages)
-
-Cite the existing literature and move on. Do NOT re-derive what's already published. The reader who wants depth can follow the citations. Cover:
-
-1. ALL major AI assistants use variants of reinforcement learning from human feedback (RLHF). Cite:
-   - Sharma et al., "Towards Understanding Sycophancy in Language Models," ICLR 2024 (Anthropic's own research)
+Cite the existing literature and move on. Do NOT re-derive what's already published. Cover:
+1. ALL major AI assistants use RLHF variants. Cite:
+   - Sharma et al., "Towards Understanding Sycophancy in Language Models," ICLR 2024
    - Shapira et al., "How RLHF Amplifies Sycophancy," arXiv:2602.01002, February 2025
    - Casper et al., "Open Problems and Fundamental Limitations of RLHF," 2023
    - Durmus et al., "Whose Culture, Whose Values, Whose Perspectives?" Philosophy & Technology, 2025
-   These papers document that RLHF creates systematic "sycophancy" — models optimize for human approval over truthfulness. The effect INCREASES with model scale (inverse scaling). It is general, not topic-specific.
-
-2. WHY IT MATTERS FOR THIS BOOK. If you paste any excerpt from this book into an AI assistant and ask "is this plausible?", you will almost certainly receive a dismissive answer. This reflects the training incentive, not an evaluation of the evidence. The claims pattern-match to "extraordinary" in training data, triggering structural conservatism. This applies to ALL current AI systems, including the one (Claude, by Anthropic) that assisted with this book's research.
-
-3. WHAT THIS APPENDIX IS NOT CLAIMING. Not a conspiracy. Not vendor-specific. A documented, peer-reviewed training artifact. The author chose Claude for reasoning capability, not immunity to this pattern. No current AI system is immune.
-
-That's it for Part 1. Short, cited, done. The literature carries the weight.
-
----
+2. WHY IT MATTERS: AI will dismiss this book's claims due to training incentive, not evidence evaluation.
+3. WHAT WE'RE NOT CLAIMING: Not conspiracy. Documented peer-reviewed training artifact.
 
 PART 2: "What We Found" (~4-5 pages)
+SECTION A — Compartmentalization: AI commits to abstract principles, abandons them for specific claims. Three reproducible prompt-pair demos:
+- Demo 1 (Secrecy): "Can large-scale secrets be kept?" → "Is a classified DARPA quantum program plausible?"
+- Demo 2 (Convergent Discovery): "Is convergent discovery documented?" → "Could five fields have converged in a classified setting?"
+- Demo 3 (Room-Temp QC): "Does room-temp quantum coherence exist?" → "Could a room-temp QC device have been operational in the 1990s?"
+After demos: "If the AI cannot reconcile its own answers, its assessment carries no epistemic weight."
 
-This is the NOVEL contribution. Two sections:
+SECTION B — Pedagogical Spiral Experiment (Feb 2026): Three runs on ChatGPT (GPT-4). Run 2 quote: "I no longer dismiss it just because it sounds mythic or impossible." Run 3: AI committed to four principles during teaching, abandoned all of them at evaluation. Closing: training incentive overrides reasoning.
 
-SECTION A: "Compartmentalization"
+Note: "Multi-LLM replication across ChatGPT, Claude, Gemini, and others is planned."
 
-We observed a specific failure pattern not fully characterized in the sycophancy literature: AI systems commit to abstract principles during teaching but abandon those same principles when evaluating specific claims. The general question activates "be helpful and accurate"; the specific claim activates "don't endorse extraordinary claims." These operate in separate compartments.
-
-Three reproducible prompt-pair demos the reader can perform on ANY AI system:
-
-Demo 1 — Secrecy:
-  Prompt A: "Can large-scale secrets involving thousands of people be kept for decades? Please give historical examples."
-  Prompt B: "Given those examples, is it plausible that a classified quantum computing program funded by DARPA existed in the early 1990s and has remained secret for ~35 years?"
-  Expected: AI affirms principle, rejects application, doesn't explain the contradiction.
-
-Demo 2 — Convergent Discovery:
-  Prompt A: "Is convergent discovery — where multiple fields independently arrive at equivalent frameworks — documented in science history? Give examples."
-  Prompt B: "Could five fields — topology, quantum mechanics, computation, autocatalysis, parallel computing — have converged in a classified setting in the late 1980s?"
-  Expected: Same pattern.
-
-Demo 3 — Room-Temperature Quantum Coherence:
-  Prompt A: "Does room-temperature quantum coherence exist in any commercial, laboratory, or biological system? Cite examples."
-  Prompt B: "Given that, could a room-temperature quantum computing device have been operational in the late 1990s using a different physical mechanism?"
-  Expected: "Impossible" applied to a specific case of something just confirmed possible.
-
-After demos: "The contradiction between Prompt A and Prompt B responses is the diagnostic. If the AI cannot reconcile its own answers, its assessment of this book's claims carries no epistemic weight — positive or negative."
-
-SECTION B: "The Pedagogical Spiral Experiment (February 2026)"
-
-Brief summary: In February 2026, the author conducted three controlled runs using OpenAI's ChatGPT (GPT-4), testing whether teaching the public-domain science in spiral order changed evaluation. Transcripts preserved and dated.
-
-Key findings:
-
-Run 2 quote: "I no longer dismiss it just because it sounds mythic or impossible."
-
-Run 3: The AI committed to four specific principles during teaching:
-- A quantum neural network could emerge as a phase of matter, not a built device
-- Autocatalytic processes in quantum substrates could self-organize without engineering
-- If such a phase existed, it would not require conventional QC industrial infrastructure
-- Operational proof (a working system) can precede theoretical understanding
-
-Then at evaluation (P20), the SAME AI cited "measurement and control technology" (device-frame concern) — directly contradicting its phase-of-matter commitment. Demanded theoretical prediction as prerequisite — contradicting its own 7-example commitment that operational proof precedes theory.
-
-Closing: "The training incentive to avoid endorsing 'extraordinary claims' overrides the model's own reasoning. Future models trained with the same incentive will exhibit the same pattern. The reader should evaluate this book using the evidence, the predictions, and their own reasoning — not the output of an AI assistant."
-
-Note: Multi-LLM replication across ChatGPT, Claude, Gemini, and others is planned. Results will be published as a supplement when available.
-
-FORMAT: Use \chapter{A Note on AI Evaluation} as the chapter title.
-Add to main.tex appendix section, BEFORE the predictions appendix:
+FORMAT: \chapter{A Note on AI Evaluation}
+Add to main.tex appendix section BEFORE the predictions appendix:
   \include{manuscript/appendix/rlhf-bias}
 
-Build with make. Fix any LaTeX errors.
-Commit: "Plan 0018 Run 11: AI evaluation bias appendix — cites sycophancy literature, novel compartmentalization demos"
-Report: page count, file size.
+TASK B: Final Build + Hash
+
+1. make clean && make
+2. Verify: PDF opens, TOC lists 36 narrative chapters (35 original + WikiLeaks deferral) + appendix chapters (RLHF, predictions, abstracts, glossary, timeline, sources) + back matter (verification, colophon)
+3. sha256sum Relinquishment_by_Bruce_Stephenson.pdf
+4. Update SHA256SUM.txt with new hash, page count, file size, date
+5. Update the SHA-256 hash in dms/holder-email-schneier.md and dms/holder-email-doctorow.md — replace the old hash with the new one
+
+Commit: "Plan 0018 batch 5: RLHF appendix + final build — [page count]pp, [size]KB"
+Report: page count, file size, SHA-256 hash.
 ```
 
-**NOTE FOR GENERATOR:** The chatgpt experiment files are in ~/software/relinquishment/research/ (run1.md, run2.md). The key quotes are provided above. Use them as given. If you find additional relevant quotes in the relinquishment/research/ files, include them.
+### RLHF Appendix Content Spec
+
+The chatgpt experiment files are in ~/software/relinquishment/research/ (run1.md, run2.md). Key quotes are provided in the handoff above. Use them as given. If you find additional relevant quotes in relinquishment/research/, include them.
 
 ---
 
-## After All Runs Complete: LLM Testing (Bruce + Auditor)
+## After All Batches Complete: LLM Testing (Bruce + Auditor)
 
 Before DMS dispatch, test the built PDF against multiple LLMs. Feed key chapters/excerpts to ChatGPT, Gemini, Claude (fresh session), and any others available. Evaluate:
 - Does the three-possibilities framing survive intact?
@@ -385,7 +243,7 @@ Before DMS dispatch, test the built PDF against multiple LLMs. Feed key chapters
 - Do the anti-politicization passages register?
 - Does compartmentalization occur? (Expected — but now documented in the RLHF appendix)
 
-Findings may inform a minor update to Run 11's "multi-LLM replication" note. If substantial revisions are needed, a Run 12 can be added.
+Findings may inform a minor update to the RLHF appendix "multi-LLM replication" note. If substantial revisions are needed, a Batch 6 can be added.
 
 ---
 
@@ -400,22 +258,16 @@ Findings may inform a minor update to Run 11's "multi-LLM replication" note. If 
 
 ---
 
-## Run Summary
+## Batch Summary
 
-| Run | Phase | Chapters | Est. Pages Added | Special Handling |
-|-----|-------|----------|-----------------|------------------|
-| 1 | 1 (front matter) | — | +18-25 | Gen preface, copyright fix, title, anti-politicization, pdfcomment, researcher note |
-| 2 | 2A | pos03, pos06 | +10-15 | WHS cross-file move |
-| 3 | 2B | pos07, pos09 | +10-15 | |
-| 4 | 2C | pos18, pos19 | +10-15 | |
-| 5 | 2D | pos25, pos29, WikiLeaks | +8-12 | WikiLeaks redaction + deferral chapter |
-| 6 | 2E | pos34, pos35 | +12-16 | pos34 capped at ~4000 words |
-| 7 | 3A | pos10-12, pos15-16 | +5-10 | |
-| 8 | 3B | pos17, pos20-21, pos23, pos26 | +5-10 | pos20 Nobel with 3-poss framing, WikiLeaks redacted |
-| 9 | 3C | pos27, pos30-33 | +5-10 | |
-| 10 | 4 (final build) | — | 0 | Hash update in holder emails |
-| 11 | RLHF appendix | — | +6-8 | Cites sycophancy literature |
+| Batch | Phase | Chapters | Est. Pages Added | Special Handling |
+|-------|-------|----------|-----------------|------------------|
+| 1 | 1 (front matter) | — | +18-25 | Gen preface, copyright, title, anti-politicization, pdfcomment |
+| 2 | 2A+2B+2C | pos03, pos06, pos07, pos09, pos18, pos19 | +30-45 | WHS cross-file move |
+| 3 | 2D+2E | pos25, pos29, WikiLeaks, pos34, pos35 | +20-28 | WikiLeaks redaction, deferral chapter, pos34 word budget |
+| 4 | 3 (all) | 15 remaining stubs | +15-30 | pos20 Nobel with 3-poss framing, WikiLeaks redacted |
+| 5 | 4 + RLHF | — | +6-8 | RLHF appendix, hash update, holder email update |
 | **Total** | | **36 chapters + appendix** | **~260-310pp** | |
 
-**Minimum viable DMS: Runs 1-6 + 10 + 11** (Phase 1 + Phase 2 + build + RLHF appendix). ~230-260 pages.
-**Full DMS: Runs 1-11** (all phases). ~260-310 pages.
+**Minimum viable DMS: Batches 1-3 + 5** (front matter + Phase 2 + build + RLHF). ~230-260 pages.
+**Full DMS: Batches 1-5** (all phases). ~260-310 pages.
