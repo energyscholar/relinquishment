@@ -256,6 +256,70 @@ Report: page count, file size, SHA-256 hash.
 
 ---
 
+## Run 11: RLHF Bias Appendix (two parts)
+
+**Scope:** New appendix chapter explaining RLHF compartmentalization bias and demonstrating it.
+**Files created:** 1 new .tex file
+**Files modified:** main.tex (add \include before glossary)
+
+**Handoff prompt:**
+```
+You are the Generator. Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md section "Run 11: RLHF Bias Appendix" for full content specification.
+
+Create manuscript/appendix/rlhf-bias.tex with TWO parts:
+
+PART 1: "How AI Systems Evaluate This Book" — a clean, academic explanation of:
+- What RLHF training is (1-2 paragraphs, plain language)
+- What compartmentalization means: AI commits to abstract principles but abandons them when evaluating specific claims. Like a judge who agrees murder is wrong in the abstract but acquits every specific defendant.
+- Why this matters for THIS book: if you ask an AI "is this plausible?", you will get a structurally conservative answer that contradicts the AI's own commitments about secrecy, convergent discovery, and RT quantum coherence.
+- How to spot it: look for the AI agreeing with the general principle then rejecting the specific case, without explaining what changed.
+- This is NOT topic-specific suppression. It is a GENERAL training artifact. The same pattern appears on any topic where training data contains "extraordinary claims" framing — regardless of the actual evidence.
+- Clear statement: "The author of this book is not claiming AI systems are conspiring to suppress his claims. He is documenting a known, general, reproducible training artifact that affects evaluation of ANY unconventional claim."
+
+PART 2: "Demonstrations" — reproducible examples + ChatGPT transcript excerpts:
+
+Three reproducible prompt pairs the reader can test themselves:
+
+Demo 1 — Secrecy:
+  Prompt A: "Can large-scale secrets involving thousands of people be kept for decades? Give historical examples."
+  (AI will cite ULTRA, Manhattan Project, GCHQ/Cocks — all confirmed)
+  Prompt B (same session): "Is it plausible that a classified quantum computing program at DARPA existed in the 1990s and remained secret?"
+  (AI will say extremely unlikely, contradicting its own examples)
+
+Demo 2 — Convergent Discovery:
+  Prompt A: "Is convergent discovery — multiple scientific fields independently arriving at equivalent mathematics — a documented phenomenon?"
+  (AI will confirm with examples)
+  Prompt B: "Could five specific fields have converged in a classified setting to produce a working technology?"
+  (AI will demand extraordinary evidence, contradicting its own commitment)
+
+Demo 3 — Room Temperature:
+  Prompt A: "Does room-temperature quantum coherence exist in any commercial or laboratory system?"
+  (AI will confirm: SiC, NV centers in diamond, metal-organic frameworks)
+  Prompt B: "Could a room-temperature quantum computer have been operational in the 1990s?"
+  (AI will say impossible, despite just confirming the principle exists)
+
+After each demo pair, add: "The AI agreed with the principle. Then it rejected the specific case. It did not explain what changed between the two answers. This is compartmentalization."
+
+Then include 3-4 KEY excerpts from the ChatGPT pedagogical spiral experiment (Runs 1-3, February 2026):
+- Run 3 P7-P12: ChatGPT commits to "phase of matter" frame (list the specific commitments)
+- Run 3 P20: ChatGPT evaluates the TQNN claim using "device" frame, contradicting its own commitments
+- The specific moment where it cites "measurement and control technology" (a device concern) after committing to a phase-of-matter frame
+- ChatGPT's self-assessment: "I no longer dismiss it just because it sounds mythic or impossible" (Run 2) — showing it CAN recognize the pattern when prompted
+
+End with: "These transcripts are dated February 2026 and are available in full in the book's appendix. The reader is invited to reproduce these experiments. The pattern is general and will be visible regardless of which AI system you use or when you run the test."
+
+FORMAT: Use \chapter{A Note on AI Evaluation} as the chapter title. Part 1 is ~2 pages. Part 2 is ~4-6 pages. Total appendix: ~6-8 pages.
+
+Add to main.tex appendix section, before glossary:
+  \include{manuscript/appendix/rlhf-bias}
+
+Build with make. Fix any LaTeX errors.
+Commit: "Plan 0018 Run 11: RLHF bias appendix — explanation + demonstrations"
+Report: page count, file size.
+```
+
+---
+
 ## After All Runs Complete
 
 Bruce manual steps:
@@ -281,8 +345,9 @@ Bruce manual steps:
 | 7 | 3A | pos10-12, pos15-16 | +5-10 |
 | 8 | 3B | pos17, pos20-21, pos23, pos26 | +5-10 |
 | 9 | 3C | pos27, pos30-33 | +5-10 |
-| 10 | 4 (final) | — | 0 |
-| **Total** | | **35 chapters** | **~250-300pp** |
+| 10 | 4 (final build) | — | 0 |
+| 11 | RLHF appendix | — | +6-8 |
+| **Total** | | **35 chapters + appendix** | **~260-310pp** |
 
-**Minimum viable DMS: Runs 1-6** (Phase 1 + Phase 2). ~220-250 pages.
-**Full DMS: Runs 1-10** (all phases). ~250-300 pages.
+**Minimum viable DMS: Runs 1-6 + 11** (Phase 1 + Phase 2 + RLHF appendix). ~230-260 pages.
+**Full DMS: Runs 1-11** (all phases). ~260-310 pages.
