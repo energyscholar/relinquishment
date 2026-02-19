@@ -20,7 +20,7 @@ A book I've been writing for 20 years about a classified program I learned about
 You've seen the arXiv paper. This is the full story behind it.
 
 **SHA-256 hash of the unencrypted PDF:**
-4f24b363a03118b4f53065b3e423d5e4bdf0e36cbd83cf35e282a0a712ecd2b5
+0dc6a4f32cc352cd0170d46eecad31d4988ee80dff447febe7805f9ffcb483c8
 
 I'm having surgery tomorrow (dental, routine) in Costa Rica. This is a precaution, not a panic. I'll check in when I'm recovered.
 

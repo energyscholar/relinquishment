@@ -31,6 +31,7 @@ _This is the critical path. Everything else can happen in parallel but the book 
 | C08 | Resolve pos05-kangaroos.tex (0 bytes) | G | P1 | TODO | C04 | File is empty. Content exists in staging (imported to pos05-the-stories.tex in Track 2). Verify no collision. |
 | C09 | QNN→TQNN standardization | G | P1 | TODO | C05 | All "QNN" → "TQNN" in imported content. Hundreds of instances. |
 | C10 | Remove Lorem ipsum from mixed chapters | G | P1 | TODO | C05 | pos02, pos13, pos24, pos28 have filler text. Replace during import. |
+| C11 | "Possibilities" positioning + prefiguring note | B | P2 | TODO | C03 | TWO tasks: (1) In pos19, add brief note that the title "Possibilities" prefigures the book's "Three Possibilities" framing. Just the observation, no interpretation. (2) POSITIONING: Ensure chapters before pos19 (especially pos03 The Mentor and pos06 The Secret) vividly describe: Healer testing/evaluating Bruce, the "job" Bruce didn't understand until later, the guided deduction method (knowledge that grows into you, not handed over). Goal: by the time the reader hits cDc #283 in pos19, the recruitment pattern is in their active context so the parallel fires without being spelled out. Watership Down method — teach Lapine before you need it. |
 
 ### Content Status Summary
 - **COMPLETE chapters:** 5/35 (pos01, pos04, pos05-stories, preface, not-claimed)
