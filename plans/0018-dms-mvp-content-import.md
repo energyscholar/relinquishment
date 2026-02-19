@@ -34,6 +34,101 @@ The 26 stubs make the PDF feel empty. 25 of them have corresponding staging file
 
 ## Phase 1: Front Matter
 
+### Generator Conventions (apply to ALL phases)
+
+**Proposition, not claim:** When describing Bruce's interpretations in chapters (pos01-pos35) and front matter, use "proposition" instead of "claim." Example: "Bruce's proposition that COWS built a TQNN" not "Bruce's claim." This applies to new framing text AND imported source material in chapters. **EXCEPTION: Appendices preserve Bruce's original wording exactly — no word substitution. Appendices are archival evidence.**
+
+**First-person voice:** All front matter and introduction content uses first-person ("I", "my mentor") to match the preface. Do not use third-person "Bruce" in the author's own voice.
+
+**Recovery protocol for Runs 1, 5, 11:** These runs create new .tex files AND modify main.tex. If a run fails partway, run `git revert HEAD` before retrying. Do NOT re-run on top of partial state.
+
+### 1-PRE. Add Redaction Macro to Preamble
+
+Add the following to `build/preamble.tex` (after existing macro definitions):
+
+```latex
+% DMS redaction marker — used for WikiLeaks-sensitive content
+\newcommand{\DMSRedacted}[1]{%
+  \begin{quote}
+  \textit{[REDACTED --- #1]}
+  \end{quote}
+}
+```
+
+Both Run 5 (pos29) and Run 8 (pos20) use this macro for consistent redaction formatting.
+
+### 1-GEN. Add Genevieve Prentice's Preface
+
+Create `manuscript/00-front/genevieve-preface.tex` with the content below.
+
+**Content for genevieve-preface.tex:**
+
+```latex
+\chapter*{Preface to the Early Draft}
+\addcontentsline{toc}{chapter}{Preface to the Early Draft}
+
+My name appears on this early draft not because I wrote the narrative or the scientific claims. I did not. When Bruce first described the scope of this work to me, I told him---more than once---that it would make a gripping Tom Clancy--style novel. Its scale felt cinematic. He chose instead to pursue it as an intellectual problem and to write it as such.
+
+This document is a draft. I have read portions of it, particularly narrative sections, but I have not reviewed the manuscript in its entirety.
+
+Bruce does not present this work as settled fact. He examines a body of material and interpretation whose ultimate status remains open. It may be mistaken, partially valid, or entirely correct. The manuscript is an exploration, not a declaration of certainty. Any external events---including unexpected ones---should not be taken as confirmation of its propositions. Ambiguity requires restraint in interpretation.
+
+My academic background is in psychology, with earlier study in phenomenology and language. I am not a physicist, mathematician, or professional programmer. I approached this project as a careful reader concerned with clarity: what is documented fact, what reflects established physics, and where interpretation begins.
+
+Over the past several months, I developed a framework called the Dignity Net while working with large language models during drafting. I offered this framework to help clarify distinctions in this draft---to label sourced material, separate accepted scientific principles from theoretical extensions, and reduce the risk of conflating evidence with interpretation. The framework does not determine whether the theories are correct. It is intended to keep those boundaries visible.
+
+Responsibility for the scientific arguments, interpretations, and conclusions rests entirely with Bruce Stephenson.
+
+This statement reflects the full extent of my role in this draft.
+
+\vspace{0.5cm}
+\hfill\textit{Genevieve Prentice, February 2026}
+```
+
+### 1-PREFACE. Strip A/B/C Detail from Bruce's Preface
+
+The current preface (manuscript/00-front/preface.tex) explains Options A, B, C in full paragraphs. Since the Introduction now carries the detailed A/B/C explanation, strip the preface to mention the concept briefly without re-explaining each option.
+
+Replace lines 10-17 (from `I cannot tell you which of the following is correct:` through the end of Option C) with:
+
+```latex
+I cannot tell you whether the story is true. It may be fabrication, exaggeration, or entirely real. I have maintained genuine uncertainty about these three possibilities for more than twenty years. The Introduction that follows explains them in detail.
+```
+
+Keep everything else in preface.tex unchanged (lines 1-9, 18-33).
+
+### 1-COPYRIGHT. Narrow AI Disclosure on Copyright Page
+
+In `manuscript/00-front/copyright.tex`, replace line 43:
+```
+Structure and research developed with AI assistance (Claude, Anthropic). All narrative prose, claims, evidence assessments, and editorial decisions are the author's. Session transcripts are included in the appendix.
+```
+with:
+```
+Structure and organization developed with AI assistance (Claude, Anthropic). All research, narrative prose, evidence assessments, and editorial decisions are the author's.
+```
+
+### 1-TITLE. Update Title Page
+
+In `manuscript/00-front/title.tex`, update the byline to:
+```
+Written by Bruce Stephenson with Genevieve Prentice
+```
+
+### 1-MAIN. Update main.tex Front Matter Order
+
+Replace the front matter includes (lines 35-36) with the following EXACT sequence:
+
+```latex
+\include{manuscript/00-front/genevieve-preface}
+\include{manuscript/00-front/preface}
+\include{manuscript/00-front/not-claimed}
+\include{manuscript/00-front/introduction}
+\include{manuscript/00-front/corrections}
+```
+
+This produces the reading order: Genevieve's preface → Bruce's preface → What This Book Does Not Claim → Introduction → What I Got Wrong → then pos01 (Three Possibilities).
+
 ### 1A. Add Introduction
 
 Create `manuscript/00-front/introduction.tex` with the content below. This is the book summary written for Genevieve Prentice that Bruce approved as "That's the intro!"
@@ -107,6 +202,24 @@ You can't choose an option you don't know exists.
 It is not a whistleblower disclosure. Bruce has no security clearance and never had access to classified information. Everything in the book is deduced from public-domain sources.
 
 It is not advocacy. It does not argue for C. It presents three possibilities with evidence and lets the reader evaluate.
+
+## A warning about certainty
+
+I do not know what is true. I have maintained that position for twenty years. This book does not argue that its central propositions are true. It does not argue that they are false. It presents three possibilities and evidence bearing on each, and it asks the reader to evaluate that evidence without reaching a premature conclusion.
+
+If someone tells you this book claims to know the truth, they are misrepresenting it. Read it yourself.
+
+This book will attract people who want to use it. Some will claim it as evidence that governments are hiding advanced technology — proof of conspiracy, vindication of distrust. Others will claim it as evidence that intelligent people can be deceived by elaborate stories — proof that conspiracy thinking is a disease. Both readings require ignoring the book's structure to cherry-pick a conclusion the author explicitly refuses to draw.
+
+There are three possibilities. Not two. The third — Possibility B, the exaggerated kernel — is the one that requires the most from the reader, because it demands simultaneous acknowledgment that something real underlies the narrative AND that the superstructure built upon it may be wrong. This is the reading that cannot be weaponized, because it refuses to collapse into the certainty that political use requires.
+
+If someone claims this book supports their political position, ask them to explain Possibility B in their own words. If they cannot, they have not read it. If they dismiss B as a hedge or a cop-out, they have not understood it. B is not the middle ground between A and C. It is the hardest of the three to hold, because it requires living with partial knowledge — which is the actual human condition.
+
+I will say this as clearly as I can:
+
+I disavow any use of this book as evidence for any political position, any institutional critique, any partisan agenda, or any conspiracy theory. I disavow any reading that collapses the three possibilities into one. The book is the three possibilities held in tension. Remove any one of them and you have destroyed it.
+
+If you have reached certainty after reading this book — certainty in any direction — something went wrong. Go back and read it again.
 
 ---END INTRODUCTION CONTENT---
 
