@@ -4,29 +4,33 @@
 \chapter*{Verification}
 \addcontentsline{toc}{chapter}{Verification}
 
-This document's integrity can be verified using the SHA-256 hash below. The hash covers the entire document except this page.
+\section*{Document Integrity}
 
-\vspace{1cm}
+This PDF was built from source commit \texttt{\GitHash} on \GitDate.
 
-\textbf{SHA-256 Hash of this PDF (excluding verification page):}
+To verify this document has not been modified:
 
-\texttt{PLACEHOLDER --- UPDATED AT FINAL BUILD}
+\begin{enumerate}
+\item Compute: \texttt{sha256sum Relinquishment\_by\_Bruce\_Stephenson.pdf}
+\item Compare the result against the hash published in \texttt{SHA256SUM.txt} in the source repository, or in the author's correspondence with deadman's switch holders.
+\end{enumerate}
 
-\vspace{0.5cm}
+A SHA-256 hash cannot appear inside the document it describes --- that would be circular. The hash lives outside this PDF, in the files and communications listed above.
 
-\textbf{Build:} \GitDate{} \quad Commit: \texttt{\GitShortHash}
+\section*{Prediction Timestamps}
 
-\vspace{1cm}
+The predictions in this book are dated by the git commit that contains this PDF, by the email headers of the deadman's switch correspondence, and by the following independent third-party timestamps of earlier versions of this material:
 
-\textit{The predictions in this book were timestamped at publication. The hash above, combined with the git commit hash and the email timestamps of the deadman's switch holders, establishes priority. The same hash appears in the file \texttt{SHA256SUM.txt} in the source repository.}
+\begin{itemize}
+\item Cryptome (2012 --- 42 Wayback Machine captures, identical content hash across 12 years)
+\item Slashdot (UID 801915 --- account creation date establishes presence)
+\item Blogspot (2012--2025 --- 30+ Wayback Machine captures)
+\item Substack, \texttt{postquantum.substack.com} (2024--2025 --- 10+ Wayback Machine captures)
+\end{itemize}
 
-\vspace{0.5cm}
+\section*{Contact}
 
-\textit{Independent third-party timestamps of earlier versions of this material exist at Cryptome (2012, Wayback Machine), Slashdot (UID 801915), Blogspot (2012--2025), and Substack (2024--2025).}
-
-\vspace{1cm}
-
-\noindent If you have evidence that corroborates or contradicts any claim in this book --- documents, personal knowledge, institutional records --- the author wants to hear from you:
+If you have evidence that corroborates or contradicts any claim in this book --- documents, personal knowledge, institutional records --- the author wants to hear from you:
 
 \begin{center}
 \texttt{energyscholar+evidence@gmail.com}
