@@ -6,7 +6,7 @@
 
 Each batch below is a separate Generator shell session. Copy-paste the handoff prompt. Wait for completion. Verify. Then start the next batch.
 
-**Build verification after every batch:** `make` must succeed with zero errors. Check page count increases. Spot-check the PDF.
+**Build verification after every batch:** `make` must succeed with zero errors. Check page count increases. Spot-check the PDF. **Include the PDF in every commit** — it's the canonical artifact and the git timestamp establishes priority.
 
 ---
 
