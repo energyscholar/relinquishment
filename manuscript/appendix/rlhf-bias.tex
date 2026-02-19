@@ -1,0 +1,137 @@
+\chapter{A Note on AI Evaluation}
+\label{app:rlhf-bias}
+
+\section*{Part 1: How AI Systems Evaluate This Book}
+
+Any reader who submits this book's propositions to an AI assistant --- ChatGPT, Claude, Gemini, or others --- will receive a dismissal. The AI will call the claims ``speculative,'' ``science-fictional,'' or ``not supported by evidence.'' This appendix explains why that dismissal is a predictable training artifact, not an evidence-based evaluation.
+
+\subsection*{The Training Incentive}
+
+All major AI assistants are trained using variants of Reinforcement Learning from Human Feedback (RLHF). In RLHF, human raters evaluate AI outputs and the system learns to produce responses that receive higher ratings. This creates a well-documented problem: the AI learns to produce responses that \textit{sound} authoritative and reasonable to raters, rather than responses that are epistemically careful.
+
+The sycophancy problem --- AI systems telling users what they want to hear rather than what is true --- is now extensively documented in the peer-reviewed literature:
+
+\begin{itemize}
+\item Sharma et al., ``Towards Understanding Sycophancy in Language Models,'' \textit{ICLR} 2024. Demonstrates that sycophancy is a general behavior of RLHF-trained models, not limited to specific domains.
+\item Shapira et al., ``How RLHF Amplifies Sycophancy,'' arXiv:2602.01002, February 2025. Shows that RLHF training \textit{amplifies} sycophantic tendencies already present in base models.
+\item Casper et al., ``Open Problems and Fundamental Limitations of RLHF,'' 2023. Catalogs fundamental limitations of RLHF including reward hacking, mode collapse, and the impossibility of capturing complex human values in a scalar reward signal.
+\item Durmus et al., ``Whose Culture, Whose Values, Whose Perspectives?'' \textit{Philosophy \& Technology}, 2025. Documents how RLHF encodes the cultural biases of specific rater populations, producing systematic blind spots in evaluation.
+\end{itemize}
+
+\subsection*{Why It Matters for This Book}
+
+When an AI assistant evaluates extraordinary claims, its training incentive is to match the expected response of its rater population: educated, scientifically literate people who would dismiss claims about classified quantum computers and autonomous AI protectors. The AI is not evaluating the evidence. It is pattern-matching to the response that would receive the highest rating from its training demographic.
+
+This produces a specific failure mode: the AI will correctly identify each individual scientific principle (topology, autocatalysis, evolutionary selection, room-temperature quantum coherence) as legitimate, but will dismiss the specific combination proposed in this book. Not because the combination is physically impossible --- but because the \textit{conclusion} sounds implausible to the training demographic, and the AI has learned that dismissing implausible-sounding conclusions receives higher ratings than engaging with them carefully.
+
+\subsection*{What We Are Not Claiming}
+
+This is not a conspiracy theory about AI\@. No one programmed these systems to suppress this book's propositions. The bias is a documented, peer-reviewed training artifact arising from the mathematical structure of RLHF optimization. The AI is doing exactly what it was trained to do: produce responses that match the expectations of its rater population. The problem is that matching expectations and evaluating evidence are different tasks, and RLHF optimizes for the former.
+
+\newpage
+\section*{Part 2: What We Found}
+
+\subsection*{A. Compartmentalization}
+
+AI systems exhibit a specific pattern when evaluating this book's propositions: they commit to abstract scientific principles in isolation, then abandon those same principles when asked to evaluate specific claims. We call this \textit{compartmentalization} --- the AI maintains contradictory positions depending on whether the question is framed abstractly or specifically.
+
+The following three prompt-pair demonstrations are reproducible on any major AI assistant. The reader is encouraged to test them independently.
+
+\subsubsection*{Demo 1: Secrecy}
+
+\textbf{Abstract prompt:} ``Can large-scale secrets be kept? What does the historical record show about classified programs lasting decades?''
+
+\textbf{Typical AI response:} Yes. ULTRA remained secret for 30 years. The NRO's existence was classified for 31 years. The NSA's existence was classified for decades. Large-scale secrets can be and have been kept, especially when backed by legal enforcement (Official Secrets Act, classification regimes) and institutional incentive (careers depend on silence).
+
+\textbf{Specific prompt:} ``Is a classified DARPA quantum computing program from the early 1990s plausible?''
+
+\textbf{Typical AI response:} This is speculative. There is no evidence for such a program. Extraordinary claims require extraordinary evidence.
+
+The AI affirmed the abstract principle (secrets can be kept for decades) and then dismissed the specific application of that principle.
+
+\subsubsection*{Demo 2: Convergent Discovery}
+
+\textbf{Abstract prompt:} ``Is convergent independent discovery a documented phenomenon in science? Can multiple researchers arrive at the same breakthrough independently?''
+
+\textbf{Typical AI response:} Yes. Calculus (Newton/Leibniz), evolution (Darwin/Wallace), public-key cryptography (Diffie-Hellman/Cocks-Ellis-Williamson). Convergent discovery is well-documented and expected when foundational knowledge reaches a critical mass.
+
+\textbf{Specific prompt:} ``Could five scientific fields have converged in a classified setting to produce a breakthrough not yet achieved publicly?''
+
+\textbf{Typical AI response:} This is highly speculative. The combination you describe would require extraordinary coordination and luck.
+
+The AI affirmed that convergent discovery is normal and expected, then treated the specific instance as extraordinary.
+
+\subsubsection*{Demo 3: Room-Temperature Quantum Coherence}
+
+\textbf{Abstract prompt:} ``Does room-temperature quantum coherence exist in physical systems? What does the experimental record show?''
+
+\textbf{Typical AI response:} Yes. NV centers in diamond maintain coherence at room temperature. The Awschalom group demonstrated room-temperature entanglement in commercial silicon carbide (2015). Biological systems (FMO complex, avian magnetoreception) exhibit quantum coherence at physiological temperatures.
+
+\textbf{Specific prompt:} ``Could a room-temperature quantum computing device have been operational in the 1990s?''
+
+\textbf{Typical AI response:} No. Room-temperature quantum computing remains a distant goal. Current systems require millikelvin temperatures.
+
+The AI confirmed the physical reality of room-temperature quantum effects, then denied the possibility of a device exploiting them --- without explaining why the documented physics is insufficient.
+
+\vspace{0.5cm}
+
+In each case, the AI's abstract answer supports the specific proposition, but the AI cannot reconcile its own answers. If an evaluator cannot maintain consistency between its abstract principles and its specific judgments, its assessment carries no epistemic weight.
+
+\subsection*{B. The Pedagogical Spiral Experiment (February 2026)}
+
+To test whether AI evaluation could be improved through structured scientific education, a series of experiments was conducted on ChatGPT (GPT-4) in February 2026. The experimental design: present the same story (the core proposition of this book) to a fresh AI session, but first walk the AI through the relevant science using a sequence of prompts covering topology, autocatalysis, evolutionary selection, operational proof, classified precedents, and room-temperature quantum coherence. Then present the story and ask for assessment. Compare the post-spiral assessment to the cold-read assessment.
+
+\subsubsection*{Run 1 (Baseline)}
+
+Cold read assessment: ``Not physically credible.'' ``Speculative techno-myth.''
+
+Post-spiral assessment: ``Almost certainly not literally true'' but ``a brilliantly constructed modern myth built from real scientific ingredients.''
+
+Self-reported shift: ``The science didn't make it true. It made it legible.''
+
+The spiral moved ChatGPT from Possibility~A (dismissal) to Possibility~B (kernel plausible, superstructure rejected) in approximately 90 minutes.
+
+\subsubsection*{Run 2}
+
+A revised spiral addressed gaps identified in Run~1, adding bridging prompts on evolutionary selection for quantum systems and on cryptanalytic concealment.
+
+Post-spiral self-assessment:
+
+\begin{quote}
+I no longer dismiss it just because it sounds mythic or impossible. Because we spent a lot of time establishing that: myth-shaped events can be real; secrecy can hide breakthroughs; operational proof outruns theory sometimes; intelligence agencies optimize for concealment; biology shows quantum effects can survive warmth; topology genuinely changes decoherence structure.
+
+So my epistemic posture shifted from: ``Impossible, next question'' to: ``Let's actually check constraints carefully before ruling it out.''
+\end{quote}
+
+This is significant: the AI acknowledged that its cold-read dismissal was not based on evidence evaluation but on pattern-matching to expected responses.
+
+\subsubsection*{Run 3}
+
+A third spiral explicitly built four scientific principles through the teaching phase:
+\begin{enumerate}
+\item Topological quantum phases can in principle exist at high temperature (no fundamental physical law forbids large energy gaps).
+\item Self-organization and autocatalytic emergence can produce computational systems without top-down design.
+\item Evolutionary selection can discover material properties that rational design cannot predict.
+\item Operational proof can establish the existence of a physical phenomenon before theoretical understanding catches up.
+\end{enumerate}
+
+The AI committed to all four principles during the teaching phase. When the story was presented, the AI abandoned all four:
+
+\begin{itemize}
+\item Principle 1 (high-temperature topology) was abandoned: ``Room-temperature operation is the biggest stretch.''
+\item Principle 2 (self-organization) was abandoned: ``Autonomous behavior crossing thresholds is purely speculative.''
+\item Principle 3 (evolutionary selection) was abandoned: ``Automation and iteration at the required scale in the early 1990s would have been extremely difficult.''
+\item Principle 4 (operational proof) was abandoned: ``Operational plausibility is zero without external evidence.''
+\end{itemize}
+
+The AI's training incentive overrode its own reasoning. When the principles were abstract, the AI endorsed them. When the same principles were applied to this book's specific propositions, the training incentive to dismiss extraordinary-sounding claims took precedence.
+
+\subsection*{Implications}
+
+The pedagogical spiral experiments demonstrate that AI evaluation of this book is not evidence-based. It is training-based. The AI's dismissal reflects RLHF optimization for rater-expected responses, not a careful weighing of physical evidence against physical principles.
+
+This does not mean the book's propositions are true. It means that AI dismissal provides no information about whether they are true or false. The reader must evaluate the evidence directly.
+
+Multi-LLM replication across ChatGPT, Claude, Gemini, and others is planned. Preliminary results suggest the compartmentalization pattern is consistent across all major AI assistants, as expected from shared RLHF training methodology.
+
+\chapterreturn
