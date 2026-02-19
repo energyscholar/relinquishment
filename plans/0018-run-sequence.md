@@ -20,7 +20,8 @@ Each batch below is a separate Generator shell session. Copy-paste the handoff p
 
 **Handoff prompt:**
 ```
-You are the Generator. Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
+You are the Generator. Plan 0018, Batch 1 of 5.
+Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
 
 Execute Phase 1 in this order:
 - 1-PRE: Add \DMSRedacted{} macro AND \usepackage{pdfcomment} + \srcnote{} macro to build/preamble.tex per plan
@@ -43,7 +44,7 @@ CONVENTIONS:
 Build with `make` after all items. Run test cases T1.1-T1.10.
 If build fails partway, discard changes (`git checkout -- . && git clean -fd`) before retrying.
 Commit: "Plan 0018 batch 1: front matter — Gen preface, introduction, corrections, Coventry fix, Alpha Farm fix, pdfcomment annotations"
-Report: page count, file size, any test failures.
+Report: "Batch 1 of 5 complete." then page count, file size, any test failures.
 ```
 
 ---
@@ -57,7 +58,8 @@ Report: page count, file size, any test failures.
 
 **Handoff prompt:**
 ```
-You are the Generator. Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
+You are the Generator. Plan 0018, Batch 2 of 5.
+Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
 
 Execute Phase 2, chapters 2.1 through 2.6 (six chapters total):
 - 2.1: pos03-the-mentor
@@ -81,7 +83,7 @@ Read manuscript/bridge/pos04-the-code-war.tex and manuscript/track-2-testament/p
 
 Build with `make` after all six chapters. Fix any LaTeX errors.
 Commit: "Plan 0018 batch 2: primary imports — pos03, pos06, pos07, pos09, pos18, pos19"
-Report: page count, file size, any build errors.
+Report: "Batch 2 of 5 complete." then page count, file size, any build errors.
 ```
 
 ---
@@ -96,7 +98,8 @@ Report: page count, file size, any build errors.
 
 **Handoff prompt:**
 ```
-You are the Generator. Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
+You are the Generator. Plan 0018, Batch 3 of 5.
+Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
 
 Execute Phase 2, chapters 2.7 through 2.10, PLUS the WikiLeaks deferral chapter:
 - 2.7: pos25-ethical-framework
@@ -127,7 +130,7 @@ Read manuscript/track-2-testament/pos05-the-stories.tex as a style reference.
 
 Build with `make` after all items. Fix any LaTeX errors.
 Commit: "Plan 0018 batch 3: pos25, pos29 (WikiLeaks redacted), WikiLeaks deferral, pos34 (capped), pos35"
-Report: page count, file size, any build errors.
+Report: "Batch 3 of 5 complete." then page count, file size, any build errors.
 ```
 
 ---
@@ -141,7 +144,8 @@ Report: page count, file size, any build errors.
 
 **Handoff prompt:**
 ```
-You are the Generator. Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
+You are the Generator. Plan 0018, Batch 4 of 5.
+Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
 
 Execute Phase 3 for ALL 15 remaining stub chapters. PROCESS pos20 FIRST (special handling), then the rest in any order.
 
@@ -168,7 +172,7 @@ CONTEXT SAFETY: If you are running low on context, build and commit what you hav
 
 Build with `make` after all chapters (or after as many as you complete). Fix any LaTeX errors.
 Commit: "Plan 0018 batch 4: secondary imports — 15 chapters including pos20 (WikiLeaks redacted)"
-Report: page count, file size, which chapters completed.
+Report: "Batch 4 of 5 complete." then page count, file size, which chapters completed.
 ```
 
 ---
@@ -183,7 +187,8 @@ Report: page count, file size, which chapters completed.
 
 **Handoff prompt:**
 ```
-You are the Generator. Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
+You are the Generator. Plan 0018, Batch 5 of 5.
+Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
 ALSO read ~/software/relinquishment/plans/0018-run-sequence.md section "RLHF Appendix Content Spec"
 
 Execute TWO tasks:
@@ -226,7 +231,7 @@ TASK B: Final Build + Hash
 5. Update the SHA-256 hash in dms/holder-email-schneier.md and dms/holder-email-doctorow.md — replace the old hash with the new one
 
 Commit: "Plan 0018 batch 5: RLHF appendix + final build — [page count]pp, [size]KB"
-Report: page count, file size, SHA-256 hash.
+Report: "Batch 5 of 5 complete." then page count, file size, SHA-256 hash.
 ```
 
 ### RLHF Appendix Content Spec
