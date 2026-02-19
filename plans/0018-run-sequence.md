@@ -118,27 +118,34 @@ Report: page count, file size, any build errors.
 
 ---
 
-## Run 5: Phase 2D — pos25 + pos29 (Ethical Framework + The Silence)
+## Run 5: Phase 2D — pos25 + pos29 + WikiLeaks deferral (Ethical Framework + The Silence + WikiLeaks)
 
-**Scope:** 2 chapters.
+**Scope:** 2 chapters + 1 deferral chapter. pos29 has WikiLeaks content that must be STRIPPED.
 
 **Handoff prompt:**
 ```
 You are the Generator. Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
 
 Execute Phase 2, chapters 2.7 (pos25-ethical-framework) and 2.8 (pos29-the-silence) only.
+ALSO create the WikiLeaks deferral chapter per the "Special Instructions: WikiLeaks Deferral Chapter" section in the plan.
 
-For each chapter:
+For pos25 and pos29:
 1. Read the FULL staging file in manuscript/staging/raw/
 2. Read the existing .tex stub
 3. Follow the per-chapter instructions in the plan (sections "Chapter 2.7" and "Chapter 2.8")
 4. Import prose sections, convert markdown to LaTeX per the conversion rules table
 5. Preserve \settrack, \chapter, \label, \chapterreturn structure
 
+CRITICAL FOR pos29: Read the "Special Instructions: pos29-the-silence" in the plan. You MUST strip all WikiLeaks/Assange content and replace with a [REDACTED] marker. Keep the silence/isolation narrative, David assessment, and "this story will be my life's work."
+
+For WikiLeaks deferral:
+1. Create manuscript/track-2-testament/wikileaks.tex per the plan's special instructions
+2. Add \include{manuscript/track-2-testament/wikileaks} to main.tex AFTER pos29-the-silence and BEFORE pos30-unipolar-condition
+
 Read manuscript/track-2-testament/pos05-the-stories.tex as a style reference.
 
-Build with `make` after both chapters. Fix any LaTeX errors.
-Commit: "Plan 0018 phase 2D: pos25 ethical framework, pos29 the silence"
+Build with `make` after all three. Fix any LaTeX errors.
+Commit: "Plan 0018 phase 2D: pos25 ethical framework, pos29 the silence (WikiLeaks redacted), WikiLeaks deferral chapter"
 Report: page count, file size, any build errors.
 ```
 
@@ -201,7 +208,7 @@ Report: page count, file size.
 
 ## Run 8: Phase 3 — Secondary Imports (batch 2: 5 chapters)
 
-**Scope:** pos17, pos20, pos21, pos23, pos26
+**Scope:** pos17, pos20, pos21, pos23, pos26. **pos20 has special handling.**
 
 **Handoff prompt:**
 ```
@@ -209,9 +216,16 @@ You are the Generator. Read ~/software/relinquishment/plans/0018-dms-mvp-content
 
 Execute Phase 3 for these 5 chapters only: pos17-the-capability, pos20-the-network, pos21-convergence-revisited, pos23-the-weight, pos26-interdiction.
 
-Same instructions as Run 7. Read staging files, import prose, convert to LaTeX, build, commit.
+Same instructions as Run 7 for pos17, pos21, pos23, pos26.
 
-Commit: "Plan 0018 phase 3B: secondary imports — pos17, pos20, pos21, pos23, pos26"
+CRITICAL FOR pos20: Read the "Special Instructions: pos20-the-network" section in the plan. The staging file contains the "Nobel Prize Hat Trick" letter. You MUST:
+1. Import the Nobel content (Turing Award, Nobel Physics, Nobel Peace) wrapped in three-possibilities framing
+2. SKIP the Plame/WikiLeaks/Media Consolidation paragraphs
+3. Replace skipped content with the [REDACTED] marker specified in the plan
+4. Make clear content was deliberately redacted — do not silently omit
+
+Build with `make` after all 5. Fix any LaTeX errors.
+Commit: "Plan 0018 phase 3B: secondary imports — pos17, pos20 (WikiLeaks redacted), pos21, pos23, pos26"
 Report: page count, file size.
 ```
 
@@ -235,9 +249,9 @@ Report: page count, file size.
 
 ---
 
-## Run 10: Phase 4 — Final Build + Hash
+## Run 10: Phase 4 — Final Build + Hash + Email Update
 
-**Scope:** Clean build, verify all chapters, generate hash.
+**Scope:** Clean build, verify all chapters (36 including WikiLeaks deferral), generate hash, update holder emails.
 
 **Handoff prompt:**
 ```
@@ -245,10 +259,11 @@ You are the Generator. Read ~/software/relinquishment/plans/0018-dms-mvp-content
 
 Execute Phase 4 only:
 1. make clean && make
-2. Verify: PDF opens, TOC lists all 35 chapters + front/back matter
+2. Verify: PDF opens, TOC lists all 36 chapters + front/back matter (35 original + WikiLeaks deferral)
 3. sha256sum Relinquishment_by_Bruce_Stephenson.pdf
 4. Update SHA256SUM.txt with new hash, page count, file size, date
-5. Run test cases T4.1-T4.4
+5. Update the SHA-256 hash in dms/holder-email-schneier.md and dms/holder-email-doctorow.md — replace the old hash with the new one
+6. Run test cases T4.1-T4.5
 
 Commit: "Plan 0018 phase 4: DMS MVP final build — [page count]pp, [size]KB"
 Report: page count, file size, SHA-256 hash.
@@ -362,20 +377,20 @@ Bruce manual steps:
 
 ## Run Summary
 
-| Run | Phase | Chapters | Est. Pages Added |
-|-----|-------|----------|-----------------|
-| 1 | 1 (front matter) | — | +15-20 |
-| 2 | 2A | pos03, pos06 | +10-15 |
-| 3 | 2B | pos07, pos09 | +10-15 |
-| 4 | 2C | pos18, pos19 | +10-15 |
-| 5 | 2D | pos25, pos29 | +8-12 |
-| 6 | 2E | pos34, pos35 | +15-20 |
-| 7 | 3A | pos10-12, pos15-16 | +5-10 |
-| 8 | 3B | pos17, pos20-21, pos23, pos26 | +5-10 |
-| 9 | 3C | pos27, pos30-33 | +5-10 |
-| 10 | 4 (final build) | — | 0 |
-| 11 | RLHF appendix | — | +6-8 |
-| **Total** | | **35 chapters + appendix** | **~260-310pp** |
+| Run | Phase | Chapters | Est. Pages Added | Special Handling |
+|-----|-------|----------|-----------------|------------------|
+| 1 | 1 (front matter) | — | +15-20 | |
+| 2 | 2A | pos03, pos06 | +10-15 | WHS cross-file move |
+| 3 | 2B | pos07, pos09 | +10-15 | |
+| 4 | 2C | pos18, pos19 | +10-15 | |
+| 5 | 2D | pos25, pos29, WikiLeaks | +8-12 | WikiLeaks redaction + deferral chapter |
+| 6 | 2E | pos34, pos35 | +12-16 | pos34 capped at ~4000 words |
+| 7 | 3A | pos10-12, pos15-16 | +5-10 | |
+| 8 | 3B | pos17, pos20-21, pos23, pos26 | +5-10 | pos20 Nobel with 3-poss framing, WikiLeaks redacted |
+| 9 | 3C | pos27, pos30-33 | +5-10 | |
+| 10 | 4 (final build) | — | 0 | Hash update in holder emails |
+| 11 | RLHF appendix | — | +6-8 | Cites sycophancy literature |
+| **Total** | | **36 chapters + appendix** | **~260-310pp** | |
 
-**Minimum viable DMS: Runs 1-6 + 11** (Phase 1 + Phase 2 + RLHF appendix). ~230-260 pages.
+**Minimum viable DMS: Runs 1-6 + 10 + 11** (Phase 1 + Phase 2 + build + RLHF appendix). ~230-260 pages.
 **Full DMS: Runs 1-11** (all phases). ~260-310 pages.

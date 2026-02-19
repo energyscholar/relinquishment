@@ -359,15 +359,17 @@ For each chapter below:
 **Staging:** `manuscript/staging/raw/pos34-the-research.md`
 **Content type:** Analytical — research timeline + evidence summary
 
+**WORD BUDGET: ~4000 words / ~12 pages maximum.**
+
 **Import instructions:**
-- This is the LARGEST staging file (413 lines, ~7200 words). Read the full file.
-- Import the cloudCrypt archive analysis as a structured timeline. The date-ordered evidence list is compelling.
-- Import the third-party timestamp section — this is the strongest evidence against fabrication.
-- Import the red team analysis sections — the adversarial counterweight is essential.
-- Import the probability trajectory.
-- The search suppression finding is circumstantial but documented — include it.
+- This is the LARGEST staging file (413 lines, ~7200 words). Read the full file but DO NOT import everything.
+- **Priority 1:** Third-party timestamp section — this is the strongest evidence against fabrication. Import in full.
+- **Priority 2:** Probability trajectory (50%→88%→crash→rebuild→82%). Import as structured narrative.
+- **Priority 3:** Search suppression finding — circumstantial but documented. Brief summary.
+- **Priority 4:** CloudCrypt archive analysis — SUMMARIZE as a 1-2 paragraph overview with key dates, NOT the full date-ordered evidence list.
+- **Priority 5:** Red team analysis — summarize in 1 paragraph. The full adversarial analysis exists in the staging file for future editions.
 - Consider using `\begin{description}` or `\begin{enumerate}` for the evidence list.
-- If the chapter feels too long (>15 pages), note in a comment that it could be split.
+- **If approaching the word budget, cut from Priority 5 up.** Timestamps and probability trajectory are essential; the rest is supporting.
 
 ### Chapter 2.10: pos35-the-question (Convergence)
 
@@ -409,14 +411,14 @@ These chapters have staging files with LESS importable prose. For each:
 3. For analytical-only content: import the most readable sections as structured text, framed with: `\textit{Source material collected for this chapter. Narrative prose under development.}` at the top
 4. If the staging file is entirely analytical bullets with no readable narrative: keep the stub but replace `[Content to be written]` with a 2-3 sentence summary of what the chapter covers, drawn from the staging file's `topics:` and `notes:` fields
 
-The 15 chapters:
+The 15 chapters + 1 deferral:
 - pos10-the-braid (Bridge)
 - pos11-the-experiment (Bridge)
 - pos12-the-threshold (Bridge)
 - pos15-first-light (T1)
 - pos16-the-thermal-ladder (T1)
 - pos17-the-capability (T1)
-- pos20-the-network (T1)
+- pos20-the-network (T1) — **SEE SPECIAL INSTRUCTIONS BELOW**
 - pos21-convergence-revisited (T1)
 - pos23-the-weight (T2)
 - pos26-interdiction (T1)
@@ -425,13 +427,58 @@ The 15 chapters:
 - pos31-wolfram (T2)
 - pos32-the-magnetosphere (T3)
 - pos33-digital-doppelganger (T2)
+- **NEW: WikiLeaks deferral chapter** — see below
+
+### Special Instructions: pos20-the-network
+
+The staging file contains the "Nobel Prize Hat Trick" letter (from forJoe.txt). This has the most specific claims in the entire book. Handle as follows:
+
+1. **Import the Nobel Hat Trick content** (Turing Award, Nobel Physics, Nobel Peace sections) but **wrap in three-possibilities framing**: "Under Option C, these accomplishments would merit..." or similar.
+2. **SKIP the Plame/WikiLeaks/Media Consolidation paragraphs.** Replace them with a visible redaction marker:
+   ```latex
+   \begin{quote}
+   \textit{[REDACTED — Content relating to subsequent transparency initiatives has been removed from this edition. See the chapter titled ``WikiLeaks'' for the author's note on this deferral.]}
+   \end{quote}
+   ```
+3. Make clear that content WAS there and was deliberately redacted. Do not silently omit.
+
+### Special Instructions: WikiLeaks Deferral Chapter
+
+Create `manuscript/track-2-testament/wikileaks.tex` with:
+
+```latex
+\settrack{tracktwo}
+
+\chapter{WikiLeaks}
+\label{ch:wikileaks}
+
+The author has material on this topic that he has chosen not to include in this edition, due to the extreme sensitivity of the subject and the safety of people who may still be at risk.
+
+This material may appear in a future publication when circumstances permit.
+
+\chapterreturn
+```
+
+Add to `main.tex` after pos29-the-silence:
+```
+\include{manuscript/track-2-testament/pos29-the-silence}
+\include{manuscript/track-2-testament/wikileaks}
+\include{manuscript/track-3-awakening/pos30-unipolar-condition}
+```
+
+### Special Instructions: pos29-the-silence
+
+When importing pos29 staging content:
+- **KEEP:** The silence/isolation narrative, Bruce's assessment of David, "this story will be my life's work"
+- **STRIP:** The Assange line ("I presume they chose Julian Assange to lead the project, instead") and the "Speak Truth to Power" / WikiLeaks origin paragraphs
+- **Replace stripped content with the same [REDACTED] marker** used in pos20
 
 ### Phase 3 Test Cases
 
 | # | Test | Pass Criteria |
 |---|------|---------------|
 | T3.1 | `make` succeeds | Zero LaTeX errors |
-| T3.2 | No "[Content to be written]" stubs remain | All 35 narrative chapters have at least a chapter summary |
+| T3.2 | No "[Content to be written]" stubs remain | All 36 narrative chapters have at least a chapter summary or deferral note |
 | T3.3 | Page count | Should be ~250-300+ pages |
 
 **Commit after Phase 3:** `Plan 0018 phase 3: secondary content import — 15 chapters`
@@ -441,19 +488,21 @@ The 15 chapters:
 ## Phase 4: Final Build, Verify, Hash
 
 1. `make clean && make`
-2. Verify: PDF opens, TOC correct, all chapters present, no blank pages
+2. Verify: PDF opens, TOC correct, all chapters present (including WikiLeaks deferral), no blank pages
 3. `sha256sum Relinquishment_by_Bruce_Stephenson.pdf` → record hash
 4. Update `SHA256SUM.txt` with new hash
-5. Report: page count, file size, hash
+5. **Update hash in holder email drafts:** Replace the old hash in `dms/holder-email-schneier.md` and `dms/holder-email-doctorow.md` with the new hash. The old hash (`3b32cd5e...`) is from the pre-import 137-page PDF and will not match.
+6. Report: page count, file size, hash
 
 ### Phase 4 Test Cases
 
 | # | Test | Pass Criteria |
 |---|------|---------------|
 | T4.1 | PDF opens in viewer | All pages render |
-| T4.2 | TOC lists all 35 chapters + front/back matter | No missing entries |
+| T4.2 | TOC lists all 36 chapters + front/back matter | No missing entries (35 original + WikiLeaks deferral) |
 | T4.3 | File size under 5MB | Must fit Gmail attachment (25MB limit with encryption overhead) |
 | T4.4 | SHA-256 recorded | Hash in SHA256SUM.txt matches actual hash |
+| T4.5 | Holder email hashes updated | Hash in both dms/holder-email-*.md matches SHA256SUM.txt |
 
 **Commit after Phase 4:** `Plan 0018 phase 4: DMS MVP final build — [page count]pp, [size]KB`
 
@@ -514,4 +563,10 @@ Bruce manual steps (NOT Generator tasks):
 
 ---
 
-*Plan by Nightstalker (Auditor), 2026-02-19. Red-teamed for LaTeX failures, content duplication, time pressure, and editorial overreach.*
+### Genevieve Prentice Credit
+
+**DEFERRED for DMS MVP.** Title page remains "Bruce Stephenson" only. Genevieve is writing her own foreword/blurb. When ready, a single Generator run updates title.tex, copyright.tex, and adds her foreword before the preface. The "with Genevieve Prentice" alternate is ready to swap in.
+
+---
+
+*Plan by Nightstalker (Auditor), 2026-02-19. Red-teamed 2x: initial (LaTeX failures, content duplication, time pressure, editorial overreach) + strategic (hash mismatch, WikiLeaks sensitivity, pos20 legal exposure, pos34 length, Genevieve credit timing). All findings addressed.*
