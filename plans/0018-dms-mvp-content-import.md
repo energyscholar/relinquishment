@@ -122,16 +122,14 @@ I cannot tell you whether the story is true. It may be fabrication, exaggeration
 
 Keep everything else in preface.tex unchanged (lines 1-9, 18-33).
 
-### 1-COPYRIGHT. Narrow AI Disclosure on Copyright Page
+### 1-COPYRIGHT. Verify Copyright Page
 
-In `manuscript/00-front/copyright.tex`, replace line 43:
-```
-Structure and research developed with AI assistance (Claude, Anthropic). All narrative prose, claims, evidence assessments, and editorial decisions are the author's. Session transcripts are included in the appendix.
-```
-with:
-```
-Structure and organization developed with AI assistance (Claude, Anthropic). All research, narrative prose, evidence assessments, and editorial decisions are the author's.
-```
+**ALREADY DONE by Auditor.** `manuscript/00-front/copyright.tex` has been updated to:
+- CC BY-ND 4.0 license (replacing custom "Free PDF Edition" language)
+- Co-copyright: "Copyright © 2026 Bruce Stephenson and Genevieve Prentice"
+- AI disclosure updated to "authors'" (plural)
+
+**Generator action:** Read copyright.tex and confirm it builds correctly. Do NOT modify it.
 
 ### 1-TITLE. Update Title Page
 
@@ -696,7 +694,7 @@ Note: The password ("relinquishment") is a psychological barrier, not security. 
 
 ### Genevieve Prentice Credit
 
-**INCLUDED.** Genevieve provided her preface (Section 1-GEN) and gave explicit YES for "with Genevieve Prentice" credit. Title page updated in 1-TITLE. Preface added in 1-GEN. If she later reverses: remove 1-GEN from build, revert 1-TITLE byline.
+**INCLUDED.** Genevieve provided her preface (Section 1-GEN) and gave explicit YES for "with Genevieve Prentice" credit. Co-copyright established: "Copyright © 2026 Bruce Stephenson and Genevieve Prentice." Title page updated in 1-TITLE. Preface added in 1-GEN. Copyright page updated by Auditor (CC BY-ND 4.0 + co-copyright). If she later reverses: remove 1-GEN from build, revert 1-TITLE byline, revert copyright to Bruce-only.
 
 ---
 

@@ -11,7 +11,7 @@ The encryption is a psychological barrier, not a security measure. It's there so
 **Instructions:**
 - Store the attached PDF somewhere you won't lose it
 - If I die, disappear, or am incapacitated and unable to communicate for 90 days: publish it
-- Publish means: post the PDF publicly. Archive.org, your blog, wherever you think appropriate
+- Publish means: post the PDF publicly. Archive.org, your blog, wherever you think appropriate. You are authorized to distribute it under the CC BY-ND 4.0 license on the copyright page
 - Remove the password protection first if you can (any PDF tool will do), so the public version is openly readable
 
 **What it is:**
