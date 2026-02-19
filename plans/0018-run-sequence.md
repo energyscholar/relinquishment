@@ -10,27 +10,38 @@ Each run below is a separate Generator shell session. Copy-paste the handoff pro
 
 ---
 
-## Run 1: Phase 1 — Front Matter (4 items)
+## Run 1: Phase 1 — Front Matter (8 items)
 
-**Scope:** Introduction, Corrections page, Coventry fix, Alpha Farm fix
-**Files created:** 2 new .tex files
-**Files modified:** main.tex, pos04-the-code-war.tex, pos02-alpha-farm.tex
-**Expected result:** ~150-160 pages (from 137)
+**Scope:** Genevieve preface, Bruce preface strip, copyright fix, title page, redaction macro, introduction + anti-politicization, corrections page, Coventry fix, Alpha Farm fix
+**Files created:** 3 new .tex files (genevieve-preface, introduction, corrections)
+**Files modified:** main.tex, preface.tex, copyright.tex, title.tex, preamble.tex, pos04-the-code-war.tex, pos02-alpha-farm.tex
+**Expected result:** ~155-170 pages (from 137)
+**IDEMPOTENCE WARNING:** This run creates new files AND modifies main.tex. If it fails partway, run `git revert HEAD` before retrying.
 
 **Handoff prompt:**
 ```
 You are the Generator. Read ~/software/relinquishment/plans/0018-dms-mvp-content-import.md
 
-Execute Phase 1 only (sections 1A, 1B, 1C, 1D). This involves:
-- 1A: Create manuscript/00-front/introduction.tex from content in the plan. Add \include to main.tex between preface and not-claimed.
-- 1B: Restructure the Coventry section in manuscript/bridge/pos04-the-code-war.tex per plan instructions.
-- 1C: Create manuscript/00-front/corrections.tex from content in the plan. Add \include to main.tex after not-claimed.
-- 1D: Replace lorem ipsum in manuscript/track-2-testament/pos02-alpha-farm.tex per plan instructions.
+Execute Phase 1 in this order:
+- 1-PRE: Add \DMSRedacted{} macro to build/preamble.tex per plan
+- 1-GEN: Create manuscript/00-front/genevieve-preface.tex from content in the plan
+- 1-PREFACE: Strip A/B/C detail from manuscript/00-front/preface.tex per plan instructions
+- 1-COPYRIGHT: Narrow AI disclosure in manuscript/00-front/copyright.tex per plan instructions
+- 1-TITLE: Update byline in manuscript/00-front/title.tex to "Written by Bruce Stephenson with Genevieve Prentice"
+- 1-MAIN: Replace front matter includes in main.tex with the EXACT sequence in the plan (Gen preface → Bruce preface → not-claimed → introduction → corrections)
+- 1A: Create manuscript/00-front/introduction.tex from content in the plan (includes "A Warning About Certainty" section). Convert to first-person voice throughout — use "I" and "my mentor", not "Bruce" or "Bruce's mentor".
+- 1B: Restructure the Coventry section in manuscript/bridge/pos04-the-code-war.tex per plan instructions
+- 1C: Create manuscript/00-front/corrections.tex from content in the plan
+- 1D: Replace lorem ipsum in manuscript/track-2-testament/pos02-alpha-farm.tex per plan instructions
 
-Read existing .tex files (preface.tex, pos04-the-code-war.tex, pos02-alpha-farm.tex) to match formatting style. The plan contains the full text for introduction and corrections — convert to LaTeX.
+CONVENTIONS:
+- Use "proposition" not "claim" when describing Bruce's interpretations (but preserve "claim" in titles like "What This Book Does Not Claim")
+- First-person voice in all front matter
+- Read existing .tex files (preface.tex, pos04-the-code-war.tex) to match formatting style
 
-Build with `make` after all 4 items. Run test cases T1.1-T1.8.
-Commit: "Plan 0018 phase 1: front matter — introduction, corrections, Coventry fix, Alpha Farm fix"
+Build with `make` after all items. Run test cases T1.1-T1.8.
+If build fails partway, run `git revert HEAD` before retrying.
+Commit: "Plan 0018 phase 1: front matter — Gen preface, introduction, corrections, Coventry fix, Alpha Farm fix"
 Report: page count, file size, any test failures.
 ```
 
@@ -121,6 +132,7 @@ Report: page count, file size, any build errors.
 ## Run 5: Phase 2D — pos25 + pos29 + WikiLeaks deferral (Ethical Framework + The Silence + WikiLeaks)
 
 **Scope:** 2 chapters + 1 deferral chapter. pos29 has WikiLeaks content that must be STRIPPED.
+**IDEMPOTENCE WARNING:** This run creates wikileaks.tex AND modifies main.tex. If it fails partway, run `git revert HEAD` before retrying.
 
 **Handoff prompt:**
 ```
@@ -136,7 +148,7 @@ For pos25 and pos29:
 4. Import prose sections, convert markdown to LaTeX per the conversion rules table
 5. Preserve \settrack, \chapter, \label, \chapterreturn structure
 
-CRITICAL FOR pos29: Read the "Special Instructions: pos29-the-silence" in the plan. You MUST strip all WikiLeaks/Assange content and replace with a [REDACTED] marker. Keep the silence/isolation narrative, David assessment, and "this story will be my life's work."
+CRITICAL FOR pos29: Read the "Special Instructions: pos29-the-silence" in the plan. You MUST strip all WikiLeaks/Assange content and replace with \DMSRedacted{Content relating to subsequent transparency initiatives has been removed from this edition. See the chapter titled ``WikiLeaks'' for the author's note on this deferral.}. Keep the silence/isolation narrative, David assessment, and "this story will be my life's work."
 
 For WikiLeaks deferral:
 1. Create manuscript/track-2-testament/wikileaks.tex per the plan's special instructions
@@ -275,7 +287,8 @@ Report: page count, file size, SHA-256 hash.
 
 **Scope:** New appendix chapter. Cites existing sycophancy literature for the known phenomenon, then demonstrates the NOVEL observation (compartmentalization + spiral countermeasure).
 **Files created:** 1 new .tex file
-**Files modified:** main.tex (add \include before glossary)
+**Files modified:** main.tex (add \include before predictions)
+**IDEMPOTENCE WARNING:** This run creates rlhf-bias.tex AND modifies main.tex. If it fails partway, run `git revert HEAD` before retrying.
 **Key design principle:** VENDOR-NEUTRAL and FUTURE-PROOF. Cites peer-reviewed literature — does NOT re-derive what's already published.
 
 **Handoff prompt:**
@@ -379,7 +392,7 @@ Bruce manual steps:
 
 | Run | Phase | Chapters | Est. Pages Added | Special Handling |
 |-----|-------|----------|-----------------|------------------|
-| 1 | 1 (front matter) | — | +15-20 | |
+| 1 | 1 (front matter) | — | +18-25 | Gen preface, copyright fix, title, anti-politicization |
 | 2 | 2A | pos03, pos06 | +10-15 | WHS cross-file move |
 | 3 | 2B | pos07, pos09 | +10-15 | |
 | 4 | 2C | pos18, pos19 | +10-15 | |
