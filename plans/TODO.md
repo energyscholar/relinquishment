@@ -138,6 +138,7 @@ _This is the critical path. Everything else can happen in parallel but the book 
 |----|------|-------|----------|--------|------|-------|
 | Q01 | Genevieve aesthetic review | GEN | P1 | TODO | C05 | Cover, typography, layout. She has veto power. |
 | Q02 | Beta readers (2-3 trusted people) | B | P2 | TODO | C05 | Fresh eyes before public release. Who? Not Schneier (he's day-0). |
+| Q06 | Multi-LLM evaluation test | B+A | P1 | TODO | — | Feed key chapters to ChatGPT, Gemini, Claude (fresh session), others. Test: three-possibilities framing survival, pedagogical spiral effect, anti-politicization, compartmentalization. Do BEFORE DMS dispatch. Results inform RLHF appendix. |
 | Q03 | Full proofread | B | P1 | TODO | C05 | Every page. Typos, formatting, broken references. |
 | Q04 | Verify all 3rd-party timestamps still live | A→G | P1 | TODO | — | Cryptome post, Slashdot comment, blog posts, Substack. Screenshot + Wayback if fragile. |
 | Q05 | Final build + sign + verify | G | P0 | TODO | ALL | The last step. `make final` → sign → verify → distribute. |
