@@ -9,6 +9,9 @@
   \input{build/screen.tex}
 \fi
 
+% --- Language ---
+\usepackage[english]{babel}
+
 % --- Fonts (LuaLaTeX native — NOT fontenc, NOT cmap) ---
 \usepackage{fontspec}
 
@@ -21,6 +24,9 @@
 \usetikzlibrary{external}
 \tikzexternalize[prefix=build/tikz-cache/]
 \usepackage{graphicx}
+
+% --- Lists ---
+\usepackage{enumitem}
 
 % --- Table of Contents styling ---
 \usepackage[titles]{tocloft}
@@ -42,6 +48,7 @@
   pdfauthor={Bruce Stephenson and Genevieve Prentice},
   pdfsubject={Topological quantum neural networks, relinquishment, Guardian},
   pdfkeywords={TQNN, Guardian, relinquishment, SFI, DARPA, predictions},
+  pdflang={en},
   colorlinks=true,
   linkcolor=linkblue,
   urlcolor=linkblue,
@@ -53,7 +60,8 @@
 % Source provenance annotations — hidden PDF notes at import points
 % Visible in PDF viewer annotation panels; invisible to casual readers
 \usepackage{pdfcomment}
-\newcommand{\srcnote}[1]{\pdfcomment[icon=Note,color=yellow]{#1}}
+% DMS: suppress annotations (remove next line to restore)
+\newcommand{\srcnote}[1]{}
 
 % --- Optional Content Groups (graphics toggle) ---
 \usepackage{ocgx2}
@@ -159,9 +167,22 @@
   \end{center}
 }
 
+% AI draft markers — DMS edition only (Plan 0022 definition, needed by Plan 0024)
+% To remove all marks for final edition: \renewcommand{\aidraft}[1]{#1}
+\newcommand{\aidraftmark}{{\textsuperscript{\dag}}}
+\newcommand{\aidraft}[1]{\aidraftmark\,#1}
+
+% Chapter-level AI draft notice
+\newcommand{\aidraftchapter}{%
+  \begin{center}
+  \small\textit{\dag\enspace AI structural draft from the author's source material}
+  \end{center}
+  \vspace{0.3cm}
+}
+
 % DMS redaction marker — used for WikiLeaks-sensitive content
 \newcommand{\DMSRedacted}[1]{%
   \begin{quote}
-  \textit{[REDACTED --- #1]}
+  \textit{[Material redacted by the author --- #1]}
   \end{quote}
 }
