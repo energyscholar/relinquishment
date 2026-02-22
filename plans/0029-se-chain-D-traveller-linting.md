@@ -25,7 +25,7 @@ cd ~/software/traveller-starship-operations-vtt
 
 **1. Install dependencies:**
 ```bash
-npm install --save-dev eslint@^9 prettier eslint-config-prettier @eslint/js@^9 globals
+npm install --save-dev eslint@^9 prettier eslint-config-prettier@^10 @eslint/js@^9 globals
 ```
 
 **2. Create eslint.config.js (TWO config blocks — Node + browser):**
@@ -147,6 +147,10 @@ git commit -m "chore: add git-blame-ignore-revs for formatting commit"
 npm run lint         # Should exit clean (warnings OK)
 npm run format:check # Should exit clean
 npm test             # Existing tests still pass
+
+# Verify browser files lint correctly (no false positives on document/window):
+npx eslint public/js/main.js 2>&1 | head -20  # Pick a representative browser file
+# Should show no 'no-undef' errors for document, window, etc.
 
 # Verify client is untouched:
 cd client && npx eslint . && cd ..  # Client's own config still works

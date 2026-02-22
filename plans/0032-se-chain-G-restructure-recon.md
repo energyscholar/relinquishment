@@ -28,10 +28,12 @@ grep -rn "require.*\./" src/*.js | grep -v node_modules > /tmp/import-graph.txt
 
 **2. Try madge for visualization:**
 ```bash
-npx madge --json src/ > /tmp/import-graph.json
-npx madge --circular src/  # Find circular dependencies
+npx madge --json src/ > /tmp/import-graph.json 2>/dev/null || echo "madge failed — use grep-based graph instead"
+npx madge --circular src/ 2>/dev/null || echo "madge failed — check grep output for circular deps manually"
 npx madge --image /tmp/import-graph.png src/ 2>/dev/null || echo "graphviz not installed"
 ```
+
+**Fallback if madge fails to install (network issues, native deps):** Build the graph manually from `/tmp/import-graph.txt` grep output. Count inbound/outbound references per file to identify fan-in/fan-out.
 
 **3. Identify coupling clusters from the graph:**
 - Files that import each other (circular deps) — MUST stay in same directory
@@ -127,17 +129,27 @@ grep -rn "path.join.*__dirname.*\.\./src/" tests/
 
 ---
 
-## Output: Restructure Blueprint
+## Output: Restructure Blueprint (MUST BE WRITTEN TO FILE)
 
-Produce a document with:
-1. Import graph summary (clusters, high-fan-in files, circular deps)
-2. chat-tui.js recommendation (move to ui/ or stay at root)
-3. Test suite verification result (catches broken imports: yes/no)
-4. Complete __dirname fixup table (all 28 files)
-5. PROJECT_ROOT recommendation (yes/no, with reasoning)
-6. Non-require references that need updating
-7. Revised batch order (adjust from proposed if coupling data suggests different grouping)
-8. Naming recommendation: `src/data/` vs `src/world/` vs `src/gamedata/`
+**CRITICAL:** Write the blueprint to `~/software/relinquishment/plans/0032-G-blueprint-output.md`. Chain H's Generator will read this file — it has NO other way to access your findings.
+
+The blueprint file must contain ALL of the following sections:
+
+1. **Import graph summary** — clusters, high-fan-in files, circular deps
+2. **chat-tui.js recommendation** — move to ui/ or stay at root, with counts
+3. **Test suite verification result** — catches broken imports: yes/no
+4. **Complete __dirname fixup table** — every file, every path, every new prefix. This table is used directly by Chain H Step 4. If it's incomplete, Chain H will break files silently.
+5. **PROJECT_ROOT recommendation** — yes/no, with reasoning
+6. **Non-require references** that need updating (package.json, run-all.js, scripts/, tests/)
+7. **Concrete file-to-directory mapping** — for EACH of the 9 batch directories, list EVERY file that goes in it. Chain H executes `git mv` from this list. Example:
+   ```
+   Batch 1 — src/data/:
+     src/geography-data.js → src/data/geography-data.js
+     src/resource-lookup.js → src/data/resource-lookup.js
+     ...
+   ```
+8. **Revised batch order** — adjust from default if coupling data suggests different grouping
+9. **Naming recommendation** — `src/data/` vs `src/world/` vs `src/gamedata/`
 
 ---
 

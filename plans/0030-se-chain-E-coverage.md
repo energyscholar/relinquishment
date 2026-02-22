@@ -3,7 +3,7 @@
 **Type:** Generator chain (Plan 004)
 **Estimated time:** ~2-3 hours
 **Dependencies:** Chain B complete (c8 confirmed working)
-**Prerequisite:** Chain B report shows "c8 result: WORKS". If c8 does NOT work, this chain cannot execute — return to Auditor for replanning.
+**Prerequisite:** Chain B report shows "c8 result: WORKS" AND Bruce (Auditor) has human-verified this result. If c8 does NOT work, this chain cannot execute — return to Auditor for replanning.
 
 ---
 

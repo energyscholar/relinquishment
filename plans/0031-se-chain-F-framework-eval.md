@@ -41,6 +41,8 @@ For each orphaned test, determine:
 - Does it crash? (Jest-dependent or broken imports?)
 - Should it be added to run-all.js?
 
+**NOTE:** If orphans are added to run-all.js here, the Chain E coverage baseline (measured before triage) becomes stale. Record which tests were added and flag in the report that coverage should be re-measured. Do NOT modify .c8rc.json thresholds — that's Chain E's territory.
+
 **Known Jest-dependent dead code (3 files):** `autonomous-player.test.js`, `campaign-filtering.test.js`, `tuesday-npc-contexts.test.js` — these use `describe`/`test`/`expect` as globals without defining them. Jest is not installed.
 
 **Known broken import:** `narrator-improvisation.test.js` references nonexistent `src/emergent-npc.js`.
@@ -62,6 +64,10 @@ Pick 5 tests that are in run-all.js and represent different areas.
 npm install --save-dev jest
 time npx jest tests/memory.test.js tests/persona.test.js tests/prompts.test.js tests/skill-check.test.js tests/disposition.test.js 2>&1
 npm uninstall jest  # Remove after benchmark
+# CRITICAL: Verify clean tree after uninstall:
+git diff --stat package.json package-lock.json
+# If dirty (npm uninstall doesn't always perfectly reverse), restore:
+git checkout -- package.json package-lock.json && npm install
 ```
 
 **(b) Node built-in test runner:**
@@ -69,7 +75,7 @@ npm uninstall jest  # Remove after benchmark
 time node --test tests/memory.test.js tests/persona.test.js tests/prompts.test.js tests/skill-check.test.js tests/disposition.test.js 2>&1
 ```
 
-Note: Node's runner may not be compatible with existing assert patterns. Record errors.
+**WARNING:** The existing tests use `assert` + custom patterns, NOT `node:test` `describe`/`it`. `node --test` will attempt to run them as test files but may not recognize the assertion pattern. Record BOTH the timing AND whether tests actually executed (check output for "pass"/"fail" counts vs silent skip). If `node --test` reports 0 tests, the timing is meaningless — note this in the gap matrix.
 
 ---
 
