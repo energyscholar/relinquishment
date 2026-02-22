@@ -93,9 +93,10 @@ Report per format at end of plan.
 ```
 You are the Generator. Read and execute
 ~/software/relinquishment/plans/0031-se-chain-F-framework-eval.md
-Evaluation task: benchmark runners, triage orphaned tests,
-produce decision document. This is a decision gate.
-Report per format at end of plan.
+Evaluation task: benchmark runners, triage orphaned tests (read-only),
+produce decision document. Write decision to
+~/software/relinquishment/plans/0031-F-framework-eval-output.md
+This is a decision gate. Report per format at end of plan.
 ```
 
 ### Chain G
@@ -144,16 +145,24 @@ Report per format at end of plan.
 - If c8 DOESN'T WORK → replanning needed for Plans 003/004
 
 ### After Chain F (framework eval):
+- Review decision document: `~/software/relinquishment/plans/0031-F-framework-eval-output.md`
 - If recommendation is Option A (keep runner) → proceed to Chain G
 - If recommendation is Option B or C → new chain needed for migration before Chain G
+- If orphan triage recommends adding tests to run-all.js, decide when to add them (coverage baseline from Chain E may need re-measurement)
 
 ### After Chain G (restructure recon):
 - Verify blueprint file exists: `~/software/relinquishment/plans/0032-G-blueprint-output.md`
-- Verify blueprint contains: file-to-directory mapping, __dirname fixup table, batch order
+- Verify blueprint contains: file-to-directory mapping, __dirname fixup table, batch order, smoke-test files, file accounting
 - Bruce decides: PROJECT_ROOT vs per-file fixup
 - Bruce decides: src/data/ naming
 - Bruce decides: chat-tui.js placement
 - Then Chain H1 can proceed
+
+### Between H1 and H2 (lightweight verification):
+- Auditor reviews H1 report
+- Auditor runs `npm test` and `node -e "require('./src/index.js')"` independently
+- Confirms game/* files still in src/ root (expected)
+- Then Chain H2 can proceed
 
 ---
 

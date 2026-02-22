@@ -25,7 +25,7 @@ npm install --save-dev eslint@^9 prettier eslint-config-prettier@^10 @eslint/js@
 **2. Create eslint.config.js:**
 ```js
 const js = require('@eslint/js');
-const prettierConfig = require('eslint-config-prettier/flat');
+const prettierConfig = require('eslint-config-prettier');
 const globals = require('globals');
 
 module.exports = [
@@ -78,7 +78,7 @@ git commit -m "chore: add ESLint 9 + Prettier configuration"
 **6. Run bulk format:**
 ```bash
 npx prettier --write "src/**/*.js" "tests/**/*.js" "scripts/**/*.js"
-npx eslint --fix "src/**/*.js" "tests/**/*.js" "scripts/**/*.js"
+npx eslint --fix src/ tests/ scripts/
 ```
 
 **7. Commit formatting (separate commit):**
@@ -132,6 +132,7 @@ Install husky + lint-staged. Wire commitlint hook (commitlint was installed in C
 npm install --save-dev husky lint-staged
 npx husky init
 ```
+**Note:** `husky init` does two things: (1) creates `.husky/pre-commit` with `npm test` (we override in Step 2), and (2) adds `"prepare": "husky"` to package.json scripts. Both are expected.
 
 **2. Replace default pre-commit hook (husky init creates "npm test" — wrong):**
 ```bash
@@ -163,15 +164,15 @@ echo "// test" >> src/memory.js
 git add src/memory.js
 git commit -m "test: verify lint-staged hook"
 # If it works, prettier+eslint run on the staged file
-# Revert:
-git reset --soft HEAD~1
-git checkout -- src/memory.js
+# Revert completely:
+git reset --hard HEAD~1
 
 # Test commitlint: try a bad commit message
 echo "// test" >> src/memory.js
 git add src/memory.js
 git commit -m "bad message"  # Should be REJECTED by commitlint
-git checkout -- src/memory.js
+# Clean up (file is staged but commit was rejected):
+git restore --staged --worktree src/memory.js
 ```
 
 ### Acceptance Criteria (both tasks)

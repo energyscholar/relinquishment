@@ -62,9 +62,11 @@ git mv src/resource-lookup.js src/data/
 
 ### Step 3: Fix require() paths — files that IMPORT the moved files
 ```bash
-# For EACH moved file:
+# For EACH moved file, search ALL directories (including scripts/):
 grep -rn "require.*geography-data" src/ tests/ scripts/ | grep -v node_modules
 # Update each reference to the new path
+# NOTE: scripts/ has ~9 require('../src/...') calls — these WILL break when files move.
+# Update e.g. require('../src/persona') → require('../src/npc/persona')
 ```
 
 ### Step 4: Fix __dirname data paths — paths INSIDE the moved files (CRITICAL)
@@ -95,9 +97,10 @@ grep -rn "require.*geography-data" tests/ | grep -v node_modules
 # Update each test's require path to the new location
 ```
 
-### Step 6: Fix non-require references
+### Step 6: Fix non-code references (package.json scripts, run-all.js paths, docs)
 ```bash
-grep -rn "geography-data" package.json tests/run-all.js scripts/ *.md
+# This is for string mentions in config/docs — NOT require() paths (handled in Step 3)
+grep -rn "geography-data" package.json tests/run-all.js *.md
 ```
 
 ### Step 7: Verify (ALL must pass before commit)
@@ -110,8 +113,9 @@ npm run format:check                        # Prettier clean
 
 ### Step 8: Verify __dirname paths resolve at runtime (CRITICAL)
 ```bash
-# Pick one moved file from this batch that uses __dirname for data access.
-# Run it in isolation to confirm the path resolves:
+# Use the smoke-test file from the blueprint (section "Per-batch smoke-test files").
+# If no file listed for this batch, pick the file with the most __dirname usage.
+# If this batch has NO __dirname files, skip this step.
 node -e "const f = require('./src/data/geography-data.js'); console.log('loaded OK')"
 # If it throws ENOENT or similar, the __dirname fixup is wrong. Fix before committing.
 ```
@@ -125,17 +129,9 @@ git commit -m "refactor(data): move data files to src/data/"
 
 ---
 
-## After ALL Batches: Sweep for Stragglers
+## After Batches 1-5: Post-H1 Verification
 
-```bash
-# Any test imports still referencing old paths?
-grep -rn "require.*\.\./src/[a-z]" tests/ | grep -v node_modules | grep -v "src/index"
-# Should return nothing — all were fixed per-batch in Step 5
-```
-
----
-
-## Phase 3: Final Verification
+**Note:** Full straggler sweep deferred to H2 (after all 9 batches). Game files still in src/ root are expected at this point.
 
 ```bash
 npm test                                # All tests pass
@@ -162,9 +158,9 @@ npx eslint src/data/geography-data.js   # Should lint, not skip
 
 ---
 
-## Acceptance Criteria
+## Acceptance Criteria (H1 scope: batches 1-5 only)
 - [ ] Import graph consulted for batch ordering
-- [ ] No files remain in `src/` root except `index.js` (+ `project-root.js` if chosen)
+- [ ] All batch 1-5 files moved to subdirectories (game/* files remain in src/ root — handled by H2)
 - [ ] All tests pass (`npm test`)
 - [ ] Full require graph loads (`node -e "require('./src/index.js')"`)
 - [ ] `npm run lint` clean
@@ -173,8 +169,9 @@ npx eslint src/data/geography-data.js   # Should lint, not skip
 - [ ] Each batch committed separately
 - [ ] `git log --follow` tracks renames
 - [ ] No __dirname paths resolve to wrong directory
-- [ ] ESLint does NOT ignore `src/data/`
-- [ ] scripts/ require paths updated where needed
+- [ ] ESLint does NOT ignore new subdirectories
+- [ ] scripts/ require paths updated where needed (Step 3 catches these)
+- [ ] package.json scripts reference correct post-move paths (e.g., `"tui"` script if chat-tui.js moved)
 - [ ] Existing subdirectories (knowledge-extraction/, red-team/) unchanged
 
 ---

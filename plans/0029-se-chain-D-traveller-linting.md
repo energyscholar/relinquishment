@@ -31,7 +31,7 @@ npm install --save-dev eslint@^9 prettier eslint-config-prettier@^10 @eslint/js@
 **2. Create eslint.config.js (TWO config blocks — Node + browser):**
 ```js
 const js = require('@eslint/js');
-const prettierConfig = require('eslint-config-prettier/flat');
+const prettierConfig = require('eslint-config-prettier');
 const globals = require('globals');
 
 module.exports = [
@@ -149,7 +149,7 @@ npm run format:check # Should exit clean
 npm test             # Existing tests still pass
 
 # Verify browser files lint correctly (no false positives on document/window):
-npx eslint public/js/main.js 2>&1 | head -20  # Pick a representative browser file
+npx eslint public/login.js 2>&1 | head -20  # Representative browser file
 # Should show no 'no-undef' errors for document, window, etc.
 
 # Verify client is untouched:
