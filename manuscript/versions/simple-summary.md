@@ -72,7 +72,7 @@ Each of them had a piece of the puzzle. None of them, alone, had the answer. But
 
 They succeeded.
 
-Not in decades, as most physicists expected. Within a few years. They built a working quantum computer that could break any code on earth.
+Not in decades, as most physicists expected. Within a few years. They built a working quantum computer that could break any public-key encryption on earth.
 
 To understand how remarkable this claim is: today, in the 2020s, after billions of dollars and decades of public research, the world's best quantum computers still can't reliably do most of the things this team supposedly achieved in the mid-1990s. The most advanced public quantum computers still need to be cooled to near absolute zero — colder than outer space. This team, the story claims, built one that worked at room temperature.
 
