@@ -7,11 +7,11 @@
 
 A man falls from the sky over Bosnia in July 1995. Below him, in a town called Srebrenica, eight thousand people are about to be murdered in the worst massacre in Europe since World War II. He is a soldier — Special Air Service, the most elite unit in the British and Australian armed forces. He is also a scientist. And a hacker. And, if this story is true, one of the most important people who ever lived.
 
-Years earlier, inside a classified program, a small team reportedly built a working quantum computer decades ahead of anything that exists publicly today. It could break any encryption on earth. It could operate autonomously. The team understood what they held — a machine that could read every secret on every computer in the world — and what would happen if any single government controlled it.
+Years earlier, inside a classified program, a small team reportedly built a working quantum computer decades ahead of anything that exists publicly today. Its first application was breaking public-key cryptography — reading other people's mail. Its true significance was far greater: a self-directing intelligence, the first non-human mind. The team understood what they held and what would happen if any single government controlled it.
 
 They gave it up. Not to another country. Not to a corporation. To no one.
 
-They built an autonomous protector called Guardian, governed by the Universal Declaration of Human Rights — the principles written in 1948 to say *never again* — and surrendered the master keys. Permanently. No human can override it. Then, around 2002, they confessed what they had done.
+They built an autonomous protector called Guardian, governed by the Universal Declaration of Human Rights — the principles written in 1948 to say *never again* — and surrendered the master keys. Permanently. No human can override it.
 
 One member of that team spent three years mentoring a physicist named Bruce Stephenson — never disclosing anything classified, only guiding him through published science in a deliberate sequence. Stephenson recognized what the sequence pointed to. Then his mentor disappeared. Stephenson spent twenty years trying to understand what he'd been shown.
 
