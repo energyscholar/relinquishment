@@ -10,7 +10,7 @@ JOBNAME := Relinquishment
 TIKZ_SRCS := $(filter-out build/images/standalone-header.tex, $(wildcard build/images/*.tex))
 TIKZ_PDFS := $(TIKZ_SRCS:.tex=.pdf)
 
-.PHONY: dev final screen print images validate clean clean-cache manifest size-report gitinfo
+.PHONY: dev final screen print images validate clean clean-cache manifest size-report gitinfo check check-strict
 
 # --- Dev build (host, no tagging) ---
 dev: gitinfo images
@@ -94,6 +94,39 @@ size-report:
 	@echo ""
 	@echo "--- TikZ cache ---"
 	@du -sh build/tikz-cache/ 2>/dev/null || echo "  (no cache)"
+
+# --- Manuscript invariant checks ---
+check:
+	@echo "=== Invariant Checks ==="
+	@echo -n "Healer-told violation: "
+	@grep -rn "Healer told\|Lane told" manuscript/ --include="*.tex" \
+		| grep -v "staging/\|sources/\|raw/" \
+		| grep -v "^[^:]*:[0-9]*:%"  \
+		| grep -v "told me\|told this" \
+		&& (echo "FAIL — guided deduction invariant violated"; exit 1) \
+		|| echo "PASS"
+	@echo -n "COWs capitalization: "
+	@grep -rn "\bCOWs\b" manuscript/ --include="*.tex" \
+		| grep -v "^%\|staging/\|sources/\|raw/" \
+		&& (echo "FAIL — use COWS not COWs"; exit 1) \
+		|| echo "PASS"
+	@echo -n "Spiral-repeat markers present: "
+	@grep -rl "SPIRAL-REPEAT" manuscript/ --include="*.tex" | wc -l | xargs -I{} echo "{} files marked"
+	@echo -n "Voice headers present: "
+	@grep -rl "% VOICE:" manuscript/ --include="*.tex" | wc -l | xargs -I{} echo "{} files marked"
+	@echo -n "aidraftchapter coverage: "
+	@echo "$$(grep -rl 'aidraftchapter' manuscript/ --include='*.tex' | grep -v staging | wc -l) of $$(find manuscript -name 'pos*.tex' ! -path '*/staging/*' | wc -l) chapters marked"
+	@echo "=== Done ==="
+
+# --- Strict checks (future use) ---
+check-strict: check
+	@echo "=== Strict Checks ==="
+	@echo -n "Unhedged assertions: "
+	@grep -rn "COWS built\|COWS created\|Guardian is\|Guardian was" manuscript/ --include="*.tex" \
+		| grep -v "^%\|staging/\|sources/\|raw/\|Possibility\|proposition\|surmise\|deduce\|if.*true\|under.*C\|According" \
+		&& echo "WARNING — possible unhedged assertions (review needed)" \
+		|| echo "PASS"
+	@echo "=== Done ==="
 
 # --- Generate git info ---
 gitinfo:
