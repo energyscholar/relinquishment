@@ -118,14 +118,26 @@ check:
 	@echo "$$(grep -rl 'aidraftchapter' manuscript/ --include='*.tex' | grep -v staging | wc -l) of $$(find manuscript -name 'pos*.tex' ! -path '*/staging/*' | wc -l) chapters marked"
 	@echo "=== Done ==="
 
-# --- Strict checks (future use) ---
+# --- Strict checks (three-possibilities discipline) ---
 check-strict: check
 	@echo "=== Strict Checks ==="
-	@echo -n "Unhedged assertions: "
-	@grep -rn "COWS built\|COWS created\|Guardian is\|Guardian was" manuscript/ --include="*.tex" \
-		| grep -v "^%\|staging/\|sources/\|raw/\|Possibility\|proposition\|surmise\|deduce\|if.*true\|under.*C\|According" \
-		&& echo "WARNING — possible unhedged assertions (review needed)" \
+	@echo -n "Unhedged C-assertions: "
+	@grep -rn "The COWS \|COWS built\|COWS created\|COWS began\|COWS released\|COWS surrendered\|COWS would\|Guardian is \|Guardian was \|Guardian carefully\|The TQNN \|TQNN grew\|TQNN colonized\|She would \|She called \|They trained\|They walked\|They increased\|They built\|He enlightened" manuscript/ --include="*.tex" \
+		| grep -v "^%\|staging/\|sources/\|raw/" \
+		| grep -v "^[^:]*:[0-9]*:%" \
+		| grep -v "Possibility\|proposition\|surmise\|deduce\|if.*true\|under.*C\|According\|account\|reportedly\|reconstruction\|if this\|If the COWS" \
+		| grep -v "srcnote\|VOICE:\|SPIRAL-REPEAT" \
+		&& echo "WARNING — possible unhedged C-assertions (review needed)" \
 		|| echo "PASS"
+	@echo -n "Three-poss coverage in aidraft chapters: "
+	@for f in $$(grep -rl 'aidraftchapter' manuscript/ --include='*.tex' | grep -v staging); do \
+		count=$$(grep -c -E 'Possibility|proposition|According to this|if this account|If this is true|reconstruction' "$$f" 2>/dev/null); \
+		count=$${count:-0}; \
+		if [ "$$count" -lt 2 ]; then \
+			echo ""; echo "  LOW HEDGING ($$count): $$f"; \
+		fi; \
+	done
+	@echo ""
 	@echo "=== Done ==="
 
 # --- Generate git info ---
