@@ -71,18 +71,7 @@ Unverifiable — Bruce's account of phone conversations. No documents, no record
 
 ## SOURCE 2: HEALER-RECONSTRUCTION.md — Wolfram as WikiLeaks Veto + Healer's Mentor (lines 807-838)
 
-### WikiLeaks Role
-- Bruce was the **first choice** for the public-facing WikiLeaks role
-- Julian Assange was Bruce's **backup/replacement**
-- When Bruce was vetoed (divorce → daughters couldn't be protected), Assange was selected instead
-- Bruce strongly suspects Wolfram was the colleague who said "we can't do that to Bruce"
-- Wolfram fits the profile: father of four children, would understand the calculus of endangering a man's daughters
-- The entire public history of WikiLeaks (Assange as face, embassy, prosecution) follows from this veto
-
-### The Thank-You Letter
-- Bruce sent Wolfram a **hand-written calligraphed letter** thanking him for protecting his children
-- Another "pinging the perimeter" — Wolfram would know exactly what it meant
-- No reply expected or received
+[REDACTED]##############################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################################
 
 ### Wolfram as Healer's Mentor (~1991-1993)
 - Bruce is 90%+ confident Wolfram mentored Healer circa 1991-1993

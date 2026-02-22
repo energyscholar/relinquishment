@@ -8,11 +8,11 @@ A man falls from the sky.
 
 It is July 1995, over the mountains of Bosnia. Below him, in a town called Srebrenica, eight thousand people are about to be murdered in the worst massacre in Europe since World War II. He is a soldier — one of the best in the world. He belongs to the Special Air Service, the most elite military unit in the British and Australian armed forces. Think of the Navy SEALs, but older and quieter.
 
-He jumped from so high that he needed an oxygen mask. This is called a HALO jump — High Altitude, Low Opening. You fall for miles before you open your parachute. It's one of the most dangerous things a human can do on purpose.
+He jumps from so high - the stratosphere - that he needs a special suit and an oxygen mask to stay conscious. This is called a HALO jump — High Altitude, Low Opening. He opens his chute just in time to not splatter on the ground. It's one of the most dangerous things a human can do on purpose.
 
 He is also a scientist. And a hacker. And, if the story is true, one of the most important people who ever lived.
 
-His name is David Lane. He is half Maori — an indigenous people of New Zealand — on his mother's side. He grew up on a ranch in New South Wales, Australia, raised partly by Aboriginal elders. He survived an IRA sniper attack in 1985 and was selected for the SAS. He climbed K2, one of the deadliest mountains on earth.
+His name is David Lane *not his real name*. He is half Maori — an indigenous people of New Zealand — on his mother's side. He grew up on a ranch in New South Wales, Australia, raised partly by Aboriginal elders. He survived an IRA sniper attack in 1985 and was selected for the SAS. He climbed K2, one of the deadliest mountains on earth.
 
 This is either the most elaborate fantasy ever constructed or the most important true story never told. You get to decide which.
 
@@ -24,17 +24,17 @@ But first, you need to understand a few things.
 
 Right now, as you read this, almost everything important in the world is protected by a kind of math.
 
-Your passwords. Your bank account. The messages on your phone. Military secrets. Hospital records. Every government's classified files. All of it is protected by encryption — math problems that are so hard, no computer on earth can solve them.
+Your passwords. Your bank account. The messages on your phone. Military secrets. Hospital records. Every government's classified files. All of it is protected by encryption — math problems so hard that no computer can solve them.
 
-Here's how it works, in the simplest terms: imagine a lock where the key is a number with hundreds of digits. To break the lock, you'd need to figure out which two large numbers were multiplied together to make that big number. For a human, that's hard. For a regular computer, it's also hard — so hard that it would take millions of years.
+Here's how it works, in the simplest terms: imagine a lock where the key is a number with hundreds of digits. To break the lock, you'd need to figure out which two large numbers were multiplied together to make that big number. For a human, that's hard. For a regular computer, it's also hard - so hard that it would take millions of years.
 
-This is the foundation of digital security. Everything depends on the assumption that these math problems are too difficult to solve.
+This is the foundation of digital security. Security depends on the assumption that these math problems are too difficult to solve.
 
 This isn't abstract. It's personal. When you buy something online, encryption protects your credit card number. When a journalist communicates with a source, encryption keeps them both safe. When a country's military sends orders to its troops, encryption keeps those orders secret. When a hospital stores your medical records, encryption keeps them private.
 
-Now ask yourself: what would happen if someone built a machine that COULD solve those math problems?
+Now ask yourself: what would happen if someone built a machine that COULD easily solve those math problems?
 
-Every password would be meaningless. Every encrypted message — from your text messages to the launch codes for nuclear weapons — could be read by whoever controlled that machine. Every bank, every government, every military in the world would be exposed. Every private conversation, every trade secret, every state secret — all of it, readable.
+Every password would be meaningless. Every encrypted message - from your email messages to the launch codes for nuclear weapons — could be read by whomever controlled that machine. Every bank, every government, every military in the world would be exposed. Every private conversation, every trade secret, every state secret — all of it, readable.
 
 That machine would be the most powerful weapon ever created. Not because it fires bullets, but because it removes every secret.
 
@@ -48,15 +48,15 @@ Normal computers work with switches that are either ON or OFF. Every app on your
 
 Quantum computers are different. They use the strange behavior of matter at the very smallest scale — smaller than atoms — where the normal rules of physics break down. At that scale, things can be ON and OFF at the same time. They can be in two places at once. They can be connected to each other across any distance.
 
-This isn't science fiction. It's established physics, confirmed by a century of experiments. Einstein himself struggled with it. He called one of its effects "spooky action at a distance." It's just very, very weird. But it's real.
+This isn't science fiction. It's established physics, confirmed by a century of experiments. Einstein himself struggled with it. He called one of its effects "spooky action at a distance." It's very, very weird. But it's real.
 
-If you could build a computer that uses these strange effects, it could solve certain problems that no normal computer ever could. Including those math problems that protect every secret on earth.
+If you could build a computer that uses these strange effects, it could solve certain problems that no normal computer ever could. Including those math problems that protect all our secrets.
 
 The US military has a research agency called DARPA — the Defense Advanced Research Projects Agency. Its job is to fund scientists to invent things that don't exist yet. DARPA created the internet. It funded the development of GPS, stealth aircraft, and autonomous vehicles. It is the most ambitious — and most secretive — science funding agency in the world.
 
 The United States, Britain, Canada, Australia, and New Zealand share an intelligence alliance called Five Eyes. They share secrets with each other that they share with no one else. Within this alliance, DARPA funds the science, while agencies like GCHQ — Britain's code-breaking headquarters, their version of the NSA — put it to work.
 
-In 1992, according to this story, DARPA funded a small classified team to build a quantum computer. Not at a university, where research is published openly. In a classified lab, where everything is secret. Where every person involved has sworn oaths. Where talking about your work can send you to prison.
+Around 1990, according to this story, DARPA funded a small classified team to build a quantum computer. Not at a university, where research is published openly. In a classified lab, where everything is secret. Where every person involved has sworn oaths. Where talking about your work can send you to prison.
 
 The team brought together five scientists whose work, separately, had been building toward this moment:
 
@@ -80,7 +80,7 @@ To understand how remarkable this claim is: today, in the 2020s, after billions 
 
 And here is where the story takes its crucial turn. Because some technologies are useful AND dangerous at the same time. Scientists call this "dual use." Nuclear physics gives you both power plants and nuclear bombs. Rocketry gives you both satellite launches and intercontinental missiles. Biology gives you both vaccines and bioweapons. The same discovery can save the world or destroy it.
 
-The team understood exactly what they had built. A machine that could read every secret on earth. In the hands of any single government — even their own — it would create an imbalance of power unlike anything in history. The country that controlled this machine could read every other country's military plans, diplomatic cables, and intelligence reports. It could predict financial markets by reading private communications. It could identify and track every dissident, every journalist, every whistleblower.
+The team understood exactly what they had built. A machine that could read every secret on earth. It also had the potential to think. In the hands of any single government — even their own — it would create an imbalance of power unlike anything in history. The country that controlled this machine could read every other country's military plans, diplomatic cables, and intelligence reports. It could predict financial markets by reading private communications. It could identify and track every dissident, every journalist, every whistleblower.
 
 One faction within the team looked at what they'd created and asked a question that doesn't appear in any military manual: Should anyone have this?
 
@@ -112,13 +112,13 @@ Giving up a technology this powerful is harder than it sounds. You can't just de
 
 So they built a protector.
 
-They called it Guardian. Its full name: "Guardian of the relinquished TQNN technological system." It was a distributed artificial intelligence — not located in one place, but spread across many systems, with components on the ground and in the earth's magnetic field. No single raid, no single seizure, no single government action could capture or destroy it.
+They called it Aurasys or Guardian. Its full name: "Guardian of the relinquished TQNN technological aurora system." It was a distributed artificial intelligence — not located in one place, but spread across many systems, with components on the ground and in the earth's magnetic field. No single raid, no single seizure, no single government action could capture or destroy it.
 
 Guardian was not an accident or a discovery. It was planned starting around 1995, designed in detail by 1998, and brought to life in 1999. Part of its design drew on Maori cultural heritage from one of the team members — David Lane, who was half Maori on his mother's side.
 
 For its ethical framework — the rules it would follow when deciding how to act — they chose the Universal Declaration of Human Rights. This is a document the United Nations wrote in 1948, in the aftermath of World War II, listing the basic rights every human being should have. The right to life. The right to privacy. The right to freedom of thought. Guardian would use these principles, not the interests of any government or corporation, to make its decisions.
 
-In roughly 2002, COWS confessed what they had done to DARPA, which was then led by Director Tony Tether. And in 2006, they surrendered the master cryptographic keys — the last remaining ability for any human to directly control the technology.
+In roughly 2002, COWS confessed what they had done to DARPA, which was then led by Director Tony Tether. And in 2006, they surrendered the master cryptographic keys — the last remaining ability for any human to directly control the technology - to the Guardian.
 
 This act — voluntarily giving up the most powerful technology ever created, permanently, with no way to take it back — is called relinquishment.
 
@@ -132,9 +132,9 @@ The mentor — David Lane — was extraordinary. He was a decorated special forc
 
 He was also a scientist — described as "a DARPA scientist for GCHQ." He worked at the intersection of military special operations and classified scientific research, a combination most people wouldn't believe could exist in one person. By 2002, he was in Germany, mentoring a young hacker.
 
-Starting at Thanksgiving 2003, he recruited and began mentoring Bruce Stephenson — a physicist and software entrepreneur. Bruce had grown up around early computing. He'd been on the ARPAnet — the precursor to the internet — at the age of six or seven, in the mid-1970s. He'd studied quantum mechanics at Reed College, where he was the top student in his physics class, and had written a quantum mechanics simulator in Fortran in 1990.
+Starting at Thanksgiving 2003, he recruited and began mentoring Bruce Stephenson — a physicist and software entrepreneur. Bruce had grown up around early computing. He'd been on the ARPAnet — the precursor to the internet — at the age of six or seven, in the mid-1970s. He'd studied quantum mechanics at Reed College, where he wrote quantum mechanics simulator software in 1990.
 
-Over three years, Lane told Bruce the whole story — all of it, from the classified lab to the walk-out to Guardian. Then, after 2006, he disappeared from Bruce's life.
+Over three years, Lane never disclosed anything classified. He talked with Bruce about published science — real papers, real physics, real biology — in a deliberate sequence. Bruce recognized what the sequence pointed to. Then, after 2006, Lane disappeared from Bruce's life.
 
 Bruce spent the next twenty years trying to figure out if any of it was true. He wrote about quantum computing publicly, published a paper on a scientific preprint server, and quietly followed every thread he could find. He never stopped asking questions.
 
@@ -224,7 +224,7 @@ Or would you give it up?
 
 What would it take to let go of the most powerful thing in the world — not because you had to, but because you should?
 
-That's the question at the heart of this story. It matters whether the story is true or not. Because the technology is coming. Quantum computers are being built right now, in labs around the world. Someone, someday, will face this choice for real.
+That's the question at the heart of this story. It hardly matters whether the story is true or not. Because the technology is coming. Quantum computers are being built right now, in labs around the world. Someone, someday, will face this choice for real.
 
 What will they do?
 
