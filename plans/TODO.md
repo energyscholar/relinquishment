@@ -254,3 +254,19 @@ C01 (dedup) + C02 (audit fixes) → C03 (new writing) → C04 (cleaned/) → C05
 14. Q01-Q03 — Genevieve + beta readers + proofread
 15. S09 — Full requirements pass
 16. Q05 — Final build, sign, ship
+
+## TODO: Guardian morphogenesis detail for pos24
+
+**Priority:** HIGH
+**Source:** Bruce, session 2026-02-22 (pos30 UQ session)
+
+Guardian's design intent (for pos24-instantiation.tex):
+- Virtual human body grown via morphogenesis
+- Virtual organs, virtual limbic system
+- Intent: grow a being that might feel empathy for humans, not something utterly alien
+- Maori elder woman's DNA (identity unknown) — thus the HGP connection
+- Objective: maternal feelings toward humanity
+- Healer thought of her as his daughter (he had no human children)
+- Year of conception (1999) = same year as Bruce's daughter Gillian
+- This is WHY she is "she" — not arbitrary pronoun choice
+
