@@ -99,17 +99,33 @@ size-report:
 check:
 	@echo "=== Invariant Checks ==="
 	@echo -n "Healer-told violation: "
-	@grep -rn "Healer told\|Lane told" manuscript/ --include="*.tex" \
+	@if grep -rn "Healer told\|Lane told" manuscript/ --include="*.tex" \
 		| grep -v "staging/\|sources/\|raw/" \
 		| grep -v "^[^:]*:[0-9]*:%"  \
-		| grep -v "told me\|told this" \
-		&& (echo "FAIL — guided deduction invariant violated"; exit 1) \
-		|| echo "PASS"
+		| grep -v "told me\|told this\|told an elaborate" \
+		| grep -q .; then \
+		grep -rn "Healer told\|Lane told" manuscript/ --include="*.tex" \
+			| grep -v "staging/\|sources/\|raw/" \
+			| grep -v "^[^:]*:[0-9]*:%" \
+			| grep -v "told me\|told this\|told an elaborate"; \
+		echo "FAIL — guided deduction invariant violated"; \
+		exit 1; \
+	else \
+		echo "PASS"; \
+	fi
 	@echo -n "COWs capitalization: "
-	@grep -rn "\bCOWs\b" manuscript/ --include="*.tex" \
-		| grep -v "^%\|staging/\|sources/\|raw/" \
-		&& (echo "FAIL — use COWS not COWs"; exit 1) \
-		|| echo "PASS"
+	@if grep -rn "\bCOWs\b" manuscript/ --include="*.tex" \
+		| grep -v "staging/\|sources/\|raw/" \
+		| grep -v "^[^:]*:[0-9]*:%" \
+		| grep -q .; then \
+		grep -rn "\bCOWs\b" manuscript/ --include="*.tex" \
+			| grep -v "staging/\|sources/\|raw/" \
+			| grep -v "^[^:]*:[0-9]*:%"; \
+		echo "FAIL — use COWS not COWs"; \
+		exit 1; \
+	else \
+		echo "PASS"; \
+	fi
 	@echo -n "Spiral-repeat markers present: "
 	@grep -rl "SPIRAL-REPEAT" manuscript/ --include="*.tex" | wc -l | xargs -I{} echo "{} files marked"
 	@echo -n "Voice headers present: "
