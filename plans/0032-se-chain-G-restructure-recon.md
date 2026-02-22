@@ -62,22 +62,23 @@ grep -rn "require.*chat-tui" src/ tests/ scripts/ | grep -v node_modules
 
 ## Task 3: Test Suite Verification (Plan 005 Phase 0.4)
 
-**1. Temporarily break one require path:**
-```js
-// In src/memory.js, temporarily change:
-// const persona = require('./persona');
-// to:
-// const persona = require('./BROKEN');
-```
-
-**2. Run tests:**
+**Safe approach — test sensitivity WITHOUT modifying files:**
 ```bash
-npm test
-```
-- If tests FAIL → test suite catches broken imports (good safety net)
-- If tests PASS → need `node -e "require('./src/index.js')"` as additional verification
+# Temporarily rename a file (git mv is easily reversible):
+git mv src/persona.js src/persona.js.bak
 
-**3. Revert the break immediately.**
+# Run tests:
+npm test
+# If tests FAIL → test suite catches broken imports (good safety net)
+# If tests PASS → need `node -e "require('./src/index.js')"` as additional verification
+
+# IMMEDIATELY restore:
+git mv src/persona.js.bak src/persona.js
+# Verify clean:
+git diff --stat  # Should show nothing
+```
+
+**If the Generator session crashes before restore:** `git mv src/persona.js.bak src/persona.js` is all that's needed. The file is not deleted, just renamed.
 
 ---
 
@@ -150,6 +151,14 @@ The blueprint file must contain ALL of the following sections:
    ```
 8. **Revised batch order** — adjust from default if coupling data suggests different grouping
 9. **Naming recommendation** — `src/data/` vs `src/world/` vs `src/gamedata/`
+10. **Per-batch smoke-test files** — for each batch, name the best file to test __dirname resolution (the file with the most complex path). If a batch has no __dirname files, write "none". Chain H Step 8 uses this.
+11. **Total file accounting** — total files in `src/*.js`, total assigned to batches, remaining in root (with justification for each, e.g., `index.js`)
+
+**After writing the blueprint, commit it:**
+```bash
+git add ~/software/relinquishment/plans/0032-G-blueprint-output.md
+git commit -m "plan: Chain G restructure blueprint"
+```
 
 ---
 
@@ -157,11 +166,14 @@ The blueprint file must contain ALL of the following sections:
 
 ```
 Chain G complete.
+Blueprint file: [WRITTEN / FAILED] — ~/software/relinquishment/plans/0032-G-blueprint-output.md
+Blueprint committed: [hash]
 Import graph: [N files, N circular deps, highest fan-in file=___]
 chat-tui.js: [move to ui/ / stay at root] — [count] inbound, [count] outbound
 Test verification: [catches broken imports / needs additional verification]
 __dirname audit: [N files, N total path edits]
 PROJECT_ROOT recommendation: [yes/no]
 Naming: [src/data/ / src/world/ / src/gamedata/]
+File accounting: [N total in src/*.js, N assigned to batches, N remaining in root]
 Ready for Chain H: [YES / NO — needs decision on ___]
 ```

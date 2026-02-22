@@ -119,12 +119,12 @@ grep -rn "require.*\.\./src/[a-z]" tests/ | grep -v node_modules | grep -v "src/
 
 ## Rollback
 
-**All-or-nothing across H1 + H2.** If any batch fails and cannot be fixed forward:
-1. Revert ALL completed batch commits (H2 AND H1) in reverse order
-2. Diagnose the failure
-3. Restart from H1 batch 1
+If any H2 batch fails and cannot be fixed forward:
+1. Revert H2's completed batch commits in reverse order
+2. Report failure to Auditor — Auditor has H1's commit hashes and will decide whether H1 also needs rollback
+3. Do NOT attempt to revert H1 commits yourself (you do not have H1's hashes)
 
-**Do NOT partially revert.**
+**Do NOT partially revert H2.**
 
 ---
 

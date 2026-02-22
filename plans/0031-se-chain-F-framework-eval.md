@@ -41,7 +41,7 @@ For each orphaned test, determine:
 - Does it crash? (Jest-dependent or broken imports?)
 - Should it be added to run-all.js?
 
-**NOTE:** If orphans are added to run-all.js here, the Chain E coverage baseline (measured before triage) becomes stale. Record which tests were added and flag in the report that coverage should be re-measured. Do NOT modify .c8rc.json thresholds — that's Chain E's territory.
+**IMPORTANT:** Do NOT modify run-all.js in this chain. Triage is READ-ONLY — report which tests SHOULD be added and why, but leave the actual modification for the Auditor to decide. Modifying run-all.js would invalidate Chain E's coverage baseline and ratchet thresholds.
 
 **Known Jest-dependent dead code (3 files):** `autonomous-player.test.js`, `campaign-filtering.test.js`, `tuesday-npc-contexts.test.js` — these use `describe`/`test`/`expect` as globals without defining them. Jest is not installed.
 
@@ -64,10 +64,11 @@ Pick 5 tests that are in run-all.js and represent different areas.
 npm install --save-dev jest
 time npx jest tests/memory.test.js tests/persona.test.js tests/prompts.test.js tests/skill-check.test.js tests/disposition.test.js 2>&1
 npm uninstall jest  # Remove after benchmark
-# CRITICAL: Verify clean tree after uninstall:
-git diff --stat package.json package-lock.json
-# If dirty (npm uninstall doesn't always perfectly reverse), restore:
-git checkout -- package.json package-lock.json && npm install
+# Restore package files to committed state (cleaner than trusting npm uninstall):
+git checkout -- package.json package-lock.json
+npm install  # Restore node_modules from committed lockfile
+# Verify:
+git status  # Working tree should be clean
 ```
 
 **(b) Node built-in test runner:**
@@ -75,7 +76,7 @@ git checkout -- package.json package-lock.json && npm install
 time node --test tests/memory.test.js tests/persona.test.js tests/prompts.test.js tests/skill-check.test.js tests/disposition.test.js 2>&1
 ```
 
-**WARNING:** The existing tests use `assert` + custom patterns, NOT `node:test` `describe`/`it`. `node --test` will attempt to run them as test files but may not recognize the assertion pattern. Record BOTH the timing AND whether tests actually executed (check output for "pass"/"fail" counts vs silent skip). If `node --test` reports 0 tests, the timing is meaningless — note this in the gap matrix.
+**WARNING:** The existing tests use `assert` + custom patterns, NOT `node:test` `describe`/`it`. `node --test` will attempt to run them as test files but may not recognize the assertion pattern. Record BOTH the timing AND whether tests actually executed (check output for "pass"/"fail" counts vs silent skip). **If `node --test` reports 0 tests, enter "N/A (0 tests detected)" in the Speed cell of the gap matrix. Do NOT enter a timing number — it would skew the comparison against runners that actually executed tests.**
 
 ---
 
@@ -97,6 +98,8 @@ Score each candidate on this matrix:
 ---
 
 ## Task 3: Decision Document (Plan 003 Phase 4)
+
+**Write the decision document to `~/software/relinquishment/plans/0031-F-framework-eval-output.md`.** The Auditor reviews this file to decide the next chain. Terminal output alone is insufficient — persist to file.
 
 Write a recommendation choosing one of:
 
@@ -145,9 +148,11 @@ grep -rl "assert\." tests/ | head -20          # assert patterns
 
 ```
 Chain F complete.
+Decision document: ~/software/relinquishment/plans/0031-F-framework-eval-output.md
 Orphan triage: [N runnable, N dead code, N broken]
   Recommend adding to run-all.js: [list]
-Benchmark: current=___ms, jest=___ms, node --test=___ms
+  NOTE: If tests added, coverage baseline from Chain E is stale — re-measurement needed
+Benchmark: current=___ms, jest=___ms, node --test=___ms (N/A if 0 tests detected)
 Recommendation: [A/B/C] — [one-sentence reason]
 Traveller: [N Jest, N Mocha, N custom]
 ```
