@@ -14,6 +14,14 @@
 | 0013 | verbatim-appendix | READY FOR GENERATOR | 0001+0002 | Verbatim historical documents appendix: 8 documents (Cryptome, Slashdot, blog post, Introduction by Aurasys, Artillect, Autobiography, Relinquishment text, forJoe.txt). |
 | 0015 | signing-and-deadman | READY FOR REVIEW | 0001 | PGP signing pipeline + deadman's switch. Key gen, encrypted deposit, key escrow, weekly check-in. P0: must complete before Bruce flies. |
 | 0014 | hybrid-appendix-architecture | READY FOR REVIEW | 0002+0013 | Three-layer appendix: visible formatted docs + embedded .docx/.png originals + archive manifest. Uses embedfile package. 14 attached files, est. 1.5-3.5MB. |
+| 0018 | dms-mvp-content-import | EXECUTED | 0001+0002 | Import all DMS MVP content into 35 chapters. 5 Generator batches. |
+| 0019 | ethical-thread | REVISED | 0018 | UDHR ethical weave across 25 chapters. 3 Generator batches. Red team fixes applied 2026-02-21 (2 CRITICAL, 3 HIGH). Ready for execution. |
+| 0020 | quick-fixes | EXECUTED | 0018 | Lorem ipsum removal, PLACEHOLDERs, spelling, metadata. |
+| 0021 | dms-redteam-fixes | READY FOR GENERATOR | 0020 | Coventry deletion, redaction format, URLs. |
+| 0022 | ai-draft-markers | EXECUTED | 0018 | 117 marks, 13 \aidraftchapter, 10/10 TCs pass. |
+| 0024 | spiral-rebalancing | EXECUTED | 0018 | pos22 surgery (6,870w->1,513w). Narrative redistributed. |
+| 0025 | manuscript-hygiene | READY FOR GENERATOR | 0024 | Voice headers, spiral markers, Makefile checks. |
+| 0036 | session13-sequencing | IN PROGRESS | 0019+0024 | Master sequencing plan: editorial + structural + cite-dont-rewrite. Phase 1 (structure) substantially complete. |
 | — | source-facts | REFERENCE | — | Flat fact-checking reference: verified dates, names, numbers, contested claims with correct framing, "do not assert" list, scientific framing rules. Generator's truth table for all verifiable claims. |
 | — | source-audit | REFERENCE | — | Factual corrections from Session 9 audit (3 passes, ~115 corrections). |
 | — | TODO | REFERENCE | — | Master release checklist: 56 items, 9 phases, prioritized + red-teamed. |

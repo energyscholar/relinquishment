@@ -5,7 +5,7 @@ SHELL := /bin/bash
 SOURCE_DATE_EPOCH := $(shell git log -1 --pretty=%ct 2>/dev/null || date +%s)
 export SOURCE_DATE_EPOCH
 
-JOBNAME := Relinquishment_by_Bruce_Stephenson
+JOBNAME := Relinquishment
 
 TIKZ_SRCS := $(filter-out build/images/standalone-header.tex, $(wildcard build/images/*.tex))
 TIKZ_PDFS := $(TIKZ_SRCS:.tex=.pdf)
