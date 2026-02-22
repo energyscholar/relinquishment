@@ -19,7 +19,7 @@ cd ~/software/npc-persona-prototype
 
 **1. Install dependencies:**
 ```bash
-npm install --save-dev eslint@^9 prettier eslint-config-prettier @eslint/js@^9 globals
+npm install --save-dev eslint@^9 prettier eslint-config-prettier@^10 @eslint/js@^9 globals
 ```
 
 **2. Create eslint.config.js:**
@@ -83,6 +83,8 @@ npx eslint --fix "src/**/*.js" "tests/**/*.js" "scripts/**/*.js"
 
 **7. Commit formatting (separate commit):**
 ```bash
+# Verify only formatting changes are staged — no config files or other modifications:
+git status
 git add src/ tests/ scripts/
 git commit -m "style: apply Prettier formatting to all JS files"
 ```
@@ -101,6 +103,12 @@ git commit -m "chore: add git-blame-ignore-revs for formatting commit"
 "lint:fix": "eslint --fix src/ tests/ scripts/",
 "format": "prettier --write \"src/**/*.js\" \"tests/**/*.js\" \"scripts/**/*.js\"",
 "format:check": "prettier --check \"src/**/*.js\" \"tests/**/*.js\" \"scripts/**/*.js\""
+```
+
+**9b. Commit npm scripts (before moving to Task 2):**
+```bash
+git add package.json
+git commit -m "chore: add lint and format npm scripts"
 ```
 
 **10. Verify:**

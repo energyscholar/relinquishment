@@ -1,7 +1,7 @@
 # SE Improvement — Generator Chain Index
 
 **Created:** 2026-02-21
-**Total chains:** 9 (A through I)
+**Total chains:** 10 (A through I, with H split into H1+H2)
 **Total estimated time:** 70-110 hours at 10% allocation
 **Review gates:** 3 (after B, F, G)
 
@@ -17,8 +17,9 @@ Chain A (quick wins, 75 min)
   └──→ Chain C (npc-persona linting, 3 hrs)
          ├──→ Chain D (traveller linting, 2-3 hrs)  [can parallel with E]
          └──→ Chain G (restructure recon, 2 hrs)  ⛔ REVIEW GATE
-                └──→ Chain H (restructure execute, 6-10 hrs)
-                       └──→ Chain I (TypeScript, 2-4 hrs)
+                └──→ Chain H1 (restructure batches 1-5, 3-5 hrs)
+                       └──→ Chain H2 (restructure batches 6-9, 3-5 hrs)
+                              └──→ Chain I (TypeScript, 2-4 hrs)
 ```
 
 **Parallelizable:** After Chain C, Chains D and E can run simultaneously (different repos / independent concerns). Chain F can start after E completes.
@@ -36,7 +37,8 @@ Chain A (quick wins, 75 min)
 | **E** | 0030 | 004 | npc | 2-3 hrs | No |
 | **F** | 0031 | 003 Phases 1-4 | npc + traveller | 4-8 hrs | **YES** |
 | **G** | 0032 | 005 Phase 0 | npc | 2 hrs | **YES** |
-| **H** | 0033 | 005 Phases 1-3 | npc | 6-10 hrs | No |
+| **H1** | 0033 | 005 Phases 1-3 (batches 1-5) | npc | 3-5 hrs | No |
+| **H2** | 0033b | 005 Phases 1-3 (batches 6-9) | npc | 3-5 hrs | No |
 | **I** | 0034 | 001 Phase 1 | npc | 2-4 hrs | No |
 
 ---
@@ -83,7 +85,7 @@ Report per format at end of plan.
 You are the Generator. Read and execute
 ~/software/relinquishment/plans/0030-se-chain-E-coverage.md
 One task: c8 coverage with ratchet threshold in npc-persona.
-Prerequisite: Chain B confirmed c8 works.
+Prerequisite: Chain B confirmed c8 works (human-verified by Auditor).
 Report per format at end of plan.
 ```
 
@@ -101,16 +103,27 @@ Report per format at end of plan.
 You are the Generator. Read and execute
 ~/software/relinquishment/plans/0032-se-chain-G-restructure-recon.md
 Reconnaissance: import graph, __dirname audit, chat-tui analysis.
-This is a decision gate. Report the blueprint.
+CRITICAL: Write blueprint to ~/software/relinquishment/plans/0032-G-blueprint-output.md
+This is a decision gate. Report summary + confirm file written.
 ```
 
-### Chain H
+### Chain H1
 ```
 You are the Generator. Read and execute
 ~/software/relinquishment/plans/0033-se-chain-H-restructure-execute.md
-Execute the restructure per the approved blueprint from Chain G.
-9 batches, each atomic. All-or-nothing rollback if needed.
+Also read the blueprint: ~/software/relinquishment/plans/0032-G-blueprint-output.md
+Execute batches 1-5 only (data, memory, ai, ui, npc).
+Each batch atomic. All-or-nothing rollback if needed.
 Report per format at end of plan.
+```
+
+### Chain H2
+```
+You are the Generator. Read and execute
+~/software/relinquishment/plans/0033b-se-chain-H2-restructure-game.md
+Also read the blueprint: ~/software/relinquishment/plans/0032-G-blueprint-output.md
+Execute batches 6-9 (game/mechanics, game/narrative, game/adventure, game/systems).
+Each batch atomic. Report per format at end of plan.
 ```
 
 ### Chain I
@@ -135,10 +148,12 @@ Report per format at end of plan.
 - If recommendation is Option B or C → new chain needed for migration before Chain G
 
 ### After Chain G (restructure recon):
+- Verify blueprint file exists: `~/software/relinquishment/plans/0032-G-blueprint-output.md`
+- Verify blueprint contains: file-to-directory mapping, __dirname fixup table, batch order
 - Bruce decides: PROJECT_ROOT vs per-file fixup
 - Bruce decides: src/data/ naming
 - Bruce decides: chat-tui.js placement
-- Then Chain H can proceed
+- Then Chain H1 can proceed
 
 ---
 

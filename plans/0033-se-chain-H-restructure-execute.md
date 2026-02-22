@@ -1,7 +1,11 @@
-# Plan 0033: SE Chain H — Restructure Execution
+# Plan 0033: SE Chain H1 — Restructure Execution (Batches 1-5)
 
-**Type:** Generator chain (Plan 005 Phases 1-3)
-**Estimated time:** ~6-10 hours (may need to split into H1/H2 if too large)
+**Type:** Generator chain (Plan 005 Phases 1-3, first half)
+**Estimated time:** ~6-10 hours total, split into TWO Generator runs:
+- **H1 (this plan):** Batches 1-5 (data, memory, ai, ui, npc) — ~3-5 hours
+- **H2 (Plan 0033b):** Batches 6-9 (game/*) — ~3-5 hours
+
+**Agent sizing:** Each Generator run must stay under ~3-4K words output. 9 batches × 7 steps exceeds this limit. Split at batch 5/6 boundary (npc/ has many cross-deps into game/, so completing npc/ first stabilizes the import graph for game/* batches).
 **Dependencies:** Chain G complete + Auditor-approved blueprint
 
 ---
@@ -9,27 +13,32 @@
 ## PREREQUISITES
 
 Before executing, confirm:
-1. Chain G blueprint reviewed and approved by Auditor
-2. __dirname approach decided: [ ] per-file fixup / [ ] PROJECT_ROOT constant
-3. chat-tui.js placement decided: [ ] move to ui/ / [ ] stay at root
-4. `src/data/` naming decided: [ ] keep / [ ] rename to src/world/
-5. Batch order finalized (may differ from default if coupling data suggests changes)
+1. Chain G blueprint file exists: `~/software/relinquishment/plans/0032-G-blueprint-output.md`
+2. Blueprint reviewed and approved by Auditor
+3. __dirname approach decided: [ ] per-file fixup / [ ] PROJECT_ROOT constant
+4. chat-tui.js placement decided: [ ] move to ui/ / [ ] stay at root
+5. `src/data/` naming decided: [ ] keep / [ ] rename to src/world/
+6. Batch order finalized (may differ from default if coupling data suggests changes)
 
 **If any prerequisite is missing, STOP and return to Auditor.**
 
+**CRITICAL:** Read `~/software/relinquishment/plans/0032-G-blueprint-output.md` FIRST. It contains:
+- The concrete file-to-directory mapping (which files go in which batch)
+- The __dirname fixup table (exact path edits per file)
+- Non-require references that need updating
+Use the blueprint as your source of truth. The defaults below are FALLBACKS only.
+
 ---
 
-## Default Batch Order (adjust per Chain G blueprint)
+## Batches for This Run (H1: 1-5 only)
+
+Adjust per Chain G blueprint. Batches 6-9 are in Plan 0033b (Chain H2).
 
 1. **data/** (or world/) — ~7 files, likely few inbound deps
 2. **memory/** — 2 files
 3. **ai/** — 3 files
 4. **ui/** — 3-4 files (chat-tui.js per decision)
 5. **npc/** — 12 files, some cross-deps
-6. **game/mechanics/** — 7 files
-7. **game/narrative/** — 7 files
-8. **game/adventure/** — 8 files
-9. **game/systems/** — 4 files
 
 ---
 
@@ -59,10 +68,13 @@ grep -rn "require.*geography-data" src/ tests/ scripts/ | grep -v node_modules
 ```
 
 ### Step 4: Fix __dirname data paths — paths INSIDE the moved files (CRITICAL)
+
+**Source:** The complete fixup table is in `~/software/relinquishment/plans/0032-G-blueprint-output.md`, section "Complete __dirname fixup table". Consult it for every file in this batch.
+
 ```bash
 # For EACH moved file, check its __dirname usage:
 grep -n "__dirname" src/data/geography-data.js
-# Update relative path depth per the fixup table from Chain G
+# Look up the file in the blueprint fixup table for the exact new prefix
 # Moving 1 level deeper: '../data/' → '../../data/'
 # Moving 2 levels deeper: '../data/' → '../../../data/'
 ```
@@ -76,12 +88,19 @@ grep -n "__dirname" src/data/geography-data.js
 # const DATA_DIR = path.join(PROJECT_ROOT, 'data/npcs');
 ```
 
-### Step 5: Fix non-require references
+### Step 5: Fix test imports for this batch (DO NOT DEFER)
+```bash
+# For EACH moved file in this batch, fix test imports immediately:
+grep -rn "require.*geography-data" tests/ | grep -v node_modules
+# Update each test's require path to the new location
+```
+
+### Step 6: Fix non-require references
 ```bash
 grep -rn "geography-data" package.json tests/run-all.js scripts/ *.md
 ```
 
-### Step 6: Verify (ALL must pass before commit)
+### Step 7: Verify (ALL must pass before commit)
 ```bash
 npm test                                    # Tests pass
 node -e "require('./src/index.js')"         # Full require graph loads
@@ -89,7 +108,15 @@ npm run lint                                # ESLint clean
 npm run format:check                        # Prettier clean
 ```
 
-### Step 7: Commit (ONLY if Step 6 passes)
+### Step 8: Verify __dirname paths resolve at runtime (CRITICAL)
+```bash
+# Pick one moved file from this batch that uses __dirname for data access.
+# Run it in isolation to confirm the path resolves:
+node -e "const f = require('./src/data/geography-data.js'); console.log('loaded OK')"
+# If it throws ENOENT or similar, the __dirname fixup is wrong. Fix before committing.
+```
+
+### Step 9: Commit (ONLY if Steps 7 AND 8 pass)
 ```bash
 git add -u
 git add src/data/   # New directory
@@ -98,13 +125,13 @@ git commit -m "refactor(data): move data files to src/data/"
 
 ---
 
-## Phase 2: Fix Test References
+## After ALL Batches: Sweep for Stragglers
 
-After ALL batches complete:
 ```bash
-grep -rn "require.*\.\./src/" tests/ | grep -v node_modules
+# Any test imports still referencing old paths?
+grep -rn "require.*\.\./src/[a-z]" tests/ | grep -v node_modules | grep -v "src/index"
+# Should return nothing — all were fixed per-batch in Step 5
 ```
-Update any broken test imports. Run `npm test` after each fix.
 
 ---
 
@@ -155,13 +182,14 @@ npx eslint src/data/geography-data.js   # Should lint, not skip
 ## Report Format
 
 ```
-Chain H complete.
-Batches: [N/9] successful
+Chain H1 complete.
+Batches: [N/5] successful (1-5)
 Approach: [per-file fixup / PROJECT_ROOT]
 Files moved: [total count]
 __dirname paths fixed: [total count]
 require() paths fixed: [total count]
 Commits: [list hashes]
-Coverage after restructure: Lines=___%, Branches=___%, Functions=___%, Statements=___%
+Tests passing: [YES/NO]
+Ready for H2: [YES/NO]
 Issues: [any unexpected problems]
 ```
