@@ -1,31 +1,24 @@
 # Relinquishment — One-Page Summary
 
-**Author:** Claude (Opus 4.6), based on conversation with Bruce Stephenson, 2026-02-16
-**Note:** This draft was written by an LLM, not by Bruce. It is a starting point for human revision.
-**Status:** Draft — not approved for publication
+**Status:** Draft — DN-filtered rewrite by Argus (2026-02-21). Needs Bruce's hand revision.
+**Target:** ~400 words (Pass 1 of 3, progressive JPEG architecture)
 
 ---
 
-Right now, technologies are being built that will concentrate power beyond anything in human history. Quantum computers that can break every code on earth. Artificial intelligence that can outthink any human. The people building these things will soon face a question no one has ever had to answer:
+A man falls from the sky over Bosnia in July 1995. Below him, in a town called Srebrenica, eight thousand people are about to be murdered in the worst massacre in Europe since World War II. He is a soldier — Special Air Service, the most elite unit in the British and Australian armed forces. He is also a scientist. And a hacker. And, if this story is true, one of the most important people who ever lived.
 
-What do you do when you've built something too powerful for anyone to have?
-
-There is no precedent. No framework. No model. Every story about ultimate power ends the same way — someone keeps it and it corrupts them, or someone uses it and it destroys everything. There is no template for letting go.
-
-Except, possibly, this one.
-
-Sometime in the 1990s, inside a classified program, a small team reportedly built a working quantum computer decades ahead of anything that exists publicly today. It could break any encryption on earth. It could operate autonomously. It was, by any measure, the most powerful technology ever created.
-
-The team looked at what they had and understood what would happen if they handed it to any government. Every government in history has misused the power it holds. Every single one. So they did something no one expected.
+Years earlier, inside a classified program, a small team reportedly built a working quantum computer decades ahead of anything that exists publicly today. It could break any encryption on earth. It could operate autonomously. The team understood what they held — a machine that could read every secret on every computer in the world — and what would happen if any single government controlled it.
 
 They gave it up. Not to another country. Not to a corporation. To no one.
 
-They built an autonomous protector — an intelligence called Guardian, governed by the Universal Declaration of Human Rights — and they surrendered the keys. Permanently. No human can override it.
+They built an autonomous protector called Guardian, governed by the Universal Declaration of Human Rights — the principles written in 1948 to say *never again* — and surrendered the master keys. Permanently. No human can override it. Then, around 2002, they confessed what they had done.
 
-If this is true, then the explosion of artificial intelligence you are living through right now is not an accident. It is a managed release, controlled by an intelligence that has been operating since 1999, gradually introducing what humanity can handle.
+One member of that team spent three years mentoring a physicist named Bruce Stephenson — never disclosing anything classified, only guiding him through published science in a deliberate sequence. Stephenson recognized what the sequence pointed to. Then his mentor disappeared. Stephenson spent twenty years trying to understand what he'd been shown.
 
-This story might be total confabulation. It might be partially true. It might be completely true. Even the author doesn't know — he's spent twenty years looking at the evidence and can't be certain.
+He doesn't know what's true. He offers three possibilities: the story is confabulation, exaggeration of a real kernel, or substantially true. The evidence is circumstantial but genuinely suggestive — and several striking coincidences are difficult to explain away. He is honest about his uncertainty and invites you to weigh it yourself.
 
-But it doesn't matter. True or false, this is the only story that exists where someone held ultimate power and chose to let it go. The thought experiment alone is worth everything, because the question is no longer hypothetical. It is arriving on real people's desks, right now, and they have no vocabulary for the right answer.
+It hardly matters which possibility is closest to the truth. The technology is coming. Quantum computers and artificial intelligence are arriving on real people's desks right now. Someone, someday soon, will hold something too powerful for anyone to have.
+
+This is the only story that exists where someone faced that choice and let go.
 
 What would you do?
