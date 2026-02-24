@@ -6,10 +6,10 @@
 
 % DMS MVP import from staging/raw/ — not final prose
 
-\begin{quote}
-\textit{``Cryptography is the ultimate form of non-violent direct action.''}
+\begin{quote}\small
+\textit{``Privacy is necessary for an open society in the electronic age.''}
 
-\hfill --- Julian Assange
+\hfill --- Eric Hughes, ``A Cypherpunk's Manifesto'' (1993)
 \end{quote}
 
 \vspace{0.5cm}
@@ -62,6 +62,8 @@ Basic Method: Build some kind of quantum computer running some quantum algorithm
 
 Problem: No one knows how to build a device capable of meeting the specifications.  Several approaches are known that can produce `toy sized' quantum computers, but none can scale to the thousands of qubits required to factor real cryptographic keys.  The main problem is decoherence time.
 
+Everything above is public-domain history. The cryptographic arms race, DARPA's mandate, Shor's algorithm, and the decoherence problem are documented in the academic and popular literature. What follows is where the book's specific claims begin.
+
 \vspace{1cm}\noindent\rule{0.5\textwidth}{0.5pt}\vspace{0.5cm}
 
 \section*{The GCHQ Precedent}
@@ -77,5 +79,7 @@ Problem: No one knows how to build a device capable of meeting the specification
 \aidraft{In November 1996, Executive Order 13026 moved encryption from the Munitions List to the Commerce Control List. The NSA had fought PKC export for twenty years (1976--1996), then reversed remarkably quickly --- just two years after Shor's algorithm. Under the narrative presented in this book, the NSA already had TQNN cryptanalysis capability by 1995. Shor's public algorithm confirmed the direction. EO 13026 released the export restrictions because PKC was no longer worth protecting.}
 
 \aidraft{The proposition: the DARPA team discovered a variant of quantum factoring \textit{before} Shor's 1994 publication. This is consistent with the GCHQ/Cocks precedent --- independent classified discovery years before public discovery. The TQNN approach would discover factoring empirically (trained on plaintext-ciphertext pairs) rather than algorithmically.}
+
+The GCHQ/Cocks precedent is real: classified independent discovery, years before public discovery, is documented history. The question is whether this pattern extends to the specific claims of this book. Under Possibility~A, the precedent is being used to make an unfalsifiable argument --- ``they did it before, so they could have done it again'' is true but proves nothing about whether they actually did. Under Possibility~B, DARPA may have had a quantum computing program in the early 1990s (it did), and some variant of quantum factoring may have been explored, but the leap to a fully successful TQNN goes beyond what the GCHQ analogy supports. Under Possibility~C, the pattern is exact: classified discovery preceded public discovery by years, and EO~13026 is the evidence that something changed.
 
 \chapterreturn

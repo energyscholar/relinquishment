@@ -1,3 +1,55 @@
+# Plan 0041: pos29 "The Silence" — Full Rewrite
+
+**Auditor:** Argus
+**Date:** 2026-02-24
+**Depends on:** None (standalone rewrite). Plan 0039 Insertions 4A/4B/4C are superseded — their content is integrated into the new text below.
+**Phase:** Single phase (complete chapter replacement)
+
+---
+
+## Context
+
+pos29 "The Silence" covers 2006-2012: the period after Bruce's vetting rejection through the break of his speech constraint and the beginning of his research. The current chapter is ~600 words of raw DMS MVP import — unfocused, emotionally flat, with large blocks of material duplicated from pos23. A full UQ extraction (Session 20, 38 prompts) produced detailed material for every section.
+
+This plan provides the COMPLETE new LaTeX text. The Generator replaces the entire file contents with the text below.
+
+**Voice model:** tracktwo — 1st-person personal ("I" not "Bruce"). See pos02-alpha-farm.tex for gold standard. Present tense for scene-setting, past tense for reflection. Short paragraphs. Concrete sensory detail. No academic hedging. A/B/C framing is integrated naturally into the memoir voice (lighter than trackone framing — 1-3 sentences, after the claim it qualifies).
+
+**OPSEC constraints (CRITICAL — do NOT violate):**
+- Do NOT mention hypnosis, drugs, or any specific mechanism of memory suppression
+- Say "couldn't speak about" or "couldn't verbalize" — reader infers trauma
+- JG is identified ONLY as "a high school friend with NATO experience who helped me find work in Luxembourg" — no QM requisitions, no Mixter reference, no PKC/encryption awareness, no boutique agency
+- Do NOT include details about David being homeless that could identify the woman who took him in
+- Do NOT include details about VR or SL by name or identifiable detail beyond what's already published
+
+---
+
+## Constraints
+
+1. Preserve the `\settrack{tracktwo}` line exactly
+2. Preserve `\chapter{The Silence}` and `\label{pos29:the-silence}`
+3. Preserve `\chapterreturn` as final line
+4. Keep existing `\srcnote` lines and add new ones for new sections
+5. Do NOT add `\aidraft{}` wrappers — this is Bruce's voice based on UQ extraction
+6. Chapter target: 2,000-2,500 words
+7. Use `Possibility~A/B/C` phrasing (LaTeX non-breaking space) for all three-possibilities references
+8. Do NOT modify the `\settrack` line
+
+---
+
+## File to Modify
+
+| # | File | Action |
+|---|------|--------|
+| 1 | `manuscript/track-2-testament/pos29-the-silence.tex` | Replace entire file contents |
+
+---
+
+## Complete New Text
+
+Replace the ENTIRE contents of `manuscript/track-2-testament/pos29-the-silence.tex` with the following:
+
+```latex
 \settrack{tracktwo}
 % VOICE: 1st-person personal (Bruce) — "I" not "Bruce". Personal/investigative voice.
 
@@ -141,3 +193,65 @@ Under any possibility, this is a man who lost years to a story he cannot prove. 
 \begin{center}\textit{This story will be my life's work.}\end{center}
 
 \chapterreturn
+```
+
+---
+
+## Acceptance Criteria
+
+1. `make` compiles without errors
+2. `\settrack{tracktwo}` line is present and unmodified
+3. `\chapter{The Silence}` and `\label{pos29:the-silence}` preserved
+4. `\chapterreturn` is the final LaTeX command
+5. No `\aidraft{}` wrappers appear anywhere in the file
+6. Word count is between 2,000 and 2,500 words (excluding LaTeX commands)
+7. A/B/C framing appears in at least 4 locations, using `Possibility~A/B/C` phrasing throughout
+8. No mention of hypnosis, drugs, or specific mechanism of memory suppression
+9. JG identified only as "a high school friend with NATO experience" — no operational details
+10. No details that could identify the woman who took David in when homeless
+11. Epigraph (Perlis #95) preserved
+12. At least one `\srcnote` line present
+13. Report final word count
+
+---
+
+## Files NOT Modified (verify untouched)
+
+All files except `manuscript/track-2-testament/pos29-the-silence.tex`.
+
+---
+
+## Generator Handoff Prompt
+
+```
+You are the Generator. Read the plan at:
+~/software/relinquishment/plans/0041-pos29-rewrite.md
+
+Replace the ENTIRE contents of:
+manuscript/track-2-testament/pos29-the-silence.tex
+
+with the complete LaTeX text provided in the "Complete New Text" section of the plan.
+Copy the text EXACTLY as written — do not add, remove, or modify any content.
+
+After replacement:
+1. Run `make` and verify compilation
+2. Count words (excluding LaTeX commands) and report
+3. Verify all 13 acceptance criteria
+
+Report completion with word count.
+```
+
+---
+
+## Red Team Record
+
+**Red team:** 2026-02-24, Session 20. Report: `aurasys-memory/research/redteam-plan-0041.md`
+**Verdict:** CONDITIONAL PASS → PASS after fixes (except Issue 4 pending Bruce).
+**Fixes applied:**
+1. Issue 1 (CRITICAL): Added Possibility B to "Someone Looking Out" A/B/C block.
+2. Issue 2 (HIGH): Swapped 2011/2012 paragraph order — Autobiography now before Cryptome/Slashdot.
+3. Issue 3 (HIGH): Obama claim removed entirely (WL scrub, Plan 0044).
+4. Issue 5 (MEDIUM): Bannon A/B/C reordered to standard A, B, C. Also fixed "Bruce's" → "my" (voice consistency).
+
+**PENDING BRUCE INPUT:**
+- Issue 4 (HIGH): "$300K" — was this Tom Hall's annual salary or the severance amount offered? Current text says "pulling down three hundred thousand a year" (salary interpretation). UQ notes say "$300K severance." Bruce must clarify.
