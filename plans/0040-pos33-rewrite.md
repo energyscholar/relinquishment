@@ -1,3 +1,41 @@
+# Plan 0040: pos33 "The Digital Doppelganger" — Full Rewrite
+
+**Auditor:** Argus
+**Date:** 2026-02-24
+**Depends on:** Plan 0038 (pos33 moved before pos32 in main.tex) — must be executed first
+**Phase:** Single-phase rewrite
+
+---
+
+## Context
+
+pos33 is currently ~460 words, mostly `\aidraft` blocks with incorrect framing (consent/violation framing that Bruce explicitly rejected in UQ Session 20). The chapter needs a complete rewrite based on Bruce's UQ extraction. The new text is 1st-person ("I"), tracktwo voice, based entirely on Bruce's words from the UQ session. No `\aidraft` wrappers — this is Bruce's voice.
+
+Plan 0039 specifies three A/B/C insertions (5A, 5B, 5C) for the old version of this chapter. Since this plan rewrites the entire chapter, those insertions are integrated into the new text directly rather than added separately. **Plan 0039's pos33 insertions (5A, 5B, 5C) should be SKIPPED when Plan 0039 executes** — this plan supersedes them.
+
+**Voice model:** pos28 "2006: Surrender" — personal, investigative, scene-based. Short declarative sentences. Emotional register: curiosity and awe, not violation or outrage.
+
+---
+
+## Constraints
+
+1. Do NOT modify the `\settrack{tracktwo}` line
+2. Keep the Perlis Epigram #16 epigraph block exactly as-is
+3. Keep existing `\srcnote` lines; add new ones for new sections
+4. Keep `\chapterreturn` as final line
+5. REMOVE all `\aidraft{}` wrappers — new text is Bruce's voice from UQ extraction
+6. Do NOT speculate about cDc/Wings Simulations connection to Soldner (Bruce said too speculative)
+7. Use "Possibility~A/B/C" phrasing (LaTeX non-breaking space `~`)
+8. Chapter target: 1,200-1,500 words
+9. 8-section structure (Bruce-approved from UQ Session 20)
+
+---
+
+## Complete Replacement Text
+
+Replace the ENTIRE contents of `manuscript/track-2-testament/pos33-digital-doppelganger.tex` with the following:
+
+```latex
 \settrack{tracktwo}
 % VOICE: 1st-person personal (Bruce) — "I" not "Bruce". Personal/investigative voice.
 
@@ -85,3 +123,74 @@ All of this came after the doppelganger. It was deliberate preparation for a wor
 Under Possibility~A, I was a technologist who saw automation coming --- many people did --- and decided to hedge with physical skills. The doppelganger was a memorable gaming experience, nothing more. Under Possibility~B, the doppelganger experience was real and striking, but my interpretation of its implications outpaced what a game bot actually demonstrated. Under Possibility~C, I had a twenty-year head start on a future that arrived in 2022. Under any possibility, the preparation was real. The bet paid off.
 
 \chapterreturn
+```
+
+---
+
+## Acceptance Criteria
+
+1. `make` compiles without errors
+2. `\settrack{tracktwo}` line is unchanged
+3. `\chapter{The Digital Doppelganger}` and `\label{pos33:digital-doppelganger}` are unchanged
+4. Perlis Epigram #16 epigraph block is present and unchanged
+5. `\chapterreturn` is the final line
+6. No `\aidraft{}` wrappers anywhere in the file
+7. Chapter has exactly 8 `\section*` headings: The Invitation, The Introduction, The Recognition, The Teamwork, The Second Doppelganger, The Generalization, The Controlled Rollout, The Rebalancing
+8. A/B/C framing present in at least 3 locations (after Recognition, after Generalization, after Rebalancing) — supersedes Plan 0039 insertions 5A/5B/5C
+9. Word count is 1,200-1,500 words (excluding LaTeX commands and comments)
+10. No mention of "consent" or "permission" as the primary framing — generalization insight is the emotional/intellectual core
+11. The 3AM verification test scene is present
+12. "Cow-types never did anything for only one reason" quote is present
+13. No speculation about cDc/Wings Simulations connection to Soldner
+
+---
+
+## Files Modified (complete list)
+
+| # | File | Action |
+|---|------|--------|
+| 1 | `manuscript/track-2-testament/pos33-digital-doppelganger.tex` | Complete rewrite |
+
+**Files NOT modified (verify untouched):** All other files.
+
+---
+
+## Interaction with Other Plans
+
+- **Plan 0038:** pos33 must already be moved before pos32 in `main.tex` (Phase A1). This plan does not modify `main.tex`.
+- **Plan 0039:** Insertions 5A, 5B, 5C for pos33 are **SUPERSEDED** by this plan. When executing Plan 0039, SKIP pos33. The A/B/C framing specified in 5A/5B/5C has been integrated into the rewritten text.
+
+---
+
+## Generator Handoff Prompt
+
+```
+You are the Generator. Read the plan at:
+~/software/relinquishment/plans/0040-pos33-rewrite.md
+
+Replace the entire contents of:
+~/software/relinquishment/manuscript/track-2-testament/pos33-digital-doppelganger.tex
+
+with the complete replacement text specified in the plan (inside the ```latex block).
+
+Constraints:
+- Copy the text EXACTLY as specified — do not edit, reword, or add anything
+- Verify \settrack{tracktwo} is the first line
+- Verify \chapterreturn is the last line
+- Run `make` in the repo root to confirm compilation
+- Report the word count of the new file (excluding LaTeX commands/comments)
+```
+
+---
+
+## Red Team Record
+
+**Red team:** 2026-02-24, Session 20. Report: `aurasys-memory/research/redteam-plan-0040.md`
+**Verdict:** CONDITIONAL PASS → PASS after fixes.
+**Fixes applied:**
+1. RT-1 (HIGH): "Bruce was" → "I was" and "Bruce's interpretation" → "my interpretation" in A/B/C blocks.
+2. RT-2 (MEDIUM): Söldner paragraph moved from The Invitation to after The Second Doppelganger (correct timeline).
+3. RT-3 (LOW): Added training data depth sentence ("either remarkably powerful or I was overestimating").
+4. RT-4 (MEDIUM): Expanded Rebalancing A/B/C to give each possibility a distinct sentence.
+5. RT-5 (MEDIUM): Added inline A/B/C framing to "quantum-trained" claim in Second Doppelganger section.
+6. RT-11 (LOW): Softened invented "Other players noticed" to "I do not know which other players realized."
