@@ -19,8 +19,12 @@ build/gitinfo.tex
 build/validation.json
 build/images/*.pdf
 build/output/
+build/epub-tmp/
 main.pdf
+*.epub
 *.md.archive
+Relinquishment.html
+Relinquishment.md
 
 # OS/editor
 .DS_Store
