@@ -21,10 +21,16 @@ build/images/*.pdf
 build/output/
 build/epub-tmp/
 main.pdf
+Relinquishment.pdf
 *.epub
+*.upa
 *.md.archive
 Relinquishment.html
 Relinquishment.md
+
+# Python / venv
+.venv/
+__pycache__/
 
 # OS/editor
 .DS_Store

@@ -43,7 +43,7 @@ epub: gitinfo
 		-f latex -t epub3 \
 		--top-level-division=chapter \
 		--toc --toc-depth=1 \
-		--epub-cover-image=build/images/cover-triskellion.svg \
+		--epub-cover-image=build/images/cover-triskellion.png \
 		--css=../../build/epub.css \
 		--metadata-file=../../build/metadata.yaml \
 		-o ../../$(JOBNAME).epub
@@ -55,7 +55,7 @@ html: gitinfo
 		-f latex -t html5 \
 		--standalone --self-contained \
 		--top-level-division=chapter \
-		--toc --toc-depth=2 \
+		--toc --toc-depth=1 \
 		--mathml \
 		--css=../../build/epub.css --css=../../build/html.css \
 		--metadata-file=../../build/metadata.yaml \

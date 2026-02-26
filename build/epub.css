@@ -14,6 +14,10 @@ blockquote.redacted { font-style: italic; border-left: 3px solid #999; padding-l
 /* Block quote attributions */
 blockquote p:last-child { text-align: right; font-size: 0.9em; }
 
+/* Links — explicit styling */
+a { color: #1a5276; text-decoration: underline; }
+a:visited { color: #6c3483; }
+
 /* Responsive body */
 body {
   max-width: 40em; margin: 0 auto; padding: 1em;
