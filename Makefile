@@ -40,16 +40,17 @@ print:
 epub: gitinfo
 	python3 build/preprocess.py
 	cd build/epub-tmp && pandoc main.tex \
-		-f latex -t epub3 \
+		-f latex -t epub \
 		--top-level-division=chapter \
 		--toc --toc-depth=1 \
 		--epub-cover-image=build/images/cover-triskellion.png \
 		--css=../../build/epub.css \
 		--metadata-file=../../build/metadata.yaml \
 		-o ../../$(JOBNAME).epub
+	python3 build/preprocess.py --fix-epub $(JOBNAME).epub
 
-# --- Single HTML (universal fallback) ---
-html: gitinfo
+# --- Single HTML (primary web distribution) ---
+html: gitinfo build/reader-inline.html
 	python3 build/preprocess.py
 	cd build/epub-tmp && pandoc main.tex \
 		-f latex -t html5 \
@@ -59,7 +60,13 @@ html: gitinfo
 		--mathml \
 		--css=../../build/epub.css --css=../../build/html.css \
 		--metadata-file=../../build/metadata.yaml \
+		--include-after-body=../../build/reader-inline.html \
 		-o ../../$(JOBNAME).html
+
+build/reader-inline.html: build/reader.js
+	echo '<script>' > $@
+	cat build/reader.js >> $@
+	echo '</script>' >> $@
 
 # --- Markdown (archival) ---
 markdown: gitinfo

@@ -20,6 +20,7 @@ build/validation.json
 build/images/*.pdf
 build/output/
 build/epub-tmp/
+build/reader-inline.html
 main.pdf
 Relinquishment.pdf
 *.epub
