@@ -7,7 +7,7 @@ or strip standard LaTeX — pandoc handles all of that natively.
 Writes patched copy to build/epub-tmp/ for inspection.
 """
 
-import shutil, re
+import shutil, re, zipfile, io
 from pathlib import Path
 
 REPO = Path(__file__).parent.parent
@@ -84,7 +84,31 @@ def patch():
     return TMP / "main.tex"
 
 
+def fix_epub(epub_path):
+    """Post-process EPUB to fix pandoc validation errors."""
+    epub_path = Path(epub_path)
+    tmp_path = epub_path.with_suffix('.tmp.epub')
+
+    with zipfile.ZipFile(epub_path, 'r') as zin, \
+         zipfile.ZipFile(tmp_path, 'w') as zout:
+        for item in zin.infolist():
+            data = zin.read(item.filename)
+            if item.filename.endswith('.xhtml'):
+                text = data.decode('utf-8')
+                # Strip invalid label= attributes (pandoc bug, 6 instances)
+                text = re.sub(r'\s+label="[^"]*"', '', text)
+                data = text.encode('utf-8')
+            zout.writestr(item, data)
+
+    tmp_path.replace(epub_path)
+    print(f"EPUB post-processed: {epub_path}")
+
+
 if __name__ == "__main__":
-    main_tex = patch()
-    print(f"Patched manuscript written to {TMP}/")
-    print(f"Entry point: {main_tex}")
+    import sys
+    if len(sys.argv) > 1 and sys.argv[1] == '--fix-epub':
+        fix_epub(sys.argv[2])
+    else:
+        main_tex = patch()
+        print(f"Patched manuscript written to {TMP}/")
+        print(f"Entry point: {main_tex}")
