@@ -1,0 +1,14 @@
+/* Responsive phone layout */
+@media (max-width: 600px) {
+  body { padding: 0.5em; font-size: 16px; }
+}
+
+/* Sticky TOC nav */
+nav#TOC {
+  position: sticky; top: 0; background: white;
+  padding: 0.5em; border-bottom: 1px solid #ccc;
+  max-height: 50vh; overflow-y: auto;
+}
+@media (prefers-color-scheme: dark) {
+  nav#TOC { background: #1a1a1a; border-bottom-color: #444; }
+}

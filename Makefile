@@ -10,7 +10,7 @@ JOBNAME := Relinquishment
 TIKZ_SRCS := $(filter-out build/images/standalone-header.tex, $(wildcard build/images/*.tex))
 TIKZ_PDFS := $(TIKZ_SRCS:.tex=.pdf)
 
-.PHONY: dev final screen print images validate clean clean-cache manifest size-report gitinfo check check-strict
+.PHONY: dev final screen print images validate clean clean-cache manifest size-report gitinfo check check-strict epub html markdown
 
 # --- Dev build (host, no tagging) ---
 dev: gitinfo images
@@ -35,6 +35,40 @@ print:
 	@command -v docker >/dev/null 2>&1 || { echo "ERROR: Docker required for print builds. Not installed on this host."; exit 1; }
 	@echo "\\def\\FINAL{1}\\def\\PRINT{1}" > build/flags.tex
 	docker run --rm -v "$(CURDIR)":/src -w /src relinquishment-build latexmk -r build/.latexmkrc -jobname=$(JOBNAME) main.tex
+
+# --- EPUB (primary distribution) ---
+epub: gitinfo
+	python3 build/preprocess.py
+	cd build/epub-tmp && pandoc main.tex \
+		-f latex -t epub3 \
+		--top-level-division=chapter \
+		--toc --toc-depth=1 \
+		--epub-cover-image=build/images/cover-triskellion.svg \
+		--css=../../build/epub.css \
+		--metadata-file=../../build/metadata.yaml \
+		-o ../../$(JOBNAME).epub
+
+# --- Single HTML (universal fallback) ---
+html: gitinfo
+	python3 build/preprocess.py
+	cd build/epub-tmp && pandoc main.tex \
+		-f latex -t html5 \
+		--standalone --self-contained \
+		--top-level-division=chapter \
+		--toc --toc-depth=2 \
+		--mathml \
+		--css=../../build/epub.css --css=../../build/html.css \
+		--metadata-file=../../build/metadata.yaml \
+		-o ../../$(JOBNAME).html
+
+# --- Markdown (archival) ---
+markdown: gitinfo
+	python3 build/preprocess.py
+	cd build/epub-tmp && pandoc main.tex \
+		-f latex -t gfm \
+		--top-level-division=chapter \
+		--toc --toc-depth=2 \
+		-o ../../$(JOBNAME).md
 
 # --- Compile standalone TikZ images ---
 images: $(TIKZ_PDFS)
