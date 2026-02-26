@@ -60,15 +60,15 @@ def patch():
                 f"% track: {html_name}"
             )
 
-        # Fix 4: Convert cover PDF image reference to SVG
+        # Fix 4: Convert cover PDF image reference to PNG
         # Also strip trailing % (LaTeX comment char that pandoc includes in filename)
         text = text.replace(
             "cover-triskellion.pdf}%",
-            "cover-triskellion.svg}"
+            "cover-triskellion.png}"
         )
         text = text.replace(
             "cover-triskellion.pdf",
-            "cover-triskellion.svg"
+            "cover-triskellion.png"
         )
 
         dst.write_text(text)
