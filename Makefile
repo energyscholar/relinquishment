@@ -44,7 +44,7 @@ epub: gitinfo
 		--top-level-division=chapter \
 		--toc --toc-depth=1 \
 		--epub-cover-image=build/images/cover-triskellion.png \
-		--css=../../build/epub.css \
+		--css=../../build/epub-only.css \
 		--metadata-file=../../build/metadata.yaml \
 		-o ../../$(JOBNAME).epub
 	python3 build/preprocess.py --fix-epub $(JOBNAME).epub
