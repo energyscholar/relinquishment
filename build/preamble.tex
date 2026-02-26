@@ -7,6 +7,8 @@
   \input{build/print.tex}
 \else
   \input{build/screen.tex}
+  % Screen mode: chapters can start on any page (eliminates ~34 blank pages)
+  \let\cleardoublepage\clearpage
 \fi
 
 % --- Language ---
@@ -36,6 +38,11 @@
 \setlength{\cftbeforesecskip}{0.4em}          % tighter section entries
 \renewcommand{\cftsecfont}{\small}            % smaller section entries
 \renewcommand{\cftsecpagefont}{\small}
+\ifdefined\PRINT
+  \setcounter{tocdepth}{0}  % Print: chapters only
+\else
+  \setcounter{tocdepth}{1}  % Screen: chapters + sections
+\fi
 
 % --- Glossary (loads amsmath via datatool dependency — must come before cleveref) ---
 \usepackage{glossaries}
@@ -52,9 +59,11 @@
   colorlinks=true,
   linkcolor=linkblue,
   urlcolor=linkblue,
+  pdfpagemode=UseOutlines,      % Open with bookmark panel visible
+  pdfstartview=FitH,            % Fit page width to window
 }
 \usepackage{bookmark}
-\bookmarksetup{depth=1, open=false}
+\bookmarksetup{depth=2, open, openlevel=1}  % Sections in sidebar, panel open, L1 expanded
 \usepackage{cleveref}
 
 % Source provenance annotations — hidden PDF notes at import points
