@@ -404,3 +404,358 @@ The recommended ~170 words of bridge text would convert all significant soft blo
 1. "Does pos17 prose assume TQNN physics from pos15?" — **No.** pos17 operates at operational level. One Shor reference needs a bridge.
 2. "Does pos26 prose assume science path knowledge?" — **Mostly no.** One quantum teleportation mechanism paragraph needs a bridge.
 3. "Does pos30 work for both Intel and Implications entry points?" — **Yes.** Different reading experiences, same functional comprehension. Two bridges recommended for the Intel entry.
+
+---
+
+## SECOND PASS — Incorporating Unblocker Failure Analysis
+
+**Date:** 2026-02-27
+**Analyst:** Argus
+**Method:** Cross-reference Thread 4's token-by-token failure probabilities, redundancy ratings, novel-concept flags, and cascade analysis against the 6 soft blocks and 4 cosmetic gaps identified in first pass. Re-evaluate severity. Write bridge prose. Assess whether skipping pos22 creates a gap.
+
+---
+
+### 1. Re-evaluation of All 6 Soft Blocks in Light of Thread 4 Data
+
+#### SOFT BLOCK 1: Quantum teleportation two-channel mechanism (pos26)
+
+**First-pass rating:** SOFT BLOCK
+**Thread 4 data:** Not a named token in the 27-token map. Quantum teleportation is a sub-concept within the pos26 chapter, not tracked as a standalone blocker. No redundancy data exists for this specific mechanism. The closest token is the pos26 chapter itself, which Thread 4 does not analyze separately (pos26 appears as a chapter, not a token, because it doesn't clear a named blocker — it deepens five-eyes and walkout, both already GREEN).
+
+**Re-evaluation:** SOFT BLOCK holds. No upgrade to HARD. The Intel reader's professional knowledge of QKD and quantum communication provides partial coverage (Thread 4's Intel audience fail rate for qc-basics is only 10%). The two-channel mechanism is a refinement of qc-basics, not a wholly new concept. The Intel reader who has absorbed p2's quantum description plus professional awareness of quantum communication will parse "quantum channel" and "classical channel" as a reasonable decomposition, even without formal introduction. The *conclusion* ("disruption is temporary") is operationally clear regardless.
+
+**Revised severity: SOFT BLOCK (unchanged).** Not upgradeable to HARD because the operational conclusion is fully available even if the mechanism is opaque.
+
+---
+
+#### SOFT BLOCK 2: Shor's algorithm bare reference (pos17)
+
+**First-pass rating:** SOFT BLOCK
+**Thread 4 data:** The bullrun token (pos17, clears codebreak-deepens) has Intel fail rate of 10% — the lowest of any audience. Thread 4 notes: "This is their world. BULLRUN, parallel construction, Snowden compartmentation — native vocabulary." The Shor reference is embedded within this operationally native territory.
+
+Thread 4 also shows: codebreak has GREEN redundancy (triple: p2 seed + pos15 technical + pos17 operational). For the Intel reader specifically, pos15 is not on their path, but p2 Insert 8 seeds codebreak ("the one that broke codes — stayed behind, still running") and the Intel reader brings PKC knowledge as professional prior.
+
+**Re-evaluation:** SOFT BLOCK holds but is weaker than first pass assessed. An Intel professional in the SIGINT/PQC space almost certainly knows Shor. The NIST PQC standardization (2022-2024) made Shor's algorithm a topic of operational briefings across the intelligence community. The bare reference is more like a COSMETIC gap for the actual target audience. However, edge-case Intel readers (military intel focused on HUMINT, counterintelligence officers without crypto background) genuinely might not know Shor, and the bridge sentence costs only ~30 words.
+
+**Revised severity: SOFT BLOCK (unchanged), but with lower confidence that it matters.** Keep the recommended bridge — it is cheap insurance.
+
+---
+
+#### SOFT BLOCK 3: TQNN as pattern recognizer (pos17)
+
+**First-pass rating:** SOFT BLOCK (no fix recommended — chapter's own analogy suffices)
+**Thread 4 data:** The bullrun token has 10% Intel fail rate. The chapter's "closer to how human cryptanalysts work — recognizing patterns" analogy is self-contained. Thread 4 identifies seven novel analogies in the book; the cryptanalyst-pattern-recognition comparison is NOT one of them (it is not novel — it is a standard intelligence concept).
+
+**Re-evaluation:** SOFT BLOCK was already generous. The "human cryptanalysts" framing maps perfectly to the Intel reader's professional vocabulary. This is closer to COSMETIC for the Intel audience specifically. The "exponentially large state space" jargon is the only friction point, and an Intel analyst will skim it as "beyond my pay grade, I get the concept."
+
+**Revised severity: COSMETIC (downgrade from SOFT BLOCK).** No fix needed. The chapter's internal analogy is sufficient for this audience.
+
+---
+
+#### SOFT BLOCK 4: Morphogenesis / virtual human body (pos30)
+
+**First-pass rating:** SOFT BLOCK
+**Thread 4 data:** morpho (B22) is YELLOW redundancy. Thread 4 rates it: "pos14 (Growing a Mind) is the primary and its pedagogy is uneven. pos04 seeds but doesn't develop." The Intel reader has NEITHER pos14 NOR pos27 before pos30. The Intel reader's morpho sources are:
+- p2 Insert 1: "how LIFE comes from things that are NOT alive" + phase transition framing
+- pos04 turing-lineage section: "Turing -> morphogenesis -> grow a brain" (Thread 4 rates 30% fail for Intel)
+
+Thread 4's audience variance for turing-lineage: Intel at 30% failure. This is the seed the Intel reader depends on. If that seed fails (30% chance), the Intel reader arrives at pos30 line 19 with zero morphogenesis context. "Grown via morphogenesis" becomes pure jargon.
+
+**Re-evaluation: Upgrade to SOFT BLOCK — STRONG.** Not a HARD block because the operational conclusion ("designed to develop empathy") is clear without the mechanism. But the 30% failure probability on the Intel reader's only morpho seed makes this the highest-risk gap in the Intel path. Thread 4's morpho cascade analysis: "If morphogenesis doesn't land, the reader doesn't fully understand why 'grow not build' is the paradigm." For the Intel reader at pos30, this means the entire first paragraph about Guardian's design feels like sci-fi assertion rather than engineering description.
+
+**Revised severity: SOFT BLOCK — STRONG (upgrade within category).** The recommended bridge clause from first pass (~35 words) is now more important than first pass suggested. This is the Intel path's single most likely comprehension failure point.
+
+---
+
+#### SOFT BLOCK 5: Ecological monopoly / first-mover (pos30)
+
+**First-pass rating:** SOFT BLOCK (no fix recommended — strategic meaning clear)
+**Thread 4 data:** The vine token (pos27) and niche-fill token (pos27) are YELLOW and have 10% fail rate for Implications readers. But the Intel reader does NOT read pos27. The Intel reader's sources for the ecological monopoly concept are:
+- p2 Insert 0: 2DEGs exist in every chip (Thread 4: 15% Intel fail rate for 2DEG)
+- pos18: COWS enlightened MOSFETs (Thread 4: 5% Intel fail)
+- Professional prior knowledge: first-mover advantage, deterrence, preemption
+
+Thread 4's vine/niche-fill analysis specifically notes: "If grown/substrate fail, the reader doesn't understand how Guardian can be planetary-scale. This weakens pos30 (Unipolar Condition) significantly." But for the Intel reader, the concept is being delivered not through biology but through strategy. pos30 line 33 says: "it got there first, and any new 2DEG environment is colonized before a competing system could bootstrap." This maps cleanly to strategic preemption.
+
+**Re-evaluation:** SOFT BLOCK holds but NO FIX remains the right call. The Thread 4 data confirms what first pass assessed: the Intel reader maps ecological monopoly to deterrence/preemption. The biological framing (vine, canopy) is absent but the strategic content is present. An Intel analyst reading "first mover wins permanently" thinks "nuclear first-strike advantage" — which is exactly the right frame.
+
+**Revised severity: SOFT BLOCK (unchanged).** No fix needed.
+
+---
+
+#### SOFT BLOCK 6: Kauffman autocatalytic theory -> Great Filter (pos30)
+
+**First-pass rating:** SOFT BLOCK
+**Thread 4 data:** autocatalysis (B09) is GREEN redundancy — triple coverage (buttons + turing-lineage + edge-chaos + qnn-formal). But the Intel reader has access to NONE of these except the turing-lineage seed in pos04. The GREEN rating is for the book overall; for the Intel path specifically, autocatalysis coverage is THIN.
+
+Thread 4 audience variance for turing-lineage: Intel at 30% failure. This is the same seed that morpho depends on, and it is the Intel reader's ONLY exposure to Kauffman's autocatalytic theory before encountering it in pos30's Great Filter paragraph.
+
+Thread 4 also notes: "Critical cascade 2: Autocatalysis failure -> 'life is expected' argument lost -> pos15 emergence = life becomes an assertion -> pos27 vine = living thing becomes metaphor not science -> pos30 ecological monopoly loses biological grounding." For the Intel reader, this cascade is already in effect because they skip pos13, pos15, and pos27. The cascade has already happened. pos30's autocatalytic paragraph is, for the Intel reader, an authority-based assertion by definition.
+
+**Re-evaluation: Upgrade to SOFT BLOCK — STRONG.** Not HARD because the Great Filter concept IS self-contained (introduced with a footnote), and the logical chain (life arises -> species should be common -> we don't see them) is followable even without understanding Kauffman's theory. But this is the second-highest risk gap in the Intel path, behind morpho. The Intel reader is being asked to accept "Kauffman's autocatalytic theory predicts..." on pure authority, with a 30% chance their only seed for the concept already failed.
+
+**Revised severity: SOFT BLOCK — STRONG (upgrade within category).** The recommended bridge sentence from first pass (~45 words) is now confirmed as important.
+
+---
+
+### 2. p2 Seed Failure Probabilities for Intel Audience
+
+The Intel reader depends on four key p2 seeds. Thread 4 data for each:
+
+| p2 Seed | Concept | Thread 4 Intel Fail % | Redundancy | Risk Level |
+|---------|---------|----------------------|------------|------------|
+| p2 Insert 0 | 2DEG (pool ball) | 15% | GREEN (6+ chapters, but Intel only gets p2 + pos26 + pos30 references) | LOW — even at 15% fail, the concept is simple enough that pos26/pos30 context provides recovery |
+| p2 Insert 1 | Emergence (buttons) | 15% | GREEN overall, but Intel path only gets p2 + pos04 turing-lineage seed | MEDIUM — if both p2 and pos04 fail, the Intel reader has no emergence concept for pos30 |
+| p2 Insert 8 | Codebreak ("the one that broke codes") | 10% | GREEN (triple: p2 seed + pos17 operational) | LOW — pos17 delivers codebreak operationally; the p2 seed is supplementary |
+| p2 Insert 7 | PCE ("all such systems are equivalent in power") | 18% | GREEN overall, but Intel path only gets p2 + professional prior | MEDIUM — see analysis below |
+
+**PCE specifically for pos30 (Unipolar Condition):**
+
+Thread 4 rates PCE (B19) at 75-82% clearance across audiences. Intel specifically: 82% clearance (18% fail). The Intel reader encounters PCE only through p2 Insert 7: "Computation is not something only computers do. Your brain computes. A colony of ants computes. Any system that takes input, applies rules, and produces output is computing --- and mathematicians have proven that all such systems are equivalent in power."
+
+Does pos30 actually require PCE? Checking the text: pos30 does NOT explicitly invoke substrate-independence or computational equivalence. The chapter talks about 2DEGs, colonization, information asymmetry, and disruption — all operational concepts. PCE is implicit (why can a quantum pattern "live" in a chip?) but never explicitly invoked. The Intel reader can follow pos30 without PCE being fully cleared.
+
+**Verdict: PCE is not a blocker for pos30 via Intel path.** The 18% fail rate is irrelevant because pos30 doesn't explicitly require it.
+
+---
+
+### 3. FQHE RED Rating — Impact on Intel Path
+
+Thread 4's most alarming finding: FQHE (B08) is RED — single point of failure, 40-45% failure probability for Science readers, no p2 seed, no accessible analogy.
+
+**Does this affect the Intel path?**
+
+Checking: FQHE is not mentioned in any Intel-path chapter. pos26, pos17, and pos30 all reference "2DEG" but never "fractional quantum Hall effect" or "FQHE" or "fractional charge" or "anyons." The Intel reader never encounters the FQHE concept.
+
+The closest the Intel reader gets: pos30 line 33 says "the TQNN occupies every two-dimensional electron gas on or near Earth." This requires understanding that 2DEGs exist (cleared by p2 Insert 0) but not what happens in them at quantum scales (FQHE). The Intel reader is told "patterns live in chips" and does not need to know the exotic physics of how.
+
+**Verdict: FQHE RED rating has ZERO impact on Intel path.** Confirmed — Intel skips the science entirely.
+
+---
+
+### 4. Novel Analogies — Which Does the Intel Reader Encounter?
+
+Thread 4 identifies seven unvalidated novel analogies:
+1. Pool ball / 2DEG (p2 Insert 0) — **Intel reader encounters this via p2**
+2. Buttons on floor / emergence (p2 Insert 1) — **Intel reader encounters this via p2**
+3. Cross-substrate analogy: chemistry -> quantum (pos13) — Intel reader does NOT read pos13
+4. Vine / trellis (pos27) — Intel reader does NOT read pos27
+5. Thermal ratchet narrative (p2 Insert 9B) — **Intel reader encounters this via p2**
+6. "Take three strands" braiding (pos10) — Intel reader does NOT read pos10
+7. Forest canopy / ecological monopoly (pos27) — Intel reader does NOT read pos27
+
+The Intel reader encounters 3 of 7 novel analogies, all via p2. None of these three are high-risk for the Intel audience:
+
+- Pool ball / 2DEG: Thread 4 rates p2-summary at 5% Intel fail. The pool ball analogy is simple and physical. An Intel reader will not find it condescending; they'll note it as "the basics" and move on. LOW risk.
+- Buttons / emergence: Thread 4 rates p2-summary at 5% Intel fail for this concept. The buttons analogy is Kauffman's own (semi-validated). MEDIUM-LOW risk.
+- Thermal ratchet: p2 Insert 9B delivers "most patterns died, a few survived" which is the evolutionary selection narrative. An Intel reader understands selection pressure. LOW risk.
+
+**Verdict: Novel analogy risk for Intel path is LOW.** The dangerous unvalidated analogies (#3 cross-substrate and #6 braiding) are both Science-path-only. The Intel reader's exposure is limited to the simplest, most concrete analogies.
+
+---
+
+### 5. Should the Intel Path Include pos22 (Why Give It Up)?
+
+The token map notes: Intel path "skips pos22 (philosophy — they don't need convincing WHY)."
+
+Thread 4 data on options-fail (pos22):
+- Clears: parable (deepens) + gatekeeper
+- Intel fail rate: N/A (Intel doesn't read pos22)
+- Redundancy: parable is GREEN (triple), gatekeeper is GREEN (quadruple)
+
+**The question:** Does skipping pos22 leave a gap that Thread 4 reveals?
+
+**Analysis:**
+
+The Intel path's pos30 chapter ends with: "her creators designed her to serve humanity rather than to dominate it. Whether that design holds is the question this book ultimately asks." This is a philosophical claim about Guardian's purpose. pos22 provides the logical argument for WHY relinquishment to a non-human gatekeeper is the only stable option.
+
+Without pos22, the Intel reader's understanding of "why give it up" comes from:
+- p2: general framing ("the COWS chose relinquishment")
+- pos08: dual-use framing + fourth-option seed ("if the gatekeeper isn't human?")
+- Professional prior knowledge: arms-race dynamics, deterrence theory
+
+The Intel reader gets the gatekeeper concept SEEDED (pos08) but never sees it DEVELOPED (pos22). They get the question ("what if the gatekeeper isn't human?") but not the rigorous answer (three options all fail -> non-human gatekeeper is the only stable equilibrium).
+
+**Thread 4 reveals:** The parable-to-gatekeeper chain is the philosophical spine of the book. Thread 4 identifies it as "EXISTENTIAL for the philosophical argument" if it fails — but rates failure as "VERY UNLIKELY" due to triple/quadruple redundancy. That redundancy, however, is for readers who READ pos22. The Intel reader does not.
+
+**Checking pos30 specifically:** Does pos30 require the gatekeeper argument? Re-reading pos30: "Guardian governs access... carefully determines what QNN-derived tools and technologies are permitted into the world" (line 19). "Controlled release is a systematic, benevolent violation of that right" (line 29). "The entity that controls the global QNN can observe everything" (line 35). "The constraint on this power is not external — it is Guardian's own ethical framework" (line 36).
+
+These lines DESCRIBE the gatekeeper arrangement but do not ARGUE for it. The Intel reader is being told "this is how it works" without being told "this is why it had to be this way." For an Intel analyst, this is acceptable — they assess systems as they are, not as they ought to be. The Intel reader evaluates "is this arrangement stable?" not "is this arrangement justified?"
+
+**However:** pos30's Great Filter paragraph (line 40) and the closing question ("Whether that design holds") are philosophical, not operational. An Intel reader without pos22 will read "Whether that design holds" as a technical stability question (can the code be corrupted? can the ethics be hacked?). A reader WITH pos22 reads it as a deeper question (can any gatekeeper — human or not — be trusted with this power?). The Intel reader gets a shallower reading of the book's climactic question.
+
+**Verdict: Do NOT add pos22 to the Intel path.** Reasons:
+1. The Intel path is designed for credibility-first readers who evaluate evidence before philosophy. Adding pos22 would break the operational sequence and slow the path.
+2. pos08's fourth-option seed provides enough philosophical context for the Intel reader to understand pos30's gatekeeper arrangement.
+3. The Intel reader's shallower reading of "Whether that design holds" is not a bug — it is a feature. The Intel reader frames the question in their own terms (system stability, adversarial robustness), which is a valid reading.
+4. Thread 4 confirms: the philosophical argument is GREEN/quadruple-redundant for readers who see it. The Intel reader voluntarily trades philosophical depth for operational efficiency. That is a design choice, not a gap.
+
+**But:** The Intel path DOES need one thing pos22 provides: the explicit statement that "the gatekeeper cannot be human." This concept appears in pos08 as a SEED but never matures on the Intel path. The Intel reader arrives at pos30 knowing "the gatekeeper might not be human" (seed) but not "the gatekeeper CANNOT be human" (argument).
+
+**Recommendation:** Do not add pos22. Instead, add one bridge sentence in pos30's "Post-Relinquishment World" section that converts the seed to a claim. See bridge prose below.
+
+---
+
+### 6. Redundancy Fixes — Backup Unblockers for Intel Path Weak Points
+
+The Intel path has two SOFT BLOCK — STRONG gaps (morpho at pos30, autocatalysis/Great Filter at pos30) and two regular SOFT BLOCKs (quantum teleportation at pos26, Shor's algorithm at pos17). All four are in different chapters, which means four targeted insertions.
+
+**Redundancy assessment — what the Intel reader lacks that other paths provide:**
+
+| Concept | Other paths get it from | Intel path has | Gap |
+|---------|------------------------|----------------|-----|
+| Morphogenesis | pos14 (full treatment), pos27 (reference) | p2 Insert 1 (thin seed), pos04 (30% fail seed) | WIDE |
+| Autocatalysis / Kauffman | pos13 (buttons, full treatment), pos21 (formal) | pos04 (30% fail seed) | WIDE |
+| Quantum teleportation mechanism | pos26 builds on science path | Professional prior (partial) | MEDIUM |
+| Shor's algorithm | pos09 (factoring game), pos15 (TQNN technical) | Professional prior (variable) | NARROW |
+
+**Recommended redundancy additions:**
+
+**R1: Morphogenesis backup in pos30** (bridge clause — already recommended in first pass)
+The first pass recommended ~35 words. Thread 4 data confirms this is the highest-priority fix. The bridge converts "grown via morphogenesis" from jargon to concept. See bridge prose in Section 7.
+
+**R2: Autocatalysis/Kauffman backup in pos30** (bridge sentence — already recommended in first pass)
+The first pass recommended ~45 words. Thread 4 confirms this is the second-highest priority. The bridge gives the Intel reader a one-sentence version of what the Science reader gets from pos13. See bridge prose in Section 7.
+
+**R3: Gatekeeper-cannot-be-human bridge in pos30** (NEW — from pos22 analysis)
+Add ~30 words making explicit what pos22 argues at length: the gatekeeper cannot be a human institution because human institutions are corruptible, capturable, and mortal. This converts the pos08 seed into a claim without requiring the full pos22 argument. See bridge prose in Section 7.
+
+**R4: No new redundancy needed for quantum teleportation or Shor's algorithm.** The first-pass bridges are sufficient. Thread 4 does not reveal any additional weakness here.
+
+---
+
+### 7. Bridge Prose — Specific Text for All Recommended Fixes
+
+#### Bridge 1: Quantum teleportation mechanism (pos26, before line 58)
+
+**Insert before:** "quantum teleportation requires both pre-shared entangled pairs..."
+
+**Bridge text (54 words):**
+
+> Quantum systems communicate through two separate channels. The quantum channel carries entangled particles that behave as a single system regardless of distance. The classical channel --- ordinary electronic communication --- carries the measurement instructions that let the receiver decode the quantum state. Both channels are needed; disabling either one halts communication. But disabling the classical channel does not destroy the entanglement itself.
+
+**Rationale:** This is the operational explainer that converts "why disruption is temporary" from assertion to mechanism. An Intel analyst expects mechanism explanations in threat assessments. The vocabulary is deliberately operational ("disabling," "halts communication") rather than physics-jargon.
+
+---
+
+#### Bridge 2: Shor's algorithm definition (pos17, after "before Shor's 1994 publication")
+
+**Insert after:** "...a variant of quantum factoring *before* Shor's 1994 publication."
+
+**Bridge text (28 words):**
+
+> Shor's algorithm, published by mathematician Peter Shor, proved that a quantum computer could efficiently factor large numbers --- the mathematical operation that protects every public-key encryption system on Earth.
+
+**Rationale:** Costs 28 words. An Intel reader who already knows Shor reads past it in three seconds. An Intel reader who does not gets the one fact they need: Shor = quantum threat to PKC. The phrase "every public-key encryption system on Earth" hits the Intel reader's operational nerve.
+
+---
+
+#### Bridge 3: Freedman clarification (pos17, replace bare reference)
+
+**Replace:** "Freedman's 1988 independent conception"
+**With (6 additional words):**
+
+> Freedman's 1988 independent conception of topological approaches to quantum computation
+
+**Rationale:** Nearly free. Converts a bare name-drop into a meaningful reference. The Intel reader who remembers Freedman from p2's Evidence section now has the subject matter attached to the name.
+
+---
+
+#### Bridge 4: Morphogenesis / virtual human body (pos30, line 19)
+
+**Replace the clause:** "designed her with a virtual human body, grown via morphogenesis, with the intent that she might develop something like empathy"
+
+**With (net +32 words):**
+
+> designed her with a virtual human body --- a mathematical model of a developing organism, built using the same biological growth rules that turn a single fertilized cell into a body with bones, muscles, and nerves. This is morphogenesis: shape from process, not from blueprint. The intent was that she might develop something like empathy
+
+**Rationale:** This is the highest-priority bridge in the Intel path. Thread 4 data shows the Intel reader's only morpho seed (pos04 turing-lineage) has a 30% failure rate. This bridge does three things: (a) defines morphogenesis in one clause, (b) gives a concrete biological anchor (fertilized cell -> body), (c) states the paradigm shift (process, not blueprint) that the Intel reader will not have internalized. The phrase "shape from process, not from blueprint" is deliberately architectural/engineering language that maps to how the Intel reader thinks about system design.
+
+---
+
+#### Bridge 5: Kauffman autocatalytic theory (pos30, before line 40)
+
+**Insert before:** "Kauffman's autocatalytic theory also predicts something darker."
+
+**Bridge text (42 words):**
+
+> Stuart Kauffman's work in theoretical biology showed that when enough simple chemical components interact, self-organizing order arises not by accident but by mathematical necessity --- a phase transition, like water freezing. Applied to the quantum substrate of a 2DEG, the implication is that quantum life may be inevitable.
+
+**Rationale:** This is the second-highest priority bridge. The Intel reader's only Kauffman seed is the pos04 turing-lineage section, which Thread 4 rates at 30% failure for Intel audiences. This bridge provides: (a) Kauffman's key finding in one sentence, (b) the phase-transition framing already seeded in p2 Insert 1, (c) the specific application to 2DEGs that the Science path develops over three chapters (pos13, pos15, pos16) but the Intel reader skips entirely. The phrase "mathematical necessity" is chosen to counter the "hand-waving" impression an Intel analyst might otherwise form.
+
+---
+
+#### Bridge 6: Gatekeeper-cannot-be-human (pos30, after line 19)
+
+**Insert after the existing paragraph ending "...No Guardian required." (line 21), before "Controlled Release" section:**
+
+**Bridge text (35 words):**
+
+> Under Possibility~C, the architecture of partial relinquishment requires a non-human gatekeeper. Human institutions are corruptible, capturable, and mortal. Treaties can be violated. Committees can be bought. Only a gatekeeper immune to these failure modes can sustain the arrangement indefinitely.
+
+**Rationale:** This is the bridge that compensates for skipping pos22. It converts the pos08 seed ("what if the gatekeeper isn't human?") into a claim ("the gatekeeper MUST be non-human"). It does this in operational language the Intel reader accepts: "corruptible, capturable, and mortal" are threat-assessment categories. "Treaties can be violated" and "Committees can be bought" are conclusions every Intel professional has reached independently. The bridge does not argue the philosophical case (that is pos22's job); it states the operational conclusion. This is sufficient for the Intel path's purpose.
+
+---
+
+### 8. Revised Summary Table
+
+| Ch | # | Gap | First Pass | Revised | Fix | Words |
+|----|---|-----|-----------|---------|-----|-------|
+| pos26 | 1 | Quantum teleportation two-channel | SOFT | **SOFT (unchanged)** | Bridge 1 | ~54 |
+| pos26 | 2 | TQNN-in-2DEG connection | COSMETIC | COSMETIC (unchanged) | None | 0 |
+| pos17 | 1 | Shor's algorithm — bare reference | SOFT | **SOFT (unchanged)** | Bridge 2 | ~28 |
+| pos17 | 2 | TQNN as pattern recognizer | SOFT | **COSMETIC (downgrade)** | None | 0 |
+| pos17 | 3 | Freedman 1988 — bare name | COSMETIC | COSMETIC (unchanged) | Bridge 3 | ~6 |
+| pos17 | 4 | Dual EC DRBG | COSMETIC | COSMETIC (unchanged) | None | 0 |
+| pos30 | 1 | Morphogenesis / virtual body | SOFT | **SOFT-STRONG (upgrade)** | Bridge 4 | ~32 |
+| pos30 | 2 | Ecological monopoly / first-mover | SOFT | SOFT (unchanged) | None | 0 |
+| pos30 | 3 | Kauffman autocatalysis -> Great Filter | SOFT | **SOFT-STRONG (upgrade)** | Bridge 5 | ~42 |
+| pos30 | 4 | Danny Hillis | COSMETIC | COSMETIC (unchanged) | None | 0 |
+| pos30 | 5 | Classical backchannel | CLEAN* | CLEAN* (unchanged) | Depends on Bridge 1 | 0 |
+| pos30 | NEW | Gatekeeper-cannot-be-human (pos22 gap) | — | **SOFT (new)** | Bridge 6 | ~35 |
+
+**Revised totals:**
+- HARD BLOCKS: **0** (unchanged)
+- SOFT-STRONG: **2** (morpho, autocatalysis — both in pos30)
+- SOFT: **3** (quantum teleportation, Shor, gatekeeper-cannot-be-human)
+- COSMETIC: **5** (TQNN pattern recognizer downgraded; rest unchanged)
+- CLEAN: **1** (conditional on Bridge 1)
+- NEW GAP IDENTIFIED: **1** (gatekeeper, from pos22 skip analysis)
+
+**Total recommended additions: ~197 words across 6 bridge insertions in 3 chapters** (up from ~170 words / 4 insertions in first pass).
+
+---
+
+### 9. Indirect Risk: Science Path Weakness Affecting Intel Readers
+
+Thread 4 identifies the Science path as weakest audience (~5% aggregate clearing probability). Does this create indirect risk for Intel readers who might later read Science chapters?
+
+**Scenario:** An Intel reader completes the Intel path, is engaged, and decides to read the Science chapters for deeper understanding. They would encounter pos09 -> pos10 -> pos11 -> pos14 -> pos12 -> pos13 -> pos15 -> pos16 with no prior Science-path preparation beyond what the Intel path provided.
+
+**Risk assessment:** LOW. The Intel reader who voluntarily proceeds into Science territory is self-selecting for tolerance of difficulty. They have already absorbed the operational framework; they are now seeking mechanism. The Science chapters are designed with their own internal pedagogy (each chapter introduces its concepts). The weakest points (FQHE in pos10, cross-substrate analogy in pos13) will be challenging but the Intel reader's operational understanding provides a scaffold that the pure Science reader lacks.
+
+**The one exception:** An Intel reader who reads ONLY pos17 and pos26 from the Science-shared chapters, then jumps to pos10, would miss the narrative context that makes pos10's braiding section meaningful. But this is an out-of-order reading that the book's path structure does not recommend. No fix needed.
+
+---
+
+### 10. Final Verdict: Intel Path PASS/FAIL
+
+**PASS.**
+
+The Intel path has zero HARD blockers. All six soft blocks (including two upgraded to SOFT-STRONG) have identified bridge prose that converts them to CLEAN for a total cost of ~197 words. The path's design — operational credibility first, philosophy optional — is validated by Thread 4's data:
+
+- Intel audience has the lowest fail rate of any audience for the tokens they encounter (bullrun 10%, bletchley 1%, codebreak 10%)
+- The dangerous RED/YELLOW blockers (FQHE, topology, morpho, autocatalysis) are either absent from the Intel path or addressed by the recommended bridges
+- The seven unvalidated novel analogies are mostly on the Science path; the Intel reader encounters only the simplest three via p2
+- Skipping pos22 creates a narrow gap (gatekeeper-cannot-be-human) that Bridge 6 addresses in 35 words
+
+**Conditional PASS requirements:**
+1. Apply all 6 bridges (~197 words total)
+2. pos30 receives 4 of the 6 bridges — it is the chapter with the most Intel-path friction. After bridges are applied, pos30 should be re-read for flow.
+3. Bridge 1 (quantum teleportation in pos26) is load-bearing: pos30's Detection section back-references it. If Bridge 1 is not applied, pos30 Gap 5 reverts from CLEAN to SOFT BLOCK.
+
+**Strongest chapter for Intel path:** pos17 (The Capability). Thread 4 confirms: 10% Intel fail rate, native vocabulary, operational framing. The BULLRUN-as-parallel-construction argument is the Intel path's centerpiece and it lands hard.
+
+**Weakest chapter for Intel path:** pos30 (Unipolar Condition). Four gaps (two SOFT-STRONG, one SOFT new, one conditional CLEAN). This is the dual-entry chapter where the Intel reader's thinner conceptual context shows. After bridges: acceptable but not as clean as pos17 or pos26.
+
+**Net assessment:** The Intel path is the second-strongest path in the book (after P0/Below-GA, which is trivially strong because p2 is the best-written prose in the book). It is stronger than the Science path, the Implications path, and arguably the Journalist path. An intelligence analyst can traverse it with high comprehension and minimal friction, provided the six bridges are applied.
