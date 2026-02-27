@@ -602,3 +602,387 @@ Alternative part titles:
 
 The reorder is clean. The four text fixes are minor (changing "previous" to "earlier"
 or "next" to "later"). The two chapter merges are already planned in the token map.
+
+---
+
+## SECOND PASS --- Incorporating Unblocker Failure Analysis
+
+*Thread 4 findings integrated 2026-02-27. This section re-evaluates the print order
+and text fixes in light of the token-by-token failure mode analysis.*
+
+---
+
+### 14. FQHE/Topology and Reordering: Can Structure Help?
+
+**Thread 4 finding:** FQHE is RED (single point of failure, 45% Science reader failure
+rate). Topology is YELLOW (25% failure rate). Both live exclusively in pos10 (The Braid).
+
+**Question:** Does any reordering of the Science path improve FQHE/topology resilience?
+
+**Answer: No.** The problem is not ordering --- it is that FQHE and topology each have
+only ONE teaching moment (pos10) and ONE deepening moment (pos16 for FQHE, pos21 for
+topology). No matter where pos10 sits in the sequence, if the reader fails to clear
+FQHE in pos10, no subsequent chapter re-teaches it from scratch. pos16 (Thermal Ladder)
+ASSUMES FQHE; pos21 (Convergence Revisited) ASSUMES topology.
+
+**Structural options considered and rejected:**
+
+1. *Move pos10 later (after pos14)?* This would put the Turing biography as a palate
+   cleanser BEFORE the hardest science chapter. Tempting, but pos10 must precede pos11
+   (The Experiment) because pos11 references the team assembled to build on braiding
+   physics. Breaking pos10 → pos11 creates a new prerequisite violation.
+
+2. *Move pos10 earlier (before pos09)?* pos10 requires crypto context from pos09
+   (Factoring Game). pos09 establishes "why factoring matters" which motivates "why
+   braiding matters." Without pos09, the reader asks "so what?" when learning about
+   anyons.
+
+3. *Split pos10 into two chapters?* This is a content fix, not a reorder fix.
+   Worth considering but outside scope of ordering analysis.
+
+**Conclusion:** FQHE and topology are TEXT FIXES, not ORDER FIXES. Thread 4's
+recommended additions (p2 seed for FQHE ~60 words, expanded pos10 analogy ~100 words,
+p2 seed for topology ~50 words) are the correct mitigation. The reorder cannot help.
+
+---
+
+### 15. S2 Ordering Re-evaluation: Resilience vs. Engagement
+
+**Thread 4 finding:** Science path has 5% aggregate probability of clearing ALL 30
+blockers. The weakest blockers are FQHE (55%), topology (75%), morpho (78%),
+five-sci (80%).
+
+**Question:** Would S1 or S3 be more resilient for the Science path, even if less
+engaging?
+
+**S1 (current prerequisite chain):** pos09 → 10 → 11 → 12 → 13 → 14 → 15 → 16 → 17 → 20 → 21 → 26
+
+- Morpho (pos14) comes AFTER autocatalysis (pos13). Reader has buttons + edge-of-chaos
+  before encountering Turing biography. The biology-of-form concept arrives with
+  autocatalytic context already loaded.
+- NATURAL REINFORCEMENT: pos12 (Threshold) → pos13 (Genesis) is a tight pair.
+  pos12 opens with "The previous chapter introduced Kauffman's autocatalytic sets"
+  and pos13 delivers the buttons payoff. Consecutive delivery = maximum retention.
+- VULNERABILITY: Six straight science chapters (pos09-14) with no narrative break.
+  Reader fatigue may cause disengagement before reaching pos15 (First Light), which
+  delivers codebreak and grown.
+
+**S2 (Turing as narrative break):** pos09 → 10 → 11 → 14 → 12 → 13 → 15 → 16 → 17 → 20 → 21 → 26
+
+- Morpho (pos14) comes BEFORE autocatalysis (pos12/13). Reader gets biology-of-form
+  first, then Kauffman's chemistry. This is PEDAGOGICALLY STRONGER: the reader
+  understands "Turing discovered how living things get their shape" before learning
+  "Kauffman discovered how chemistry organizes itself." The conceptual arc goes
+  form → self-organization → emergence.
+- NATURAL REINFORCEMENT: pos14 (morpho) → pos12 (autocatalysis) → pos13 (buttons).
+  Three consecutive chapters building the "grown not built" paradigm. This is a
+  STRONGER reinforcement chain than S1 because morpho CONTEXTUALIZES autocatalysis.
+- NARRATIVE BREAK: pos14 (Turing biography) after three hard-science chapters
+  (pos09, 10, 11) gives the reader a biographical/emotional breather. This REDUCES
+  fatigue risk for the pos12-pos13 autocatalysis block that follows.
+- COST: Requires text fix F2 (pos12 "previous chapter" → "earlier chapter").
+
+**S3 (Interdiction moved up):** pos09 → 10 → 11 → 12 → 13 → 14 → 26 → 15 → 16 → 17 → 20 → 21
+
+- Interdiction (pos26) as breather after science block. Same idea as S2 (narrative
+  break in the science) but pos26 is evidence/operational, not biographical.
+- Does NOT improve any blocker redundancy.
+- BREAKS the morpho → autocatalysis reinforcement chain that S2 creates.
+- pos26 (Five Eyes operations) between pos14 (Turing bio) and pos15 (First Light)
+  creates a topic whiplash: biology → intelligence operations → quantum emergence.
+
+**Resilience comparison:**
+
+| Metric | S1 | S2 | S3 |
+|--------|-----|-----|-----|
+| FQHE resilience | Same | Same | Same |
+| Topology resilience | Same | Same | Same |
+| Morpho resilience | Baseline | IMPROVED (earlier, contextualizes autocatalysis) | Same |
+| Autocatalysis reinforcement | pos12→13 (tight pair) | pos14→12→13 (morpho primes it) | pos12→13 (tight pair) |
+| Reader fatigue risk | HIGH (6 straight science) | LOWER (Turing break at chapter 4 of 12) | LOWER (Interdiction break at chapter 7 of 12) |
+| Novel analogy clustering | See Section 17 | See Section 17 | See Section 17 |
+
+**Verdict: S2 remains the best ordering.** It does not improve FQHE or topology (nothing
+can, structurally), but it DOES improve morpho resilience by contextualizing autocatalysis,
+and it reduces fatigue risk with the Turing narrative break. S3 offers a break but at the
+wrong point and in the wrong topic.
+
+---
+
+### 16. Natural Redundancy in the Print Order
+
+**Question:** Does the recommended print order create cases where concept N introduced in
+chapter K gets reinforced in chapter K+1, providing natural backup?
+
+**Natural reinforcement chains found (consecutive or near-consecutive):**
+
+| Print pos | Chapters | Reinforcement |
+|-----------|----------|---------------|
+| 3 → 4 | pos04 → pos05 | pos04 seeds morpho/autocatalysis + secrecy. pos05 deepens healer + udhr through horror stories. GCHQ "secrets can be kept" → David's most extraordinary claims. Strong chain. |
+| 5 → 6 | pos06 → pos07 | pos06 clears tradecraft. pos07 clears joy-reread. The Secret → The Departure: compartmentalization → why they left. Sequential deepening. |
+| 7 → 8 | pos08 → pos22 | pos08 introduces parable + gatekeeper seed. pos22 DEEPENS BOTH immediately. In J2 ordering, the reader gets the philosophical framework (pos08 concept, pos22 argument) as a tight pair before any action chapters. This is the STRONGEST reinforcement chain in the book for the philosophical argument. |
+| 12 → 13 | pos28 → pos29 | Surrender → Silence. Narrative climax → aftermath. Walkout climax immediately followed by consequences. Emotional reinforcement. |
+| 16 → 17 | pos24 → pos25 | Instantiation → Ethical Framework. How Guardian was born → what rules it follows. Tight pair. |
+| 17 → 18 | pos25 → pos27 | Ethical Framework → Extension. Rules → growth. Implies ordering pos24→25→27 is a natural triad. |
+| 23 → 24 | pos10 → pos11 | Braid → Experiment. Braiding physics → team assembled to use it. |
+| 25 → 26 → 27 | pos14 → pos12 → pos13 | Turing bio (morpho) → Threshold (autocatalysis intro) → Genesis (buttons payoff). THREE-CHAPTER reinforcement chain for the "grown not built" paradigm. This is the strongest science reinforcement in the book. S2 ordering CREATES this chain; S1 breaks it. |
+| 29 → 30 | pos16 → pos17 | Thermal Ladder → Capability. Room-temp mechanism → operational delivery. Physics → application. |
+
+**Natural redundancy gaps (no reinforcement in adjacent chapters):**
+
+| Print pos | Gap | Risk |
+|-----------|-----|------|
+| 22 → 23 | pos09 → pos10 | Factoring Game → Braid. Both introduce new concepts (crypto details, braiding physics). No reinforcement --- both are FOUNDATIONAL chapters that seed rather than reinforce. |
+| 27 → 28 | pos13 → pos15 | Genesis → First Light. Autocatalysis payoff → TQNN emergence. This is a topic shift, but both assume autocatalysis, so pos13 naturally primes pos15. Weak reinforcement but not a gap. |
+| 31 → 32 | pos20 → pos21 | Network → Convergence Revisited. Capabilities catalog → formal mapping. pos20 covers substrate; pos21 formalizes topology + autocatalysis. Different angles on the same system. Adequate reinforcement. |
+
+**Assessment:** The print order has STRONG natural redundancy in the Journalist section
+(pos08→22 pair), the Implications section (pos24→25→27 triad), and the Science section
+(pos14→12→13 triad). The main gap is the Science opening (pos09→10), which is
+unavoidable --- both chapters are foundational introductions.
+
+---
+
+### 17. Novel Analogy Density Map
+
+Thread 4 identified 7 novel analogies that have not been battle-tested with readers:
+
+| # | Analogy | Chapter | Print position |
+|---|---------|---------|---------------|
+| N1 | Pool ball / 2DEG | p2 Insert 0 | FRONTMATTER (before ch1) |
+| N2 | Buttons on floor | p2 Insert 1 | FRONTMATTER (before ch1) |
+| N3 | Thermal ratchet narrative | p2 Insert 9B | FRONTMATTER (before ch1) |
+| N4 | "Take three strands" braiding | pos10 | Print pos 23 |
+| N5 | Cross-substrate analogy (chem→quantum) | pos13 | Print pos 27 |
+| N6 | Vine / trellis | pos27 | Print pos 18 |
+| N7 | Forest canopy / ecological monopoly | pos27 | Print pos 18 |
+
+**Density across print order:**
+
+```
+Frontmatter:  N1, N2, N3  (3 novel analogies in p2)
+Pos 1-15:     (none)       GA + Journalist = tested concepts, narrative
+Pos 16-18:    N6, N7       (2 novel analogies in pos27, Implications section)
+Pos 19-22:    (none)
+Pos 23:       N4           (1 novel analogy in pos10, Science section)
+Pos 24-26:    (none)
+Pos 27:       N5           (1 novel analogy in pos13, Science section)
+Pos 28-33:    (none)
+```
+
+**Clusters identified:**
+
+1. **p2 cluster (N1+N2+N3):** Three novel analogies in the summary document. This is
+   BY DESIGN --- p2 is the accessibility layer that must introduce concepts without
+   assuming prior knowledge. The analogies are separated by inserts (Insert 0, Insert 1,
+   Insert 9B), so the reader encounters them across the document, not consecutively.
+   **Risk: LOW.** p2 is self-contained and each analogy is independent.
+
+2. **pos27 cluster (N6+N7):** Two novel analogies in the same chapter (vine/trellis and
+   forest canopy). These are thematically linked --- both are biological/ecological
+   metaphors for Guardian's growth. The reader encounters them in one sitting.
+   **Risk: MODERATE.** If the reader rejects one ecological metaphor, they may reject
+   both. However, the Implications reader arrives at pos27 with pos24+pos25 context
+   (Guardian design + ethical framework), which grounds the metaphors in prior content.
+
+3. **No consecutive-chapter novel analogy clusters in Parts I-II.** The GA and Journalist
+   sections use established concepts and evidence, not novel analogies. Good.
+
+4. **pos10 (N4) and pos13 (N5) are separated by 4 chapters** (pos10 at position 23,
+   pos13 at position 27). The intervening chapters (pos11, pos14, pos12) contain no
+   novel analogies, giving the reader recovery time between the braiding analogy and
+   the cross-substrate analogy. **Risk: LOW.**
+
+**Worst case:** A reader who reads p2 then skips to the Science path hits N1+N2+N3
+(frontmatter) then nothing novel for 22 chapters, then N4 (pos10), then nothing for
+3 chapters, then N5 (pos13). Excellent spacing.
+
+**The pos27 N6+N7 cluster is the only concern,** and it is MODERATE risk because:
+- Both analogies serve the same concept (growth/substrate).
+- The Implications reader is self-selected for comfort with speculative framing.
+- If one lands, it likely carries the other.
+
+**No reordering can fix the pos27 cluster** --- N6 and N7 are in the same chapter.
+If mitigation is needed, it would be a textual fix (strengthen the first analogy
+to carry the second).
+
+---
+
+### 18. Text Fixes Re-evaluation
+
+The first pass identified 4 text fixes. Thread 4 findings require re-evaluation:
+
+**Fix 1 (pos25 "previous chapter" → "earlier chapter"):** UNCHANGED. Thread 4 shows
+gatekeeper has quadruple coverage (GREEN). The reference is to pos22's argument, not
+a blocker-clearing moment. The fix is cosmetic accuracy, not resilience-critical.
+
+**Fix 2 (pos12 "previous chapter" → "earlier chapter"):** NOW MORE IMPORTANT. Thread 4
+shows autocatalysis at 85% clearing for Science (GREEN overall, but the cross-substrate
+analogy N5 in pos13 is novel and untested). The pos12 back-reference is the reader's
+bridge from autocatalysis seed (pos04/p2) to autocatalysis full treatment (pos12/13).
+If the reference says "previous chapter" but the previous chapter is pos14 (Turing bio),
+the reader may be confused about where autocatalysis was introduced. In S2 ordering,
+the Turing bio (pos14) serves as CONTEXT for autocatalysis --- the reader should
+arrive at pos12 thinking "Turing understood morphogenesis, now I'll learn about
+autocatalysis." The fix to "An earlier chapter introduced Kauffman's autocatalytic
+sets" preserves this priming.
+
+**Recommendation: Strengthen Fix 2.** Instead of just changing "previous" to "earlier,"
+add a bridge sentence: "An earlier chapter introduced Kauffman's autocatalytic sets ---
+the mathematics of how self-sustaining order arises spontaneously from random
+interactions. The previous chapter showed how Turing reached for the same insight
+from biology. Now the threads converge." This connects pos14→pos12 explicitly and
+reinforces the morpho→autocatalysis chain that S2 creates.
+
+**Fix 3 (pos27 "next chapter" → "The chapter Surrender"):** UNCHANGED. Thread 4
+shows walkout at GREEN (triple redundancy). The fix is referential accuracy.
+
+**Fix 4 (pos22 "next chapters" → "Later chapters"):** UNCHANGED. Same reasoning.
+
+**NEW FIX (from Thread 4): Fix 5 --- p2 FQHE seed.**
+Thread 4's highest-priority recommendation: add ~60 words to p2 Insert 0 seeding
+FQHE. This is not a reorder fix but it directly addresses the RED blocker. Should
+be tracked alongside the 4 print-order text fixes because it must happen at the same
+time (before the reorder is finalized).
+
+**NEW FIX (from Thread 4): Fix 6 --- p2 topology seed.**
+Add ~50 words to p2 seeding braiding-as-information. Same timing requirement.
+
+**NEW FIX (from Thread 4): Fix 7 --- Expanded pos10 FQHE analogy.**
+Add ~100 words to pos10's FQHE paragraph with the "dance floor" analogy. Same timing.
+
+**Updated fix table:**
+
+| ID | File | Change | Priority | Source |
+|----|------|--------|----------|--------|
+| F1 | pos25-ethical-framework.tex | "previous chapter" → "earlier chapter" | Medium | First pass |
+| F2 | pos12-the-threshold.tex | "previous chapter" → bridge sentence (see above) | HIGH | First pass + Thread 4 |
+| F3 | pos27-extension.tex | "next chapter" → "The chapter *Surrender*" | Medium | First pass |
+| F4 | pos22-why-give-it-up.tex | "next chapters" → "Later chapters" | Low | First pass |
+| F5 | summary.tex (Insert 0) | Add ~60w FQHE seed | CRITICAL | Thread 4 |
+| F6 | summary.tex (Insert 1) | Add ~50w topology seed | HIGH | Thread 4 |
+| F7 | pos10-the-braid.tex | Expand FQHE paragraph ~100w | CRITICAL | Thread 4 |
+
+---
+
+### 19. Should Print Order Prioritize Resilience Over Engagement for Science?
+
+**The question:** Thread 4 shows the Science path at 5% aggregate resilience (probability
+of clearing ALL 30 blockers). Should the print order sacrifice engagement to improve
+Science resilience?
+
+**Analysis:**
+
+The print order serves the COVER-TO-COVER reader. The Science path is the deepest
+reading --- the cover-to-cover reader IS the Science reader plus all shorter paths.
+So print order engagement directly serves the Science reader.
+
+The 5% figure is misleading. It means "probability of clearing ALL 30 blockers
+perfectly." But the book is designed for graceful degradation --- a Science reader who
+fails to clear FQHE still understands 29 other blockers and can follow the narrative.
+Thread 4 itself notes: "The Science path is aspirational --- it aims to give
+non-specialists enough to understand the physics. Some readers will not make it all
+the way through."
+
+**The real question is: does any ordering change convert a FAILED blocker to a CLEARED
+blocker?** The answer is NO for the three weakest blockers:
+
+- FQHE (55%): Lives in pos10. No ordering change adds a second explanation.
+- Topology (75%): Lives in pos10. Same.
+- Morpho (78%): Lives in pos14 (primary) + pos04 (seed). S2 ordering ALREADY
+  improves morpho by placing pos14 before pos12, so morpho contextualizes
+  autocatalysis. This is the maximum structural benefit.
+
+The only ordering that could theoretically improve resilience would be one that places
+a concept's BACKUP explanation immediately after its primary. But the backups
+(pos16 for FQHE, pos21 for topology) don't re-teach from scratch --- they ASSUME
+the primary succeeded.
+
+**Verdict: No.** Prioritizing resilience over engagement would mean choosing S1 (strict
+prerequisite chain), which REDUCES morpho resilience (by delaying morpho until after
+autocatalysis) and INCREASES fatigue risk (no narrative break). S2 is simultaneously
+the most engaging AND the most resilient ordering for the Science path.
+
+---
+
+### 20. pos15 Draft State: Position Risk Assessment
+
+**Thread 4 finding:** pos15 (First Light) is in \aidraft state. It delivers the critical
+tokens `tqnn-split` (codebreak, grown) with 20% Science reader failure probability.
+Draft-state prose elevates this risk.
+
+**In the print order:** pos15 is at position 28 of 33 (Part IV, chapter 7 of 12 in
+the Science section).
+
+**Position risk assessment:**
+
+- pos15 follows pos13 (Genesis, buttons payoff) and precedes pos16 (Thermal Ladder).
+- The reader arrives at pos15 with autocatalysis, morpho, emergence, braiding, and
+  FQHE already encountered. pos15 is where these converge into "the QNN emerged."
+- If pos15's draft-state prose fails to deliver tqnn-split, the reader enters pos16
+  without understanding the TQNN1/TQNN2 bifurcation. pos16 assumes it.
+
+**Does position amplify or reduce the risk?**
+
+AMPLIFY, slightly. pos15 is in the middle of the Science section (chapter 7 of 12).
+By this point, the reader has absorbed 6 science chapters. Fatigue accumulation is
+real. A draft-quality chapter at this position compounds the fatigue effect. If pos15
+were earlier (say, chapter 3 of 12), the reader would have more energy to push through
+rough prose.
+
+However, pos15 CANNOT be moved earlier. It requires pos10 (braiding), pos12
+(autocatalysis), and pos13 (buttons) as prerequisites. In S2 ordering, pos15 is already
+as early as possible given its dependencies.
+
+**Mitigation:** Priority rewrite of pos15 (as Thread 4 recommends). This is not an
+ordering fix --- it is a content-quality fix. The ordering is correct; the prose
+quality must improve.
+
+---
+
+### 21. Final Print Order Recommendation
+
+**The S2 ordering stands.** Thread 4's failure analysis does not change the recommended
+print order. The reasons:
+
+1. FQHE and topology are TEXT FIXES, not ORDER FIXES.
+2. S2 is simultaneously the most engaging AND most resilient Science ordering (morpho
+   contextualizes autocatalysis, Turing break reduces fatigue).
+3. Natural redundancy chains in the print order are strong (pos08→22, pos24→25→27,
+   pos14→12→13).
+4. Novel analogy density is well-spaced (no consecutive-chapter clusters except pos27
+   which is intra-chapter).
+5. pos15 draft state is a content issue, not a position issue.
+
+**Print order: UNCHANGED from first pass.**
+
+```
+Part I:    The Story           pos01 02 04 05 06 07           (6 chapters)
+Part II:   The Reckoning       pos08 22 18 23 19 28 29 34 34b (9 chapters)
+Part III:  The Implications    pos24 25 27 30 32 31           (6 chapters)
+Part IV:   The Science         pos09 10 11 14 12 13 15 16 17 20 21 26 (12 chapters)
+Part V:    The Question        pos35                          (1 chapter)
+```
+
+**Changes from first pass:**
+
+| Item | First pass | Second pass |
+|------|-----------|-------------|
+| Print order | S2 | S2 (confirmed) |
+| Text fixes | 4 (F1-F4) | 7 (F1-F7, adding FQHE seed, topology seed, FQHE analogy) |
+| Fix F2 | Simple word swap | Strengthened to bridge sentence connecting morpho→autocatalysis |
+| Priority ranking | All fixes equal | F5, F7 CRITICAL; F2, F6 HIGH; F1, F3 MEDIUM; F4 LOW |
+| Resilience assessment | Not done | Science path at 5%, but graceful degradation by design |
+| Novel analogy map | Not done | 7 analogies mapped, no problematic clusters |
+
+**Execution order for fixes:**
+
+1. F5 + F6 (p2 seeds for FQHE and topology) --- CRITICAL, required before print order finalized
+2. F7 (pos10 FQHE analogy expansion) --- CRITICAL, same timing
+3. F2 (pos12 bridge sentence) --- HIGH, required for S2 ordering
+4. F1, F3 (pos25, pos27 reference fixes) --- MEDIUM, required for any reorder
+5. F4 (pos22 "later chapters") --- LOW, cosmetic
+6. M1, M2 (chapter merges) --- prerequisite for reorder
+7. V1-V4 (content verifications) --- prerequisite for reorder
+8. Reorder main.tex \include{} sequence
+9. Build and verify

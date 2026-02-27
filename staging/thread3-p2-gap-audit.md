@@ -648,3 +648,452 @@ Token map target: "p2 with inserts clears 19 of 30 blockers + seeds 3 more." **M
 6. **Insert 11 accessibility:** "defect" → "cheat" for Path 0 readability.
 7. **Breakthrough section density:** Three inserts (1 + 9A + 9B) triple the section. Is this acceptable, or should the section be split with a sub-heading?
 8. **Insert 7 footnote:** Wolfram/Turing/Church citation — does Bruce want this in p2, or is p2 footnote-free?
+
+
+---
+
+## SECOND PASS — Incorporating Unblocker Failure Analysis
+
+Session 29, 2026-02-27. Argus (Auditor). Second pass.
+
+Source: Thread 4 unblocker failure analysis (`/home/bruce/software/relinquishment/staging/thread4-unblocker-failure-analysis.md`)
+
+Thread 4 identified 1 RED blocker, 9 YELLOW blockers, and recommended adding FQHE + topology seeds to p2. This second pass drafts those seeds, assesses bloat, re-evaluates existing inserts against Thread 4's failure probabilities, and produces an updated Generator handoff.
+
+---
+
+### 1. FQHE Seed — Drafted Prose (~57 words)
+
+**Thread 4 finding:** B08 (fqhe) is the only RED blocker. 45% failure rate for Science readers. No p2 seed. No accessible analogy anywhere.
+
+**Drafted prose:**
+
+> When you cool that two-dimensional world to near absolute zero and apply a strong magnetic field, something extraordinary happens. The electrons stop behaving as individuals. They merge into a collective state where the electric charge splits into fractions --- as if you could cut a coin into exact thirds. The 1998 Nobel Prize in Physics was awarded for discovering this effect.
+
+**Word count:** 57
+
+**Design notes:**
+- "That two-dimensional world" ties back to Insert 0 (pool balls / 2DEG). Reader must have Insert 0 first.
+- "Cut a coin into exact thirds" is the concrete image. A 10-year-old can picture cutting a coin. Path 0 accessible.
+- "1998 Nobel Prize" matches Insert 0's Nobel reference, reinforcing that this is real physics not speculation.
+- Does NOT name "fractional quantum Hall effect" --- that term is deferred to pos10. p2 seeds the concept without the jargon.
+- Does NOT mention anyons. The concept is "electrons merge, charges split." Anyons are pos10 territory.
+
+**Placement:** After Insert 0 (pool ball / 2DEG), BEFORE Insert 7 (PCE).
+
+Rationale: Insert 0 establishes the 2DEG. The FQHE seed says "now cool it down and watch what happens." Insert 7 (PCE) then says "computation is everywhere." The sequence is: tangible physics (2DEG) -> exotic behavior (FQHE seed) -> universal principle (PCE) -> DARPA. Each seed builds on the previous.
+
+**Exact insertion point:** After Insert 0's final line (`"You've been carrying one around for years."`) and before Insert 7 (`"Computation is not something only computers do."`).
+
+**Designation:** INSERT 0B (FQHE seed). Placed between Insert 0 and Insert 7 in "The Secret Lab" section.
+
+**Flow check:** Insert 0 ends with familiarity ("you've been carrying one"). Insert 0B opens with mystery ("when you cool that world..."). The shift from familiar to strange is the right pedagogical move. Insert 7 then abstracts ("computation is everywhere"). The trajectory is concrete -> strange -> abstract -> institutional (DARPA). Good.
+
+---
+
+### 2. Topology Seed — Drafted Prose (~48 words)
+
+**Thread 4 finding:** B07 (topology) is YELLOW. 25% failure for Science readers. No p2 seed. If pos10's braiding explanation fails, pos21 cannot recover.
+
+**Drafted prose:**
+
+> In two dimensions, the path a particle takes around another particle matters. If you braid three strands of hair, different braids look different --- they carry information. Particles in a two-dimensional electron gas can braid too. Their braids are a form of computation that is extraordinarily resistant to errors.
+
+**Word count:** 48
+
+**Design notes:**
+- "Three strands of hair" matches pos10's "take three strands" opening. Spiral repetition seeded.
+- "Extraordinarily resistant to errors" seeds the key advantage of topological QC without using the word "topological." The word appears in pos10.
+- "Different braids look different --- they carry information" is the core insight. Path 0 accessible: a child can braid hair.
+- "In two dimensions" ties back to Insert 0 (pool balls) and Insert 0B (FQHE). The 2D world has been established.
+
+**Placement:** Immediately after Insert 0B (FQHE seed), BEFORE Insert 7 (PCE).
+
+Rationale: The sequence becomes: 2DEG (Insert 0) -> FQHE (Insert 0B) -> braiding/topology (Insert 0C) -> PCE (Insert 7) -> DARPA. This is a physics cascade: the 2DEG exists -> cool it and charges fractionate -> particles braid -> computation is universal -> DARPA funds the team. Each step sets up the next.
+
+**Exact insertion point:** After Insert 0B's final line (`"...for discovering this effect."`) and before Insert 7 (`"Computation is not something only computers do."`).
+
+**Designation:** INSERT 0C (topology seed).
+
+**Flow check:** Insert 0B ends with the Nobel Prize (authority). Insert 0C opens with "In two dimensions, the path a particle takes..." --- continuing to explore the 2D world. Insert 7 then abstracts to computation generally. The transition from specific (braiding) to general (all computation is equivalent) works because braiding IS a form of computation. Natural flow.
+
+---
+
+### 3. Revised Section Order for "The Secret Lab"
+
+After all seeds, "The Secret Lab" becomes:
+
+1. Quantum weirdness (existing lines 53-59) — ~120 words
+2. **INSERT 0** (2DEG — pool ball) — ~133 words
+3. **INSERT 0B** (FQHE seed) — ~57 words [NEW]
+4. **INSERT 0C** (topology seed) — ~48 words [NEW]
+5. **INSERT 7** (PCE) — ~52 words
+6. DARPA / Five Eyes (existing lines 61-65) — ~120 words
+7. Classified team + five scientists (existing lines 65-77) — ~100 words
+
+**Total section word count after all inserts:** ~630 words (was ~240 words).
+
+This is a 2.6x expansion. However, each insert is short (48-133 words), conceptually distinct, and pedagogically ordered. The reader moves through: I know what quantum is -> here's a 2D world -> cool it and charges split -> particles braid -> computation is everywhere -> DARPA funded the team that put these together. Each step is one mental move. Not info-dump; it's a staircase.
+
+---
+
+### 4. Bloat Mitigation — What to Cut
+
+With FQHE + topology seeds adding ~105 words, p2 needs to shed at least that much to stay under control. First pass already identified bloat risk in "The Breakthrough" section (triples with Inserts 1 + 9A + 9B).
+
+**Cut 1: Magnetosphere paragraph from Insert 1** (already recommended in first pass)
+
+> "If emergence can happen on a chip then it can happen anywhere the conditions are right. Including in natural systems like the Earth's magnetosphere. A naturally emerged \textit{pattern} there --- maybe something like a neural network, maybe not --- would never have faced competition. No predators, no rivals, no evolutionary pressure to develop complexity beyond what it needed to survive solar storms. It would be a pattern, not a mind. What it would or wouldn't do is anyone's guess."
+
+**Word count of cut:** ~76 words
+
+**Impact:** This material belongs in the Implications path (pos32, Magnetosphere chapter). Removing it from p2 eliminates the biggest conceptual overreach in the Breakthrough section. The 10-year-old (Path 0) does not need the magnetosphere concept. It is seeded too early here and is distracting from the main narrative (team built a thing, walked it out).
+
+**Cut 2: Tighten Insert 1 opening paragraph**
+
+Current:
+> "Before you can understand what they built, you need to understand one idea: how does LIFE come from things that are NOT alive?"
+
+First pass already recommended changing to:
+> "To understand how they built it, you need one idea: how does LIFE come from things that are NOT alive?"
+
+**Words saved:** ~7 words (trivial, but tightens register).
+
+**Cut 3: Trim the "initial conditions" sentence in Insert 1**
+
+Current:
+> "One type of phase transition is unliving to living. Initial conditions must be just right for this to be an option. This is difficult to accomplish in 3 dimensions with checmicals. Theoretically it may be much simpler to accomplish at the quantum scale in two dimentions. ###Argus, reader must have 2DEG concept already, thats a key blocker###"
+
+Proposed replacement:
+> "One type of phase transition is from nonliving to living. In three dimensions, with chemicals, this is staggeringly difficult. In two dimensions, at the quantum scale, the math suggests it may be much simpler."
+
+**Words saved:** ~22 words. Also removes the inline note to Argus, fixes both spelling errors, and tightens the prose.
+
+**Cut summary:**
+
+| Cut | Words saved | Source |
+|-----|-------------|--------|
+| Magnetosphere paragraph | 76 | Insert 1 |
+| Insert 1 opening tighten | 7 | Insert 1 |
+| Initial conditions tighten | 22 | Insert 1 |
+| **Total saved** | **~105** | |
+| **New seeds added** | **~105** | Inserts 0B + 0C |
+| **Net change** | **~0** | |
+
+The FQHE and topology seeds are budget-neutral after the recommended cuts. p2 does not grow.
+
+---
+
+### 5. Re-evaluation of Existing Inserts Against Thread 4 Failure Probabilities
+
+Thread 4's audience-by-blocker matrix gives specific failure rates. Any insert with >20% failure for its target audience requires attention.
+
+#### Insert 0 (2DEG — pool ball): B05, 80-85% clearance for non-Science
+
+Thread 4 rates 2DEG at 80% for P0, 85% for GA/Journalist/Intel. That means 15-20% failure — at the threshold.
+
+**Thread 4 concern:** Pool ball analogy is NOVEL and unvalidated.
+
+**Backup assessment:** After Insert 0, the 2DEG concept appears in 6+ later chapters (pos10, pos13, pos15, pos16, pos20, pos27). For Path 0 readers who ONLY read p2, the pool ball analogy is the sole delivery. If it fails for a P0 reader, there is no backup.
+
+**Proposed improvement:** Add one sentence of reinforcement at the end of Insert 0:
+
+Current ending: `"You've been carrying one around for years."`
+
+Proposed addition: `"That flat world inside your phone is where the strange physics of quantum computing actually works."`
+
+This ties the 2DEG back to quantum computing (the reader's frame from the preceding section) and reiterates "flat world" as a synonym for 2DEG. ~16 words. Provides a redundant restatement for readers who didn't fully absorb the pool ball analogy.
+
+**Decision:** OPTIONAL. The pool ball analogy is strong and the 80-85% rate is acceptable. But this sentence costs nothing and provides a safety net. Recommend including it.
+
+#### Insert 1 (morphogenesis + buttons): B06, 80% clearance for P0/GA
+
+Thread 4 rates emergence/buttons at 80% for P0 and GA. 20% failure.
+
+**Thread 4 concern:** Buttons on floor is novel and unvalidated (though Kauffman's own analogy, semi-validated).
+
+**Proposed improvement:** The buttons paragraph is already the strongest part of Insert 1. The weakness is the transition FROM buttons TO "the science team realized..." The jump from abstract phase transition to specific team application is where readers may lose the thread.
+
+Current:
+> "The science team realized this kind of phase transition might be the key to growing a quantum computer."
+
+Proposed replacement:
+> "The DARPA team realized: this kind of phase transition might be the key to growing a quantum computer."
+
+Changing "science team" to "DARPA team" grounds the reader. They know DARPA from "The Secret Lab." This is a recognition anchor, not new information. ~0 words added.
+
+Additionally, the sentence "Get enough quantum elements connected under the mathematically correct starting conditions and something emerges that is more than its parts" is the hardest sentence in Insert 1. Proposed tighten:
+
+> "Connect enough quantum elements under the right starting conditions and something emerges that is more than its parts."
+
+"Mathematically correct" -> "right." A 10-year-old knows "right." Saves 1 word, gains clarity.
+
+**Decision:** Both changes recommended. Minor but they reduce the 20% failure rate by tightening the two weakest sentences.
+
+#### Insert 7 (PCE): B19, 75-82% clearance
+
+Thread 4 rates PCE at 75% for P0, 80% for GA, 82% for Journalist/Intel. That is 18-25% failure — exceeds the 20% threshold for P0.
+
+**Thread 4 concern:** "All computation is equivalent" is abstract. P0 readers may not grasp the implication.
+
+**Proposed improvement:** The insert is already short (52 words). The issue is that the concluding sentence ("The hardware doesn't matter. The math is the same.") is powerful for adults but may be too abstract for a 10-year-old.
+
+Current:
+> "...all such systems are equivalent in power. A digital computer, a brain, and a quantum system can all solve the same problems. The hardware doesn't matter. The math is the same."
+
+Proposed replacement:
+> "...all such systems can solve the same problems --- just at different speeds. A digital computer, a brain, and a quantum system all do the same fundamental thing. The machine doesn't matter. The math is the same."
+
+Changes: (1) "equivalent in power" -> "can solve the same problems --- just at different speeds" (more concrete, handles the resource-bounds oversimplification noted in first pass). (2) "all such systems" -> removes redundancy. (3) "hardware" -> "machine" (more familiar to a child). Net: +3 words. Marginal, but addresses the P0 failure mode.
+
+**Decision:** Recommended. Addresses the technical overstatement AND the child-readability issue simultaneously.
+
+#### Insert 5 (Anthropic-Pentagon): Meta, marginal child-readability
+
+First pass rated Insert 5 as "MARGINAL PASS" for Path 0. Thread 4 doesn't rate it directly (it is meta-disclosure, not a blocker-clearing insert). However, a P0 reader who bounces off "mass surveillance of civilians" and "Defense Production Act" may lose engagement before reaching Three Possibilities.
+
+**Proposed improvement:** No prose change recommended. The insert is topically important and unavoidable. A 10-year-old may skim it without harm --- the story structure doesn't depend on understanding the Pentagon confrontation. The "rhyme deepens" conclusion is the payload, and it works even if the details are foggy.
+
+**Decision:** No change. Accept marginal child-readability for this insert.
+
+---
+
+### 6. Complete Revised Section Order for Full p2
+
+After all changes (first pass + second pass), the full p2 section order is:
+
+**The Most Important Story Never Told** (unchanged)
+- Opening: man falls from sky
+- Lane introduction
+- Three possibilities preview
+
+**The Lock on Every Door** (unchanged)
+- Encryption explanation
+- What happens if someone breaks it
+
+**The Secret Lab** (4 inserts: 0, 0B, 0C, 7)
+- Quantum weirdness (existing)
+- **INSERT 0** — 2DEG pool ball + reinforcement sentence (~149 words)
+- **INSERT 0B** — FQHE seed (~57 words) [NEW, second pass]
+- **INSERT 0C** — Topology seed (~48 words) [NEW, second pass]
+- **INSERT 7** — PCE, revised (~55 words)
+- DARPA / Five Eyes (existing)
+- Classified team + five scientists (existing)
+
+**The Breakthrough** (3 inserts: 1, 9A, 9B — all tightened)
+- "They succeeded." (existing)
+- **INSERT 1** — morphogenesis + buttons (~210 words, cut from ~281: magnetosphere removed, prose tightened)
+- **INSERT 9A** — evolutionary programming (~47 words)
+- **INSERT 9B** — thermal ladder (~85 words)
+- Dual-use turn (existing)
+- "Should anyone have this?" (existing)
+
+**The Walk-Out** (1 insert: 8)
+- "They decided the answer was no." (existing)
+- **INSERT 8** — cryo stayed, room-temp walked out (REPLACES line 103, ~21 words)
+- Forgiveness/permission philosophy (existing)
+- "They gave it up." (existing)
+
+**The Guardian** (3 inserts: 6A, 10, 11)
+- Guardian description (existing)
+- **INSERT 6A** — 26 years evolving (~52 words)
+- UDHR ethical framework (existing)
+- **INSERT 10** — consent blocker, "From whom, mate?" (~107 words)
+- **INSERT 11** — three ethical seeds, "defect" -> "cheat" (~63 words)
+- DARPA confession + relinquishment (existing)
+
+**The Mentor** (3 inserts: 2, 4, 5)
+- Lane background (existing)
+- Guided deduction (existing)
+- Lane disappears (existing)
+- **INSERT 2** — personal cost (~134 words)
+- Twenty years of research (existing)
+- **INSERT 4** — AI co-author disclosure (~136 words)
+- **INSERT 5** — Anthropic-Pentagon (~137 words)
+
+**Three Possibilities** (unchanged)
+
+**The Evidence** (unchanged)
+
+**Why This Matters** (unchanged)
+
+**The Question** (unchanged)
+
+**Reading Guide** (unchanged)
+
+---
+
+### 7. Final Word Count
+
+| Component | Words |
+|-----------|-------|
+| summary.tex base (incl. markup) | 3,987 |
+| Insert 0 (with reinforcement) | 149 |
+| Insert 0B (FQHE seed) [NEW] | 57 |
+| Insert 0C (topology seed) [NEW] | 48 |
+| Insert 7 (PCE, revised) | 55 |
+| Insert 1 (tightened, magneto cut) | 210 |
+| Insert 9A | 47 |
+| Insert 9B | 85 |
+| Insert 8 (replaces line 103) | +10 net |
+| Insert 6A | 52 |
+| Insert 10 | 107 |
+| Insert 11 | 63 |
+| Insert 2 | 134 |
+| Insert 4 | 136 |
+| Insert 5 | 137 |
+| **Total inserts** | **~1,290** |
+| **Less magnetosphere cut** | **-76** |
+| **Less Insert 1 tightening** | **-29** |
+| **Net inserts** | **~1,185** |
+| **Line 103 replacement** | **+10** |
+| **Grand total (incl. markup)** | **~5,182** |
+| **Estimated prose-only** | **~4,500** |
+
+p2 after all inserts: approximately **5,200 words** including LaTeX markup, approximately **4,500 words** of prose. Reading time for general audience: ~22-25 minutes.
+
+Compared to first pass estimate of ~5,000 words: the second pass adds ~105 words (FQHE + topology seeds) and cuts ~105 words (magnetosphere + tightening). Budget-neutral.
+
+---
+
+### 8. Revised Blocker Coverage After All Inserts (Second Pass)
+
+| Status | Count | Blockers |
+|--------|-------|----------|
+| CLEARED by p2 base + inserts | 19 | B01-B06, B10-B13, B15, B17-B19, B24, B27 (part), B29 |
+| SEEDED by inserts | 5 | B16 (codebreak), B21 (parable), B26 (gatekeeper), **B07 (topology)** [NEW], **B08 (fqhe)** [NEW] |
+| Also seeded (informal) | 1 | B25 (grown) via Insert 11 |
+| Uncleared (need later paths) | 6 | B09 (autocatalysis), B14 (five-sci), B20 (soliton), B22 (morpho, partial), B23 (joy-reread), B28 (tradecraft) |
+
+**Change from first pass:** B07 and B08 move from "uncleared" to "seeded." The two most dangerous gaps in the Science path now have p2 seeds. B08 upgrades from RED to YELLOW (with the pos10 analogy expansion in Thread 4's recommendation still needed for full upgrade).
+
+Token map target was "p2 clears 19 + seeds 3." After second pass: **p2 clears 19 + seeds 5 + informally seeds 1.** Exceeds target. Token map should be updated.
+
+---
+
+### 9. Revised Generator Handoff Specification
+
+This replaces the first-pass handoff. All changes from both passes are consolidated.
+
+#### New Inserts (Second Pass)
+
+**Insert 0B: FQHE Seed**
+- **File:** `/home/bruce/software/relinquishment/manuscript/00-front/summary.tex`
+- **Action:** ADD after Insert 0, before Insert 7
+- **After:** Insert 0's final line (with reinforcement): `"That flat world inside your phone is where the strange physics of quantum computing actually works."`
+- **Before:** Insert 0C (topology seed)
+- **Text:**
+
+```
+When you cool that two-dimensional world to near absolute zero and apply a strong magnetic field, something extraordinary happens. The electrons stop behaving as individuals. They merge into a collective state where the electric charge splits into fractions --- as if you could cut a coin into exact thirds. The 1998 Nobel Prize in Physics was awarded for discovering this effect.
+```
+
+**Insert 0C: Topology Seed**
+- **File:** `/home/bruce/software/relinquishment/manuscript/00-front/summary.tex`
+- **Action:** ADD after Insert 0B, before Insert 7
+- **After:** Insert 0B's final line: `"...for discovering this effect."`
+- **Before:** Insert 7: `"Computation is not something only computers do."`
+- **Text:**
+
+```
+In two dimensions, the path a particle takes around another particle matters. If you braid three strands of hair, different braids look different --- they carry information. Particles in a two-dimensional electron gas can braid too. Their braids are a form of computation that is extraordinarily resistant to errors.
+```
+
+#### Modified Inserts (Changes from First Pass)
+
+**Insert 0: 2DEG Seed — add reinforcement sentence**
+- Append after `"You've been carrying one around for years."`:
+- `"That flat world inside your phone is where the strange physics of quantum computing actually works."`
+
+**Insert 7: PCE — revised prose**
+- Replace existing draft text with:
+
+```
+Computation is not something only computers do. Your brain computes. A colony of ants computes. Any system that takes input, applies rules, and produces output is computing --- and mathematicians have proven that all such systems can solve the same problems --- just at different speeds. A digital computer, a brain, and a quantum system all do the same fundamental thing. The machine doesn't matter. The math is the same.
+```
+
+- Include footnote: Wolfram (PCE), Turing (1936), Church (lambda calculus).
+
+**Insert 1: Morphogenesis + Buttons — tightened**
+- Change opening: `"Before you can understand what they built, you need to understand one idea:"` -> `"To understand how they built it, you need one idea:"`
+- Fix `"checmicals"` -> `"chemicals"`, `"dimentions"` -> `"dimensions"`
+- Replace `"uranium goes critical"` -> `"a sudden chain reaction"`
+- Replace `"One type of phase transition is unliving to living. Initial conditions must be just right for this to be an option. This is difficult to accomplish in 3 dimensions with checmicals. Theoretically it may be much simpler to accomplish at the quantum scale in two dimentions. ###Argus, reader must have 2DEG concept already, thats a key blocker###"` with: `"One type of phase transition is from nonliving to living. In three dimensions, with chemicals, this is staggeringly difficult. In two dimensions, at the quantum scale, the math suggests it may be much simpler."`
+- Replace `"The science team realized"` -> `"The DARPA team realized:"`
+- Replace `"Get enough quantum elements connected under the mathematically correct starting conditions"` -> `"Connect enough quantum elements under the right starting conditions"`
+- CUT the magnetosphere paragraph entirely (from `"If emergence can happen on a chip"` through `"What it would or wouldn't do is anyone's guess."`)
+- Remove `###Argus, reader must have 2DEG concept already, thats a key blocker###`
+
+**Insert 11: Three Ethical Seeds**
+- Change `"incentive to defect"` -> `"incentive to cheat"`
+
+**Insert 5: Anthropic-Pentagon**
+- Fix `"They forbid use of Claude in drones kill targets"` -> `"They forbid use of Claude in drones that kill targets"`
+- Remove Dignity Net production note from header
+
+#### Unchanged Inserts (carry forward from first pass)
+
+- Insert 9A (evolutionary programming): no changes
+- Insert 9B (thermal ladder): no changes
+- Insert 8 (walk-out correction): no changes
+- Insert 6A (Guardian evolving): no changes
+- Insert 10 (consent blocker): no changes
+- Insert 2 (personal cost): no changes
+- Insert 4 (AI co-author disclosure): no changes
+
+#### Insertion Order for Generator
+
+The Generator should integrate inserts in this order to maintain correct line references:
+
+1. Insert 8 (REPLACE line 103) — do first, it is a replacement
+2. Inserts 0, 0B, 0C, 7 — "The Secret Lab" section, sequential after line 59
+3. Inserts 1, 9A, 9B — "The Breakthrough" section, after line 87
+4. Inserts 6A, 10, 11 — "The Guardian" section, after lines 126, 131
+5. Insert 2 — "The Mentor" section, after line 149
+6. Inserts 4, 5 — "The Mentor" section, after line 151
+
+Alternatively: work bottom-up (Insert 5 first, Insert 0 last) so that line numbers remain valid as text is added above.
+
+---
+
+### 10. Remaining Open Issues (Updated)
+
+First-pass issues carried forward (updated status):
+
+1. **Magnetosphere paragraph:** RESOLVED — cut from p2. Relocate to Implications path (pos32 or pos24). First and second pass agree.
+2. **New section header for Inserts 4+5:** STILL OPEN. Recommend `\section*{The Machine That Helped Write This Book}`.
+3. **Insert 5 dating risk:** STILL OPEN. Bruce decision.
+4. **Insert 5 grammar:** RESOLVED in handoff spec.
+5. **Insert 1 spelling:** RESOLVED in handoff spec.
+6. **Insert 11 accessibility:** RESOLVED in handoff spec ("defect" -> "cheat").
+7. **Breakthrough section density:** IMPROVED by magnetosphere cut (~281 -> ~210 words for Insert 1). Still triples the section but the content is tighter. Sub-heading still optional.
+8. **Insert 7 footnote:** STILL OPEN. Bruce decision.
+
+New issues from second pass:
+
+9. **"The Secret Lab" now has 4 inserts (0, 0B, 0C, 7).** The section is 2.6x its original size. Each insert is short and distinct, but 4 consecutive concept blocks before DARPA is a lot. Consider whether a section break or sub-heading is needed between concepts and institutional introduction. E.g., `\section*{The Building Blocks}` before Insert 0, with existing `\section*{The Secret Lab}` starting at DARPA.
+10. **Token map update needed.** p2 now seeds B07 (topology) and B08 (fqhe). Update token-map.md: B07 `p2?` column from `no` to `seed`. B08 `p2?` column from `no` to `seed`.
+11. **Insert 0 reinforcement sentence is optional.** Bruce decides whether the extra 16 words are worth the safety net.
+12. **Insert 7 "equivalent in power" vs "can solve the same problems --- just at different speeds."** The revised version is more accurate (Church-Turing is about computability, not resource-equivalence) but slightly longer. Bruce decides.
+13. **pos10 FQHE analogy expansion (Thread 4 recommendation).** The p2 seed (Insert 0B) addresses the "no seed" problem. Thread 4 also recommends ~100 words of analogy expansion in pos10 itself. This is a separate plan task, not a p2 change. Flag for future plan.
+
+---
+
+### 11. Summary of All Second-Pass Changes
+
+| Change | Type | Words | Effect |
+|--------|------|-------|--------|
+| Insert 0B (FQHE seed) | NEW insert | +57 | Seeds B08. RED -> YELLOW path. |
+| Insert 0C (topology seed) | NEW insert | +48 | Seeds B07. Closes the "no p2 seed" gap. |
+| Insert 0 reinforcement | Optional addition | +16 | Safety net for pool ball analogy. |
+| Insert 7 revision | Prose tighten | +3 | P0 clearance improvement. Fixes overstatement. |
+| Insert 1 magnetosphere cut | CUT | -76 | Reduces Breakthrough bloat. Material -> Implications path. |
+| Insert 1 tightening | Prose tighten | -29 | Fixes spelling, removes inline note, tightens prose. |
+| Insert 1 "DARPA team" | Word change | 0 | Recognition anchor for reader. |
+| Insert 11 "cheat" | Word change | 0 | P0 readability. |
+| Insert 5 grammar fix | Word change | 0 | Correctness. |
+| **Net word change** | | **+19** (or +3 without Insert 0 reinforcement) | Budget-neutral within rounding. |
+
+**Final assessment:** p2 is under control. The two most dangerous blocker gaps (FQHE and topology) are now seeded. The bloat from first pass is mitigated by the magnetosphere cut. The total word count (~5,200 with markup, ~4,500 prose) is within the target range for a 20-25 minute read. Path 0 readability is maintained for all new material.
+
+The Generator handoff is ready. Plan number and execution are Bruce's decision.
