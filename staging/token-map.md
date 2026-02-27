@@ -196,6 +196,9 @@ pos25 Ethical Framework .... udhr deepens (failure modes)
 pos27 Extension ............ grown, substrate (vine metaphor)
 pos30 Unipolar Condition ... substrate deepens (decisive advantage)
 pos32 Magnetosphere ........ natural emergence (something ancient)
+                              NOTE: Add Kauffman prediction argument — those who knew
+                              SK's science should have PREDICTED mag entity, not been
+                              surprised. The surprise measures how few had synthesized.
 pos31 Wolfram .............. pce deepens (job application)
 ── IMPLICATIONS STOPS HERE (~35K) ──
 
