@@ -8,7 +8,7 @@
 % Source: manuscript/versions/ultra-bridge.md (imported Plan 0011)
 % Rewrite: Argus session 16, cite-dont-rewrite compression, three-possibilities fix
 
-You've seen the movie. Or you've read the book --- Andrew Hodges's \textit{Alan Turing: The Enigma}, the definitive biography. However you got it, you know this story.
+You've seen the movie. Or you've read the book --- Andrew Hodges's \textit{Alan Turing: The Enigma}, the definitive biography.\footcite{hodges1983} However you got it, you know this story.
 
 Enigma, Bletchley Park, Alan Turing. A brilliant mathematician cracks the Nazi encryption machine. The Allies read Germany's secret communications. The war turns. Turing is later persecuted for being gay, chemically castrated, dead at forty-one. Decades pass before recognition.
 
@@ -30,7 +30,7 @@ Every single one of them kept the secret.
 
 Not for a year. Not for the duration of the war. For more than thirty years.
 
-The Ultra Secret --- as the intelligence was codenamed --- remained classified until 1974, when a former RAF officer named F.W.\ Winterbotham published a book about it. That book didn't even mention Alan Turing by name. More than thirty years of silence. Ten thousand people. In a democracy, with a free press, with family members asking ``what did you do in the war?'' --- ten thousand people said nothing.
+The Ultra Secret --- as the intelligence was codenamed --- remained classified until 1974, when a former RAF officer named F.W.\ Winterbotham published a book about it.\footcite{winterbotham1974} That book didn't even mention Alan Turing by name. More than thirty years of silence. Ten thousand people. In a democracy, with a free press, with family members asking ``what did you do in the war?'' --- ten thousand people said nothing.
 
 Some of them carried the secret to their graves. They died without ever telling their children, their spouses, their closest friends. Not because they were threatened with violence --- though the Official Secrets Act carried real penalties --- but because they'd been told the secret mattered, and they believed it, and they kept their word.
 
@@ -44,7 +44,7 @@ On November 14, 1940, the Luftwaffe bombed the city of Coventry. An estimated fi
 
 In 1974, F.W.\ Winterbotham --- the same former RAF officer whose book first revealed the Ultra secret --- claimed that Churchill had specific advance intelligence that Coventry was the target. In Winterbotham's telling, Churchill knew what was coming, knew when it was coming, and chose not to act. He did not evacuate the city. He did not warn its people. He let Coventry burn to protect the secret that Britain was reading German codes.
 
-The majority of historians dispute this. Sir Harry Hinsley, the official historian of British Intelligence in the Second World War, concluded that Churchill knew a major Luftwaffe raid was coming but probably did not know Coventry was the specific target. R.V.\ Jones, who served as Assistant Director of Intelligence during the war, reached a similar conclusion. GCHQ's own published account does not support Winterbotham's version. The scholarly consensus is that the story of Churchill deliberately sacrificing Coventry is, at best, a dramatic oversimplification and, at worst, a myth.
+The majority of historians dispute this. Sir Harry Hinsley, the official historian of British Intelligence in the Second World War, concluded that Churchill knew a major Luftwaffe raid was coming but probably did not know Coventry was the specific target.\footcite{hinsley1979} R.V.\ Jones, who served as Assistant Director of Intelligence during the war, reached a similar conclusion.\footcite{jones1978} GCHQ's own published account does not support Winterbotham's version. The scholarly consensus is that the story of Churchill deliberately sacrificing Coventry is, at best, a dramatic oversimplification and, at worst, a myth.
 
 But the existence of this debate is itself the proof. Ultra secrecy was considered so important that historians take seriously the question of whether a prime minister would let a city burn to preserve it. The Coventry myth endures not because it is true, but because it is plausible --- because when a code-breaking capability is real, protecting its secrecy justifies almost anything in the minds of those who hold it.
 
@@ -62,15 +62,15 @@ That agency is called GCHQ --- Government Communications Headquarters. It is Bri
 
 In 1969, a GCHQ mathematician named James Ellis conceived of something revolutionary: a way for two people to communicate securely without ever needing to share a secret key in advance. This idea --- public-key cryptography --- would eventually become the foundation of all internet security. Every time you see a padlock icon in your browser, every time you make an online purchase, every time you send an encrypted message, you are using the principle Ellis invented.
 
-In 1973, another GCHQ mathematician named Clifford Cocks worked out the specific mathematics. He independently invented what the world would later call RSA --- named for Rivest, Shamir, and Adleman, the three American academics who published the same idea in 1977.
+In 1973, another GCHQ mathematician named Clifford Cocks worked out the specific mathematics. He independently invented what the world would later call RSA --- named for Rivest, Shamir, and Adleman, the three American academics who published the same idea in 1978.\footcite{rsa1978}
 
-In 1974, a third GCHQ mathematician, Malcolm Williamson, independently invented what the public world would call Diffie-Hellman key exchange --- the protocol published by Whitfield Diffie and Martin Hellman in 1976.
+In 1974, a third GCHQ mathematician, Malcolm Williamson, independently invented what the public world would call Diffie-Hellman key exchange --- the protocol published by Whitfield Diffie and Martin Hellman in 1976.\footcite{diffiehellman1976}
 
 Three of the most important cryptographic inventions of the twentieth century. All invented at GCHQ\@. All classified. The public world ``discovered'' each one independently, years later, without knowing that GCHQ had gotten there first.
 
 GCHQ didn't acknowledge any of this until 1997 --- twenty-four years after Cocks's work.
 
-This is not speculation. It is not conspiracy theory. It is declassified, acknowledged history. GCHQ has publicly confirmed these facts. The agency that grew out of Bletchley Park --- the same agency --- kept another world-changing cryptographic breakthrough secret for nearly a quarter of a century.
+This is not speculation. It is not conspiracy theory. It is declassified, acknowledged history. GCHQ has publicly confirmed these facts.\footcite{singh1999} The agency that grew out of Bletchley Park --- the same agency --- kept another world-changing cryptographic breakthrough secret for nearly a quarter of a century.
 
 The pattern is clear: a secret government agency makes a fundamental breakthrough in cryptography or computation. They classify it. The public world independently discovers the same principles years or decades later. When the secret finally comes out, history has to be rewritten.
 
@@ -84,7 +84,7 @@ The question this book asks is: did it happen a third time?
 
 Before we get to that question, we need to go back to Alan Turing. Not the code-breaker. Not the persecution victim. The scientist.
 
-In 1952, while enduring chemical castration, Turing published ``The Chemical Basis of Morphogenesis'' in the \textit{Philosophical Transactions of the Royal Society}. Almost nobody knows he pivoted.
+In 1952, while enduring chemical castration, Turing published ``The Chemical Basis of Morphogenesis'' in the \textit{Philosophical Transactions of the Royal Society}.\footcite{turing1952} Almost nobody knows he pivoted.
 
 Here is the chain of reasoning, stated as simply as I can manage. What is an example of intelligence? Your brain. How did your brain get there? An organism grew it --- morphogenesis, the process by which a single fertilized cell becomes a structured, patterned, functional body. Your brain is part of your shape. So if you truly understood morphogenesis, you could \textit{grow} a brain. Not program it. Grow it. The way nature does.
 
