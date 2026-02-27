@@ -1,5 +1,6 @@
 $pdf_mode = 4;                    # LuaLaTeX
 $lualatex = 'lualatex --shell-escape %O %S';
+$biber = 'biber %O %S';
 # NO $aux_dir, NO $out_dir.
 # LuaLaTeX on TeX Live does NOT support --aux-directory natively.
 # latexmk emulates it by copying files, which breaks makeglossaries.
