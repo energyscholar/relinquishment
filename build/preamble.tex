@@ -14,6 +14,11 @@
 % --- Language ---
 \usepackage[english]{babel}
 
+% --- Bibliography (Chicago Notes-Bibliography) ---
+\usepackage[backend=biber]{biblatex-chicago}
+\ExecuteBibliographyOptions{isbn=false,doi=false,eprint=false}
+\addbibresource{manuscript/bibliography.bib}
+
 % --- Fonts (LuaLaTeX native — NOT fontenc, NOT cmap) ---
 \usepackage{fontspec}
 

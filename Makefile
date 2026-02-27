@@ -91,9 +91,9 @@ validate:
 clean:
 	latexmk -r build/.latexmkrc -jobname=$(JOBNAME) -C main.tex 2>/dev/null || true
 	rm -f $(JOBNAME).pdf $(JOBNAME).aux $(JOBNAME).log $(JOBNAME).toc $(JOBNAME).out $(JOBNAME).fls $(JOBNAME).fdb_latexmk
-	rm -f $(JOBNAME).glo $(JOBNAME).gls $(JOBNAME).glg $(JOBNAME).ist $(JOBNAME).synctex.gz $(JOBNAME).bbl $(JOBNAME).blg
+	rm -f $(JOBNAME).glo $(JOBNAME).gls $(JOBNAME).glg $(JOBNAME).ist $(JOBNAME).synctex.gz $(JOBNAME).bbl $(JOBNAME).blg $(JOBNAME).bcf $(JOBNAME).run.xml
 	rm -f main.pdf main.aux main.log main.toc main.out main.fls main.fdb_latexmk
-	rm -f main.glo main.gls main.glg main.ist main.synctex.gz main.bbl main.blg
+	rm -f main.glo main.gls main.glg main.ist main.synctex.gz main.bbl main.blg main.bcf main.run.xml
 	rm -rf build/tikz-cache/*
 	rm -f build/images/*.pdf
 	rm -f build/validation.json
