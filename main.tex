@@ -32,6 +32,9 @@
 
 \begin{document}
 \frontmatter
+% Suppress blank pages between front matter elements (PDF-first layout)
+\let\origcleardoublepage\cleardoublepage
+\let\cleardoublepage\clearpage
 \include{manuscript/00-front/cover}
 \include{manuscript/00-front/title}
 \include{manuscript/00-front/copyright}
@@ -46,6 +49,8 @@
 \include{manuscript/00-front/introduction}
 \include{manuscript/00-front/corrections}
 
+% Restore normal chapter-start behavior for mainmatter
+\let\cleardoublepage\origcleardoublepage
 \mainmatter
 
 % ===== PART I: THE STORY (GA path — Positions 1-7) =====

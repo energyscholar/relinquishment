@@ -143,6 +143,29 @@
 % --- Full-page backgrounds (cover) ---
 \usepackage{eso-pic}
 
+% --- Click-to-advance page navigation (screen only) ---
+% Fixed-position arrows: park mouse on ▶, click to advance. No scroll needed.
+\ifdefined\PRINT\else
+  \AddToShipoutPictureBG{%
+    % Next page — right margin, vertically centered
+    \AtPageUpperLeft{%
+      \put(\LenToUnit{\paperwidth-38pt},\LenToUnit{-0.5\paperheight}){%
+        \hyperlink{page.\the\numexpr\value{page}+1\relax}{%
+          \textcolor{linkblue!50}{\fontsize{18}{20}\selectfont$\triangleright$}%
+        }%
+      }%
+    }%
+    % Previous page — left margin, vertically centered
+    \AtPageUpperLeft{%
+      \put(18pt,\LenToUnit{-0.5\paperheight}){%
+        \hyperlink{page.\the\numexpr\value{page}-1\relax}{%
+          \textcolor{linkblue!50}{\fontsize{18}{20}\selectfont$\triangleleft$}%
+        }%
+      }%
+    }%
+  }
+\fi
+
 % --- Full-height track stripe + rotated label (right margin) ---
 % No stripe on pages before first \settrack call (front matter, TOC, etc.)
 \AddToShipoutPictureBG{%
