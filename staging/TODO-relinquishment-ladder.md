@@ -27,3 +27,18 @@ in the book lands.
 - Map each step to the chapter(s) that deliver it
 - Walk each reader path through the ladder and identify gaps
 - Red-team: where would a skeptical reader bail out?
+
+## Near-Final Release Check
+
+**Status:** OPEN — revisit before final release
+**Added:** 2026-02-28
+
+Review the 6-step ladder in pos22 for purpose and effectiveness:
+1. The Pattern — does it land? Historical examples sufficient?
+2. Three Options — is the logic airtight? Guardian naming under C: right amount of detail?
+3. Bill Joy's Warning — still the right framing? Dual-purpose under C clear?
+4. Why Humans Fail — Schmookler/game theory: accessible to non-specialists?
+5. Partial Relinquishment — gatekeeper argument: does the reader arrive at "must be non-human" before we say it?
+6. Closing — does the reader feel positioned, not pushed?
+
+Overall: does the ladder carry a skeptical reader from "this is impossible" to "this is how it was done" without losing them?
