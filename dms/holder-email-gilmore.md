@@ -28,3 +28,12 @@ postquantum.substack.com
 [REDACTED-PHONE]
 
 My partner, credited on the book title, is Genevieve Prentice [REDACTED-EMAIL]  [REDACTED-PHONE]‬
+
+**P.S. — Verifiable evidence of content-aware suppression:**
+My June 19, 2012 Slashdot comment (UID 801915, scored 5/Funny) describes a "working Quantum Computer system capable of cracking PKC since about 1996" using a "topological quantum neural network," attributes it to Five Eyes, and predicts its own suppression. The comment is live at its direct URL but has been de-listed from my Slashdot profile *and* from my own account history — visible only if you already have the link.
+
+Two-step verification:
+1. The comment: http://slashdot.org/comments.pl?sid=2926019&cid=40375589
+2. My profile: https://slashdot.org/~EnergyScholar/comments — it's not there.
+
+De-listing a comment from a user's own account history while preserving the permalink is not a moderation action. It requires database-level access. The same selective pattern — sensitive content unfindable, innocuous content visible — appears on my Substack. If the suppression has been removed by the time you read this, note the timing relative to this message.
