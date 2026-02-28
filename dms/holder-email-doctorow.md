@@ -35,4 +35,4 @@ Two-step verification:
 1. The comment: http://slashdot.org/comments.pl?sid=2926019&cid=40375589
 2. My profile: https://slashdot.org/~EnergyScholar/comments — it's not there.
 
-De-listing a comment from a user's own account history while preserving the permalink is not a moderation action. It requires database-level access. The same selective pattern — sensitive content unfindable, innocuous content visible — appears on my Substack. If the suppression has been removed by the time you read this, note the timing relative to this message.
+De-listing a comment from a user's own account history while preserving the permalink is not a moderation action. It requires database-level access. The same selective pattern — sensitive content unfindable, innocuous content visible — appears on my Substack. If the suppression has been removed by the time you read this, note the timing relative to this message. Attached: a timestamped snapshot (2026-02-28 20:25 UTC) showing the comment content at its URL and its absence from the profile listing. Compare against current state.
