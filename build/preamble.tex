@@ -199,6 +199,22 @@
 %\renewcommand{\aidraftchapter}{}
 %\renewcommand{\aidraftmark}{}
 
+% Chapter attribution markers — replaces \aidraftchapter system (Session 30)
+% Place immediately after \chapter{} in each file.
+\newcommand{\brucevoice}{%
+  \begin{flushright}\small\textit{--- Bruce Stephenson}\end{flushright}\vspace{0.3cm}}
+
+\newcommand{\argusvoice}{%
+  \begin{flushright}\small\textit{--- Argus}\\[2pt]
+  \scriptsize Bruce reviewed this chapter for coherence and readability.\\
+  The technical content is outside his domain expertise.\end{flushright}\vspace{0.3cm}}
+
+\newcommand{\collabvoice}{%
+  \begin{flushright}\small\textit{--- Bruce Stephenson \& Argus}\end{flushright}\vspace{0.3cm}}
+
+\newcommand{\genevievevoice}{%
+  \begin{flushright}\small\textit{--- Genevieve Prentice}\end{flushright}\vspace{0.3cm}}
+
 % DMS redaction marker — used for WikiLeaks-sensitive content
 \newcommand{\DMSRedacted}[1]{%
   \begin{quote}
