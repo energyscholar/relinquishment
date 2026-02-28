@@ -29,11 +29,23 @@ postquantum.substack.com
 
 My partner, credited on the book title, is Genevieve Prentice [REDACTED-EMAIL]  [REDACTED-PHONE]‬
 
-**P.S. — Verifiable evidence of content-aware suppression:**
-My June 19, 2012 Slashdot comment (UID 801915, scored 5/Funny) describes a "working Quantum Computer system capable of cracking PKC since about 1996" using a "topological quantum neural network," attributes it to Five Eyes, and predicts its own suppression. The comment is live at its direct URL but has been de-listed from my Slashdot profile *and* from my own account history — visible only if you already have the link.
+**P.S. — Verifiable evidence of content-aware suppression (3 types, 2 platforms):**
 
-Two-step verification:
+**Type 1 — Database-level de-listing (Slashdot):**
+My June 19, 2012 comment (UID 801915, scored 5/Funny) is live at its direct URL but absent from my profile and my own account history. 24 other comments are listed normally. Only the one combining TQNN technical claims + Five Eyes attribution + suppression prediction is missing. Moderation changes scores, not account listings. This requires database access.
+
+Verify in two clicks:
 1. The comment: http://slashdot.org/comments.pl?sid=2926019&cid=40375589
-2. My profile: https://slashdot.org/~EnergyScholar/comments — it's not there.
+2. My profile: https://slashdot.org/~EnergyScholar/comments — not listed.
 
-De-listing a comment from a user's own account history while preserving the permalink is not a moderation action. It requires database-level access. The same selective pattern — sensitive content unfindable, innocuous content visible — appears on my Substack. If the suppression has been removed by the time you read this, note the timing relative to this message. Attached: a timestamped snapshot (2026-02-28 20:25 UTC) showing the comment content at its URL and its absence from the profile listing. Compare against current state.
+**Type 2 — Moderation suppression (Slashdot):**
+Two comments describing the suppression mechanism itself were modded to -1 (below default visibility): "forum spy admins messing with me" (Sept 4, 2012, tagged Offtopic) and "time to leave Slashdot" (Sept 19, 2012, tagged Troll). Could be organic; consistent with the pattern.
+
+**Type 3 — Search engine de-indexing (Substack):**
+Verify with two Google searches:
+1. `site:postquantum.substack.com "Magic Numbers"` — innocuous article, indexed, findable.
+2. `site:postquantum.substack.com "Relinquishment"` — the central story, not indexed, invisible. Same for "Kangaroos" and "Death of Alan Turing."
+
+Same domain, same traffic, same SEO. The selectivity is content-aware.
+
+If any suppression has been removed by the time you read this, note the timing relative to this message. Attached: a timestamped snapshot (2026-02-28 20:25 UTC) showing the Slashdot comment at its URL and its absence from the profile listing. Compare against current state.
