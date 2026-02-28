@@ -11,6 +11,10 @@
 *.glg
 *.ist
 *.auxlock
+*.bbl
+*.bcf
+*.blg
+*.run.xml
 
 # Build artifacts
 build/tikz-cache/
@@ -22,12 +26,36 @@ build/output/
 build/epub-tmp/
 build/reader-inline.html
 main.pdf
-Relinquishment.pdf
 *.epub
 *.upa
 *.md.archive
 Relinquishment.html
 Relinquishment.md
+
+# Not book content
+.claude/
+research/
+staging/
+tests/
+manuscript/staging/audit-pass-*.md
+manuscript/staging/pos22-extracted-narrative.md
+plans/0026-se-chain-*.md
+plans/0027-se-chain-*.md
+plans/0028-se-chain-*.md
+plans/0029-se-chain-*.md
+plans/0030-se-chain-*.md
+plans/0031-se-chain-*.md
+plans/0032-se-chain-*.md
+plans/0033-se-chain-*.md
+plans/0033b-se-chain-*.md
+plans/0034-se-chain-*.md
+plans/0035-se-chain-*.md
+plans/aesthetics-audit-*.md
+plans/ethical-thread-openings.md
+plans/source-audit.md
+plans/source-facts.md
+plans/terminology.md
+plans/verification-0003.md
 
 # Python / venv
 .venv/
