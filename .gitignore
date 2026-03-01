@@ -57,6 +57,16 @@ plans/source-facts.md
 plans/terminology.md
 plans/verification-0003.md
 
+# Sensitive / local
+scripts/mailing-list.txt
+.env
+.env.*
+*.key
+*.pem
+*.asc
+credentials*
+checksums.sha256
+
 # Python / venv
 .venv/
 __pycache__/

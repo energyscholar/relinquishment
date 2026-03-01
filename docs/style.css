@@ -1,0 +1,187 @@
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  background: #0D1117;
+  color: #E6EDF3;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+main {
+  max-width: 42rem;
+  width: 100%;
+  padding: 2rem 1.5rem;
+}
+
+/* Cover image */
+.cover {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.cover img {
+  max-width: 280px;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+}
+
+/* Title block */
+.title-block {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.title-block h1 {
+  font-size: 2.4rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  margin-bottom: 0.3rem;
+}
+
+.title-block .subtitle {
+  font-style: italic;
+  color: #8B949E;
+  font-size: 1.05rem;
+  margin-bottom: 0.8rem;
+}
+
+.title-block .authors {
+  color: #8B949E;
+  font-size: 0.95rem;
+}
+
+/* Section headings */
+h2 {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+  color: #E6EDF3;
+}
+
+/* Hook paragraph */
+.hook {
+  margin-bottom: 2.5rem;
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+/* Three possibilities */
+.possibilities {
+  margin-bottom: 2.5rem;
+}
+
+.possibility {
+  margin-bottom: 1.2rem;
+  padding-left: 1rem;
+  border-left: 3px solid #8B949E;
+}
+
+.possibility.track-a { border-color: #2D9B96; }  /* teal */
+.possibility.track-b { border-color: #D4A04A; }  /* amber */
+.possibility.track-c { border-color: #8B6FC0; }  /* violet */
+
+.possibility strong {
+  display: block;
+  margin-bottom: 0.2rem;
+}
+
+.possibility.track-a strong { color: #2D9B96; }
+.possibility.track-b strong { color: #D4A04A; }
+.possibility.track-c strong { color: #8B6FC0; }
+
+/* Downloads */
+.downloads {
+  margin-bottom: 2.5rem;
+  text-align: center;
+}
+
+.download-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-top: 0.8rem;
+}
+
+.download-buttons a {
+  display: inline-block;
+  padding: 0.6rem 1.5rem;
+  border: 1px solid #30363D;
+  border-radius: 6px;
+  color: #E6EDF3;
+  text-decoration: none;
+  font-size: 0.95rem;
+  transition: border-color 0.15s;
+}
+
+.download-buttons a:hover {
+  border-color: #58A6FF;
+}
+
+.download-buttons .primary {
+  background: #1F6FEB;
+  border-color: #1F6FEB;
+}
+
+.download-buttons .primary:hover {
+  background: #388BFD;
+  border-color: #388BFD;
+}
+
+/* License and contact */
+.meta {
+  margin-bottom: 2rem;
+  font-size: 0.9rem;
+  color: #8B949E;
+  line-height: 1.7;
+}
+
+.meta a {
+  color: #58A6FF;
+  text-decoration: none;
+}
+
+.meta a:hover {
+  text-decoration: underline;
+}
+
+/* Footer */
+footer {
+  width: 100%;
+  max-width: 42rem;
+  padding: 1.5rem;
+  border-top: 1px solid #21262D;
+  text-align: center;
+  font-size: 0.85rem;
+  color: #484F58;
+}
+
+/* Mobile adjustments */
+@media (max-width: 480px) {
+  .title-block h1 {
+    font-size: 1.8rem;
+    letter-spacing: 0.1em;
+  }
+
+  .cover img {
+    max-width: 200px;
+  }
+
+  main {
+    padding: 1.5rem 1rem;
+  }
+}
