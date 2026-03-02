@@ -12,12 +12,18 @@ TIKZ_PDFS := $(TIKZ_SRCS:.tex=.pdf)
 
 .PHONY: dev final screen print images validate clean clean-cache manifest size-report gitinfo check check-strict epub html markdown
 
-# --- Dev build (host, no tagging) ---
+# --- Dev build (public release — no DMS appendix, no working draft notice) ---
 dev: gitinfo images
 	@echo "" > build/flags.tex
 	@mkdir -p build/tikz-cache
 	latexmk -r build/.latexmkrc -jobname=$(JOBNAME) main.tex
 	$(MAKE) html
+
+# --- DMS build (includes DMS appendix + working draft notice) ---
+dms: gitinfo images
+	@echo "\\def\\dmsbuild{1}" > build/flags.tex
+	@mkdir -p build/tikz-cache
+	latexmk -r build/.latexmkrc -jobname=$(JOBNAME) main.tex
 
 # --- Final build (Docker required) ---
 final:

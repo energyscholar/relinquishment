@@ -115,7 +115,10 @@
 \include{manuscript/appendix/glossary}
 \include{manuscript/appendix/timeline}
 \include{manuscript/appendix/sources}
+% DMS appendix — only included when \dmsbuild is defined (make dms)
+\ifdefined\dmsbuild
 \include{manuscript/appendix/dms-note}
+\fi
 
 \backmatter
 \include{manuscript/99-back/acknowledgements}
