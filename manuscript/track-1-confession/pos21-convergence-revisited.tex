@@ -73,11 +73,25 @@ Thus, if one admits to having a functional QNN, one also admits to having a func
 
 The logical chain here is real: a QNN does imply a quantum computer, and admitting one means admitting the other. Under Possibility~A, the logic is sound but the premise (a working QNN exists) is false. Under Possibility~B, some early-stage quantum neural network research may have occurred, but the leap to ``production-scale'' is where the claim exceeds evidence.
 
+\section*{The Operators}
+
+\aidraft
+
+\brucevoice
+
+Between 2016 and 2018 I tutored my lifelong friend Robin Macomber in mathematics and programming. Robin grew up thirty metres from me at Dunn School; he is a self-taught mathematician with an instinct for structure. I taught him the things Healer had taught me --- discretised dynamical systems, criticality, the behaviour of systems at the edge of chaos. I did not tell him why these topics mattered. I just taught.
+
+Robin took what I taught him and ran. Working independently, from classical discrete mathematics alone, he derived a set of five operators that describe the evolution of a system near a critical transition. He called them A, B, R, C, and E\@. A extracts gradients. B couples neighbours. R circulates. C bounds. E composes one evolutionary step. He derived them to detect early warning signals of critical transitions in time series data --- a problem in ecology, finance, and epidemiology. We published the mathematics together as a cross-domain analysis of convergent discovery in critical phenomena.\footcite{stephenson2025}
+
+I did not immediately recognise what Robin had found. It was only after I began writing this book --- after twenty years of letting the pieces settle --- that the correspondence became clear. Robin's operators, derived from classical mathematics to detect criticality in ordinary time series, map precisely onto the operations of a topological quantum neural network. The same five operations. The same structure. Different fields, different scales, same mathematics.
+
+This is the convergence pattern that recurs throughout this story: independent researchers, working from different starting points, arriving at the same structure. If Possibility~C is true, they arrive at the same structure because there is a real physical system generating it. If Possibility~A is true, the convergence is an artefact of the underlying mathematics being deeply connected for independent reasons. Either way, the operators are real and the mapping is worth examining.
+
 \section*{The Operator Mapping}
 
 \srcnote{HEALER-RECONSTRUCTION.md lines 272-311 | staging/raw/pos21-convergence-revisited.md | 2026-02-15 | ABCRE operator mapping to topological QNN operations, knot theory connection}
 
-The \gls{abcre} operators, independently derived from classical discretized mathematics, map to topological QNN operations:
+The \gls{abcre} operators, independently derived from classical discretised mathematics, map to topological QNN operations:
 
 \begin{description}
 \item[A (gradient extraction):] Identifying excitations --- where anyons are.
