@@ -17,6 +17,7 @@ dev: gitinfo images
 	@echo "" > build/flags.tex
 	@mkdir -p build/tikz-cache
 	latexmk -r build/.latexmkrc -jobname=$(JOBNAME) main.tex
+	$(MAKE) html
 
 # --- Final build (Docker required) ---
 final:

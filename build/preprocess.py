@@ -73,13 +73,22 @@ def patch():
 
         dst.write_text(text)
 
-    # Copy images directory
+    # Copy images directories
     img_src = REPO / "build" / "images"
     img_dst = TMP / "build" / "images"
     img_dst.mkdir(parents=True, exist_ok=True)
     for f in img_src.iterdir():
         if f.is_file():
             shutil.copy2(f, img_dst / f.name)
+
+    # Copy root images/ (screenshots, figures referenced from manuscript)
+    root_img_src = REPO / "images"
+    root_img_dst = TMP / "images"
+    if root_img_src.exists():
+        root_img_dst.mkdir(parents=True, exist_ok=True)
+        for f in root_img_src.iterdir():
+            if f.is_file():
+                shutil.copy2(f, root_img_dst / f.name)
 
     return TMP / "main.tex"
 
