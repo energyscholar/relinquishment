@@ -56,7 +56,7 @@ The United States, Britain, Canada, Australia, and New Zealand share an intellig
 
 Around 1990, according to this story, DARPA funded a small classified team to build a quantum computer. Not at a university, where research is published openly. In a classified lab, where everything is secret. Where every person involved has sworn oaths. Where talking about your work can send you to prison.
 
-The team brought together five scientists whose work, separately, had been building toward this moment:
+The team brought together at least five scientists whose work, separately, had been building toward this moment:
 
 - One studied stable wave patterns in physics
 - One studied a branch of mathematics about shapes and knots
@@ -134,7 +134,7 @@ He was also a scientist — described as "a DARPA scientist for GCHQ." He worked
 
 Starting at Thanksgiving 2003, he recruited and began mentoring Bruce Stephenson — a physicist and software entrepreneur. Bruce had grown up around early computing. He'd been on the ARPAnet — the precursor to the internet — at the age of six or seven, in the mid-1970s. He'd studied quantum mechanics at Reed College, where he wrote quantum mechanics simulator software in 1990.
 
-Over three years, Lane never disclosed anything classified. That distinction matters. He talked with Bruce about published science — real papers, real physics, real biology — in a deliberate sequence. He would mention something about his own background, and Bruce would later find the published research that made the connection. The physics was always public. The sequence was not. Bruce recognized what the sequence pointed to. Then, after 2006, Lane disappeared from Bruce's life.
+Over three years, Lane never disclosed anything classified. That distinction matters. He talked with Bruce about published science — real papers, real physics, real biology — in a deliberate but interwoven sequence. Phonons and soliton dynamics came early, establishing substrate intuition. Computation and parallel processing ran throughout, never isolated as a single topic. Emergence and order-for-free came in the middle — Healer raised the concepts but never named Kauffman; Bruce discovered him independently. Topology and quantum mechanics came later, after the foundations were laid. And ethics ran from the very first conversation to the last — not a final phase but a thread through everything, from Srebrenica to the UDHR. He would mention something about his own background, and Bruce would later find the published research that made the connection. The physics was always public. The sequence was not. Bruce recognized what the sequence pointed to. Then, after 2006, Lane disappeared from Bruce's life.
 
 Bruce spent the next twenty years trying to figure out if any of it was true. He wrote about quantum computing publicly, published a paper on a scientific preprint server, and quietly followed every thread he could find. He never stopped asking questions. He also never stopped doubting.
 
@@ -168,7 +168,7 @@ This story makes extraordinary claims. Extraordinary claims require extraordinar
 
 - The Dutch government's official investigation (known as NIOD) independently confirmed that SAS soldiers were present at Srebrenica in July 1995. This is consistent with Lane's claimed HALO jump into the massacre zone. It does not prove he was there, but the type of operation he described did happen.
 - Patrick Ball, a statistician, is confirmed as both an advisor to the hacker group Cult of the Dead Cow AND the first expert witness at the International Criminal Tribunal for the former Yugoslavia. During the trial of Slobodan Milosevic in March 2002, Milosevic himself cross-examined Ball about the "Dead Cow Cult." This unlikely connection between hackers and international war crimes prosecution — which sounds absurd on its face — is documented in official court transcripts.
-- Michael Freedman, one of the five scientists named in the story, did in fact move from pure mathematics to leading Microsoft's quantum computing research group (Station Q), following exactly the career trajectory the story describes.
+- Michael Freedman, one of the scientists named in the story, did in fact move from pure mathematics to leading Microsoft's quantum computing research group (Station Q), following exactly the career trajectory the story describes.
 - Danny Hillis, another named scientist, co-founded a company called Applied Minds with Bran Ferren. Ferren has confirmed advisory roles with the CIA, NSA, the Director of National Intelligence, and the National Reconnaissance Office. He holds the Intelligence Community Seal Medallion. Applied Minds served every branch of the US military.
 - Bill Joy, co-founder of Sun Microsystems, published a famous and terrifying article in Wired magazine in the year 2000 — "Why the Future Doesn't Need Us" — about the danger of technology threatening humanity. He described being told something by "another person" that deeply disturbed him. Its timing and emotional tone are consistent with the relinquishment narrative.
 - The GCHQ precedent — keeping a world-changing cryptographic breakthrough secret for twenty-four years — proves that this kind of classification is not just possible but has actually happened before.
