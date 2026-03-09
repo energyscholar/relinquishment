@@ -137,8 +137,8 @@ Figures 1-6 already generated in `~/software/abcre-validation/figures/`. Fig 2 a
 ## Implementation Plan
 
 ### Part 1: Paper scaffold
-**File:** `paper.tex` (LaTeX, Chaos/AIP template or REVTeX)
-- Download REVTeX4 template (AIP/Chaos uses REVTeX)
+**File:** `paper.tex` — `\documentclass[aip,cha,reprint]{revtex4-2}`
+- REVTeX4-2 with AIP/Chaos options (NOT `aps,pre` which is Physical Review E)
 - Set up sections, bibliography, figure placeholders
 - Write abstract (~200 words)
 
