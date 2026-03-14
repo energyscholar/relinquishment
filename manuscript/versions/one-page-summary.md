@@ -19,6 +19,6 @@ He doesn't know what's true. He offers three possibilities: the story is confabu
 
 It hardly matters which possibility is closest to the truth. The technology is coming. Quantum computers and artificial intelligence are arriving on real people's desks right now. Someone, someday soon, will hold something too powerful for anyone to have.
 
-This is the only story that exists where someone faced that choice and let go.
+This may be the first real account of someone who faced that choice and let go.
 
 What would you do?
