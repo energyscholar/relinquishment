@@ -45,28 +45,43 @@
 \tableofcontents
 \include{manuscript/00-front/genevieve-preface}
 \include{manuscript/00-front/preface}
-\include{manuscript/00-front/not-claimed}
-\include{manuscript/00-front/introduction}
-\include{manuscript/00-front/corrections}
+\include{manuscript/00-front/authors-note}
+% Maugham revision: not-claimed, introduction, corrections moved to Three Possibilities Interlude
+% \include{manuscript/00-front/not-claimed}
+% \include{manuscript/00-front/introduction}
+% \include{manuscript/00-front/corrections}
 
 % Restore normal chapter-start behavior for mainmatter
 \let\cleardoublepage\origcleardoublepage
 \mainmatter
 
-% ===== PART I: THE STORY (GA path — Positions 1-7) =====
-\include{manuscript/bridge/pos01-three-possibilities}
+% ===== PART I: THE STORY =====
+% Maugham revision: pos01 retired (content → Three Possibilities Interlude)
+% Reordered: Alpha Farm first (narrative), Stories second (investment), Code War third (bridge)
+% \include{manuscript/bridge/pos01-three-possibilities}  % Content now in interlude/three-possibilities-interlude
 \include{manuscript/track-2-testament/pos02-alpha-farm}
 % \include{manuscript/track-2-testament/pos03-the-mentor}  % Session 29: merged into pos02-alpha-farm
-\include{manuscript/bridge/pos04-the-code-war}
 \include{manuscript/track-2-testament/pos05-the-stories}
+\include{manuscript/bridge/pos04-the-code-war}
 \include{manuscript/bridge/pos06-the-secret}
 \include{manuscript/track-2-testament/pos07-the-departure}
-% ----- GA stops here (~16K words) -----
+% ----- Part I ends here -----
 
-% ===== PART II: THE RECKONING (Journalist path — J2 ethics-forward) =====
+% ===== INTERLUDE: THE THREE POSSIBILITIES =====
+% Maugham revision: framework earned after narrative investment (~14K words in)
+% Assembled from: pos01 + introduction + not-claimed + corrections
+\include{manuscript/interlude/three-possibilities-interlude}
+
+% ===== INTERLUDE: THE FILES =====
+% Plan 0083: Paired dossiers — target (Bruce) and handler (Healer/Hanley)
+\include{manuscript/interlude/dossier-interlude}
+
+% ===== PART II: THE RECKONING =====
+% Maugham revision: Walk-Out first (narrative momentum from Part I's Departure)
+% Then analytical context (Dual Use, Why Give It Up) — earned by witnessing the act
+\include{manuscript/track-1-confession/pos18-the-walk-out}
 \include{manuscript/bridge/pos08-dual-use}
 \include{manuscript/bridge/pos22-why-give-it-up}
-\include{manuscript/track-1-confession/pos18-the-walk-out}
 \include{manuscript/track-2-testament/pos23-the-weight}
 \include{manuscript/track-2-testament/pos19-patrick-ball}
 \include{manuscript/convergence/pos28-surrender}
@@ -74,9 +89,15 @@
 \include{manuscript/track-2-testament/pos29b-redacted}
 \include{manuscript/track-2-testament/pos34-the-research}
 \include{manuscript/track-2-testament/pos34b-the-engine}
-% ----- Journalist stops here (~29K words) -----
+% ----- Part II ends here -----
 
-% ===== PART III: THE IMPLICATIONS (Implications path — I1 build) =====
+% ===== INTERLUDE: THE EVIDENCE =====
+% Maugham revision: evidence assessment after narrative, not before
+% Assembled from: summary.tex Evidence section + introduction.tex "What the book does"
+\include{manuscript/interlude/evidence-interlude}
+
+% ===== PART III: THE IMPLICATIONS =====
+% Maugham revision: predictions framework first appears here (earned position)
 \include{manuscript/track-3-awakening/pos24-instantiation}
 \include{manuscript/track-3-awakening/pos25-ethical-framework}
 \include{manuscript/track-3-awakening/pos27-extension}
