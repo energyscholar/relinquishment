@@ -68,7 +68,7 @@ html: gitinfo build/reader-inline.html
 		--css=../../build/epub.css --css=../../build/html.css \
 		--metadata-file=../../build/metadata.yaml \
 		--include-after-body=../../build/reader-inline.html \
-		-o ../../$(JOBNAME).html
+		-o ../../docs/downloads/$(JOBNAME).html
 
 build/reader-inline.html: build/reader.js
 	echo '<script>' > $@
