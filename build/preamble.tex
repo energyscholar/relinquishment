@@ -222,6 +222,10 @@
 %\renewcommand{\aidraftchapter}{}
 %\renewcommand{\aidraftmark}{}
 
+% QQQ editorial markers — visible in PDF and HTML for co-author editing
+% To hide for final edition: \renewcommand{\qqq}[1]{}
+\newcommand{\qqq}[1]{\par\noindent\textbf{[QQQ: #1]}\par}
+
 % Chapter attribution markers — replaces \aidraftchapter system (Session 30)
 % Place immediately after \chapter{} in each file.
 \newcommand{\brucevoice}{%
