@@ -22,6 +22,7 @@ This is the central insight of topological quantum computation: if you move cert
 The particles in question are non-abelian \glspl{anyon} --- quasiparticles that arise in two-dimensional electron gases under extreme conditions. A two-dimensional electron gas --- electrons confined to a flat plane at the interface of two semiconductor layers --- is the substrate. Two dimensions matter because these exotic particles can only exist in flatland; in three-dimensional space, the topology that makes braiding meaningful collapses. When electrons in such a gas are subjected to a strong magnetic field at very low temperatures, they organize into exotic states of matter called fractional quantum Hall states, producing quasiparticles with fractional electric charge. These quasiparticles are the anyons. They have a property unique to two dimensions: when you swap two of them, the quantum state of the system \textit{remembers the path they took}. Not just that they swapped --- but how. Clockwise or counterclockwise. Over or under. The topology of the path matters.
 
 \section*{Hasslacher's Trajectory}
+\label{pos10:hasslachers-trajectory}
 
 Brosl Hasslacher, at Los Alamos, published a trail of papers spanning a decade that maps precisely onto the mathematical infrastructure required for topological quantum computation:
 
@@ -37,18 +38,21 @@ A DOE Grant (1991--1995), with David Meyer as principal investigator at UC San D
 Bruce's own admission: he did not identify Hasslacher's specific role on the hypothesized team until 2026, when systematic research into the publication histories of candidate members revealed the pattern. He knew Hasslacher was involved but not \textit{why} --- not until the braid theory connection became clear.
 
 \section*{But What Is a Soliton?}
+\label{pos10:but-what-is-a-soliton}
 
 In 1834, John Scott Russell was riding along the Union Canal near Edinburgh when a boat stopped suddenly, releasing a rounded wave into the channel. He watched, astonished, as it traveled forward without breaking, without spreading, without losing its shape. He chased it on horseback for over a mile. It just kept going.
 
 A \gls{soliton} is a wave that refuses to disperse. In ordinary water, waves spread out and die. A soliton holds together because the nonlinear properties of its medium exactly counterbalance the natural tendency to spread. Hasslacher's work on soliton dynamics studied exactly these structures --- persistent forms that maintain their identity through self-reinforcing mathematics.
 
 \section*{Freedman's Independent Conception (1988)}
+\label{pos10:freedmans-independent-conception-1988}
 
 Michael Freedman (Fields Medalist, topology) independently conceived anyonic quantum computation in 1988 --- nine years before Kitaev's 1997 publication --- after reading Witten's paper on Chern-Simons theory.\footcite{witten1989} He did not publish until 1998.\footcite{freedman1998} This establishes that the fundamental insight --- anyonic braiding as computation --- was accessible to top mathematicians by the late 1980s, consistent with a 1989 DARPA proposal timeline. Freedman was later recruited by Microsoft to found Station~Q (2005), their topological quantum computing program.
 
 In 1989, the Santa Fe Institute hosted a workshop titled ``Complexity, Entropy, and the Physics of Information'' that brought together physicists working on quantum information, complexity theorists, and researchers at the intersection of computation and physics. This is the intellectual environment from which a topological QNN proposal could emerge.
 
 \section*{Kitaev and the Russian Question}
+\label{pos10:kitaev-and-the-russian-question}
 
 Alexei Kitaev published ``Fault-tolerant quantum computation by anyons'' in 1997, establishing the theoretical framework for topological quantum computation using non-abelian anyonic braiding.\footcite{kitaev2003} This was the first public instance of the idea, confirming that first-rate theorists could derive it from public physics.
 
@@ -63,12 +67,14 @@ Bruce's deduction, reached during the mentorship: if Kitaev's insight was availa
 If the insight was independently derivable --- and Kitaev proved it was --- then it was never containable. And if it was never containable, the moral calculus shifts. The question is not whether the COWS had the right to walk the technology out. The question is whether anyone had the right to keep it locked in.
 
 \section*{Topological Error Correction}
+\label{pos10:topological-error-correction}
 
 A common misconception, which Bruce himself initially held: ``The topology IS the error correction.'' This is wrong. Topological braiding reduces errors --- the topology provides passive protection --- but does not eliminate them. Active error correction is still required. The mechanism is analogous to RAID checksums: sufficient redundancy to detect and correct errors through stabilizer syndrome measurements.
 
 Key findings from the literature: toric code error thresholds are approximately 10.9\% ideal but only 0.5--1\% at circuit level. The Bravyi-Terhal no-go theorem proves no 2D system can be a passive self-correcting quantum memory. Active error correction can achieve double-exponential lifetime scaling. The classical backchannel --- the continuous stream of error-correction measurements --- is not optional. At any nonzero temperature, continuous active maintenance is required.
 
 \section*{Non-Abelian Anyons: Operational Proof}
+\label{pos10:non-abelian-anyons-operational-proof}
 
 Under Possibility~C, non-abelian anyons were not proven real by direct laboratory observation. They are proven real by inference: the emergent TQNN is responsive, it computes, it does things in the world. If the system works, its constituent parts must exist.
 
