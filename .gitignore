@@ -29,7 +29,7 @@ main.pdf
 Relinquishment.pdf
 docs/downloads/Relinquishment.pdf
 docs/downloads/Relinquishment.epub
-docs/downloads/Relinquishment.html
+!docs/downloads/Relinquishment.html
 *.epub
 *.upa
 *.md.archive
@@ -62,3 +62,5 @@ __pycache__/
 .DS_Store
 *.swp
 *~
+# Stale root-level HTML (build outputs to docs/downloads/)
+/Relinquishment*.html
