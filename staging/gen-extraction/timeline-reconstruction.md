@@ -14,7 +14,7 @@
 - Marriage failing. Wife severely bipolar, violent. Bruce experiencing extreme caregiver burnout, nervous breakdown.
 
 ## ~November 13, 2003
-- Bruce visits Alpha Farm for the first time. Spends time there, decides to return. Sends emails saying "I'll be back in two weeks."
+- Bruce visits Alpha Farm for the first time. Spends time there, decides to return. Leaves a printed copy of Jay Hanson's "A Means of Control" on the dining room table — a litmus test, seeking intellectual engagement from someone capable enough to engage. Sends emails saying "I'll be back in two weeks."
 
 ## ~November 16, 2003
 - David arrives at Alpha Farm, approximately 3 days after Bruce's departure. Claims to have entered the US through a port in Louisiana ~10-11 days prior. Gets severely ill on arrival, spends 10 days recovering.
@@ -25,7 +25,7 @@
 - **That evening or the next day:** David comes downstairs. First meeting. Australian accent, ~6 feet tall, wasting athlete physique. Introduces himself as military veteran on "walkabout." Mentions FAM-9 passport, stolen kit bag, water systems expertise.
 
 ## Day 2 at Alpha Farm (late November 2003)
-- Bruce leaves a pamphlet (Jay Hanson's "A Means of Control") on the library table. David picks it up — already thoroughly familiar with the content.
+- Bruce finds his pamphlet (Jay Hanson's "A Means of Control") still on the dining room table where he left it two weeks earlier. David is holding it — already thoroughly familiar with the content.
 - Evening: David steers conversation to steganography. Bruce describes GPS phase-shifting method. David acknowledges: "That's pretty sharp, mate." Bruce passes the test.
 - David probes Bruce's knowledge of TCP/IP protocols. Bruce misses NTP (Network Time Protocol) — the obvious candidate for steganographic embedding.
 
