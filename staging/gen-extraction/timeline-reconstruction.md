@@ -16,7 +16,7 @@
 ## Summer 2003
 - Bruce visits Alpha Farm for the first time, alone, to check it out.
 - Second visit, late summer, with daughters Gillian and Fiona. Spent a day exploring. Kids loved it.
-- Bruce exchanges emails with Alpha Farm residents over these months, expressing clear intent to spend extended time there. Anyone reading his email traffic would know his plans well in advance.
+- Bruce exchanges paper letters and emails with Alpha Farm residents over these months, expressing clear intent to spend extended time there. Anyone reading his email traffic would know his plans well in advance.
 
 ## ~November 9–13, 2003
 - Third visit. Bruce arrives with intention to live there for a while. Leaves a printed copy of Jay Hanson's "A Means of Control" on the dining room table — a litmus test, seeking intellectual engagement from someone capable enough to engage. Departs after a few days, sends emails saying "I'll be back in two weeks."
