@@ -38,118 +38,124 @@
 \include{manuscript/00-front/cover}
 \include{manuscript/00-front/title}
 \include{manuscript/00-front/copyright}
-% legal-note.tex folded into preface.tex (S43)
 \include{manuscript/00-front/hook}
-\include{manuscript/00-front/summary}
 \phantomsection\label{toc}%
 \tableofcontents
 \include{manuscript/00-front/genevieve-preface}
 \include{manuscript/00-front/preface}
-\include{manuscript/00-front/authors-note}
-% Maugham revision: not-claimed, introduction, corrections moved to Three Possibilities Interlude
-% \include{manuscript/00-front/not-claimed}
-% \include{manuscript/00-front/introduction}
-% \include{manuscript/00-front/corrections}
 
 % Restore normal chapter-start behavior for mainmatter
 \let\cleardoublepage\origcleardoublepage
 \mainmatter
 
-% ===== PART I: THE STORY =====
-% Three-part reorg (Gen + Bruce approved 2026-03-13): Parts I+II → Part I
-% Narrative arc: meeting → apprenticeship → departure → reckoning → aftermath
-%
-% Maugham revision: pos01 retired (content → Three Possibilities Interlude)
-% Reordered: Alpha Farm first (narrative), Stories second (investment), Code War third (bridge)
-% \include{manuscript/bridge/pos01-three-possibilities}  % Content now in interlude/three-possibilities-interlude
+% ========================================================================
+% PART I: THE STORY
+% Three-part reorg (Phase 2c): narrative arc + science bridge to Part II
+% Blocker chain: Code War → Departure (GCHQ precedent before Healer leaves)
+%   — NOTE: Code War placed AFTER Departure per Bruce's specified ordering.
+%   — Dual-Use after Secret (Why Relinquish?) — ethical framing before investigation.
+%   — Factoring Game + Braid here as science bridge into Part II.
+% ========================================================================
+\part{The Story}
+
+\include{manuscript/bridge/pos01-three-possibilities}
+\include{manuscript/bridge/pos01b-hobbit-mirror}
 \include{manuscript/track-2-testament/pos02-alpha-farm}
-% \include{manuscript/track-2-testament/pos03-the-mentor}  % Session 29: merged into pos02-alpha-farm
 \include{manuscript/track-2-testament/pos05-the-stories}
-\include{manuscript/bridge/pos04-the-code-war}
 \include{manuscript/bridge/pos06-the-secret}
-\include{manuscript/track-2-testament/pos07-the-departure}
-
-% ----- INTERLUDE: THE THREE POSSIBILITIES -----
-% Maugham revision: framework earned after narrative investment (~14K words in)
-% Assembled from: pos01 + introduction + not-claimed + corrections
-\include{manuscript/interlude/three-possibilities-interlude}
-
-% ----- INTERLUDE: THE FILES -----
-% Plan 0083: Paired dossiers — target (Bruce) and handler (Healer/Hanley)
-\include{manuscript/interlude/dossier-interlude}
-
-% ----- THE RECKONING (Part I continues) -----
-% Maugham revision: Walk-Out first (narrative momentum from Part I's Departure)
-% Then analytical context (Dual Use, Why Give It Up) — earned by witnessing the act
-\include{manuscript/track-1-confession/pos18-the-walk-out}
 \include{manuscript/bridge/pos08-dual-use}
-% pos22-why-give-it-up merged into pos06-the-secret as "Why Relinquish?" (Plan 0091 Merge 2)
-%\include{manuscript/bridge/pos22-why-give-it-up}
-\include{manuscript/track-2-testament/pos23-the-weight}
-\include{manuscript/track-2-testament/pos19-patrick-ball}
-\include{manuscript/convergence/pos28-surrender}
-\include{manuscript/track-2-testament/pos29-the-silence}
-\include{manuscript/track-2-testament/pos29b-redacted}
-\include{manuscript/track-2-testament/pos34-the-research}
-\include{manuscript/track-2-testament/pos34b-the-engine}
-% ----- Part I ends here -----
-
-% ----- INTERLUDE: THE EVIDENCE -----
-% Bridge between Part I (Story) and Part II (Investigation)
-% Assembled from: summary.tex Evidence section + introduction.tex "What the book does"
-\include{manuscript/interlude/evidence-interlude}
-
-% ===== PART II: THE INVESTIGATION =====
-% Three-part reorg: Parts III (Implications) + IV (Science) → Part II
-% Analysis arc: implications → technical foundations → mechanism
-%
-% --- The Implications ---
-% Maugham revision: predictions framework first appears here (earned position)
-\include{manuscript/track-3-awakening/pos24-instantiation}
-\include{manuscript/track-3-awakening/pos25-ethical-framework}
-\include{manuscript/track-3-awakening/pos27-extension}
-\include{manuscript/track-3-awakening/pos30-unipolar-condition}
-% \include{manuscript/track-2-testament/pos33-digital-doppelganger}  % Session 29: trimmed to paragraph in pos02/05
-\include{manuscript/track-3-awakening/pos32-the-magnetosphere}
-\include{manuscript/track-2-testament/pos31-wolfram}
-% --- The Science ---
+\include{manuscript/track-2-testament/pos07-the-departure}
+\include{manuscript/bridge/pos04-the-code-war}
 \include{manuscript/bridge/pos09-the-factoring-game}
 \include{manuscript/bridge/pos10-the-braid}
-\include{manuscript/bridge/pos11-the-experiment}
-\include{manuscript/bridge/pos14-growing-a-mind}
-\include{manuscript/bridge/pos12-the-threshold}
+
+% ========================================================================
+% PART II: THE INVESTIGATION
+% Technical case: demonstrations → mechanism → interdiction → walk-out
+% Blocker chain: Braid < Genesis, Demo < Network
+% Three Possibilities checkpoint at end (trimmed interlude)
+% ========================================================================
+\part{The Investigation}
+
+\include{manuscript/bridge/pos11-the-demo}
 \include{manuscript/track-1-confession/pos13-genesis}
-\include{manuscript/track-1-confession/pos15-first-light}
-\include{manuscript/track-1-confession/pos16-the-thermal-ladder}
-\include{manuscript/track-1-confession/pos17-the-capability}
-\include{manuscript/track-1-confession/pos20-the-network}
-% pos21-convergence-revisited merged into pos20-the-network (Plan 0092 Merge 5)
-%\include{manuscript/track-1-confession/pos21-convergence-revisited}
+\include{manuscript/bridge/pos14-growing-a-mind}
 \include{manuscript/track-1-confession/pos26-interdiction}
-% ----- Part II ends here -----
+\include{manuscript/track-1-confession/pos15-first-light}
+\include{manuscript/track-1-confession/pos18-the-walk-out}
+\include{manuscript/track-1-confession/pos20-the-network}
+\include{manuscript/interlude/three-possibilities-interlude}
 
-% ===== PART III: THE QUESTION (All paths converge) =====
-\include{manuscript/convergence/pos36-steelman-a}
+% ========================================================================
+% PART III: THE INTERPRETATION
+% Implications → habitat → monopoly → aftermath → convergence (Dual-Use moved to Part I)
+% Blocker chain: Genesis < Instantiation
+% ========================================================================
+\part{The Interpretation}
+
+\include{manuscript/track-3-awakening/pos24-instantiation}
+\include{manuscript/track-3-awakening/pos25-ethical-framework}
+\include{manuscript/track-3-awakening/pos32-the-magnetosphere}
+\include{manuscript/track-3-awakening/pos27-extension}
+\include{manuscript/track-2-testament/pos29-twenty-years}
+\include{manuscript/convergence/pos28-surrender}
 \include{manuscript/convergence/pos35-the-question}
-% ----- All paths converge here -----
+\include{manuscript/convergence/pos36-steelman-a}
 
+% ========================================================================
+% APPENDICES
+% ========================================================================
 \appendix
-% three-possibilities.tex removed from appendix — content promoted to Pos 1 mainmatter chapter per Plan 0007
-% \include{manuscript/appendix/three-possibilities}
-\include{manuscript/appendix/rlhf-bias}
+
 \include{manuscript/appendix/predictions}
 \include{manuscript/appendix/abstracts}
 \include{manuscript/appendix/glossary}
-\include{manuscript/appendix/timeline}
-\include{manuscript/appendix/sources}
 % DMS appendix — only included when \dmsbuild is defined (make dms)
 \ifdefined\dmsbuild
 \include{manuscript/appendix/dms-note}
 \fi
 
+% ========================================================================
+% BACK MATTER
+% ========================================================================
 \backmatter
+
+\include{manuscript/99-back/afterword}
+\include{manuscript/appendix/timeline}
+\include{manuscript/appendix/sources}
+\include{manuscript/appendix/corrections}
+\include{manuscript/appendix/dossier}
+\include{manuscript/00-front/summary}
+\include{manuscript/00-front/how-to-read}
 \include{manuscript/99-back/acknowledgements}
 \include{manuscript/99-back/verification}
 \include{manuscript/99-back/colophon}
+
+% ========================================================================
+% COMMENTED OUT — no longer included (preserved in git)
+% ========================================================================
+% \include{manuscript/00-front/authors-note}           % Plan 0094: merged into preface
+% \include{manuscript/00-front/not-claimed}             % Maugham revision: merged into preface
+% \include{manuscript/00-front/introduction}            % Maugham revision: content in interlude
+% \include{manuscript/00-front/corrections}             % Maugham revision: content in interlude
+% \include{manuscript/track-2-testament/pos03-the-mentor}  % Session 29: merged into pos02
+% \include{manuscript/bridge/pos22-why-give-it-up}      % Plan 0091: merged into pos06
+% \include{manuscript/track-2-testament/pos23-the-weight}  % Phase 2a: merged into Twenty Years
+% \include{manuscript/track-2-testament/pos19-patrick-ball} % Phase 2a: merged into restructure
+% \include{manuscript/track-2-testament/pos29-the-silence}  % Phase 2a: merged into Twenty Years
+% \include{manuscript/track-2-testament/pos29b-redacted}    % Content in Twenty Years
+% \include{manuscript/track-2-testament/pos34-the-research} % Phase 2a: merged into Twenty Years
+% \include{manuscript/track-2-testament/pos34b-the-engine}  % Plan 0094: relocated to afterword
+% \include{manuscript/interlude/evidence-interlude}     % Merge 8: merged into pos35
+% \include{manuscript/interlude/dossier-interlude}      % Plan 0094: relocated to appendix/dossier
+% \include{manuscript/track-3-awakening/pos30-unipolar-condition} % Merge 6: merged into pos27
+% \include{manuscript/track-2-testament/pos33-digital-doppelganger} % Session 29: in pos02/05
+% \include{manuscript/track-2-testament/pos31-wolfram}  % Phase 2a: merged into Twenty Years
+% \include{manuscript/bridge/pos12-the-threshold}       % Phase 2a: merged into pos11-the-demo
+% \include{manuscript/track-1-confession/pos16-the-thermal-ladder} % Phase 2a: merged into restructure
+% \include{manuscript/track-1-confession/pos17-the-capability}     % Phase 2a: merged into restructure
+% \include{manuscript/track-1-confession/pos21-convergence-revisited} % Plan 0092: merged into pos20
+% \include{manuscript/appendix/three-possibilities}     % Historical: promoted to mainmatter
+% \include{manuscript/appendix/rlhf-bias}               % Plan 0094: cut
 
 \end{document}
