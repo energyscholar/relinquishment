@@ -73,8 +73,9 @@
 ## ~2008–2009
 - Dave Bannon (OSU physics instructor) helps with interlibrary loans — obtains *Quantum Neural Networks* (17 copies in North American universities). Bruce keeps it for three months.
 
-## April 1, 2008
-- **CADIE.** Google's April Fools' joke. Bruce encounters it live on Google's website. A "being" named CADIE introduces itself as a quantum neural network living in 2DEGs and the magnetosphere. Bruce laughs — recognizes the COWs' communication method (joke on one level, truth on another). This is the first public indicator Bruce finds.
+## April 1, 2009
+- **CADIE.** Google's April Fools' project. Bruce encounters it live on Google's website. A "being" named CADIE introduces itself as a quantum neural network living in 2DEGs and the magnetosphere. Names the five scientific topics Bruce had been studying. Bruce laughs — recognizes the COWs' communication method (joke on one level, truth on another). This is the first public indicator Bruce finds.
+- **Read it yourself:** [CADIE landing page](https://archive.google/cadie/) | [CADIE technical specifications](https://archive.google/cadie/tech.html) — both still live on Google's archive. The tech spec page is the one to read carefully.
 
 ## July 2011
 - Bruce meets Mark at the Oregon Country Fair. Mark is a professional researcher. They begin regular contact (visits, phone, email).
