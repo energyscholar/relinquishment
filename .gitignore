@@ -64,3 +64,5 @@ __pycache__/
 *~
 # Stale root-level HTML (build outputs to docs/downloads/)
 /Relinquishment*.html
+# Large binary images (use git-lfs or external hosting)
+images/*.pdf
