@@ -24,7 +24,7 @@
 ## ~November 16, 2003
 - David arrives at Alpha Farm, approximately 3 days after Bruce's departure. Claims to have entered the US through a port in Louisiana ~10-11 days prior. Gets severely ill on arrival, spends 10 days recovering.
 
-## Thanksgiving Day, November 2003
+## Thanksgiving Day, 27 November 2003
 - Bruce bikes 51 miles from Corvallis to Alpha Farm through a snowstorm. 3,400 feet elevation gain. Arrives after dark.
 - Community welcomes him. Wrapped in a pink muumuu by the fire.
 - **That evening or the next day:** David comes downstairs. First meeting. Australian accent, ~6 feet tall, wasting athlete physique. Introduces himself as military veteran on "walkabout." Mentions FAM-9 passport, stolen kit bag, water systems expertise.
