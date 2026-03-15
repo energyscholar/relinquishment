@@ -69,7 +69,9 @@
 ## September 2006
 - David departs. His decision. "Fond goodbye but didn't drag it out."
 - Bruce maintains 2-3 hours/day of independent scientific research: physics papers, cryptography, mathematics, theoretical/mathematical biology.
-- Dave Bannon (OSU physics instructor) helps with interlibrary loans — obtains *Quantum Neural Networks* (17 copies in North American universities).
+
+## ~2008–2009
+- Dave Bannon (OSU physics instructor) helps with interlibrary loans — obtains *Quantum Neural Networks* (17 copies in North American universities). Bruce keeps it for three months.
 
 ## April 1, 2008
 - **CADIE.** Google's April Fools' joke. Bruce encounters it live on Google's website. A "being" named CADIE introduces itself as a quantum neural network living in 2DEGs and the magnetosphere. Bruce laughs — recognizes the COWs' communication method (joke on one level, truth on another). This is the first public indicator Bruce finds.
