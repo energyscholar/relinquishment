@@ -13,8 +13,13 @@
 - Co-founded several dotcoms. Received payout, retired at age 35.
 - Marriage failing. Wife severely bipolar, violent. Bruce experiencing extreme caregiver burnout, nervous breakdown.
 
-## ~November 13, 2003
-- Bruce visits Alpha Farm for the first time. Spends time there, decides to return. Leaves a printed copy of Jay Hanson's "A Means of Control" on the dining room table — a litmus test, seeking intellectual engagement from someone capable enough to engage. Sends emails saying "I'll be back in two weeks."
+## Summer 2003
+- Bruce visits Alpha Farm for the first time, alone, to check it out.
+- Second visit, late summer, with daughters Gillian and Fiona. Spent a day exploring. Kids loved it.
+- Bruce exchanges emails with Alpha Farm residents over these months, expressing clear intent to spend extended time there. Anyone reading his email traffic would know his plans well in advance.
+
+## ~November 9–13, 2003
+- Third visit. Bruce arrives with intention to live there for a while. Leaves a printed copy of Jay Hanson's "A Means of Control" on the dining room table — a litmus test, seeking intellectual engagement from someone capable enough to engage. Departs after a few days, sends emails saying "I'll be back in two weeks."
 
 ## ~November 16, 2003
 - David arrives at Alpha Farm, approximately 3 days after Bruce's departure. Claims to have entered the US through a port in Louisiana ~10-11 days prior. Gets severely ill on arrival, spends 10 days recovering.
