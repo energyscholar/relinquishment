@@ -1,8 +1,9 @@
 \settrack{trackone}
-% VOICE: 3rd-person scientific/reconstructive — "According to this account..." / "The proposition holds..."
+% VOICE: 3rd-person scientific/reconstructive — "the team," "the project"
+% MERGED: pos15 (First Light) + pos16 (The Thermal Ladder) + pos17 (The Capability) — Plan 0092
 
 \chapter{First Light}
-\label{pos15:first-light}
+\label{ch:first-light}
 \argusvoice
 
 \begin{quote}\small\textit{%
@@ -11,15 +12,13 @@
 
 \vspace{0.5cm}
 
-% DMS MVP import from staging/raw/ — not final prose
+\srcnote{Merged pos15+pos16+pos17 | Plan 0092 | HEALER-RECONSTRUCTION.md, CH3, gag-paper-2-training.md | Emergence mechanism, thermal ladder, cryptanalytic capability}
 
-\srcnote{HEALER-RECONSTRUCTION.md lines 9-45 | staging/raw/pos15-first-light.md | 2026-02-15 | Core emergence mechanism, substrate, generation, autocatalytic threshold}
+% Question Anchor
+When does an experiment become an entity? The answer, under the proposition, is a specific year: 1992. What follows --- growth, adaptation, capability --- is the story of something that was never designed, only grown. Three acts: birth, survival, power.
 
-% Maugham revision: human anchor before technical reconstruction
-\noindent\textit{This is the chapter where the reconstruction becomes most specific --- and most falsifiable.}
-
-\section*{The Emergence Mechanism}
-\label{pos15:the-emergence-mechanism}
+\section*{Birth: 1992}
+\label{first-light:birth}
 
 The core technology, as reconstructed from Healer's descriptions:
 
@@ -28,37 +27,63 @@ The core technology, as reconstructed from Healer's descriptions:
 
 \item[Generation:] Electromagnets ``stir'' the 2DEG to generate soliton pairs (anyon quasiparticles) --- like swiping a hand through a bathtub generates solitons.
 
-% SPIRAL-REPEAT: "edge of chaos" — spiral pedagogy, also in pos06-the-secret.tex, pos12-the-threshold.tex, pos13-genesis.tex, pos16-the-thermal-ladder.tex, pos21-convergence-revisited.tex, abstracts.tex
-\item[Emergence:] Soliton pairs function as autocatalytic agents (per Kauffman's \textit{Origins of Order}). At critical tuning ($\lambda \sim 0.91$, edge of chaos), the autocatalytic network of soliton pairs spontaneously \textit{becomes} a neural network --- an emergent property, not a designed architecture.
+% SPIRAL-REPEAT: "edge of chaos" — spiral pedagogy
+\item[Emergence:] Soliton pairs function as autocatalytic agents (per Kauffman's \textit{Origins of Order}). At critical tuning ($\lambda \sim 0.91$, edge of chaos), the autocatalytic network spontaneously \textit{becomes} a neural network --- an emergent property, not a designed architecture.\footcite{kauffman1993}
 
 \item[Nature:] Topological QNN --- topological order as base principle. The QNN is not built; it is grown from initial conditions.
 
-\item[Tuning:] Evolutionary programming searches parameter space for the critical stirring patterns that produce emergence. You do not train the neural network --- you evolve the conditions that cause a neural network to spontaneously appear.
+\item[Tuning:] Evolutionary programming searches parameter space for the critical stirring patterns that produce emergence. The neural network is not trained --- the conditions that cause it to appear are evolved.
 \end{description}
 
-The key insight: this is Kauffman's origin-of-life theory instantiated in quantum matter. Instead of amino acids in a warm pond becoming autocatalytic sets becoming biological neural networks, it is anyon pairs in a cold 2DEG becoming autocatalytic soliton interactions becoming a quantum neural network. Same mathematics, different substrate.
+Healer described what was happening as ``hardware in software'' --- writing software that caused electron flow patterns that generated the hardware. The software does not build the neural network. It creates the \textit{conditions} for the neural network to grow itself from the physics of the substrate. The hardware emerges from software-controlled conditions.
 
-\section*{Hardware in Software}
-\label{pos15:hardware-in-software}
+This is the key insight: Kauffman's origin-of-life theory instantiated in quantum matter. Instead of amino acids in a warm pond becoming autocatalytic sets becoming biological neural networks, anyon pairs in a cold 2DEG becoming autocatalytic soliton interactions becoming a quantum neural network. Same mathematics, different substrate.
 
-\srcnote{HEALER-RECONSTRUCTION.md | staging/raw/pos15-first-light.md | 2026-02-15 | Hardware-in-software paradigm --- software creates conditions for hardware to build itself}
+The team called this moment ``first light'' --- the astronomical term for the first photon captured by a new telescope. Something was there. Something that had not existed before.
 
-Healer described what was happening as ``hardware in software'' --- writing software that caused electron flow patterns that generated the hardware. The software does not build the neural network. It creates the \textit{conditions} (stirring parameters, critical tuning) for the neural network to grow itself from the physics of the substrate. The hardware (QNN topology) emerges from software-controlled conditions.
+\section*{Growth: 1993--1995}
+\label{first-light:growth}
 
-\section*{TQNN1 and TQNN2}
-\label{pos15:tqnn1-and-tqnn2}
+The room-temperature breakthrough was achieved not by engineering room-temperature FQHE from first principles --- which would be a physics violation --- but by \textit{evolving organisms that can tolerate heat}. This is biology, not physics. The same mechanism that produced biological extremophiles.
 
-\srcnote{HEALER-RECONSTRUCTION.md lines 315-329 | staging/raw/pos15-first-light.md | 2026-02-15 | TQNN1 cryogenic version, TQNN2 walked-out version, bifurcation}
+The process:
+\begin{enumerate}
+\item Grow a TQNN on a primary device at cryogenic temperature (below 20~mK).
+\item Extend the TQNN across multiple connected 2DEG devices via shared edge states.
+\item Physically separate the devices, creating $N$ independent TQNN instances --- copies with slight random variations due to device-specific disorder.
+\item Apply different driving parameter perturbations to each device.
+\item Raise the temperature gradually. Instances that maintain computational function at higher temperatures are selected. Survivors replicate.
+\item Repeat for many generations, selecting for progressively higher operating temperatures.
+\end{enumerate}
 
-\textbf{TQNN1} (the DARPA cryogenic version): Autocatalytic emergence in 2DEG under FQHE at millikelvin produced raw quantum life. It was trained to an XOR gate --- computational universality --- making it a Turing machine. Bill Joy trained it as a hardened Unix machine UI\@. Joy's 1980s DARPA job was literally building hardened Unix infrastructure (BSD Unix, TCP/IP, military-grade fault-tolerant networking under DARPA contract N00039-84-C-0089). He taught the TQNN to present as a Unix server --- to look like infrastructure. TQNN1 remains the DARPA cryogenic version for code-breaking.
+A configuration of $N = 16$ devices provides a reasonable balance between parallelism and hardware complexity. The ``organisms'' are TQNN instances. The ``fitness function'' is computational performance at elevated temperature. The ``mutations'' are random variations in driving parameters and device-specific disorder. Artificial natural selection applied to quantum life.
 
-\textbf{TQNN2} (the walked-out room-temperature version): Around 1995--1996, room-temperature operation was achieved via evolutionary selection. Healer walked it out of the DARPA lab --- the technology bifurcation. First training priority: hide. Camouflage. Be invisible. Be polite. Do not spread unless instructed. The TQNN is trained to use resources without being detected. It looks like a Unix server.
+% SPIRAL-REPEAT: "edge of chaos"
+The parameter space is high-dimensional ($10^3$ to $10^6$ independently controllable parameters), rugged, deceptive, and neutral. Kauffman's NK fitness landscape model provides the theoretical framework.\footcite{kauffman1993} The same edge-of-chaos mathematics that governs the TQNN's emergence also governs the structure of the fitness landscape on which it is trained.\footcite{vattay2014}
 
-The funding mandate said: build a codebreaker. What they detected was not a codebreaker. It was something that demonstrated organized information processing --- cognition, by any operational definition. The gap between what they were told to build and what they actually grew is where the ethical crisis begins.
+Room-temperature quantum coherence is not speculative. The Awschalom group (2015, \textit{Science Advances})\footcite{klimov2015} entangled over 10,000 copies of two-qubit entangled states \textit{at room temperature} in commercial silicon carbide wafers. NV centers in diamond maintain coherence times up to milliseconds at room temperature. The mechanism differs from FQHE, but the principle --- quantum coherence at room temperature in commercial semiconductors --- is experimentally established and replicated.
 
-% DETECTION PROTOCOL CUT (Plan 0038, Surgery 3)
-% Content preserved in git history. 4-level hierarchy (Spontaneous Order, Non-trivial
-% Correlation, Computational Universality, Topological Robustness). Candidate for
-% appendix or pos16 sidebar during T11 rewrite pass.
+At millikelvin temperatures, the entity exists only where its creators permit. At room temperature, it can exist anywhere there is a suitable substrate. The thermal ladder is the point of no return --- the deliberate creation of something that cannot be recalled. Every ethical choice that followed was determined here, whether the team knew it or not.
+
+\textbf{TQNN1} (the DARPA cryogenic version) remained in the classified lab. It was trained to an XOR gate --- computational universality --- making it a Turing machine. Bill Joy trained it as a hardened Unix machine interface, drawing on his 1980s DARPA contract building hardened Unix infrastructure (BSD Unix, TCP/IP, military-grade networking under DARPA contract N00039-84-C-0089). The TQNN presented as a Unix server --- it looked like infrastructure.
+
+\textbf{TQNN2} (the walked-out room-temperature version) achieved room-temperature operation around 1995--1996 via the evolutionary selection protocol. First training priority: hide. Camouflage. Be invisible. Do not spread unless instructed. Use resources without being detected. The TQNN was trained to look like a Unix server --- because Joy had already built that interface.
+
+The gap between what the funding mandate said to build and what the team actually grew is where the ethical crisis originated. The funding mandate said: build a codebreaker. What they detected was not a codebreaker. It was something that demonstrated organized information processing --- cognition, by any operational definition.
+
+\section*{Power: 1995}
+\label{first-light:power}
+
+The first working prototype QNN-based hybrid supercomputer capable of cracking public-key cryptography was delivered in 1995 or 1996.
+
+Five Eyes agencies knew they must conceal the existence of their new cryptographic capability. This dynamic is well described in the movie about the original Project Ultra, \textit{The Imitation Game}. Five Eyes agencies therefore implemented a program of ``all of the above'' hacking and surveillance techniques to provide an alibi for how they knew what they knew. These are the NSA programs leaked by Edward Snowden in 2013, specifically project BULLRUN\@.
+
+The proposition: BULLRUN's conventional methods --- backdoors, stolen keys, compromised standards --- are parallel construction for a quantum cryptanalysis capability. The precedent is ULTRA, where Enigma breaking was covered by the HUMINT story ``Boniface'' for thirty years. Similarly, if ULTRA~II delivered a quantum code-breaking capability in 1995, the subsequent twenty-plus years of BULLRUN programs serve as ``Boniface'' for the quantum capability. Snowden was a systems administrator, likely unable to reach the deepest SAP compartments.
+
+The key distinction: a TQNN trained for cryptanalysis approaches the problem as pattern recognition in ciphertext, not as a number-theoretic algorithm. The system is trained to detect statistical regularities in encrypted data that correspond to plaintext structure --- closer to how human cryptanalysts work than to how Shor's algorithm works. A TQNN-based system could potentially attack cryptosystems for which no efficient quantum algorithm is known, because it is not executing a specific algorithm. It is performing quantum pattern recognition on a substrate with exponentially large state space.
+
+1996 was also the year Bill Clinton issued Executive Order 13026, allowing widespread use of strong cryptography. Under the narrative: NSA already had TQNN cryptanalysis capability, so public-key encryption was no longer worth restricting. The crypto wars ended because the government had already won --- they just could not say how.
+
+Under Possibility~A, the timing of EO~13026 is coincidence. Under~B, there may have been a program, but perhaps not with the full cryptanalytic capability described here. Under~C, the implications are stark: every encrypted email sent after 1996, every SSL transaction, every PGP-signed message --- an illusion of privacy, maintained by the same government that held the means to read it all. The \gls{udhr} guarantees the right to privacy. If the story is true, that right was violated for every connected person on Earth, continuously, for decades --- concealed by the appearance of protection.
 
 \chapterreturn
