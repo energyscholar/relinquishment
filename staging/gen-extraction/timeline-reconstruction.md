@@ -13,11 +13,11 @@
 - Co-founded several dotcoms. Received payout, retired at age 35.
 - Marriage failing. Wife severely bipolar, violent. Bruce experiencing extreme caregiver burnout, nervous breakdown.
 
-## Late October / Early November 2003
-- Bruce visits Alpha Farm for the first time (a week or two before the bike ride). Spends time there, decides to return. Sends emails saying "I'll be back in two weeks."
+## ~November 13, 2003
+- Bruce visits Alpha Farm for the first time. Spends time there, decides to return. Sends emails saying "I'll be back in two weeks."
 
-## ~Mid-November 2003
-- David arrives at Alpha Farm, approximately 10 days after Bruce's departure. Claims to have entered the US through a port in Louisiana ~10-11 days prior. Gets severely ill on arrival, spends 10 days recovering.
+## ~November 16, 2003
+- David arrives at Alpha Farm, approximately 3 days after Bruce's departure. Claims to have entered the US through a port in Louisiana ~10-11 days prior. Gets severely ill on arrival, spends 10 days recovering.
 
 ## Thanksgiving Day, November 2003
 - Bruce bikes 51 miles from Corvallis to Alpha Farm through a snowstorm. 3,400 feet elevation gain. Arrives after dark.
