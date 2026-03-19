@@ -93,6 +93,187 @@ def patch():
     return TMP / "main.tex"
 
 
+def fix_html_toc(html_path):
+    """Post-process HTML to restructure flat TOC into part-grouped TOC.
+
+    Pandoc with --toc-depth=2 nests chapters under parts, but:
+    - Front matter items float at top level without a group header
+    - Appendices and back matter are lumped under the last part
+    - Part entries are clickable links (should be visual group headers)
+
+    This restructures the TOC with Front Matter, Part, Appendices, and
+    Back Matter groupings, with parts as non-clickable headers.
+    """
+    html_path = Path(html_path)
+    text = html_path.read_text()
+
+    # Extract the TOC nav block
+    toc_match = re.search(r'<nav id="TOC"[^>]*>(.+?)</nav>', text, re.DOTALL)
+    if not toc_match:
+        print("WARNING: No TOC found in HTML, skipping TOC fix")
+        return
+
+    # Part IDs — these become non-clickable group headers
+    part_ids = {"the-story", "the-investigation", "the-interpretation"}
+
+    # Appendix IDs (from \appendix section in main.tex)
+    appendix_ids = {"app:predictions", "app:abstracts", "app:glossary", "app:dms-note"}
+
+    # Back matter IDs (from \backmatter section in main.tex)
+    backmatter_ids = {
+        "afterword-the-engine", "app:timeline", "app:sources",
+        "corrections-and-concessions", "summary:most-important-story",
+        "acknowledgements", "verification", "colophon",
+    }
+
+    # Parse the TOC into a structured list
+    # Each top-level <li> is either a front matter item, a part with children, or a stray
+    toc_inner = toc_match.group(1)
+
+    # Strategy: rebuild the TOC from scratch using regex parsing
+    # Find all top-level <li> entries (with potential nested <ul>)
+    # We need to handle nested tags, so use a simple state machine
+    top_items = []
+    depth = 0
+    current = ""
+    in_top_ul = False
+
+    # Find the outer <ul> content
+    outer_ul_match = re.search(r'<ul>(.*)</ul>', toc_inner, re.DOTALL)
+    if not outer_ul_match:
+        print("WARNING: No outer <ul> in TOC, skipping")
+        return
+
+    content = outer_ul_match.group(1)
+
+    # Split into top-level <li> items by tracking tag depth
+    i = 0
+    while i < len(content):
+        if content[i:i+3] == '<li':
+            # Start of a top-level li
+            li_depth = 0
+            start = i
+            while i < len(content):
+                if content[i:i+3] == '<li':
+                    li_depth += 1
+                elif content[i:i+5] == '</li>':
+                    li_depth -= 1
+                    if li_depth == 0:
+                        i += 5
+                        top_items.append(content[start:i])
+                        break
+                i += 1
+        else:
+            i += 1
+
+    # Categorize each top-level item
+    front_items = []
+    part_groups = []  # list of (part_li_html, [child items])
+    current_part = None
+
+    for item in top_items:
+        # Extract the href ID
+        href_match = re.search(r'href="#([^"]+)"', item)
+        item_id = href_match.group(1) if href_match else ""
+
+        if item_id in part_ids:
+            # This is a part entry — extract its label and children
+            label_match = re.search(r'<a[^>]*>(.+?)</a>', item, re.DOTALL)
+            label = label_match.group(1).strip() if label_match else item_id
+
+            # Extract nested <ul> children (chapters under this part)
+            children_match = re.search(r'<ul>(.*)</ul>', item, re.DOTALL)
+            children_html = children_match.group(1) if children_match else ""
+
+            # Parse children into individual <li> items
+            children = []
+            ci = 0
+            child_content = children_html
+            while ci < len(child_content):
+                if child_content[ci:ci+3] == '<li':
+                    li_d = 0
+                    cs = ci
+                    while ci < len(child_content):
+                        if child_content[ci:ci+3] == '<li':
+                            li_d += 1
+                        elif child_content[ci:ci+5] == '</li>':
+                            li_d -= 1
+                            if li_d == 0:
+                                ci += 5
+                                children.append(child_content[cs:ci])
+                                break
+                        ci += 1
+                else:
+                    ci += 1
+
+            current_part = (label, item_id, children)
+            part_groups.append(current_part)
+        else:
+            # Not a part — it's a front matter item (before any part)
+            if not part_groups:
+                front_items.append(item)
+            else:
+                # After parts — shouldn't happen with proper toc-depth=2
+                # but handle gracefully: append to last part's children
+                part_groups[-1][2].append(item)
+
+    # Now separate appendix/backmatter from the last part's children
+    # They got lumped under "The Interpretation" by pandoc
+    last_part_label, last_part_id, last_children = part_groups[-1]
+    real_chapters = []
+    appendix_items = []
+    back_items = []
+    for child in last_children:
+        href_match = re.search(r'href="#([^"]+)"', child)
+        child_id = href_match.group(1) if href_match else ""
+        if child_id in appendix_ids:
+            appendix_items.append(child)
+        elif child_id in backmatter_ids:
+            back_items.append(child)
+        else:
+            real_chapters.append(child)
+    part_groups[-1] = (last_part_label, last_part_id, real_chapters)
+
+    # Build the new TOC HTML
+    def make_group(label, items, css_class="toc-group"):
+        if not items:
+            return ""
+        lines = [f'<li class="{css_class}"><span class="toc-part-label">{label}</span>']
+        lines.append("<ul>")
+        for item in items:
+            lines.append(item)
+        lines.append("</ul></li>")
+        return "\n".join(lines)
+
+    new_toc_items = []
+
+    # Front Matter
+    if front_items:
+        new_toc_items.append(make_group("Front Matter", front_items))
+
+    # Parts
+    for label, pid, children in part_groups:
+        new_toc_items.append(make_group(label, children))
+
+    # Appendices
+    if appendix_items:
+        new_toc_items.append(make_group("Appendices", appendix_items))
+
+    # Back Matter
+    if back_items:
+        new_toc_items.append(make_group("Back Matter", back_items))
+
+    new_toc = '<nav id="TOC" role="doc-toc">\n<ul>\n'
+    new_toc += "\n".join(new_toc_items)
+    new_toc += "\n</ul>\n</nav>"
+
+    # Replace the old TOC
+    text = text[:toc_match.start()] + new_toc + text[toc_match.end():]
+
+    html_path.write_text(text)
+    print(f"HTML TOC restructured: {html_path}")
+
+
 def fix_epub(epub_path):
     """Post-process EPUB to fix pandoc validation errors."""
     epub_path = Path(epub_path)
@@ -117,6 +298,8 @@ if __name__ == "__main__":
     import sys
     if len(sys.argv) > 1 and sys.argv[1] == '--fix-epub':
         fix_epub(sys.argv[2])
+    elif len(sys.argv) > 1 and sys.argv[1] == '--fix-html':
+        fix_html_toc(sys.argv[2])
     else:
         main_tex = patch()
         print(f"Patched manuscript written to {TMP}/")
