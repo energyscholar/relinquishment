@@ -7,8 +7,10 @@ or strip standard LaTeX — pandoc handles all of that natively.
 Writes patched copy to build/epub-tmp/ for inspection.
 """
 
-import shutil, re, zipfile, io
+import shutil, re, sys, zipfile, io
 from pathlib import Path
+sys.path.insert(0, str(Path(__file__).parent))
+from collapsible import preprocess_tex
 
 REPO = Path(__file__).parent.parent
 TMP = REPO / "build" / "epub-tmp"
@@ -70,6 +72,9 @@ def patch():
             "cover-triskellion.pdf",
             "cover-triskellion.png"
         )
+
+        # Fix 5: Collapsible content blocks → sentinels for pandoc
+        text = preprocess_tex(text)
 
         dst.write_text(text)
 

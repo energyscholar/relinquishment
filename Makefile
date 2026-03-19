@@ -69,6 +69,7 @@ html: gitinfo build/reader-inline.html
 		--metadata-file=../../build/metadata.yaml \
 		--include-after-body=../../build/reader-inline.html \
 		-o ../../docs/downloads/$(JOBNAME).html
+	python3 build/postprocess-html.py docs/downloads/$(JOBNAME).html
 
 build/reader-inline.html: build/reader.js
 	echo '<script>' > $@
