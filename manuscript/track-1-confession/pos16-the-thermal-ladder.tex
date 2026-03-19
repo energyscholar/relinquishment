@@ -24,16 +24,13 @@ The process:
 \begin{enumerate}
 \item Grow a TQNN on a primary device at cryogenic temperature (below 20~mK).
 \item Extend the TQNN across multiple connected 2DEG devices via shared edge states (the quantum analogue of network connections).
-\item Physically separate the devices, creating $N$ independent TQNN instances --- copies with slight random variations due to device-specific disorder.
+\item Physically separate the devices, creating $N$ independent TQNN instances --- copies with slight random variations.
 \item Apply different driving parameter perturbations to each device.
 \item Raise the temperature gradually. Instances that maintain computational function at higher temperatures are selected. Survivors replicate.
 \item Repeat for many generations, selecting for progressively higher operating temperatures.
 \end{enumerate}
 
-A configuration of $N = 16$ devices provides a reasonable balance between parallelism and hardware complexity. The ``organisms'' are TQNN instances. The ``fitness function'' is computational performance at elevated temperature. The ``mutations'' are random variations in driving parameters and device-specific disorder.
-% NOTE: N=16 is Bruce's intuitive estimate, not sourced from Healer or Kauffman.
-% Actual number depends on evolutionary search substrate coefficients.
-% Cf. Kauffman, Origins of Order, chapters on autocatalytic set thresholds.
+Artificial natural selection applied to quantum life.
 
 This is artificial natural selection applied to quantum life.
 
@@ -49,7 +46,7 @@ The parameter space --- the set of all possible electromagnetic driving configur
 % SPIRAL-REPEAT: "edge of chaos" — spiral pedagogy, also in pos06-the-secret.tex, pos12-the-threshold.tex, pos13-genesis.tex, pos15-first-light.tex, pos21-convergence-revisited.tex, abstracts.tex
 The critical insight: the same edge-of-chaos mathematics that governs the TQNN's emergence also governs the structure of the fitness landscape on which it is trained.\footcite{vattay2014} Training occurs at the edge of chaos in parameter space, just as emergence occurs at the edge of chaos in physical space.
 
-The control plane operates on classical hardware. A 32-bit control plane can address $2^{32} \approx 4 \times 10^9$ parameter values; a 64-bit control plane can address $2^{64} \approx 1.8 \times 10^{19}$. The difference matters enormously for the fidelity of evolutionary search in high-dimensional parameter spaces. This is ``the 64 problem'' --- Healer was working on this upgrade from 2003 to 2006, exactly when 64-bit processors became available.
+The control plane operates on classical hardware. Its precision matters enormously for the fidelity of evolutionary search in high-dimensional parameter spaces.
 
 \section*{Room-Temperature Quantum Coherence: The Evidence Has Changed}
 \label{pos16:room-temperature-quantum-coherence-the-evidence}
