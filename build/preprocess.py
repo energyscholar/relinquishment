@@ -14,6 +14,51 @@ REPO = Path(__file__).parent.parent
 TMP = REPO / "build" / "epub-tmp"
 
 
+def convert_topic_guide(text):
+    """Convert Topic Guide description lists to simple LaTeX for pandoc.
+
+    Transforms:
+      \\item[{\\hyperref[label]{term}}] description
+    Into:
+      \\hyperref[label]{\\textbf{term}} --- description
+
+    Pandoc handles \\hyperref and \\textbf natively.
+    """
+    lines = text.split('\n')
+    out = []
+    in_description = False
+
+    for line in lines:
+        stripped = line.strip()
+
+        # Strip description environment wrappers
+        if stripped.startswith(r'\begin{description}'):
+            in_description = True
+            continue
+        if stripped.startswith(r'\end{description}'):
+            in_description = False
+            out.append('')  # blank line paragraph break
+            continue
+
+        if not in_description:
+            out.append(line)
+            continue
+
+        # Match \item[{\hyperref[label]{term}}] description
+        m = re.match(
+            r'\s*\\item\[\{\\hyperref\[([^\]]+)\]\{([^}]+)\}\}\]\s*(.*)',
+            stripped
+        )
+        if m:
+            label, term, desc = m.group(1), m.group(2), m.group(3)
+            out.append(f'\\hyperref[{label}]{{\\textbf{{{term}}}}} --- {desc}')
+            out.append('')  # blank line = new paragraph
+        else:
+            out.append(line)
+
+    return '\n'.join(out)
+
+
 def patch():
     # Clean previous run
     if TMP.exists():
@@ -71,6 +116,12 @@ def patch():
             "cover-triskellion.png"
         )
 
+        # Fix 5: Convert Topic Guide description lists to simple LaTeX
+        # Pandoc can't parse \item[{\hyperref[label]{term}}] — strips both
+        # the term and the link. Convert to paragraph-based format.
+        if "topic-guide" in str(src):
+            text = convert_topic_guide(text)
+
         dst.write_text(text)
 
     # Copy images directories
@@ -122,6 +173,7 @@ def fix_html_toc(html_path):
     # Back matter IDs (from \backmatter section in main.tex)
     backmatter_ids = {
         "afterword-the-engine", "app:timeline", "app:sources",
+        "topic-guide", "app:topic-guide",
         "corrections-and-concessions", "summary:most-important-story",
         "acknowledgements", "verification", "colophon",
     }
