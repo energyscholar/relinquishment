@@ -15,26 +15,3 @@ nav#TOC ul ul { display: none; }
 @media (prefers-color-scheme: dark) {
   nav#TOC { background: #222; border-color: #444; }
 }
-
-/* --- Collapsible content blocks --- */
-details.collapsible { margin: 1.5em 0; }
-details.collapsible summary {
-  cursor: pointer;
-  color: #1a5276;
-  font-family: sans-serif;
-  font-size: 0.95em;
-  padding: 0.4em 0;
-  user-select: none;
-}
-details.collapsible summary:hover { text-decoration: underline; }
-
-/* Print: force all collapsible content visible (mirrors PDF printocg=always) */
-@media print {
-  details.collapsible { display: block !important; }
-  details.collapsible > * { display: block !important; }
-}
-
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
-  details.collapsible summary { color: #6ba3f7; }
-}
