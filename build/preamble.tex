@@ -86,39 +86,6 @@
   \begin{ocg}[printocg=always,exportocg=always]{Graphics}{graphics}{1}#1\end{ocg}%
 }
 
-% --- Collapsible content blocks (Show/Hide toggle) ---
-% Usage: \begin{collapsible}[open]{Label} ... \end{collapsible}
-% Default: closed. PDF: ocgx2 toggle. HTML: <details>. Fallback: inline with header.
-% Protocol: plans/0098-collapsible-content.md
-\newcounter{collapsiblectr}
-\ifdefined\switchocg
-  % Layer 2: full ocgx2 toggle
-  \newenvironment{collapsible}[2][closed]{%
-    \stepcounter{collapsiblectr}%
-    \edef\collapsibleid{clps-\the\value{collapsiblectr}}%
-    \def\collapsiblevis{0}%
-    \def\collapsibleopen{open}%
-    \def\collapsiblearg{#1}%
-    \ifx\collapsiblearg\collapsibleopen\def\collapsiblevis{1}\fi%
-    \par\medskip\noindent
-    \switchocg{\collapsibleid}{%
-      \textcolor{linkblue}{\small\sffamily [\,Show/Hide~#2\,]}%
-    }%
-    \par\smallskip
-    \begin{ocg}[printocg=always,exportocg=always]{#2}{\collapsibleid}{\collapsiblevis}%
-  }{%
-    \leavevmode\end{ocg}%
-    \par\medskip
-  }%
-\else
-  % Layer 1 fallback: no toggle, content always visible with header
-  \newenvironment{collapsible}[2][closed]{%
-    \par\medskip\noindent
-    {\small\sffamily [\,#2\,]}%
-    \par\smallskip
-  }{\par\medskip}%
-\fi
-
 % --- Headers/footers ---
 \usepackage{fancyhdr}
 \setlength{\headheight}{16.1pt}
