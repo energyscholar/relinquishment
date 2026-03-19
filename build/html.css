@@ -3,15 +3,33 @@
   body { padding: 0.5em; font-size: 16px; }
 }
 
-/* TOC — compact, subsections hidden */
+/* TOC — part-grouped with chapters visible */
 nav#TOC {
   padding: 0.5em; margin-bottom: 2em;
   border: 1px solid #ccc; background: #f8f8f8;
   font-size: 0.85em; line-height: 1.4;
 }
 nav#TOC ul { margin: 0; padding-left: 1em; }
+nav#TOC > ul { padding-left: 0; }
 nav#TOC > ul > li { margin-bottom: 0.15em; }
-nav#TOC ul ul { display: none; }
+nav#TOC > ul > li.toc-group > ul { display: block; }
+nav#TOC ul ul ul { display: none; }
+
+/* Part group headers — non-clickable visual separators */
+nav#TOC .toc-part-label {
+  display: block;
+  font-weight: bold;
+  font-size: 1.05em;
+  margin-top: 0.6em;
+  margin-bottom: 0.2em;
+  color: #333;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 0.15em;
+}
+nav#TOC > ul > li.toc-group { list-style: none; margin-bottom: 0.5em; }
+nav#TOC > ul > li.toc-group > ul > li { margin-bottom: 0.1em; }
+
 @media (prefers-color-scheme: dark) {
   nav#TOC { background: #222; border-color: #444; }
+  nav#TOC .toc-part-label { color: #ddd; border-bottom-color: #555; }
 }

@@ -63,12 +63,13 @@ html: gitinfo build/reader-inline.html
 		-f latex -t html5 \
 		--standalone --self-contained \
 		--top-level-division=chapter \
-		--toc --toc-depth=1 \
+		--toc --toc-depth=2 \
 		--mathml \
 		--css=../../build/epub.css --css=../../build/html.css \
 		--metadata-file=../../build/metadata.yaml \
 		--include-after-body=../../build/reader-inline.html \
 		-o ../../docs/downloads/$(JOBNAME).html
+	python3 build/preprocess.py --fix-html docs/downloads/$(JOBNAME).html
 
 build/reader-inline.html: build/reader.js
 	echo '<script>' > $@
