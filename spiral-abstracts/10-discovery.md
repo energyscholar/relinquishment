@@ -1,5 +1,7 @@
 # Abstract X: Discovery
 
+**Primer anchors: Plasma Topology, Collisionless Decoupling.**
+
 ## Prerequisite Physics
 
 This abstract describes observational anomalies and offers three hypotheses without asserting which is correct. The third hypothesis (artificial topological order) inherits its physical basis from Abstract IX. No independent physics claim is made.

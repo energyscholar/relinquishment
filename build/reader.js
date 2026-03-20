@@ -209,7 +209,17 @@
             }, 2000);
           }
           if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(onCopied, function() { onCopied(); });
+            navigator.clipboard.writeText(text).then(onCopied, function() {
+              // Clipboard API failed (non-HTTPS, permission denied) — try textarea fallback
+              var ta = document.createElement('textarea');
+              ta.value = text;
+              ta.style.cssText = 'position:fixed;left:-9999px;';
+              document.body.appendChild(ta);
+              ta.select();
+              document.execCommand('copy');
+              document.body.removeChild(ta);
+              onCopied();
+            });
           } else {
             var ta = document.createElement('textarea');
             ta.value = text;
@@ -225,8 +235,8 @@
       }
 
       // Top button — right after the chapter heading
-      var topBtn = makeCopyBtn('copy-llm-primer-top');
-      primerSection.parentNode.insertBefore(topBtn, primerSection.nextSibling);
+      var copyTopBtn = makeCopyBtn('copy-llm-primer-top');
+      primerSection.parentNode.insertBefore(copyTopBtn, primerSection.nextSibling);
 
       // Bottom button — before the next chapter-level heading
       // Primer is h2 in appendix; find the next h1 or h2 after it

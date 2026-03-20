@@ -1,6 +1,6 @@
 # Abstract III: Thermal Selection
 
-**Primer anchors: Temperature Independence, Evolutionary Search.**
+**Primer anchors: Temperature Independence, Evolutionary Search, Coherence Precedent.**
 
 ## Prerequisite Physics
 

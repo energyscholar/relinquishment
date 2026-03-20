@@ -1,6 +1,6 @@
 # Abstract I: Genesis
 
-**Primer anchors: Substrate Independence, Anyon Emergence, Braiding Universality, Kauffman Criticality.**
+**Primer anchors: Substrate Independence, Anyon Emergence, Braiding Universality, Kauffman Criticality, Coherence Precedent.**
 
 ## Prerequisite Physics
 
