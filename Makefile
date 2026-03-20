@@ -70,6 +70,7 @@ html: gitinfo build/reader-inline.html
 		--include-after-body=../../build/reader-inline.html \
 		-o ../../docs/downloads/$(JOBNAME).html
 	python3 build/preprocess.py --fix-html docs/downloads/$(JOBNAME).html
+	cp docs/downloads/$(JOBNAME).html $(JOBNAME).html
 
 build/reader-inline.html: build/reader.js
 	echo '<script>' > $@

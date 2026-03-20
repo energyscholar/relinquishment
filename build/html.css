@@ -1,3 +1,43 @@
+/* Title block — clean single block replacing pandoc's triple repetition */
+.title-block {
+  text-align: center;
+  margin: 2em 0 3em;
+  padding: 1em 0;
+}
+.title-block .book-title {
+  font-size: 2.5em;
+  margin: 0 0 0.3em;
+  letter-spacing: 0.05em;
+}
+.title-block .book-subtitle {
+  font-size: 1.2em;
+  font-style: italic;
+  margin: 0 0 0.8em;
+  color: #555;
+}
+.title-block .book-authors {
+  font-size: 1.05em;
+  margin: 0 0 1em;
+}
+.title-block hr {
+  width: 40%;
+  margin: 1em auto;
+  border: none;
+  border-top: 1px solid #999;
+}
+.title-block .book-tagline {
+  font-size: 0.95em;
+  margin: 0.3em 0;
+}
+.title-block .book-skip {
+  margin-top: 1.5em;
+  font-size: 1.1em;
+}
+@media (prefers-color-scheme: dark) {
+  .title-block .book-subtitle { color: #aaa; }
+  .title-block hr { border-top-color: #555; }
+}
+
 /* Responsive phone layout */
 @media (max-width: 600px) {
   body { padding: 0.5em; font-size: 16px; }

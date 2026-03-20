@@ -59,6 +59,49 @@ def convert_topic_guide(text):
     return '\n'.join(out)
 
 
+def convert_timeline(text):
+    """Convert Timeline description lists to simple LaTeX for pandoc.
+
+    Transforms:
+      \\item[YEAR] description text
+    Into:
+      \\textbf{YEAR} --- description text
+
+    Pandoc strips \\item[] labels from description lists with optional
+    arguments like [style=nextline, leftmargin=3.5cm], losing all dates.
+    """
+    lines = text.split('\n')
+    out = []
+    in_description = False
+
+    for line in lines:
+        stripped = line.strip()
+
+        # Strip description environment wrappers
+        if stripped.startswith(r'\begin{description}'):
+            in_description = True
+            continue
+        if stripped.startswith(r'\end{description}'):
+            in_description = False
+            out.append('')
+            continue
+
+        if not in_description:
+            out.append(line)
+            continue
+
+        # Match \item[YEAR] description (year can contain ~, $, --, etc.)
+        m = re.match(r'\s*\\item\[([^\]]+)\]\s*(.*)', stripped)
+        if m:
+            year, desc = m.group(1), m.group(2)
+            out.append(f'\\textbf{{{year}}} --- {desc}')
+            out.append('')  # blank line = new paragraph
+        elif stripped:
+            out.append(line)
+
+    return '\n'.join(out)
+
+
 def patch():
     # Clean previous run
     if TMP.exists():
@@ -121,6 +164,12 @@ def patch():
         # the term and the link. Convert to paragraph-based format.
         if "topic-guide" in str(src):
             text = convert_topic_guide(text)
+
+        # Fix 6: Convert Timeline description lists to preserve year labels
+        # Pandoc strips \item[] labels from description lists with optional
+        # args like [style=nextline, leftmargin=3.5cm], losing all dates.
+        if "timeline" in str(src):
+            text = convert_timeline(text)
 
         dst.write_text(text)
 
@@ -322,8 +371,51 @@ def fix_html_toc(html_path):
     # Replace the old TOC
     text = text[:toc_match.start()] + new_toc + text[toc_match.end():]
 
+    # --- Fix 2: Clean up triple-repeated title block ---
+    # Remove pandoc's title-block-header (redundant with LaTeX title pages)
+    text = re.sub(
+        r'<header id="title-block-header">.*?</header>\s*',
+        '', text, flags=re.DOTALL
+    )
+
+    # Replace the two consecutive <div class="center"> title blocks
+    # (cover page + title page) with one clean block
+    title_pattern = (
+        r'<div class="center">\s*'
+        r'<p>.*?</p>\s*'  # cover image (base64)
+        r'<p><span><strong>RELINQUISHMENT</strong></span></p>\s*'
+        r'<p><span><em>It is easier to get forgiveness than\s*'
+        r'permission</em></span></p>\s*'
+        r'<p><span>\s*Bruce Stephenson, Genevieve Prentice &amp; Argus</span></p>\s*'
+        r'<p><span>\s*March 2026</span></p>\s*'
+        r'</div>\s*'
+        r'<div class="center">\s*'
+        r'<p><span><strong>RELINQUISHMENT</strong></span></p>\s*'
+        r'<p><span><em>It is easier to get forgiveness than\s*'
+        r'permission</em></span></p>\s*'
+        r'<hr />\s*'
+        r'<p><span><em>Three narrative threads.*?</em></span></p>\s*'
+        r'<p><span><em>Three possible explanations.*?</em></span></p>\s*'
+        r'<p><span><em>You decide.</em></span></p>\s*'
+        r'<p><span>Written by Bruce Stephenson, Genevieve Prentice &amp;\s*'
+        r'Argus</span></p>\s*'
+        r'<p><span>2026</span></p>\s*'
+        r'<p><span><a href="#hook:what-would-you-do">.*?</a></span></p>\s*'
+        r'</div>'
+    )
+    replacement = '''<div class="title-block">
+<h1 class="book-title">Relinquishment</h1>
+<p class="book-subtitle">It is easier to get forgiveness than permission</p>
+<p class="book-authors">by Bruce Stephenson, Genevieve Prentice &amp; Argus</p>
+<hr />
+<p class="book-tagline"><em>Three narrative threads. Real science. Real people. Real institutions.</em></p>
+<p class="book-tagline"><em>Three possible explanations for all of it. You decide.</em></p>
+<p class="book-skip"><a href="#hook:what-would-you-do">Skip ahead to the story \u2192</a></p>
+</div>'''
+    text = re.sub(title_pattern, replacement, text, flags=re.DOTALL)
+
     html_path.write_text(text)
-    print(f"HTML TOC restructured: {html_path}")
+    print(f"HTML post-processed: {html_path}")
 
 
 def fix_epub(epub_path):
