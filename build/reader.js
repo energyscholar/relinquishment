@@ -166,8 +166,92 @@
     progress.style.width = pct + '%';
   });
 
-  // --- Dark mode for floating nav ---
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  // --- Dark mode detection (used by copy button and nav) ---
+  var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  // --- LLM Primer copy buttons (top + bottom) ---
+  var primerSection = document.getElementById('app:llm-primer') ||
+    document.getElementById('ai-evaluation-tool');
+  if (!primerSection) {
+    document.querySelectorAll('h1').forEach(function(h) {
+      if (h.textContent.indexOf('AI Evaluation Tool') !== -1) primerSection = h;
+    });
+  }
+  if (primerSection) {
+    var primerDiv = document.getElementById('llm-primer-text');
+    if (primerDiv) {
+      var btnBase = isDark ? '#2471a3' : '#1a5276';
+      var btnHover = isDark ? '#2e86c1' : '#2471a3';
+      var btnLabel = '\u2398 Copy LLM Science Primer';
+      var btnTitle = 'Paste this into your AI assistant to teach it the science required to competently evaluate Relinquishment';
+      var btnStyle = 'display:block;margin:1em auto;padding:0.8em 1.6em;' +
+        'font-size:1.1em;font-weight:bold;font-family:inherit;cursor:pointer;' +
+        'background:' + btnBase + ';color:#fff;border:none;border-radius:6px;' +
+        'transition:background 0.2s;';
+
+      function makeCopyBtn(id) {
+        var btn = document.createElement('button');
+        btn.id = id;
+        btn.className = 'copy-llm-primer';
+        btn.textContent = btnLabel;
+        btn.title = btnTitle;
+        btn.style.cssText = btnStyle;
+        btn.addEventListener('mouseenter', function() { btn.style.background = btnHover; });
+        btn.addEventListener('mouseleave', function() { btn.style.background = btnBase; });
+        btn.addEventListener('click', function() {
+          var text = primerDiv.textContent;
+          function onCopied() {
+            btn.textContent = 'Copied!';
+            btn.style.background = '#1e8449';
+            setTimeout(function() {
+              btn.textContent = btnLabel;
+              btn.style.background = btnBase;
+            }, 2000);
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(onCopied, function() { onCopied(); });
+          } else {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.cssText = 'position:fixed;left:-9999px;';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            onCopied();
+          }
+        });
+        return btn;
+      }
+
+      // Top button — right after the chapter heading
+      var topBtn = makeCopyBtn('copy-llm-primer-top');
+      primerSection.parentNode.insertBefore(topBtn, primerSection.nextSibling);
+
+      // Bottom button — before the next chapter-level heading
+      // Primer is h2 in appendix; find the next h1 or h2 after it
+      var chapterHeadings = document.querySelectorAll('h1, h2');
+      var nextChapter = null;
+      var foundPrimer = false;
+      for (var hi = 0; hi < chapterHeadings.length; hi++) {
+        if (chapterHeadings[hi] === primerSection) {
+          foundPrimer = true;
+        } else if (foundPrimer) {
+          nextChapter = chapterHeadings[hi];
+          break;
+        }
+      }
+      var bottomBtn = makeCopyBtn('copy-llm-primer-bottom');
+      if (nextChapter) {
+        nextChapter.parentNode.insertBefore(bottomBtn, nextChapter);
+      } else {
+        // Fallback: append after last element in primer section's parent
+        primerSection.parentNode.appendChild(bottomBtn);
+      }
+    }
+  }
+
+  if (isDark) {
     nav.style.background = 'rgba(26,26,26,0.95)';
     nav.style.borderTopColor = '#444';
     chapterLabel.style.color = '#aaa';

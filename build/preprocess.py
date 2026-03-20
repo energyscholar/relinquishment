@@ -217,7 +217,7 @@ def fix_html_toc(html_path):
     part_ids = {"the-story", "the-investigation", "the-interpretation"}
 
     # Appendix IDs (from \appendix section in main.tex)
-    appendix_ids = {"app:predictions", "app:abstracts", "app:glossary", "app:dms-note"}
+    appendix_ids = {"app:predictions", "app:llm-primer", "app:abstracts", "app:glossary", "app:dms-note"}
 
     # Back matter IDs (from \backmatter section in main.tex)
     backmatter_ids = {
@@ -413,6 +413,24 @@ def fix_html_toc(html_path):
 <p class="book-skip"><a href="#hook:what-would-you-do">Skip ahead to the story \u2192</a></p>
 </div>'''
     text = re.sub(title_pattern, replacement, text, flags=re.DOTALL)
+
+    # --- Fix 3: Inject LLM primer markdown for copy button ---
+    # Must be inserted BEFORE the reader.js <script> block so the div
+    # exists in the DOM when the IIFE executes.
+    primer_path = REPO / "science-primer-for-llms.md"
+    if primer_path.exists():
+        import html as html_mod
+        primer_md = primer_path.read_text()
+        escaped = html_mod.escape(primer_md)
+        hidden_div = f'<div id="llm-primer-text" style="display:none">{escaped}</div>\n'
+        # Find the last <script> tag (reader.js) and insert before it
+        last_script = text.rfind('<script>')
+        if last_script != -1:
+            text = text[:last_script] + hidden_div + text[last_script:]
+        else:
+            # Fallback: insert before </body>
+            text = text.replace('</body>', hidden_div + '</body>')
+        print(f"Injected LLM primer ({len(primer_md)} chars) for copy button")
 
     html_path.write_text(text)
     print(f"HTML post-processed: {html_path}")
