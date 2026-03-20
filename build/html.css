@@ -74,6 +74,27 @@ nav#TOC > ul > li.toc-group > ul > li { margin-bottom: 0.1em; }
   nav#TOC .toc-part-label { color: #ddd; border-bottom-color: #555; }
 }
 
+/* LLM Primer copy buttons */
+.copy-llm-primer {
+  display: block;
+  margin: 1em auto;
+  padding: 0.8em 1.6em;
+  font-size: 1.1em;
+  font-weight: bold;
+  background: #1a5276;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+.copy-llm-primer:hover { background: #2471a3; }
+#llm-primer-text { display: none; }
+@media (prefers-color-scheme: dark) {
+  .copy-llm-primer { background: #2471a3; }
+  .copy-llm-primer:hover { background: #2e86c1; }
+}
+
 /* Topic Guide — definition list styling */
 dl.topic-guide { margin: 0.5em 0; }
 dl.topic-guide dt {
