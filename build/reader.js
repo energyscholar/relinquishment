@@ -174,7 +174,7 @@
     document.getElementById('ai-evaluation-tool');
   if (!primerSection) {
     document.querySelectorAll('h1').forEach(function(h) {
-      if (h.textContent.indexOf('AI Evaluation Tool') !== -1) primerSection = h;
+      if (h.textContent.indexOf('Published Physics Reference') !== -1) primerSection = h;
     });
   }
   if (primerSection) {
@@ -182,8 +182,8 @@
     if (primerDiv) {
       var btnBase = isDark ? '#2471a3' : '#1a5276';
       var btnHover = isDark ? '#2e86c1' : '#2471a3';
-      var btnLabel = '\u2398 Copy LLM Science Primer';
-      var btnTitle = 'Paste this into your AI assistant to teach it the science required to competently evaluate Relinquishment';
+      var btnLabel = '\u2398 Copy Physics Reference';
+      var btnTitle = 'Copy the Published Physics Reference for use with your AI assistant';
       var btnStyle = 'display:block;margin:1em auto;padding:0.8em 1.6em;' +
         'font-size:1.1em;font-weight:bold;font-family:inherit;cursor:pointer;' +
         'background:' + btnBase + ';color:#fff;border:none;border-radius:6px;' +
@@ -257,6 +257,28 @@
       } else {
         // Fallback: append after last element in primer section's parent
         primerSection.parentNode.appendChild(bottomBtn);
+      }
+
+      // Front-matter button — at the "For AI-Assisted Readers" note
+      var frontNote = document.getElementById('for-ai-assisted-readers');
+      if (!frontNote) {
+        document.querySelectorAll('h2, h3').forEach(function(h) {
+          if (h.textContent.indexOf('AI-Assisted Readers') !== -1) frontNote = h;
+        });
+      }
+      if (frontNote) {
+        var frontBtn = makeCopyBtn('copy-llm-primer-front');
+        // Find the end of the front-matter section (next heading)
+        var frontParent = frontNote.parentNode;
+        var frontNext = frontNote.nextElementSibling;
+        while (frontNext && !/^H[1-3]$/.test(frontNext.tagName)) {
+          frontNext = frontNext.nextElementSibling;
+        }
+        if (frontNext) {
+          frontParent.insertBefore(frontBtn, frontNext);
+        } else {
+          frontNote.parentNode.appendChild(frontBtn);
+        }
       }
     }
   }
