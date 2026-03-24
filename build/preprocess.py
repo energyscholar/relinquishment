@@ -436,6 +436,9 @@ def collapse_chapters(text):
     collapse_css = """
 /* Collapsible styles — Plan 0101: 3-level hierarchy */
 
+/* Hide pandoc TOC — collapsible outline replaces it */
+nav#TOC { display: none; }
+
 /* Level 0: Hook section */
 details.hook-section {
   margin-bottom: 1em;
