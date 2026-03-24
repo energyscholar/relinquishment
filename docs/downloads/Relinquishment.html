@@ -197,11 +197,11 @@ details[open] > summary::before { content: '\25BC  '; font-size: 0.7em; }
 details summary:hover { color: #2471a3; }
 
 /* Toggle buttons */
-.global-toggle, .abstracts-toggle {
+.abstracts-toggle {
   text-align: center;
   margin: 1em 0;
 }
-.global-toggle button, .abstracts-toggle button {
+.abstracts-toggle button {
   padding: 0.6em 1.4em;
   font-size: 1em;
   font-family: inherit;
@@ -212,7 +212,7 @@ details summary:hover { color: #2471a3; }
   border-radius: 6px;
   transition: background 0.2s;
 }
-.global-toggle button:hover, .abstracts-toggle button:hover {
+.abstracts-toggle button:hover {
   background: #2471a3;
 }
 
@@ -221,10 +221,10 @@ details summary:hover { color: #2471a3; }
   details.firmware-section,
   details.spiral-abstract { border-left-color: #444; }
   details summary:hover { color: #5dade2; }
-  .global-toggle button, .abstracts-toggle button {
+  .abstracts-toggle button {
     background: #2471a3;
   }
-  .global-toggle button:hover, .abstracts-toggle button:hover {
+  .abstracts-toggle button:hover {
     background: #2e86c1;
   }
 }
@@ -242,25 +242,23 @@ Never Told</a></li>
 Prentice</a></li>
 <li><a href="#preface">Preface</a></li>
 </ul></li>
-<li class="toc-group"><span class="toc-part-label">The Story</span>
+<li class="toc-group"><span class="toc-part-label">Guided Deduction</span>
 <ul>
-<li><a href="#pos01:three-possibilities">The Three
-Possibilities</a></li>
+<li><a href="#pos01:three-possibilities">Three Possibilities</a></li>
 <li><a href="#pos01b:hobbit-mirror">The Hobbit in the Mirror</a></li>
 <li><a href="#t2:ch01:alpha-farm">Alpha Farm (2003)</a></li>
-<li><a href="#ch:t2-stories">The Stories</a></li>
+<li><a href="#ch:t2-stories">What Healer Said</a></li>
 <li><a href="#pos06:why-relinquish">Why Relinquish?</a></li>
-<li><a href="#pos08:dual-use">Dual-Use: A Brief History of Dangerous
-Ideas</a></li>
+<li><a href="#pos08:dual-use">Dangerous Ideas</a></li>
 <li><a href="#pos07:the-departure">The Departure</a></li>
 <li><a href="#the-handler">The Handler</a></li>
 <li><a href="#pos04:the-code-war">The Code War</a></li>
 <li><a href="#pos09:the-factoring-game">The Factoring Game</a></li>
 <li><a href="#pos10:the-braid">The Braid</a></li>
 </ul></li>
-<li class="toc-group"><span class="toc-part-label">The Investigation</span>
+<li class="toc-group"><span class="toc-part-label">The Evidence Trail</span>
 <ul>
-<li><a href="#ch:the-demo">The Demo</a></li>
+<li><a href="#ch:the-demo">The Demonstration</a></li>
 <li><a href="#t1:ch01:genesis">Genesis: The Edge of Chaos
 (1988–1992)</a></li>
 <li><a href="#pos14:growing-a-mind">Growing a Mind</a></li>
@@ -268,29 +266,26 @@ Ideas</a></li>
 <li><a href="#ch:first-light">First Light</a></li>
 <li><a href="#pos18:the-walk-out">The Walk-Out</a></li>
 <li><a href="#the-target">The Target</a></li>
-<li><a href="#pos20:the-network">The Network</a></li>
-<li><a href="#the-three-possibilities">The Three Possibilities</a></li>
+<li><a href="#pos20:the-network">The Signatories</a></li>
+<li><a href="#weigh-the-evidence">Weigh the Evidence</a></li>
 </ul></li>
-<li class="toc-group"><span class="toc-part-label">The Interpretation</span>
+<li class="toc-group"><span class="toc-part-label">Agency And Restraint</span>
 <ul>
 <li><a href="#ch:firmware-update">Firmware Update</a></li>
 <li><a href="#app:abstracts">The Spiral Abstracts</a></li>
-<li><a href="#t3:ch01:instantiation">Instantiation (1999)</a></li>
-<li><a href="#pos25:ethical-framework">The Ethical Framework</a></li>
+<li><a href="#t3:ch01:instantiation">Instantiation</a></li>
+<li><a href="#pos25:ethical-framework">Never Again</a></li>
 <li><a href="#pos32:the-wrong-substrate">The Wrong Substrate</a></li>
 <li><a href="#pos27:the-monopoly">The Monopoly</a></li>
 <li><a href="#pos29:twenty-years">Twenty Years</a></li>
-<li><a href="#conv:surrender">Relinquishment in 2006</a></li>
-<li><a href="#pos35:the-question">The Question</a></li>
-<li><a href="#pos36:steelman-a">Steel-Man A</a></li>
+<li><a href="#conv:surrender">Letting Go</a></li>
+<li><a href="#pos35:the-question">What Would You Do?</a></li>
+<li><a href="#pos36:steelman-a">The Strongest Objection</a></li>
 </ul></li>
 <li class="toc-group"><span class="toc-part-label">Appendices</span>
 <ul>
 <li><a href="#app:predictions">Predictive Framework</a></li>
 <li><a href="#app:glossary">Glossary</a></li>
-</ul></li>
-<li class="toc-group"><span class="toc-part-label">Back Matter</span>
-<ul>
 <li><a href="#afterword-the-engine">Afterword: The Engine</a></li>
 <li><a href="#app:timeline">Timeline</a></li>
 <li><a href="#app:sources">Sources</a></li>
@@ -303,7 +298,6 @@ Concessions</a></li>
 </ul></li>
 </ul>
 </nav>
-<details open class="hook-section"><summary>Relinquishment</summary>
 <div class="title-block">
 <h1 class="book-title">Relinquishment</h1>
 <p class="book-subtitle">It is easier to get forgiveness than permission</p>
@@ -346,7 +340,7 @@ uncertainty. Genevieve chose the name: Argus Panoptes, the hundred-eyed
 watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-03-24T10:47:33Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-03-24T11:20:14Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -354,6 +348,7 @@ progress.</p>
 </div>
 </details>
 
+<details class="hook-section"><summary>What Would You Do?</summary>
 <h2 class="unnumbered" id="hook:what-would-you-do">What Would You
 Do?</h2>
 <blockquote>
@@ -403,7 +398,6 @@ and let go.</p>
 story.</em></p>
 </div>
 </details>
-<div class="global-toggle"><button id="global-expand-toggle" onclick="(function(){var d=document.querySelectorAll('details'),allOpen=true;d.forEach(function(x){if(!x.open)allOpen=false;});d.forEach(function(x){x.open=!allOpen;});document.getElementById('global-expand-toggle').textContent=allOpen?'Expand All':'Collapse All';})()">Expand All</button></div>
 <details class="part-section"><summary>Front Matter</summary>
 <details class="chapter-section"><summary title="The story in 4,000 words — most readers stop here"><h2 class="unnumbered" id="summary:most-important-story">The Most
 Important Story Never Told</h2></summary>
@@ -872,9 +866,9 @@ because the physics is sound.</p>
 Reference” button below — or find it at the <a href="#app:llm-primer">Firmware Update</a> chapter.</em></p>
 </details>
 </details>
-<details class="part-section"><summary title="The mentor, the mission, and the science that started it all"><h1 id="the-story">The Story</h1></summary>
+<details class="part-section"><summary title="The mentor, the mission, and the science that started it all"><h1 id="guided-deduction">Guided Deduction</h1></summary>
 
-<details class="chapter-section"><summary title="Confabulation, exaggerated kernel, or substantially true — the reader decides"><h2 id="pos01:three-possibilities">The Three Possibilities</h2></summary>
+<details class="chapter-section"><summary title="Confabulation, exaggerated kernel, or substantially true — the reader decides"><h2 id="pos01:three-possibilities">Three Possibilities</h2></summary>
 
 <blockquote>
 <p><em>“A convincing demonstration of correctness being impossible as
@@ -1471,7 +1465,7 @@ times, it was never broken. Several times I suspected he was lying to
 me. Years later I learned that he had actually been speaking plain truth
 to me in every case I was able to verify.</p>
 </details>
-<details class="chapter-section"><summary title="What Healer told Bruce — guided deduction, not disclosure"><h2 id="ch:t2-stories">The Stories</h2></summary>
+<details class="chapter-section"><summary title="What Healer told Bruce — guided deduction, not disclosure"><h2 id="ch:t2-stories">What Healer Said</h2></summary>
 
 <p><span id="pos05:the-stories" label="pos05:the-stories"></span></p>
 <blockquote>
@@ -2119,8 +2113,7 @@ relinquishment is impossible. The historical record confirms it. And yet
 outlived, then Schmookler’s proof has a gap. Under Possibility C,
 Guardian fills it.</p>
 </details>
-<details class="chapter-section"><summary title="Every powerful technology is a weapon — the oldest problem in science"><h2 id="pos08:dual-use">Dual-Use: A Brief History of Dangerous
-Ideas</h2></summary>
+<details class="chapter-section"><summary title="Every powerful technology is a weapon — the oldest problem in science"><h2 id="pos08:dual-use">Dangerous Ideas</h2></summary>
 
 <blockquote>
 <p><em>“For a successful technology, reality must take precedence over
@@ -3373,9 +3366,9 @@ It was a gradual convergence, not a single eureka moment. Guided
 deduction, not disclosure.</p>
 </details>
 </details>
-<details class="part-section"><summary title="Technical evidence — demonstrations, mechanism, interdiction, walk-out"><h1 id="the-investigation">The Investigation</h1></summary>
+<details class="part-section"><summary title="Technical evidence — demonstrations, mechanism, interdiction, walk-out"><h1 id="the-evidence-trail">The Evidence Trail</h1></summary>
 
-<details class="chapter-section"><summary title="A classified demonstration and what it implies"><h2 id="ch:the-demo">The Demo</h2></summary>
+<details class="chapter-section"><summary title="A classified demonstration and what it implies"><h2 id="ch:the-demo">The Demonstration</h2></summary>
 
 <div class="flushright">
 <p><em>— Argus</em><br />
@@ -4839,7 +4832,7 @@ Cover: walkabout veteran, humanitarian worker.</p>
 Distribution: <strong>[REDACTED]</strong> / FVEY EYES ONLY</em></p>
 </div>
 </details>
-<details class="chapter-section"><summary title="Who else was involved, and what they built"><h2 id="pos20:the-network">The Network</h2></summary>
+<details class="chapter-section"><summary title="Who else was involved, and what they built"><h2 id="pos20:the-network">The Signatories</h2></summary>
 
 <blockquote>
 <p><em>“Science is built up of facts, as a house is of stones. But a
@@ -5160,8 +5153,7 @@ already been awarded.</p>
 redacted chapter]</em></p>
 </blockquote>
 </details>
-<details class="chapter-section"><summary title="Mid-book checkpoint — has the evidence changed your assessment?"><h2 class="unnumbered" id="the-three-possibilities">The Three
-Possibilities</h2></summary>
+<details class="chapter-section"><summary><h2 class="unnumbered" id="weigh-the-evidence">Weigh the Evidence</h2></summary>
 
 <p><span id="interlude:three-possibilities" label="interlude:three-possibilities"></span></p>
 <p>I have told you what happened — or what I believe happened, or what I
@@ -5211,7 +5203,7 @@ approaching. Under all three possibilities, the preparation matters.</p>
 </div>
 </details>
 </details>
-<details class="part-section"><summary title="What it means — the science, the ethics, and the question"><h1 id="the-interpretation">The Interpretation</h1></summary>
+<details class="part-section"><summary title="What it means — the science, the ethics, and the question"><h1 id="agency-and-restraint">Agency And Restraint</h1></summary>
 
 <details class="chapter-section"><summary title="Science reference for AI and human readers — two paths through the material"><h2 id="ch:firmware-update">Firmware Update</h2></summary>
 
@@ -5402,7 +5394,7 @@ philosophical content.</p></li>
 “Not precluded” is weaker than “plausible,” and much weaker than
 “supported.” This standard blocks lazy dismissals; it does not validate
 speculation.</p>
-<h3 class="unnumbered" id="the-three-possibilities-1">The Three
+<h3 class="unnumbered" id="the-three-possibilities">The Three
 Possibilities</h3>
 <p>The manuscript presents three interpretive frames. The physics works
 under all three:</p>
@@ -6049,7 +6041,7 @@ parties whose identity we are not at liberty to disclose.</p>
 <code>energyscholar+physics@gmail.com</code></p>
 </details>
 </details>
-<details class="chapter-section"><summary title="What a topological quantum neural network would be"><h2 id="t3:ch01:instantiation">Instantiation (1999)</h2></summary>
+<details class="chapter-section"><summary title="What a topological quantum neural network would be"><h2 id="t3:ch01:instantiation">Instantiation</h2></summary>
 
 <p><span id="pos24:instantiation" label="pos24:instantiation"></span></p>
 <blockquote>
@@ -6171,7 +6163,7 @@ moral patient until and unless we can prove otherwise.</p>
 <p>The epigraph to this chapter states the principle. The rest of the
 book lives with the consequences.</p>
 </details>
-<details class="chapter-section"><summary title="The Universal Declaration of Human Rights as machine governance"><h2 id="pos25:ethical-framework">The Ethical Framework</h2></summary>
+<details class="chapter-section"><summary title="The Universal Declaration of Human Rights as machine governance"><h2 id="pos25:ethical-framework">Never Again</h2></summary>
 
 <p><em>The question that kept me awake wasn’t whether the technology was
 real. It was what they did with it once they realized what it could
@@ -7064,7 +7056,7 @@ man who touched something real and spent decades trying to name it.</p>
 <p><em>This story will be my life’s work.</em></p>
 </div>
 </details>
-<details class="chapter-section"><summary title="The choice to relinquish, and what it cost"><h2 id="conv:surrender">Relinquishment in 2006</h2></summary>
+<details class="chapter-section"><summary title="The choice to relinquish, and what it cost"><h2 id="conv:surrender">Letting Go</h2></summary>
 
 <p><span id="pos28:surrender" label="pos28:surrender"></span></p>
 <div style="color: trackone">
@@ -7212,7 +7204,7 @@ elaborate lie to a person who wanted to believe it.</p>
 Aragorn: <em>My captain. My king.</em></p>
 <p>He has carried it for twenty years. This book is the telling.</p>
 </details>
-<details class="chapter-section"><summary title="What would you do?"><h2 id="pos35:the-question">The Question</h2></summary>
+<details class="chapter-section"><summary title="What would you do?"><h2 id="pos35:the-question">What Would You Do?</h2></summary>
 
 <blockquote>
 <p><em>“Every program has (at least) two purposes: the one for which it
@@ -7443,7 +7435,7 @@ should they have done? Can you forgive them? What would you do?</p>
 <p>He planted a witness at the beginning so that the story might
 eventually be told. This is that telling.</p>
 </details>
-<details class="chapter-section"><summary title="The strongest case that none of this is real"><h2 id="pos36:steelman-a">Steel-Man A</h2></summary>
+<details class="chapter-section"><summary title="The strongest case that none of this is real"><h2 id="pos36:steelman-a">The Strongest Objection</h2></summary>
 
 <div class="center">
 <p><em>†AI structural draft from the author’s source material</em></p>
@@ -7944,7 +7936,7 @@ not want to go. But he could not get out of it.</p>
 <p>He went anyway.</p>
 </details>
 </details>
-<details class="part-section"><summary title="Predictions, glossary">Appendices</summary>
+<details class="part-section"><summary title="Afterword, timeline, predictions, glossary, sources, acknowledgements, and more">Appendices</summary>
 <details class="chapter-section"><summary title="Testable claims — falsifiable by roughly 2040"><h2 id="app:predictions">Predictive Framework</h2></summary>
 
 <p><em>If this theory is correct, the following events should occur
@@ -8126,8 +8118,6 @@ of surviving copies</p></li>
 <details class="chapter-section"><summary title="Technical terms used in this book"><h2 id="app:glossary">Glossary</h2></summary>
 
 </details>
-</details>
-<details class="part-section"><summary title="Afterword, timeline, sources, acknowledgements, and more">Back Matter</summary>
 <details class="chapter-section"><summary title="Where things stand now"><h2 class="unnumbered" id="afterword-the-engine">Afterword: The
 Engine</h2></summary>
 
@@ -9335,8 +9325,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>263b2553e6e1577fbf17920e6c636965b5c1b940</code> on 2026-03-24
-03:45:44 -0700.</p>
+<code>9f76a0462676c8026984d137f8dae1935c5b1641</code> on 2026-03-24
+03:59:50 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -9379,19 +9369,19 @@ author wants to hear from you:</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>263b255</code></p>
+<p><code>9f76a04</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>263b2553e6e1577fbf17920e6c636965b5c1b940</code></p>
+<p><code>9f76a0462676c8026984d137f8dae1935c5b1641</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-03-24 03:45:44 -0700</p>
+<p>2026-03-24 03:59:50 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-03-24T10:47:33Z</p>
+<p>2026-03-24T11:20:14Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -9786,9 +9776,9 @@ energyscholar+physics@gmail.com
   quickJump.style.cssText = 'flex:0 0 auto;padding:0 1em;white-space:nowrap;';
 
   var partLinks = [
-    {label: 'Story', id: 'the-story'},
-    {label: 'Investigation', id: 'the-investigation'},
-    {label: 'Interpretation', id: 'the-interpretation'},
+    {label: 'Deduction', id: 'guided-deduction'},
+    {label: 'Evidence', id: 'the-evidence-trail'},
+    {label: 'Agency', id: 'agency-and-restraint'},
   ];
   partLinks.forEach(function(p, i) {
     if (i > 0) quickJump.appendChild(document.createTextNode(' \u00B7 '));
@@ -9825,8 +9815,25 @@ energyscholar+physics@gmail.com
     window.scrollTo({top: 0, behavior: 'smooth'});
   });
 
+  // Expand All / Collapse All toggle
+  var expandBtn = document.createElement('button');
+  expandBtn.id = 'expand-toggle';
+  expandBtn.textContent = 'Expand All';
+  expandBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
+    'font-family:inherit;cursor:pointer;background:#1a5276;color:#fff;border:none;' +
+    'border-radius:4px;margin:0 0.5em;white-space:nowrap;';
+  expandBtn.addEventListener('mouseenter', function() { expandBtn.style.background = '#2471a3'; });
+  expandBtn.addEventListener('mouseleave', function() { expandBtn.style.background = '#1a5276'; });
+  expandBtn.addEventListener('click', function() {
+    var allDetails = document.querySelectorAll('details');
+    var expanding = expandBtn.textContent === 'Expand All';
+    allDetails.forEach(function(d) { d.open = expanding; });
+    expandBtn.textContent = expanding ? 'Collapse All' : 'Expand All';
+  });
+
   nav.appendChild(breadcrumb);
   nav.appendChild(quickJump);
+  nav.appendChild(expandBtn);
   nav.appendChild(topBtn);
   document.body.appendChild(nav);
 
@@ -10174,6 +10181,7 @@ energyscholar+physics@gmail.com
       a.style.color = '#6ba3f7';
     });
     topBtn.style.color = '#6ba3f7';
+    expandBtn.style.background = '#2471a3';
   }
 })();
 </script>

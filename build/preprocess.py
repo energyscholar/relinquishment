@@ -322,20 +322,7 @@ def collapse_chapters(text):
         )
         text = text[:sec_start] + replacement + text[content_end:]
 
-    # Insert global Expand All / Collapse All button after hook, before first <details>
-    first_details = text.find('<details class="chapter-section">')
-    if first_details != -1:
-        global_toggle = (
-            '<div class="global-toggle">'
-            '<button id="global-expand-toggle" '
-            'onclick="(function(){var d=document.querySelectorAll(\'details\'),'
-            'allOpen=true;d.forEach(function(x){if(!x.open)allOpen=false;});'
-            'd.forEach(function(x){x.open=!allOpen;});'
-            'document.getElementById(\'global-expand-toggle\').textContent='
-            'allOpen?\'Expand All\':\'Collapse All\';})()">'
-            'Expand All</button></div>\n'
-        )
-        text = text[:first_details] + global_toggle + text[first_details:]
+    # (Global Expand All button moved to reader.js bottom nav bar — 6b)
 
     # === Wrap copyright block in collapsible details ===
     # The copyright/notices block is a <div class="flushleft"> between the
@@ -356,29 +343,31 @@ def collapse_chapters(text):
 
     # === Pass 3: Hook section and Part-level wrapping ===
 
-    # 3a: Hook section — wrap title block through hook content
-    # Everything from title-block to the global toggle gets wrapped in
-    # <details open class="hook-section">. Starts expanded, collapsible.
-    title_start = text.find('<div class="title-block">')
-    global_toggle_pos = text.find('<div class="global-toggle">')
-    if title_start != -1 and global_toggle_pos != -1:
-        hook_content = text[title_start:global_toggle_pos]
-        text = (text[:title_start] +
-                '<details open class="hook-section">'
-                '<summary>Relinquishment</summary>\n' +
+    # 3a: Hook section — wrap hook content (NOT title block, which stays visible)
+    # Find the hook h2 and wrap from there to the first chapter-section.
+    hook_h2_match = re.search(r'<h2[^>]*id="hook:what-would-you-do"[^>]*>', text)
+    first_chapter_after_hook = -1
+    if hook_h2_match:
+        first_chapter_after_hook = text.find('<details class="chapter-section">', hook_h2_match.end())
+    if hook_h2_match and first_chapter_after_hook != -1:
+        hook_start = hook_h2_match.start()
+        hook_content = text[hook_start:first_chapter_after_hook]
+        text = (text[:hook_start] +
+                '<details class="hook-section">'
+                '<summary>What Would You Do?</summary>\n' +
                 hook_content +
                 '</details>\n' +
-                text[global_toggle_pos:])
+                text[first_chapter_after_hook:])
 
     # 3b: Part-level wrapping — group chapters under Part containers
-    # Boundaries: h1 Part headings + Appendices/Back Matter by first chapter ID
+    # Boundaries: h1 Part headings + Appendices by first chapter ID
     boundaries = []  # (start_pos, heading_end_pos, summary_html, tooltip_key)
 
     for m in re.finditer(r'<h1([^>]*)>(.+?)</h1>', text, re.DOTALL):
         attrs = m.group(1)
         id_m = re.search(r'id="([^"]+)"', attrs)
         hid = id_m.group(1) if id_m else ''
-        if hid in {'the-story', 'the-investigation', 'the-interpretation'}:
+        if hid in {'guided-deduction', 'the-evidence-trail', 'agency-and-restraint'}:
             boundaries.append((m.start(), m.end(), m.group(0), hid))
 
     # Appendices boundary: chapter-section containing app:predictions
@@ -387,13 +376,6 @@ def collapse_chapters(text):
         app_start = text.rfind('<details class="chapter-section">', 0, app_pred_pos)
         if app_start != -1:
             boundaries.append((app_start, app_start, 'Appendices', 'appendices'))
-
-    # Back Matter boundary: chapter-section containing afterword-the-engine
-    bm_pos = text.find('id="afterword-the-engine"')
-    if bm_pos != -1:
-        bm_start = text.rfind('<details class="chapter-section">', 0, bm_pos)
-        if bm_start != -1:
-            boundaries.append((bm_start, bm_start, 'Back Matter', 'back-matter'))
 
     boundaries.sort()
     body_end_pos = text.rfind('</body>')
@@ -415,13 +397,29 @@ def collapse_chapters(text):
         )
         text = text[:part_start] + wrapped + text[part_end:]
 
-    # 3c: Front Matter part-section — chapters between global toggle and first Part
-    gt_match = re.search(r'<div class="global-toggle">.*?</div>\s*', text, re.DOTALL)
-    if gt_match:
-        gt_end = gt_match.end()
-        first_part = text.find('<details class="part-section">', gt_end)
+    # 3c: Front Matter part-section — chapters between hook-section and first Part
+    # Find closing </details> for hook-section by tracking nesting depth
+    hook_section_start = text.find('<details class="hook-section">')
+    hook_end = -1
+    if hook_section_start != -1:
+        depth = 0
+        pos = hook_section_start
+        while pos < len(text):
+            if text[pos:pos+8] == '<details':
+                depth += 1
+            elif text[pos:pos+10] == '</details>':
+                depth -= 1
+                if depth == 0:
+                    hook_end = pos + 10
+                    break
+            pos += 1
+    if hook_end != -1:
+        # Skip any whitespace after hook close
+        while hook_end < len(text) and text[hook_end] in ' \t\n':
+            hook_end += 1
+        first_part = text.find('<details class="part-section">', hook_end)
         if first_part != -1:
-            fm_region = text[gt_end:first_part]
+            fm_region = text[hook_end:first_part]
             if '<details class="chapter-section">' in fm_region:
                 fm_wrapped = (
                     '<details class="part-section">'
@@ -429,7 +427,7 @@ def collapse_chapters(text):
                     fm_region +
                     '</details>\n'
                 )
-                text = text[:gt_end] + fm_wrapped + text[first_part:]
+                text = text[:hook_end] + fm_wrapped + text[first_part:]
 
     part_count = text.count('<details class="part-section">')
     print(f"  Part-level: {part_count} parts, hook section wrapped")
@@ -498,11 +496,11 @@ details[open] > summary::before { content: '\\25BC  '; font-size: 0.7em; }
 details summary:hover { color: #2471a3; }
 
 /* Toggle buttons */
-.global-toggle, .abstracts-toggle {
+.abstracts-toggle {
   text-align: center;
   margin: 1em 0;
 }
-.global-toggle button, .abstracts-toggle button {
+.abstracts-toggle button {
   padding: 0.6em 1.4em;
   font-size: 1em;
   font-family: inherit;
@@ -513,7 +511,7 @@ details summary:hover { color: #2471a3; }
   border-radius: 6px;
   transition: background 0.2s;
 }
-.global-toggle button:hover, .abstracts-toggle button:hover {
+.abstracts-toggle button:hover {
   background: #2471a3;
 }
 
@@ -522,10 +520,10 @@ details summary:hover { color: #2471a3; }
   details.firmware-section,
   details.spiral-abstract { border-left-color: #444; }
   details summary:hover { color: #5dade2; }
-  .global-toggle button, .abstracts-toggle button {
+  .abstracts-toggle button {
     background: #2471a3;
   }
-  .global-toggle button:hover, .abstracts-toggle button:hover {
+  .abstracts-toggle button:hover {
     background: #2e86c1;
   }
 }
@@ -554,7 +552,7 @@ def fix_html_toc(html_path):
     - Part entries are clickable links (should be visual group headers)
 
     This restructures the TOC with Front Matter, Part, Appendices, and
-    Back Matter groupings, with parts as non-clickable headers.
+    Appendices groupings, with parts as non-clickable headers.
     """
     html_path = Path(html_path)
     text = html_path.read_text()
@@ -566,15 +564,13 @@ def fix_html_toc(html_path):
         return
 
     # Part IDs — these become non-clickable group headers
-    part_ids = {"the-story", "the-investigation", "the-interpretation"}
+    part_ids = {"guided-deduction", "the-evidence-trail", "agency-and-restraint"}
 
-    # Appendix IDs (from \appendix section in main.tex)
+    # Appendix IDs (from \appendix + \backmatter sections in main.tex)
     # Note: app:llm-primer removed (now in Firmware Update chapter, Part III)
     # Note: app:abstracts removed (now in Part III, after Firmware Update)
-    appendix_ids = {"app:predictions", "app:glossary"}
-
-    # Back matter IDs (from \backmatter section in main.tex)
-    backmatter_ids = {
+    appendix_ids = {
+        "app:predictions", "app:glossary",
         "afterword-the-engine", "app:timeline", "app:sources",
         "topic-guide", "app:topic-guide",
         "corrections-and-concessions", "summary:most-important-story",
@@ -677,14 +673,11 @@ def fix_html_toc(html_path):
     last_part_label, last_part_id, last_children = part_groups[-1]
     real_chapters = []
     appendix_items = []
-    back_items = []
     for child in last_children:
         href_match = re.search(r'href="#([^"]+)"', child)
         child_id = href_match.group(1) if href_match else ""
         if child_id in appendix_ids:
             appendix_items.append(child)
-        elif child_id in backmatter_ids:
-            back_items.append(child)
         else:
             real_chapters.append(child)
     part_groups[-1] = (last_part_label, last_part_id, real_chapters)
@@ -710,13 +703,9 @@ def fix_html_toc(html_path):
     for label, pid, children in part_groups:
         new_toc_items.append(make_group(label, children))
 
-    # Appendices
+    # Appendices (includes former back matter)
     if appendix_items:
         new_toc_items.append(make_group("Appendices", appendix_items))
-
-    # Back Matter
-    if back_items:
-        new_toc_items.append(make_group("Back Matter", back_items))
 
     new_toc = '<nav id="TOC" role="doc-toc">\n<ul>\n'
     new_toc += "\n".join(new_toc_items)

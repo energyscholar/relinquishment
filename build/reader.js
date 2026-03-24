@@ -62,9 +62,9 @@
   quickJump.style.cssText = 'flex:0 0 auto;padding:0 1em;white-space:nowrap;';
 
   var partLinks = [
-    {label: 'Story', id: 'the-story'},
-    {label: 'Investigation', id: 'the-investigation'},
-    {label: 'Interpretation', id: 'the-interpretation'},
+    {label: 'Deduction', id: 'guided-deduction'},
+    {label: 'Evidence', id: 'the-evidence-trail'},
+    {label: 'Agency', id: 'agency-and-restraint'},
   ];
   partLinks.forEach(function(p, i) {
     if (i > 0) quickJump.appendChild(document.createTextNode(' \u00B7 '));
@@ -101,8 +101,25 @@
     window.scrollTo({top: 0, behavior: 'smooth'});
   });
 
+  // Expand All / Collapse All toggle
+  var expandBtn = document.createElement('button');
+  expandBtn.id = 'expand-toggle';
+  expandBtn.textContent = 'Expand All';
+  expandBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
+    'font-family:inherit;cursor:pointer;background:#1a5276;color:#fff;border:none;' +
+    'border-radius:4px;margin:0 0.5em;white-space:nowrap;';
+  expandBtn.addEventListener('mouseenter', function() { expandBtn.style.background = '#2471a3'; });
+  expandBtn.addEventListener('mouseleave', function() { expandBtn.style.background = '#1a5276'; });
+  expandBtn.addEventListener('click', function() {
+    var allDetails = document.querySelectorAll('details');
+    var expanding = expandBtn.textContent === 'Expand All';
+    allDetails.forEach(function(d) { d.open = expanding; });
+    expandBtn.textContent = expanding ? 'Collapse All' : 'Expand All';
+  });
+
   nav.appendChild(breadcrumb);
   nav.appendChild(quickJump);
+  nav.appendChild(expandBtn);
   nav.appendChild(topBtn);
   document.body.appendChild(nav);
 
@@ -450,5 +467,6 @@
       a.style.color = '#6ba3f7';
     });
     topBtn.style.color = '#6ba3f7';
+    expandBtn.style.background = '#2471a3';
   }
 })();

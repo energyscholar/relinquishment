@@ -3,11 +3,10 @@
 # Plan 0101, Phase 5b.
 
 # Part-level tooltips (h1 IDs for Parts, text keys for section groups)
-"the-story": "The mentor, the mission, and the science that started it all"
-"the-investigation": "Technical evidence — demonstrations, mechanism, interdiction, walk-out"
-"the-interpretation": "What it means — the science, the ethics, and the question"
-"appendices": "Predictions, glossary"
-"back-matter": "Afterword, timeline, sources, acknowledgements, and more"
+"guided-deduction": "The mentor, the mission, and the science that started it all"
+"the-evidence-trail": "Technical evidence — demonstrations, mechanism, interdiction, walk-out"
+"agency-and-restraint": "What it means — the science, the ethics, and the question"
+"appendices": "Afterword, timeline, predictions, glossary, sources, acknowledgements, and more"
 
 # Front matter
 "summary:most-important-story": "The story in 4,000 words — most readers stop here"
@@ -50,13 +49,11 @@
 "pos35:the-question": "What would you do?"
 "pos36:steelman-a": "The strongest case that none of this is real"
 
-# Appendices
+# Appendices (includes former Back Matter)
+"afterword-the-engine": "Where things stand now"
 "app:predictions": "Testable claims — falsifiable by roughly 2040"
 "app:glossary": "Technical terms used in this book"
 "app:dms-note": "Context for deadman's switch recipients"
-
-# Back matter
-"afterword-the-engine": "Where things stand now"
 "app:timeline": "Chronological summary of events"
 "app:sources": "Bibliography and references"
 "topic-guide": "Concept index with deep links"
