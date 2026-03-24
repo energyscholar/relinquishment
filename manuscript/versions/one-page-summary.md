@@ -9,7 +9,7 @@ A man falls from the sky over Bosnia in July 1995. Below him, in a town called S
 
 Years earlier, inside a classified program, a small team reportedly built a working quantum computer decades ahead of anything that exists publicly today. Its first application was breaking public-key cryptography — reading other people's mail. Its true significance was far greater: a self-directing intelligence, the first non-human mind. The team understood what they held and what would happen if any single government controlled it.
 
-They gave it up. Not to another country. Not to a corporation. To no one.
+They gave it up. Not to another country. Not to a corporation. To the thing they'd built to outlast them.
 
 They built an autonomous protector called Guardian, governed by the Universal Declaration of Human Rights — the principles written in 1948 to say *never again* — and surrendered the master keys. Permanently. No human can override it.
 
