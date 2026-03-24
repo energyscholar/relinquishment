@@ -417,9 +417,9 @@ def fix_html_toc(html_path):
     # --- Fix 3: Inject LLM primer markdown for copy button ---
     # Must be inserted BEFORE the reader.js <script> block so the div
     # exists in the DOM when the IIFE executes.
+    import html as html_mod
     primer_path = REPO / "science-primer-for-llms.md"
     if primer_path.exists():
-        import html as html_mod
         primer_md = primer_path.read_text()
         escaped = html_mod.escape(primer_md)
         hidden_div = f'<div id="llm-primer-text" style="display:none">{escaped}</div>\n'
@@ -431,6 +431,19 @@ def fix_html_toc(html_path):
             # Fallback: insert before </body>
             text = text.replace('</body>', hidden_div + '</body>')
         print(f"Injected LLM primer ({len(primer_md)} chars) for copy button")
+
+    # --- Fix 3b: Inject Spiral Abstracts markdown for copy button ---
+    abstracts_path = REPO / "spiral-abstracts-for-copy.md"
+    if abstracts_path.exists():
+        abstracts_md = abstracts_path.read_text()
+        escaped_abs = html_mod.escape(abstracts_md)
+        hidden_div_abs = f'<div id="spiral-abstracts-text" style="display:none">{escaped_abs}</div>\n'
+        last_script = text.rfind('<script>')
+        if last_script != -1:
+            text = text[:last_script] + hidden_div_abs + text[last_script:]
+        else:
+            text = text.replace('</body>', hidden_div_abs + '</body>')
+        print(f"Injected Spiral Abstracts ({len(abstracts_md)} chars) for copy button")
 
     html_path.write_text(text)
     print(f"HTML post-processed: {html_path}")
