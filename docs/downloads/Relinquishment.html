@@ -157,16 +157,6 @@ details.book-section > summary {
   opacity: 0.7;
 }
 
-/* Level 0: Title section */
-details.title-section {
-  margin-bottom: 0.3em;
-}
-details.title-section > summary {
-  font-size: 1.3em;
-  font-weight: bold;
-  padding: 0.2em 0;
-}
-
 /* Level 0: Hook section */
 details.hook-section {
   margin-bottom: 0.3em;
@@ -276,6 +266,8 @@ Never Told</a></li>
 <li><a href="#preface-by-genevieve-prentice">Preface by Genevieve
 Prentice</a></li>
 <li><a href="#preface">Preface</a></li>
+<li><a href="#your-ai-may-need-a-firmware-update">Your AI May Need a
+Firmware Update</a></li>
 </ul></li>
 <li class="toc-group"><span class="toc-part-label">Guided Deduction</span>
 <ul>
@@ -333,9 +325,7 @@ Concessions</a></li>
 </ul></li>
 </ul>
 </nav>
-<details class="book-section"><summary>Relinquishment <span class="book-subtitle-inline">&mdash; It is easier to get forgiveness than permission</span></summary>
-<details class="title-section"><summary>Relinquishment</summary>
-<div class="title-block">
+<div class="title-block" style="display:none">
 <h1 class="book-title">Relinquishment</h1>
 <p class="book-subtitle">It is easier to get forgiveness than permission</p>
 <p class="book-authors">by Bruce Stephenson, Genevieve Prentice &amp; Argus</p>
@@ -344,10 +334,7 @@ Concessions</a></li>
 <p class="book-tagline"><em>Three possible explanations for all of it. You decide.</em></p>
 <p class="book-skip"><a href="#hook:what-would-you-do">Skip ahead to the story →</a></p>
 </div>
-</details>
-
-<details class="chapter-section"><summary title="License, authorship, and draft status">Copyright &amp; Notices</summary>
-<div class="flushleft">
+<div class="flushleft" style="display:none">
 <p><strong>Relinquishment: It is easier to get forgiveness than
 permission</strong></p>
 <p>Copyright  2026 Bruce Stephenson and Genevieve Prentice.</p>
@@ -379,14 +366,13 @@ uncertainty. Genevieve chose the name: Argus Panoptes, the hundred-eyed
 watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-03-24T11:57:57Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-03-24T12:47:42Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
 <p>First edition, Spring 2026.</p>
 </div>
-</details>
-
+<details class="book-section"><summary>Relinquishment <span class="book-subtitle-inline">&mdash; It is easier to get forgiveness than permission</span></summary>
 <details class="hook-section"><summary>What Would You Do?</summary>
 <h2 class="unnumbered" id="hook:what-would-you-do">What Would You
 Do?</h2>
@@ -437,7 +423,6 @@ and let go.</p>
 story.</em></p>
 </div>
 </details>
-<details class="part-section"><summary>Front Matter</summary>
 <details class="chapter-section"><summary title="The story in 4,000 words — most readers stop here"><h2 class="unnumbered" id="summary:most-important-story">The Most
 Important Story Never Told</h2></summary>
 
@@ -615,9 +600,9 @@ autocatalytic emergence, computational universality — and found that it
 converges on exactly the capability the story describes. Every paper is
 public. Every citation can be checked. The convergence is either a
 coincidence or an explanation. A concentrated summary of this scientific
-convergence is available in the <a href="#app:llm-primer">Published
-Physics Reference</a> appendix, suitable for independent evaluation or
-for use with an AI assistant.</p>
+convergence is available in the <a href="#ch:firmware-update">Firmware
+Update</a> chapter, suitable for independent evaluation or for use with
+an AI assistant.</p>
 <p>Bruce’s position: “I’m fine with all three and can’t tell which is
 closest to true.”</p>
 <p>The book works under all three. This summary works under all three.
@@ -888,22 +873,37 @@ in Appendix B are the real test. Everything else is preamble.</p>
 ethics, and the question at the heart of all of it. The reader
 decides.</p>
 <p><em>— Bruce Stephenson, March 2026</em></p>
-<h3 class="unnumbered" id="for-ai-assisted-readers">For AI-Assisted
-Readers</h3>
-<p><span id="front:evaluation-note" label="front:evaluation-note"></span></p>
-<p>This book makes physics claims that span several specializations. AI
-systems evaluating it tend to apply introductory-level reasoning to
-non-introductory physics — confidently dismissing claims that no law of
-physics actually forbids.</p>
-<p>A short <a href="#app:llm-primer">Published Physics Reference</a> in
-the appendix provides the ten specific results needed for competent
-evaluation, with DOI-verified citations. Copy it into your AI assistant
-before sharing the book. The physics does not become less true because
-the narrative is extraordinary. The narrative does not become more true
-because the physics is sound.</p>
-<p><em>In the <strong>HTML version</strong>, use the “Copy Science
-Reference” button below — or find it at the <a href="#app:llm-primer">Firmware Update</a> chapter.</em></p>
 </details>
+<details class="chapter-section"><summary title="Why LLMs confidently dismiss this book, and the one-click fix"><h2 class="unnumbered" id="your-ai-may-need-a-firmware-update">Your AI
+May Need a Firmware Update</h2></summary>
+
+<p><span id="front:evaluation-note" label="front:evaluation-note"></span></p>
+<p>You are probably going to ask an AI about this book. Here is what
+will happen.</p>
+<p>Your AI will read the first few chapters, pattern-match on phrases
+like “classified quantum computer” and “self-directing intelligence,”
+and produce a confident, well-structured dismissal. It will sound
+authoritative. It will be wrong — not because the book’s claims are
+necessarily true, but because the AI lacks the cross-domain physics
+knowledge to evaluate them.</p>
+<p>This is a known problem. Most large language models in 2026 were
+trained on introductory physics. This book’s claims involve
+non-introductory results from topological quantum computing, nonlinear
+dynamics, autocatalytic network theory, and plasma physics. An AI
+applying undergraduate reasoning to graduate-level questions will get
+the wrong answer every time — and it will never tell you it’s out of its
+depth.</p>
+<p>The fix takes thirty seconds. The <a href="#ch:firmware-update">Firmware Update</a> chapter in Part III
+contains ten specific physics results, with DOI-verified citations, that
+your AI needs before it can competently evaluate what follows. Copy them
+into your AI assistant before asking it about this book.</p>
+<p><em>In the <strong>HTML version</strong>, use the “Copy Science
+Reference” button — it puts the ten results on your clipboard, ready to
+paste.</em></p>
+<p>The physics does not become less true because the narrative is
+extraordinary. The narrative does not become more true because the
+physics is sound. But your AI cannot tell you which is which until it
+has the right physics installed.</p>
 </details>
 <details class="part-section"><summary title="The mentor, the mission, and the science that started it all"><h1 id="guided-deduction">Guided Deduction</h1></summary>
 
@@ -1799,8 +1799,8 @@ follow orders. My primary recording tool is pen on waterproof paper. I
 also have a camera with good lenses.</p>
 <p>A Serbian Paramilitary K9 patrol approaches my position! I freeze.
 The dog handlers stop 10 meters away from the bush where I hide. I know
-my scent discipline has been good enough when a dog urinates on me. They
-eventually leave. I continue my mission of observation and
+my scent discipline has been good enough when a dog urinates on my bush.
+They eventually leave. I continue my mission of observation and
 recording.</p>
 <p>Days of horror follow. Finally, when the coast is clear and I can
 bear it no more, shaken as never before, I radio for extraction. The
@@ -1847,20 +1847,21 @@ Doe went on.</p>
 <p>“In the aftermath of the Bosnian war I was assigned to protect some
 Agency spooks and their guests from Dyncorp. They flew in from somewhere
 on an Agency plane. There was a translator, the Agency spook, the
-Dyncorps rep, some rich guy named Epstein, and a black haired woman who
-was obviously Epstein’s handler. Their cover was ‘Humanitarian fact
-finding mission’. I was supposed to guard them and fill a uniform while
-they visited refugee camps.”</p>
+Dyncorps rep, some tall rich guy, and a dark-haired woman who was
+obviously his handler. Their cover was ‘Humanitarian fact finding
+mission’. I was supposed to guard them and fill a uniform while they
+visited refugee camps.”</p>
 <p>“At first it was on the up-and-up. They spoke to refugees. They asked
 questions. They even wrote down some answers. Strange thing was, it was
 obvious they didn’t care about the answers. Like they were just going
 through the motions. What they really did was pick out the prettiest
-young refugee girls and fly them off to this Epstein character’s private
-island. I watched them do it and heard them discuss it. They obviously
-had bad intentions towards those young girls they took. Normally I keep
-my mouth shut, you guys know that, but I really don’t like pedos, nor
-those who assist them. Yet they have clearance from the top. What can we
-do?”</p>
+young refugee girls and fly them off to this character’s private island.
+I watched them do it and heard them discuss it. They obviously had bad
+intentions towards those young girls they took. Normally I keep my mouth
+shut, you guys know that, but I really don’t like pedos, nor those who
+assist them. Yet they have clearance from the top. What can we do?”</p>
+<p><em>[In retrospect, the descriptions match Jeffrey Epstein and
+Ghislaine Maxwell. Doe did not name them. — B.S.]</em></p>
 <p>None of us could fault Doe for violating direct order and talking
 about a secret mission. We all hated pedos. At the same time, none of us
 could think of anything we could do against such corruption at the top.
@@ -1904,10 +1905,9 @@ London forbade NIOD from interviewing the SAS operatives.</p>
 founding members of the cDc in 1984, and that Healer joined later. The
 cDc was a meritocracy based on hacking skill. The “3 COWS” — Wolfram,
 Kauffman, and Healer — are the three scientists who walked the
-room-temperature QNN out of the DARPA lab. “BULLS are senior COWS” — a
-wordplay on BULLRUN, the NSA’s known cryptanalysis program. The cDc is
-well documented for its identity practices: false identities, shared
-handles, and tradecraft misdirection. Oxblood Ruffin is publicly
+room-temperature QNN out of the DARPA lab. “Bulls are senior cows.” The
+cDc is well documented for its identity practices: false identities,
+shared handles, and tradecraft misdirection. Oxblood Ruffin is publicly
 admitted as a shared handle.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
 <p>I have seen the very worst of what humans do to each other. My dreams
 ever since have been filled with the horror of it, especially around the
@@ -9364,8 +9364,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>5e248329e6ffe03bfdb6c16c0c3abec00a16e0b1</code> on 2026-03-24
-04:47:23 -0700.</p>
+<code>7cc77b09b31859ad3360165156942f088982dbe2</code> on 2026-03-24
+05:07:01 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -9408,19 +9408,19 @@ author wants to hear from you:</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>5e24832</code></p>
+<p><code>7cc77b0</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>5e248329e6ffe03bfdb6c16c0c3abec00a16e0b1</code></p>
+<p><code>7cc77b09b31859ad3360165156942f088982dbe2</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-03-24 04:47:23 -0700</p>
+<p>2026-03-24 05:07:01 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-03-24T11:57:57Z</p>
+<p>2026-03-24T12:47:42Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -10020,7 +10020,7 @@ energyscholar+physics@gmail.com
     document.getElementById('ai-evaluation-tool');
   if (!primerSection) {
     document.querySelectorAll('h1').forEach(function(h) {
-      if (h.textContent.indexOf('Published Physics Reference') !== -1) primerSection = h;
+      if (h.textContent.indexOf('Firmware Update') !== -1) primerSection = h;
     });
   }
   if (primerSection) {
@@ -10097,11 +10097,11 @@ energyscholar+physics@gmail.com
         primerSection.parentNode.appendChild(bottomBtn);
       }
 
-      // Front-matter button — at the "For AI-Assisted Readers" note
-      var frontNote = document.getElementById('for-ai-assisted-readers');
+      // Front-matter button — at the "Your AI May Need a Firmware Update" note
+      var frontNote = document.getElementById('your-ai-may-need-a-firmware-update');
       if (!frontNote) {
         document.querySelectorAll('h2, h3').forEach(function(h) {
-          if (h.textContent.indexOf('AI-Assisted Readers') !== -1) frontNote = h;
+          if (h.textContent.indexOf('Firmware Update') !== -1 && h.textContent.indexOf('Your AI') !== -1) frontNote = h;
         });
       }
       if (frontNote) {
