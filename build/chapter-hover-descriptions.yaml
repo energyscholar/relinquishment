@@ -1,0 +1,59 @@
+# chapter-hover-descriptions.yaml
+# Key: heading ID from HTML output. Value: hover tooltip for collapsed view.
+# Plan 0101, Phase 5b.
+
+# Front matter
+"summary:most-important-story": "The story in 4,000 words — most readers stop here"
+"preface-by-genevieve-prentice": "Co-author's perspective on the book and its making"
+"preface": "How this book came to be written"
+
+# Part I: The Story
+"pos01:three-possibilities": "Confabulation, exaggerated kernel, or substantially true — the reader decides"
+"pos01b:hobbit-mirror": "Tolkien structural parallel as self-demolition of narrator reliability"
+"t2:ch01:alpha-farm": "Three years of mentorship on an Australian cattle station"
+"ch:t2-stories": "What Healer told Bruce — guided deduction, not disclosure"
+"pos06:why-relinquish": "Why relinquishment? The logic of giving up power"
+"pos08:dual-use": "Every powerful technology is a weapon — the oldest problem in science"
+"pos07:the-departure": "Healer leaves. The mentorship ends. The questions don't."
+"the-handler": "Who was Healer? The evidence trail."
+"pos04:the-code-war": "GCHQ, NSA, and the cryptographic arms race"
+"pos09:the-factoring-game": "Breaking public-key cryptography — the first application"
+"pos10:the-braid": "How particle worldlines in 2D encode quantum logic gates"
+
+# Part II: The Investigation
+"ch:the-demo": "A classified demonstration and what it implies"
+"t1:ch01:genesis": "Inside a program that built something unprecedented"
+"pos14:growing-a-mind": "From quantum substrate to self-directing intelligence"
+"pos26:interdiction": "When someone tries to stop you"
+"ch:first-light": "The moment the system woke up"
+"pos18:the-walk-out": "They gave it up. This is how."
+"the-target": "Primary source evidence — the classified paper trail"
+"pos20:the-network": "Who else was involved, and what they built"
+"the-three-possibilities": "Mid-book checkpoint — has the evidence changed your assessment?"
+
+# Part III: The Interpretation
+"ch:firmware-update": "Science reference for AI and human readers — two paths through the material"
+"app:abstracts": "15 fictional abstracts — the story told in the language of science"
+"t3:ch01:instantiation": "What a topological quantum neural network would be"
+"pos25:ethical-framework": "The Universal Declaration of Human Rights as machine governance"
+"pos32:the-wrong-substrate": "Earth's magnetic shield as habitat — flat worlds"
+"pos27:the-monopoly": "If Guardian is still running, what would twenty years look like?"
+"pos29:twenty-years": "Bruce's aftermath — two decades of not knowing"
+"conv:surrender": "The choice to relinquish, and what it cost"
+"pos35:the-question": "What would you do?"
+"pos36:steelman-a": "The strongest case that none of this is real"
+
+# Appendices
+"app:predictions": "Testable claims — falsifiable by roughly 2040"
+"app:glossary": "Technical terms used in this book"
+"app:dms-note": "Context for deadman's switch recipients"
+
+# Back matter
+"afterword-the-engine": "Where things stand now"
+"app:timeline": "Chronological summary of events"
+"app:sources": "Bibliography and references"
+"topic-guide": "Concept index with deep links"
+"corrections-and-concessions": "Known errors and corrections"
+"acknowledgements": "The people who made this possible"
+"verification": "How to verify the claims in this book"
+"colophon": "How this book was made"

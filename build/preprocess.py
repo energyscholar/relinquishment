@@ -7,8 +7,13 @@ or strip standard LaTeX — pandoc handles all of that natively.
 Writes patched copy to build/epub-tmp/ for inspection.
 """
 
-import shutil, re, sys, zipfile, io
+import shutil, re, sys, zipfile, io, html as html_mod
 from pathlib import Path
+
+try:
+    import yaml
+except ImportError:
+    yaml = None
 
 REPO = Path(__file__).parent.parent
 TMP = REPO / "build" / "epub-tmp"
@@ -193,6 +198,210 @@ def patch():
     return TMP / "main.tex"
 
 
+def collapse_chapters(text):
+    """Wrap chapters in collapsible <details> elements for progressive disclosure.
+
+    Two passes:
+      Pass 1: Wrap h3 internal sections (Firmware Update + Spiral Abstracts)
+      Pass 2: Re-scan and wrap h2 chapters
+
+    Working backwards in each pass so position shifts don't affect unprocessed regions.
+    """
+
+    # Load hover descriptions keyed by heading ID
+    hover_map = {}
+    yaml_path = REPO / "build" / "chapter-hover-descriptions.yaml"
+    if yaml and yaml_path.exists():
+        hover_map = yaml.safe_load(yaml_path.read_text()) or {}
+
+    def find_headings(txt):
+        """Parse all h1/h2/h3 headings with positions, IDs, and text."""
+        heading_re = re.compile(r'<(h[123])(\s[^>]*)?>(.+?)</\1>', re.DOTALL)
+        result = []
+        for m in heading_re.finditer(txt):
+            attrs = m.group(2) or ""
+            id_m = re.search(r'id="([^"]+)"', attrs)
+            hid = id_m.group(1) if id_m else ""
+            plain = re.sub(r'<[^>]+>', '', m.group(3)).strip()
+            # Normalize whitespace (pandoc splits some headings across lines)
+            plain = re.sub(r'\s+', ' ', plain)
+            result.append({
+                'tag': m.group(1), 'id': hid, 'text': plain,
+                'start': m.start(), 'end': m.end(), 'full': m.group(0),
+            })
+        return result
+
+    def content_end_for(headings, idx, stop_tags):
+        """Find where content ends: start of next heading with tag in stop_tags."""
+        for j in range(idx + 1, len(headings)):
+            if headings[j]['tag'] in stop_tags:
+                return headings[j]['start']
+        body_end = text.rfind('</body>')
+        return body_end if body_end != -1 else len(text)
+
+    # --- h3 IDs to wrap internally ---
+    abstract_ids = {
+        'appendix:genesis', 'appendix:nursery', 'appendix:thermal-selection',
+        'appendix:cryptanalysis', 'appendix:production', 'appendix:exodus',
+        'appendix:infrastructure', 'appendix:relinquishment', 'appendix:orbital',
+        'appendix:discovery', 'appendix:kitaevs-echo', 'appendix:interdiction',
+        'appendix:confession', 'appendix:the-unipolar-condition', 'appendix:guardian',
+    }
+    firmware_ids = {'five-physics-distinctions-often-missed', 'ten-physics-anchors'}
+
+    # === Pass 1: Wrap h3 internal sections ===
+    headings = find_headings(text)
+    ops = []
+    for i, h in enumerate(headings):
+        if h['tag'] != 'h3':
+            continue
+        if h['id'] in abstract_ids:
+            ce = content_end_for(headings, i, {'h1', 'h2', 'h3'})
+            ops.append((h['start'], h['end'], ce, 'spiral-abstract', h['full']))
+        elif h['id'] in firmware_ids:
+            ce = content_end_for(headings, i, {'h1', 'h2', 'h3'})
+            ops.append((h['start'], h['end'], ce, 'firmware-section', h['full']))
+
+    # Apply from end to start
+    ops.sort(key=lambda o: o[0], reverse=True)
+    for sec_start, head_end, content_end, css_class, heading_html in ops:
+        content = text[head_end:content_end]
+        replacement = (
+            f'<details class="{css_class}">'
+            f'<summary>{heading_html}</summary>\n'
+            f'{content}'
+            f'</details>\n'
+        )
+        text = text[:sec_start] + replacement + text[content_end:]
+
+    # Insert Spiral Abstracts Expand All / Collapse All button
+    first_abstract = text.find('<details class="spiral-abstract">')
+    if first_abstract != -1:
+        abs_toggle = (
+            '<div class="abstracts-toggle">'
+            '<button id="abstracts-expand-toggle" '
+            'onclick="(function(){var d=document.querySelectorAll(\'details.spiral-abstract\'),'
+            'allOpen=true;d.forEach(function(x){if(!x.open)allOpen=false;});'
+            'd.forEach(function(x){x.open=!allOpen;});'
+            'document.getElementById(\'abstracts-expand-toggle\').textContent='
+            'allOpen?\'Expand All Abstracts\':\'Collapse All Abstracts\';})()">'
+            'Expand All Abstracts</button></div>\n'
+        )
+        text = text[:first_abstract] + abs_toggle + text[first_abstract:]
+
+    # === Pass 2: Wrap h2 chapters ===
+    headings = find_headings(text)  # Re-scan after pass 1 modifications
+    exempt_ids = {'hook:what-would-you-do'}
+    ops = []
+    for i, h in enumerate(headings):
+        if h['tag'] != 'h2':
+            continue
+        if h['id'] in exempt_ids:
+            continue
+        ce = content_end_for(headings, i, {'h1', 'h2'})
+        tooltip = hover_map.get(h['id'], '')
+        ops.append((h['start'], h['end'], ce, tooltip, h['full']))
+
+    ops.sort(key=lambda o: o[0], reverse=True)
+    for sec_start, head_end, content_end, tooltip, heading_html in ops:
+        title_attr = f' title="{html_mod.escape(tooltip)}"' if tooltip else ''
+        content = text[head_end:content_end]
+        replacement = (
+            f'<details class="chapter-section">'
+            f'<summary{title_attr}>{heading_html}</summary>\n'
+            f'{content}'
+            f'</details>\n'
+        )
+        text = text[:sec_start] + replacement + text[content_end:]
+
+    # Insert global Expand All / Collapse All button after hook, before first <details>
+    first_details = text.find('<details class="chapter-section">')
+    if first_details != -1:
+        global_toggle = (
+            '<div class="global-toggle">'
+            '<button id="global-expand-toggle" '
+            'onclick="(function(){var d=document.querySelectorAll(\'details\'),'
+            'allOpen=true;d.forEach(function(x){if(!x.open)allOpen=false;});'
+            'd.forEach(function(x){x.open=!allOpen;});'
+            'document.getElementById(\'global-expand-toggle\').textContent='
+            'allOpen?\'Expand All\':\'Collapse All\';})()">'
+            'Expand All</button></div>\n'
+        )
+        text = text[:first_details] + global_toggle + text[first_details:]
+
+    # === Inject CSS ===
+    collapse_css = """
+/* Collapsible chapter styles — Plan 0101 Phase 5g */
+details.chapter-section {
+  margin: 0.5em 0;
+  border-left: 3px solid #ddd;
+  padding-left: 1em;
+}
+details.firmware-section,
+details.spiral-abstract {
+  border-left: 2px solid #ccc;
+  padding-left: 0.8em;
+  margin-left: 0.5em;
+  margin: 0.3em 0 0.3em 0.5em;
+}
+details summary {
+  cursor: pointer;
+  padding: 0.3em 0;
+  list-style: none;
+}
+details summary::-webkit-details-marker { display: none; }
+details summary::before { content: '\\25B6  '; font-size: 0.7em; }
+details[open] > summary::before { content: '\\25BC  '; font-size: 0.7em; }
+details summary:hover { color: #2471a3; }
+details.chapter-section > summary > h2 { display: inline; }
+details.firmware-section > summary > h3,
+details.spiral-abstract > summary > h3 { display: inline; }
+.global-toggle, .abstracts-toggle {
+  text-align: center;
+  margin: 1em 0;
+}
+.global-toggle button, .abstracts-toggle button {
+  padding: 0.6em 1.4em;
+  font-size: 1em;
+  font-family: inherit;
+  cursor: pointer;
+  background: #1a5276;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+.global-toggle button:hover, .abstracts-toggle button:hover {
+  background: #2471a3;
+}
+@media (prefers-color-scheme: dark) {
+  details.chapter-section { border-left-color: #555; }
+  details.firmware-section,
+  details.spiral-abstract { border-left-color: #444; }
+  details summary:hover { color: #5dade2; }
+  .global-toggle button, .abstracts-toggle button {
+    background: #2471a3;
+  }
+  .global-toggle button:hover, .abstracts-toggle button:hover {
+    background: #2e86c1;
+  }
+}
+"""
+    # Inject before closing </style> of the last style block in <head>
+    head_end = text.find('</head>')
+    if head_end != -1:
+        last_style_close = text.rfind('</style>', 0, head_end)
+        if last_style_close != -1:
+            text = text[:last_style_close] + collapse_css + text[last_style_close:]
+
+    count = text.count('<details class="chapter-section">')
+    fw_count = text.count('<details class="firmware-section">')
+    abs_count = text.count('<details class="spiral-abstract">')
+    print(f"Collapsed: {count} chapters, {fw_count} firmware sections, {abs_count} abstracts")
+
+    return text
+
+
 def fix_html_toc(html_path):
     """Post-process HTML to restructure flat TOC into part-grouped TOC.
 
@@ -217,7 +426,9 @@ def fix_html_toc(html_path):
     part_ids = {"the-story", "the-investigation", "the-interpretation"}
 
     # Appendix IDs (from \appendix section in main.tex)
-    appendix_ids = {"app:predictions", "app:llm-primer", "app:abstracts", "app:glossary", "app:dms-note"}
+    # Note: app:llm-primer removed (now in Firmware Update chapter, Part III)
+    # Note: app:abstracts removed (now in Part III, after Firmware Update)
+    appendix_ids = {"app:predictions", "app:glossary", "app:dms-note"}
 
     # Back matter IDs (from \backmatter section in main.tex)
     backmatter_ids = {
@@ -414,10 +625,12 @@ def fix_html_toc(html_path):
 </div>'''
     text = re.sub(title_pattern, replacement, text, flags=re.DOTALL)
 
-    # --- Fix 3: Inject LLM primer markdown for copy button ---
+    # --- Fix 3: Collapse chapters into <details> elements ---
+    text = collapse_chapters(text)
+
+    # --- Fix 4: Inject LLM primer markdown for copy button ---
     # Must be inserted BEFORE the reader.js <script> block so the div
     # exists in the DOM when the IIFE executes.
-    import html as html_mod
     primer_path = REPO / "science-primer-for-llms.md"
     if primer_path.exists():
         primer_md = primer_path.read_text()

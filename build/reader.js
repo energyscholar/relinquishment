@@ -166,6 +166,43 @@
     progress.style.width = pct + '%';
   });
 
+  // --- Hash auto-expand (open ancestor <details> on hash navigation) ---
+  function autoExpand(hash) {
+    if (!hash) return;
+    var target = document.querySelector(hash);
+    if (!target) {
+      // Try decoding (pandoc uses colons in IDs)
+      try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch(e) {}
+    }
+    if (!target) return;
+    var el = target;
+    while (el) {
+      if (el.tagName === 'DETAILS') el.open = true;
+      el = el.parentElement;
+    }
+    // Also check if target is inside a <summary> — expand its parent <details>
+    var summary = target.closest('summary');
+    if (summary && summary.parentElement && summary.parentElement.tagName === 'DETAILS') {
+      summary.parentElement.open = true;
+    }
+    target.scrollIntoView();
+  }
+  if (window.location.hash) {
+    autoExpand(window.location.hash);
+  }
+  window.addEventListener('hashchange', function() {
+    autoExpand(window.location.hash);
+  });
+  // Also intercept clicks on internal links
+  document.addEventListener('click', function(e) {
+    var link = e.target.closest('a[href^="#"]');
+    if (link) {
+      var hash = link.getAttribute('href');
+      // Let default behavior happen, then auto-expand
+      setTimeout(function() { autoExpand(hash); }, 50);
+    }
+  });
+
   // --- Dark mode detection (used by copy button and nav) ---
   var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
