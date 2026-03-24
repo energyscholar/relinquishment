@@ -456,8 +456,9 @@ def collapse_chapters(text):
             book_content = text[book_start:wrap_end]
             text = (text[:book_start] +
                     '<details class="book-section">'
-                    '<summary>Relinquishment &mdash; '
-                    'It is easier to get forgiveness than permission</summary>\n' +
+                    '<summary>Relinquishment '
+                    '<span class="book-subtitle-inline">&mdash; '
+                    'It is easier to get forgiveness than permission</span></summary>\n' +
                     book_content +
                     '\n</details>\n' +
                     text[wrap_end:])
@@ -472,12 +473,19 @@ nav#TOC { display: none; }
 
 /* Book-level: the one-line entry point */
 details.book-section {
-  margin: 0.5em 0;
+  margin: 0.3em 0;
 }
 details.book-section > summary {
-  font-size: 1.5em;
+  font-size: 1.4em;
   font-weight: bold;
-  padding: 0.3em 0;
+  padding: 0.2em 0;
+  white-space: nowrap;
+}
+.book-subtitle-inline {
+  font-size: 0.65em;
+  font-weight: normal;
+  font-style: italic;
+  opacity: 0.7;
 }
 
 /* Level 0: Title section */
@@ -548,6 +556,11 @@ details summary::-webkit-details-marker { display: none; }
 details summary::before { content: '\\25B6  '; font-size: 0.7em; }
 details[open] > summary::before { content: '\\25BC  '; font-size: 0.7em; }
 details summary:hover { color: #2471a3; }
+
+/* Tighter document spacing */
+details p { margin: 0.4em 0; }
+details h2, details h3, details h4 { margin: 0.6em 0 0.3em 0; }
+details blockquote { margin: 0.5em 0; }
 
 /* Toggle buttons */
 .abstracts-toggle {
