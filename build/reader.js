@@ -271,28 +271,21 @@
         return btn;
       }
 
-      // Top button — right after the chapter heading
+      // Top button — inside <details> after <summary>, not inside summary
       var copyTopBtn = makeCopyBtn('copy-llm-primer-top');
-      primerSection.parentNode.insertBefore(copyTopBtn, primerSection.nextSibling);
-
-      // Bottom button — before the next chapter-level heading
-      // Primer is h2 in appendix; find the next h1 or h2 after it
-      var chapterHeadings = document.querySelectorAll('h1, h2');
-      var nextChapter = null;
-      var foundPrimer = false;
-      for (var hi = 0; hi < chapterHeadings.length; hi++) {
-        if (chapterHeadings[hi] === primerSection) {
-          foundPrimer = true;
-        } else if (foundPrimer) {
-          nextChapter = chapterHeadings[hi];
-          break;
-        }
-      }
-      var bottomBtn = makeCopyBtn('copy-llm-primer-bottom');
-      if (nextChapter) {
-        nextChapter.parentNode.insertBefore(bottomBtn, nextChapter);
+      var primerDetails = primerSection.closest('details');
+      if (primerDetails) {
+        var primerSummary = primerDetails.querySelector(':scope > summary');
+        if (primerSummary) primerSummary.insertAdjacentElement('afterend', copyTopBtn);
       } else {
-        // Fallback: append after last element in primer section's parent
+        primerSection.parentNode.insertBefore(copyTopBtn, primerSection.nextSibling);
+      }
+
+      // Bottom button — at end of the <details> content
+      var bottomBtn = makeCopyBtn('copy-llm-primer-bottom');
+      if (primerDetails) {
+        primerDetails.appendChild(bottomBtn);
+      } else {
         primerSection.parentNode.appendChild(bottomBtn);
       }
 
@@ -305,14 +298,11 @@
       }
       if (frontNote) {
         var frontBtn = makeCopyBtn('copy-llm-primer-front');
-        // Find the end of the front-matter section (next heading)
-        var frontParent = frontNote.parentNode;
-        var frontNext = frontNote.nextElementSibling;
-        while (frontNext && !/^H[1-3]$/.test(frontNext.tagName)) {
-          frontNext = frontNext.nextElementSibling;
-        }
-        if (frontNext) {
-          frontParent.insertBefore(frontBtn, frontNext);
+        // Insert inside the <details> after <summary>
+        var frontDetails = frontNote.closest('details');
+        if (frontDetails) {
+          var frontSummary = frontDetails.querySelector(':scope > summary');
+          if (frontSummary) frontSummary.insertAdjacentElement('afterend', frontBtn);
         } else {
           frontNote.parentNode.appendChild(frontBtn);
         }
@@ -383,25 +373,20 @@
         return btn;
       }
 
-      // Top button — right after the chapter heading
+      // Top button — inside <details> after <summary>, not inside summary
       var absTopBtn = makeAbsCopyBtn('copy-spiral-abstracts-top');
-      abstractsSection.parentNode.insertBefore(absTopBtn, abstractsSection.nextSibling);
-
-      // Bottom button — before the next chapter-level heading
-      var absHeadings = document.querySelectorAll('h1, h2');
-      var absNextChapter = null;
-      var foundAbstracts = false;
-      for (var ai = 0; ai < absHeadings.length; ai++) {
-        if (absHeadings[ai] === abstractsSection) {
-          foundAbstracts = true;
-        } else if (foundAbstracts) {
-          absNextChapter = absHeadings[ai];
-          break;
-        }
+      var absDetails = abstractsSection.closest('details');
+      if (absDetails) {
+        var absSummary = absDetails.querySelector(':scope > summary');
+        if (absSummary) absSummary.insertAdjacentElement('afterend', absTopBtn);
+      } else {
+        abstractsSection.parentNode.insertBefore(absTopBtn, abstractsSection.nextSibling);
       }
+
+      // Bottom button — at end of the <details> content
       var absBottomBtn = makeAbsCopyBtn('copy-spiral-abstracts-bottom');
-      if (absNextChapter) {
-        absNextChapter.parentNode.insertBefore(absBottomBtn, absNextChapter);
+      if (absDetails) {
+        absDetails.appendChild(absBottomBtn);
       } else {
         abstractsSection.parentNode.appendChild(absBottomBtn);
       }

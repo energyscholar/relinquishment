@@ -176,6 +176,14 @@ def patch():
         if "timeline" in str(src):
             text = convert_timeline(text)
 
+        # Fix 7: Strip \ifdefined\dmsbuild conditional blocks
+        # Pandoc doesn't handle \ifdefined — includes DMS content unconditionally.
+        # Remove the block so DMS appendix only appears in `make dms` builds.
+        text = re.sub(
+            r'\\ifdefined\\dmsbuild\s*\n.*?\\fi\b',
+            '', text, flags=re.DOTALL
+        )
+
         dst.write_text(text)
 
     # Copy images directories
@@ -329,11 +337,40 @@ def collapse_chapters(text):
         )
         text = text[:first_details] + global_toggle + text[first_details:]
 
+    # === Wrap copyright block in collapsible details ===
+    # The copyright/notices block is a <div class="flushleft"> between the
+    # title block and the hook. It has no headings, so collapse_chapters skips it.
+    flushleft_start = text.find('<div class="flushleft">')
+    if flushleft_start != -1:
+        # Find matching </div> (no nested divs in this block)
+        flushleft_end = text.find('</div>', flushleft_start) + 6
+        copyright_content = text[flushleft_start:flushleft_end]
+        copyright_wrapped = (
+            '<details class="chapter-section">'
+            '<summary title="License, authorship, and draft status">'
+            'Copyright &amp; Notices</summary>\n'
+            + copyright_content +
+            '\n</details>\n'
+        )
+        text = text[:flushleft_start] + copyright_wrapped + text[flushleft_end:]
+
+    # === Inject section dividers for Appendices and Back Matter ===
+    # Parts I/II/III have h1 headers that stay visible. Appendices and Back Matter
+    # flow without group headers. Inject styled dividers before the first item of each.
+    for div_label, before_id in [('Appendices', 'app:predictions'), ('Back Matter', 'afterword-the-engine')]:
+        target = f'id="{before_id}"'
+        idx = text.find(target)
+        if idx != -1:
+            details_start = text.rfind('<details class="chapter-section">', 0, idx)
+            if details_start != -1:
+                divider = f'<div class="section-divider">{div_label}</div>\n'
+                text = text[:details_start] + divider + text[details_start:]
+
     # === Inject CSS ===
     collapse_css = """
 /* Collapsible chapter styles — Plan 0101 Phase 5g */
 details.chapter-section {
-  margin: 0.5em 0;
+  margin: 0.3em 0;
   border-left: 3px solid #ddd;
   padding-left: 1em;
 }
@@ -348,6 +385,7 @@ details summary {
   cursor: pointer;
   padding: 0.3em 0;
   list-style: none;
+  display: block;
 }
 details summary::-webkit-details-marker { display: none; }
 details summary::before { content: '\\25B6  '; font-size: 0.7em; }
@@ -374,7 +412,18 @@ details.spiral-abstract > summary > h3 { display: inline; }
 .global-toggle button:hover, .abstracts-toggle button:hover {
   background: #2471a3;
 }
+.section-divider {
+  margin: 1.5em 0 0.5em;
+  padding: 0.3em 0;
+  border-top: 2px solid #888;
+  font-variant: small-caps;
+  color: #555;
+  font-size: 1.2em;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
 @media (prefers-color-scheme: dark) {
+  .section-divider { border-top-color: #666; color: #aaa; }
   details.chapter-section { border-left-color: #555; }
   details.firmware-section,
   details.spiral-abstract { border-left-color: #444; }
@@ -428,7 +477,7 @@ def fix_html_toc(html_path):
     # Appendix IDs (from \appendix section in main.tex)
     # Note: app:llm-primer removed (now in Firmware Update chapter, Part III)
     # Note: app:abstracts removed (now in Part III, after Firmware Update)
-    appendix_ids = {"app:predictions", "app:glossary", "app:dms-note"}
+    appendix_ids = {"app:predictions", "app:glossary"}
 
     # Back matter IDs (from \backmatter section in main.tex)
     backmatter_ids = {
