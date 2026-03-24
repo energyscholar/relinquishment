@@ -6,12 +6,12 @@
   // --- TOC toggle ---
   var toc = document.getElementById('TOC');
   if (toc) {
-    var btn = document.createElement('button');
-    btn.id = 'toc-toggle';
-    btn.textContent = 'Contents';
-    btn.setAttribute('aria-expanded', 'false');
-    btn.setAttribute('aria-controls', 'TOC');
-    btn.style.cssText = 'display:block;width:100%;padding:0.6em;font-size:1em;' +
+    var tocBtn = document.createElement('button');
+    tocBtn.id = 'toc-toggle';
+    tocBtn.textContent = 'Contents';
+    tocBtn.setAttribute('aria-expanded', 'false');
+    tocBtn.setAttribute('aria-controls', 'TOC');
+    tocBtn.style.cssText = 'display:block;width:100%;padding:0.6em;font-size:1em;' +
       'background:#f0f0f0;border:1px solid #ccc;cursor:pointer;text-align:left;' +
       'font-family:inherit;margin-bottom:0;border-radius:4px 4px 0 0;';
 
@@ -22,132 +22,171 @@
       tocList.style.borderRadius = '0 0 4px 4px';
     }
 
-    toc.insertBefore(btn, toc.firstChild);
+    toc.insertBefore(tocBtn, toc.firstChild);
     toc.style.padding = '0';
     toc.style.border = 'none';
     toc.style.background = 'none';
 
-    btn.addEventListener('click', function() {
+    tocBtn.addEventListener('click', function() {
       var open = tocList.style.display !== 'none';
       tocList.style.display = open ? 'none' : 'block';
-      btn.setAttribute('aria-expanded', open ? 'false' : 'true');
-      btn.style.borderRadius = open ? '4px 4px 0 0' : '4px 4px 0 0';
+      tocBtn.setAttribute('aria-expanded', open ? 'false' : 'true');
     });
 
     // Close TOC when a link is clicked
     tocList.addEventListener('click', function(e) {
       if (e.target.tagName === 'A') {
         tocList.style.display = 'none';
-        btn.setAttribute('aria-expanded', 'false');
+        tocBtn.setAttribute('aria-expanded', 'false');
       }
     });
   }
 
-  // --- Collect chapters ---
-  var chapters = [];
-  document.querySelectorAll('h1').forEach(function(h1) {
-    if (h1.id && h1.id !== 'title-block-header') {
-      chapters.push(h1);
-    }
-  });
-  // Also grab sections with ids that match TOC links
-  if (chapters.length === 0) {
-    document.querySelectorAll('[id]').forEach(function(el) {
-      if (el.tagName === 'H1' || el.tagName === 'H2') {
-        chapters.push(el);
-      }
-    });
-  }
-
-  // --- Floating nav bar ---
+  // --- Bottom navigation bar: Breadcrumb + Quick-jump + Top ---
   var nav = document.createElement('div');
   nav.id = 'reader-nav';
-  nav.style.cssText = 'position:fixed;bottom:0;left:0;right:0;' +
-    'background:rgba(248,248,248,0.95);border-top:1px solid #ccc;' +
-    'padding:0.4em 0.8em;display:flex;justify-content:space-between;' +
-    'align-items:center;font-size:0.85em;z-index:100;backdrop-filter:blur(4px);';
+  nav.style.cssText = 'position:sticky;bottom:0;left:0;right:0;' +
+    'background:rgba(248,248,248,0.97);border-top:1px solid #ddd;' +
+    'padding:0.3em 0.8em;display:flex;justify-content:space-between;' +
+    'align-items:center;font-size:0.8em;z-index:100;backdrop-filter:blur(4px);';
 
-  var prevBtn = document.createElement('a');
-  prevBtn.textContent = '\u25C0 Prev';
-  prevBtn.href = '#';
-  prevBtn.style.cssText = 'text-decoration:none;color:#1a5276;padding:0.3em 0.6em;';
+  // Left: Breadcrumb
+  var breadcrumb = document.createElement('span');
+  breadcrumb.id = 'nav-breadcrumb';
+  breadcrumb.style.cssText = 'flex:1;overflow:hidden;white-space:nowrap;' +
+    'text-overflow:ellipsis;';
 
-  var chapterLabel = document.createElement('span');
-  chapterLabel.style.cssText = 'flex:1;text-align:center;overflow:hidden;' +
-    'white-space:nowrap;text-overflow:ellipsis;color:#555;font-size:0.85em;';
+  // Center: Quick-jump Part links
+  var quickJump = document.createElement('span');
+  quickJump.id = 'nav-quickjump';
+  quickJump.style.cssText = 'flex:0 0 auto;padding:0 1em;white-space:nowrap;';
 
-  var nextBtn = document.createElement('a');
-  nextBtn.textContent = 'Next \u25B6';
-  nextBtn.href = '#';
-  nextBtn.style.cssText = 'text-decoration:none;color:#1a5276;padding:0.3em 0.6em;';
+  var partLinks = [
+    {label: 'Story', id: 'the-story'},
+    {label: 'Investigation', id: 'the-investigation'},
+    {label: 'Interpretation', id: 'the-interpretation'},
+  ];
+  partLinks.forEach(function(p, i) {
+    if (i > 0) quickJump.appendChild(document.createTextNode(' \u00B7 '));
+    var a = document.createElement('a');
+    a.href = '#' + p.id;
+    a.textContent = p.label;
+    a.style.cssText = 'text-decoration:none;color:#1a5276;';
+    a.addEventListener('mouseenter', function() { a.style.color = '#2471a3'; });
+    a.addEventListener('mouseleave', function() { a.style.color = '#1a5276'; });
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      var target = document.getElementById(p.id);
+      if (target) {
+        // Open all ancestor <details> and scroll
+        var el = target;
+        while (el) {
+          if (el.tagName === 'DETAILS') el.open = true;
+          el = el.parentElement;
+        }
+        target.scrollIntoView({behavior: 'smooth'});
+      }
+    });
+    quickJump.appendChild(a);
+  });
 
+  // Right: ▲ Top
   var topBtn = document.createElement('a');
-  topBtn.textContent = '\u25B2 TOC';
-  topBtn.href = '#TOC';
-  topBtn.style.cssText = 'text-decoration:none;color:#1a5276;padding:0.3em 0.6em;margin-left:0.5em;';
+  topBtn.textContent = '\u25B2 Top';
+  topBtn.href = '#';
+  topBtn.style.cssText = 'text-decoration:none;color:#1a5276;padding:0.3em 0.6em;' +
+    'flex:0 0 auto;white-space:nowrap;';
+  topBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
 
-  nav.appendChild(prevBtn);
-  nav.appendChild(chapterLabel);
-  nav.appendChild(nextBtn);
+  nav.appendChild(breadcrumb);
+  nav.appendChild(quickJump);
   nav.appendChild(topBtn);
   document.body.appendChild(nav);
 
-  // Add bottom padding so nav doesn't cover content
+  // Body padding for sticky nav
   document.body.style.paddingBottom = '3em';
 
-  // --- Chapter navigation logic ---
-  function getCurrentChapter() {
-    var scrollY = window.scrollY + 100;
-    for (var i = chapters.length - 1; i >= 0; i--) {
-      if (chapters[i].offsetTop <= scrollY) return i;
-    }
-    return 0;
+  // --- Breadcrumb update on scroll ---
+  function makeBreadcrumbLink(label, targetId) {
+    var a = document.createElement('a');
+    a.textContent = label;
+    a.href = targetId ? '#' + targetId : '#';
+    a.style.cssText = 'text-decoration:none;color:#777;';
+    a.addEventListener('mouseenter', function() { a.style.color = '#2471a3'; });
+    a.addEventListener('mouseleave', function() { a.style.color = '#777'; });
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      if (targetId) {
+        autoExpand('#' + targetId);
+      } else {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+      }
+    });
+    return a;
   }
 
-  function updateNav() {
-    var idx = getCurrentChapter();
-    if (chapters.length === 0) return;
+  function updateBreadcrumb() {
+    var partName = '';
+    var partId = '';
+    var chapterName = '';
+    var chapterId = '';
 
-    chapterLabel.textContent = chapters[idx] ?
-      chapters[idx].textContent.trim().substring(0, 40) : '';
+    // Find current part: last part-section summary scrolled past
+    document.querySelectorAll('details.part-section > summary').forEach(function(s) {
+      if (s.getBoundingClientRect().top <= 150) {
+        partName = s.textContent.trim().substring(0, 25);
+        var h1 = s.querySelector('h1[id]');
+        partId = h1 ? h1.id : '';
+      }
+    });
 
-    if (idx > 0) {
-      prevBtn.href = '#' + chapters[idx - 1].id;
-      prevBtn.style.visibility = 'visible';
-    } else {
-      prevBtn.style.visibility = 'hidden';
+    // Find current chapter: last open chapter-section scrolled past
+    document.querySelectorAll('details.chapter-section[open] > summary').forEach(function(s) {
+      if (s.getBoundingClientRect().top <= 150) {
+        chapterName = s.textContent.trim().substring(0, 35);
+        var h2 = s.querySelector('h2[id]');
+        chapterId = h2 ? h2.id : '';
+      }
+    });
+
+    // Build breadcrumb
+    breadcrumb.innerHTML = '';
+    breadcrumb.appendChild(makeBreadcrumbLink('Relinquishment', ''));
+
+    if (partName) {
+      breadcrumb.appendChild(document.createTextNode(' \u203A '));
+      breadcrumb.appendChild(makeBreadcrumbLink(partName, partId));
     }
 
-    if (idx < chapters.length - 1) {
-      nextBtn.href = '#' + chapters[idx + 1].id;
-      nextBtn.style.visibility = 'visible';
-    } else {
-      nextBtn.style.visibility = 'hidden';
+    if (chapterName) {
+      breadcrumb.appendChild(document.createTextNode(' \u203A '));
+      breadcrumb.appendChild(makeBreadcrumbLink(chapterName, chapterId));
     }
   }
 
-  // Throttled scroll handler
-  var scrollTimer;
+  // Throttled scroll handler for breadcrumb
+  var breadcrumbTimer;
   window.addEventListener('scroll', function() {
-    if (scrollTimer) return;
-    scrollTimer = setTimeout(function() {
-      scrollTimer = null;
-      updateNav();
-    }, 100);
+    if (breadcrumbTimer) return;
+    breadcrumbTimer = setTimeout(function() {
+      breadcrumbTimer = null;
+      updateBreadcrumb();
+    }, 150);
   });
-  updateNav();
+  updateBreadcrumb();
 
   // --- Keyboard navigation ---
+  var chapters = [];
+  document.querySelectorAll('h1, h2').forEach(function(h) {
+    if (h.id) chapters.push(h);
+  });
+
   document.addEventListener('keydown', function(e) {
     if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-    var idx = getCurrentChapter();
-    if (e.key === 'ArrowLeft' && idx > 0) {
-      e.preventDefault();
-      chapters[idx - 1].scrollIntoView({behavior: 'smooth'});
-    } else if (e.key === 'ArrowRight' && idx < chapters.length - 1) {
-      e.preventDefault();
-      chapters[idx + 1].scrollIntoView({behavior: 'smooth'});
-    } else if (e.key === 'Home') {
+    if (e.key === 'Home') {
       e.preventDefault();
       window.scrollTo({top: 0, behavior: 'smooth'});
     }
@@ -247,7 +286,6 @@
           }
           if (navigator.clipboard && navigator.clipboard.writeText) {
             navigator.clipboard.writeText(text).then(onCopied, function() {
-              // Clipboard API failed (non-HTTPS, permission denied) — try textarea fallback
               var ta = document.createElement('textarea');
               ta.value = text;
               ta.style.cssText = 'position:fixed;left:-9999px;';
@@ -393,16 +431,24 @@
     }
   }
 
+  // --- Dark mode styling ---
   if (isDark) {
-    nav.style.background = 'rgba(26,26,26,0.95)';
+    nav.style.background = 'rgba(26,26,26,0.97)';
     nav.style.borderTopColor = '#444';
-    chapterLabel.style.color = '#aaa';
-    prevBtn.style.color = '#6ba3f7';
-    nextBtn.style.color = '#6ba3f7';
-    topBtn.style.color = '#6ba3f7';
     progress.style.background = '#6ba3f7';
-    if (btn) btn.style.background = '#333';
-    if (btn) btn.style.borderColor = '#555';
-    if (btn) btn.style.color = '#e0e0e0';
+    if (tocBtn) {
+      tocBtn.style.background = '#333';
+      tocBtn.style.borderColor = '#555';
+      tocBtn.style.color = '#e0e0e0';
+    }
+    // Update breadcrumb link colors
+    breadcrumb.querySelectorAll('a').forEach(function(a) {
+      a.style.color = '#aaa';
+    });
+    // Update quick-jump link colors
+    quickJump.querySelectorAll('a').forEach(function(a) {
+      a.style.color = '#6ba3f7';
+    });
+    topBtn.style.color = '#6ba3f7';
   }
 })();

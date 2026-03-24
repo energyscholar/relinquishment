@@ -354,33 +354,138 @@ def collapse_chapters(text):
         )
         text = text[:flushleft_start] + copyright_wrapped + text[flushleft_end:]
 
-    # === Inject section dividers for Appendices and Back Matter ===
-    # Parts I/II/III have h1 headers that stay visible. Appendices and Back Matter
-    # flow without group headers. Inject styled dividers before the first item of each.
-    for div_label, before_id in [('Appendices', 'app:predictions'), ('Back Matter', 'afterword-the-engine')]:
-        target = f'id="{before_id}"'
-        idx = text.find(target)
-        if idx != -1:
-            details_start = text.rfind('<details class="chapter-section">', 0, idx)
-            if details_start != -1:
-                divider = f'<div class="section-divider">{div_label}</div>\n'
-                text = text[:details_start] + divider + text[details_start:]
+    # === Pass 3: Hook section and Part-level wrapping ===
+
+    # 3a: Hook section — wrap title block through hook content
+    # Everything from title-block to the global toggle gets wrapped in
+    # <details open class="hook-section">. Starts expanded, collapsible.
+    title_start = text.find('<div class="title-block">')
+    global_toggle_pos = text.find('<div class="global-toggle">')
+    if title_start != -1 and global_toggle_pos != -1:
+        hook_content = text[title_start:global_toggle_pos]
+        text = (text[:title_start] +
+                '<details open class="hook-section">'
+                '<summary>Relinquishment</summary>\n' +
+                hook_content +
+                '</details>\n' +
+                text[global_toggle_pos:])
+
+    # 3b: Part-level wrapping — group chapters under Part containers
+    # Boundaries: h1 Part headings + Appendices/Back Matter by first chapter ID
+    boundaries = []  # (start_pos, heading_end_pos, summary_html, tooltip_key)
+
+    for m in re.finditer(r'<h1([^>]*)>(.+?)</h1>', text, re.DOTALL):
+        attrs = m.group(1)
+        id_m = re.search(r'id="([^"]+)"', attrs)
+        hid = id_m.group(1) if id_m else ''
+        if hid in {'the-story', 'the-investigation', 'the-interpretation'}:
+            boundaries.append((m.start(), m.end(), m.group(0), hid))
+
+    # Appendices boundary: chapter-section containing app:predictions
+    app_pred_pos = text.find('id="app:predictions"')
+    if app_pred_pos != -1:
+        app_start = text.rfind('<details class="chapter-section">', 0, app_pred_pos)
+        if app_start != -1:
+            boundaries.append((app_start, app_start, 'Appendices', 'appendices'))
+
+    # Back Matter boundary: chapter-section containing afterword-the-engine
+    bm_pos = text.find('id="afterword-the-engine"')
+    if bm_pos != -1:
+        bm_start = text.rfind('<details class="chapter-section">', 0, bm_pos)
+        if bm_start != -1:
+            boundaries.append((bm_start, bm_start, 'Back Matter', 'back-matter'))
+
+    boundaries.sort()
+    body_end_pos = text.rfind('</body>')
+
+    # Wrap each part from end to start (preserves earlier positions)
+    for i in range(len(boundaries) - 1, -1, -1):
+        part_start, heading_end, summary_html, tooltip_key = boundaries[i]
+        part_end = boundaries[i + 1][0] if i < len(boundaries) - 1 else body_end_pos
+
+        tooltip = hover_map.get(tooltip_key, '')
+        title_attr = f' title="{html_mod.escape(tooltip)}"' if tooltip else ''
+
+        region_content = text[heading_end:part_end]
+        wrapped = (
+            f'<details class="part-section">'
+            f'<summary{title_attr}>{summary_html}</summary>\n'
+            f'{region_content}'
+            f'</details>\n'
+        )
+        text = text[:part_start] + wrapped + text[part_end:]
+
+    # 3c: Front Matter part-section — chapters between global toggle and first Part
+    gt_match = re.search(r'<div class="global-toggle">.*?</div>\s*', text, re.DOTALL)
+    if gt_match:
+        gt_end = gt_match.end()
+        first_part = text.find('<details class="part-section">', gt_end)
+        if first_part != -1:
+            fm_region = text[gt_end:first_part]
+            if '<details class="chapter-section">' in fm_region:
+                fm_wrapped = (
+                    '<details class="part-section">'
+                    '<summary>Front Matter</summary>\n' +
+                    fm_region +
+                    '</details>\n'
+                )
+                text = text[:gt_end] + fm_wrapped + text[first_part:]
+
+    part_count = text.count('<details class="part-section">')
+    print(f"  Part-level: {part_count} parts, hook section wrapped")
 
     # === Inject CSS ===
     collapse_css = """
-/* Collapsible chapter styles — Plan 0101 Phase 5g */
+/* Collapsible styles — Plan 0101: 3-level hierarchy */
+
+/* Level 0: Hook section */
+details.hook-section {
+  margin-bottom: 1em;
+}
+details.hook-section > summary {
+  font-size: 1.4em;
+  font-weight: bold;
+  padding: 0.5em 0;
+}
+
+/* Level 1: Part-level (no left border, large bold summary) */
+details.part-section {
+  margin: 0.8em 0;
+}
+details.part-section > summary {
+  font-size: 1.2em;
+  font-weight: bold;
+  padding: 0.4em 0;
+  font-variant: small-caps;
+  letter-spacing: 0.05em;
+}
+details.part-section > summary > h1 {
+  display: inline;
+  margin: 0;
+  font-size: inherit;
+  font-variant: inherit;
+  letter-spacing: inherit;
+}
+
+/* Level 2: Chapter-level (thin left border, indented inside Part) */
 details.chapter-section {
   margin: 0.3em 0;
   border-left: 3px solid #ddd;
   padding-left: 1em;
 }
+details.chapter-section > summary > h2 { display: inline; }
+
+/* Level 3: Internal (firmware sections, spiral abstracts) */
 details.firmware-section,
 details.spiral-abstract {
   border-left: 2px solid #ccc;
   padding-left: 0.8em;
-  margin-left: 0.5em;
   margin: 0.3em 0 0.3em 0.5em;
 }
+details.firmware-section > summary > h3,
+details.spiral-abstract > summary > h3 { display: inline; }
+
+/* Common summary styles */
 details summary {
   cursor: pointer;
   padding: 0.3em 0;
@@ -391,9 +496,8 @@ details summary::-webkit-details-marker { display: none; }
 details summary::before { content: '\\25B6  '; font-size: 0.7em; }
 details[open] > summary::before { content: '\\25BC  '; font-size: 0.7em; }
 details summary:hover { color: #2471a3; }
-details.chapter-section > summary > h2 { display: inline; }
-details.firmware-section > summary > h3,
-details.spiral-abstract > summary > h3 { display: inline; }
+
+/* Toggle buttons */
 .global-toggle, .abstracts-toggle {
   text-align: center;
   margin: 1em 0;
@@ -412,18 +516,8 @@ details.spiral-abstract > summary > h3 { display: inline; }
 .global-toggle button:hover, .abstracts-toggle button:hover {
   background: #2471a3;
 }
-.section-divider {
-  margin: 1.5em 0 0.5em;
-  padding: 0.3em 0;
-  border-top: 2px solid #888;
-  font-variant: small-caps;
-  color: #555;
-  font-size: 1.2em;
-  font-weight: bold;
-  letter-spacing: 0.1em;
-}
+
 @media (prefers-color-scheme: dark) {
-  .section-divider { border-top-color: #666; color: #aaa; }
   details.chapter-section { border-left-color: #555; }
   details.firmware-section,
   details.spiral-abstract { border-left-color: #444; }
