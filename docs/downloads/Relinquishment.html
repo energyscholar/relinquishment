@@ -142,12 +142,19 @@ nav#TOC { display: none; }
 
 /* Book-level: the one-line entry point */
 details.book-section {
-  margin: 0.5em 0;
+  margin: 0.3em 0;
 }
 details.book-section > summary {
-  font-size: 1.5em;
+  font-size: 1.4em;
   font-weight: bold;
-  padding: 0.3em 0;
+  padding: 0.2em 0;
+  white-space: nowrap;
+}
+.book-subtitle-inline {
+  font-size: 0.65em;
+  font-weight: normal;
+  font-style: italic;
+  opacity: 0.7;
 }
 
 /* Level 0: Title section */
@@ -218,6 +225,11 @@ details summary::-webkit-details-marker { display: none; }
 details summary::before { content: '\25B6  '; font-size: 0.7em; }
 details[open] > summary::before { content: '\25BC  '; font-size: 0.7em; }
 details summary:hover { color: #2471a3; }
+
+/* Tighter document spacing */
+details p { margin: 0.4em 0; }
+details h2, details h3, details h4 { margin: 0.6em 0 0.3em 0; }
+details blockquote { margin: 0.5em 0; }
 
 /* Toggle buttons */
 .abstracts-toggle {
@@ -321,7 +333,7 @@ Concessions</a></li>
 </ul></li>
 </ul>
 </nav>
-<details class="book-section"><summary>Relinquishment &mdash; It is easier to get forgiveness than permission</summary>
+<details class="book-section"><summary>Relinquishment <span class="book-subtitle-inline">&mdash; It is easier to get forgiveness than permission</span></summary>
 <details class="title-section"><summary>Relinquishment</summary>
 <div class="title-block">
 <h1 class="book-title">Relinquishment</h1>
@@ -367,7 +379,7 @@ uncertainty. Genevieve chose the name: Argus Panoptes, the hundred-eyed
 watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-03-24T11:46:56Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-03-24T11:57:57Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -9352,8 +9364,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>c748d4b2071427f8f2be7c25f2adcc51185e13d6</code> on 2026-03-24
-04:33:29 -0700.</p>
+<code>5e248329e6ffe03bfdb6c16c0c3abec00a16e0b1</code> on 2026-03-24
+04:47:23 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -9396,19 +9408,19 @@ author wants to hear from you:</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>c748d4b</code></p>
+<p><code>5e24832</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>c748d4b2071427f8f2be7c25f2adcc51185e13d6</code></p>
+<p><code>5e248329e6ffe03bfdb6c16c0c3abec00a16e0b1</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-03-24 04:33:29 -0700</p>
+<p>2026-03-24 04:47:23 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-03-24T11:46:56Z</p>
+<p>2026-03-24T11:57:57Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
