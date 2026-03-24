@@ -485,7 +485,12 @@ details.chapter-section {
   border-left: 3px solid #ddd;
   padding-left: 1em;
 }
-details.chapter-section > summary > h2 { display: inline; }
+details.chapter-section > summary > h2 {
+  display: inline;
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
 
 /* Level 3: Internal (firmware sections, spiral abstracts) */
 details.firmware-section,
@@ -495,7 +500,12 @@ details.spiral-abstract {
   margin: 0.3em 0 0.3em 0.5em;
 }
 details.firmware-section > summary > h3,
-details.spiral-abstract > summary > h3 { display: inline; }
+details.spiral-abstract > summary > h3 {
+  display: inline;
+  margin: 0;
+  font-size: inherit;
+  font-weight: inherit;
+}
 
 /* Common summary styles */
 details summary {
