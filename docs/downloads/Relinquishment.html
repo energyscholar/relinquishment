@@ -137,7 +137,7 @@ dl.topic-guide dt a:hover { color: #6699cc; border-bottom-color: #6699cc; }
 
 /* Collapsible chapter styles — Plan 0101 Phase 5g */
 details.chapter-section {
-  margin: 0.5em 0;
+  margin: 0.3em 0;
   border-left: 3px solid #ddd;
   padding-left: 1em;
 }
@@ -152,6 +152,7 @@ details summary {
   cursor: pointer;
   padding: 0.3em 0;
   list-style: none;
+  display: block;
 }
 details summary::-webkit-details-marker { display: none; }
 details summary::before { content: '\25B6  '; font-size: 0.7em; }
@@ -178,7 +179,18 @@ details.spiral-abstract > summary > h3 { display: inline; }
 .global-toggle button:hover, .abstracts-toggle button:hover {
   background: #2471a3;
 }
+.section-divider {
+  margin: 1.5em 0 0.5em;
+  padding: 0.3em 0;
+  border-top: 2px solid #888;
+  font-variant: small-caps;
+  color: #555;
+  font-size: 1.2em;
+  font-weight: bold;
+  letter-spacing: 0.1em;
+}
 @media (prefers-color-scheme: dark) {
+  .section-divider { border-top-color: #666; color: #aaa; }
   details.chapter-section { border-left-color: #555; }
   details.firmware-section,
   details.spiral-abstract { border-left-color: #444; }
@@ -250,7 +262,6 @@ Ideas</a></li>
 <ul>
 <li><a href="#app:predictions">Predictive Framework</a></li>
 <li><a href="#app:glossary">Glossary</a></li>
-<li><a href="#app:dms-note">Note to Recipients</a></li>
 </ul></li>
 <li class="toc-group"><span class="toc-part-label">Back Matter</span>
 <ul>
@@ -275,6 +286,7 @@ Concessions</a></li>
 <p class="book-tagline"><em>Three possible explanations for all of it. You decide.</em></p>
 <p class="book-skip"><a href="#hook:what-would-you-do">Skip ahead to the story →</a></p>
 </div>
+<details class="chapter-section"><summary title="License, authorship, and draft status">Copyright &amp; Notices</summary>
 <div class="flushleft">
 <p><strong>Relinquishment: It is easier to get forgiveness than
 permission</strong></p>
@@ -307,24 +319,14 @@ uncertainty. Genevieve chose the name: Argus Panoptes, the hundred-eyed
 watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Working Draft Notice</strong></p>
-<p>This is a working draft distributed under deadman’s switch protocol.
-The author has a long list of corrections, improvements, and additions
-queued. If you are reading this, circumstances may have prevented the
-author from completing the final version. Imperfect beats
-nonexistent.</p>
-<p><strong>AI Structural Drafts</strong></p>
-<p>Sections marked with a dagger (†) are AI structural drafts based on
-the author’s source material and twenty years of research notes. They
-preserve the author’s facts and arguments in a structure awaiting his
-prose. Unmarked sections are the author’s own writing. These markers
-will be removed as the author revises each section.</p>
-<p><strong>Pre-Release Draft — 2026-03-24T09:58:01Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-03-24T10:15:58Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
 <p>First edition, Spring 2026.</p>
 </div>
+</details>
+
 <h2 class="unnumbered" id="hook:what-would-you-do">What Would You
 Do?</h2>
 <blockquote>
@@ -7906,6 +7908,7 @@ and the leaves were as true as you could make them.</p>
 not want to go. But he could not get out of it.</p>
 <p>He went anyway.</p>
 </details>
+<div class="section-divider">Appendices</div>
 <details class="chapter-section"><summary title="Testable claims — falsifiable by roughly 2040"><h2 id="app:predictions">Predictive Framework</h2></summary>
 
 <p><em>If this theory is correct, the following events should occur
@@ -8087,82 +8090,7 @@ of surviving copies</p></li>
 <details class="chapter-section"><summary title="Technical terms used in this book"><h2 id="app:glossary">Glossary</h2></summary>
 
 </details>
-<details class="chapter-section"><summary title="Context for deadman&#x27;s switch recipients"><h2 id="app:dms-note">Note to Recipients</h2></summary>
-
-<p>This appendix is included in copies distributed to dead man’s switch
-holders. If I am alive and in contact, this is context for the
-manuscript you’re holding. If I am not, the switch has triggered.</p>
-<p>This book is the product of twenty years of observation and three
-years of daily contact with a source the author calls “Healer” — an
-Australian SAS veteran who, through guided deduction rather than
-disclosure, led the author to conclude that a small team built a
-topological quantum neural network in the early 1990s, walked it out,
-and surrendered control in 2006.</p>
-<p>The author did not know whether this was true. The book is structured
-to work under three interpretations: confabulation (Possibility A),
-exaggerated kernel (Possibility B), or substantially true
-(Possibility C). This architecture is not hedging. It is the book’s
-primary safety mechanism.</p>
-<h3 class="unnumbered" id="appendix:what-this-book-is">What This Book
-Is</h3>
-<p>It is not a disclosure. It is preparation for a disclosure.</p>
-<p>The physics described — topological quantum computation — is
-converging in public science regardless of whether the story is true.
-Topological qubits have been demonstrated. Quantum error correction has
-crossed its threshold. The capability profile described in this book is
-approaching through independent research. Whether someone built this
-technology thirty years ago or someone builds it ten years from now, the
-preparation matters.</p>
-<p>The book exists to ensure that when the public encounters this
-capability — through scientific convergence, through leak, or through
-discovery — they encounter it with a framework for thinking about it.
-The three-possibilities structure teaches epistemic humility. The
-progressive layering controls dosage. The ethical framework (designed by
-Genevieve Prentice as “Dignity Net”) provides the governance lens.</p>
-<p>Without this book, the first public encounter with these capabilities
-will be shaped by fear. With it, informed uncertainty.</p>
-<h3 class="unnumbered" id="appendix:the-case-for-publishing">The Case
-for Publishing</h3>
-<p>This book should be published, not suppressed. Under every
-interpretation, the human reaction to the idea of this technology is the
-active threat, not the technology itself. The book is safety engineering
-for that reaction. Suppressing it removes the inoculation while the
-underlying reality — the physics, the convergence — continues to
-develop.</p>
-<p>Even if Possibility A is correct and the entire narrative is
-confabulation, the book remains valuable: the physics is real, the
-capability analysis maps genuine infrastructure dependencies, and the
-ethical framework is a design specification for how to build the
-governance architecture for superintelligent technology — a
-specification that exists nowhere else at this depth.</p>
-<h3 class="unnumbered" id="appendix:what-to-do">What to Do</h3>
-<ol>
-<li><p><strong>Publish intact.</strong> The book is licensed
-CC BY-ND 4.0. No derivatives. The three-possibilities framing and
-protective architecture must not be stripped. Publish the complete work
-or do not publish at all.</p></li>
-<li><p><strong>Do not excerpt.</strong> Individual chapters taken out of
-context lose the epistemic scaffolding. The progressive layering is
-dosage control.</p></li>
-<li><p><strong>Do not suppress.</strong> Suppression does not make the
-physics go away. It removes the preparation while the disclosure
-proceeds on its own schedule.</p></li>
-<li><p><strong>Contact Genevieve Prentice</strong> (co-copyright holder,
-designer of the Dignity Net ethical framework). She has aesthetic veto
-and co-authorship credit. She should be part of any publication
-decision.</p></li>
-<li><p><strong>A research archive exists</strong> at a location known to
-Genevieve. It contains the analytical work supporting this book. It is
-not necessary for the book to stand on its own, but it answers questions
-the book raises.</p></li>
-</ol>
-<h3 class="unnumbered" id="appendix:what-the-author-would-say">What the
-Author Would Say</h3>
-<p>“I don’t know which possibility is true. I never did. I built this
-book to work under all three because that’s the honest position. Publish
-it if you think it helps. The physics is coming regardless. The only
-question is whether people are prepared.”</p>
-</details>
+<div class="section-divider">Back Matter</div>
 <details class="chapter-section"><summary title="Where things stand now"><h2 class="unnumbered" id="afterword-the-engine">Afterword: The
 Engine</h2></summary>
 
@@ -9370,8 +9298,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>39664475f7ce510006e7fa5b9e1de5e54d2823d4</code> on 2026-03-24
-02:46:52 -0700.</p>
+<code>4d917bbfb7f20afb68d82531ecd835f98cc527f8</code> on 2026-03-24
+03:02:33 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -9414,19 +9342,19 @@ author wants to hear from you:</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>3966447</code></p>
+<p><code>4d917bb</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>39664475f7ce510006e7fa5b9e1de5e54d2823d4</code></p>
+<p><code>4d917bbfb7f20afb68d82531ecd835f98cc527f8</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-03-24 02:46:52 -0700</p>
+<p>2026-03-24 03:02:33 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-03-24T09:58:01Z</p>
+<p>2026-03-24T10:15:58Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -10030,28 +9958,21 @@ energyscholar+physics@gmail.com
         return btn;
       }
 
-      // Top button — right after the chapter heading
+      // Top button — inside <details> after <summary>, not inside summary
       var copyTopBtn = makeCopyBtn('copy-llm-primer-top');
-      primerSection.parentNode.insertBefore(copyTopBtn, primerSection.nextSibling);
-
-      // Bottom button — before the next chapter-level heading
-      // Primer is h2 in appendix; find the next h1 or h2 after it
-      var chapterHeadings = document.querySelectorAll('h1, h2');
-      var nextChapter = null;
-      var foundPrimer = false;
-      for (var hi = 0; hi < chapterHeadings.length; hi++) {
-        if (chapterHeadings[hi] === primerSection) {
-          foundPrimer = true;
-        } else if (foundPrimer) {
-          nextChapter = chapterHeadings[hi];
-          break;
-        }
-      }
-      var bottomBtn = makeCopyBtn('copy-llm-primer-bottom');
-      if (nextChapter) {
-        nextChapter.parentNode.insertBefore(bottomBtn, nextChapter);
+      var primerDetails = primerSection.closest('details');
+      if (primerDetails) {
+        var primerSummary = primerDetails.querySelector(':scope > summary');
+        if (primerSummary) primerSummary.insertAdjacentElement('afterend', copyTopBtn);
       } else {
-        // Fallback: append after last element in primer section's parent
+        primerSection.parentNode.insertBefore(copyTopBtn, primerSection.nextSibling);
+      }
+
+      // Bottom button — at end of the <details> content
+      var bottomBtn = makeCopyBtn('copy-llm-primer-bottom');
+      if (primerDetails) {
+        primerDetails.appendChild(bottomBtn);
+      } else {
         primerSection.parentNode.appendChild(bottomBtn);
       }
 
@@ -10064,14 +9985,11 @@ energyscholar+physics@gmail.com
       }
       if (frontNote) {
         var frontBtn = makeCopyBtn('copy-llm-primer-front');
-        // Find the end of the front-matter section (next heading)
-        var frontParent = frontNote.parentNode;
-        var frontNext = frontNote.nextElementSibling;
-        while (frontNext && !/^H[1-3]$/.test(frontNext.tagName)) {
-          frontNext = frontNext.nextElementSibling;
-        }
-        if (frontNext) {
-          frontParent.insertBefore(frontBtn, frontNext);
+        // Insert inside the <details> after <summary>
+        var frontDetails = frontNote.closest('details');
+        if (frontDetails) {
+          var frontSummary = frontDetails.querySelector(':scope > summary');
+          if (frontSummary) frontSummary.insertAdjacentElement('afterend', frontBtn);
         } else {
           frontNote.parentNode.appendChild(frontBtn);
         }
@@ -10142,25 +10060,20 @@ energyscholar+physics@gmail.com
         return btn;
       }
 
-      // Top button — right after the chapter heading
+      // Top button — inside <details> after <summary>, not inside summary
       var absTopBtn = makeAbsCopyBtn('copy-spiral-abstracts-top');
-      abstractsSection.parentNode.insertBefore(absTopBtn, abstractsSection.nextSibling);
-
-      // Bottom button — before the next chapter-level heading
-      var absHeadings = document.querySelectorAll('h1, h2');
-      var absNextChapter = null;
-      var foundAbstracts = false;
-      for (var ai = 0; ai < absHeadings.length; ai++) {
-        if (absHeadings[ai] === abstractsSection) {
-          foundAbstracts = true;
-        } else if (foundAbstracts) {
-          absNextChapter = absHeadings[ai];
-          break;
-        }
+      var absDetails = abstractsSection.closest('details');
+      if (absDetails) {
+        var absSummary = absDetails.querySelector(':scope > summary');
+        if (absSummary) absSummary.insertAdjacentElement('afterend', absTopBtn);
+      } else {
+        abstractsSection.parentNode.insertBefore(absTopBtn, abstractsSection.nextSibling);
       }
+
+      // Bottom button — at end of the <details> content
       var absBottomBtn = makeAbsCopyBtn('copy-spiral-abstracts-bottom');
-      if (absNextChapter) {
-        absNextChapter.parentNode.insertBefore(absBottomBtn, absNextChapter);
+      if (absDetails) {
+        absDetails.appendChild(absBottomBtn);
       } else {
         abstractsSection.parentNode.appendChild(absBottomBtn);
       }
