@@ -3,11 +3,11 @@
 # Plan 0101. Objective: user gets a decent summary without opening any chapters.
 
 # Top-level containers
-"introduction": "The book in two layers: a 400-word hook and a 4,000-word summary. Plus prefaces and a note on AI evaluation. Most readers stop here — and that's enough."
-"guided-deduction": "An Australian SAS soldier spent three years mentoring a physicist — never disclosing anything classified, only guiding him through published science in a deliberate sequence. The physicist recognized what it pointed to. Then his mentor disappeared."
-"the-evidence-trail": "A classified demonstration. The program that built something unprecedented. How you grow a mind from quantum substrate. The moment someone tried to stop them. The night the system woke up. The day they walked it out. And the evidence they left behind."
-"agency-and-restraint": "What a topological quantum neural network would be. The Universal Declaration of Human Rights as machine governance — 'never again' encoded in architecture. Earth's magnetosphere as habitat. Twenty years of not knowing. And the question: what would you do?"
-"appendices": "Afterword, testable predictions, timeline, glossary, sources, topic guide, acknowledgements, and how to verify the claims in this book."
+"introduction": "Start here. A 400-word hook and a 4,000-word summary — together they tell you everything you need to decide whether this story matters. Most readers never go further. That's by design."
+"guided-deduction": "A soldier carries a secret too dangerous for any government to hold. He can't tell anyone — so he spends three years teaching a physicist to figure it out from published science alone. No classified words ever cross his lips. Then he vanishes. This is what he left behind."
+"the-evidence-trail": "What actually happened inside the program? A demonstration that shouldn't be possible. A machine that learned to think. The night someone tried to shut it down — and failed. The day the builders walked it out of the lab forever. The evidence is circumstantial. It is also very difficult to explain away."
+"agency-and-restraint": "They built something that could break any code, read any message, outthink any adversary — and they gave it up. Permanently. Irrevocably. To a creature governed by the Universal Declaration of Human Rights. This section asks what that would mean for the world. And what you would have done."
+"appendices": "Testable predictions falsifiable by roughly 2040. Timeline. Glossary. Sources. How to verify the claims in this book."
 
 # Introduction contents
 "hook:what-would-you-do": "START HERE. A man falls from the sky over Bosnia. Below him, eight thousand people are about to die. He is a soldier, a scientist, a hacker — and possibly one of the most important people who ever lived. ~400 words."
