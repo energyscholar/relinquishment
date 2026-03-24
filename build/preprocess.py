@@ -324,36 +324,20 @@ def collapse_chapters(text):
 
     # (Global Expand All button moved to reader.js bottom nav bar — 6b)
 
-    # === Wrap copyright block in collapsible details ===
-    # The copyright/notices block is a <div class="flushleft"> between the
-    # title block and the hook. It has no headings, so collapse_chapters skips it.
+    # === Hide title block and copyright from skeleton ===
+    # Title info is in book-section summary; copyright stays in DOM for legal.
+
+    # Hide title block
+    tb_start = text.find('<div class="title-block">')
+    if tb_start != -1:
+        text = text.replace('<div class="title-block">', '<div class="title-block" style="display:none">', 1)
+
+    # Hide copyright block (flushleft div between title and hook)
     flushleft_start = text.find('<div class="flushleft">')
     if flushleft_start != -1:
-        # Find matching </div> (no nested divs in this block)
-        flushleft_end = text.find('</div>', flushleft_start) + 6
-        copyright_content = text[flushleft_start:flushleft_end]
-        copyright_wrapped = (
-            '<details class="chapter-section">'
-            '<summary title="License, authorship, and draft status">'
-            'Copyright &amp; Notices</summary>\n'
-            + copyright_content +
-            '\n</details>\n'
-        )
-        text = text[:flushleft_start] + copyright_wrapped + text[flushleft_end:]
+        text = text.replace('<div class="flushleft">', '<div class="flushleft" style="display:none">', 1)
 
-    # === Pass 3: Title block, hook section, and Part-level wrapping ===
-
-    # 3a-pre: Wrap title block in collapsible details (collapsed by default)
-    tb_start = text.find('<div class="title-block">')
-    tb_end = text.find('</div>', tb_start) + len('</div>') if tb_start != -1 else -1
-    if tb_start != -1 and tb_end != -1:
-        tb_content = text[tb_start:tb_end]
-        text = (text[:tb_start] +
-                '<details class="title-section">'
-                '<summary>Relinquishment</summary>\n' +
-                tb_content +
-                '\n</details>\n' +
-                text[tb_end:])
+    # === Pass 3: Hook section and Part-level wrapping ===
 
     # 3a: Hook section — wrap hook content
     # Find the hook h2 and wrap from there to the first chapter-section.
@@ -409,44 +393,15 @@ def collapse_chapters(text):
         )
         text = text[:part_start] + wrapped + text[part_end:]
 
-    # 3c: Front Matter part-section — chapters between hook-section and first Part
-    # Find closing </details> for hook-section by tracking nesting depth
-    hook_section_start = text.find('<details class="hook-section">')
-    hook_end = -1
-    if hook_section_start != -1:
-        depth = 0
-        pos = hook_section_start
-        while pos < len(text):
-            if text[pos:pos+8] == '<details':
-                depth += 1
-            elif text[pos:pos+10] == '</details>':
-                depth -= 1
-                if depth == 0:
-                    hook_end = pos + 10
-                    break
-            pos += 1
-    if hook_end != -1:
-        # Skip any whitespace after hook close
-        while hook_end < len(text) and text[hook_end] in ' \t\n':
-            hook_end += 1
-        first_part = text.find('<details class="part-section">', hook_end)
-        if first_part != -1:
-            fm_region = text[hook_end:first_part]
-            if '<details class="chapter-section">' in fm_region:
-                fm_wrapped = (
-                    '<details class="part-section">'
-                    '<summary>Front Matter</summary>\n' +
-                    fm_region +
-                    '</details>\n'
-                )
-                text = text[:hook_end] + fm_wrapped + text[first_part:]
+    # 3c: Front Matter dissolved — chapters between hook and first Part
+    # float as top-level items inside book-section (no wrapper)
 
     part_count = text.count('<details class="part-section">')
-    print(f"  Part-level: {part_count} parts, hook section wrapped")
+    print(f"  Part-level: {part_count} parts, hook section wrapped, front matter dissolved")
 
     # 3d: Outer book wrapper — entire book behind one line
-    # Wrap everything from title-section to last part-section closing tag
-    book_start = text.find('<details class="title-section">')
+    # Wrap everything from hook-section to last part-section closing tag
+    book_start = text.find('<details class="hook-section">')
     if book_start != -1:
         body_end = text.rfind('</body>')
         # Find the last </details> before </body> (the last part-section close)
@@ -486,16 +441,6 @@ details.book-section > summary {
   font-weight: normal;
   font-style: italic;
   opacity: 0.7;
-}
-
-/* Level 0: Title section */
-details.title-section {
-  margin-bottom: 0.3em;
-}
-details.title-section > summary {
-  font-size: 1.3em;
-  font-weight: bold;
-  padding: 0.2em 0;
 }
 
 /* Level 0: Hook section */

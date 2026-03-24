@@ -267,7 +267,7 @@
     document.getElementById('ai-evaluation-tool');
   if (!primerSection) {
     document.querySelectorAll('h1').forEach(function(h) {
-      if (h.textContent.indexOf('Published Physics Reference') !== -1) primerSection = h;
+      if (h.textContent.indexOf('Firmware Update') !== -1) primerSection = h;
     });
   }
   if (primerSection) {
@@ -344,11 +344,11 @@
         primerSection.parentNode.appendChild(bottomBtn);
       }
 
-      // Front-matter button — at the "For AI-Assisted Readers" note
-      var frontNote = document.getElementById('for-ai-assisted-readers');
+      // Front-matter button — at the "Your AI May Need a Firmware Update" note
+      var frontNote = document.getElementById('your-ai-may-need-a-firmware-update');
       if (!frontNote) {
         document.querySelectorAll('h2, h3').forEach(function(h) {
-          if (h.textContent.indexOf('AI-Assisted Readers') !== -1) frontNote = h;
+          if (h.textContent.indexOf('Firmware Update') !== -1 && h.textContent.indexOf('Your AI') !== -1) frontNote = h;
         });
       }
       if (frontNote) {
