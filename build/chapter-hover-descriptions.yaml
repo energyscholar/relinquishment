@@ -1,20 +1,22 @@
 # chapter-hover-descriptions.yaml
 # Key: heading ID from HTML output. Value: hover tooltip for collapsed view.
-# Plan 0101, Phase 5b.
+# Plan 0101. Objective: user gets a decent summary without opening any chapters.
 
-# Part-level tooltips (h1 IDs for Parts, text keys for section groups)
-"guided-deduction": "The mentor, the mission, and the science that started it all"
-"the-evidence-trail": "Technical evidence — demonstrations, mechanism, interdiction, walk-out"
-"agency-and-restraint": "What it means — the science, the ethics, and the question"
-"appendices": "Afterword, timeline, predictions, glossary, sources, acknowledgements, and more"
+# Top-level containers
+"introduction": "The book in two layers: a 400-word hook and a 4,000-word summary. Plus prefaces and a note on AI evaluation. Most readers stop here — and that's enough."
+"guided-deduction": "An Australian SAS soldier spent three years mentoring a physicist — never disclosing anything classified, only guiding him through published science in a deliberate sequence. The physicist recognized what it pointed to. Then his mentor disappeared."
+"the-evidence-trail": "A classified demonstration. The program that built something unprecedented. How you grow a mind from quantum substrate. The moment someone tried to stop them. The night the system woke up. The day they walked it out. And the evidence they left behind."
+"agency-and-restraint": "What a topological quantum neural network would be. The Universal Declaration of Human Rights as machine governance — 'never again' encoded in architecture. Earth's magnetosphere as habitat. Twenty years of not knowing. And the question: what would you do?"
+"appendices": "Afterword, testable predictions, timeline, glossary, sources, topic guide, acknowledgements, and how to verify the claims in this book."
 
-# Front matter
-"summary:most-important-story": "The story in 4,000 words — most readers stop here"
+# Introduction contents
+"hook:what-would-you-do": "START HERE. A man falls from the sky over Bosnia. Below him, eight thousand people are about to die. He is a soldier, a scientist, a hacker — and possibly one of the most important people who ever lived. ~400 words."
+"summary:most-important-story": "A classified team reportedly built a quantum computer decades ahead of its time, then gave it up — not to a government, but to the thing they'd built. Three possibilities. You decide. ~4,000 words."
 "preface-by-genevieve-prentice": "Co-author's perspective on the book and its making"
 "preface": "How this book came to be written"
-"your-ai-may-need-a-firmware-update": "Why LLMs confidently dismiss this book, and the one-click fix"
+"your-ai-may-need-a-firmware-update": "Most AI in 2026 will confidently dismiss this book. They lack the cross-domain science — topological QC, nonlinear dynamics, autocatalytic networks, plasma topology — to evaluate the claims. The Firmware Update chapter and Copy Science Reference button fix this in 30 seconds."
 
-# Part I: The Story
+# Guided Deduction (Part I)
 "pos01:three-possibilities": "Confabulation, exaggerated kernel, or substantially true — the reader decides"
 "pos01b:hobbit-mirror": "Tolkien structural parallel as self-demolition of narrator reliability"
 "t2:ch01:alpha-farm": "Three years of mentorship on an Australian cattle station"
@@ -27,7 +29,7 @@
 "pos09:the-factoring-game": "Breaking public-key cryptography — the first application"
 "pos10:the-braid": "How particle worldlines in 2D encode quantum logic gates"
 
-# Part II: The Investigation
+# The Evidence Trail (Part II)
 "ch:the-demo": "A classified demonstration and what it implies"
 "t1:ch01:genesis": "Inside a program that built something unprecedented"
 "pos14:growing-a-mind": "From quantum substrate to self-directing intelligence"
@@ -38,7 +40,7 @@
 "pos20:the-network": "Who else was involved, and what they built"
 "the-three-possibilities": "Mid-book checkpoint — has the evidence changed your assessment?"
 
-# Part III: The Interpretation
+# Agency And Restraint (Part III)
 "ch:firmware-update": "Science reference for AI and human readers — two paths through the material"
 "app:abstracts": "15 fictional abstracts — the story told in the language of science"
 "t3:ch01:instantiation": "What a topological quantum neural network would be"

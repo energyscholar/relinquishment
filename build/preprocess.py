@@ -337,10 +337,9 @@ def collapse_chapters(text):
     if flushleft_start != -1:
         text = text.replace('<div class="flushleft">', '<div class="flushleft" style="display:none">', 1)
 
-    # === Pass 3: Hook section and Part-level wrapping ===
+    # === Pass 3: Hook as chapter-section + Introduction + Part-level wrapping ===
 
-    # 3a: Hook section — wrap hook content
-    # Find the hook h2 and wrap from there to the first chapter-section.
+    # 3a: Wrap hook content as a chapter-section (same level as other chapters)
     hook_h2_match = re.search(r'<h2[^>]*id="hook:what-would-you-do"[^>]*>', text)
     first_chapter_after_hook = -1
     if hook_h2_match:
@@ -348,9 +347,11 @@ def collapse_chapters(text):
     if hook_h2_match and first_chapter_after_hook != -1:
         hook_start = hook_h2_match.start()
         hook_content = text[hook_start:first_chapter_after_hook]
+        hook_tooltip = hover_map.get('hook:what-would-you-do', '')
+        hook_title_attr = f' title="{html_mod.escape(hook_tooltip)}"' if hook_tooltip else ''
         text = (text[:hook_start] +
-                '<details class="hook-section">'
-                '<summary>What Would You Do?</summary>\n' +
+                '<details class="chapter-section">'
+                f'<summary{hook_title_attr}>What Would You Do?</summary>\n' +
                 hook_content +
                 '</details>\n' +
                 text[first_chapter_after_hook:])
@@ -393,15 +394,29 @@ def collapse_chapters(text):
         )
         text = text[:part_start] + wrapped + text[part_end:]
 
-    # 3c: Front Matter dissolved — chapters between hook and first Part
-    # float as top-level items inside book-section (no wrapper)
+    # 3c: Introduction part-section — wrap chapters between hidden content and first Part
+    # Find the first chapter-section (the hook, now a chapter-section)
+    first_ch = text.find('<details class="chapter-section">')
+    first_part = text.find('<details class="part-section">')
+    if first_ch != -1 and first_part != -1 and first_ch < first_part:
+        intro_region = text[first_ch:first_part]
+        if '<details class="chapter-section">' in intro_region:
+            intro_tooltip = hover_map.get('introduction', '')
+            intro_title_attr = f' title="{html_mod.escape(intro_tooltip)}"' if intro_tooltip else ''
+            intro_wrapped = (
+                f'<details class="part-section">'
+                f'<summary{intro_title_attr}>Introduction</summary>\n' +
+                intro_region +
+                '</details>\n'
+            )
+            text = text[:first_ch] + intro_wrapped + text[first_part:]
 
     part_count = text.count('<details class="part-section">')
-    print(f"  Part-level: {part_count} parts, hook section wrapped, front matter dissolved")
+    print(f"  Part-level: {part_count} parts (Introduction + {part_count - 1} others)")
 
     # 3d: Outer book wrapper — entire book behind one line
-    # Wrap everything from hook-section to last part-section closing tag
-    book_start = text.find('<details class="hook-section">')
+    # Wrap everything from Introduction to last part-section closing tag
+    book_start = text.find('<details class="part-section">')
     if book_start != -1:
         body_end = text.rfind('</body>')
         # Find the last </details> before </body> (the last part-section close)
@@ -443,15 +458,7 @@ details.book-section > summary {
   opacity: 0.7;
 }
 
-/* Level 0: Hook section */
-details.hook-section {
-  margin-bottom: 0.3em;
-}
-details.hook-section > summary {
-  font-size: 1.2em;
-  font-weight: bold;
-  padding: 0.2em 0;
-}
+/* (hook-section removed — hook is now a chapter-section inside Introduction) */
 
 /* Level 1: Part-level (no left border, large bold summary) */
 details.part-section {
