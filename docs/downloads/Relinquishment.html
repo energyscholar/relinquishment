@@ -140,24 +140,44 @@ dl.topic-guide dt a:hover { color: #6699cc; border-bottom-color: #6699cc; }
 /* Hide pandoc TOC — collapsible outline replaces it */
 nav#TOC { display: none; }
 
+/* Book-level: the one-line entry point */
+details.book-section {
+  margin: 0.5em 0;
+}
+details.book-section > summary {
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 0.3em 0;
+}
+
+/* Level 0: Title section */
+details.title-section {
+  margin-bottom: 0.3em;
+}
+details.title-section > summary {
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 0.2em 0;
+}
+
 /* Level 0: Hook section */
 details.hook-section {
-  margin-bottom: 1em;
+  margin-bottom: 0.3em;
 }
 details.hook-section > summary {
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-weight: bold;
-  padding: 0.5em 0;
+  padding: 0.2em 0;
 }
 
 /* Level 1: Part-level (no left border, large bold summary) */
 details.part-section {
-  margin: 0.8em 0;
+  margin: 0.2em 0;
 }
 details.part-section > summary {
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: bold;
-  padding: 0.4em 0;
+  padding: 0.2em 0;
   font-variant: small-caps;
   letter-spacing: 0.05em;
 }
@@ -171,7 +191,7 @@ details.part-section > summary > h1 {
 
 /* Level 2: Chapter-level (thin left border, indented inside Part) */
 details.chapter-section {
-  margin: 0.3em 0;
+  margin: 0.15em 0;
   border-left: 3px solid #ddd;
   padding-left: 1em;
 }
@@ -190,7 +210,7 @@ details.spiral-abstract > summary > h3 { display: inline; }
 /* Common summary styles */
 details summary {
   cursor: pointer;
-  padding: 0.3em 0;
+  padding: 0.15em 0;
   list-style: none;
   display: block;
 }
@@ -301,6 +321,8 @@ Concessions</a></li>
 </ul></li>
 </ul>
 </nav>
+<details class="book-section"><summary>Relinquishment &mdash; It is easier to get forgiveness than permission</summary>
+<details class="title-section"><summary>Relinquishment</summary>
 <div class="title-block">
 <h1 class="book-title">Relinquishment</h1>
 <p class="book-subtitle">It is easier to get forgiveness than permission</p>
@@ -310,6 +332,8 @@ Concessions</a></li>
 <p class="book-tagline"><em>Three possible explanations for all of it. You decide.</em></p>
 <p class="book-skip"><a href="#hook:what-would-you-do">Skip ahead to the story →</a></p>
 </div>
+</details>
+
 <details class="chapter-section"><summary title="License, authorship, and draft status">Copyright &amp; Notices</summary>
 <div class="flushleft">
 <p><strong>Relinquishment: It is easier to get forgiveness than
@@ -343,7 +367,7 @@ uncertainty. Genevieve chose the name: Argus Panoptes, the hundred-eyed
 watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-03-24T11:32:30Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-03-24T11:46:56Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -9328,8 +9352,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>58cf1cab0735f25f83c6b945ae3f7a35cc011307</code> on 2026-03-24
-04:25:30 -0700.</p>
+<code>c748d4b2071427f8f2be7c25f2adcc51185e13d6</code> on 2026-03-24
+04:33:29 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -9372,19 +9396,19 @@ author wants to hear from you:</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>58cf1ca</code></p>
+<p><code>c748d4b</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>58cf1cab0735f25f83c6b945ae3f7a35cc011307</code></p>
+<p><code>c748d4b2071427f8f2be7c25f2adcc51185e13d6</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-03-24 04:25:30 -0700</p>
+<p>2026-03-24 04:33:29 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-03-24T11:32:30Z</p>
+<p>2026-03-24T11:46:56Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -10190,5 +10214,7 @@ energyscholar+physics@gmail.com
 </script>
 </details>
 </details>
+</details>
+
 </body>
 </html>

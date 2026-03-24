@@ -341,9 +341,21 @@ def collapse_chapters(text):
         )
         text = text[:flushleft_start] + copyright_wrapped + text[flushleft_end:]
 
-    # === Pass 3: Hook section and Part-level wrapping ===
+    # === Pass 3: Title block, hook section, and Part-level wrapping ===
 
-    # 3a: Hook section — wrap hook content (NOT title block, which stays visible)
+    # 3a-pre: Wrap title block in collapsible details (collapsed by default)
+    tb_start = text.find('<div class="title-block">')
+    tb_end = text.find('</div>', tb_start) + len('</div>') if tb_start != -1 else -1
+    if tb_start != -1 and tb_end != -1:
+        tb_content = text[tb_start:tb_end]
+        text = (text[:tb_start] +
+                '<details class="title-section">'
+                '<summary>Relinquishment</summary>\n' +
+                tb_content +
+                '\n</details>\n' +
+                text[tb_end:])
+
+    # 3a: Hook section — wrap hook content
     # Find the hook h2 and wrap from there to the first chapter-section.
     hook_h2_match = re.search(r'<h2[^>]*id="hook:what-would-you-do"[^>]*>', text)
     first_chapter_after_hook = -1
@@ -432,6 +444,25 @@ def collapse_chapters(text):
     part_count = text.count('<details class="part-section">')
     print(f"  Part-level: {part_count} parts, hook section wrapped")
 
+    # 3d: Outer book wrapper — entire book behind one line
+    # Wrap everything from title-section to last part-section closing tag
+    book_start = text.find('<details class="title-section">')
+    if book_start != -1:
+        body_end = text.rfind('</body>')
+        # Find the last </details> before </body> (the last part-section close)
+        last_details_close = text.rfind('</details>', 0, body_end)
+        if last_details_close != -1:
+            wrap_end = last_details_close + len('</details>')
+            book_content = text[book_start:wrap_end]
+            text = (text[:book_start] +
+                    '<details class="book-section">'
+                    '<summary>Relinquishment &mdash; '
+                    'It is easier to get forgiveness than permission</summary>\n' +
+                    book_content +
+                    '\n</details>\n' +
+                    text[wrap_end:])
+        print("  Book-level: outer wrapper applied")
+
     # === Inject CSS ===
     collapse_css = """
 /* Collapsible styles — Plan 0101: 3-level hierarchy */
@@ -439,24 +470,44 @@ def collapse_chapters(text):
 /* Hide pandoc TOC — collapsible outline replaces it */
 nav#TOC { display: none; }
 
+/* Book-level: the one-line entry point */
+details.book-section {
+  margin: 0.5em 0;
+}
+details.book-section > summary {
+  font-size: 1.5em;
+  font-weight: bold;
+  padding: 0.3em 0;
+}
+
+/* Level 0: Title section */
+details.title-section {
+  margin-bottom: 0.3em;
+}
+details.title-section > summary {
+  font-size: 1.3em;
+  font-weight: bold;
+  padding: 0.2em 0;
+}
+
 /* Level 0: Hook section */
 details.hook-section {
-  margin-bottom: 1em;
+  margin-bottom: 0.3em;
 }
 details.hook-section > summary {
-  font-size: 1.4em;
+  font-size: 1.2em;
   font-weight: bold;
-  padding: 0.5em 0;
+  padding: 0.2em 0;
 }
 
 /* Level 1: Part-level (no left border, large bold summary) */
 details.part-section {
-  margin: 0.8em 0;
+  margin: 0.2em 0;
 }
 details.part-section > summary {
-  font-size: 1.2em;
+  font-size: 1.1em;
   font-weight: bold;
-  padding: 0.4em 0;
+  padding: 0.2em 0;
   font-variant: small-caps;
   letter-spacing: 0.05em;
 }
@@ -470,7 +521,7 @@ details.part-section > summary > h1 {
 
 /* Level 2: Chapter-level (thin left border, indented inside Part) */
 details.chapter-section {
-  margin: 0.3em 0;
+  margin: 0.15em 0;
   border-left: 3px solid #ddd;
   padding-left: 1em;
 }
@@ -489,7 +540,7 @@ details.spiral-abstract > summary > h3 { display: inline; }
 /* Common summary styles */
 details summary {
   cursor: pointer;
-  padding: 0.3em 0;
+  padding: 0.15em 0;
   list-style: none;
   display: block;
 }
