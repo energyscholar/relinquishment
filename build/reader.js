@@ -182,8 +182,8 @@
     if (primerDiv) {
       var btnBase = isDark ? '#2471a3' : '#1a5276';
       var btnHover = isDark ? '#2e86c1' : '#2471a3';
-      var btnLabel = '\u2398 Copy Physics Reference';
-      var btnTitle = 'Copy the Published Physics Reference for use with your AI assistant';
+      var btnLabel = '\u2398 Copy Science Reference';
+      var btnTitle = 'Copy the Science Reference for use with your AI assistant';
       var btnStyle = 'display:block;margin:1em auto;padding:0.8em 1.6em;' +
         'font-size:1.1em;font-weight:bold;font-family:inherit;cursor:pointer;' +
         'background:' + btnBase + ';color:#fff;border:none;border-radius:6px;' +
@@ -279,6 +279,94 @@
         } else {
           frontNote.parentNode.appendChild(frontBtn);
         }
+      }
+    }
+  }
+
+  // --- Spiral Abstracts copy buttons (top + bottom) ---
+  var abstractsSection = document.getElementById('app:abstracts');
+  if (!abstractsSection) {
+    document.querySelectorAll('h1').forEach(function(h) {
+      if (h.textContent.indexOf('Spiral Abstracts') !== -1) abstractsSection = h;
+    });
+  }
+  if (abstractsSection) {
+    var abstractsDiv = document.getElementById('spiral-abstracts-text');
+    if (abstractsDiv) {
+      var absBtnBase = isDark ? '#2471a3' : '#1a5276';
+      var absBtnHover = isDark ? '#2e86c1' : '#2471a3';
+      var absBtnLabel = '\u2398 Copy Spiral Abstracts';
+      var absBtnTitle = 'Copy the Spiral Abstracts for use with your AI assistant';
+      var absBtnStyle = 'display:block;margin:1em auto;padding:0.8em 1.6em;' +
+        'font-size:1.1em;font-weight:bold;font-family:inherit;cursor:pointer;' +
+        'background:' + absBtnBase + ';color:#fff;border:none;border-radius:6px;' +
+        'transition:background 0.2s;';
+
+      function makeAbsCopyBtn(id) {
+        var btn = document.createElement('button');
+        btn.id = id;
+        btn.className = 'copy-spiral-abstracts';
+        btn.textContent = absBtnLabel;
+        btn.title = absBtnTitle;
+        btn.style.cssText = absBtnStyle;
+        btn.addEventListener('mouseenter', function() { btn.style.background = absBtnHover; });
+        btn.addEventListener('mouseleave', function() { btn.style.background = absBtnBase; });
+        btn.addEventListener('click', function() {
+          var text = abstractsDiv.textContent;
+          function onCopied() {
+            btn.textContent = 'Copied!';
+            btn.style.background = '#1e8449';
+            setTimeout(function() {
+              btn.textContent = absBtnLabel;
+              btn.style.background = absBtnBase;
+            }, 2000);
+          }
+          if (navigator.clipboard && navigator.clipboard.writeText) {
+            navigator.clipboard.writeText(text).then(onCopied, function() {
+              var ta = document.createElement('textarea');
+              ta.value = text;
+              ta.style.cssText = 'position:fixed;left:-9999px;';
+              document.body.appendChild(ta);
+              ta.select();
+              document.execCommand('copy');
+              document.body.removeChild(ta);
+              onCopied();
+            });
+          } else {
+            var ta = document.createElement('textarea');
+            ta.value = text;
+            ta.style.cssText = 'position:fixed;left:-9999px;';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+            onCopied();
+          }
+        });
+        return btn;
+      }
+
+      // Top button — right after the chapter heading
+      var absTopBtn = makeAbsCopyBtn('copy-spiral-abstracts-top');
+      abstractsSection.parentNode.insertBefore(absTopBtn, abstractsSection.nextSibling);
+
+      // Bottom button — before the next chapter-level heading
+      var absHeadings = document.querySelectorAll('h1, h2');
+      var absNextChapter = null;
+      var foundAbstracts = false;
+      for (var ai = 0; ai < absHeadings.length; ai++) {
+        if (absHeadings[ai] === abstractsSection) {
+          foundAbstracts = true;
+        } else if (foundAbstracts) {
+          absNextChapter = absHeadings[ai];
+          break;
+        }
+      }
+      var absBottomBtn = makeAbsCopyBtn('copy-spiral-abstracts-bottom');
+      if (absNextChapter) {
+        absNextChapter.parentNode.insertBefore(absBottomBtn, absNextChapter);
+      } else {
+        abstractsSection.parentNode.appendChild(absBottomBtn);
       }
     }
   }
