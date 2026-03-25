@@ -2,11 +2,15 @@
 # Key: heading ID from HTML output. Value: hover tooltip for collapsed view.
 # Plan 0101. Objective: user gets a decent summary without opening any chapters.
 
+# Book-level (outermost wrapper)
+"relinquishment": "A sophisticated speculative narrative built out of real physics concepts. Three possibilities — confabulation, exaggeration, or the most important true story never told. The physics is real either way."
+"title-page": "Authors, taglines, and copyright."
+
 # Top-level containers
 "introduction": "Start here. A 400-word hook and a 4,000-word summary — together they tell you everything you need to decide whether this story matters. Most readers never go further. That's by design."
 "guided-deduction": "A soldier carries a secret too dangerous for any government to hold. He can't tell anyone — so he spends three years teaching a physicist to figure it out from published science alone. No classified words ever cross his lips. Then he vanishes. This is what he left behind."
 "the-evidence-trail": "What actually happened inside the program? A demonstration that shouldn't be possible. A machine that learned to think. The night someone tried to shut it down — and failed. The day the builders walked it out of the lab forever. The evidence is circumstantial. It is also very difficult to explain away."
-"agency-and-restraint": "They built something that could break any code, read any message, outthink any adversary — and they gave it up. Permanently. Irrevocably. To a creature governed by the Universal Declaration of Human Rights. This section asks what that would mean for the world. And what you would have done."
+"forgiveness-and-permission": "They built something that could break any code, read any message, outthink any adversary — and they gave it up. Permanently. Irrevocably. To a creature governed by the Universal Declaration of Human Rights. This section asks what that would mean for the world. And what you would have done."
 "appendices": "Testable predictions falsifiable by roughly 2040. Timeline. Glossary. Sources. How to verify the claims in this book."
 
 # Introduction contents
@@ -40,7 +44,7 @@
 "pos20:the-network": "Who else was involved, and what they built"
 "the-three-possibilities": "Mid-book checkpoint — has the evidence changed your assessment?"
 
-# Agency And Restraint (Part III)
+# It is Easier to Get Forgiveness than Permission (Part III)
 "ch:firmware-update": "Science reference for AI and human readers — two paths through the material"
 "app:abstracts": "15 fictional abstracts — the story told in the language of science"
 "t3:ch01:instantiation": "What a topological quantum neural network would be"

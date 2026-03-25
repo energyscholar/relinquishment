@@ -324,19 +324,6 @@ def collapse_chapters(text):
 
     # (Global Expand All button moved to reader.js bottom nav bar — 6b)
 
-    # === Hide title block and copyright from skeleton ===
-    # Title info is in book-section summary; copyright stays in DOM for legal.
-
-    # Hide title block
-    tb_start = text.find('<div class="title-block">')
-    if tb_start != -1:
-        text = text.replace('<div class="title-block">', '<div class="title-block" style="display:none">', 1)
-
-    # Hide copyright block (flushleft div between title and hook)
-    flushleft_start = text.find('<div class="flushleft">')
-    if flushleft_start != -1:
-        text = text.replace('<div class="flushleft">', '<div class="flushleft" style="display:none">', 1)
-
     # === Pass 3: Hook as chapter-section + Introduction + Part-level wrapping ===
 
     # 3a: Wrap hook content as a chapter-section (same level as other chapters)
@@ -364,7 +351,7 @@ def collapse_chapters(text):
         attrs = m.group(1)
         id_m = re.search(r'id="([^"]+)"', attrs)
         hid = id_m.group(1) if id_m else ''
-        if hid in {'guided-deduction', 'the-evidence-trail', 'agency-and-restraint'}:
+        if hid in {'guided-deduction', 'the-evidence-trail', 'forgiveness-and-permission'}:
             boundaries.append((m.start(), m.end(), m.group(0), hid))
 
     # Appendices boundary: chapter-section containing app:predictions
@@ -411,8 +398,29 @@ def collapse_chapters(text):
             )
             text = text[:first_ch] + intro_wrapped + text[first_part:]
 
+    # 3c2: Title Page part-section — wrap title-block + copyright above Introduction
+    tb_start = text.find('<div class="title-block">')
+    if tb_start != -1:
+        tb_close = text.find('</div>', tb_start) + len('</div>')
+        title_page_end = tb_close
+        # Grab flushleft (copyright) if it follows within 200 chars
+        flushleft_after = text.find('<div class="flushleft">', tb_close, tb_close + 200)
+        if flushleft_after != -1:
+            fl_close = text.find('</div>', flushleft_after) + len('</div>')
+            title_page_end = fl_close
+        title_page_content = text[tb_start:title_page_end]
+        title_page_tooltip = hover_map.get('title-page', '')
+        tp_title_attr = f' title="{html_mod.escape(title_page_tooltip)}"' if title_page_tooltip else ''
+        title_page_wrapped = (
+            f'<details class="part-section">'
+            f'<summary{tp_title_attr}>Title Page</summary>\n'
+            + title_page_content +
+            '\n</details>\n'
+        )
+        text = text[:tb_start] + title_page_wrapped + text[title_page_end:]
+
     part_count = text.count('<details class="part-section">')
-    print(f"  Part-level: {part_count} parts (Introduction + {part_count - 1} others)")
+    print(f"  Part-level: {part_count} parts (Title Page + Introduction + {part_count - 2} others)")
 
     # 3d: Outer book wrapper — entire book behind one line
     # Wrap everything from Introduction to last part-section closing tag
@@ -424,11 +432,13 @@ def collapse_chapters(text):
         if last_details_close != -1:
             wrap_end = last_details_close + len('</details>')
             book_content = text[book_start:wrap_end]
+            book_tooltip = hover_map.get('relinquishment', '')
+            book_title_attr = f' title="{html_mod.escape(book_tooltip)}"' if book_tooltip else ''
             text = (text[:book_start] +
                     '<details class="book-section">'
-                    '<summary>Relinquishment '
+                    f'<summary{book_title_attr}>Relinquishment '
                     '<span class="book-subtitle-inline">&mdash; '
-                    'It is easier to get forgiveness than permission</span></summary>\n' +
+                    'Life in Two Dimensions</span></summary>\n' +
                     book_content +
                     '\n</details>\n' +
                     text[wrap_end:])
@@ -593,7 +603,7 @@ def fix_html_toc(html_path):
         return
 
     # Part IDs — these become non-clickable group headers
-    part_ids = {"guided-deduction", "the-evidence-trail", "agency-and-restraint"}
+    part_ids = {"guided-deduction", "the-evidence-trail", "forgiveness-and-permission"}
 
     # Appendix IDs (from \appendix + \backmatter sections in main.tex)
     # Note: app:llm-primer removed (now in Firmware Update chapter, Part III)
@@ -756,15 +766,13 @@ def fix_html_toc(html_path):
         r'<div class="center">\s*'
         r'<p>.*?</p>\s*'  # cover image (base64)
         r'<p><span><strong>RELINQUISHMENT</strong></span></p>\s*'
-        r'<p><span><em>It is easier to get forgiveness than\s*'
-        r'permission</em></span></p>\s*'
+        r'<p><span><em>Life in Two Dimensions</em></span></p>\s*'
         r'<p><span>\s*Bruce Stephenson, Genevieve Prentice &amp; Argus</span></p>\s*'
         r'<p><span>\s*March 2026</span></p>\s*'
         r'</div>\s*'
         r'<div class="center">\s*'
         r'<p><span><strong>RELINQUISHMENT</strong></span></p>\s*'
-        r'<p><span><em>It is easier to get forgiveness than\s*'
-        r'permission</em></span></p>\s*'
+        r'<p><span><em>Life in Two Dimensions</em></span></p>\s*'
         r'<hr />\s*'
         r'<p><span><em>Three narrative threads.*?</em></span></p>\s*'
         r'<p><span><em>Three possible explanations.*?</em></span></p>\s*'
@@ -777,7 +785,7 @@ def fix_html_toc(html_path):
     )
     replacement = '''<div class="title-block">
 <h1 class="book-title">Relinquishment</h1>
-<p class="book-subtitle">It is easier to get forgiveness than permission</p>
+<p class="book-subtitle">Life in Two Dimensions</p>
 <p class="book-authors">by Bruce Stephenson, Genevieve Prentice &amp; Argus</p>
 <hr />
 <p class="book-tagline"><em>Three narrative threads. Real science. Real people. Real institutions.</em></p>
