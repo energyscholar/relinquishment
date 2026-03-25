@@ -122,3 +122,25 @@ dl.topic-guide dd {
   dl.topic-guide dt a { border-bottom-color: #666; }
   dl.topic-guide dt a:hover { color: #6699cc; border-bottom-color: #6699cc; }
 }
+
+/* Heading deep link icons */
+.heading-link {
+  text-decoration: none;
+  color: #888;
+  font-size: 0.7em;
+  margin-left: 0.3em;
+  opacity: 0;
+  transition: opacity 0.15s;
+  cursor: pointer;
+}
+h1:hover .heading-link,
+h2:hover .heading-link,
+h3:hover .heading-link { opacity: 0.5; }
+.heading-link:hover { opacity: 1 !important; }
+@media (hover: none) { .heading-link { opacity: 0.3; } }
+@media (prefers-color-scheme: dark) { .heading-link { color: #aaa; } }
+
+/* Mobile: hide quick-jump to prevent overflow */
+@media (max-width: 600px) {
+  #nav-quickjump { display: none; }
+}

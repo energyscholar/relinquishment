@@ -3,6 +3,32 @@
 (function() {
   'use strict';
 
+  // --- Dark mode detection (used by copy button, nav, heading links) ---
+  var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+  // --- Clipboard utility (shared by copy buttons, heading links, share button) ---
+  function fallbackCopy(text) {
+    var ta = document.createElement('textarea');
+    ta.value = text;
+    ta.style.cssText = 'position:fixed;left:-9999px;';
+    document.body.appendChild(ta);
+    ta.select();
+    document.execCommand('copy');
+    document.body.removeChild(ta);
+  }
+
+  function copyToClipboard(text, onSuccess) {
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(onSuccess, function() {
+        fallbackCopy(text);
+        onSuccess();
+      });
+    } else {
+      fallbackCopy(text);
+      onSuccess();
+    }
+  }
+
   // --- TOC toggle ---
   var toc = document.getElementById('TOC');
   if (toc) {
@@ -56,10 +82,60 @@
   breadcrumb.style.cssText = 'flex:1;overflow:hidden;white-space:nowrap;' +
     'text-overflow:ellipsis;';
 
+  // Share button (§) — appended after breadcrumb, updated on scroll
+  var shareBtn = document.createElement('a');
+  shareBtn.id = 'nav-share';
+  shareBtn.textContent = '\u00A7';
+  shareBtn.href = '#';
+  shareBtn.title = 'Copy link to current section';
+  shareBtn.style.cssText = 'text-decoration:none;color:' + (isDark ? '#aaa' : '#888') +
+    ';font-size:1.1em;margin-left:0.5em;cursor:pointer;flex:0 0 auto;';
+  shareBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    var hash = shareBtn.getAttribute('href');
+    var url = location.origin + location.pathname + (hash !== '#' ? hash : '');
+    copyToClipboard(url, function() {
+      shareBtn.textContent = '\u2713';
+      setTimeout(function() { shareBtn.textContent = '\u00A7'; }, 1500);
+    });
+  });
+
   // Center: Quick-jump Part links
   var quickJump = document.createElement('span');
   quickJump.id = 'nav-quickjump';
   quickJump.style.cssText = 'flex:0 0 auto;padding:0 1em;white-space:nowrap;';
+
+  // Intro link — opens Introduction, p1 (hook), and p2 (summary)
+  var introLink = document.createElement('a');
+  introLink.href = '#hook:what-would-you-do';
+  introLink.textContent = 'Intro';
+  introLink.style.cssText = 'text-decoration:none;color:#1a5276;font-weight:bold;';
+  introLink.addEventListener('mouseenter', function() { introLink.style.color = '#2471a3'; });
+  introLink.addEventListener('mouseleave', function() { introLink.style.color = '#1a5276'; });
+  introLink.addEventListener('click', function(e) {
+    e.preventDefault();
+    // Open book-section
+    var bookSection = document.querySelector('details.book-section');
+    if (bookSection) bookSection.open = true;
+    // Find and open the Introduction part-section
+    document.querySelectorAll('details.part-section > summary').forEach(function(s) {
+      if (s.textContent.indexOf('Introduction') !== -1) {
+        s.parentElement.open = true;
+      }
+    });
+    // Open p1 (hook) and p2 (summary) chapter-sections
+    var hookEl = document.getElementById('hook:what-would-you-do');
+    var summaryEl = document.getElementById('summary:most-important-story');
+    [hookEl, summaryEl].forEach(function(el) {
+      if (el) {
+        var details = el.closest('details');
+        if (details) details.open = true;
+      }
+    });
+    // Scroll to hook
+    if (hookEl) hookEl.scrollIntoView({behavior: 'smooth'});
+  });
+  quickJump.appendChild(introLink);
 
   var partLinks = [
     {label: 'Deduction', id: 'guided-deduction'},
@@ -67,7 +143,7 @@
     {label: 'Agency', id: 'agency-and-restraint'},
   ];
   partLinks.forEach(function(p, i) {
-    if (i > 0) quickJump.appendChild(document.createTextNode(' \u00B7 '));
+    quickJump.appendChild(document.createTextNode(' \u00B7 '));
     var a = document.createElement('a');
     a.href = '#' + p.id;
     a.textContent = p.label;
@@ -118,6 +194,7 @@
   });
 
   nav.appendChild(breadcrumb);
+  nav.appendChild(shareBtn);
   nav.appendChild(quickJump);
   nav.appendChild(expandBtn);
   nav.appendChild(topBtn);
@@ -131,9 +208,9 @@
     var a = document.createElement('a');
     a.textContent = label;
     a.href = targetId ? '#' + targetId : '#';
-    a.style.cssText = 'text-decoration:none;color:#777;';
+    a.style.cssText = 'text-decoration:none;color:' + (isDark ? '#aaa' : '#777') + ';';
     a.addEventListener('mouseenter', function() { a.style.color = '#2471a3'; });
-    a.addEventListener('mouseleave', function() { a.style.color = '#777'; });
+    a.addEventListener('mouseleave', function() { a.style.color = isDark ? '#aaa' : '#777'; });
     a.addEventListener('click', function(e) {
       e.preventDefault();
       if (targetId) {
@@ -151,20 +228,23 @@
     var chapterName = '';
     var chapterId = '';
 
-    // Find current part: last part-section summary scrolled past
-    document.querySelectorAll('details.part-section > summary').forEach(function(s) {
+    // Find current part: last open part-section whose summary scrolled past
+    document.querySelectorAll('details.part-section[open] > summary').forEach(function(s) {
       if (s.getBoundingClientRect().top <= 150) {
-        partName = s.textContent.trim().substring(0, 25);
         var h1 = s.querySelector('h1[id]');
+        partName = h1 ? h1.textContent.trim() : s.textContent.trim();
+        partName = partName.substring(0, 25);
         partId = h1 ? h1.id : '';
       }
     });
 
-    // Find current chapter: last open chapter-section scrolled past
-    document.querySelectorAll('details.chapter-section[open] > summary').forEach(function(s) {
+    // Find current chapter: last chapter-section (open or closed) scrolled past
+    // within an open part — show what section the reader is in
+    document.querySelectorAll('details.part-section[open] details.chapter-section > summary').forEach(function(s) {
       if (s.getBoundingClientRect().top <= 150) {
-        chapterName = s.textContent.trim().substring(0, 35);
         var h2 = s.querySelector('h2[id]');
+        chapterName = h2 ? h2.textContent.trim() : s.textContent.trim();
+        chapterName = chapterName.substring(0, 35);
         chapterId = h2 ? h2.id : '';
       }
     });
@@ -182,6 +262,9 @@
       breadcrumb.appendChild(document.createTextNode(' \u203A '));
       breadcrumb.appendChild(makeBreadcrumbLink(chapterName, chapterId));
     }
+
+    // Update share button href
+    shareBtn.href = '#' + (chapterId || partId || '');
   }
 
   // Throttled scroll handler for breadcrumb
@@ -252,15 +335,30 @@
   // Also intercept clicks on internal links
   document.addEventListener('click', function(e) {
     var link = e.target.closest('a[href^="#"]');
-    if (link) {
+    if (link && !link.classList.contains('heading-link')) {
       var hash = link.getAttribute('href');
       // Let default behavior happen, then auto-expand
       setTimeout(function() { autoExpand(hash); }, 50);
     }
   });
 
-  // --- Dark mode detection (used by copy button and nav) ---
-  var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  // --- Heading link icons (deep link discovery) ---
+  document.querySelectorAll('h1[id], h2[id], h3[id]').forEach(function(heading) {
+    var a = document.createElement('a');
+    a.className = 'heading-link';
+    a.href = '#' + heading.id;
+    a.textContent = '#';
+    a.addEventListener('click', function(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var url = location.origin + location.pathname + '#' + heading.id;
+      copyToClipboard(url, function() {
+        a.textContent = '\u2713';
+        setTimeout(function() { a.textContent = '#'; }, 1500);
+      });
+    });
+    heading.appendChild(a);
+  });
 
   // --- LLM Primer copy buttons (top + bottom) ---
   var primerSection = document.getElementById('app:llm-primer') ||
@@ -293,35 +391,14 @@
         btn.addEventListener('mouseleave', function() { btn.style.background = btnBase; });
         btn.addEventListener('click', function() {
           var text = primerDiv.textContent;
-          function onCopied() {
+          copyToClipboard(text, function() {
             btn.textContent = 'Copied!';
             btn.style.background = '#1e8449';
             setTimeout(function() {
               btn.textContent = btnLabel;
               btn.style.background = btnBase;
             }, 2000);
-          }
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(onCopied, function() {
-              var ta = document.createElement('textarea');
-              ta.value = text;
-              ta.style.cssText = 'position:fixed;left:-9999px;';
-              document.body.appendChild(ta);
-              ta.select();
-              document.execCommand('copy');
-              document.body.removeChild(ta);
-              onCopied();
-            });
-          } else {
-            var ta = document.createElement('textarea');
-            ta.value = text;
-            ta.style.cssText = 'position:fixed;left:-9999px;';
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand('copy');
-            document.body.removeChild(ta);
-            onCopied();
-          }
+          });
         });
         return btn;
       }
@@ -395,35 +472,14 @@
         btn.addEventListener('mouseleave', function() { btn.style.background = absBtnBase; });
         btn.addEventListener('click', function() {
           var text = abstractsDiv.textContent;
-          function onCopied() {
+          copyToClipboard(text, function() {
             btn.textContent = 'Copied!';
             btn.style.background = '#1e8449';
             setTimeout(function() {
               btn.textContent = absBtnLabel;
               btn.style.background = absBtnBase;
             }, 2000);
-          }
-          if (navigator.clipboard && navigator.clipboard.writeText) {
-            navigator.clipboard.writeText(text).then(onCopied, function() {
-              var ta = document.createElement('textarea');
-              ta.value = text;
-              ta.style.cssText = 'position:fixed;left:-9999px;';
-              document.body.appendChild(ta);
-              ta.select();
-              document.execCommand('copy');
-              document.body.removeChild(ta);
-              onCopied();
-            });
-          } else {
-            var ta = document.createElement('textarea');
-            ta.value = text;
-            ta.style.cssText = 'position:fixed;left:-9999px;';
-            document.body.appendChild(ta);
-            ta.select();
-            document.execCommand('copy');
-            document.body.removeChild(ta);
-            onCopied();
-          }
+          });
         });
         return btn;
       }
@@ -458,10 +514,6 @@
       tocBtn.style.borderColor = '#555';
       tocBtn.style.color = '#e0e0e0';
     }
-    // Update breadcrumb link colors
-    breadcrumb.querySelectorAll('a').forEach(function(a) {
-      a.style.color = '#aaa';
-    });
     // Update quick-jump link colors
     quickJump.querySelectorAll('a').forEach(function(a) {
       a.style.color = '#6ba3f7';

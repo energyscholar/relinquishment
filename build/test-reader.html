@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Reader.js Test Harness</title>
+<link rel="stylesheet" href="html.css">
+<style>
+body { font-family: Georgia, serif; max-width: 800px; margin: 2em auto; padding: 1em; }
+#results { margin-bottom: 2em; font-family: monospace; font-size: 0.95em; }
+#results div { padding: 0.2em 0; }
+.pass { color: green; }
+.fail { color: red; font-weight: bold; }
+#summary { font-size: 1.2em; font-weight: bold; margin-bottom: 1em; }
+</style>
+</head>
+<body>
+
+<h1>Reader.js Test Harness</h1>
+<div id="summary"></div>
+<div id="results"></div>
+
+<!-- Mock book structure -->
+<details class="book-section" open>
+  <summary><h1 id="test-book">Test Book</h1></summary>
+  <details class="part-section" open>
+    <summary><h1 id="test-part">Test Part</h1></summary>
+    <details class="chapter-section">
+      <summary><h2 id="test-chapter">Test Chapter</h2></summary>
+      <p>Content here.</p>
+      <h3 id="test-section">Test Section</h3>
+      <p>More content.</p>
+    </details>
+    <details class="chapter-section">
+      <summary><h2 id="test-chapter-2">Another Chapter</h2></summary>
+      <p>Second chapter content.</p>
+    </details>
+  </details>
+</details>
+
+<script src="reader.js"></script>
+<script>
+(function() {
+  var results = document.getElementById('results');
+  var summaryEl = document.getElementById('summary');
+  var passed = 0;
+  var failed = 0;
+
+  function assert(name, condition) {
+    var div = document.createElement('div');
+    if (condition) {
+      div.className = 'pass';
+      div.textContent = 'PASS: ' + name;
+      passed++;
+    } else {
+      div.className = 'fail';
+      div.textContent = 'FAIL: ' + name;
+      failed++;
+    }
+    results.appendChild(div);
+  }
+
+  // Delay to let reader.js finish setup
+  setTimeout(function() {
+
+    // Test 1: Link icons exist on all headings with ids
+    var headings = document.querySelectorAll('h1[id], h2[id], h3[id]');
+    var allHaveLinks = true;
+    headings.forEach(function(h) {
+      if (!h.querySelector('.heading-link')) allHaveLinks = false;
+    });
+    assert('Link icons exist on all h1[id], h2[id], h3[id]', allHaveLinks && headings.length > 0);
+
+    // Test 2: Link icon href correct
+    var allHrefsCorrect = true;
+    headings.forEach(function(h) {
+      var link = h.querySelector('.heading-link');
+      if (!link || link.getAttribute('href') !== '#' + h.id) allHrefsCorrect = false;
+    });
+    assert('Link icon href matches #id of parent heading', allHrefsCorrect);
+
+    // Test 3: Click does not toggle details (critical stopPropagation test)
+    var chapterSummary = document.querySelector('#test-chapter').closest('summary');
+    var chapterDetails = chapterSummary ? chapterSummary.parentElement : null;
+    if (chapterDetails) {
+      // Ensure details is closed first
+      chapterDetails.open = false;
+      var wasClosed = !chapterDetails.open;
+      // Click the heading link inside the summary
+      var headingLink = document.querySelector('#test-chapter .heading-link');
+      if (headingLink) {
+        headingLink.click();
+        // After click, details should still be closed (stopPropagation prevented toggle)
+        var stillClosed = !chapterDetails.open;
+        assert('Click on heading link does NOT toggle parent details', wasClosed && stillClosed);
+      } else {
+        assert('Click on heading link does NOT toggle parent details', false);
+      }
+    } else {
+      assert('Click on heading link does NOT toggle parent details', false);
+    }
+
+    // Test 4: Clipboard mock
+    var clipboardReceived = null;
+    var origClipboard = navigator.clipboard;
+    // Mock clipboard
+    Object.defineProperty(navigator, 'clipboard', {
+      value: {
+        writeText: function(text) {
+          clipboardReceived = text;
+          return Promise.resolve();
+        }
+      },
+      writable: true,
+      configurable: true
+    });
+    var sectionLink = document.querySelector('#test-section .heading-link');
+    if (sectionLink) {
+      sectionLink.click();
+      // Give the promise a tick to resolve
+      setTimeout(function() {
+        var expected = location.origin + location.pathname + '#test-section';
+        assert('Clipboard receives correct URL on heading link click', clipboardReceived === expected);
+
+        // Restore clipboard
+        if (origClipboard) {
+          Object.defineProperty(navigator, 'clipboard', {
+            value: origClipboard, writable: true, configurable: true
+          });
+        }
+
+        // Test 5: Nav bar exists
+        assert('Nav bar (#reader-nav) exists', !!document.getElementById('reader-nav'));
+
+        // Test 6: Share button exists
+        var share = document.getElementById('nav-share');
+        assert('Share button (section symbol) exists in nav', !!share && share.textContent === '\u00A7');
+
+        // Test 7: autoExpand works
+        // Close all details first
+        document.querySelectorAll('details').forEach(function(d) { d.open = false; });
+        // Set hash and trigger autoExpand via hashchange
+        var chapterEl = document.getElementById('test-chapter');
+        var chapterDetailsEl = chapterEl ? chapterEl.closest('details') : null;
+        var partDetailsEl = chapterDetailsEl ? chapterDetailsEl.closest('details.part-section') : null;
+        var bookDetailsEl = partDetailsEl ? partDetailsEl.closest('details.book-section') : null;
+        // Manually trigger autoExpand by setting hash
+        location.hash = '#test-chapter';
+        setTimeout(function() {
+          var allOpen = true;
+          if (chapterDetailsEl && !chapterDetailsEl.open) allOpen = false;
+          if (partDetailsEl && !partDetailsEl.open) allOpen = false;
+          if (bookDetailsEl && !bookDetailsEl.open) allOpen = false;
+          assert('autoExpand opens all ancestor details for #test-chapter', allOpen);
+
+          // Summary
+          summaryEl.textContent = passed + ' passed, ' + failed + ' failed';
+          summaryEl.style.color = failed > 0 ? 'red' : 'green';
+        }, 200);
+      }, 50);
+    } else {
+      assert('Clipboard receives correct URL on heading link click', false);
+      assert('Nav bar (#reader-nav) exists', !!document.getElementById('reader-nav'));
+      var share = document.getElementById('nav-share');
+      assert('Share button (section symbol) exists in nav', !!share);
+      assert('autoExpand opens all ancestor details for #test-chapter', false);
+      summaryEl.textContent = passed + ' passed, ' + failed + ' failed';
+      summaryEl.style.color = 'red';
+    }
+
+  }, 100);
+})();
+</script>
+</body>
+</html>
