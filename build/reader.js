@@ -140,7 +140,7 @@
   var partLinks = [
     {label: 'Deduction', id: 'guided-deduction'},
     {label: 'Evidence', id: 'the-evidence-trail'},
-    {label: 'Agency', id: 'agency-and-restraint'},
+    {label: 'Forgiveness', id: 'forgiveness-and-permission'},
   ];
   partLinks.forEach(function(p, i) {
     quickJump.appendChild(document.createTextNode(' \u00B7 '));
