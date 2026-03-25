@@ -20,7 +20,7 @@ a:visited { color: #6c3483; }
 
 /* Responsive body */
 body {
-  max-width: 40em; margin: 0 auto; padding: 1em;
+  max-width: 50em; margin: 0 auto; padding: 1em;
   font-family: Georgia, "Times New Roman", serif;
   line-height: 1.6; color: #1a1a1a;
 }
