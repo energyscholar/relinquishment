@@ -16,6 +16,7 @@ TIKZ_PDFS := $(TIKZ_SRCS:.tex=.pdf)
 dev: gitinfo images
 	@echo "" > build/flags.tex
 	@mkdir -p build/tikz-cache
+	python3 build/generate-hover.py
 	latexmk -r build/.latexmkrc -jobname=$(JOBNAME) main.tex
 	$(MAKE) html
 
@@ -23,6 +24,7 @@ dev: gitinfo images
 dms: gitinfo images
 	@echo "\\def\\dmsbuild{1}" > build/flags.tex
 	@mkdir -p build/tikz-cache
+	python3 build/generate-hover.py
 	latexmk -r build/.latexmkrc -jobname=$(JOBNAME) main.tex
 
 # --- Final build (Docker required) ---
