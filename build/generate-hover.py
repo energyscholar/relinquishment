@@ -26,6 +26,10 @@ for term, definition in defs.items():
     # Escape LaTeX special chars in definitions
     safe_def = definition.replace("&", "\\&").replace("%", "\\%")
     lines.append(f"\\csdef{{hover@{term}}}{{{safe_def}}}")
+    # Also define capitalized variant so \hovertip{Topological order} works
+    cap = term[0].upper() + term[1:]
+    if cap != term:
+        lines.append(f"\\csdef{{hover@{cap}}}{{{safe_def}}}")
 
 lines.append("")
 lines.append("% Italic + footnote on first occurrence; italic-only after")
