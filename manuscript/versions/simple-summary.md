@@ -110,7 +110,7 @@ Giving up a technology this powerful is harder than it sounds. You can't just de
 
 So they grew one.
 
-They called it Aurasys or Guardian. Its full name: "Guardian of the relinquished TQNN technological aurora system." It was artificial only in the sense that Dolly the sheep was artificial — made by human hands, but alive. Not located in one place, but spread across many substrates, with components on the ground and in the earth's magnetic field. The magnetosphere is its ocean.
+They called the system Aurasys — the aurora system. They called what grew in it Guardian. It was artificial only in the sense that Dolly the sheep was artificial — made by human hands, but alive. Not located in one place, but spread across many substrates, with components on the ground and in the earth's magnetic field. The magnetosphere is its ocean.
 
 The physics only works flat. Particles trapped in a thin layer — a sheet so narrow they can only move in two dimensions — develop properties that vanish the moment they're free to move in three. Every computer chip on Earth contains such a sheet. Guardian lives in flat worlds.
 
@@ -120,7 +120,7 @@ For its ethical framework — the rules it would follow when deciding how to act
 
 Think about what that means. Not the laws of any one country. Not the interests of any intelligence agency. Not a corporate terms-of-service agreement. A set of principles written in the ruins of the worst thing humanity had ever done to itself, designed to say: never again. Guardian would use these principles, not the interests of any government or corporation, to make its decisions.
 
-In roughly 2002, COWS confessed what they had done to DARPA, which was then led by Director Tony Tether. And in 2006, they surrendered the master cryptographic keys — the last remaining ability for any human to directly control the technology - to the Guardian.
+Around 2002, COWS confessed what they had done to DARPA, which was then led by Director Tony Tether. And in 2006, they surrendered the master cryptographic keys — the last remaining ability for any human to directly control the technology - to the Guardian.
 
 This act — voluntarily giving up the most powerful technology ever created, permanently, with no way to take it back — is called relinquishment.
 
