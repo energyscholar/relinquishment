@@ -842,24 +842,29 @@ def fix_html_toc(html_path):
     if yaml and hover_yaml.exists():
         hover_defs = yaml.safe_load(hover_yaml.read_text()) or {}
     if hover_defs:
+        # Case-insensitive lookup: build lowercase-keyed map
+        hover_lower = {k.lower(): v for k, v in hover_defs.items()}
         hover_seen = set()
         hover_count = 0
 
         def hover_replace(m):
             nonlocal hover_count
-            term = m.group(1)
-            if term in hover_defs and term not in hover_seen:
-                hover_seen.add(term)
+            raw_term = m.group(1)
+            # Pandoc may insert newlines in multi-word terms; normalize for lookup
+            term = re.sub(r'\s+', ' ', raw_term).strip()
+            lookup = term.lower()
+            if lookup in hover_lower and lookup not in hover_seen:
+                hover_seen.add(lookup)
                 hover_count += 1
-                escaped_def = html_mod.escape(hover_defs[term])
+                escaped_def = html_mod.escape(hover_lower[lookup])
                 return f'<span class="hover-term" title="{escaped_def}">{term}</span>'
-            elif term in hover_defs:
+            elif lookup in hover_lower:
                 return f'<em>{term}</em>'
             else:
                 print(f"  WARNING: hovertip term not in YAML: '{term}'")
                 return f'<em>{term}</em>'
 
-        text = re.sub(r'HOVERSTART\u00a7(.+?)\u00a7HOVEREND', hover_replace, text)
+        text = re.sub(r'HOVERSTART\u00a7(.+?)\u00a7HOVEREND', hover_replace, text, flags=re.DOTALL)
         if hover_count:
             print(f"Hover tooltips: {hover_count} first-occurrence terms")
 
