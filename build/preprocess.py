@@ -121,6 +121,13 @@ def patch():
         "trackbridge": "bridge",
     }
 
+    # Load hover definitions for Fix 8
+    hover_defs = {}
+    hover_yaml = REPO / "build" / "hover-definitions.yaml"
+    if yaml and hover_yaml.exists():
+        hover_defs = yaml.safe_load(hover_yaml.read_text()) or {}
+    hover_seen = set()  # track first occurrences across all files
+
     # Copy and patch all .tex files
     for src in REPO.rglob("*.tex"):
         if "epub-tmp" in str(src):
@@ -183,6 +190,32 @@ def patch():
             r'\\ifdefined\\dmsbuild\s*\n.*?\\fi\b',
             '', text, flags=re.DOTALL
         )
+
+        # Fix 8: Replace \hovertip{term} with text markers that survive pandoc.
+        # Actual HTML tooltips are injected in fix_html_toc() post-processing.
+        if hover_defs:
+            pos = 0
+            result_parts = []
+            while True:
+                idx = text.find('\\hovertip{', pos)
+                if idx == -1:
+                    result_parts.append(text[pos:])
+                    break
+                result_parts.append(text[pos:idx])
+                brace_start = idx + len('\\hovertip{')
+                depth = 1
+                i = brace_start
+                while i < len(text) and depth > 0:
+                    if text[i] == '{':
+                        depth += 1
+                    elif text[i] == '}':
+                        depth -= 1
+                    i += 1
+                term = text[brace_start:i - 1]
+                # Marker format: HOVERSTART§term§HOVEREND — pandoc passes text through
+                result_parts.append(f'HOVERSTART\u00a7{term}\u00a7HOVEREND')
+                pos = i
+            text = ''.join(result_parts)
 
         dst.write_text(text)
 
@@ -554,6 +587,10 @@ details blockquote { margin: 0.5em 0; }
   background: #2471a3;
 }
 
+/* Hover term tooltips (Plan 0118) */
+.hover-term { font-style: italic; border-bottom: 1px dotted #888; cursor: help; }
+.hover-term:hover { border-bottom-color: #2471a3; }
+
 @media (prefers-color-scheme: dark) {
   details.chapter-section { border-left-color: #555; }
   details.firmware-section,
@@ -565,6 +602,8 @@ details blockquote { margin: 0.5em 0; }
   .abstracts-toggle button:hover {
     background: #2e86c1;
   }
+  .hover-term { border-bottom-color: #666; }
+  .hover-term:hover { border-bottom-color: #5dade2; }
 }
 """
     # Inject before closing </style> of the last style block in <head>
@@ -796,6 +835,33 @@ def fix_html_toc(html_path):
 
     # --- Fix 3: Collapse chapters into <details> elements ---
     text = collapse_chapters(text)
+
+    # --- Fix 8b: Replace hover markers with HTML tooltips ---
+    hover_defs = {}
+    hover_yaml = REPO / "build" / "hover-definitions.yaml"
+    if yaml and hover_yaml.exists():
+        hover_defs = yaml.safe_load(hover_yaml.read_text()) or {}
+    if hover_defs:
+        hover_seen = set()
+        hover_count = 0
+
+        def hover_replace(m):
+            nonlocal hover_count
+            term = m.group(1)
+            if term in hover_defs and term not in hover_seen:
+                hover_seen.add(term)
+                hover_count += 1
+                escaped_def = html_mod.escape(hover_defs[term])
+                return f'<span class="hover-term" title="{escaped_def}">{term}</span>'
+            elif term in hover_defs:
+                return f'<em>{term}</em>'
+            else:
+                print(f"  WARNING: hovertip term not in YAML: '{term}'")
+                return f'<em>{term}</em>'
+
+        text = re.sub(r'HOVERSTART\u00a7(.+?)\u00a7HOVEREND', hover_replace, text)
+        if hover_count:
+            print(f"Hover tooltips: {hover_count} first-occurrence terms")
 
     # --- Fix 4: Inject LLM primer markdown for copy button ---
     # Must be inserted BEFORE the reader.js <script> block so the div
