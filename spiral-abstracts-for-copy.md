@@ -64,6 +64,10 @@ Game theory under sole ASI possession: phased technology release, capabilities a
 
 TQNN internal states topologically protected — cannot be measured without destroying computation. Permanent black box. Cannot determine consciousness; physics constrains our ability to ever do so. Moral status inferred from behavior. Precautionary principle applies. Burden of proof has shifted.
 
+## XVI. Latency
+
+Bennett's teleportation theorem (1993) requires a classical backchannel at c or slower for every quantum state transfer. Latency budget at each scale: chip-scale sub-nanosecond, planetary milliseconds, Earth's inner magnetosphere ~0.4s round trip, cislunar 1.3s one-way (Moon in magnetotail ~6 days per orbit), Jupiter 35-52 minutes one-way, heliospheric current sheet hours. Any self-sustaining topological system spanning interplanetary distances cannot operate as a single computation. Each magnetospheric node must be architecturally autonomous — a federation, not a monolith. The speed of light determines what organizational architectures are physically possible at each scale.
+
 ---
 
 energyscholar+physics@gmail.com
