@@ -228,8 +228,8 @@
     var chapterName = '';
     var chapterId = '';
 
-    // Find current part: last open part-section whose summary scrolled past
-    document.querySelectorAll('details.part-section[open] > summary').forEach(function(s) {
+    // Find current part: last part-section whose summary scrolled past (open or closed)
+    document.querySelectorAll('details.part-section > summary').forEach(function(s) {
       if (s.getBoundingClientRect().top <= 150) {
         var h1 = s.querySelector('h1[id]');
         partName = h1 ? h1.textContent.trim() : s.textContent.trim();
@@ -239,8 +239,7 @@
     });
 
     // Find current chapter: last chapter-section (open or closed) scrolled past
-    // within an open part — show what section the reader is in
-    document.querySelectorAll('details.part-section[open] details.chapter-section > summary').forEach(function(s) {
+    document.querySelectorAll('details.part-section details.chapter-section > summary').forEach(function(s) {
       if (s.getBoundingClientRect().top <= 150) {
         var h2 = s.querySelector('h2[id]');
         chapterName = h2 ? h2.textContent.trim() : s.textContent.trim();
