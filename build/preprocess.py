@@ -287,6 +287,7 @@ def collapse_chapters(text):
         'appendix:infrastructure', 'appendix:relinquishment', 'appendix:orbital',
         'appendix:discovery', 'appendix:kitaevs-echo', 'appendix:interdiction',
         'appendix:confession', 'appendix:the-unipolar-condition', 'appendix:guardian',
+        'appendix:latency',
     }
     firmware_ids = {'five-physics-distinctions-often-missed', 'ten-physics-anchors'}
 
