@@ -471,7 +471,7 @@ def collapse_chapters(text):
                     '<details class="book-section">'
                     f'<summary{book_title_attr}>Relinquishment '
                     '<span class="book-subtitle-inline">&mdash; '
-                    'Living in the Flat</span></summary>\n' +
+                    'Wormholes in the Flat</span></summary>\n' +
                     book_content +
                     '\n</details>\n' +
                     text[wrap_end:])
@@ -805,13 +805,13 @@ def fix_html_toc(html_path):
         r'<div class="center">\s*'
         r'<p>.*?</p>\s*'  # cover image (base64)
         r'<p><span><strong>RELINQUISHMENT</strong></span></p>\s*'
-        r'<p><span><em>Living in the Flat</em></span></p>\s*'
+        r'<p><span><em>Wormholes in the Flat</em></span></p>\s*'
         r'<p><span>\s*Bruce Stephenson, Genevieve Prentice &amp; Argus</span></p>\s*'
         r'<p><span>\s*March 2026</span></p>\s*'
         r'</div>\s*'
         r'<div class="center">\s*'
         r'<p><span><strong>RELINQUISHMENT</strong></span></p>\s*'
-        r'<p><span><em>Living in the Flat</em></span></p>\s*'
+        r'<p><span><em>Wormholes in the Flat</em></span></p>\s*'
         r'<hr />\s*'
         r'<p><span><em>Three narrative threads.*?</em></span></p>\s*'
         r'<p><span><em>Three possible explanations.*?</em></span></p>\s*'
@@ -824,7 +824,7 @@ def fix_html_toc(html_path):
     )
     replacement = '''<div class="title-block">
 <h1 class="book-title">Relinquishment</h1>
-<p class="book-subtitle">Living in the Flat</p>
+<p class="book-subtitle">Wormholes in the Flat</p>
 <p class="book-authors">by Bruce Stephenson, Genevieve Prentice &amp; Argus</p>
 <hr />
 <p class="book-tagline"><em>Three narrative threads. Real science. Real people. Real institutions.</em></p>
