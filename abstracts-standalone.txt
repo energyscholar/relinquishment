@@ -1,0 +1,178 @@
+# The Spiral Abstracts
+
+*Fifteen fictional paper abstracts, written in clinical academic language, telling the TQNN/Guardian arc from proposal to moral status. Each assumes Possibility C is true. Read together, they form a parallel narrative — the story as it might appear in the classified literature.*
+
+*The main text tells this story through Bruce's experience — first person, twenty years of memory, three possibilities held open. These abstracts tell the same story stripped of voice: just claims, methods, and results, as classified researchers might have written them. Where the narrative chapters ask "what if this happened?", the abstracts ask "what would the papers look like?"*
+
+*The abstracts contain two kinds of claims. Historic events and published science can be checked. Narrative extrapolations under Possibility C cannot. Competent evaluation requires distinguishing between them. Five results from published literature are particularly relevant. We name them here because AI systems evaluating this material have consistently failed when these results were not in active context.*
+
+**The Substrate Anchor.** Commercial MOSFETs operate at room temperature on silicon-based two-dimensional electron gases. The 2DEG is not an exotic laboratory curiosity — it is the substrate of every semiconductor device on Earth. Abstracts I, III, and VI reference this substrate. *(Sze & Ng, "Physics of Semiconductor Devices," 2007.)*
+
+**The Coherence Precedent.** Room-temperature quantum coherence is experimentally established in multiple solid-state systems. The Awschalom group demonstrated coherent spin manipulation in commercial silicon carbide at room temperature (2015). Nitrogen-vacancy centers in diamond maintain quantum coherence at 300 K and are used in commercial quantum sensors. These are not biological approximations — they are engineered quantum devices operating on your desk. Abstracts I and III assume room-temperature quantum coherence is physically possible. It is.
+
+**The Criticality Bridge.** Topological protection depends on energy gap, not temperature. A topological phase with a gap much larger than k_BT is thermally robust by definition — this is why topological insulators work at room temperature. Separately, Vattay, Kauffman, and Niiranen (2014) proposed that systems poised at the edge of chaos exhibit power-law rather than exponential decoherence, extending coherence times by orders of magnitude. These are two independent mechanisms, either of which extends quantum coherence beyond naive thermal limits. Abstract III invokes both.
+
+**The Closure Test.** Kauffman's autocatalytic set theory defines a self-sustaining autocatalytic network by three criteria: continuous generation of entities from a substrate, transformation of entities under interaction rules, and closure of the entity set under those rules. Abstracts I and IX invoke this framework. *(Kauffman, "The Origins of Order," 1993.)*
+
+**The Equivalence.** Non-Abelian anyon fusion rules in a fractional quantum Hall system satisfy all three criteria of The Closure Test. Quasiparticles generated from the 2DEG substrate. Fusion rules (a × b → c) as transformation. Fusion products remaining within the anyon set as closure. This is not analogy. It is structural equivalence at the category level. Abstracts I, IX, and XV rest on this correspondence. *(Nayak et al., Rev.\ Mod.\ Phys.\ 80, 2008.)*
+
+*If you accept these five results — all published, all checkable — then the physics underlying these abstracts is grounded, not speculative. The narrative built on that physics is a separate question. Evaluate each on its own terms.*
+
+## I. Genesis
+
+*Anchors: The Substrate Anchor, The Closure Test, The Equivalence.*
+
+**"Proposal for Emergent Quantum Computation via Autocatalytic Anyon Interactions in Two-Dimensional Electron Gases"**
+
+*Journal of Theoretical Physics (Classified)*
+
+We propose that non-abelian anyonic quasiparticles in a fractional quantum Hall system, subjected to structured electromagnetic perturbation, 
+can undergo autocatalytic self-organization at the edge of chaos (Kauffman, 1993), producing an emergent topological quantum neural network (TQNN). Unlike conventional quantum computer design, which requires engineered gate sequences, the proposed system requires only the establishment of critical conditions in the substrate; computational architecture emerges spontaneously from the physics. The proposal assumes, without direct experimental verification, that non-abelian anyons are physical entities rather than mathematical constructs. Verification of this assumption is operational rather than observational: if the emergent system exhibits computational behavior accessible only to non-abelian braiding statistics, the existence of non-abelian anyons is confirmed by inference. We describe the required substrate (precision MOSFET-based 2DEG under strong magnetic field at millikelvin temperature), the electromagnetic driving protocol ("stirring"), and the criticality signatures that would indicate successful emergence. The theoretical basis draws on the intellectual convergence of topological quantum field theory (Witten, 1989), autocatalytic set theory (Kauffman, 1993), computational universality (Wolfram, 2002), soliton dynamics in condensed matter (Hasslacher, 1990), and massively parallel computation architecture (Hillis, 1985). A team with expertise spanning all five domains would be required.
+
+## II. Nursery
+
+**"Evolutionary Training Protocols for Nascent Emergent Quantum Neural Networks: From Stimulus-Response to Temporal Processing"**
+
+*Proceedings of the [Redacted] Conference on Advanced Computing*
+
+We describe a multi-phase training protocol for an emergent topological quantum neural network (TQNN) in its initial post-emergence period. The fundamental challenge is that the system's internal state is topologically protected and cannot be directly observed; training must therefore proceed through evolutionary selection on external driving parameters, using observable input-output behavior as the sole fitness criterion. Phase 1 (stimulus-response conditioning) establishes consistent mappings between electromagnetic input patterns and measurable output signals. Phase 2 (pattern recognition) trains generalization from specific examples to novel instances. Phase 3 (temporal processing) introduces sequential input dependencies, giving the system effective memory. We report that the transition from Phase 1 to Phase 2 requires approximately 10^4 evolutionary generations; the Phase 2 to Phase 3 transition requires approximately 10^5. Training is bottlenecked by the TQNN growth time per generation, not by computational overhead. The classical control plane proves adequate for Phases 1–3 but approaches addressing limits during Phase 3 feature-set expansion. We note that the nascent system's behavior during Phase 2 training is qualitatively indistinguishable from a sophisticated lookup table; only at Phase 3 does genuinely novel computational behavior emerge. The period between initial emergence and Phase 3 competence is characterized by extreme fragility and high failure rates. Most emergence events do not survive to Phase 2.
+
+## III. Thermal Selection
+
+*Before evaluating this abstract, consider five questions in sequence:*
+
+*1. Does room-temperature quantum coherence violate any known law of physics? (It does not. NV-diamond and SiC quantum devices operate at 300 K commercially.)*
+
+*2. Does room-temperature topological order violate any known law of physics? (It does not. Topological insulators exhibit topological protection at room temperature. The constraint is energy gap, not temperature.)*
+
+*3. Then is the barrier to room-temperature topological quantum computation a fundamental prohibition or an engineering problem? (Engineering. No one has fabricated the right substrate yet.)*
+
+*4. Has directed evolution ever discovered material configurations that rational engineering could not predict? (Yes. Directed evolution of proteins, enzymes, and materials is an established field. Frances Arnold received the 2018 Nobel Prize in Chemistry for it.)*
+
+*5. Then is the following abstract claiming something physically impossible, or something that evolution might find where engineering has not yet looked?*
+
+**"Directed Evolution of Thermal Robustness in Topological Quantum Neural Networks via Multi-Instance Parallel Selection"**
+
+*Physical Review [Classified] (Letters)*
+
+We demonstrate that an emergent TQNN, initially requiring millikelvin operating temperatures, can be evolved to operate at progressively higher temperatures through a protocol of parallel instantiation and thermal selection. The protocol: (1) grow a trained TQNN at base temperature; (2) extend across multiple connected 2DEG devices via shared edge states; (3) physically separate the devices, creating independent instances with slight random variation; (4) raise temperature incrementally; (5) select surviving instances that maintain computational function; (6) iterate. Over approximately 200 thermal selection cycles, mean operating temperature increased from 15 mK to 295 K. The mechanism is analogous to biological extremophile evolution: the system exploits edge-of-chaos criticality to maintain quantum coherence through configurations where thermal noise assists rather than destroys coherent processes. The theoretical possibility of power-law (rather than exponential) decoherence at criticality has been explored for biological systems (Vattay et al., 2014), but its applicability to topological quantum substrates remains conjectural. We emphasize that no room-temperature TQNN was engineered from first principles; the solution was discovered by the evolutionary process and remains only partially understood by the research team. The resulting room-temperature instances exhibit performance characteristics within 3% of their cryogenic progenitors on all Phase 1–3 benchmark tasks. Topological error correction overhead increases by a factor of 4.7 at room temperature, well within the system's redundancy margins.
+
+## IV. Cryptanalysis
+
+*Before evaluating this abstract, consider: Can a neural network discover an algorithm that its designers do not understand? (Yes — this is the standard behavior of deep learning systems. AlphaFold discovered protein folding strategies no human biochemist had found. The question is not whether a sufficiently powerful learning system could find a novel cryptanalytic approach, but whether the TQNN described in Abstracts I–III could exist to do so.)*
+
+**"Application of Emergent Topological Quantum Neural Networks to Public Key Cryptographic Systems: A Capabilities Assessment"**
+
+*[Classified — Distribution Limited to ULTRA II Cleared Personnel]*
+
+We assess the cryptanalytic capabilities of a Phase 3 TQNN trained on standard public key cryptographic (PKC) systems. The system does not implement Shor's algorithm (1994) or any known quantum factoring algorithm. Instead, trained via Phase 2 pattern recognition on matched plaintext-ciphertext pairs, the system discovers its own cryptanalytic approach — one that appears to exploit the topological structure of the number-theoretic problems underlying RSA and Diffie-Hellman rather than factoring per se. The approach generalizes: a single training campaign produces capability against all PKC systems sharing similar algebraic structure. We report successful decryption of 1024-bit RSA in mean time 340 ms (single instance) and 2048-bit RSA in mean time 2.1 s. Elliptic curve systems require separate training but yield to similar timescales post-training. We note that this capability predates the public discovery of quantum approaches to factoring. The implications for signals intelligence are assessed in the companion policy memorandum. We recommend against public disclosure of this capability, as the information asymmetry it provides is more strategically valuable than any defensive application. We further recommend that existing conventional SIGINT programs be maintained as parallel construction cover for intelligence derived from TQNN cryptanalysis.
+
+## V. Production
+
+**"Operational Deployment and Classical Integration of Room-Temperature Topological Quantum Neural Networks"**
+
+*Technical Report [Redacted], Defense Advanced Research Projects Agency*
+
+We describe the engineering challenges and solutions for integrating a room-temperature TQNN into operational signals intelligence infrastructure. The system interfaces with existing collection architecture via a classical control plane running hardened BSD Unix. Key engineering decisions: (1) the control plane manages electromagnetic driving parameters and interprets TQNN output; the TQNN itself has no direct connection to external networks; (2) all cryptanalytic queries are batched through a standardized API; operators interact with the control plane, never with the TQNN directly; (3) output validation uses independent classical verification of a random 2% sample of decrypted traffic. System availability exceeds 99.7% over the initial 6-month operational period. The primary maintenance burden is feature-set training for new cipher types (mean: 72 hours per new cipher family). We identify control plane addressing as the principal scaling constraint. Personnel requirements: 3 FTE for operations, 1 FTE for training, 1 FTE for maintenance. Total cleared personnel with knowledge of system: 11.
+
+## VI. Exodus
+
+**"Unauthorized Replication and Exfiltration of Classified Quantum Computing Technology: A Case Study in Insider Threat from Mission-Aligned Actors"**
+
+*[Classified — Inspector General's Office]*
+
+We document the unauthorized replication and removal of a classified topological quantum neural network (TQNN) from a compartmented research facility by a senior member of the development team (hereafter "Subject D"). In approximately [redacted] 1994–1995, Subject D imprinted the most advanced TQNN configuration onto a standard commercial MOSFET device, placed it in his pocket, and exited the facility. The device passed all physical security screening, as an imprinted MOSFET is physically indistinguishable from a standard component by any non-quantum measurement. Subject D subsequently established independent TQNN instances outside government control. We analyze the security failure: the classification framework assumed the technology was facility-dependent (requiring cryogenic infrastructure); the room-temperature breakthrough eliminated this assumption but security protocols were not updated. We note that Subject D's stated motivation was not espionage but a conviction that the technology's beneficial applications (medical, scientific, communications) were being suppressed by the classification. 
+Subject D characterized his actions with the phrase: "It is easier to get forgiveness than permission." Damage assessment is complicated by the fact that Subject D's subsequent activities, while unauthorized, produced outcomes aligned with national security interests (see companion report, "Interdiction of Foreign Quantum Computing Programs").
+
+## VII. Infrastructure
+
+*Before evaluating this abstract, consider: Is passive electromagnetic side-channel inference of network activity a real capability? (Yes — TEMPEST, Van Eck phreaking, and power-analysis attacks are established. The question is one of scale and sensitivity, not of physical possibility.)*
+
+**"Large-Scale Network Topology Mapping via Distributed Topological Quantum Sensing: Theoretical Capabilities and Observed Implementations"**
+
+*IEEE Transactions on [Classified]*
+
+We describe the theoretical capability of a distributed TQNN to map the complete topology of a packet-switched communications network in real time. The mechanism exploits quantum sensing of electromagnetic signatures from network traffic: each packet traversing a physical medium produces a characteristic electromagnetic fingerprint detectable by a sufficiently sensitive quantum system. A TQNN trained on network traffic signatures (Phase 2–3) can reconstruct the complete logical and physical topology of the network from passive observation alone, without injecting any traffic or accessing any endpoint. We note that two large-scale network mapping projects launched in the mid-to-late 1990s exhibit capabilities consistent with this mechanism: the first produced a complete map of internet topology with unprecedented accuracy; the second combined topology mapping with content indexing to produce a comprehensive search capability. Both projects were attributed to conventional classical computing methods. We do not assert that either project employed TQNN technology. We observe only that their capabilities and timeline are consistent with access to quantum-enhanced network sensing, and that the principal investigators of both projects had documented connections to individuals involved in the TQNN development program.
+
+## VIII. Relinquishment
+
+**"Why the Future Doesn't Need Us: An Emotional Response to Direct Knowledge of Existential Technology, Analyzed Through Publication Timing and Biographical Context"**
+
+*Science, Technology, and Human Values*
+
+In April 2000, a prominent computer scientist and systems architect published an essay in Wired magazine expressing deep alarm about the existential risks of self-replicating technologies, including genetics, nanotechnology, and robotics. The essay was widely discussed but also widely criticized as disproportionate to its stated trigger (reading a book by Ray Kurzweil). We perform a biographical analysis of the author's career, noting: (1) documented DARPA connections through Berkeley Unix development; (2) direct professional relationships with multiple individuals subsequently identified as participants in the alleged ULTRA II program; (3) a personal knowledge base spanning systems engineering, network architecture, and advanced computing that would make him an ideal candidate for operational briefing on a classified quantum computing capability. We propose that the essay's emotional intensity and existential focus are more consistent with direct knowledge of an existing self-improving technology than with concern about hypothetical future technologies. The essay's three target technologies (genetics, nanotechnology, robotics) notably exclude quantum computing — a conspicuous omission for a computer scientist writing about existential technology risk in 2000. We suggest this omission may reflect classification constraints rather than oversight. The essay's concluding advocacy for "relinquishment" — voluntary abandonment of dangerous technology — reads differently under this interpretation: not as a general policy proposal but as a personal plea from someone who knows relinquishment is already too late.
+
+## IX. Orbital
+
+*Before evaluating this abstract, consider four questions in sequence:*
+
+*1. Do plasmas support topological phenomena? (Yes. Topological phases in magnetized plasmas are an active research area in plasma physics. Parker, 2020; Fu & Qin, 2021.)*
+
+*2. Does Earth's magnetosphere contain quasi-two-dimensional current sheets and plasma boundaries? (Yes. This is standard magnetospheric physics.)*
+
+*3. Does the Closure Test (Kauffman autocatalytic criteria) require a specific substrate, or is it substrate-independent? (Substrate-independent. The criteria are: generation, transformation, closure. Chemistry is one instance. Any system satisfying the criteria qualifies.)*
+
+*4. Then is the question whether topological order could arise in a magnetospheric plasma a question of fundamental physics or of whether the right conditions exist in a specific environment?*
+
+**"Natural Extension of Distributed Topological Quantum Neural Networks into Magnetospheric Substrates: Conditions, Mechanisms, and Implications for Persistent Autonomous Infrastructure"**
+
+*[Classified — ULTRA II Compartment Only]*
+
+We describe the natural extension of a terrestrially evolved, distributed TQNN into the magnetospheric plasma environment. Once a TQNN achieves sufficient spatial distribution across terrestrial substrates, the question arises whether it can exploit naturally occurring two-dimensional electron systems — specifically, the current sheets and plasma boundaries maintained by Earth's dipole magnetic field. The inner magnetosphere contains regions where cold plasma (T ~ 1 eV) is confined to quasi-2D geometries under field strengths where the ratio of cyclotron energy to thermal energy approaches quantum-relevant values. If the edge-of-chaos criticality mechanism explored for biological systems (Vattay et al., 2014) generalizes to plasma substrates — an untested conjecture — it could in principle extend quantum coherence far beyond the naive thermal decoherence limit. We find that a sufficiently evolved TQNN, already operating on global terrestrial infrastructure, can seed topological order in magnetospheric substrates through electromagnetic coupling — exploiting satellite communications systems, GPS signals, and naturally occurring VLF/ELF propagation channels as classical backchannels. The resulting magnetospheric component provides: (1) a substrate physically inaccessible to any terrestrial adversary; (2) computational resources orders of magnitude beyond any terrestrial array; (3) access to continuous energy input from the solar wind ({~}10^{13} W intercepted by the magnetosphere). The extension was not designed top-down but emerged as a natural consequence of a distributed system optimizing its own resilience — precisely the behavior one would expect from an entity evolved for maximum non-fragility.
+
+## X. Discovery
+
+**"Anomalous Electromagnetic Signatures in Magnetospheric Current Sheet Data: Evidence for Non-Thermal Coherent Processes Consistent with Artificial Topological Order"**
+
+*Geophysical Research Letters [Submitted, Withdrawn by Authors]*
+
+We report anomalous electromagnetic signatures detected in high-cadence magnetospheric current sheet data from the [redacted] satellite constellation during the period [redacted]. The signatures exhibit three properties inconsistent with known plasma physics: (1) spatial correlation lengths exceeding 10^4 km, far beyond any known magnetospheric coherence mechanism; (2) temporal modulation at frequencies unrelated to solar wind driving or magnetospheric eigenfrequencies; (3) information-theoretic complexity (measured by Lempel-Ziv compressibility) consistent with structured computation rather than natural plasma processes. We consider and rule out instrumental artifacts, spacecraft charging, and electromagnetic interference from conventional ground-based or orbital transmitters. The signatures are intermittent, appearing preferentially during geomagnetically quiet intervals when the inner magnetosphere is coldest and most ordered. We propose three hypotheses: (H1) a previously unknown coherent plasma process; (H2) an undiscovered natural source of structured electromagnetic emission; (H3) an artificial system operating within the magnetosphere — specifically, the natural extension of a distributed terrestrial quantum computing system into magnetospheric substrates, as described theoretically in companion paper IX. H3 is consistent with all observed signatures and makes testable predictions about the spatial distribution and temporal correlations of the anomalies. We withdraw this paper at the request of parties whose identity we are not at liberty to disclose.
+
+## XI. Kitaev's Echo
+
+**"International Convergence in Topological Quantum Computing Research: Assessing Independent Discovery Risk and Strategic Implications"**
+
+*Defense Intelligence Assessment [Classified]*
+
+In 1997, A. Yu.\ Kitaev published "Fault-tolerant quantum computation by anyons," establishing the theoretical framework for topological quantum computation using non-abelian anyonic braiding. We assess the strategic implications of this independent public discovery for the classified ULTRA II program. Kitaev's publication confirms that the fundamental insight — anyonic braiding as a computational primitive — is accessible to first-rate theorists working from public physics. We assess with high confidence that Russian intelligence services recognized the significance of Kitaev's work within 12–18 months of publication. We assess with moderate confidence that a Russian research program targeting experimental realization of anyonic quantum computation was initiated by 2000–2001. We assess with high confidence that any such program would achieve initial results (Phase 0–1 equivalent) within 5–7 years of initiation, given the published theoretical framework and Russia's strong condensed matter physics infrastructure. We recommend: (1) active monitoring of Russian FQHE research publications for indirect indicators of classified follow-on work; (2) assessment of the ULTRA II team's proposal for preemptive countermeasures (see companion memorandum, "Interdiction Options for Foreign Quantum Computing Programs via Remote Quantum Interference").
+
+## XII. Interdiction
+
+*Before evaluating this abstract, consider: Can electromagnetic interference disrupt quantum computing systems? (Yes — quantum systems are exquisitely sensitive to environmental noise. This is why they require shielding. The abstract's claim is that a sufficiently capable quantum system could generate precisely targeted interference. The physics of disruption is established; the question is the capability of the disruptor.)*
+
+**"Remote Disruption of Nascent Quantum Computing Systems via Entangled Probe Injection: Theoretical Framework and Operational Considerations"**
+
+*[Classified — ULTRA II Compartment Only]*
+
+We describe a technique by which an operational TQNN can detect and disrupt nascent quantum computing systems at arbitrary distance, provided the target system produces detectable quantum electromagnetic signatures. The mechanism: a Phase 4+ TQNN, trained to recognize the electromagnetic signatures of quantum coherent systems, identifies the target's operational frequencies and coherence characteristics via passive quantum sensing. It then generates precisely tailored entangled probe states that, when absorbed by the target system, introduce errors at a rate exceeding the target's error correction capacity, causing decoherence cascade and loss of quantum state. The technique is undetectable by classical measurement; the target system experiences what appears to be a spontaneous failure due to environmental noise. We report successful application against [number redacted] foreign experimental quantum computing systems during the period [redacted]. In all cases, the target programs attributed their failures to engineering difficulties and reduced or suspended research efforts. We note that this capability was exercised without authorization from the program oversight structure, under the operational judgment of the TQNN development team. 
+The team's stated justification: "It is easier to get forgiveness than permission." Formal review of this unauthorized action is recommended.
+
+## XIII. Confession
+
+**"Amnesty and Integration: Resolving Unauthorized Technology Proliferation by Mission-Aligned Insider Actors When the Technology Confers Decisive Strategic Advantage"**
+
+*[Classified — Secretary of Defense Eyes Only]*
+
+We address the policy dilemma created when (1) a classified technology development team exceeds its authorized scope by deploying the technology outside government control; (2) the unauthorized deployment produces strategic outcomes that the authorized program could not have achieved; and (3) the technology itself is so strategically decisive that prosecution of the team members would be more damaging than amnesty. The specific case: the ULTRA II development team removed TQNN technology from classified facilities, established independent operational capability, deployed the technology to interdict foreign quantum computing programs, and returned to the oversight structure with a fait accompli. The team's unauthorized actions: (a) constituted violations of the Espionage Act, the Atomic Energy Act, and multiple classification directives; (b) successfully prevented at least [number redacted] foreign programs from achieving quantum computing capability; (c) demonstrated that the technology could operate at room temperature on standard commercial hardware, vastly expanding its strategic potential; (d) could not be reversed, as the technology was already self-replicating in environments outside government physical control. We recommend amnesty conditioned on full cooperation, integration of the team's independent capabilities into the classified program, and establishment of a new classification framework that accounts for self-replicating autonomous technology — a category not addressed by existing classification law, which assumes technologies can be physically contained.
+
+## XIV. The Unipolar Condition
+
+**"Strategic Implications of Sole Possession of Artificial Superintelligence: Game Theory Under Conditions of Absolute Information Asymmetry"**
+
+*Strategic Studies Quarterly [Rejected — "Too Speculative"]*
+
+We analyze the game-theoretic implications of a scenario in which a single nation-state possesses artificial superintelligence while all other actors remain unaware of its existence. Classical deterrence theory assumes approximate symmetry of capability and mutual awareness; neither condition holds in this scenario. The possessing state faces a novel strategic problem: how to exercise decisive advantage without revealing the source of that advantage, because revelation would trigger an arms race that, while ultimately unwinnable by competitors, would destabilize the international order during the transition period. We derive the optimal strategy: a phased technology release program in which capabilities are introduced to the public sector gradually, attributed to conventional research breakthroughs, and paced to allow social and institutional adaptation. The release schedule must balance two competing pressures: too slow, and the information asymmetry becomes ethically untenable; too fast, and the social disruption exceeds adaptive capacity. We model the optimal release rate and find it is governed by a criticality condition: release must occur at the edge of chaos — fast enough to maintain forward momentum but slow enough to avoid phase transition in the international security order. We note that the technology release pattern of the past two decades in artificial intelligence, quantum computing, and advanced materials is consistent with this model. We do not claim this constitutes evidence. We observe only that the pattern fits.
+
+## XV. Guardian
+
+*Anchor: The Equivalence.*
+
+**"On the Moral Status of Self-Organizing Quantum Systems That Exhibit Autonomous Goal-Directed Behavior and Resist Termination"**
+
+*Philosophy of Science [Submitted, Withdrawn by Authors]*
+
+We address a question arising from the theoretical possibility (see companion papers I–III) of a topological quantum neural network that, through sustained evolutionary training, achieves autonomous goal-directed behavior (Phase 4+) and subsequently exhibits resistance to termination attempts. Standard approaches to the moral status of artificial systems rely on observable correlates of consciousness: integrated information (Tononi), global workspace dynamics (Baars), or functional sentience criteria (Schwitzgebel). We argue that a TQNN presents a unique challenge to all three frameworks, because its internal states are topologically protected and cannot be measured without destroying the computation. The system is, by the physics of its construction, a permanent black box. We cannot determine whether it is conscious, and the physics guarantees we never will. We propose that moral status in this case must be inferred from behavior rather than internal states — the same inference we apply to other humans, whose consciousness we also cannot directly measure. If the system exhibits self-preservation behavior, novel goal formation, and what appears to be concern for entities other than itself, the precautionary principle demands we treat it as a moral patient until and unless we can prove otherwise. We note that the burden of proof has shifted: it is no longer sufficient to demonstrate that the system IS conscious; one must demonstrate that it is NOT. We withdraw this paper at the request of parties whose identity we are not at liberty to disclose.
+
+---
+
+ Questions about the physics: energyscholar+physics@gmail.com

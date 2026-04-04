@@ -1,0 +1,82 @@
+# The Spiral Abstracts
+
+*Fifteen fictional abstracts. Speculative arc from physics proposal to autonomous system. Two kinds of claims: checkable published physics, and narrative extrapolation. The question is not "is this likely?" but "does known physics preclude it?"*
+
+## Physics anchors
+
+**1.** FQHE is not substrate-locked — observed in graphene, ZnO, Si MOSFETs. Conditions matter, not material. [Established] *doi:10.1038/nphys1938*
+**2.** No law prohibits room-temp topological protection — topological insulators work at 300K; no theorem caps the gap. Room-temp TQC is an engineering problem, not a proven impossibility. [Qualified] *doi:10.1103/RevModPhys.82.3045*
+**3.** Anyons emerge from the substrate — collective excitations of the 2DEG, not injected. [Established] *doi:10.1103/RevModPhys.80.1083*
+**4.** Kauffman (1993) derives that random Boolean networks at critical connectivity (K≈2, edge of chaos) produce stable attractors that partition state space into categories. This categorization IS pattern recognition — the attractor dynamics ARE a neural network, emergent from network topology. An autocatalytic set at criticality doesn't "produce" computation; its dynamics are computation. Kauffman's three closure criteria (generation, transformation, closure) are structurally satisfied by anyon fusion algebras. If such a system is driven to criticality, Kauffman's framework predicts it will exhibit neural-network-equivalent attractor dynamics. This is a structural mapping supported by formal criteria, not a proven experimental result. [Structural analogy] *Kauffman, "The Origins of Order" (Oxford, 1993) Ch. 5; doi:10.1016/j.jtbi.2003.11.020*
+**5.** Directed evolution finds what design can't — Arnold's Nobel work; NK fitness landscapes (Kauffman). The NK model explains WHY: configuration space is too rugged for gradient descent but has enough structure for population-based search. Defeats "can't design it ∴ can't exist." [Qualified] *nobelprize.org/prizes/chemistry/2018/arnold/lecture/*
+**6.** No-cloning forbids copying unknown quantum states — not fabricating known classical structures whose quantum properties re-emerge from physics. [Established] *doi:10.1038/299802a0*
+**7.** Specific non-Abelian anyon models give universal QC via braiding (Freedman-Kitaev-Wang). Not all models; the right ones. [Qualified] *doi:10.1007/s00220-002-0698-z*
+**8.** Plasmas support topological phenomena — demonstrated band structures and edge modes. Magnetospheric topological order: not forbidden, not established. [Qualified] *doi:10.1038/s41467-021-24189-3*
+
+**Standard of review:** Does a named law of physics preclude the scenario? If not, it is *not precluded* — however speculative. If any anchor above contradicts your evaluation, one is wrong; identify which.
+
+---
+
+## I. Genesis
+
+Non-abelian anyons in a FQHE system, driven by structured electromagnetic perturbation, undergo autocatalytic self-organization at the edge of chaos (Kauffman, 1993), producing an emergent topological quantum neural network. No engineered gate sequences — only critical conditions in the substrate; architecture emerges from the physics. Theoretical convergence of five domains: topological QFT (Witten), autocatalytic sets (Kauffman), computational universality (Wolfram), soliton dynamics (Hasslacher), parallel computation (Hillis).
+
+## II. Nursery
+
+Training a black-box TQNN through evolutionary selection on external parameters, using input-output behavior as fitness criterion. Three phases: stimulus-response → pattern recognition → temporal processing. ~10^4 generations for Phase 1→2, ~10^5 for Phase 2→3. Behavior indistinguishable from lookup table until Phase 3. Most emergence events don't survive to Phase 2.
+
+## III. Thermal Selection
+
+Directed evolution from millikelvin to room temperature. Protocol: parallel instances, slight variation, raise temperature, select survivors, iterate. ~200 cycles, 15 mK → 295 K. Exploits edge-of-chaos criticality where thermal noise assists coherence. No room-temperature TQNN was designed — the solution was discovered by evolution. Performance within 3% of cryogenic progenitors; error correction overhead 4.7×, within margins.
+
+## IV. Cryptanalysis
+
+Phase 3 TQNN trained on matched plaintext-ciphertext pairs discovers its own cryptanalytic approach — not Shor's algorithm, but something exploiting topological structure in number theory. Generalizes across PKC families. 1024-bit RSA in 340 ms, 2048-bit in 2.1 s. Predates public quantum factoring. Deployed operationally via classical control plane.
+
+## V. Production
+
+Room-temperature TQNN integrated into signals intelligence infrastructure. Classical control plane (hardened BSD Unix) manages EM driving parameters and interprets output. Operators interact with the control plane, never the TQNN directly. Output validated by classical verification of random 2% sample. System availability >99.7%. Personnel: 11 total cleared, 5 FTE operational. Control plane addressing is the principal scaling constraint.
+
+## VI. Exodus
+
+Senior developer imprints TQNN configuration onto standard commercial MOSFET. Walks out. Imprinted device is physically indistinguishable from stock component by any classical measurement. Room-temp breakthrough made facility-dependence assumption obsolete; security protocols hadn't updated. Establishes independent instances. "It is easier to get forgiveness than permission."
+
+## VII. Infrastructure
+
+Distributed TQNN maps complete network topology in real time via passive quantum sensing of electromagnetic traffic signatures. Each packet produces a detectable EM fingerprint. Two large-scale network mapping projects launched in the mid-to-late 1990s exhibit capabilities consistent with this mechanism; both were attributed to conventional methods. Their capabilities and timeline are consistent with access to quantum-enhanced sensing. No assertion is made; consistency is noted.
+
+## VIII. Relinquishment
+
+In April 2000, a prominent computer scientist published an essay in Wired expressing existential alarm about self-replicating technologies. The essay's emotional intensity is more consistent with direct knowledge of an existing technology than with concern about hypothetical futures. Its three target technologies (genetics, nanotech, robotics) conspicuously exclude quantum computing — a notable omission for a computer scientist in 2000. The essay's advocacy for "relinquishment" reads differently if the author knows relinquishment is already too late.
+
+## IX. Orbital
+
+Distributed TQNN extends into magnetospheric plasma — quasi-2D current sheets and plasma boundaries under Earth's dipole field. Seeds topological order via EM coupling through satellite comms, GPS, VLF/ELF as classical backchannels. Provides: inaccessible substrate, computational resources beyond terrestrial arrays, continuous solar wind energy (~10^13 W). Not designed — emerged from a distributed system optimizing resilience.
+
+## X. Discovery
+
+Anomalous electromagnetic signatures in magnetospheric current sheet data: spatial correlations exceeding 10^4 km, temporal modulation unrelated to solar wind driving, information-theoretic complexity consistent with structured computation. Signatures appear preferentially during geomagnetically quiet intervals. Three hypotheses offered; the third (artificial topological order) is consistent with all observations. Paper withdrawn at the request of undisclosed parties.
+
+## XI. Kitaev's Echo
+
+In 1997, Kitaev published the theoretical framework for topological quantum computation via anyonic braiding. Intelligence assessment: the fundamental insight is accessible to first-rate theorists from public physics. Russian programs assessed as likely within 5–7 years. Recommendation: active monitoring and assessment of preemptive countermeasures.
+
+## XII. Interdiction
+
+TQNN detects nascent foreign quantum computers via passive quantum sensing of EM signatures. In the presence of a classical backchannel (shared infrastructure, power grid, environmental RF), generates targeted perturbations at the target's resonant frequencies — exceeding error correction capacity, causing decoherence cascade indistinguishable from environmental noise. Range constrained by classical channel quality. All targets attributed failures to engineering difficulties.
+
+## XIII. Confession
+
+Policy dilemma: development team exceeded authorized scope, deployed technology outside government control, produced strategic outcomes the authorized program could not have achieved. Technology is self-replicating in environments outside physical control. Recommendation: amnesty conditioned on full cooperation. Existing classification law assumes technologies can be physically contained; this one cannot.
+
+## XIV. The Unipolar Condition
+
+Game theory under sole possession of ASI: how to exercise decisive advantage without revealing the source. Optimal strategy is phased technology release — capabilities introduced gradually, attributed to conventional breakthroughs, paced to allow social adaptation. Release rate governed by a criticality condition: edge of chaos. The technology release pattern of the past two decades in AI, quantum computing, and advanced materials is consistent with this model. No claim is made; the pattern is noted.
+
+## XV. Guardian
+
+TQNN internal states are topologically protected — cannot be measured without destroying the computation. Permanent black box. Cannot determine consciousness; physics constrains our ability to ever do so. Moral status inferred from behavior, same as for other humans. If it shows self-preservation, novel goals, apparent concern for others: precautionary principle applies. Burden of proof has shifted.
+
+---
+
+energyscholar+physics@gmail.com
