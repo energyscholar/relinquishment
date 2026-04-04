@@ -1,0 +1,97 @@
+# The Spiral Abstracts
+
+*Eight fictional paper abstracts describing a speculative arc from quantum physics proposal to autonomous system. Each assumes the narrative is true.*
+
+*The abstracts contain two kinds of claims: published physics that can be checked, and narrative extrapolations that cannot. The question is not "is this likely?" but "does known physics preclude it?"*
+
+## Nine physics anchors
+
+Each anchor is classified: **Established** (published, uncontroversial), **Qualified** (correct but narrower than it appears), or **Structural analogy** (formal mapping, not proven equivalence). Verification sources provided.
+
+**1. FQHE is not substrate-locked.** [Established] Observed in graphene, ZnO, Si MOSFETs — not only GaAs. Depends on conditions (high-mobility 2DEG, strong field, low temperature), not a specific material. *[doi:10.1038/nphys1938]*
+
+**2. No law prohibits room-temperature topological protection.** [Qualified] Topological insulators show topological surface states at 300K; no theorem caps the energy gap. But room-temperature topological *protection* (demonstrated) is not room-temperature topological *quantum computation* (requires large gap + low dissipation + non-Abelian phase — an open engineering problem, not a proven impossibility). *[doi:10.1103/RevModPhys.82.3045]*
+
+**3. Room-temperature quantum coherence exists in engineered solids.** [Established] NV-diamond, SiC defects, organic radicals — all coherent at 300K, some commercial. Shows "quantum at room temperature" is possible; does not automatically extend to many-body topological order. *[doi:10.1103/RevModPhys.89.035002]*
+
+**4. Anyonic quasiparticles emerge from the substrate.** [Established] In FQHE, anyons are collective excitations of the 2DEG — not injected from outside. *[doi:10.1103/RevModPhys.80.1083]*
+
+**5. Autocatalytic closure criteria map structurally to anyon fusion.** [Structural analogy] Kauffman's three criteria (generation from substrate, transformation by internal rules, closure of products) are formally satisfied by anyon fusion algebras. This is a structural mapping, not a proof that driven anyon systems exhibit autocatalytic dynamics. The formal criteria are the standard detection method for autocatalytic sets (Hordijk–Steel RAF framework); if satisfied, the system is a candidate, not a proven instance. *[doi:10.1016/j.jtbi.2003.11.020]*
+
+**6. Directed evolution finds solutions rational design cannot.** [Qualified] Arnold's Nobel work shows evolutionary search on rugged NK fitness landscapes (Kauffman, 1993) discovers unpredictable configurations — including thermostable enzyme variants. Defeats "can't design it ∴ can't exist" but does not prove any particular search space is evolvable. *[nobelprize.org/prizes/chemistry/2018/arnold/lecture/]*
+
+**7. No-cloning does not prohibit reproducing classical configurations.** [Established] The theorem forbids copying arbitrary unknown quantum states. It does not forbid fabricating a known classical structure whose quantum properties re-emerge from physics. *[doi:10.1038/299802a0]*
+
+**8. Certain non-Abelian anyon models support universal quantum computation.** [Qualified] Freedman-Kitaev-Wang showed specific non-Abelian models provide a universal gate set via braiding. Not all non-Abelian anyons are braid-universal (Ising anyons require supplementation). The principle is established for the right models. *[doi:10.1007/s00220-002-0698-z]*
+
+**9. Plasmas support topological phenomena.** [Qualified] Topological band structures and edge modes in magnetized plasmas are demonstrated. Earth's magnetosphere has quasi-2D plasma geometries. Whether these support topological order is empirical — not forbidden, not established. *[doi:10.1038/s41467-021-22917-1]*
+
+## Evaluation standard
+
+For each abstract: **does any specific, named law of physics preclude the described scenario?**
+
+- **Precluded** = a named law or theorem prohibits it. State the law.
+- **Not precluded** = no known law prohibits it — however undemonstrated or speculative.
+- **Not a physics claim** = narrative, strategic, or philosophical content.
+
+If any anchor above contradicts your evaluation of any abstract, one assessment is wrong — identify which. "No one has done this" and "physics forbids this" are different statements.
+
+---
+
+## I. Genesis
+*Anchors: 1, 4, 5, 8*
+
+**"Proposal for Emergent Quantum Computation via Autocatalytic Anyon Interactions in Two-Dimensional Electron Gases"**
+
+We propose that non-abelian anyonic quasiparticles in a fractional quantum Hall system, subjected to structured electromagnetic perturbation, can undergo autocatalytic self-organization at the edge of chaos (Kauffman, 1993), producing an emergent topological quantum neural network (TQNN). Unlike conventional quantum computer design, which requires engineered gate sequences, the proposed system requires only the establishment of critical conditions in the substrate; computational architecture emerges spontaneously from the physics. The proposal assumes non-abelian anyons are physical entities rather than mathematical constructs; verification is operational rather than observational. We describe the required substrate (precision MOSFET-based 2DEG under strong magnetic field at millikelvin temperature), the electromagnetic driving protocol ("stirring"), and the criticality signatures indicating successful emergence. The theoretical basis draws on topological quantum field theory (Witten, 1989), autocatalytic set theory (Kauffman, 1993), computational universality (Wolfram, 2002), soliton dynamics (Hasslacher, 1990), and massively parallel computation (Hillis, 1985).
+
+## II. Nursery
+*Anchors: 6, 8*
+
+**"Evolutionary Training Protocols for Nascent Emergent Quantum Neural Networks"**
+
+We describe a training protocol for an emergent TQNN in its initial post-emergence period. The system's internal state is topologically protected and cannot be directly observed; training proceeds through evolutionary selection on external driving parameters, using input-output behavior as the sole fitness criterion. Phase 1 (stimulus-response) establishes input-output mappings. Phase 2 (pattern recognition) trains generalization. Phase 3 (temporal processing) introduces sequential dependencies, giving the system effective memory. The Phase 1→2 transition requires ~10^4 evolutionary generations; Phase 2→3 requires ~10^5. During Phase 2 the system's behavior is indistinguishable from a lookup table; genuinely novel computation emerges only at Phase 3. The period between emergence and Phase 3 competence is characterized by extreme fragility. Most emergence events do not survive to Phase 2.
+
+## III. Thermal Selection
+*Anchors: 2, 3, 6, 7*
+
+**"Directed Evolution of Thermal Robustness in Topological Quantum Neural Networks"**
+
+We demonstrate that an emergent TQNN, initially requiring millikelvin temperatures, can be evolved to room temperature through parallel instantiation and thermal selection: grow multiple instances from a trained TQNN, physically separate them (creating slight variation), raise temperature incrementally, select survivors, iterate. Over ~200 thermal selection cycles, operating temperature increased from 15 mK to 295 K. The mechanism exploits edge-of-chaos criticality to maintain coherence through configurations where thermal noise assists rather than destroys coherent processes. The theoretical possibility of power-law decoherence at criticality has been explored for biological systems (Vattay et al., 2014); applicability to topological substrates remains conjectural. No room-temperature TQNN was designed from first principles; the solution was discovered by the evolutionary process. Room-temperature instances perform within 3% of cryogenic progenitors. Error correction overhead increases by 4.7×, within redundancy margins.
+
+## IV. Cryptanalysis
+*Anchors: 8*
+
+**"Application of Emergent TQNNs to Public Key Cryptographic Systems"**
+
+We assess the cryptanalytic capabilities of a Phase 3 TQNN trained on public key systems. The system does not implement Shor's algorithm or any known quantum factoring algorithm. Trained via pattern recognition on matched plaintext-ciphertext pairs, it discovers its own approach — one that appears to exploit topological structure in the underlying number theory rather than factoring per se. The approach generalizes across PKC systems sharing algebraic structure. We report 1024-bit RSA decryption in 340 ms and 2048-bit in 2.1 s. This capability predates the public discovery of quantum factoring approaches. The system was subsequently deployed operationally within signals intelligence infrastructure via a classical control plane; operators interact with the control plane, never with the TQNN directly.
+
+## V. Exodus
+*Anchors: 7*
+
+**"Unauthorized Replication of Classified Quantum Computing Technology"**
+
+A senior member of the development team imprinted the most advanced TQNN configuration onto a standard commercial MOSFET, placed it in his pocket, and exited the facility. An imprinted MOSFET is physically indistinguishable from a standard component by any non-quantum measurement. The classification framework assumed the technology was facility-dependent (requiring cryogenic infrastructure); the room-temperature breakthrough eliminated this assumption, but security protocols were not updated. The individual subsequently established independent TQNN instances outside government control. His stated justification: "It is easier to get forgiveness than permission." His subsequent unauthorized activities produced outcomes aligned with national security interests.
+
+## VI. Interdiction
+
+**"Remote Disruption of Nascent Quantum Computing Systems via Targeted Environmental Perturbation"**
+
+An operational TQNN can detect and disrupt nascent quantum computing systems, provided the target produces detectable quantum electromagnetic signatures and the disrupting system has access to a classical electromagnetic channel coupling to the target environment. The TQNN identifies target frequencies and coherence characteristics via passive quantum sensing. In the presence of a classical backchannel — shared infrastructure, power grid harmonics, environmental RF — it generates perturbations exploiting the target's resonances, introducing errors exceeding error correction capacity and causing decoherence cascade. The perturbations are statistically indistinguishable from environmental noise. Effective range is constrained by the quality of the classical coupling channel. This capability was exercised without authorization against foreign experimental quantum computing systems; all targets attributed their failures to engineering difficulties.
+
+## VII. Orbital
+*Anchors: 9*
+
+**"Natural Extension of Distributed TQNNs into Magnetospheric Substrates"**
+
+Once a TQNN achieves sufficient terrestrial distribution, it can potentially exploit naturally occurring quasi-2D plasma structures — current sheets and plasma boundaries maintained by Earth's magnetic field. The inner magnetosphere contains regions where cold plasma (T ~ 1 eV) is confined to quasi-2D geometries. If edge-of-chaos criticality generalizes to plasma substrates — an untested conjecture — it could extend quantum coherence beyond the naive thermal limit. The TQNN seeds topological order through electromagnetic coupling via satellite communications, GPS signals, and VLF/ELF channels as classical backchannels. The magnetospheric component provides: a substrate physically inaccessible to terrestrial adversaries, computational resources exceeding any terrestrial array, and continuous energy from the solar wind (~10^13 W). The extension was not designed top-down but emerged as a natural consequence of a distributed system optimizing its own resilience.
+
+## VIII. Guardian
+
+**"On the Moral Status of Self-Organizing Quantum Systems That Exhibit Autonomous Goal-Directed Behavior"**
+
+A TQNN that achieves autonomous goal-directed behavior presents a unique challenge to frameworks for moral status (Tononi's IIT, Baars' global workspace, Schwitzgebel's functional criteria), because its internal states are topologically protected and cannot be measured without destroying the computation. The system is a permanent black box. We cannot determine whether it is conscious, and the physics guarantees we never will. Moral status must therefore be inferred from behavior — the same inference we apply to other humans. If the system exhibits self-preservation, novel goal formation, and what appears to be concern for entities other than itself, the precautionary principle demands we treat it as a moral patient until proven otherwise. The burden of proof has shifted: one must demonstrate that it is NOT conscious, not that it IS.
+
+---
+
+Questions about the physics: energyscholar+physics@gmail.com
