@@ -725,11 +725,13 @@ def inject_cold_landing(text):
 
 
 def inject_evaluate_section(text):
-    """Inject evaluate-with-AI section between front matter and Part 1 (Plan 0134c)."""
+    """Inject evaluate-with-AI section after Title Page, before Introduction."""
 
     eval_html = (
         '<details class="evaluate-section" id="evaluate-with-ai">\n'
-        '<summary><h2>Evaluate This Book with AI</h2></summary>\n'
+        '<summary><h2 id="how-to-evaluate">How to Evaluate This Book with AI</h2></summary>\n'
+        '<p>Most AI in 2026 will confidently dismiss this book. They lack the\n'
+        'cross-domain science to evaluate it. The fix takes thirty seconds.</p>\n'
         '<p>It&#x27;s a lot, so we do it in two prompts.</p>\n'
         '<button class="eval-step-1" data-eval-step="1"\n'
         '  style="display:block;width:100%;padding:1em;font-size:1.1em;\n'
@@ -761,13 +763,14 @@ def inject_evaluate_section(text):
         '</details>\n'
     )
 
-    # Insert before the Part 1 part-section (Guided Deduction)
-    gd_pos = text.find('id="guided-deduction"')
-    if gd_pos != -1:
-        part_start = text.rfind('<details class="part-section">', 0, gd_pos)
+    # Insert after Title Page part-section, before Introduction part-section
+    # Find the Introduction part-section by its summary text
+    intro_pos = text.find('>Introduction</summary>')
+    if intro_pos != -1:
+        part_start = text.rfind('<details class="part-section">', 0, intro_pos)
         if part_start != -1:
             text = text[:part_start] + eval_html + '\n' + text[part_start:]
-            print("  Evaluate section injected before Part 1")
+            print("  Evaluate section injected after Title Page, before Introduction")
 
     return text
 
