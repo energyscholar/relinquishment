@@ -226,7 +226,7 @@
   evalBtn.addEventListener('mouseleave', function() { evalBtn.style.background = '#1a5276'; });
   evalBtn.addEventListener('click', function() {
     pushNavState();
-    autoExpand('#evaluate-with-ai');
+    autoExpand('#how-to-evaluate');
   });
 
   nav.appendChild(backBtn);
