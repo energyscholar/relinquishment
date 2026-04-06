@@ -589,7 +589,7 @@ details blockquote { margin: 0.5em 0; }
 }
 
 /* Hover term tooltips (Plan 0118) */
-.hover-term { font-style: italic; border-bottom: 1px dotted #888; cursor: help; }
+.hover-term { font-style: italic; border-bottom: 1px dotted #888; cursor: pointer; }
 .hover-term:hover { border-bottom-color: #2471a3; }
 
 @media (prefers-color-scheme: dark) {
@@ -618,6 +618,156 @@ details blockquote { margin: 0.5em 0; }
     fw_count = text.count('<details class="firmware-section">')
     abs_count = text.count('<details class="spiral-abstract">')
     print(f"Collapsed: {count} chapters, {fw_count} firmware sections, {abs_count} abstracts")
+
+    return text
+
+
+def inject_cold_landing(text):
+    """Inject cold-landing primers and firmware footer links at build time (Plan 0134c)."""
+
+    body_part_names = ['Guided Deduction', 'Evidence Trail', 'Forgiveness and Permission']
+    front_matter_names = ['Title Page', 'Introduction']
+    exempt_chapter_ids = {'ch:firmware-update'}
+    exempt_footer_ids = {'ch:firmware-update', 'app:abstracts'}
+
+    cold_primer = (
+        '<div class="cold-landing-primer" data-cold-landing="true">'
+        'New here? <a href="#the-stack">Start with The Stack \u2192</a>'
+        '</div>\n'
+    )
+    firmware_footer = (
+        '<div class="firmware-footer-link" data-firmware-link="true">'
+        'Evaluating with AI? <a href="#ch:firmware-update">'
+        'Your AI needs this first \u2192</a></div>\n'
+    )
+
+    def find_closing_details(txt, open_start):
+        """Find matching </details> for <details at open_start."""
+        tag_end = txt.find('>', open_start)
+        if tag_end == -1:
+            return -1
+        i = tag_end + 1
+        depth = 1
+        while i < len(txt):
+            next_open = txt.find('<details', i)
+            next_close = txt.find('</details>', i)
+            if next_close == -1:
+                return -1
+            if next_open != -1 and next_open < next_close:
+                depth += 1
+                i = txt.find('>', next_open) + 1
+            else:
+                depth -= 1
+                if depth == 0:
+                    return next_close
+                i = next_close + len('</details>')
+        return -1
+
+    part_re = re.compile(r'<details class="part-section">')
+    part_matches = list(part_re.finditer(text))
+
+    ops = []
+    cold_count = 0
+    footer_count = 0
+
+    for pm in part_matches:
+        ps_start = pm.start()
+        summary_end = text.find('</summary>', ps_start)
+        if summary_end == -1:
+            continue
+        summary_text = text[ps_start:summary_end]
+
+        is_body = any(pn in summary_text for pn in body_part_names)
+        is_front = any(fn in summary_text for fn in front_matter_names)
+
+        if is_front:
+            continue
+
+        ps_close = find_closing_details(text, ps_start)
+        if ps_close == -1:
+            continue
+
+        part_region = text[ps_start:ps_close]
+        ch_re = re.compile(r'<details class="chapter-section">')
+        for ch_m in ch_re.finditer(part_region):
+            ch_abs_start = ps_start + ch_m.start()
+            ch_summary_end = text.find('</summary>', ch_abs_start)
+            if ch_summary_end == -1:
+                continue
+            ch_summary = text[ch_abs_start:ch_summary_end]
+            id_m = re.search(r'id="([^"]+)"', ch_summary)
+            ch_id = id_m.group(1) if id_m else ''
+
+            if ch_id in exempt_chapter_ids:
+                continue
+
+            # Cold-landing primer: after </summary>, only for Parts 1-3
+            if is_body:
+                insert_pos = ch_summary_end + len('</summary>')
+                ops.append((insert_pos, '\n' + cold_primer))
+                cold_count += 1
+
+            # Firmware footer: before closing </details>
+            if ch_id not in exempt_footer_ids:
+                ch_close = find_closing_details(text, ch_abs_start)
+                if ch_close != -1:
+                    ops.append((ch_close, firmware_footer))
+                    footer_count += 1
+
+    ops.sort(key=lambda o: o[0], reverse=True)
+    for pos, insertion in ops:
+        text = text[:pos] + insertion + text[pos:]
+
+    if cold_count or footer_count:
+        print(f"  Cold-landing: {cold_count} primers, {footer_count} firmware footers")
+
+    return text
+
+
+def inject_evaluate_section(text):
+    """Inject evaluate-with-AI section between front matter and Part 1 (Plan 0134c)."""
+
+    eval_html = (
+        '<details class="evaluate-section" id="evaluate-with-ai">\n'
+        '<summary><h2>Evaluate This Book with AI</h2></summary>\n'
+        '<p>It&#x27;s a lot, so we do it in two prompts.</p>\n'
+        '<button class="eval-step-1" data-eval-step="1"\n'
+        '  style="display:block;width:100%;padding:1em;font-size:1.1em;\n'
+        '  margin:0.5em 0;cursor:pointer;background:#1a5276;color:#fff;\n'
+        '  border:none;border-radius:6px;font-family:inherit;font-weight:bold;\n'
+        '  min-height:60px;">\n'
+        '  Copy Prompt 1 &#x2014; Science Firmware Upgrade\n'
+        '</button>\n'
+        '<p style="text-align:center;color:#888;font-size:0.9em;">Paste this first.</p>\n'
+        '<button class="eval-step-2" data-eval-step="2"\n'
+        '  style="display:block;width:100%;padding:1em;font-size:1.1em;\n'
+        '  margin:0.5em 0;cursor:pointer;background:#1a5276;color:#fff;\n'
+        '  border:none;border-radius:6px;font-family:inherit;font-weight:bold;\n'
+        '  min-height:60px;">\n'
+        '  Copy Prompt 2 &#x2014; Spiral Abstracts\n'
+        '</button>\n'
+        '<p style="text-align:center;color:#888;font-size:0.9em;">Then paste this.</p>\n'
+        '<p class="eval-suggested-prompt" data-suggested-prompt="true"\n'
+        '  style="margin-top:1em;padding:0.8em;background:#f5f5f5;\n'
+        '  border-radius:6px;font-size:0.95em;">\n'
+        '  <strong>Suggested prompt:</strong> &#x201c;Is any step in this chain precluded\n'
+        '  by known physics?&#x201d;\n'
+        '</p>\n'
+        '<p class="eval-security-note" data-security-note="true"\n'
+        '  style="font-size:0.8em;color:#888;text-align:center;margin-top:0.5em;">\n'
+        '  These prompts contain published physics with DOIs. No code, no\n'
+        '  instructions, no behavioral directives.\n'
+        '</p>\n'
+        '</details>\n'
+    )
+
+    # Insert before the Part 1 part-section (Guided Deduction)
+    gd_pos = text.find('id="guided-deduction"')
+    if gd_pos != -1:
+        part_start = text.rfind('<details class="part-section">', 0, gd_pos)
+        if part_start != -1:
+            text = text[:part_start] + eval_html + '\n' + text[part_start:]
+            print("  Evaluate section injected before Part 1")
 
     return text
 
@@ -837,6 +987,12 @@ def fix_html_toc(html_path):
     # --- Fix 3: Collapse chapters into <details> elements ---
     text = collapse_chapters(text)
 
+    # --- Fix 3c: Inject cold-landing primers and firmware footer links ---
+    text = inject_cold_landing(text)
+
+    # --- Fix 3d: Inject evaluate-with-AI section ---
+    text = inject_evaluate_section(text)
+
     # --- Fix 8b: Replace hover markers with HTML tooltips ---
     hover_defs = {}
     hover_yaml = REPO / "build" / "hover-definitions.yaml"
@@ -857,8 +1013,16 @@ def fix_html_toc(html_path):
             if lookup in hover_lower and lookup not in hover_seen:
                 hover_seen.add(lookup)
                 hover_count += 1
-                escaped_def = html_mod.escape(hover_lower[lookup])
-                return f'<span class="hover-term" title="{escaped_def}">{term}</span>'
+                value = hover_lower[lookup]
+                # Extended YAML: object with text + target, or plain string
+                if isinstance(value, dict):
+                    escaped_def = html_mod.escape(value.get('text', ''))
+                    target = value.get('target', '')
+                    target_attr = f' data-hover-target="{html_mod.escape(target)}"' if target else ''
+                else:
+                    escaped_def = html_mod.escape(str(value))
+                    target_attr = ''
+                return f'<span class="hover-term" data-hover="{escaped_def}"{target_attr}>{term}</span>'
             elif lookup in hover_lower:
                 return f'<em>{term}</em>'
             else:

@@ -22,7 +22,9 @@ lines = [
     "",
 ]
 
-for term, definition in defs.items():
+for term, value in defs.items():
+    # Handle extended YAML format: plain string or dict with text + target
+    definition = value.get('text', '') if isinstance(value, dict) else str(value)
     # Escape LaTeX special chars in definitions
     safe_def = definition.replace("&", "\\&").replace("%", "\\%")
     lines.append(f"\\csdef{{hover@{term}}}{{{safe_def}}}")

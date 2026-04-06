@@ -41,6 +41,13 @@
 /* Responsive phone layout */
 @media (max-width: 600px) {
   body { padding: 0.5em; font-size: 16px; }
+  #reader-nav { flex-wrap: wrap; }
+  #nav-breadcrumb { flex: 1 1 60%; }
+  #nav-quickjump { display: none; }
+  .hover-panel { max-width: calc(100vw - 16px); left: 8px !important; right: 8px; }
+  details summary { padding: 0.6em 0; min-height: 44px; }
+  .section-share { min-width: 44px; min-height: 44px; display: inline-flex;
+    align-items: center; justify-content: center; }
 }
 
 /* TOC — part-grouped with chapters visible */
@@ -140,7 +147,127 @@ h3:hover .heading-link { opacity: 0.5; }
 @media (hover: none) { .heading-link { opacity: 0.3; } }
 @media (prefers-color-scheme: dark) { .heading-link { color: #aaa; } }
 
-/* Mobile: hide quick-jump to prevent overflow */
-@media (max-width: 600px) {
-  #nav-quickjump { display: none; }
+/* Hover panels (Plan 0134a) */
+.hover-panel {
+  position: fixed;
+  z-index: 200;
+  max-width: 400px;
+  max-height: 300px;
+  overflow-y: auto;
+  padding: 0.8em 1em;
+  background: #fff;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  font-size: 0.9em;
+  line-height: 1.5;
+  animation: panel-fade-in 0.15s ease-out;
+}
+
+@keyframes panel-fade-in {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.hover-term {
+  font-style: italic;
+  border-bottom: 1px dotted #888;
+  cursor: pointer;
+}
+.hover-term:hover { border-bottom-color: #2471a3; }
+
+@media (prefers-color-scheme: dark) {
+  .hover-panel {
+    background: #2a2a2a;
+    border-color: #555;
+    color: #e0e0e0;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  }
+  .hover-term { border-bottom-color: #666; }
+  .hover-term:hover { border-bottom-color: #5dade2; }
+}
+
+/* Arrival indicator (deep link target highlight) */
+.deep-link-target {
+  animation: highlight-pulse 2s ease-out;
+}
+@keyframes highlight-pulse {
+  from { background-color: rgba(36, 113, 163, 0.2); }
+  to { background-color: transparent; }
+}
+
+/* Scroll margin so target headings aren't hidden behind sticky nav */
+h1[id], h2[id], h3[id] {
+  scroll-margin-top: 3em;
+}
+
+/* Click-through link in hover panels */
+.panel-navigate {
+  display: block;
+  margin-top: 0.5em;
+  color: #2471a3;
+  text-decoration: none;
+  font-weight: bold;
+}
+.panel-navigate:hover { text-decoration: underline; }
+
+/* Dark mode for panel links and back button */
+@media (prefers-color-scheme: dark) {
+  .panel-navigate { color: #5dade2; }
+  #nav-back { color: #5dade2; border-color: #5dade2; }
+}
+
+/* Per-section share icons (Plan 0134c) */
+.section-share {
+  text-decoration: none;
+  font-size: 0.7em;
+  margin-left: 0.3em;
+  opacity: 0;
+  transition: opacity 0.15s;
+  cursor: pointer;
+  vertical-align: middle;
+}
+summary:hover .section-share { opacity: 0.5; }
+.section-share:hover { opacity: 1 !important; }
+@media (hover: none) { .section-share { opacity: 0.3; } }
+
+/* Firmware prominent share */
+.firmware-share {
+  padding: 0.5em;
+  margin: 0.5em 0;
+  display: flex;
+  align-items: center;
+  gap: 0.5em;
+  flex-wrap: wrap;
+}
+
+/* Cold-landing primers */
+.cold-landing-primer {
+  font-size: 0.85em;
+  color: #888;
+  padding: 0.3em 0;
+  border-bottom: 1px dashed #ddd;
+  margin-bottom: 0.5em;
+}
+.cold-landing-primer a { color: #2471a3; text-decoration: none; }
+.cold-landing-primer a:hover { text-decoration: underline; }
+
+/* Firmware footer links */
+.firmware-footer-link {
+  font-size: 0.8em;
+  color: #888;
+  padding: 0.5em 0;
+  margin-top: 1em;
+  border-top: 1px dashed #ddd;
+}
+.firmware-footer-link a { color: #2471a3; text-decoration: none; }
+.firmware-footer-link a:hover { text-decoration: underline; }
+
+/* Dark mode for cold-landing, firmware-footer, eval */
+@media (prefers-color-scheme: dark) {
+  .cold-landing-primer { color: #888; border-bottom-color: #444; }
+  .cold-landing-primer a { color: #5dade2; }
+  .firmware-footer-link { color: #888; border-top-color: #444; }
+  .firmware-footer-link a { color: #5dade2; }
+  .eval-suggested-prompt { background: #333 !important; }
 }
