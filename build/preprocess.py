@@ -729,7 +729,8 @@ def inject_evaluate_section(text):
 
     eval_html = (
         '<details class="part-section evaluate-section" id="evaluate-with-ai">\n'
-        '<summary><h2 id="how-to-evaluate">How to Evaluate This Book with AI</h2></summary>\n'
+        '<summary title="Most AI in 2026 will confidently dismiss this book. They lack the cross-domain science. The fix takes thirty seconds.">How to Evaluate This Book with AI</summary>\n'
+        '<h2 id="how-to-evaluate" style="display:none;">How to Evaluate This Book with AI</h2>\n'
         '<p>Most AI in 2026 will confidently dismiss this book. They lack the\n'
         'cross-domain science to evaluate it. The fix takes thirty seconds.</p>\n'
         '<p>It&#x27;s a lot, so we do it in two prompts.</p>\n'
