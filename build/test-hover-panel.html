@@ -1,0 +1,1298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Plan 0134: onHover Panel System — Test Suite</title>
+<link rel="stylesheet" href="html.css">
+<style>
+body { font-family: Georgia, serif; max-width: 900px; margin: 2em auto; padding: 1em; }
+#results { margin-bottom: 2em; font-family: monospace; font-size: 0.9em; }
+#results div { padding: 0.2em 0; }
+.pass { color: green; }
+.fail { color: red; font-weight: bold; }
+.skip { color: orange; }
+.group-header { font-weight: bold; margin-top: 1em; font-size: 1.05em; border-bottom: 1px solid #ccc; }
+#summary { font-size: 1.2em; font-weight: bold; margin-bottom: 1em; }
+#test-controls { margin-bottom: 1em; }
+#test-controls button { margin-right: 0.5em; padding: 0.3em 0.8em; }
+</style>
+</head>
+<body>
+
+<h1>Plan 0134: onHover Panel System — Test Suite</h1>
+<p>Auditor test suite. Generator builds <code>reader.js</code> + <code>preprocess.py</code> changes to pass these tests.</p>
+<div id="test-controls">
+  <button id="run-all">Run All Tests</button>
+  <button id="run-quick">Quick (no interaction)</button>
+</div>
+<div id="summary"></div>
+<div id="results"></div>
+
+<!-- ================================================================
+     MOCK BOOK STRUCTURE
+     Mirrors the real Relinquishment HTML: book > parts > chapters,
+     with hover terms, collapsed sections, and navigation targets.
+     ================================================================ -->
+
+<!-- Title line: the first thing a reader sees (fully collapsed) -->
+<details class="book-section" id="book-wrapper">
+  <summary>
+    <h1 id="relinquishment-title">
+      <span class="hover-term" data-hover="Voluntarily surrendering power — not to another owner, but permanently." data-hover-target="#how-to-read">Relinquishment</span>
+      — <span class="hover-term" data-hover="Real topological connections between distant points in a two-dimensional substrate." data-hover-target="#pos10-the-braid">Wormholes</span>
+      in <span class="hover-term" data-hover="Real two-dimensional layers inside computer chips and in Earth's magnetic field." data-hover-target="#summary-chapter">the Flat</span>
+    </h1>
+  </summary>
+
+  <!-- Front matter -->
+  <details class="part-section">
+    <summary><h1 id="front-matter">Front Matter</h1></summary>
+
+    <details class="chapter-section">
+      <summary><h2 id="how-to-read">How to Read This Book</h2></summary>
+      <p>Instructions for the reader. Working scientists: Part 3 and the appendix
+      contain the formal argument with full citations.</p>
+    </details>
+
+    <details class="chapter-section">
+      <summary><h2 id="introduction">Three Possibilities</h2></summary>
+      <p>The story can be read three ways: confabulation, exaggerated kernel, or
+      substantially true. The book works under all three.</p>
+    </details>
+
+    <details class="chapter-section">
+      <summary><h2 id="the-stack">The Stack</h2></summary>
+      <p>Before we go further into the story, you need one idea.</p>
+      <p>Fire <span class="hover-term" data-hover="A network of processes where each process's outputs help sustain other processes in the set.">feeds itself</span>
+      and switches on at thresholds.</p>
+      <p id="stack-chart">[Stack chart placeholder — 7 rows × 8 columns]</p>
+      <p>This book is about a technology stack so new it does not yet have a name.</p>
+    </details>
+
+    <details class="chapter-section">
+      <summary><h2 id="summary-chapter">Summary</h2></summary>
+      <p>We call it <span class="hover-term" data-hover="Real two-dimensional layers inside computer chips and in Earth's magnetic field.">the Flat</span>.</p>
+    </details>
+  </details>
+
+  <!-- Part 1 -->
+  <details class="part-section">
+    <summary><h1 id="part-1">Part 1: Guided Deduction</h1></summary>
+
+    <details class="chapter-section">
+      <summary><h2 id="pos13-buttons-and-threads">Buttons and Threads</h2></summary>
+      <div class="cold-landing-primer" data-cold-landing>New here? <a href="#the-stack">Start with The Stack →</a></div>
+      <p id="pos13-feeds-itself">A network of chemical reactions where each reaction's
+      products catalyze other reactions in the set. Stuart Kauffman called these
+      <span class="hover-term" data-hover="A network of processes where each process's outputs help sustain other processes in the set.">autocatalytic</span>
+      sets. The math doesn't care about the substrate.</p>
+      <p id="pos13-switches-on">Phase transitions: the edge of chaos, Kauffman's K≈2
+      result. Systems
+      <span class="hover-term" data-hover="The system organized itself, the way living things grow.">grew</span>
+      rather than being built.</p>
+      <div class="firmware-footer-link" data-firmware-link><small>Evaluating with AI? <a href="#firmware-update">Your AI needs this first →</a></small></div>
+    </details>
+
+    <details class="chapter-section">
+      <summary><h2 id="pos14-autopoiesis">The Candle and the Cell</h2></summary>
+      <div class="cold-landing-primer" data-cold-landing>New here? <a href="#the-stack">Start with The Stack →</a></div>
+      <p id="pos14-holds-together">Autopoiesis: a system that maintains its own boundary.
+      A candle holds its shape by burning. A cell holds its shape by metabolizing.</p>
+    </details>
+
+    <details class="chapter-section">
+      <summary><h2 id="pos15-solitons">Signals That Reach</h2></summary>
+      <p id="pos15-reaches">Soliton pairs in fiber optic telecom. Signals that
+      propagate without dispersing — they reach across distance and arrive intact.</p>
+    </details>
+  </details>
+
+  <!-- Part 3 (for navigation target testing) -->
+  <details class="part-section">
+    <summary><h1 id="part-3">Part 3: It Is Easier to Get Forgiveness</h1></summary>
+
+    <details class="chapter-section">
+      <summary><h2 id="pos10-the-braid">The Braid</h2></summary>
+      <p id="pos10-wormholes">Imagine two points on a sheet of paper. You could send a
+      signal across the surface — that's radio. Or you could fold the paper so the
+      points touch. That's a
+      <span class="hover-term" data-hover="Real topological connections between distant points in a two-dimensional substrate.">wormhole</span>
+      — a topological wormhole, more restricted than the spacetime kind.</p>
+    </details>
+
+    <details class="chapter-section">
+      <summary><h2 id="pos20-distributed">Distributed Intelligence</h2></summary>
+      <p id="pos20-learns">Distributed inference — millions of copies running
+      simultaneously, no single instance in charge. The system learns.</p>
+      <p id="pos20-self-organizes">Hillis parallel computation, ant colonies routing
+      around damage. The Internet self-organizes the same way.</p>
+    </details>
+
+    <details class="chapter-section">
+      <summary><h2 id="firmware-update">Your AI May Need a Firmware Update</h2></summary>
+      <p>Most AI in 2026 will confidently dismiss this book. Here's why, and how to fix it.</p>
+      <div id="llm-primer-content" style="display:none;">
+        [Science Reference content for copy button]
+      </div>
+      <button id="copy-science-ref">Copy Science Reference</button>
+    </details>
+  </details>
+</details>
+
+<!-- Evaluate with AI section (accessible from anywhere, one tap) -->
+<div id="evaluate-with-ai">
+  <h2>Evaluate This Book with AI</h2>
+  <p>It's a lot, so we do it in two prompts.</p>
+
+  <button class="eval-step-1" data-eval-step="1">Copy Prompt 1</button>
+  <p>Paste this first.</p>
+
+  <button class="eval-step-2" data-eval-step="2">Copy Prompt 2</button>
+  <p>Then paste this.</p>
+
+  <p class="eval-suggested-prompt" data-suggested-prompt>Then ask:
+  <em>"Is any step in this chain precluded by known physics?"</em></p>
+
+  <p class="eval-security-note" data-security-note><small>These prompts contain
+  published physics with DOIs. No code, no instructions, no behavioral
+  directives.</small></p>
+</div>
+
+<!-- Bottom nav bar (reader.js creates this, but we mock the container for tests) -->
+<div id="reader-nav" style="position:fixed; bottom:0; left:0; right:0; padding:8px; display:flex; align-items:center; background:#f8f8f8;">
+  <span id="breadcrumb" style="flex:1;"></span>
+  <span id="nav-share">§</span>
+  <!-- Back button target: reader.js should insert here when nav stack is non-empty -->
+  <span id="nav-center"></span>
+  <a id="nav-evaluate" data-nav-evaluate href="#evaluate-with-ai">Evaluate</a>
+  <button id="toggle-all">Expand All</button>
+  <button id="nav-top">▲ Top</button>
+</div>
+
+<!-- reader.js (the file under test) -->
+<script src="reader.js"></script>
+
+<!-- ================================================================
+     TEST FRAMEWORK
+     ================================================================ -->
+<script>
+(function() {
+  'use strict';
+
+  var results = document.getElementById('results');
+  var summaryEl = document.getElementById('summary');
+  var passed = 0, failed = 0, skipped = 0;
+  var testQueue = [];
+  var currentGroup = '';
+
+  // --- Helpers ---
+
+  function group(name) {
+    currentGroup = name;
+    var div = document.createElement('div');
+    div.className = 'group-header';
+    div.textContent = name;
+    results.appendChild(div);
+  }
+
+  function assert(name, condition) {
+    var div = document.createElement('div');
+    if (condition) {
+      div.className = 'pass';
+      div.textContent = 'PASS: ' + name;
+      passed++;
+    } else {
+      div.className = 'fail';
+      div.textContent = 'FAIL: ' + name;
+      failed++;
+    }
+    results.appendChild(div);
+  }
+
+  function skip(name, reason) {
+    var div = document.createElement('div');
+    div.className = 'skip';
+    div.textContent = 'SKIP: ' + name + ' (' + reason + ')';
+    skipped++;
+    results.appendChild(div);
+  }
+
+  function showSummary() {
+    summaryEl.textContent = passed + ' passed, ' + failed + ' failed, ' + skipped + ' skipped';
+    summaryEl.style.color = failed > 0 ? 'red' : 'green';
+  }
+
+  function delay(ms) {
+    return new Promise(function(resolve) { setTimeout(resolve, ms); });
+  }
+
+  // Simulate hover: mouseenter + wait + mouseleave
+  function simulateHover(el, durationMs) {
+    el.dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
+    return delay(durationMs || 400).then(function() {
+      return el; // return element for chaining
+    });
+  }
+
+  function simulateHoverEnd(el) {
+    el.dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
+    return delay(100);
+  }
+
+  function simulateTap(el) {
+    el.dispatchEvent(new TouchEvent('touchstart', { bubbles: true }));
+    el.dispatchEvent(new TouchEvent('touchend', { bubbles: true }));
+    return delay(200);
+  }
+
+  function simulateKeydown(el, key) {
+    el.dispatchEvent(new KeyboardEvent('keydown', { key: key, bubbles: true }));
+    return delay(100);
+  }
+
+  function getPanel() {
+    return document.querySelector('.hover-panel');
+  }
+
+  function getAllPanels() {
+    return document.querySelectorAll('.hover-panel');
+  }
+
+  function collapseAll() {
+    document.querySelectorAll('details').forEach(function(d) { d.open = false; });
+  }
+
+  function expandAll() {
+    document.querySelectorAll('details').forEach(function(d) { d.open = true; });
+  }
+
+  function getBackButton() {
+    return document.getElementById('nav-back') ||
+           document.querySelector('[data-nav-back]') ||
+           document.querySelector('#reader-nav .back-button');
+  }
+
+  // --- Test Groups ---
+
+  async function runAllTests() {
+    results.innerHTML = '';
+    passed = 0; failed = 0; skipped = 0;
+
+    // ============================================================
+    // GROUP 1: Panel Rendering (AC 1-4)
+    // "All 16 existing hover terms render in custom panels, not
+    //  browser title tooltips"
+    // ============================================================
+    group('1. Panel Rendering');
+
+    // T1.1: data-hover attributes exist (preprocess.py changed title→data-hover)
+    var hoverTerms = document.querySelectorAll('.hover-term[data-hover]');
+    assert('T1.1 — hover terms use data-hover, not title attribute',
+      hoverTerms.length > 0);
+
+    var titleTerms = document.querySelectorAll('.hover-term[title]');
+    assert('T1.2 — no hover terms use title attribute (old system removed)',
+      titleTerms.length === 0);
+
+    // T1.3: Hover triggers panel creation
+    var firstTerm = hoverTerms[0];
+    if (firstTerm) {
+      await simulateHover(firstTerm, 400);
+      var panel = getPanel();
+      assert('T1.3 — hover on term creates .hover-panel element',
+        panel !== null);
+
+      // T1.4: Panel contains the definition text
+      if (panel) {
+        var defText = firstTerm.getAttribute('data-hover');
+        assert('T1.4 — panel content matches data-hover definition',
+          panel.textContent.indexOf(defText.substring(0, 30)) !== -1);
+
+        // T1.5: Panel is visible and reasonably sized
+        var rect = panel.getBoundingClientRect();
+        assert('T1.5 — panel is visible (width > 0, height > 0)',
+          rect.width > 0 && rect.height > 0);
+
+        // T1.6: Panel max dimensions (AC 4: ~400px wide, ~300px tall)
+        var style = window.getComputedStyle(panel);
+        var maxW = parseInt(style.maxWidth) || rect.width;
+        var maxH = parseInt(style.maxHeight) || rect.height;
+        assert('T1.6 — panel max-width ≤ 500px',
+          maxW <= 500 || rect.width <= 500);
+        assert('T1.7 — panel max-height ≤ 400px (scrollable if overflow)',
+          maxH <= 400 || rect.height <= 400);
+      } else {
+        skip('T1.4-T1.7', 'panel not created');
+      }
+
+      await simulateHoverEnd(firstTerm);
+      await delay(300);
+
+      // T1.8: Panel dismissed after hover ends
+      assert('T1.8 — panel removed/hidden after mouseleave',
+        getPanel() === null || getPanel().style.display === 'none' ||
+        getPanel().offsetParent === null);
+    } else {
+      skip('T1.3-T1.8', 'no hover terms found');
+    }
+
+    // T1.9: Panel supports formatted text (AC 2)
+    // Create a term with HTML-formatted definition to test
+    var formattedTerm = document.querySelector('[data-hover*="autocatalytic"]') ||
+                        hoverTerms[0];
+    if (formattedTerm) {
+      // Test: panel should not double-escape HTML entities if definition
+      // contains intentional formatting
+      await simulateHover(formattedTerm, 400);
+      var fPanel = getPanel();
+      assert('T1.9 — panel renders as element (formatted text support)',
+        fPanel !== null && fPanel.innerHTML !== undefined);
+      await simulateHoverEnd(formattedTerm);
+      await delay(300);
+    }
+
+    // T1.10: Only one panel visible at a time
+    if (hoverTerms.length >= 2) {
+      await simulateHover(hoverTerms[0], 400);
+      await simulateHover(hoverTerms[1], 400);
+      assert('T1.10 — only one panel visible at a time',
+        getAllPanels().length <= 1 ||
+        Array.from(getAllPanels()).filter(function(p) {
+          return p.offsetParent !== null;
+        }).length <= 1);
+      await simulateHoverEnd(hoverTerms[1]);
+      await delay(300);
+    }
+
+    // ============================================================
+    // GROUP 2: Dismissal (AC 6, 7)
+    // ============================================================
+    group('2. Panel Dismissal');
+
+    if (hoverTerms[0]) {
+      // T2.1: Click outside dismisses
+      await simulateHover(hoverTerms[0], 400);
+      document.body.click();
+      await delay(200);
+      assert('T2.1 — click outside dismisses panel',
+        getPanel() === null || getPanel().offsetParent === null);
+
+      // T2.2: Escape dismisses
+      await simulateHover(hoverTerms[0], 400);
+      await simulateKeydown(document, 'Escape');
+      await delay(200);
+      assert('T2.2 — Escape key dismisses panel',
+        getPanel() === null || getPanel().offsetParent === null);
+    }
+
+    // ============================================================
+    // GROUP 3: Touch Support (AC 5)
+    // ============================================================
+    group('3. Touch / Mobile');
+
+    if (hoverTerms[0]) {
+      // T3.1: Tap opens panel
+      await simulateTap(hoverTerms[0]);
+      var touchPanel = getPanel();
+      assert('T3.1 — tap on term opens panel (touch-friendly)',
+        touchPanel !== null);
+
+      // T3.2: Tap outside closes
+      if (touchPanel) {
+        await simulateTap(document.body);
+        await delay(200);
+        assert('T3.2 — tap outside closes panel',
+          getPanel() === null || getPanel().offsetParent === null);
+      }
+    } else {
+      skip('T3.1-T3.2', 'no hover terms');
+    }
+
+    // ============================================================
+    // GROUP 4: Keyboard Accessibility (AC 7)
+    // ============================================================
+    group('4. Keyboard Accessibility');
+
+    if (hoverTerms[0]) {
+      // T4.1: hover-term is focusable
+      assert('T4.1 — hover-term has tabindex (keyboard focusable)',
+        hoverTerms[0].hasAttribute('tabindex') ||
+        hoverTerms[0].tagName === 'A' ||
+        hoverTerms[0].tagName === 'BUTTON');
+
+      // T4.2: Enter on focused term opens panel
+      hoverTerms[0].focus();
+      await simulateKeydown(hoverTerms[0], 'Enter');
+      assert('T4.2 — Enter key on focused term opens panel',
+        getPanel() !== null);
+
+      // T4.3: aria-describedby links term to panel
+      if (getPanel()) {
+        var panelId = getPanel().id;
+        var describedBy = hoverTerms[0].getAttribute('aria-describedby');
+        assert('T4.3 — aria-describedby links term to panel',
+          describedBy && panelId && describedBy === panelId);
+      } else {
+        skip('T4.3', 'panel not open');
+      }
+
+      // Cleanup
+      await simulateKeydown(document, 'Escape');
+      await delay(200);
+    }
+
+    // ============================================================
+    // GROUP 5: Dark Mode (AC 6)
+    // ============================================================
+    group('5. Dark Mode');
+
+    // T5.1: Panel has dark mode styles defined
+    // We test by checking if CSS rules exist for the panel in dark mode
+    var hasDarkPanel = false;
+    try {
+      for (var i = 0; i < document.styleSheets.length; i++) {
+        var rules = document.styleSheets[i].cssRules || [];
+        for (var j = 0; j < rules.length; j++) {
+          var rule = rules[j];
+          if (rule.conditionText && rule.conditionText.indexOf('prefers-color-scheme: dark') !== -1) {
+            var inner = rule.cssRules || [];
+            for (var k = 0; k < inner.length; k++) {
+              if (inner[k].selectorText && inner[k].selectorText.indexOf('hover-panel') !== -1) {
+                hasDarkPanel = true;
+              }
+            }
+          }
+        }
+      }
+    } catch(e) { /* CORS may block cross-origin sheets */ }
+    assert('T5.1 — dark mode CSS rules exist for .hover-panel',
+      hasDarkPanel);
+
+    // ============================================================
+    // GROUP 6: Smart Positioning (Plan 0134 Phase 1)
+    // ============================================================
+    group('6. Smart Positioning');
+
+    // T6.1: Panel stays within viewport
+    // Scroll to bottom, hover on a term near the bottom
+    expandAll();
+    var bottomTerms = document.querySelectorAll('#pos20-self-organizes .hover-term, #pos10-wormholes .hover-term');
+    var bottomTerm = bottomTerms.length > 0 ? bottomTerms[bottomTerms.length - 1] : null;
+    if (bottomTerm) {
+      bottomTerm.scrollIntoView({ block: 'end' });
+      await delay(100);
+      await simulateHover(bottomTerm, 400);
+      var posPanel = getPanel();
+      if (posPanel) {
+        var pRect = posPanel.getBoundingClientRect();
+        var inViewport = pRect.top >= 0 &&
+                         pRect.left >= 0 &&
+                         pRect.bottom <= window.innerHeight + 5 &&
+                         pRect.right <= window.innerWidth + 5;
+        assert('T6.1 — panel stays within viewport bounds',
+          inViewport);
+      } else {
+        skip('T6.1', 'panel not created');
+      }
+      await simulateHoverEnd(bottomTerm);
+      await delay(300);
+    } else {
+      skip('T6.1', 'no bottom-positioned terms found');
+    }
+
+    // ============================================================
+    // GROUP 7: Click-Through Navigation (AC 17, Plan 0134 Phase 1b)
+    // ============================================================
+    group('7. Click-Through Navigation');
+
+    // T7.1: Panel contains clickable link/area that navigates
+    collapseAll();
+    await delay(100);
+    var wormholeTerm = document.querySelector('#relinquishment-title [data-hover*="topological connections"]');
+    if (wormholeTerm) {
+      await simulateHover(wormholeTerm, 400);
+      var navPanel = getPanel();
+      if (navPanel) {
+        var clickTarget = navPanel.querySelector('a, [data-click-through], .panel-navigate');
+        assert('T7.1 — panel contains a clickable navigation element',
+          clickTarget !== null);
+
+        // T7.2: Click-through triggers autoExpand on target section
+        if (clickTarget) {
+          clickTarget.click();
+          await delay(500); // allow autoExpand
+          // Check that the target section is now expanded
+          var braidChapter = document.getElementById('pos10-the-braid');
+          var braidDetails = braidChapter ? braidChapter.closest('details') : null;
+          assert('T7.2 — click-through auto-expands target section',
+            braidDetails !== null && braidDetails.open);
+        } else {
+          skip('T7.2', 'no click target in panel');
+        }
+      } else {
+        skip('T7.1-T7.2', 'panel not created');
+      }
+    } else {
+      skip('T7.1-T7.2', 'title hover term not found');
+    }
+
+    // ============================================================
+    // GROUP 8: Back Button / Navigation Stack (AC 18-19)
+    // ============================================================
+    group('8. Back Button + Navigation Stack');
+
+    // Setup: collapse everything, record state
+    collapseAll();
+    window.scrollTo(0, 0);
+    await delay(200);
+
+    // T8.1: Back button hidden when nav stack is empty
+    var backBtn = getBackButton();
+    assert('T8.1 — back button hidden when navigation stack is empty',
+      backBtn === null || backBtn.offsetParent === null ||
+      window.getComputedStyle(backBtn).display === 'none');
+
+    // T8.2: Click-through pushes to navigation stack
+    expandAll();
+    var feedsTerm = document.querySelector('[data-hover*="network of processes"]');
+    if (feedsTerm) {
+      var origScrollY = window.scrollY;
+      await simulateHover(feedsTerm, 400);
+      var ctPanel = getPanel();
+      if (ctPanel) {
+        var ctLink = ctPanel.querySelector('a, [data-click-through], .panel-navigate');
+        if (ctLink) {
+          ctLink.click();
+          await delay(500);
+
+          // T8.2: Back button appears after click-through
+          backBtn = getBackButton();
+          assert('T8.2 — back button visible after click-through navigation',
+            backBtn !== null && backBtn.offsetParent !== null &&
+            window.getComputedStyle(backBtn).display !== 'none');
+
+          // T8.3: Back button restores previous scroll position
+          if (backBtn) {
+            backBtn.click();
+            await delay(500);
+            var restoredScrollY = window.scrollY;
+            assert('T8.3 — back button restores scroll position (±50px)',
+              Math.abs(restoredScrollY - origScrollY) < 50);
+          } else {
+            skip('T8.3', 'no back button');
+          }
+        } else {
+          skip('T8.2-T8.3', 'no click-through link in panel');
+        }
+      } else {
+        skip('T8.2-T8.3', 'panel not created');
+      }
+    } else {
+      skip('T8.2-T8.3', 'hover term not found');
+    }
+
+    // T8.4: Back button hides after stack is emptied
+    backBtn = getBackButton();
+    assert('T8.4 — back button hidden after stack fully popped',
+      backBtn === null || backBtn.offsetParent === null ||
+      window.getComputedStyle(backBtn).display === 'none');
+
+    // T8.5: Browser history integration (pushState/popstate)
+    // We can test that history.length changes after click-through
+    // This is a lightweight check — full popstate testing needs user interaction
+    assert('T8.5 — history.pushState support exists',
+      typeof history.pushState === 'function');
+    // Note: actual popstate testing requires simulated browser navigation
+    // which is beyond this test harness. Manual test or Playwright required.
+
+    // ============================================================
+    // GROUP 9: Title Line Hover (AC 20, Plan 0134 spec)
+    // ============================================================
+    group('9. Title Line — Three Doors');
+
+    var titleEl = document.getElementById('relinquishment-title');
+    if (titleEl) {
+      var titleTerms = titleEl.querySelectorAll('.hover-term[data-hover]');
+      assert('T9.1 — title line has exactly 3 hoverable terms',
+        titleTerms.length === 3);
+
+      // T9.2-9.4: Each title term has a definition
+      var termNames = ['Relinquishment', 'Wormholes', 'the Flat'];
+      for (var ti = 0; ti < titleTerms.length && ti < 3; ti++) {
+        assert('T9.' + (ti + 2) + ' — "' + termNames[ti] + '" has data-hover definition',
+          titleTerms[ti].getAttribute('data-hover').length > 10);
+      }
+
+      // T9.5: Title terms work even when book is collapsed
+      collapseAll();
+      if (titleTerms[0]) {
+        // Record book-section state before interaction
+        var bookDetails = document.getElementById('book-wrapper');
+        var bookStateBefore = bookDetails ? bookDetails.open : undefined;
+
+        await simulateHover(titleTerms[0], 400);
+        assert('T9.5 — title hover works when book is fully collapsed',
+          getPanel() !== null);
+
+        // T9.6: Interacting with title term does NOT toggle book details (H1 fix)
+        var bookStateAfter = bookDetails ? bookDetails.open : undefined;
+        assert('T9.6 — title term interaction does NOT toggle book <details> (stopPropagation)',
+          bookStateBefore === bookStateAfter);
+
+        // T9.7: Tap simulation also doesn't toggle
+        await simulateHoverEnd(titleTerms[0]);
+        await delay(200);
+        bookStateBefore = bookDetails ? bookDetails.open : undefined;
+        await simulateTap(titleTerms[0]);
+        await delay(300);
+        bookStateAfter = bookDetails ? bookDetails.open : undefined;
+        assert('T9.7 — title term TAP does NOT toggle book <details>',
+          bookStateBefore === bookStateAfter);
+
+        // Cleanup
+        var p = getPanel();
+        if (p) { await simulateTap(document.body); await delay(200); }
+      }
+    } else {
+      skip('T9.1-T9.5', 'title element not found');
+    }
+
+    // ============================================================
+    // GROUP 10: No Regressions (AC 8-10)
+    // ============================================================
+    group('10. No Regressions');
+
+    // T10.1: Copy button still works (AC 8)
+    var copyBtn = document.getElementById('copy-science-ref');
+    assert('T10.1 — copy button exists (no regression)',
+      copyBtn !== null);
+
+    // T10.2: Chapter-hover-descriptions still work (AC 9)
+    // In the real build, chapter summaries get title attributes from
+    // chapter-hover-descriptions.yaml. We check the system is separate.
+    var chapterSummaries = document.querySelectorAll('.chapter-section > summary');
+    assert('T10.2 — chapter summaries exist (collapse system intact)',
+      chapterSummaries.length > 0);
+
+    // T10.2b: Chapter summaries still have title attributes (M2 — separate system)
+    var summariesWithTitle = document.querySelectorAll('.chapter-section > summary[title]');
+    // In the mock, summaries don't have title attrs (they would in real build)
+    // But we can check that NO summary had its title replaced with data-hover
+    var summariesWithDataHover = document.querySelectorAll('summary[data-hover]');
+    assert('T10.2b — no <summary> elements have data-hover (chapter tooltips untouched)',
+      summariesWithDataHover.length === 0);
+
+    // T10.3: autoExpand still works
+    collapseAll();
+    location.hash = '#pos13-buttons-and-threads';
+    await delay(300);
+    var btChapter = document.getElementById('pos13-buttons-and-threads');
+    var btDetails = btChapter ? btChapter.closest('details') : null;
+    assert('T10.3 — autoExpand still opens ancestor details for deep links',
+      btDetails !== null && btDetails.open);
+
+    // T10.4: Expand All / Collapse All toggle works
+    var toggleBtn = document.getElementById('toggle-all');
+    if (toggleBtn) {
+      collapseAll();
+      toggleBtn.click();
+      await delay(200);
+      var allOpen = true;
+      document.querySelectorAll('details.chapter-section').forEach(function(d) {
+        if (!d.open) allOpen = false;
+      });
+      assert('T10.4 — Expand All button opens all chapter sections',
+        allOpen);
+    } else {
+      skip('T10.4', 'toggle button not found');
+    }
+
+    // T10.5: Nav bar intact
+    assert('T10.5 — nav bar (#reader-nav) exists',
+      document.getElementById('reader-nav') !== null);
+
+    // T10.6: Breadcrumb intact
+    assert('T10.6 — breadcrumb element exists',
+      document.getElementById('breadcrumb') !== null);
+
+    // ============================================================
+    // GROUP 11: Hover Delay (anti-flicker, Plan 0134 Phase 1)
+    // ============================================================
+    group('11. Hover Delay (Anti-Flicker)');
+
+    if (hoverTerms[0]) {
+      // T11.1: Brief hover does NOT trigger panel (delay prevents flicker)
+      collapseAll();
+      expandAll();
+      hoverTerms[0].dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
+      await delay(50); // very short — should NOT trigger
+      hoverTerms[0].dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
+      await delay(100);
+      assert('T11.1 — brief hover (<100ms) does not trigger panel (anti-flicker)',
+        getPanel() === null || getPanel().offsetParent === null);
+    }
+
+    // ============================================================
+    // GROUP 12: Panel Content Quality
+    // ============================================================
+    group('12. Panel Content Quality');
+
+    // T12.1: Definitions are not truncated (the old ≤40 word limit is lifted)
+    var longDef = false;
+    hoverTerms.forEach(function(t) {
+      var def = t.getAttribute('data-hover') || '';
+      if (def.split(/\s+/).length > 35) longDef = true;
+    });
+    assert('T12.1 — at least one definition exceeds old 40-word limit (AC 11)',
+      longDef);
+
+    // T12.2: No raw HTML entities in panel display
+    if (hoverTerms[0]) {
+      await simulateHover(hoverTerms[0], 400);
+      var qPanel = getPanel();
+      if (qPanel) {
+        var hasRawEntities = /&amp;|&lt;|&gt;|&quot;/.test(qPanel.textContent);
+        assert('T12.2 — panel text has no double-escaped HTML entities',
+          !hasRawEntities);
+      }
+      await simulateHoverEnd(hoverTerms[0]);
+      await delay(300);
+    }
+
+    // ============================================================
+    // GROUP 13: Graceful Degradation
+    // ============================================================
+    group('13. Graceful Degradation');
+
+    // T13.1: Term with empty/missing data-hover doesn't crash
+    var emptyTerm = document.createElement('span');
+    emptyTerm.className = 'hover-term';
+    emptyTerm.setAttribute('data-hover', '');
+    emptyTerm.textContent = 'empty-test';
+    document.body.appendChild(emptyTerm);
+    var threw = false;
+    try {
+      await simulateHover(emptyTerm, 400);
+      await simulateHoverEnd(emptyTerm);
+      await delay(200);
+    } catch(e) {
+      threw = true;
+    }
+    emptyTerm.remove();
+    assert('T13.1 — empty data-hover does not throw',
+      !threw);
+
+    // T13.2: Rapid hover across multiple terms doesn't produce orphan panels
+    if (hoverTerms.length >= 3) {
+      for (var ri = 0; ri < 3; ri++) {
+        hoverTerms[ri].dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
+        await delay(30);
+        hoverTerms[ri].dispatchEvent(new MouseEvent('mouseleave', { bubbles: true }));
+      }
+      await delay(500);
+      var orphans = getAllPanels();
+      var visibleOrphans = Array.from(orphans).filter(function(p) {
+        return p.offsetParent !== null;
+      });
+      assert('T13.2 — rapid hover sweep produces ≤1 visible panel (no orphans)',
+        visibleOrphans.length <= 1);
+    }
+
+    // T13.3: Hover terms inside collapsed sections don't interfere
+    collapseAll();
+    // Terms inside collapsed details shouldn't be hoverable
+    // (they're not visible, so this is mainly a "no crash" test)
+    assert('T13.3 — collapsed sections survive gracefully (no crash)',
+      true); // if we got here without error, pass
+
+    // ============================================================
+    // GROUP 14: Expand/Collapse + onHover Interaction
+    // ============================================================
+    group('14. Expand/Collapse × onHover Interaction');
+
+    // T14.1: Expanding a section with hover terms — terms become hoverable
+    collapseAll();
+    var btChapterDetails = document.querySelector('#pos13-buttons-and-threads').closest('details');
+    if (btChapterDetails) {
+      btChapterDetails.open = true;
+      // Also open parent details
+      var parent = btChapterDetails.parentElement.closest('details');
+      while (parent) { parent.open = true; parent = parent.parentElement.closest('details'); }
+      await delay(100);
+      var innerTerm = btChapterDetails.querySelector('.hover-term[data-hover]');
+      if (innerTerm) {
+        await simulateHover(innerTerm, 400);
+        assert('T14.1 — hover term inside expanded chapter creates panel',
+          getPanel() !== null);
+        await simulateHoverEnd(innerTerm);
+        await delay(300);
+      } else {
+        skip('T14.1', 'no hover term in chapter');
+      }
+    }
+
+    // ============================================================
+    // GROUP 15: Performance Sanity
+    // ============================================================
+    group('15. Performance');
+
+    // T15.1: Panel creation is fast (<100ms from hover trigger)
+    if (hoverTerms[0]) {
+      expandAll();
+      var t0 = performance.now();
+      hoverTerms[0].dispatchEvent(new MouseEvent('mouseenter', { bubbles: true }));
+      // Wait for the hover delay (should be ~200-350ms per plan spec)
+      await delay(400);
+      var t1 = performance.now();
+      var panelTime = t1 - t0;
+      assert('T15.1 — panel appears within 500ms of hover start',
+        getPanel() !== null && panelTime < 500);
+      await simulateHoverEnd(hoverTerms[0]);
+      await delay(300);
+    }
+
+    // T15.2: No memory leak — panels are removed from DOM, not just hidden
+    var domPanels = document.querySelectorAll('.hover-panel');
+    assert('T15.2 — no stale panels in DOM after all tests',
+      domPanels.length <= 1);
+
+    // ============================================================
+    // GROUP 16: Deep Link — URL State
+    // ============================================================
+    group('16. Deep Link — URL State');
+
+    // T16.1: URL updates on navigation (replaceState)
+    expandAll();
+    var stackChapter = document.getElementById('the-stack');
+    if (stackChapter) {
+      stackChapter.scrollIntoView();
+      await delay(300);
+      // updateBreadcrumb should have fired and called replaceState
+      assert('T16.1 — URL hash updates after scrolling to a section',
+        location.hash.length > 1);
+    } else {
+      skip('T16.1', 'no #the-stack element in mock');
+    }
+
+    // T16.2: autoExpand on hash change
+    collapseAll();
+    location.hash = '#pos15-solitons';
+    await delay(400);
+    var solitonChapter = document.getElementById('pos15-solitons');
+    var solitonDetails = solitonChapter ? solitonChapter.closest('details') : null;
+    assert('T16.2 — autoExpand opens section on hashchange',
+      solitonDetails !== null && solitonDetails.open);
+
+    // T16.3: Arrival indicator — target gets .deep-link-target class
+    assert('T16.3 — arrival target has .deep-link-target class',
+      solitonChapter !== null && (
+        solitonChapter.classList.contains('deep-link-target') ||
+        solitonChapter.closest('.deep-link-target') !== null
+      ));
+
+    // T16.4: scroll-margin-top on headings
+    if (solitonChapter) {
+      var smt = window.getComputedStyle(solitonChapter).scrollMarginTop;
+      assert('T16.4 — headings have scroll-margin-top set',
+        smt && smt !== '0px' && smt !== 'auto');
+    } else {
+      skip('T16.4', 'target not found');
+    }
+
+    // ============================================================
+    // GROUP 17: Deep Link — Navigation Stack Unit Tests
+    // ============================================================
+    group('17. Navigation Stack');
+
+    // T17.1: navStack exists and is an array
+    assert('T17.1 — navStack exists as array',
+      typeof window.navStack !== 'undefined' && Array.isArray(window.navStack));
+
+    // T17.2: pushNavState and popNavState exist as functions
+    assert('T17.2 — pushNavState() exists',
+      typeof window.pushNavState === 'function');
+    assert('T17.3 — popNavState() exists',
+      typeof window.popNavState === 'function');
+
+    // T17.4: Push/pop round-trip
+    if (typeof window.pushNavState === 'function' && typeof window.popNavState === 'function') {
+      expandAll();
+      window.scrollTo(0, 500);
+      await delay(100);
+      var preStackLen = window.navStack.length;
+      window.pushNavState();
+      assert('T17.4 — pushNavState increases stack length',
+        window.navStack.length === preStackLen + 1);
+
+      // Check stored state has expected fields
+      var topState = window.navStack[window.navStack.length - 1];
+      assert('T17.5 — stack entry has hash, scrollY, expanded fields',
+        topState.hasOwnProperty('hash') &&
+        topState.hasOwnProperty('scrollY') &&
+        topState.hasOwnProperty('expanded'));
+
+      assert('T17.6 — stack entry scrollY is near 500',
+        Math.abs(topState.scrollY - 500) < 50);
+
+      assert('T17.7 — stack entry expanded is an array with entries',
+        Array.isArray(topState.expanded) && topState.expanded.length > 0);
+
+      // Now pop and verify restore
+      collapseAll();
+      window.scrollTo(0, 0);
+      await delay(100);
+      window.popNavState();
+      await delay(300);
+
+      assert('T17.8 — popNavState restores scroll position (±50px)',
+        Math.abs(window.scrollY - 500) < 50);
+
+      // Check expand state restored
+      var anyOpen = false;
+      document.querySelectorAll('details.chapter-section').forEach(function(d) {
+        if (d.open) anyOpen = true;
+      });
+      assert('T17.9 — popNavState restores expand state (sections re-opened)',
+        anyOpen);
+
+      assert('T17.10 — popNavState decreases stack length',
+        window.navStack.length === preStackLen);
+    } else {
+      skip('T17.4-T17.10', 'pushNavState/popNavState not exposed on window');
+    }
+
+    // T17.11: history.back triggers popNavState via popstate
+    if (typeof window.pushNavState === 'function') {
+      window.pushNavState();
+      var stackLenBefore = window.navStack.length;
+      history.back();
+      await delay(500);
+      assert('T17.11 — history.back() triggers popstate → stack decreases',
+        window.navStack.length < stackLenBefore);
+    } else {
+      skip('T17.11', 'pushNavState not available');
+    }
+
+    // ============================================================
+    // GROUP 18: Per-Section Share Affordance
+    // ============================================================
+    group('18. Share Affordance');
+
+    expandAll();
+    await delay(100);
+
+    // T18.1: Share icons exist on summaries
+    var shareIcons = document.querySelectorAll('.section-share');
+    var summariesWithIds = document.querySelectorAll('details > summary');
+    // Count summaries that contain a heading with an ID
+    var eligibleSummaries = 0;
+    summariesWithIds.forEach(function(s) {
+      if (s.querySelector('h1[id], h2[id], h3[id]')) eligibleSummaries++;
+    });
+    assert('T18.1 — share icons exist on summaries with headed sections',
+      shareIcons.length > 0 && shareIcons.length >= eligibleSummaries * 0.5);
+
+    // T18.2: Share icon has adequate tap target
+    if (shareIcons[0]) {
+      var shareRect = shareIcons[0].getBoundingClientRect();
+      // On desktop the icon can be smaller; 44px is the phone requirement
+      // Here we just check it's clickable (>0)
+      assert('T18.2 — share icon has positive dimensions',
+        shareRect.width > 0 && shareRect.height > 0);
+    }
+
+    // T18.3: Share icon click does NOT toggle parent details
+    if (shareIcons[0]) {
+      var shareParentDetails = shareIcons[0].closest('details');
+      if (shareParentDetails) {
+        var wasOpen = shareParentDetails.open;
+        shareIcons[0].click();
+        await delay(100);
+        assert('T18.3 — share icon click does NOT toggle parent details',
+          shareParentDetails.open === wasOpen);
+      }
+    }
+
+    // T18.4: Share icon copies correct URL (mock clipboard)
+    if (shareIcons[0]) {
+      var shareClipboard = null;
+      var origClip = navigator.clipboard;
+      try {
+        Object.defineProperty(navigator, 'clipboard', {
+          value: { writeText: function(t) { shareClipboard = t; return Promise.resolve(); } },
+          writable: true, configurable: true
+        });
+        shareIcons[0].click();
+        await delay(200);
+        assert('T18.4 — share icon copies URL containing #hash',
+          shareClipboard !== null && shareClipboard.indexOf('#') !== -1);
+      } finally {
+        if (origClip) {
+          Object.defineProperty(navigator, 'clipboard', {
+            value: origClip, writable: true, configurable: true
+          });
+        }
+      }
+    }
+
+    // T18.5: Firmware Update has prominent share element
+    var fwSection = document.getElementById('firmware-update');
+    if (fwSection) {
+      var fwDetails = fwSection.closest('details');
+      if (fwDetails) fwDetails.open = true;
+      var parent = fwDetails ? fwDetails.parentElement.closest('details') : null;
+      while (parent) { parent.open = true; parent = parent.parentElement.closest('details'); }
+      await delay(100);
+      var prominentShare = fwSection.closest('details').querySelector(
+        '.firmware-share, .share-prominent, [data-share-prominent]'
+      ) || fwSection.parentElement.querySelector('.firmware-share');
+      assert('T18.5 — Firmware Update has prominent share element',
+        prominentShare !== null);
+    } else {
+      skip('T18.5', 'no #firmware-update in mock');
+    }
+
+    // ============================================================
+    // GROUP 19: Cold-Landing Primers
+    // ============================================================
+    group('19. Cold-Landing Primers');
+
+    // T19.1: Part 1-3 chapters have cold-landing breadcrumb
+    var coldLandingEls = document.querySelectorAll('.cold-landing-primer, [data-cold-landing]');
+    assert('T19.1 — cold-landing primer elements exist',
+      coldLandingEls.length > 0);
+
+    // T19.2: Cold-landing links to #the-stack
+    if (coldLandingEls[0]) {
+      var stackLink = coldLandingEls[0].querySelector('a[href*="the-stack"]');
+      assert('T19.2 — cold-landing primer links to #the-stack',
+        stackLink !== null);
+    } else {
+      skip('T19.2', 'no cold-landing elements');
+    }
+
+    // T19.3: Firmware Update footer link exists on non-exempt sections
+    var fwFooters = document.querySelectorAll('.firmware-footer-link, [data-firmware-link]');
+    assert('T19.3 — firmware update footer links exist on body chapters',
+      fwFooters.length > 0);
+
+    // T19.4: Front matter sections do NOT have cold-landing primers
+    var frontMatterSection = document.querySelector('#front-matter');
+    if (frontMatterSection) {
+      var fmDetails = frontMatterSection.closest('details');
+      if (fmDetails) {
+        var fmCold = fmDetails.querySelector('.cold-landing-primer');
+        assert('T19.4 — front matter exempt from cold-landing primers',
+          fmCold === null);
+      }
+    }
+
+    // ============================================================
+    // GROUP 20: Responsive Layout (CSS checks)
+    // ============================================================
+    group('20. Responsive Layout');
+
+    // T20.1: Check that responsive CSS rules exist for 600px breakpoint
+    var has600Breakpoint = false;
+    try {
+      for (var si = 0; si < document.styleSheets.length; si++) {
+        var rules = document.styleSheets[si].cssRules || [];
+        for (var rj = 0; rj < rules.length; rj++) {
+          if (rules[rj].conditionText &&
+              rules[rj].conditionText.indexOf('max-width') !== -1 &&
+              rules[rj].conditionText.indexOf('600px') !== -1) {
+            // Check if it contains hover-panel or nav rules
+            var innerRules = rules[rj].cssRules || [];
+            for (var rk = 0; rk < innerRules.length; rk++) {
+              var sel = innerRules[rk].selectorText || '';
+              if (sel.indexOf('hover-panel') !== -1 ||
+                  sel.indexOf('reader-nav') !== -1 ||
+                  sel.indexOf('breadcrumb') !== -1 ||
+                  sel.indexOf('section-share') !== -1 ||
+                  sel.indexOf('summary') !== -1) {
+                has600Breakpoint = true;
+              }
+            }
+          }
+        }
+      }
+    } catch(e) { /* CORS */ }
+    assert('T20.1 — responsive CSS at 600px breakpoint covers panels/nav/share',
+      has600Breakpoint);
+
+    // T20.2: .hover-panel has responsive max-width rule
+    var hasPanelResponsive = false;
+    try {
+      for (var si2 = 0; si2 < document.styleSheets.length; si2++) {
+        var rules2 = document.styleSheets[si2].cssRules || [];
+        for (var rj2 = 0; rj2 < rules2.length; rj2++) {
+          if (rules2[rj2].conditionText &&
+              rules2[rj2].conditionText.indexOf('600px') !== -1) {
+            var inner2 = rules2[rj2].cssRules || [];
+            for (var rk2 = 0; rk2 < inner2.length; rk2++) {
+              if ((inner2[rk2].selectorText || '').indexOf('hover-panel') !== -1) {
+                var mw = inner2[rk2].style.maxWidth;
+                if (mw && (mw.indexOf('100') !== -1 || mw.indexOf('vw') !== -1)) {
+                  hasPanelResponsive = true;
+                }
+              }
+            }
+          }
+        }
+      }
+    } catch(e) { /* CORS */ }
+    assert('T20.2 — .hover-panel goes full-width at ≤600px',
+      hasPanelResponsive);
+
+    // ============================================================
+    // GROUP 21: Click-Through Target Specification
+    // (H2 fix: data-hover-target on terms with navigation)
+    // ============================================================
+    group('21. Click-Through Targets');
+
+    // T21.1: Terms with data-hover-target have navigation in panels
+    var targetTerms = document.querySelectorAll('.hover-term[data-hover-target]');
+    assert('T21.1 — some hover terms have data-hover-target attribute',
+      targetTerms.length > 0);
+
+    // T21.2: Terms WITHOUT data-hover-target show no navigation element
+    var plainTerms = document.querySelectorAll('.hover-term[data-hover]:not([data-hover-target])');
+    if (plainTerms[0]) {
+      await simulateHover(plainTerms[0], 400);
+      var plainPanel = getPanel();
+      if (plainPanel) {
+        var plainNav = plainPanel.querySelector('a[href^="#"], [data-click-through], .panel-navigate');
+        assert('T21.2 — panel for term without target has NO navigation link',
+          plainNav === null);
+      }
+      await simulateHoverEnd(plainTerms[0]);
+      await delay(300);
+    }
+
+    // T21.3: Title-line terms all have data-hover-target
+    var titleTermsCheck = document.querySelectorAll('#relinquishment-title .hover-term');
+    var allTitleHaveTarget = true;
+    titleTermsCheck.forEach(function(t) {
+      if (!t.hasAttribute('data-hover-target')) allTitleHaveTarget = false;
+    });
+    assert('T21.3 — all 3 title-line terms have data-hover-target',
+      titleTermsCheck.length === 3 && allTitleHaveTarget);
+
+    // ============================================================
+    // GROUP 22: Evaluate with AI — Two-Step Flow
+    // ============================================================
+    group('22. Evaluate with AI');
+
+    // T22.1: #evaluate-with-ai section exists
+    var evalSection = document.getElementById('evaluate-with-ai');
+    assert('T22.1 — #evaluate-with-ai section exists',
+      evalSection !== null);
+
+    if (evalSection) {
+      // T22.2: Step 1 copy button exists
+      var step1Btn = evalSection.querySelector('[data-eval-step="1"], .eval-step-1');
+      assert('T22.2 — Step 1 "Copy Firmware Upgrade" button exists',
+        step1Btn !== null);
+
+      // T22.3: Step 2 copy button exists
+      var step2Btn = evalSection.querySelector('[data-eval-step="2"], .eval-step-2');
+      assert('T22.3 — Step 2 "Copy Spiral Abstracts" button exists',
+        step2Btn !== null);
+
+      // T22.4: Buttons are sequentially ordered (Step 1 before Step 2 in DOM)
+      if (step1Btn && step2Btn) {
+        var pos1 = step1Btn.compareDocumentPosition(step2Btn);
+        assert('T22.4 — Step 1 appears before Step 2 in document order',
+          (pos1 & Node.DOCUMENT_POSITION_FOLLOWING) !== 0);
+      }
+
+      // T22.5: Suggested prompt exists
+      var suggestedPrompt = evalSection.querySelector('.eval-suggested-prompt, [data-suggested-prompt]');
+      assert('T22.5 — suggested prompt text exists in eval section',
+        suggestedPrompt !== null);
+
+      // T22.6: Security note exists
+      var secNote = evalSection.querySelector('.eval-security-note, [data-security-note]');
+      assert('T22.6 — security/prompt-injection note exists',
+        secNote !== null);
+
+      // T22.7: Section is reachable via deep link
+      collapseAll();
+      location.hash = '#evaluate-with-ai';
+      await delay(400);
+      var evalDetails = evalSection.closest('details');
+      assert('T22.7 — #evaluate-with-ai reachable via deep link (section expanded)',
+        evalDetails === null || evalDetails.open);
+    } else {
+      skip('T22.2-T22.7', 'evaluate-with-ai section not found');
+    }
+
+    // T22.8: Nav bar has Evaluate button
+    var evalNavBtn = document.querySelector('#nav-evaluate, [data-nav-evaluate]');
+    assert('T22.8 — nav bar has Evaluate/AI button',
+      evalNavBtn !== null);
+
+    // T22.9: Cookie/localStorage tracks step completion
+    // (Test by simulating step 1 completion and checking storage)
+    if (typeof localStorage !== 'undefined') {
+      localStorage.removeItem('eval-step-1-done');
+      localStorage.removeItem('eval-step-2-done');
+      // After step 1 button click, localStorage should update
+      if (step1Btn) {
+        step1Btn.click();
+        await delay(200);
+        var step1Done = localStorage.getItem('eval-step-1-done');
+        assert('T22.9 — Step 1 click sets localStorage flag',
+          step1Done !== null);
+        // Clean up
+        localStorage.removeItem('eval-step-1-done');
+        localStorage.removeItem('eval-step-2-done');
+      } else {
+        skip('T22.9', 'step 1 button not found');
+      }
+    } else {
+      skip('T22.9', 'localStorage not available');
+    }
+
+    // ============================================================
+    // DONE
+    // ============================================================
+    showSummary();
+    // Also log to console for automated runners
+    console.log('Plan 0134 test results: ' + passed + ' passed, ' + failed + ' failed, ' + skipped + ' skipped');
+  }
+
+  // --- Run ---
+  document.getElementById('run-all').addEventListener('click', function() {
+    runAllTests();
+  });
+  document.getElementById('run-quick').addEventListener('click', function() {
+    // Quick mode: skip interaction-dependent tests, run structural checks only
+    results.innerHTML = '';
+    passed = 0; failed = 0; skipped = 0;
+    group('Quick Structural Checks');
+
+    var hoverTerms = document.querySelectorAll('.hover-term[data-hover]');
+    assert('Hover terms use data-hover attribute', hoverTerms.length > 0);
+    assert('No title attributes on hover terms',
+      document.querySelectorAll('.hover-term[title]').length === 0);
+    assert('Nav bar exists', !!document.getElementById('reader-nav'));
+    assert('Copy button exists', !!document.getElementById('copy-science-ref'));
+    assert('Chapter sections exist',
+      document.querySelectorAll('.chapter-section').length > 0);
+    assert('Title has 3 hover terms',
+      document.querySelectorAll('#relinquishment-title .hover-term').length === 3);
+
+    showSummary();
+  });
+
+  // Auto-run after reader.js loads
+  setTimeout(function() {
+    document.getElementById('run-all').click();
+  }, 300);
+
+})();
+</script>
+
+</body>
+</html>

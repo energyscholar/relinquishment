@@ -12,9 +12,15 @@ classical backchannel: "An ordinary communication channel — radio, light, elec
 magnetosphere: "Earth's magnetic field, extending thousands of kilometers into space. Contains thin layers where charged particles are trapped flat — two-dimensional electron gases on a planetary scale."
 guided deduction: "Teaching someone to discover the answer from public information, rather than disclosing it directly. Legally distinct from disclosure — no classified information changes hands, only the sequence of questions."
 topological protection: "Information stored in global patterns is shielded from local disturbances — including heat. This is why topological quantum computers could work at room temperature, when conventional designs require near-absolute-zero cooling."
-relinquishment: "Voluntarily surrendering power — not to another owner, but permanently. Not because you're forced to, but because holding it is more dangerous than letting go. The word Bill Joy used in his 2000 essay."
-flat worlds: "Real two-dimensional layers inside computer chips and in Earth's magnetic field. Different physics applies there — particles behave in ways impossible in three dimensions. This book treats them as habitats: environments where different rules apply and self-organizing structures can form."
+relinquishment:
+  text: "Voluntarily surrendering power that cannot be taken by force — a decision only the powerful can make. Not because you're forced to, but because holding it is more dangerous than letting go. The word Bill Joy used in his 2000 essay. The title asks: what would you do?"
+  target: "#preface"
+flat worlds:
+  text: "Real two-dimensional layers inside computer chips where quantum effects dominate. Flatland is not a metaphor — it is the physics that makes your phone work. This book treats them as habitats where different rules apply and self-organizing structures can form."
+  target: "#ch:what-is-the-flat"
 Special Air Service: "The most elite special forces unit shared by Britain and Australia. Selection has a failure rate above 90 percent. Veterans are bound by the Official Secrets Act for life."
 grew: "The system organized itself, the way living things grow. Not engineered component by component — emerged from the physics of the substrate. This is how autocatalytic systems work."
 encryption: "Math that scrambles information so only the intended recipient can read it. Protects passwords, messages, bank accounts, and government secrets. Modern civilization depends on it — break the encryption, break the infrastructure."
-wormholes: "Real topological connections between distant points in a two-dimensional substrate. Not science fiction — the 2016 Nobel Prize in Physics (Thouless, Haldane, Kosterlitz) was awarded for the theory behind them. Search: topological phases of matter."
+wormholes:
+  text: "Real topological connections between distant points in a material. Not science fiction — condensed matter physics. The 2016 Nobel Prize in Physics was awarded for the theory behind them. The book argues these may exist in magnetized plasma."
+  target: "#pos10-the-braid"
