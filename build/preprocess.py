@@ -468,11 +468,115 @@ def collapse_chapters(text):
             book_content = text[book_start:wrap_end]
             book_tooltip = hover_map.get('relinquishment', '')
             book_title_attr = f' title="{html_mod.escape(book_tooltip)}"' if book_tooltip else ''
+            demo_svg = (
+                '<svg xmlns="http://www.w3.org/2000/svg" width="280" height="60" viewBox="0 0 280 60" style="display:block;margin:0.5em auto;">'
+                '<defs><linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%">'
+                '<stop offset="0%" style="stop-color:#1a5276;stop-opacity:0.8"/>'
+                '<stop offset="50%" style="stop-color:#2471a3;stop-opacity:1"/>'
+                '<stop offset="100%" style="stop-color:#1a5276;stop-opacity:0.8"/>'
+                '</linearGradient></defs>'
+                '<rect x="2" y="2" width="276" height="56" rx="8" fill="none" stroke="url(#glow)" stroke-width="1.5"/>'
+                '<text x="140" y="24" text-anchor="middle" font-size="11" fill="#1a5276" font-family="serif" font-style="italic">Three narrative threads. Real science.</text>'
+                '<text x="140" y="42" text-anchor="middle" font-size="11" fill="#1a5276" font-family="serif" font-style="italic">Three possible explanations. You decide.</text>'
+                '</svg>'
+            )
+            demo_hover_html = html_mod.escape(
+                '<p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;">'
+                '<strong>Relinquishment</strong> — voluntarily surrendering power '
+                'that cannot be taken by force. A preparation document built from '
+                'real physics, real people, and real institutions. 239 pages across '
+                'three parts: the story, the evidence, and the question.</p>'
+                + demo_svg
+            )
+            wormhole_svg = (
+                '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="140" viewBox="0 0 300 140" style="display:block;margin:0.5em auto;">'
+                # Top surface — ellipse
+                '<ellipse cx="80" cy="35" rx="65" ry="20" fill="none" stroke="#1a5276" stroke-width="1.2" opacity="0.6"/>'
+                # Top opening — darker ellipse (mouth of wormhole)
+                '<ellipse cx="80" cy="35" rx="18" ry="8" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5"/>'
+                # Bottom surface — ellipse
+                '<ellipse cx="220" cy="105" rx="65" ry="20" fill="none" stroke="#1a5276" stroke-width="1.2" opacity="0.6"/>'
+                # Bottom opening
+                '<ellipse cx="220" cy="105" rx="18" ry="8" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5"/>'
+                # Connecting tube — two curved lines
+                '<path d="M 62,35 C 55,60 195,80 202,105" fill="none" stroke="#2471a3" stroke-width="1.2" stroke-dasharray="4,3"/>'
+                '<path d="M 98,35 C 105,60 245,80 238,105" fill="none" stroke="#2471a3" stroke-width="1.2" stroke-dasharray="4,3"/>'
+                # Labels
+                '<text x="80" y="12" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">surface A</text>'
+                '<text x="220" y="135" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">surface B</text>'
+                # Distance label
+                '<text x="150" y="75" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif">topological</text>'
+                '<text x="150" y="87" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif">connection</text>'
+                '</svg>'
+            )
+            wormhole_hover_html = html_mod.escape(
+                '<p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;">'
+                '<strong>Wormholes</strong> — real topological connections between '
+                'distant points in a material. Not science fiction — condensed matter '
+                'physics. The 2016 Nobel Prize in Physics was awarded for the theory '
+                'behind them. The book argues these may exist in magnetized plasma.</p>'
+                + wormhole_svg
+            )
+            flat_svg = (
+                '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="120" viewBox="0 0 300 120" style="display:block;margin:0.5em auto;">'
+                # 3D block — showing the thin 2D layer inside bulk material
+                # Bulk material — parallelogram outline
+                '<path d="M 40,20 L 260,20 L 280,50 L 60,50 Z" fill="#f0f0f0" stroke="#999" stroke-width="0.8"/>'
+                # The Flat — thin glowing layer
+                '<path d="M 40,48 L 260,48 L 280,54 L 60,54 Z" fill="rgba(36,113,163,0.15)" stroke="#2471a3" stroke-width="1.5"/>'
+                # Bulk below
+                '<path d="M 60,54 L 280,54 L 280,80 L 60,80 Z" fill="#f0f0f0" stroke="#999" stroke-width="0.8"/>'
+                '<path d="M 60,80 L 40,50 L 40,48" fill="none" stroke="#999" stroke-width="0.8"/>'
+                '<path d="M 280,80 L 260,48" fill="none" stroke="#999" stroke-width="0.8"/>'
+                # Electrons trapped on the sheet — small dots
+                '<circle cx="100" cy="51" r="2.5" fill="#2471a3" opacity="0.8"/>'
+                '<circle cx="140" cy="51" r="2.5" fill="#2471a3" opacity="0.8"/>'
+                '<circle cx="180" cy="51" r="2.5" fill="#2471a3" opacity="0.8"/>'
+                '<circle cx="210" cy="51" r="2.5" fill="#2471a3" opacity="0.8"/>'
+                '<circle cx="160" cy="52" r="2.5" fill="#2471a3" opacity="0.5"/>'
+                '<circle cx="120" cy="52" r="2.5" fill="#2471a3" opacity="0.5"/>'
+                '<circle cx="240" cy="52" r="2.5" fill="#2471a3" opacity="0.6"/>'
+                # Arrow showing confinement — can only move in 2D
+                '<line x1="85" y1="51" x2="75" y2="51" stroke="#1a5276" stroke-width="0.8" marker-end="url(#arr)"/>'
+                '<line x1="250" y1="51" x2="260" y2="52" stroke="#1a5276" stroke-width="0.8" marker-end="url(#arr)"/>'
+                '<defs><marker id="arr" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="5" markerHeight="5" orient="auto">'
+                '<path d="M 0,0 L 6,3 L 0,6 Z" fill="#1a5276"/></marker></defs>'
+                # Labels
+                '<text x="170" y="98" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif" font-style="italic">electrons confined to two dimensions</text>'
+                '<text x="170" y="112" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">different physics applies here</text>'
+                '</svg>'
+            )
+            flat_hover_html = html_mod.escape(
+                '<p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;">'
+                '<strong>The Flat</strong> — a two-dimensional electron gas: a thin '
+                'layer where electrons are trapped on a sheet and can only move in two '
+                'directions. Found inside every computer chip and in Earth\'s '
+                'magnetosphere. Different physics applies in two dimensions than in '
+                'three — particles can braid, information can be stored topologically, '
+                'and structures can form that are impossible in our 3D world.</p>'
+                '<p style="margin:0;font-size:0.85em;line-height:1.4;color:#666;">'
+                'Physicists call it a <em>two-dimensional electron gas</em> (2DEG). '
+                'We call the ocean floor the Deep and the emptiness between galaxies '
+                'the Void. This book calls those thin worlds <strong>the Flat</strong> '
+                '— until someone coins something better for this otherwise-unnamed '
+                'physical system.</p>'
+                + flat_svg
+            )
             text = (text[:book_start] +
                     '<details class="book-section">'
-                    f'<summary{book_title_attr}>Relinquishment '
+                    f'<summary{book_title_attr}>'
+                    '<span class="hover-term" data-hover="placeholder" '
+                    f'data-hover-html="{demo_hover_html}">'
+                    'Relinquishment</span> '
                     '<span class="book-subtitle-inline">&mdash; '
-                    'Wormholes in the Flat</span></summary>\n' +
+                    '<span class="hover-term" data-hover="placeholder" '
+                    f'data-hover-html="{wormhole_hover_html}" '
+                    'data-hover-target="#summary:most-important-story">'
+                    'Wormholes</span> in '
+                    '<span class="hover-term" data-hover="placeholder" '
+                    f'data-hover-html="{flat_hover_html}" '
+                    'data-hover-target="#summary:most-important-story">'
+                    'the Flat</span></span></summary>\n' +
                     book_content +
                     '\n</details>\n' +
                     text[wrap_end:])
@@ -735,6 +839,7 @@ def inject_evaluate_section(text):
         'cross-domain science to evaluate it. The fix takes thirty seconds.</p>\n'
         '<p>It&#x27;s a lot, so we do it in two prompts.</p>\n'
         '<button class="eval-step-1" data-eval-step="1"\n'
+        '  title="Paste this Science Firmware Update into your LLM to teach it the additional cross-domain science it needs to competently evaluate this book"\n'
         '  style="display:block;width:100%;padding:1em;font-size:1.1em;\n'
         '  margin:0.5em 0;cursor:pointer;background:#1a5276;color:#fff;\n'
         '  border:none;border-radius:6px;font-family:inherit;font-weight:bold;\n'
@@ -743,6 +848,7 @@ def inject_evaluate_section(text):
         '</button>\n'
         '<p style="text-align:center;color:#888;font-size:0.9em;">Paste this first.</p>\n'
         '<button class="eval-step-2" data-eval-step="2"\n'
+        '  title="These Spiral Abstracts tell the entire story of this book, all the scientific and technical details, without any personal details. Read it or paste it into an LLM"\n'
         '  style="display:block;width:100%;padding:1em;font-size:1.1em;\n'
         '  margin:0.5em 0;cursor:pointer;background:#1a5276;color:#fff;\n'
         '  border:none;border-radius:6px;font-family:inherit;font-weight:bold;\n'
