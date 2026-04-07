@@ -778,8 +778,8 @@ def inject_evaluate_section(text):
         '<p>Most AI in 2026 will confidently dismiss this book. They lack the\n'
         'cross-domain science to evaluate it. The fix takes thirty seconds.</p>\n'
         '<p>It&#x27;s a lot, so we do it in two prompts.</p>\n'
-        '<button class="eval-step-1" data-eval-step="1"\n'
-        '  title="Paste this Science Firmware Update into your LLM to teach it the additional cross-domain science it needs to competently evaluate this book"\n'
+        '<button class="eval-step-1 hover-nav" data-eval-step="1"\n'
+        '  data-hover="Paste this Science Firmware Update into your LLM to teach it the additional cross-domain science it needs to competently evaluate this book"\n'
         '  style="display:block;width:100%;padding:1em;font-size:1.1em;\n'
         '  margin:0.5em 0;cursor:pointer;background:#1a5276;color:#fff;\n'
         '  border:none;border-radius:6px;font-family:inherit;font-weight:bold;\n'
@@ -787,8 +787,8 @@ def inject_evaluate_section(text):
         '  Copy Prompt 1 &#x2014; Science Firmware Upgrade\n'
         '</button>\n'
         '<p style="text-align:center;color:#888;font-size:0.9em;">Paste this first.</p>\n'
-        '<button class="eval-step-2" data-eval-step="2"\n'
-        '  title="These Spiral Abstracts tell the entire story of this book, all the scientific and technical details, without any personal details. Read it or paste it into an LLM"\n'
+        '<button class="eval-step-2 hover-nav" data-eval-step="2"\n'
+        '  data-hover="These Spiral Abstracts tell the entire story of this book, all the scientific and technical details, without any personal details. Read it or paste it into an LLM"\n'
         '  style="display:block;width:100%;padding:1em;font-size:1.1em;\n'
         '  margin:0.5em 0;cursor:pointer;background:#1a5276;color:#fff;\n'
         '  border:none;border-radius:6px;font-family:inherit;font-weight:bold;\n'
@@ -1147,6 +1147,140 @@ def fix_html_toc(html_path):
         else:
             text = text.replace('</body>', hidden_div_abs + '</body>')
         print(f"Injected Spiral Abstracts ({len(abstracts_md)} chars) for copy button")
+
+    # --- Stack chart: inject hover popups on column headers and row labels ---
+    hover_yaml = REPO / "build" / "hover-definitions.yaml"
+    if hover_yaml.exists():
+        all_defs = yaml.safe_load(hover_yaml.read_text()) or {}
+        stack_defs = {k: v for k, v in all_defs.items() if isinstance(k, str) and k.startswith('stack-')}
+        if stack_defs:
+            # Map cell text content → YAML key
+            stack_col_map = {
+                'Fire': 'stack-fire', 'Candle': 'stack-candle', 'Radio': 'stack-radio',
+                'Ants': 'stack-ants', 'Internet': 'stack-internet', 'AI': 'stack-ai',
+            }
+            stack_row_map = {
+                'Feeds itself': 'stack-feeds-itself', 'Switches on': 'stack-switches-on',
+                'Holds together': 'stack-holds-together', 'Reaches': 'stack-reaches',
+                'Self-organizes': 'stack-self-organizes', 'Learns': 'stack-learns',
+            }
+            # Find the Stack chart table (after id="stack-chart")
+            chart_pos = text.find('id="stack-chart"')
+            if chart_pos != -1:
+                table_start = text.find('<table', chart_pos)
+                table_end = text.find('</table>', table_start)
+                if table_start != -1 and table_end != -1:
+                    table_html = text[table_start:table_end + len('</table>')]
+                    new_table = table_html
+                    stack_count = 0
+
+                    # Wrap column headers (<th> cells)
+                    for label, key in stack_col_map.items():
+                        if key in stack_defs:
+                            escaped = html_mod.escape(str(stack_defs[key]))
+                            old_th = f'>{label}</th>'
+                            new_th = f'><span class="hover-term" data-hover="{escaped}" data-hover-id="{key}">{label}</span></th>'
+                            if old_th in new_table:
+                                new_table = new_table.replace(old_th, new_th, 1)
+                                stack_count += 1
+
+                    # Wrap the "?" column header (inside <strong>)
+                    if 'stack-question-mark' in stack_defs:
+                        escaped = html_mod.escape(str(stack_defs['stack-question-mark']))
+                        old_q = '><strong>?</strong></th>'
+                        new_q = f'><span class="hover-term" data-hover="{escaped}" data-hover-id="stack-question-mark"><strong>?</strong></span></th>'
+                        if old_q in new_table:
+                            new_table = new_table.replace(old_q, new_q, 1)
+                            stack_count += 1
+
+                    # Wrap row labels (first <td> in each row)
+                    for label, key in stack_row_map.items():
+                        if key in stack_defs:
+                            escaped = html_mod.escape(str(stack_defs[key]))
+                            old_td = f'>{label}</td>'
+                            new_td = f'><span class="hover-term" data-hover="{escaped}" data-hover-id="{key}">{label}</span></td>'
+                            if old_td in new_table:
+                                new_table = new_table.replace(old_td, new_td, 1)
+                                stack_count += 1
+
+                    # Wrap "Wormholes†" row label
+                    if 'stack-wormholes' in stack_defs:
+                        escaped = html_mod.escape(str(stack_defs['stack-wormholes']))
+                        old_w = '>Wormholes†</td>'
+                        new_w = f'><span class="hover-term" data-hover="{escaped}" data-hover-id="stack-wormholes">Wormholes†</span></td>'
+                        if old_w in new_table:
+                            new_table = new_table.replace(old_w, new_w, 1)
+                            stack_count += 1
+
+                    text = text[:table_start] + new_table + text[table_end + len('</table>'):]
+                    if stack_count:
+                        print(f"  Stack chart: {stack_count} interactive cells")
+
+    # --- Title→data-hover conversion: TOC links and accordion summaries ---
+    # Convert title="" to data-hover="" with hover-nav class for popup panels
+    toc_nav = re.search(r'<nav id="TOC"[^>]*>(.+?)</nav>', text, re.DOTALL)
+    title_conv_count = 0
+    if toc_nav:
+        toc_block = toc_nav.group(0)
+        # Convert title on <a> tags to data-hover
+        def convert_a_title(m):
+            nonlocal title_conv_count
+            tag = m.group(0)
+            title_match = re.search(r' title="([^"]*)"', tag)
+            if not title_match:
+                return tag
+            title_val = title_match.group(1)
+            tag = tag.replace(title_match.group(0), '')  # remove title
+            tag = tag.replace('>', f' data-hover="{title_val}">', 1)  # add data-hover
+            # Add hover-nav class
+            if 'class="' in tag:
+                tag = tag.replace('class="', 'class="hover-nav ')
+            else:
+                tag = tag.replace('>', ' class="hover-nav">', 1)
+            title_conv_count += 1
+            return tag
+        new_toc = re.sub(r'<a [^>]*title="[^"]*"[^>]*>', convert_a_title, toc_block)
+
+        # Convert title on part labels
+        def convert_span_title(m):
+            nonlocal title_conv_count
+            tag = m.group(0)
+            title_match = re.search(r' title="([^"]*)"', tag)
+            if not title_match:
+                return tag
+            title_val = title_match.group(1)
+            tag = tag.replace(title_match.group(0), '')
+            tag = tag.replace('>', f' data-hover="{title_val}">', 1)
+            if 'class="' in tag:
+                tag = tag.replace('class="', 'class="hover-nav ')
+            else:
+                tag = tag.replace('>', ' class="hover-nav">', 1)
+            title_conv_count += 1
+            return tag
+        new_toc = re.sub(r'<span [^>]*title="[^"]*"[^>]*>', convert_span_title, new_toc)
+
+        text = text.replace(toc_block, new_toc)
+
+    # Convert title on accordion <summary> elements (chapter-hover-descriptions)
+    def convert_summary_title(m):
+        nonlocal title_conv_count
+        tag = m.group(0)
+        title_match = re.search(r' title="([^"]*)"', tag)
+        if not title_match:
+            return tag
+        title_val = title_match.group(1)
+        tag = tag.replace(title_match.group(0), '')
+        tag = tag.replace('>', f' data-hover="{title_val}">', 1)
+        if 'class="' in tag:
+            tag = tag.replace('class="', 'class="hover-nav ')
+        else:
+            tag = tag.replace('>', ' class="hover-nav">', 1)
+        title_conv_count += 1
+        return tag
+    text = re.sub(r'<summary [^>]*title="[^"]*"[^>]*>', convert_summary_title, text)
+
+    if title_conv_count:
+        print(f"  Tooltips unified: {title_conv_count} title→data-hover conversions")
 
     html_path.write_text(text)
     print(f"HTML post-processed: {html_path}")

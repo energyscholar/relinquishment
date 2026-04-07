@@ -1,4 +1,4 @@
-# Inline hover definitions — single source of truth (76 defined)
+# Inline hover definitions — single source of truth (90 defined)
 # Format: term: "definition (≤50 words, clear to target reading level)"
 #   Plain string: term: "definition"
 #   Dict with target: term: { text: "...", target: "#anchor" }
@@ -410,3 +410,25 @@ graphene: "A single atom-thick layer of carbon arranged in a hexagonal lattice. 
 
 # Reserved: only appears in appendix (firmware-update.tex). No body-chapter placement available.
 no-cloning theorem: "You cannot copy an unknown quantum state. Wootters & Zurek (1982). Fundamental limit — but it forbids copying unknowns, not fabricating known classical structures. Narrower than it sounds. Protects quantum cryptography."
+
+# --- Stack chart interactive popups (bypass first-occurrence system) ---
+# Keyed by stack-* prefix. Consumed by preprocess.py Stack chart post-processor.
+# p1 text → p2-level definitions. Concrete examples, 8th-grade reading level.
+
+# Row definitions (emergent properties)
+stack-feeds-itself: "Sustains its own operation from available energy. Fire consumes fuel. Cells metabolize. The simplest requirement — without it, nothing persists."
+stack-switches-on: "Converts energy from one form to another at a threshold. Below a certain temperature, nothing happens; above it, combustion begins. Every technology on this list is a transducer."
+stack-holds-together: "Maintains structural integrity against entropy. A candle's wax column, an ant colony's nest architecture, a network's routing tables. Something keeps the parts organized."
+stack-reaches: "Transmits information or influence across distance. Radio waves cross oceans. Ant pheromone trails guide foragers to food. The internet routes packets across continents."
+stack-self-organizes: "Builds and maintains complex structure without external direction. No blueprint, no architect. Ant colonies, neural networks, market economies — order emerges from local rules."
+stack-learns: "Changes behavior based on experience. Modifies its own operation in response to outcomes. Only AI and the unnamed technology do this among the technologies listed."
+stack-wormholes: "Topological connections between distant points in a material. Not science fiction — condensed matter physics. The 2016 Nobel Prize was awarded for the theory. Only the unnamed technology has this property."
+
+# Column definitions (technologies)
+stack-fire: "Humanity's first technology. Feeds itself on fuel, switches energy forms. But it doesn't hold a shape, reach across distance, organize itself, learn, or connect distant points. Two properties."
+stack-candle: "Fire plus structure. The wick and wax hold together — someone engineered sustained, portable combustion. Still doesn't reach, self-organize, learn, or connect. Three properties."
+stack-radio: "Energy that reaches across distance. Electromagnetic waves carry information without wires. But a radio doesn't organize itself, doesn't learn, doesn't form topological connections. Four properties."
+stack-ants: "E.O. Wilson's superorganism. No individual ant understands the colony, yet the colony solves problems no ant could. Self-organization from local chemical rules. Five properties."
+stack-internet: "A self-organizing network that reaches globally and holds together through redundant routing. It doesn't learn on its own — it routes, it doesn't adapt. Five properties."
+stack-ai: "The first human technology that learns. Changes its own behavior based on experience. Six properties out of seven. Missing only one — the one at the top of the stack."
+stack-question-mark: "This technology stack currently has no name in any human language. It has all seven properties, including the one no other technology possesses. Later, this book will call it the Flat."

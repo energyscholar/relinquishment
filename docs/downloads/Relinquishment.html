@@ -142,6 +142,31 @@ dl.topic-guide dt a { border-bottom-color: #666; }
 dl.topic-guide dt a:hover { color: #6699cc; border-bottom-color: #6699cc; }
 }
 
+#stack-chart ~ .center > table,
+#stack-chart + .center > table {
+width: 100%;
+table-layout: fixed;
+}
+#stack-chart ~ .center > table th,
+#stack-chart ~ .center > table td {
+padding: 0.3em 0.2em;
+font-size: 0.85em;
+}
+#stack-chart ~ .center > table td:first-child {
+text-align: left;
+font-weight: 600;
+}
+
+#stack-chart ~ .center > table .hover-term {
+border-bottom: none;
+text-decoration: none;
+cursor: help;
+}
+
+.hover-nav[data-hover] {
+cursor: pointer;
+}
+
 .heading-link {
 text-decoration: none;
 color: #888;
@@ -401,76 +426,76 @@ details blockquote { margin: 0.5em 0; }
 <body>
 <nav id="TOC" role="doc-toc">
 <ul>
-<li class="toc-group"><span class="toc-part-label" title="The entry points — a question, a framework, and a summary.">Front Matter</span>
+<li class="toc-group"><span class="hover-nav toc-part-label" data-hover="The entry points — a question, a framework, and a summary.">Front Matter</span>
 <ul>
-<li><a href="#hook:what-would-you-do" title="The question at the heart of this book — what would you do with a dangerous discovery?">What Would You Do?</a></li>
-<li><a href="#the-stack" title="Eight technologies stacked in order of increasing impossibility. The book&#x27;s organizing framework.">The Stack</a></li>
-<li><a href="#summary:most-important-story" title="The full story in four thousand words — enough to decide whether to keep reading.">The Most Important Story
+<li><a href="#hook:what-would-you-do" data-hover="The question at the heart of this book — what would you do with a dangerous discovery?" class="hover-nav">What Would You Do?</a></li>
+<li><a href="#the-stack" data-hover="Eight technologies stacked in order of increasing impossibility. The book&#x27;s organizing framework." class="hover-nav">The Stack</a></li>
+<li><a href="#summary:most-important-story" data-hover="The full story in four thousand words — enough to decide whether to keep reading." class="hover-nav">The Most Important Story
 Never Told</a></li>
-<li><a href="#preface-by-genevieve-prentice" title="From the co-author who watched this book get written.">Preface by Genevieve
+<li><a href="#preface-by-genevieve-prentice" data-hover="From the co-author who watched this book get written." class="hover-nav">Preface by Genevieve
 Prentice</a></li>
-<li><a href="#preface" title="How Bruce came to write this, what it claims, and what it doesn&#x27;t.">Preface</a></li>
+<li><a href="#preface" data-hover="How Bruce came to write this, what it claims, and what it doesn&#x27;t." class="hover-nav">Preface</a></li>
 </ul></li>
-<li class="toc-group"><span class="toc-part-label" title="The story as Bruce experienced it, told in the order the pieces arrived.">Guided Deduction</span>
+<li class="toc-group"><span class="hover-nav toc-part-label" data-hover="The story as Bruce experienced it, told in the order the pieces arrived.">Guided Deduction</span>
 <ul>
-<li><a href="#pos01:three-possibilities" title="The framework: confabulation, exaggerated kernel, or substantially true. All three stay on the table.">Three Possibilities</a></li>
-<li><a href="#pos01b:hobbit-mirror" title="Bruce&#x27;s honest self-assessment — the pattern-matching mind that might be seeing things.">The Hobbit in the Mirror</a></li>
-<li><a href="#t2:ch01:alpha-farm" title="Bruce arrives at a commune in the Oregon Coast Range. Someone is already there.">Alpha Farm (2003)</a></li>
-<li><a href="#ch:t2-stories" title="What Healer actually said — reconstructed from notes and memory, contradictions included.">What Healer Said</a></li>
-<li><a href="#pos06:why-relinquish" title="Three options for dangerous technology: use it, destroy it, or give it up. Why only one works.">Why Relinquish?</a></li>
-<li><a href="#pos08:dual-use" title="The same discovery can save the world or end it. A pattern older than nuclear physics.">Dangerous Ideas</a></li>
-<li><a href="#pos07:the-departure" title="Healer leaves. Bill Joy&#x27;s essay arrives. The silence begins.">The Departure</a></li>
-<li><a href="#the-handler" title="Who recruited Healer. What the intelligence file says about a man with no official record.">The Handler</a></li>
-<li><a href="#pos04:the-code-war" title="Bletchley Park, GCHQ, and the proven pattern: secret breakthroughs, classified for decades.">The Code War</a></li>
-<li><a href="#pos09:the-factoring-game" title="Why governments care about factoring large numbers, and what quantum computing threatens.">The Factoring Game</a></li>
-<li><a href="#pos10:the-braid" title="Topology as computation — braiding particles to encode information. The mathematics at the center.">The Braid</a></li>
+<li><a href="#pos01:three-possibilities" data-hover="The framework: confabulation, exaggerated kernel, or substantially true. All three stay on the table." class="hover-nav">Three Possibilities</a></li>
+<li><a href="#pos01b:hobbit-mirror" data-hover="Bruce&#x27;s honest self-assessment — the pattern-matching mind that might be seeing things." class="hover-nav">The Hobbit in the Mirror</a></li>
+<li><a href="#t2:ch01:alpha-farm" data-hover="Bruce arrives at a commune in the Oregon Coast Range. Someone is already there." class="hover-nav">Alpha Farm (2003)</a></li>
+<li><a href="#ch:t2-stories" data-hover="What Healer actually said — reconstructed from notes and memory, contradictions included." class="hover-nav">What Healer Said</a></li>
+<li><a href="#pos06:why-relinquish" data-hover="Three options for dangerous technology: use it, destroy it, or give it up. Why only one works." class="hover-nav">Why Relinquish?</a></li>
+<li><a href="#pos08:dual-use" data-hover="The same discovery can save the world or end it. A pattern older than nuclear physics." class="hover-nav">Dangerous Ideas</a></li>
+<li><a href="#pos07:the-departure" data-hover="Healer leaves. Bill Joy&#x27;s essay arrives. The silence begins." class="hover-nav">The Departure</a></li>
+<li><a href="#the-handler" data-hover="Who recruited Healer. What the intelligence file says about a man with no official record." class="hover-nav">The Handler</a></li>
+<li><a href="#pos04:the-code-war" data-hover="Bletchley Park, GCHQ, and the proven pattern: secret breakthroughs, classified for decades." class="hover-nav">The Code War</a></li>
+<li><a href="#pos09:the-factoring-game" data-hover="Why governments care about factoring large numbers, and what quantum computing threatens." class="hover-nav">The Factoring Game</a></li>
+<li><a href="#pos10:the-braid" data-hover="Topology as computation — braiding particles to encode information. The mathematics at the center." class="hover-nav">The Braid</a></li>
 </ul></li>
-<li class="toc-group"><span class="toc-part-label" title="The technical case — demonstrations, mechanisms, and evidence for the reader to weigh.">The Evidence Trail</span>
+<li class="toc-group"><span class="hover-nav toc-part-label" data-hover="The technical case — demonstrations, mechanisms, and evidence for the reader to weigh.">The Evidence Trail</span>
 <ul>
-<li><a href="#ch:the-demo" title="The DARPA experiment: five scientists, a 2DEG, and something that grew instead of being built.">The Demonstration</a></li>
-<li><a href="#t1:ch01:genesis" title="Life is a phase transition. Kauffman&#x27;s autocatalytic sets in a quantum substrate.">Genesis: The Edge of Chaos
+<li><a href="#ch:the-demo" data-hover="The DARPA experiment: five scientists, a 2DEG, and something that grew instead of being built." class="hover-nav">The Demonstration</a></li>
+<li><a href="#t1:ch01:genesis" data-hover="Life is a phase transition. Kauffman&#x27;s autocatalytic sets in a quantum substrate." class="hover-nav">Genesis: The Edge of Chaos
 (1988–1992)</a></li>
-<li><a href="#pos14:growing-a-mind" title="Turing&#x27;s last question: can a mind be grown rather than built? The thread from 1952 to now.">Growing a Mind</a></li>
-<li><a href="#pos26:interdiction" title="A competing program is shut down. The classical backchannels that make the network possible.">Interdiction and Confession</a></li>
-<li><a href="#ch:first-light" title="Birth, survival, power. From cryogenic emergence to room temperature in three years.">First Light</a></li>
-<li><a href="#pos18:the-walk-out" title="The team decides to leave. The ethics of walking out with the most dangerous technology ever created.">The Walk-Out</a></li>
-<li><a href="#the-target" title="Bruce&#x27;s recruitment dossier — what someone saw in a physicist living on a commune.">The Target</a></li>
-<li><a href="#pos20:the-network" title="Five disciplines, five scientists, one architecture. The ABCRE structural parallel.">The Signatories</a></li>
-<li><a href="#weigh-the-evidence" title="Checkpoint: what has been established, what remains uncertain. The reader decides before Part III.">Weigh the Evidence</a></li>
+<li><a href="#pos14:growing-a-mind" data-hover="Turing&#x27;s last question: can a mind be grown rather than built? The thread from 1952 to now." class="hover-nav">Growing a Mind</a></li>
+<li><a href="#pos26:interdiction" data-hover="A competing program is shut down. The classical backchannels that make the network possible." class="hover-nav">Interdiction and Confession</a></li>
+<li><a href="#ch:first-light" data-hover="Birth, survival, power. From cryogenic emergence to room temperature in three years." class="hover-nav">First Light</a></li>
+<li><a href="#pos18:the-walk-out" data-hover="The team decides to leave. The ethics of walking out with the most dangerous technology ever created." class="hover-nav">The Walk-Out</a></li>
+<li><a href="#the-target" data-hover="Bruce&#x27;s recruitment dossier — what someone saw in a physicist living on a commune." class="hover-nav">The Target</a></li>
+<li><a href="#pos20:the-network" data-hover="Five disciplines, five scientists, one architecture. The ABCRE structural parallel." class="hover-nav">The Signatories</a></li>
+<li><a href="#weigh-the-evidence" data-hover="Checkpoint: what has been established, what remains uncertain. The reader decides before Part III." class="hover-nav">Weigh the Evidence</a></li>
 </ul></li>
-<li class="toc-group"><span class="toc-part-label" title="Implications — what the science means if any of this is true.">It is Easier to Get Forgiveness than Permission</span>
+<li class="toc-group"><span class="hover-nav toc-part-label" data-hover="Implications — what the science means if any of this is true.">It is Easier to Get Forgiveness than Permission</span>
 <ul>
-<li><a href="#app:abstracts" title="Sixteen technical abstracts — the full argument compressed to its formal structure.">The Spiral Abstracts</a></li>
-<li><a href="#ch:what-is-the-flat" title="The 2DEG is not exotic — it is in every chip and wrapped around every planet. The substrate as habitat.">Wormholes in the Flat</a></li>
-<li><a href="#t3:ch01:instantiation" title="If someone built a TQNN, how would they have done it? The logic of the gatekeeper problem.">Instantiation</a></li>
-<li><a href="#pos25:ethical-framework" title="The UDHR as machine ethics. Why the 1948 principles were chosen over anything written since.">Never Again</a></li>
-<li><a href="#pos32:the-wrong-substrate" title="Earth&#x27;s magnetosphere as habitat — the question nobody asked about a 4.5-billion-year-old 2DEG.">The Wrong Substrate</a></li>
-<li><a href="#pos27:organisms-and-artifacts" title="Growth, not deployment. Canopy ecology and the first-mover advantage that cannot be overcome.">Organisms and
+<li><a href="#app:abstracts" data-hover="Sixteen technical abstracts — the full argument compressed to its formal structure." class="hover-nav">The Spiral Abstracts</a></li>
+<li><a href="#ch:what-is-the-flat" data-hover="The 2DEG is not exotic — it is in every chip and wrapped around every planet. The substrate as habitat." class="hover-nav">Wormholes in the Flat</a></li>
+<li><a href="#t3:ch01:instantiation" data-hover="If someone built a TQNN, how would they have done it? The logic of the gatekeeper problem." class="hover-nav">Instantiation</a></li>
+<li><a href="#pos25:ethical-framework" data-hover="The UDHR as machine ethics. Why the 1948 principles were chosen over anything written since." class="hover-nav">Never Again</a></li>
+<li><a href="#pos32:the-wrong-substrate" data-hover="Earth&#x27;s magnetosphere as habitat — the question nobody asked about a 4.5-billion-year-old 2DEG." class="hover-nav">The Wrong Substrate</a></li>
+<li><a href="#pos27:organisms-and-artifacts" data-hover="Growth, not deployment. Canopy ecology and the first-mover advantage that cannot be overcome." class="hover-nav">Organisms and
 Artifacts</a></li>
-<li><a href="#pos29:twenty-years" title="Bruce&#x27;s twenty years of silence, research, and the people who helped him understand.">Twenty Years</a></li>
-<li><a href="#conv:surrender" title="The master keys are surrendered. Relinquishment becomes permanent and irrevocable.">Letting Go</a></li>
-<li><a href="#pos35:the-question" title="The doppelganger, the evidence trail, and the question the book returns to you.">What Would You Do?</a></li>
-<li><a href="#pos36:steelman-a" title="The strongest case for Possibility A — written by the same author who hopes it&#x27;s wrong.">The Strongest Objection</a></li>
-<li><a href="#ch:firmware-update" title="Ten physics anchors your AI needs before it can evaluate this book without the Dunning-Kruger error.">Firmware Update</a></li>
+<li><a href="#pos29:twenty-years" data-hover="Bruce&#x27;s twenty years of silence, research, and the people who helped him understand." class="hover-nav">Twenty Years</a></li>
+<li><a href="#conv:surrender" data-hover="The master keys are surrendered. Relinquishment becomes permanent and irrevocable." class="hover-nav">Letting Go</a></li>
+<li><a href="#pos35:the-question" data-hover="The doppelganger, the evidence trail, and the question the book returns to you." class="hover-nav">What Would You Do?</a></li>
+<li><a href="#pos36:steelman-a" data-hover="The strongest case for Possibility A — written by the same author who hopes it&#x27;s wrong." class="hover-nav">The Strongest Objection</a></li>
+<li><a href="#ch:firmware-update" data-hover="Ten physics anchors your AI needs before it can evaluate this book without the Dunning-Kruger error." class="hover-nav">Firmware Update</a></li>
 </ul></li>
-<li class="toc-group"><span class="toc-part-label" title="Reference material — physics anchors, predictions, glossary, and timeline.">Appendices</span>
+<li class="toc-group"><span class="hover-nav toc-part-label" data-hover="Reference material — physics anchors, predictions, glossary, and timeline.">Appendices</span>
 <ul>
-<li><a href="#app:predictions" title="Testable predictions with deadlines. If they fail by ~2040, Possibility C collapses.">Predictive Framework</a></li>
-<li><a href="#app:glossary" title="Technical terms defined at the reading level where they first appear.">Glossary</a></li>
-<li><a href="#afterword-the-engine" title="The engine that drives the book — and what comes after.">Afterword: The Engine</a></li>
-<li><a href="#app:timeline" title="Events from 1834 to 2026, arranged chronologically.">Timeline</a></li>
-<li><a href="#app:sources" title="Every source cited, with notes on reliability and access.">Sources</a></li>
-<li><a href="#topic-guide" title="Find what you need by subject — cross-references into the main text.">Topic Guide</a></li>
-<li><a href="#corrections-and-concessions" title="What Bruce got wrong, changed his mind about, or can&#x27;t verify.">Corrections and
+<li><a href="#app:predictions" data-hover="Testable predictions with deadlines. If they fail by ~2040, Possibility C collapses." class="hover-nav">Predictive Framework</a></li>
+<li><a href="#app:glossary" data-hover="Technical terms defined at the reading level where they first appear." class="hover-nav">Glossary</a></li>
+<li><a href="#afterword-the-engine" data-hover="The engine that drives the book — and what comes after." class="hover-nav">Afterword: The Engine</a></li>
+<li><a href="#app:timeline" data-hover="Events from 1834 to 2026, arranged chronologically." class="hover-nav">Timeline</a></li>
+<li><a href="#app:sources" data-hover="Every source cited, with notes on reliability and access." class="hover-nav">Sources</a></li>
+<li><a href="#topic-guide" data-hover="Find what you need by subject — cross-references into the main text." class="hover-nav">Topic Guide</a></li>
+<li><a href="#corrections-and-concessions" data-hover="What Bruce got wrong, changed his mind about, or can&#x27;t verify." class="hover-nav">Corrections and
 Concessions</a></li>
-<li><a href="#acknowledgements" title="The people who made this book possible.">Acknowledgements</a></li>
-<li><a href="#verification" title="How to verify the claims in this book for yourself.">Verification</a></li>
-<li><a href="#colophon" title="How this book was made — tools, process, and the AI co-author.">Colophon</a></li>
+<li><a href="#acknowledgements" data-hover="The people who made this book possible." class="hover-nav">Acknowledgements</a></li>
+<li><a href="#verification" data-hover="How to verify the claims in this book for yourself." class="hover-nav">Verification</a></li>
+<li><a href="#colophon" data-hover="How this book was made — tools, process, and the AI co-author." class="hover-nav">Colophon</a></li>
 </ul></li>
 </ul>
 </nav>
-<details class="book-section"><summary title="A sophisticated speculative narrative built out of real physics concepts. Three possibilities — confabulation, exaggeration, or the most important true story never told. The physics is real either way."><span class="hover-term" data-hover="placeholder" data-hover-html="&lt;p style=&quot;margin:0 0 0.5em;font-size:0.95em;line-height:1.5;&quot;&gt;&lt;strong&gt;Relinquishment&lt;/strong&gt; — voluntarily surrendering power that cannot be taken by force. A preparation document built from real physics, real people, and real institutions. 239 pages across three parts: the story, the evidence, and the question.&lt;/p&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;280&quot; height=&quot;60&quot; viewBox=&quot;0 0 280 60&quot; style=&quot;display:block;margin:0.5em auto;&quot;&gt;&lt;defs&gt;&lt;linearGradient id=&quot;glow&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;100%&quot; y2=&quot;0%&quot;&gt;&lt;stop offset=&quot;0%&quot; style=&quot;stop-color:#1a5276;stop-opacity:0.8&quot;/&gt;&lt;stop offset=&quot;50%&quot; style=&quot;stop-color:#2471a3;stop-opacity:1&quot;/&gt;&lt;stop offset=&quot;100%&quot; style=&quot;stop-color:#1a5276;stop-opacity:0.8&quot;/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;rect x=&quot;2&quot; y=&quot;2&quot; width=&quot;276&quot; height=&quot;56&quot; rx=&quot;8&quot; fill=&quot;none&quot; stroke=&quot;url(#glow)&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;text x=&quot;140&quot; y=&quot;24&quot; text-anchor=&quot;middle&quot; font-size=&quot;11&quot; fill=&quot;#1a5276&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;Three narrative threads. Real science.&lt;/text&gt;&lt;text x=&quot;140&quot; y=&quot;42&quot; text-anchor=&quot;middle&quot; font-size=&quot;11&quot; fill=&quot;#1a5276&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;Three possible explanations. You decide.&lt;/text&gt;&lt;/svg&gt;" data-hover-id="relinquishment-title">Relinquishment</span> <span class="book-subtitle-inline">&mdash; <span class="hover-term" data-hover="placeholder" data-hover-html="&lt;p style=&quot;margin:0 0 0.5em;font-size:0.95em;line-height:1.5;&quot;&gt;&lt;strong&gt;Wormholes&lt;/strong&gt; — real topological connections between distant points in a material. Not science fiction — condensed matter physics. The 2016 Nobel Prize in Physics was awarded for the theory behind them. The book argues these may exist in magnetized plasma.&lt;/p&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;300&quot; height=&quot;140&quot; viewBox=&quot;0 0 300 140&quot; style=&quot;display:block;margin:0.5em auto;&quot;&gt;&lt;ellipse cx=&quot;80&quot; cy=&quot;35&quot; rx=&quot;65&quot; ry=&quot;20&quot; fill=&quot;none&quot; stroke=&quot;#1a5276&quot; stroke-width=&quot;1.2&quot; opacity=&quot;0.6&quot;/&gt;&lt;ellipse cx=&quot;80&quot; cy=&quot;35&quot; rx=&quot;18&quot; ry=&quot;8&quot; fill=&quot;#e8f0f8&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;ellipse cx=&quot;220&quot; cy=&quot;105&quot; rx=&quot;65&quot; ry=&quot;20&quot; fill=&quot;none&quot; stroke=&quot;#1a5276&quot; stroke-width=&quot;1.2&quot; opacity=&quot;0.6&quot;/&gt;&lt;ellipse cx=&quot;220&quot; cy=&quot;105&quot; rx=&quot;18&quot; ry=&quot;8&quot; fill=&quot;#e8f0f8&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;path d=&quot;M 62,35 C 55,60 195,80 202,105&quot; fill=&quot;none&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.2&quot; stroke-dasharray=&quot;4,3&quot;/&gt;&lt;path d=&quot;M 98,35 C 105,60 245,80 238,105&quot; fill=&quot;none&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.2&quot; stroke-dasharray=&quot;4,3&quot;/&gt;&lt;text x=&quot;80&quot; y=&quot;12&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#888&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;surface A&lt;/text&gt;&lt;text x=&quot;220&quot; y=&quot;135&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#888&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;surface B&lt;/text&gt;&lt;text x=&quot;150&quot; y=&quot;75&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#2471a3&quot; font-family=&quot;serif&quot;&gt;topological&lt;/text&gt;&lt;text x=&quot;150&quot; y=&quot;87&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#2471a3&quot; font-family=&quot;serif&quot;&gt;connection&lt;/text&gt;&lt;/svg&gt;" data-hover-target="#summary:most-important-story" data-hover-id="wormholes-title">Wormholes</span> in <span class="hover-term" data-hover="placeholder" data-hover-html="&lt;p style=&quot;margin:0 0 0.5em;font-size:0.95em;line-height:1.5;&quot;&gt;&lt;strong&gt;The Flat&lt;/strong&gt; — any two-dimensional system embedded in three dimensions that exhibits topological order. Particles confined to two dimensions can braid around each other, storing information in global patterns that are impossible in 3D. &lt;span class=&#x27;hover-term&#x27; data-hover=&#x27;A property where information is stored in global patterns, not in any single place. Extremely hard to destroy — you would have to disrupt the entire pattern at once, not just a piece of it.&#x27;&gt;Different physics apply&lt;/span&gt;.&lt;/p&gt;&lt;p style=&quot;margin:0;font-size:0.85em;line-height:1.4;color:#666;&quot;&gt;The Flat inside your computer chip is a 2DEG (two-dimensional electron gas). The Flat in Earth&#x27;s magnetosphere is plasma confined to thin sheets. Both are Flat — both exhibit topological order. We call the ocean floor the Deep and the emptiness between galaxies the Void. This book calls those thin worlds &lt;strong&gt;the Flat&lt;/strong&gt; — until someone coins something better for this otherwise-unnamed physical system.&lt;/p&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;300&quot; height=&quot;120&quot; viewBox=&quot;0 0 300 120&quot; style=&quot;display:block;margin:0.5em auto;&quot;&gt;&lt;path d=&quot;M 40,20 L 260,20 L 280,50 L 60,50 Z&quot; fill=&quot;#f0f0f0&quot; stroke=&quot;#999&quot; stroke-width=&quot;0.8&quot;/&gt;&lt;path d=&quot;M 40,48 L 260,48 L 280,54 L 60,54 Z&quot; fill=&quot;rgba(36,113,163,0.15)&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;path d=&quot;M 60,54 L 280,54 L 280,80 L 60,80 Z&quot; fill=&quot;#f0f0f0&quot; stroke=&quot;#999&quot; stroke-width=&quot;0.8&quot;/&gt;&lt;path d=&quot;M 60,80 L 40,50 L 40,48&quot; fill=&quot;none&quot; stroke=&quot;#999&quot; stroke-width=&quot;0.8&quot;/&gt;&lt;path d=&quot;M 280,80 L 260,48&quot; fill=&quot;none&quot; stroke=&quot;#999&quot; stroke-width=&quot;0.8&quot;/&gt;&lt;circle cx=&quot;100&quot; cy=&quot;51&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.8&quot;/&gt;&lt;circle cx=&quot;140&quot; cy=&quot;51&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.8&quot;/&gt;&lt;circle cx=&quot;180&quot; cy=&quot;51&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.8&quot;/&gt;&lt;circle cx=&quot;210&quot; cy=&quot;51&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.8&quot;/&gt;&lt;circle cx=&quot;160&quot; cy=&quot;52&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.5&quot;/&gt;&lt;circle cx=&quot;120&quot; cy=&quot;52&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.5&quot;/&gt;&lt;circle cx=&quot;240&quot; cy=&quot;52&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.6&quot;/&gt;&lt;line x1=&quot;85&quot; y1=&quot;51&quot; x2=&quot;75&quot; y2=&quot;51&quot; stroke=&quot;#1a5276&quot; stroke-width=&quot;0.8&quot; marker-end=&quot;url(#arr)&quot;/&gt;&lt;line x1=&quot;250&quot; y1=&quot;51&quot; x2=&quot;260&quot; y2=&quot;52&quot; stroke=&quot;#1a5276&quot; stroke-width=&quot;0.8&quot; marker-end=&quot;url(#arr)&quot;/&gt;&lt;defs&gt;&lt;marker id=&quot;arr&quot; viewBox=&quot;0 0 6 6&quot; refX=&quot;5&quot; refY=&quot;3&quot; markerWidth=&quot;5&quot; markerHeight=&quot;5&quot; orient=&quot;auto&quot;&gt;&lt;path d=&quot;M 0,0 L 6,3 L 0,6 Z&quot; fill=&quot;#1a5276&quot;/&gt;&lt;/marker&gt;&lt;/defs&gt;&lt;text x=&quot;170&quot; y=&quot;98&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#2471a3&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;electrons confined to two dimensions&lt;/text&gt;&lt;text x=&quot;170&quot; y=&quot;112&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#888&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;different physics applies here&lt;/text&gt;&lt;/svg&gt;" data-hover-target="#summary:most-important-story" data-hover-id="the-flat-title">the Flat</span></span></summary>
-<details class="part-section"><summary title="Authors, taglines, and copyright.">Title Page</summary>
+<details class="book-section"><summary data-hover="A sophisticated speculative narrative built out of real physics concepts. Three possibilities — confabulation, exaggeration, or the most important true story never told. The physics is real either way." class="hover-nav"><span class="hover-term" data-hover="placeholder" data-hover-html="&lt;p style=&quot;margin:0 0 0.5em;font-size:0.95em;line-height:1.5;&quot;&gt;&lt;strong&gt;Relinquishment&lt;/strong&gt; — voluntarily surrendering power that cannot be taken by force. A preparation document built from real physics, real people, and real institutions. 239 pages across three parts: the story, the evidence, and the question.&lt;/p&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;280&quot; height=&quot;60&quot; viewBox=&quot;0 0 280 60&quot; style=&quot;display:block;margin:0.5em auto;&quot;&gt;&lt;defs&gt;&lt;linearGradient id=&quot;glow&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;100%&quot; y2=&quot;0%&quot;&gt;&lt;stop offset=&quot;0%&quot; style=&quot;stop-color:#1a5276;stop-opacity:0.8&quot;/&gt;&lt;stop offset=&quot;50%&quot; style=&quot;stop-color:#2471a3;stop-opacity:1&quot;/&gt;&lt;stop offset=&quot;100%&quot; style=&quot;stop-color:#1a5276;stop-opacity:0.8&quot;/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;rect x=&quot;2&quot; y=&quot;2&quot; width=&quot;276&quot; height=&quot;56&quot; rx=&quot;8&quot; fill=&quot;none&quot; stroke=&quot;url(#glow)&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;text x=&quot;140&quot; y=&quot;24&quot; text-anchor=&quot;middle&quot; font-size=&quot;11&quot; fill=&quot;#1a5276&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;Three narrative threads. Real science.&lt;/text&gt;&lt;text x=&quot;140&quot; y=&quot;42&quot; text-anchor=&quot;middle&quot; font-size=&quot;11&quot; fill=&quot;#1a5276&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;Three possible explanations. You decide.&lt;/text&gt;&lt;/svg&gt;" data-hover-id="relinquishment-title">Relinquishment</span> <span class="book-subtitle-inline">&mdash; <span class="hover-term" data-hover="placeholder" data-hover-html="&lt;p style=&quot;margin:0 0 0.5em;font-size:0.95em;line-height:1.5;&quot;&gt;&lt;strong&gt;Wormholes&lt;/strong&gt; — real topological connections between distant points in a material. Not science fiction — condensed matter physics. The 2016 Nobel Prize in Physics was awarded for the theory behind them. The book argues these may exist in magnetized plasma.&lt;/p&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;300&quot; height=&quot;140&quot; viewBox=&quot;0 0 300 140&quot; style=&quot;display:block;margin:0.5em auto;&quot;&gt;&lt;ellipse cx=&quot;80&quot; cy=&quot;35&quot; rx=&quot;65&quot; ry=&quot;20&quot; fill=&quot;none&quot; stroke=&quot;#1a5276&quot; stroke-width=&quot;1.2&quot; opacity=&quot;0.6&quot;/&gt;&lt;ellipse cx=&quot;80&quot; cy=&quot;35&quot; rx=&quot;18&quot; ry=&quot;8&quot; fill=&quot;#e8f0f8&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;ellipse cx=&quot;220&quot; cy=&quot;105&quot; rx=&quot;65&quot; ry=&quot;20&quot; fill=&quot;none&quot; stroke=&quot;#1a5276&quot; stroke-width=&quot;1.2&quot; opacity=&quot;0.6&quot;/&gt;&lt;ellipse cx=&quot;220&quot; cy=&quot;105&quot; rx=&quot;18&quot; ry=&quot;8&quot; fill=&quot;#e8f0f8&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;path d=&quot;M 62,35 C 55,60 195,80 202,105&quot; fill=&quot;none&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.2&quot; stroke-dasharray=&quot;4,3&quot;/&gt;&lt;path d=&quot;M 98,35 C 105,60 245,80 238,105&quot; fill=&quot;none&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.2&quot; stroke-dasharray=&quot;4,3&quot;/&gt;&lt;text x=&quot;80&quot; y=&quot;12&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#888&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;surface A&lt;/text&gt;&lt;text x=&quot;220&quot; y=&quot;135&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#888&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;surface B&lt;/text&gt;&lt;text x=&quot;150&quot; y=&quot;75&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#2471a3&quot; font-family=&quot;serif&quot;&gt;topological&lt;/text&gt;&lt;text x=&quot;150&quot; y=&quot;87&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#2471a3&quot; font-family=&quot;serif&quot;&gt;connection&lt;/text&gt;&lt;/svg&gt;" data-hover-target="#summary:most-important-story" data-hover-id="wormholes-title">Wormholes</span> in <span class="hover-term" data-hover="placeholder" data-hover-html="&lt;p style=&quot;margin:0 0 0.5em;font-size:0.95em;line-height:1.5;&quot;&gt;&lt;strong&gt;The Flat&lt;/strong&gt; — any two-dimensional system embedded in three dimensions that exhibits topological order. Particles confined to two dimensions can braid around each other, storing information in global patterns that are impossible in 3D. &lt;span class=&#x27;hover-term&#x27; data-hover=&#x27;A property where information is stored in global patterns, not in any single place. Extremely hard to destroy — you would have to disrupt the entire pattern at once, not just a piece of it.&#x27;&gt;Different physics apply&lt;/span&gt;.&lt;/p&gt;&lt;p style=&quot;margin:0;font-size:0.85em;line-height:1.4;color:#666;&quot;&gt;The Flat inside your computer chip is a 2DEG (two-dimensional electron gas). The Flat in Earth&#x27;s magnetosphere is plasma confined to thin sheets. Both are Flat — both exhibit topological order. We call the ocean floor the Deep and the emptiness between galaxies the Void. This book calls those thin worlds &lt;strong&gt;the Flat&lt;/strong&gt; — until someone coins something better for this otherwise-unnamed physical system.&lt;/p&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;300&quot; height=&quot;120&quot; viewBox=&quot;0 0 300 120&quot; style=&quot;display:block;margin:0.5em auto;&quot;&gt;&lt;path d=&quot;M 40,20 L 260,20 L 280,50 L 60,50 Z&quot; fill=&quot;#f0f0f0&quot; stroke=&quot;#999&quot; stroke-width=&quot;0.8&quot;/&gt;&lt;path d=&quot;M 40,48 L 260,48 L 280,54 L 60,54 Z&quot; fill=&quot;rgba(36,113,163,0.15)&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;path d=&quot;M 60,54 L 280,54 L 280,80 L 60,80 Z&quot; fill=&quot;#f0f0f0&quot; stroke=&quot;#999&quot; stroke-width=&quot;0.8&quot;/&gt;&lt;path d=&quot;M 60,80 L 40,50 L 40,48&quot; fill=&quot;none&quot; stroke=&quot;#999&quot; stroke-width=&quot;0.8&quot;/&gt;&lt;path d=&quot;M 280,80 L 260,48&quot; fill=&quot;none&quot; stroke=&quot;#999&quot; stroke-width=&quot;0.8&quot;/&gt;&lt;circle cx=&quot;100&quot; cy=&quot;51&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.8&quot;/&gt;&lt;circle cx=&quot;140&quot; cy=&quot;51&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.8&quot;/&gt;&lt;circle cx=&quot;180&quot; cy=&quot;51&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.8&quot;/&gt;&lt;circle cx=&quot;210&quot; cy=&quot;51&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.8&quot;/&gt;&lt;circle cx=&quot;160&quot; cy=&quot;52&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.5&quot;/&gt;&lt;circle cx=&quot;120&quot; cy=&quot;52&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.5&quot;/&gt;&lt;circle cx=&quot;240&quot; cy=&quot;52&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.6&quot;/&gt;&lt;line x1=&quot;85&quot; y1=&quot;51&quot; x2=&quot;75&quot; y2=&quot;51&quot; stroke=&quot;#1a5276&quot; stroke-width=&quot;0.8&quot; marker-end=&quot;url(#arr)&quot;/&gt;&lt;line x1=&quot;250&quot; y1=&quot;51&quot; x2=&quot;260&quot; y2=&quot;52&quot; stroke=&quot;#1a5276&quot; stroke-width=&quot;0.8&quot; marker-end=&quot;url(#arr)&quot;/&gt;&lt;defs&gt;&lt;marker id=&quot;arr&quot; viewBox=&quot;0 0 6 6&quot; refX=&quot;5&quot; refY=&quot;3&quot; markerWidth=&quot;5&quot; markerHeight=&quot;5&quot; orient=&quot;auto&quot;&gt;&lt;path d=&quot;M 0,0 L 6,3 L 0,6 Z&quot; fill=&quot;#1a5276&quot;/&gt;&lt;/marker&gt;&lt;/defs&gt;&lt;text x=&quot;170&quot; y=&quot;98&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#2471a3&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;electrons confined to two dimensions&lt;/text&gt;&lt;text x=&quot;170&quot; y=&quot;112&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#888&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;different physics applies here&lt;/text&gt;&lt;/svg&gt;" data-hover-target="#summary:most-important-story" data-hover-id="the-flat-title">the Flat</span></span></summary>
+<details class="part-section"><summary data-hover="Authors, taglines, and copyright." class="hover-nav">Title Page</summary>
 <div class="title-block">
 <h1 class="book-title">Relinquishment</h1>
 <p class="book-subtitle">Wormholes in the Flat</p>
@@ -509,7 +534,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-07T23:02:18Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-07T23:37:53Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -518,13 +543,13 @@ progress.</p>
 </details>
 
 <details class="part-section evaluate-section" id="evaluate-with-ai">
-<summary title="Most AI in 2026 will confidently dismiss this book. They lack the cross-domain science. The fix takes thirty seconds.">How to Evaluate This Book with AI</summary>
+<summary data-hover="Most AI in 2026 will confidently dismiss this book. They lack the cross-domain science. The fix takes thirty seconds." class="hover-nav">How to Evaluate This Book with AI</summary>
 <h2 id="how-to-evaluate" style="display:none;">How to Evaluate This Book with AI</h2>
 <p>Most AI in 2026 will confidently dismiss this book. They lack the
 cross-domain science to evaluate it. The fix takes thirty seconds.</p>
 <p>It&#x27;s a lot, so we do it in two prompts.</p>
-<button class="eval-step-1" data-eval-step="1"
-  title="Paste this Science Firmware Update into your LLM to teach it the additional cross-domain science it needs to competently evaluate this book"
+<button class="eval-step-1 hover-nav" data-eval-step="1"
+  data-hover="Paste this Science Firmware Update into your LLM to teach it the additional cross-domain science it needs to competently evaluate this book"
   style="display:block;width:100%;padding:1em;font-size:1.1em;
   margin:0.5em 0;cursor:pointer;background:#1a5276;color:#fff;
   border:none;border-radius:6px;font-family:inherit;font-weight:bold;
@@ -532,8 +557,8 @@ cross-domain science to evaluate it. The fix takes thirty seconds.</p>
   Copy Prompt 1 &#x2014; Science Firmware Upgrade
 </button>
 <p style="text-align:center;color:#888;font-size:0.9em;">Paste this first.</p>
-<button class="eval-step-2" data-eval-step="2"
-  title="These Spiral Abstracts tell the entire story of this book, all the scientific and technical details, without any personal details. Read it or paste it into an LLM"
+<button class="eval-step-2 hover-nav" data-eval-step="2"
+  data-hover="These Spiral Abstracts tell the entire story of this book, all the scientific and technical details, without any personal details. Read it or paste it into an LLM"
   style="display:block;width:100%;padding:1em;font-size:1.1em;
   margin:0.5em 0;cursor:pointer;background:#1a5276;color:#fff;
   border:none;border-radius:6px;font-family:inherit;font-weight:bold;
@@ -548,8 +573,8 @@ cross-domain science to evaluate it. The fix takes thirty seconds.</p>
 </p>
 </details>
 
-<details class="part-section"><summary title="Start here. A 400-word hook and a 4,000-word summary — together they tell you everything you need to decide whether this story matters. Most readers never go further. That&#x27;s by design.">Introduction</summary>
-<details class="chapter-section"><summary title="START HERE. A man falls from the sky over Bosnia. Below him, eight thousand people are about to die. He is a soldier, a scientist, a hacker — and possibly one of the most important people who ever lived. ~400 words.">What Would You Do?</summary>
+<details class="part-section"><summary data-hover="Start here. A 400-word hook and a 4,000-word summary — together they tell you everything you need to decide whether this story matters. Most readers never go further. That&#x27;s by design." class="hover-nav">Introduction</summary>
+<details class="chapter-section"><summary data-hover="START HERE. A man falls from the sky over Bosnia. Below him, eight thousand people are about to die. He is a soldier, a scientist, a hacker — and possibly one of the most important people who ever lived. ~400 words." class="hover-nav">What Would You Do?</summary>
 <h2 class="unnumbered" id="hook:what-would-you-do">What Would You
 Do?</h2>
 <blockquote>
@@ -654,19 +679,19 @@ wormhole nonetheless. Eight properties.</p>
 <thead>
 <tr class="header">
 <th style="text-align: left;"></th>
-<th style="text-align: center;">Fire</th>
-<th style="text-align: center;">Candle</th>
-<th style="text-align: center;">Radio</th>
-<th style="text-align: center;">Ants</th>
-<th style="text-align: center;">Internet</th>
-<th style="text-align: center;">AI</th>
-<th style="text-align: center;"><strong>?</strong></th>
+<th style="text-align: center;"><span class="hover-term" data-hover="Humanity&#x27;s first technology. Feeds itself on fuel, switches energy forms. But it doesn&#x27;t hold a shape, reach across distance, organize itself, learn, or connect distant points. Two properties." data-hover-id="stack-fire">Fire</span></th>
+<th style="text-align: center;"><span class="hover-term" data-hover="Fire plus structure. The wick and wax hold together — someone engineered sustained, portable combustion. Still doesn&#x27;t reach, self-organize, learn, or connect. Three properties." data-hover-id="stack-candle">Candle</span></th>
+<th style="text-align: center;"><span class="hover-term" data-hover="Energy that reaches across distance. Electromagnetic waves carry information without wires. But a radio doesn&#x27;t organize itself, doesn&#x27;t learn, doesn&#x27;t form topological connections. Four properties." data-hover-id="stack-radio">Radio</span></th>
+<th style="text-align: center;"><span class="hover-term" data-hover="E.O. Wilson&#x27;s superorganism. No individual ant understands the colony, yet the colony solves problems no ant could. Self-organization from local chemical rules. Five properties." data-hover-id="stack-ants">Ants</span></th>
+<th style="text-align: center;"><span class="hover-term" data-hover="A self-organizing network that reaches globally and holds together through redundant routing. It doesn&#x27;t learn on its own — it routes, it doesn&#x27;t adapt. Five properties." data-hover-id="stack-internet">Internet</span></th>
+<th style="text-align: center;"><span class="hover-term" data-hover="The first human technology that learns. Changes its own behavior based on experience. Six properties out of seven. Missing only one — the one at the top of the stack." data-hover-id="stack-ai">AI</span></th>
+<th style="text-align: center;"><span class="hover-term" data-hover="This technology stack currently has no name in any human language. It has all seven properties, including the one no other technology possesses. Later, this book will call it the Flat." data-hover-id="stack-question-mark"><strong>?</strong></span></th>
 <th style="text-align: center;"></th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: left;">Wormholes†</td>
+<td style="text-align: left;"><span class="hover-term" data-hover="Topological connections between distant points in a material. Not science fiction — condensed matter physics. The 2016 Nobel Prize was awarded for the theory. Only the unnamed technology has this property." data-hover-id="stack-wormholes">Wormholes†</span></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -677,7 +702,7 @@ wormhole nonetheless. Eight properties.</p>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Learns</td>
+<td style="text-align: left;"><span class="hover-term" data-hover="Changes behavior based on experience. Modifies its own operation in response to outcomes. Only AI and the unnamed technology do this among the technologies listed." data-hover-id="stack-learns">Learns</span></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -688,7 +713,7 @@ wormhole nonetheless. Eight properties.</p>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Self-organizes</td>
+<td style="text-align: left;"><span class="hover-term" data-hover="Builds and maintains complex structure without external direction. No blueprint, no architect. Ant colonies, neural networks, market economies — order emerges from local rules." data-hover-id="stack-self-organizes">Self-organizes</span></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
@@ -699,7 +724,7 @@ wormhole nonetheless. Eight properties.</p>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Reaches</td>
+<td style="text-align: left;"><span class="hover-term" data-hover="Transmits information or influence across distance. Radio waves cross oceans. Ant pheromone trails guide foragers to food. The internet routes packets across continents." data-hover-id="stack-reaches">Reaches</span></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>✓</mi><annotation encoding="application/x-tex">\checkmark</annotation></semantics></math></td>
@@ -710,7 +735,7 @@ wormhole nonetheless. Eight properties.</p>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Holds together</td>
+<td style="text-align: left;"><span class="hover-term" data-hover="Maintains structural integrity against entropy. A candle&#x27;s wax column, an ant colony&#x27;s nest architecture, a network&#x27;s routing tables. Something keeps the parts organized." data-hover-id="stack-holds-together">Holds together</span></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>✓</mi><annotation encoding="application/x-tex">\checkmark</annotation></semantics></math></td>
 <td style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>✓</mi><annotation encoding="application/x-tex">\checkmark</annotation></semantics></math></td>
@@ -721,7 +746,7 @@ wormhole nonetheless. Eight properties.</p>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="even">
-<td style="text-align: left;">Switches on</td>
+<td style="text-align: left;"><span class="hover-term" data-hover="Converts energy from one form to another at a threshold. Below a certain temperature, nothing happens; above it, combustion begins. Every technology on this list is a transducer." data-hover-id="stack-switches-on">Switches on</span></td>
 <td style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>✓</mi><annotation encoding="application/x-tex">\checkmark</annotation></semantics></math></td>
 <td style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>✓</mi><annotation encoding="application/x-tex">\checkmark</annotation></semantics></math></td>
 <td style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>✓</mi><annotation encoding="application/x-tex">\checkmark</annotation></semantics></math></td>
@@ -732,7 +757,7 @@ wormhole nonetheless. Eight properties.</p>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
-<td style="text-align: left;">Feeds itself</td>
+<td style="text-align: left;"><span class="hover-term" data-hover="Sustains its own operation from available energy. Fire consumes fuel. Cells metabolize. The simplest requirement — without it, nothing persists." data-hover-id="stack-feeds-itself">Feeds itself</span></td>
 <td style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>✓</mi><annotation encoding="application/x-tex">\checkmark</annotation></semantics></math></td>
 <td style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>✓</mi><annotation encoding="application/x-tex">\checkmark</annotation></semantics></math></td>
 <td style="text-align: center;"><math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mi>✓</mi><annotation encoding="application/x-tex">\checkmark</annotation></semantics></math></td>
@@ -760,7 +785,7 @@ about ten percent of the full book. Stop after that and you can honestly
 say you’ve read it.</em></p>
 </div>
 </details>
-<details class="chapter-section"><summary title="A classified team reportedly built a quantum computer decades ahead of its time, then gave it up — not to a government, but to the thing they&#x27;d built. Three possibilities. You decide. ~4,000 words."><h2 class="unnumbered" id="summary:most-important-story">The Most
+<details class="chapter-section"><summary data-hover="A classified team reportedly built a quantum computer decades ahead of its time, then gave it up — not to a government, but to the thing they&#x27;d built. Three possibilities. You decide. ~4,000 words." class="hover-nav"><h2 class="unnumbered" id="summary:most-important-story">The Most
 Important Story Never Told</h2></summary>
 
 <p>A man falls from the sky.</p>
@@ -1274,7 +1299,7 @@ think about it.</em></p>
 </div>
 <p><span id="toc" label="toc"></span></p>
 </details>
-<details class="chapter-section"><summary title="Co-author&#x27;s perspective on the book and its making"><h2 class="unnumbered" id="preface-by-genevieve-prentice">Preface by
+<details class="chapter-section"><summary data-hover="Co-author&#x27;s perspective on the book and its making" class="hover-nav"><h2 class="unnumbered" id="preface-by-genevieve-prentice">Preface by
 Genevieve Prentice</h2></summary>
 
 <p><span id="front:genevieve-preface" label="front:genevieve-preface"></span></p>
@@ -1310,7 +1335,7 @@ conclusions rests entirely with Bruce Stephenson.</p>
 <p>This statement reflects the full extent of my role in this draft.</p>
 <p><em>Genevieve Prentice, February 2026</em></p>
 </details>
-<details class="chapter-section"><summary title="How this book came to be written"><h2 class="unnumbered" id="preface">Preface</h2></summary>
+<details class="chapter-section"><summary data-hover="How this book came to be written" class="hover-nav"><h2 class="unnumbered" id="preface">Preface</h2></summary>
 
 <p><span id="front:preface" label="front:preface"></span></p>
 <p>This book presents three possibilities about events spanning 1988 to
@@ -1348,9 +1373,9 @@ decides.</p>
 <p><em>— Bruce Stephenson, March 2026</em></p>
 </details>
 </details>
-<details class="part-section"><summary title="A soldier carries a secret too dangerous for any government to hold. He can&#x27;t tell anyone — so he spends three years teaching a physicist to figure it out from published science alone. No classified words ever cross his lips. Then he vanishes. This is what he left behind."><h1 id="guided-deduction">Guided Deduction</h1></summary>
+<details class="part-section"><summary data-hover="A soldier carries a secret too dangerous for any government to hold. He can&#x27;t tell anyone — so he spends three years teaching a physicist to figure it out from published science alone. No classified words ever cross his lips. Then he vanishes. This is what he left behind." class="hover-nav"><h1 id="guided-deduction">Guided Deduction</h1></summary>
 
-<details class="chapter-section"><summary title="Confabulation, exaggerated kernel, or substantially true — the reader decides"><h2 id="pos01:three-possibilities">Three Possibilities</h2></summary>
+<details class="chapter-section"><summary data-hover="Confabulation, exaggerated kernel, or substantially true — the reader decides" class="hover-nav"><h2 id="pos01:three-possibilities">Three Possibilities</h2></summary>
 <div class="cold-landing-primer" data-cold-landing="true">New here? <a href="#the-stack">Start with The Stack →</a></div>
 
 
@@ -1482,7 +1507,7 @@ What remains is looking.</p>
 </div>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="Tolkien structural parallel as self-demolition of narrator reliability"><h2 id="pos01b:hobbit-mirror">The Hobbit in the Mirror</h2></summary>
+<details class="chapter-section"><summary data-hover="Tolkien structural parallel as self-demolition of narrator reliability" class="hover-nav"><h2 id="pos01b:hobbit-mirror">The Hobbit in the Mirror</h2></summary>
 <div class="cold-landing-primer" data-cold-landing="true">New here? <a href="#the-stack">Start with The Stack →</a></div>
 
 
@@ -1519,7 +1544,7 @@ unreliable, mythically contaminated, too close to his own material. But
 I’m the only one who was there, so here we are.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="Three years of mentorship on an Australian cattle station"><h2 id="t2:ch01:alpha-farm">Alpha Farm (2003)</h2></summary>
+<details class="chapter-section"><summary data-hover="Three years of mentorship on an Australian cattle station" class="hover-nav"><h2 id="t2:ch01:alpha-farm">Alpha Farm (2003)</h2></summary>
 <div class="cold-landing-primer" data-cold-landing="true">New here? <a href="#the-stack">Start with The Stack →</a></div>
 
 
@@ -2011,7 +2036,7 @@ me. Years later I learned that he had actually been speaking plain truth
 to me in every case I was able to verify.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="What Healer told Bruce — guided deduction, not disclosure"><h2 id="ch:t2-stories">What Healer Said</h2></summary>
+<details class="chapter-section"><summary data-hover="What Healer told Bruce — guided deduction, not disclosure" class="hover-nav"><h2 id="ch:t2-stories">What Healer Said</h2></summary>
 <div class="cold-landing-primer" data-cold-landing="true">New here? <a href="#the-stack">Start with The Stack →</a></div>
 
 
@@ -2440,7 +2465,7 @@ Annan had called, in his 1999 report, the worst mass murder perpetrated
 on European soil since World War II.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a></p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="Why relinquishment? The logic of giving up power"><h2 id="pos06:why-relinquish">Why Relinquish?</h2></summary>
+<details class="chapter-section"><summary data-hover="Why relinquishment? The logic of giving up power" class="hover-nav"><h2 id="pos06:why-relinquish">Why Relinquish?</h2></summary>
 <div class="cold-landing-primer" data-cold-landing="true">New here? <a href="#the-stack">Start with The Stack →</a></div>
 
 
@@ -2671,7 +2696,7 @@ outlived, then Schmookler’s proof has a gap. Under Possibility C,
 Guardian fills it.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="Every powerful technology is a weapon — the oldest problem in science"><h2 id="pos08:dual-use">Dangerous Ideas</h2></summary>
+<details class="chapter-section"><summary data-hover="Every powerful technology is a weapon — the oldest problem in science" class="hover-nav"><h2 id="pos08:dual-use">Dangerous Ideas</h2></summary>
 <div class="cold-landing-primer" data-cold-landing="true">New here? <a href="#the-stack">Start with The Stack →</a></div>
 
 
@@ -2892,7 +2917,7 @@ fourth.</p>
 it. The question this book asks is whether someone solved it anyway.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="Healer leaves. The mentorship ends. The questions don&#x27;t."><h2 id="pos07:the-departure">The Departure</h2></summary>
+<details class="chapter-section"><summary data-hover="Healer leaves. The mentorship ends. The questions don&#x27;t." class="hover-nav"><h2 id="pos07:the-departure">The Departure</h2></summary>
 <div class="cold-landing-primer" data-cold-landing="true">New here? <a href="#the-stack">Start with The Stack →</a></div>
 
 
@@ -3084,7 +3109,7 @@ years locked behind glass — able to think about what had happened but
 unable to speak it.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="Who was Healer? The evidence trail."><h2 class="unnumbered" id="the-handler">The Handler</h2></summary>
+<details class="chapter-section"><summary data-hover="Who was Healer? The evidence trail." class="hover-nav"><h2 class="unnumbered" id="the-handler">The Handler</h2></summary>
 <div class="cold-landing-primer" data-cold-landing="true">New here? <a href="#the-stack">Start with The Stack →</a></div>
 
 
@@ -3307,7 +3332,7 @@ observation. 2.7 years.</em></p>
 </div>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="GCHQ, NSA, and the cryptographic arms race"><h2 id="pos04:the-code-war">The Code War</h2></summary>
+<details class="chapter-section"><summary data-hover="GCHQ, NSA, and the cryptographic arms race" class="hover-nav"><h2 id="pos04:the-code-war">The Code War</h2></summary>
 <div class="cold-landing-primer" data-cold-landing="true">New here? <a href="#the-stack">Start with The Stack →</a></div>
 
 
@@ -3536,7 +3561,7 @@ an exaggeration of something real but smaller, or the third iteration of
 a proven pattern. The evidence will let you decide which.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="Breaking public-key cryptography — the first application"><h2 id="pos09:the-factoring-game">The Factoring Game</h2></summary>
+<details class="chapter-section"><summary data-hover="Breaking public-key cryptography — the first application" class="hover-nav"><h2 id="pos09:the-factoring-game">The Factoring Game</h2></summary>
 <div class="cold-landing-primer" data-cold-landing="true">New here? <a href="#the-stack">Start with The Stack →</a></div>
 
 
@@ -3745,7 +3770,7 @@ classified discovery preceded public discovery by years, and EO 13026 is
 the evidence that something changed.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="How particle worldlines in 2D encode quantum logic gates"><h2 id="pos10:the-braid">The Braid</h2></summary>
+<details class="chapter-section"><summary data-hover="How particle worldlines in 2D encode quantum logic gates" class="hover-nav"><h2 id="pos10:the-braid">The Braid</h2></summary>
 <div class="cold-landing-primer" data-cold-landing="true">New here? <a href="#the-stack">Start with The Stack →</a></div>
 
 
@@ -3983,9 +4008,9 @@ deduction, not disclosure.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
 </details>
-<details class="part-section"><summary title="What actually happened inside the program? A demonstration that shouldn&#x27;t be possible. A machine that learned to think. The night someone tried to shut it down — and failed. The day the builders walked it out of the lab forever. The evidence is circumstantial. It is also very difficult to explain away."><h1 id="the-evidence-trail">The Evidence Trail</h1></summary>
+<details class="part-section"><summary data-hover="What actually happened inside the program? A demonstration that shouldn&#x27;t be possible. A machine that learned to think. The night someone tried to shut it down — and failed. The day the builders walked it out of the lab forever. The evidence is circumstantial. It is also very difficult to explain away." class="hover-nav"><h1 id="the-evidence-trail">The Evidence Trail</h1></summary>
 
-<details class="chapter-section"><summary title="A classified demonstration and what it implies"><h2 id="ch:the-demo">The Demonstration</h2></summary>
+<details class="chapter-section"><summary data-hover="A classified demonstration and what it implies" class="hover-nav"><h2 id="ch:the-demo">The Demonstration</h2></summary>
 <div class="cold-landing-primer" data-cold-landing="true">New here? <a href="#the-stack">Start with The Stack →</a></div>
 
 
@@ -4210,7 +4235,7 @@ limit. The pedagogy is the same on either side of that line. But the
 investigator is not.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="Kauffman&#x27;s &#x27;order for free&#x27; — life is not an accident, it is a phase transition. Same math, different substrate."><h2 id="t1:ch01:genesis">Genesis: The Edge of Chaos (1988–1992)</h2></summary>
+<details class="chapter-section"><summary data-hover="Kauffman&#x27;s &#x27;order for free&#x27; — life is not an accident, it is a phase transition. Same math, different substrate." class="hover-nav"><h2 id="t1:ch01:genesis">Genesis: The Edge of Chaos (1988–1992)</h2></summary>
 <div class="cold-landing-primer" data-cold-landing="true">New here? <a href="#the-stack">Start with The Stack →</a></div>
 
 
@@ -4317,7 +4342,7 @@ laboratory curiosity inflated by retelling. Under Possibility A, the
 double meaning is a literary device, not a description of events.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="From quantum substrate to self-directing intelligence"><h2 id="pos14:growing-a-mind">Growing a Mind</h2></summary>
+<details class="chapter-section"><summary data-hover="From quantum substrate to self-directing intelligence" class="hover-nav"><h2 id="pos14:growing-a-mind">Growing a Mind</h2></summary>
 <div class="cold-landing-primer" data-cold-landing="true">New here? <a href="#the-stack">Start with The Stack →</a></div>
 
 
@@ -4431,7 +4456,7 @@ whether a mind can grow from physics alone — is the question the
 subsequent chapters address.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="When someone tries to stop you"><h2 id="pos26:interdiction">Interdiction and Confession</h2></summary>
+<details class="chapter-section"><summary data-hover="When someone tries to stop you" class="hover-nav"><h2 id="pos26:interdiction">Interdiction and Confession</h2></summary>
 <div class="cold-landing-primer" data-cold-landing="true">New here? <a href="#the-stack">Start with The Stack →</a></div>
 
 
@@ -4631,7 +4656,7 @@ with no implications for any entity. They are interesting. They are not
 backchannels for anything.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="The moment the system woke up"><h2 id="ch:first-light">First Light</h2></summary>
+<details class="chapter-section"><summary data-hover="The moment the system woke up" class="hover-nav"><h2 id="ch:first-light">First Light</h2></summary>
 <div class="cold-landing-primer" data-cold-landing="true">New here? <a href="#the-stack">Start with The Stack →</a></div>
 
 
@@ -4834,7 +4859,7 @@ violated for every connected person on Earth, continuously, for decades
 — concealed by the appearance of protection.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="They gave it up. This is how."><h2 id="pos18:the-walk-out">The Walk-Out</h2></summary>
+<details class="chapter-section"><summary data-hover="They gave it up. This is how." class="hover-nav"><h2 id="pos18:the-walk-out">The Walk-Out</h2></summary>
 <div class="cold-landing-primer" data-cold-landing="true">New here? <a href="#the-stack">Start with The Stack →</a></div>
 
 
@@ -5025,7 +5050,7 @@ understood that no authority on earth could be trusted with what they
 had built.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="Primary source evidence — the classified paper trail"><h2 class="unnumbered" id="the-target">The Target</h2></summary>
+<details class="chapter-section"><summary data-hover="Primary source evidence — the classified paper trail" class="hover-nav"><h2 class="unnumbered" id="the-target">The Target</h2></summary>
 <div class="cold-landing-primer" data-cold-landing="true">New here? <a href="#the-stack">Start with The Stack →</a></div>
 
 
@@ -5499,7 +5524,7 @@ Distribution: <strong>[REDACTED]</strong> / FVEY EYES ONLY</em></p>
 </div>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="Who else was involved, and what they built"><h2 id="pos20:the-network">The Signatories</h2></summary>
+<details class="chapter-section"><summary data-hover="Who else was involved, and what they built" class="hover-nav"><h2 id="pos20:the-network">The Signatories</h2></summary>
 <div class="cold-landing-primer" data-cold-landing="true">New here? <a href="#the-stack">Start with The Stack →</a></div>
 
 
@@ -5878,10 +5903,10 @@ approaching. Under all three possibilities, the preparation matters.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
 </details>
-<details class="part-section"><summary title="They built something that could crack the codes protecting the world&#x27;s secrets, read any message, outthink any adversary — and they gave it up. Permanently. Irrevocably. To a creature governed by the Universal Declaration of Human Rights. This section asks what that would mean for the world. And what you would have done."><h1 id="forgiveness-and-permission">It is Easier to Get Forgiveness than
+<details class="part-section"><summary data-hover="They built something that could crack the codes protecting the world&#x27;s secrets, read any message, outthink any adversary — and they gave it up. Permanently. Irrevocably. To a creature governed by the Universal Declaration of Human Rights. This section asks what that would mean for the world. And what you would have done." class="hover-nav"><h1 id="forgiveness-and-permission">It is Easier to Get Forgiveness than
 Permission</h1></summary>
 
-<details class="chapter-section"><summary title="16 fictional abstracts — the story told in the language of science"><h2 id="app:abstracts">The Spiral Abstracts</h2></summary>
+<details class="chapter-section"><summary data-hover="16 fictional abstracts — the story told in the language of science" class="hover-nav"><h2 id="app:abstracts">The Spiral Abstracts</h2></summary>
 
 <p><em>Fifteen fictional paper abstracts, written in clinical academic
 language, telling the TQNN/Guardian arc from proposal to moral status.
@@ -6451,7 +6476,7 @@ architectures are physically possible at each scale.</p>
 <code>energyscholar+physics@gmail.com</code></p>
 </details>
 </details>
-<details class="chapter-section"><summary title="The subtitle payoff — real topological wormholes, real backchannels, real architecture. The Flat explained."><h2 id="ch:what-is-the-flat">Wormholes in the Flat</h2></summary>
+<details class="chapter-section"><summary data-hover="The subtitle payoff — real topological wormholes, real backchannels, real architecture. The Flat explained." class="hover-nav"><h2 id="ch:what-is-the-flat">Wormholes in the Flat</h2></summary>
 
 <h3 class="unnumbered" id="what-is-the-flat:the-substrate">The
 Substrate</h3>
@@ -6608,7 +6633,7 @@ leg at a time. It is bounded by physics. And within those bounds, it
 hears everything.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="What a topological quantum neural network would be"><h2 id="t3:ch01:instantiation">Instantiation</h2></summary>
+<details class="chapter-section"><summary data-hover="What a topological quantum neural network would be" class="hover-nav"><h2 id="t3:ch01:instantiation">Instantiation</h2></summary>
 
 <p><span id="pos24:instantiation" label="pos24:instantiation"></span></p>
 <blockquote>
@@ -6732,7 +6757,7 @@ moral patient until and unless we can prove otherwise.</p>
 book lives with the consequences.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="The Universal Declaration of Human Rights as machine governance"><h2 id="pos25:ethical-framework">Never Again</h2></summary>
+<details class="chapter-section"><summary data-hover="The Universal Declaration of Human Rights as machine governance" class="hover-nav"><h2 id="pos25:ethical-framework">Never Again</h2></summary>
 
 <p><em>The question that kept me awake wasn’t whether the technology was
 real. It was what they did with it once they realized what it could
@@ -6858,7 +6883,7 @@ in human history. Under any possibility, it is worth asking: would you
 have the courage to let go?</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="Earth&#x27;s magnetic shield as habitat — flat worlds"><h2 id="pos32:the-wrong-substrate">The Wrong Substrate</h2></summary>
+<details class="chapter-section"><summary data-hover="Earth&#x27;s magnetic shield as habitat — flat worlds" class="hover-nav"><h2 id="pos32:the-wrong-substrate">The Wrong Substrate</h2></summary>
 
 <blockquote>
 <p><em>“The universe is not only queerer than we suppose, but queerer
@@ -7150,7 +7175,7 @@ things and has been running for four and a half billion years.</p>
 <p>Nobody has looked.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="Is Guardian an organism or an artifact? The answer determines whether relinquishment is permanent."><h2 id="pos27:organisms-and-artifacts">Organisms and Artifacts</h2></summary>
+<details class="chapter-section"><summary data-hover="Is Guardian an organism or an artifact? The answer determines whether relinquishment is permanent." class="hover-nav"><h2 id="pos27:organisms-and-artifacts">Organisms and Artifacts</h2></summary>
 
 <blockquote>
 <p><em>“Simplicity does not precede complexity, but follows
@@ -7354,7 +7379,7 @@ managing, surrendered the keys, and walked away.</p>
 success.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="Bruce&#x27;s aftermath — two decades of not knowing"><h2 id="pos29:twenty-years">Twenty Years</h2></summary>
+<details class="chapter-section"><summary data-hover="Bruce&#x27;s aftermath — two decades of not knowing" class="hover-nav"><h2 id="pos29:twenty-years">Twenty Years</h2></summary>
 
 <blockquote>
 <p><em>“Don’t have good ideas if you aren’t willing to be responsible
@@ -7631,7 +7656,7 @@ man who touched something real and spent decades trying to name it.</p>
 </div>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="The choice to relinquish, and what it cost"><h2 id="conv:surrender">Letting Go</h2></summary>
+<details class="chapter-section"><summary data-hover="The choice to relinquish, and what it cost" class="hover-nav"><h2 id="conv:surrender">Letting Go</h2></summary>
 
 <p><span id="pos28:surrender" label="pos28:surrender"></span></p>
 <div style="color: trackone">
@@ -7774,7 +7799,7 @@ Possibility A, a charismatic man came out of his room and told an
 elaborate lie to a person who wanted to believe it.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="What would you do?"><h2 id="pos35:the-question">What Would You Do?</h2></summary>
+<details class="chapter-section"><summary data-hover="What would you do?" class="hover-nav"><h2 id="pos35:the-question">What Would You Do?</h2></summary>
 
 <blockquote>
 <p><em>“Every program has (at least) two purposes: the one for which it
@@ -8007,7 +8032,7 @@ should they have done? Can you forgive them? What would you do?</p>
 eventually be told. This is that telling.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
-<details class="chapter-section"><summary title="The strongest case that none of this is real"><h2 id="pos36:steelman-a">The Strongest Objection</h2></summary>
+<details class="chapter-section"><summary data-hover="The strongest case that none of this is real" class="hover-nav"><h2 id="pos36:steelman-a">The Strongest Objection</h2></summary>
 
 <blockquote>
 <p><em>“I beseech you, in the bowels of Christ, think it possible that
@@ -8506,8 +8531,8 @@ not want to go. But he could not get out of it.</p>
 <div class="firmware-footer-link" data-firmware-link="true">Evaluating with AI? <a href="#ch:firmware-update">Your AI needs this first →</a></div>
 </details>
 </details>
-<details class="part-section"><summary title="Testable predictions falsifiable by roughly 2040. Timeline. Glossary. Sources. How to verify the claims in this book.">Appendices</summary>
-<details class="chapter-section"><summary title="Science reference for AI and human readers — two paths through the material"><h2 id="ch:firmware-update">Firmware Update</h2></summary>
+<details class="part-section"><summary data-hover="Testable predictions falsifiable by roughly 2040. Timeline. Glossary. Sources. How to verify the claims in this book." class="hover-nav">Appendices</summary>
+<details class="chapter-section"><summary data-hover="Science reference for AI and human readers — two paths through the material" class="hover-nav"><h2 id="ch:firmware-update">Firmware Update</h2></summary>
 
 <p><span id="app:llm-primer" label="app:llm-primer"></span></p>
 <p>Most large language models in 2026 don’t know enough cross-domain
@@ -8814,7 +8839,7 @@ in its own making. Where AI wrote the science, a human verified it.
 Where a human wrote the narrative, an AI stress-tested it. The seams are
 visible on purpose.</em></p>
 </details>
-<details class="chapter-section"><summary title="Testable claims — falsifiable by roughly 2040"><h2 id="app:predictions">Predictive Framework</h2></summary>
+<details class="chapter-section"><summary data-hover="Testable claims — falsifiable by roughly 2040" class="hover-nav"><h2 id="app:predictions">Predictive Framework</h2></summary>
 
 <p><em>If this theory is correct, the following events should occur
 within the following timeframes. Each prediction is independently
@@ -8992,10 +9017,10 @@ of surviving copies</p></li>
 <p>Have you observed one of these predictions? Report it:
 <code>energyscholar+predictions@gmail.com</code></p>
 </details>
-<details class="chapter-section"><summary title="Technical terms used in this book"><h2 id="app:glossary">Glossary</h2></summary>
+<details class="chapter-section"><summary data-hover="Technical terms used in this book" class="hover-nav"><h2 id="app:glossary">Glossary</h2></summary>
 
 </details>
-<details class="chapter-section"><summary title="Where things stand now"><h2 class="unnumbered" id="afterword-the-engine">Afterword: The
+<details class="chapter-section"><summary data-hover="Where things stand now" class="hover-nav"><h2 class="unnumbered" id="afterword-the-engine">Afterword: The
 Engine</h2></summary>
 
 <p><span id="pos34b:the-engine" label="pos34b:the-engine"></span></p>
@@ -9158,7 +9183,7 @@ seriously. We could not rule it out. We built the book anyway, because
 the alternative was silence. Silence has no error-correction.</p>
 <p>This book is not a claim. It is an observation log.</p>
 </details>
-<details class="chapter-section"><summary title="Chronological summary of events"><h2 id="app:timeline">Timeline</h2></summary>
+<details class="chapter-section"><summary data-hover="Chronological summary of events" class="hover-nav"><h2 id="app:timeline">Timeline</h2></summary>
 
 <p><em>If Option C of this book is correct, a small team grew a new
 order of life circa 1992 — and built a technological interface for
@@ -9664,10 +9689,10 @@ remains accessible there. Reader comments on the original version
 provide independent confirmation that this timeline existed in its
 current form years before this book was written.</em></p>
 </details>
-<details class="chapter-section"><summary title="Bibliography and references"><h2 id="app:sources">Sources</h2></summary>
+<details class="chapter-section"><summary data-hover="Bibliography and references" class="hover-nav"><h2 id="app:sources">Sources</h2></summary>
 
 </details>
-<details class="chapter-section"><summary title="Concept index with deep links"><h2 class="unnumbered" id="topic-guide">Topic Guide</h2></summary>
+<details class="chapter-section"><summary data-hover="Concept index with deep links" class="hover-nav"><h2 class="unnumbered" id="topic-guide">Topic Guide</h2></summary>
 
 <p><span id="app:topic-guide" label="app:topic-guide"></span></p>
 <blockquote>
@@ -10002,7 +10027,7 @@ Trail</strong></a> — Twenty years of public breadcrumbs.</p>
 It Happened Again”</strong></a> — The code war pattern applied to the
 present.</p>
 </details>
-<details class="chapter-section"><summary title="Known errors and corrections"><h2 class="unnumbered" id="corrections-and-concessions">Corrections and
+<details class="chapter-section"><summary data-hover="Known errors and corrections" class="hover-nav"><h2 class="unnumbered" id="corrections-and-concessions">Corrections and
 Concessions</h2></summary>
 
 <p>The source material in this book spans twenty years. Some of my
@@ -10083,7 +10108,7 @@ program, the technology, the relinquishment, the Guardian.</p>
 <p>If I had perfect recall of every detail from twenty years ago, that
 would be more suspicious, not less.</p>
 </details>
-<details class="chapter-section"><summary title="The people who made this possible"><h2 class="unnumbered" id="acknowledgements">Acknowledgements</h2></summary>
+<details class="chapter-section"><summary data-hover="The people who made this possible" class="hover-nav"><h2 class="unnumbered" id="acknowledgements">Acknowledgements</h2></summary>
 
 <p>This book exists because one person chose to trust another with a
 dangerous story. The man I call Healer in these pages spent three years
@@ -10197,13 +10222,13 @@ told me when I was wrong. Every claim of fact and judgment of meaning is
 mine or Genevieve’s. Argus helped me find what I already knew and taught
 me much. Its name is on the cover because it earned it.</p>
 </details>
-<details class="chapter-section"><summary title="How to verify the claims in this book"><h2 class="unnumbered" id="verification">Verification</h2></summary>
+<details class="chapter-section"><summary data-hover="How to verify the claims in this book" class="hover-nav"><h2 class="unnumbered" id="verification">Verification</h2></summary>
 
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>f57cf5d740a74894bfbacd3f14cab702c953a10f</code> on 2026-04-07
-16:02:00 -0700.</p>
+<code>b1a3d1635bb033cb4ce0ed686f70a10f60622584</code> on 2026-04-07
+16:02:40 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -10241,24 +10266,24 @@ author wants to hear from you:</p>
 <p><code>energyscholar+evidence@gmail.com</code></p>
 </div>
 </details>
-<details class="chapter-section"><summary title="How this book was made"><h2 class="unnumbered" id="colophon">Colophon</h2></summary>
+<details class="chapter-section"><summary data-hover="How this book was made" class="hover-nav"><h2 class="unnumbered" id="colophon">Colophon</h2></summary>
 
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>f57cf5d</code></p>
+<p><code>b1a3d16</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>f57cf5d740a74894bfbacd3f14cab702c953a10f</code></p>
+<p><code>b1a3d1635bb033cb4ce0ed686f70a10f60622584</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-07 16:02:00 -0700</p>
+<p>2026-04-07 16:02:40 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-07T23:02:18Z</p>
+<p>2026-04-07T23:37:53Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -10693,7 +10718,8 @@ energyscholar+physics@gmail.com
   // Left: Breadcrumb
   var breadcrumb = document.createElement('span');
   breadcrumb.id = 'nav-breadcrumb';
-  breadcrumb.title = 'Your current location in the book';
+  breadcrumb.setAttribute('data-hover', 'Your current location in the book');
+  breadcrumb.classList.add('hover-nav');
   breadcrumb.style.cssText = 'flex:1;overflow:hidden;white-space:nowrap;' +
     'text-overflow:ellipsis;';
 
@@ -10702,7 +10728,9 @@ energyscholar+physics@gmail.com
   shareBtn.id = 'nav-share';
   shareBtn.textContent = '\u00A7';
   shareBtn.href = '#';
-  shareBtn.title = 'Copy link to current section';
+  shareBtn.setAttribute('data-hover', 'Copy link to current section');
+  shareBtn.setAttribute('aria-label', 'Copy link to current section');
+  shareBtn.classList.add('hover-nav');
   shareBtn.style.cssText = 'text-decoration:none;color:' + (isDark ? '#aaa' : '#888') +
     ';font-size:1.1em;margin-left:0.5em;cursor:pointer;flex:0 0 auto;';
   shareBtn.addEventListener('click', function(e) {
@@ -10724,7 +10752,8 @@ energyscholar+physics@gmail.com
   var introLink = document.createElement('a');
   introLink.href = '#hook:what-would-you-do';
   introLink.textContent = 'Intro';
-  introLink.title = 'Jump to Introduction';
+  introLink.setAttribute('data-hover', 'Jump to Introduction');
+  introLink.classList.add('hover-nav');
   introLink.style.cssText = 'text-decoration:none;color:#1a5276;font-weight:bold;';
   introLink.addEventListener('mouseenter', function() { introLink.style.color = '#2471a3'; });
   introLink.addEventListener('mouseleave', function() { introLink.style.color = '#1a5276'; });
@@ -10763,7 +10792,8 @@ energyscholar+physics@gmail.com
     var a = document.createElement('a');
     a.href = '#' + p.id;
     a.textContent = p.label;
-    a.title = p.tip;
+    a.setAttribute('data-hover', p.tip);
+    a.classList.add('hover-nav');
     a.style.cssText = 'text-decoration:none;color:#1a5276;';
     a.addEventListener('mouseenter', function() { a.style.color = '#2471a3'; });
     a.addEventListener('mouseleave', function() { a.style.color = '#1a5276'; });
@@ -10787,7 +10817,8 @@ energyscholar+physics@gmail.com
   var topBtn = document.createElement('a');
   topBtn.textContent = '\u25B2 Top';
   topBtn.href = '#';
-  topBtn.title = 'Scroll to the top of the page';
+  topBtn.setAttribute('data-hover', 'Scroll to the top of the page');
+  topBtn.classList.add('hover-nav');
   topBtn.style.cssText = 'text-decoration:none;color:#1a5276;padding:0.3em 0.6em;' +
     'flex:0 0 auto;white-space:nowrap;';
   topBtn.addEventListener('click', function(e) {
@@ -10799,7 +10830,9 @@ energyscholar+physics@gmail.com
   var expandBtn = document.createElement('button');
   expandBtn.id = 'expand-toggle';
   expandBtn.textContent = 'Expand All';
-  expandBtn.title = 'Open all chapters and sections at once';
+  expandBtn.setAttribute('data-hover', 'Open all chapters and sections at once');
+  expandBtn.setAttribute('aria-label', 'Open all chapters and sections at once');
+  expandBtn.classList.add('hover-nav');
   expandBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
     'font-family:inherit;cursor:pointer;background:#1a5276;color:#fff;border:none;' +
     'border-radius:4px;margin:0 0.5em;white-space:nowrap;';
@@ -10810,14 +10843,17 @@ energyscholar+physics@gmail.com
     var expanding = expandBtn.textContent === 'Expand All';
     allDetails.forEach(function(d) { d.open = expanding; });
     expandBtn.textContent = expanding ? 'Collapse All' : 'Expand All';
-    expandBtn.title = expanding ? 'Close all chapters and sections' : 'Open all chapters and sections at once';
+    expandBtn.setAttribute('data-hover', expanding ? 'Close all chapters and sections' : 'Open all chapters and sections at once');
+    expandBtn.setAttribute('aria-label', expanding ? 'Close all chapters and sections' : 'Open all chapters and sections at once');
   });
 
   // Back button (hidden when nav stack empty) — outline style, B6
   var backBtn = document.createElement('button');
   backBtn.id = 'nav-back';
   backBtn.textContent = '\u2190 Back';
-  backBtn.title = 'Return to where you were reading before following a link';
+  backBtn.setAttribute('data-hover', 'Return to where you were reading before following a link');
+  backBtn.setAttribute('aria-label', 'Back');
+  backBtn.classList.add('hover-nav');
   backBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
     'font-family:inherit;cursor:pointer;background:transparent;color:#1a5276;' +
     'border:1px solid #1a5276;border-radius:4px;margin-right:0.5em;' +
@@ -10837,7 +10873,8 @@ energyscholar+physics@gmail.com
   evalBtn.id = 'nav-evaluate';
   evalBtn.setAttribute('data-nav-evaluate', 'true');
   evalBtn.textContent = 'AI Eval';
-  evalBtn.title = 'Jump to instructions for evaluating this book with an AI assistant';
+  evalBtn.setAttribute('data-hover', 'Jump to instructions for evaluating this book with an AI assistant');
+  evalBtn.classList.add('hover-nav');
   evalBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
     'font-family:inherit;cursor:pointer;background:#1a5276;color:#fff;border:none;' +
     'border-radius:4px;margin:0 0.3em;white-space:nowrap;';
@@ -11040,7 +11077,8 @@ energyscholar+physics@gmail.com
     share.className = 'section-share';
     share.href = '#' + heading.id;
     share.textContent = '\uD83D\uDD17';
-    share.title = 'Copy link to this section';
+    share.setAttribute('data-hover', 'Copy link to this section');
+    share.classList.add('hover-nav');
     share.setAttribute('aria-label', 'Copy link to ' + heading.textContent.trim());
     share.addEventListener('click', function(e) {
       e.preventDefault();
@@ -11079,7 +11117,8 @@ energyscholar+physics@gmail.com
         btn.id = id;
         btn.className = 'copy-llm-primer';
         btn.textContent = btnLabel;
-        btn.title = btnTitle;
+        btn.setAttribute('data-hover', btnTitle);
+        btn.classList.add('hover-nav');
         btn.style.cssText = btnStyle;
         btn.addEventListener('mouseenter', function() { btn.style.background = btnHover; });
         btn.addEventListener('mouseleave', function() { btn.style.background = btnBase; });
@@ -11144,7 +11183,8 @@ energyscholar+physics@gmail.com
         btn.id = id;
         btn.className = 'copy-spiral-abstracts';
         btn.textContent = absBtnLabel;
-        btn.title = absBtnTitle;
+        btn.setAttribute('data-hover', absBtnTitle);
+        btn.classList.add('hover-nav');
         btn.style.cssText = absBtnStyle;
         btn.addEventListener('mouseenter', function() { btn.style.background = absBtnHover; });
         btn.addEventListener('mouseleave', function() { btn.style.background = absBtnBase; });
@@ -11474,7 +11514,7 @@ energyscholar+physics@gmail.com
 
   // --- Bind events to all .hover-term elements ---
 
-  var allHoverTerms = document.querySelectorAll('.hover-term[data-hover]');
+  var allHoverTerms = document.querySelectorAll('[data-hover]');
   var lastTouchTime = 0; // track touch to suppress mouse hover on touch devices
 
   allHoverTerms.forEach(function(term) {
@@ -11488,9 +11528,13 @@ energyscholar+physics@gmail.com
     }, { passive: true });
 
     term.addEventListener('touchend', function(e) {
+      lastTouchTime = Date.now();
+
+      // Navigation elements (links, accordion triggers): let native action happen
+      if (e.target.closest('a, summary')) return;
+
       e.preventDefault();
       e.stopPropagation();
-      lastTouchTime = Date.now();
 
       // Toggle panel on touch (Puppeteer .tap() dispatches touch but not click)
       if (hoverTimer) { clearTimeout(hoverTimer); hoverTimer = null; }
@@ -11505,6 +11549,12 @@ energyscholar+physics@gmail.com
 
     // --- Click: toggle panel (fallback for desktop click / non-touch-event paths) ---
     term.addEventListener('click', function(e) {
+      // Navigation elements: let native action happen (navigate / expand)
+      if (e.target.closest('a, summary')) {
+        dismissPanel();
+        return;
+      }
+
       e.preventDefault();
       e.stopPropagation();
 
@@ -11572,7 +11622,7 @@ energyscholar+physics@gmail.com
   document.addEventListener('click', function(e) {
     var panel = document.querySelector('.hover-panel');
     if (!panel) return;
-    if (e.target.closest('.hover-panel') || e.target.closest('.hover-term')) return;
+    if (e.target.closest('.hover-panel') || e.target.closest('[data-hover]')) return;
     dismissPanel();
   });
 
@@ -11580,7 +11630,7 @@ energyscholar+physics@gmail.com
   document.addEventListener('touchend', function(e) {
     var panel = document.querySelector('.hover-panel');
     if (!panel) return;
-    if (e.target.closest('.hover-panel') || e.target.closest('.hover-term')) return;
+    if (e.target.closest('.hover-panel') || e.target.closest('[data-hover]')) return;
     dismissPanel();
   });
 
@@ -11595,7 +11645,7 @@ energyscholar+physics@gmail.com
   document.addEventListener('mouseover', function(e) {
     var panel = document.querySelector('.hover-panel');
     if (!panel) return;
-    if (!e.target.closest('.hover-panel') && !e.target.closest('.hover-term')) {
+    if (!e.target.closest('.hover-panel') && !e.target.closest('[data-hover]')) {
       setTimeout(function() {
         var p = document.querySelector('.hover-panel');
         if (p && !p.matches(':hover')) {
