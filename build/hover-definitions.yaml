@@ -1,4 +1,4 @@
-# Inline hover definitions — single source of truth (95 terms planned, 47 defined)
+# Inline hover definitions — single source of truth (76 defined)
 # Format: term: "definition (≤50 words, clear to target reading level)"
 #   Plain string: term: "definition"
 #   Dict with target: term: { text: "...", target: "#anchor" }
@@ -86,6 +86,7 @@ magnetosphere:
     <text x="10" y="92" font-size="9" fill="#f39c12" font-family="sans-serif">solar</text>
     <text x="10" y="112" font-size="9" fill="#f39c12" font-family="sans-serif">wind</text>
     </svg>
+# Reserved: structural/navigational term (Part I heading). No hovertip call — menu tooltips handle it.
 guided deduction: "Teaching someone to discover the answer from public information, rather than disclosing it directly. Legally distinct from disclosure — no classified information changes hands, only the sequence of questions."
 topological protection: "Information stored in global patterns is shielded from local disturbances — including heat. This is why topological quantum computers could work at room temperature, when conventional designs require near-absolute-zero cooling."
 relinquishment:
@@ -94,6 +95,7 @@ relinquishment:
 flat worlds:
   text: "Real two-dimensional layers inside computer chips where quantum effects dominate. Flatland is not a metaphor — it is the physics that makes your phone work. This book treats them as habitats where different rules apply and self-organizing structures can form."
   target: "#ch:what-is-the-flat"
+# Reserved: story content — may be added manually by Bruce.
 Special Air Service: "The most elite special forces unit shared by Britain and Australia. Selection has a failure rate above 90 percent. Veterans are bound by the Official Secrets Act for life."
 grew: "The system organized itself, the way living things grow. Not engineered component by component — emerged from the physics of the substrate. This is how autocatalytic systems work."
 encryption: "Math that scrambles information so only the intended recipient can read it. Protects passwords, messages, bank accounts, and government secrets. Modern civilization depends on it — break the encryption, break the infrastructure."
@@ -123,6 +125,7 @@ topological wormhole:
   text: "Fold the paper so two points touch — the signal doesn't cross the distance; the distance disappears. Real physics, more restricted than spacetime wormholes. 2016 Nobel Prize."
   target: "#pos10:the-braid"
 
+# Reserved: too generic as hovertip trigger. Fires at natural first occurrence via summary.tex.
 two dimensions: "Movement restricted to a flat sheet. The third dimension is physically gone, not just ignored. Different rules take over — particles can braid around each other in ways impossible in 3D."
 
 threshold: "Below: nothing happens. Above: everything changes. A match needs a minimum temperature to ignite. A network needs a minimum complexity to self-organize. Phase transitions in physics."
@@ -157,6 +160,7 @@ soliton: "A wave that holds its shape — doesn't spread out or break apart. Sel
 
 # --- Tier 2 HIGH PRIORITY: p3 chapters (popup = peer-reviewed definition) ---
 
+# No hovertip call: \gls{anyon} handles first occurrence. YAML entry retained for HTML popup system.
 anyon:
   text: "A particle that exists only in two dimensions. Exchange two anyons and you get any phase angle — not just +1 (boson) or −1 (fermion). The 'any' in anyon. Predicted 1977, confirmed experimentally 2020."
   target: "#pos10:the-braid"
@@ -264,6 +268,7 @@ phase transition:
     text-anchor="middle" font-style="italic">Ordered</text>
     </svg>
 
+# No hovertip call: \gls{edgeofchaos} handles first occurrence. YAML entry retained for HTML popup system.
 edge of chaos:
   text: "The narrow regime between frozen order and random disorder. Where computation happens. Where life happens. Systems here are complex enough to process information but stable enough to remember it."
   html: >-
@@ -397,8 +402,11 @@ poised realm: "Kauffman's concept: systems at the quantum-classical boundary, po
 
 braid group: "The mathematical group describing how strands can cross over and under each other. The algebra behind anyon computation — each crossing is an operation, and the sequence of crossings encodes the computation."
 
+# Reserved: only appears in appendix (firmware-update.tex). No body-chapter placement available.
 topological insulator: "A material that is insulating inside but conducting on its surface. The surface states are topologically protected — they work at room temperature. Demonstrates that topological protection survives thermal noise."
 
+# Reserved: only appears in appendix (firmware-update.tex). No body-chapter placement available.
 graphene: "A single atom-thick layer of carbon arranged in a hexagonal lattice. A natural two-dimensional electron gas. The material where FQHE was demonstrated outside GaAs — proving substrate independence (Anchor 1)."
 
+# Reserved: only appears in appendix (firmware-update.tex). No body-chapter placement available.
 no-cloning theorem: "You cannot copy an unknown quantum state. Wootters & Zurek (1982). Fundamental limit — but it forbids copying unknowns, not fabricating known classical structures. Narrower than it sounds. Protects quantum cryptography."
