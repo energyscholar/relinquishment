@@ -987,6 +987,39 @@ def fix_html_toc(html_path):
     # Replace the old TOC
     text = text[:toc_match.start()] + new_toc + text[toc_match.end():]
 
+    # --- Inject menu tooltips on TOC links and part labels ---
+    menu_yaml = Path(__file__).parent / "menu-tooltips.yaml"
+    if menu_yaml.exists():
+        menu_data = yaml.safe_load(menu_yaml.read_text()) or {}
+        chapters = menu_data.get("chapters", {})
+        parts = menu_data.get("parts", {})
+        tooltip_count = 0
+
+        # Add title attributes to TOC <a> links
+        for anchor_id, desc in chapters.items():
+            escaped = html_mod.escape(desc)
+            # Match <a href="#anchor_id"> and add title if not present
+            old = f'href="#{anchor_id}"'
+            new = f'href="#{anchor_id}" title="{escaped}"'
+            if old in text and f'href="#{anchor_id}" title=' not in text:
+                text = text.replace(old, new, 1)  # first occurrence only (in TOC)
+                tooltip_count += 1
+
+        # Add title attributes to part labels (handle potential line-wrapping)
+        for label, desc in parts.items():
+            escaped = html_mod.escape(desc)
+            # Build regex that allows whitespace variations in label text
+            label_pattern = r'\s+'.join(re.escape(w) for w in label.split())
+            pattern = r'(class="toc-part-label")>' + label_pattern
+            replacement = rf'\1 title="{escaped}">' + label
+            new_text = re.sub(pattern, replacement, text, count=1)
+            if new_text != text:
+                text = new_text
+                tooltip_count += 1
+
+        if tooltip_count:
+            print(f"  Menu tooltips: {tooltip_count} applied")
+
     # --- Fix 2: Clean up triple-repeated title block ---
     # Remove pandoc's title-block-header (redundant with LaTeX title pages)
     text = re.sub(
