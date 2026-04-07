@@ -82,6 +82,7 @@
   // Left: Breadcrumb
   var breadcrumb = document.createElement('span');
   breadcrumb.id = 'nav-breadcrumb';
+  breadcrumb.title = 'Your current location in the book';
   breadcrumb.style.cssText = 'flex:1;overflow:hidden;white-space:nowrap;' +
     'text-overflow:ellipsis;';
 
@@ -112,6 +113,7 @@
   var introLink = document.createElement('a');
   introLink.href = '#hook:what-would-you-do';
   introLink.textContent = 'Intro';
+  introLink.title = 'Jump to Introduction';
   introLink.style.cssText = 'text-decoration:none;color:#1a5276;font-weight:bold;';
   introLink.addEventListener('mouseenter', function() { introLink.style.color = '#2471a3'; });
   introLink.addEventListener('mouseleave', function() { introLink.style.color = '#1a5276'; });
@@ -141,15 +143,16 @@
   quickJump.appendChild(introLink);
 
   var partLinks = [
-    {label: 'Deduction', id: 'guided-deduction'},
-    {label: 'Evidence', id: 'the-evidence-trail'},
-    {label: 'Forgiveness', id: 'forgiveness-and-permission'},
+    {label: 'Deduction', id: 'guided-deduction', tip: 'Jump to Part I: Guided Deduction'},
+    {label: 'Evidence', id: 'the-evidence-trail', tip: 'Jump to Part II: The Evidence Trail'},
+    {label: 'Forgiveness', id: 'forgiveness-and-permission', tip: 'Jump to Part III: Forgiveness and Permission'},
   ];
   partLinks.forEach(function(p, i) {
     quickJump.appendChild(document.createTextNode(' \u00B7 '));
     var a = document.createElement('a');
     a.href = '#' + p.id;
     a.textContent = p.label;
+    a.title = p.tip;
     a.style.cssText = 'text-decoration:none;color:#1a5276;';
     a.addEventListener('mouseenter', function() { a.style.color = '#2471a3'; });
     a.addEventListener('mouseleave', function() { a.style.color = '#1a5276'; });
@@ -173,6 +176,7 @@
   var topBtn = document.createElement('a');
   topBtn.textContent = '\u25B2 Top';
   topBtn.href = '#';
+  topBtn.title = 'Scroll to the top of the page';
   topBtn.style.cssText = 'text-decoration:none;color:#1a5276;padding:0.3em 0.6em;' +
     'flex:0 0 auto;white-space:nowrap;';
   topBtn.addEventListener('click', function(e) {
@@ -184,6 +188,7 @@
   var expandBtn = document.createElement('button');
   expandBtn.id = 'expand-toggle';
   expandBtn.textContent = 'Expand All';
+  expandBtn.title = 'Open all chapters and sections at once';
   expandBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
     'font-family:inherit;cursor:pointer;background:#1a5276;color:#fff;border:none;' +
     'border-radius:4px;margin:0 0.5em;white-space:nowrap;';
@@ -194,12 +199,14 @@
     var expanding = expandBtn.textContent === 'Expand All';
     allDetails.forEach(function(d) { d.open = expanding; });
     expandBtn.textContent = expanding ? 'Collapse All' : 'Expand All';
+    expandBtn.title = expanding ? 'Close all chapters and sections' : 'Open all chapters and sections at once';
   });
 
   // Back button (hidden when nav stack empty) — outline style, B6
   var backBtn = document.createElement('button');
   backBtn.id = 'nav-back';
   backBtn.textContent = '\u2190 Back';
+  backBtn.title = 'Return to where you were reading before following a link';
   backBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
     'font-family:inherit;cursor:pointer;background:transparent;color:#1a5276;' +
     'border:1px solid #1a5276;border-radius:4px;margin-right:0.5em;' +
@@ -219,6 +226,7 @@
   evalBtn.id = 'nav-evaluate';
   evalBtn.setAttribute('data-nav-evaluate', 'true');
   evalBtn.textContent = 'AI Eval';
+  evalBtn.title = 'Jump to instructions for evaluating this book with an AI assistant';
   evalBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
     'font-family:inherit;cursor:pointer;background:#1a5276;color:#fff;border:none;' +
     'border-radius:4px;margin:0 0.3em;white-space:nowrap;';
@@ -761,6 +769,15 @@
       panel.appendChild(content);
     } else {
       panel.appendChild(document.createTextNode(def));
+    }
+
+    // Hover ID footer (dev builds only — hidden when body has final-build class)
+    var hoverId = term.getAttribute('data-hover-id');
+    if (hoverId && !document.body.classList.contains('final-build')) {
+      var idFooter = document.createElement('div');
+      idFooter.style.cssText = 'font-size:0.7em;color:#999;margin-top:0.5em;font-family:monospace;';
+      idFooter.textContent = '[' + hoverId + ']';
+      panel.appendChild(idFooter);
     }
 
     // Click-through link for terms with data-hover-target

@@ -191,18 +191,27 @@ def patch():
             '', text, flags=re.DOTALL
         )
 
-        # Fix 8: Replace \hovertip{term} with text markers that survive pandoc.
+        # Fix 8: Replace \hovertip{term} and \hovertiphtml{term} with text markers
+        # that survive pandoc. Both produce the same HOVERSTART marker for HTML.
         # Actual HTML tooltips are injected in fix_html_toc() post-processing.
         if hover_defs:
+            macros = ['\\hovertiphtml{', '\\hovertip{']  # longer match first
             pos = 0
             result_parts = []
             while True:
-                idx = text.find('\\hovertip{', pos)
-                if idx == -1:
+                # Find earliest occurrence of either macro
+                best_idx = -1
+                best_macro = None
+                for macro in macros:
+                    idx = text.find(macro, pos)
+                    if idx != -1 and (best_idx == -1 or idx < best_idx):
+                        best_idx = idx
+                        best_macro = macro
+                if best_idx == -1:
                     result_parts.append(text[pos:])
                     break
-                result_parts.append(text[pos:idx])
-                brace_start = idx + len('\\hovertip{')
+                result_parts.append(text[pos:best_idx])
+                brace_start = best_idx + len(best_macro)
                 depth = 1
                 i = brace_start
                 while i < len(text) and depth > 0:
@@ -470,118 +479,43 @@ def collapse_chapters(text):
             book_content = text[book_start:wrap_end]
             book_tooltip = hover_map.get('relinquishment', '')
             book_title_attr = f' title="{html_mod.escape(book_tooltip)}"' if book_tooltip else ''
-            demo_svg = (
-                '<svg xmlns="http://www.w3.org/2000/svg" width="280" height="60" viewBox="0 0 280 60" style="display:block;margin:0.5em auto;">'
-                '<defs><linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%">'
-                '<stop offset="0%" style="stop-color:#1a5276;stop-opacity:0.8"/>'
-                '<stop offset="50%" style="stop-color:#2471a3;stop-opacity:1"/>'
-                '<stop offset="100%" style="stop-color:#1a5276;stop-opacity:0.8"/>'
-                '</linearGradient></defs>'
-                '<rect x="2" y="2" width="276" height="56" rx="8" fill="none" stroke="url(#glow)" stroke-width="1.5"/>'
-                '<text x="140" y="24" text-anchor="middle" font-size="11" fill="#1a5276" font-family="serif" font-style="italic">Three narrative threads. Real science.</text>'
-                '<text x="140" y="42" text-anchor="middle" font-size="11" fill="#1a5276" font-family="serif" font-style="italic">Three possible explanations. You decide.</text>'
-                '</svg>'
-            )
-            demo_hover_html = html_mod.escape(
-                '<p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;">'
-                '<strong>Relinquishment</strong> — voluntarily surrendering power '
-                'that cannot be taken by force. A preparation document built from '
-                'real physics, real people, and real institutions. 239 pages across '
-                'three parts: the story, the evidence, and the question.</p>'
-                + demo_svg
-            )
-            wormhole_svg = (
-                '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="140" viewBox="0 0 300 140" style="display:block;margin:0.5em auto;">'
-                # Top surface — ellipse
-                '<ellipse cx="80" cy="35" rx="65" ry="20" fill="none" stroke="#1a5276" stroke-width="1.2" opacity="0.6"/>'
-                # Top opening — darker ellipse (mouth of wormhole)
-                '<ellipse cx="80" cy="35" rx="18" ry="8" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5"/>'
-                # Bottom surface — ellipse
-                '<ellipse cx="220" cy="105" rx="65" ry="20" fill="none" stroke="#1a5276" stroke-width="1.2" opacity="0.6"/>'
-                # Bottom opening
-                '<ellipse cx="220" cy="105" rx="18" ry="8" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5"/>'
-                # Connecting tube — two curved lines
-                '<path d="M 62,35 C 55,60 195,80 202,105" fill="none" stroke="#2471a3" stroke-width="1.2" stroke-dasharray="4,3"/>'
-                '<path d="M 98,35 C 105,60 245,80 238,105" fill="none" stroke="#2471a3" stroke-width="1.2" stroke-dasharray="4,3"/>'
-                # Labels
-                '<text x="80" y="12" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">surface A</text>'
-                '<text x="220" y="135" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">surface B</text>'
-                # Distance label
-                '<text x="150" y="75" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif">topological</text>'
-                '<text x="150" y="87" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif">connection</text>'
-                '</svg>'
-            )
-            wormhole_hover_html = html_mod.escape(
-                '<p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;">'
-                '<strong>Wormholes</strong> — real topological connections between '
-                'distant points in a material. Not science fiction — condensed matter '
-                'physics. The 2016 Nobel Prize in Physics was awarded for the theory '
-                'behind them. The book argues these may exist in magnetized plasma.</p>'
-                + wormhole_svg
-            )
-            flat_svg = (
-                '<svg xmlns="http://www.w3.org/2000/svg" width="300" height="120" viewBox="0 0 300 120" style="display:block;margin:0.5em auto;">'
-                # 3D block — showing the thin 2D layer inside bulk material
-                # Bulk material — parallelogram outline
-                '<path d="M 40,20 L 260,20 L 280,50 L 60,50 Z" fill="#f0f0f0" stroke="#999" stroke-width="0.8"/>'
-                # The Flat — thin glowing layer
-                '<path d="M 40,48 L 260,48 L 280,54 L 60,54 Z" fill="rgba(36,113,163,0.15)" stroke="#2471a3" stroke-width="1.5"/>'
-                # Bulk below
-                '<path d="M 60,54 L 280,54 L 280,80 L 60,80 Z" fill="#f0f0f0" stroke="#999" stroke-width="0.8"/>'
-                '<path d="M 60,80 L 40,50 L 40,48" fill="none" stroke="#999" stroke-width="0.8"/>'
-                '<path d="M 280,80 L 260,48" fill="none" stroke="#999" stroke-width="0.8"/>'
-                # Electrons trapped on the sheet — small dots
-                '<circle cx="100" cy="51" r="2.5" fill="#2471a3" opacity="0.8"/>'
-                '<circle cx="140" cy="51" r="2.5" fill="#2471a3" opacity="0.8"/>'
-                '<circle cx="180" cy="51" r="2.5" fill="#2471a3" opacity="0.8"/>'
-                '<circle cx="210" cy="51" r="2.5" fill="#2471a3" opacity="0.8"/>'
-                '<circle cx="160" cy="52" r="2.5" fill="#2471a3" opacity="0.5"/>'
-                '<circle cx="120" cy="52" r="2.5" fill="#2471a3" opacity="0.5"/>'
-                '<circle cx="240" cy="52" r="2.5" fill="#2471a3" opacity="0.6"/>'
-                # Arrow showing confinement — can only move in 2D
-                '<line x1="85" y1="51" x2="75" y2="51" stroke="#1a5276" stroke-width="0.8" marker-end="url(#arr)"/>'
-                '<line x1="250" y1="51" x2="260" y2="52" stroke="#1a5276" stroke-width="0.8" marker-end="url(#arr)"/>'
-                '<defs><marker id="arr" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="5" markerHeight="5" orient="auto">'
-                '<path d="M 0,0 L 6,3 L 0,6 Z" fill="#1a5276"/></marker></defs>'
-                # Labels
-                '<text x="170" y="98" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif" font-style="italic">electrons confined to two dimensions</text>'
-                '<text x="170" y="112" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">different physics applies here</text>'
-                '</svg>'
-            )
-            flat_hover_html = html_mod.escape(
-                '<p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;">'
-                '<strong>The Flat</strong> — any two-dimensional system embedded in '
-                'three dimensions that exhibits topological order. Particles confined '
-                'to two dimensions can braid around each other, storing information '
-                "in global patterns that are impossible in 3D. "
-                "<span class='hover-term' data-hover='A property where information "
-                "is stored in global patterns, not in any single place. Extremely hard "
-                "to destroy — you would have to disrupt the entire pattern at once, not "
-                "just a piece of it.'>Different physics apply</span>.</p>"
-                '<p style="margin:0;font-size:0.85em;line-height:1.4;color:#666;">'
-                'The Flat inside your computer chip is a 2DEG (two-dimensional electron '
-                'gas). The Flat in Earth\'s magnetosphere is plasma confined to thin '
-                'sheets. Both are Flat — both exhibit topological order. '
-                'We call the ocean floor the Deep and the emptiness between galaxies '
-                'the Void. This book calls those thin worlds <strong>the Flat</strong> '
-                '— until someone coins something better for this otherwise-unnamed '
-                'physical system.</p>'
-                + flat_svg
-            )
+
+            # Build title-line rich panels from YAML (hover-definitions.yaml)
+            # Each entry has: text, html (raw HTML+SVG), optional target, optional hover_id
+            _title_hover_defs = {}
+            _title_hover_yaml = Path(__file__).resolve().parent / "hover-definitions.yaml"
+            if _title_hover_yaml.exists():
+                import yaml as _yaml
+                _title_hover_defs = _yaml.safe_load(_title_hover_yaml.read_text()) or {}
+            def _title_panel_attrs(yaml_key):
+                """Return (escaped_html, target_attr, hover_id) for a title-line YAML entry."""
+                entry = _title_hover_defs.get(yaml_key, {})
+                if not isinstance(entry, dict) or 'html' not in entry:
+                    print(f"  WARNING: title-line panel '{yaml_key}' missing from YAML or has no 'html' key")
+                    return ('', '', yaml_key)
+                raw_html = entry['html'].rstrip('\n')
+                escaped = html_mod.escape(raw_html)
+                target = entry.get('target', '')
+                target_attr = f' data-hover-target="{html_mod.escape(target)}"' if target else ''
+                hover_id = entry.get('hover_id', yaml_key)
+                return (escaped, target_attr, hover_id)
+
+            demo_escaped, demo_target, demo_id = _title_panel_attrs('relinquishment-title')
+            worm_escaped, worm_target, worm_id = _title_panel_attrs('wormholes-title')
+            flat_escaped, flat_target, flat_id = _title_panel_attrs('the-flat-title')
+
             text = (text[:book_start] +
                     '<details class="book-section">'
                     f'<summary{book_title_attr}>'
-                    '<span class="hover-term" data-hover="placeholder" '
-                    f'data-hover-html="{demo_hover_html}">'
+                    f'<span class="hover-term" data-hover="placeholder" '
+                    f'data-hover-html="{demo_escaped}"{demo_target} data-hover-id="{demo_id}">'
                     'Relinquishment</span> '
                     '<span class="book-subtitle-inline">&mdash; '
-                    '<span class="hover-term" data-hover="placeholder" '
-                    f'data-hover-html="{wormhole_hover_html}" '
-                    'data-hover-target="#summary:most-important-story">'
+                    f'<span class="hover-term" data-hover="placeholder" '
+                    f'data-hover-html="{worm_escaped}"{worm_target} data-hover-id="{worm_id}">'
                     'Wormholes</span> in '
-                    '<span class="hover-term" data-hover="placeholder" '
-                    f'data-hover-html="{flat_hover_html}" '
-                    'data-hover-target="#summary:most-important-story">'
+                    f'<span class="hover-term" data-hover="placeholder" '
+                    f'data-hover-html="{flat_escaped}"{flat_target} data-hover-id="{flat_id}">'
                     'the Flat</span></span></summary>\n' +
                     book_content +
                     '\n</details>\n' +
@@ -1112,6 +1046,10 @@ def fix_html_toc(html_path):
         # Case-insensitive lookup: build lowercase-keyed map
         hover_lower = {k.lower(): v for k, v in hover_defs.items()}
         hover_seen = set()
+        # Title-line rich panels (Relinquishment, Wormholes, the Flat) already
+        # rendered as hover-term spans — register their body-equivalent keys
+        # so first-occurrence tracking prevents duplicate hovertips downstream.
+        hover_seen.update(['relinquishment', 'wormholes'])
         hover_count = 0
 
         def hover_replace(m):
@@ -1119,7 +1057,7 @@ def fix_html_toc(html_path):
             raw_term = m.group(1)
             # Pandoc may insert newlines in multi-word terms; normalize for lookup
             term = re.sub(r'\s+', ' ', raw_term).strip()
-            lookup = term.lower()
+            lookup = term.lower().replace('\u2019', "'").replace('\u2018', "'")
             if lookup in hover_lower and lookup not in hover_seen:
                 hover_seen.add(lookup)
                 hover_count += 1
@@ -1129,10 +1067,14 @@ def fix_html_toc(html_path):
                     escaped_def = html_mod.escape(value.get('text', ''))
                     target = value.get('target', '')
                     target_attr = f' data-hover-target="{html_mod.escape(target)}"' if target else ''
+                    rich_html = value.get('html', '').rstrip('\n')
+                    html_attr = f' data-hover-html="{html_mod.escape(rich_html)}"' if rich_html else ''
                 else:
                     escaped_def = html_mod.escape(str(value))
                     target_attr = ''
-                return f'<span class="hover-term" data-hover="{escaped_def}"{target_attr}>{term}</span>'
+                    html_attr = ''
+                hover_id = re.sub(r'[^a-z0-9]+', '-', lookup).strip('-')
+                return f'<span class="hover-term" data-hover="{escaped_def}"{target_attr}{html_attr} data-hover-id="{hover_id}">{term}</span>'
             elif lookup in hover_lower:
                 return f'<em>{term}</em>'
             else:
