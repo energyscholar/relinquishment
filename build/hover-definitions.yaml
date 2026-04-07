@@ -1,6 +1,35 @@
-# Inline hover definitions — single source of truth
-# Format: term: "definition (≤40 words, clear to 12th grade reader)"
+# Inline hover definitions — single source of truth (95 terms planned, 47 defined)
+# Format: term: "definition (≤50 words, clear to target reading level)"
+#   Plain string: term: "definition"
+#   Dict with target: term: { text: "...", target: "#anchor" }
+#   Rich panel (HTML+SVG): term: { text: "...", html: "...", target: "#anchor" }
+#     When 'html' is present, it is used for data-hover-html (rich popup panel).
 # Used by: PDF (footnotes), HTML (tooltips)
+# Hover IDs auto-generated from YAML keys (slugified). Feedback: hover:<id>
+
+# --- Title-line rich panels (Relinquishment — Wormholes in the Flat) ---
+
+relinquishment-title:
+  text: "placeholder"
+  hover_id: "relinquishment-title"
+  html: |
+    <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;"><strong>Relinquishment</strong> — voluntarily surrendering power that cannot be taken by force. A preparation document built from real physics, real people, and real institutions. 239 pages across three parts: the story, the evidence, and the question.</p><svg xmlns="http://www.w3.org/2000/svg" width="280" height="60" viewBox="0 0 280 60" style="display:block;margin:0.5em auto;"><defs><linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#1a5276;stop-opacity:0.8"/><stop offset="50%" style="stop-color:#2471a3;stop-opacity:1"/><stop offset="100%" style="stop-color:#1a5276;stop-opacity:0.8"/></linearGradient></defs><rect x="2" y="2" width="276" height="56" rx="8" fill="none" stroke="url(#glow)" stroke-width="1.5"/><text x="140" y="24" text-anchor="middle" font-size="11" fill="#1a5276" font-family="serif" font-style="italic">Three narrative threads. Real science.</text><text x="140" y="42" text-anchor="middle" font-size="11" fill="#1a5276" font-family="serif" font-style="italic">Three possible explanations. You decide.</text></svg>
+
+wormholes-title:
+  text: "placeholder"
+  hover_id: "wormholes-title"
+  target: "#summary:most-important-story"
+  html: |
+    <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;"><strong>Wormholes</strong> — real topological connections between distant points in a material. Not science fiction — condensed matter physics. The 2016 Nobel Prize in Physics was awarded for the theory behind them. The book argues these may exist in magnetized plasma.</p><svg xmlns="http://www.w3.org/2000/svg" width="300" height="140" viewBox="0 0 300 140" style="display:block;margin:0.5em auto;"><ellipse cx="80" cy="35" rx="65" ry="20" fill="none" stroke="#1a5276" stroke-width="1.2" opacity="0.6"/><ellipse cx="80" cy="35" rx="18" ry="8" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5"/><ellipse cx="220" cy="105" rx="65" ry="20" fill="none" stroke="#1a5276" stroke-width="1.2" opacity="0.6"/><ellipse cx="220" cy="105" rx="18" ry="8" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5"/><path d="M 62,35 C 55,60 195,80 202,105" fill="none" stroke="#2471a3" stroke-width="1.2" stroke-dasharray="4,3"/><path d="M 98,35 C 105,60 245,80 238,105" fill="none" stroke="#2471a3" stroke-width="1.2" stroke-dasharray="4,3"/><text x="80" y="12" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">surface A</text><text x="220" y="135" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">surface B</text><text x="150" y="75" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif">topological</text><text x="150" y="87" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif">connection</text></svg>
+
+the-flat-title:
+  text: "placeholder"
+  hover_id: "the-flat-title"
+  target: "#summary:most-important-story"
+  html: |
+    <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;"><strong>The Flat</strong> — any two-dimensional system embedded in three dimensions that exhibits topological order. Particles confined to two dimensions can braid around each other, storing information in global patterns that are impossible in 3D. <span class='hover-term' data-hover='A property where information is stored in global patterns, not in any single place. Extremely hard to destroy — you would have to disrupt the entire pattern at once, not just a piece of it.'>Different physics apply</span>.</p><p style="margin:0;font-size:0.85em;line-height:1.4;color:#666;">The Flat inside your computer chip is a 2DEG (two-dimensional electron gas). The Flat in Earth's magnetosphere is plasma confined to thin sheets. Both are Flat — both exhibit topological order. We call the ocean floor the Deep and the emptiness between galaxies the Void. This book calls those thin worlds <strong>the Flat</strong> — until someone coins something better for this otherwise-unnamed physical system.</p><svg xmlns="http://www.w3.org/2000/svg" width="300" height="120" viewBox="0 0 300 120" style="display:block;margin:0.5em auto;"><path d="M 40,20 L 260,20 L 280,50 L 60,50 Z" fill="#f0f0f0" stroke="#999" stroke-width="0.8"/><path d="M 40,48 L 260,48 L 280,54 L 60,54 Z" fill="rgba(36,113,163,0.15)" stroke="#2471a3" stroke-width="1.5"/><path d="M 60,54 L 280,54 L 280,80 L 60,80 Z" fill="#f0f0f0" stroke="#999" stroke-width="0.8"/><path d="M 60,80 L 40,50 L 40,48" fill="none" stroke="#999" stroke-width="0.8"/><path d="M 280,80 L 260,48" fill="none" stroke="#999" stroke-width="0.8"/><circle cx="100" cy="51" r="2.5" fill="#2471a3" opacity="0.8"/><circle cx="140" cy="51" r="2.5" fill="#2471a3" opacity="0.8"/><circle cx="180" cy="51" r="2.5" fill="#2471a3" opacity="0.8"/><circle cx="210" cy="51" r="2.5" fill="#2471a3" opacity="0.8"/><circle cx="160" cy="52" r="2.5" fill="#2471a3" opacity="0.5"/><circle cx="120" cy="52" r="2.5" fill="#2471a3" opacity="0.5"/><circle cx="240" cy="52" r="2.5" fill="#2471a3" opacity="0.6"/><line x1="85" y1="51" x2="75" y2="51" stroke="#1a5276" stroke-width="0.8" marker-end="url(#arr)"/><line x1="250" y1="51" x2="260" y2="52" stroke="#1a5276" stroke-width="0.8" marker-end="url(#arr)"/><defs><marker id="arr" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0,0 L 6,3 L 0,6 Z" fill="#1a5276"/></marker></defs><text x="170" y="98" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif" font-style="italic">electrons confined to two dimensions</text><text x="170" y="112" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">different physics applies here</text></svg>
+
+# --- Standard hover definitions ---
 
 two-dimensional electron gas: "A thin layer where electrons can only move in two directions — trapped on a sheet. Found inside every computer chip and in Earth's magnetic field. Different physics applies in two dimensions than in three."
 topological order: "A property where information is stored in global patterns, not in any single place. Extremely hard to destroy — you would have to disrupt the entire pattern at once, not just a piece of it."
@@ -9,7 +38,54 @@ quantum teleportation: "Transferring quantum information from one place to anoth
 nonlocal: "Connected across distance without anything traveling between. In quantum systems, distant points share correlations — information about one place is encoded in another. This is a measured fact, not speculation."
 autocatalytic: "A network of processes where each process's outputs help sustain other processes in the set. The result is a self-maintaining cycle — a hallmark of living systems. The math is substrate-independent: it works in chemical reactions (origin of life) and in quantum substrates (the Flat)."
 classical backchannel: "An ordinary communication channel — radio, light, electrical signal. Required to complete quantum teleportation, which is why teleportation cannot transmit information faster than light."
-magnetosphere: "Earth's magnetic field, extending thousands of kilometers into space. Contains thin layers where charged particles are trapped flat — two-dimensional electron gases on a planetary scale."
+magnetosphere:
+  text: "Earth's magnetic field, extending thousands of kilometers into space. Contains thin layers where charged particles are trapped flat — two-dimensional electron gases on a planetary scale."
+  target: "#pos32:the-wrong-substrate"
+  html: >-
+    <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;">
+    <strong>Magnetosphere</strong> — Earth's magnetic field extending thousands
+    of km into space. Contains 2D plasma sheets where charged particles are
+    confined flat. A planetary-scale habitat.</p>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380"
+    height="200" style="display:block;margin:0 auto;">
+    <rect width="380" height="200" fill="#fafafa" rx="4"/>
+    <circle cx="190" cy="100" r="18" fill="#5dade2" stroke="#2471a3"
+    stroke-width="1.5"/>
+    <text x="190" y="104" font-size="8" fill="#fff" font-family="sans-serif"
+    text-anchor="middle">Earth</text>
+    <path d="M172,70 C140,50 130,30 160,18" fill="none" stroke="#2471a3"
+    stroke-width="1.2"/>
+    <path d="M172,130 C140,150 130,170 160,182" fill="none" stroke="#2471a3"
+    stroke-width="1.2"/>
+    <path d="M208,70 C240,50 250,30 220,18" fill="none" stroke="#2471a3"
+    stroke-width="1.2"/>
+    <path d="M208,130 C240,150 250,170 220,182" fill="none" stroke="#2471a3"
+    stroke-width="1.2"/>
+    <path d="M120,100 C100,60 95,30 130,10" fill="none" stroke="#1a5276"
+    stroke-width="0.8" stroke-dasharray="3,2"/>
+    <path d="M120,100 C100,140 95,170 130,190" fill="none" stroke="#1a5276"
+    stroke-width="0.8" stroke-dasharray="3,2"/>
+    <path d="M210,100 L350,100" fill="none" stroke="#c0392b"
+    stroke-width="1" stroke-dasharray="4,2" opacity="0.5"/>
+    <path d="M210,95 L350,80" fill="none" stroke="#c0392b"
+    stroke-width="0.8" stroke-dasharray="4,2" opacity="0.4"/>
+    <path d="M210,105 L350,120" fill="none" stroke="#c0392b"
+    stroke-width="0.8" stroke-dasharray="4,2" opacity="0.4"/>
+    <text x="340" y="96" font-size="9" fill="#c0392b" font-family="sans-serif"
+    text-anchor="end" font-style="italic">magnetotail</text>
+    <text x="290" y="108" font-size="8" fill="#888" font-family="sans-serif"
+    text-anchor="middle">plasma sheet</text>
+    <path d="M90,40 C80,65 80,135 90,160" fill="none" stroke="#e67e22"
+    stroke-width="1.5"/>
+    <text x="72" y="105" font-size="8" fill="#e67e22" font-family="sans-serif"
+    text-anchor="middle" transform="rotate(-90,72,105)">bow shock</text>
+    <defs><marker id="mA" markerWidth="8" markerHeight="6" refX="8" refY="3"
+    orient="auto"><path d="M0,0 L8,3 L0,6" fill="#f39c12"/></marker></defs>
+    <line x1="15" y1="100" x2="60" y2="100" stroke="#f39c12" stroke-width="1.5"
+    marker-end="url(#mA)"/>
+    <text x="10" y="92" font-size="9" fill="#f39c12" font-family="sans-serif">solar</text>
+    <text x="10" y="112" font-size="9" fill="#f39c12" font-family="sans-serif">wind</text>
+    </svg>
 guided deduction: "Teaching someone to discover the answer from public information, rather than disclosing it directly. Legally distinct from disclosure — no classified information changes hands, only the sequence of questions."
 topological protection: "Information stored in global patterns is shielded from local disturbances — including heat. This is why topological quantum computers could work at room temperature, when conventional designs require near-absolute-zero cooling."
 relinquishment:
@@ -23,4 +99,306 @@ grew: "The system organized itself, the way living things grow. Not engineered c
 encryption: "Math that scrambles information so only the intended recipient can read it. Protects passwords, messages, bank accounts, and government secrets. Modern civilization depends on it — break the encryption, break the infrastructure."
 wormholes:
   text: "Real topological connections between distant points in a material. Not science fiction — condensed matter physics. The 2016 Nobel Prize in Physics was awarded for the theory behind them. The book argues these may exist in magnetized plasma."
-  target: "#pos10-the-braid"
+  target: "#pos10:the-braid"
+
+# --- Tier 1: hook.tex (p1 → p2 popups) ---
+
+quantum computer: "A machine that uses quantum effects — particles in two states at once, linked across distance — to solve problems no ordinary computer can. The race to build one is real and accelerating."
+
+master keys: "Cryptographic keys that control access to an entire system. Whoever holds them can read anything the system protects. Surrendering them is permanent — there is no backup."
+
+Universal Declaration of Human Rights: "A 1948 United Nations document listing 30 basic rights for all people. Written in the aftermath of World War II to say 'never again.' Not the law of any country — a set of principles that transcend borders."
+
+# --- Tier 1: the-stack.tex (p1 → p2 popups) ---
+
+stack:
+  text: "A tower of technologies where each one does everything the one before it did, plus something new. Cumulative. The book's central organizing idea."
+  target: "#stack-chart"
+
+self-maintaining structure: "A structure that repairs and sustains itself without outside help. A candle recovers from wind. A cell repairs damage. This is more than just not falling apart — it actively holds together."
+
+self-organizes: "Global order emerging from local rules with no central control. No ant knows the colony's plan. No neuron knows your thoughts. The pattern arises from interactions, not instructions."
+
+topological wormhole:
+  text: "Fold the paper so two points touch — the signal doesn't cross the distance; the distance disappears. Real physics, more restricted than spacetime wormholes. 2016 Nobel Prize."
+  target: "#pos10:the-braid"
+
+two dimensions: "Movement restricted to a flat sheet. The third dimension is physically gone, not just ignored. Different rules take over — particles can braid around each other in ways impossible in 3D."
+
+threshold: "Below: nothing happens. Above: everything changes. A match needs a minimum temperature to ignite. A network needs a minimum complexity to self-organize. Phase transitions in physics."
+
+# --- Tier 1: summary.tex (p2 → p3 popups) ---
+
+DARPA: "The US military's science agency — Defense Advanced Research Projects Agency. Created the internet, funded GPS, stealth aircraft, autonomous vehicles. Its job: fund what doesn't exist yet."
+
+Five Eyes: "Intelligence alliance: the United States, United Kingdom, Canada, Australia, and New Zealand. They share classified intelligence with each other that they share with no one else."
+
+GCHQ: "Britain's signals intelligence headquarters — Government Communications Headquarters. Equivalent of the NSA. Independently invented public-key cryptography in 1973 and kept it classified for 24 years."
+
+public-key cryptography: "Encryption using paired keys — one public, one private. Lets strangers communicate securely without meeting first. Basis of all internet security. Invented secretly by GCHQ in 1973, publicly by Diffie-Hellman in 1976."
+
+dual use: "Technology that is both useful and dangerous. Nuclear physics: power plants and bombs. Biology: vaccines and bioweapons. The same discovery can save the world or destroy it."
+
+confabulation:
+  text: "A pattern-matching mind building a coherent narrative from real pieces that may not fit together. Not lying — the confabulator genuinely believes. This is one of the book's three possibilities."
+  target: "#pos01:three-possibilities"
+
+falsifiable: "A claim that tells you what would prove it wrong. 'The earth is flat' is falsifiable — go look. Science requires falsifiability. Claims that can't be tested aren't wrong, they're not even science."
+
+Dunning-Kruger effect: "When limited knowledge in a domain produces overconfidence rather than caution. You don't know what you don't know, so you feel certain. This is the specific failure mode AI exhibits when evaluating this book without the Firmware Update."
+
+Bletchley Park: "Britain's WWII codebreaking center. 10,000 people kept the secret for 35 years. Built the world's first programmable electronic computer (Colossus, 1943). Birthplace of modern computing."
+
+convergence:
+  text: "Independent lines of research pointing to the same conclusion from different directions. Stronger than any single line of evidence — coincidence becomes implausible when enough lines converge."
+  target: "#ch:firmware-update"
+
+soliton: "A wave that holds its shape — doesn't spread out or break apart. Self-reinforcing. Found in oceans, fiber optics, and plasma. One of the first physics concepts in the mentorship sequence."
+
+# --- Tier 2 HIGH PRIORITY: p3 chapters (popup = peer-reviewed definition) ---
+
+anyon:
+  text: "A particle that exists only in two dimensions. Exchange two anyons and you get any phase angle — not just +1 (boson) or −1 (fermion). The 'any' in anyon. Predicted 1977, confirmed experimentally 2020."
+  target: "#pos10:the-braid"
+  html: >-
+    <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;">
+    <strong>Anyon braiding</strong> — two particles winding around each other
+    in 2+1D spacetime. The path is the computation. Topologically protected:
+    only the winding matters, not the details.</p>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380"
+    height="200" style="display:block;margin:0 auto;">
+    <rect width="380" height="200" fill="#fafafa" rx="4"/>
+    <defs><marker id="aT" markerWidth="8" markerHeight="6" refX="8" refY="3"
+    orient="auto"><path d="M0,0 L8,3 L0,6" fill="#999"/></marker></defs>
+    <line x1="24" y1="188" x2="24" y2="12" stroke="#999" stroke-width="1"
+    marker-end="url(#aT)"/>
+    <text x="28" y="18" font-size="10" fill="#888" font-family="sans-serif">Time</text>
+    <path d="M140,185 C140,135 240,125 240,100 C240,75 140,65 140,15"
+    fill="none" stroke="#2471a3" stroke-width="2.5"/>
+    <path d="M240,185 C240,135 140,125 140,100 C140,75 240,65 240,15"
+    fill="none" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="6,3"/>
+    <circle cx="140" cy="185" r="5" fill="#2471a3"/>
+    <circle cx="240" cy="185" r="5" fill="#c0392b"/>
+    <circle cx="140" cy="15" r="5" fill="#2471a3"/>
+    <circle cx="240" cy="15" r="5" fill="#c0392b"/>
+    <text x="140" y="198" font-size="9" fill="#2471a3" font-family="sans-serif"
+    text-anchor="middle">anyon A</text>
+    <text x="240" y="198" font-size="9" fill="#c0392b" font-family="sans-serif"
+    text-anchor="middle">anyon B</text>
+    <text x="310" y="95" font-size="10" fill="#555" font-family="sans-serif">worldlines</text>
+    <text x="310" y="109" font-size="10" fill="#555" font-family="sans-serif">braid around</text>
+    <text x="310" y="123" font-size="10" fill="#555" font-family="sans-serif">each other</text>
+    </svg>
+
+non-abelian anyon: "An anyon whose exchange operations depend on ORDER — A then B is not the same as B then A. This non-commutativity is what makes topological quantum computation possible. The braiding IS the computation."
+
+fractional quantum Hall effect:
+  text: "Nobel Prize 1998. Electrons confined to 2D under a strong magnetic field produce quasiparticles with fractional electric charge. Proves anyons exist. The experimental foundation for topological quantum computing."
+  target: "#pos10:the-braid"
+
+TQNN:
+  text: "Topological Quantum Neural Network — the book's central technology claim. A system combining all eight stack properties: self-sustaining, switching, self-maintaining, reaching, self-organizing, learning, and topological connection."
+  target: "#t3:ch01:instantiation"
+
+braiding:
+  text: "Moving anyons around each other in 2D. The path IS the computation — information is encoded in how worldlines wind around each other. Like tying knots in spacetime. Topologically protected from errors."
+  target: "#pos10:the-braid"
+  html: >-
+    <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;">
+    <strong>Braiding</strong> — moving anyons around each other in 2D.
+    The path IS the computation. Information is encoded in how worldlines
+    wind around each other — like tying knots in spacetime.</p>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380"
+    height="200" style="display:block;margin:0 auto;">
+    <rect width="380" height="200" fill="#fafafa" rx="4"/>
+    <defs><marker id="bT" markerWidth="8" markerHeight="6" refX="8" refY="3"
+    orient="auto"><path d="M0,0 L8,3 L0,6" fill="#999"/></marker></defs>
+    <line x1="24" y1="188" x2="24" y2="12" stroke="#999" stroke-width="1"
+    marker-end="url(#bT)"/>
+    <text x="28" y="18" font-size="10" fill="#888" font-family="sans-serif">Time</text>
+    <path d="M140,185 C140,135 240,125 240,100 C240,75 140,65 140,15"
+    fill="none" stroke="#2471a3" stroke-width="2.5"/>
+    <path d="M240,185 C240,135 140,125 140,100 C140,75 240,65 240,15"
+    fill="none" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="6,3"/>
+    <circle cx="140" cy="185" r="5" fill="#2471a3"/>
+    <circle cx="240" cy="185" r="5" fill="#c0392b"/>
+    <circle cx="140" cy="15" r="5" fill="#2471a3"/>
+    <circle cx="240" cy="15" r="5" fill="#c0392b"/>
+    <text x="140" y="198" font-size="9" fill="#2471a3" font-family="sans-serif"
+    text-anchor="middle">anyon A</text>
+    <text x="240" y="198" font-size="9" fill="#c0392b" font-family="sans-serif"
+    text-anchor="middle">anyon B</text>
+    <text x="310" y="95" font-size="10" fill="#555" font-family="sans-serif">worldlines</text>
+    <text x="310" y="109" font-size="10" fill="#555" font-family="sans-serif">braid around</text>
+    <text x="310" y="123" font-size="10" fill="#555" font-family="sans-serif">each other</text>
+    </svg>
+
+phase transition:
+  text: "A sudden qualitative change at a critical threshold. Water freezes. Magnets demagnetize. Networks self-organize. Gradual buildup of a driving parameter, then sudden structural shift."
+  html: >-
+    <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;">
+    <strong>Phase transition</strong> — a sudden qualitative change at a
+    critical threshold. Gradual buildup, then sudden shift. The jump is
+    where new physics emerges.</p>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380"
+    height="200" style="display:block;margin:0 auto;">
+    <rect width="380" height="200" fill="#fafafa" rx="4"/>
+    <line x1="40" y1="170" x2="360" y2="170" stroke="#555" stroke-width="1.5"/>
+    <line x1="40" y1="170" x2="40" y2="20" stroke="#555" stroke-width="1.5"/>
+    <text x="200" y="195" font-size="11" fill="#555" font-family="sans-serif"
+    text-anchor="middle">Control parameter</text>
+    <text x="16" y="95" font-size="11" fill="#555" font-family="sans-serif"
+    text-anchor="middle" transform="rotate(-90,16,95)">Order</text>
+    <path d="M50,155 L160,150 L170,148" fill="none" stroke="#2471a3"
+    stroke-width="2.5"/>
+    <line x1="170" y1="148" x2="210" y2="50" stroke="#c0392b"
+    stroke-width="2.5" stroke-dasharray="4,3"/>
+    <path d="M210,50 L220,47 L340,40" fill="none" stroke="#2471a3"
+    stroke-width="2.5"/>
+    <circle cx="190" cy="99" r="4" fill="#c0392b"/>
+    <text x="190" y="87" font-size="10" fill="#c0392b" font-family="sans-serif"
+    text-anchor="middle" font-weight="bold">Phase transition</text>
+    <text x="100" y="140" font-size="10" fill="#888" font-family="sans-serif"
+    text-anchor="middle" font-style="italic">Disordered</text>
+    <text x="290" y="35" font-size="10" fill="#888" font-family="sans-serif"
+    text-anchor="middle" font-style="italic">Ordered</text>
+    </svg>
+
+edge of chaos:
+  text: "The narrow regime between frozen order and random disorder. Where computation happens. Where life happens. Systems here are complex enough to process information but stable enough to remember it."
+  html: >-
+    <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;">
+    <strong>Edge of chaos</strong> — the narrow regime between frozen order
+    and random disorder. Where computation and life happen. Too ordered =
+    frozen. Too random = noise. The edge = information processing.</p>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380"
+    height="200" style="display:block;margin:0 auto;">
+    <rect width="380" height="200" fill="#fafafa" rx="4"/>
+    <rect x="30" y="60" width="110" height="40" rx="4" fill="#d4e6f1"
+    stroke="#2471a3" stroke-width="1"/>
+    <text x="85" y="84" font-size="12" fill="#1a5276" font-family="sans-serif"
+    text-anchor="middle" font-weight="bold">Frozen / Ordered</text>
+    <rect x="240" y="60" width="110" height="40" rx="4" fill="#fadbd8"
+    stroke="#c0392b" stroke-width="1"/>
+    <text x="295" y="84" font-size="12" fill="#922b21" font-family="sans-serif"
+    text-anchor="middle" font-weight="bold">Chaotic / Random</text>
+    <rect x="152" y="55" width="76" height="50" rx="4" fill="#d5f5e3"
+    stroke="#27ae60" stroke-width="2"/>
+    <text x="190" y="77" font-size="11" fill="#1e8449" font-family="sans-serif"
+    text-anchor="middle" font-weight="bold">Edge of</text>
+    <text x="190" y="93" font-size="11" fill="#1e8449" font-family="sans-serif"
+    text-anchor="middle" font-weight="bold">Chaos</text>
+    <defs><marker id="eA" markerWidth="8" markerHeight="6" refX="0" refY="3"
+    orient="auto"><path d="M0,3 L8,0 L8,6" fill="#27ae60"/></marker></defs>
+    <line x1="190" y1="130" x2="190" y2="112" stroke="#27ae60"
+    stroke-width="1.5" marker-end="url(#eA)"/>
+    <text x="190" y="145" font-size="10" fill="#27ae60" font-family="sans-serif"
+    text-anchor="middle" font-style="italic">Life, computation,</text>
+    <text x="190" y="159" font-size="10" fill="#27ae60" font-family="sans-serif"
+    text-anchor="middle" font-style="italic">adaptation</text>
+    <line x1="30" y1="120" x2="350" y2="120" stroke="#ccc" stroke-width="1"/>
+    <path d="M30,118 L140,118" stroke="#2471a3" stroke-width="3"/>
+    <path d="M152,118 L228,118" stroke="#27ae60" stroke-width="3"/>
+    <path d="M240,118 L350,118" stroke="#c0392b" stroke-width="3"/>
+    </svg>
+
+computational universality: "Any sufficiently complex system can compute anything any other system can. Turing's 1936 insight. Means the substrate doesn't matter — if it's complex enough, it can think."
+
+cellular automaton: "A grid of cells following simple local rules. Can generate unlimited complexity from trivial starting conditions. Wolfram's central object — proof that simple rules produce complex behavior."
+
+decoherence:
+  text: "Loss of quantum behavior due to interaction with the environment. The enemy of quantum computing — random nudges from surroundings scramble quantum states. Topological protection defeats this by storing information in global patterns, not local states."
+  target: "#pos09:the-factoring-game"
+
+quantum coherence: "A quantum system maintaining its wave-like behavior — superposition and entanglement intact. Required for quantum computation. Typically fragile, but topological protection and certain substrates can extend it dramatically."
+
+# --- Tier 2 MEDIUM PRIORITY: p3 chapters (popup = peer-reviewed definition) ---
+
+Shor's algorithm: "Quantum algorithm that factors large numbers exponentially faster than any known classical method. Published by Peter Shor in 1994. Breaks RSA encryption. The reason governments care about quantum computing."
+
+lattice gas automata: "Hasslacher's model: simulate fluid dynamics on a discrete grid. Simple collision rules at each node produce complex macroscopic flow. The bridge between discrete computation and continuous physics."
+
+Connection Machine: "Danny Hillis's 1985 massively parallel supercomputer. 65,536 processors working simultaneously. Proved that parallelism could solve problems no serial machine could approach. DARPA-funded."
+
+Chern-Simons theory: "Mathematical framework linking knot theory to quantum field theory. Witten's Fields Medal (1990). Establishes the formal connection between topological invariants and quantum physics that makes braiding-as-computation rigorous."
+
+knot invariant: "A number or polynomial describing a knot that doesn't change when you deform the knot smoothly. If two knots have different invariants, they're truly different. Connects to anyonic braiding — braids are knots in spacetime."
+
+Jones polynomial: "A knot invariant discovered by Vaughan Jones (1984, Fields Medal). Computable by braiding anyons in a topological quantum computer. The mathematical bridge connecting pure topology to physical computation."
+
+MOSFET: "Metal-Oxide-Semiconductor Field-Effect Transistor. The transistor in every computer chip. Contains a two-dimensional electron gas at its oxide interface. Billions per chip. The most manufactured device in human history."
+
+plasma sheet: "Hot charged particles trapped in a thin 2D sheet by Earth's magnetic field. Thousands of kilometers across but thin relative to its extent. The magnetosphere's largest confined two-dimensional structure."
+
+heliospheric current sheet: "The solar system's largest two-dimensional structure — a vast warped surface separating regions of opposing magnetic polarity in the solar wind. Alfvén called it the 'ballerina skirt.' Extends beyond all the planets."
+
+substorm: "Explosive energy release in Earth's magnetotail. Drives auroras. Injects energetic particles into the inner magnetosphere. Part of the magnetosphere's rhythmic energy cycle — loading, then sudden release."
+
+self-organized criticality:
+  text: "Systems that naturally evolve to a critical state where avalanches of all sizes occur. Sandpiles. Earthquakes. Forest fires. The magnetosphere. Bak, Tang & Wiesenfeld (1987). No tuning needed — the system tunes itself."
+  html: >-
+    <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;">
+    <strong>Self-organized criticality</strong> — systems naturally evolve to
+    a critical state where avalanches of all sizes occur. No tuning needed.
+    Bak, Tang &amp; Wiesenfeld (1987).</p>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380"
+    height="200" style="display:block;margin:0 auto;">
+    <rect width="380" height="200" fill="#fafafa" rx="4"/>
+    <polygon points="190,30 60,170 320,170" fill="#f0e6d3" stroke="#b7950b"
+    stroke-width="1.5"/>
+    <circle cx="175" cy="145" r="3" fill="#c0392b" opacity="0.7"/>
+    <circle cx="210" cy="130" r="5" fill="#c0392b" opacity="0.6"/>
+    <circle cx="150" cy="120" r="2" fill="#c0392b" opacity="0.8"/>
+    <circle cx="230" cy="155" r="4" fill="#c0392b" opacity="0.5"/>
+    <circle cx="195" cy="90" r="7" fill="#c0392b" opacity="0.4"/>
+    <circle cx="140" cy="155" r="2.5" fill="#c0392b" opacity="0.7"/>
+    <circle cx="260" cy="145" r="3.5" fill="#c0392b" opacity="0.6"/>
+    <circle cx="185" cy="110" r="2" fill="#c0392b" opacity="0.8"/>
+    <circle cx="220" cy="100" r="4" fill="#c0392b" opacity="0.5"/>
+    <path d="M175,145 L168,165" stroke="#c0392b" stroke-width="1" opacity="0.4"/>
+    <path d="M210,130 L225,160" stroke="#c0392b" stroke-width="1.5" opacity="0.3"/>
+    <path d="M195,90 L180,130" stroke="#c0392b" stroke-width="2" opacity="0.25"/>
+    <text x="190" y="188" font-size="11" fill="#555" font-family="sans-serif"
+    text-anchor="middle" font-style="italic">All sizes of avalanche</text>
+    <text x="340" y="50" font-size="9" fill="#888" font-family="sans-serif"
+    text-anchor="end">small</text>
+    <circle cx="355" cy="47" r="2.5" fill="#c0392b" opacity="0.7"/>
+    <text x="340" y="70" font-size="9" fill="#888" font-family="sans-serif"
+    text-anchor="end">medium</text>
+    <circle cx="355" cy="67" r="4.5" fill="#c0392b" opacity="0.5"/>
+    <text x="340" y="93" font-size="9" fill="#888" font-family="sans-serif"
+    text-anchor="end">large</text>
+    <circle cx="355" cy="90" r="7" fill="#c0392b" opacity="0.35"/>
+    </svg>
+
+collisionless plasma: "Plasma so thin that particles rarely collide directly. Mean free path exceeds a million meters. Thermal equilibrium arguments fail — 'hot' is not 'thermally coupled.' Different physics from ordinary gases. The magnetosphere is collisionless."
+
+Parable of the Tribes: "Andrew Bard Schmookler's insight: among competing groups, one aggressor forces all others to arm, flee, or die. No group can unilaterally choose peace. Power is a one-way ratchet. Applies to technology races."
+
+information asymmetry: "One party knows what the other doesn't. In game theory, the party with more information has a decisive strategic advantage. Extreme form: total surveillance without the target's knowledge."
+
+gain-of-function research: "Deliberately engineering pathogens to be more transmissible or virulent — to study them, to prepare defenses, or both. The biology version of dual use. Classified as Dual-Use Research of Concern (DURC)."
+
+directed evolution: "Frances Arnold's Nobel Prize technique (2018). Artificial selection applied to molecules — iterative rounds of mutation and screening find configurations that no rational design could specify. NK fitness landscapes explain why it works."
+
+morphogenesis: "How biological form arises from a uniform starting point. Turing's last paper (1952): chemical gradients can spontaneously generate spatial patterns. A brain is not assembled — it precipitates."
+
+reaction-diffusion: "Turing's mathematical model for pattern formation (1952). Two chemicals — an activator and an inhibitor — diffusing at different rates spontaneously produce stripes, spots, and spirals from uniform initial conditions."
+
+quasiparticle: "Not a real particle — a collective excitation of many particles that behaves as if it were one. Phonons (sound), holes (missing electrons), anyons (2D braiding). The anyon is the quasiparticle that makes topological computation possible."
+
+Great Filter: "Why don't we see aliens? Something kills technological civilizations before they can spread. Whether the filter is behind us (we got lucky) or ahead (we haven't hit it yet) is the question. Hanson (1998)."
+
+Enigma: "German cipher machine used in WWII. Broken by Alan Turing and the team at Bletchley Park. The effort to break it produced Colossus — the world's first programmable electronic computer. The secret was kept for 35 years."
+
+poised realm: "Kauffman's concept: systems at the quantum-classical boundary, poised at the edge of chaos, may sustain quantum coherence longer than bulk matter. Power-law rather than exponential decoherence. A theoretical bridge to room-temperature quantum effects."
+
+# --- Tier 2 LOWER PRIORITY (selective — high-value terms only) ---
+
+braid group: "The mathematical group describing how strands can cross over and under each other. The algebra behind anyon computation — each crossing is an operation, and the sequence of crossings encodes the computation."
+
+topological insulator: "A material that is insulating inside but conducting on its surface. The surface states are topologically protected — they work at room temperature. Demonstrates that topological protection survives thermal noise."
+
+graphene: "A single atom-thick layer of carbon arranged in a hexagonal lattice. A natural two-dimensional electron gas. The material where FQHE was demonstrated outside GaAs — proving substrate independence (Anchor 1)."
+
+no-cloning theorem: "You cannot copy an unknown quantum state. Wootters & Zurek (1982). Fundamental limit — but it forbids copying unknowns, not fabricating known classical structures. Narrower than it sounds. Protects quantum cryptography."
