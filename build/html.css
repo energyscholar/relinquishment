@@ -130,6 +130,33 @@ dl.topic-guide dd {
   dl.topic-guide dt a:hover { color: #6699cc; border-bottom-color: #6699cc; }
 }
 
+/* Stack chart — full-width interactive table */
+#stack-chart ~ .center > table,
+#stack-chart + .center > table {
+  width: 100%;
+  table-layout: fixed;
+}
+#stack-chart ~ .center > table th,
+#stack-chart ~ .center > table td {
+  padding: 0.3em 0.2em;
+  font-size: 0.85em;
+}
+#stack-chart ~ .center > table td:first-child {
+  text-align: left;
+  font-weight: 600;
+}
+/* Stack chart hover-term styling — no dotted underline, just cursor */
+#stack-chart ~ .center > table .hover-term {
+  border-bottom: none;
+  text-decoration: none;
+  cursor: help;
+}
+
+/* hover-nav — popup-enabled navigation elements (no underline change) */
+.hover-nav[data-hover] {
+  cursor: pointer;
+}
+
 /* Heading deep link icons */
 .heading-link {
   text-decoration: none;

@@ -82,7 +82,8 @@
   // Left: Breadcrumb
   var breadcrumb = document.createElement('span');
   breadcrumb.id = 'nav-breadcrumb';
-  breadcrumb.title = 'Your current location in the book';
+  breadcrumb.setAttribute('data-hover', 'Your current location in the book');
+  breadcrumb.classList.add('hover-nav');
   breadcrumb.style.cssText = 'flex:1;overflow:hidden;white-space:nowrap;' +
     'text-overflow:ellipsis;';
 
@@ -91,7 +92,9 @@
   shareBtn.id = 'nav-share';
   shareBtn.textContent = '\u00A7';
   shareBtn.href = '#';
-  shareBtn.title = 'Copy link to current section';
+  shareBtn.setAttribute('data-hover', 'Copy link to current section');
+  shareBtn.setAttribute('aria-label', 'Copy link to current section');
+  shareBtn.classList.add('hover-nav');
   shareBtn.style.cssText = 'text-decoration:none;color:' + (isDark ? '#aaa' : '#888') +
     ';font-size:1.1em;margin-left:0.5em;cursor:pointer;flex:0 0 auto;';
   shareBtn.addEventListener('click', function(e) {
@@ -113,7 +116,8 @@
   var introLink = document.createElement('a');
   introLink.href = '#hook:what-would-you-do';
   introLink.textContent = 'Intro';
-  introLink.title = 'Jump to Introduction';
+  introLink.setAttribute('data-hover', 'Jump to Introduction');
+  introLink.classList.add('hover-nav');
   introLink.style.cssText = 'text-decoration:none;color:#1a5276;font-weight:bold;';
   introLink.addEventListener('mouseenter', function() { introLink.style.color = '#2471a3'; });
   introLink.addEventListener('mouseleave', function() { introLink.style.color = '#1a5276'; });
@@ -152,7 +156,8 @@
     var a = document.createElement('a');
     a.href = '#' + p.id;
     a.textContent = p.label;
-    a.title = p.tip;
+    a.setAttribute('data-hover', p.tip);
+    a.classList.add('hover-nav');
     a.style.cssText = 'text-decoration:none;color:#1a5276;';
     a.addEventListener('mouseenter', function() { a.style.color = '#2471a3'; });
     a.addEventListener('mouseleave', function() { a.style.color = '#1a5276'; });
@@ -176,7 +181,8 @@
   var topBtn = document.createElement('a');
   topBtn.textContent = '\u25B2 Top';
   topBtn.href = '#';
-  topBtn.title = 'Scroll to the top of the page';
+  topBtn.setAttribute('data-hover', 'Scroll to the top of the page');
+  topBtn.classList.add('hover-nav');
   topBtn.style.cssText = 'text-decoration:none;color:#1a5276;padding:0.3em 0.6em;' +
     'flex:0 0 auto;white-space:nowrap;';
   topBtn.addEventListener('click', function(e) {
@@ -188,7 +194,9 @@
   var expandBtn = document.createElement('button');
   expandBtn.id = 'expand-toggle';
   expandBtn.textContent = 'Expand All';
-  expandBtn.title = 'Open all chapters and sections at once';
+  expandBtn.setAttribute('data-hover', 'Open all chapters and sections at once');
+  expandBtn.setAttribute('aria-label', 'Open all chapters and sections at once');
+  expandBtn.classList.add('hover-nav');
   expandBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
     'font-family:inherit;cursor:pointer;background:#1a5276;color:#fff;border:none;' +
     'border-radius:4px;margin:0 0.5em;white-space:nowrap;';
@@ -199,14 +207,17 @@
     var expanding = expandBtn.textContent === 'Expand All';
     allDetails.forEach(function(d) { d.open = expanding; });
     expandBtn.textContent = expanding ? 'Collapse All' : 'Expand All';
-    expandBtn.title = expanding ? 'Close all chapters and sections' : 'Open all chapters and sections at once';
+    expandBtn.setAttribute('data-hover', expanding ? 'Close all chapters and sections' : 'Open all chapters and sections at once');
+    expandBtn.setAttribute('aria-label', expanding ? 'Close all chapters and sections' : 'Open all chapters and sections at once');
   });
 
   // Back button (hidden when nav stack empty) — outline style, B6
   var backBtn = document.createElement('button');
   backBtn.id = 'nav-back';
   backBtn.textContent = '\u2190 Back';
-  backBtn.title = 'Return to where you were reading before following a link';
+  backBtn.setAttribute('data-hover', 'Return to where you were reading before following a link');
+  backBtn.setAttribute('aria-label', 'Back');
+  backBtn.classList.add('hover-nav');
   backBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
     'font-family:inherit;cursor:pointer;background:transparent;color:#1a5276;' +
     'border:1px solid #1a5276;border-radius:4px;margin-right:0.5em;' +
@@ -226,7 +237,8 @@
   evalBtn.id = 'nav-evaluate';
   evalBtn.setAttribute('data-nav-evaluate', 'true');
   evalBtn.textContent = 'AI Eval';
-  evalBtn.title = 'Jump to instructions for evaluating this book with an AI assistant';
+  evalBtn.setAttribute('data-hover', 'Jump to instructions for evaluating this book with an AI assistant');
+  evalBtn.classList.add('hover-nav');
   evalBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
     'font-family:inherit;cursor:pointer;background:#1a5276;color:#fff;border:none;' +
     'border-radius:4px;margin:0 0.3em;white-space:nowrap;';
@@ -429,7 +441,8 @@
     share.className = 'section-share';
     share.href = '#' + heading.id;
     share.textContent = '\uD83D\uDD17';
-    share.title = 'Copy link to this section';
+    share.setAttribute('data-hover', 'Copy link to this section');
+    share.classList.add('hover-nav');
     share.setAttribute('aria-label', 'Copy link to ' + heading.textContent.trim());
     share.addEventListener('click', function(e) {
       e.preventDefault();
@@ -468,7 +481,8 @@
         btn.id = id;
         btn.className = 'copy-llm-primer';
         btn.textContent = btnLabel;
-        btn.title = btnTitle;
+        btn.setAttribute('data-hover', btnTitle);
+        btn.classList.add('hover-nav');
         btn.style.cssText = btnStyle;
         btn.addEventListener('mouseenter', function() { btn.style.background = btnHover; });
         btn.addEventListener('mouseleave', function() { btn.style.background = btnBase; });
@@ -533,7 +547,8 @@
         btn.id = id;
         btn.className = 'copy-spiral-abstracts';
         btn.textContent = absBtnLabel;
-        btn.title = absBtnTitle;
+        btn.setAttribute('data-hover', absBtnTitle);
+        btn.classList.add('hover-nav');
         btn.style.cssText = absBtnStyle;
         btn.addEventListener('mouseenter', function() { btn.style.background = absBtnHover; });
         btn.addEventListener('mouseleave', function() { btn.style.background = absBtnBase; });
@@ -863,7 +878,7 @@
 
   // --- Bind events to all .hover-term elements ---
 
-  var allHoverTerms = document.querySelectorAll('.hover-term[data-hover]');
+  var allHoverTerms = document.querySelectorAll('[data-hover]');
   var lastTouchTime = 0; // track touch to suppress mouse hover on touch devices
 
   allHoverTerms.forEach(function(term) {
@@ -877,9 +892,13 @@
     }, { passive: true });
 
     term.addEventListener('touchend', function(e) {
+      lastTouchTime = Date.now();
+
+      // Navigation elements (links, accordion triggers): let native action happen
+      if (e.target.closest('a, summary')) return;
+
       e.preventDefault();
       e.stopPropagation();
-      lastTouchTime = Date.now();
 
       // Toggle panel on touch (Puppeteer .tap() dispatches touch but not click)
       if (hoverTimer) { clearTimeout(hoverTimer); hoverTimer = null; }
@@ -894,6 +913,12 @@
 
     // --- Click: toggle panel (fallback for desktop click / non-touch-event paths) ---
     term.addEventListener('click', function(e) {
+      // Navigation elements: let native action happen (navigate / expand)
+      if (e.target.closest('a, summary')) {
+        dismissPanel();
+        return;
+      }
+
       e.preventDefault();
       e.stopPropagation();
 
@@ -961,7 +986,7 @@
   document.addEventListener('click', function(e) {
     var panel = document.querySelector('.hover-panel');
     if (!panel) return;
-    if (e.target.closest('.hover-panel') || e.target.closest('.hover-term')) return;
+    if (e.target.closest('.hover-panel') || e.target.closest('[data-hover]')) return;
     dismissPanel();
   });
 
@@ -969,7 +994,7 @@
   document.addEventListener('touchend', function(e) {
     var panel = document.querySelector('.hover-panel');
     if (!panel) return;
-    if (e.target.closest('.hover-panel') || e.target.closest('.hover-term')) return;
+    if (e.target.closest('.hover-panel') || e.target.closest('[data-hover]')) return;
     dismissPanel();
   });
 
@@ -984,7 +1009,7 @@
   document.addEventListener('mouseover', function(e) {
     var panel = document.querySelector('.hover-panel');
     if (!panel) return;
-    if (!e.target.closest('.hover-panel') && !e.target.closest('.hover-term')) {
+    if (!e.target.closest('.hover-panel') && !e.target.closest('[data-hover]')) {
       setTimeout(function() {
         var p = document.querySelector('.hover-panel');
         if (p && !p.matches(':hover')) {
