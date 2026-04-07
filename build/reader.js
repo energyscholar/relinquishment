@@ -769,9 +769,15 @@
     panel.id = 'hover-panel-' + panelIdCounter;
     panel.setAttribute('role', 'tooltip');
 
-    // Use createTextNode — definitions are plain text, HTML-escaped by preprocess.py.
-    // innerHTML would double-escape &amp; etc. createTextNode allows appending link after.
-    panel.appendChild(document.createTextNode(def));
+    // Rich content panels use data-hover-html; plain text panels use data-hover
+    var richHtml = term.getAttribute('data-hover-html');
+    if (richHtml) {
+      var content = document.createElement('div');
+      content.innerHTML = richHtml;
+      panel.appendChild(content);
+    } else {
+      panel.appendChild(document.createTextNode(def));
+    }
 
     // Click-through link for terms with data-hover-target
     var hoverTarget = term.getAttribute('data-hover-target');
