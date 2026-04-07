@@ -551,8 +551,11 @@ def collapse_chapters(text):
                 '<strong>The Flat</strong> — any two-dimensional system embedded in '
                 'three dimensions that exhibits topological order. Particles confined '
                 'to two dimensions can braid around each other, storing information '
-                'in global patterns that are impossible in 3D. This changes everything '
-                '— different physics, different possibilities.</p>'
+                "in global patterns that are impossible in 3D. "
+                "<span class='hover-term' data-hover='A property where information "
+                "is stored in global patterns, not in any single place. Extremely hard "
+                "to destroy — you would have to disrupt the entire pattern at once, not "
+                "just a piece of it.'>Different physics apply</span>.</p>"
                 '<p style="margin:0;font-size:0.85em;line-height:1.4;color:#666;">'
                 'The Flat inside your computer chip is a 2DEG (two-dimensional electron '
                 'gas). The Flat in Earth\'s magnetosphere is plasma confined to thin '
@@ -857,12 +860,6 @@ def inject_evaluate_section(text):
         '  Copy Prompt 2 &#x2014; Spiral Abstracts\n'
         '</button>\n'
         '<p style="text-align:center;color:#888;font-size:0.9em;">Then paste this.</p>\n'
-        '<p class="eval-suggested-prompt" data-suggested-prompt="true"\n'
-        '  style="margin-top:1em;padding:0.8em;background:#f5f5f5;\n'
-        '  border-radius:6px;font-size:0.95em;">\n'
-        '  <strong>Suggested prompt:</strong> &#x201c;Is any step in this chain precluded\n'
-        '  by known physics?&#x201d;\n'
-        '</p>\n'
         '<p class="eval-security-note" data-security-note="true"\n'
         '  style="font-size:0.8em;color:#888;text-align:center;margin-top:0.5em;">\n'
         '  These prompts contain published physics with DOIs. No code, no\n'
