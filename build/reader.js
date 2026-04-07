@@ -496,24 +496,8 @@
         primerSection.parentNode.appendChild(bottomBtn);
       }
 
-      // Front-matter button — at the "Your AI May Need a Firmware Update" note
-      var frontNote = document.getElementById('your-ai-may-need-a-firmware-update');
-      if (!frontNote) {
-        document.querySelectorAll('h2, h3').forEach(function(h) {
-          if (h.textContent.indexOf('Firmware Update') !== -1 && h.textContent.indexOf('Your AI') !== -1) frontNote = h;
-        });
-      }
-      if (frontNote) {
-        var frontBtn = makeCopyBtn('copy-llm-primer-front');
-        // Insert inside the <details> after <summary>
-        var frontDetails = frontNote.closest('details');
-        if (frontDetails) {
-          var frontSummary = frontDetails.querySelector(':scope > summary');
-          if (frontSummary) frontSummary.insertAdjacentElement('afterend', frontBtn);
-        } else {
-          frontNote.parentNode.appendChild(frontBtn);
-        }
-      }
+      // (Front-matter "Your AI May Need a Firmware Update" removed —
+      // replaced by "How to Evaluate" section with eval buttons)
     }
   }
 

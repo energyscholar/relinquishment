@@ -388,10 +388,12 @@ def collapse_chapters(text):
         if hid in {'guided-deduction', 'the-evidence-trail', 'forgiveness-and-permission'}:
             boundaries.append((m.start(), m.end(), m.group(0), hid))
 
-    # Appendices boundary: chapter-section containing app:predictions
-    app_pred_pos = text.find('id="app:predictions"')
-    if app_pred_pos != -1:
-        app_start = text.rfind('<details class="chapter-section">', 0, app_pred_pos)
+    # Appendices boundary: first appendix chapter (firmware-update or app:predictions)
+    app_first_id = text.find('id="ch:firmware-update"')
+    if app_first_id == -1:
+        app_first_id = text.find('id="app:predictions"')
+    if app_first_id != -1:
+        app_start = text.rfind('<details class="chapter-section">', 0, app_first_id)
         if app_start != -1:
             boundaries.append((app_start, app_start, 'Appendices', 'appendices'))
 
