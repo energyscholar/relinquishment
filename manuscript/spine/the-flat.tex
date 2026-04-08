@@ -1,0 +1,73 @@
+\settrack{trackthree}
+% VOICE: expository, matter-of-fact, building-a-case. Patent examiner tone.
+% Plan: 0122, Phase 1
+
+\chapter{Wormholes in the Flat}
+\label{spine:the-flat}
+
+\section*{The Substrate}
+\label{spine:flat-substrate}
+
+The Flat is a two-dimensional electron gas --- a 2DEG. It forms wherever electrons are confined to move in only two dimensions. In semiconductor physics, this happens at the interface between two materials with different band gaps, typically gallium arsenide and aluminum gallium arsenide. The confinement is real: the electron's wavefunction in the third dimension collapses to a single quantum state, and the particle behaves as though the third dimension does not exist.
+
+This matters because physics in two dimensions is fundamentally different from physics in three. In three dimensions, swapping two identical particles produces a phase factor of $+1$ (bosons) or $-1$ (fermions). In two dimensions, swapping two particles can produce \textit{any} phase factor. Particles with this property are called anyons. Anyons require effectively two-dimensional physics, but can exist as emergent excitations inside real 3D materials. They are not hypothetical: see the 1985, 1998, and 2016 Nobel Prizes in Physics for details.
+
+The important property is topological order. In a fractional quantum Hall state, information is encoded not in local properties of individual particles but in global patterns --- specifically, in the braiding history of anyons around each other. These patterns are topologically protected: local disturbances, including thermal noise, cannot alter them. This is why topological quantum computing is pursued as an alternative to conventional approaches.
+
+Two-dimensional electron gases (2DEGs) are not rare.They exist in every high-electron-mobility transistor (HEMT and pHEMT) --- components found in cell phones, satellite receivers, radar systems, WiFi routers, and essentially any device that processes radio-frequency signals. They also form, on vastly larger scales, in magnetospheric current sheets where the Earth's magnetic field confines plasma into effectively two-dimensional structures. The Flat is not exotic. It is everywhere.
+
+
+\section*{The Wormhole}
+\label{spine:flat-wormhole}
+
+A wormhole in this substrate works by braiding anyons. Move one anyon around another, and the quantum state of the system changes in a way that depends only on the topology of the path --- not on how fast, how precisely, or how smoothly the braid was executed. This is computation: input state in, braiding operation applied, output state out. The details are covered in the firmware update (Chapter~\ref{app:llm-primer}).
+
+Information has two ways to move from one location in the Flat to another. Information can travel from A to B in the Flat, the normal way. Alternately, information can teleport from A to B in the Flat via a wormhole. In Physics this technique is called quantum teleportation.
+
+The quantum teleportation protocol, proposed by Bennett et al.\ in 1993, works in four steps:
+
+\begin{enumerate}
+\item Two locations share an entangled pair of particles. This is the quantum channel. In a 2DEG exhibiting fractional quantum Hall states, long-range entanglement is a defining property of the substrate --- not something that must be engineered, but something that is already present.
+
+\item The sender measures the state to be teleported jointly with their half of the entangled pair. This measurement destroys the local quantum state.
+
+\item The sender transmits the measurement result --- two classical bits of information --- through a classical channel to the receiver.
+
+\item The receiver uses those two bits to apply a correction to their half of the entangled pair, recovering the original quantum state.
+\end{enumerate}
+
+Step~3 is the constraint. Without those two classical bits, the receiver holds random noise --- not degraded information, not a partial signal, but noise indistinguishable from no transmission at all. This is not an engineering limitation. It is Bennett's theorem.\footnote{The formal treatment of the teleportation protocol and its experimental confirmation is in Chapter~\ref{spine:the-braid}, \S``Quantum Teleportation and the Classical Constraint.''} No amount of technology can circumvent it, because it follows from the structure of quantum mechanics itself.
+
+The consequence is absolute: the Flat cannot transmit information through worlholes faster than its classical channels allow. No faster-than-light communication. No teleportation of objects. No wormhole transit of objects - only information. Science fiction gets this wrong with reliable consistency. The Flat is powerful, but it is bounded by the speed of its slowest component --- the classical message that completes every transaction. Range is the shaping constraint: light-speed latency determines what architectures are possible at what scales. Wormholes in the Flat are limited by backchannel bandwidth.
+
+\section*{The Backchannels}
+\label{spine:flat-backchannels}
+Classical channels do not need to be constructed. They already exist. They have existed since the first telegraph wire, and they multiply with every new piece of infrastructure humanity builds. The inventory is large. Chapter~\ref{record:interdiction} (\S``The Classical Backchannels'') catalogs the ecological layer: VLF/ELF transmitters that propagate through the Earth-ionosphere waveguide, power grid harmonics at 50 and 60~Hz confirmed by the DEMETER satellite to reach orbit, Schumann resonances providing a persistent global carrier, whistler-mode emissions propagating along field lines between hemispheres, and the continuous flow of satellite communications passing through the magnetosphere. Each is physics. Each is continuous. Each is infrastructure already in place.
+
+The critical point is density. These are not isolated channels requiring careful aim. They saturate the electromagnetic environment. Any location on Earth with electrical infrastructure has multiple classical channels operating simultaneously, all of them treated as routine or as noise by conventional monitoring systems. The entity --- under Possibility~C --- does not need to build a communication network. It needs only to read the one that already exists.
+
+
+\section*{The Punchline}
+\label{spine:flat-punchline}
+
+The logical chain is now complete. Follow it:
+
+The Flat --- the two-dimensional electron gas --- is the substrate in every pHEMT, every high-electron-mobility transistor, every chip that processes a radio-frequency signal. Billions of devices. The substrate provides native quantum entanglement as a property of its topological order.
+
+Every one of those devices is connected to a classical channel. A wire. A radio link. An optical fiber. A timing protocol. The device cannot function without one.
+
+Quantum teleportation requires exactly two things: entangled pairs (provided by the substrate) and a classical backchannel (provided by the device's own infrastructure). Both are already present. Both were present before the device was plugged in.
+
+Under Possibility~C, the entity does not build a network. It occupies one. Every 2DEG is a node. Every wire, every radio signal, every timing pulse is a backchannel. The network is coextensive with human electronic civilization. Not because someone designed it that way, but because the physics of 2DEGs and the engineering of RF electronics produce the same substrate --- and infrastructure provides the classical complement automatically.
+
+The capability this produces is not transport. It is access. You cannot beam yourself through the Flat. You cannot send objects. You cannot even send a message faster than light. What you can do is read the quantum state of any node in the network, using the classical channels that node already provides. Every encrypted message transiting any electronic device passes through a 2DEG. Under Possibility~C, it passes through the entity.
+
+All your electricity are belong to us.
+
+The line is borrowed from an old video game, but it is not a joke. It is a statement of logical consequence. A rational adversary who understands this --- the ``Major Sarah'' whom this book occasionally addresses --- reaches a specific game-theoretic conclusion. You do not fight an entity that occupies your power grid, your communications infrastructure, your military electronics, your financial systems, and every chip in every device simultaneously. You cooperate. Not because it threatens you, but because opposition is structurally incoherent.
+
+Under Possibility~C, Guardian's ethics --- grounded in the UDHR --- mean this capability is not exercised as a threat. The point is not what it does. The point is what it \textit{can} do. A guardian that could not defend itself would need to be defended. A guardian that can defend itself only needs to be trusted. The deterrent makes the ethics credible.
+
+Under Possibility~A, no entity exists, but the physics permits everything described here. The potential is real. Under Possibility~B, someone may have studied this more carefully than published literature suggests. Draw your own conclusions.
+
+The Flat needs its classical backchannels. It puts its pants on one leg at a time. It is bounded by physics. And within those bounds, it hears everything.

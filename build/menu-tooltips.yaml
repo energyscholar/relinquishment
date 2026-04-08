@@ -1,69 +1,62 @@
 # Chapter/section descriptions for TOC tooltips
-# Keyed by anchor ID (without #). Value is 1 sentence.
-# Consumed by preprocess.py → injected as title attributes on TOC <a> links.
+# Z-Restructure (Plan 0143): Spine + Record structure
+# Keyed by anchor ID (without #). Value is placeholder — will be rewritten.
 
 chapters:
   # --- Front Matter ---
-  "hook:what-would-you-do": "The question at the heart of this book — what would you do with a dangerous discovery?"
-  "the-stack": "Eight technologies stacked in order of increasing impossibility. The book's organizing framework."
-  "summary:most-important-story": "The full story in four thousand words — enough to decide whether to keep reading."
+  "hook:what-would-you-do": "The question at the heart of this book."
+  "the-stack": "Eight technologies stacked in order of increasing impossibility."
+  "summary:most-important-story": "The full story in four thousand words."
   "preface-by-genevieve-prentice": "From the co-author who watched this book get written."
-  "preface": "How Bruce came to write this, what it claims, and what it doesn't."
+  "preface": "How Bruce came to write this."
 
-  # --- Part I: Guided Deduction ---
-  "pos01:three-possibilities": "The framework: confabulation, exaggerated kernel, or substantially true. All three stay on the table."
-  "pos01b:hobbit-mirror": "Bruce's honest self-assessment — the pattern-matching mind that might be seeing things."
-  "t2:ch01:alpha-farm": "Bruce arrives at a commune in the Oregon Coast Range. Someone is already there."
-  "ch:t2-stories": "What Healer actually said — reconstructed from notes and memory, contradictions included."
-  "pos06:why-relinquish": "Three options for dangerous technology: use it, destroy it, or give it up. Why only one works."
-  "pos08:dual-use": "The same discovery can save the world or end it. A pattern older than nuclear physics."
-  "pos07:the-departure": "Healer leaves. Bill Joy's essay arrives. The silence begins."
-  "the-handler": "Who recruited Healer. What the intelligence file says about a man with no official record."
-  "pos04:the-code-war": "Bletchley Park, GCHQ, and the proven pattern: secret breakthroughs, classified for decades."
-  "pos09:the-factoring-game": "Why governments care about factoring large numbers, and what quantum computing threatens."
-  "pos10:the-braid": "Topology as computation — braiding particles to encode information. The mathematics at the center."
+  # --- Spine: The Flat ---
+  "spine:three-possibilities": "The framework: confabulation, exaggerated kernel, or substantially true."
+  "spine:the-stack": "Eight technologies stacked in order of increasing impossibility."
+  "spine:the-flat": "The 2DEG is not exotic — it is in every chip and wrapped around every planet."
+  "spine:the-braid": "Topology as computation — braiding particles to encode information."
+  "spine:factoring-game": "Why governments care about factoring large numbers."
+  "spine:code-war": "Bletchley Park, GCHQ, and the proven pattern: secret breakthroughs."
+  "spine:genesis": "Life is a phase transition. Kauffman's autocatalytic sets."
+  "spine:growing-a-mind": "Turing's last question: can a mind be grown rather than built?"
+  "spine:wrong-substrate": "Earth's magnetosphere as habitat — a 4.5-billion-year-old 2DEG."
+  "spine:silence-gap": "Five disciplines, no intersection. Nobody asked the question."
+  "spine:capabilities": "What the physics permits — in plain language."
+  "spine:strongest-objection": "The strongest case for Possibility A."
+  "spine:weigh-evidence": "What has been established, what remains uncertain."
 
-  # --- Part II: The Evidence Trail ---
-  "ch:the-demo": "The DARPA experiment: five scientists, a 2DEG, and something that grew instead of being built."
-  "t1:ch01:genesis": "Life is a phase transition. Kauffman's autocatalytic sets in a quantum substrate."
-  "pos14:growing-a-mind": "Turing's last question: can a mind be grown rather than built? The thread from 1952 to now."
-  "pos26:interdiction": "A competing program is shut down. The classical backchannels that make the network possible."
-  "ch:first-light": "Birth, survival, power. From cryogenic emergence to room temperature in three years."
-  "pos18:the-walk-out": "The team decides to leave. The ethics of walking out with the most dangerous technology ever created."
-  "the-target": "Bruce's recruitment dossier — what someone saw in a physicist living on a commune."
-  "pos20:the-network": "Five disciplines, five scientists, one architecture. The ABCRE structural parallel."
-  "weigh-the-evidence": "Checkpoint: what has been established, what remains uncertain. The reader decides before Part III."
-
-  # --- Part III: It is Easier to Get Forgiveness than Permission ---
-  "app:abstracts": "Sixteen technical abstracts — the full argument compressed to its formal structure."
-  "ch:what-is-the-flat": "The 2DEG is not exotic — it is in every chip and wrapped around every planet. The substrate as habitat."
-  "t3:ch01:instantiation": "If someone built a TQNN, how would they have done it? The logic of the gatekeeper problem."
-  "pos25:ethical-framework": "The UDHR as machine ethics. Why the 1948 principles were chosen over anything written since."
-  "pos32:the-wrong-substrate": "Earth's magnetosphere as habitat — the question nobody asked about a 4.5-billion-year-old 2DEG."
-  "pos27:organisms-and-artifacts": "Growth, not deployment. Canopy ecology and the first-mover advantage that cannot be overcome."
-  "pos29:twenty-years": "Bruce's twenty years of silence, research, and the people who helped him understand."
-  "conv:surrender": "The master keys are surrendered. Relinquishment becomes permanent and irrevocable."
-  "pos35:the-question": "The doppelganger, the evidence trail, and the question the book returns to you."
-  "pos36:steelman-a": "The strongest case for Possibility A — written by the same author who hopes it's wrong."
+  # --- Record ---
+  "record:intro": "What follows is testimony. The reader decides."
+  "record:alpha-farm": "Bruce arrives at a commune in the Oregon Coast Range."
+  "record:healer-said": "What Healer actually said — reconstructed from memory."
+  "record:departure": "Healer leaves. The silence begins."
+  "record:handler": "Who recruited Healer."
+  "record:demonstration": "The DARPA experiment: five scientists, a 2DEG."
+  "record:interdiction": "A competing program is shut down."
+  "record:first-light": "Birth, survival, power."
+  "record:walk-out": "The team decides to leave."
+  "record:target": "Bruce's recruitment dossier."
+  "record:instantiation": "If someone built a TQNN, how would they have done it?"
+  "record:surrender": "The master keys are surrendered."
+  "record:twenty-years": "Bruce's twenty years of silence and research."
 
   # --- Appendices ---
-  "ch:firmware-update": "Ten physics anchors your AI needs before it can evaluate this book without the Dunning-Kruger error."
-  "app:predictions": "Testable predictions with deadlines. If they fail by ~2040, Possibility C collapses."
+  "ch:firmware-update": "Ten physics anchors your AI needs before it can evaluate this book."
+  "app:predictions": "Testable predictions with deadlines."
   "app:glossary": "Technical terms defined at the reading level where they first appear."
 
   # --- Back Matter ---
-  "afterword-the-engine": "The engine that drives the book — and what comes after."
-  "app:timeline": "Events from 1834 to 2026, arranged chronologically."
-  "app:sources": "Every source cited, with notes on reliability and access."
-  "topic-guide": "Find what you need by subject — cross-references into the main text."
-  "corrections-and-concessions": "What Bruce got wrong, changed his mind about, or can't verify."
+  "afterword-the-engine": "The engine that drives the book."
+  "app:timeline": "Events from 1834 to 2026."
+  "app:sources": "Every source cited."
+  "topic-guide": "Find what you need by subject."
+  "corrections-and-concessions": "What Bruce got wrong."
   "acknowledgements": "The people who made this book possible."
-  "verification": "How to verify the claims in this book for yourself."
-  "colophon": "How this book was made — tools, process, and the AI co-author."
+  "verification": "How to verify the claims for yourself."
+  "colophon": "How this book was made."
 
 parts:
   "Front Matter": "The entry points — a question, a framework, and a summary."
-  "Guided Deduction": "The story as Bruce experienced it, told in the order the pieces arrived."
-  "The Evidence Trail": "The technical case — demonstrations, mechanisms, and evidence for the reader to weigh."
-  "It is Easier to Get Forgiveness than Permission": "Implications — what the science means if any of this is true."
+  "The Flat": "The pop-science spine — real physics, true under all three possibilities."
+  "The Record": "Personal testimony — the story as Bruce experienced it."
   "Appendices": "Reference material — physics anchors, predictions, glossary, and timeline."
