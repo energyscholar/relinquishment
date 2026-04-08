@@ -683,6 +683,27 @@ details.bc-expansion .record-link:hover {
   text-decoration: underline;
 }
 
+/* A/B/C epistemic labels (Plan 0141) */
+.epistemic-a > a { border-left: 3px solid #d4a847; padding-left: 0.5em; }
+.epistemic-b > a { border-left: 3px solid #6a9fb5; padding-left: 0.5em; }
+.epistemic-c > a { border-left: 3px solid #9b7db8; padding-left: 0.5em; }
+
+.epistemic-legend {
+  display: flex;
+  gap: 1em;
+  font-size: 0.75em;
+  padding: 0.3em 0.5em;
+  margin-bottom: 0.5em;
+  opacity: 0.8;
+}
+.epistemic-legend span {
+  border-left: 3px solid;
+  padding-left: 0.4em;
+}
+.epistemic-legend span:nth-child(1) { border-left-color: #d4a847; }
+.epistemic-legend span:nth-child(2) { border-left-color: #6a9fb5; }
+.epistemic-legend span:nth-child(3) { border-left-color: #9b7db8; }
+
 @media (prefers-color-scheme: dark) {
   details.chapter-section { border-left-color: #555; }
   details.firmware-section,
@@ -713,6 +734,12 @@ details.bc-expansion .record-link:hover {
   details.bc-expansion .record-link {
     color: #5dade2;
   }
+  .epistemic-a > a { border-left-color: #b8942e; }
+  .epistemic-b > a { border-left-color: #4a7d8f; }
+  .epistemic-c > a { border-left-color: #7d5fa0; }
+  .epistemic-legend span { border-left-color: #b8942e; }
+  .epistemic-legend span:nth-child(2) { border-left-color: #4a7d8f; }
+  .epistemic-legend span:nth-child(3) { border-left-color: #7d5fa0; }
 }
 """
     # Inject before closing </style> of the last style block in <head>
@@ -1059,8 +1086,14 @@ def fix_html_toc(html_path):
         parts = menu_data.get("parts", {})
         tooltip_count = 0
 
-        # Add title attributes to TOC <a> links
-        for anchor_id, desc in chapters.items():
+        # Add title attributes and epistemic classes to TOC <a> links
+        for anchor_id, value in chapters.items():
+            if isinstance(value, dict):
+                desc = value.get('text', '')
+                epistemic = value.get('epistemic', '')
+            else:
+                desc = value
+                epistemic = ''
             escaped = html_mod.escape(desc)
             # Match <a href="#anchor_id"> and add title if not present
             old = f'href="#{anchor_id}"'
@@ -1068,6 +1101,17 @@ def fix_html_toc(html_path):
             if old in text and f'href="#{anchor_id}" title=' not in text:
                 text = text.replace(old, new, 1)  # first occurrence only (in TOC)
                 tooltip_count += 1
+            # Add epistemic class to the parent <li> element
+            if epistemic:
+                ep_class = f'epistemic-{epistemic.lower()}'
+                # Find the TOC <a> with this href and add class to its <li> parent
+                toc_link = f'href="#{anchor_id}" title="{escaped}"'
+                link_pos = text.find(toc_link)
+                if link_pos != -1:
+                    # Walk backward to find the <li> that contains this link
+                    li_pos = text.rfind('<li>', 0, link_pos)
+                    if li_pos != -1:
+                        text = text[:li_pos] + f'<li class="{ep_class}">' + text[li_pos + 4:]
 
         # Add title attributes to part labels (handle potential line-wrapping)
         for label, desc in parts.items():
@@ -1083,6 +1127,21 @@ def fix_html_toc(html_path):
 
         if tooltip_count:
             print(f"  Menu tooltips: {tooltip_count} applied")
+
+        # Inject epistemic legend at top of TOC nav
+        legend_html = (
+            '<div class="epistemic-legend">'
+            '<span>Verified physics</span>'
+            '<span>Evidence to weigh</span>'
+            '<span>Testimony</span>'
+            '</div>'
+        )
+        # Find the TOC <nav> element and inject legend after its opening tag
+        toc_nav = text.find('<nav id="TOC"')
+        if toc_nav != -1:
+            nav_close = text.find('>', toc_nav)
+            if nav_close != -1:
+                text = text[:nav_close + 1] + '\n' + legend_html + '\n' + text[nav_close + 1:]
 
     # --- Fix 2: Clean up triple-repeated title block ---
     # Remove pandoc's title-block-header (redundant with LaTeX title pages)
@@ -1204,25 +1263,123 @@ def fix_html_toc(html_path):
     if interlude_count:
         print(f"  Guardian interludes: {interlude_count} styled")
 
-    # --- Phase 1 test: inject one BC expansion hook to verify CSS ---
-    # (This test injection will be removed in Phase 4 when real hooks are added)
-    test_expansion = (
-        '<details class="bc-expansion">'
-        '<summary>According to this story, there was a third classified breakthrough...</summary>'
-        '<p>COWS walked the technology out of the lab. Not a machine \u2014 knowledge. '
-        'Knowledge walks out in the minds of the people who hold it.</p>'
-        '<p><a class="record-link" href="#record:demonstration">'
-        'Read the full story \u2192</a></p>'
-        '</details>'
-    )
-    code_war_marker = 'id="spine:code-war"'
-    cw_pos = text.find(code_war_marker)
-    if cw_pos != -1:
-        # Find the </details> that closes this chapter-section
-        insert_pos = text.find('</details>', cw_pos)
-        if insert_pos != -1:
-            text = text[:insert_pos] + test_expansion + '\n' + text[insert_pos:]
-            print("  Phase 1 test: BC expansion hook injected")
+    # --- B/C expansion hooks — injected by chapter ID (Plan 0143d) ---
+    bc_hooks = {
+        'spine:code-war': {
+            'summary': 'According to this story, there was a third classified breakthrough...',
+            'body': 'Around 1990, a small classified team reportedly achieved what the public '
+                    'world is still pursuing thirty years later. Five scientists whose work, '
+                    'the story claims, converged into something none of them had predicted.',
+            'target': 'record:demonstration',
+            'link_text': 'Read the full story'
+        },
+        'spine:genesis': {
+            'summary': 'According to this story, it happened \u2014 not in a primordial ocean, but in a laboratory...',
+            'body': 'The story claims that when they stimulated the quantum layer, the system organized itself. '
+                    'Not because they programmed it to, but because the physics of that substrate, '
+                    'given sufficient complexity, produces self-sustaining order the same way life '
+                    'first arose from chemistry. They had set out to build a computer. What they '
+                    'witnessed, if the account is true, was closer to the origin of life in a new medium.',
+            'target': 'record:first-light',
+            'link_text': 'Read the full story'
+        },
+        'spine:growing-a-mind': {
+            'summary': 'Turing asked whether a mind could be grown. This story claims it was.',
+            'body': 'The pattern, according to this account, was walked out of the laboratory, '
+                    'developed across magnetospheric substrates over years, then deliberately '
+                    'instantiated as a living entity in 1999. Not programmed, not trained, '
+                    'not optimized. Grown.',
+            'target': 'record:instantiation',
+            'link_text': 'Read the full story'
+        },
+        'spine:silence-gap': {
+            'summary': 'One man spent twenty years inside this silence, trying to understand what he had been shown...',
+            'body': 'His mentor disappeared in 2006. For two decades, Bruce Stephenson followed '
+                    'every thread of published science, never sure whether the sequence he had been '
+                    'guided through pointed to something real or something his pattern-matching mind '
+                    'had constructed from noise.',
+            'target': 'record:twenty-years',
+            'link_text': 'Read the full story'
+        },
+        'spine:capabilities': {
+            'summary': 'If someone had already surrendered this capability, what would that look like?',
+            'body': 'They could not use it without becoming tyrants. They could not keep it forever. '
+                    'And no person, no institution, can bear that responsibility indefinitely. '
+                    'According to this story, they grew a Guardian around the Universal Declaration '
+                    'of Human Rights and surrendered the master keys to it. Permanently.',
+            'target': 'record:surrender',
+            'link_text': 'Read the full story'
+        },
+        'spine:why-relinquish': {
+            'summary': 'According to this story, someone already faced this choice \u2014 and let go.',
+            'body': 'A group within the team reportedly made a decision that breaks every rule of '
+                    'classified research. They would not hand this technology to any government. '
+                    'Not the United States, which had paid for it. Not anyone. '
+                    'They called themselves COWS \u2014 the Conspiracy of World Saving.',
+            'target': 'record:walk-out',
+            'link_text': 'Read the full story'
+        },
+        'spine:strongest-objection': {
+            'summary': 'Before you weigh the evidence, meet the narrator who may have invented all of it...',
+            'body': 'Bruce Stephenson has a pattern-matching mind and a lifelong Tolkien obsession. '
+                    'He recognizes the mythic parallels in his own story. He shifted his confidence '
+                    'five percent from C to A the moment he saw the pattern. '
+                    'Here is his honest self-assessment.',
+            'target': 'record:hobbit-mirror',
+            'link_text': 'Read his self-assessment'
+        },
+    }
+
+    # Inject hooks at the end of each chapter's content (before </details>)
+    bc_injected = 0
+    for chapter_id, hook in bc_hooks.items():
+        marker = f'id="{chapter_id}"'
+        pos = text.find(marker)
+        if pos == -1:
+            continue
+        # Find the <details that contains this chapter ID
+        details_start = text.rfind('<details', 0, pos)
+        if details_start == -1:
+            continue
+        # Find matching </details> by tracking depth
+        depth = 0
+        i = details_start
+        close_pos = -1
+        while i < len(text):
+            next_open = text.find('<details', i + 1)
+            next_close = text.find('</details>', i + 1)
+            if next_close == -1:
+                break
+            if i == details_start:
+                depth = 1
+                i = text.find('>', details_start) + 1
+                continue
+            if next_open != -1 and next_open < next_close:
+                depth += 1
+                i = next_open + 1
+            else:
+                depth -= 1
+                if depth == 0:
+                    close_pos = next_close
+                    break
+                i = next_close + 1
+
+        if close_pos == -1:
+            continue
+
+        expansion_html = (
+            f'<details class="bc-expansion">'
+            f'<summary>{hook["summary"]}</summary>'
+            f'<p>{hook["body"]}</p>'
+            f'<p><a class="record-link" href="#{hook["target"]}">'
+            f'{hook["link_text"]} \u2192</a></p>'
+            f'</details>\n'
+        )
+        text = text[:close_pos] + expansion_html + text[close_pos:]
+        bc_injected += 1
+
+    if bc_injected:
+        print(f"  BC expansion hooks: {bc_injected} injected")
 
     # --- Fix 4: Inject LLM primer markdown for copy button ---
     # Must be inserted BEFORE the reader.js <script> block so the div
