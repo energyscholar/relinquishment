@@ -684,9 +684,9 @@ details.bc-expansion .record-link:hover {
 }
 
 /* A/B/C epistemic labels (Plan 0141) */
-.epistemic-a > a { border-left: 3px solid #d4a847; padding-left: 0.5em; }
-.epistemic-b > a { border-left: 3px solid #6a9fb5; padding-left: 0.5em; }
-.epistemic-c > a { border-left: 3px solid #9b7db8; padding-left: 0.5em; }
+.epistemic-a > a, details.epistemic-a > summary { border-left: 3px solid #d4a847; padding-left: 0.5em; }
+.epistemic-b > a, details.epistemic-b > summary { border-left: 3px solid #6a9fb5; padding-left: 0.5em; }
+.epistemic-c > a, details.epistemic-c > summary { border-left: 3px solid #9b7db8; padding-left: 0.5em; }
 
 .epistemic-legend {
   display: flex;
@@ -734,9 +734,9 @@ details.bc-expansion .record-link:hover {
   details.bc-expansion .record-link {
     color: #5dade2;
   }
-  .epistemic-a > a { border-left-color: #b8942e; }
-  .epistemic-b > a { border-left-color: #4a7d8f; }
-  .epistemic-c > a { border-left-color: #7d5fa0; }
+  .epistemic-a > a, details.epistemic-a > summary { border-left-color: #b8942e; }
+  .epistemic-b > a, details.epistemic-b > summary { border-left-color: #4a7d8f; }
+  .epistemic-c > a, details.epistemic-c > summary { border-left-color: #7d5fa0; }
   .epistemic-legend span { border-left-color: #b8942e; }
   .epistemic-legend span:nth-child(2) { border-left-color: #4a7d8f; }
   .epistemic-legend span:nth-child(3) { border-left-color: #7d5fa0; }
@@ -1101,7 +1101,7 @@ def fix_html_toc(html_path):
             if old in text and f'href="#{anchor_id}" title=' not in text:
                 text = text.replace(old, new, 1)  # first occurrence only (in TOC)
                 tooltip_count += 1
-            # Add epistemic class to the parent <li> element
+            # Add epistemic class to the parent <li> element (hidden TOC)
             if epistemic:
                 ep_class = f'epistemic-{epistemic.lower()}'
                 # Find the TOC <a> with this href and add class to its <li> parent
@@ -1112,6 +1112,7 @@ def fix_html_toc(html_path):
                     li_pos = text.rfind('<li>', 0, link_pos)
                     if li_pos != -1:
                         text = text[:li_pos] + f'<li class="{ep_class}">' + text[li_pos + 4:]
+                # Epistemic class for chapter-section <details> is applied after collapse_chapters()
 
         # Add title attributes to part labels (handle potential line-wrapping)
         for label, desc in parts.items():
@@ -1186,6 +1187,32 @@ def fix_html_toc(html_path):
 
     # --- Fix 3: Collapse chapters into <details> elements ---
     text = collapse_chapters(text)
+
+    # --- Fix 3a: Apply epistemic classes to chapter-section <details> ---
+    menu_yaml_path = Path(__file__).parent / "menu-tooltips.yaml"
+    if menu_yaml_path.exists():
+        _ep_data = yaml.safe_load(menu_yaml_path.read_text()) or {}
+        _ep_chapters = _ep_data.get("chapters", {})
+        _ep_count = 0
+        for anchor_id, value in _ep_chapters.items():
+            if not isinstance(value, dict):
+                continue
+            epistemic = value.get('epistemic', '')
+            if not epistemic:
+                continue
+            ep_class = f'epistemic-{epistemic.lower()}'
+            id_marker = f'id="{anchor_id}"'
+            id_pos = text.find(id_marker)
+            if id_pos == -1:
+                continue
+            details_pos = text.rfind('<details class="chapter-section">', 0, id_pos)
+            if details_pos != -1 and (id_pos - details_pos) < 300:
+                old_tag = '<details class="chapter-section">'
+                new_tag = f'<details class="chapter-section {ep_class}">'
+                text = text[:details_pos] + new_tag + text[details_pos + len(old_tag):]
+                _ep_count += 1
+        if _ep_count:
+            print(f"  Epistemic labels: {_ep_count} chapter-sections tagged")
 
     # --- Fix 3c: Inject cold-landing primers and firmware footer links ---
     text = inject_cold_landing(text)
