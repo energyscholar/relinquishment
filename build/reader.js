@@ -876,7 +876,7 @@
     panel.style.left = left + 'px';
   }
 
-  // --- Bind events to all .hover-term elements ---
+  // --- Bind events to all [data-hover] elements ---
 
   var allHoverTerms = document.querySelectorAll('[data-hover]');
   var lastTouchTime = 0; // track touch to suppress mouse hover on touch devices
@@ -885,60 +885,8 @@
     // Make keyboard-focusable
     term.setAttribute('tabindex', '0');
 
-    // --- Touch: record timestamp so mouseenter can be suppressed ---
-    term.addEventListener('touchstart', function(e) {
-      e.stopPropagation();
-      lastTouchTime = Date.now();
-    }, { passive: true });
-
-    term.addEventListener('touchend', function(e) {
-      lastTouchTime = Date.now();
-
-      // Navigation elements (links, accordion triggers): let native action happen
-      if (e.target.closest('a, summary')) return;
-
-      e.preventDefault();
-      e.stopPropagation();
-
-      // Toggle panel on touch (Puppeteer .tap() dispatches touch but not click)
-      if (hoverTimer) { clearTimeout(hoverTimer); hoverTimer = null; }
-
-      var existingPanel = document.querySelector('.hover-panel');
-      if (existingPanel && term.getAttribute('aria-describedby') === existingPanel.id) {
-        dismissPanel();
-        return;
-      }
-      showPanel(term);
-    });
-
-    // --- Click: toggle panel (fallback for desktop click / non-touch-event paths) ---
-    term.addEventListener('click', function(e) {
-      // Navigation elements: let native action happen (navigate / expand)
-      if (e.target.closest('a, summary')) {
-        dismissPanel();
-        return;
-      }
-
-      e.preventDefault();
-      e.stopPropagation();
-
-      // If touch just handled this (within 500ms), skip — touchend already toggled
-      if (Date.now() - lastTouchTime < 500) return;
-
-      // If hover timer is pending (mouseenter fired), cancel it — click takes over
-      if (hoverTimer) { clearTimeout(hoverTimer); hoverTimer = null; }
-
-      // Toggle: if panel is already showing for this term, dismiss it
-      var existingPanel = document.querySelector('.hover-panel');
-      if (existingPanel && term.getAttribute('aria-describedby') === existingPanel.id) {
-        dismissPanel();
-        return;
-      }
-
-      showPanel(term);
-    });
-
     // --- Mouse: hover with delay (anti-flicker, desktop only) ---
+    // Per-element binding: mouseenter/mouseleave need direct attachment
     term.addEventListener('mouseenter', function(e) {
       // Suppress hover if this was triggered by a recent touch (within 500ms)
       if (Date.now() - lastTouchTime < 500) return;
@@ -980,21 +928,75 @@
     });
   });
 
-  // --- Global dismiss handlers ---
+  // --- Touch + Click: event delegation on document ---
+  // Mobile browsers may resolve e.target to a parent element (e.g. <p>) instead
+  // of the small inline <span>. Delegated handlers use closest() to find the
+  // nearest [data-hover] ancestor, which works regardless of hit-test target.
 
-  // Click outside dismisses panel
-  document.addEventListener('click', function(e) {
-    var panel = document.querySelector('.hover-panel');
-    if (!panel) return;
-    if (e.target.closest('.hover-panel') || e.target.closest('[data-hover]')) return;
-    dismissPanel();
+  document.addEventListener('touchstart', function(e) {
+    var term = e.target.closest('[data-hover]');
+    if (term) lastTouchTime = Date.now();
+  }, { passive: true });
+
+  document.addEventListener('touchend', function(e) {
+    var term = e.target.closest('[data-hover]');
+    if (!term) return;
+    lastTouchTime = Date.now();
+
+    // Navigation elements: let native action happen on touch
+    // hover-nav = buttons, links, accordion triggers — touch should navigate/act, not popup
+    // But hover-term INSIDE a summary (title-line spans) should still popup
+    if (term.classList.contains('hover-nav')) return;
+
+    e.preventDefault();
+
+    // Toggle panel on touch
+    if (hoverTimer) { clearTimeout(hoverTimer); hoverTimer = null; }
+
+    var existingPanel = document.querySelector('.hover-panel');
+    if (existingPanel && term.getAttribute('aria-describedby') === existingPanel.id) {
+      dismissPanel();
+      return;
+    }
+    showPanel(term);
   });
 
-  // Touch outside dismisses panel
+  document.addEventListener('click', function(e) {
+    var term = e.target.closest('[data-hover]');
+    if (!term) {
+      // Click outside — dismiss panel
+      if (!e.target.closest('.hover-panel')) dismissPanel();
+      return;
+    }
+
+    // Navigation elements: let native action happen (click navigates/acts)
+    if (term.classList.contains('hover-nav')) {
+      dismissPanel();
+      return;
+    }
+
+    // If touch just handled this (within 500ms), skip
+    if (Date.now() - lastTouchTime < 500) return;
+
+    e.preventDefault();
+
+    if (hoverTimer) { clearTimeout(hoverTimer); hoverTimer = null; }
+
+    var existingPanel = document.querySelector('.hover-panel');
+    if (existingPanel && term.getAttribute('aria-describedby') === existingPanel.id) {
+      dismissPanel();
+      return;
+    }
+
+    showPanel(term);
+  });
+
+  // --- Global dismiss handlers ---
+  // Click-outside is handled by the delegated click handler above (the !term branch).
+
+  // Touch outside [data-hover] dismisses panel
   document.addEventListener('touchend', function(e) {
-    var panel = document.querySelector('.hover-panel');
-    if (!panel) return;
-    if (e.target.closest('.hover-panel') || e.target.closest('[data-hover]')) return;
+    if (e.target.closest('[data-hover]') || e.target.closest('.hover-panel')) return;
     dismissPanel();
   });
 
