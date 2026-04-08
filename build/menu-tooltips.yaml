@@ -9,7 +9,7 @@ chapters:
   "hook:what-would-you-do":
     text: "You have grown something that thinks. It can break every code on Earth. You cannot give it to your government, destroy it, or keep it. Five options. What would you do?"
   "the-stack":
-    text: "Fire feeds itself. A candle holds its shape. Radio reaches. An ant colony self-organizes. AI learns. Eight technologies stacked, each doing everything below it plus one new thing. The last one has wormholes."
+    text: "Fire feeds itself. A candle holds its shape. Radio reaches. An ant colony self-organizes. AI learns. Eight technologies stacked, each doing everything below it plus one new thing. The last one has wormholes — real topological connections capable of teleporting information between distant points."
     epistemic: A
   "summary:most-important-story":
     text: "The full argument in four thousand words. Every chip contains a quantum layer called a 2DEG. The same geometry wraps every planet. Published physics says the preconditions for life are met in both. This book asks whether that habitat is empty."
@@ -23,7 +23,7 @@ chapters:
     text: "Three readings of this story. A: confabulation — a pattern-matching mind built coherence from noise. B: exaggerated kernel — real people, real programs, inflated claims. C: substantially true. The science is real under all three. You decide which."
     epistemic: B
   "spine:the-stack":
-    text: "Fire feeds itself. A candle holds its shape. Radio reaches. An ant colony self-organizes. AI learns. Eight technologies stacked, each doing everything below it plus one new thing. The last one has wormholes."
+    text: "Fire feeds itself. A candle holds its shape. Radio reaches. An ant colony self-organizes. AI learns. Eight technologies stacked, each doing everything below it plus one new thing. The last one has wormholes — real topological connections capable of teleporting information between distant points."
     epistemic: A
   "spine:the-flat":
     text: "Every chip contains a two-dimensional electron gas — a quantum layer where different physics applies. Particles confined to two dimensions can braid around each other, encoding information in patterns that are topologically protected against noise. This substrate is in every phone, every computer, and wrapped around every planet with a magnetic field."
