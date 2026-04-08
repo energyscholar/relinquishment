@@ -394,7 +394,7 @@ def collapse_chapters(text):
         attrs = m.group(1)
         id_m = re.search(r'id="([^"]+)"', attrs)
         hid = id_m.group(1) if id_m else ''
-        if hid in {'guided-deduction', 'the-evidence-trail', 'forgiveness-and-permission'}:
+        if hid in {'the-flat', 'the-record'}:
             boundaries.append((m.start(), m.end(), m.group(0), hid))
 
     # Appendices boundary: first appendix chapter (firmware-update or app:predictions)
@@ -636,6 +636,53 @@ details blockquote { margin: 0.5em 0; }
 .hover-term { font-style: italic; border-bottom: 1px dotted #888; cursor: pointer; }
 .hover-term:hover { border-bottom-color: #2471a3; }
 
+/* Guardian interludes (Plan 0143) */
+.guardian-interlude {
+  border-left: 3px solid #9b7db8;
+  padding: 0.8em 1.2em;
+  margin: 1.5em 0;
+  line-height: 1.6;
+  color: #444;
+  background: rgba(155, 125, 184, 0.04);
+}
+.guardian-interlude::before {
+  content: '';
+  display: block;
+  width: 3em;
+  height: 1px;
+  background: #9b7db8;
+  margin-bottom: 0.5em;
+  opacity: 0.5;
+}
+
+/* B/C expansion hooks (Plan 0143) */
+details.bc-expansion {
+  border-left: 3px solid #9b7db8;
+  padding-left: 1em;
+  margin: 0.8em 0;
+  font-size: 0.95em;
+}
+details.bc-expansion > summary {
+  cursor: pointer;
+  color: #7d5fa0;
+  font-style: italic;
+  padding: 0.2em 0;
+  list-style: none;
+  display: block;
+}
+details.bc-expansion > summary::-webkit-details-marker { display: none; }
+details.bc-expansion > summary::before { content: '\\25B8 '; }
+details.bc-expansion[open] > summary::before { content: '\\25BE '; }
+details.bc-expansion .record-link {
+  display: block;
+  margin-top: 0.5em;
+  font-size: 0.9em;
+  color: #2471a3;
+}
+details.bc-expansion .record-link:hover {
+  text-decoration: underline;
+}
+
 @media (prefers-color-scheme: dark) {
   details.chapter-section { border-left-color: #555; }
   details.firmware-section,
@@ -649,6 +696,23 @@ details blockquote { margin: 0.5em 0; }
   }
   .hover-term { border-bottom-color: #666; }
   .hover-term:hover { border-bottom-color: #5dade2; }
+  .guardian-interlude {
+    border-left-color: #7d5fa0;
+    color: #bbb;
+    background: rgba(155, 125, 184, 0.08);
+  }
+  .guardian-interlude::before {
+    background: #7d5fa0;
+  }
+  details.bc-expansion {
+    border-left-color: #7d5fa0;
+  }
+  details.bc-expansion > summary {
+    color: #b39ddb;
+  }
+  details.bc-expansion .record-link {
+    color: #5dade2;
+  }
 }
 """
     # Inject before closing </style> of the last style block in <head>
@@ -669,7 +733,7 @@ details blockquote { margin: 0.5em 0; }
 def inject_cold_landing(text):
     """Inject cold-landing primers and firmware footer links at build time (Plan 0134c)."""
 
-    body_part_names = ['Guided Deduction', 'Evidence Trail', 'Forgiveness and Permission']
+    body_part_names = ['The Flat', 'The Record']
     front_matter_names = ['Title Page', 'Introduction']
     exempt_chapter_ids = {'ch:firmware-update'}
     exempt_footer_ids = {'ch:firmware-update', 'app:abstracts'}
@@ -837,7 +901,7 @@ def fix_html_toc(html_path):
         return
 
     # Part IDs — these become non-clickable group headers
-    part_ids = {"guided-deduction", "the-evidence-trail", "forgiveness-and-permission"}
+    part_ids = {"the-flat", "the-record"}
 
     # Appendix IDs (from \appendix + \backmatter sections in main.tex)
     # Note: app:llm-primer removed (now in Firmware Update chapter, Part III)
@@ -1117,6 +1181,48 @@ def fix_html_toc(html_path):
         text = re.sub(r'HOVERSTART\u00a7(.+?)\u00a7HOVEREND', hover_replace, text, flags=re.DOTALL)
         if hover_count:
             print(f"Hover tooltips: {hover_count} first-occurrence terms")
+
+    # --- Guardian interludes: convert <hr> <blockquote> <hr> pattern ---
+    # to <div class="guardian-interlude"> (Plan 0143)
+    interlude_pattern = re.compile(
+        r'(?:<div class="center">\s*)?<hr\s*/?>(?:\s*</div>)?'
+        r'[\s\n]*<blockquote>[\s\n]*(.*?)[\s\n]*</blockquote>[\s\n]*'
+        r'(?:<div class="center">\s*)?<hr\s*/?>(?:\s*</div>)?',
+        re.DOTALL
+    )
+    interlude_count = 0
+    def interlude_replace(m):
+        nonlocal interlude_count
+        interlude_count += 1
+        content = m.group(1).strip()
+        # Strip <p><em>...</em></p> wrapper only for single-paragraph interludes
+        if content.count('<p>') == 1:
+            content = re.sub(r'^<p><em>(.*?)</em></p>$', r'\1', content, flags=re.DOTALL)
+        return f'<div class="guardian-interlude">{content}</div>'
+
+    text = interlude_pattern.sub(interlude_replace, text)
+    if interlude_count:
+        print(f"  Guardian interludes: {interlude_count} styled")
+
+    # --- Phase 1 test: inject one BC expansion hook to verify CSS ---
+    # (This test injection will be removed in Phase 4 when real hooks are added)
+    test_expansion = (
+        '<details class="bc-expansion">'
+        '<summary>According to this story, there was a third classified breakthrough...</summary>'
+        '<p>COWS walked the technology out of the lab. Not a machine \u2014 knowledge. '
+        'Knowledge walks out in the minds of the people who hold it.</p>'
+        '<p><a class="record-link" href="#record:demonstration">'
+        'Read the full story \u2192</a></p>'
+        '</details>'
+    )
+    code_war_marker = 'id="spine:code-war"'
+    cw_pos = text.find(code_war_marker)
+    if cw_pos != -1:
+        # Find the </details> that closes this chapter-section
+        insert_pos = text.find('</details>', cw_pos)
+        if insert_pos != -1:
+            text = text[:insert_pos] + test_expansion + '\n' + text[insert_pos:]
+            print("  Phase 1 test: BC expansion hook injected")
 
     # --- Fix 4: Inject LLM primer markdown for copy button ---
     # Must be inserted BEFORE the reader.js <script> block so the div

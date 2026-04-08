@@ -1,0 +1,205 @@
+\settrack{trackbridge}
+% VOICE: expository/pedagogical — teaches concepts, no narrative events, no "the COWS did X"
+
+\chapter{The Code War}
+\label{spine:code-war}
+
+\begin{quote}\small\textit{%
+``In wartime, truth is so precious that she should always be attended by a bodyguard of lies.''%
+}\par\raggedleft --- Churchill, Tehran Conference (1943)\end{quote}
+
+\vspace{0.5cm}
+
+% Source: manuscript/versions/ultra-bridge.md (imported Plan 0011)
+% Rewrite: Argus session 16, cite-dont-rewrite compression, three-possibilities fix
+
+You've seen the movie. Or you've read the book --- Andrew Hodges's \textit{Alan Turing: The Enigma}, the definitive biography.\footcite{hodges1983} However you got it, you know this story.%TODO: "You've seen the movie" assumes familiarity with The Imitation Game (2014). General audience may not have seen it or know the ULTRA I story at all. Needs rewrite that doesn't presume prior knowledge — the next two paragraphs actually provide the summary, so the opener should invite rather than assume. Discuss.
+
+\hovertiphtml{Enigma}, Bletchley Park, Alan Turing. A brilliant mathematician cracks the Nazi encryption machine. The Allies read Germany's secret communications. The war turns. Turing is later persecuted for being gay, chemically castrated, dead at forty-one. Decades pass before recognition.
+
+That's the version most people know. It's roughly correct. And it's missing the parts that matter most for what comes next.
+
+\vspace{1cm}\noindent\rule{0.5\textwidth}{0.5pt}\vspace{0.5cm}
+
+\section*{What the Movie Didn't Tell You}
+\label{spine:cw-what-the-movie-didnt-tell-you}
+
+Three things. Not a list of Hollywood errors --- three specific facts the movie undersold or skipped entirely. Each one matters for what you're about to read.
+
+\subsection*{1. Ten Thousand People Kept the Secret}
+\label{spine:cw-ten-thousand-people-kept-the-secret}
+
+The Imitation Game shows a small team. A handful of brilliant eccentrics in a country house. That's not what Bletchley Park was.
+
+At its peak, roughly ten thousand people worked there. Ten thousand. Mathematicians, yes --- but also machine operators, translators, clerks, drivers, janitors, cafeteria workers. Ten thousand people who knew, at various levels of detail, that Britain was reading Germany's secret communications.
+
+Every single one of them kept the secret.
+
+Not for a year. Not for the duration of the war. For more than thirty years.
+
+The Ultra Secret --- as the intelligence was codenamed --- remained classified until 1974, when a former RAF officer named F.W.\ Winterbotham published a book about it.\footcite{winterbotham1974} That book didn't even mention Alan Turing by name. More than thirty years of silence. Ten thousand people. In a democracy, with a free press, with family members asking ``what did you do in the war?'' --- ten thousand people said nothing.
+
+Some of them carried the secret to their graves. They died without ever telling their children, their spouses, their closest friends. Not because they were threatened with violence --- though the Official Secrets Act carried real penalties --- but because they'd been told the secret mattered, and they believed it, and they kept their word.
+
+This is the most important correction. Not because it makes a better movie, but because it answers a question people always ask: ``Could a secret that big really be kept?''
+
+Yes. It could. It was. It is historical fact. Ten thousand people, more than thirty years, one of the most consequential secrets in the history of warfare. Kept.
+
+\subsection*{2. The Coventry Question}
+\label{spine:cw-the-coventry-question}
+
+On November 14, 1940, the Luftwaffe bombed the city of Coventry. An estimated five hundred and sixty-eight people died. The great medieval church of St Michael's --- elevated to cathedral status only in 1918 --- was destroyed in a single night.
+
+In 1974, F.W.\ Winterbotham --- the same former RAF officer whose book first revealed the Ultra secret --- claimed that Churchill had specific advance intelligence that Coventry was the target. In Winterbotham's telling, Churchill knew what was coming, knew when it was coming, and chose not to act. He did not evacuate the city. He did not warn its people. He let Coventry burn to protect the secret that Britain was reading German codes.
+
+The majority of historians dispute this. Sir Harry Hinsley, the official historian of British Intelligence in the Second World War, concluded that Churchill knew a major Luftwaffe raid was coming but probably did not know Coventry was the specific target.\footcite{hinsley1979} R.V.\ Jones, who served as Assistant Director of Intelligence during the war, reached a similar conclusion.\footcite{jones1978} GCHQ's own published account does not support Winterbotham's version. The scholarly consensus is that the story of Churchill deliberately sacrificing Coventry is, at best, a dramatic oversimplification and, at worst, a myth.
+
+But the existence of this debate is itself the proof. Ultra secrecy was considered so important that historians take seriously the question of whether a prime minister would let a city burn to preserve it. The Coventry myth endures not because it is true, but because it is plausible --- because when a code-breaking capability is real, protecting its secrecy justifies almost anything in the minds of those who hold it.
+
+Remember this. It matters later.
+
+\vspace{0.5cm}
+\noindent\textit{Did the scientists in this story inherit that tradition --- that secrecy justifies sacrifice --- or did they break it?}
+\vspace{0.5cm}
+
+\subsection*{3. They Did It Again}
+\label{spine:cw-they-did-it-again}
+
+The Imitation Game ends with Turing's death in 1954. It does not tell you what happened next at the agency that grew out of Bletchley Park.
+
+That agency is called \gls{gchq} --- Government Communications Headquarters. It is Britain's code-breaking agency, their equivalent of America's NSA\@. It is the direct institutional descendant of the Bletchley Park operation. Same mission. Same secrecy. Same culture.
+
+In 1969, a GCHQ mathematician named James Ellis conceived of something revolutionary: a way for two people to communicate securely without ever needing to share a secret key in advance. This idea --- public-key cryptography --- would eventually become the foundation of all internet security. Every time you see a padlock icon in your browser, every time you make an online purchase, every time you send an encrypted message, you are using the principle Ellis invented.
+
+In 1973, another GCHQ mathematician named Clifford Cocks worked out the specific mathematics. He independently invented what the world would later call RSA --- named for Rivest, Shamir, and Adleman, the three American academics who published the same idea in 1977.\footcite{rsa1977}
+
+In 1974, a third GCHQ mathematician, Malcolm Williamson, independently invented what the public world would call Diffie-Hellman key exchange --- the protocol published by Whitfield Diffie and Martin Hellman in 1976.\footcite{diffiehellman1976}
+
+Three of the most important cryptographic inventions of the twentieth century. All invented at GCHQ\@. All classified. The public world ``discovered'' each one independently, years later, without knowing that GCHQ had gotten there first.
+
+GCHQ didn't acknowledge any of this until 1997 --- twenty-four years after Cocks's work.
+
+This is not speculation. It is not conspiracy theory. It is declassified, acknowledged history. GCHQ has publicly confirmed these facts.\footcite{singh1999} The agency that grew out of Bletchley Park --- the same agency --- kept another world-changing cryptographic breakthrough secret for nearly a quarter of a century.
+
+The pattern is clear: a secret government agency makes a fundamental breakthrough in cryptography or computation. They classify it. The public world independently discovers the same principles years or decades later. When the secret finally comes out, history has to be rewritten.
+
+This pattern has repeated at least twice. Ultra. Then public-key cryptography.
+
+The question this book asks is: did it happen a third time?
+
+\vspace{1cm}\noindent\rule{0.5\textwidth}{0.5pt}\vspace{0.5cm}
+
+\section*{The Dual-Use Pattern}
+\label{spine:cw-the-dual-use-pattern}
+
+Everyone already knows what a dual-use technology is. They just don't know the term.
+
+When someone says \textit{atomic energy}, most people think of two things at once: electricity and bombs. That double vision --- the same discovery powering cities and destroying them --- is what dual-use means. Fire keeps you warm and burns your house down. The internet connects you to your grandmother and to people who want to steal her savings. Every powerful technology carries its opposite inside it like a seed.
+
+The pattern is old. A general purpose technology is one that generates other technologies. Stone tools were the first. Control of fire came next. Each one arrived faster than the last, and each one could heal or kill depending on who held it.
+
+\vspace{0.5cm}
+\begin{center}
+\textbf{General Purpose Technologies}
+\end{center}
+\vspace{0.3cm}
+
+\noindent\begin{tabular}{p{3.8cm}p{4.2cm}p{6cm}}
+\textbf{Technology} & \textbf{Approximate Date} & \textbf{Dual-Use Signature} \\
+\hline
+Control of fire & 500,000 years ago & Warmth and arson \\
+Agriculture & 12,000 years ago & Surplus and siege \\
+Metallurgy & 5,000 years ago & Plowshares and swords \\
+Written language & 5,000 years ago & Law and propaganda \\
+Fossil energy & 600 years ago & Industry and pollution \\
+Electricity & 200 years ago & Light and the electric chair \\
+Atomic power & 1940s & Electricity and Hiroshima \\
+Computer & 1940s & Science and surveillance \\
+Internet & 1969 & Connection and cyberwar \\
+Genetic engineering & 1973 & Medicine and bioweapons \\
+\end{tabular}
+
+\vspace{0.5cm}
+
+Notice the acceleration. Stone tools to fire: hundreds of thousands of years. Fire to agriculture: hundreds of thousands more. Metallurgy to writing: a few thousand. Electricity to atomic power: about a century. The internet to genetic engineering: four years. Each interval shorter than the last. Each technology more powerful. Each dual-use potential more extreme.
+
+\subsection*{The Regret Pattern}
+\label{spine:cw-the-regret-pattern}
+
+And notice what happens to the inventors.
+
+Eli Whitney built the cotton gin to make cotton processing easier. Instead, it made slavery enormously profitable and extended the institution by decades. An invention meant to reduce labor entrenched the worst labor system in American history.
+
+Alfred Nobel invented dynamite and built a fortune selling military explosives. When a French newspaper reportedly published his obituary under the headline \textit{``Le marchand de la mort est mort''} --- the merchant of death is dead --- Nobel was so horrified at his legacy that he left his fortune to fund the Nobel Prizes.\footcite{fant1993}
+
+Albert Einstein published $E = mc^2$ in 1905. Forty years later, that equation leveled Hiroshima. Einstein spent the rest of his life saying he wished he had never lifted a finger:
+
+\begin{quote}
+\textit{``The unleashed power of the atom has changed everything save our modes of thinking, and thus we drift toward unparalleled catastrophe.''}\footcite{einstein1960peace} --- Albert Einstein, 1946
+\end{quote}
+
+The pattern is: invent, deploy, regret. Whitney, Nobel, Einstein --- three brilliant people who gave the world something powerful and then watched it become a weapon. None of them intended the destructive use. None of them could prevent it.
+
+\vspace{1cm}\noindent\rule{0.5\textwidth}{0.5pt}\vspace{0.5cm}
+
+\section*{The Work He Never Finished}
+\label{spine:cw-the-work-he-never-finished}
+
+Before we get to that question, we need to go back to Alan Turing. Not the code-breaker. Not the persecution victim. The scientist.
+
+In 1952, while enduring chemical castration, Turing published ``The Chemical Basis of Morphogenesis'' in the \textit{Philosophical Transactions of the Royal Society}.\footcite{turing1952} Almost nobody knows he pivoted --- from computation to biology.
+
+Here is the chain of reasoning, stated as simply as I can manage. What is an example of intelligence? Your brain. How did your brain get there? An organism grew it --- \gls{morphogenesis}, the process by which a single fertilized cell becomes a structured, patterned, functional body. Your brain is part of your shape. So if you truly understood morphogenesis, you could \textit{grow} a brain. Not program it. Grow it. The way nature does.
+
+Turing saw this. He had invented the theory of digital computation --- and then realized that digital computers could never achieve true intelligence. He pivoted to morphogenesis, looking for how to \textit{grow} a mind rather than program one. He saw that a developing embryo isn't just growing --- it's computing. Chemical signals react, spread through tissue, create patterns. Simple rules, applied over and over, generate extraordinary complexity.
+
+He couldn't finish the work. His body was being poisoned by the hormones the government forced on him. He died on June 7, 1954. A half-eaten apple beside his bed.
+
+The thread didn't die with him. Stuart Kauffman studied \glspl{autocatalytic} --- networks of chemical reactions that spontaneously achieve self-sustaining order beyond a critical threshold of complexity. Stephen Wolfram showed that simple computational rules, applied repeatedly, can generate universal computation. Different fields, different methods, same thread: the deep connection between computation and biology that Turing glimpsed but couldn't complete.
+
+\vspace{1cm}\noindent\rule{0.5\textwidth}{0.5pt}\vspace{0.5cm}
+
+\section*{Now Imagine It Happened Again}
+\label{spine:cw-now-imagine-it-happened-again}
+
+Here is the pattern, stated plainly:
+
+\begin{enumerate}
+\item A secret government project achieves a fundamental breakthrough in cryptography or computation.
+\item The breakthrough is decades ahead of anything the public world knows about.
+\item It is classified and kept secret.
+\item Years or decades later, the public world independently ``discovers'' the same principles.
+\item When the secret finally emerges, history has to be rewritten.
+\end{enumerate}
+
+This pattern is not theory. It is documented history. Ultra at Bletchley Park --- secret for more than thirty years. Public-key cryptography at GCHQ --- secret for twenty-four years. Twice, at the same institution and its direct successor, on the same subject --- cryptography and computation.
+
+Now: what if this pattern repeated a third time?
+
+This book presents three possibilities:
+
+Under \textbf{Possibility~A}, the pattern stopped at two. The story you are about to read is an elaborate confabulation --- a narrator who wanted the pattern to continue and found what he was looking for. The human capacity for pattern-matching is powerful, and sometimes the pattern isn't there.
+
+Under \textbf{Possibility~B}, a kernel of truth exists. Real classified work in quantum computation or topological physics took place within the Five Eyes alliance, but the story has been inflated --- by the narrator, by his source, or by both --- into something grander than the facts support.
+
+Under \textbf{Possibility~C}, the pattern repeated in full. A DARPA-funded team achieved a quantum-biological breakthrough in the 1990s, building on the intellectual lineage that runs from Turing through Kauffman and Wolfram. They classified it. And then, having learned from Turing's fate --- having seen what happens when governments hold absolute cryptanalytic power, having heard that Churchill may have let Coventry burn to protect a secret --- they decided not to hand it over.
+
+They walked it out.
+
+\vspace{0.5cm}
+
+The book works under all three readings. The pattern is undeniable. The precedent is proven. The agencies are real. Turing's unfinished work is documented, public, and uncontroversial. What's in question is whether the pattern repeated, and if so, how closely reality matches the story told here.
+
+This chapter isn't asking you to believe anything. Not yet. It's asking you to acknowledge three facts:
+
+First: large-scale cryptographic secrets have been kept for decades. This is proven. Ten thousand people. More than thirty years. It happened.
+
+Second: the same agencies have done this more than once. GCHQ invented the foundation of internet security in the early 1970s and kept it secret until 1997. Same pattern. Same agencies. Proven.
+
+Third: Alan Turing's unfinished work --- the merger of computation and biology --- pointed toward exactly the kind of breakthrough this book describes. That intellectual lineage is documented, public, and real.
+
+You now have everything you need to hear the full story. You have the pattern. You have the precedent. You have the science.
+
+What follows is either the most elaborate fantasy ever constructed, an exaggeration of something real but smaller, or the third iteration of a proven pattern. The evidence will let you decide which.
+
+\chapterreturn
