@@ -9,7 +9,7 @@ chapters:
   # filter-group: A = science (visible in "just science" mode)
   #               B = mixed/bridge (visible in both modes)
   #               C = testimony (visible in "just the story" mode)
-  #               G = Guardian interlude (visible in "just the story" mode)
+  #               G = Guardian interlude (visible in ALL modes)
   #               M = meta/navigation (always visible)
   "hook:what-would-you-do":
     text: "You have grown something that thinks. It can break every code on Earth. You cannot give it to your government, destroy it, or keep it. Five options. What would you do?"

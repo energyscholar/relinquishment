@@ -208,7 +208,10 @@
   expandBtn.addEventListener('click', function() {
     var allDetails = document.querySelectorAll('details');
     var expanding = expandBtn.textContent === 'Expand All';
-    allDetails.forEach(function(d) { d.open = expanding; });
+    allDetails.forEach(function(d) {
+      if (d.style.display === 'none') return;
+      d.open = expanding;
+    });
     expandBtn.textContent = expanding ? 'Collapse All' : 'Expand All';
     expandBtn.setAttribute('data-hover', expanding ? 'Collapse back to the starting view' : 'Open everything — or click again to collapse back to the starting view');
     expandBtn.setAttribute('aria-label', expanding ? 'Collapse all chapters and sections' : 'Open all chapters and sections');
@@ -235,6 +238,70 @@
     backBtn.style.display = navStack.length > 0 ? 'inline-block' : 'none';
   }
 
+  // --- Epistemic filter buttons (Plan 0144) ---
+  var activeFilter = null; // null | 'science' | 'story'
+
+  function applyFilter(mode) {
+    activeFilter = mode;
+    document.querySelectorAll('details.chapter-section').forEach(function(ch) {
+      var fg = ch.getAttribute('data-filter-group') || 'M';
+      var hide = false;
+      if (mode === 'science') hide = (fg === 'B' || fg === 'C');
+      else if (mode === 'story') hide = (fg === 'A');
+      ch.style.display = hide ? 'none' : '';
+      if (hide) ch.open = false;
+    });
+    // Auto-hide empty part-sections
+    document.querySelectorAll('details.part-section').forEach(function(part) {
+      var chs = part.querySelectorAll(':scope > details.chapter-section');
+      if (!chs.length) return;
+      var allHidden = Array.from(chs).every(function(c) { return c.style.display === 'none'; });
+      part.style.display = allHidden ? 'none' : '';
+    });
+    updateFilterButtons();
+    try {
+      if (mode) localStorage.setItem('relinquishment-filter', mode);
+      else localStorage.removeItem('relinquishment-filter');
+    } catch(e) {}
+  }
+
+  function updateFilterButtons() {
+    var sciActive = activeFilter === 'science';
+    var storyActive = activeFilter === 'story';
+    var activeBase = isDark ? '#2471a3' : '#1a5276';
+    var inactiveColor = isDark ? '#5dade2' : '#1a5276';
+    scienceBtn.style.background = sciActive ? activeBase : 'transparent';
+    scienceBtn.style.color = sciActive ? '#fff' : inactiveColor;
+    scienceBtn.style.borderColor = sciActive ? activeBase : inactiveColor;
+    storyBtn.style.background = storyActive ? activeBase : 'transparent';
+    storyBtn.style.color = storyActive ? '#fff' : inactiveColor;
+    storyBtn.style.borderColor = storyActive ? activeBase : inactiveColor;
+  }
+
+  var scienceBtn = document.createElement('button');
+  scienceBtn.id = 'filter-science';
+  scienceBtn.textContent = 'Science';
+  scienceBtn.setAttribute('data-hover', 'Show only the published physics — verified science that stands under all three possibilities');
+  scienceBtn.classList.add('hover-nav');
+  scienceBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
+    'font-family:inherit;cursor:pointer;background:transparent;color:#1a5276;' +
+    'border:1px solid #1a5276;border-radius:4px;margin:0 0.2em;white-space:nowrap;';
+  scienceBtn.addEventListener('click', function() {
+    applyFilter(activeFilter === 'science' ? null : 'science');
+  });
+
+  var storyBtn = document.createElement('button');
+  storyBtn.id = 'filter-story';
+  storyBtn.textContent = 'Story';
+  storyBtn.setAttribute('data-hover', 'Show the testimony and narrative — the story as told by the people who lived it');
+  storyBtn.classList.add('hover-nav');
+  storyBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
+    'font-family:inherit;cursor:pointer;background:transparent;color:#1a5276;' +
+    'border:1px solid #1a5276;border-radius:4px;margin:0 0.2em;white-space:nowrap;';
+  storyBtn.addEventListener('click', function() {
+    applyFilter(activeFilter === 'story' ? null : 'story');
+  });
+
   // Evaluate button (navigates to evaluate-with-AI section)
   var evalBtn = document.createElement('button');
   evalBtn.id = 'nav-evaluate';
@@ -256,6 +323,8 @@
   nav.appendChild(breadcrumb);
   nav.appendChild(shareBtn);
   nav.appendChild(quickJump);
+  nav.appendChild(scienceBtn);
+  nav.appendChild(storyBtn);
   nav.appendChild(expandBtn);
   nav.appendChild(evalBtn);
   nav.appendChild(topBtn);
@@ -382,6 +451,11 @@
       try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch(e) {}
     }
     if (!target) return;
+    // Clear filter if target is inside a hidden chapter
+    var parentCh = target.closest('details.chapter-section');
+    if (parentCh && parentCh.style.display === 'none') {
+      applyFilter(null);
+    }
     var el = target;
     while (el) {
       if (el.tagName === 'DETAILS') el.open = true;
@@ -401,6 +475,14 @@
 
     target.scrollIntoView();
   }
+  // Restore saved filter state (before deep-link, so deep-link can override)
+  try {
+    var savedFilter = localStorage.getItem('relinquishment-filter');
+    if (savedFilter === 'science' || savedFilter === 'story') {
+      applyFilter(savedFilter);
+    }
+  } catch(e) {}
+
   if (initialHash) {
     autoExpand(initialHash);
   }
@@ -681,6 +763,10 @@
     backBtn.style.color = '#5dade2';
     backBtn.style.borderColor = '#5dade2';
     evalBtn.style.background = '#2471a3';
+    scienceBtn.style.color = '#5dade2';
+    scienceBtn.style.borderColor = '#5dade2';
+    storyBtn.style.color = '#5dade2';
+    storyBtn.style.borderColor = '#5dade2';
   }
 
   // --- Navigation Stack (Plan 0134b) ---
