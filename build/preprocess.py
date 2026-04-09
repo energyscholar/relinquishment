@@ -1214,6 +1214,29 @@ def fix_html_toc(html_path):
         if _ep_count:
             print(f"  Epistemic labels: {_ep_count} chapter-sections tagged")
 
+        # Apply filter-group data attributes to chapter-section <details>
+        _fg_count = 0
+        for anchor_id, value in _ep_chapters.items():
+            if not isinstance(value, dict):
+                continue
+            fg = value.get('filter-group', '')
+            if not fg:
+                continue
+            id_marker = f'id="{anchor_id}"'
+            id_pos = text.find(id_marker)
+            if id_pos == -1:
+                continue
+            # Find nearest <details class="chapter-section..."> before this ID
+            details_pos = text.rfind('<details class="chapter-section', 0, id_pos)
+            if details_pos != -1 and (id_pos - details_pos) < 400:
+                # Find the closing > of this <details> tag
+                tag_end = text.find('>', details_pos)
+                if tag_end != -1 and f'data-filter-group=' not in text[details_pos:tag_end]:
+                    text = text[:tag_end] + f' data-filter-group="{fg}"' + text[tag_end:]
+                    _fg_count += 1
+        if _fg_count:
+            print(f"  Filter groups: {_fg_count} chapter-sections tagged")
+
     # --- Fix 3c: Inject cold-landing primers and firmware footer links ---
     text = inject_cold_landing(text)
 
