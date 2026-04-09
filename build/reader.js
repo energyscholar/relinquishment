@@ -116,7 +116,7 @@
   var introLink = document.createElement('a');
   introLink.href = '#hook:what-would-you-do';
   introLink.textContent = 'Intro';
-  introLink.setAttribute('data-hover', 'Jump to Introduction');
+  introLink.setAttribute('data-hover', 'Start here. 400 words, then the full story in 4,000. Most readers never need more.');
   introLink.classList.add('hover-nav');
   introLink.style.cssText = 'text-decoration:none;color:#1a5276;font-weight:bold;';
   introLink.addEventListener('mouseenter', function() { introLink.style.color = '#2471a3'; });
@@ -147,14 +147,14 @@
   quickJump.appendChild(introLink);
 
   var partLinks = [
-    {label: 'Deduction', id: 'guided-deduction', tip: 'Jump to Part I: Guided Deduction'},
-    {label: 'Evidence', id: 'the-evidence-trail', tip: 'Jump to Part II: The Evidence Trail'},
-    {label: 'Forgiveness', id: 'forgiveness-and-permission', tip: 'Jump to Part III: Forgiveness and Permission'},
+    {label: 'The Flat', partName: 'The Flat', tip: 'The physics — every chip and every planet has a flat world that supports quantum teleportation. Published science. True under all three possibilities.'},
+    {label: 'The Record', partName: 'The Record', tip: 'The testimony — one man met something that shouldn\'t exist. Grown, not built. A secret kept twenty years. You decide what to believe.'},
+    {label: 'Appendices', partName: 'Appendices', tip: 'Predictions with deadlines. The physics AI needs to evaluate this book. How to verify everything yourself.'},
   ];
   partLinks.forEach(function(p, i) {
     quickJump.appendChild(document.createTextNode(' \u00B7 '));
     var a = document.createElement('a');
-    a.href = '#' + p.id;
+    a.href = '#';
     a.textContent = p.label;
     a.setAttribute('data-hover', p.tip);
     a.classList.add('hover-nav');
@@ -163,16 +163,19 @@
     a.addEventListener('mouseleave', function() { a.style.color = '#1a5276'; });
     a.addEventListener('click', function(e) {
       e.preventDefault();
-      var target = document.getElementById(p.id);
-      if (target) {
-        // Open all ancestor <details> and scroll
-        var el = target;
-        while (el) {
-          if (el.tagName === 'DETAILS') el.open = true;
-          el = el.parentElement;
+      pushNavState();
+      // Open book-section
+      var bookSection = document.querySelector('details.book-section');
+      if (bookSection) bookSection.open = true;
+      // Find and open the matching part-section by name
+      var opened = false;
+      document.querySelectorAll('details.part-section > summary').forEach(function(s) {
+        if (s.textContent.indexOf(p.partName) !== -1) {
+          s.parentElement.open = true;
+          s.parentElement.scrollIntoView({behavior: 'smooth'});
+          opened = true;
         }
-        target.scrollIntoView({behavior: 'smooth'});
-      }
+      });
     });
     quickJump.appendChild(a);
   });
@@ -181,7 +184,7 @@
   var topBtn = document.createElement('a');
   topBtn.textContent = '\u25B2 Top';
   topBtn.href = '#';
-  topBtn.setAttribute('data-hover', 'Scroll to the top of the page');
+  topBtn.setAttribute('data-hover', 'Back to the top — where the question starts');
   topBtn.classList.add('hover-nav');
   topBtn.style.cssText = 'text-decoration:none;color:#1a5276;padding:0.3em 0.6em;' +
     'flex:0 0 auto;white-space:nowrap;';
@@ -194,8 +197,8 @@
   var expandBtn = document.createElement('button');
   expandBtn.id = 'expand-toggle';
   expandBtn.textContent = 'Expand All';
-  expandBtn.setAttribute('data-hover', 'Open all chapters and sections at once');
-  expandBtn.setAttribute('aria-label', 'Open all chapters and sections at once');
+  expandBtn.setAttribute('data-hover', 'Open everything — or click again to collapse back to the starting view');
+  expandBtn.setAttribute('aria-label', 'Open or collapse all chapters and sections');
   expandBtn.classList.add('hover-nav');
   expandBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
     'font-family:inherit;cursor:pointer;background:#1a5276;color:#fff;border:none;' +
@@ -207,8 +210,8 @@
     var expanding = expandBtn.textContent === 'Expand All';
     allDetails.forEach(function(d) { d.open = expanding; });
     expandBtn.textContent = expanding ? 'Collapse All' : 'Expand All';
-    expandBtn.setAttribute('data-hover', expanding ? 'Close all chapters and sections' : 'Open all chapters and sections at once');
-    expandBtn.setAttribute('aria-label', expanding ? 'Close all chapters and sections' : 'Open all chapters and sections at once');
+    expandBtn.setAttribute('data-hover', expanding ? 'Collapse back to the starting view' : 'Open everything — or click again to collapse back to the starting view');
+    expandBtn.setAttribute('aria-label', expanding ? 'Collapse all chapters and sections' : 'Open all chapters and sections');
   });
 
   // Back button (hidden when nav stack empty) — outline style, B6
@@ -237,7 +240,7 @@
   evalBtn.id = 'nav-evaluate';
   evalBtn.setAttribute('data-nav-evaluate', 'true');
   evalBtn.textContent = 'AI Eval';
-  evalBtn.setAttribute('data-hover', 'Jump to instructions for evaluating this book with an AI assistant');
+  evalBtn.setAttribute('data-hover', 'Most AI confidently dismisses this book. They lack five fields of science. The fix takes thirty seconds.');
   evalBtn.classList.add('hover-nav');
   evalBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
     'font-family:inherit;cursor:pointer;background:#1a5276;color:#fff;border:none;' +
