@@ -459,6 +459,11 @@ no-cloning theorem: "You cannot copy an unknown quantum state. Wootters & Zurek 
 
 # Row definitions (emergent properties)
 stack-feeds-itself: "Sustains its own operation from available energy. Fire consumes fuel. Cells metabolize. The simplest requirement — without it, nothing persists."
+# Five-fields / eleven-domains cluster map (Plan 0149)
+five scientific disciplines: "Five clusters, eleven domains: Topology · Topological field theory · Condensed matter · TQC | Solitons · Nonlinear dynamics | Autocatalysis · Autopoiesis | Universality · Parallel computation | Materials science. The 'five fields' shorthand maps to these clusters — each cluster contains disciplines that talk to each other but rarely cross cluster boundaries."
+five scientific fields: "Five clusters, eleven domains: Topology · Topological field theory · Condensed matter · TQC | Solitons · Nonlinear dynamics | Autocatalysis · Autopoiesis | Universality · Parallel computation | Materials science. The 'five fields' shorthand maps to these clusters — each cluster contains disciplines that talk to each other but rarely cross cluster boundaries."
+five fields: "Five clusters, eleven domains: Topology · Topological field theory · Condensed matter · TQC | Solitons · Nonlinear dynamics | Autocatalysis · Autopoiesis | Universality · Parallel computation | Materials science. The 'five fields' shorthand maps to these clusters — each cluster contains disciplines that talk to each other but rarely cross cluster boundaries."
+
 stack-switches-on: "Converts energy from one form to another at a threshold. Below a certain temperature, nothing happens; above it, combustion begins. Every technology on this list is a transducer."
 stack-holds-together: "Maintains structural integrity against entropy. A candle's wax column, an ant colony's nest architecture, a network's routing tables. Something keeps the parts organized."
 stack-reaches: "Transmits information or influence across distance. Radio waves cross oceans. Ant pheromone trails guide foragers to food. The internet routes packets across continents."
