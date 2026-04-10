@@ -24,25 +24,13 @@ A wormhole in this substrate works by braiding anyons. Move one anyon around ano
 
 Information has two ways to move from one location in the Flat to another. Information can travel from A to B in the Flat, the normal way. Alternately, information can teleport from A to B in the Flat via a wormhole. In Physics this technique is called quantum teleportation.
 
-The quantum teleportation protocol, proposed by Bennett et al.\ in 1993, works in four steps:
-
-\begin{enumerate}
-\item Two locations share an entangled pair of particles. This is the quantum channel. In a 2DEG exhibiting fractional quantum Hall states, long-range entanglement is a defining property of the substrate --- not something that must be engineered, but something that is already present.
-
-\item The sender measures the state to be teleported jointly with their half of the entangled pair. This measurement destroys the local quantum state.
-
-\item The sender transmits the measurement result --- two classical bits of information --- through a classical channel to the receiver.
-
-\item The receiver uses those two bits to apply a correction to their half of the entangled pair, recovering the original quantum state.
-\end{enumerate}
-
-Step~3 is the constraint. Without those two classical bits, the receiver holds random noise --- not degraded information, not a partial signal, but noise indistinguishable from no transmission at all. This is not an engineering limitation. It is Bennett's theorem.\footnote{The formal treatment of the teleportation protocol and its experimental confirmation is in Chapter~\ref{spine:the-braid}, \S``Quantum Teleportation and the Classical Constraint.''} No amount of technology can circumvent it, because it follows from the structure of quantum mechanics itself.
+Quantum teleportation, proposed by Bennett et al.\ in 1993, transfers a quantum state from one location to another --- but completing each transfer requires sending a classical message (two ordinary bits) from sender to receiver.\footcite{bennett1993} Without those two bits, the receiver holds random noise --- not degraded information, but noise indistinguishable from no transmission at all. This is not an engineering limitation. It is a theorem.\footnote{The formal treatment of the teleportation protocol and its experimental confirmation is in Chapter~\ref{spine:the-braid}, \S``Quantum Teleportation and the Classical Constraint.''} No amount of technology can circumvent it, because it follows from the structure of quantum mechanics itself.
 
 The consequence is absolute: the Flat cannot transmit information through worlholes faster than its classical channels allow. No faster-than-light communication. No teleportation of objects. No wormhole transit of objects - only information. Science fiction gets this wrong with reliable consistency. The Flat is powerful, but it is bounded by the speed of its slowest component --- the classical message that completes every transaction. Range is the shaping constraint: light-speed latency determines what architectures are possible at what scales. Wormholes in the Flat are limited by backchannel bandwidth.
 
 \section*{The Backchannels}
 \label{spine:flat-backchannels}
-Classical channels do not need to be constructed. They already exist. They have existed since the first telegraph wire, and they multiply with every new piece of infrastructure humanity builds. The inventory is large. Chapter~\ref{record:interdiction} (\S``The Classical Backchannels'') catalogs the ecological layer: VLF/ELF transmitters that propagate through the Earth-ionosphere waveguide, power grid harmonics at 50 and 60~Hz confirmed by the DEMETER satellite to reach orbit, Schumann resonances providing a persistent global carrier, whistler-mode emissions propagating along field lines between hemispheres, and the continuous flow of satellite communications passing through the magnetosphere. Each is physics. Each is continuous. Each is infrastructure already in place.
+Classical channels do not need to be constructed. They already exist. They have existed since the first telegraph wire, and they multiply with every new piece of infrastructure humanity builds. The inventory is large --- radio, power grids, atmospheric resonances, satellite links --- and Chapter~\ref{record:interdiction} (\S``The Classical Backchannels'') catalogs it in full. Each channel is physics. Each is continuous. Each is infrastructure already in place.
 
 The critical point is density. These are not isolated channels requiring careful aim. They saturate the electromagnetic environment. Any location on Earth with electrical infrastructure has multiple classical channels operating simultaneously, all of them treated as routine or as noise by conventional monitoring systems. The entity --- under Possibility~C --- does not need to build a communication network. It needs only to read the one that already exists.
 

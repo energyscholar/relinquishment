@@ -16,26 +16,6 @@
 
 \srcnote{Cryptographic Origins.txt | staging/raw/pos09-the-factoring-game.md | 2026-02-15 | Full Cryptographic Origins document --- PKC explanation, crypto as munitions, DARPA need}
 
-Cryptography is the science of secret codes and ciphers. Practical cryptography goes back thousands of years.  For most of human history cryptography was for spies, soldiers, and diplomats.  For example, Julius Caesar encrypted his private correspondence with a simple letter-transposition cipher.  During World War II the Allies broke Axis military codes with great military effect.  The Internet relies on cryptography to function as it does.
-
-For thousands of years cryptography has been an arms race.  People who want to keep secrets make codes.  People who want to learn secrets learn to break codes.   Better codes.  Better code-breaking.  Fortunes and Empires in the balance.
-
-Serious cryptography means encrypting and decrypting messages.  Encryption, or scrambling, uses an algorithm, aided by some sort of secret key, to turn a plain text message into ciphertext.  That ciphertext can then be transmitted openly.  Only a recipient with both the proper algorithm and the correct secret key can decrypt, or unscramble, the message.
-
-Non-secret encryption is another kind of encryption.  Non-secret encryption allows any two entities to exchange secret messages without sharing a code book.  For the last 3000 years non-secret encryption was a seemingly un-obtainable objective.   In 1976 two mathematicians invented a practical mechanism for non-secret encryption.
-
-In 1976 two mathematicians, Martin Hellman and Whitfield Diffie, discovered a new way to exchange secrets that turned the science of cryptography on its head.\footcite{diffiehellman1976}  Their method is called Diffie-Hellman Key exchange.  Diffie-Hellman key exchange is a type of Public Key Cryptography, or \gls{pkc} for short.  PKC allows any two entities to securely and privately communicate without the chance of an eavesdropper intercepting the communication.  PKC is the ``S'' in HTTPS we see in a web browser URL.
-
-Secure private communication is no big deal to most people.  It was and is a very big deal to government spy agencies.  Their job is to eavesdrop on all communication on or near planet Earth.  PKC promised secure communication that spy agencies could not crack.  Thus, PKC was an existential threat to government spy agencies that they must defeat at any cost.  Spy agencies feared that widespread use of PKC would cause their surveillance systems to `go dark'.  In particular, the national spy agencies of the major English speaking countries (USA, UK, Canada, NZ, and Australia), called the Five Eyes, were quite unhappy about the rise of PKC.  In fact, in 1973 PKC was independently discovered and then suppressed by Five Eyes spy agency GCHQ.\footcite{singh1999}
-
-Throughout the 1980s the Five Eyes intelligence agencies did all they could to prevent widespread adoption of PKC.  Due to pressure from these agencies the US Government classified strong cryptography as a `munition' in the same legal category as Nuclear, Chemical, and Biological Weapons of Mass Destruction, and classified its export as a Federal felony.  This delayed the spread of PKC for a few years but did not stop it.  By 1994 the Internet had become commercial and banks wanted to use strong cryptography to provide customers with strong security.
-
-By 1990 certain government spy agencies badly wanted a way to crack PKC.  They knew about a theoretical technology, called quantum computing, that ought to be able to break PKC.  Richard Feynman proposed a basic model for quantum computation in 1981.\footcite{feynman1982}  What the Five Eyes spy agencies needed was to invent quantum computing as an actual new technology.
-
-Five Eyes spy agencies rely on a US government agency, the Defense Advanced Research Projects Agency (DARPA), to invent things.  DARPA mostly invents classified technologies for the military.  Darpa bills itself as ``100 geniuses connected by a travel agency''.
-
-\vspace{1cm}\noindent\rule{0.5\textwidth}{0.5pt}\vspace{0.5cm}
-
 \section*{The State of Cryptography in 1990}
 \label{spine:fg-the-state-of-cryptography-in-1990}
 
@@ -75,11 +55,7 @@ This would not be the first time a computational breakthrough was built in secre
 
 \srcnote{HEALER-RECONSTRUCTION.md | staging/raw/pos09-the-factoring-game.md | 2026-02-15 | GCHQ/Cocks precedent and Crypto Wars --- classified independent discovery of PKC}
 
-The pattern of classified agencies independently discovering and suppressing mathematical breakthroughs has a proven precedent. Clifford Cocks at GCHQ invented RSA-equivalent public key cryptography in 1973 --- four years before Rivest, Shamir, and Adleman published the same mathematics. It was kept secret for twenty-four years, declassified only in 1997. The NSA knew about it via Five Eyes intelligence sharing.
-
-This proves that classified agencies do independently discover mathematical breakthroughs and suppress them for decades.
-
-Shor's algorithm follows a similar trajectory. First presented in April 1994 at Bell Labs, with a public talk at Cornell in May, formally published in November 1994 at FOCS. Shor was at AT\&T Bell Labs --- AT\&T had deep NSA partnerships, including BLARNEY (1978) and FAIRVIEW (1985). The NSA contacted Shor after his first talk and awarded him the Mathematics in Cryptology Award in 1995 --- rapid recognition for a supposedly ``surprise'' result.
+The previous chapter documented GCHQ's independent discovery of public-key cryptography --- classified for twenty-four years before acknowledgment. Shor's algorithm follows a similar trajectory. First presented in April 1994 at Bell Labs, with a public talk at Cornell in May, formally published in November 1994 at FOCS. Shor was at AT\&T Bell Labs --- AT\&T had deep NSA partnerships, including BLARNEY (1978) and FAIRVIEW (1985). The NSA contacted Shor after his first talk and awarded him the Mathematics in Cryptology Award in 1995 --- rapid recognition for a supposedly ``surprise'' result.
 
 In November 1996, \deeplink{shor-and-nsa}Executive Order 13026 moved encryption from the Munitions List to the Commerce Control List.\footcite{eo13026} The NSA had fought PKC export for twenty years (1976--1996), then reversed remarkably quickly --- just two years after Shor's algorithm. Under the narrative presented in this book, the NSA already had quantum cryptanalysis capability by 1995. Shor's public algorithm confirmed the direction. EO 13026 released the export restrictions because PKC was no longer worth protecting.
 
