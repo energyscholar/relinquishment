@@ -935,6 +935,12 @@
     // Link term to panel via aria-describedby
     term.setAttribute('aria-describedby', panel.id);
 
+    // Nav tooltips (menu summaries) are read-only — let mouse pass through
+    // so user can reach the next menu item without the panel blocking it.
+    if (term.classList.contains('hover-nav')) {
+      panel.style.pointerEvents = 'none';
+    }
+
     // Append to body (not as child of term — terms live inside nested <details>)
     document.body.appendChild(panel);
 
