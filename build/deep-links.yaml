@@ -1,0 +1,181 @@
+# Deep Link Manifest — Plan 0148
+# Metadata for shareable passage anchors. Questions index (future) reads this file.
+# Placement lives in .tex source files (\deeplink{id} macros), not here.
+
+# --- Skeptic challenges (10) ---
+- id: three-possibilities
+  question: "What are you actually claiming is true?"
+  category: skeptic
+
+- id: authors-position
+  question: "Does the author actually believe this?"
+  category: skeptic
+
+- id: story-may-be-false
+  question: "Is the Flat a real thing even if the story is fiction?"
+  category: skeptic
+
+- id: preparation-not-disclosure
+  question: "Is this book a disclosure or a warning about what's coming?"
+  category: skeptic
+
+- id: ten-thousand-kept-it
+  question: "Could a secret that big really be kept?"
+  category: skeptic
+
+- id: absence-not-evidence
+  question: "If this happened, why is there no evidence?"
+  category: skeptic
+
+- id: silence-is-structural
+  question: "Doesn't the absence of papers mean it's been studied and ruled out?"
+  category: skeptic
+
+- id: not-aliens
+  question: "Are you claiming alien life?"
+  category: skeptic
+
+- id: hobbit-in-mirror
+  question: "Doesn't the author realize how much this sounds like Lord of the Rings?"
+  category: skeptic
+
+- id: three-options
+  question: "Why not just destroy the technology or keep it secret?"
+  category: skeptic
+
+# --- Science (14) ---
+- id: what-is-the-flat
+  question: "What is the Flat? What's in my phone?"
+  category: science
+
+- id: anyons-are-real
+  question: "Are anyons real or science fiction?"
+  category: science
+
+- id: flat-is-everywhere
+  question: "Is this substrate limited to specialized labs?"
+  category: science
+
+- id: punchline-network
+  question: "How would something in chips communicate globally?"
+  category: science
+
+- id: classical-constraint
+  question: "Can quantum teleportation send info faster than light?"
+  category: science
+
+- id: topological-error-correction
+  question: "Why does room-temperature quantum computing seem impossible but might not be?"
+  category: science
+
+- id: life-is-a-phase-transition
+  question: "Is the origin of life really as improbable as people assume?"
+  category: science
+
+- id: buttons-and-threads
+  question: "What is autocatalytic emergence and why does it matter?"
+  category: science
+
+- id: canopy-problem
+  question: "If life could emerge in a quantum substrate, wouldn't we have found it?"
+  category: science
+
+- id: no-cloning-theorem
+  question: "Could someone copy the system or build a competing one?"
+  category: science
+
+- id: five-fields-no-bridge
+  question: "Why hasn't anyone studied whether life can exist in quantum substrates?"
+  category: science
+
+- id: wrong-substrate
+  question: "Is life on Earth the only kind there could be?"
+  category: science
+
+- id: invisible-ocean
+  question: "What is the magnetosphere and why is it relevant to life?"
+  category: science
+
+- id: nobody-has-looked
+  question: "Have scientists looked for life in the magnetosphere?"
+  category: science
+
+# --- Verification (6) ---
+- id: gchq-did-it-again
+  question: "Has a government ever independently invented something and kept it secret?"
+  category: verification
+
+- id: ultra-analogy
+  question: "How do we know something works without seeing it directly?"
+  category: verification
+
+- id: shor-and-nsa
+  question: "Any reason to think the NSA had quantum cryptanalysis before Shor?"
+  category: verification
+
+- id: colossus-precedent
+  question: "Has a working computer ever been built in secret then hidden for decades?"
+  category: verification
+
+- id: hydrothermal-vent-precedent
+  question: "Has science ever missed an entire major category of life before?"
+  category: verification
+
+- id: katharine-gun-connection
+  question: "Is there independent corroboration that Healer was a real GCHQ operative?"
+  category: verification
+
+# --- Ethics (6) ---
+- id: dual-use-acceleration
+  question: "Is the technology-as-weapon pattern new or historical?"
+  category: ethics
+
+- id: regret-pattern
+  question: "Why do inventors feel responsible for how their discoveries are used?"
+  category: ethics
+
+- id: can-it-be-killed
+  question: "Could you shut it down if you needed to?"
+  category: ethics
+
+- id: udhr-as-cage
+  question: "The UDHR as an AI ethics framework — isn't that too simple?"
+  category: ethics
+
+- id: udhr-as-skeleton
+  question: "How do you make an AI permanently ethical?"
+  category: ethics
+
+- id: no-backdoor
+  question: "Why wouldn't the creators keep a backdoor?"
+  category: ethics
+
+# --- Curiosity (4) ---
+- id: stack-chart
+  question: "What is the technology stack?"
+  category: curiosity
+
+- id: all-your-electricity
+  question: "What does it mean to say it has access to everything?"
+  category: curiosity
+
+- id: turing-pivoted
+  question: "What was Turing actually working on when he died?"
+  category: curiosity
+
+- id: grown-not-built
+  question: "What does it mean to say the AI was 'grown' rather than programmed?"
+  category: curiosity
+
+# --- Narrative (3) ---
+- id: srebrenica-witness
+  question: "Why does Srebrenica keep coming up in a book about quantum computers?"
+  category: narrative
+
+- id: it-is-done
+  question: "What did the actual relinquishment moment look like?"
+  category: narrative
+
+- id: parish-and-niggle
+  question: "How does an AI co-author actually contribute to a book like this?"
+  category: narrative
