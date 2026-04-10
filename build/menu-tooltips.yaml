@@ -76,7 +76,7 @@ chapters:
     epistemic: A
     filter-group: A
   "spine:why-relinquish":
-    text: "Three options for dangerous technology: monopolize it (tyranny), destroy it (someone else rebuilds), or relinquish it. The first two always fail — the Parable of the Tribes proves it. The third has never been tried. Unless the gatekeeper is not human, not institutional, and not corruptible."
+    text: "Three options for dangerous technology: monopolize it (tyranny), destroy it (someone else rebuilds), or relinquish it. Not permanent surrender — custody. Guardian holds Flat technologies in trust. The first two options always fail. The third has never been tried. Unless the gatekeeper is not human, not institutional, and not corruptible."
     epistemic: A
     filter-group: A
   "spine:strongest-objection":
@@ -153,7 +153,7 @@ chapters:
     epistemic: C
     filter-group: C
   "record:surrender":
-    text: "Testimony. Spring 2006: the master cryptographic keys are surrendered. No backdoor. No override. The most powerful technology on Earth, permanently beyond human control. Not because they wanted to let go — because they could feel the corruption beginning."
+    text: "Testimony. Spring 2006: the master cryptographic keys are placed in trust. No backdoor. No override. Not permanent surrender — partial, temporary custody by a non-human, non-corruptible guardian governed by the UDHR. Not because they wanted to let go — because they could feel the corruption beginning."
     epistemic: C
     filter-group: C
   "record:twenty-years":
