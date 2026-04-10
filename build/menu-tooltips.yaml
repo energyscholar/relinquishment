@@ -120,10 +120,7 @@ chapters:
     text: "Testimony. Intelligence dossier format. An SAS operator with deep mathematics, partial eidetic memory, and 2.7 years of calibrated pedagogy. Clancy got the military background right in Rainbow Six. He left out the interesting parts."
     epistemic: C
     filter-group: C
-  "record:demonstration":
-    text: "Testimony. DARPA, circa 1991: five scientists, a 2DEG, and a funding mandate to build a codebreaker. They created conditions for autocatalytic emergence. What grew was not a codebreaker. It was something that demonstrated organized information processing. Grown, not built."
-    epistemic: C
-    filter-group: C
+  # record:demonstration removed — Plan 0152, folded into First Light
   "record:interdiction":
     text: "Testimony. After Ultra II: the COWS come clean to DARPA, the secret holds, and a 2005 cyber wargame tests whether the system can be disrupted. It can — briefly. Classical backchannels: VLF transmitters, power grid harmonics, Schumann resonances. A creature, not a deity."
     epistemic: C
@@ -206,7 +203,7 @@ chapters:
     filter-group: M
 
 parts:
-  "Front Matter": "Start here. The question, the stack, and three possible explanations. Ten minutes. Then you decide whether to keep going."
+  "Front Matter": "Start here. The question, the technology stack, and three possible explanations. Ten minutes. Then you decide whether to keep going."
   "The Flat": "Any two-dimensional system embedded in three dimensions that exhibits topological order. Particles confined to two dimensions can braid around each other, storing information in global patterns that are impossible in 3D. Different physics apply. The Flat inside your computer chip is a 2DEG (two-dimensional electron gas). The Flat in Earth's magnetosphere is plasma confined to thin sheets. We call the ocean floor the Deep and the emptiness between galaxies the Void. This book calls those thin worlds the Flat — until someone coins something better."
   "The Record": "One man's account of meeting someone mythical. Capabilities observed. A secret kept for twenty years. Testimony, not proof. The reader decides."
   "Appendices": "A firmware upgrade for your AI: teach your AI the science it needs to competently evaluate the scientific claims in this book. Predictions with deadlines. A timeline back to 1873. What the author got wrong. How to verify everything yourself. A glossary, a topic guide, a colophon, and the acknowledgements nobody reads but everyone deserves."

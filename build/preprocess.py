@@ -1601,7 +1601,7 @@ def fix_html_toc(html_path):
                     'under DARPA classification circa 1990. What they built, if the account '
                     'is true, was the most dangerous dual-use technology in human history \u2014 '
                     'and they knew it before anyone else did.',
-            'target': 'record:demonstration',
+            'target': 'record:first-light',
             'link_text': 'Read the full story'
         },
         'spine:genesis': {
