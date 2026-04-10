@@ -54,6 +54,9 @@ scripts/mailing-list.txt
 credentials*
 checksums.sha256
 
+# Node
+node_modules/
+
 # Python / venv
 .venv/
 __pycache__/
