@@ -953,6 +953,200 @@ def inject_evaluate_section(text):
     return text
 
 
+def _parse_bib(bib_path):
+    """Parse a .bib file into a dict of {key: {type, fields...}}.
+
+    Regex-based parser tailored to the project's bibliography.bib.
+    Handles multiline values with brace nesting.
+    """
+    text = bib_path.read_text()
+    entries = {}
+    # Match @type{key, ... } blocks
+    pos = 0
+    while pos < len(text):
+        m = re.search(r'@(\w+)\s*\{([^,]+),', text[pos:])
+        if not m:
+            break
+        entry_type = m.group(1).lower()
+        key = m.group(2).strip()
+        start = pos + m.end()
+
+        # Find the matching closing brace
+        depth = 1
+        i = start
+        while i < len(text) and depth > 0:
+            if text[i] == '{':
+                depth += 1
+            elif text[i] == '}':
+                depth -= 1
+            i += 1
+        body = text[start:i - 1]
+        pos = i
+
+        # Parse field = {value} or field = "value" pairs
+        entry = {'_type': entry_type}
+        field_re = re.compile(r'(\w+)\s*=\s*(?:\{((?:[^{}]|\{[^{}]*\})*)\}|"([^"]*)")')
+        for fm in field_re.finditer(body):
+            field_name = fm.group(1).lower()
+            value = fm.group(2) if fm.group(2) is not None else fm.group(3)
+            # Clean LaTeX artifacts
+            value = re.sub(r'\\[\'"`^~]?\{?(\w)\}?', r'\1', value)
+            value = value.replace(r'\&', '&').replace(r'\@', '')
+            value = value.replace(r'\textit{', '').replace(r'\texttt{', '')
+            value = value.replace(r'\url{', '').replace(r'\emph{', '')
+            value = re.sub(r'[{}]', '', value)
+            value = value.replace('--', '–')
+            entry[field_name] = value.strip()
+        entries[key] = entry
+    return entries
+
+
+def _format_short_cite(entry):
+    """Format a short citation: Author, <em>Title</em> (Year)."""
+    author = entry.get('author', 'Unknown')
+    # Truncate to first author + et al.
+    if ' and ' in author:
+        first = author.split(' and ')[0].strip()
+        author = f'{first} et al.'
+    title = entry.get('title', 'Untitled')
+    year = entry.get('year', 'n.d.')
+    doi = entry.get('doi', '')
+    url = entry.get('url', '')
+
+    cite = f'{author}, <em>{title}</em> ({year})'
+    if doi:
+        cite = f'<a href="https://doi.org/{doi}" target="_blank">{cite}</a>'
+    elif url:
+        cite = f'<a href="{url}" target="_blank">{cite}</a>'
+    return cite
+
+
+def _format_full_entry(entry):
+    """Format a full bibliography entry in Chicago style."""
+    author = entry.get('author', 'Unknown')
+    title = entry.get('title', 'Untitled')
+    year = entry.get('year', 'n.d.')
+    journal = entry.get('journal', '')
+    booktitle = entry.get('booktitle', '')
+    publisher = entry.get('publisher', '')
+    volume = entry.get('volume', '')
+    number = entry.get('number', '')
+    pages = entry.get('pages', '')
+    doi = entry.get('doi', '')
+    url = entry.get('url', '')
+    note = entry.get('note', '')
+    entry_type = entry.get('_type', '')
+
+    parts = [f'<strong>{author}</strong>.']
+    if entry_type in ('article',):
+        parts.append(f'"{title}."')
+        if journal:
+            vol_info = f' {volume}' if volume else ''
+            num_info = f', no. {number}' if number else ''
+            page_info = f': {pages}' if pages else ''
+            parts.append(f'<em>{journal}</em>{vol_info}{num_info} ({year}){page_info}.')
+        else:
+            parts.append(f'({year}).')
+    elif entry_type in ('book', 'incollection'):
+        parts.append(f'<em>{title}</em>.')
+        if publisher:
+            address = entry.get('address', '')
+            addr_str = f'{address}: ' if address else ''
+            parts.append(f'{addr_str}{publisher}, {year}.')
+        else:
+            parts.append(f'{year}.')
+    elif entry_type in ('inproceedings',):
+        parts.append(f'"{title}."')
+        if booktitle:
+            parts.append(f'In <em>{booktitle}</em>, {year}.')
+        else:
+            parts.append(f'{year}.')
+        if pages:
+            parts.append(f'{pages}.')
+    elif entry_type in ('online', 'misc'):
+        parts.append(f'"{title}."')
+        parts.append(f'{year}.')
+    elif entry_type in ('techreport',):
+        parts.append(f'<em>{title}</em>.')
+        institution = entry.get('institution', '')
+        if institution:
+            parts.append(f'{institution}, {year}.')
+        else:
+            parts.append(f'{year}.')
+    else:
+        parts.append(f'<em>{title}</em>. {year}.')
+
+    result = ' '.join(parts)
+    if note:
+        result += f' <span class="bib-note">{note}</span>'
+
+    links = []
+    if doi:
+        links.append(f'<a href="https://doi.org/{doi}" target="_blank">DOI</a>')
+    if url:
+        links.append(f'<a href="{url}" target="_blank">URL</a>')
+    if links:
+        result += ' [' + ' | '.join(links) + ']'
+
+    return result
+
+
+def _generate_sources_html(entries):
+    """Generate grouped bibliography HTML from parsed .bib entries."""
+    # Group by type
+    groups = {
+        'Books': [],
+        'Journal Articles': [],
+        'Conference Proceedings': [],
+        'Preprints': [],
+        'Online Resources': [],
+        'Technical Reports': [],
+        'Legal and Archival': [],
+    }
+
+    # Classify entries
+    legal_keys = {'udhr1948', 'iccpr1966', 'eo13026', 'ballicty2002',
+                  'ictydecision', 'milosevicarchive', 'foreignpolicy2012',
+                  'annan1999', 'sudetic2010', 'brighton2004',
+                  'norton-taylor2004', 'bbc2004gun'}
+
+    for key, entry in entries.items():
+        etype = entry.get('_type', '')
+        if key in legal_keys:
+            groups['Legal and Archival'].append((key, entry))
+        elif etype in ('book', 'incollection'):
+            groups['Books'].append((key, entry))
+        elif etype == 'article':
+            groups['Journal Articles'].append((key, entry))
+        elif etype == 'inproceedings':
+            groups['Conference Proceedings'].append((key, entry))
+        elif etype == 'techreport':
+            groups['Technical Reports'].append((key, entry))
+        elif etype in ('online', 'misc'):
+            # Check if it's a preprint
+            if entry.get('eprinttype') or 'arXiv' in entry.get('note', ''):
+                groups['Preprints'].append((key, entry))
+            else:
+                groups['Online Resources'].append((key, entry))
+        else:
+            groups['Online Resources'].append((key, entry))
+
+    html_parts = ['<div class="bibliography">']
+    for group_name, items in groups.items():
+        if not items:
+            continue
+        # Sort by author then year
+        items.sort(key=lambda x: (x[1].get('author', '').lower(), x[1].get('year', '')))
+        html_parts.append(f'<h3>{group_name}</h3>')
+        html_parts.append('<ul class="bib-list">')
+        for key, entry in items:
+            formatted = _format_full_entry(entry)
+            html_parts.append(f'<li id="bib-{key}">{formatted}</li>')
+        html_parts.append('</ul>')
+    html_parts.append('</div>')
+    return '\n'.join(html_parts)
+
+
 def fix_html_toc(html_path):
     """Post-process HTML to restructure flat TOC into part-grouped TOC.
 
@@ -1635,6 +1829,43 @@ def fix_html_toc(html_path):
 
     if title_conv_count:
         print(f"  Tooltips unified: {title_conv_count} title→data-hover conversions")
+
+    # --- Citation rendering: fill empty pandoc citation spans from .bib ---
+    bib_path = REPO / "manuscript" / "bibliography.bib"
+    if bib_path.exists():
+        bib_entries = _parse_bib(bib_path)
+        if bib_entries:
+            # Fill empty citation spans
+            cite_filled = 0
+            cite_missing = 0
+            def _fill_cite_span(m):
+                nonlocal cite_filled, cite_missing
+                keys = m.group(1).split()
+                parts = []
+                for key in keys:
+                    if key in bib_entries:
+                        parts.append(_format_short_cite(bib_entries[key]))
+                    else:
+                        parts.append(f'[{key}]')
+                        cite_missing += 1
+                cite_filled += 1
+                return f'<span class="citation" data-cites="{m.group(1)}">{"; ".join(parts)}</span>'
+            text = re.sub(
+                r'<span class="citation" data-cites="([^"]*)"></span>',
+                _fill_cite_span, text
+            )
+            print(f"  Citations filled: {cite_filled} spans ({cite_missing} missing keys)")
+
+            # Generate Sources bibliography
+            sources_html = _generate_sources_html(bib_entries)
+            # Find the empty Sources <details> and inject content after </summary>
+            sources_pattern = r'(<details[^>]*>(?:<summary[^>]*>)?[^<]*<h2[^>]*id="app:sources"[^>]*>[^<]*</h2>(?:</summary>)?)(\s*</details>)'
+            sources_match = re.search(sources_pattern, text)
+            if sources_match:
+                text = text[:sources_match.end(1)] + '\n' + sources_html + '\n' + text[sources_match.start(2):]
+                print(f"  Sources bibliography: {len(bib_entries)} entries injected")
+            else:
+                print("  WARNING: Could not find Sources section to inject bibliography")
 
     html_path.write_text(text)
     print(f"HTML post-processed: {html_path}")
