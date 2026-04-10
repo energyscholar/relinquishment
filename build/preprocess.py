@@ -780,6 +780,26 @@ details.bc-expansion .record-link:hover {
   .epistemic-legend span:nth-child(2) { border-left-color: #4a7d8f; }
   .epistemic-legend span:nth-child(3) { border-left-color: #7d5fa0; }
 }
+
+/* Deep link anchors — Plan 0148 */
+.share-anchor { position: relative; display: inline; }
+.share-anchor::after {
+  content: "🔗";
+  font-size: 0.6em;
+  opacity: 0;
+  cursor: pointer;
+  user-select: none;
+  margin-left: 0.3em;
+  padding: 8px;
+  transition: opacity 0.2s;
+}
+body.show-anchors .share-anchor::after { opacity: 0.3; }
+body.show-anchors .share-anchor:hover::after { opacity: 0.8; }
+@media print { .share-anchor::after { content: none; } }
+@media (prefers-color-scheme: dark) {
+  body.show-anchors .share-anchor::after { opacity: 0.25; }
+  body.show-anchors .share-anchor:hover::after { opacity: 0.7; }
+}
 """
     # Inject before closing </style> of the last style block in <head>
     head_end = text.find('</head>')
@@ -1866,6 +1886,18 @@ def fix_html_toc(html_path):
                 print(f"  Sources bibliography: {len(bib_entries)} entries injected")
             else:
                 print("  WARNING: Could not find Sources section to inject bibliography")
+
+    # Convert deep-link hypertargets to share-anchor spans (Plan 0148)
+    # Pandoc outputs <div id="dl:*">...</div> when macro is on its own line (block),
+    # and <span id="dl:*"></span> when inline. Handle both.
+    dl_div = re.compile(r'<div id="(dl:[^"]+)">\s*</div>', re.DOTALL)
+    dl_span = re.compile(r'<(?:span|a) id="(dl:[^"]+)"></(?:span|a)>')
+    dl_replacement = lambda m: f'<span class="share-anchor" id="{m.group(1)}" aria-hidden="true"></span>'
+    dl_before = text.count('id="dl:')
+    text = dl_div.sub(dl_replacement, text)
+    text = dl_span.sub(dl_replacement, text)
+    dl_after = text.count('class="share-anchor"')
+    print(f"Deep links: {dl_after} share anchors converted (from {dl_before} hypertargets)")
 
     html_path.write_text(text)
     print(f"HTML post-processed: {html_path}")
