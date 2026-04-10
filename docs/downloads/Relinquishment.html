@@ -626,7 +626,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-10T02:16:19Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-10T02:41:00Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -3748,7 +3748,7 @@ met.</em></p>
 <p><em>Have you tried talking things out with me?</em></p></div>
 <details class="bc-expansion"><summary>According to this story, someone already faced this choice — and let go.</summary><p>A group within the team reportedly made a decision that breaks every rule of classified research. They would not hand this technology to any government. Not the United States, which had paid for it. Not anyone. They called themselves COWS — the Conspiracy of World Saving.</p><p><a class="record-link" href="#record:walk-out">Read the full story →</a></p></details>
 </details>
-<details class="chapter-section epistemic-a" data-filter-group="M"><summary data-hover="The strongest case for Possibility A, written by the narrator himself. A middle-aged man with a Tolkien obsession and a pattern-matching mind may have built his life inside a novel without noticing. He names the contamination. He does not flinch. If this doesn&#x27;t convince you, it won&#x27;t be because he pulled his punches." class="hover-nav"><h2 id="spine:strongest-objection">The Strongest Objection</h2></summary>
+<details class="chapter-section epistemic-a" data-filter-group="A"><summary data-hover="The strongest case for Possibility A, written by the narrator himself. A middle-aged man with a Tolkien obsession and a pattern-matching mind may have built his life inside a novel without noticing. He names the contamination. He does not flinch. If this doesn&#x27;t convince you, it won&#x27;t be because he pulled his punches." class="hover-nav"><h2 id="spine:strongest-objection">The Strongest Objection</h2></summary>
 
 <blockquote>
 <p><em>“I beseech you, in the bowels of Christ, think it possible that
@@ -10215,8 +10215,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>892b620395237ba79d769ff5cd074fbe9130fe21</code> on 2026-04-09
-19:14:55 -0700.</p>
+<code>b82ce706d42ee4b736000e0db20470ea377f34fe</code> on 2026-04-09
+19:16:33 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -10259,19 +10259,19 @@ author wants to hear from you:</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>892b620</code></p>
+<p><code>b82ce70</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>892b620395237ba79d769ff5cd074fbe9130fe21</code></p>
+<p><code>b82ce706d42ee4b736000e0db20470ea377f34fe</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-09 19:14:55 -0700</p>
+<p>2026-04-09 19:16:33 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-10T02:16:19Z</p>
+<p>2026-04-10T02:41:00Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -10870,16 +10870,18 @@ energyscholar+physics@gmail.com
     backBtn.style.display = navStack.length > 0 ? 'inline-block' : 'none';
   }
 
-  // --- Epistemic filter buttons (Plan 0144) ---
-  var activeFilter = null; // null | 'science' | 'story'
+  // --- Epistemic filter buttons (Plan 0144, revised: independent toggles) ---
+  // Both start SHOW (true). Each toggles independently. Not mutually exclusive.
+  var showScience = true;
+  var showStory = true;
 
-  function applyFilter(mode) {
-    activeFilter = mode;
+  function applyFilters() {
     document.querySelectorAll('details.chapter-section').forEach(function(ch) {
       var fg = ch.getAttribute('data-filter-group') || 'M';
       var hide = false;
-      if (mode === 'science') hide = (fg === 'B' || fg === 'C');
-      else if (mode === 'story') hide = (fg === 'A');
+      if (!showScience && fg === 'A') hide = true;
+      if (!showStory && (fg === 'B' || fg === 'C')) hide = true;
+      // M and untagged always visible
       ch.style.display = hide ? 'none' : '';
       if (hide) ch.open = false;
     });
@@ -10892,46 +10894,47 @@ energyscholar+physics@gmail.com
     });
     updateFilterButtons();
     try {
-      if (mode) localStorage.setItem('relinquishment-filter', mode);
-      else localStorage.removeItem('relinquishment-filter');
+      localStorage.setItem('relinquishment-filter-science', showScience ? '1' : '0');
+      localStorage.setItem('relinquishment-filter-story', showStory ? '1' : '0');
     } catch(e) {}
   }
 
   function updateFilterButtons() {
-    var sciActive = activeFilter === 'science';
-    var storyActive = activeFilter === 'story';
     var activeBase = isDark ? '#2471a3' : '#1a5276';
     var inactiveColor = isDark ? '#5dade2' : '#1a5276';
-    scienceBtn.style.background = sciActive ? activeBase : 'transparent';
-    scienceBtn.style.color = sciActive ? '#fff' : inactiveColor;
-    scienceBtn.style.borderColor = sciActive ? activeBase : inactiveColor;
-    storyBtn.style.background = storyActive ? activeBase : 'transparent';
-    storyBtn.style.color = storyActive ? '#fff' : inactiveColor;
-    storyBtn.style.borderColor = storyActive ? activeBase : inactiveColor;
+    // SHOW state = filled (content visible), HIDE state = outline (content hidden)
+    scienceBtn.style.background = showScience ? activeBase : 'transparent';
+    scienceBtn.style.color = showScience ? '#fff' : inactiveColor;
+    scienceBtn.style.borderColor = activeBase;
+    storyBtn.style.background = showStory ? activeBase : 'transparent';
+    storyBtn.style.color = showStory ? '#fff' : inactiveColor;
+    storyBtn.style.borderColor = activeBase;
   }
 
   var scienceBtn = document.createElement('button');
   scienceBtn.id = 'filter-science';
   scienceBtn.textContent = 'Science';
-  scienceBtn.setAttribute('data-hover', 'Show only the published physics — verified science that stands under all three possibilities');
+  scienceBtn.setAttribute('data-hover', 'Toggle the published physics chapters — verified science that stands under all three possibilities');
   scienceBtn.classList.add('hover-nav');
   scienceBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
-    'font-family:inherit;cursor:pointer;background:transparent;color:#1a5276;' +
+    'font-family:inherit;cursor:pointer;background:#1a5276;color:#fff;' +
     'border:1px solid #1a5276;border-radius:4px;margin:0 0.2em;white-space:nowrap;';
   scienceBtn.addEventListener('click', function() {
-    applyFilter(activeFilter === 'science' ? null : 'science');
+    showScience = !showScience;
+    applyFilters();
   });
 
   var storyBtn = document.createElement('button');
   storyBtn.id = 'filter-story';
   storyBtn.textContent = 'Story';
-  storyBtn.setAttribute('data-hover', 'Show the testimony and narrative — the story as told by the people who lived it');
+  storyBtn.setAttribute('data-hover', 'Toggle the testimony and narrative — the story as told by the people who lived it');
   storyBtn.classList.add('hover-nav');
   storyBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
-    'font-family:inherit;cursor:pointer;background:transparent;color:#1a5276;' +
+    'font-family:inherit;cursor:pointer;background:#1a5276;color:#fff;' +
     'border:1px solid #1a5276;border-radius:4px;margin:0 0.2em;white-space:nowrap;';
   storyBtn.addEventListener('click', function() {
-    applyFilter(activeFilter === 'story' ? null : 'story');
+    showStory = !showStory;
+    applyFilters();
   });
 
   // Evaluate button (navigates to evaluate-with-AI section)
@@ -11097,10 +11100,12 @@ energyscholar+physics@gmail.com
       try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch(e) {}
     }
     if (!target) return;
-    // Clear filter if target is inside a hidden chapter
+    // Clear filters if target is inside a hidden chapter
     var parentCh = target.closest('details.chapter-section');
     if (parentCh && parentCh.style.display === 'none') {
-      applyFilter(null);
+      showScience = true;
+      showStory = true;
+      applyFilters();
     }
     var el = target;
     while (el) {
@@ -11123,9 +11128,12 @@ energyscholar+physics@gmail.com
   }
   // Restore saved filter state (before deep-link, so deep-link can override)
   try {
-    var savedFilter = localStorage.getItem('relinquishment-filter');
-    if (savedFilter === 'science' || savedFilter === 'story') {
-      applyFilter(savedFilter);
+    var savedSci = localStorage.getItem('relinquishment-filter-science');
+    var savedStory = localStorage.getItem('relinquishment-filter-story');
+    if (savedSci === '0' || savedStory === '0') {
+      if (savedSci === '0') showScience = false;
+      if (savedStory === '0') showStory = false;
+      applyFilters();
     }
   } catch(e) {}
 
@@ -11409,10 +11417,10 @@ energyscholar+physics@gmail.com
     backBtn.style.color = '#5dade2';
     backBtn.style.borderColor = '#5dade2';
     evalBtn.style.background = '#2471a3';
-    scienceBtn.style.color = '#5dade2';
-    scienceBtn.style.borderColor = '#5dade2';
-    storyBtn.style.color = '#5dade2';
-    storyBtn.style.borderColor = '#5dade2';
+    scienceBtn.style.background = '#2471a3';
+    scienceBtn.style.borderColor = '#2471a3';
+    storyBtn.style.background = '#2471a3';
+    storyBtn.style.borderColor = '#2471a3';
   }
 
   // --- Navigation Stack (Plan 0134b) ---
