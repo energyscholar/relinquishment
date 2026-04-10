@@ -1113,7 +1113,7 @@
       return;
     }
     showPanel(term);
-  });
+  }, { passive: false });
 
   document.addEventListener('click', function(e) {
     var term = e.target.closest('[data-hover]');
