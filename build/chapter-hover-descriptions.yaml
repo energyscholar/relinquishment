@@ -61,6 +61,10 @@
 "pos36:steelman-a": "The strongest case that none of this is real"
 
 # Appendices (includes former Back Matter)
+# Record intro (pandoc generates the-record-1 to avoid ID collision with part heading)
+"the-record-1": "What follows is testimony. Under A it is fiction; under B, exaggeration; under C, the most important record of the century. The science in the spine stands regardless."
+
+# Appendices (includes former Back Matter)
 "afterword-the-engine": "Where things stand now. If Guardian is real, she holds Flat technologies in trust and reportedly provides services to technology companies. The relinquishment is partial and temporary — not surrender, but custody."
 "app:predictions": "Testable claims — falsifiable by roughly 2040"
 "app:glossary": "Technical terms used in this book"
