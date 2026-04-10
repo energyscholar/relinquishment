@@ -258,11 +258,22 @@ def collapse_chapters(text):
     Working backwards in each pass so position shifts don't affect unprocessed regions.
     """
 
-    # Load hover descriptions keyed by heading ID
+    # Load hover descriptions keyed by heading ID.
+    # Two sources, layered: chapter-hover-descriptions.yaml (primary, hand-written
+    # for the body accordions) falls back to menu-tooltips.yaml (comprehensive,
+    # also drives the hidden TOC). This ensures every chapter accordion gets a
+    # tooltip even if chapter-hover-descriptions.yaml doesn't have a custom entry.
+    # chapter-hover-descriptions entries win when both exist for the same ID.
     hover_map = {}
     yaml_path = REPO / "build" / "chapter-hover-descriptions.yaml"
     if yaml and yaml_path.exists():
         hover_map = yaml.safe_load(yaml_path.read_text()) or {}
+    menu_yaml = REPO / "build" / "menu-tooltips.yaml"
+    if yaml and menu_yaml.exists():
+        _mt = yaml.safe_load(menu_yaml.read_text()) or {}
+        for anchor_id, value in (_mt.get("chapters", {})).items():
+            if anchor_id not in hover_map and isinstance(value, dict):
+                hover_map[anchor_id] = value.get('text', '')
 
     def find_headings(txt):
         """Parse all h1/h2/h3 headings with positions, IDs, and text."""
@@ -1206,7 +1217,7 @@ def fix_html_toc(html_path):
             if id_pos == -1:
                 continue
             details_pos = text.rfind('<details class="chapter-section">', 0, id_pos)
-            if details_pos != -1 and (id_pos - details_pos) < 300:
+            if details_pos != -1 and (id_pos - details_pos) < 800:
                 old_tag = '<details class="chapter-section">'
                 new_tag = f'<details class="chapter-section {ep_class}">'
                 text = text[:details_pos] + new_tag + text[details_pos + len(old_tag):]
@@ -1228,7 +1239,7 @@ def fix_html_toc(html_path):
                 continue
             # Find nearest <details class="chapter-section..."> before this ID
             details_pos = text.rfind('<details class="chapter-section', 0, id_pos)
-            if details_pos != -1 and (id_pos - details_pos) < 400:
+            if details_pos != -1 and (id_pos - details_pos) < 800:
                 # Find the closing > of this <details> tag
                 tag_end = text.find('>', details_pos)
                 if tag_end != -1 and f'data-filter-group=' not in text[details_pos:tag_end]:
