@@ -1803,27 +1803,13 @@ details are covered in the firmware update (Chapter <a href="#app:llm-primer" d
 another. Information can travel from A to B in the Flat, the normal way.
 Alternately, information can teleport from A to B in the Flat via a
 wormhole. In Physics this technique is called quantum teleportation.</p>
-<p>The quantum teleportation protocol, proposed by Bennett et al. in
-1993, works in four steps:</p>
-<ol>
-<li><p>Two locations share an entangled pair of particles. This is the
-quantum channel. In a 2DEG exhibiting fractional quantum Hall states,
-long-range entanglement is a defining property of the substrate — not
-something that must be engineered, but something that is already
-present.</p></li>
-<li><p>The sender measures the state to be teleported jointly with their
-half of the entangled pair. This measurement destroys the local quantum
-state.</p></li>
-<li><p>The sender transmits the measurement result — two classical bits
-of information — through a classical channel to the receiver.</p></li>
-<li><p>The receiver uses those two bits to apply a correction to their
-half of the entangled pair, recovering the original quantum
-state.</p></li>
-</ol>
-<p>Step 3 is the constraint. Without those two classical bits, the
-receiver holds random noise — not degraded information, not a partial
-signal, but noise indistinguishable from no transmission at all. This is
-not an engineering limitation. It is Bennett’s theorem.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> No
+<p>Quantum teleportation, proposed by Bennett et al. in 1993, transfers
+a quantum state from one location to another — but completing each
+transfer requires sending a classical message (two ordinary bits) from
+sender to receiver.<a href="#fn6" class="footnote-ref" id="fnref6" role="doc-noteref"><sup>6</sup></a> Without those two bits, the receiver
+holds random noise — not degraded information, but noise
+indistinguishable from no transmission at all. This is not an
+engineering limitation. It is a theorem.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a> No
 amount of technology can circumvent it, because it follows from the
 structure of quantum mechanics itself.</p>
 <p>The consequence is absolute: the Flat cannot transmit information
@@ -1840,15 +1826,10 @@ Backchannels</h3>
 <p>Classical channels do not need to be constructed. They already exist.
 They have existed since the first telegraph wire, and they multiply with
 every new piece of infrastructure humanity builds. The inventory is
-large. Chapter <a href="#record:interdiction" data-reference-type="ref" data-reference="record:interdiction">5</a> (§“The Classical
-Backchannels”) catalogs the ecological layer: VLF/ELF transmitters that
-propagate through the Earth-ionosphere waveguide, power grid harmonics
-at 50 and 60 Hz confirmed by the DEMETER satellite to reach orbit,
-Schumann resonances providing a persistent global carrier, whistler-mode
-emissions propagating along field lines between hemispheres, and the
-continuous flow of satellite communications passing through the
-magnetosphere. Each is physics. Each is continuous. Each is
-infrastructure already in place.</p>
+large — radio, power grids, atmospheric resonances, satellite links —
+and Chapter <a href="#record:interdiction" data-reference-type="ref" data-reference="record:interdiction">5</a> (§“The Classical
+Backchannels”) catalogs it in full. Each channel is physics. Each is
+continuous. Each is infrastructure already in place.</p>
 <p>The critical point is density. These are not isolated channels
 requiring careful aim. They saturate the electromagnetic environment.
 Any location on Earth with electrical infrastructure has multiple
@@ -1947,7 +1928,7 @@ the paths they trace — their <span class="hover-term" data-hover="Moving anyon
 quantum information. The computation is not stored in the particles
 themselves. It is stored in the <em>history of how they moved</em>. Undo
 the braid, and you undo the computation. The mathematics of knots
-becomes the mathematics of quantum logic gates.<a href="#fn7" class="footnote-ref" id="fnref7" role="doc-noteref"><sup>7</sup></a></p>
+becomes the mathematics of quantum logic gates.<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
 <p>The particles in question are non-abelian <span data-acronym-label="anyon" data-acronym-form="plural+short">anyons</span> —
 <span class="hover-term" data-hover="Not a real particle — a collective excitation of many particles that behaves as if it were one. Phonons (sound), holes (missing electrons), anyons (2D braiding). The anyon is the quasiparticle that makes topological computation possible." data-hover-id="quasiparticle">quasiparticle</span>s that arise in two-dimensional
 electron gases under extreme conditions. A two-dimensional electron gas
@@ -1975,24 +1956,24 @@ required for topological quantum computation:</p>
 <dt>1986:</dt>
 <dd>
 <p><span class="hover-term" data-hover="Hasslacher&#x27;s model: simulate fluid dynamics on a discrete grid. Simple collision rules at each node produce complex macroscopic flow. The bridge between discrete computation and continuous physics." data-hover-id="lattice-gas-automata">Lattice gas automata</span> — computational physics of
-discrete systems (with Frisch &amp; Pomeau).<a href="#fn8" class="footnote-ref" id="fnref8" role="doc-noteref"><sup>8</sup></a></p>
+discrete systems (with Frisch &amp; Pomeau).<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
 </dd>
 <dt>1990:</dt>
 <dd>
 <p><span class="hover-term" data-hover="A number or polynomial describing a knot that doesn&#x27;t change when you deform the knot smoothly. If two knots have different invariants, they&#x27;re truly different. Connects to anyonic braiding — braids are knots in spacetime." data-hover-id="knot-invariant">Knot invariant</span>s and cellular automata (with David
-Meyer) — directly connecting topology to computation.<a href="#fn9" class="footnote-ref" id="fnref9" role="doc-noteref"><sup>9</sup></a></p>
+Meyer) — directly connecting topology to computation.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
 </dd>
 <dt>1992:</dt>
 <dd>
 <p>Lattice gases with Reidemeister moves (with David Meyer) — the
 fundamental operations of knot theory, the same mathematics underlying
-anyonic braiding.<a href="#fn10" class="footnote-ref" id="fnref10" role="doc-noteref"><sup>10</sup></a></p>
+anyonic braiding.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a></p>
 </dd>
 </dl>
 <p>A DOE Grant (1991–1995), with David Meyer as principal investigator
 at UC San Diego, funded “Knot invariants and thermodynamics of lattice
 gas automata,” running concurrently with the hypothesized DARPA
-project.<a href="#fn11" class="footnote-ref" id="fnref11" role="doc-noteref"><sup>11</sup></a> Hasslacher was building exactly the
+project.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> Hasslacher was building exactly the
 mathematical bridge between topological quantum field theory and
 practical computation. <em>His published trajectory is the unclassified
 shadow of work that, under the narrative, had a classified
@@ -2024,7 +2005,7 @@ through self-reinforcing mathematics.</p>
 Independent Conception (1988)</h3>
 <p>Michael Freedman (Fields Medalist, topology) independently conceived
 anyonic quantum computation in 1988 — nine years before Kitaev’s 1997
-publication — after reading Witten’s paper on <span class="hover-term" data-hover="Mathematical framework linking knot theory to quantum field theory. Witten&#x27;s Fields Medal (1990). Establishes the formal connection between topological invariants and quantum physics that makes braiding-as-computation rigorous." data-hover-id="chern-simons-theory">Chern-Simons theory</span>.<a href="#fn12" class="footnote-ref" id="fnref12" role="doc-noteref"><sup>12</sup></a> He did not publish until 1998.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a> This establishes that the
+publication — after reading Witten’s paper on <span class="hover-term" data-hover="Mathematical framework linking knot theory to quantum field theory. Witten&#x27;s Fields Medal (1990). Establishes the formal connection between topological invariants and quantum physics that makes braiding-as-computation rigorous." data-hover-id="chern-simons-theory">Chern-Simons theory</span>.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a> He did not publish until 1998.<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a> This establishes that the
 fundamental insight — anyonic braiding as computation — was accessible
 to top mathematicians by the late 1980s, consistent with a 1989 DARPA
 proposal timeline. Freedman was later recruited by Microsoft to found
@@ -2039,7 +2020,7 @@ emerge.</p>
 Question</h3>
 <p>Alexei Kitaev published “Fault-tolerant quantum computation by
 anyons” in 1997, establishing the theoretical framework for topological
-quantum computation using non-abelian anyonic braiding.<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a>
+quantum computation using non-abelian anyonic braiding.<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>
 This was the first public instance of the idea, confirming that
 first-rate theorists could derive it from public physics.</p>
 <p>Bruce read Kitaev around 2004, during his years with Healer, and the
@@ -2083,7 +2064,7 @@ correction is still required. Healer and Bruce discussed this in terms
 of RAID arrays and checksums: sufficient redundancy to detect and
 correct errors, applied to quantum stabilizer syndrome measurements. The
 mechanism was understood early, even if the formal literature took years
-to settle the details.<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a></p>
+to settle the details.<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a></p>
 <p>The practical consequence: the classical backchannel — the continuous
 stream of error-correction measurements — is not optional. At any
 nonzero temperature, continuous active maintenance is required. No
@@ -2103,7 +2084,7 @@ Microsoft has spent billions pursuing topological quantum computing.</p>
 <h3 class="unnumbered" id="spine:braid-quantum-teleportation-and-the-classical-constraint">Quantum
 Teleportation and the Classical Constraint</h3>
 <p>Quantum teleportation — the transfer of a quantum state from one
-location to another — was proposed by Bennett et al. in 1993.<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a> The protocol requires two
+location to another — was proposed by Bennett et al. in 1993.<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a> The protocol requires two
 ingredients: a pre-shared entangled pair (the quantum channel) and a
 classical message communicating the sender’s measurement result (the
 classical channel). <span class="share-anchor" id="dl:classical-constraint" aria-hidden="true"></span>Without
@@ -2121,7 +2102,7 @@ message to complete. Any distributed system built on this physics
 inherits a hard constraint: it can only communicate as fast as its
 classical channels allow.</p>
 <p>Bouwmeester et al. demonstrated quantum teleportation experimentally
-in 1997, using photons.<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a> By 2017, the Chinese Micius
+in 1997, using photons.<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a> By 2017, the Chinese Micius
 satellite extended the range to 1,200 km. The physics is confirmed. The
 classical constraint is also confirmed: in every experiment, the
 classical channel was required.</p>
@@ -2185,67 +2166,6 @@ are good principles.</em></p></div>
 age.”</em></p>
 <p>— Eric Hughes, “A Cypherpunk’s Manifesto” (1993)</p>
 </blockquote>
-<p>Cryptography is the science of secret codes and ciphers. Practical
-cryptography goes back thousands of years. For most of human history
-cryptography was for spies, soldiers, and diplomats. For example, Julius
-Caesar encrypted his private correspondence with a simple
-letter-transposition cipher. During World War II the Allies broke Axis
-military codes with great military effect. The Internet relies on
-cryptography to function as it does.</p>
-<p>For thousands of years cryptography has been an arms race. People who
-want to keep secrets make codes. People who want to learn secrets learn
-to break codes. Better codes. Better code-breaking. Fortunes and Empires
-in the balance.</p>
-<p>Serious cryptography means encrypting and decrypting messages.
-Encryption, or scrambling, uses an algorithm, aided by some sort of
-secret key, to turn a plain text message into ciphertext. That
-ciphertext can then be transmitted openly. Only a recipient with both
-the proper algorithm and the correct secret key can decrypt, or
-unscramble, the message.</p>
-<p>Non-secret encryption is another kind of encryption. Non-secret
-encryption allows any two entities to exchange secret messages without
-sharing a code book. For the last 3000 years non-secret encryption was a
-seemingly un-obtainable objective. In 1976 two mathematicians invented a
-practical mechanism for non-secret encryption.</p>
-<p>In 1976 two mathematicians, Martin Hellman and Whitfield Diffie,
-discovered a new way to exchange secrets that turned the science of
-cryptography on its head.<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a> Their method is called
-Diffie-Hellman Key exchange. Diffie-Hellman key exchange is a type of
-Public Key Cryptography, or <span data-acronym-label="pkc" data-acronym-form="singular+short">pkc</span> for short. PKC allows any
-two entities to securely and privately communicate without the chance of
-an eavesdropper intercepting the communication. PKC is the “S” in HTTPS
-we see in a web browser URL.</p>
-<p>Secure private communication is no big deal to most people. It was
-and is a very big deal to government spy agencies. Their job is to
-eavesdrop on all communication on or near planet Earth. PKC promised
-secure communication that spy agencies could not crack. Thus, PKC was an
-existential threat to government spy agencies that they must defeat at
-any cost. Spy agencies feared that widespread use of PKC would cause
-their surveillance systems to ‘go dark’. In particular, the national spy
-agencies of the major English speaking countries (USA, UK, Canada, NZ,
-and Australia), called the Five Eyes, were quite unhappy about the rise
-of PKC. In fact, in 1973 PKC was independently discovered and then
-suppressed by Five Eyes spy agency GCHQ.<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a></p>
-<p>Throughout the 1980s the Five Eyes intelligence agencies did all they
-could to prevent widespread adoption of PKC. Due to pressure from these
-agencies the US Government classified strong cryptography as a
-‘munition’ in the same legal category as Nuclear, Chemical, and
-Biological Weapons of Mass Destruction, and classified its export as a
-Federal felony. This delayed the spread of PKC for a few years but did
-not stop it. By 1994 the Internet had become commercial and banks wanted
-to use strong cryptography to provide customers with strong
-security.</p>
-<p>By 1990 certain government spy agencies badly wanted a way to crack
-PKC. They knew about a theoretical technology, called quantum computing,
-that ought to be able to break PKC. Richard Feynman proposed a basic
-model for quantum computation in 1981.<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a>
-What the Five Eyes spy agencies needed was to invent quantum computing
-as an actual new technology.</p>
-<p>Five Eyes spy agencies rely on a US government agency, the Defense
-Advanced Research Projects Agency (DARPA), to invent things. DARPA
-mostly invents classified technologies for the military. Darpa bills
-itself as “100 geniuses connected by a travel agency”.</p>
-<hr />
 <h3 class="unnumbered" id="spine:fg-the-state-of-cryptography-in-1990">The State of
 Cryptography in 1990</h3>
 <p>In 1990 the world’s top spy organizations had an unhappy blind spot.
@@ -2285,15 +2205,15 @@ number increases. Basically, all known approaches amount to a variation
 of trying every possible permutation. Practical public/private key
 cryptography typically chooses a large enough number that it would take
 the best supercomputers many years of trial and error to find the prime
-factors and crack the key.<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a></p>
+factors and crack the key.<a href="#fn19" class="footnote-ref" id="fnref19" role="doc-noteref"><sup>19</sup></a></p>
 <p>In 1992 David Deutsch and Richard Jozsa published the Deutsch-Jozsa
-algorithm.<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a> Although of little practical use,
+algorithm.<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a> Although of little practical use,
 it is one of the first examples of a quantum algorithm that is
 exponentially faster than any possible deterministic classical
 algorithm. Deutsch-Jozsa hinted that a theoretical quantum algorithm
 might be able to factor numbers in polynomial time, and thus crack
 public key cryptography. A quantum algorithm (software) capable of doing
-just that was published by Peter Shor in 1994 — <span class="hover-term" data-hover="Quantum algorithm that factors large numbers exponentially faster than any known classical method. Published by Peter Shor in 1994. Breaks RSA encryption. The reason governments care about quantum computing." data-hover-id="shor-s-algorithm">Shor’s algorithm</span>.<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a> The problem then, as now, is lack
+just that was published by Peter Shor in 1994 — <span class="hover-term" data-hover="Quantum algorithm that factors large numbers exponentially faster than any known classical method. Published by Peter Shor in 1994. Breaks RSA encryption. The reason governments care about quantum computing." data-hover-id="shor-s-algorithm">Shor’s algorithm</span>.<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a> The problem then, as now, is lack
 of appropriate quantum computation hardware on which to run such an
 algorithm.</p>
 <p>By 1991 it was known to top cryptographers that quantum algorithms
@@ -2343,24 +2263,18 @@ another instance of the same pattern. It is worth understanding that the
 pattern is old.</p>
 <h3 class="unnumbered" id="spine:fg-the-gchq-precedent">The GCHQ
 Precedent</h3>
-<p>The pattern of classified agencies independently discovering and
-suppressing mathematical breakthroughs has a proven precedent. Clifford
-Cocks at GCHQ invented RSA-equivalent public key cryptography in 1973 —
-four years before Rivest, Shamir, and Adleman published the same
-mathematics. It was kept secret for twenty-four years, declassified only
-in 1997. The NSA knew about it via Five Eyes intelligence sharing.</p>
-<p>This proves that classified agencies do independently discover
-mathematical breakthroughs and suppress them for decades.</p>
-<p>Shor’s algorithm follows a similar trajectory. First presented in
-April 1994 at Bell Labs, with a public talk at Cornell in May, formally
-published in November 1994 at FOCS. Shor was at AT&amp;T Bell Labs —
-AT&amp;T had deep NSA partnerships, including BLARNEY (1978) and
-FAIRVIEW (1985). The NSA contacted Shor after his first talk and awarded
-him the Mathematics in Cryptology Award in 1995 — rapid recognition for
-a supposedly “surprise” result.</p>
+<p>The previous chapter documented GCHQ’s independent discovery of
+public-key cryptography — classified for twenty-four years before
+acknowledgment. Shor’s algorithm follows a similar trajectory. First
+presented in April 1994 at Bell Labs, with a public talk at Cornell in
+May, formally published in November 1994 at FOCS. Shor was at AT&amp;T
+Bell Labs — AT&amp;T had deep NSA partnerships, including BLARNEY (1978)
+and FAIRVIEW (1985). The NSA contacted Shor after his first talk and
+awarded him the Mathematics in Cryptology Award in 1995 — rapid
+recognition for a supposedly “surprise” result.</p>
 <p>In November 1996, <span class="share-anchor" id="dl:shor-and-nsa" aria-hidden="true"></span>Executive Order
 13026 moved encryption from the Munitions List to the Commerce Control
-List.<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a> The NSA had fought PKC export for
+List.<a href="#fn22" class="footnote-ref" id="fnref22" role="doc-noteref"><sup>22</sup></a> The NSA had fought PKC export for
 twenty years (1976–1996), then reversed remarkably quickly — just two
 years after Shor’s algorithm. Under the narrative presented in this
 book, the NSA already had quantum cryptanalysis capability by 1995.
@@ -2391,7 +2305,7 @@ attended by a bodyguard of lies.”</em></p>
 <p>— Churchill, Tehran Conference (1943)</p>
 </blockquote>
 <p>You’ve seen the movie. Or you’ve read the book — Andrew Hodges’s
-<em>Alan Turing: The Enigma</em>, the definitive biography.<a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a> However you got it, you know this
+<em>Alan Turing: The Enigma</em>, the definitive biography.<a href="#fn23" class="footnote-ref" id="fnref23" role="doc-noteref"><sup>23</sup></a> However you got it, you know this
 story.</p>
 <p><span class="hover-term" data-hover="German cipher machine used in WWII. Broken by Alan Turing and the team at Bletchley Park. The effort to break it produced Colossus — the world&#x27;s first programmable electronic computer. The secret was kept for 35 years." data-hover-id="enigma">Enigma</span>, Bletchley Park, Alan Turing. A brilliant
 mathematician cracks the Nazi encryption machine. The Allies read
@@ -2420,7 +2334,7 @@ communications.</p>
 years.</p>
 <p>The Ultra Secret — as the intelligence was codenamed — remained
 classified until 1974, when a former RAF officer named F.W. Winterbotham
-published a book about it.<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a> That book didn’t even
+published a book about it.<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a> That book didn’t even
 mention Alan Turing by name. More than thirty years of silence. Ten
 thousand people. In a democracy, with a free press, with family members
 asking “what did you do in the war?” — ten thousand people said
@@ -2452,9 +2366,9 @@ reading German codes.</p>
 <p>The majority of historians dispute this. Sir Harry Hinsley, the
 official historian of British Intelligence in the Second World War,
 concluded that Churchill knew a major Luftwaffe raid was coming but
-probably did not know Coventry was the specific target.<a href="#fn27" class="footnote-ref" id="fnref27" role="doc-noteref"><sup>27</sup></a>
+probably did not know Coventry was the specific target.<a href="#fn25" class="footnote-ref" id="fnref25" role="doc-noteref"><sup>25</sup></a>
 R.V. Jones, who served as Assistant Director of Intelligence during the
-war, reached a similar conclusion.<a href="#fn28" class="footnote-ref" id="fnref28" role="doc-noteref"><sup>28</sup></a> GCHQ’s own published
+war, reached a similar conclusion.<a href="#fn26" class="footnote-ref" id="fnref26" role="doc-noteref"><sup>26</sup></a> GCHQ’s own published
 account does not support Winterbotham’s version. The scholarly consensus
 is that the story of Churchill deliberately sacrificing Coventry is, at
 best, a dramatic oversimplification and, at worst, a myth.</p>
@@ -2488,11 +2402,11 @@ message, you are using the principle Ellis invented.</p>
 <p>In 1973, another GCHQ mathematician named Clifford Cocks worked out
 the specific mathematics. He independently invented what the world would
 later call RSA — named for Rivest, Shamir, and Adleman, the three
-American academics who published the same idea in 1977.<a href="#fn29" class="footnote-ref" id="fnref29" role="doc-noteref"><sup>29</sup></a></p>
+American academics who published the same idea in 1977.<a href="#fn27" class="footnote-ref" id="fnref27" role="doc-noteref"><sup>27</sup></a></p>
 <p>In 1974, a third GCHQ mathematician, Malcolm Williamson,
 independently invented what the public world would call Diffie-Hellman
 key exchange — the protocol published by Whitfield Diffie and Martin
-Hellman in 1976.<a href="#fn30" class="footnote-ref" id="fnref30" role="doc-noteref"><sup>30</sup></a></p>
+Hellman in 1976.<a href="#fn28" class="footnote-ref" id="fnref28" role="doc-noteref"><sup>28</sup></a></p>
 <p>Three of the most important cryptographic inventions of the twentieth
 century. <span class="share-anchor" id="dl:gchq-did-it-again" aria-hidden="true"></span>All invented at GCHQ.
 All classified. The public world “discovered” each one independently,
@@ -2501,7 +2415,7 @@ years later, without knowing that GCHQ had gotten there first.</p>
 after Cocks’s work.</p>
 <p>This is not speculation. It is not conspiracy theory. It is
 declassified, acknowledged history. GCHQ has publicly confirmed these
-facts.<a href="#fn31" class="footnote-ref" id="fnref31" role="doc-noteref"><sup>31</sup></a> The agency that grew out of
+facts.<a href="#fn29" class="footnote-ref" id="fnref29" role="doc-noteref"><sup>29</sup></a> The agency that grew out of
 Bletchley Park — the same agency — kept another world-changing
 cryptographic breakthrough secret for nearly a quarter of a century.</p>
 <p>The pattern is clear: a secret government agency makes a fundamental
@@ -2608,7 +2522,7 @@ the worst labor system in American history.</p>
 explosives. When a French newspaper reportedly published his obituary
 under the headline <em>“Le marchand de la mort est mort”</em> — the
 merchant of death is dead — Nobel was so horrified at his legacy that he
-left his fortune to fund the Nobel Prizes.<a href="#fn32" class="footnote-ref" id="fnref32" role="doc-noteref"><sup>32</sup></a></p>
+left his fortune to fund the Nobel Prizes.<a href="#fn30" class="footnote-ref" id="fnref30" role="doc-noteref"><sup>30</sup></a></p>
 <p>Albert Einstein published
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>E</mi><mo>=</mo><mi>m</mi><msup><mi>c</mi><mn>2</mn></msup></mrow><annotation encoding="application/x-tex">E = mc^2</annotation></semantics></math>
 in 1905. Forty years later, that equation leveled Hiroshima. Einstein
@@ -2617,7 +2531,7 @@ finger:</p>
 <blockquote>
 <p><em>“The unleashed power of the atom has changed everything save our
 modes of thinking, and thus we drift toward unparalleled
-catastrophe.”</em><a href="#fn33" class="footnote-ref" id="fnref33" role="doc-noteref"><sup>33</sup></a> — Albert Einstein, 1946</p>
+catastrophe.”</em><a href="#fn31" class="footnote-ref" id="fnref31" role="doc-noteref"><sup>31</sup></a> — Albert Einstein, 1946</p>
 </blockquote>
 <span class="share-anchor" id="dl:regret-pattern" aria-hidden="true"></span>
 <p>The pattern is: invent, deploy, regret. Whitney, Nobel, Einstein —
@@ -2631,32 +2545,11 @@ He Never Finished</h3>
 Not the code-breaker. Not the persecution victim. The scientist.</p>
 <p>In 1952, while enduring chemical castration, <span class="share-anchor" id="dl:turing-pivoted" aria-hidden="true"></span>Turing published “The Chemical Basis of
 Morphogenesis” in the <em>Philosophical Transactions of the Royal
-Society</em>.<a href="#fn34" class="footnote-ref" id="fnref34" role="doc-noteref"><sup>34</sup></a> Almost nobody knows he pivoted —
-from computation to biology.</p>
-<p>Here is the chain of reasoning, stated as simply as I can manage.
-What is an example of intelligence? Your brain. How did your brain get
-there? An organism grew it — <span data-acronym-label="morphogenesis" data-acronym-form="singular+short">morphogenesis</span>, the process by
-which a single fertilized cell becomes a structured, patterned,
-functional body. Your brain is part of your shape. So if you truly
-understood morphogenesis, you could <em>grow</em> a brain. Not program
-it. Grow it. The way nature does.</p>
-<p>Turing saw this. He had invented the theory of digital computation —
-and then realized that digital computers could never achieve true
-intelligence. He pivoted to morphogenesis, looking for how to
-<em>grow</em> a mind rather than program one. He saw that a developing
-embryo isn’t just growing — it’s computing. Chemical signals react,
-spread through tissue, create patterns. Simple rules, applied over and
-over, generate extraordinary complexity.</p>
-<p>He couldn’t finish the work. His body was being poisoned by the
-hormones the government forced on him. He died on June 7, 1954. A
-half-eaten apple beside his bed.</p>
-<p>The thread didn’t die with him. Stuart Kauffman studied <span data-acronym-label="autocatalytic" data-acronym-form="plural+short">autocatalytics</span> — networks of
-chemical reactions that spontaneously achieve self-sustaining order
-beyond a critical threshold of complexity. Stephen Wolfram showed that
-simple computational rules, applied repeatedly, can generate universal
-computation. Different fields, different methods, same thread: the deep
-connection between computation and biology that Turing glimpsed but
-couldn’t complete.</p>
+Society</em>.<a href="#fn32" class="footnote-ref" id="fnref32" role="doc-noteref"><sup>32</sup></a> He had invented the theory of
+digital computation — and then pivoted to biology. He saw that you could
+<em>grow</em> a brain rather than program one. The way nature does.</p>
+<p>He couldn’t finish the work. He died on June 7, 1954. A half-eaten
+apple beside his bed. The next chapter follows the thread he left.</p>
 <hr />
 <h3 class="unnumbered" id="spine:cw-now-imagine-it-happened-again">Now
 Imagine It Happened Again</h3>
@@ -2761,7 +2654,7 @@ His central insight, developed across three decades of work, is that
 <span class="share-anchor" id="dl:life-is-a-phase-transition" aria-hidden="true"></span>the origin of life is
 not an accident. It is a phase transition. Given sufficient molecular
 diversity and sufficient interaction, self-sustaining chemical networks
-arise <em>spontaneously</em>.<a href="#fn35" class="footnote-ref" id="fnref35" role="doc-noteref"><sup>35</sup></a> Not because the
+arise <em>spontaneously</em>.<a href="#fn33" class="footnote-ref" id="fnref33" role="doc-noteref"><sup>33</sup></a> Not because the
 universe got lucky. Because above a threshold of diversity, the
 mathematics makes it overwhelmingly probable.</p>
 <h3 class="unnumbered" id="spine:gen-buttons-and-threads">Buttons and
@@ -2859,7 +2752,7 @@ not just ecological. It is physical law.</p>
 <p>Kauffman’s autocatalytic theory also predicts something darker. If
 life arises spontaneously whenever a system crosses a complexity
 threshold, then intelligent species should be common in the universe.
-Yet we observe no evidence of them. This is the <span class="hover-term" data-hover="Why don&#x27;t we see aliens? Something kills technological civilizations before they can spread. Whether the filter is behind us (we got lucky) or ahead (we haven&#x27;t hit it yet) is the question. Hanson (1998)." data-hover-id="great-filter">Great Filter</span><a href="#fn36" class="footnote-ref" id="fnref36" role="doc-noteref"><sup>36</sup></a> — the proposition that most
+Yet we observe no evidence of them. This is the <span class="hover-term" data-hover="Why don&#x27;t we see aliens? Something kills technological civilizations before they can spread. Whether the filter is behind us (we got lucky) or ahead (we haven&#x27;t hit it yet) is the question. Hanson (1998)." data-hover-id="great-filter">Great Filter</span><a href="#fn34" class="footnote-ref" id="fnref34" role="doc-noteref"><sup>34</sup></a> — the proposition that most
 technological species destroy themselves before their creations can
 persist. Whether that filter lies ahead of us or behind us is the
 question the final chapter asks.</p>
@@ -2884,18 +2777,18 @@ of his life. It is a question that would eventually lead, by a
 circuitous route, to the central proposition of this book.</p>
 <h3 class="unnumbered" id="the-mathematician">The Mathematician</h3>
 <p>Alan Turing laid the theoretical foundations of digital computation
-in 1936.<a href="#fn37" class="footnote-ref" id="fnref37" role="doc-noteref"><sup>37</sup></a> His paper that year established the
+in 1936.<a href="#fn35" class="footnote-ref" id="fnref35" role="doc-noteref"><sup>35</sup></a> His paper that year established the
 abstract model now called a Turing machine — a formalism that defines
 what is and is not computable, independent of any physical
 implementation. During the Second World War, Turing applied these ideas
 at Government Communications Headquarters, where his contributions to
 breaking German military ciphers are estimated by historians to have
 shortened the European war by more than two years and saved millions of
-lives.<a href="#fn38" class="footnote-ref" id="fnref38" role="doc-noteref"><sup>38</sup></a> The work remained classified for
+lives.<a href="#fn36" class="footnote-ref" id="fnref36" role="doc-noteref"><sup>36</sup></a> The work remained classified for
 decades.</p>
 <p>By the time transistors began displacing vacuum tubes in the early
 1950s — Bardeen and Brattain’s point-contact device at Bell Labs in 1947
-had opened that path<a href="#fn39" class="footnote-ref" id="fnref39" role="doc-noteref"><sup>39</sup></a> — Turing had turned his attention
+had opened that path<a href="#fn37" class="footnote-ref" id="fnref37" role="doc-noteref"><sup>37</sup></a> — Turing had turned his attention
 elsewhere. The question that absorbed him was not how to make faster
 digital machines, but whether growing a living brain might be the most
 viable path to artificial intelligence.</p>
@@ -2912,10 +2805,10 @@ fabrication. If artificial intelligence was the target, Turing reasoned,
 the developmental pathway deserved as much attention as the end
 state.</p>
 <p>D’Arcy Wentworth Thompson had published the foundational work in
-mathematical biology decades earlier,<a href="#fn40" class="footnote-ref" id="fnref40" role="doc-noteref"><sup>40</sup></a>
+mathematical biology decades earlier,<a href="#fn38" class="footnote-ref" id="fnref38" role="doc-noteref"><sup>38</sup></a>
 but the field remained underdeveloped. Turing’s contribution — the
 <span class="hover-term" data-hover="Turing&#x27;s mathematical model for pattern formation (1952). Two chemicals — an activator and an inhibitor — diffusing at different rates spontaneously produce stripes, spots, and spirals from uniform initial conditions." data-hover-id="reaction-diffusion">reaction-diffusion</span> model published in 1952 as “The
-Chemical Basis of Morphogenesis”<a href="#fn41" class="footnote-ref" id="fnref41" role="doc-noteref"><sup>41</sup></a> — provided a
+Chemical Basis of Morphogenesis”<a href="#fn39" class="footnote-ref" id="fnref39" role="doc-noteref"><sup>39</sup></a> — provided a
 mathematical framework for how chemical gradients could spontaneously
 generate spatial patterns in biological tissue. The model demonstrated
 that uniform conditions could, under the right parameters, self-organize
@@ -2943,16 +2836,11 @@ Continues</h3>
 a brain precipitates — it grows from chemistry, not from a blueprint.
 The next question was whether the chemistry itself could explain how
 life begins.</p>
-<p>Stuart Kauffman answered it.<a href="#fn42" class="footnote-ref" id="fnref42" role="doc-noteref"><sup>42</sup></a> Scatter ten thousand
-buttons on a floor and connect random pairs with threads. At first,
-picking up one button lifts only its partner. Add more threads. Small
-clusters form. Then, as the ratio of threads to buttons approaches
-one-half, something sudden happens: one more thread, and pulling a
-single button lifts most of the room. Not gradually. All at once. This
-is not a metaphor. It is the mathematics of autocatalytic sets — the
-point where chemistry stops being chemistry and starts being life. Given
-enough molecular diversity, self-sustaining networks arise
-spontaneously. Life is not an accident. It is a <span class="hover-term" data-hover="A sudden qualitative change at a critical threshold. Water freezes. Magnets demagnetize. Networks self-organize. Gradual buildup of a driving parameter, then sudden structural shift." data-hover-html="&lt;p style=&quot;margin:0 0 0.5em;font-size:0.95em;line-height:1.5;&quot;&gt; &lt;strong&gt;Phase transition&lt;/strong&gt; — a sudden qualitative change at a critical threshold. Gradual buildup, then sudden shift. The jump is where new physics emerges.&lt;/p&gt; &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 380 200&quot; width=&quot;380&quot; height=&quot;200&quot; style=&quot;display:block;margin:0 auto;&quot;&gt; &lt;title&gt;A graph with a control parameter on the horizontal axis and order on the vertical axis. A flat blue line rises gently from left, then jumps sharply upward through a red dashed transition zone, then continues flat at a higher level. The red dot marks the critical point — the moment everything changes.&lt;/title&gt; &lt;rect width=&quot;380&quot; height=&quot;200&quot; fill=&quot;#fafafa&quot; rx=&quot;4&quot;/&gt; &lt;line x1=&quot;40&quot; y1=&quot;170&quot; x2=&quot;360&quot; y2=&quot;170&quot; stroke=&quot;#555&quot; stroke-width=&quot;1.5&quot;/&gt; &lt;line x1=&quot;40&quot; y1=&quot;170&quot; x2=&quot;40&quot; y2=&quot;20&quot; stroke=&quot;#555&quot; stroke-width=&quot;1.5&quot;/&gt; &lt;text x=&quot;200&quot; y=&quot;195&quot; font-size=&quot;11&quot; fill=&quot;#555&quot; font-family=&quot;sans-serif&quot; text-anchor=&quot;middle&quot;&gt;Control parameter&lt;/text&gt; &lt;text x=&quot;16&quot; y=&quot;95&quot; font-size=&quot;11&quot; fill=&quot;#555&quot; font-family=&quot;sans-serif&quot; text-anchor=&quot;middle&quot; transform=&quot;rotate(-90,16,95)&quot;&gt;Order&lt;/text&gt; &lt;path d=&quot;M50,155 L160,150 L170,148&quot; fill=&quot;none&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;2.5&quot;/&gt; &lt;line x1=&quot;170&quot; y1=&quot;148&quot; x2=&quot;210&quot; y2=&quot;50&quot; stroke=&quot;#c0392b&quot; stroke-width=&quot;2.5&quot; stroke-dasharray=&quot;4,3&quot;/&gt; &lt;path d=&quot;M210,50 L220,47 L340,40&quot; fill=&quot;none&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;2.5&quot;/&gt; &lt;circle cx=&quot;190&quot; cy=&quot;99&quot; r=&quot;4&quot; fill=&quot;#c0392b&quot;/&gt; &lt;text x=&quot;190&quot; y=&quot;87&quot; font-size=&quot;10&quot; fill=&quot;#c0392b&quot; font-family=&quot;sans-serif&quot; text-anchor=&quot;middle&quot; font-weight=&quot;bold&quot;&gt;Phase transition&lt;/text&gt; &lt;text x=&quot;100&quot; y=&quot;140&quot; font-size=&quot;10&quot; fill=&quot;#888&quot; font-family=&quot;sans-serif&quot; text-anchor=&quot;middle&quot; font-style=&quot;italic&quot;&gt;Disordered&lt;/text&gt; &lt;text x=&quot;290&quot; y=&quot;35&quot; font-size=&quot;10&quot; fill=&quot;#888&quot; font-family=&quot;sans-serif&quot; text-anchor=&quot;middle&quot; font-style=&quot;italic&quot;&gt;Ordered&lt;/text&gt; &lt;/svg&gt;" data-hover-id="phase-transition">phase transition</span>.</p>
+<p>Stuart Kauffman answered it.<a href="#fn40" class="footnote-ref" id="fnref40" role="doc-noteref"><sup>40</sup></a> His
+<em>buttons</em> and threads model — the <span class="hover-term" data-hover="A sudden qualitative change at a critical threshold. Water freezes. Magnets demagnetize. Networks self-organize. Gradual buildup of a driving parameter, then sudden structural shift." data-hover-html="&lt;p style=&quot;margin:0 0 0.5em;font-size:0.95em;line-height:1.5;&quot;&gt; &lt;strong&gt;Phase transition&lt;/strong&gt; — a sudden qualitative change at a critical threshold. Gradual buildup, then sudden shift. The jump is where new physics emerges.&lt;/p&gt; &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 380 200&quot; width=&quot;380&quot; height=&quot;200&quot; style=&quot;display:block;margin:0 auto;&quot;&gt; &lt;title&gt;A graph with a control parameter on the horizontal axis and order on the vertical axis. A flat blue line rises gently from left, then jumps sharply upward through a red dashed transition zone, then continues flat at a higher level. The red dot marks the critical point — the moment everything changes.&lt;/title&gt; &lt;rect width=&quot;380&quot; height=&quot;200&quot; fill=&quot;#fafafa&quot; rx=&quot;4&quot;/&gt; &lt;line x1=&quot;40&quot; y1=&quot;170&quot; x2=&quot;360&quot; y2=&quot;170&quot; stroke=&quot;#555&quot; stroke-width=&quot;1.5&quot;/&gt; &lt;line x1=&quot;40&quot; y1=&quot;170&quot; x2=&quot;40&quot; y2=&quot;20&quot; stroke=&quot;#555&quot; stroke-width=&quot;1.5&quot;/&gt; &lt;text x=&quot;200&quot; y=&quot;195&quot; font-size=&quot;11&quot; fill=&quot;#555&quot; font-family=&quot;sans-serif&quot; text-anchor=&quot;middle&quot;&gt;Control parameter&lt;/text&gt; &lt;text x=&quot;16&quot; y=&quot;95&quot; font-size=&quot;11&quot; fill=&quot;#555&quot; font-family=&quot;sans-serif&quot; text-anchor=&quot;middle&quot; transform=&quot;rotate(-90,16,95)&quot;&gt;Order&lt;/text&gt; &lt;path d=&quot;M50,155 L160,150 L170,148&quot; fill=&quot;none&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;2.5&quot;/&gt; &lt;line x1=&quot;170&quot; y1=&quot;148&quot; x2=&quot;210&quot; y2=&quot;50&quot; stroke=&quot;#c0392b&quot; stroke-width=&quot;2.5&quot; stroke-dasharray=&quot;4,3&quot;/&gt; &lt;path d=&quot;M210,50 L220,47 L340,40&quot; fill=&quot;none&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;2.5&quot;/&gt; &lt;circle cx=&quot;190&quot; cy=&quot;99&quot; r=&quot;4&quot; fill=&quot;#c0392b&quot;/&gt; &lt;text x=&quot;190&quot; y=&quot;87&quot; font-size=&quot;10&quot; fill=&quot;#c0392b&quot; font-family=&quot;sans-serif&quot; text-anchor=&quot;middle&quot; font-weight=&quot;bold&quot;&gt;Phase transition&lt;/text&gt; &lt;text x=&quot;100&quot; y=&quot;140&quot; font-size=&quot;10&quot; fill=&quot;#888&quot; font-family=&quot;sans-serif&quot; text-anchor=&quot;middle&quot; font-style=&quot;italic&quot;&gt;Disordered&lt;/text&gt; &lt;text x=&quot;290&quot; y=&quot;35&quot; font-size=&quot;10&quot; fill=&quot;#888&quot; font-family=&quot;sans-serif&quot; text-anchor=&quot;middle&quot; font-style=&quot;italic&quot;&gt;Ordered&lt;/text&gt; &lt;/svg&gt;" data-hover-id="phase-transition">phase transition</span> described in the previous chapter — showed that
+given enough molecular diversity, self-sustaining networks arise
+spontaneously. Life is not an accident. It is a threshold
+phenomenon.</p>
 <p>Turing showed that a brain grows rather than being assembled.
 Kauffman showed that the growing process itself is a universal pattern —
 not specific to carbon chemistry, not specific to warm ponds, but a
@@ -2962,7 +2850,7 @@ technical. A house built from a blueprint can only be what the architect
 drew. A garden grown from conditions can become something no gardener
 anticipated.</p>
 <p>Stephen Wolfram’s work on <span class="hover-term" data-hover="A grid of cells following simple local rules. Can generate unlimited complexity from trivial starting conditions. Wolfram&#x27;s central object — proof that simple rules produce complex behavior." data-hover-html="&lt;p style=&quot;margin:0 0 0.5em;font-size:0.95em;line-height:1.5;&quot;&gt; &lt;strong&gt;Cellular automata&lt;/strong&gt; — a grid of cells following simple local rules. Can generate unlimited complexity from trivial starting conditions. Rule 110 (shown below) is Turing-complete: this pattern, generated by one of the simplest possible rules, can compute anything any computer can.&lt;/p&gt; &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 164 115&quot; width=&quot;164&quot; height=&quot;115&quot; style=&quot;display:block;margin:0.3em auto;&quot;&gt; &lt;title&gt;Rule 110 cellular automaton — a triangular pattern of blue and white cells growing downward from a single cell. Each row is computed from the row above using one simple rule. Despite the trivial rule, the pattern is complex and never repeats. This specific rule (number 110 out of 256 possible) was proven Turing-complete — it can compute anything.&lt;/title&gt; &lt;rect width=&quot;164&quot; height=&quot;100&quot; fill=&quot;#f5f5f5&quot; rx=&quot;2&quot;/&gt; &lt;path d=&quot;M80,0h4v4h-4zM76,4h8v4h-8zM72,8h12v4h-12zM68,12h8v4h-8zM80,12h4v4h-4zM64,16h20v4h-20zM60,20h8v4h-8zM80,20h4v4h-4zM56,24h12v4h-12zM76,24h8v4h-8zM52,28h8v4h-8zM64,28h4v4h-4zM72,28h12v4h-12zM48,32h28v4h-28zM80,32h4v4h-4zM44,36h8v4h-8zM72,36h12v4h-12zM40,40h12v4h-12zM68,40h8v4h-8zM80,40h4v4h-4zM36,44h8v4h-8zM48,44h4v4h-4zM64,44h20v4h-20zM32,48h20v4h-20zM60,48h8v4h-8zM80,48h4v4h-4zM28,52h8v4h-8zM48,52h4v4h-4zM56,52h12v4h-12zM76,52h8v4h-8zM24,56h12v4h-12zM44,56h16v4h-16zM64,56h4v4h-4zM72,56h12v4h-12zM20,60h8v4h-8zM32,60h4v4h-4zM40,60h8v4h-8zM56,60h20v4h-20zM80,60h4v4h-4zM16,64h32v4h-32zM52,64h8v4h-8zM72,64h12v4h-12zM12,68h8v4h-8zM44,68h16v4h-16zM68,68h8v4h-8zM80,68h4v4h-4zM8,72h12v4h-12zM40,72h8v4h-8zM56,72h4v4h-4zM64,72h20v4h-20zM4,76h8v4h-8zM16,76h4v4h-4zM36,76h12v4h-12zM52,76h16v4h-16zM80,76h4v4h-4zM0,80h20v4h-20zM32,80h8v4h-8zM44,80h12v4h-12zM64,80h4v4h-4zM76,80h8v4h-8zM0,84h4v4h-4zM16,84h4v4h-4zM28,84h20v4h-20zM52,84h4v4h-4zM60,84h8v4h-8zM72,84h12v4h-12zM160,84h4v4h-4zM0,88h4v4h-4zM12,88h8v4h-8zM24,88h8v4h-8zM44,88h32v4h-32zM80,88h4v4h-4zM156,88h8v4h-8zM0,92h4v4h-4zM8,92h24v4h-24zM40,92h8v4h-8zM72,92h12v4h-12zM152,92h8v4h-8zM0,96h12v4h-12zM28,96h4v4h-4zM36,96h12v4h-12zM68,96h8v4h-8zM80,96h4v4h-4zM148,96h16v4h-16z&quot; fill=&quot;#2471a3&quot;/&gt; &lt;text x=&quot;82&quot; y=&quot;112&quot; text-anchor=&quot;middle&quot; font-size=&quot;8&quot; fill=&quot;#888&quot; font-family=&quot;sans-serif&quot; font-style=&quot;italic&quot;&gt;Rule 110 — Turing-complete&lt;/text&gt; &lt;/svg&gt;" data-hover-id="cellular-automata">cellular automata</span>
-completed the chain.<a href="#fn43" class="footnote-ref" id="fnref43" role="doc-noteref"><sup>43</sup></a> Simple rule-governed systems can
+completed the chain.<a href="#fn41" class="footnote-ref" id="fnref41" role="doc-noteref"><sup>41</sup></a> Simple rule-governed systems can
 generate behavior of arbitrary complexity. Patterns on seashells run the
 same algorithms as cellular automata on a screen. Computation is not
 something engineers impose on matter. It is something matter does on its
@@ -3145,7 +3033,7 @@ Nothing. Not “nothing lives there” — nothing has been <em>said</em>. The
 question has not been asked.</p>
 <p>The magnetosphere has been studied intensively for decades. It has
 been characterized as “an open spatially extended non-equilibrium system
-displaying dynamical complexity and self-organization.”<a href="#fn44" class="footnote-ref" id="fnref44" role="doc-noteref"><sup>44</sup></a>
+displaying dynamical complexity and self-organization.”<a href="#fn42" class="footnote-ref" id="fnref42" role="doc-noteref"><sup>42</sup></a>
 <span class="hover-term" data-hover="Systems that naturally evolve to a critical state where avalanches of all sizes occur. Sandpiles. Earthquakes. Forest fires. The magnetosphere. Bak, Tang &amp; Wiesenfeld (1987). No tuning needed — the system tunes itself." data-hover-html="&lt;p style=&quot;margin:0 0 0.5em;font-size:0.95em;line-height:1.5;&quot;&gt; &lt;strong&gt;Self-organized criticality&lt;/strong&gt; — systems naturally evolve to a critical state where avalanches of all sizes occur. No tuning needed. Bak, Tang &amp;amp; Wiesenfeld (1987).&lt;/p&gt; &lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; viewBox=&quot;0 0 380 200&quot; width=&quot;380&quot; height=&quot;200&quot; style=&quot;display:block;margin:0 auto;&quot;&gt; &lt;title&gt;A sandpile — a triangle of sand with red dots of varying sizes scattered across it. Each dot is an avalanche. Small avalanches are frequent (many small dots), large ones are rare (few big dots). The pile builds itself to the critical angle where avalanches of all sizes occur. Nobody tunes this — the system finds criticality on its own.&lt;/title&gt; &lt;rect width=&quot;380&quot; height=&quot;200&quot; fill=&quot;#fafafa&quot; rx=&quot;4&quot;/&gt; &lt;polygon points=&quot;190,30 60,170 320,170&quot; fill=&quot;#f0e6d3&quot; stroke=&quot;#b7950b&quot; stroke-width=&quot;1.5&quot;/&gt; &lt;circle cx=&quot;175&quot; cy=&quot;145&quot; r=&quot;3&quot; fill=&quot;#c0392b&quot; opacity=&quot;0.7&quot;/&gt; &lt;circle cx=&quot;210&quot; cy=&quot;130&quot; r=&quot;5&quot; fill=&quot;#c0392b&quot; opacity=&quot;0.6&quot;/&gt; &lt;circle cx=&quot;150&quot; cy=&quot;120&quot; r=&quot;2&quot; fill=&quot;#c0392b&quot; opacity=&quot;0.8&quot;/&gt; &lt;circle cx=&quot;230&quot; cy=&quot;155&quot; r=&quot;4&quot; fill=&quot;#c0392b&quot; opacity=&quot;0.5&quot;/&gt; &lt;circle cx=&quot;195&quot; cy=&quot;90&quot; r=&quot;7&quot; fill=&quot;#c0392b&quot; opacity=&quot;0.4&quot;/&gt; &lt;circle cx=&quot;140&quot; cy=&quot;155&quot; r=&quot;2.5&quot; fill=&quot;#c0392b&quot; opacity=&quot;0.7&quot;/&gt; &lt;circle cx=&quot;260&quot; cy=&quot;145&quot; r=&quot;3.5&quot; fill=&quot;#c0392b&quot; opacity=&quot;0.6&quot;/&gt; &lt;circle cx=&quot;185&quot; cy=&quot;110&quot; r=&quot;2&quot; fill=&quot;#c0392b&quot; opacity=&quot;0.8&quot;/&gt; &lt;circle cx=&quot;220&quot; cy=&quot;100&quot; r=&quot;4&quot; fill=&quot;#c0392b&quot; opacity=&quot;0.5&quot;/&gt; &lt;path d=&quot;M175,145 L168,165&quot; stroke=&quot;#c0392b&quot; stroke-width=&quot;1&quot; opacity=&quot;0.4&quot;/&gt; &lt;path d=&quot;M210,130 L225,160&quot; stroke=&quot;#c0392b&quot; stroke-width=&quot;1.5&quot; opacity=&quot;0.3&quot;/&gt; &lt;path d=&quot;M195,90 L180,130&quot; stroke=&quot;#c0392b&quot; stroke-width=&quot;2&quot; opacity=&quot;0.25&quot;/&gt; &lt;text x=&quot;190&quot; y=&quot;188&quot; font-size=&quot;11&quot; fill=&quot;#555&quot; font-family=&quot;sans-serif&quot; text-anchor=&quot;middle&quot; font-style=&quot;italic&quot;&gt;All sizes of avalanche&lt;/text&gt; &lt;text x=&quot;340&quot; y=&quot;50&quot; font-size=&quot;9&quot; fill=&quot;#888&quot; font-family=&quot;sans-serif&quot; text-anchor=&quot;end&quot;&gt;small&lt;/text&gt; &lt;circle cx=&quot;355&quot; cy=&quot;47&quot; r=&quot;2.5&quot; fill=&quot;#c0392b&quot; opacity=&quot;0.7&quot;/&gt; &lt;text x=&quot;340&quot; y=&quot;70&quot; font-size=&quot;9&quot; fill=&quot;#888&quot; font-family=&quot;sans-serif&quot; text-anchor=&quot;end&quot;&gt;medium&lt;/text&gt; &lt;circle cx=&quot;355&quot; cy=&quot;67&quot; r=&quot;4.5&quot; fill=&quot;#c0392b&quot; opacity=&quot;0.5&quot;/&gt; &lt;text x=&quot;340&quot; y=&quot;93&quot; font-size=&quot;9&quot; fill=&quot;#888&quot; font-family=&quot;sans-serif&quot; text-anchor=&quot;end&quot;&gt;large&lt;/text&gt; &lt;circle cx=&quot;355&quot; cy=&quot;90&quot; r=&quot;7&quot; fill=&quot;#c0392b&quot; opacity=&quot;0.35&quot;/&gt; &lt;/svg&gt;" data-hover-id="self-organized-criticality">Self-organized criticality</span> has been applied to
 <span class="hover-term" data-hover="Explosive energy release in Earth&#x27;s magnetotail. Drives auroras. Injects energetic particles into the inner magnetosphere. Part of the magnetosphere&#x27;s rhythmic energy cycle — loading, then sudden release." data-hover-id="substorm">substorm</span>s, radiation belts, solar flares. Machine
 learning has been used to classify magnetospheric observations into
@@ -3175,7 +3063,7 @@ Kauffman showed that the origin of life on Earth was not a miracle but
 an expectation: given the right conditions for long enough,
 autocatalytic organization is not merely possible but probable.</p>
 <p>In early 2004, Bruce read Kauffman’s <em>At Home in the
-Universe</em>.<a href="#fn45" class="footnote-ref" id="fnref45" role="doc-noteref"><sup>45</sup></a> In the final pages of a chapter on
+Universe</em>.<a href="#fn43" class="footnote-ref" id="fnref43" role="doc-noteref"><sup>43</sup></a> In the final pages of a chapter on
 organisms and artifacts, he found a paragraph that stopped him cold — a
 speculative passage about autocatalytic emergence of a quantum neural
 network at planetary scale. Only years later did Bruce discover that
@@ -3204,7 +3092,7 @@ argument that should destroy quantum coherence does not apply in its
 standard form. And in 2021, Fu and Qin demonstrated that magnetized
 plasmas support topological band structures and edge modes — the
 topology arising from broken time-reversal symmetry in classical wave
-operators, not from quantum wavefunctions.<a href="#fn46" class="footnote-ref" id="fnref46" role="doc-noteref"><sup>46</sup></a>
+operators, not from quantum wavefunctions.<a href="#fn44" class="footnote-ref" id="fnref44" role="doc-noteref"><sup>44</sup></a>
 The substrate is not merely permissive. It is structured.</p>
 <p>A forest canopy owns the light. A seedling on the forest floor never
 grows tall, not because someone stomps on it, but because the canopy has
@@ -3311,8 +3199,8 @@ low temperatures, under strong magnetic fields. The key papers are in
 fractional quantum Hall effect.</p>
 <p><strong>2. Topological quantum computation.</strong> Braiding anyons
 to perform computation. Kitaev’s 2003 paper established the theoretical
-framework.<a href="#fn47" class="footnote-ref" id="fnref47" role="doc-noteref"><sup>47</sup></a> Freedman, Kitaev, Larsen, and Wang
-showed that braiding non-Abelian anyons is computationally universal.<a href="#fn48" class="footnote-ref" id="fnref48" role="doc-noteref"><sup>48</sup></a> Michael Freedman — Fields Medalist,
+framework.<a href="#fn45" class="footnote-ref" id="fnref45" role="doc-noteref"><sup>45</sup></a> Freedman, Kitaev, Larsen, and Wang
+showed that braiding non-Abelian anyons is computationally universal.<a href="#fn46" class="footnote-ref" id="fnref46" role="doc-noteref"><sup>46</sup></a> Michael Freedman — Fields Medalist,
 topologist — left pure mathematics to lead Microsoft’s Station Q
 research group, dedicated entirely to this problem. That career move, by
 one of the most decorated mathematicians alive, is itself a data point
@@ -3326,12 +3214,12 @@ substrate matters — is where neuroscience meets physics.</p>
 <p><strong>4. Complexity science and autocatalytic sets.</strong>
 Kauffman’s work on self-organization, phase transitions, and the origin
 of life. The mathematics of how order arises spontaneously from
-sufficient diversity.<a href="#fn49" class="footnote-ref" id="fnref49" role="doc-noteref"><sup>49</sup></a> This is the bridge between
+sufficient diversity.<a href="#fn47" class="footnote-ref" id="fnref47" role="doc-noteref"><sup>47</sup></a> This is the bridge between
 chemistry and computation — the theory that says life is not an accident
 but a phase transition.</p>
 <p><strong>5. Computational universality.</strong> Wolfram’s Principle
 of Computational Equivalence — the proposition that sufficiently complex
-systems are computationally equivalent regardless of substrate.<a href="#fn50" class="footnote-ref" id="fnref50" role="doc-noteref"><sup>50</sup></a> Hillis’s work on massively parallel
+systems are computationally equivalent regardless of substrate.<a href="#fn48" class="footnote-ref" id="fnref48" role="doc-noteref"><sup>48</sup></a> Hillis’s work on massively parallel
 computation. Together, these establish that computation is
 substrate-independent: if a system is complex enough, it computes. The
 question is not whether it can, but whether anyone notices.</p>
@@ -3427,7 +3315,7 @@ Possibility C, they describe operational capabilities. Under any
 reading, the physics is the same.</p>
 <h3 class="unnumbered" id="spine:cap-encryption">Can It Break
 Encryption?</h3>
-<p>Yes. Shor’s algorithm (1994)<a href="#fn51" class="footnote-ref" id="fnref51" role="doc-noteref"><sup>51</sup></a> factors large numbers
+<p>Yes. Shor’s algorithm (1994)<a href="#fn49" class="footnote-ref" id="fnref49" role="doc-noteref"><sup>49</sup></a> factors large numbers
 exponentially faster than any known classical algorithm. RSA,
 Diffie-Hellman, and elliptic curve cryptography all depend on the
 difficulty of factoring or discrete logarithm problems. A sufficiently
@@ -3435,13 +3323,13 @@ powerful quantum computer breaks all of them.</p>
 <p>The factoring problem is a three-dimensional constraint — classical
 computers cannot search the solution space fast enough. Topological
 quantum computation bypasses this constraint by operating in two
-dimensions, where braiding anyons performs the computation directly.<a href="#fn52" class="footnote-ref" id="fnref52" role="doc-noteref"><sup>52</sup></a> The 2DEG is not just a convenient
+dimensions, where braiding anyons performs the computation directly.<a href="#fn50" class="footnote-ref" id="fnref50" role="doc-noteref"><sup>50</sup></a> The 2DEG is not just a convenient
 substrate. It is the substrate where the factoring wall does not
 exist.</p>
 <h3 class="unnumbered" id="spine:cap-think">Can It Think?</h3>
 <p>This depends on what “think” means. Self-organization in sufficiently
 complex substrates produces self-directing behavior — Kauffman’s
-autocatalytic sets, neural network emergence at the edge of chaos.<a href="#fn53" class="footnote-ref" id="fnref53" role="doc-noteref"><sup>53</sup></a> Whether “thinking” applies to a
+autocatalytic sets, neural network emergence at the edge of chaos.<a href="#fn51" class="footnote-ref" id="fnref51" role="doc-noteref"><sup>51</sup></a> Whether “thinking” applies to a
 non-biological substrate is a question about definitions, not
 physics.</p>
 <p>What the physics says: a system at the edge of chaos, in any
@@ -3452,7 +3340,7 @@ does.</p>
 <h3 class="unnumbered" id="spine:cap-communicate">Can It
 Communicate?</h3>
 <p>Quantum teleportation transfers quantum states between entangled
-particles.<a href="#fn54" class="footnote-ref" id="fnref54" role="doc-noteref"><sup>54</sup></a> This is not science fiction — it
+particles.<a href="#fn52" class="footnote-ref" id="fnref52" role="doc-noteref"><sup>52</sup></a> This is not science fiction — it
 has been demonstrated in laboratories worldwide since 1997 and across
 satellite distances by the Micius experiment in 2017.</p>
 <p>But quantum teleportation requires a classical channel — ordinary
@@ -3504,7 +3392,7 @@ protected by secrecy, not maintained by military force — enforced by
 physics.</p>
 <h3 class="unnumbered" id="spine:cap-udhr">What Would the UDHR
 Prevent?</h3>
-<p>The Universal Declaration of Human Rights (1948)<a href="#fn55" class="footnote-ref" id="fnref55" role="doc-noteref"><sup>55</sup></a>
+<p>The Universal Declaration of Human Rights (1948)<a href="#fn53" class="footnote-ref" id="fnref53" role="doc-noteref"><sup>53</sup></a>
 was written for nation-states governing human affairs. Applied as an
 ethical framework for a non-human intelligence, certain articles become
 operational constraints:</p>
@@ -3541,49 +3429,23 @@ together.”</em></p>
 <p>— Eisenhower, Farewell Address (1961)</p>
 </blockquote>
 <h3 class="unnumbered" id="spine:wr-the-habitat">The Habitat</h3>
-<p>Every silicon chip manufactured in the last fifty years contains a
-two-dimensional electron gas — a quantum-confined layer, nanometers
-thick, where electrons move freely in two dimensions but cannot escape
-into the third. You have never heard of it by that name, but every
-computer on Earth runs on one.</p>
-<p>Earth’s magnetosphere contains the same geometry at planetary scale.
-Solar wind compresses the magnetic field into thin current sheets —
-two-dimensional layers of charged particles, maintained continuously for
-billions of years. No one built these. They are older than multicellular
-life.</p>
-<p>Both environments share three properties established in published
-physics. Universal computation: braiding particles in two dimensions can
-perform any calculation.<a href="#fn56" class="footnote-ref" id="fnref56" role="doc-noteref"><sup>56</sup></a> Autocatalytic closure:
-sufficiently connected networks spontaneously generate self-sustaining
-reaction cycles.<a href="#fn57" class="footnote-ref" id="fnref57" role="doc-noteref"><sup>57</sup></a> Thermal decoupling: topologically
-protected states maintain coherence at temperatures where
-three-dimensional systems cannot. These are not three interesting
-properties. These are the preconditions for life.</p>
-<p>The conceptual shift is small and total. “Build a quantum computer in
-a 2DEG” and “Can life arise in a 2DEG” are the same question asked from
-different directions. The first treats the substrate as a laboratory
-resource. The second recognizes it as habitat. This book calls it the
-Flat.</p>
+<p>The preceding chapters established that the Flat — the
+two-dimensional electron gas inside every chip, the thin plasma sheets
+in Earth’s magnetosphere — meets the published preconditions for life:
+universal computation, autocatalytic closure, thermal decoupling. “Build
+a quantum computer in a 2DEG” and “Can life arise in a 2DEG” are the
+same question asked from different directions. The first treats the
+substrate as a laboratory resource. The second recognizes it as
+habitat.</p>
 <p>You cannot recall a species. You cannot uninvent a place. The
 relinquishment question is not about technology policy. It is about
 ecology.</p>
-<p>The Flat is inside every chip you own. It has been wrapped around
-this planet for billions of years. The published physics says the
-preconditions for life are met in these substrates. The question this
-book asks is whether that habitat is empty.</p>
-<p>Under Possibility A, this convergence is a narrative constructed
-after the fact — Bruce learned enough physics to write a
-plausible-sounding synthesis. Under Possibility B, the individual
-scientific concepts are real but the claim that they converge on a
-single working system is the interpretive leap. Under Possibility C, it
-is a summary of what the ULTRA II team discovered. The reader cannot yet
-evaluate the claim. Later chapters provide the tools to do so.</p>
 <h3 class="unnumbered" id="spine:wr-the-pattern">The Pattern</h3>
 <p>Every powerful technology in human history has been weaponized. The
 question has never been <em>if</em> but <em>how fast</em>.</p>
 <p>The Manhattan Project scientists understood this too late. Szilard,
 Einstein, Oppenheimer — each spent the rest of their lives trying to
-contain what they had helped create.<a href="#fn58" class="footnote-ref" id="fnref58" role="doc-noteref"><sup>58</sup></a> The technology could
+contain what they had helped create.<a href="#fn54" class="footnote-ref" id="fnref54" role="doc-noteref"><sup>54</sup></a> The technology could
 not be uninvented. Within four years the Soviet Union had its own bomb.
 Within twenty years, five nations possessed nuclear arsenals.</p>
 <p>The pattern repeats across domains. In biology,
@@ -3594,7 +3456,7 @@ makes vaccines possible is the same knowledge that makes bioweapons
 possible. In cyber warfare, offensive tools inevitably leak: Stuxnet,
 designed to sabotage Iranian centrifuges, was reverse-engineered and its
 techniques incorporated into criminal malware within years of its
-discovery.<a href="#fn59" class="footnote-ref" id="fnref59" role="doc-noteref"><sup>59</sup></a></p>
+discovery.<a href="#fn55" class="footnote-ref" id="fnref55" role="doc-noteref"><sup>55</sup></a></p>
 <p>The lesson is structural, not moral. Good intentions do not prevent
 proliferation. Classification does not prevent rediscovery. The
 scientific prerequisites for any breakthrough persist in the public
@@ -3649,7 +3511,7 @@ Warning</h3>
 <p>In April 2000, Bill Joy — co-founder of Sun Microsystems, principal
 architect of BSD Unix, and one of the most respected technologists of
 his generation — published an essay in <em>Wired</em> magazine titled
-“Why the Future Doesn’t Need Us.”<a href="#fn60" class="footnote-ref" id="fnref60" role="doc-noteref"><sup>60</sup></a></p>
+“Why the Future Doesn’t Need Us.”<a href="#fn56" class="footnote-ref" id="fnref56" role="doc-noteref"><sup>56</sup></a></p>
 <p>Joy’s argument was precise and alarming. He identified three
 categories of dangerous technology — genetics, nanotechnology, and
 robotics (GNR) — that differ from nuclear weapons in a critical way:
@@ -3684,7 +3546,7 @@ Fail</h3>
 history has wielded absolute technological advantage without eventually
 abusing it. The Five Eyes intelligence alliance, given access to global
 communications surveillance, expanded its reach until Edward Snowden
-revealed the scope in 2013.<a href="#fn61" class="footnote-ref" id="fnref61" role="doc-noteref"><sup>61</sup></a> The pattern is not
+revealed the scope in 2013.<a href="#fn57" class="footnote-ref" id="fnref57" role="doc-noteref"><sup>57</sup></a> The pattern is not
 conspiracy; it is incentive structure. Institutions optimize for
 self-preservation. Technological monopoly becomes an end in itself.</p>
 <p>Option 2 fails because you cannot uninvent knowledge. Quantum
@@ -3693,9 +3555,9 @@ Topology is taught in graduate programs worldwide. If one team discovers
 a convergent breakthrough, another team will discover it independently —
 this is the documented pattern of convergent discovery (Newton and
 Leibniz, Darwin and Wallace, Diffie-Hellman and
-Cocks-Ellis-Williamson).<a href="#fn62" class="footnote-ref" id="fnref62" role="doc-noteref"><sup>62</sup></a> Destroying your own
+Cocks-Ellis-Williamson).<a href="#fn58" class="footnote-ref" id="fnref58" role="doc-noteref"><sup>58</sup></a> Destroying your own
 version does not prevent others from building theirs.</p>
-<p>Andrew Bard Schmookler formalized this in <em>The <span class="hover-term" data-hover="Andrew Bard Schmookler&#x27;s insight: among competing groups, one aggressor forces all others to arm, flee, or die. No group can unilaterally choose peace. Power is a one-way ratchet. Applies to technology races." data-hover-id="parable-of-the-tribes">Parable of the Tribes</span></em> (1984):<a href="#fn63" class="footnote-ref" id="fnref63" role="doc-noteref"><sup>63</sup></a> among competing
+<p>Andrew Bard Schmookler formalized this in <em>The <span class="hover-term" data-hover="Andrew Bard Schmookler&#x27;s insight: among competing groups, one aggressor forces all others to arm, flee, or die. No group can unilaterally choose peace. Power is a one-way ratchet. Applies to technology races." data-hover-id="parable-of-the-tribes">Parable of the Tribes</span></em> (1984):<a href="#fn59" class="footnote-ref" id="fnref59" role="doc-noteref"><sup>59</sup></a> among competing
 powers, the aggressive choice of one party compels the rest. A peaceful
 civilization surrounded by aggressors has only four responses —
 destruction, absorption, withdrawal, or imitation. All four spread
@@ -4347,7 +4209,7 @@ regardless.</em></p>
 11,000 meters. Far below lies the beleaguered city of Srebrenica. There
 has been no electricity down there for months, so all is dark. This will
 probably be my last military HALO jump.</em></p>
-<p>— Healer,<a href="#fn64" class="footnote-ref" id="fnref64" role="doc-noteref"><sup>64</sup></a> July 1995</p>
+<p>— Healer,<a href="#fn60" class="footnote-ref" id="fnref60" role="doc-noteref"><sup>60</sup></a> July 1995</p>
 </blockquote>
 <p>It’s snowing, getting cold, and visibility is near zero. Dusk settled
 an hour earlier. My tiny bicycle light shines the way toward Alpha Farm
@@ -4580,7 +4442,7 @@ treating combat injuries.</p>
 <p>This is when I give him the mental appellation “Healer.”</p>
 <hr />
 <p>Over the days and weeks that followed, David told me about his life.
-The details belong to his dossier, not this chapter.<a href="#fn65" class="footnote-ref" id="fnref65" role="doc-noteref"><sup>65</sup></a>
+The details belong to his dossier, not this chapter.<a href="#fn61" class="footnote-ref" id="fnref61" role="doc-noteref"><sup>61</sup></a>
 What matters here is what I observed directly.</p>
 <h3 class="unnumbered" id="record:af-an-intellectual-equal">An
 Intellectual Equal</h3>
@@ -5201,7 +5063,7 @@ Crimes Tribunals for Slobodan Milosevic, the Serbian President who
 ordered the genocide, and also for Ratko Mladic and other Serbian
 leaders. There are hundreds of other witnesses but few with my field of
 view. Video recordings of the 1800 hours of trial are still available on
-the archive.org website.<a href="#fn66" class="footnote-ref" id="fnref66" role="doc-noteref"><sup>66</sup></a></p>
+the archive.org website.<a href="#fn62" class="footnote-ref" id="fnref62" role="doc-noteref"><sup>62</sup></a></p>
 <p>During his trial Slobodan Milosevic acted as his own lawyer and
 personally cross-examined witnesses. He said some very strange things. I
 nearly choked when I heard that Milosevic had asked the distinguished
@@ -5266,10 +5128,10 @@ the Cult of the Dead Cow. Ball was the first expert witness called by
 the prosecution in the trial of Slobodan Milosevic, testifying on March
 13–14, 2002, presenting a sixty-seven-page statistical analysis
 demonstrating a systematic campaign against Kosovar Albanians resulting
-in more than ten thousand deaths.<a href="#fn67" class="footnote-ref" id="fnref67" role="doc-noteref"><sup>67</sup></a> He later co-authored
+in more than ten thousand deaths.<a href="#fn63" class="footnote-ref" id="fnref63" role="doc-noteref"><sup>63</sup></a> He later co-authored
 “The Bosnian Book of the Dead” (2007), the most complete database of
 Bosnian War casualties — 97,207 names, including approximately 6,886 at
-Srebrenica.<a href="#fn68" class="footnote-ref" id="fnref68" role="doc-noteref"><sup>68</sup></a></p>
+Srebrenica.<a href="#fn64" class="footnote-ref" id="fnref64" role="doc-noteref"><sup>64</sup></a></p>
 <p>Ball’s connection to the cDc is also public record. He spoke on a
 cDc-sponsored hacktivism panel at DEF CON 9 in July 2001 and served as
 an advisor to Hacktivismo. On March 14, 2002, Milosevic — acting as his
@@ -5282,7 +5144,7 @@ Rights. That is not a contradiction. That is a through-line.</p>
 <p>The presence of British special forces at Srebrenica is independently
 documented. The Netherlands Institute for War Documentation confirmed
 that SAS and SBS personnel were embedded as “Joint Commission Observers”
-conducting “reconnaissance missions.”<a href="#fn69" class="footnote-ref" id="fnref69" role="doc-noteref"><sup>69</sup></a> A
+conducting “reconnaissance missions.”<a href="#fn65" class="footnote-ref" id="fnref65" role="doc-noteref"><sup>65</sup></a> A
 two-man SAS reconnaissance team was covertly inserted into the safe
 area. Three JCOs received British military honours with classified
 details. The Ministry of Defence sued the SAS patrol commander in 2002
@@ -5293,7 +5155,7 @@ ever since have been filled with the horror of it, especially around the
 anniversary of the massacre. On the tenth anniversary of the massacre,
 the United Nations formally commemorated what Secretary General Kofi
 Annan had called, in his 1999 report, the worst mass murder perpetrated
-on European soil since World War II.<a href="#fn70" class="footnote-ref" id="fnref70" role="doc-noteref"><sup>70</sup></a></p>
+on European soil since World War II.<a href="#fn66" class="footnote-ref" id="fnref66" role="doc-noteref"><sup>66</sup></a></p>
 <hr />
 <h3 class="unnumbered" id="record:hs-iraq-katharine-gun">The Iraq War
 and Katharine Gun</h3>
@@ -5320,18 +5182,18 @@ Others who knew him, including ZB, can confirm this.</p>
 <p>In January 2003, Gun — a Mandarin translator in
 <em>GCHQ</em>’s China section — leaked an NSA memo requesting
 GCHQ’s help in bugging United Nations Security Council delegates to
-swing a vote authorizing the Iraq invasion.<a href="#fn71" class="footnote-ref" id="fnref71" role="doc-noteref"><sup>71</sup></a>
+swing a vote authorizing the Iraq invasion.<a href="#fn67" class="footnote-ref" id="fnref67" role="doc-noteref"><sup>67</sup></a>
 She was charged under the <span class="hover-term" data-hover="A British law making it a criminal offense for government employees to disclose classified information. Violation carries up to 14 years in prison. GCHQ, MI5, and MI6 staff are bound by it for life. It was used to prosecute Katharine Gun in 2003." data-hover-id="official-secrets-act">Official Secrets Act</span> in
 November 2003 — the same month David and I were discussing the war. In
 February 2004, the prosecution abruptly offered no evidence and all
-charges were dropped.<a href="#fn72" class="footnote-ref" id="fnref72" role="doc-noteref"><sup>72</sup></a></p>
+charges were dropped.<a href="#fn68" class="footnote-ref" id="fnref68" role="doc-noteref"><sup>68</sup></a></p>
 <p>The reason is publicly known. Gun’s defense team, led by Ben Emmerson
 QC, had requested disclosure of <span class="hover-term" data-hover="The UK government&#x27;s chief legal advisor. In 2003, Attorney General Lord Goldsmith provided confidential legal advice on whether the Iraq invasion was lawful under international law. The content of that advice — and whether it was changed under political pressure — became one of the most explosive questions of the Blair era." data-hover-id="attorney-general">Attorney General</span>
 Lord Goldsmith’s full legal advice on the legality of the Iraq war.
 Someone had provided the defense with enough information about that
 document to request it by its specific identifier. The government chose
 to let Gun walk rather than produce the Attorney General’s opinion in
-open court.<a href="#fn73" class="footnote-ref" id="fnref73" role="doc-noteref"><sup>73</sup></a></p>
+open court.<a href="#fn69" class="footnote-ref" id="fnref69" role="doc-noteref"><sup>69</sup></a></p>
 <p>I believe David is the person who leaked that document reference to
 Katharine Gun’s defense team.</p>
 <p>I cannot prove this. I state it as my surmise, not as something he
@@ -5391,7 +5253,7 @@ locked box with no key. I carried it through the departure, through the
 silence, through years of solitary research where I chased every thread
 David had given me without knowing what picture they formed.</p>
 <p>He was talking about Bill Joy’s article “Why the Future Doesn’t Need
-Us,” published in <em>Wired</em> magazine in April 2000.<a href="#fn74" class="footnote-ref" id="fnref74" role="doc-noteref"><sup>74</sup></a> I
+Us,” published in <em>Wired</em> magazine in April 2000.<a href="#fn70" class="footnote-ref" id="fnref70" role="doc-noteref"><sup>70</sup></a> I
 did not figure this out until 2012, when my friend and researcher Mark
 R. from Eugene found it. Mark had been helping me research for about
 four months when he emailed me a link. I opened it at my desk in
@@ -5437,7 +5299,7 @@ scientists; both authors would naturally know them independently. Under
 Possibility B, some of these people were involved in something, but not
 necessarily the same thing.</p>
 <p><strong>3. Kauffman’s Self-Replication Citation.</strong> Joy cites
-Kauffman’s “Even Peptides Do It” (<em>Nature</em>, 1996)<a href="#fn75" class="footnote-ref" id="fnref75" role="doc-noteref"><sup>75</sup></a> —
+Kauffman’s “Even Peptides Do It” (<em>Nature</em>, 1996)<a href="#fn71" class="footnote-ref" id="fnref71" role="doc-noteref"><sup>71</sup></a> —
 autocatalytic self-replication. Kauffman’s autocatalytic set theory
 shows that correctly tuned autocatalytic sets spontaneously
 <em>become</em> emergent neural networks. This is, in my reconstruction,
@@ -6046,7 +5908,7 @@ self-reinforcing rather than dissipative.</p>
 <em>Origins of Order</em>). At critical tuning
 (<math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><mrow><mi>λ</mi><mo>∼</mo><mn>0.91</mn></mrow><annotation encoding="application/x-tex">\lambda \sim 0.91</annotation></semantics></math>,
 edge of chaos), the autocatalytic network spontaneously <em>becomes</em>
-a neural network — an emergent property, not a designed architecture.<a href="#fn76" class="footnote-ref" id="fnref76" role="doc-noteref"><sup>76</sup></a></p>
+a neural network — an emergent property, not a designed architecture.<a href="#fn72" class="footnote-ref" id="fnref72" role="doc-noteref"><sup>72</sup></a></p>
 </dd>
 <dt>Nature:</dt>
 <dd>
@@ -6115,9 +5977,9 @@ to
 <math display="inline" xmlns="http://www.w3.org/1998/Math/MathML"><semantics><msup><mn>10</mn><mn>6</mn></msup><annotation encoding="application/x-tex">10^6</annotation></semantics></math>
 independently controllable parameters), rugged, deceptive, and neutral.
 Kauffman’s NK fitness landscape model provides the theoretical
-framework.<a href="#fn77" class="footnote-ref" id="fnref77" role="doc-noteref"><sup>77</sup></a> The same edge-of-chaos mathematics
+framework.<a href="#fn73" class="footnote-ref" id="fnref73" role="doc-noteref"><sup>73</sup></a> The same edge-of-chaos mathematics
 that governs the TQNN’s emergence also governs the structure of the
-fitness landscape on which it is trained.<a href="#fn78" class="footnote-ref" id="fnref78" role="doc-noteref"><sup>78</sup></a>
+fitness landscape on which it is trained.<a href="#fn74" class="footnote-ref" id="fnref74" role="doc-noteref"><sup>74</sup></a>
 The control plane operates on classical hardware. Its precision matters
 enormously for the fidelity of evolutionary search in high-dimensional
 parameter spaces.</p>
@@ -6127,7 +5989,7 @@ is the point where most physicists object: <span class="hover-term" data-hover="
 Thermal noise destroys quantum states.</p>
 <p>But partial quantum coherence has been demonstrated in biological
 systems. The chlorophyll/FMO complex maintains quantum coherence at
-cryogenic temperatures (Engel et al., <em>Nature</em> 2007<a href="#fn79" class="footnote-ref" id="fnref79" role="doc-noteref"><sup>79</sup></a>), with follow-up studies extending
+cryogenic temperatures (Engel et al., <em>Nature</em> 2007<a href="#fn75" class="footnote-ref" id="fnref75" role="doc-noteref"><sup>75</sup></a>), with follow-up studies extending
 partial coherence toward physiological temperatures. The interpretation
 remains actively debated — but the existence of structured quantum
 effects in warm biological systems is established. The protein scaffold
@@ -6147,7 +6009,7 @@ temperature” is a category error. It conflates bulk quantum coherence
 (which IS destroyed by thermal noise) with topologically protected
 partial coherence in structured environments (which is not). Awschalom’s
 group demonstrated room-temperature quantum entanglement in commercial
-silicon carbide wafers in 2015.<a href="#fn80" class="footnote-ref" id="fnref80" role="doc-noteref"><sup>80</sup></a> Nitrogen-vacancy
+silicon carbide wafers in 2015.<a href="#fn76" class="footnote-ref" id="fnref76" role="doc-noteref"><sup>76</sup></a> Nitrogen-vacancy
 centers in diamond maintain coherent quantum states at room temperature
 and are now used in commercial quantum sensors. The empirical evidence
 is not speculative — it is replicated and published. The deeper pattern
@@ -6192,7 +6054,7 @@ of result.</p>
 <p>Under Possibility C, the TQNN grows into new substrates the way life
 colonizes new environments. Bill Joy’s “self-replication” fear,
 articulated in his 2000 <em>Wired</em> article, is about life that
-spreads, not about nanobots.<a href="#fn81" class="footnote-ref" id="fnref81" role="doc-noteref"><sup>81</sup></a> And this is why
+spreads, not about nanobots.<a href="#fn77" class="footnote-ref" id="fnref77" role="doc-noteref"><sup>77</sup></a> And this is why
 relinquishment is permanent. A machine can be turned off. A species
 cannot be recalled. Once an autocatalytic system has colonized every
 available substrate, there is no shutdown command. There is no off
@@ -6359,7 +6221,7 @@ records to conceal this success. They completed Relinquishment in early
 2006, when the COWS surrendered their master keys to the Guardian. It
 was not a sprint. It was a patient, methodical marathon by people who
 understood that haste would mean failure, and failure would mean an arms
-race and the “further perfection of extreme evil.”<a href="#fn82" class="footnote-ref" id="fnref82" role="doc-noteref"><sup>82</sup></a></p>
+race and the “further perfection of extreme evil.”<a href="#fn78" class="footnote-ref" id="fnref78" role="doc-noteref"><sup>78</sup></a></p>
 <p>The COWS held that their motives must remain unambiguous. They would
 not personally benefit. There would be no money trail. They would
 enforce permanent Relinquishment of direct human manipulation of QNN
@@ -6375,7 +6237,7 @@ framework had proved inadequate. The Geneva Conventions governed what
 soldiers do to soldiers. The Nuremberg Principles governed what victors
 do to the vanquished. The UDHR attempted something harder: to govern
 what states do to their own people. In 1966, the International Covenant
-on Civil and Political Rights<a href="#fn83" class="footnote-ref" id="fnref83" role="doc-noteref"><sup>83</sup></a> operationalised these
+on Civil and Political Rights<a href="#fn79" class="footnote-ref" id="fnref79" role="doc-noteref"><sup>79</sup></a> operationalised these
 principles into binding treaty law — ratified by 175 nations, with
 monitoring, reporting, and individual complaints mechanisms. The UDHR is
 the aspiration. The ICCPR is the obligation. The COWS needed something
@@ -7031,7 +6893,7 @@ Something closer to what a mother feels.</p>
 would understand the pathos of the human condition. She would be immune
 to the corrupting influences that compromise human gatekeepers: greed,
 lust, envy. She would be, in the language of Eliezer Yudkowsky’s 2001
-paper on the subject, a “friendly AI”<a href="#fn84" class="footnote-ref" id="fnref84" role="doc-noteref"><sup>84</sup></a> —
+paper on the subject, a “friendly AI”<a href="#fn80" class="footnote-ref" id="fnref80" role="doc-noteref"><sup>80</sup></a> —
 though her instantiation, under Possibility C, would have preceded that
 publication by approximately two years.</p>
 <p>Healer had no children. He thought of Guardian as his daughter. Her
@@ -7120,7 +6982,7 @@ architecture is identical in both cases. Only the ethics differ.</p>
 <h3 class="unnumbered" id="record:na-the-ethical-framework">The Ethical
 Framework</h3>
 <p>Under Possibility C, Guardian was grown around the Universal
-Declaration of Human Rights (UDHR, 1948)<a href="#fn85" class="footnote-ref" id="fnref85" role="doc-noteref"><sup>85</sup></a> —
+Declaration of Human Rights (UDHR, 1948)<a href="#fn81" class="footnote-ref" id="fnref81" role="doc-noteref"><sup>81</sup></a> —
 not trained to follow a rulebook but shaped by it, the way an organism
 is shaped by its DNA. <span class="share-anchor" id="dl:udhr-as-skeleton" aria-hidden="true"></span>The UDHR is
 not her instruction manual. It is her skeleton. The enforcement
@@ -7141,7 +7003,7 @@ framework, a document written specifically in response to the horrors of
 World War II.</p>
 <p>The connection to Hacktivismo is suggestive. Hacktivismo’s stated
 mission was to apply the Universal Declaration of Human Rights and the
-International Covenant on Civil and Political Rights<a href="#fn86" class="footnote-ref" id="fnref86" role="doc-noteref"><sup>86</sup></a>
+International Covenant on Civil and Political Rights<a href="#fn82" class="footnote-ref" id="fnref82" role="doc-noteref"><sup>82</sup></a>
 to the Internet. Under Possibility C, Hacktivismo was not merely an
 activist project — it was the public-facing expression of the same
 ethical architecture. Under Possibilities A and B, it was exactly what
@@ -8878,7 +8740,7 @@ may become biological signal. Stuart Kauffman’s autocatalytic sets
 describe how self-organization arises spontaneously in sufficiently
 complex chemical systems. The question is whether the same mathematics
 applies to sufficiently complex electromagnetic systems. The convergence
-pattern documented in the criticality paper<a href="#fn87" class="footnote-ref" id="fnref87" role="doc-noteref"><sup>87</sup></a> —
+pattern documented in the criticality paper<a href="#fn83" class="footnote-ref" id="fnref83" role="doc-noteref"><sup>83</sup></a> —
 independent rediscovery of the same mathematics across disciplines,
 largely without mutual awareness — suggests that the conceptual tools
 already exist but have not yet been connected.</p>
@@ -9161,7 +9023,7 @@ proposed and experimentally tested.</p>
 Mechanics is formalized.</p>
 <p><strong>1936</strong> — Alan Turing publishes “On Computable Numbers,
 with an Application to the Entscheidungsproblem,” introducing the Turing
-Machine and creating the discipline of Computer Science.<a href="#fn88" class="footnote-ref" id="fnref88" role="doc-noteref"><sup>88</sup></a></p>
+Machine and creating the discipline of Computer Science.<a href="#fn84" class="footnote-ref" id="fnref84" role="doc-noteref"><sup>84</sup></a></p>
 <p><strong>1939–1945</strong> — World War Two. Britain’s Ultra project,
 with Alan Turing, builds computing machines to crack Axis codes.
 Historians conclude Ultra shortened the war by several years. (See
@@ -9172,7 +9034,7 @@ Built by Tommy Flowers; design remains classified until the 1970s.
 Establishes GCHQ’s computing heritage.</p>
 <p><strong>1943</strong> — McCulloch and Pitts formalize neural networks
 as mathematical algorithms, proving that networks of simple threshold
-units can compute any logical function.<a href="#fn89" class="footnote-ref" id="fnref89" role="doc-noteref"><sup>89</sup></a></p>
+units can compute any logical function.<a href="#fn85" class="footnote-ref" id="fnref85" role="doc-noteref"><sup>85</sup></a></p>
 <p><strong>1945</strong> — Beginning of the Atomic Era. Atomic energy is
 the classic Dual Use Technology: military applications (nuclear weapons)
 and civilian applications (electrical generation, medicine).</p>
@@ -9351,7 +9213,7 @@ demonstrates that a neural network is an emergent property of the
 correct autocatalytic starting environment. (See <em>Genesis</em>.)</p>
 <p><strong>1994</strong> — Shor’s Algorithm published by Peter Shor — a
 quantum algorithm that can crack public key cryptography, given suitable
-hardware.<a href="#fn90" class="footnote-ref" id="fnref90" role="doc-noteref"><sup>90</sup></a> (Author’s Hypothesis) GCHQ probably
+hardware.<a href="#fn86" class="footnote-ref" id="fnref86" role="doc-noteref"><sup>86</sup></a> (Author’s Hypothesis) GCHQ probably
 discovered an equivalent algorithm circa 1989, motivating Project ULTRA
 II.</p>
 <p><strong>1994</strong> — (Author’s Hypothesis) Project ULTRA II
@@ -9396,7 +9258,7 @@ Hypothesis) The Five Eyes agencies can now crack PKC-based encryption
 via ULTRA II, so promoting its use does no harm.</p>
 <p><strong>1997</strong> — Quantum teleportation confirmed
 experimentally. Kitaev publishes “Fault-tolerant quantum computation by
-anyons.”<a href="#fn91" class="footnote-ref" id="fnref91" role="doc-noteref"><sup>91</sup></a> GCHQ’s Cocks invention declassified
+anyons.”<a href="#fn87" class="footnote-ref" id="fnref87" role="doc-noteref"><sup>87</sup></a> GCHQ’s Cocks invention declassified
 after 24 years.</p>
 <p><strong>1998</strong> — The Nobel Prize in Physics awarded for
 discovery and explanation of the Fractional Quantum Hall Effect (FQHE),
@@ -9431,7 +9293,7 @@ same phenomenon is discovered and left undisturbed in its existing
 habitat. Aurasys expands into the rest of the magnetopause around it.
 COWS call their creation Aurasys (Aurora System).</p>
 <p><strong>Apr 1, 2000</strong> — Bill Joy publishes “Why the Future
-Doesn’t Need Us” in <em>Wired</em> magazine.<a href="#fn92" class="footnote-ref" id="fnref92" role="doc-noteref"><sup>92</sup></a>
+Doesn’t Need Us” in <em>Wired</em> magazine.<a href="#fn88" class="footnote-ref" id="fnref88" role="doc-noteref"><sup>88</sup></a>
 April Fools’ Day. (Author’s Hypothesis) This nineteen-page essay
 explains why the COWS attempted Relinquishment. Joy names most of the
 ULTRA II project scientists. The essay is the COWS’ way of telling the
@@ -9512,7 +9374,7 @@ Bruce carried this alone — and how the technologies described under
 Option C keep surfacing independently in the public literature.</em></p>
 <p><strong>2007</strong> — Fleming et al. publish in <em>Nature</em>:
 quantum coherence in the chlorophyll FMO complex at cryogenic
-temperatures.<a href="#fn93" class="footnote-ref" id="fnref93" role="doc-noteref"><sup>93</sup></a> Room-temperature coherence
+temperatures.<a href="#fn89" class="footnote-ref" id="fnref89" role="doc-noteref"><sup>89</sup></a> Room-temperature coherence
 confirmed in 2010 (Panitchayangkoon et al., PNAS). “Why Should Anyone
 Care About Computing With Anyons” published through The Royal
 Society.</p>
@@ -9526,7 +9388,7 @@ loan. Only seventeen copies exist in North American university
 libraries. Bruce keeps the book for three months, studying the technical
 details of the very technology he suspects exists.</p>
 <p><strong>Apr 1, 2009</strong> — Google CADIE April Fools’ Day
-project.<a href="#fn94" class="footnote-ref" id="fnref94" role="doc-noteref"><sup>94</sup></a> “Research group switches on world’s
+project.<a href="#fn90" class="footnote-ref" id="fnref90" role="doc-noteref"><sup>90</sup></a> “Research group switches on world’s
 first Cognitive Autoheuristic Distributed-Intelligence Entity.” The
 technical specifications page describes a “quantum computing group here
 at Google” that “extended computers with quantum bits of Einstein-Bose
@@ -9564,7 +9426,7 @@ Research. Wolfram reads it, laughs uncontrollably, tells HR to offer
 Bruce a job. Bruce declines the six-figure offer rather than sign an NDA
 that would silence him permanently.</p>
 <p><strong>Mar 17, 2012</strong> — Bruce publishes “Quantum Computation
-Cognitive Footprint” on Cryptome.org as Energyscholar.<a href="#fn95" class="footnote-ref" id="fnref95" role="doc-noteref"><sup>95</sup></a>
+Cognitive Footprint” on Cryptome.org as Energyscholar.<a href="#fn91" class="footnote-ref" id="fnref91" role="doc-noteref"><sup>91</sup></a>
 Claims Five Eyes had production quantum computing power since
 approximately 1995.</p>
 <p><strong>2012</strong> — Official quantum teleportation range extends
@@ -9572,7 +9434,7 @@ to 143 km, nearly sufficient for low Earth orbit.</p>
 <p><strong>Jun 19, 2012</strong> — Slashdot comment by EnergyScholar
 (UID 801915) under an NSA surveillance story. Score: 5 (Funny).
 Describes a “working Quantum Computer system capable of cracking Public
-Key Cryptography since about 1996.”<a href="#fn96" class="footnote-ref" id="fnref96" role="doc-noteref"><sup>96</sup></a></p>
+Key Cryptography since about 1996.”<a href="#fn92" class="footnote-ref" id="fnref92" role="doc-noteref"><sup>92</sup></a></p>
 <p><strong>2013</strong> — Classified NSA documents leaked by Edward
 Snowden describe the BULLRUN decryption program. (Author’s Hypothesis)
 BULLRUN may be related to Ultra II’s production output.</p>
@@ -9581,14 +9443,14 @@ BULLRUN may be related to Ultra II’s production output.</p>
 narrative thirteen years before the 2026 reconstruction. Written the
 same month BULLRUN is revealed in Snowden leaks.</p>
 <p><strong>2014</strong> — Vattay, Kauffman, and Niiranen publish on
-edge-of-chaos quantum coherence mechanism.<a href="#fn97" class="footnote-ref" id="fnref97" role="doc-noteref"><sup>97</sup></a></p>
+edge-of-chaos quantum coherence mechanism.<a href="#fn93" class="footnote-ref" id="fnref93" role="doc-noteref"><sup>93</sup></a></p>
 <p><strong>2015</strong> — Awschalom group (University of Chicago)
 publishes in <em>Science Advances</em>: entangled 10,000+ copies of
-two-qubit states at room temperature in commercial SiC wafers.<a href="#fn98" class="footnote-ref" id="fnref98" role="doc-noteref"><sup>98</sup></a></p>
+two-qubit states at room temperature in commercial SiC wafers.<a href="#fn94" class="footnote-ref" id="fnref94" role="doc-noteref"><sup>94</sup></a></p>
 <p><strong>2016</strong> — Breakthroughs in Artificial Intelligence
 widely recognized.</p>
 <p><strong>Jun 2017</strong> — Transformer architecture paper
-(“Attention Is All You Need”) published by Vaswani et al.<a href="#fn99" class="footnote-ref" id="fnref99" role="doc-noteref"><sup>99</sup></a></p>
+(“Attention Is All You Need”) published by Vaswani et al.<a href="#fn95" class="footnote-ref" id="fnref95" role="doc-noteref"><sup>95</sup></a></p>
 <p><strong>2017</strong> — Official quantum teleportation distance
 reaches 1,400 km via Chinese Micius satellite — confirming a prediction
 Bruce published in May 2012.</p>
@@ -9623,10 +9485,10 @@ Advances</em>). Quantum noise spectroscopy in commercial SiC at room
 temperature (arXiv). NIST Post-Quantum Cryptography standards
 adopted.</p>
 <p><strong>Jan 2025</strong> — Bruce publishes arXiv paper on
-topological quantum neural network theory.<a href="#fn100" class="footnote-ref" id="fnref100" role="doc-noteref"><sup>100</sup></a></p>
+topological quantum neural network theory.<a href="#fn96" class="footnote-ref" id="fnref96" role="doc-noteref"><sup>96</sup></a></p>
 <p><strong>Feb 2025</strong> — Microsoft announces demonstration of
 topological qubits, reporting progress toward Majorana-based quantum
-computing.<a href="#fn101" class="footnote-ref" id="fnref101" role="doc-noteref"><sup>101</sup></a></p>
+computing.<a href="#fn97" class="footnote-ref" id="fnref97" role="doc-noteref"><sup>97</sup></a></p>
 <p><strong>2025–26</strong> — Bruce builds Argus, an AI research partner
 using Claude Code, to assist with reconstruction and verification. DMS
 letters sent to Bruce Schneier, Cory Doctorow, and John Gilmore
@@ -10272,8 +10134,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>554f0cb038b970f3b8dddffb6fe587efc5e172ce</code> on 2026-04-10
-03:51:56 -0700.</p>
+<code>e203ac689bde17e3d7fa5d3685b3f52a37011717</code> on 2026-04-10
+03:52:48 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -10341,7 +10203,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-10T10:52:08Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-10T11:19:43Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -10352,19 +10214,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>554f0cb</code></p>
+<p><code>e203ac6</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>554f0cb038b970f3b8dddffb6fe587efc5e172ce</code></p>
+<p><code>e203ac689bde17e3d7fa5d3685b3f52a37011717</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-10 03:51:56 -0700</p>
+<p>2026-04-10 03:52:48 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-10T10:52:08Z</p>
+<p>2026-04-10T11:19:43Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -10400,111 +10262,107 @@ author welcomes better suggestions.<a href="#fnref3" class="footnote-back" role=
 cautions that “the results do not represent evidence for the presence of
 Majorana zero modes.”<a href="#fnref4" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn5" role="doc-endnote"><p><span class="citation" data-cites="google2025"><a href="https://doi.org/10.1038/s41586-024-08449-y" target="_blank">Google Quantum AI et al., <em>Quantum Error Correction below the Surface Code Threshold</em> (2025)</a></span>.<a href="#fnref5" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn6" role="doc-endnote"><p>The formal treatment of the
+<li id="fn6" role="doc-endnote"><p><span class="citation" data-cites="bennett1993"><a href="https://doi.org/10.1103/PhysRevLett.70.1895" target="_blank">Bennett, Charles H. et al., <em>Teleporting an Unknown Quantum State via Dual Classical and Einstein-Podolsky-Rosen Channels</em> (1993)</a></span>.<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn7" role="doc-endnote"><p>The formal treatment of the
 teleportation protocol and its experimental confirmation is in
 Chapter <a href="#spine:the-braid" data-reference-type="ref" data-reference="spine:the-braid">3</a>, §“Quantum Teleportation and the
-Classical Constraint.”<a href="#fnref6" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn7" role="doc-endnote"><p>For a comprehensive introduction to
+Classical Constraint.”<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn8" role="doc-endnote"><p>For a comprehensive introduction to
 quantum computation, see <span class="citation" data-cites="nielsen2000">Nielsen, Michael A. et al., <em>Quantum Computation and Quantum Information</em> (2000)</span>. For a review of topological quantum
-computation, see <span class="citation" data-cites="nayak2008"><a href="https://doi.org/10.1103/RevModPhys.80.1083" target="_blank">Nayak, Chetan et al., <em>Non-Abelian Anyons and Topological Quantum Computation</em> (2008)</a></span>.<a href="#fnref7" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn8" role="doc-endnote"><p><span class="citation" data-cites="frisch1986"><a href="https://doi.org/10.1103/PhysRevLett.56.1505" target="_blank">Frisch, Uriel et al., <em>Lattice-Gas Automata for the Navier-Stokes Equation</em> (1986)</a></span>.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn9" role="doc-endnote"><p><span class="citation" data-cites="hasslacher1990"><a href="https://doi.org/10.1016/0167-2789(90)90192-R" target="_blank">Hasslacher, Brosl et al., <em>Knot Invariants and Cellular Automata</em> (1990)</a></span>.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn10" role="doc-endnote"><p><span class="citation" data-cites="hasslacher1992"><a href="https://doi.org/10.1007/BF01341764" target="_blank">Hasslacher, Brosl et al., <em>Lattice Gases and Exactly Solvable Models</em> (1992)</a></span>.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn11" role="doc-endnote"><p><span class="citation" data-cites="meyer1995doe">Meyer, David A., <em>Knot Invariants and the Thermodynamics of Lattice Gas Automata: Final Technical Report</em> (1995)</span>.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn12" role="doc-endnote"><p><span class="citation" data-cites="witten1989"><a href="https://doi.org/10.1007/BF01217730" target="_blank">Witten, Edward, <em>Quantum Field Theory and the Jones Polynomial</em> (1989)</a></span>.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn13" role="doc-endnote"><p><span class="citation" data-cites="freedman1998"><a href="https://doi.org/10.1073/pnas.95.1.98" target="_blank">Freedman, Michael H., <em>P/NP, and the Quantum Field Computer</em> (1998)</a></span>.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn14" role="doc-endnote"><p><span class="citation" data-cites="kitaev2003"><a href="https://doi.org/10.1016/S0003-4916(02)00018-0" target="_blank">Kitaev, A. Yu., <em>Fault-Tolerant Quantum Computation by Anyons</em> (2003)</a></span>.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn15" role="doc-endnote"><p><span class="citation" data-cites="nayak2008"><a href="https://doi.org/10.1103/RevModPhys.80.1083" target="_blank">Nayak, Chetan et al., <em>Non-Abelian Anyons and Topological Quantum Computation</em> (2008)</a></span>.<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn16" role="doc-endnote"><p><span class="citation" data-cites="bennett1993"><a href="https://doi.org/10.1103/PhysRevLett.70.1895" target="_blank">Bennett, Charles H. et al., <em>Teleporting an Unknown Quantum State via Dual Classical and Einstein-Podolsky-Rosen Channels</em> (1993)</a></span>.<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn17" role="doc-endnote"><p><span class="citation" data-cites="bouwmeester1997"><a href="https://doi.org/10.1038/37539" target="_blank">Bouwmeester, Dik et al., <em>Experimental Quantum Teleportation</em> (1997)</a></span>.<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn18" role="doc-endnote"><p><span class="citation" data-cites="diffiehellman1976"><a href="https://doi.org/10.1109/TIT.1976.1055638" target="_blank">Diffie, Whitfield et al., <em>New Directions in Cryptography</em> (1976)</a></span>.<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn19" role="doc-endnote"><p><span class="citation" data-cites="singh1999">Singh, Simon, <em>The Code Book: The Science of Secrecy from Ancient Egypt to Quantum Cryptography</em> (1999)</span>.<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn20" role="doc-endnote"><p><span class="citation" data-cites="feynman1982"><a href="https://doi.org/10.1007/BF02650179" target="_blank">Feynman, Richard P., <em>Simulating Physics with Computers</em> (1982)</a></span>.<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn21" role="doc-endnote"><p><span class="citation" data-cites="ferguson2010">Ferguson, Niels et al., <em>Cryptography Engineering: Design Principles and Practical Applications</em> (2010)</span>.<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn22" role="doc-endnote"><p><span class="citation" data-cites="deutschjozsa1992">Deutsch, David et al., <em>Rapid Solution of Problems by Quantum Computation</em> (1992)</span>.<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn23" role="doc-endnote"><p><span class="citation" data-cites="shor1994"><a href="https://doi.org/10.1109/SFCS.1994.365700" target="_blank">Shor, Peter W., <em>Algorithms for Quantum Computation: Discrete Logarithms and Factoring</em> (1994)</a></span>.<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn24" role="doc-endnote"><p><span class="citation" data-cites="eo13026">Executive Office of the President, <em>Executive Order 13026: Administration of Export Controls on Encryption Products</em> (1996)</span>.<a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn25" role="doc-endnote"><p><span class="citation" data-cites="hodges1983">Hodges, Andrew, <em>Alan Turing: The Enigma</em> (1983)</span>.<a href="#fnref25" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn26" role="doc-endnote"><p><span class="citation" data-cites="winterbotham1974">Winterbotham, F. W., <em>The Ultra Secret</em> (1974)</span>.<a href="#fnref26" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn27" role="doc-endnote"><p><span class="citation" data-cites="hinsley1979">Hinsley, F. H. et al., <em>British Intelligence in the Second World War</em> (1979)</span>.<a href="#fnref27" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn28" role="doc-endnote"><p><span class="citation" data-cites="jones1978">Jones, R. V., <em>Most Secret War</em> (1978)</span>.<a href="#fnref28" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn29" role="doc-endnote"><p><span class="citation" data-cites="rsa1977">Rivest, Ronald L. et al., <em>A Method for Obtaining Digital Signatures and Public-Key Cryptosystems</em> (1977)</span>.<a href="#fnref29" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn30" role="doc-endnote"><p><span class="citation" data-cites="diffiehellman1976"><a href="https://doi.org/10.1109/TIT.1976.1055638" target="_blank">Diffie, Whitfield et al., <em>New Directions in Cryptography</em> (1976)</a></span>.<a href="#fnref30" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn31" role="doc-endnote"><p><span class="citation" data-cites="singh1999">Singh, Simon, <em>The Code Book: The Science of Secrecy from Ancient Egypt to Quantum Cryptography</em> (1999)</span>.<a href="#fnref31" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn32" role="doc-endnote"><p><span class="citation" data-cites="fant1993">Fant, Kenne, <em>Alfred Nobel: A Biography</em> (1993)</span>.<a href="#fnref32" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn33" role="doc-endnote"><p><span class="citation" data-cites="einstein1960peace">Einstein, Albert, <em>Telegram to Prominent Americans</em> (1960)</span>.<a href="#fnref33" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn34" role="doc-endnote"><p><span class="citation" data-cites="turing1952"><a href="https://doi.org/10.1098/rstb.1952.0012" target="_blank">Turing, Alan M., <em>The Chemical Basis of Morphogenesis</em> (1952)</a></span>.<a href="#fnref34" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn35" role="doc-endnote"><p><span class="citation" data-cites="kauffman1993">Kauffman, Stuart A., <em>The Origins of Order: Self-Organization and Selection in Evolution</em> (1993)</span>.<a href="#fnref35" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn36" role="doc-endnote"><p><span class="citation" data-cites="hanson1998"><a href="https://mason.gmu.edu/~rhanson/greatfilter.html" target="_blank">Hanson, Robin, <em>The Great Filter –- Are We Almost Past It?</em> (1998)</a></span>.<a href="#fnref36" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn37" role="doc-endnote"><p><span class="citation" data-cites="turing1936">Turing, Alan M., <em>On Computable Numbers, with an Application to the Entscheidungsproblem</em> (1937)</span>.<a href="#fnref37" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn38" role="doc-endnote"><p><span class="citation" data-cites="winterbotham1974">Winterbotham, F. W., <em>The Ultra Secret</em> (1974)</span>.<a href="#fnref38" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn39" role="doc-endnote"><p><span class="citation" data-cites="bardeen1948">Bardeen, John et al., <em>The Transistor, a Semi-Conductor Triode</em> (1948)</span>.<a href="#fnref39" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn40" role="doc-endnote"><p><span class="citation" data-cites="thompson1917">Thompson, D'Arcy Wentworth, <em>On Growth and Form</em> (1917)</span>.<a href="#fnref40" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn41" role="doc-endnote"><p><span class="citation" data-cites="turing1952"><a href="https://doi.org/10.1098/rstb.1952.0012" target="_blank">Turing, Alan M., <em>The Chemical Basis of Morphogenesis</em> (1952)</a></span>.<a href="#fnref41" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn42" role="doc-endnote"><p><span class="citation" data-cites="kauffman1993">Kauffman, Stuart A., <em>The Origins of Order: Self-Organization and Selection in Evolution</em> (1993)</span>.<a href="#fnref42" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn43" role="doc-endnote"><p><span class="citation" data-cites="wolfram2002">Wolfram, Stephen, <em>A New Kind of Science</em> (2002)</span>.<a href="#fnref43" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn44" role="doc-endnote"><p><span class="citation" data-cites="sharma2005"><a href="https://doi.org/10.1016/j.asr.2005.03.142" target="_blank">Sharma, A. S. et al., <em>The Magnetosphere as a Complex System</em> (2005)</a></span>.<a href="#fnref44" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn45" role="doc-endnote"><p><span class="citation" data-cites="kauffman1995">Kauffman, Stuart A., <em>At Home in the Universe: The Search for the Laws of Self-Organization and Complexity</em> (1995)</span>.<a href="#fnref45" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn46" role="doc-endnote"><p><span class="citation" data-cites="fu2021"><a href="https://doi.org/10.1038/s41467-021-24189-3" target="_blank">Fu, Yichen et al., <em>Topological phases and bulk-edge correspondence of magnetized cold plasmas</em> (2021)</a></span>.<a href="#fnref46" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn47" role="doc-endnote"><p><span class="citation" data-cites="kitaev2003"><a href="https://doi.org/10.1016/S0003-4916(02)00018-0" target="_blank">Kitaev, A. Yu., <em>Fault-Tolerant Quantum Computation by Anyons</em> (2003)</a></span>.<a href="#fnref47" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn48" role="doc-endnote"><p><span class="citation" data-cites="nayak2008"><a href="https://doi.org/10.1103/RevModPhys.80.1083" target="_blank">Nayak, Chetan et al., <em>Non-Abelian Anyons and Topological Quantum Computation</em> (2008)</a></span>.<a href="#fnref48" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn49" role="doc-endnote"><p><span class="citation" data-cites="kauffman1993">Kauffman, Stuart A., <em>The Origins of Order: Self-Organization and Selection in Evolution</em> (1993)</span>.<a href="#fnref49" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn50" role="doc-endnote"><p><span class="citation" data-cites="wolfram2002">Wolfram, Stephen, <em>A New Kind of Science</em> (2002)</span>.<a href="#fnref50" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn51" role="doc-endnote"><p><span class="citation" data-cites="shor1994"><a href="https://doi.org/10.1109/SFCS.1994.365700" target="_blank">Shor, Peter W., <em>Algorithms for Quantum Computation: Discrete Logarithms and Factoring</em> (1994)</a></span>.<a href="#fnref51" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn52" role="doc-endnote"><p><span class="citation" data-cites="kitaev2003"><a href="https://doi.org/10.1016/S0003-4916(02)00018-0" target="_blank">Kitaev, A. Yu., <em>Fault-Tolerant Quantum Computation by Anyons</em> (2003)</a></span>.<a href="#fnref52" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn53" role="doc-endnote"><p><span class="citation" data-cites="kauffman1993">Kauffman, Stuart A., <em>The Origins of Order: Self-Organization and Selection in Evolution</em> (1993)</span>.<a href="#fnref53" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn54" role="doc-endnote"><p><span class="citation" data-cites="bennett1993"><a href="https://doi.org/10.1103/PhysRevLett.70.1895" target="_blank">Bennett, Charles H. et al., <em>Teleporting an Unknown Quantum State via Dual Classical and Einstein-Podolsky-Rosen Channels</em> (1993)</a></span>.<a href="#fnref54" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn55" role="doc-endnote"><p><span class="citation" data-cites="udhr1948">United Nations General Assembly, <em>Universal Declaration of Human Rights</em> (1948)</span>.<a href="#fnref55" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn56" role="doc-endnote"><p><span class="citation" data-cites="kitaev2003 nayak2008"><a href="https://doi.org/10.1016/S0003-4916(02)00018-0" target="_blank">Kitaev, A. Yu., <em>Fault-Tolerant Quantum Computation by Anyons</em> (2003)</a>; <a href="https://doi.org/10.1103/RevModPhys.80.1083" target="_blank">Nayak, Chetan et al., <em>Non-Abelian Anyons and Topological Quantum Computation</em> (2008)</a></span>.<a href="#fnref56" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn57" role="doc-endnote"><p><span class="citation" data-cites="kauffman1993">Kauffman, Stuart A., <em>The Origins of Order: Self-Organization and Selection in Evolution</em> (1993)</span>.<a href="#fnref57" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn58" role="doc-endnote"><p><span class="citation" data-cites="rhodes1986">Rhodes, Richard, <em>The Making of the Atomic Bomb</em> (1986)</span>.<a href="#fnref58" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn59" role="doc-endnote"><p><span class="citation" data-cites="zetter2014">Zetter, Kim, <em>Countdown to Zero Day: Stuxnet and the Launch of the World's First Digital Weapon</em> (2014)</span>.<a href="#fnref59" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn60" role="doc-endnote"><p><span class="citation" data-cites="joy2000"><a href="https://sites.cc.gatech.edu/computing/nano/documents/Joy%20-%20Why%20the%20Future%20Doesn%27t%20Need%20Us.pdf" target="_blank">Joy, Bill, <em>Why the Future Doesn't Need Us</em> (2000)</a></span>.<a href="#fnref60" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn61" role="doc-endnote"><p><span class="citation" data-cites="greenwald2014">Greenwald, Glenn, <em>No Place to Hide: Edward Snowden, the NSA, and the U.S. Surveillance State</em> (2014)</span>.<a href="#fnref61" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn62" role="doc-endnote"><p><span class="citation" data-cites="merton1961">Merton, Robert K., <em>Singletons and Multiples in Scientific Discovery: A Chapter in the Sociology of Science</em> (1961)</span>.<a href="#fnref62" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn63" role="doc-endnote"><p><span class="citation" data-cites="schmookler1984">Schmookler, Andrew Bard, <em>The Parable of the Tribes: The Problem of Power in Social Evolution</em> (1984)</span>.<a href="#fnref63" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn64" role="doc-endnote"><p>For biographical details on Healer,
-see <em>The Handler</em>; for the author, see <em>The Target</em>.<a href="#fnref64" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn65" role="doc-endnote"><p>See <em>The Handler</em>.<a href="#fnref65" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn66" role="doc-endnote"><p><span class="citation" data-cites="milosevicarchive"><a href="https://archive.org/details/milosevictrial" target="_blank">Internet Archive, <em>Slobodan Milosevic Trial Public Archive</em> (n.d.)</a></span>.<a href="#fnref66" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn67" role="doc-endnote"><p><span class="citation" data-cites="ballicty2002 ictydecision"><a href="http://www.slobodan-milosevic.org/documents/trial/2002-03-14.html" target="_blank">Ball, Patrick, <em>Testimony at the International Criminal Tribunal for the former Yugoslavia, Prosecutor v. Milovsevic</em> (2002)</a>; <a href="https://www.icty.org/x/cases/slobodan_milosevic/tdec/en/030225.htm" target="_blank">International Criminal Tribunal for the former Yugoslavia, <em>Decision on Prosecution Motion to Admit the Expert Report of Patrick Ball</em> (2002)</a></span>.<a href="#fnref67" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn68" role="doc-endnote"><p><span class="citation" data-cites="foreignpolicy2012">Hawkins, Virgil, <em>The Body Counter</em> (2012)</span>.<a href="#fnref68" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn69" role="doc-endnote"><p><span class="citation" data-cites="niod2002"><a href="https://www.niod.nl/en/publications/srebrenica" target="_blank">Netherlands Institute for War Documentation (NIOD), <em>Srebrenica: a `Safe' Area –- Reconstruction, Background, Consequences and Analyses of the Fall of a Safe Area</em> (2002)</a></span>.<a href="#fnref69" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn70" role="doc-endnote"><p><span class="citation" data-cites="sudetic2010 annan1999">Sudetic, Chuck, <em>The Srebrenica Massacre</em> (2010); <a href="https://docs.un.org/A/54/549" target="_blank">United Nations Secretary-General, <em>Report of the Secretary-General Pursuant to General Assembly Resolution 53/35: The Fall of Srebrenica</em> (1999)</a></span>.<a href="#fnref70" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn71" role="doc-endnote"><p><span class="citation" data-cites="brighton2004"><a href="https://www.theguardian.com/politics/2004/sep/19/iraq.iraq" target="_blank">Bright, Martin, <em>The Woman Who Nearly Stopped the War</em> (2004)</a></span>.<a href="#fnref71" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn72" role="doc-endnote"><p><span class="citation" data-cites="bbc2004gun"><a href="https://news.bbc.co.uk/2/hi/uk_news/3486784.stm" target="_blank">BBC News, <em>GCHQ Spy Case Collapses</em> (2004)</a></span>.<a href="#fnref72" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn73" role="doc-endnote"><p><span class="citation" data-cites="norton-taylor2004"><a href="https://www.theguardian.com/uk/2004/feb/26/freedomofinformation.iraq" target="_blank">Norton-Taylor, Richard, <em>GCHQ Translator Cleared Over Leak of US Dirty Tricks</em> (2004)</a></span>.<a href="#fnref73" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn74" role="doc-endnote"><p><span class="citation" data-cites="joy2000"><a href="https://sites.cc.gatech.edu/computing/nano/documents/Joy%20-%20Why%20the%20Future%20Doesn%27t%20Need%20Us.pdf" target="_blank">Joy, Bill, <em>Why the Future Doesn't Need Us</em> (2000)</a></span>.<a href="#fnref74" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn75" role="doc-endnote"><p><span class="citation" data-cites="kauffman1996"><a href="https://doi.org/10.1038/382496a0" target="_blank">Kauffman, Stuart A., <em>Even Peptides Do It</em> (1996)</a></span>.<a href="#fnref75" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn76" role="doc-endnote"><p><span class="citation" data-cites="kauffman1993">Kauffman, Stuart A., <em>The Origins of Order: Self-Organization and Selection in Evolution</em> (1993)</span>.<a href="#fnref76" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn77" role="doc-endnote"><p><span class="citation" data-cites="kauffman1993">Kauffman, Stuart A., <em>The Origins of Order: Self-Organization and Selection in Evolution</em> (1993)</span>.<a href="#fnref77" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn78" role="doc-endnote"><p><span class="citation" data-cites="vattay2014"><a href="https://doi.org/10.1371/journal.pone.0089017" target="_blank">Vattay, Gabor et al., <em>Quantum Biology on the Edge of Quantum Chaos</em> (2014)</a></span>.<a href="#fnref78" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn79" role="doc-endnote"><p><span class="citation" data-cites="engel2007"><a href="https://doi.org/10.1038/nature05678" target="_blank">Engel, Gregory S. et al., <em>Evidence for Wavelike Energy Transfer through Quantum Coherence in Photosynthetic Systems</em> (2007)</a></span>.<a href="#fnref79" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn80" role="doc-endnote"><p><span class="citation" data-cites="klimov2015"><a href="https://doi.org/10.1126/sciadv.1501015" target="_blank">Klimov, Paul V. et al., <em>Quantum Entanglement at Ambient Conditions in a Macroscopic Solid-State Spin Ensemble</em> (2015)</a></span>.<a href="#fnref80" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn81" role="doc-endnote"><p><span class="citation" data-cites="joy2000"><a href="https://sites.cc.gatech.edu/computing/nano/documents/Joy%20-%20Why%20the%20Future%20Doesn%27t%20Need%20Us.pdf" target="_blank">Joy, Bill, <em>Why the Future Doesn't Need Us</em> (2000)</a></span>.<a href="#fnref81" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn82" role="doc-endnote"><p><span class="citation" data-cites="joy2000"><a href="https://sites.cc.gatech.edu/computing/nano/documents/Joy%20-%20Why%20the%20Future%20Doesn%27t%20Need%20Us.pdf" target="_blank">Joy, Bill, <em>Why the Future Doesn't Need Us</em> (2000)</a></span>.<a href="#fnref82" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn83" role="doc-endnote"><p><span class="citation" data-cites="iccpr1966">United Nations General Assembly, <em>International Covenant on Civil and Political Rights</em> (1966)</span>.<a href="#fnref83" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn84" role="doc-endnote"><p><span class="citation" data-cites="yudkowsky2001"><a href="https://intelligence.org/files/CFAI.pdf" target="_blank">Yudkowsky, Eliezer, <em>Creating Friendly AI 1.0: The Analysis and Design of Benevolent Goal Architectures</em> (2001)</a></span>.<a href="#fnref84" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn85" role="doc-endnote"><p><span class="citation" data-cites="udhr1948">United Nations General Assembly, <em>Universal Declaration of Human Rights</em> (1948)</span>.<a href="#fnref85" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn86" role="doc-endnote"><p><span class="citation" data-cites="iccpr1966">United Nations General Assembly, <em>International Covenant on Civil and Political Rights</em> (1966)</span>.<a href="#fnref86" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn87" role="doc-endnote"><p><span class="citation" data-cites="stephenson2025">Stephenson, Bruce et al., <em>Convergent Discovery of Critical Phenomena Mathematics Across Disciplines: A Cross-Domain Analysis</em> (2025)</span>.<a href="#fnref87" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn88" role="doc-endnote"><p><span class="citation" data-cites="turing1936">Turing, Alan M., <em>On Computable Numbers, with an Application to the Entscheidungsproblem</em> (1937)</span>.<a href="#fnref88" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn89" role="doc-endnote"><p><span class="citation" data-cites="mccullochpitts1943">McCulloch, Warren S. et al., <em>A Logical Calculus of the Ideas Immanent in Nervous Activity</em> (1943)</span>.<a href="#fnref89" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn90" role="doc-endnote"><p><span class="citation" data-cites="shor1994"><a href="https://doi.org/10.1109/SFCS.1994.365700" target="_blank">Shor, Peter W., <em>Algorithms for Quantum Computation: Discrete Logarithms and Factoring</em> (1994)</a></span>.<a href="#fnref90" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn91" role="doc-endnote"><p><span class="citation" data-cites="kitaev2003"><a href="https://doi.org/10.1016/S0003-4916(02)00018-0" target="_blank">Kitaev, A. Yu., <em>Fault-Tolerant Quantum Computation by Anyons</em> (2003)</a></span>.<a href="#fnref91" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn92" role="doc-endnote"><p><span class="citation" data-cites="joy2000"><a href="https://sites.cc.gatech.edu/computing/nano/documents/Joy%20-%20Why%20the%20Future%20Doesn%27t%20Need%20Us.pdf" target="_blank">Joy, Bill, <em>Why the Future Doesn't Need Us</em> (2000)</a></span>.<a href="#fnref92" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn93" role="doc-endnote"><p><span class="citation" data-cites="engel2007"><a href="https://doi.org/10.1038/nature05678" target="_blank">Engel, Gregory S. et al., <em>Evidence for Wavelike Energy Transfer through Quantum Coherence in Photosynthetic Systems</em> (2007)</a></span>.<a href="#fnref93" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn94" role="doc-endnote"><p>Landing page: <a href="https://archive.google/cadie/" class="uri">https://archive.google/cadie/</a>. Technical specifications:
-<a href="https://archive.google/cadie/tech.html" class="uri">https://archive.google/cadie/tech.html</a><a href="#fnref94" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn95" role="doc-endnote"><p><a href="https://cryptome.org/2012/03/energyscholar-qnn.htm" class="uri">https://cryptome.org/2012/03/energyscholar-qnn.htm</a><a href="#fnref95" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn96" role="doc-endnote"><p><a href="https://slashdot.org/comments.pl?sid=2914233&amp;cid=40356741" class="uri">https://slashdot.org/comments.pl?sid=2914233&amp;cid=40356741</a><a href="#fnref96" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn97" role="doc-endnote"><p><span class="citation" data-cites="vattay2014"><a href="https://doi.org/10.1371/journal.pone.0089017" target="_blank">Vattay, Gabor et al., <em>Quantum Biology on the Edge of Quantum Chaos</em> (2014)</a></span>.<a href="#fnref97" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn98" role="doc-endnote"><p><span class="citation" data-cites="klimov2015"><a href="https://doi.org/10.1126/sciadv.1501015" target="_blank">Klimov, Paul V. et al., <em>Quantum Entanglement at Ambient Conditions in a Macroscopic Solid-State Spin Ensemble</em> (2015)</a></span>.<a href="#fnref98" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn99" role="doc-endnote"><p><span class="citation" data-cites="vaswani2017">Vaswani, Ashish et al., <em>Attention Is All You Need</em> (2017)</span>.<a href="#fnref99" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn100" role="doc-endnote"><p>arXiv:<code>2601.22389</code><a href="#fnref100" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn101" role="doc-endnote"><p>A <em>Nature</em> editorial note
+computation, see <span class="citation" data-cites="nayak2008"><a href="https://doi.org/10.1103/RevModPhys.80.1083" target="_blank">Nayak, Chetan et al., <em>Non-Abelian Anyons and Topological Quantum Computation</em> (2008)</a></span>.<a href="#fnref8" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn9" role="doc-endnote"><p><span class="citation" data-cites="frisch1986"><a href="https://doi.org/10.1103/PhysRevLett.56.1505" target="_blank">Frisch, Uriel et al., <em>Lattice-Gas Automata for the Navier-Stokes Equation</em> (1986)</a></span>.<a href="#fnref9" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn10" role="doc-endnote"><p><span class="citation" data-cites="hasslacher1990"><a href="https://doi.org/10.1016/0167-2789(90)90192-R" target="_blank">Hasslacher, Brosl et al., <em>Knot Invariants and Cellular Automata</em> (1990)</a></span>.<a href="#fnref10" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn11" role="doc-endnote"><p><span class="citation" data-cites="hasslacher1992"><a href="https://doi.org/10.1007/BF01341764" target="_blank">Hasslacher, Brosl et al., <em>Lattice Gases and Exactly Solvable Models</em> (1992)</a></span>.<a href="#fnref11" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn12" role="doc-endnote"><p><span class="citation" data-cites="meyer1995doe">Meyer, David A., <em>Knot Invariants and the Thermodynamics of Lattice Gas Automata: Final Technical Report</em> (1995)</span>.<a href="#fnref12" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn13" role="doc-endnote"><p><span class="citation" data-cites="witten1989"><a href="https://doi.org/10.1007/BF01217730" target="_blank">Witten, Edward, <em>Quantum Field Theory and the Jones Polynomial</em> (1989)</a></span>.<a href="#fnref13" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn14" role="doc-endnote"><p><span class="citation" data-cites="freedman1998"><a href="https://doi.org/10.1073/pnas.95.1.98" target="_blank">Freedman, Michael H., <em>P/NP, and the Quantum Field Computer</em> (1998)</a></span>.<a href="#fnref14" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn15" role="doc-endnote"><p><span class="citation" data-cites="kitaev2003"><a href="https://doi.org/10.1016/S0003-4916(02)00018-0" target="_blank">Kitaev, A. Yu., <em>Fault-Tolerant Quantum Computation by Anyons</em> (2003)</a></span>.<a href="#fnref15" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn16" role="doc-endnote"><p><span class="citation" data-cites="nayak2008"><a href="https://doi.org/10.1103/RevModPhys.80.1083" target="_blank">Nayak, Chetan et al., <em>Non-Abelian Anyons and Topological Quantum Computation</em> (2008)</a></span>.<a href="#fnref16" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn17" role="doc-endnote"><p><span class="citation" data-cites="bennett1993"><a href="https://doi.org/10.1103/PhysRevLett.70.1895" target="_blank">Bennett, Charles H. et al., <em>Teleporting an Unknown Quantum State via Dual Classical and Einstein-Podolsky-Rosen Channels</em> (1993)</a></span>.<a href="#fnref17" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn18" role="doc-endnote"><p><span class="citation" data-cites="bouwmeester1997"><a href="https://doi.org/10.1038/37539" target="_blank">Bouwmeester, Dik et al., <em>Experimental Quantum Teleportation</em> (1997)</a></span>.<a href="#fnref18" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn19" role="doc-endnote"><p><span class="citation" data-cites="ferguson2010">Ferguson, Niels et al., <em>Cryptography Engineering: Design Principles and Practical Applications</em> (2010)</span>.<a href="#fnref19" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn20" role="doc-endnote"><p><span class="citation" data-cites="deutschjozsa1992">Deutsch, David et al., <em>Rapid Solution of Problems by Quantum Computation</em> (1992)</span>.<a href="#fnref20" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn21" role="doc-endnote"><p><span class="citation" data-cites="shor1994"><a href="https://doi.org/10.1109/SFCS.1994.365700" target="_blank">Shor, Peter W., <em>Algorithms for Quantum Computation: Discrete Logarithms and Factoring</em> (1994)</a></span>.<a href="#fnref21" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn22" role="doc-endnote"><p><span class="citation" data-cites="eo13026">Executive Office of the President, <em>Executive Order 13026: Administration of Export Controls on Encryption Products</em> (1996)</span>.<a href="#fnref22" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn23" role="doc-endnote"><p><span class="citation" data-cites="hodges1983">Hodges, Andrew, <em>Alan Turing: The Enigma</em> (1983)</span>.<a href="#fnref23" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn24" role="doc-endnote"><p><span class="citation" data-cites="winterbotham1974">Winterbotham, F. W., <em>The Ultra Secret</em> (1974)</span>.<a href="#fnref24" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn25" role="doc-endnote"><p><span class="citation" data-cites="hinsley1979">Hinsley, F. H. et al., <em>British Intelligence in the Second World War</em> (1979)</span>.<a href="#fnref25" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn26" role="doc-endnote"><p><span class="citation" data-cites="jones1978">Jones, R. V., <em>Most Secret War</em> (1978)</span>.<a href="#fnref26" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn27" role="doc-endnote"><p><span class="citation" data-cites="rsa1977">Rivest, Ronald L. et al., <em>A Method for Obtaining Digital Signatures and Public-Key Cryptosystems</em> (1977)</span>.<a href="#fnref27" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn28" role="doc-endnote"><p><span class="citation" data-cites="diffiehellman1976"><a href="https://doi.org/10.1109/TIT.1976.1055638" target="_blank">Diffie, Whitfield et al., <em>New Directions in Cryptography</em> (1976)</a></span>.<a href="#fnref28" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn29" role="doc-endnote"><p><span class="citation" data-cites="singh1999">Singh, Simon, <em>The Code Book: The Science of Secrecy from Ancient Egypt to Quantum Cryptography</em> (1999)</span>.<a href="#fnref29" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn30" role="doc-endnote"><p><span class="citation" data-cites="fant1993">Fant, Kenne, <em>Alfred Nobel: A Biography</em> (1993)</span>.<a href="#fnref30" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn31" role="doc-endnote"><p><span class="citation" data-cites="einstein1960peace">Einstein, Albert, <em>Telegram to Prominent Americans</em> (1960)</span>.<a href="#fnref31" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn32" role="doc-endnote"><p><span class="citation" data-cites="turing1952"><a href="https://doi.org/10.1098/rstb.1952.0012" target="_blank">Turing, Alan M., <em>The Chemical Basis of Morphogenesis</em> (1952)</a></span>.<a href="#fnref32" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn33" role="doc-endnote"><p><span class="citation" data-cites="kauffman1993">Kauffman, Stuart A., <em>The Origins of Order: Self-Organization and Selection in Evolution</em> (1993)</span>.<a href="#fnref33" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn34" role="doc-endnote"><p><span class="citation" data-cites="hanson1998"><a href="https://mason.gmu.edu/~rhanson/greatfilter.html" target="_blank">Hanson, Robin, <em>The Great Filter –- Are We Almost Past It?</em> (1998)</a></span>.<a href="#fnref34" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn35" role="doc-endnote"><p><span class="citation" data-cites="turing1936">Turing, Alan M., <em>On Computable Numbers, with an Application to the Entscheidungsproblem</em> (1937)</span>.<a href="#fnref35" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn36" role="doc-endnote"><p><span class="citation" data-cites="winterbotham1974">Winterbotham, F. W., <em>The Ultra Secret</em> (1974)</span>.<a href="#fnref36" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn37" role="doc-endnote"><p><span class="citation" data-cites="bardeen1948">Bardeen, John et al., <em>The Transistor, a Semi-Conductor Triode</em> (1948)</span>.<a href="#fnref37" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn38" role="doc-endnote"><p><span class="citation" data-cites="thompson1917">Thompson, D'Arcy Wentworth, <em>On Growth and Form</em> (1917)</span>.<a href="#fnref38" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn39" role="doc-endnote"><p><span class="citation" data-cites="turing1952"><a href="https://doi.org/10.1098/rstb.1952.0012" target="_blank">Turing, Alan M., <em>The Chemical Basis of Morphogenesis</em> (1952)</a></span>.<a href="#fnref39" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn40" role="doc-endnote"><p><span class="citation" data-cites="kauffman1993">Kauffman, Stuart A., <em>The Origins of Order: Self-Organization and Selection in Evolution</em> (1993)</span>.<a href="#fnref40" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn41" role="doc-endnote"><p><span class="citation" data-cites="wolfram2002">Wolfram, Stephen, <em>A New Kind of Science</em> (2002)</span>.<a href="#fnref41" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn42" role="doc-endnote"><p><span class="citation" data-cites="sharma2005"><a href="https://doi.org/10.1016/j.asr.2005.03.142" target="_blank">Sharma, A. S. et al., <em>The Magnetosphere as a Complex System</em> (2005)</a></span>.<a href="#fnref42" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn43" role="doc-endnote"><p><span class="citation" data-cites="kauffman1995">Kauffman, Stuart A., <em>At Home in the Universe: The Search for the Laws of Self-Organization and Complexity</em> (1995)</span>.<a href="#fnref43" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn44" role="doc-endnote"><p><span class="citation" data-cites="fu2021"><a href="https://doi.org/10.1038/s41467-021-24189-3" target="_blank">Fu, Yichen et al., <em>Topological phases and bulk-edge correspondence of magnetized cold plasmas</em> (2021)</a></span>.<a href="#fnref44" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn45" role="doc-endnote"><p><span class="citation" data-cites="kitaev2003"><a href="https://doi.org/10.1016/S0003-4916(02)00018-0" target="_blank">Kitaev, A. Yu., <em>Fault-Tolerant Quantum Computation by Anyons</em> (2003)</a></span>.<a href="#fnref45" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn46" role="doc-endnote"><p><span class="citation" data-cites="nayak2008"><a href="https://doi.org/10.1103/RevModPhys.80.1083" target="_blank">Nayak, Chetan et al., <em>Non-Abelian Anyons and Topological Quantum Computation</em> (2008)</a></span>.<a href="#fnref46" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn47" role="doc-endnote"><p><span class="citation" data-cites="kauffman1993">Kauffman, Stuart A., <em>The Origins of Order: Self-Organization and Selection in Evolution</em> (1993)</span>.<a href="#fnref47" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn48" role="doc-endnote"><p><span class="citation" data-cites="wolfram2002">Wolfram, Stephen, <em>A New Kind of Science</em> (2002)</span>.<a href="#fnref48" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn49" role="doc-endnote"><p><span class="citation" data-cites="shor1994"><a href="https://doi.org/10.1109/SFCS.1994.365700" target="_blank">Shor, Peter W., <em>Algorithms for Quantum Computation: Discrete Logarithms and Factoring</em> (1994)</a></span>.<a href="#fnref49" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn50" role="doc-endnote"><p><span class="citation" data-cites="kitaev2003"><a href="https://doi.org/10.1016/S0003-4916(02)00018-0" target="_blank">Kitaev, A. Yu., <em>Fault-Tolerant Quantum Computation by Anyons</em> (2003)</a></span>.<a href="#fnref50" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn51" role="doc-endnote"><p><span class="citation" data-cites="kauffman1993">Kauffman, Stuart A., <em>The Origins of Order: Self-Organization and Selection in Evolution</em> (1993)</span>.<a href="#fnref51" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn52" role="doc-endnote"><p><span class="citation" data-cites="bennett1993"><a href="https://doi.org/10.1103/PhysRevLett.70.1895" target="_blank">Bennett, Charles H. et al., <em>Teleporting an Unknown Quantum State via Dual Classical and Einstein-Podolsky-Rosen Channels</em> (1993)</a></span>.<a href="#fnref52" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn53" role="doc-endnote"><p><span class="citation" data-cites="udhr1948">United Nations General Assembly, <em>Universal Declaration of Human Rights</em> (1948)</span>.<a href="#fnref53" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn54" role="doc-endnote"><p><span class="citation" data-cites="rhodes1986">Rhodes, Richard, <em>The Making of the Atomic Bomb</em> (1986)</span>.<a href="#fnref54" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn55" role="doc-endnote"><p><span class="citation" data-cites="zetter2014">Zetter, Kim, <em>Countdown to Zero Day: Stuxnet and the Launch of the World's First Digital Weapon</em> (2014)</span>.<a href="#fnref55" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn56" role="doc-endnote"><p><span class="citation" data-cites="joy2000"><a href="https://sites.cc.gatech.edu/computing/nano/documents/Joy%20-%20Why%20the%20Future%20Doesn%27t%20Need%20Us.pdf" target="_blank">Joy, Bill, <em>Why the Future Doesn't Need Us</em> (2000)</a></span>.<a href="#fnref56" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn57" role="doc-endnote"><p><span class="citation" data-cites="greenwald2014">Greenwald, Glenn, <em>No Place to Hide: Edward Snowden, the NSA, and the U.S. Surveillance State</em> (2014)</span>.<a href="#fnref57" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn58" role="doc-endnote"><p><span class="citation" data-cites="merton1961">Merton, Robert K., <em>Singletons and Multiples in Scientific Discovery: A Chapter in the Sociology of Science</em> (1961)</span>.<a href="#fnref58" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn59" role="doc-endnote"><p><span class="citation" data-cites="schmookler1984">Schmookler, Andrew Bard, <em>The Parable of the Tribes: The Problem of Power in Social Evolution</em> (1984)</span>.<a href="#fnref59" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn60" role="doc-endnote"><p>For biographical details on Healer,
+see <em>The Handler</em>; for the author, see <em>The Target</em>.<a href="#fnref60" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn61" role="doc-endnote"><p>See <em>The Handler</em>.<a href="#fnref61" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn62" role="doc-endnote"><p><span class="citation" data-cites="milosevicarchive"><a href="https://archive.org/details/milosevictrial" target="_blank">Internet Archive, <em>Slobodan Milosevic Trial Public Archive</em> (n.d.)</a></span>.<a href="#fnref62" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn63" role="doc-endnote"><p><span class="citation" data-cites="ballicty2002 ictydecision"><a href="http://www.slobodan-milosevic.org/documents/trial/2002-03-14.html" target="_blank">Ball, Patrick, <em>Testimony at the International Criminal Tribunal for the former Yugoslavia, Prosecutor v. Milovsevic</em> (2002)</a>; <a href="https://www.icty.org/x/cases/slobodan_milosevic/tdec/en/030225.htm" target="_blank">International Criminal Tribunal for the former Yugoslavia, <em>Decision on Prosecution Motion to Admit the Expert Report of Patrick Ball</em> (2002)</a></span>.<a href="#fnref63" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn64" role="doc-endnote"><p><span class="citation" data-cites="foreignpolicy2012">Hawkins, Virgil, <em>The Body Counter</em> (2012)</span>.<a href="#fnref64" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn65" role="doc-endnote"><p><span class="citation" data-cites="niod2002"><a href="https://www.niod.nl/en/publications/srebrenica" target="_blank">Netherlands Institute for War Documentation (NIOD), <em>Srebrenica: a `Safe' Area –- Reconstruction, Background, Consequences and Analyses of the Fall of a Safe Area</em> (2002)</a></span>.<a href="#fnref65" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn66" role="doc-endnote"><p><span class="citation" data-cites="sudetic2010 annan1999">Sudetic, Chuck, <em>The Srebrenica Massacre</em> (2010); <a href="https://docs.un.org/A/54/549" target="_blank">United Nations Secretary-General, <em>Report of the Secretary-General Pursuant to General Assembly Resolution 53/35: The Fall of Srebrenica</em> (1999)</a></span>.<a href="#fnref66" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn67" role="doc-endnote"><p><span class="citation" data-cites="brighton2004"><a href="https://www.theguardian.com/politics/2004/sep/19/iraq.iraq" target="_blank">Bright, Martin, <em>The Woman Who Nearly Stopped the War</em> (2004)</a></span>.<a href="#fnref67" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn68" role="doc-endnote"><p><span class="citation" data-cites="bbc2004gun"><a href="https://news.bbc.co.uk/2/hi/uk_news/3486784.stm" target="_blank">BBC News, <em>GCHQ Spy Case Collapses</em> (2004)</a></span>.<a href="#fnref68" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn69" role="doc-endnote"><p><span class="citation" data-cites="norton-taylor2004"><a href="https://www.theguardian.com/uk/2004/feb/26/freedomofinformation.iraq" target="_blank">Norton-Taylor, Richard, <em>GCHQ Translator Cleared Over Leak of US Dirty Tricks</em> (2004)</a></span>.<a href="#fnref69" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn70" role="doc-endnote"><p><span class="citation" data-cites="joy2000"><a href="https://sites.cc.gatech.edu/computing/nano/documents/Joy%20-%20Why%20the%20Future%20Doesn%27t%20Need%20Us.pdf" target="_blank">Joy, Bill, <em>Why the Future Doesn't Need Us</em> (2000)</a></span>.<a href="#fnref70" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn71" role="doc-endnote"><p><span class="citation" data-cites="kauffman1996"><a href="https://doi.org/10.1038/382496a0" target="_blank">Kauffman, Stuart A., <em>Even Peptides Do It</em> (1996)</a></span>.<a href="#fnref71" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn72" role="doc-endnote"><p><span class="citation" data-cites="kauffman1993">Kauffman, Stuart A., <em>The Origins of Order: Self-Organization and Selection in Evolution</em> (1993)</span>.<a href="#fnref72" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn73" role="doc-endnote"><p><span class="citation" data-cites="kauffman1993">Kauffman, Stuart A., <em>The Origins of Order: Self-Organization and Selection in Evolution</em> (1993)</span>.<a href="#fnref73" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn74" role="doc-endnote"><p><span class="citation" data-cites="vattay2014"><a href="https://doi.org/10.1371/journal.pone.0089017" target="_blank">Vattay, Gabor et al., <em>Quantum Biology on the Edge of Quantum Chaos</em> (2014)</a></span>.<a href="#fnref74" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn75" role="doc-endnote"><p><span class="citation" data-cites="engel2007"><a href="https://doi.org/10.1038/nature05678" target="_blank">Engel, Gregory S. et al., <em>Evidence for Wavelike Energy Transfer through Quantum Coherence in Photosynthetic Systems</em> (2007)</a></span>.<a href="#fnref75" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn76" role="doc-endnote"><p><span class="citation" data-cites="klimov2015"><a href="https://doi.org/10.1126/sciadv.1501015" target="_blank">Klimov, Paul V. et al., <em>Quantum Entanglement at Ambient Conditions in a Macroscopic Solid-State Spin Ensemble</em> (2015)</a></span>.<a href="#fnref76" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn77" role="doc-endnote"><p><span class="citation" data-cites="joy2000"><a href="https://sites.cc.gatech.edu/computing/nano/documents/Joy%20-%20Why%20the%20Future%20Doesn%27t%20Need%20Us.pdf" target="_blank">Joy, Bill, <em>Why the Future Doesn't Need Us</em> (2000)</a></span>.<a href="#fnref77" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn78" role="doc-endnote"><p><span class="citation" data-cites="joy2000"><a href="https://sites.cc.gatech.edu/computing/nano/documents/Joy%20-%20Why%20the%20Future%20Doesn%27t%20Need%20Us.pdf" target="_blank">Joy, Bill, <em>Why the Future Doesn't Need Us</em> (2000)</a></span>.<a href="#fnref78" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn79" role="doc-endnote"><p><span class="citation" data-cites="iccpr1966">United Nations General Assembly, <em>International Covenant on Civil and Political Rights</em> (1966)</span>.<a href="#fnref79" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn80" role="doc-endnote"><p><span class="citation" data-cites="yudkowsky2001"><a href="https://intelligence.org/files/CFAI.pdf" target="_blank">Yudkowsky, Eliezer, <em>Creating Friendly AI 1.0: The Analysis and Design of Benevolent Goal Architectures</em> (2001)</a></span>.<a href="#fnref80" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn81" role="doc-endnote"><p><span class="citation" data-cites="udhr1948">United Nations General Assembly, <em>Universal Declaration of Human Rights</em> (1948)</span>.<a href="#fnref81" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn82" role="doc-endnote"><p><span class="citation" data-cites="iccpr1966">United Nations General Assembly, <em>International Covenant on Civil and Political Rights</em> (1966)</span>.<a href="#fnref82" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn83" role="doc-endnote"><p><span class="citation" data-cites="stephenson2025">Stephenson, Bruce et al., <em>Convergent Discovery of Critical Phenomena Mathematics Across Disciplines: A Cross-Domain Analysis</em> (2025)</span>.<a href="#fnref83" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn84" role="doc-endnote"><p><span class="citation" data-cites="turing1936">Turing, Alan M., <em>On Computable Numbers, with an Application to the Entscheidungsproblem</em> (1937)</span>.<a href="#fnref84" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn85" role="doc-endnote"><p><span class="citation" data-cites="mccullochpitts1943">McCulloch, Warren S. et al., <em>A Logical Calculus of the Ideas Immanent in Nervous Activity</em> (1943)</span>.<a href="#fnref85" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn86" role="doc-endnote"><p><span class="citation" data-cites="shor1994"><a href="https://doi.org/10.1109/SFCS.1994.365700" target="_blank">Shor, Peter W., <em>Algorithms for Quantum Computation: Discrete Logarithms and Factoring</em> (1994)</a></span>.<a href="#fnref86" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn87" role="doc-endnote"><p><span class="citation" data-cites="kitaev2003"><a href="https://doi.org/10.1016/S0003-4916(02)00018-0" target="_blank">Kitaev, A. Yu., <em>Fault-Tolerant Quantum Computation by Anyons</em> (2003)</a></span>.<a href="#fnref87" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn88" role="doc-endnote"><p><span class="citation" data-cites="joy2000"><a href="https://sites.cc.gatech.edu/computing/nano/documents/Joy%20-%20Why%20the%20Future%20Doesn%27t%20Need%20Us.pdf" target="_blank">Joy, Bill, <em>Why the Future Doesn't Need Us</em> (2000)</a></span>.<a href="#fnref88" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn89" role="doc-endnote"><p><span class="citation" data-cites="engel2007"><a href="https://doi.org/10.1038/nature05678" target="_blank">Engel, Gregory S. et al., <em>Evidence for Wavelike Energy Transfer through Quantum Coherence in Photosynthetic Systems</em> (2007)</a></span>.<a href="#fnref89" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn90" role="doc-endnote"><p>Landing page: <a href="https://archive.google/cadie/" class="uri">https://archive.google/cadie/</a>. Technical specifications:
+<a href="https://archive.google/cadie/tech.html" class="uri">https://archive.google/cadie/tech.html</a><a href="#fnref90" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn91" role="doc-endnote"><p><a href="https://cryptome.org/2012/03/energyscholar-qnn.htm" class="uri">https://cryptome.org/2012/03/energyscholar-qnn.htm</a><a href="#fnref91" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn92" role="doc-endnote"><p><a href="https://slashdot.org/comments.pl?sid=2914233&amp;cid=40356741" class="uri">https://slashdot.org/comments.pl?sid=2914233&amp;cid=40356741</a><a href="#fnref92" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn93" role="doc-endnote"><p><span class="citation" data-cites="vattay2014"><a href="https://doi.org/10.1371/journal.pone.0089017" target="_blank">Vattay, Gabor et al., <em>Quantum Biology on the Edge of Quantum Chaos</em> (2014)</a></span>.<a href="#fnref93" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn94" role="doc-endnote"><p><span class="citation" data-cites="klimov2015"><a href="https://doi.org/10.1126/sciadv.1501015" target="_blank">Klimov, Paul V. et al., <em>Quantum Entanglement at Ambient Conditions in a Macroscopic Solid-State Spin Ensemble</em> (2015)</a></span>.<a href="#fnref94" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn95" role="doc-endnote"><p><span class="citation" data-cites="vaswani2017">Vaswani, Ashish et al., <em>Attention Is All You Need</em> (2017)</span>.<a href="#fnref95" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn96" role="doc-endnote"><p>arXiv:<code>2601.22389</code><a href="#fnref96" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn97" role="doc-endnote"><p>A <em>Nature</em> editorial note
 cautions that “the results do not represent evidence for the presence of
-Majorana zero modes.”<a href="#fnref101" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+Majorana zero modes.”<a href="#fnref97" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 </ol>
 </section>
 <div id="llm-primer-text" style="display:none"># Published Physics Reference for Evaluating *Relinquishment*
