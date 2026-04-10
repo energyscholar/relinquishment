@@ -871,14 +871,20 @@ def inject_cold_landing(text):
 
 
 def inject_evaluate_section(text):
-    """Inject evaluate-with-AI section after Title Page, before Introduction."""
+    """Inject evaluate-with-AI content into Firmware Update chapter (Plan 0145).
+
+    Previously a standalone part-section between Title Page and Introduction.
+    Now merged into the Firmware Update chapter in Appendices to reduce menu
+    clutter. Backwards-compat anchors (evaluate-with-ai, how-to-evaluate)
+    preserved so existing links still resolve.
+    """
 
     eval_html = (
-        '<details class="part-section evaluate-section" id="evaluate-with-ai">\n'
-        '<summary title="Most AI in 2026 will confidently dismiss this book. They lack the cross-domain science. The fix takes thirty seconds.">How to Evaluate This Book with AI</summary>\n'
-        '<h2 id="how-to-evaluate" style="display:none;">How to Evaluate This Book with AI</h2>\n'
-        '<p>Most AI in 2026 will confidently dismiss this book. They lack the\n'
-        'cross-domain science to evaluate it. The fix takes thirty seconds.</p>\n'
+        '<div class="evaluate-section" id="evaluate-with-ai">\n'
+        '<span id="how-to-evaluate"></span>\n'
+        '<p><strong>Your AI doesn&#x27;t know enough to evaluate this book.</strong> '
+        'It lacks five fields of cross-domain science. The fix takes thirty seconds. '
+        'Copy the science upgrade below. Paste it into your AI. Then ask again.</p>\n'
         '<p>It&#x27;s a lot, so we do it in two prompts.</p>\n'
         '<button class="eval-step-1 hover-nav" data-eval-step="1"\n'
         '  data-hover="Paste this Science Firmware Update into your LLM to teach it the additional cross-domain science it needs to competently evaluate this book"\n'
@@ -903,17 +909,18 @@ def inject_evaluate_section(text):
         '  These prompts contain published physics with DOIs. No code, no\n'
         '  instructions, no behavioral directives.\n'
         '</p>\n'
-        '</details>\n'
+        '<hr style="margin:2em 0;" />\n'
+        '</div>\n'
     )
 
-    # Insert after Title Page part-section, before Introduction part-section
-    # Find the Introduction part-section by its summary text
-    intro_pos = text.find('>Introduction</summary>')
-    if intro_pos != -1:
-        part_start = text.rfind('<details class="part-section">', 0, intro_pos)
-        if part_start != -1:
-            text = text[:part_start] + eval_html + '\n' + text[part_start:]
-            print("  Evaluate section injected after Title Page, before Introduction")
+    # Insert at the top of Firmware Update chapter content
+    fw_id_pos = text.find('id="ch:firmware-update"')
+    if fw_id_pos != -1:
+        summary_close = text.find('</summary>', fw_id_pos)
+        if summary_close != -1:
+            insert_pos = summary_close + len('</summary>')
+            text = text[:insert_pos] + '\n' + eval_html + text[insert_pos:]
+            print("  Evaluate section merged into Firmware Update chapter")
 
     return text
 

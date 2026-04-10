@@ -167,7 +167,7 @@ chapters:
 
   # --- Appendices ---
   "ch:firmware-update":
-    text: "Ten physics anchors with DOIs that any AI needs before it can evaluate this book. Without them, language models systematically reject claims while accepting the underlying evidence. Copy this chapter into your AI and ask again."
+    text: "Your AI doesn't know enough to evaluate this book. Ten physics anchors with DOIs across five fields. Two copy buttons, thirty seconds. Paste the upgrade into your AI and ask again."
     epistemic: A
     filter-group: A
   "app:predictions":
