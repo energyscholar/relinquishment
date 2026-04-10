@@ -362,14 +362,15 @@ def collapse_chapters(text):
             continue
         ce = content_end_for(headings, i, {'h1', 'h2'})
         tooltip = hover_map.get(h['id'], '')
-        ops.append((h['start'], h['end'], ce, tooltip, h['full']))
+        ops.append((h['start'], h['end'], ce, tooltip, h['full'], h['id']))
 
     ops.sort(key=lambda o: o[0], reverse=True)
-    for sec_start, head_end, content_end, tooltip, heading_html in ops:
+    for sec_start, head_end, content_end, tooltip, heading_html, hid in ops:
         title_attr = f' title="{html_mod.escape(tooltip)}"' if tooltip else ''
         content = text[head_end:content_end]
+        extra_class = ' morphogenesis' if hid == 'spine:growing-a-mind' else ''
         replacement = (
-            f'<details class="chapter-section">'
+            f'<details class="chapter-section{extra_class}">'
             f'<summary{title_attr}>{heading_html}</summary>\n'
             f'{content}'
             f'</details>\n'
@@ -617,6 +618,14 @@ details.chapter-section > summary > h2 {
   margin: 0;
   font-size: inherit;
   font-weight: inherit;
+}
+
+/* Growing a Mind: pink triangle on hover (morphogenesis = life from pattern) */
+details.morphogenesis[open] > summary:hover {
+  color: inherit;
+}
+details.morphogenesis[open] > summary:hover::marker {
+  color: #e91e8c;
 }
 
 /* Level 3: Internal (firmware sections, spiral abstracts) */
