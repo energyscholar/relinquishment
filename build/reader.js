@@ -867,10 +867,9 @@
       if (linkedTerm) linkedTerm.removeAttribute('aria-describedby');
       existing.remove();
     }
-    if (hoverTimer) {
-      clearTimeout(hoverTimer);
-      hoverTimer = null;
-    }
+    // Note: do NOT clear hoverTimer here — a new mouseenter may have already
+    // set a timer for the next element. Clearing it here kills the next tooltip.
+    // Each mouseenter/mouseleave manages its own timer.
   }
 
   // Create and show a hover panel for the given term element
