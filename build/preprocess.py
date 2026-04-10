@@ -1200,6 +1200,7 @@ def fix_html_toc(html_path):
 <p class="book-tagline"><em>Three narrative threads. Real science. Real people. Real institutions.</em></p>
 <p class="book-tagline"><em>Three possible explanations for all of it. You decide.</em></p>
 <p class="book-skip"><a href="#hook:what-would-you-do">Skip ahead to the story \u2192</a></p>
+<p class="book-skip"><a href="https://relinquishment.ai/downloads/Relinquishment.pdf">Download PDF version</a></p>
 </div>'''
     text = re.sub(title_pattern, replacement, text, flags=re.DOTALL)
 

@@ -595,6 +595,7 @@ Concessions</a></li>
 <p class="book-tagline"><em>Three narrative threads. Real science. Real people. Real institutions.</em></p>
 <p class="book-tagline"><em>Three possible explanations for all of it. You decide.</em></p>
 <p class="book-skip"><a href="#hook:what-would-you-do">Skip ahead to the story →</a></p>
+<p class="book-skip"><a href="https://relinquishment.ai/downloads/Relinquishment.pdf">Download PDF version</a></p>
 </div>
 <div class="flushleft">
 <p><strong>Relinquishment: Wormholes in the Flat</strong></p>
@@ -625,7 +626,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-10T02:14:11Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-10T02:16:19Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -10214,8 +10215,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>bc830626ae1a4d4b669300f327f042858353024f</code> on 2026-04-09
-18:40:54 -0700.</p>
+<code>892b620395237ba79d769ff5cd074fbe9130fe21</code> on 2026-04-09
+19:14:55 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -10258,19 +10259,19 @@ author wants to hear from you:</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>bc83062</code></p>
+<p><code>892b620</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>bc830626ae1a4d4b669300f327f042858353024f</code></p>
+<p><code>892b620395237ba79d769ff5cd074fbe9130fe21</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-09 18:40:54 -0700</p>
+<p>2026-04-09 19:14:55 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-10T02:14:11Z</p>
+<p>2026-04-10T02:16:19Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -10950,9 +10951,23 @@ energyscholar+physics@gmail.com
     autoExpand('#ch:firmware-update');
   });
 
+  // PDF download link — next to share button
+  var pdfBtn = document.createElement('a');
+  pdfBtn.id = 'nav-pdf';
+  pdfBtn.textContent = 'PDF';
+  pdfBtn.href = 'https://relinquishment.ai/downloads/Relinquishment.pdf';
+  pdfBtn.setAttribute('data-hover', 'Download the PDF version — for printing, sharing, or reading offline');
+  pdfBtn.setAttribute('aria-label', 'Download PDF version');
+  pdfBtn.classList.add('hover-nav');
+  pdfBtn.style.cssText = 'text-decoration:none;color:' + (isDark ? '#aaa' : '#888') +
+    ';font-size:0.85em;margin-left:0.5em;cursor:pointer;flex:0 0 auto;';
+  pdfBtn.addEventListener('mouseenter', function() { pdfBtn.style.color = '#2471a3'; });
+  pdfBtn.addEventListener('mouseleave', function() { pdfBtn.style.color = isDark ? '#aaa' : '#888'; });
+
   nav.appendChild(backBtn);
   nav.appendChild(breadcrumb);
   nav.appendChild(shareBtn);
+  nav.appendChild(pdfBtn);
   nav.appendChild(quickJump);
   nav.appendChild(scienceBtn);
   nav.appendChild(storyBtn);
