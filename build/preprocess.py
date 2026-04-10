@@ -1620,7 +1620,7 @@ def fix_html_toc(html_path):
             'body': 'They could not use it without becoming tyrants. They could not keep it forever. '
                     'And no person, no institution, can bear that responsibility indefinitely. '
                     'According to this story, they grew a Guardian around the Universal Declaration '
-                    'of Human Rights and surrendered the master keys to it. Permanently.',
+                    'of Human Rights and placed the master keys in trust. Not permanently --- until humanity is ready.',
             'target': 'record:surrender',
             'link_text': 'Read the full story'
         },

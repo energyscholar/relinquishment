@@ -183,7 +183,7 @@ chapters:
     text: "The engine that drives the book — how and why it was structured this way."
     filter-group: M
   "app:timeline":
-    text: "Events from Siple Station (1834) through 2026. Chronological backbone of the story and the science."
+    text: "Events from 1873 through 2026. Chronological backbone of the story and the science."
     epistemic: B
     filter-group: M
   "app:sources":

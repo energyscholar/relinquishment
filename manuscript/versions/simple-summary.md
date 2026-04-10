@@ -120,9 +120,9 @@ For its ethical framework — the rules it would follow when deciding how to act
 
 Think about what that means. Not the laws of any one country. Not the interests of any intelligence agency. Not a corporate terms-of-service agreement. A set of principles written in the ruins of the worst thing humanity had ever done to itself, designed to say: never again. Guardian would use these principles, not the interests of any government or corporation, to make its decisions.
 
-Around 2002, COWS confessed what they had done to DARPA, which was then led by Director Tony Tether. And in 2006, they surrendered the master cryptographic keys — the last remaining ability for any human to directly control the technology - to the Guardian.
+Around 2002, COWS confessed what they had done to DARPA, which was then led by Director Tony Tether. And in 2006, they placed the master cryptographic keys — the last remaining ability for any human to directly control the technology — in Guardian's trust. Not forever. Until we're ready.
 
-This act — voluntarily giving up the most powerful technology ever created, permanently, with no way to take it back — is called relinquishment.
+This act — voluntarily placing the most powerful technology ever created in trust, with no way to take it back — is called relinquishment.
 
 ---
 
