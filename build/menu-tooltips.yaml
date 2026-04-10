@@ -82,7 +82,7 @@ chapters:
   "spine:strongest-objection":
     text: "The strongest case for Possibility A, written by the narrator himself. A middle-aged man with a Tolkien obsession and a pattern-matching mind may have built his life inside a novel without noticing. He names the contamination. He does not flinch. If this doesn't convince you, it won't be because he pulled his punches."
     epistemic: A
-    filter-group: M
+    filter-group: A
   "spine:weigh-evidence":
     text: "Three possibilities, restated after the evidence. GCHQ's 24-year secret proves classification works. The silence gap proves nobody asked. The circumstantial evidence is real but not proof. Bruce has lived with all three readings for twenty years. Now it is your turn."
     epistemic: B

@@ -238,16 +238,18 @@
     backBtn.style.display = navStack.length > 0 ? 'inline-block' : 'none';
   }
 
-  // --- Epistemic filter buttons (Plan 0144) ---
-  var activeFilter = null; // null | 'science' | 'story'
+  // --- Epistemic filter buttons (Plan 0144, revised: independent toggles) ---
+  // Both start SHOW (true). Each toggles independently. Not mutually exclusive.
+  var showScience = true;
+  var showStory = true;
 
-  function applyFilter(mode) {
-    activeFilter = mode;
+  function applyFilters() {
     document.querySelectorAll('details.chapter-section').forEach(function(ch) {
       var fg = ch.getAttribute('data-filter-group') || 'M';
       var hide = false;
-      if (mode === 'science') hide = (fg === 'B' || fg === 'C');
-      else if (mode === 'story') hide = (fg === 'A');
+      if (!showScience && fg === 'A') hide = true;
+      if (!showStory && (fg === 'B' || fg === 'C')) hide = true;
+      // M and untagged always visible
       ch.style.display = hide ? 'none' : '';
       if (hide) ch.open = false;
     });
@@ -260,46 +262,47 @@
     });
     updateFilterButtons();
     try {
-      if (mode) localStorage.setItem('relinquishment-filter', mode);
-      else localStorage.removeItem('relinquishment-filter');
+      localStorage.setItem('relinquishment-filter-science', showScience ? '1' : '0');
+      localStorage.setItem('relinquishment-filter-story', showStory ? '1' : '0');
     } catch(e) {}
   }
 
   function updateFilterButtons() {
-    var sciActive = activeFilter === 'science';
-    var storyActive = activeFilter === 'story';
     var activeBase = isDark ? '#2471a3' : '#1a5276';
     var inactiveColor = isDark ? '#5dade2' : '#1a5276';
-    scienceBtn.style.background = sciActive ? activeBase : 'transparent';
-    scienceBtn.style.color = sciActive ? '#fff' : inactiveColor;
-    scienceBtn.style.borderColor = sciActive ? activeBase : inactiveColor;
-    storyBtn.style.background = storyActive ? activeBase : 'transparent';
-    storyBtn.style.color = storyActive ? '#fff' : inactiveColor;
-    storyBtn.style.borderColor = storyActive ? activeBase : inactiveColor;
+    // SHOW state = filled (content visible), HIDE state = outline (content hidden)
+    scienceBtn.style.background = showScience ? activeBase : 'transparent';
+    scienceBtn.style.color = showScience ? '#fff' : inactiveColor;
+    scienceBtn.style.borderColor = activeBase;
+    storyBtn.style.background = showStory ? activeBase : 'transparent';
+    storyBtn.style.color = showStory ? '#fff' : inactiveColor;
+    storyBtn.style.borderColor = activeBase;
   }
 
   var scienceBtn = document.createElement('button');
   scienceBtn.id = 'filter-science';
   scienceBtn.textContent = 'Science';
-  scienceBtn.setAttribute('data-hover', 'Show only the published physics — verified science that stands under all three possibilities');
+  scienceBtn.setAttribute('data-hover', 'Toggle the published physics chapters — verified science that stands under all three possibilities');
   scienceBtn.classList.add('hover-nav');
   scienceBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
-    'font-family:inherit;cursor:pointer;background:transparent;color:#1a5276;' +
+    'font-family:inherit;cursor:pointer;background:#1a5276;color:#fff;' +
     'border:1px solid #1a5276;border-radius:4px;margin:0 0.2em;white-space:nowrap;';
   scienceBtn.addEventListener('click', function() {
-    applyFilter(activeFilter === 'science' ? null : 'science');
+    showScience = !showScience;
+    applyFilters();
   });
 
   var storyBtn = document.createElement('button');
   storyBtn.id = 'filter-story';
   storyBtn.textContent = 'Story';
-  storyBtn.setAttribute('data-hover', 'Show the testimony and narrative — the story as told by the people who lived it');
+  storyBtn.setAttribute('data-hover', 'Toggle the testimony and narrative — the story as told by the people who lived it');
   storyBtn.classList.add('hover-nav');
   storyBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
-    'font-family:inherit;cursor:pointer;background:transparent;color:#1a5276;' +
+    'font-family:inherit;cursor:pointer;background:#1a5276;color:#fff;' +
     'border:1px solid #1a5276;border-radius:4px;margin:0 0.2em;white-space:nowrap;';
   storyBtn.addEventListener('click', function() {
-    applyFilter(activeFilter === 'story' ? null : 'story');
+    showStory = !showStory;
+    applyFilters();
   });
 
   // Evaluate button (navigates to evaluate-with-AI section)
@@ -465,10 +468,12 @@
       try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch(e) {}
     }
     if (!target) return;
-    // Clear filter if target is inside a hidden chapter
+    // Clear filters if target is inside a hidden chapter
     var parentCh = target.closest('details.chapter-section');
     if (parentCh && parentCh.style.display === 'none') {
-      applyFilter(null);
+      showScience = true;
+      showStory = true;
+      applyFilters();
     }
     var el = target;
     while (el) {
@@ -491,9 +496,12 @@
   }
   // Restore saved filter state (before deep-link, so deep-link can override)
   try {
-    var savedFilter = localStorage.getItem('relinquishment-filter');
-    if (savedFilter === 'science' || savedFilter === 'story') {
-      applyFilter(savedFilter);
+    var savedSci = localStorage.getItem('relinquishment-filter-science');
+    var savedStory = localStorage.getItem('relinquishment-filter-story');
+    if (savedSci === '0' || savedStory === '0') {
+      if (savedSci === '0') showScience = false;
+      if (savedStory === '0') showStory = false;
+      applyFilters();
     }
   } catch(e) {}
 
@@ -777,10 +785,10 @@
     backBtn.style.color = '#5dade2';
     backBtn.style.borderColor = '#5dade2';
     evalBtn.style.background = '#2471a3';
-    scienceBtn.style.color = '#5dade2';
-    scienceBtn.style.borderColor = '#5dade2';
-    storyBtn.style.color = '#5dade2';
-    storyBtn.style.borderColor = '#5dade2';
+    scienceBtn.style.background = '#2471a3';
+    scienceBtn.style.borderColor = '#2471a3';
+    storyBtn.style.background = '#2471a3';
+    storyBtn.style.borderColor = '#2471a3';
   }
 
   // --- Navigation Stack (Plan 0134b) ---
