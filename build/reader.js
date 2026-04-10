@@ -319,9 +319,23 @@
     autoExpand('#ch:firmware-update');
   });
 
+  // PDF download link — next to share button
+  var pdfBtn = document.createElement('a');
+  pdfBtn.id = 'nav-pdf';
+  pdfBtn.textContent = 'PDF';
+  pdfBtn.href = 'https://relinquishment.ai/downloads/Relinquishment.pdf';
+  pdfBtn.setAttribute('data-hover', 'Download the PDF version — for printing, sharing, or reading offline');
+  pdfBtn.setAttribute('aria-label', 'Download PDF version');
+  pdfBtn.classList.add('hover-nav');
+  pdfBtn.style.cssText = 'text-decoration:none;color:' + (isDark ? '#aaa' : '#888') +
+    ';font-size:0.85em;margin-left:0.5em;cursor:pointer;flex:0 0 auto;';
+  pdfBtn.addEventListener('mouseenter', function() { pdfBtn.style.color = '#2471a3'; });
+  pdfBtn.addEventListener('mouseleave', function() { pdfBtn.style.color = isDark ? '#aaa' : '#888'; });
+
   nav.appendChild(backBtn);
   nav.appendChild(breadcrumb);
   nav.appendChild(shareBtn);
+  nav.appendChild(pdfBtn);
   nav.appendChild(quickJump);
   nav.appendChild(scienceBtn);
   nav.appendChild(storyBtn);
