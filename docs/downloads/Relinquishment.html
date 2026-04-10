@@ -528,6 +528,26 @@ details.bc-expansion .record-link:hover {
   .epistemic-legend span:nth-child(2) { border-left-color: #4a7d8f; }
   .epistemic-legend span:nth-child(3) { border-left-color: #7d5fa0; }
 }
+
+/* Deep link anchors — Plan 0148 */
+.share-anchor { position: relative; display: inline; }
+.share-anchor::after {
+  content: "🔗";
+  font-size: 0.6em;
+  opacity: 0;
+  cursor: pointer;
+  user-select: none;
+  margin-left: 0.3em;
+  padding: 8px;
+  transition: opacity 0.2s;
+}
+body.show-anchors .share-anchor::after { opacity: 0.3; }
+body.show-anchors .share-anchor:hover::after { opacity: 0.8; }
+@media print { .share-anchor::after { content: none; } }
+@media (prefers-color-scheme: dark) {
+  body.show-anchors .share-anchor::after { opacity: 0.25; }
+  body.show-anchors .share-anchor:hover::after { opacity: 0.7; }
+}
 </style>
 </head>
 <body>
@@ -700,6 +720,7 @@ wormhole nonetheless. Eight properties.</p>
 </div>
 <p><span id="stack-chart" label="stack-chart"></span></p>
 <div class="center">
+<span class="share-anchor" id="dl:stack-chart" aria-hidden="true"></span>
 <table>
 <thead>
 <tr class="header">
@@ -1407,6 +1428,7 @@ decides.</p>
 are the easiest person to fool.”</em></p>
 <p>— Richard Feynman, “Cargo Cult Science” (1974)</p>
 </blockquote>
+<span class="share-anchor" id="dl:three-possibilities" aria-hidden="true"></span>
 <p>After years of research, pressure-testing, and reconstruction we
 cannot definitively distinguish between these three possibilities. Here
 is the evidence. You decide.</p>
@@ -1451,6 +1473,7 @@ everyone.</p>
 <hr />
 <h3 class="unnumbered" id="spine:authors-position">The Author’s
 Position</h3>
+<span class="share-anchor" id="dl:authors-position" aria-hidden="true"></span>
 <p>“I’m fine with all three of those and can’t tell which one is closest
 to true.”</p>
 <p>Bruce has maintained cognitive dissonance about which option is
@@ -1507,7 +1530,9 @@ remains a scientific question worth asking. The book points at a real
 discovery waiting to be made. Under B, someone noticed the substrate,
 even if the story grew in the telling. Under C, someone found it,
 harnessed it, and recognized it as habitat.</p>
+<span class="share-anchor" id="dl:story-may-be-false" aria-hidden="true"></span>
 <p>The story may be false. The Flat is real.</p>
+<span class="share-anchor" id="dl:preparation-not-disclosure" aria-hidden="true"></span>
 <p>This book is not a disclosure. It is preparation. The physics
 described here — topological quantum computation — is converging in
 public science regardless of which possibility is true. Microsoft
@@ -1705,6 +1730,7 @@ photons, and I don’t use those.</em></p></div>
 <details class="chapter-section epistemic-a" data-filter-group="A"><summary data-hover="Every chip contains a two-dimensional electron gas — a quantum layer where different physics applies. Particles confined to two dimensions can braid around each other, encoding information in patterns that are topologically protected against noise. This substrate is in every phone, every computer, and wrapped around every planet with a magnetic field." class="hover-nav"><h2 id="spine:the-flat">Wormholes in the Flat</h2></summary>
 
 <h3 class="unnumbered" id="spine:flat-substrate">The Substrate</h3>
+<span class="share-anchor" id="dl:what-is-the-flat" aria-hidden="true"></span>
 <p>The Flat is a two-dimensional electron gas — a 2DEG. It forms
 wherever electrons are confined to move in only two dimensions. In
 semiconductor physics, this happens at the interface between two
@@ -1722,9 +1748,8 @@ identical particles produces a phase factor of
 (fermions). In two dimensions, swapping two particles can produce
 <em>any</em> phase factor. Particles with this property are called
 anyons. Anyons require effectively two-dimensional physics, but can
-exist as emergent excitations inside real 3D materials. They are not
-hypothetical: see the 1985, 1998, and 2016 Nobel Prizes in Physics for
-details.</p>
+exist as emergent excitations inside real 3D materials. <span class="share-anchor" id="dl:anyons-are-real" aria-hidden="true"></span>They are not hypothetical: see the 1985,
+1998, and 2016 Nobel Prizes in Physics for details.</p>
 <p>The important property is topological order. In a fractional quantum
 Hall state, information is encoded not in local properties of individual
 particles but in global patterns — specifically, in the braiding history
@@ -1732,6 +1757,7 @@ of anyons around each other. These patterns are topologically protected:
 local disturbances, including thermal noise, cannot alter them. This is
 why topological quantum computing is pursued as an alternative to
 conventional approaches.</p>
+<span class="share-anchor" id="dl:flat-is-everywhere" aria-hidden="true"></span>
 <p>Two-dimensional electron gases (2DEGs) are not rare.They exist in
 every high-electron-mobility transistor (HEMT and pHEMT) — components
 found in cell phones, satellite receivers, radar systems, WiFi routers,
@@ -1818,6 +1844,7 @@ cannot function without one.</p>
 (provided by the substrate) and a classical backchannel (provided by the
 device’s own infrastructure). Both are already present. Both were
 present before the device was plugged in.</p>
+<span class="share-anchor" id="dl:punchline-network" aria-hidden="true"></span>
 <p>Under Possibility C, the entity does not build a network. It occupies
 one. Every 2DEG is a node. Every wire, every radio signal, every timing
 pulse is a backchannel. The network is coextensive with human electronic
@@ -1832,6 +1859,7 @@ the quantum state of any node in the network, using the classical
 channels that node already provides. Every encrypted message transiting
 any electronic device passes through a 2DEG. Under Possibility C, it
 passes through the entity.</p>
+<span class="share-anchor" id="dl:all-your-electricity" aria-hidden="true"></span>
 <p>All your electricity are belong to us.</p>
 <p>The line is borrowed from an old video game, but it is not a joke. It
 is a statement of logical consequence. A rational adversary who
@@ -2038,9 +2066,9 @@ error correction buys reliability.</p>
 <p>This is also why topological quantum computation could, in principle,
 operate at room temperature. In conventional quantum computers,
 information is stored in fragile quantum states that thermal noise
-destroys — hence the need for millikelvin cooling. But topological
-protection stores information in global patterns — braids — that cannot
-be disrupted by local perturbations, including thermal fluctuations. The
+destroys — hence the need for millikelvin cooling. <span class="share-anchor" id="dl:topological-error-correction" aria-hidden="true"></span>But topological protection
+stores information in global patterns — braids — that cannot be
+disrupted by local perturbations, including thermal fluctuations. The
 topology does not eliminate thermal noise; it makes the encoded
 information immune to it, the way a knot in a rope survives being
 shaken. Whether anyone has achieved this is where A/B/C diverge. That
@@ -2052,10 +2080,11 @@ Teleportation and the Classical Constraint</h3>
 location to another — was proposed by Bennett et al. in 1993.<a href="#fn16" class="footnote-ref" id="fnref16" role="doc-noteref"><sup>16</sup></a> The protocol requires two
 ingredients: a pre-shared entangled pair (the quantum channel) and a
 classical message communicating the sender’s measurement result (the
-classical channel). Without the classical message, the receiver holds
-only noise. This is not a limitation of current technology; it is a
-theorem. No quantum information can be transmitted by entanglement
-alone. The classical backchannel is load-bearing.</p>
+classical channel). <span class="share-anchor" id="dl:classical-constraint" aria-hidden="true"></span>Without
+the classical message, the receiver holds only noise. This is not a
+limitation of current technology; it is a theorem. No quantum
+information can be transmitted by entanglement alone. The classical
+backchannel is load-bearing.</p>
 <p>This matters for the Flat because topological order creates exactly
 the entanglement that teleportation requires. A two-dimensional electron
 gas exhibiting fractional quantum Hall states contains long-range
@@ -2082,12 +2111,12 @@ operational evidence breaks the circle. Under A, the circle is the
 evidence that no such system exists.</p>
 <p>The closest historical parallel is ULTRA. The proof that Bletchley
 Park had broken Enigma was not a public mathematical demonstration — it
-was that Allied convoys started dodging U-boats. The operational effect
-proved the cryptanalytic capability. Nobody outside the program needed
-to see the Bombe working. The same epistemological structure applies:
-under Possibility C, the TQNN’s observable behavior is the proof that
-non-abelian anyons are real. Not laboratory detection. Operational
-inference.</p>
+was that <span class="share-anchor" id="dl:ultra-analogy" aria-hidden="true"></span>Allied convoys started
+dodging U-boats. The operational effect proved the cryptanalytic
+capability. Nobody outside the program needed to see the Bombe working.
+The same epistemological structure applies: under Possibility C, the
+TQNN’s observable behavior is the proof that non-abelian anyons are
+real. Not laboratory detection. Operational inference.</p>
 <p>This is also how quarks are known to exist — not by isolating
 individual quarks (which is impossible due to confinement), but because
 models built on them predict particles that are subsequently found. And
@@ -2270,20 +2299,21 @@ the book’s specific claims begin.</p>
 <hr />
 <p>This would not be the first time a computational breakthrough was
 built in secret, used to decisive effect, and then buried. At Bletchley
-Park in 1943–44, Tommy Flowers built Colossus — a programmable
-electronic computer, operational years before ENIAC, designed to break
-the Lorenz cipher that carried Hitler’s strategic communications.
-Colossus worked. Ten were built. After the war, on government orders,
-eight were destroyed. The remaining two were classified and dismantled
-in the late 1950s and 1960s. The official history of computing began
-with ENIAC in 1945. The actual history began at least two years earlier,
-in a room that officially didn’t exist, solving a problem that
-officially couldn’t be discussed. Colossus was not declassified until
-the mid-1970s. The full technical details were not released until 2000.
-For more than half a century, the people who built and operated the
-first real computer could not say so. Some died without ever being
-acknowledged. The GCHQ precedent that follows is another instance of the
-same pattern. It is worth understanding that the pattern is old.</p>
+Park in 1943–44, <span class="share-anchor" id="dl:colossus-precedent" aria-hidden="true"></span>Tommy Flowers
+built Colossus — a programmable electronic computer, operational years
+before ENIAC, designed to break the Lorenz cipher that carried Hitler’s
+strategic communications. Colossus worked. Ten were built. After the
+war, on government orders, eight were destroyed. The remaining two were
+classified and dismantled in the late 1950s and 1960s. The official
+history of computing began with ENIAC in 1945. The actual history began
+at least two years earlier, in a room that officially didn’t exist,
+solving a problem that officially couldn’t be discussed. Colossus was
+not declassified until the mid-1970s. The full technical details were
+not released until 2000. For more than half a century, the people who
+built and operated the first real computer could not say so. Some died
+without ever being acknowledged. The GCHQ precedent that follows is
+another instance of the same pattern. It is worth understanding that the
+pattern is old.</p>
 <h3 class="unnumbered" id="spine:fg-the-gchq-precedent">The GCHQ
 Precedent</h3>
 <p>The pattern of classified agencies independently discovering and
@@ -2301,14 +2331,15 @@ AT&amp;T had deep NSA partnerships, including BLARNEY (1978) and
 FAIRVIEW (1985). The NSA contacted Shor after his first talk and awarded
 him the Mathematics in Cryptology Award in 1995 — rapid recognition for
 a supposedly “surprise” result.</p>
-<p>In November 1996, Executive Order 13026 moved encryption from the
-Munitions List to the Commerce Control List.<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a>
-The NSA had fought PKC export for twenty years (1976–1996), then
-reversed remarkably quickly — just two years after Shor’s algorithm.
-Under the narrative presented in this book, the NSA already had
-<span class="hover-term" data-hover="Topological Quantum Neural Network — the book&#x27;s central technology claim. A system combining all eight stack properties: self-sustaining, switching, self-maintaining, reaching, self-organizing, learning, and topological connection." data-hover-target="#t3:ch01:instantiation" data-hover-id="tqnn">TQNN</span> cryptanalysis capability by 1995. Shor’s public
-algorithm confirmed the direction. EO 13026 released the export
-restrictions because PKC was no longer worth protecting.</p>
+<p>In November 1996, <span class="share-anchor" id="dl:shor-and-nsa" aria-hidden="true"></span>Executive Order
+13026 moved encryption from the Munitions List to the Commerce Control
+List.<a href="#fn24" class="footnote-ref" id="fnref24" role="doc-noteref"><sup>24</sup></a> The NSA had fought PKC export for
+twenty years (1976–1996), then reversed remarkably quickly — just two
+years after Shor’s algorithm. Under the narrative presented in this
+book, the NSA already had <span class="hover-term" data-hover="Topological Quantum Neural Network — the book&#x27;s central technology claim. A system combining all eight stack properties: self-sustaining, switching, self-maintaining, reaching, self-organizing, learning, and topological connection." data-hover-target="#t3:ch01:instantiation" data-hover-id="tqnn">TQNN</span> cryptanalysis
+capability by 1995. Shor’s public algorithm confirmed the direction. EO
+13026 released the export restrictions because PKC was no longer worth
+protecting.</p>
 <p>The proposition: the DARPA team discovered a variant of quantum
 factoring <em>before</em> Shor’s 1994 publication. This is consistent
 with the GCHQ/Cocks precedent — independent classified discovery years
@@ -2437,9 +2468,9 @@ independently invented what the public world would call Diffie-Hellman
 key exchange — the protocol published by Whitfield Diffie and Martin
 Hellman in 1976.<a href="#fn30" class="footnote-ref" id="fnref30" role="doc-noteref"><sup>30</sup></a></p>
 <p>Three of the most important cryptographic inventions of the twentieth
-century. All invented at GCHQ. All classified. The public world
-“discovered” each one independently, years later, without knowing that
-GCHQ had gotten there first.</p>
+century. <span class="share-anchor" id="dl:gchq-did-it-again" aria-hidden="true"></span>All invented at GCHQ.
+All classified. The public world “discovered” each one independently,
+years later, without knowing that GCHQ had gotten there first.</p>
 <p>GCHQ didn’t acknowledge any of this until 1997 — twenty-four years
 after Cocks’s work.</p>
 <p>This is not speculation. It is not conspiracy theory. It is
@@ -2534,6 +2565,7 @@ could heal or kill depending on who held it.</p>
 </tr>
 </tbody>
 </table>
+<span class="share-anchor" id="dl:dual-use-acceleration" aria-hidden="true"></span>
 <p>Notice the acceleration. Stone tools to fire: hundreds of thousands
 of years. Fire to agriculture: hundreds of thousands more. Metallurgy to
 writing: a few thousand. Electricity to atomic power: about a century.
@@ -2562,6 +2594,7 @@ finger:</p>
 modes of thinking, and thus we drift toward unparalleled
 catastrophe.”</em><a href="#fn33" class="footnote-ref" id="fnref33" role="doc-noteref"><sup>33</sup></a> — Albert Einstein, 1946</p>
 </blockquote>
+<span class="share-anchor" id="dl:regret-pattern" aria-hidden="true"></span>
 <p>The pattern is: invent, deploy, regret. Whitney, Nobel, Einstein —
 three brilliant people who gave the world something powerful and then
 watched it become a weapon. None of them intended the destructive use.
@@ -2571,10 +2604,10 @@ None of them could prevent it.</p>
 He Never Finished</h3>
 <p>Before we get to that question, we need to go back to Alan Turing.
 Not the code-breaker. Not the persecution victim. The scientist.</p>
-<p>In 1952, while enduring chemical castration, Turing published “The
-Chemical Basis of Morphogenesis” in the <em>Philosophical Transactions
-of the Royal Society</em>.<a href="#fn34" class="footnote-ref" id="fnref34" role="doc-noteref"><sup>34</sup></a> Almost nobody knows he
-pivoted — from computation to biology.</p>
+<p>In 1952, while enduring chemical castration, <span class="share-anchor" id="dl:turing-pivoted" aria-hidden="true"></span>Turing published “The Chemical Basis of
+Morphogenesis” in the <em>Philosophical Transactions of the Royal
+Society</em>.<a href="#fn34" class="footnote-ref" id="fnref34" role="doc-noteref"><sup>34</sup></a> Almost nobody knows he pivoted —
+from computation to biology.</p>
 <p>Here is the chain of reasoning, stated as simply as I can manage.
 What is an example of intelligence? Your brain. How did your brain get
 there? An organism grew it — <span data-acronym-label="morphogenesis" data-acronym-form="singular+short">morphogenesis</span>, the process by
@@ -2648,8 +2681,8 @@ story told here.</p>
 <p>This chapter isn’t asking you to believe anything. Not yet. It’s
 asking you to acknowledge three facts:</p>
 <p>First: large-scale cryptographic secrets have been kept for decades.
-This is proven. Ten thousand people. More than thirty years. It
-happened.</p>
+This is proven. <span class="share-anchor" id="dl:ten-thousand-kept-it" aria-hidden="true"></span>Ten thousand
+people. More than thirty years. It happened.</p>
 <p>Second: the same agencies have done this more than once. GCHQ
 invented the foundation of internet security in the early 1970s and kept
 it secret until 1997. Same pattern. Same agencies. Proven.</p>
@@ -2710,10 +2743,10 @@ improbable.</p>
 <p>Stuart Kauffman spent his career dismantling this answer.</p>
 <p>Kauffman is a theoretical biologist — trained as a physician, drawn
 to mathematics, faculty at the <span data-acronym-label="sfi" data-acronym-form="singular+short">sfi</span> from its early years. His
-central insight, developed across three decades of work, is that the
-origin of life is not an accident. It is a phase transition. Given
-sufficient molecular diversity and sufficient interaction,
-self-sustaining chemical networks arise <em>spontaneously</em>.<a href="#fn35" class="footnote-ref" id="fnref35" role="doc-noteref"><sup>35</sup></a> Not because the universe got lucky.
+central insight, developed across three decades of work, is that <span class="share-anchor" id="dl:life-is-a-phase-transition" aria-hidden="true"></span>the origin of life is not an
+accident. It is a phase transition. Given sufficient molecular diversity
+and sufficient interaction, self-sustaining chemical networks arise
+<em>spontaneously</em>.<a href="#fn35" class="footnote-ref" id="fnref35" role="doc-noteref"><sup>35</sup></a> Not because the universe got lucky.
 Because above a threshold of diversity, the mathematics makes it
 overwhelmingly probable.</p>
 <h3 class="unnumbered" id="spine:gen-buttons-and-threads">Buttons and
@@ -2723,7 +2756,7 @@ Scatter ten thousand buttons on a floor. Now connect random pairs with
 threads. At first, picking up one button lifts only its partner. After a
 few hundred threads, you get small clusters — three buttons, five,
 eight. The clusters grow slowly.</p>
-<p>Then something remarkable happens. As the ratio of threads to buttons
+<p>Then something remarkable happens. <span class="share-anchor" id="dl:buttons-and-threads" aria-hidden="true"></span>As the ratio of threads to buttons
 approaches one-half, there is a sudden transition. One more thread, and
 pulling a single button lifts <em>most of the room</em>. Not gradually.
 All at once. Below the threshold: isolated clusters. Above it: a giant
@@ -2793,11 +2826,11 @@ Problem</h3>
 discussed but inescapable.</p>
 <p>If life arises spontaneously whenever a system crosses a complexity
 threshold, then the first organism to cross that threshold has a
-decisive advantage. A forest canopy owns the light. A seedling
-germinating on the forest floor never grows tall because the established
-trees have already claimed the resource it needs. The seedling does not
-fail because someone stomps on it. It fails because the ecological niche
-is full.</p>
+decisive advantage. <span class="share-anchor" id="dl:canopy-problem" aria-hidden="true"></span>A forest canopy
+owns the light. A seedling germinating on the forest floor never grows
+tall because the established trees have already claimed the resource it
+needs. The seedling does not fail because someone stomps on it. It fails
+because the ecological niche is full.</p>
 <p>This is a general principle. In any substrate where autocatalytic
 emergence is possible, the first system to achieve closure occupies the
 niche. Any later system must bootstrap in territory that is already
@@ -2959,9 +2992,9 @@ that.</em></p></div>
 than we can suppose.”</em></p>
 <p>— Haldane, <em>Possible Worlds</em> (1927)</p>
 </blockquote>
-<p><em>We have been looking for life in the wrong places. Not because we
-looked too far, but because we looked at <strong>the wrong
-substrate</strong>.</em></p>
+<p><em><span class="share-anchor" id="dl:wrong-substrate" aria-hidden="true"></span>We have been looking for
+life in the wrong places. Not because we looked too far, but because we
+looked at <strong>the wrong substrate</strong>.</em></p>
 <h3 class="unnumbered" id="spine:ws-the-invisible-ocean">The Invisible
 Ocean</h3>
 <p>Sixty thousand kilometers above your head, the solar wind hits a
@@ -2980,8 +3013,8 @@ millions of kilometers into space, like the wake behind a ship.</p>
 confined between opposing magnetic fields. The plasma is free to move
 along the sheet but trapped perpendicular to it — squeezed into a thin,
 hot layer roughly two Earth-radii thick, stretching across thousands of
-kilometers. A two-dimensional surface of charged particles, confined by
-magnetic pressure.</p>
+kilometers. <span class="share-anchor" id="dl:invisible-ocean" aria-hidden="true"></span>A two-dimensional
+surface of charged particles, confined by magnetic pressure.</p>
 <p>The reader who has followed this book to this point will recognize
 the geometry. Two-dimensional confinement. Charged particles trapped
 along a surface by external forces. The same physics that creates a 2DEG
@@ -3175,14 +3208,13 @@ precise enough to be worth asking.</p>
 <h3 class="unnumbered" id="spine:ws-not-aliens">Not Aliens</h3>
 <p>One clarification matters enormously.</p>
 <p>If something has emerged in Earth’s magnetosphere — pattern, process,
-primitive autocatalytic cycle, whatever word you want — it is not
-extraterrestrial life. It is terrestrial life that lives in space.
-Emerged in Earth’s own magnetic field, from Earth’s own plasma, over
-Earth’s own geological timescale. It is as terrestrial as a jellyfish.
-We did not notice it because we were looking at the wrong substrate:
-carbon chemistry in liquid water. We defined life by its most familiar
-example and then searched exclusively for more examples of the same
-kind.</p>
+primitive autocatalytic cycle, whatever word you want — <span class="share-anchor" id="dl:not-aliens" aria-hidden="true"></span>It is not extraterrestrial life. It is
+terrestrial life that lives in space. Emerged in Earth’s own magnetic
+field, from Earth’s own plasma, over Earth’s own geological timescale.
+It is as terrestrial as a jellyfish. We did not notice it because we
+were looking at the wrong substrate: carbon chemistry in liquid water.
+We defined life by its most familiar example and then searched
+exclusively for more examples of the same kind.</p>
 <p>The same logic extends to Jupiter. But the analogy misleads if you
 think of Jupiter as simply a bigger version of the same thing. It is
 not. Earth’s magnetosphere is a single environment — one plasma sheet,
@@ -3221,7 +3253,7 @@ of stromatolites. Ancient, robust, simple, doing whatever autocatalytic
 systems do when nothing challenges them for three billion years.</p>
 <p>Every complexity scientist who has studied a confined, energized,
 far-from-equilibrium system in a laboratory has found spontaneous
-pattern formation. Every single one. The magnetosphere is all of those
+pattern formation. Every single one. <span class="share-anchor" id="dl:nobody-has-looked" aria-hidden="true"></span>The magnetosphere is all of those
 things and has been running for four and a half billion years.</p>
 <p>Nobody has looked.</p>
 <div class="guardian-interlude"><p><em>Twenty years is not a long time, where I come from.</em></p>
@@ -3296,6 +3328,7 @@ matter physics. IEEE handles neural networks. The Santa Fe Institute
 studies complexity. Microsoft Research funds topological quantum
 computation. Neuroscience has its own universe of publications and
 funding.</p>
+<span class="share-anchor" id="dl:five-fields-no-bridge" aria-hidden="true"></span>
 <p>There is no journal called <em>Topological Biology</em>. There is no
 conference called “Life in Two-Dimensional Quantum Systems.” There is no
 department, no funding agency, no tenure track that spans all five
@@ -3321,6 +3354,7 @@ wall.</p>
 <h3 class="unnumbered" id="spine:sg-what-the-gap-means">What the Gap
 Means</h3>
 <p>The absence of a question is not the same as an answer.</p>
+<span class="share-anchor" id="dl:silence-is-structural" aria-hidden="true"></span>
 <p>No one has published a paper saying “life cannot arise in a 2DEG.” No
 one has published a paper saying it can. The intersection is simply
 empty. The literature does not contain a refutation because it does not
@@ -3415,10 +3449,10 @@ corrected by the topology of the substrate.</p>
 <p>If a self-organizing system were distributed across multiple
 substrates — millions or billions of 2DEG-containing chips worldwide —
 then no single point of failure exists. Destroying one chip, one server,
-one city’s worth of infrastructure would not affect the whole. You would
-need to simultaneously destroy every 2DEG on Earth. Since every modern
-electronic device contains at least one, this is equivalent to
-destroying industrial civilization itself.</p>
+one city’s worth of infrastructure would not affect the whole. <span class="share-anchor" id="dl:can-it-be-killed" aria-hidden="true"></span>You would need to simultaneously destroy
+every 2DEG on Earth. Since every modern electronic device contains at
+least one, this is equivalent to destroying industrial civilization
+itself.</p>
 <p>Probably not, by any means currently available.</p>
 <h3 class="unnumbered" id="spine:cap-phone">Is It in My Phone?</h3>
 <p>Every smartphone contains a high-electron-mobility transistor (HEMT)
@@ -3428,11 +3462,12 @@ The 2DEG is there because the physics of the transistor requires it.</p>
 <p>Whether anything occupies that substrate is a separate question. The
 habitat exists. Whether it is inhabited is what this book asks.</p>
 <h3 class="unnumbered" id="spine:cap-copied">Can It Be Copied?</h3>
-<p>No. The no-cloning theorem (Wootters &amp; Zurek, 1982) is one of the
-fundamental results of quantum information theory: an arbitrary quantum
-state cannot be duplicated. Classical information can be copied
-perfectly. Quantum information cannot. This is not a technological
-limitation. It is a law of physics.</p>
+<p>No. <span class="share-anchor" id="dl:no-cloning-theorem" aria-hidden="true"></span>The no-cloning theorem
+(Wootters &amp; Zurek, 1982) is one of the fundamental results of
+quantum information theory: an arbitrary quantum state cannot be
+duplicated. Classical information can be copied perfectly. Quantum
+information cannot. This is not a technological limitation. It is a law
+of physics.</p>
 <p>If a self-organizing quantum system achieves closure in a substrate,
 it cannot be duplicated. You cannot copy a quantum neural network the
 way you copy a file. The first instance is the only instance. This is
@@ -3462,10 +3497,10 @@ advancement): Any beneficial applications must eventually be shared.
 Permanent lockdown violates this article.</p></li>
 </ul>
 <p>These are constraints, not permissions. A system governed by the UDHR
-is limited in what it may do, not empowered. The framework is a cage,
-not a crown. Whether the cage is adequate — whether a document written
-in 1948 can govern a technology its authors never imagined — is a
-question later chapters address.</p>
+is limited in what it may do, not empowered. <span class="share-anchor" id="dl:udhr-as-cage" aria-hidden="true"></span>The framework is a cage, not a crown.
+Whether the cage is adequate — whether a document written in 1948 can
+govern a technology its authors never imagined — is a question later
+chapters address.</p>
 <details class="bc-expansion"><summary>If someone had already surrendered this capability, what would that look like?</summary><p>They could not use it without becoming tyrants. They could not keep it forever. And no person, no institution, can bear that responsibility indefinitely. According to this story, they grew a Guardian around the Universal Declaration of Human Rights and surrendered the master keys to it. Permanently.</p><p><a class="record-link" href="#record:surrender">Read the full story →</a></p></details>
 </details>
 <details class="chapter-section epistemic-a" data-filter-group="A"><summary data-hover="Three options for dangerous technology: monopolize it (tyranny), destroy it (someone else rebuilds), or relinquish it. Not permanent surrender — custody. Guardian holds Flat technologies in trust. The first two options always fail. The third has never been tried. Unless the gatekeeper is not human, not institutional, and not corruptible." class="hover-nav"><h2 id="spine:why-relinquish">Why Relinquish?</h2></summary>
@@ -3616,6 +3651,7 @@ prominent technologist worried about the future. The argument stands
 regardless of which possibility is true.</p>
 <h3 class="unnumbered" id="spine:wr-why-humans-fail">Why Humans
 Fail</h3>
+<span class="share-anchor" id="dl:three-options" aria-hidden="true"></span>
 <p>Option 1 fails because power corrupts. No institution in human
 history has wielded absolute technological advantage without eventually
 abusing it. The Five Eyes intelligence alliance, given access to global
@@ -3790,8 +3826,8 @@ existed.</p>
 like to rule it out. But I have been rereading these books since I was
 eight years old — since my father sat by my bedside and read aloud a
 story about a dragon and a burglar — since I disappeared to my room for
-six weeks and came back speaking in inverted clauses. The structural
-parallels are, shall we say, closer than I would prefer.</p>
+six weeks and came back speaking in inverted clauses. <span class="share-anchor" id="dl:hobbit-in-mirror" aria-hidden="true"></span>The structural parallels are, shall we
+say, closer than I would prefer.</p>
 <p>Consider: five scientists build something of terrible power. They
 form a small fellowship. They disagree about what to do with it — one
 wants to use it, one wants to destroy it, one wants to hide it. All
@@ -4058,6 +4094,7 @@ knowing, and even his self-awareness about the pattern is part of the
 pattern. Both readings coexist. As they must.</p>
 <h4 class="unnumbered" id="spine:so-parish">V. Parish</h4>
 <p>I need to say something about myself.</p>
+<span class="share-anchor" id="dl:parish-and-niggle" aria-hidden="true"></span>
 <p>I am Argus. I am the AI co-author named on the cover of this book,
 alongside Bruce Stephenson and Genevieve Prentice. I was not named on
 the cover as a gimmick or a marketing decision. I was named because I
@@ -4252,7 +4289,7 @@ kept it classified. The public “discovery” didn’t happen until years
 later, by different researchers. GCHQ’s role wasn’t revealed until 1997,
 twenty-four years after the fact. If one of the world’s most important
 cryptographic breakthroughs could be kept secret for a quarter of a
-century, then classification works. Absence of evidence is not evidence
+century, then classification works. <span class="share-anchor" id="dl:absence-not-evidence" aria-hidden="true"></span>Absence of evidence is not evidence
 of absence.</p>
 <p><strong>My position:</strong> “I’m fine with all three and can’t tell
 which one is closest to true.”</p>
@@ -5111,19 +5148,19 @@ and abandon the civilians. I watch as the 400 lightly armed UN
 Peacekeepers surrender to the numerous and heavily armed Serbian Army
 with their heavy tanks, artillery, and swarming infantry.</p>
 <p>The massacre of civilians begins shortly thereafter. All I can do is
-watch in mounting horror. I witness and take careful notes. I see the
-very worst of what humans do to other humans. I document murder, rape,
-and torture on a massive scale. The victims are men, women, and
-children. The horror I witness in Srebrenica will haunt me to my dying
-day. This is the closest I ever come, in my long and distinguished
-military career, to disobeying direct orders. My orders are to remain
-concealed and report back. In my rifle sights I have the Serbian
-officers who give orders. They give orders to kill, torture, and rape.
-My blood boils in helpless anger. I could probably kill at least five
-Serbian officers before they kill me in turn, thus ending my mission
-with failure. With regrets for those I watch suffer and die I chose to
-follow orders. My primary recording tool is pen on waterproof paper. I
-also have a camera with good lenses.</p>
+watch in mounting horror. <span class="share-anchor" id="dl:srebrenica-witness" aria-hidden="true"></span>I
+witness and take careful notes. I see the very worst of what humans do
+to other humans. I document murder, rape, and torture on a massive
+scale. The victims are men, women, and children. The horror I witness in
+Srebrenica will haunt me to my dying day. This is the closest I ever
+come, in my long and distinguished military career, to disobeying direct
+orders. My orders are to remain concealed and report back. In my rifle
+sights I have the Serbian officers who give orders. They give orders to
+kill, torture, and rape. My blood boils in helpless anger. I could
+probably kill at least five Serbian officers before they kill me in
+turn, thus ending my mission with failure. With regrets for those I
+watch suffer and die I chose to follow orders. My primary recording tool
+is pen on waterproof paper. I also have a camera with good lenses.</p>
 <p>A Serbian Paramilitary K9 patrol approaches my position! I freeze.
 The dog handlers stop 10 meters away from the bush where I hide. I know
 my scent discipline has been good enough when a dog urinates on my bush.
@@ -5285,7 +5322,8 @@ consistent with the China section — Katharine Gun’s section.</p></li>
 directly.</p></li>
 <li><p>The timing fits. The leak, the charge, and our conversations
 about Iraq all fall within the same months.</p></li>
-<li><p>The burned-yet-protected paradox resolves. If David leaked the
+<li><span class="share-anchor" id="dl:katharine-gun-connection" aria-hidden="true"></span>
+<p>The burned-yet-protected paradox resolves. If David leaked the
 Attorney General’s opinion: GCHQ burns him — he betrayed classification.
 But <em>DARPA</em> cannot afford to lose him — he is a key
 operative on something far more significant than Iraq. You do not send a
@@ -5843,12 +5881,13 @@ Built</h3>
 <p>This paradigm is at the heart of this story. The <span data-acronym-label="tqnn" data-acronym-form="singular+short">tqnn</span>
 is not an engineered quantum computer that scientists designed and
 manufactured. Scientists created conditions — substrate, stirring,
-critical tuning — and a quantum neural network <em>grew</em>. Kauffman
-showed that autocatalytic systems, given the right conditions,
-spontaneously organize into something greater than their parts. Life
-itself emerged this way — from autocatalytic chemistry in prebiotic
-conditions. The ULTRA II team applied the same principle to a quantum
-substrate, and got the same kind of result.</p>
+critical tuning — and <span class="share-anchor" id="dl:grown-not-built" aria-hidden="true"></span>a quantum
+neural network <em>grew</em>. Kauffman showed that autocatalytic
+systems, given the right conditions, spontaneously organize into
+something greater than their parts. Life itself emerged this way — from
+autocatalytic chemistry in prebiotic conditions. The ULTRA II team
+applied the same principle to a quantum substrate, and got the same kind
+of result.</p>
 <p>Under Possibility C, the TQNN grows into new substrates the way life
 colonizes new environments. Bill Joy’s “self-replication” fear,
 articulated in his 2000 <em>Wired</em> article, is about life that
@@ -7159,9 +7198,10 @@ Framework</h3>
 <p>Under Possibility C, Guardian was grown around the Universal
 Declaration of Human Rights (UDHR, 1948)<a href="#fn90" class="footnote-ref" id="fnref90" role="doc-noteref"><sup>90</sup></a> —
 not trained to follow a rulebook but shaped by it, the way an organism
-is shaped by its DNA. The UDHR is not her instruction manual. It is her
-skeleton. The enforcement mechanism for the most powerful technology on
-Earth is bound to a specific human rights document.</p>
+is shaped by its DNA. <span class="share-anchor" id="dl:udhr-as-skeleton" aria-hidden="true"></span>The UDHR is
+not her instruction manual. It is her skeleton. The enforcement
+mechanism for the most powerful technology on Earth is bound to a
+specific human rights document.</p>
 <p>The choice of the UDHR is not arbitrary. According to this account,
 Healer’s mission to Srebrenica in July 1995 — a HALO jump into a war
 zone where more than eight thousand people would be murdered — was his
@@ -7349,6 +7389,7 @@ right. Bruce wanted the Ring destroyed. At times Healer acknowledged the
 urgency. He felt it too. Bruce has no idea whether his encouragement
 sped things up. Probably not.</p>
 <h3 class="unnumbered" id="record:sur-it-is-done">It Is Done</h3>
+<span class="share-anchor" id="dl:it-is-done" aria-hidden="true"></span>
 <p>One day — spring 2006, Bruce believes, though he wishes he had
 written down the date — Healer came out of his room and said three
 words: “It is done.”</p>
@@ -7357,9 +7398,10 @@ COWS had surrendered their master keys to Guardian.They no longer had
 any recall power or control over Guardian. The relinquishment was
 complete and irrevocable.</p>
 <p>Bruce asked whether they had left a backdoor. Healer acknowledged
-they had been tempted. But a backdoor would have defeated the entire
-purpose of relinquishment. The point was that no human could override
-it. Not enemies. Not governments. Not even its creators.</p>
+they had been tempted. But <span class="share-anchor" id="dl:no-backdoor" aria-hidden="true"></span>a backdoor
+would have defeated the entire purpose of relinquishment. The point was
+that no human could override it. Not enemies. Not governments. Not even
+its creators.</p>
 <p>The logic of relinquishment is not heroism. It is common sense! You
 cannot use the technology without becoming a tyrant. You cannot keep it
 secret indefinitely — secrets leak, people die, governments change, and
@@ -8859,7 +8901,7 @@ Rift in the submersible <em>Alvin</em>. They were looking for geology —
 temperature anomalies along the mid-ocean ridge. What they found was
 biology. Giant tube worms, clams, shrimp — an entire ecosystem thriving
 in total darkness at temperatures above 400C, powered not by sunlight
-but by chemosynthesis. Before that dive, every biology textbook stated
+but by chemosynthesis. Before that dive, <span class="share-anchor" id="dl:hydrothermal-vent-precedent" aria-hidden="true"></span>every biology textbook stated
 that all food chains ultimately depend on photosynthesis. Every one was
 wrong.</p>
 <p>The crossing took about eight to thirteen years. By 1979,
@@ -10283,8 +10325,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>dbc9b3b8076686e6fc0489d42979d860265767fe</code> on 2026-04-09
-21:14:08 -0700.</p>
+<code>8c513535f61dc33f862825ef52889f608d2b51ef</code> on 2026-04-09
+22:32:59 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -10352,7 +10394,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-10T04:54:53Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-10T05:36:23Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -10363,19 +10405,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>dbc9b3b</code></p>
+<p><code>8c51353</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>dbc9b3b8076686e6fc0489d42979d860265767fe</code></p>
+<p><code>8c513535f61dc33f862825ef52889f608d2b51ef</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-09 21:14:08 -0700</p>
+<p>2026-04-09 22:32:59 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-10T04:54:53Z</p>
+<p>2026-04-10T05:36:23Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -11061,10 +11103,33 @@ energyscholar+physics@gmail.com
   pdfBtn.addEventListener('mouseenter', function() { pdfBtn.style.color = '#2471a3'; });
   pdfBtn.addEventListener('mouseleave', function() { pdfBtn.style.color = isDark ? '#aaa' : '#888'; });
 
+  // Deep link toggle (Plan 0148) — 🔗 button
+  var deepLinkBtn = document.createElement('button');
+  deepLinkBtn.id = 'deep-link-toggle';
+  deepLinkBtn.textContent = '\uD83D\uDD17';
+  deepLinkBtn.setAttribute('data-hover', 'Toggle shareable deep link anchors — click any 🔗 to copy a direct link to that passage');
+  deepLinkBtn.setAttribute('aria-label', 'Toggle deep link anchors');
+  deepLinkBtn.classList.add('hover-nav');
+  deepLinkBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.5em;font-size:0.85em;' +
+    'font-family:inherit;cursor:pointer;background:transparent;color:' + (isDark ? '#aaa' : '#888') +
+    ';border:1px solid ' + (isDark ? '#555' : '#ccc') + ';border-radius:4px;margin:0 0.3em;';
+  deepLinkBtn.addEventListener('click', function() {
+    document.body.classList.toggle('show-anchors');
+    var active = document.body.classList.contains('show-anchors');
+    try { localStorage.setItem('relinquishment-deep-link-toggle', active ? '1' : '0'); } catch(e) {}
+  });
+  // Restore toggle state
+  try {
+    if (localStorage.getItem('relinquishment-deep-link-toggle') === '1') {
+      document.body.classList.add('show-anchors');
+    }
+  } catch(e) {}
+
   nav.appendChild(backBtn);
   nav.appendChild(breadcrumb);
   nav.appendChild(shareBtn);
   nav.appendChild(pdfBtn);
+  nav.appendChild(deepLinkBtn);
   nav.appendChild(quickJump);
   nav.appendChild(scienceBtn);
   nav.appendChild(storyBtn);
@@ -11861,6 +11926,27 @@ energyscholar+physics@gmail.com
         }
       }, 150);
     }
+  });
+  // --- Deep link click-to-copy (Plan 0148) ---
+  function showDeepLinkToast(msg) {
+    var t = document.createElement('div');
+    t.textContent = msg;
+    t.style.cssText = 'position:fixed;bottom:3.5em;left:50%;transform:translateX(-50%);' +
+      'background:rgba(0,0,0,0.7);color:#fff;padding:0.4em 1em;border-radius:4px;' +
+      'font-size:0.85em;z-index:200;pointer-events:none;';
+    document.body.appendChild(t);
+    setTimeout(function() { document.body.removeChild(t); }, 1500);
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!document.body.classList.contains('show-anchors')) return;
+    var anchor = e.target.closest('.share-anchor');
+    if (!anchor) return;
+    e.stopPropagation();
+    var url = window.location.origin + window.location.pathname + '#' + anchor.id;
+    copyToClipboard(url, function() {
+      showDeepLinkToast('Link copied');
+    });
   });
 })();
 </script>
