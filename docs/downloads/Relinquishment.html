@@ -10283,8 +10283,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>948ca62c34a6d55a3da32a2b407c0d38a0a110c2</code> on 2026-04-09
-20:09:01 -0700.</p>
+<code>b356f92fea296b1e4e47b92b9369776cd62a6d5a</code> on 2026-04-09
+20:10:34 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -10352,7 +10352,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-10T03:10:11Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-10T03:18:44Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -10363,19 +10363,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>948ca62</code></p>
+<p><code>b356f92</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>948ca62c34a6d55a3da32a2b407c0d38a0a110c2</code></p>
+<p><code>b356f92fea296b1e4e47b92b9369776cd62a6d5a</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-09 20:09:01 -0700</p>
+<p>2026-04-09 20:10:34 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-10T03:10:11Z</p>
+<p>2026-04-10T03:18:44Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -11658,6 +11658,12 @@ energyscholar+physics@gmail.com
 
     // Link term to panel via aria-describedby
     term.setAttribute('aria-describedby', panel.id);
+
+    // Nav tooltips (menu summaries) are read-only — let mouse pass through
+    // so user can reach the next menu item without the panel blocking it.
+    if (term.classList.contains('hover-nav')) {
+      panel.style.pointerEvents = 'none';
+    }
 
     // Append to body (not as child of term — terms live inside nested <details>)
     document.body.appendChild(panel);
