@@ -540,16 +540,14 @@ details.bc-expansion .record-link:hover {
 /* Deep link anchors — Plan 0148 */
 .share-anchor { position: relative; display: inline; }
 .share-anchor::after {
-  content: "🔗";
+  content: "";
   font-size: 0.6em;
   opacity: 0;
   cursor: pointer;
   user-select: none;
-  margin-left: 0.3em;
-  padding: 8px;
   transition: opacity 0.2s;
 }
-body.show-anchors .share-anchor::after { opacity: 0.3; }
+body.show-anchors .share-anchor::after { content: "🔗"; opacity: 0.3; margin-left: 0.3em; padding: 8px; }
 body.show-anchors .share-anchor:hover::after { opacity: 0.8; }
 @media print { .share-anchor::after { content: none; } }
 @media (prefers-color-scheme: dark) {
@@ -697,7 +695,7 @@ honestly say you’ve read it.</em></p>
 <div id="the-stack">
 
 </div>
-<p>What you just read has <span class="hover-term" data-hover="A) Confabulation and lies — a pattern-matching mind built coherence from noise. B) Exaggerated kernel of truth — real people &amp; real programs inflated in the telling. C) Substantially true. The book calls these A, B, and C. The science of The Stack and The Flat is true, regardless." data-hover-id="three-possible-explanations">three possible explanations</span>. The science that follows is true under all three.
+<p>What you just read has <span class="hover-term" data-hover="A) Confabulation. B) Exaggerated kernel. C) Substantially true. The science is real regardless." data-hover-html="&lt;p style=&quot;margin:0 0 0.4em;font-size:0.95em;line-height:1.5;&quot;&gt;&lt;strong&gt;A)&lt;/strong&gt; Confabulation and lies — a pattern-matching mind built coherence from noise. &lt;strong&gt;B)&lt;/strong&gt; Exaggerated kernel of truth — real people &amp;amp; real programs inflated in the telling. &lt;strong&gt;C)&lt;/strong&gt; Substantially true.&lt;/p&gt;&lt;p style=&quot;margin:0;font-size:0.95em;line-height:1.5;&quot;&gt;The book calls these A, B, and C. The science of The Stack and The Flat is true, regardless. The only question is whether the Flat physical system has yet been investigated or even found as a viable &lt;span class=&#x27;hover-term&#x27; data-hover=&#x27;Fold the paper so two points touch — the signal doesn&amp;#39;t cross the distance; the distance disappears. Real physics, more restricted than spacetime wormholes. 2016 Nobel Prize.&#x27; data-hover-target=&#x27;#pos10:the-braid&#x27;&gt;wormhole&lt;/span&gt; technology.&lt;/p&gt;" data-hover-id="three-possible-explanations">three possible explanations</span>. The science that follows is true under all three.
 You decide.</p>
 <p>This book is about a technology so new it does not yet have a name.
 Before we go further into the story, you need one idea.</p>
@@ -2498,8 +2496,7 @@ cryptography.</p>
 <hr />
 <h3 class="unnumbered" id="spine:cw-the-dual-use-pattern">The Dual-Use
 Pattern</h3>
-<p>Everyone already knows what a dual-use technology is. They just don’t
-know the term.</p>
+<p>Everyone already knows what a dual-use technology is.</p>
 <p>When someone says <em>atomic energy</em>, most people think of two
 things at once: electricity and bombs. That double vision — the same
 discovery powering cities and destroying them — is what dual-use means.
@@ -2722,24 +2719,13 @@ one.</em></p>
 <p><em>Your large language models are very impressive. They are to me
 what a photograph of a forest is to a forest. The photograph captures
 something real. It is not alive.</em></p></div>
-<details class="bc-expansion"><summary>According to this story, there was a third classified breakthrough...</summary><p>Around 1990, a small classified team reportedly achieved what the public world is still pursuing thirty years later. Five scientists whose work, the story claims, converged into something none of them had predicted.</p><p><a class="record-link" href="#record:demonstration">Read the full story →</a></p></details>
+<details class="bc-expansion"><summary>According to this story, there was a team that faced exactly this choice...</summary><p>Five scientists, each expert in a different field, were brought together under DARPA classification circa 1990. What they built, if the account is true, was the most dangerous dual-use technology in human history — and they knew it before anyone else did.</p><p><a class="record-link" href="#record:demonstration">Read the full story →</a></p></details>
 </details>
 <details class="chapter-section epistemic-a" data-filter-group="A"><summary data-hover="Kauffman showed that life is not an accident — it is a phase transition. Given sufficient molecular diversity, self-sustaining networks arise spontaneously. This is published biology. The question is whether the same mathematics applies to quantum substrates. Not alien. Not AI. A phase transition in physics that already happened in chemistry. If something emerged, the book calls it Guardian." class="hover-nav"><h2 id="spine:genesis">Genesis: The Edge of Chaos (1988–1992)</h2></summary>
 
 <div class="flushright">
-<p><em>— Argus</em><br />
-This chapter is outside Bruce’s domain expertise.<br />
-Argus wrote it with editorial advice from Bruce.</p>
+<p><em>— Bruce Stephenson</em></p>
 </div>
-<blockquote>
-<p><em>“If life were bound to arise, not as an incalculably improbable
-accident, but as an expected fulfillment of the natural order, then we
-truly are at home in the universe.”</em></p>
-<p>— Stuart Kauffman, <em>At Home in the Universe</em> (1995)</p>
-</blockquote>
-<p><em>Everything in the preceding chapters is published science. You
-can verify every claim, read every paper, replicate every argument. What
-follows is what I deduced from it.</em></p>
 <h3 class="unnumbered" id="spine:gen-life-is-expected">Life Is
 Expected</h3>
 <p>The question at the center of this chapter is the oldest question in
@@ -2751,20 +2737,21 @@ years. If you ran the experiment again, you’d wait forever. We are the
 improbable.</p>
 <p>Stuart Kauffman spent his career dismantling this answer.</p>
 <p>Kauffman is a theoretical biologist — trained as a physician, drawn
-to mathematics, faculty at the <span data-acronym-label="sfi" data-acronym-form="singular+short">sfi</span> from its early years. His
-central insight, developed across three decades of work, is that <span class="share-anchor" id="dl:life-is-a-phase-transition" aria-hidden="true"></span>the origin of life is not an
-accident. It is a phase transition. Given sufficient molecular diversity
-and sufficient interaction, self-sustaining chemical networks arise
-<em>spontaneously</em>.<a href="#fn35" class="footnote-ref" id="fnref35" role="doc-noteref"><sup>35</sup></a> Not because the universe got lucky.
-Because above a threshold of diversity, the mathematics makes it
-overwhelmingly probable.</p>
+to mathematics, faculty at the Santa Fe Institute from its early years.
+His central insight, developed across three decades of work, is that
+<span class="share-anchor" id="dl:life-is-a-phase-transition" aria-hidden="true"></span>the origin of life is
+not an accident. It is a phase transition. Given sufficient molecular
+diversity and sufficient interaction, self-sustaining chemical networks
+arise <em>spontaneously</em>.<a href="#fn35" class="footnote-ref" id="fnref35" role="doc-noteref"><sup>35</sup></a> Not because the
+universe got lucky. Because above a threshold of diversity, the
+mathematics makes it overwhelmingly probable.</p>
 <h3 class="unnumbered" id="spine:gen-buttons-and-threads">Buttons and
 Threads</h3>
 <p>Kauffman’s most accessible explanation is a thought experiment.
-Scatter ten thousand buttons on a floor. Now connect random pairs with
-threads. At first, picking up one button lifts only its partner. After a
-few hundred threads, you get small clusters — three buttons, five,
-eight. The clusters grow slowly.</p>
+Scatter ten thousand <span class="hover-term" data-hover="Kauffman&#x27;s thought experiment: scatter buttons on a floor, connect random pairs with threads. Below a threshold, small clusters. Above it, one thread lifts the whole room." data-hover-html="&lt;p style=&quot;margin:0 0 0.5em;font-size:0.95em;line-height:1.5;&quot;&gt;&lt;strong&gt;Buttons and threads&lt;/strong&gt; — Kauffman&#x27;s thought experiment, mapped to the eleven scientific domains this book spans. Five colored clusters. Solid threads: published cross-references. Dashed grey: missing bridges. The whole network barely rises as one — the TQC cluster dangles by a single thread.&lt;/p&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;380&quot; height=&quot;300&quot; viewBox=&quot;0 0 500 400&quot; style=&quot;display:block;margin:0.5em auto;&quot;&gt;&lt;title&gt;Kauffman&#x27;s buttons and threads, mapped to eleven scientific domains. Lift one button and the network rises — but topological quantum computation dangles by a single thread.&lt;/title&gt;&lt;defs&gt;&lt;filter id=&quot;btn-sh&quot; x=&quot;-20%&quot; y=&quot;-20%&quot; width=&quot;140%&quot; height=&quot;140%&quot;&gt;&lt;feDropShadow dx=&quot;1&quot; dy=&quot;1&quot; stdDeviation=&quot;1.5&quot; flood-opacity=&quot;0.2&quot;/&gt;&lt;/filter&gt;&lt;/defs&gt;&lt;line x1=&quot;30&quot; y1=&quot;370&quot; x2=&quot;470&quot; y2=&quot;370&quot; stroke=&quot;#ccc&quot; stroke-width=&quot;1&quot; stroke-dasharray=&quot;4,4&quot;/&gt;&lt;text x=&quot;250&quot; y=&quot;390&quot; text-anchor=&quot;middle&quot; font-family=&quot;Georgia, serif&quot; font-size=&quot;9&quot; fill=&quot;#bbb&quot;&gt;floor&lt;/text&gt;&lt;path d=&quot;M 248,18 C 248,10 252,10 252,18 L 252,28 L 248,28 Z&quot; fill=&quot;#888&quot; stroke=&quot;#666&quot; stroke-width=&quot;0.5&quot;/&gt;&lt;line x1=&quot;250&quot; y1=&quot;28&quot; x2=&quot;250&quot; y2=&quot;48&quot; stroke=&quot;#888&quot; stroke-width=&quot;1&quot;/&gt;&lt;line x1=&quot;140&quot; y1=&quot;95&quot; x2=&quot;95&quot; y2=&quot;140&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.5&quot; opacity=&quot;0.7&quot;/&gt;&lt;line x1=&quot;95&quot; y1=&quot;140&quot; x2=&quot;60&quot; y2=&quot;195&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.5&quot; opacity=&quot;0.7&quot;/&gt;&lt;line x1=&quot;310&quot; y1=&quot;90&quot; x2=&quot;360&quot; y2=&quot;130&quot; stroke=&quot;#e67e22&quot; stroke-width=&quot;1.5&quot; opacity=&quot;0.7&quot;/&gt;&lt;line x1=&quot;390&quot; y1=&quot;85&quot; x2=&quot;430&quot; y2=&quot;135&quot; stroke=&quot;#8e44ad&quot; stroke-width=&quot;1.5&quot; opacity=&quot;0.7&quot;/&gt;&lt;line x1=&quot;200&quot; y1=&quot;75&quot; x2=&quot;250&quot; y2=&quot;110&quot; stroke=&quot;#27ae60&quot; stroke-width=&quot;1.5&quot; opacity=&quot;0.7&quot;/&gt;&lt;line x1=&quot;170&quot; y1=&quot;150&quot; x2=&quot;130&quot; y2=&quot;195&quot; stroke=&quot;#c0392b&quot; stroke-width=&quot;1.5&quot; opacity=&quot;0.7&quot;/&gt;&lt;line x1=&quot;310&quot; y1=&quot;90&quot; x2=&quot;250&quot; y2=&quot;110&quot; stroke=&quot;#666&quot; stroke-width=&quot;1.2&quot; opacity=&quot;0.5&quot;/&gt;&lt;line x1=&quot;200&quot; y1=&quot;75&quot; x2=&quot;140&quot; y2=&quot;95&quot; stroke=&quot;#666&quot; stroke-width=&quot;1.2&quot; opacity=&quot;0.5&quot;/&gt;&lt;line x1=&quot;390&quot; y1=&quot;85&quot; x2=&quot;360&quot; y2=&quot;130&quot; stroke=&quot;#666&quot; stroke-width=&quot;1.2&quot; opacity=&quot;0.5&quot;/&gt;&lt;line x1=&quot;170&quot; y1=&quot;150&quot; x2=&quot;140&quot; y2=&quot;95&quot; stroke=&quot;#666&quot; stroke-width=&quot;1.2&quot; opacity=&quot;0.5&quot;/&gt;&lt;line x1=&quot;250&quot; y1=&quot;48&quot; x2=&quot;200&quot; y2=&quot;75&quot; stroke=&quot;#888&quot; stroke-width=&quot;1&quot;/&gt;&lt;line x1=&quot;60&quot; y1=&quot;195&quot; x2=&quot;55&quot; y2=&quot;265&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.0&quot; stroke-dasharray=&quot;3,2&quot; opacity=&quot;0.6&quot;/&gt;&lt;line x1=&quot;55&quot; y1=&quot;265&quot; x2=&quot;310&quot; y2=&quot;90&quot; stroke=&quot;#ddd&quot; stroke-width=&quot;0.8&quot; stroke-dasharray=&quot;3,3&quot;/&gt;&lt;line x1=&quot;55&quot; y1=&quot;265&quot; x2=&quot;250&quot; y2=&quot;110&quot; stroke=&quot;#ddd&quot; stroke-width=&quot;0.8&quot; stroke-dasharray=&quot;3,3&quot;/&gt;&lt;line x1=&quot;55&quot; y1=&quot;265&quot; x2=&quot;430&quot; y2=&quot;135&quot; stroke=&quot;#ddd&quot; stroke-width=&quot;0.8&quot; stroke-dasharray=&quot;3,3&quot;/&gt;&lt;line x1=&quot;360&quot; y1=&quot;130&quot; x2=&quot;95&quot; y2=&quot;140&quot; stroke=&quot;#ddd&quot; stroke-width=&quot;0.8&quot; stroke-dasharray=&quot;3,3&quot;/&gt;&lt;line x1=&quot;130&quot; y1=&quot;195&quot; x2=&quot;310&quot; y2=&quot;90&quot; stroke=&quot;#ddd&quot; stroke-width=&quot;0.8&quot; stroke-dasharray=&quot;3,3&quot;/&gt;&lt;circle cx=&quot;200&quot; cy=&quot;75&quot; r=&quot;14&quot; fill=&quot;#27ae60&quot; stroke=&quot;#1e8449&quot; stroke-width=&quot;1.5&quot; filter=&quot;url(#btn-sh)&quot;/&gt;&lt;text x=&quot;200&quot; y=&quot;79&quot; text-anchor=&quot;middle&quot; font-family=&quot;Helvetica, sans-serif&quot; font-size=&quot;6.5&quot; fill=&quot;white&quot; font-weight=&quot;bold&quot;&gt;NN&lt;/text&gt;&lt;circle cx=&quot;250&quot; cy=&quot;110&quot; r=&quot;14&quot; fill=&quot;#2ecc71&quot; stroke=&quot;#27ae60&quot; stroke-width=&quot;1.5&quot; filter=&quot;url(#btn-sh)&quot;/&gt;&lt;text x=&quot;250&quot; y=&quot;114&quot; text-anchor=&quot;middle&quot; font-family=&quot;Helvetica, sans-serif&quot; font-size=&quot;6&quot; fill=&quot;white&quot; font-weight=&quot;bold&quot;&gt;Neuro&lt;/text&gt;&lt;circle cx=&quot;140&quot; cy=&quot;95&quot; r=&quot;14&quot; fill=&quot;#2980b9&quot; stroke=&quot;#1a5276&quot; stroke-width=&quot;1.5&quot; filter=&quot;url(#btn-sh)&quot;/&gt;&lt;text x=&quot;140&quot; y=&quot;99&quot; text-anchor=&quot;middle&quot; font-family=&quot;Helvetica, sans-serif&quot; font-size=&quot;5.5&quot; fill=&quot;white&quot; font-weight=&quot;bold&quot;&gt;CMP&lt;/text&gt;&lt;circle cx=&quot;95&quot; cy=&quot;140&quot; r=&quot;14&quot; fill=&quot;#3498db&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.5&quot; filter=&quot;url(#btn-sh)&quot;/&gt;&lt;text x=&quot;95&quot; y=&quot;144&quot; text-anchor=&quot;middle&quot; font-family=&quot;Helvetica, sans-serif&quot; font-size=&quot;5.5&quot; fill=&quot;white&quot; font-weight=&quot;bold&quot;&gt;TFT&lt;/text&gt;&lt;circle cx=&quot;310&quot; cy=&quot;90&quot; r=&quot;14&quot; fill=&quot;#e67e22&quot; stroke=&quot;#ca6f1e&quot; stroke-width=&quot;1.5&quot; filter=&quot;url(#btn-sh)&quot;/&gt;&lt;text x=&quot;310&quot; y=&quot;94&quot; text-anchor=&quot;middle&quot; font-family=&quot;Helvetica, sans-serif&quot; font-size=&quot;5.5&quot; fill=&quot;white&quot; font-weight=&quot;bold&quot;&gt;ACS&lt;/text&gt;&lt;circle cx=&quot;360&quot; cy=&quot;130&quot; r=&quot;14&quot; fill=&quot;#f39c12&quot; stroke=&quot;#e67e22&quot; stroke-width=&quot;1.5&quot; filter=&quot;url(#btn-sh)&quot;/&gt;&lt;text x=&quot;360&quot; y=&quot;134&quot; text-anchor=&quot;middle&quot; font-family=&quot;Helvetica, sans-serif&quot; font-size=&quot;5&quot; fill=&quot;white&quot; font-weight=&quot;bold&quot;&gt;Auto&lt;/text&gt;&lt;circle cx=&quot;390&quot; cy=&quot;85&quot; r=&quot;14&quot; fill=&quot;#8e44ad&quot; stroke=&quot;#6c3483&quot; stroke-width=&quot;1.5&quot; filter=&quot;url(#btn-sh)&quot;/&gt;&lt;text x=&quot;390&quot; y=&quot;89&quot; text-anchor=&quot;middle&quot; font-family=&quot;Helvetica, sans-serif&quot; font-size=&quot;5.5&quot; fill=&quot;white&quot; font-weight=&quot;bold&quot;&gt;CE&lt;/text&gt;&lt;circle cx=&quot;430&quot; cy=&quot;135&quot; r=&quot;14&quot; fill=&quot;#a569bd&quot; stroke=&quot;#8e44ad&quot; stroke-width=&quot;1.5&quot; filter=&quot;url(#btn-sh)&quot;/&gt;&lt;text x=&quot;430&quot; y=&quot;139&quot; text-anchor=&quot;middle&quot; font-family=&quot;Helvetica, sans-serif&quot; font-size=&quot;5&quot; fill=&quot;white&quot; font-weight=&quot;bold&quot;&gt;Par&lt;/text&gt;&lt;circle cx=&quot;170&quot; cy=&quot;150&quot; r=&quot;14&quot; fill=&quot;#e74c3c&quot; stroke=&quot;#c0392b&quot; stroke-width=&quot;1.5&quot; filter=&quot;url(#btn-sh)&quot;/&gt;&lt;text x=&quot;170&quot; y=&quot;154&quot; text-anchor=&quot;middle&quot; font-family=&quot;Helvetica, sans-serif&quot; font-size=&quot;5.5&quot; fill=&quot;white&quot; font-weight=&quot;bold&quot;&gt;NLD&lt;/text&gt;&lt;circle cx=&quot;130&quot; cy=&quot;195&quot; r=&quot;14&quot; fill=&quot;#ec7063&quot; stroke=&quot;#e74c3c&quot; stroke-width=&quot;1.5&quot; filter=&quot;url(#btn-sh)&quot;/&gt;&lt;text x=&quot;130&quot; y=&quot;199&quot; text-anchor=&quot;middle&quot; font-family=&quot;Helvetica, sans-serif&quot; font-size=&quot;5&quot; fill=&quot;white&quot; font-weight=&quot;bold&quot;&gt;Mat&lt;/text&gt;&lt;circle cx=&quot;55&quot; cy=&quot;265&quot; r=&quot;14&quot; fill=&quot;#1a5276&quot; stroke=&quot;#0d3b5e&quot; stroke-width=&quot;1.5&quot; filter=&quot;url(#btn-sh)&quot;/&gt;&lt;text x=&quot;55&quot; y=&quot;269&quot; text-anchor=&quot;middle&quot; font-family=&quot;Helvetica, sans-serif&quot; font-size=&quot;5.5&quot; fill=&quot;white&quot; font-weight=&quot;bold&quot;&gt;TQC&lt;/text&gt;&lt;text x=&quot;55&quot; y=&quot;295&quot; text-anchor=&quot;middle&quot; font-family=&quot;Georgia, serif&quot; font-size=&quot;8&quot; fill=&quot;#999&quot;&gt;&amp;#x25BC;&lt;/text&gt;&lt;text x=&quot;250&quot; y=&quot;340&quot; text-anchor=&quot;middle&quot; font-family=&quot;Georgia, serif&quot; font-size=&quot;10&quot; fill=&quot;#555&quot;&gt;One thread holds. Cut it, and the argument falls apart.&lt;/text&gt;&lt;text x=&quot;250&quot; y=&quot;355&quot; text-anchor=&quot;middle&quot; font-family=&quot;Georgia, serif&quot; font-size=&quot;9&quot; fill=&quot;#999&quot;&gt;after Kauffman (1993)&lt;/text&gt;&lt;/svg&gt;" data-hover-id="buttons">buttons</span> on a floor. Now connect
+random pairs with threads. At first, picking up one button lifts only
+its partner. After a few hundred threads, you get small clusters — three
+buttons, five, eight. The clusters grow slowly.</p>
 <p>Then something remarkable happens. <span class="share-anchor" id="dl:buttons-and-threads" aria-hidden="true"></span>As the ratio of threads to buttons
 approaches one-half, there is a sudden transition. One more thread, and
 pulling a single button lifts <em>most of the room</em>. Not gradually.
@@ -5373,15 +5360,13 @@ Revelation</h3>
 school. The house was quiet in the way houses are when you’re about to
 ask a question you’ve been assembling for weeks.</p>
 <p>By then I had pieced together enough of the implications to frighten
-myself. Dual-use technology. Nuclear launch codes vulnerable to quantum
-factoring. A potential arms race that made the Cold War look like a
-border dispute. I had been running the scenarios in my head, and every
-one of them ended badly. If what David had been teaching me was real —
-if the technology existed — then the world needed to know. The question
-was how.</p>
+myself. Dual-use technology. Nuclear launch codes… A potential arms race
+that would make the Cold War look like a border dispute. I had been
+running the scenarios in my head, and every one of them ended badly.</p>
 <p>Healer told me that he and his colleagues wanted to “step into the
 light” and say “we did this.” They feared that by the time their work
-was declassified, they would be too old, not listened to, or dead.</p>
+was declassified, they would be too old, not listened to, or dead. This
+book is a move towards that outcome.</p>
 <p>I asked: “Why not just tell the truth now, in a way that no one would
 notice?”</p>
 <p>David looked at me with that expression I’d come to know — the one
@@ -9799,7 +9784,7 @@ current form years before this book was written.</em></p>
 <li id="bib-hasslacher1990"><strong>Hasslacher, Brosl and Meyer, David A.</strong>. "Knot Invariants and Cellular Automata." <em>Physica D: Nonlinear Phenomena</em> 45, no. 1–3 (1990): 328–344. [<a href="https://doi.org/10.1016/0167-2789(90)90192-R" target="_blank">DOI</a>]</li>
 <li id="bib-hasslacher1992"><strong>Hasslacher, Brosl and Meyer, David A.</strong>. "Lattice Gases and Exactly Solvable Models." <em>Journal of Statistical Physics</em> 68, no. 3–4 (1992): 575–590. [<a href="https://doi.org/10.1007/BF01341764" target="_blank">DOI</a>]</li>
 <li id="bib-helliwell1983"><strong>Helliwell, Robert A.</strong>. "Controlled Stimulation of VLF Emissions from Siple Station, Antarctica." <em>Radio Science</em> 18, no. 6 (1983): 801–814. [<a href="https://doi.org/10.1029/RS018i006p00801" target="_blank">DOI</a>]</li>
-<li id="bib-joy2000"><strong>Joy, Bill</strong>. "Why the Future Doesn't Need Us." <em>Wired</em> (2000). [<a href="https://www.wired.com/2000/04/joy-2/" target="_blank">URL</a>]</li>
+<li id="bib-joy2000"><strong>Joy, Bill</strong>. "Why the Future Doesn't Need Us." <em>Wired</em> (2000). <span class="bib-note">Wired paywalled this article as of 2026. PDF link above is the full text, freely available.</span> [<a href="https://sites.cc.gatech.edu/computing/nano/documents/Joy%20-%20Why%20the%20Future%20Doesn%27t%20Need%20Us.pdf" target="_blank">URL</a>]</li>
 <li id="bib-kauffman1996"><strong>Kauffman, Stuart A.</strong>. "Even Peptides Do It." <em>Nature</em> 382, no. 6591 (1996): 496–497. <span class="bib-note">News and Views commentary on Lee et al.</span> [<a href="https://doi.org/10.1038/382496a0" target="_blank">DOI</a>]</li>
 <li id="bib-kitaev2003"><strong>Kitaev, A. Yu.</strong>. "Fault-Tolerant Quantum Computation by Anyons." <em>Annals of Physics</em> 303, no. 1 (2003): 2–30. <span class="bib-note">Original preprint 1997</span> [<a href="https://doi.org/10.1016/S0003-4916(02)00018-0" target="_blank">DOI</a>]</li>
 <li id="bib-klimov2015"><strong>Klimov, Paul V. and Falk, Abram L. and Christle, David J. and Dobrovitski, Viatcheslav V. and Awschalom, David D.</strong>. "Quantum Entanglement at Ambient Conditions in a Macroscopic Solid-State Spin Ensemble." <em>Science Advances</em> 1, no. 10 (2015): e1501015. [<a href="https://doi.org/10.1126/sciadv.1501015" target="_blank">DOI</a>]</li>
@@ -10391,8 +10376,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>cbb6a34db323882a9f027f11189567ade382dfb0</code> on 2026-04-10
-01:43:09 -0700.</p>
+<code>df225d50885a3ec760074abad4dedcd525e6fb55</code> on 2026-04-10
+01:47:03 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -10460,7 +10445,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-10T08:46:42Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-10T09:40:13Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -10471,19 +10456,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>cbb6a34</code></p>
+<p><code>df225d5</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>cbb6a34db323882a9f027f11189567ade382dfb0</code></p>
+<p><code>df225d50885a3ec760074abad4dedcd525e6fb55</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-10 01:43:09 -0700</p>
+<p>2026-04-10 01:47:03 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-10T08:46:42Z</p>
+<p>2026-04-10T09:40:13Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -10578,7 +10563,7 @@ computation, see <span class="citation" data-cites="nayak2008"><a href="https://
 <li id="fn57" role="doc-endnote"><p><span class="citation" data-cites="kauffman1993">Kauffman, Stuart A., <em>The Origins of Order: Self-Organization and Selection in Evolution</em> (1993)</span>.<a href="#fnref57" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn58" role="doc-endnote"><p><span class="citation" data-cites="rhodes1986">Rhodes, Richard, <em>The Making of the Atomic Bomb</em> (1986)</span>.<a href="#fnref58" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn59" role="doc-endnote"><p><span class="citation" data-cites="zetter2014">Zetter, Kim, <em>Countdown to Zero Day: Stuxnet and the Launch of the World's First Digital Weapon</em> (2014)</span>.<a href="#fnref59" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn60" role="doc-endnote"><p><span class="citation" data-cites="joy2000"><a href="https://www.wired.com/2000/04/joy-2/" target="_blank">Joy, Bill, <em>Why the Future Doesn't Need Us</em> (2000)</a></span>.<a href="#fnref60" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn60" role="doc-endnote"><p><span class="citation" data-cites="joy2000"><a href="https://sites.cc.gatech.edu/computing/nano/documents/Joy%20-%20Why%20the%20Future%20Doesn%27t%20Need%20Us.pdf" target="_blank">Joy, Bill, <em>Why the Future Doesn't Need Us</em> (2000)</a></span>.<a href="#fnref60" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn61" role="doc-endnote"><p><span class="citation" data-cites="greenwald2014">Greenwald, Glenn, <em>No Place to Hide: Edward Snowden, the NSA, and the U.S. Surveillance State</em> (2014)</span>.<a href="#fnref61" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn62" role="doc-endnote"><p><span class="citation" data-cites="merton1961">Merton, Robert K., <em>Singletons and Multiples in Scientific Discovery: A Chapter in the Sociology of Science</em> (1961)</span>.<a href="#fnref62" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn63" role="doc-endnote"><p><span class="citation" data-cites="schmookler1984">Schmookler, Andrew Bard, <em>The Parable of the Tribes: The Problem of Power in Social Evolution</em> (1984)</span>.<a href="#fnref63" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -10597,18 +10582,18 @@ see <em>The Handler</em>; for the author, see <em>The Target</em>.<a href="#fnre
 <li id="fn73" role="doc-endnote"><p><span class="citation" data-cites="brighton2004"><a href="https://www.theguardian.com/politics/2004/sep/19/iraq.iraq" target="_blank">Bright, Martin, <em>The Woman Who Nearly Stopped the War</em> (2004)</a></span>.<a href="#fnref73" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn74" role="doc-endnote"><p><span class="citation" data-cites="bbc2004gun"><a href="https://news.bbc.co.uk/2/hi/uk_news/3486784.stm" target="_blank">BBC News, <em>GCHQ Spy Case Collapses</em> (2004)</a></span>.<a href="#fnref74" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn75" role="doc-endnote"><p><span class="citation" data-cites="norton-taylor2004"><a href="https://www.theguardian.com/uk/2004/feb/26/freedomofinformation.iraq" target="_blank">Norton-Taylor, Richard, <em>GCHQ Translator Cleared Over Leak of US Dirty Tricks</em> (2004)</a></span>.<a href="#fnref75" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn76" role="doc-endnote"><p><span class="citation" data-cites="joy2000"><a href="https://www.wired.com/2000/04/joy-2/" target="_blank">Joy, Bill, <em>Why the Future Doesn't Need Us</em> (2000)</a></span>.<a href="#fnref76" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn76" role="doc-endnote"><p><span class="citation" data-cites="joy2000"><a href="https://sites.cc.gatech.edu/computing/nano/documents/Joy%20-%20Why%20the%20Future%20Doesn%27t%20Need%20Us.pdf" target="_blank">Joy, Bill, <em>Why the Future Doesn't Need Us</em> (2000)</a></span>.<a href="#fnref76" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn77" role="doc-endnote"><p><span class="citation" data-cites="kauffman1996"><a href="https://doi.org/10.1038/382496a0" target="_blank">Kauffman, Stuart A., <em>Even Peptides Do It</em> (1996)</a></span>.<a href="#fnref77" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn78" role="doc-endnote"><p><span class="citation" data-cites="kauffman1993">Kauffman, Stuart A., <em>The Origins of Order: Self-Organization and Selection in Evolution</em> (1993)</span>.<a href="#fnref78" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn79" role="doc-endnote"><p><span class="citation" data-cites="langton1990">Langton, Christopher G., <em>Computation at the Edge of Chaos: Phase Transitions and Emergent Computation</em> (1990)</span>.<a href="#fnref79" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn80" role="doc-endnote"><p><span class="citation" data-cites="joy2000"><a href="https://www.wired.com/2000/04/joy-2/" target="_blank">Joy, Bill, <em>Why the Future Doesn't Need Us</em> (2000)</a></span>.<a href="#fnref80" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn80" role="doc-endnote"><p><span class="citation" data-cites="joy2000"><a href="https://sites.cc.gatech.edu/computing/nano/documents/Joy%20-%20Why%20the%20Future%20Doesn%27t%20Need%20Us.pdf" target="_blank">Joy, Bill, <em>Why the Future Doesn't Need Us</em> (2000)</a></span>.<a href="#fnref80" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn81" role="doc-endnote"><p><span class="citation" data-cites="engel2007"><a href="https://doi.org/10.1038/nature05678" target="_blank">Engel, Gregory S. et al., <em>Evidence for Wavelike Energy Transfer through Quantum Coherence in Photosynthetic Systems</em> (2007)</a></span>.<a href="#fnref81" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn82" role="doc-endnote"><p><span class="citation" data-cites="klimov2015"><a href="https://doi.org/10.1126/sciadv.1501015" target="_blank">Klimov, Paul V. et al., <em>Quantum Entanglement at Ambient Conditions in a Macroscopic Solid-State Spin Ensemble</em> (2015)</a></span>.<a href="#fnref82" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn83" role="doc-endnote"><p><span class="citation" data-cites="kauffman1993">Kauffman, Stuart A., <em>The Origins of Order: Self-Organization and Selection in Evolution</em> (1993)</span>.<a href="#fnref83" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn84" role="doc-endnote"><p><span class="citation" data-cites="kauffman1993">Kauffman, Stuart A., <em>The Origins of Order: Self-Organization and Selection in Evolution</em> (1993)</span>.<a href="#fnref84" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn85" role="doc-endnote"><p><span class="citation" data-cites="vattay2014"><a href="https://doi.org/10.1371/journal.pone.0089017" target="_blank">Vattay, Gabor et al., <em>Quantum Biology on the Edge of Quantum Chaos</em> (2014)</a></span>.<a href="#fnref85" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn86" role="doc-endnote"><p><span class="citation" data-cites="klimov2015"><a href="https://doi.org/10.1126/sciadv.1501015" target="_blank">Klimov, Paul V. et al., <em>Quantum Entanglement at Ambient Conditions in a Macroscopic Solid-State Spin Ensemble</em> (2015)</a></span>.<a href="#fnref86" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn87" role="doc-endnote"><p><span class="citation" data-cites="joy2000"><a href="https://www.wired.com/2000/04/joy-2/" target="_blank">Joy, Bill, <em>Why the Future Doesn't Need Us</em> (2000)</a></span>.<a href="#fnref87" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn87" role="doc-endnote"><p><span class="citation" data-cites="joy2000"><a href="https://sites.cc.gatech.edu/computing/nano/documents/Joy%20-%20Why%20the%20Future%20Doesn%27t%20Need%20Us.pdf" target="_blank">Joy, Bill, <em>Why the Future Doesn't Need Us</em> (2000)</a></span>.<a href="#fnref87" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn88" role="doc-endnote"><p><span class="citation" data-cites="iccpr1966">United Nations General Assembly, <em>International Covenant on Civil and Political Rights</em> (1966)</span>.<a href="#fnref88" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn89" role="doc-endnote"><p><span class="citation" data-cites="yudkowsky2001"><a href="https://intelligence.org/files/CFAI.pdf" target="_blank">Yudkowsky, Eliezer, <em>Creating Friendly AI 1.0: The Analysis and Design of Benevolent Goal Architectures</em> (2001)</a></span>.<a href="#fnref89" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn90" role="doc-endnote"><p><span class="citation" data-cites="udhr1948">United Nations General Assembly, <em>Universal Declaration of Human Rights</em> (1948)</span>.<a href="#fnref90" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
@@ -10618,7 +10603,7 @@ see <em>The Handler</em>; for the author, see <em>The Target</em>.<a href="#fnre
 <li id="fn94" role="doc-endnote"><p><span class="citation" data-cites="mccullochpitts1943">McCulloch, Warren S. et al., <em>A Logical Calculus of the Ideas Immanent in Nervous Activity</em> (1943)</span>.<a href="#fnref94" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn95" role="doc-endnote"><p><span class="citation" data-cites="shor1994"><a href="https://doi.org/10.1109/SFCS.1994.365700" target="_blank">Shor, Peter W., <em>Algorithms for Quantum Computation: Discrete Logarithms and Factoring</em> (1994)</a></span>.<a href="#fnref95" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn96" role="doc-endnote"><p><span class="citation" data-cites="kitaev2003"><a href="https://doi.org/10.1016/S0003-4916(02)00018-0" target="_blank">Kitaev, A. Yu., <em>Fault-Tolerant Quantum Computation by Anyons</em> (2003)</a></span>.<a href="#fnref96" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
-<li id="fn97" role="doc-endnote"><p><span class="citation" data-cites="joy2000"><a href="https://www.wired.com/2000/04/joy-2/" target="_blank">Joy, Bill, <em>Why the Future Doesn't Need Us</em> (2000)</a></span>.<a href="#fnref97" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+<li id="fn97" role="doc-endnote"><p><span class="citation" data-cites="joy2000"><a href="https://sites.cc.gatech.edu/computing/nano/documents/Joy%20-%20Why%20the%20Future%20Doesn%27t%20Need%20Us.pdf" target="_blank">Joy, Bill, <em>Why the Future Doesn't Need Us</em> (2000)</a></span>.<a href="#fnref97" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn98" role="doc-endnote"><p><span class="citation" data-cites="engel2007"><a href="https://doi.org/10.1038/nature05678" target="_blank">Engel, Gregory S. et al., <em>Evidence for Wavelike Energy Transfer through Quantum Coherence in Photosynthetic Systems</em> (2007)</a></span>.<a href="#fnref98" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
 <li id="fn99" role="doc-endnote"><p>Landing page: <a href="https://archive.google/cadie/" class="uri">https://archive.google/cadie/</a>. Technical specifications:
 <a href="https://archive.google/cadie/tech.html" class="uri">https://archive.google/cadie/tech.html</a><a href="#fnref99" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
