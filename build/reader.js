@@ -337,10 +337,33 @@
   pdfBtn.addEventListener('mouseenter', function() { pdfBtn.style.color = '#2471a3'; });
   pdfBtn.addEventListener('mouseleave', function() { pdfBtn.style.color = isDark ? '#aaa' : '#888'; });
 
+  // Deep link toggle (Plan 0148) — 🔗 button
+  var deepLinkBtn = document.createElement('button');
+  deepLinkBtn.id = 'deep-link-toggle';
+  deepLinkBtn.textContent = '\uD83D\uDD17';
+  deepLinkBtn.setAttribute('data-hover', 'Toggle shareable deep link anchors — click any 🔗 to copy a direct link to that passage');
+  deepLinkBtn.setAttribute('aria-label', 'Toggle deep link anchors');
+  deepLinkBtn.classList.add('hover-nav');
+  deepLinkBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.5em;font-size:0.85em;' +
+    'font-family:inherit;cursor:pointer;background:transparent;color:' + (isDark ? '#aaa' : '#888') +
+    ';border:1px solid ' + (isDark ? '#555' : '#ccc') + ';border-radius:4px;margin:0 0.3em;';
+  deepLinkBtn.addEventListener('click', function() {
+    document.body.classList.toggle('show-anchors');
+    var active = document.body.classList.contains('show-anchors');
+    try { localStorage.setItem('relinquishment-deep-link-toggle', active ? '1' : '0'); } catch(e) {}
+  });
+  // Restore toggle state
+  try {
+    if (localStorage.getItem('relinquishment-deep-link-toggle') === '1') {
+      document.body.classList.add('show-anchors');
+    }
+  } catch(e) {}
+
   nav.appendChild(backBtn);
   nav.appendChild(breadcrumb);
   nav.appendChild(shareBtn);
   nav.appendChild(pdfBtn);
+  nav.appendChild(deepLinkBtn);
   nav.appendChild(quickJump);
   nav.appendChild(scienceBtn);
   nav.appendChild(storyBtn);
@@ -1137,5 +1160,26 @@
         }
       }, 150);
     }
+  });
+  // --- Deep link click-to-copy (Plan 0148) ---
+  function showDeepLinkToast(msg) {
+    var t = document.createElement('div');
+    t.textContent = msg;
+    t.style.cssText = 'position:fixed;bottom:3.5em;left:50%;transform:translateX(-50%);' +
+      'background:rgba(0,0,0,0.7);color:#fff;padding:0.4em 1em;border-radius:4px;' +
+      'font-size:0.85em;z-index:200;pointer-events:none;';
+    document.body.appendChild(t);
+    setTimeout(function() { document.body.removeChild(t); }, 1500);
+  }
+
+  document.addEventListener('click', function(e) {
+    if (!document.body.classList.contains('show-anchors')) return;
+    var anchor = e.target.closest('.share-anchor');
+    if (!anchor) return;
+    e.stopPropagation();
+    var url = window.location.origin + window.location.pathname + '#' + anchor.id;
+    copyToClipboard(url, function() {
+      showDeepLinkToast('Link copied');
+    });
   });
 })();
