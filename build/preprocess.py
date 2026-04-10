@@ -793,16 +793,14 @@ details.bc-expansion .record-link:hover {
 /* Deep link anchors — Plan 0148 */
 .share-anchor { position: relative; display: inline; }
 .share-anchor::after {
-  content: "🔗";
+  content: "";
   font-size: 0.6em;
   opacity: 0;
   cursor: pointer;
   user-select: none;
-  margin-left: 0.3em;
-  padding: 8px;
   transition: opacity 0.2s;
 }
-body.show-anchors .share-anchor::after { opacity: 0.3; }
+body.show-anchors .share-anchor::after { content: "🔗"; opacity: 0.3; margin-left: 0.3em; padding: 8px; }
 body.show-anchors .share-anchor:hover::after { opacity: 0.8; }
 @media print { .share-anchor::after { content: none; } }
 @media (prefers-color-scheme: dark) {
@@ -1580,10 +1578,11 @@ def fix_html_toc(html_path):
     # --- B/C expansion hooks — injected by chapter ID (Plan 0143d) ---
     bc_hooks = {
         'spine:code-war': {
-            'summary': 'According to this story, there was a third classified breakthrough...',
-            'body': 'Around 1990, a small classified team reportedly achieved what the public '
-                    'world is still pursuing thirty years later. Five scientists whose work, '
-                    'the story claims, converged into something none of them had predicted.',
+            'summary': 'According to this story, there was a team that faced exactly this choice...',
+            'body': 'Five scientists, each expert in a different field, were brought together '
+                    'under DARPA classification circa 1990. What they built, if the account '
+                    'is true, was the most dangerous dual-use technology in human history \u2014 '
+                    'and they knew it before anyone else did.',
             'target': 'record:demonstration',
             'link_text': 'Read the full story'
         },
