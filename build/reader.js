@@ -1084,10 +1084,23 @@
     if (!term) return;
     lastTouchTime = Date.now();
 
-    // Navigation elements: let native action happen on touch
-    // hover-nav = buttons, links, accordion triggers — touch should navigate/act, not popup
-    // But hover-term INSIDE a summary (title-line spans) should still popup
-    if (term.classList.contains('hover-nav')) return;
+    // Navigation elements: split touch target on summaries
+    // Triangle/marker area = native toggle, heading text = show tooltip
+    if (term.classList.contains('hover-nav')) {
+      var heading = e.target.closest('h2, h3');
+      if (heading && term.contains(heading)) {
+        // Tap was on the chapter title text — show tooltip, prevent toggle
+        e.preventDefault();
+        var existingPanel = document.querySelector('.hover-panel');
+        if (existingPanel && term.getAttribute('aria-describedby') === existingPanel.id) {
+          dismissPanel();
+        } else {
+          showPanel(term);
+        }
+      }
+      // Tap on triangle/marker area or non-heading nav: fall through, native action happens
+      return;
+    }
 
     e.preventDefault();
 
@@ -1110,14 +1123,15 @@
       return;
     }
 
+    // If touch just handled this (within 500ms), skip — prevents synthetic click
+    // from dismissing a panel that touchend just opened
+    if (Date.now() - lastTouchTime < 500) return;
+
     // Navigation elements: let native action happen (click navigates/acts)
     if (term.classList.contains('hover-nav')) {
       dismissPanel();
       return;
     }
-
-    // If touch just handled this (within 500ms), skip
-    if (Date.now() - lastTouchTime < 500) return;
 
     e.preventDefault();
 

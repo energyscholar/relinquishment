@@ -431,6 +431,17 @@ details blockquote { margin: 0.5em 0; }
 .hover-term { font-style: italic; border-bottom: 1px dotted #888; cursor: pointer; }
 .hover-term:hover { border-bottom-color: #2471a3; }
 
+/* Mobile: hint that chapter titles are tappable for tooltip (Plan 0148 Phase 2b) */
+@media (hover: none) {
+  details.chapter-section > summary.hover-nav > h2,
+  details.chapter-section > summary.hover-nav > h3,
+  details.part-section > summary.hover-nav > h2 {
+    text-decoration: underline dotted;
+    text-decoration-color: rgba(0,0,0,0.25);
+    text-underline-offset: 3px;
+  }
+}
+
 /* Guardian interludes (Plan 0143) */
 .guardian-interlude {
   border-left: 3px solid #9b7db8;
@@ -535,6 +546,13 @@ details.bc-expansion .record-link:hover {
   .epistemic-legend span { border-left-color: #b8942e; }
   .epistemic-legend span:nth-child(2) { border-left-color: #4a7d8f; }
   .epistemic-legend span:nth-child(3) { border-left-color: #7d5fa0; }
+}
+@media (hover: none) and (prefers-color-scheme: dark) {
+  details.chapter-section > summary.hover-nav > h2,
+  details.chapter-section > summary.hover-nav > h3,
+  details.part-section > summary.hover-nav > h2 {
+    text-decoration-color: rgba(255,255,255,0.2);
+  }
 }
 
 /* Deep link anchors — Plan 0148 */
@@ -10376,8 +10394,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>df225d50885a3ec760074abad4dedcd525e6fb55</code> on 2026-04-10
-01:47:03 -0700.</p>
+<code>550f46de1155d46bc139e2066e78edcdd914683a</code> on 2026-04-10
+02:41:05 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -10445,7 +10463,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-10T09:40:13Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-10T09:47:46Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -10456,19 +10474,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>df225d5</code></p>
+<p><code>550f46d</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>df225d50885a3ec760074abad4dedcd525e6fb55</code></p>
+<p><code>550f46de1155d46bc139e2066e78edcdd914683a</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-10 01:47:03 -0700</p>
+<p>2026-04-10 02:41:05 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-10T09:40:13Z</p>
+<p>2026-04-10T09:47:46Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -11901,10 +11919,23 @@ energyscholar+physics@gmail.com
     if (!term) return;
     lastTouchTime = Date.now();
 
-    // Navigation elements: let native action happen on touch
-    // hover-nav = buttons, links, accordion triggers — touch should navigate/act, not popup
-    // But hover-term INSIDE a summary (title-line spans) should still popup
-    if (term.classList.contains('hover-nav')) return;
+    // Navigation elements: split touch target on summaries
+    // Triangle/marker area = native toggle, heading text = show tooltip
+    if (term.classList.contains('hover-nav')) {
+      var heading = e.target.closest('h2, h3');
+      if (heading && term.contains(heading)) {
+        // Tap was on the chapter title text — show tooltip, prevent toggle
+        e.preventDefault();
+        var existingPanel = document.querySelector('.hover-panel');
+        if (existingPanel && term.getAttribute('aria-describedby') === existingPanel.id) {
+          dismissPanel();
+        } else {
+          showPanel(term);
+        }
+      }
+      // Tap on triangle/marker area or non-heading nav: fall through, native action happens
+      return;
+    }
 
     e.preventDefault();
 
@@ -11927,14 +11958,15 @@ energyscholar+physics@gmail.com
       return;
     }
 
+    // If touch just handled this (within 500ms), skip — prevents synthetic click
+    // from dismissing a panel that touchend just opened
+    if (Date.now() - lastTouchTime < 500) return;
+
     // Navigation elements: let native action happen (click navigates/acts)
     if (term.classList.contains('hover-nav')) {
       dismissPanel();
       return;
     }
-
-    // If touch just handled this (within 500ms), skip
-    if (Date.now() - lastTouchTime < 500) return;
 
     e.preventDefault();
 

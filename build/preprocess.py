@@ -684,6 +684,17 @@ details blockquote { margin: 0.5em 0; }
 .hover-term { font-style: italic; border-bottom: 1px dotted #888; cursor: pointer; }
 .hover-term:hover { border-bottom-color: #2471a3; }
 
+/* Mobile: hint that chapter titles are tappable for tooltip (Plan 0148 Phase 2b) */
+@media (hover: none) {
+  details.chapter-section > summary.hover-nav > h2,
+  details.chapter-section > summary.hover-nav > h3,
+  details.part-section > summary.hover-nav > h2 {
+    text-decoration: underline dotted;
+    text-decoration-color: rgba(0,0,0,0.25);
+    text-underline-offset: 3px;
+  }
+}
+
 /* Guardian interludes (Plan 0143) */
 .guardian-interlude {
   border-left: 3px solid #9b7db8;
@@ -788,6 +799,13 @@ details.bc-expansion .record-link:hover {
   .epistemic-legend span { border-left-color: #b8942e; }
   .epistemic-legend span:nth-child(2) { border-left-color: #4a7d8f; }
   .epistemic-legend span:nth-child(3) { border-left-color: #7d5fa0; }
+}
+@media (hover: none) and (prefers-color-scheme: dark) {
+  details.chapter-section > summary.hover-nav > h2,
+  details.chapter-section > summary.hover-nav > h3,
+  details.part-section > summary.hover-nav > h2 {
+    text-decoration-color: rgba(255,255,255,0.2);
+  }
 }
 
 /* Deep link anchors — Plan 0148 */
