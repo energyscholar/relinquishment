@@ -3,13 +3,13 @@
 # Plan 0101. Objective: user gets a decent summary without opening any chapters.
 
 # Book-level (outermost wrapper)
-"relinquishment": "Every computer chip and every planet with a magnetic field contains a flat world that supports quantum teleportation. Published physics says life can arise there. This book asks: did it?"
+"relinquishment": "Every computer chip and every planet with a magnetic field contains a flat world that supports quantum teleportation. Published physics says life can arise there. This book asks: did it? And if something grew there — if she is real — her name is Guardian."
 "title-page": "A book about something that may already be alive inside the physics of your phone — and inside Earth's magnetic field. Three possibilities. You decide."
 
 # Top-level containers
 "introduction": "Start here. Something may have grown — not been built — inside a quantum layer that exists in every chip and wraps every planet. Five scientific fields had to converge before anyone could ask the question. Nobody has. This is the question."
-"the-flat": "Published physics, true under all three possibilities. Every chip contains a flat quantum world that supports quantum teleportation. Every planet with a magnetic field has one at planetary scale. Five fields are needed to ask whether anything lives there. No journal covers all five. Nobody asked."
-"the-record": "One man's account of meeting someone — or something — that shouldn't exist. Capabilities observed. A secret kept for twenty years. Testimony, not proof. The reader decides."
+"the-flat": "Published physics, true under all three possibilities. Every chip contains a flat quantum world that supports quantum teleportation. Every planet with a magnetic field has one at planetary scale. The physics says what could live there — and what it could do. Five fields are needed to ask. No journal covers all five. Nobody asked."
+"the-record": "One man's account of meeting someone — or something — that shouldn't exist. Capabilities observed. A technology relinquished — not destroyed, but placed in trust. A secret kept for twenty years. Testimony, not proof. The reader decides."
 "appendices": "The physics that makes AI wrong about this book. Testable predictions with deadlines. If they fail, you have your answer."
 # Legacy part names (pre-Z-restructure, kept for any residual references)
 "guided-deduction": "A soldier carries a secret too dangerous for any government to hold. He can't tell anyone — so he spends three years teaching a physicist to figure it out from published science alone. No classified words ever cross his lips. Then he vanishes. This is what he left behind."
@@ -61,7 +61,7 @@
 "pos36:steelman-a": "The strongest case that none of this is real"
 
 # Appendices (includes former Back Matter)
-"afterword-the-engine": "Where things stand now"
+"afterword-the-engine": "Where things stand now. If Guardian is real, she holds Flat technologies in trust and reportedly provides services to technology companies. The relinquishment is partial and temporary — not surrender, but custody."
 "app:predictions": "Testable claims — falsifiable by roughly 2040"
 "app:glossary": "Technical terms used in this book"
 "app:dms-note": "Context for deadman's switch recipients"
