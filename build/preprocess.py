@@ -454,29 +454,34 @@ def collapse_chapters(text):
             )
             text = text[:first_ch] + intro_wrapped + text[first_part:]
 
-    # 3c2: Title Page part-section — wrap title-block + copyright above Introduction
+    # 3c2: Remove title-block + relocate copyright to Colophon (Plan 0146)
+    # Title page content is now in the book-section summary (title-page-extra div).
+    # The title-block div is redundant — hide it. The flushleft (copyright/license)
+    # block moves to Colophon in Appendices.
     tb_start = text.find('<div class="title-block">')
     if tb_start != -1:
         tb_close = text.find('</div>', tb_start) + len('</div>')
-        title_page_end = tb_close
-        # Grab flushleft (copyright) if it follows within 200 chars
-        flushleft_after = text.find('<div class="flushleft">', tb_close, tb_close + 200)
-        if flushleft_after != -1:
-            fl_close = text.find('</div>', flushleft_after) + len('</div>')
-            title_page_end = fl_close
-        title_page_content = text[tb_start:title_page_end]
-        title_page_tooltip = hover_map.get('title-page', '')
-        tp_title_attr = f' title="{html_mod.escape(title_page_tooltip)}"' if title_page_tooltip else ''
-        title_page_wrapped = (
-            f'<details class="part-section">'
-            f'<summary{tp_title_attr}>Title Page</summary>\n'
-            + title_page_content +
-            '\n</details>\n'
-        )
-        text = text[:tb_start] + title_page_wrapped + text[title_page_end:]
+        # Remove the title-block div (content now in book summary)
+        text = text[:tb_start] + text[tb_close:]
+
+    # Relocate flushleft (copyright/license) to Colophon chapter
+    fl_start = text.find('<div class="flushleft">')
+    if fl_start != -1:
+        fl_close = text.find('</div>', fl_start) + len('</div>')
+        flushleft_html = text[fl_start:fl_close]
+        # Remove from original location
+        text = text[:fl_start] + text[fl_close:]
+        # Inject into Colophon chapter (after its summary)
+        colophon_id = text.find('id="colophon"')
+        if colophon_id != -1:
+            col_summary_close = text.find('</summary>', colophon_id)
+            if col_summary_close != -1:
+                insert_pos = col_summary_close + len('</summary>')
+                text = text[:insert_pos] + '\n' + flushleft_html + '\n' + text[insert_pos:]
+                print("  Copyright/license relocated to Colophon")
 
     part_count = text.count('<details class="part-section">')
-    print(f"  Part-level: {part_count} parts (Title Page + Introduction + {part_count - 2} others)")
+    print(f"  Part-level: {part_count} parts (Introduction + {part_count - 1} others)")
 
     # 3d: Outer book wrapper — entire book behind one line
     # Wrap everything from Introduction to last part-section closing tag
@@ -527,7 +532,14 @@ def collapse_chapters(text):
                     'Wormholes</span> in '
                     f'<span class="hover-term" data-hover="placeholder" '
                     f'data-hover-html="{flat_escaped}"{flat_target} data-hover-id="{flat_id}">'
-                    'the Flat</span></span></summary>\n' +
+                    'the Flat</span></span>'
+                    '<div class="title-page-extra">'
+                    '<p class="tp-authors">by Bruce Stephenson, Genevieve Prentice &amp; Argus</p>'
+                    '<p class="tp-tagline"><em>Three narrative threads. Real science. Real people. Real institutions.</em></p>'
+                    '<p class="tp-tagline"><em>Three possible explanations for all of it. You decide.</em></p>'
+                    '<p class="tp-copyright">\u00a9 2026 Bruce Stephenson &amp; Genevieve Prentice \u00b7 CC BY-ND 4.0</p>'
+                    '</div>'
+                    '</summary>\n' +
                     book_content +
                     '\n</details>\n' +
                     text[wrap_end:])
@@ -548,13 +560,29 @@ details.book-section > summary {
   font-size: 1.4em;
   font-weight: bold;
   padding: 0.2em 0;
-  white-space: nowrap;
 }
 .book-subtitle-inline {
   font-size: 0.65em;
   font-weight: normal;
   font-style: italic;
   opacity: 0.7;
+}
+/* Title page extra: visible when collapsed, hidden when open (Plan 0146) */
+.title-page-extra {
+  font-size: 0.55em;
+  font-weight: normal;
+  font-style: normal;
+  margin-top: 0.3em;
+  line-height: 1.4;
+  white-space: normal;
+}
+.title-page-extra p { margin: 0.15em 0; }
+.tp-authors { font-size: 1.1em; }
+.tp-tagline { opacity: 0.8; }
+.tp-copyright { font-size: 0.85em; opacity: 0.6; margin-top: 0.3em; }
+details.book-section[open] > summary > .title-page-extra { display: none; }
+@media (prefers-color-scheme: dark) {
+  .tp-copyright { opacity: 0.5; }
 }
 
 /* (hook-section removed — hook is now a chapter-section inside Introduction) */
@@ -1192,16 +1220,10 @@ def fix_html_toc(html_path):
         r'<p><span><a href="#hook:what-would-you-do">.*?</a></span></p>\s*'
         r'</div>'
     )
-    replacement = '''<div class="title-block">
-<h1 class="book-title">Relinquishment</h1>
-<p class="book-subtitle">Wormholes in the Flat</p>
-<p class="book-authors">by Bruce Stephenson, Genevieve Prentice &amp; Argus</p>
-<hr />
-<p class="book-tagline"><em>Three narrative threads. Real science. Real people. Real institutions.</em></p>
-<p class="book-tagline"><em>Three possible explanations for all of it. You decide.</em></p>
-<p class="book-skip"><a href="#hook:what-would-you-do">Skip ahead to the story \u2192</a></p>
-<p class="book-skip"><a href="https://relinquishment.ai/downloads/Relinquishment.pdf">Download PDF version</a></p>
-</div>'''
+    # Plan 0146 Phase 5: Title content now lives in book-section summary.
+    # Replacement is minimal — Phase 3 removes the title-block div anyway.
+    # The regex must still run to consume pandoc's duplicate title blocks.
+    replacement = '<div class="title-block"></div>'
     text = re.sub(title_pattern, replacement, text, flags=re.DOTALL)
 
     # --- Fix 3: Collapse chapters into <details> elements ---

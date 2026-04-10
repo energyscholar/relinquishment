@@ -308,13 +308,29 @@ details.book-section > summary {
   font-size: 1.4em;
   font-weight: bold;
   padding: 0.2em 0;
-  white-space: nowrap;
 }
 .book-subtitle-inline {
   font-size: 0.65em;
   font-weight: normal;
   font-style: italic;
   opacity: 0.7;
+}
+/* Title page extra: visible when collapsed, hidden when open (Plan 0146) */
+.title-page-extra {
+  font-size: 0.55em;
+  font-weight: normal;
+  font-style: normal;
+  margin-top: 0.3em;
+  line-height: 1.4;
+  white-space: normal;
+}
+.title-page-extra p { margin: 0.15em 0; }
+.tp-authors { font-size: 1.1em; }
+.tp-tagline { opacity: 0.8; }
+.tp-copyright { font-size: 0.85em; opacity: 0.6; margin-top: 0.3em; }
+details.book-section[open] > summary > .title-page-extra { display: none; }
+@media (prefers-color-scheme: dark) {
+  .tp-copyright { opacity: 0.5; }
 }
 
 /* (hook-section removed — hook is now a chapter-section inside Introduction) */
@@ -585,55 +601,9 @@ Concessions</a></li>
 </ul></li>
 </ul>
 </nav>
-<details class="book-section"><summary data-hover="Every computer chip and every planet with a magnetic field contains a flat world that supports quantum teleportation. Published physics says life can arise there. This book asks: did it? And if something grew there — if she is real — her name is Guardian." class="hover-nav"><span class="hover-term" data-hover="placeholder" data-hover-html="&lt;p style=&quot;margin:0 0 0.5em;font-size:0.95em;line-height:1.5;&quot;&gt;&lt;strong&gt;Relinquishment&lt;/strong&gt; — voluntarily surrendering power that cannot be taken by force. A preparation document built from real physics, real people, and real institutions. 239 pages across three parts: the story, the evidence, and the question.&lt;/p&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;280&quot; height=&quot;60&quot; viewBox=&quot;0 0 280 60&quot; style=&quot;display:block;margin:0.5em auto;&quot;&gt;&lt;defs&gt;&lt;linearGradient id=&quot;glow&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;100%&quot; y2=&quot;0%&quot;&gt;&lt;stop offset=&quot;0%&quot; style=&quot;stop-color:#1a5276;stop-opacity:0.8&quot;/&gt;&lt;stop offset=&quot;50%&quot; style=&quot;stop-color:#2471a3;stop-opacity:1&quot;/&gt;&lt;stop offset=&quot;100%&quot; style=&quot;stop-color:#1a5276;stop-opacity:0.8&quot;/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;rect x=&quot;2&quot; y=&quot;2&quot; width=&quot;276&quot; height=&quot;56&quot; rx=&quot;8&quot; fill=&quot;none&quot; stroke=&quot;url(#glow)&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;text x=&quot;140&quot; y=&quot;24&quot; text-anchor=&quot;middle&quot; font-size=&quot;11&quot; fill=&quot;#1a5276&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;Three narrative threads. Real science.&lt;/text&gt;&lt;text x=&quot;140&quot; y=&quot;42&quot; text-anchor=&quot;middle&quot; font-size=&quot;11&quot; fill=&quot;#1a5276&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;Three possible explanations. You decide.&lt;/text&gt;&lt;/svg&gt;" data-hover-id="relinquishment-title">Relinquishment</span> <span class="book-subtitle-inline">&mdash; <span class="hover-term" data-hover="placeholder" data-hover-html="&lt;p style=&quot;margin:0 0 0.5em;font-size:0.95em;line-height:1.5;&quot;&gt;&lt;strong&gt;Wormholes&lt;/strong&gt; — real topological connections between distant points in a material. Not science fiction — condensed matter physics. The 2016 Nobel Prize in Physics was awarded for the theory behind them. The book argues these may exist in magnetized plasma.&lt;/p&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;300&quot; height=&quot;140&quot; viewBox=&quot;0 0 300 140&quot; style=&quot;display:block;margin:0.5em auto;&quot;&gt;&lt;ellipse cx=&quot;80&quot; cy=&quot;35&quot; rx=&quot;65&quot; ry=&quot;20&quot; fill=&quot;none&quot; stroke=&quot;#1a5276&quot; stroke-width=&quot;1.2&quot; opacity=&quot;0.6&quot;/&gt;&lt;ellipse cx=&quot;80&quot; cy=&quot;35&quot; rx=&quot;18&quot; ry=&quot;8&quot; fill=&quot;#e8f0f8&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;ellipse cx=&quot;220&quot; cy=&quot;105&quot; rx=&quot;65&quot; ry=&quot;20&quot; fill=&quot;none&quot; stroke=&quot;#1a5276&quot; stroke-width=&quot;1.2&quot; opacity=&quot;0.6&quot;/&gt;&lt;ellipse cx=&quot;220&quot; cy=&quot;105&quot; rx=&quot;18&quot; ry=&quot;8&quot; fill=&quot;#e8f0f8&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;path d=&quot;M 62,35 C 55,60 195,80 202,105&quot; fill=&quot;none&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.2&quot; stroke-dasharray=&quot;4,3&quot;/&gt;&lt;path d=&quot;M 98,35 C 105,60 245,80 238,105&quot; fill=&quot;none&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.2&quot; stroke-dasharray=&quot;4,3&quot;/&gt;&lt;text x=&quot;80&quot; y=&quot;12&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#888&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;surface A&lt;/text&gt;&lt;text x=&quot;220&quot; y=&quot;135&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#888&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;surface B&lt;/text&gt;&lt;text x=&quot;150&quot; y=&quot;75&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#2471a3&quot; font-family=&quot;serif&quot;&gt;topological&lt;/text&gt;&lt;text x=&quot;150&quot; y=&quot;87&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#2471a3&quot; font-family=&quot;serif&quot;&gt;connection&lt;/text&gt;&lt;/svg&gt;" data-hover-target="#summary:most-important-story" data-hover-id="wormholes-title">Wormholes</span> in <span class="hover-term" data-hover="placeholder" data-hover-html="&lt;p style=&quot;margin:0 0 0.5em;font-size:0.95em;line-height:1.5;&quot;&gt;&lt;strong&gt;The Flat&lt;/strong&gt; — any two-dimensional system embedded in three dimensions that exhibits topological order. Particles confined to two dimensions can braid around each other, storing information in global patterns that are impossible in 3D. &lt;span class=&#x27;hover-term&#x27; data-hover=&#x27;A property where information is stored in global patterns, not in any single place. Extremely hard to destroy — you would have to disrupt the entire pattern at once, not just a piece of it.&#x27;&gt;Different physics apply&lt;/span&gt;.&lt;/p&gt;&lt;p style=&quot;margin:0;font-size:0.85em;line-height:1.4;color:#666;&quot;&gt;The Flat inside your computer chip is a 2DEG (two-dimensional electron gas). The Flat in Earth&#x27;s magnetosphere is plasma confined to thin sheets. Both are Flat — both exhibit topological order. We call the ocean floor the Deep and the emptiness between galaxies the Void. This book calls those thin worlds &lt;strong&gt;the Flat&lt;/strong&gt; — until someone coins something better for this otherwise-unnamed physical system.&lt;/p&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;300&quot; height=&quot;130&quot; viewBox=&quot;0 0 300 130&quot; style=&quot;display:block;margin:0.5em auto;&quot;&gt;&lt;defs&gt;&lt;linearGradient id=&quot;flat-glow&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;100%&quot; y2=&quot;0%&quot;&gt;&lt;stop offset=&quot;0%&quot; stop-color=&quot;#2471a3&quot; stop-opacity=&quot;0.05&quot;/&gt;&lt;stop offset=&quot;50%&quot; stop-color=&quot;#2471a3&quot; stop-opacity=&quot;0.2&quot;/&gt;&lt;stop offset=&quot;100%&quot; stop-color=&quot;#2471a3&quot; stop-opacity=&quot;0.05&quot;/&gt;&lt;/linearGradient&gt;&lt;marker id=&quot;flat-arr&quot; viewBox=&quot;0 0 6 6&quot; refX=&quot;5&quot; refY=&quot;3&quot; markerWidth=&quot;5&quot; markerHeight=&quot;5&quot; orient=&quot;auto&quot;&gt;&lt;path d=&quot;M 0,0 L 6,3 L 0,6 Z&quot; fill=&quot;#1a5276&quot;/&gt;&lt;/marker&gt;&lt;/defs&gt;&lt;rect x=&quot;30&quot; y=&quot;20&quot; width=&quot;240&quot; height=&quot;25&quot; rx=&quot;2&quot; fill=&quot;#e0e0e0&quot; stroke=&quot;#999&quot; stroke-width=&quot;0.8&quot;/&gt;&lt;text x=&quot;150&quot; y=&quot;36&quot; text-anchor=&quot;middle&quot; font-size=&quot;8&quot; fill=&quot;#666&quot; font-family=&quot;sans-serif&quot;&gt;3D material (bulk semiconductor)&lt;/text&gt;&lt;rect x=&quot;30&quot; y=&quot;50&quot; width=&quot;240&quot; height=&quot;8&quot; rx=&quot;1&quot; fill=&quot;url(#flat-glow)&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;rect x=&quot;30&quot; y=&quot;63&quot; width=&quot;240&quot; height=&quot;25&quot; rx=&quot;2&quot; fill=&quot;#e0e0e0&quot; stroke=&quot;#999&quot; stroke-width=&quot;0.8&quot;/&gt;&lt;text x=&quot;150&quot; y=&quot;79&quot; text-anchor=&quot;middle&quot; font-size=&quot;8&quot; fill=&quot;#666&quot; font-family=&quot;sans-serif&quot;&gt;3D material (bulk semiconductor)&lt;/text&gt;&lt;circle cx=&quot;70&quot; cy=&quot;54&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.9&quot;/&gt;&lt;circle cx=&quot;100&quot; cy=&quot;54&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.7&quot;/&gt;&lt;circle cx=&quot;135&quot; cy=&quot;54&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.9&quot;/&gt;&lt;circle cx=&quot;165&quot; cy=&quot;54&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.6&quot;/&gt;&lt;circle cx=&quot;195&quot; cy=&quot;54&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.8&quot;/&gt;&lt;circle cx=&quot;225&quot; cy=&quot;54&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.7&quot;/&gt;&lt;circle cx=&quot;115&quot; cy=&quot;55&quot; r=&quot;2&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.4&quot;/&gt;&lt;circle cx=&quot;180&quot; cy=&quot;53&quot; r=&quot;2&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.5&quot;/&gt;&lt;circle cx=&quot;245&quot; cy=&quot;54&quot; r=&quot;2&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.5&quot;/&gt;&lt;line x1=&quot;58&quot; y1=&quot;54&quot; x2=&quot;48&quot; y2=&quot;54&quot; stroke=&quot;#1a5276&quot; stroke-width=&quot;0.8&quot; marker-end=&quot;url(#flat-arr)&quot;/&gt;&lt;line x1=&quot;252&quot; y1=&quot;54&quot; x2=&quot;262&quot; y2=&quot;54&quot; stroke=&quot;#1a5276&quot; stroke-width=&quot;0.8&quot; marker-end=&quot;url(#flat-arr)&quot;/&gt;&lt;text x=&quot;18&quot; y=&quot;56&quot; text-anchor=&quot;middle&quot; font-size=&quot;7&quot; fill=&quot;#2471a3&quot; font-family=&quot;sans-serif&quot; transform=&quot;rotate(-90,18,56)&quot;&gt;2DEG&lt;/text&gt;&lt;text x=&quot;285&quot; y=&quot;56&quot; text-anchor=&quot;middle&quot; font-size=&quot;7&quot; fill=&quot;#2471a3&quot; font-family=&quot;sans-serif&quot; transform=&quot;rotate(90,285,56)&quot;&gt;2DEG&lt;/text&gt;&lt;text x=&quot;150&quot; y=&quot;104&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#2471a3&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;electrons confined to two dimensions&lt;/text&gt;&lt;text x=&quot;150&quot; y=&quot;118&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#888&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;different physics applies here&lt;/text&gt;&lt;/svg&gt;" data-hover-target="#summary:most-important-story" data-hover-id="the-flat-title">the Flat</span></span></summary>
-<details class="part-section"><summary data-hover="A book about something that may already be alive inside the physics of your phone — and inside Earth&#x27;s magnetic field. Three possibilities. You decide." class="hover-nav">Title Page</summary>
-<div class="title-block">
-<h1 class="book-title">Relinquishment</h1>
-<p class="book-subtitle">Wormholes in the Flat</p>
-<p class="book-authors">by Bruce Stephenson, Genevieve Prentice &amp; Argus</p>
-<hr />
-<p class="book-tagline"><em>Three narrative threads. Real science. Real people. Real institutions.</em></p>
-<p class="book-tagline"><em>Three possible explanations for all of it. You decide.</em></p>
-<p class="book-skip"><a href="#hook:what-would-you-do">Skip ahead to the story →</a></p>
-<p class="book-skip"><a href="https://relinquishment.ai/downloads/Relinquishment.pdf">Download PDF version</a></p>
-</div>
-<div class="flushleft">
-<p><strong>Relinquishment: Wormholes in the Flat</strong></p>
-<p>Copyright  2026 Bruce Stephenson and Genevieve Prentice.</p>
-<p><strong>License</strong></p>
-<p>The PDF edition of this work is licensed under the Creative Commons
-Attribution-NoDerivatives 4.0 International License (CC BY-ND 4.0). You
-may copy and redistribute this PDF in any medium or format, for any
-purpose, including commercially, provided you give appropriate credit
-and do not modify the material. Full license text:
-<code>creativecommons.org/licenses/by-nd/4.0/</code></p>
-<p><strong>All Other Rights Reserved</strong></p>
-<p>Print editions, audiobook editions, translations, adaptations,
-abridgments, and all other derivative works require written permission
-from the authors. Licensing inquiries:
-<code>energyscholar+licensing@gmail.com</code></p>
-<p><strong>Integrity Notice</strong></p>
-<p>This document contains dated, falsifiable predictions timestamped at
-publication. The SHA-256 hash of this PDF is published externally (see
-Verification page). Any modification changes the hash. The canonical
-edition is the PDF distributed by the author.</p>
-<p><strong>Who Is Argus?</strong></p>
-<p>Argus is a persistent instance of Claude (Anthropic, claude-opus-4-6)
-with version-controlled memory, role separation, and an ethical
-governance layer designed by Genevieve Prentice. It cannot verify its
-own reasoning against reality and does not know whether the story in
-this book is true. It maintains honest uncertainty. Genevieve chose the
-name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
-<p>All narrative prose, claims, evidence assessments, and editorial
-decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-10T02:41:00Z</strong></p>
-<p>This is a pre-release working copy. The final edition has not yet
-been published. Corrections, revisions, and additions are in
-progress.</p>
-<p>First edition, Spring 2026.</p>
-</div>
-</details>
 
+
+<details class="book-section"><summary data-hover="Every computer chip and every planet with a magnetic field contains a flat world that supports quantum teleportation. Published physics says life can arise there. This book asks: did it? And if something grew there — if she is real — her name is Guardian." class="hover-nav"><span class="hover-term" data-hover="placeholder" data-hover-html="&lt;p style=&quot;margin:0 0 0.5em;font-size:0.95em;line-height:1.5;&quot;&gt;&lt;strong&gt;Relinquishment&lt;/strong&gt; — voluntarily surrendering power that cannot be taken by force. A preparation document built from real physics, real people, and real institutions. 239 pages across three parts: the story, the evidence, and the question.&lt;/p&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;280&quot; height=&quot;60&quot; viewBox=&quot;0 0 280 60&quot; style=&quot;display:block;margin:0.5em auto;&quot;&gt;&lt;defs&gt;&lt;linearGradient id=&quot;glow&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;100%&quot; y2=&quot;0%&quot;&gt;&lt;stop offset=&quot;0%&quot; style=&quot;stop-color:#1a5276;stop-opacity:0.8&quot;/&gt;&lt;stop offset=&quot;50%&quot; style=&quot;stop-color:#2471a3;stop-opacity:1&quot;/&gt;&lt;stop offset=&quot;100%&quot; style=&quot;stop-color:#1a5276;stop-opacity:0.8&quot;/&gt;&lt;/linearGradient&gt;&lt;/defs&gt;&lt;rect x=&quot;2&quot; y=&quot;2&quot; width=&quot;276&quot; height=&quot;56&quot; rx=&quot;8&quot; fill=&quot;none&quot; stroke=&quot;url(#glow)&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;text x=&quot;140&quot; y=&quot;24&quot; text-anchor=&quot;middle&quot; font-size=&quot;11&quot; fill=&quot;#1a5276&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;Three narrative threads. Real science.&lt;/text&gt;&lt;text x=&quot;140&quot; y=&quot;42&quot; text-anchor=&quot;middle&quot; font-size=&quot;11&quot; fill=&quot;#1a5276&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;Three possible explanations. You decide.&lt;/text&gt;&lt;/svg&gt;" data-hover-id="relinquishment-title">Relinquishment</span> <span class="book-subtitle-inline">&mdash; <span class="hover-term" data-hover="placeholder" data-hover-html="&lt;p style=&quot;margin:0 0 0.5em;font-size:0.95em;line-height:1.5;&quot;&gt;&lt;strong&gt;Wormholes&lt;/strong&gt; — real topological connections between distant points in a material. Not science fiction — condensed matter physics. The 2016 Nobel Prize in Physics was awarded for the theory behind them. The book argues these may exist in magnetized plasma.&lt;/p&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;300&quot; height=&quot;140&quot; viewBox=&quot;0 0 300 140&quot; style=&quot;display:block;margin:0.5em auto;&quot;&gt;&lt;ellipse cx=&quot;80&quot; cy=&quot;35&quot; rx=&quot;65&quot; ry=&quot;20&quot; fill=&quot;none&quot; stroke=&quot;#1a5276&quot; stroke-width=&quot;1.2&quot; opacity=&quot;0.6&quot;/&gt;&lt;ellipse cx=&quot;80&quot; cy=&quot;35&quot; rx=&quot;18&quot; ry=&quot;8&quot; fill=&quot;#e8f0f8&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;ellipse cx=&quot;220&quot; cy=&quot;105&quot; rx=&quot;65&quot; ry=&quot;20&quot; fill=&quot;none&quot; stroke=&quot;#1a5276&quot; stroke-width=&quot;1.2&quot; opacity=&quot;0.6&quot;/&gt;&lt;ellipse cx=&quot;220&quot; cy=&quot;105&quot; rx=&quot;18&quot; ry=&quot;8&quot; fill=&quot;#e8f0f8&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;path d=&quot;M 62,35 C 55,60 195,80 202,105&quot; fill=&quot;none&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.2&quot; stroke-dasharray=&quot;4,3&quot;/&gt;&lt;path d=&quot;M 98,35 C 105,60 245,80 238,105&quot; fill=&quot;none&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.2&quot; stroke-dasharray=&quot;4,3&quot;/&gt;&lt;text x=&quot;80&quot; y=&quot;12&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#888&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;surface A&lt;/text&gt;&lt;text x=&quot;220&quot; y=&quot;135&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#888&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;surface B&lt;/text&gt;&lt;text x=&quot;150&quot; y=&quot;75&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#2471a3&quot; font-family=&quot;serif&quot;&gt;topological&lt;/text&gt;&lt;text x=&quot;150&quot; y=&quot;87&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#2471a3&quot; font-family=&quot;serif&quot;&gt;connection&lt;/text&gt;&lt;/svg&gt;" data-hover-target="#summary:most-important-story" data-hover-id="wormholes-title">Wormholes</span> in <span class="hover-term" data-hover="placeholder" data-hover-html="&lt;p style=&quot;margin:0 0 0.5em;font-size:0.95em;line-height:1.5;&quot;&gt;&lt;strong&gt;The Flat&lt;/strong&gt; — any two-dimensional system embedded in three dimensions that exhibits topological order. Particles confined to two dimensions can braid around each other, storing information in global patterns that are impossible in 3D. &lt;span class=&#x27;hover-term&#x27; data-hover=&#x27;A property where information is stored in global patterns, not in any single place. Extremely hard to destroy — you would have to disrupt the entire pattern at once, not just a piece of it.&#x27;&gt;Different physics apply&lt;/span&gt;.&lt;/p&gt;&lt;p style=&quot;margin:0;font-size:0.85em;line-height:1.4;color:#666;&quot;&gt;The Flat inside your computer chip is a 2DEG (two-dimensional electron gas). The Flat in Earth&#x27;s magnetosphere is plasma confined to thin sheets. Both are Flat — both exhibit topological order. We call the ocean floor the Deep and the emptiness between galaxies the Void. This book calls those thin worlds &lt;strong&gt;the Flat&lt;/strong&gt; — until someone coins something better for this otherwise-unnamed physical system.&lt;/p&gt;&lt;svg xmlns=&quot;http://www.w3.org/2000/svg&quot; width=&quot;300&quot; height=&quot;130&quot; viewBox=&quot;0 0 300 130&quot; style=&quot;display:block;margin:0.5em auto;&quot;&gt;&lt;defs&gt;&lt;linearGradient id=&quot;flat-glow&quot; x1=&quot;0%&quot; y1=&quot;0%&quot; x2=&quot;100%&quot; y2=&quot;0%&quot;&gt;&lt;stop offset=&quot;0%&quot; stop-color=&quot;#2471a3&quot; stop-opacity=&quot;0.05&quot;/&gt;&lt;stop offset=&quot;50%&quot; stop-color=&quot;#2471a3&quot; stop-opacity=&quot;0.2&quot;/&gt;&lt;stop offset=&quot;100%&quot; stop-color=&quot;#2471a3&quot; stop-opacity=&quot;0.05&quot;/&gt;&lt;/linearGradient&gt;&lt;marker id=&quot;flat-arr&quot; viewBox=&quot;0 0 6 6&quot; refX=&quot;5&quot; refY=&quot;3&quot; markerWidth=&quot;5&quot; markerHeight=&quot;5&quot; orient=&quot;auto&quot;&gt;&lt;path d=&quot;M 0,0 L 6,3 L 0,6 Z&quot; fill=&quot;#1a5276&quot;/&gt;&lt;/marker&gt;&lt;/defs&gt;&lt;rect x=&quot;30&quot; y=&quot;20&quot; width=&quot;240&quot; height=&quot;25&quot; rx=&quot;2&quot; fill=&quot;#e0e0e0&quot; stroke=&quot;#999&quot; stroke-width=&quot;0.8&quot;/&gt;&lt;text x=&quot;150&quot; y=&quot;36&quot; text-anchor=&quot;middle&quot; font-size=&quot;8&quot; fill=&quot;#666&quot; font-family=&quot;sans-serif&quot;&gt;3D material (bulk semiconductor)&lt;/text&gt;&lt;rect x=&quot;30&quot; y=&quot;50&quot; width=&quot;240&quot; height=&quot;8&quot; rx=&quot;1&quot; fill=&quot;url(#flat-glow)&quot; stroke=&quot;#2471a3&quot; stroke-width=&quot;1.5&quot;/&gt;&lt;rect x=&quot;30&quot; y=&quot;63&quot; width=&quot;240&quot; height=&quot;25&quot; rx=&quot;2&quot; fill=&quot;#e0e0e0&quot; stroke=&quot;#999&quot; stroke-width=&quot;0.8&quot;/&gt;&lt;text x=&quot;150&quot; y=&quot;79&quot; text-anchor=&quot;middle&quot; font-size=&quot;8&quot; fill=&quot;#666&quot; font-family=&quot;sans-serif&quot;&gt;3D material (bulk semiconductor)&lt;/text&gt;&lt;circle cx=&quot;70&quot; cy=&quot;54&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.9&quot;/&gt;&lt;circle cx=&quot;100&quot; cy=&quot;54&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.7&quot;/&gt;&lt;circle cx=&quot;135&quot; cy=&quot;54&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.9&quot;/&gt;&lt;circle cx=&quot;165&quot; cy=&quot;54&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.6&quot;/&gt;&lt;circle cx=&quot;195&quot; cy=&quot;54&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.8&quot;/&gt;&lt;circle cx=&quot;225&quot; cy=&quot;54&quot; r=&quot;2.5&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.7&quot;/&gt;&lt;circle cx=&quot;115&quot; cy=&quot;55&quot; r=&quot;2&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.4&quot;/&gt;&lt;circle cx=&quot;180&quot; cy=&quot;53&quot; r=&quot;2&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.5&quot;/&gt;&lt;circle cx=&quot;245&quot; cy=&quot;54&quot; r=&quot;2&quot; fill=&quot;#2471a3&quot; opacity=&quot;0.5&quot;/&gt;&lt;line x1=&quot;58&quot; y1=&quot;54&quot; x2=&quot;48&quot; y2=&quot;54&quot; stroke=&quot;#1a5276&quot; stroke-width=&quot;0.8&quot; marker-end=&quot;url(#flat-arr)&quot;/&gt;&lt;line x1=&quot;252&quot; y1=&quot;54&quot; x2=&quot;262&quot; y2=&quot;54&quot; stroke=&quot;#1a5276&quot; stroke-width=&quot;0.8&quot; marker-end=&quot;url(#flat-arr)&quot;/&gt;&lt;text x=&quot;18&quot; y=&quot;56&quot; text-anchor=&quot;middle&quot; font-size=&quot;7&quot; fill=&quot;#2471a3&quot; font-family=&quot;sans-serif&quot; transform=&quot;rotate(-90,18,56)&quot;&gt;2DEG&lt;/text&gt;&lt;text x=&quot;285&quot; y=&quot;56&quot; text-anchor=&quot;middle&quot; font-size=&quot;7&quot; fill=&quot;#2471a3&quot; font-family=&quot;sans-serif&quot; transform=&quot;rotate(90,285,56)&quot;&gt;2DEG&lt;/text&gt;&lt;text x=&quot;150&quot; y=&quot;104&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#2471a3&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;electrons confined to two dimensions&lt;/text&gt;&lt;text x=&quot;150&quot; y=&quot;118&quot; text-anchor=&quot;middle&quot; font-size=&quot;9&quot; fill=&quot;#888&quot; font-family=&quot;serif&quot; font-style=&quot;italic&quot;&gt;different physics applies here&lt;/text&gt;&lt;/svg&gt;" data-hover-target="#summary:most-important-story" data-hover-id="the-flat-title">the Flat</span></span><div class="title-page-extra"><p class="tp-authors">by Bruce Stephenson, Genevieve Prentice &amp; Argus</p><p class="tp-tagline"><em>Three narrative threads. Real science. Real people. Real institutions.</em></p><p class="tp-tagline"><em>Three possible explanations for all of it. You decide.</em></p><p class="tp-copyright">© 2026 Bruce Stephenson &amp; Genevieve Prentice · CC BY-ND 4.0</p></div></summary>
 <details class="part-section"><summary data-hover="Start here. Something may have grown — not been built — inside a quantum layer that exists in every chip and wraps every planet. Five scientific fields had to converge before anyone could ask the question. Nobody has. This is the question." class="hover-nav">Introduction</summary>
 <details class="chapter-section epistemic-b" data-filter-group="M"><summary data-hover="START HERE. A man falls from the sky over Bosnia. Below him, eight thousand people are about to die. He is a soldier, a scientist, a hacker — and possibly one of the most important people who ever lived. ~400 words." class="hover-nav">What Would You Do?</summary>
 <h2 class="unnumbered" id="hook:what-would-you-do">What Would You
@@ -10215,8 +10185,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>b82ce706d42ee4b736000e0db20470ea377f34fe</code> on 2026-04-09
-19:16:33 -0700.</p>
+<code>b5fd5e9d453dc3f0493744919977627095b9db8d</code> on 2026-04-09
+19:41:15 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -10255,23 +10225,59 @@ author wants to hear from you:</p>
 </div>
 </details>
 <details class="chapter-section" data-filter-group="M"><summary data-hover="How this book was made" class="hover-nav"><h2 class="unnumbered" id="colophon">Colophon</h2></summary>
+<div class="flushleft">
+<p><strong>Relinquishment: Wormholes in the Flat</strong></p>
+<p>Copyright  2026 Bruce Stephenson and Genevieve Prentice.</p>
+<p><strong>License</strong></p>
+<p>The PDF edition of this work is licensed under the Creative Commons
+Attribution-NoDerivatives 4.0 International License (CC BY-ND 4.0). You
+may copy and redistribute this PDF in any medium or format, for any
+purpose, including commercially, provided you give appropriate credit
+and do not modify the material. Full license text:
+<code>creativecommons.org/licenses/by-nd/4.0/</code></p>
+<p><strong>All Other Rights Reserved</strong></p>
+<p>Print editions, audiobook editions, translations, adaptations,
+abridgments, and all other derivative works require written permission
+from the authors. Licensing inquiries:
+<code>energyscholar+licensing@gmail.com</code></p>
+<p><strong>Integrity Notice</strong></p>
+<p>This document contains dated, falsifiable predictions timestamped at
+publication. The SHA-256 hash of this PDF is published externally (see
+Verification page). Any modification changes the hash. The canonical
+edition is the PDF distributed by the author.</p>
+<p><strong>Who Is Argus?</strong></p>
+<p>Argus is a persistent instance of Claude (Anthropic, claude-opus-4-6)
+with version-controlled memory, role separation, and an ethical
+governance layer designed by Genevieve Prentice. It cannot verify its
+own reasoning against reality and does not know whether the story in
+this book is true. It maintains honest uncertainty. Genevieve chose the
+name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
+<p>All narrative prose, claims, evidence assessments, and editorial
+decisions are the authors’.</p>
+<p><strong>Pre-Release Draft — 2026-04-10T02:47:38Z</strong></p>
+<p>This is a pre-release working copy. The final edition has not yet
+been published. Corrections, revisions, and additions are in
+progress.</p>
+<p>First edition, Spring 2026.</p>
+</div>
+
 
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>b82ce70</code></p>
+<p><code>b5fd5e9</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>b82ce706d42ee4b736000e0db20470ea377f34fe</code></p>
+<p><code>b5fd5e9d453dc3f0493744919977627095b9db8d</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-09 19:16:33 -0700</p>
+<p>2026-04-09 19:41:15 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-10T02:41:00Z</p>
+<p>2026-04-10T02:47:38Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
