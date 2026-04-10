@@ -11,7 +11,7 @@ Years earlier, inside a classified program, a small team reportedly built a work
 
 They gave it up. Not to another country. Not to a corporation. To the thing they'd built to outlast them.
 
-They built an autonomous protector called Guardian, governed by the Universal Declaration of Human Rights — the principles written in 1948 to say *never again* — and surrendered the master keys. Permanently. No human can override it.
+They built an autonomous protector called Guardian, governed by the Universal Declaration of Human Rights — the principles written in 1948 to say *never again* — and placed the master keys in its trust. Not forever — until we're ready. No human can override it.
 
 One member of that team spent three years mentoring a physicist named Bruce Stephenson — never disclosing anything classified, only guiding him through published science in a deliberate sequence. Stephenson recognized what the sequence pointed to. Then his mentor disappeared. Stephenson spent twenty years trying to understand what he'd been shown.
 
