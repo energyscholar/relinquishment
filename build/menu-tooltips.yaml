@@ -21,7 +21,7 @@ chapters:
     filter-group: A
   "summary:most-important-story":
     text: "The full argument in four thousand words. Every chip contains a quantum layer called a 2DEG. The same geometry wraps every planet. Published physics says the preconditions for life are met in both. This book asks whether that habitat is empty."
-    epistemic: A
+    epistemic: B
     filter-group: M
   "preface-by-genevieve-prentice":
     text: "From the co-author who designed the book's ethical framework and watched it get written."
