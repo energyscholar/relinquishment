@@ -18,6 +18,7 @@ dev: gitinfo images
 	@mkdir -p build/tikz-cache
 	python3 build/generate-hover.py
 	latexmk -r build/.latexmkrc -jobname=$(JOBNAME) main.tex
+	cp $(JOBNAME).pdf docs/downloads/$(JOBNAME).pdf
 	$(MAKE) html
 
 # --- DMS build (includes DMS appendix + working draft notice) ---
@@ -73,6 +74,7 @@ html: gitinfo build/reader-inline.html
 		-o ../../docs/downloads/$(JOBNAME).html
 	python3 build/preprocess.py --fix-html docs/downloads/$(JOBNAME).html
 	cp docs/downloads/$(JOBNAME).html $(JOBNAME).html
+	@if [ -f $(JOBNAME).pdf ]; then cp $(JOBNAME).pdf docs/downloads/$(JOBNAME).pdf; fi
 
 build/reader-inline.html: build/reader.js
 	echo '<script>' > $@
