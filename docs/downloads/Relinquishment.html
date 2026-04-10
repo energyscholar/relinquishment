@@ -10283,8 +10283,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>cc2c060311e167e0384486d75ef601b132a83f77</code> on 2026-04-09
-20:32:15 -0700.</p>
+<code>dbc9b3b8076686e6fc0489d42979d860265767fe</code> on 2026-04-09
+21:14:08 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -10352,7 +10352,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-10T04:13:57Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-10T04:54:53Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -10363,19 +10363,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>cc2c060</code></p>
+<p><code>dbc9b3b</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>cc2c060311e167e0384486d75ef601b132a83f77</code></p>
+<p><code>dbc9b3b8076686e6fc0489d42979d860265767fe</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-09 20:32:15 -0700</p>
+<p>2026-04-09 21:14:08 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-10T04:13:57Z</p>
+<p>2026-04-10T04:54:53Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -11050,7 +11050,9 @@ energyscholar+physics@gmail.com
   var pdfBtn = document.createElement('a');
   pdfBtn.id = 'nav-pdf';
   pdfBtn.textContent = 'PDF';
-  pdfBtn.href = 'https://relinquishment.ai/downloads/Relinquishment.pdf';
+  // Relative path: works on any host if PDF is in same directory as HTML
+  var pdfName = window.location.pathname.replace(/\.html?$/i, '.pdf');
+  pdfBtn.href = pdfName;
   pdfBtn.setAttribute('data-hover', 'Download the PDF version — for printing, sharing, or reading offline');
   pdfBtn.setAttribute('aria-label', 'Download PDF version');
   pdfBtn.classList.add('hover-nav');

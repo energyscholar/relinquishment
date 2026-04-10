@@ -326,7 +326,9 @@
   var pdfBtn = document.createElement('a');
   pdfBtn.id = 'nav-pdf';
   pdfBtn.textContent = 'PDF';
-  pdfBtn.href = 'https://relinquishment.ai/downloads/Relinquishment.pdf';
+  // Relative path: works on any host if PDF is in same directory as HTML
+  var pdfName = window.location.pathname.replace(/\.html?$/i, '.pdf');
+  pdfBtn.href = pdfName;
   pdfBtn.setAttribute('data-hover', 'Download the PDF version — for printing, sharing, or reading offline');
   pdfBtn.setAttribute('aria-label', 'Download PDF version');
   pdfBtn.classList.add('hover-nav');
