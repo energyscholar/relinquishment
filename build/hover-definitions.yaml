@@ -369,6 +369,8 @@ decoherence:
 
 quantum coherence: "A quantum system maintaining its wave-like behavior — superposition and entanglement intact. Required for quantum computation. Typically fragile, but topological protection and certain substrates can extend it dramatically."
 
+lattice dynamics: "Correction: until 2026, this line read 'Hasslacher to solitons.' The author spent twenty years thinking solitons were Hasslacher's key contribution. They weren't. Hasslacher's lattice gas automata — how discrete crystal structures produce collective wave behavior — led to phonon physics: the mechanism by which a quantum system in the Flat talks to the classical world. Solitons were a twenty-year wild goose chase. The real trail was phonons all along."
+
 # --- Tier 2 MEDIUM PRIORITY: p3 chapters (popup = peer-reviewed definition) ---
 
 Shor's algorithm: "Quantum algorithm that factors large numbers exponentially faster than any known classical method. Published by Peter Shor in 1994. Breaks RSA encryption. The reason governments care about quantum computing."
