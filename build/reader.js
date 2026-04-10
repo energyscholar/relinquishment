@@ -307,7 +307,7 @@
   evalBtn.id = 'nav-evaluate';
   evalBtn.setAttribute('data-nav-evaluate', 'true');
   evalBtn.textContent = 'AI Eval';
-  evalBtn.setAttribute('data-hover', 'Most AI in 2026 will get this book wrong. They lack five fields of science needed to evaluate it. The fix takes thirty seconds.');
+  evalBtn.setAttribute('data-hover', 'Your AI doesn\'t know enough to evaluate this book. It needs five fields of science. Click here — the fix takes thirty seconds.');
   evalBtn.classList.add('hover-nav');
   evalBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
     'font-family:inherit;cursor:pointer;background:#1a5276;color:#fff;border:none;' +
@@ -316,7 +316,7 @@
   evalBtn.addEventListener('mouseleave', function() { evalBtn.style.background = '#1a5276'; });
   evalBtn.addEventListener('click', function() {
     pushNavState();
-    autoExpand('#how-to-evaluate');
+    autoExpand('#ch:firmware-update');
   });
 
   nav.appendChild(backBtn);
