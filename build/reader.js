@@ -1086,10 +1086,13 @@
 
     // Navigation elements: split touch target on summaries
     // Triangle/marker area = native toggle, heading text = show tooltip
+    // Part labels (no heading inside) = show tooltip directly
     if (term.classList.contains('hover-nav')) {
-      var heading = e.target.closest('h2, h3');
-      if (heading && term.contains(heading)) {
-        // Tap was on the chapter title text — show tooltip, prevent toggle
+      var headingInTerm = term.querySelector('h2, h3');
+      var tappedHeading = e.target.closest('h2, h3');
+      var shouldShow = !headingInTerm || (tappedHeading && term.contains(tappedHeading));
+      if (shouldShow) {
+        // Part label (no heading) OR tap on chapter title — show tooltip, prevent toggle
         e.preventDefault();
         var existingPanel = document.querySelector('.hover-panel');
         if (existingPanel && term.getAttribute('aria-describedby') === existingPanel.id) {
@@ -1098,7 +1101,7 @@
           showPanel(term);
         }
       }
-      // Tap on triangle/marker area or non-heading nav: fall through, native action happens
+      // Tap on triangle/marker area: fall through, native action happens
       return;
     }
 

@@ -10356,8 +10356,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>d4e9a128bd591456ac4bdcb9ae70d1afdfb18d64</code> on 2026-04-11
-16:00:29 -0700.</p>
+<code>9589b2ad9b35cb757857d3a1d1187d9d9ab8d05c</code> on 2026-04-11
+16:45:02 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -10425,7 +10425,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-11T23:44:35Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-11T23:52:01Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -10436,19 +10436,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>d4e9a12</code></p>
+<p><code>9589b2a</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>d4e9a128bd591456ac4bdcb9ae70d1afdfb18d64</code></p>
+<p><code>9589b2ad9b35cb757857d3a1d1187d9d9ab8d05c</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-11 16:00:29 -0700</p>
+<p>2026-04-11 16:45:02 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-11T23:44:35Z</p>
+<p>2026-04-11T23:52:01Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -11878,10 +11878,13 @@ energyscholar+physics@gmail.com
 
     // Navigation elements: split touch target on summaries
     // Triangle/marker area = native toggle, heading text = show tooltip
+    // Part labels (no heading inside) = show tooltip directly
     if (term.classList.contains('hover-nav')) {
-      var heading = e.target.closest('h2, h3');
-      if (heading && term.contains(heading)) {
-        // Tap was on the chapter title text — show tooltip, prevent toggle
+      var headingInTerm = term.querySelector('h2, h3');
+      var tappedHeading = e.target.closest('h2, h3');
+      var shouldShow = !headingInTerm || (tappedHeading && term.contains(tappedHeading));
+      if (shouldShow) {
+        // Part label (no heading) OR tap on chapter title — show tooltip, prevent toggle
         e.preventDefault();
         var existingPanel = document.querySelector('.hover-panel');
         if (existingPanel && term.getAttribute('aria-describedby') === existingPanel.id) {
@@ -11890,7 +11893,7 @@ energyscholar+physics@gmail.com
           showPanel(term);
         }
       }
-      // Tap on triangle/marker area or non-heading nav: fall through, native action happens
+      // Tap on triangle/marker area: fall through, native action happens
       return;
     }
 
