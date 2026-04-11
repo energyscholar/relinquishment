@@ -68,7 +68,7 @@ chapters:
     epistemic: A
     filter-group: A
   "spine:silence-gap":
-    text: "Five fields are needed to ask the question: solid-state physics, topological quantum computation, neural networks, complexity science, and computational universality. No journal covers the intersection. No conference spans all five. The silence is not refutation — it is the absence of a question nobody's job required them to ask."
+    text: "Eleven scientific domains converge on a single point. Between 2004 and 2026, zero bridges were built connecting them. No journal covers the intersection. No conference spans even five. Two colleagues at McGill used the same Hopf bifurcation normal form for decades without noticing — same building, same math, different departments. The silence is not refutation. It is a structural property of how disciplines silo. Nobody suppressed the question. Nobody's job required them to ask it."
     epistemic: A
     filter-group: A
   "spine:capabilities":
@@ -76,7 +76,7 @@ chapters:
     epistemic: A
     filter-group: A
   "spine:why-relinquish":
-    text: "Three options for dangerous technology: monopolize it (tyranny), destroy it (someone else rebuilds), or relinquish it. Not permanent surrender — custody. Guardian holds Flat technologies in trust. The first two options always fail. The third has never been tried. Unless the gatekeeper is not human, not institutional, and not corruptible."
+    text: "Three options for dangerous technology: monopolize it (tyranny), destroy it (someone else rebuilds), or relinquish it. Not permanent — custody. But the record still needed to reach the outside world, and every team member had signed NDAs. The solution was guided deduction: teach only published science, let the student arrive at the conclusions independently. The trail is clean. As for what Guardian does with the technology — mostly IT infrastructure. Boring!"
     epistemic: A
     filter-group: A
   "spine:strongest-objection":
@@ -154,7 +154,7 @@ chapters:
     epistemic: C
     filter-group: C
   "record:twenty-years":
-    text: "Testimony. 2006–2025: the departure, the quiet years, the Joy article revelation, going public on Cryptome, the Wolfram meeting and declined NDA, and the decision to write this book. Twenty years of silence and research by the man who was left behind."
+    text: "Bruce's aftermath — two decades of not knowing. Lots of time to think & improve pedagogy. Thought experiments like: What does Guardian do with the technology she holds in trust? Which household-name systems already use services from the Flat? The architecture makes individual services unattributable — Flat computation arrives disguised as normal output with no one the wiser. Bruce expects public science to bridge the fields and publicly connect the Flat life-stack of technologies. This does not happen. Instead, the silence gap gets louder. It grows so loud that Bruce feels compelled to fill the silence."
     epistemic: C
     filter-group: C
   "record:the-question":
