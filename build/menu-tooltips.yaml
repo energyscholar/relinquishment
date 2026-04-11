@@ -113,11 +113,11 @@ chapters:
     epistemic: C
     filter-group: C
   "record:handler":
-    text: "Testimony. Intelligence dossier format. An SAS operator with deep mathematics, partial eidetic memory, and 2.7 years of calibrated pedagogy. Clancy got the military background right in Rainbow Six. He left out the interesting parts."
+    text: "Under Possibility C, this is the operator's approximate file. SAS. Intelligence Corps. Deep mathematics that no military curriculum explains. Partial eidetic memory. 2.7 years of calibrated guided deduction across five scientific fields — through conversation alone, leaving no paper trail. He stood on K2 in 1996 and decided to use his abilities for something other than killing. Everything that followed — including this book — traces back to that decision."
     epistemic: C
     filter-group: C
   "the-handler":
-    text: "Testimony. Intelligence dossier format. An SAS operator with deep mathematics, partial eidetic memory, and 2.7 years of calibrated pedagogy. Clancy got the military background right in Rainbow Six. He left out the interesting parts."
+    text: "Under Possibility C, this is the operator's approximate file. SAS. Intelligence Corps. Deep mathematics that no military curriculum explains. Partial eidetic memory. 2.7 years of calibrated guided deduction across five scientific fields — through conversation alone, leaving no paper trail. He stood on K2 in 1996 and decided to use his abilities for something other than killing. Everything that followed — including this book — traces back to that decision."
     epistemic: C
     filter-group: C
   # record:demonstration removed — Plan 0152, folded into First Light
@@ -134,11 +134,11 @@ chapters:
     epistemic: C
     filter-group: C
   "record:target":
-    text: "Testimony. Bruce's recruitment dossier, written as an intelligence assessment. Education, skills, family vulnerabilities, neurological profile. Why the COWS chose this particular person to eventually tell the story."
+    text: "Under Possibility C, this is the student's approximate file. Reed College quantum physics. Partial eidetic memory. Third-generation intelligence-adjacent. A five-year campaign of teaching Fortune 500 engineers about cryptography and surveillance — not because anyone asked him to, but because he thought they should know. The COWS needed someone who could receive a multi-year guided deduction and would be dispositionally inclined to publish what he learned. Read the file and ask yourself: is this the guy?"
     epistemic: C
     filter-group: C
   "the-target":
-    text: "Testimony. Bruce's recruitment dossier, written as an intelligence assessment. Education, skills, family vulnerabilities, neurological profile. Why the COWS chose this particular person to eventually tell the story."
+    text: "Under Possibility C, this is the student's approximate file. Reed College quantum physics. Partial eidetic memory. Third-generation intelligence-adjacent. A five-year campaign of teaching Fortune 500 engineers about cryptography and surveillance — not because anyone asked him to, but because he thought they should know. The COWS needed someone who could receive a multi-year guided deduction and would be dispositionally inclined to publish what he learned. Read the file and ask yourself: is this the guy?"
     epistemic: C
     filter-group: C
   "record:instantiation":
