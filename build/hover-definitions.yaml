@@ -31,6 +31,10 @@ the-flat-title:
 
 # --- Standard hover definitions ---
 
+2DEG:
+  text: "A thin layer where electrons can only move in two directions — trapped on a sheet. Found inside every computer chip and in Earth's magnetic field."
+  hover_id: "two-dimensional-electron-gas"
+
 two-dimensional electron gas:
   text: "A thin layer where electrons can only move in two directions — trapped on a sheet. Found inside every computer chip and in Earth's magnetic field."
   hover_id: "two-dimensional-electron-gas"
