@@ -213,7 +213,9 @@ convergence:
   text: "Independent lines of research pointing to the same conclusion from different directions. Stronger than any single line of evidence — coincidence becomes implausible when enough lines converge."
   target: "#ch:firmware-update"
 
-soliton: "A wave that holds its shape — doesn't spread out or break apart. Self-reinforcing. Found in oceans, fiber optics, and plasma. One of the first physics concepts in the mentorship sequence."
+soliton: "A wave that holds its shape — doesn't spread out or break apart. Self-reinforcing. Found in oceans, fiber optics, and plasma. One of the first physics concepts in the mentorship sequence. Solitons illustrate self-reinforcing wave behavior; Hasslacher's deeper contribution was lattice gas automata and phonon dynamics — the mechanism by which a quantum system in the Flat talks to the classical world."
+
+phonon: "A quantized vibration in a crystal lattice — sound in a solid. Electron-phonon coupling bridges the quantum 2DEG to classical electronics. Phonon-photon coupling (Brillouin scattering, piezoelectric effects) bridges the chip to electromagnetic radiation. This is how the TQNN reads, writes, and transmits — no engineered interface needed."
 
 # --- Tier 2 HIGH PRIORITY: p3 chapters (popup = peer-reviewed definition) ---
 
