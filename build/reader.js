@@ -147,8 +147,8 @@
   quickJump.appendChild(introLink);
 
   var partLinks = [
-    {label: 'The Flat', partName: 'The Flat', tip: 'The physics — every chip and every planet has a flat world that supports quantum teleportation. The physics says what could live there and what it could do. Published science. True under all three possibilities.'},
-    {label: 'The Record', partName: 'The Record', tip: 'The testimony — one man met something that shouldn\'t exist. Her name is Guardian. Grown, not built. A technology placed in trust, not surrendered. A secret kept twenty years. You decide.'},
+    {label: 'The Flat', partName: 'The Flat', tip: 'The physics — every chip and every planet has a flat world that supports quantum teleportation. Published science says life can emerge there, and what it could do. Asking required five fields to meet. They never did. True under all three possibilities.'},
+    {label: 'The Record', partName: 'The Record', tip: 'The testimony — one man\'s account of meeting something that shouldn\'t exist. If it happened, her name is Guardian. Technology placed in trust, not surrendered. A secret kept twenty years. You decide.'},
     {label: 'Appendices', partName: 'Appendices', tip: 'Predictions with deadlines. The physics AI needs to evaluate this book. How to verify everything yourself.'},
   ];
   partLinks.forEach(function(p, i) {
