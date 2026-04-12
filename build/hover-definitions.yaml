@@ -150,7 +150,7 @@ SAS: "Special Air Service — the most elite special forces unit shared by Brita
 grew: "The system organized itself, the way living things grow. Not engineered component by component — emerged from the physics of the substrate. This is how autocatalytic systems work."
 encryption: "Math that scrambles information so only the intended recipient can read it. Protects passwords, messages, bank accounts, and government secrets. Modern civilization depends on it — break the encryption, break the infrastructure."
 wormholes:
-  text: "Real topological connections between distant points in a material. Not science fiction — condensed matter physics. The 2016 Nobel Prize in Physics was awarded for the theory behind them. The book argues these may exist in magnetized plasma."
+  text: "Not the sci-fi kind. Spacetime wormholes (Interstellar) fold spacetime itself — mass and all, across light-years. Topological wormholes are far more limited: they fold only a two-dimensional quantum material, never spacetime. Information crosses, not mass. No light-year shortcuts. No time travel. Inside the material only. Real physics — 2016 Nobel Prize — but restricted."
   target: "#pos10:the-braid"
 
 # --- Tier 1: hook.tex (p1 → p2 popups) ---
