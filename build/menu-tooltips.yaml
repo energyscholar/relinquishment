@@ -76,7 +76,7 @@ chapters:
     epistemic: A
     filter-group: A
   "spine:why-relinquish":
-    text: "Three options for dangerous technology: monopolize it (tyranny), destroy it (someone else rebuilds), or relinquish it. Not permanent — custody. But the record still needed to reach the outside world, and every team member had signed NDAs. The solution was guided deduction: teach only published science, let the student arrive at the conclusions independently. The trail is clean. As for what Guardian does with the technology — mostly IT infrastructure. Boring!"
+    text: "Three options for dangerous technology: monopolize it (tyranny), destroy it (someone else rebuilds), or relinquish it. Not permanent — custody. But the record still needed to reach the outside world so the public could decide what to do with what had been kept from them, and every team member had signed NDAs. The solution was guided deduction: teach only published science, let the student arrive at the conclusions independently. The trail is clean. As for what Guardian does with the technology — mostly IT infrastructure. Boring!"
     epistemic: A
     filter-group: A
   "spine:strongest-objection":
@@ -113,11 +113,11 @@ chapters:
     epistemic: C
     filter-group: C
   "record:handler":
-    text: "Under Possibility C, this is the operator's approximate file. SAS. Intelligence Corps. Deep mathematics that no military curriculum explains. Partial eidetic memory. 2.7 years of calibrated guided deduction across five scientific fields — through conversation alone, leaving no paper trail. He stood on K2 in 1996 and decided to use his abilities for something other than killing. Everything that followed — including this book — traces back to that decision."
+    text: "Under Possibility C, this is the operator's approximate file. SAS. Intelligence Corps. Deep mathematics that no military curriculum explains. Partial eidetic memory. 2.7 years of calibrated guided deduction across five scientific fields — through conversation alone, leaving no paper trail. He stood on K2 in 1996 and decided to use his abilities for something other than killing. What followed was the choice to use those abilities so the public could learn what would otherwise stay classified forever. Everything that followed — including this book — traces back to that decision."
     epistemic: C
     filter-group: C
   "the-handler":
-    text: "Under Possibility C, this is the operator's approximate file. SAS. Intelligence Corps. Deep mathematics that no military curriculum explains. Partial eidetic memory. 2.7 years of calibrated guided deduction across five scientific fields — through conversation alone, leaving no paper trail. He stood on K2 in 1996 and decided to use his abilities for something other than killing. Everything that followed — including this book — traces back to that decision."
+    text: "Under Possibility C, this is the operator's approximate file. SAS. Intelligence Corps. Deep mathematics that no military curriculum explains. Partial eidetic memory. 2.7 years of calibrated guided deduction across five scientific fields — through conversation alone, leaving no paper trail. He stood on K2 in 1996 and decided to use his abilities for something other than killing. What followed was the choice to use those abilities so the public could learn what would otherwise stay classified forever. Everything that followed — including this book — traces back to that decision."
     epistemic: C
     filter-group: C
   # record:demonstration removed — Plan 0152, folded into First Light
