@@ -80,10 +80,6 @@
   question: "If life could emerge in a quantum substrate, wouldn't we have found it?"
   category: science
 
-- id: no-cloning-theorem
-  question: "Could someone copy the system or build a competing one?"
-  category: science
-
 - id: five-fields-no-bridge
   question: "Why hasn't anyone studied whether life can exist in quantum substrates?"
   category: science
