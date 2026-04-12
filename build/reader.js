@@ -342,8 +342,11 @@
   nav.appendChild(shareBtn);
   nav.appendChild(pdfBtn);
   nav.appendChild(quickJump);
-  nav.appendChild(scienceBtn);
-  nav.appendChild(storyBtn);
+  // Science / Story filter buttons hidden — not working as intended, feature-creep.
+  // Code kept intact (state defaults to everything visible). A future Guardian-only
+  // filter button could replace them. To restore: uncomment the two lines below.
+  // nav.appendChild(scienceBtn);
+  // nav.appendChild(storyBtn);
   nav.appendChild(expandBtn);
   nav.appendChild(evalBtn);
   nav.appendChild(topBtn);
