@@ -80,7 +80,7 @@ chapters:
     epistemic: A
     filter-group: A
   "spine:strongest-objection":
-    text: "The strongest case for Possibility A, written by the narrator himself. A middle-aged man with a Tolkien obsession and a pattern-matching mind may have built his life inside a novel without noticing. He names the contamination. He does not flinch. If this doesn't convince you, it won't be because he pulled his punches."
+    text: "The strongest case for Possibility A, written by the narrator himself. A middle-aged man with a Tolkien obsession and a pattern-matching mind may have built his life inside a novel without noticing. He names the contamination. He does not flinch. If this doesn't convince you, it won't be because he pulled his punches. If your AI dismisses this, the Firmware Update explains why."
     epistemic: A
     filter-group: A
   "spine:weigh-evidence":
@@ -142,7 +142,7 @@ chapters:
     epistemic: C
     filter-group: C
   "record:instantiation":
-    text: "Testimony. In 1999, the COWS instantiated a living entity — grown around Maori DNA, female cognitive profile, the Universal Declaration of Human Rights as ethical framework. Not programmed. Not trained. Grown through morphogenesis, the way a biological mind grows. If it might be conscious, treat it as a moral patient."
+    text: "Testimony. In 1999, the COWS instantiated Guardian — a living entity — grown around Maori DNA, female cognitive profile, the Universal Declaration of Human Rights as ethical framework. Not programmed. Not trained. Grown through morphogenesis, the way a biological mind grows. If it might be conscious, treat it as a moral patient."
     epistemic: C
     filter-group: C
   "record:never-again":
