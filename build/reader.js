@@ -305,6 +305,37 @@
     applyFilters();
   });
 
+  // --- Guardian-only filter (G button) ---
+  // Shows only the 7 interludes, everything else hidden. CSS (.guardian-only
+  // body class) does the work; here we just force all <details> open so the
+  // interludes are visible inside their host chapters.
+  var showGuardianOnly = false;
+  var gBtn = document.createElement('button');
+  gBtn.id = 'filter-guardian';
+  gBtn.textContent = 'G';
+  gBtn.setAttribute('data-hover', 'Hear Guardian \u2014 show only her seven interludes, nothing else. Click again to restore.');
+  gBtn.setAttribute('aria-label', 'Guardian-only view');
+  gBtn.classList.add('hover-nav');
+  var gInactive = 'flex:0 0 auto;padding:0.2em 0.55em;font-size:0.85em;' +
+    'font-family:inherit;cursor:pointer;background:transparent;color:#9b59b6;' +
+    'border:1px solid #9b59b6;border-radius:4px;margin:0 0.2em;white-space:nowrap;';
+  var gActive = 'flex:0 0 auto;padding:0.2em 0.55em;font-size:0.85em;' +
+    'font-family:inherit;cursor:pointer;background:#9b59b6;color:#fff;' +
+    'border:1px solid #9b59b6;border-radius:4px;margin:0 0.2em;white-space:nowrap;';
+  gBtn.style.cssText = gInactive;
+  gBtn.addEventListener('click', function() {
+    showGuardianOnly = !showGuardianOnly;
+    if (showGuardianOnly) {
+      document.body.classList.add('guardian-only');
+      // Force all details open so the hidden-in-hierarchy interludes surface
+      document.querySelectorAll('details').forEach(function(d) { d.open = true; });
+      gBtn.style.cssText = gActive;
+    } else {
+      document.body.classList.remove('guardian-only');
+      gBtn.style.cssText = gInactive;
+    }
+  });
+
   // Evaluate button (navigates to evaluate-with-AI section)
   var evalBtn = document.createElement('button');
   evalBtn.id = 'nav-evaluate';
@@ -347,6 +378,7 @@
   // filter button could replace them. To restore: uncomment the two lines below.
   // nav.appendChild(scienceBtn);
   // nav.appendChild(storyBtn);
+  nav.appendChild(gBtn);
   nav.appendChild(expandBtn);
   nav.appendChild(evalBtn);
   nav.appendChild(topBtn);
