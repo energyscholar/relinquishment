@@ -818,12 +818,12 @@ details.bc-expansion .record-link:hover {
   user-select: none;
   transition: opacity 0.2s;
 }
-body.show-anchors .share-anchor::after { content: "🔗"; opacity: 0.3; margin-left: 0.3em; padding: 8px; }
-body.show-anchors .share-anchor:hover::after { opacity: 0.8; }
+.share-anchor::after { content: "🔗"; opacity: 0.3; margin-left: 0.3em; padding: 8px; }
+.share-anchor:hover::after { opacity: 0.8; }
 @media print { .share-anchor::after { content: none; } }
 @media (prefers-color-scheme: dark) {
-  body.show-anchors .share-anchor::after { opacity: 0.25; }
-  body.show-anchors .share-anchor:hover::after { opacity: 0.7; }
+  .share-anchor::after { opacity: 0.25; }
+  .share-anchor:hover::after { opacity: 0.7; }
 }
 """
     # Inject before closing </style> of the last style block in <head>
