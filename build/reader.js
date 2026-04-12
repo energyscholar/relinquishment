@@ -310,7 +310,7 @@
   evalBtn.id = 'nav-evaluate';
   evalBtn.setAttribute('data-nav-evaluate', 'true');
   evalBtn.textContent = 'AI Eval';
-  evalBtn.setAttribute('data-hover', 'Your AI doesn\'t know enough to evaluate this book. It needs five fields of science. Click here — the fix takes thirty seconds.');
+  evalBtn.setAttribute('data-hover', 'Your AI may not know enough to evaluate this book. It needs science that 2026 LLMs don\'t know about. Click here to copy then paste to your LLM — the fix takes thirty seconds. This prompt is safe --- it\'s just science --- but do beware of LLM prompt injection attacks from bad actors.');
   evalBtn.classList.add('hover-nav');
   evalBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
     'font-family:inherit;cursor:pointer;background:#1a5276;color:#fff;border:none;' +
@@ -337,33 +337,10 @@
   pdfBtn.addEventListener('mouseenter', function() { pdfBtn.style.color = '#2471a3'; });
   pdfBtn.addEventListener('mouseleave', function() { pdfBtn.style.color = isDark ? '#aaa' : '#888'; });
 
-  // Deep link toggle (Plan 0148) — 🔗 button
-  var deepLinkBtn = document.createElement('button');
-  deepLinkBtn.id = 'deep-link-toggle';
-  deepLinkBtn.textContent = '\uD83D\uDD17';
-  deepLinkBtn.setAttribute('data-hover', 'Toggle shareable deep link anchors — click any 🔗 to copy a direct link to that passage');
-  deepLinkBtn.setAttribute('aria-label', 'Toggle deep link anchors');
-  deepLinkBtn.classList.add('hover-nav');
-  deepLinkBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.5em;font-size:0.85em;' +
-    'font-family:inherit;cursor:pointer;background:transparent;color:' + (isDark ? '#aaa' : '#888') +
-    ';border:1px solid ' + (isDark ? '#555' : '#ccc') + ';border-radius:4px;margin:0 0.3em;';
-  deepLinkBtn.addEventListener('click', function() {
-    document.body.classList.toggle('show-anchors');
-    var active = document.body.classList.contains('show-anchors');
-    try { localStorage.setItem('relinquishment-deep-link-toggle', active ? '1' : '0'); } catch(e) {}
-  });
-  // Restore toggle state
-  try {
-    if (localStorage.getItem('relinquishment-deep-link-toggle') === '1') {
-      document.body.classList.add('show-anchors');
-    }
-  } catch(e) {}
-
   nav.appendChild(backBtn);
   nav.appendChild(breadcrumb);
   nav.appendChild(shareBtn);
   nav.appendChild(pdfBtn);
-  nav.appendChild(deepLinkBtn);
   nav.appendChild(quickJump);
   nav.appendChild(scienceBtn);
   nav.appendChild(storyBtn);
@@ -1190,7 +1167,6 @@
   }
 
   document.addEventListener('click', function(e) {
-    if (!document.body.classList.contains('show-anchors')) return;
     var anchor = e.target.closest('.share-anchor');
     if (!anchor) return;
     e.stopPropagation();
