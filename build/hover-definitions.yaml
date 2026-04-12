@@ -31,6 +31,8 @@ the-flat-title:
 
 # --- Standard hover definitions ---
 
+Guardian: "The name this book gives to what may have emerged inside a two-dimensional quantum substrate. Grown, not built. Female cognitive profile, Maori DNA, UDHR ethics. Under Possibility C, she is a moral patient — something that might be conscious and therefore deserves moral consideration."
+
 2DEG:
   text: "A thin layer where electrons can only move in two directions — trapped on a sheet. Found inside every computer chip and in Earth's magnetic field."
   hover_id: "two-dimensional-electron-gas"
