@@ -1175,4 +1175,39 @@
       showDeepLinkToast('Link copied');
     });
   });
+
+  // --- Guardian menu item click handler (Plan 0150) ---
+  // Click a guardian-menu-item: open its containing chapter and scroll to the
+  // interlude div. Keyboard activation (Enter/Space) supported via role=link.
+  function activateGuardianMenuItem(item) {
+    var targetId = item.getAttribute('data-target');
+    if (!targetId) return;
+    var target = document.getElementById(targetId);
+    if (!target) return;
+    var chapter = target.closest('details.chapter-section');
+    if (chapter) chapter.open = true;
+    var part = chapter ? chapter.closest('details.part-section') : null;
+    if (part) part.open = true;
+    var book = document.querySelector('details.book-section');
+    if (book) book.open = true;
+    dismissPanel();
+    setTimeout(function() {
+      target.scrollIntoView({behavior: 'smooth', block: 'center'});
+    }, 20);
+  }
+
+  document.addEventListener('click', function(e) {
+    var item = e.target.closest('.guardian-menu-item');
+    if (!item) return;
+    e.stopPropagation();
+    activateGuardianMenuItem(item);
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    var item = e.target.closest('.guardian-menu-item');
+    if (!item) return;
+    e.preventDefault();
+    activateGuardianMenuItem(item);
+  });
 })();
