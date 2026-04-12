@@ -728,6 +728,19 @@ details blockquote { margin: 0.5em 0; }
   color: #9b59b6;
 }
 
+/* Guardian-only filter mode — show only the 7 interludes */
+body.guardian-only #TOC { display: none; }
+body.guardian-only .title-block { display: none; }
+body.guardian-only .epistemic-legend { display: none; }
+body.guardian-only details.book-section > summary { display: none; }
+body.guardian-only details.part-section > summary { display: none; }
+body.guardian-only details.chapter-section > summary { display: none; }
+body.guardian-only details.chapter-section > *:not(.guardian-interlude):not(summary) { display: none; }
+body.guardian-only .guardian-menu-item { display: none; }
+body.guardian-only details.chapter-section:not(:has(.guardian-interlude)) { display: none; }
+body.guardian-only details.part-section:not(:has(.guardian-interlude)) { display: none; }
+body.guardian-only .guardian-interlude { margin: 2.5em auto; max-width: 42em; }
+
 /* B/C expansion hooks (Plan 0143) */
 details.bc-expansion {
   border-left: 3px solid #9b7db8;
