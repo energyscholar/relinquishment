@@ -541,29 +541,10 @@
     heading.appendChild(a);
   });
 
-  // --- Per-Section Share Icons (Plan 0134c) ---
-  document.querySelectorAll('details > summary').forEach(function(summary) {
-    var heading = summary.querySelector('h1[id], h2[id], h3[id]');
-    if (!heading) return;
-
-    var share = document.createElement('a');
-    share.className = 'section-share';
-    share.href = '#' + heading.id;
-    share.textContent = '\uD83D\uDD17';
-    share.setAttribute('data-hover', 'Copy link to this section');
-    share.classList.add('hover-nav');
-    share.setAttribute('aria-label', 'Copy link to ' + heading.textContent.trim());
-    share.addEventListener('click', function(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      var url = location.origin + location.pathname + '#' + heading.id;
-      copyToClipboard(url, function() {
-        share.textContent = '\u2713';
-        setTimeout(function() { share.textContent = '\uD83D\uDD17'; }, 1500);
-      });
-    });
-    summary.appendChild(share);
-  });
+  // --- Per-Section Share Icons (Plan 0134c) — REMOVED
+  // The chain-link (🔗) buttons on every chapter/section summary were noisy in
+  // the collapsed accordion menu. Copy-link is still available via the sticky
+  // nav § button and the inline .share-anchor deep links (Plan 0148).
 
   // --- LLM Primer copy buttons (top + bottom) ---
   var primerSection = document.getElementById('app:llm-primer') ||

@@ -975,65 +975,13 @@ body { font-family: Georgia, serif; max-width: 900px; margin: 2em auto; padding:
 
     // ============================================================
     // GROUP 18: Per-Section Share Affordance
+    // T18.1–T18.4 removed: .section-share feature deleted (Plan 0134c).
+    // Share-link affordance is now: sticky-nav § button + inline .share-anchor.
     // ============================================================
     group('18. Share Affordance');
 
     expandAll();
     await delay(100);
-
-    // T18.1: Share icons exist on summaries
-    var shareIcons = document.querySelectorAll('.section-share');
-    var summariesWithIds = document.querySelectorAll('details > summary');
-    // Count summaries that contain a heading with an ID
-    var eligibleSummaries = 0;
-    summariesWithIds.forEach(function(s) {
-      if (s.querySelector('h1[id], h2[id], h3[id]')) eligibleSummaries++;
-    });
-    assert('T18.1 — share icons exist on summaries with headed sections',
-      shareIcons.length > 0 && shareIcons.length >= eligibleSummaries * 0.5);
-
-    // T18.2: Share icon has adequate tap target
-    if (shareIcons[0]) {
-      var shareRect = shareIcons[0].getBoundingClientRect();
-      // On desktop the icon can be smaller; 44px is the phone requirement
-      // Here we just check it's clickable (>0)
-      assert('T18.2 — share icon has positive dimensions',
-        shareRect.width > 0 && shareRect.height > 0);
-    }
-
-    // T18.3: Share icon click does NOT toggle parent details
-    if (shareIcons[0]) {
-      var shareParentDetails = shareIcons[0].closest('details');
-      if (shareParentDetails) {
-        var wasOpen = shareParentDetails.open;
-        shareIcons[0].click();
-        await delay(100);
-        assert('T18.3 — share icon click does NOT toggle parent details',
-          shareParentDetails.open === wasOpen);
-      }
-    }
-
-    // T18.4: Share icon copies correct URL (mock clipboard)
-    if (shareIcons[0]) {
-      var shareClipboard = null;
-      var origClip = navigator.clipboard;
-      try {
-        Object.defineProperty(navigator, 'clipboard', {
-          value: { writeText: function(t) { shareClipboard = t; return Promise.resolve(); } },
-          writable: true, configurable: true
-        });
-        shareIcons[0].click();
-        await delay(200);
-        assert('T18.4 — share icon copies URL containing #hash',
-          shareClipboard !== null && shareClipboard.indexOf('#') !== -1);
-      } finally {
-        if (origClip) {
-          Object.defineProperty(navigator, 'clipboard', {
-            value: origClip, writable: true, configurable: true
-          });
-        }
-      }
-    }
 
     // T18.5: Firmware Update has prominent share element
     var fwSection = document.getElementById('firmware-update');
@@ -1108,7 +1056,6 @@ body { font-family: Georgia, serif; max-width: 900px; margin: 2em auto; padding:
               if (sel.indexOf('hover-panel') !== -1 ||
                   sel.indexOf('reader-nav') !== -1 ||
                   sel.indexOf('breadcrumb') !== -1 ||
-                  sel.indexOf('section-share') !== -1 ||
                   sel.indexOf('summary') !== -1) {
                 has600Breakpoint = true;
               }
