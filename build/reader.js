@@ -991,7 +991,8 @@
 
     // Nav tooltips (menu summaries) are read-only — let mouse pass through
     // so user can reach the next menu item without the panel blocking it.
-    if (term.classList.contains('hover-nav')) {
+    if (term.classList.contains('hover-nav') ||
+        term.classList.contains('guardian-menu-item')) {
       panel.style.pointerEvents = 'none';
     }
 
