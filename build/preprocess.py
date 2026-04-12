@@ -714,6 +714,20 @@ details blockquote { margin: 0.5em 0; }
   opacity: 0.5;
 }
 
+/* Guardian menu items (Plan 0150) — appear between chapters in TOC */
+.guardian-menu-item {
+  padding: 0.3em 0 0.3em 2em;
+  font-style: italic;
+  color: #6c3483;
+  font-size: 0.9em;
+  cursor: pointer;
+}
+.guardian-menu-item:hover { color: #8e44ad; }
+.guardian-menu-item .guardian-marker {
+  margin-right: 0.4em;
+  color: #9b59b6;
+}
+
 /* B/C expansion hooks (Plan 0143) */
 details.bc-expansion {
   border-left: 3px solid #9b7db8;
@@ -784,6 +798,9 @@ details.bc-expansion .record-link:hover {
   .guardian-interlude::before {
     background: #7d5fa0;
   }
+  .guardian-menu-item { color: #bb8fce; }
+  .guardian-menu-item:hover { color: #d2b4de; }
+  .guardian-menu-item .guardian-marker { color: #d2b4de; }
   details.bc-expansion {
     border-left-color: #7d5fa0;
   }
