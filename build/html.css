@@ -46,8 +46,6 @@
   #nav-quickjump { display: none; }
   .hover-panel { max-width: calc(100vw - 16px); left: 8px !important; right: 8px; }
   details summary { padding: 0.6em 0; min-height: 44px; }
-  .section-share { min-width: 44px; min-height: 44px; display: inline-flex;
-    align-items: center; justify-content: center; }
 }
 
 /* TOC — part-grouped with chapters visible */
@@ -244,19 +242,7 @@ h1[id], h2[id], h3[id] {
   #nav-back { color: #5dade2; border-color: #5dade2; }
 }
 
-/* Per-section share icons (Plan 0134c) */
-.section-share {
-  text-decoration: none;
-  font-size: 0.7em;
-  margin-left: 0.3em;
-  opacity: 0;
-  transition: opacity 0.15s;
-  cursor: pointer;
-  vertical-align: middle;
-}
-summary:hover .section-share { opacity: 0.5; }
-.section-share:hover { opacity: 1 !important; }
-@media (hover: none) { .section-share { opacity: 0.3; } }
+/* Per-section share icons (Plan 0134c) — REMOVED. See reader.js note. */
 
 /* Firmware prominent share */
 .firmware-share {

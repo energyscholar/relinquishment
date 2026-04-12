@@ -535,30 +535,22 @@ async function testPhoneShare(browser) {
     });
     await delay(500);
 
-    // 5a: Check for .section-share elements on summaries
+    // 5a: Check for .heading-link elements as share mechanism
+    // (.section-share removed — Plan 0134c feature deleted)
     const shareInfo = await page.evaluate(() => {
-      const shares = document.querySelectorAll('.section-share');
-      // Also check for heading-link elements as share mechanism
       const headingLinks = document.querySelectorAll('.heading-link');
-      return {
-        sectionShares: shares.length,
-        headingLinks: headingLinks.length,
-      };
+      return { headingLinks: headingLinks.length };
     });
 
-    if (shareInfo.sectionShares > 0) {
-      pass(`[iPhone 14] .section-share elements exist (${shareInfo.sectionShares} found)`);
-    } else if (shareInfo.headingLinks > 0) {
+    if (shareInfo.headingLinks > 0) {
       pass(`[iPhone 14] Share mechanism exists via .heading-link elements (${shareInfo.headingLinks} found)`);
     } else {
-      skip('[iPhone 14] .section-share elements', 'not yet implemented (heading-links serve as share)');
+      skip('[iPhone 14] share mechanism', 'no heading-link elements found');
     }
 
-    // 5b: Share icon tap target >= 44px
-    // Check heading-link or section-share elements
+    // 5b: Share icon tap target >= 44px (heading-link only)
     const tapTargetOk = await page.evaluate(() => {
-      const shareEl = document.querySelector('.section-share') ||
-        document.querySelector('.heading-link');
+      const shareEl = document.querySelector('.heading-link');
       if (!shareEl) return { found: false };
       const rect = shareEl.getBoundingClientRect();
       return {
