@@ -368,10 +368,40 @@
   pdfBtn.addEventListener('mouseenter', function() { pdfBtn.style.color = '#2471a3'; });
   pdfBtn.addEventListener('mouseleave', function() { pdfBtn.style.color = isDark ? '#aaa' : '#888'; });
 
+  // Tooltip toggle — small subtle control for quiet-mode users
+  var tipsBtn = document.createElement('a');
+  tipsBtn.id = 'nav-tips-toggle';
+  tipsBtn.href = '#';
+  tipsBtn.setAttribute('data-hover', 'Toggle tooltips off/on');
+  tipsBtn.setAttribute('data-hover-always', 'true');
+  tipsBtn.setAttribute('aria-label', 'Toggle tooltips off/on');
+  tipsBtn.classList.add('hover-nav');
+  tipsBtn.style.cssText = 'text-decoration:none;color:' + (isDark ? '#aaa' : '#888') +
+    ';font-size:0.85em;margin-left:0.5em;cursor:pointer;flex:0 0 auto;';
+  function renderTipsBtn() {
+    var on = (function(){ try { return localStorage.getItem('tooltipsDisabled') !== '1'; } catch(e){ return true; } })();
+    tipsBtn.textContent = on ? 'tips:on' : 'tips:off';
+    tipsBtn.style.opacity = on ? '1' : '0.55';
+  }
+  renderTipsBtn();
+  tipsBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    try {
+      var cur = localStorage.getItem('tooltipsDisabled') === '1';
+      localStorage.setItem('tooltipsDisabled', cur ? '0' : '1');
+    } catch(err) {}
+    renderTipsBtn();
+    var p = document.querySelector('.hover-panel');
+    if (p) p.remove();
+  });
+  tipsBtn.addEventListener('mouseenter', function() { tipsBtn.style.color = '#2471a3'; });
+  tipsBtn.addEventListener('mouseleave', function() { tipsBtn.style.color = isDark ? '#aaa' : '#888'; });
+
   nav.appendChild(backBtn);
   nav.appendChild(breadcrumb);
   nav.appendChild(shareBtn);
   nav.appendChild(pdfBtn);
+  nav.appendChild(tipsBtn);
   nav.appendChild(quickJump);
   // Science / Story filter buttons hidden — not working as intended, feature-creep.
   // Code kept intact (state defaults to everything visible). A future Guardian-only
@@ -890,10 +920,17 @@
     // Each mouseenter/mouseleave manages its own timer.
   }
 
+  // Global tooltip kill-switch (persisted). The toggle button itself is exempt
+  // so users can find their way back.
+  function tooltipsEnabled() {
+    try { return localStorage.getItem('tooltipsDisabled') !== '1'; } catch (e) { return true; }
+  }
+
   // Create and show a hover panel for the given term element
   function showPanel(term) {
     var def = term.getAttribute('data-hover');
     if (!def) return;
+    if (!tooltipsEnabled() && !term.hasAttribute('data-hover-always')) return;
 
     // Dismiss any existing panel first (single-panel rule)
     dismissPanel();

@@ -10379,8 +10379,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>2733fcf2cdbcf093fa69146376a4e586e4b5818f</code> on 2026-04-11
-23:09:54 -0700.</p>
+<code>33590c009a331e6588f5afac9f165924b144c512</code> on 2026-04-11
+23:19:38 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -10448,7 +10448,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-12T06:19:18Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-12T06:28:42Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -10459,19 +10459,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>2733fcf</code></p>
+<p><code>33590c0</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>2733fcf2cdbcf093fa69146376a4e586e4b5818f</code></p>
+<p><code>33590c009a331e6588f5afac9f165924b144c512</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-11 23:09:54 -0700</p>
+<p>2026-04-11 23:19:38 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-12T06:19:18Z</p>
+<p>2026-04-12T06:28:42Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -11183,10 +11183,40 @@ energyscholar+physics@gmail.com
   pdfBtn.addEventListener('mouseenter', function() { pdfBtn.style.color = '#2471a3'; });
   pdfBtn.addEventListener('mouseleave', function() { pdfBtn.style.color = isDark ? '#aaa' : '#888'; });
 
+  // Tooltip toggle — small subtle control for quiet-mode users
+  var tipsBtn = document.createElement('a');
+  tipsBtn.id = 'nav-tips-toggle';
+  tipsBtn.href = '#';
+  tipsBtn.setAttribute('data-hover', 'Toggle tooltips off/on');
+  tipsBtn.setAttribute('data-hover-always', 'true');
+  tipsBtn.setAttribute('aria-label', 'Toggle tooltips off/on');
+  tipsBtn.classList.add('hover-nav');
+  tipsBtn.style.cssText = 'text-decoration:none;color:' + (isDark ? '#aaa' : '#888') +
+    ';font-size:0.85em;margin-left:0.5em;cursor:pointer;flex:0 0 auto;';
+  function renderTipsBtn() {
+    var on = (function(){ try { return localStorage.getItem('tooltipsDisabled') !== '1'; } catch(e){ return true; } })();
+    tipsBtn.textContent = on ? 'tips:on' : 'tips:off';
+    tipsBtn.style.opacity = on ? '1' : '0.55';
+  }
+  renderTipsBtn();
+  tipsBtn.addEventListener('click', function(e) {
+    e.preventDefault();
+    try {
+      var cur = localStorage.getItem('tooltipsDisabled') === '1';
+      localStorage.setItem('tooltipsDisabled', cur ? '0' : '1');
+    } catch(err) {}
+    renderTipsBtn();
+    var p = document.querySelector('.hover-panel');
+    if (p) p.remove();
+  });
+  tipsBtn.addEventListener('mouseenter', function() { tipsBtn.style.color = '#2471a3'; });
+  tipsBtn.addEventListener('mouseleave', function() { tipsBtn.style.color = isDark ? '#aaa' : '#888'; });
+
   nav.appendChild(backBtn);
   nav.appendChild(breadcrumb);
   nav.appendChild(shareBtn);
   nav.appendChild(pdfBtn);
+  nav.appendChild(tipsBtn);
   nav.appendChild(quickJump);
   // Science / Story filter buttons hidden — not working as intended, feature-creep.
   // Code kept intact (state defaults to everything visible). A future Guardian-only
@@ -11705,10 +11735,17 @@ energyscholar+physics@gmail.com
     // Each mouseenter/mouseleave manages its own timer.
   }
 
+  // Global tooltip kill-switch (persisted). The toggle button itself is exempt
+  // so users can find their way back.
+  function tooltipsEnabled() {
+    try { return localStorage.getItem('tooltipsDisabled') !== '1'; } catch (e) { return true; }
+  }
+
   // Create and show a hover panel for the given term element
   function showPanel(term) {
     var def = term.getAttribute('data-hover');
     if (!def) return;
+    if (!tooltipsEnabled() && !term.hasAttribute('data-hover-always')) return;
 
     // Dismiss any existing panel first (single-panel rule)
     dismissPanel();
