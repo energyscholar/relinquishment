@@ -1572,7 +1572,17 @@ def fix_html_toc(html_path):
             print(f"Hover tooltips: {hover_count} first-occurrence terms")
 
     # --- Guardian interludes: convert <hr> <blockquote> <hr> pattern ---
-    # to <div class="guardian-interlude"> (Plan 0143)
+    # to <div class="guardian-interlude" id="guardian:..."> (Plan 0143, 0150)
+    # Plan 0150: assign sequential IDs and titles so Phase 1B can inject menu items.
+    INTERLUDE_IDS = [
+        'guardian:home', 'guardian:the-dance', 'guardian:your-locks',
+        'guardian:growing', 'guardian:the-ocean', 'guardian:quiet',
+        'guardian:hello'
+    ]
+    INTERLUDE_TITLES = [
+        'Home', 'The Dance', 'Your Locks', 'Growing',
+        'The Ocean', 'Quiet', 'Hello'
+    ]
     interlude_pattern = re.compile(
         r'(?:<div class="center">\s*)?<hr\s*/?>(?:\s*</div>)?'
         r'[\s\n]*<blockquote>[\s\n]*(.*?)[\s\n]*</blockquote>[\s\n]*'
@@ -1587,11 +1597,57 @@ def fix_html_toc(html_path):
         # Strip <p><em>...</em></p> wrapper only for single-paragraph interludes
         if content.count('<p>') == 1:
             content = re.sub(r'^<p><em>(.*?)</em></p>$', r'\1', content, flags=re.DOTALL)
-        return f'<div class="guardian-interlude">{content}</div>'
+        idx = interlude_count - 1
+        iid = INTERLUDE_IDS[idx] if idx < len(INTERLUDE_IDS) else ''
+        id_attr = f' id="{iid}"' if iid else ''
+        return f'<div class="guardian-interlude"{id_attr}>{content}</div>'
 
     text = interlude_pattern.sub(interlude_replace, text)
     if interlude_count:
         print(f"  Guardian interludes: {interlude_count} styled")
+
+    # --- Plan 0150: Inject Guardian menu items after containing chapter-section ---
+    # For each interlude div, find the next </details> (the chapter-section close)
+    # and inject a sibling .guardian-menu-item so it appears between chapters in TOC.
+    interlude_tooltips = {}
+    menu_yaml_path_gmi = REPO / "build" / "menu-tooltips.yaml"
+    if yaml and menu_yaml_path_gmi.exists():
+        _gmi_data = yaml.safe_load(menu_yaml_path_gmi.read_text()) or {}
+        _gmi_chapters = _gmi_data.get("chapters", {})
+        for iid in INTERLUDE_IDS:
+            entry = _gmi_chapters.get(iid)
+            if isinstance(entry, dict):
+                interlude_tooltips[iid] = entry.get('text', '')
+
+    gmi_injected = 0
+    for iid, title in zip(INTERLUDE_IDS, INTERLUDE_TITLES):
+        div_marker = f'<div class="guardian-interlude" id="{iid}">'
+        div_pos = text.find(div_marker)
+        if div_pos == -1:
+            continue
+        close_pos = text.find('</details>', div_pos)
+        if close_pos == -1:
+            continue
+        insert_at = close_pos + len('</details>')
+        tooltip_raw = interlude_tooltips.get(iid, '')
+        # Replace ¶ with <br><br> BEFORE escaping so the tags survive as entities
+        # in the attribute; reader.js innerHTML decodes them back into real <br>.
+        tooltip_html = html_mod.escape(tooltip_raw.replace('\u00b6', '<br><br>'))
+        menu_item = (
+            f'\n<div class="guardian-menu-item" id="menu-{iid}" '
+            f'data-target="{iid}" '
+            f'role="link" tabindex="0" '
+            f'aria-label="Guardian interlude: {html_mod.escape(title)}" '
+            f'data-filter-group="G" '
+            f'data-hover="Guardian interlude: {html_mod.escape(title)}" '
+            f'data-hover-html="{tooltip_html}">'
+            f'<span class="guardian-marker">\u27e1</span> '
+            f'Guardian: {html_mod.escape(title)}</div>\n'
+        )
+        text = text[:insert_at] + menu_item + text[insert_at:]
+        gmi_injected += 1
+    if gmi_injected:
+        print(f"  Guardian menu items: {gmi_injected} injected")
 
     # --- B/C expansion hooks — injected by chapter ID (Plan 0143d) ---
     bc_hooks = {
