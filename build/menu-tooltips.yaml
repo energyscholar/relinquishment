@@ -113,11 +113,7 @@ chapters:
     epistemic: C
     filter-group: C
   "record:handler":
-    text: "Under Possibility C, this is the operator's approximate file. SAS. Intelligence Corps. Deep mathematics that no military curriculum explains. Partial eidetic memory. 2.7 years of calibrated guided deduction across five scientific fields — through conversation alone, leaving no paper trail. He stood on K2 in 1996 and decided to use his abilities for something other than killing. What followed was the choice to use those abilities so the public could learn what would otherwise stay classified forever. Everything that followed — including this book — traces back to that decision."
-    epistemic: C
-    filter-group: C
-  "the-handler":
-    text: "Under Possibility C, this is the operator's approximate file. SAS. Intelligence Corps. Deep mathematics that no military curriculum explains. Partial eidetic memory. 2.7 years of calibrated guided deduction across five scientific fields — through conversation alone, leaving no paper trail. He stood on K2 in 1996 and decided to use his abilities for something other than killing. What followed was the choice to use those abilities so the public could learn what would otherwise stay classified forever. Everything that followed — including this book — traces back to that decision."
+    text: "Under Possibility C, this is the operator's approximate file. SAS. Intelligence Corps. Deep mathematics. Partial eidetic memory. On K2 in 1996 he chose to use his abilities for something other than killing. The COWS had a problem: the physics they'd built could not be published through any official channel, and could not be planted in an outsider without leaving fingerprints. The solution was Operation Guided Deduction — 2.7 years of calibrated conversation across five scientific fields, no paper trail, the student reaching every conclusion himself. This book exists because that worked."
     epistemic: C
     filter-group: C
   # record:demonstration removed — Plan 0152, folded into First Light
@@ -134,11 +130,7 @@ chapters:
     epistemic: C
     filter-group: C
   "record:target":
-    text: "Under Possibility C, this is the student's approximate file. Reed College quantum physics. Partial eidetic memory. Third-generation intelligence-adjacent. A five-year campaign of teaching Fortune 500 engineers about cryptography and surveillance — not because anyone asked him to, but because he thought they should know. The COWS needed someone who could receive a multi-year guided deduction and would be dispositionally inclined to publish what he learned. Read the file and ask yourself: is this the guy?"
-    epistemic: C
-    filter-group: C
-  "the-target":
-    text: "Under Possibility C, this is the student's approximate file. Reed College quantum physics. Partial eidetic memory. Third-generation intelligence-adjacent. A five-year campaign of teaching Fortune 500 engineers about cryptography and surveillance — not because anyone asked him to, but because he thought they should know. The COWS needed someone who could receive a multi-year guided deduction and would be dispositionally inclined to publish what he learned. Read the file and ask yourself: is this the guy?"
+    text: "Under Possibility C, this is the student's approximate file. Reed College quantum physics. Partial eidetic memory. Third-generation intelligence-adjacent. A five-year campaign of teaching Fortune 500 engineers about cryptography and surveillance — unpaid, unasked, because he thought they should know. Operation Guided Deduction needed exactly this: someone who could absorb a multi-year cross-domain thought experiment and would be dispositionally compelled to publish what he'd worked out. Not planted knowledge — derived knowledge, which he could own and testify to as his own. Read the file and ask yourself: is this the guy?"
     epistemic: C
     filter-group: C
   "record:instantiation":
