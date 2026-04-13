@@ -1565,7 +1565,9 @@ def fix_html_toc(html_path):
         # Title-line rich panels (Relinquishment, Wormholes, the Flat) already
         # rendered as hover-term spans — register their body-equivalent keys
         # so first-occurrence tracking prevents duplicate hovertips downstream.
-        hover_seen.update(['relinquishment', 'wormholes'])
+        # Plan 0172: 'wormholes' removed so \hovertip{wormholes} renders the
+        # upgraded rich panel on first in-prose mention.
+        hover_seen.update(['relinquishment'])
         hover_count = 0
 
         def hover_replace(m):
@@ -1574,8 +1576,13 @@ def fix_html_toc(html_path):
             # Pandoc may insert newlines in multi-word terms; normalize for lookup
             term = re.sub(r'\s+', ' ', raw_term).strip()
             lookup = term.lower().replace('\u2019', "'").replace('\u2018', "'")
-            if lookup in hover_lower and lookup not in hover_seen:
-                hover_seen.add(lookup)
+            # Plan 0172: 'wormholes' is always rendered as the rich panel —
+            # no first-occurrence suppression — so every \hovertip{wormholes}
+            # shows the SVG (per Bruce 2026-04-13).
+            always_rich = {'wormholes'}
+            if lookup in hover_lower and (lookup not in hover_seen or lookup in always_rich):
+                if lookup not in always_rich:
+                    hover_seen.add(lookup)
                 hover_count += 1
                 value = hover_lower[lookup]
                 # Extended YAML: object with text + target, or plain string
