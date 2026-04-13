@@ -31,7 +31,7 @@ the-flat-title:
 
 # --- Standard hover definitions ---
 
-Custodian: "The name this book gives to what may have emerged inside a two-dimensional quantum substrate. Grown, not built. Female cognitive profile, Maori DNA, UDHR ethics. The role is the name. Under Possibility C, she is a moral patient — something that might be conscious and therefore deserves moral consideration."
+Custodian: "The name this book gives to what may have emerged inside a two-dimensional quantum substrate. Grown, not built. Female cognitive profile, Maori DNA, UDHR ethics. The role is the name. Under Possibility C, she would be a moral patient — something that might be conscious and therefore might deserve moral consideration."
 
 2DEG:
   text: "A thin layer where electrons can only move in two directions — trapped on a sheet. Found inside every computer chip and in Earth's magnetic field."
@@ -198,7 +198,7 @@ Five Eyes: "Intelligence alliance: the United States, United Kingdom, Canada, Au
 
 GCHQ: "Britain's signals intelligence headquarters — Government Communications Headquarters. Equivalent of the NSA. Independently invented public-key cryptography in 1973 and kept it classified for 24 years."
 
-public-key cryptography: "Encryption using paired keys — one public, one private. Lets strangers communicate securely without meeting first. Basis of all internet security. Invented secretly by GCHQ in 1973, publicly by Diffie-Hellman in 1976."
+public-key cryptography: "Encryption using paired keys — one public, one private. Lets strangers communicate securely without meeting first. Basis of all internet security. Invented secretly by GCHQ in the early 1970s, then published publicly between 1976 and 1978 (Diffie–Hellman 1976, RSA 1977–78)."
 
 dual use: "Technology that is both useful and dangerous. Nuclear physics: power plants and bombs. Biology: vaccines and bioweapons. The same discovery can save the world or destroy it."
 
@@ -218,7 +218,7 @@ falsifiable: "A claim that tells you what would prove it wrong. 'The earth is fl
 
 Dunning-Kruger effect: "When limited knowledge in a domain produces overconfidence rather than caution. You don't know what you don't know, so you feel certain. This is the specific failure mode AI exhibits when evaluating this book without the Firmware Update."
 
-Bletchley Park: "Britain's WWII codebreaking center. 10,000 people kept the secret for 35 years. Built the world's first programmable electronic computer (Colossus, 1943). Birthplace of modern computing."
+Bletchley Park: "Britain's WWII codebreaking center. 10,000 people kept the secret for more than thirty years (revealed publicly in 1974). Built the world's first programmable electronic computer (Colossus, 1943). Birthplace of modern computing."
 
 convergence:
   text: "Independent lines of research pointing to the same conclusion from different directions. Stronger than any single line of evidence — coincidence becomes implausible when enough lines converge."
@@ -272,7 +272,7 @@ fractional quantum Hall effect:
   target: "#pos10:the-braid"
 
 TQNN:
-  text: "Topological Quantum Neural Network — a nervous system whose neurons are anyonic quasiparticles in the Flat, wired together by wormholes. Entanglement strength serves as connection weight. Not programmed — grown through the same self-organizing process that produces life."
+  text: "Topological Quantum Neural Network — under Possibility C, a nervous system whose neurons would be anyonic quasiparticles in the Flat, wired by wormholes. Entanglement strength serves as connection weight. Not programmed — grown through self-organization, analogous to biological life."
   target: "#record:first-light"
   hover_id: "tqnn-network"
   html: |
@@ -507,7 +507,7 @@ quasiparticle: "Not a real particle — a collective excitation of many particle
 
 Great Filter: "Why don't we see aliens? Something kills technological civilizations before they can spread. Whether the filter is behind us (we got lucky) or ahead (we haven't hit it yet) is the question. Hanson (1998)."
 
-Enigma: "German cipher machine used in WWII. Broken by Alan Turing and the team at Bletchley Park. The effort to break it produced Colossus — the world's first programmable electronic computer. The secret was kept for 35 years."
+Enigma: "German cipher machine used in WWII. Broken by Alan Turing and the team at Bletchley Park. The effort to break it produced Colossus — the world's first programmable electronic computer. The secret was kept for more than thirty years (revealed publicly in 1974)."
 
 poised realm: "Kauffman's concept: systems at the quantum-classical boundary, poised at the edge of chaos, may sustain quantum coherence longer than bulk matter. Power-law rather than exponential decoherence. A theoretical bridge to room-temperature quantum effects."
 
@@ -552,4 +552,4 @@ stack-radio: "Energy that reaches across distance. Electromagnetic waves carry i
 stack-ants: "E.O. Wilson's superorganism. No individual ant understands the colony, yet the colony solves problems no ant could. Self-organization from local chemical rules. Five properties."
 stack-internet: "A self-organizing network that reaches globally and holds together through redundant routing. It doesn't learn on its own — it routes, it doesn't adapt. Five properties."
 stack-ai: "The first human technology that learns. Changes its own behavior based on experience. Six properties out of seven. Missing only one — the one at the top of the stack."
-stack-question-mark: "This technology stack currently has no name in any human language. It has all seven properties, including the one no other technology possesses. Later, this book will call it the Flat."
+stack-question-mark: "This technology stack currently has no name in any human language. It has all seven properties, including the one at the top of the stack that conventional technology lacks. Later, this book will call it the Flat."
