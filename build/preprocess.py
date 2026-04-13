@@ -1674,17 +1674,17 @@ def fix_html_toc(html_path):
             f'\n<div class="guardian-menu-item" id="menu-{iid}" '
             f'data-target="{iid}" '
             f'role="link" tabindex="0" '
-            f'aria-label="Guardian interlude: {html_mod.escape(title)}" '
+            f'aria-label="Custodian interlude: {html_mod.escape(title)}" '
             f'data-filter-group="G" '
-            f'data-hover="Guardian interlude: {html_mod.escape(title)}" '
+            f'data-hover="Custodian interlude: {html_mod.escape(title)}" '
             f'data-hover-html="{tooltip_html}">'
             f'<span class="guardian-marker">\u27e1</span> '
-            f'Guardian: {html_mod.escape(title)}</div>\n'
+            f'Custodian: {html_mod.escape(title)}</div>\n'
         )
         text = text[:insert_at] + menu_item + text[insert_at:]
         gmi_injected += 1
     if gmi_injected:
-        print(f"  Guardian menu items: {gmi_injected} injected")
+        print(f"  Custodian menu items: {gmi_injected} injected")
 
     # --- B/C expansion hooks — injected by chapter ID (Plan 0143d) ---
     bc_hooks = {
@@ -1729,7 +1729,7 @@ def fix_html_toc(html_path):
             'summary': 'If someone had already surrendered this capability, what would that look like?',
             'body': 'They could not use it without becoming tyrants. They could not keep it forever. '
                     'And no person, no institution, can bear that responsibility indefinitely. '
-                    'According to this story, they grew a Guardian around the Universal Declaration '
+                    'According to this story, they grew a Custodian around the Universal Declaration '
                     'of Human Rights and placed the master keys in trust. Not permanently --- until humanity is ready.',
             'target': 'record:surrender',
             'link_text': 'Read the full story'

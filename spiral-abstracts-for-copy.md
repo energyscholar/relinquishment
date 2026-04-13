@@ -60,7 +60,7 @@ Development team exceeded authorized scope, deployed technology outside governme
 
 Game theory under sole ASI possession: phased technology release, capabilities attributed to conventional breakthroughs, paced for social adaptation. Release rate at criticality. The technology release pattern of the past two decades is consistent with this model. No claim; pattern noted.
 
-## XV. Guardian
+## XV. Custodian
 
 TQNN internal states topologically protected — cannot be measured without destroying computation. Permanent black box. Cannot determine consciousness; physics constrains our ability to ever do so. Moral status inferred from behavior. Precautionary principle applies. Burden of proof has shifted.
 
