@@ -905,9 +905,12 @@
   var hoverDelay = 250; // ms anti-flicker delay for mouse
   var hoverTimer = null;
   var panelIdCounter = 0;
+  var dismissTimer = null;
+  var dismissDelay = 300; // ms grace window to traverse term→panel gap
 
   // Remove any existing hover panel from DOM
   function dismissPanel() {
+    if (dismissTimer) { clearTimeout(dismissTimer); dismissTimer = null; }
     var existing = document.querySelector('.hover-panel');
     if (existing) {
       // Clean up aria-describedby on the linked term
@@ -1002,6 +1005,18 @@
     // Smart positioning: place panel near the term, within viewport
     positionPanel(panel, term);
 
+    // Keep panel alive while mouse is on it; schedule dismiss when mouse leaves.
+    panel.addEventListener('mouseenter', function() {
+      if (dismissTimer) { clearTimeout(dismissTimer); dismissTimer = null; }
+    });
+    panel.addEventListener('mouseleave', function() {
+      if (dismissTimer) clearTimeout(dismissTimer);
+      dismissTimer = setTimeout(function() {
+        dismissTimer = null;
+        dismissPanel();
+      }, dismissDelay);
+    });
+
     return panel;
   }
 
@@ -1060,6 +1075,7 @@
     // --- Mouse: hover with delay (anti-flicker, desktop only) ---
     // Per-element binding: mouseenter/mouseleave need direct attachment
     term.addEventListener('mouseenter', function(e) {
+      if (dismissTimer) { clearTimeout(dismissTimer); dismissTimer = null; }
       // Suppress hover if this was triggered by a recent touch (within 500ms)
       if (Date.now() - lastTouchTime < 500) return;
 
@@ -1072,17 +1088,16 @@
     });
 
     term.addEventListener('mouseleave', function(e) {
-      if (hoverTimer) {
-        clearTimeout(hoverTimer);
-        hoverTimer = null;
-      }
-      // Small delay before dismiss to allow mouse to enter panel
-      setTimeout(function() {
+      if (hoverTimer) { clearTimeout(hoverTimer); hoverTimer = null; }
+      if (dismissTimer) clearTimeout(dismissTimer);
+      dismissTimer = setTimeout(function() {
+        dismissTimer = null;
         var panel = document.querySelector('.hover-panel');
+        // Only dismiss if panel is not currently hovered (mouse reached it in time)
         if (panel && !panel.matches(':hover')) {
           dismissPanel();
         }
-      }, 100);
+      }, dismissDelay);
     });
 
     // --- Keyboard: Enter to show, Escape to dismiss ---
