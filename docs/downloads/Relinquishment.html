@@ -10469,8 +10469,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>e813245235c73cbed3741dbc02b9dd2bc8ea8345</code> on 2026-04-12
-19:52:30 -0700.</p>
+<code>79856b3756b074463cca1e83e894d1beb4708aa3</code> on 2026-04-12
+19:55:21 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -10538,7 +10538,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-13T02:55:12Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-13T02:59:36Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -10549,19 +10549,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>e813245</code></p>
+<p><code>79856b3</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>e813245235c73cbed3741dbc02b9dd2bc8ea8345</code></p>
+<p><code>79856b3756b074463cca1e83e894d1beb4708aa3</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-12 19:52:30 -0700</p>
+<p>2026-04-12 19:55:21 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-13T02:55:12Z</p>
+<p>2026-04-13T02:59:36Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -11810,9 +11810,12 @@ energyscholar+physics@gmail.com
   var hoverDelay = 250; // ms anti-flicker delay for mouse
   var hoverTimer = null;
   var panelIdCounter = 0;
+  var dismissTimer = null;
+  var dismissDelay = 300; // ms grace window to traverse term→panel gap
 
   // Remove any existing hover panel from DOM
   function dismissPanel() {
+    if (dismissTimer) { clearTimeout(dismissTimer); dismissTimer = null; }
     var existing = document.querySelector('.hover-panel');
     if (existing) {
       // Clean up aria-describedby on the linked term
@@ -11907,6 +11910,18 @@ energyscholar+physics@gmail.com
     // Smart positioning: place panel near the term, within viewport
     positionPanel(panel, term);
 
+    // Keep panel alive while mouse is on it; schedule dismiss when mouse leaves.
+    panel.addEventListener('mouseenter', function() {
+      if (dismissTimer) { clearTimeout(dismissTimer); dismissTimer = null; }
+    });
+    panel.addEventListener('mouseleave', function() {
+      if (dismissTimer) clearTimeout(dismissTimer);
+      dismissTimer = setTimeout(function() {
+        dismissTimer = null;
+        dismissPanel();
+      }, dismissDelay);
+    });
+
     return panel;
   }
 
@@ -11965,6 +11980,7 @@ energyscholar+physics@gmail.com
     // --- Mouse: hover with delay (anti-flicker, desktop only) ---
     // Per-element binding: mouseenter/mouseleave need direct attachment
     term.addEventListener('mouseenter', function(e) {
+      if (dismissTimer) { clearTimeout(dismissTimer); dismissTimer = null; }
       // Suppress hover if this was triggered by a recent touch (within 500ms)
       if (Date.now() - lastTouchTime < 500) return;
 
@@ -11977,17 +11993,16 @@ energyscholar+physics@gmail.com
     });
 
     term.addEventListener('mouseleave', function(e) {
-      if (hoverTimer) {
-        clearTimeout(hoverTimer);
-        hoverTimer = null;
-      }
-      // Small delay before dismiss to allow mouse to enter panel
-      setTimeout(function() {
+      if (hoverTimer) { clearTimeout(hoverTimer); hoverTimer = null; }
+      if (dismissTimer) clearTimeout(dismissTimer);
+      dismissTimer = setTimeout(function() {
+        dismissTimer = null;
         var panel = document.querySelector('.hover-panel');
+        // Only dismiss if panel is not currently hovered (mouse reached it in time)
         if (panel && !panel.matches(':hover')) {
           dismissPanel();
         }
-      }, 100);
+      }, dismissDelay);
     });
 
     // --- Keyboard: Enter to show, Escape to dismiss ---
