@@ -1,0 +1,60 @@
+# 6-stage renunciation archetype — per plan 0168 spec.
+name: Renunciation journey
+stages:
+  - id: discovery
+    name: The Discovery
+    markers:
+      - "found it"
+      - "converging"
+      - "five fields"
+      - "capability"
+      - "what they held"
+      - "breakthrough"
+
+  - id: oath
+    name: The Oath
+    markers:
+      - "\\bsworn\\b"
+      - "\\boath\\b"
+      - "secrecy"
+      - "classified"
+      - "forbidden"
+      - "signed agreements"
+
+  - id: dilemma
+    name: The Dilemma
+    markers:
+      - "what do you do"
+      - "refuse to hoard"
+      - "worse than"
+      - "could not keep"
+      - "could not use"
+
+  - id: third_path
+    name: Guided Deduction (third path)
+    markers:
+      - "taught"
+      - "indirectly"
+      - "published science"
+      - "reason their way"
+      - "guided deduction"
+      - "deliberate sequence"
+
+  - id: harder_question
+    name: Who Holds the Power
+    markers:
+      - "who could safely"
+      - "no nation"
+      - "not themselves"
+      - "no single government"
+      - "imbalance of power"
+
+  - id: renunciation
+    name: The Surrender
+    markers:
+      - "surrender"
+      - "stepped back"
+      - "smallest custodian"
+      - "gave it up"
+      - "relinquish"
+      - "master keys"

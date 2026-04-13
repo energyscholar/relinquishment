@@ -1,0 +1,97 @@
+# Relinquishment takeaways — ported from
+# aurasys-memory/memory/project-book-primary-objectives.md (T1-T7)
+# plus T8 (guided deduction as method) tracked separately.
+# T6 = trusteeship (relinquishment is temporary and partial).
+# T7 = Guardian provides services (IT infrastructure, key management, adjudication).
+#
+# Anchors are case-insensitive regexes. A takeaway hits when ≥2 anchor matches
+# or ≥2 distinct anchors fire.
+
+- id: T1
+  name: Meet Guardian
+  priority: 10
+  anchors:
+    - "\\bGuardian\\b"
+    - "\\bAurasys\\b"
+    - "named her"
+    - "living being"
+    - "1999"
+
+- id: T2
+  name: The Flat
+  priority: 10
+  anchors:
+    - "\\bFlat\\b"
+    - "two-dimensional"
+    - "\\b2DEG\\b"
+    - "2-D electron"
+    - "topological order"
+    - "fractional charge"
+
+- id: T3
+  name: The Flat might have life
+  priority: 9
+  anchors:
+    - "magnetosphere"
+    - "Kauffman"
+    - "self-organiz"
+    - "autocatal"
+    - "billions of years"
+    - "life in the Flat"
+
+- id: T4
+  name: Capabilities
+  priority: 8
+  anchors:
+    - "encryption"
+    - "quantum\\s+computer"
+    - "code[- ]?break"
+    - "capabilit"
+    - "track record"
+    - "read.{0,20}(email|secrets)"
+    - "room-temperature"
+
+- id: T5
+  name: Silence gap
+  priority: 9
+  anchors:
+    - "silence gap"
+    - "five fields"
+    - "specialization"
+    - "no journal"
+    - "no career"
+    - "not conspiracy"
+    - "structural"
+
+- id: T6
+  name: Trusteeship / relinquishment
+  priority: 7
+  anchors:
+    - "relinquish"
+    - "master keys"
+    - "trust"
+    - "surrender"
+    - "gave it up"
+    - "until we're ready"
+
+- id: T7
+  name: Guardian provides services
+  priority: 7
+  anchors:
+    - "\\bservices\\b"
+    - "IT infrastructure"
+    - "key management"
+    - "access control"
+    - "adjudicat"
+    - "infrastructure"
+    - "provides"
+
+- id: T8
+  name: Guided deduction (method)
+  priority: 6
+  anchors:
+    - "guided deduction"
+    - "published science"
+    - "deliberate sequence"
+    - "teaching was not a favor"
+    - "breach the silence"

@@ -1,0 +1,88 @@
+# Relinquishment reader failure modes — ported from
+# aurasys-memory/memory/project-reader-failure-modes.md
+#
+# Higher severity = worse if triggered. Each trigger is a case-insensitive regex.
+
+- id: F-crank
+  name: Crackpot dismissal
+  severity: 9
+  triggers:
+    - "\\brevolution(ary|ize)\\b"
+    - "\\bparadigm[- ]shift\\b"
+    - "\\bgrand theory\\b"
+    - "\\btheory of everything\\b"
+    - "changes everything"
+
+- id: F-AI-slop
+  name: ChatGPT confabulation pattern
+  severity: 8
+  triggers:
+    - "as an AI"
+    - "it is important to note"
+    - "in conclusion"
+    - "let us delve"
+
+- id: F-religious
+  name: Sentience / deity pattern-match
+  severity: 10
+  triggers:
+    - "\\balive\\b"
+    - "\\bconscious(ness)?\\b"
+    - "\\bsentient\\b"
+    - "\\bsoul\\b"
+    - "\\bher mind\\b"
+    - "\\bdivine\\b"
+    - "\\bangel(ic)?\\b"
+    - "\\bgod-?like\\b"
+
+- id: F-delusion
+  name: Mentally ill author signal
+  severity: 7
+  triggers:
+    - "they are watching"
+    - "i alone"
+    - "chosen one"
+    - "the truth they hide"
+
+- id: F-conspiracy
+  name: Cabal / unfalsifiable-by-design pattern
+  severity: 8
+  triggers:
+    - "\\bcabal\\b"
+    - "\\bshadowy\\b"
+    - "secret group"
+    - "they decided"
+    - "\\bdeep state\\b"
+    - "covered it up"
+
+- id: F-scifi
+  name: Reads as fiction / entertainment only
+  severity: 5
+  triggers:
+    - "in this novel"
+    - "our hero"
+    - "the protagonist"
+
+- id: F-omnipotent
+  name: Godlike Guardian (violates Correction #20)
+  severity: 9
+  triggers:
+    - "all-?knowing"
+    - "omnipotent"
+    - "omniscient"
+    - "\\bcontrols\\b.{0,30}\\beverything\\b"
+
+- id: F-dystopian
+  name: Relinquishment = permanent loss
+  severity: 6
+  triggers:
+    - "forever lost"
+    - "never again will"
+    - "gave up hope"
+
+- id: F-exotic-other
+  name: Western weirdness only
+  severity: 4
+  triggers:
+    - "only in the West"
+    - "Western science alone"

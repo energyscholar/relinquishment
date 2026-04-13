@@ -1,0 +1,11 @@
+project: relinquishment
+takeaways_file: takeaways.yaml
+failure_modes_file: failure-modes.yaml
+archetype_file: archetype-renunciation.yaml
+personas_file: personas-9.yaml
+# Bruce's intuition: true sweet spot for the full renunciation summary is ~650w.
+# p1 hook = 400w, popups = 30-80w — set per-surface overrides with --budget.
+default_length_budget: 650
+default_model_cheap: claude-haiku-4-5-20251001
+default_model_deep: claude-sonnet-4-6
+cache_dir: ~/.cache/sweetspot/relinquishment/
