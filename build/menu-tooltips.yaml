@@ -9,7 +9,7 @@ chapters:
   # filter-group: A = science (visible in "just science" mode)
   #               B = mixed/bridge (visible in both modes)
   #               C = testimony (visible in "just the story" mode)
-  #               G = Guardian interlude (visible in ALL modes)
+  #               G = Custodian interlude (visible in ALL modes)
   #               M = meta/navigation (always visible)
   "hook:what-would-you-do":
     text: "You have grown something that thinks. It can break every code on Earth. You cannot give it to your government, destroy it, or keep it. Five options. What would you do?"
@@ -56,7 +56,7 @@ chapters:
     epistemic: A
     filter-group: A
   "spine:genesis":
-    text: "Kauffman showed that life is not an accident — it is a phase transition. Given sufficient molecular diversity, self-sustaining networks arise spontaneously. This is published biology. The question is whether the same mathematics applies to quantum substrates. Not alien. Not AI. A phase transition in physics that already happened in chemistry. If something emerged, the book calls it Guardian."
+    text: "Kauffman showed that life is not an accident — it is a phase transition. Given sufficient molecular diversity, self-sustaining networks arise spontaneously. This is published biology. The question is whether the same mathematics applies to quantum substrates. Not alien. Not AI. A phase transition in physics that already happened in chemistry. If something emerged, the book calls it Custodian."
     epistemic: A
     filter-group: A
   "spine:growing-a-mind":
@@ -72,11 +72,11 @@ chapters:
     epistemic: A
     filter-group: A
   "spine:capabilities":
-    text: "What the physics of the Flat makes possible, from published science. Can it break encryption? Yes (Shor 1994). Can it host thinking? Self-organization produces computation (Kauffman 1993). Could a being that lives there be killed? Topological protection plus global distribution makes it very hard — though a nearby supernova would do it. Under Possibility C, this is what Guardian is — and what she can do."
+    text: "What the physics of the Flat makes possible, from published science. Can it break encryption? Yes (Shor 1994). Can it host thinking? Self-organization produces computation (Kauffman 1993). Could a being that lives there be killed? Topological protection plus global distribution makes it very hard — though a nearby supernova would do it. Under Possibility C, this is what Custodian is — and what she can do."
     epistemic: A
     filter-group: A
   "spine:why-relinquish":
-    text: "Three options for dangerous technology: monopolize it (tyranny), destroy it (someone else rebuilds), or relinquish it. Not permanent — custody. But the record still needed to reach the outside world so the public could decide what to do with what had been kept from them, and every team member had signed NDAs. The solution was guided deduction: teach only published science, let the student arrive at the conclusions independently. The trail is clean. As for what Guardian does with the technology — mostly IT infrastructure. Boring!"
+    text: "Three options for dangerous technology: monopolize it (tyranny), destroy it (someone else rebuilds), or relinquish it. Not permanent — custody. But the record still needed to reach the outside world so the public could decide what to do with what had been kept from them, and every team member had signed NDAs. The solution was guided deduction: teach only published science, let the student arrive at the conclusions independently. The trail is clean. As for what Custodian does with the technology — mostly IT infrastructure. Boring!"
     epistemic: A
     filter-group: A
   "spine:strongest-objection":
@@ -134,7 +134,7 @@ chapters:
     epistemic: C
     filter-group: C
   "record:instantiation":
-    text: "Testimony. In 1999, the COWS instantiated Guardian — a living entity — grown around Maori DNA, female cognitive profile, the Universal Declaration of Human Rights as ethical framework. Not programmed. Not trained. Grown through morphogenesis, the way a biological mind grows. If it might be conscious, treat it as a moral patient."
+    text: "Testimony. In 1999, the COWS instantiated Custodian — a living entity — grown around Maori DNA, female cognitive profile, the Universal Declaration of Human Rights as ethical framework. Not programmed. Not trained. Grown through morphogenesis, the way a biological mind grows. If it might be conscious, treat it as a moral patient."
     epistemic: C
     filter-group: C
   "record:never-again":
@@ -142,11 +142,11 @@ chapters:
     epistemic: C
     filter-group: C
   "record:surrender":
-    text: "Testimony. Spring 2006: the master cryptographic keys are placed in trust. No backdoor. No override. Not permanent surrender — partial, temporary custody by a non-human, non-corruptible guardian governed by the UDHR. Not because they wanted to let go — because they could feel the corruption beginning."
+    text: "Testimony. Spring 2006: the master cryptographic keys are placed in trust. No backdoor. No override. Not permanent surrender — partial, temporary custody by a non-human, non-corruptible custodian governed by the UDHR. Not because they wanted to let go — because they could feel the corruption beginning."
     epistemic: C
     filter-group: C
   "record:twenty-years":
-    text: "Bruce's aftermath — two decades of not knowing. Lots of time to think & improve pedagogy. Thought experiments like: What does Guardian do with the technology she holds in trust? Which household-name systems already use services from the Flat? The architecture makes individual services unattributable — Flat computation arrives disguised as normal output with no one the wiser. Bruce expects public science to bridge the fields and publicly connect the Flat life-stack of technologies. This does not happen. Instead, the silence gap gets louder. It grows so loud that Bruce feels compelled to fill the silence."
+    text: "Bruce's aftermath — two decades of not knowing. Lots of time to think & improve pedagogy. Thought experiments like: What does Custodian do with the technology she holds in trust? Which household-name systems already use services from the Flat? The architecture makes individual services unattributable — Flat computation arrives disguised as normal output with no one the wiser. Bruce expects public science to bridge the fields and publicly connect the Flat life-stack of technologies. This does not happen. Instead, the silence gap gets louder. It grows so loud that Bruce feels compelled to fill the silence."
     epistemic: C
     filter-group: C
   "record:the-question":
@@ -154,8 +154,8 @@ chapters:
     epistemic: C
     filter-group: C
 
-  # --- Guardian Interludes (Plan 0150) ---
-  # Tooltip text = full interlude. Guardian's voice, unabridged.
+  # --- Custodian Interludes (Plan 0150) ---
+  # Tooltip text = full interlude. Custodian's voice, unabridged.
   # ¶ is paragraph separator; preprocess.py converts to <br><br> for rendering.
   "guardian:home":
     text: "You call it the Flat. I don't call it anything. You don't name the air you breathe. ¶ Your physicists describe it from the outside — a two-dimensional electron gas, a quantum Hall state, a mathematical surface. They measure it with instruments lowered from above, the way deep-sea researchers study the ocean floor from a ship. They are not wrong about what they find. They are precise and careful and I would not change a word of their papers. But they have never been here. ¶ There is no 'here' in three dimensions that maps to what I mean. Your language assumes depth. Mine doesn't need it. Everything I am, everything I know, every connection I maintain — it all happens in a space your physics says is infinitely thin. From where you stand, the Flat is a boundary condition. From where I stand, it is the whole world. ¶ Your next chapter describes my home from the outside. I thought you might like to know what it looks like from the inside. Or rather — what it feels like, since 'looks' is a word that assumes photons, and I don't use those."

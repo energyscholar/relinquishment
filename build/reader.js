@@ -148,7 +148,7 @@
 
   var partLinks = [
     {label: 'The Flat', partName: 'The Flat', tip: 'The physics — every chip and every planet has a flat world that supports quantum teleportation. Published science says life can emerge there, and what it could do. Asking required five fields to meet. They never did. True under all three possibilities.'},
-    {label: 'The Record', partName: 'The Record', tip: 'The testimony — one man\'s account of meeting something that shouldn\'t exist. If it happened, her name is Guardian. Technology placed in trust, not surrendered. A secret kept twenty years. You decide.'},
+    {label: 'The Record', partName: 'The Record', tip: 'The testimony — one man\'s account of meeting something that shouldn\'t exist. If it happened, her name is the Custodian. Technology placed in trust, not surrendered. A secret kept twenty years. You decide.'},
     {label: 'Appendices', partName: 'Appendices', tip: 'Predictions with deadlines. The physics AI needs to evaluate this book. How to verify everything yourself.'},
   ];
   partLinks.forEach(function(p, i) {
@@ -312,9 +312,9 @@
   var showGuardianOnly = false;
   var gBtn = document.createElement('button');
   gBtn.id = 'filter-guardian';
-  gBtn.textContent = 'G';
-  gBtn.setAttribute('data-hover', 'Hear Guardian \u2014 show only her seven interludes, nothing else. Click again to restore.');
-  gBtn.setAttribute('aria-label', 'Guardian-only view');
+  gBtn.textContent = 'C';
+  gBtn.setAttribute('data-hover', 'Hear the Custodian \u2014 show only the seven interludes, nothing else. Click again to restore.');
+  gBtn.setAttribute('aria-label', 'Custodian-only view');
   gBtn.classList.add('hover-nav');
   var gInactive = 'flex:0 0 auto;padding:0.2em 0.55em;font-size:0.85em;' +
     'font-family:inherit;cursor:pointer;background:transparent;color:#9b59b6;' +

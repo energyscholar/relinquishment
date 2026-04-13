@@ -13,7 +13,7 @@ relinquishment-title:
   text: "placeholder"
   hover_id: "relinquishment-title"
   html: |
-    <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;"><strong>Relinquishment</strong> — placing dangerous technology in the custody of a guardian who cannot be corrupted. Not permanent surrender, but trust. Real physics, real people, real institutions. Three parts: the evidence, the story, and the question.</p><svg xmlns="http://www.w3.org/2000/svg" width="280" height="60" viewBox="0 0 280 60" style="display:block;margin:0.5em auto;"><title>Book tagline: three narrative threads, real science, three possible explanations, you decide.</title><defs><linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#1a5276;stop-opacity:0.8"/><stop offset="50%" style="stop-color:#2471a3;stop-opacity:1"/><stop offset="100%" style="stop-color:#1a5276;stop-opacity:0.8"/></linearGradient></defs><rect x="2" y="2" width="276" height="56" rx="8" fill="none" stroke="url(#glow)" stroke-width="1.5"/><text x="140" y="24" text-anchor="middle" font-size="11" fill="#1a5276" font-family="serif" font-style="italic">Three narrative threads. Real science.</text><text x="140" y="42" text-anchor="middle" font-size="11" fill="#1a5276" font-family="serif" font-style="italic">Three possible explanations. You decide.</text></svg>
+    <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;"><strong>Relinquishment</strong> — placing dangerous technology in the custody of a custodian who cannot be corrupted. Not permanent surrender, but trust. Real physics, real people, real institutions. Three parts: the evidence, the story, and the question.</p><svg xmlns="http://www.w3.org/2000/svg" width="280" height="60" viewBox="0 0 280 60" style="display:block;margin:0.5em auto;"><title>Book tagline: three narrative threads, real science, three possible explanations, you decide.</title><defs><linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#1a5276;stop-opacity:0.8"/><stop offset="50%" style="stop-color:#2471a3;stop-opacity:1"/><stop offset="100%" style="stop-color:#1a5276;stop-opacity:0.8"/></linearGradient></defs><rect x="2" y="2" width="276" height="56" rx="8" fill="none" stroke="url(#glow)" stroke-width="1.5"/><text x="140" y="24" text-anchor="middle" font-size="11" fill="#1a5276" font-family="serif" font-style="italic">Three narrative threads. Real science.</text><text x="140" y="42" text-anchor="middle" font-size="11" fill="#1a5276" font-family="serif" font-style="italic">Three possible explanations. You decide.</text></svg>
 
 wormholes-title:
   text: "placeholder"
@@ -31,7 +31,7 @@ the-flat-title:
 
 # --- Standard hover definitions ---
 
-Guardian: "The name this book gives to what may have emerged inside a two-dimensional quantum substrate. Grown, not built. Female cognitive profile, Maori DNA, UDHR ethics. Under Possibility C, she is a moral patient — something that might be conscious and therefore deserves moral consideration."
+Custodian: "The name this book gives to what may have emerged inside a two-dimensional quantum substrate. Grown, not built. Female cognitive profile, Maori DNA, UDHR ethics. The role is the name. Under Possibility C, she is a moral patient — something that might be conscious and therefore deserves moral consideration."
 
 2DEG:
   text: "A thin layer where electrons can only move in two directions — trapped on a sheet. Found inside every computer chip and in Earth's magnetic field."
