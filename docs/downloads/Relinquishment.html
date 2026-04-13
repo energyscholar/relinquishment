@@ -1044,8 +1044,8 @@ orders secret. When a hospital stores your medical records, encryption
 keeps them private.</p>
 <p>Now ask yourself: what would happen if someone built a machine that
 COULD easily solve those math problems?</p>
-<p>Every password would be meaningless. Every encrypted message — from
-your email to military command channels — could be read by whomever
+<p>Every encrypted login would be exposed. Every encrypted message —
+from your email to military command channels — could be read by whomever
 controlled that machine. Every bank, every government, every military in
 the world would be exposed. Every private conversation, every trade
 secret, every state secret — all of it, readable.</p>
@@ -1089,7 +1089,7 @@ classified for twenty-four years. <span class="hover-term" data-hover="Britain&#
 built a working programmable electronic computer in 1943; its existence
 was secret until the late 1970s, and full technical details remained
 classified until the 2000s. Ten thousand people kept that secret for
-thirty-five years.</p>
+more than thirty years.</p>
 <p>Around 1990, according to this story, DARPA funded a small classified
 team to build a quantum computer. Not at a university, where research is
 published openly. In a classified lab, where everything is secret. Where
@@ -1432,7 +1432,7 @@ will produce a confident, well-structured dismissal instead of saying “I
 don’t know enough to judge.”</p>
 <p>The fix is simple. The <a href="#ch:firmware-update">Firmware
 Update</a> appendix contains the ten physics results your AI needs. Give
-it those results and ask again. The answer changes.</p>
+it those results and ask again. The answer may change.</p>
 <p>Bruce’s position: “I’m fine with all three and can’t tell which is
 closest to true.”</p>
 <p>The book works under all three. This summary works under all three.
@@ -2283,7 +2283,7 @@ inherits a hard constraint: it can only communicate as fast as its
 classical channels allow.</p>
 <p>Bouwmeester et al. demonstrated quantum teleportation experimentally
 in 1997, using photons.<a href="#fn18" class="footnote-ref" id="fnref18" role="doc-noteref"><sup>18</sup></a> By 2017, the Chinese Micius
-satellite extended the range to 1,200 km. The physics is confirmed. The
+satellite extended the range to 1,400 km. The physics is confirmed. The
 classical constraint is also confirmed: in every experiment, the
 classical channel was required.</p>
 <h3 class="unnumbered" id="spine:braid-non-abelian-anyons-operational-proof">Non-Abelian
@@ -2351,14 +2351,14 @@ age.”</em></p>
 <h3 class="unnumbered" id="spine:fg-the-state-of-cryptography-in-1990">The State of
 Cryptography in 1990</h3>
 <p>In 1990 the world’s top spy organizations had an unhappy blind spot.
-The mathematics of Public Key Cryptography, invented in 1978, allowed
-civilian computer users to routinely encrypt communications in
-unbreakable ways. Supposedly, officially, they still have this same
-blind spot in 2026. Public key cryptography provides the S in HTTPS.
-Alice and Bob could communicate privately. Eve could analyse traffic,
-but she could not eavesdrop. Organizations that existed to spy on
-communications, such as the United States National Security Agency and
-the other members of the Five Eyes, felt threatened. The spy
+The mathematics of Public Key Cryptography, published publicly between
+1976 and 1978, allowed civilian computer users to routinely encrypt
+communications in unbreakable ways. Supposedly, officially, they still
+have this same blind spot in 2026. Public key cryptography provides the
+S in HTTPS. Alice and Bob could communicate privately. Eve could analyse
+traffic, but she could not eavesdrop. Organizations that existed to spy
+on communications, such as the United States National Security Agency
+and the other members of the Five Eyes, felt threatened. The spy
 organizations badly needed a reliable way to crack public key
 cryptography. Something had to be done.</p>
 <p>One need not be a mathematician to understand how Public Key
@@ -2392,10 +2392,11 @@ factors and crack the key.<a href="#fn19" class="footnote-ref" id="fnref19" role
 algorithm.<a href="#fn20" class="footnote-ref" id="fnref20" role="doc-noteref"><sup>20</sup></a> Although of little practical use,
 it is one of the first examples of a quantum algorithm that is
 exponentially faster than any possible deterministic classical
-algorithm. Deutsch-Jozsa hinted that a theoretical quantum algorithm
-might be able to factor numbers in polynomial time, and thus crack
-public key cryptography. A quantum algorithm (software) capable of doing
-just that was published by Peter Shor in 1994 — <span class="hover-term" data-hover="Quantum algorithm that factors large numbers exponentially faster than any known classical method. Published by Peter Shor in 1994. Breaks RSA encryption. The reason governments care about quantum computing." data-hover-id="shor-s-algorithm">Shor’s algorithm</span>.<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a> The problem then, as now, is lack
+algorithm. Simon’s problem (1994) demonstrated an exponential quantum
+speedup for a structured problem, inspiring Shor to apply the same
+periodicity-finding insight to integer factoring. A quantum algorithm
+(software) capable of cracking public key cryptography was published by
+Peter Shor in 1994 — <span class="hover-term" data-hover="Quantum algorithm that factors large numbers exponentially faster than any known classical method. Published by Peter Shor in 1994. Breaks RSA encryption. The reason governments care about quantum computing." data-hover-id="shor-s-algorithm">Shor’s algorithm</span>.<a href="#fn21" class="footnote-ref" id="fnref21" role="doc-noteref"><sup>21</sup></a> The problem then, as now, is lack
 of appropriate quantum computation hardware on which to run such an
 algorithm.</p>
 <p>By 1991 it was known to top cryptographers that quantum algorithms
@@ -8765,8 +8766,9 @@ Comm. Math. Phys. 2002.</em></p>
 <p><strong>Anchor 10 — Coherence Precedent.</strong> Room-temperature
 quantum coherence is experimentally established. NV-diamond and SiC
 devices maintain coherent quantum states at 300 K in commercial
-products. Not theoretical — deployed. [Established] <em>Christle et al.,
-Nature Materials 2015.</em></p>
+products. Not theoretical — deployed. [Established] <em>Balasubramanian
+et al., Nature Materials 2009; Klimov et al., Science Advances
+2015.</em></p>
 <h4 class="unnumbered" id="temperature-and-evolution">Temperature and
 Evolution</h4>
 <p><strong>Anchor 4 — Temperature Independence.</strong> No law
@@ -8969,9 +8971,12 @@ doi:10.1038/nature03939</p></li>
 inner magnetosphere: 1. Dominant physical processes.” <em>Journal of
 Geophysical Research</em> 103, 2385–2396 (1998).
 doi:10.1029/97JA02919</p></li>
-<li><p>Christle, D.J. et al. “Isolated electron spins in silicon carbide
-with millisecond coherence times.” <em>Nature Materials</em> 14, 160–163
-(2015). doi:10.1038/nmat4144</p></li>
+<li><p>Balasubramanian, G. et al. “Ultralong spin coherence time in
+isotopically engineered diamond.” <em>Nature Materials</em> 8, 383–387
+(2009). doi:10.1038/nmat2420</p></li>
+<li><p>Klimov, P.V. et al. “Quantum entanglement at ambient conditions
+in a macroscopic solid-state spin ensemble.” <em>Science Advances</em>
+1(10), e1501015 (2015). doi:10.1126/sciadv.1501015</p></li>
 </ol>
 <p><em>This reference was developed through adversarial testing across
 multiple AI systems (Claude, ChatGPT-4o, Gemini 2.5 Pro, Grok). All
@@ -9408,10 +9413,9 @@ Biology, concentrating on the Morphogenesis Problem, which he believes
 holds the key to advanced Artificial Intelligence.</p>
 <p><strong>1954</strong> — Alan Turing dies. An award is eventually
 established in his name, the Turing Award.</p>
-<p><strong>1954</strong> — Marvin Minsky writes his doctoral thesis,
+<p><strong>1954</strong> — Marvin Minsky completes his doctoral thesis,
 <em>Theory of Neural-Analog Reinforcement Systems and its Application to
-the Brain-Model Problem</em>, then publishes <em>Steps Towards
-Artificial Intelligence</em>.</p>
+the Brain-Model Problem</em>.</p>
 <p><strong>1954</strong> — First use of a computing machine to simulate
 an artificial neural network.</p>
 <p><strong>1956</strong> — IBM engineer Arthur Samuel builds the first
@@ -9451,8 +9455,8 @@ circuits, including the Superconducting Quantum Interference Device
 <p><strong>1975</strong> — The Cognitron, a multi-layer neural network
 exceeding the limits proposed by Minsky and Papert, is proposed by
 Kunihiko Fukushima.</p>
-<p><strong>1975</strong> — The Ultra Secret finally revealed publicly,
-35 years after its inception, in a book by the same name, written by a
+<p><strong>1974</strong> — The Ultra Secret finally revealed publicly,
+34 years after its inception, in a book by the same name, written by a
 British officer who distributed Ultra intelligence to Allied
 generals.</p>
 <p><strong>1976</strong> — Public Key Cryptography re-invented in public
@@ -10487,8 +10491,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>e74c63be7e8b39e4d657dced89d8d4fd66cf056a</code> on 2026-04-12
-20:44:37 -0700.</p>
+<code>1e3662ec48edce3590b761e00af70d415d07e2b6</code> on 2026-04-12
+21:00:59 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -10556,7 +10560,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-13T03:58:19Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-13T04:30:21Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -10567,19 +10571,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>e74c63b</code></p>
+<p><code>1e3662e</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>e74c63be7e8b39e4d657dced89d8d4fd66cf056a</code></p>
+<p><code>1e3662ec48edce3590b761e00af70d415d07e2b6</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-12 20:44:37 -0700</p>
+<p>2026-04-12 21:00:59 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-13T03:58:19Z</p>
+<p>2026-04-13T04:30:21Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
