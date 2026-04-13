@@ -1,11 +1,3 @@
-/* Constrain images (cover triskellion, any embedded figures) to viewport */
-img {
-  max-width: 100%;
-  height: auto;
-  display: block;
-  margin: 0 auto;
-}
-
 /* Title block — clean single block replacing pandoc's triple repetition */
 .title-block {
   text-align: center;
