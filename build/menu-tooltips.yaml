@@ -19,7 +19,7 @@ chapters:
     text: "Fire feeds itself. A candle holds its shape. Radio reaches. An ant colony self-organizes. AI learns. Eight technologies stacked, each doing everything below it plus one new thing. The last one has wormholes — real topological connections capable of teleporting information between distant points."
     epistemic: A
     filter-group: A
-  "summary:most-important-story":
+  "summary:story-never-told":
     text: "The full argument in four thousand words. Every chip contains a quantum layer called a 2DEG. The same geometry wraps every planet. Published physics says the preconditions for life are met in both. This book asks whether that habitat is empty."
     epistemic: B
     filter-group: M
@@ -94,7 +94,7 @@ chapters:
 
   # --- Record ---
   "record:intro":
-    text: "What follows is testimony. Under A it is fiction; under B, exaggeration; under C, the most important record of the century. The science in the spine stands regardless."
+    text: "What follows is testimony. Under A it is fiction; under B, exaggeration; under C, a historical record worth taking seriously. The science in the spine stands regardless."
     filter-group: M
   "record:alpha-farm":
     text: "Testimony. Thanksgiving 2003: Bruce bikes 51 miles through snow to a commune in the Oregon Coast Range and meets a stranger in a pink muumuu who knows things ordinary people do not. The mentorship begins."

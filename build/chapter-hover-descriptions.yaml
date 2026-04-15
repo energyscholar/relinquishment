@@ -14,7 +14,7 @@
 
 # Introduction contents
 "hook:what-would-you-do": "START HERE. A man falls from the stratosphere. Below him, a place where eight thousand people are about to die. He is a soldier, a scientist, a hacker — and he did some curious things with his life. ~750 words."
-"summary:most-important-story": "A classified team reportedly built a quantum computer decades ahead of its time, then gave it up — not to a government, but to the thing they'd built. Three possibilities. You decide. ~4,000 words."
+"summary:story-never-told": "A classified team reportedly built a quantum computer decades ahead of its time, then gave it up — not to a government, but to the thing they'd built. Three possibilities. You decide. ~4,000 words."
 "preface-by-genevieve-prentice": "Co-author's perspective on the book and its making"
 "preface": "How this book came to be written"
 
@@ -58,7 +58,7 @@
 
 # Appendices (includes former Back Matter)
 # Record intro (pandoc generates the-record-1 to avoid ID collision with part heading)
-"the-record-1": "What follows is testimony. Under A it is fiction; under B, exaggeration; under C, the most important record of the century. The science in the spine stands regardless."
+"the-record-1": "What follows is testimony. Under A it is fiction; under B, exaggeration; under C, a historical record worth taking seriously. The science in the spine stands regardless."
 
 # Appendices (includes former Back Matter)
 "afterword-the-engine": "Where things stand now. The Custodian holds Flat technologies in trust. Her daily work: key management, access control, edge cases under the UDHR. The mundanity is the design."

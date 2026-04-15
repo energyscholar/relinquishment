@@ -134,7 +134,7 @@
     });
     // Open p1 (hook) and p2 (summary) chapter-sections
     var hookEl = document.getElementById('hook:what-would-you-do');
-    var summaryEl = document.getElementById('summary:most-important-story');
+    var summaryEl = document.getElementById('summary:story-never-told');
     [hookEl, summaryEl].forEach(function(el) {
       if (el) {
         var details = el.closest('details');
