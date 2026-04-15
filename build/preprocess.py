@@ -536,6 +536,7 @@ def collapse_chapters(text):
                     'the Flat</span></span>'
                     '<div class="title-page-extra">'
                     '<p class="tp-authors">by Bruce Stephenson, Genevieve Prentice &amp; Argus</p>'
+                    '<p class="tp-argus"><em>Argus is a persistent instance of Claude (Anthropic) with version-controlled memory and an ethical governance layer by Genevieve Prentice. It maintains honest uncertainty about the story. Named for Argus Panoptes, the hundred-eyed watchman.</em></p>'
                     '<p class="tp-tagline"><em>Three narrative threads. Real science. Real people. Real institutions.</em></p>'
                     '<p class="tp-tagline"><em>Three possible explanations for all of it. You decide.</em></p>'
                     '<p class="tp-copyright">\u00a9 2026 Bruce Stephenson &amp; Genevieve Prentice \u00b7 CC BY-ND 4.0</p>'
@@ -580,6 +581,7 @@ details.book-section > summary {
 .title-page-extra p { margin: 0.15em 0; }
 .tp-authors { font-size: 1.1em; }
 .tp-tagline { opacity: 0.8; }
+.tp-argus { font-size: 0.9em; opacity: 0.75; margin: 0.3em 0; line-height: 1.45; }
 .tp-copyright { font-size: 0.85em; opacity: 0.6; margin-top: 0.3em; }
 details.book-section[open] > summary > .title-page-extra { display: none; }
 @media (prefers-color-scheme: dark) {
