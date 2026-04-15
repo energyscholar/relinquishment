@@ -1488,6 +1488,7 @@ def fix_html_toc(html_path):
         r'<p><span>Written by Bruce Stephenson, Genevieve Prentice &amp;\s*'
         r'Argus</span></p>\s*'
         r'<p><span>2026</span></p>\s*'
+        r'<p><span><em>Argus is a persistent instance of Claude[^<]*?hundred-eyed watchman\.</em></span></p>\s*'
         r'<p><span><a href="#hook:what-would-you-do">.*?</a></span></p>\s*'
         r'</div>'
     )
