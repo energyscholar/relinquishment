@@ -1252,7 +1252,7 @@ def fix_html_toc(html_path):
         "app:predictions", "app:glossary",
         "afterword-the-engine", "app:timeline", "app:sources",
         "topic-guide", "app:topic-guide",
-        "corrections-and-concessions", "summary:most-important-story",
+        "corrections-and-concessions", "summary:story-never-told",
         "acknowledgements", "verification", "colophon",
     }
 
