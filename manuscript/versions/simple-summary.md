@@ -191,7 +191,7 @@ If Possibility A is true — if this is all a fabrication — then it is at wors
 
 If Possibility B is true — if there's a real kernel beneath the elaboration — then somewhere in the classified world, quantum computing is further along than anyone publicly admits. That's something governments, companies, and ordinary people should want to know about.
 
-If Possibility C is true, then this is the most important event of the twenty-first century.
+If Possibility C is true, then this may be the most important event of the twenty-first century.
 
 A group of people voluntarily gave up the most powerful technology ever created. They did it not because they were forced to, but because they believed that possessing it was more dangerous than surrendering it. They chose the safety of everyone over the power of anyone — including themselves.
 
