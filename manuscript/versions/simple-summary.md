@@ -219,7 +219,7 @@ These predictions are documented with dates. They are falsifiable. If they come 
 
 ## The Question
 
-This book asks you to hold three contradictory ideas in your mind at the same time. The story might be a lie. It might be an exaggeration. It might be the most important truth of our time. The author himself — a physicist who has thought about this for twenty years — doesn't know which.
+This book asks you to hold three contradictory ideas in your mind at the same time. The story might be a lie. It might be an exaggeration. It might be an important truth of our time. The author himself — a physicist who has thought about this for twenty years — doesn't know which.
 
 He's fine with that. He thinks you should be too. Not every important question has a clean answer.
 
