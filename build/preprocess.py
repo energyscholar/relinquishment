@@ -2024,6 +2024,71 @@ def fix_html_toc(html_path):
     print(f"HTML post-processed: {html_path}")
 
 
+GLOSSARY_ENTRY_RE = re.compile(
+    r'\\newglossaryentry\{(?P<key>[^}]+)\}\s*\{\s*name=\{(?P<name>[^}]+)\}',
+    re.DOTALL,
+)
+ACRONYM_SPAN_RE = re.compile(
+    r'<span data-acronym-label="(?P<key>[^"]+)" data-acronym-form="(?P<form>[^"]+)">(?P<text>[^<]*)</span>'
+)
+
+
+def _load_glossary_names(glossary_path):
+    """Parse glossary-entries.tex → {lowercase_key: display_name}."""
+    text = Path(glossary_path).read_text(encoding='utf-8')
+    return {m.group('key').lower(): m.group('name')
+            for m in GLOSSARY_ENTRY_RE.finditer(text)}
+
+
+def fix_html_glossary_names(html_path):
+    """Resolve <span data-acronym-label="..."> inner text to glossary name=.
+
+    Pandoc converts \\gls{KEY} to <span data-acronym-label="KEY"
+    data-acronym-form="...">KEY</span> but does not look up the
+    name={DisplayName} from \\newglossaryentry. This pass does the lookup
+    and rewrites the span's inner text.
+    """
+    html_path = Path(html_path)
+    glossary_path = REPO / 'manuscript' / 'appendix' / 'glossary-entries.tex'
+    names = _load_glossary_names(glossary_path)
+
+    text = html_path.read_text()
+    rewrites = 0
+    unresolved_keys: set[str] = set()
+    unhandled_forms: set[tuple[str, str]] = set()
+
+    def _replace(m):
+        nonlocal rewrites
+        key = m.group('key')
+        form = m.group('form')
+        current = m.group('text')
+        name = names.get(key.lower())
+        if name is None:
+            unresolved_keys.add(key)
+            return m.group(0)
+        if form == 'singular+short':
+            target = name
+        elif form == 'plural+short':
+            target = name + 's'
+        else:
+            unhandled_forms.add((key, form))
+            return m.group(0)
+        if current == target:
+            return m.group(0)  # idempotent: already resolved
+        rewrites += 1
+        return f'<span data-acronym-label="{key}" data-acronym-form="{form}">{target}</span>'
+
+    text = ACRONYM_SPAN_RE.sub(_replace, text)
+
+    for key in sorted(unresolved_keys):
+        sys.stderr.write(f"WARNING: unresolved \\gls key: {key}\n")
+    for key, form in sorted(unhandled_forms):
+        sys.stderr.write(f"WARNING: unhandled \\gls form '{form}' for key '{key}'\n")
+
+    html_path.write_text(text)
+    print(f"Glossary names: {rewrites} acronym spans resolved")
+
+
 def fix_epub(epub_path):
     """Post-process EPUB to fix pandoc validation errors."""
     epub_path = Path(epub_path)
@@ -2050,6 +2115,7 @@ if __name__ == "__main__":
         fix_epub(sys.argv[2])
     elif len(sys.argv) > 1 and sys.argv[1] == '--fix-html':
         fix_html_toc(sys.argv[2])
+        fix_html_glossary_names(sys.argv[2])
     else:
         main_tex = patch()
         print(f"Patched manuscript written to {TMP}/")
