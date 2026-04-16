@@ -339,7 +339,7 @@ def collapse_chapters(text):
         'appendix:cryptanalysis', 'appendix:production', 'appendix:exodus',
         'appendix:infrastructure', 'appendix:relinquishment', 'appendix:orbital',
         'appendix:discovery', 'appendix:kitaevs-echo', 'appendix:interdiction',
-        'appendix:confession', 'appendix:the-unipolar-condition', 'appendix:guardian',
+        'appendix:confession', 'appendix:the-unipolar-condition', 'appendix:custodian',
         'appendix:latency',
     }
     firmware_ids = {'five-physics-distinctions-often-missed', 'ten-physics-anchors'}
@@ -728,7 +728,7 @@ details blockquote { margin: 0.5em 0; }
 }
 
 /* Guardian interludes (Plan 0143) */
-.guardian-interlude {
+.custodian-interlude {
   border-left: 3px solid #9b7db8;
   padding: 0.8em 1.2em;
   margin: 1.5em 0;
@@ -736,7 +736,7 @@ details blockquote { margin: 0.5em 0; }
   color: #444;
   background: rgba(155, 125, 184, 0.04);
 }
-.guardian-interlude::before {
+.custodian-interlude::before {
   content: '';
   display: block;
   width: 3em;
@@ -747,31 +747,31 @@ details blockquote { margin: 0.5em 0; }
 }
 
 /* Guardian menu items (Plan 0150) — appear between chapters in TOC */
-.guardian-menu-item {
+.custodian-menu-item {
   padding: 0.3em 0 0.3em 2em;
   font-style: italic;
   color: #6c3483;
   font-size: 0.9em;
   cursor: pointer;
 }
-.guardian-menu-item:hover { color: #8e44ad; }
-.guardian-menu-item .guardian-marker {
+.custodian-menu-item:hover { color: #8e44ad; }
+.custodian-menu-item .custodian-marker {
   margin-right: 0.4em;
   color: #9b59b6;
 }
 
 /* Guardian-only filter mode — show only the 7 interludes */
-body.guardian-only #TOC { display: none; }
-body.guardian-only .title-block { display: none; }
-body.guardian-only .epistemic-legend { display: none; }
-body.guardian-only details.book-section > summary { display: none; }
-body.guardian-only details.part-section > summary { display: none; }
-body.guardian-only details.chapter-section > summary { display: none; }
-body.guardian-only details.chapter-section > *:not(.guardian-interlude):not(summary) { display: none; }
-body.guardian-only .guardian-menu-item { display: none; }
-body.guardian-only details.chapter-section:not(:has(.guardian-interlude)) { display: none; }
-body.guardian-only details.part-section:not(:has(.guardian-interlude)) { display: none; }
-body.guardian-only .guardian-interlude { margin: 2.5em auto; max-width: 42em; }
+body.custodian-only #TOC { display: none; }
+body.custodian-only .title-block { display: none; }
+body.custodian-only .epistemic-legend { display: none; }
+body.custodian-only details.book-section > summary { display: none; }
+body.custodian-only details.part-section > summary { display: none; }
+body.custodian-only details.chapter-section > summary { display: none; }
+body.custodian-only details.chapter-section > *:not(.custodian-interlude):not(summary) { display: none; }
+body.custodian-only .custodian-menu-item { display: none; }
+body.custodian-only details.chapter-section:not(:has(.custodian-interlude)) { display: none; }
+body.custodian-only details.part-section:not(:has(.custodian-interlude)) { display: none; }
+body.custodian-only .custodian-interlude { margin: 2.5em auto; max-width: 42em; }
 
 /* B/C expansion hooks (Plan 0143) */
 details.bc-expansion {
@@ -835,17 +835,17 @@ details.bc-expansion .record-link:hover {
   }
   .hover-term { border-bottom-color: #666; }
   .hover-term:hover { border-bottom-color: #5dade2; }
-  .guardian-interlude {
+  .custodian-interlude {
     border-left-color: #7d5fa0;
     color: #bbb;
     background: rgba(155, 125, 184, 0.08);
   }
-  .guardian-interlude::before {
+  .custodian-interlude::before {
     background: #7d5fa0;
   }
-  .guardian-menu-item { color: #bb8fce; }
-  .guardian-menu-item:hover { color: #d2b4de; }
-  .guardian-menu-item .guardian-marker { color: #d2b4de; }
+  .custodian-menu-item { color: #bb8fce; }
+  .custodian-menu-item:hover { color: #d2b4de; }
+  .custodian-menu-item .custodian-marker { color: #d2b4de; }
   details.bc-expansion {
     border-left-color: #7d5fa0;
   }
@@ -1674,7 +1674,7 @@ def fix_html_toc(html_path):
         idx = interlude_count - 1
         iid = INTERLUDE_IDS[idx] if idx < len(INTERLUDE_IDS) else ''
         id_attr = f' id="{iid}"' if iid else ''
-        return f'<div class="guardian-interlude"{id_attr}>{content}</div>'
+        return f'<div class="custodian-interlude"{id_attr}>{content}</div>'
 
     text = interlude_pattern.sub(interlude_replace, text)
     if interlude_count:
@@ -1682,7 +1682,7 @@ def fix_html_toc(html_path):
 
     # --- Plan 0150: Inject Guardian menu items after containing chapter-section ---
     # For each interlude div, find the next </details> (the chapter-section close)
-    # and inject a sibling .guardian-menu-item so it appears between chapters in TOC.
+    # and inject a sibling .custodian-menu-item so it appears between chapters in TOC.
     interlude_tooltips = {}
     menu_yaml_path_gmi = REPO / "build" / "menu-tooltips.yaml"
     if yaml and menu_yaml_path_gmi.exists():
@@ -1695,7 +1695,7 @@ def fix_html_toc(html_path):
 
     gmi_injected = 0
     for iid, title in zip(INTERLUDE_IDS, INTERLUDE_TITLES):
-        div_marker = f'<div class="guardian-interlude" id="{iid}">'
+        div_marker = f'<div class="custodian-interlude" id="{iid}">'
         div_pos = text.find(div_marker)
         if div_pos == -1:
             continue
@@ -1714,13 +1714,13 @@ def fix_html_toc(html_path):
             html=tooltip_html_raw or None,
         )
         menu_item = (
-            f'\n<div class="guardian-menu-item" id="menu-{iid}" '
+            f'\n<div class="custodian-menu-item" id="menu-{iid}" '
             f'data-target="{iid}" '
             f'role="link" tabindex="0" '
             f'aria-label="Custodian interlude: {html_mod.escape(title)}" '
             f'data-filter-group="G" '
             f'data-hover-id="{hover_id}">'
-            f'<span class="guardian-marker">\u27e1</span> '
+            f'<span class="custodian-marker">\u27e1</span> '
             f'Custodian: {html_mod.escape(title)}</div>\n'
         )
         text = text[:insert_at] + menu_item + text[insert_at:]
