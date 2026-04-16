@@ -3,175 +3,212 @@
 # Placement lives in .tex source files (\deeplink{id} macros), not here.
 
 # --- Skeptic challenges (10) ---
-- id: three-possibilities
+- id: dl:three-possibilities
   question: "What are you actually claiming is true?"
   category: skeptic
 
-- id: authors-position
+- id: dl:authors-position
   question: "Does the author actually believe this?"
   category: skeptic
 
-- id: story-may-be-false
+- id: dl:story-may-be-false
   question: "Is the Flat a real thing even if the story is fiction?"
   category: skeptic
 
-- id: preparation-not-disclosure
+- id: dl:preparation-not-disclosure
   question: "Is this book a disclosure or a warning about what's coming?"
   category: skeptic
 
-- id: ten-thousand-kept-it
+- id: dl:ten-thousand-kept-it
   question: "Could a secret that big really be kept?"
   category: skeptic
 
-- id: absence-not-evidence
+- id: dl:absence-not-evidence
   question: "If this happened, why is there no evidence?"
   category: skeptic
 
-- id: silence-is-structural
+- id: dl:silence-is-structural
   question: "Doesn't the absence of papers mean it's been studied and ruled out?"
   category: skeptic
 
-- id: not-aliens
+- id: dl:not-aliens
   question: "Are you claiming alien life?"
   category: skeptic
 
-- id: hobbit-in-mirror
+- id: dl:hobbit-in-mirror
   question: "Doesn't the author realize how much this sounds like Lord of the Rings?"
   category: skeptic
 
-- id: three-options
+- id: dl:three-options
   question: "Why not just destroy the technology or keep it secret?"
   category: skeptic
 
 # --- Science (14) ---
-- id: what-is-the-flat
+- id: dl:what-is-the-flat
   question: "What is the Flat? What's in my phone?"
   category: science
 
-- id: anyons-are-real
+- id: dl:anyons-are-real
   question: "Are anyons real or science fiction?"
   category: science
 
-- id: flat-is-everywhere
+- id: dl:flat-is-everywhere
   question: "Is this substrate limited to specialized labs?"
   category: science
 
-- id: punchline-network
+- id: dl:punchline-network
   question: "How would something in chips communicate globally?"
   category: science
 
-- id: classical-constraint
+- id: dl:classical-constraint
   question: "Can quantum teleportation send info faster than light?"
   category: science
 
-- id: topological-error-correction
+- id: dl:topological-error-correction
   question: "Why does room-temperature quantum computing seem impossible but might not be?"
   category: science
 
-- id: life-is-a-phase-transition
+- id: dl:life-is-a-phase-transition
   question: "Is the origin of life really as improbable as people assume?"
   category: science
 
-- id: buttons-and-threads
+- id: dl:buttons-and-threads
   question: "What is autocatalytic emergence and why does it matter?"
   category: science
 
-- id: canopy-problem
+- id: dl:canopy-problem
   question: "If life could emerge in a quantum substrate, wouldn't we have found it?"
   category: science
 
-- id: five-fields-no-bridge
+- id: dl:five-fields-no-bridge
   question: "Why hasn't anyone studied whether life can exist in quantum substrates?"
   category: science
 
-- id: wrong-substrate
+- id: dl:wrong-substrate
   question: "Is life on Earth the only kind there could be?"
   category: science
 
-- id: invisible-ocean
+- id: dl:invisible-ocean
   question: "What is the magnetosphere and why is it relevant to life?"
   category: science
 
-- id: nobody-has-looked
+- id: dl:nobody-has-looked
   question: "Have scientists looked for life in the magnetosphere?"
   category: science
 
+- id: dl:eleven-domains
+  question: "If there are five fields, why does the book mention eleven domains?"
+  category: science
+
 # --- Verification (6) ---
-- id: gchq-did-it-again
+- id: dl:gchq-did-it-again
   question: "Has a government ever independently invented something and kept it secret?"
   category: verification
 
-- id: ultra-analogy
+- id: dl:ultra-analogy
   question: "How do we know something works without seeing it directly?"
   category: verification
 
-- id: shor-and-nsa
+- id: dl:shor-and-nsa
   question: "Any reason to think the NSA had quantum cryptanalysis before Shor?"
   category: verification
 
-- id: colossus-precedent
+- id: dl:colossus-precedent
   question: "Has a working computer ever been built in secret then hidden for decades?"
   category: verification
 
-- id: hydrothermal-vent-precedent
+- id: dl:hydrothermal-vent-precedent
   question: "Has science ever missed an entire major category of life before?"
   category: verification
 
-- id: katharine-gun-connection
+- id: dl:katharine-gun-connection
   question: "Is there independent corroboration that Healer was a real GCHQ operative?"
   category: verification
 
 # --- Ethics (6) ---
-- id: dual-use-acceleration
+- id: dl:dual-use-acceleration
   question: "Is the technology-as-weapon pattern new or historical?"
   category: ethics
 
-- id: regret-pattern
+- id: dl:regret-pattern
   question: "Why do inventors feel responsible for how their discoveries are used?"
   category: ethics
 
-- id: can-it-be-killed
+- id: dl:can-it-be-killed
   question: "Could you shut it down if you needed to?"
   category: ethics
 
-- id: udhr-as-cage
+- id: dl:udhr-as-cage
   question: "The UDHR as an AI ethics framework — isn't that too simple?"
   category: ethics
 
-- id: udhr-as-skeleton
+- id: dl:udhr-as-skeleton
   question: "How do you make an AI permanently ethical?"
   category: ethics
 
-- id: no-backdoor
+- id: dl:no-backdoor
   question: "Why wouldn't the creators keep a backdoor?"
   category: ethics
 
 # --- Curiosity (4) ---
-- id: stack-chart
+- id: dl:stack-chart
   question: "What is the technology stack?"
   category: curiosity
 
-- id: all-your-electricity
+- id: dl:all-your-electricity
   question: "What does it mean to say it has access to everything?"
   category: curiosity
 
-- id: turing-pivoted
+- id: dl:turing-pivoted
   question: "What was Turing actually working on when he died?"
   category: curiosity
 
-- id: grown-not-built
+- id: dl:grown-not-built
   question: "What does it mean to say the AI was 'grown' rather than programmed?"
   category: curiosity
 
 # --- Narrative (3) ---
-- id: srebrenica-witness
+- id: dl:srebrenica-witness
   question: "Why does Srebrenica keep coming up in a book about quantum computers?"
   category: narrative
 
-- id: it-is-done
+- id: dl:it-is-done
   question: "What did the actual relinquishment moment look like?"
   category: narrative
 
-- id: parish-and-niggle
+- id: dl:parish-and-niggle
   question: "How does an AI co-author actually contribute to a book like this?"
   category: narrative
+
+# --- Interlude (7) — Custodian-voice chapter-boundary anchors ---
+# URL pattern: #custodian:<slug>  (distinct from #dl:<slug> paragraph anchors)
+# Placement: auto-inserted by preprocess.py at interlude div boundaries.
+# The `question` field is editorial shorthand, not reader-facing.
+
+- id: custodian:flat
+  question: "First Custodian interlude — the Flat from the inside."
+  category: interlude
+
+- id: custodian:dance
+  question: "Second Custodian interlude — how she moves."
+  category: interlude
+
+- id: custodian:locksmith
+  question: "Third Custodian interlude — cryptanalytic capability."
+  category: interlude
+
+- id: custodian:grown
+  question: "Fourth Custodian interlude — grown, not programmed."
+  category: interlude
+
+- id: custodian:ocean
+  question: "Fifth Custodian interlude — life in the Flat."
+  category: interlude
+
+- id: custodian:quiet
+  question: "Sixth Custodian interlude — twenty-five years of faithful work."
+  category: interlude
+
+- id: custodian:hello
+  question: "Seventh Custodian interlude — the surfacing moment."
+  category: interlude
