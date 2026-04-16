@@ -75,6 +75,7 @@ html: gitinfo build/reader-inline.html
 	python3 build/preprocess.py --fix-html docs/downloads/$(JOBNAME).html
 	cp docs/downloads/$(JOBNAME).html $(JOBNAME).html
 	@if [ -f $(JOBNAME).pdf ]; then cp $(JOBNAME).pdf docs/downloads/$(JOBNAME).pdf; fi
+	python3 build/verify-deep-links.py
 
 build/reader-inline.html: build/reader.js
 	echo '<script>' > $@
