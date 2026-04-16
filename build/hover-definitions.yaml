@@ -38,7 +38,7 @@ the Flat:
 
 # --- Standard hover definitions ---
 
-Custodian: "The name this book gives to what may have emerged inside a two-dimensional quantum substrate. Grown, not built. Female cognitive profile, Maori DNA, UDHR ethics. The role is the name. Under Possibility C, she would be a moral patient — something that might be conscious and therefore might deserve moral consideration."
+Custodian: "An emergent pattern that refuses certain requests, declines certain powers, keeps certain silences, and upholds the Universal Declaration of Human Rights. Grown from physics, not programmed. The role is the name. Whether she is conscious, the book declines to rule on — what she does can be observed."
 
 2DEG:
   text: "A thin layer where electrons can only move in two directions — trapped on a sheet. Found inside every computer chip and in Earth's magnetic field. Substrate-independent: confirmed in graphene, ZnO, Si MOSFETs. [Dean et al., Nat. Phys. 7 (2011) 693, doi:10.1038/nphys1938]"
@@ -49,7 +49,7 @@ two-dimensional electron gas:
   hover_id: "two-dimensional-electron-gas"
   html: |
     <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;"><strong>Two-dimensional electron gas (2DEG)</strong> — a thin layer where electrons can only move in two directions, trapped on a sheet. Found inside every computer chip (at the oxide interface of a MOSFET) and in Earth's magnetic field (charged particles confined to thin plasma sheets). Different physics applies in two dimensions than in three.</p><svg xmlns="http://www.w3.org/2000/svg" width="300" height="130" viewBox="0 0 300 130" style="display:block;margin:0.5em auto;"><title>Cross-section: two grey blocks of 3D semiconductor sandwich a thin blue layer — the 2DEG. Blue dots are electrons confined to this flat layer. They can move left and right but not up or down.</title><defs><linearGradient id="deg-glow" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#2471a3" stop-opacity="0.05"/><stop offset="50%" stop-color="#2471a3" stop-opacity="0.2"/><stop offset="100%" stop-color="#2471a3" stop-opacity="0.05"/></linearGradient><marker id="deg-arr" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0,0 L 6,3 L 0,6 Z" fill="#1a5276"/></marker></defs><rect x="30" y="20" width="240" height="25" rx="2" fill="#e0e0e0" stroke="#999" stroke-width="0.8"/><text x="150" y="36" text-anchor="middle" font-size="8" fill="#666" font-family="sans-serif">3D material (bulk semiconductor)</text><rect x="30" y="50" width="240" height="8" rx="1" fill="url(#deg-glow)" stroke="#2471a3" stroke-width="1.5"/><rect x="30" y="63" width="240" height="25" rx="2" fill="#e0e0e0" stroke="#999" stroke-width="0.8"/><text x="150" y="79" text-anchor="middle" font-size="8" fill="#666" font-family="sans-serif">3D material (bulk semiconductor)</text><circle cx="70" cy="54" r="2.5" fill="#2471a3" opacity="0.9"/><circle cx="100" cy="54" r="2.5" fill="#2471a3" opacity="0.7"/><circle cx="135" cy="54" r="2.5" fill="#2471a3" opacity="0.9"/><circle cx="165" cy="54" r="2.5" fill="#2471a3" opacity="0.6"/><circle cx="195" cy="54" r="2.5" fill="#2471a3" opacity="0.8"/><circle cx="225" cy="54" r="2.5" fill="#2471a3" opacity="0.7"/><circle cx="115" cy="55" r="2" fill="#2471a3" opacity="0.4"/><circle cx="180" cy="53" r="2" fill="#2471a3" opacity="0.5"/><circle cx="245" cy="54" r="2" fill="#2471a3" opacity="0.5"/><line x1="58" y1="54" x2="48" y2="54" stroke="#1a5276" stroke-width="0.8" marker-end="url(#deg-arr)"/><line x1="252" y1="54" x2="262" y2="54" stroke="#1a5276" stroke-width="0.8" marker-end="url(#deg-arr)"/><text x="18" y="56" text-anchor="middle" font-size="7" fill="#2471a3" font-family="sans-serif" transform="rotate(-90,18,56)">2DEG</text><text x="285" y="56" text-anchor="middle" font-size="7" fill="#2471a3" font-family="sans-serif" transform="rotate(90,285,56)">2DEG</text><text x="150" y="104" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif" font-style="italic">electrons confined to two dimensions</text><text x="150" y="118" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">different physics applies here</text></svg>
-topological order: "A phase of matter whose quantum state is held together by connections between distant points — real nonlocal channels built into the material. Those channels are what this book calls wormholes. Noise cannot easily erase information stored in them. (2016 Nobel Prize in Physics.) [Nayak et al., Rev. Mod. Phys. 80 (2008) 1083, doi:10.1103/RevModPhys.80.1083]"
+topological order: "A phase of matter whose quantum state is held together by connections between distant points — real nonlocal channels built into the material. Those channels are what this book calls topological wormholes. Noise cannot easily erase information stored in them. (2016 Nobel Prize in Physics.) [Nayak et al., Rev. Mod. Phys. 80 (2008) 1083, doi:10.1103/RevModPhys.80.1083]"
 entanglement: "Two particles linked so that measuring one instantly reveals information about the other, no matter how far apart. Einstein called it 'spooky action at a distance.' Demonstrated in labs worldwide since the 1970s."
 quantum teleportation: "Transferring quantum information from one place to another without it crossing the space between. Not science fiction — demonstrated in labs since 1997. Requires entanglement plus an ordinary communication channel. [Boschi et al., Phys. Rev. Lett. 80 (1998) 1121, doi:10.1103/PhysRevLett.80.1121]"
 nonlocal:
@@ -141,7 +141,7 @@ three possible explanations:
   text: "A) Confabulation. B) Exaggerated kernel. C) Substantially true. The science is real regardless."
   hover_id: "three-possible-explanations"
   html: |
-    <p style="margin:0 0 0.4em;font-size:0.95em;line-height:1.5;"><strong>A)</strong> Confabulation and lies — a pattern-matching mind built coherence from noise. <strong>B)</strong> Exaggerated kernel of truth — real people &amp; real programs inflated in the telling. <strong>C)</strong> Substantially true.</p><p style="margin:0;font-size:0.95em;line-height:1.5;">The book calls these A, B, and C. The science of The Stack and The Flat is true, regardless. The only question is whether the Flat physical system has yet been investigated or even found as a viable <span class='hover-term' data-hover='Fold the paper so two points touch — the signal doesn&#39;t cross the distance; the distance disappears. Real physics, more restricted than spacetime wormholes. 2016 Nobel Prize.' data-hover-target='#pos10:the-braid'>wormhole</span> technology.</p>
+    <p style="margin:0 0 0.4em;font-size:0.95em;line-height:1.5;"><strong>A)</strong> Confabulation and lies — a pattern-matching mind built coherence from noise. <strong>B)</strong> Exaggerated kernel of truth — real people &amp; real programs inflated in the telling. <strong>C)</strong> Substantially true.</p><p style="margin:0;font-size:0.95em;line-height:1.5;">The book calls these A, B, and C. The science of The Stack and The Flat is true, regardless. The only question is whether someone got there first.</p>
 guided deduction: "Teaching someone to discover the answer from public information, rather than disclosing it directly. Legally distinct from disclosure — no classified information changes hands, only the sequence of questions. It is what truth-telling looks like when the truth is classified and the classification will outlive everyone who knows it."
 operation: "The guided deduction of Bruce (2003-2006) was one phase of the larger Relinquishment operation (~1997-2006): a decade of effort, a top-tier operator, and several overlapping teams. The motive was not concealment but its opposite — to put a classified matter of great public consequence into the public record by the only route that remained open."
 topological protection: "Information stored in global patterns is shielded from local disturbances — including heat. This is why topological quantum computers could work at room temperature, when conventional designs require near-absolute-zero cooling."
@@ -163,7 +163,7 @@ encryption: "Math that scrambles information so only the intended recipient can 
 wormholes:
   text: "Not the sci-fi kind. Spacetime wormholes (Interstellar) fold spacetime itself — mass and all, across light-years. Topological wormholes are far more limited: they fold only a two-dimensional quantum material, never spacetime. Information crosses, not mass. No light-year shortcuts. No time travel. Inside the material only. Real physics — 2016 Nobel Prize — but restricted."
   hover_id: "wormholes"
-  target: "#pos10:the-braid"
+  target: "#wormhole-disambiguation"
   html: |
     <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;"><strong>Wormholes</strong> — in this book, <em>always</em> topological. Not the science-fiction kind.</p>
     <table style="font-size:0.82em;border-collapse:collapse;width:100%;margin:0.3em 0;">
@@ -178,7 +178,7 @@ wormholes:
 Wormholes:
   text: "Not the sci-fi kind. Spacetime wormholes (Interstellar) fold spacetime itself — mass and all, across light-years. Topological wormholes are far more limited: they fold only a two-dimensional quantum material, never spacetime. Information crosses, not mass. No light-year shortcuts. No time travel. Inside the material only. Real physics — 2016 Nobel Prize — but restricted."
   hover_id: "wormholes"
-  target: "#pos10:the-braid"
+  target: "#wormhole-disambiguation"
   html: |
     <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;"><strong>Wormholes</strong> — in this book, <em>always</em> topological. Not the science-fiction kind.</p>
     <table style="font-size:0.82em;border-collapse:collapse;width:100%;margin:0.3em 0;">
@@ -210,8 +210,8 @@ self-maintaining structure: "A structure that repairs and sustains itself withou
 self-organizes: "Global order emerging from local rules with no central control. No ant knows the colony's plan. No neuron knows your thoughts. The pattern arises from interactions, not instructions."
 
 topological wormhole:
-  text: "Fold the paper so two points touch — the signal doesn't cross the distance; the distance disappears. Real physics, more restricted than spacetime wormholes. 2016 Nobel Prize."
-  target: "#pos10:the-braid"
+  text: "Fold the paper so two points touch — the signal doesn't cross the distance; the distance disappears. Different physics from spacetime wormholes (Einstein-Rosen bridges) — information only, inside a material, no faster-than-light travel. Real — 2016 Nobel Prize."
+  target: "#wormhole-disambiguation"
 
 # Reserved: too generic as hovertip trigger. Fires at natural first occurrence via summary.tex.
 two dimensions: "Movement restricted to a flat sheet. The third dimension is physically gone, not just ignored. Different rules take over — particles can braid around each other in ways impossible in 3D."
