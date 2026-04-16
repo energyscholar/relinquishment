@@ -2114,6 +2114,48 @@ def _load_glossary_names(glossary_path):
             for m in GLOSSARY_ENTRY_RE.finditer(text)}
 
 
+def inject_questions_index(html_path):
+    """Generate a collapsible FAQ from the manifest and insert before Appendices."""
+    html_path = Path(html_path)
+    manifest = yaml.safe_load((REPO / 'build/deep-links.yaml').read_text())
+
+    by_category = {}
+    for e in manifest:
+        if not e['id'].startswith('dl:'):
+            continue
+        by_category.setdefault(e['category'], []).append(e)
+
+    lines = ['<details class="chapter-section" id="questions-index">']
+    lines.append('  <summary><h2>Questions about this book</h2></summary>')
+    lines.append('  <p><em>Each question links into the passage that answers it.</em></p>')
+    for cat in ['skeptic', 'science', 'verification', 'ethics', 'curiosity', 'narrative']:
+        if cat not in by_category:
+            continue
+        lines.append(f'  <h3>{cat.title()}</h3>')
+        lines.append('  <ul>')
+        for e in by_category[cat]:
+            lines.append(f'    <li><a href="#{e["id"]}">{e["question"]}</a></li>')
+        lines.append('  </ul>')
+    lines.append('</details>')
+    block = '\n'.join(lines)
+
+    text = html_path.read_text()
+    marker = '<details class="part-section"><summary'
+    idx = text.find(marker)
+    appendices_idx = text.find(marker, idx)
+    found = False
+    while appendices_idx != -1:
+        if 'Appendices' in text[appendices_idx:appendices_idx + 200]:
+            text = text[:appendices_idx] + block + '\n' + text[appendices_idx:]
+            found = True
+            break
+        appendices_idx = text.find(marker, appendices_idx + 1)
+    if not found:
+        text = text[:appendices_idx] + block + '\n' + text[appendices_idx:]
+    html_path.write_text(text)
+    print(f"  Questions index: {sum(len(v) for v in by_category.values())} entries in {len(by_category)} categories")
+
+
 def fix_html_glossary_names(html_path):
     """Resolve <span data-acronym-label="..."> inner text to glossary name=.
 
@@ -2189,6 +2231,7 @@ if __name__ == "__main__":
         fix_epub(sys.argv[2])
     elif len(sys.argv) > 1 and sys.argv[1] == '--fix-html':
         fix_html_toc(sys.argv[2])
+        inject_questions_index(sys.argv[2])
         fix_html_glossary_names(sys.argv[2])
     else:
         main_tex = patch()
