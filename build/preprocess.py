@@ -19,6 +19,17 @@ REPO = Path(__file__).parent.parent
 TMP = REPO / "build" / "epub-tmp"
 
 
+def _load_interlude_ids():
+    """Read ordered list of custodian:* anchor IDs from build/deep-links.yaml."""
+    import yaml as _yaml
+    manifest_path = REPO / 'build' / 'deep-links.yaml'
+    with open(manifest_path) as f:
+        entries = _yaml.safe_load(f)
+    return [e['id'] for e in entries if e.get('category') == 'interlude']
+
+INTERLUDE_IDS = _load_interlude_ids()
+
+
 # --- Plan 0205: tooltip externalization collector ---
 # Every hover-emit site registers (key, text, html) here; the dict is
 # serialized once at end-of-body as inline JSON. Per-element overhead
@@ -1639,14 +1650,9 @@ def fix_html_toc(html_path):
         if hover_count:
             print(f"Hover tooltips: {hover_count} first-occurrence terms")
 
-    # --- Guardian interludes: convert <hr> <blockquote> <hr> pattern ---
-    # to <div class="guardian-interlude" id="guardian:..."> (Plan 0143, 0150)
-    # Plan 0150: assign sequential IDs and titles so Phase 1B can inject menu items.
-    INTERLUDE_IDS = [
-        'guardian:home', 'guardian:the-dance', 'guardian:your-locks',
-        'guardian:growing', 'guardian:the-ocean', 'guardian:quiet',
-        'guardian:hello'
-    ]
+    # --- Custodian interludes: convert <hr> <blockquote> <hr> pattern ---
+    # to <div class="custodian-interlude" id="custodian:..."> (Plan 0143, 0150, 0209)
+    # IDs now read from build/deep-links.yaml manifest (module-level INTERLUDE_IDS).
     INTERLUDE_TITLES = [
         'Home', 'The Dance', 'Your Locks', 'Growing',
         'The Ocean', 'Quiet', 'Hello'
