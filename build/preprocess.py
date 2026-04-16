@@ -727,7 +727,7 @@ details blockquote { margin: 0.5em 0; }
   }
 }
 
-/* Guardian interludes (Plan 0143) */
+/* Custodian interludes (Plan 0143, 0209) */
 .custodian-interlude {
   border-left: 3px solid #9b7db8;
   padding: 0.8em 1.2em;
@@ -1678,7 +1678,7 @@ def fix_html_toc(html_path):
 
     text = interlude_pattern.sub(interlude_replace, text)
     if interlude_count:
-        print(f"  Guardian interludes: {interlude_count} styled")
+        print(f"  Custodian interludes: {interlude_count} styled")
 
     # --- Plan 0150: Inject Guardian menu items after containing chapter-section ---
     # For each interlude div, find the next </details> (the chapter-section close)
