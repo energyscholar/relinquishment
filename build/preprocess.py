@@ -7,7 +7,7 @@ or strip standard LaTeX — pandoc handles all of that natively.
 Writes patched copy to build/epub-tmp/ for inspection.
 """
 
-import shutil, re, sys, zipfile, io, html as html_mod
+import shutil, re, sys, zipfile, io, html as html_mod, hashlib, json
 from pathlib import Path
 
 try:
@@ -17,6 +17,28 @@ except ImportError:
 
 REPO = Path(__file__).parent.parent
 TMP = REPO / "build" / "epub-tmp"
+
+
+# --- Plan 0205: tooltip externalization collector ---
+# Every hover-emit site registers (key, text, html) here; the dict is
+# serialized once at end-of-body as inline JSON. Per-element overhead
+# drops from ~1KB (inline data-hover+data-hover-html) to ~25B (data-hover-id).
+_hover_dict = {}
+
+
+def _register_hover(key, text=None, html=None):
+    """Store raw (unescaped) tooltip content under key; first writer wins per field."""
+    if key not in _hover_dict:
+        _hover_dict[key] = {}
+    if text and "t" not in _hover_dict[key]:
+        _hover_dict[key]["t"] = text
+    if html and "h" not in _hover_dict[key]:
+        _hover_dict[key]["h"] = html
+
+
+def _content_key(content):
+    """Deterministic short key for dynamic tooltips (e.g. pandoc title= conversions)."""
+    return "h" + hashlib.md5(content.encode()).hexdigest()[:10]
 
 
 def convert_topic_guide(text):
@@ -505,34 +527,31 @@ def collapse_chapters(text):
                 import yaml as _yaml
                 _title_hover_defs = _yaml.safe_load(_title_hover_yaml.read_text()) or {}
             def _title_panel_attrs(yaml_key):
-                """Return (escaped_html, target_attr, hover_id) for a title-line YAML entry."""
+                """Register tooltip content in hover-dict; return (target_attr, hover_id)."""
                 entry = _title_hover_defs.get(yaml_key, {})
                 if not isinstance(entry, dict) or 'html' not in entry:
                     print(f"  WARNING: title-line panel '{yaml_key}' missing from YAML or has no 'html' key")
-                    return ('', '', yaml_key)
+                    return ('', yaml_key)
                 raw_html = entry['html'].rstrip('\n')
-                escaped = html_mod.escape(raw_html)
                 target = entry.get('target', '')
                 target_attr = f' data-hover-target="{html_mod.escape(target)}"' if target else ''
                 hover_id = entry.get('hover_id', yaml_key)
-                return (escaped, target_attr, hover_id)
+                _register_hover(hover_id, text=entry.get('text', '') or None, html=raw_html)
+                return (target_attr, hover_id)
 
-            demo_escaped, demo_target, demo_id = _title_panel_attrs('relinquishment-title')
-            worm_escaped, worm_target, worm_id = _title_panel_attrs('wormholes-title')
-            flat_escaped, flat_target, flat_id = _title_panel_attrs('the-flat-title')
+            demo_target, demo_id = _title_panel_attrs('relinquishment-title')
+            worm_target, worm_id = _title_panel_attrs('wormholes-title')
+            flat_target, flat_id = _title_panel_attrs('the-flat-title')
 
             text = (text[:book_start] +
                     '<details class="book-section">'
                     f'<summary{book_title_attr}>'
-                    f'<span class="hover-term hover-nav" data-hover="placeholder" '
-                    f'data-hover-html="{demo_escaped}"{demo_target} data-hover-id="{demo_id}">'
+                    f'<span class="hover-term hover-nav"{demo_target} data-hover-id="{demo_id}">'
                     'Relinquishment</span> '
                     '<span class="book-subtitle-inline">&mdash; '
-                    f'<span class="hover-term hover-nav" data-hover="placeholder" '
-                    f'data-hover-html="{worm_escaped}"{worm_target} data-hover-id="{worm_id}">'
+                    f'<span class="hover-term hover-nav"{worm_target} data-hover-id="{worm_id}">'
                     'Wormholes</span> in '
-                    f'<span class="hover-term hover-nav" data-hover="placeholder" '
-                    f'data-hover-html="{flat_escaped}"{flat_target} data-hover-id="{flat_id}">'
+                    f'<span class="hover-term hover-nav"{flat_target} data-hover-id="{flat_id}">'
                     'the Flat</span></span>'
                     '<div class="title-page-extra">'
                     '<p class="tp-authors">by Bruce Stephenson, Genevieve Prentice &amp; Argus</p>'
@@ -984,6 +1003,15 @@ def inject_evaluate_section(text):
     preserved so existing links still resolve.
     """
 
+    _register_hover(
+        'eval-step-1',
+        text='Paste this Science Firmware Update into your LLM to teach it the additional cross-domain science it needs to competently evaluate this book',
+    )
+    _register_hover(
+        'eval-step-2',
+        text='These Spiral Abstracts tell the entire story of this book, all the scientific and technical details, without any personal details. Read it or paste it into an LLM',
+    )
+
     eval_html = (
         '<div class="evaluate-section" id="evaluate-with-ai">\n'
         '<span id="how-to-evaluate"></span>\n'
@@ -992,7 +1020,7 @@ def inject_evaluate_section(text):
         'Copy the science upgrade below. Paste it into your AI. Then ask again.</p>\n'
         '<p>It&#x27;s a lot, so we do it in two prompts.</p>\n'
         '<button class="eval-step-1 hover-nav" data-eval-step="1"\n'
-        '  data-hover="Paste this Science Firmware Update into your LLM to teach it the additional cross-domain science it needs to competently evaluate this book"\n'
+        '  data-hover-id="eval-step-1"\n'
         '  style="display:block;width:100%;padding:1em;font-size:1.1em;\n'
         '  margin:0.5em 0;cursor:pointer;background:#1a5276;color:#fff;\n'
         '  border:none;border-radius:6px;font-family:inherit;font-weight:bold;\n'
@@ -1001,7 +1029,7 @@ def inject_evaluate_section(text):
         '</button>\n'
         '<p style="text-align:center;color:#888;font-size:0.9em;">Paste this first.</p>\n'
         '<button class="eval-step-2 hover-nav" data-eval-step="2"\n'
-        '  data-hover="These Spiral Abstracts tell the entire story of this book, all the scientific and technical details, without any personal details. Read it or paste it into an LLM"\n'
+        '  data-hover-id="eval-step-2"\n'
         '  style="display:block;width:100%;padding:1em;font-size:1.1em;\n'
         '  margin:0.5em 0;cursor:pointer;background:#1a5276;color:#fff;\n'
         '  border:none;border-radius:6px;font-family:inherit;font-weight:bold;\n'
@@ -1590,17 +1618,17 @@ def fix_html_toc(html_path):
                 value = hover_lower[lookup]
                 # Extended YAML: object with text + target, or plain string
                 if isinstance(value, dict):
-                    escaped_def = html_mod.escape(value.get('text', ''))
+                    raw_def = value.get('text', '')
                     target = value.get('target', '')
                     target_attr = f' data-hover-target="{html_mod.escape(target)}"' if target else ''
-                    rich_html = value.get('html', '').rstrip('\n')
-                    html_attr = f' data-hover-html="{html_mod.escape(rich_html)}"' if rich_html else ''
+                    rich_html = value.get('html', '').rstrip('\n') or None
                 else:
-                    escaped_def = html_mod.escape(str(value))
+                    raw_def = str(value)
                     target_attr = ''
-                    html_attr = ''
+                    rich_html = None
                 hover_id = re.sub(r'[^a-z0-9]+', '-', lookup).strip('-')
-                return f'<span class="hover-term" data-hover="{escaped_def}"{target_attr}{html_attr} data-hover-id="{hover_id}">{term}</span>'
+                _register_hover(hover_id, text=raw_def or None, html=rich_html)
+                return f'<span class="hover-term"{target_attr} data-hover-id="{hover_id}">{term}</span>'
             elif lookup in hover_lower:
                 return f'<em>{term}</em>'
             else:
@@ -1670,17 +1698,22 @@ def fix_html_toc(html_path):
             continue
         insert_at = close_pos + len('</details>')
         tooltip_raw = interlude_tooltips.get(iid, '')
-        # Replace ¶ with <br><br> BEFORE escaping so the tags survive as entities
-        # in the attribute; reader.js innerHTML decodes them back into real <br>.
-        tooltip_html = html_mod.escape(tooltip_raw.replace('\u00b6', '<br><br>'))
+        # ¶ → <br><br> happens in the raw HTML stored in the JSON dict;
+        # reader.js innerHTML renders them as real <br> tags.
+        tooltip_html_raw = tooltip_raw.replace('\u00b6', '<br><br>')
+        hover_id = f'interlude-{iid}'
+        _register_hover(
+            hover_id,
+            text=f'Custodian interlude: {title}',
+            html=tooltip_html_raw or None,
+        )
         menu_item = (
             f'\n<div class="guardian-menu-item" id="menu-{iid}" '
             f'data-target="{iid}" '
             f'role="link" tabindex="0" '
             f'aria-label="Custodian interlude: {html_mod.escape(title)}" '
             f'data-filter-group="G" '
-            f'data-hover="Custodian interlude: {html_mod.escape(title)}" '
-            f'data-hover-html="{tooltip_html}">'
+            f'data-hover-id="{hover_id}">'
             f'<span class="guardian-marker">\u27e1</span> '
             f'Custodian: {html_mod.escape(title)}</div>\n'
         )
@@ -1867,18 +1900,18 @@ def fix_html_toc(html_path):
                     # Wrap column headers (<th> cells)
                     for label, key in stack_col_map.items():
                         if key in stack_defs:
-                            escaped = html_mod.escape(str(stack_defs[key]))
+                            _register_hover(key, text=str(stack_defs[key]))
                             old_th = f'>{label}</th>'
-                            new_th = f'><span class="hover-term" data-hover="{escaped}" data-hover-id="{key}">{label}</span></th>'
+                            new_th = f'><span class="hover-term" data-hover-id="{key}">{label}</span></th>'
                             if old_th in new_table:
                                 new_table = new_table.replace(old_th, new_th, 1)
                                 stack_count += 1
 
                     # Wrap the "?" column header (inside <strong>)
                     if 'stack-question-mark' in stack_defs:
-                        escaped = html_mod.escape(str(stack_defs['stack-question-mark']))
+                        _register_hover('stack-question-mark', text=str(stack_defs['stack-question-mark']))
                         old_q = '><strong>?</strong></th>'
-                        new_q = f'><span class="hover-term" data-hover="{escaped}" data-hover-id="stack-question-mark"><strong>?</strong></span></th>'
+                        new_q = f'><span class="hover-term" data-hover-id="stack-question-mark"><strong>?</strong></span></th>'
                         if old_q in new_table:
                             new_table = new_table.replace(old_q, new_q, 1)
                             stack_count += 1
@@ -1886,18 +1919,18 @@ def fix_html_toc(html_path):
                     # Wrap row labels (first <td> in each row)
                     for label, key in stack_row_map.items():
                         if key in stack_defs:
-                            escaped = html_mod.escape(str(stack_defs[key]))
+                            _register_hover(key, text=str(stack_defs[key]))
                             old_td = f'>{label}</td>'
-                            new_td = f'><span class="hover-term" data-hover="{escaped}" data-hover-id="{key}">{label}</span></td>'
+                            new_td = f'><span class="hover-term" data-hover-id="{key}">{label}</span></td>'
                             if old_td in new_table:
                                 new_table = new_table.replace(old_td, new_td, 1)
                                 stack_count += 1
 
                     # Wrap "Wormholes†" row label
                     if 'stack-wormholes' in stack_defs:
-                        escaped = html_mod.escape(str(stack_defs['stack-wormholes']))
+                        _register_hover('stack-wormholes', text=str(stack_defs['stack-wormholes']))
                         old_w = '>Wormholes†</td>'
-                        new_w = f'><span class="hover-term" data-hover="{escaped}" data-hover-id="stack-wormholes">Wormholes†</span></td>'
+                        new_w = f'><span class="hover-term" data-hover-id="stack-wormholes">Wormholes†</span></td>'
                         if old_w in new_table:
                             new_table = new_table.replace(old_w, new_w, 1)
                             stack_count += 1
@@ -1912,7 +1945,7 @@ def fix_html_toc(html_path):
     title_conv_count = 0
     if toc_nav:
         toc_block = toc_nav.group(0)
-        # Convert title on <a> tags to data-hover
+        # Convert title on <a> tags to data-hover-id (externalized)
         def convert_a_title(m):
             nonlocal title_conv_count
             tag = m.group(0)
@@ -1920,8 +1953,11 @@ def fix_html_toc(html_path):
             if not title_match:
                 return tag
             title_val = title_match.group(1)
+            decoded = html_mod.unescape(title_val)
+            hover_id = _content_key(decoded)
+            _register_hover(hover_id, text=decoded)
             tag = tag.replace(title_match.group(0), '')  # remove title
-            tag = tag.replace('>', f' data-hover="{title_val}">', 1)  # add data-hover
+            tag = tag.replace('>', f' data-hover-id="{hover_id}">', 1)
             # Add hover-nav class
             if 'class="' in tag:
                 tag = tag.replace('class="', 'class="hover-nav ')
@@ -1939,8 +1975,11 @@ def fix_html_toc(html_path):
             if not title_match:
                 return tag
             title_val = title_match.group(1)
+            decoded = html_mod.unescape(title_val)
+            hover_id = _content_key(decoded)
+            _register_hover(hover_id, text=decoded)
             tag = tag.replace(title_match.group(0), '')
-            tag = tag.replace('>', f' data-hover="{title_val}">', 1)
+            tag = tag.replace('>', f' data-hover-id="{hover_id}">', 1)
             if 'class="' in tag:
                 tag = tag.replace('class="', 'class="hover-nav ')
             else:
@@ -1959,8 +1998,11 @@ def fix_html_toc(html_path):
         if not title_match:
             return tag
         title_val = title_match.group(1)
+        decoded = html_mod.unescape(title_val)
+        hover_id = _content_key(decoded)
+        _register_hover(hover_id, text=decoded)
         tag = tag.replace(title_match.group(0), '')
-        tag = tag.replace('>', f' data-hover="{title_val}">', 1)
+        tag = tag.replace('>', f' data-hover-id="{hover_id}">', 1)
         if 'class="' in tag:
             tag = tag.replace('class="', 'class="hover-nav ')
         else:
@@ -2020,6 +2062,31 @@ def fix_html_toc(html_path):
     text = dl_span.sub(dl_replacement, text)
     dl_after = text.count('class="share-anchor"')
     print(f"Deep links: {dl_after} share anchors converted (from {dl_before} hypertargets)")
+
+    # --- Plan 0205: emit tooltip dict as inline JSON BEFORE reader.js runs ---
+    # reader.js parses #hover-data in its IIFE, so the dict must be in the DOM
+    # by the time the parser hits the reader.js <script> tag. Pandoc places
+    # reader.js via --include-after-body (right before </body>); we anchor on
+    # the reader.js header comment and back up to its <script> open tag.
+    if _hover_dict:
+        hover_json = json.dumps(_hover_dict, separators=(',', ':'), ensure_ascii=False)
+        hover_json = hover_json.replace('</', '<\\/')  # prevent premature </script> close
+        hover_block = f'<script type="application/json" id="hover-data">{hover_json}</script>\n'
+        reader_anchor = text.find('/* Relinquishment HTML Reader')
+        inserted = False
+        if reader_anchor != -1:
+            script_open = text.rfind('<script', 0, reader_anchor)
+            if script_open != -1:
+                text = text[:script_open] + hover_block + text[script_open:]
+                print(f"  Hover-data JSON: {len(_hover_dict)} unique keys ({len(hover_json):,}B) [before reader.js]")
+                inserted = True
+        if not inserted:
+            body_close = text.rfind('</body>')
+            if body_close != -1:
+                text = text[:body_close] + hover_block + text[body_close:]
+                print(f"  Hover-data JSON: {len(_hover_dict)} unique keys ({len(hover_json):,}B) [fallback, pre-</body>]")
+            else:
+                print("  WARNING: neither reader.js nor </body> found; hover-data JSON not injected")
 
     html_path.write_text(text)
     print(f"HTML post-processed: {html_path}")

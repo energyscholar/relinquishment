@@ -154,16 +154,18 @@ async function testBuildVerification(browser) {
       }
 
       // 1c: Hover attributes exist
-      // Current build uses title; future build uses data-hover. Test for either.
+      // Preferred: data-hover-id (externalized). Legacy fallbacks: data-hover, title.
       const hoverInfo = await page.evaluate(() => {
+        const dataHoverId = document.querySelectorAll('.hover-term[data-hover-id]').length;
         const dataHover = document.querySelectorAll('.hover-term[data-hover]').length;
         const titleHover = document.querySelectorAll('.hover-term[title]').length;
-        return { dataHover, titleHover };
+        return { dataHoverId, dataHover, titleHover };
       });
-      if (hoverInfo.dataHover > 0) {
-        pass(`${label} Hover terms use data-hover attributes (${hoverInfo.dataHover} found)`);
+      if (hoverInfo.dataHoverId > 0) {
+        pass(`${label} Hover terms use data-hover-id externalization (${hoverInfo.dataHoverId} found)`);
+      } else if (hoverInfo.dataHover > 0) {
+        pass(`${label} Hover terms use inline data-hover (${hoverInfo.dataHover} found, externalization pending)`);
       } else if (hoverInfo.titleHover > 0) {
-        // Acceptable: old system still in place, note it
         pass(`${label} Hover terms exist with title attributes (${hoverInfo.titleHover} found, data-hover migration pending)`);
       } else {
         fail(`${label} Hover terms exist`, 'no .hover-term elements found');
@@ -304,8 +306,9 @@ async function testPhonePanelInteraction(browser) {
     });
     await delay(500);
 
-    // Find first hover term — check both data-hover and title
+    // Find first hover term — prefer externalized data-hover-id, fall back to inline/title
     const termSelector = await page.evaluate(() => {
+      if (document.querySelector('.hover-term[data-hover-id]')) return '.hover-term[data-hover-id]';
       if (document.querySelector('.hover-term[data-hover]')) return '.hover-term[data-hover]';
       if (document.querySelector('.hover-term[title]')) return '.hover-term[title]';
       return null;
@@ -321,7 +324,8 @@ async function testPhonePanelInteraction(browser) {
       return;
     }
 
-    const attrName = termSelector.includes('data-hover') ? 'data-hover' : 'title';
+    const attrName = termSelector.includes('data-hover-id') ? 'data-hover-id'
+                   : termSelector.includes('data-hover') ? 'data-hover' : 'title';
 
     // 3a: Tap on .hover-term — .hover-panel appears
     const firstTerm = await page.$(termSelector);
@@ -988,6 +992,148 @@ async function testImmuneSystemChain(browser) {
   }
 }
 
+/**
+ * 9. TOOLTIP JSON CONTRACT (all devices)
+ * Verifies the externalized tooltip architecture: single <script id="hover-data">
+ * dict exists, parses as JSON, and every [data-hover-id] reference resolves.
+ */
+async function testTooltipJsonContract(browser) {
+  group('9. TOOLTIP JSON CONTRACT');
+
+  for (const [dk, device] of Object.entries(DEVICES)) {
+    const label = `[${device.name}]`;
+    const page = await createPage(browser, dk);
+
+    try {
+      await loadPage(page, FILE_URL);
+
+      const dictInfo = await page.evaluate(() => {
+        const el = document.getElementById('hover-data');
+        if (!el) return { missing: true };
+        try {
+          const data = JSON.parse(el.textContent);
+          return { keys: Object.keys(data).length, sample: Object.keys(data).slice(0, 3) };
+        } catch (e) { return { parseError: e.message }; }
+      });
+
+      if (dictInfo.missing) {
+        fail(`${label} hover-data block exists`, 'missing');
+      } else if (dictInfo.parseError) {
+        fail(`${label} hover-data parses`, dictInfo.parseError);
+      } else {
+        pass(`${label} hover-data has ${dictInfo.keys} entries (sample: ${dictInfo.sample.join(', ')})`);
+      }
+
+      if (!dictInfo.missing && !dictInfo.parseError) {
+        const orphans = await page.evaluate(() => {
+          const data = JSON.parse(document.getElementById('hover-data').textContent);
+          const refs = Array.from(document.querySelectorAll('[data-hover-id]'))
+            .map(el => el.getAttribute('data-hover-id'));
+          return refs.filter(r => !(r in data));
+        });
+        if (orphans.length) {
+          fail(`${label} all data-hover-id refs resolve`,
+            `${orphans.length} orphans: ${orphans.slice(0, 3).join(', ')}`);
+        } else {
+          pass(`${label} all data-hover-id refs resolve`);
+        }
+      }
+    } finally {
+      await safeClose(page);
+    }
+  }
+}
+
+/**
+ * 10. TOOLTIP RENDERS (desktop + phone)
+ * Spot-checks that three known terms render a .hover-panel with content
+ * pulled from the externalized JSON dict. Uses real puppeteer hover/tap
+ * (synthetic dispatchEvent on mouseenter is untrusted and doesn't fire
+ * reader.js's hoverTimer chain reliably).
+ */
+async function testTooltipRenders(browser) {
+  group('10. TOOLTIP RENDERS');
+
+  const targets = ['the-flat', 'wormholes', 'dual-use'];
+
+  for (const dk of ['desktop', 'phone']) {
+    const device = DEVICES[dk];
+    const label = `[${device.name}]`;
+    const page = await createPage(browser, dk);
+
+    try {
+      await loadPage(page, FILE_URL);
+
+      await page.evaluate(() => {
+        document.querySelectorAll('details').forEach(d => { d.open = true; });
+      });
+      await delay(400);
+
+      for (const id of targets) {
+        // Dismiss any existing panel first
+        await page.evaluate(() => {
+          document.querySelectorAll('.hover-panel').forEach(p => p.remove());
+        });
+
+        // Find target element and scroll into view
+        const handle = await page.evaluateHandle((hoverId) => {
+          return document.querySelector(`[data-hover-id="${hoverId}"]`);
+        }, id);
+
+        const elExists = await page.evaluate(el => !!el, handle);
+        if (!elExists) {
+          skip(`${label} ${id} tooltip rendered`, 'term not in DOM');
+          continue;
+        }
+
+        await page.evaluate(el => el.scrollIntoView({ block: 'center' }), handle);
+        await delay(100);
+
+        // Input strategy differs by device:
+        //  - Desktop: real hover (mouseenter → hoverTimer → showPanel)
+        //  - Mobile: synthetic click dispatched in-page. Puppeteer's tap() can
+        //    miss hit-testing when an inline span wraps or is narrow. A direct
+        //    el.click() invocation inside page.evaluate bubbles to reader.js's
+        //    delegated document click handler, which calls showPanel.
+        if (device.viewport.hasTouch && device.viewport.isMobile) {
+          await page.evaluate((hoverId) => {
+            const el = document.querySelector(`[data-hover-id="${hoverId}"]`);
+            if (el) el.click();
+          }, id);
+        } else {
+          try { await handle.hover(); } catch (_) {
+            await page.evaluate((hoverId) => {
+              const el = document.querySelector(`[data-hover-id="${hoverId}"]`);
+              if (el) el.click();
+            }, id);
+          }
+        }
+
+        // Desktop needs >250ms hoverDelay; add buffer
+        await delay(500);
+
+        const panelInfo = await page.evaluate(() => {
+          const panel = document.querySelector('.hover-panel');
+          if (!panel) return { present: false };
+          return {
+            present: true,
+            text: panel.textContent.slice(0, 120),
+          };
+        });
+
+        if (!panelInfo.present) {
+          fail(`${label} ${id} tooltip rendered`, 'no .hover-panel after input');
+        } else {
+          const preview = (panelInfo.text || '').replace(/\s+/g, ' ').slice(0, 50);
+          pass(`${label} ${id} tooltip rendered ("${preview}...")`);
+        }
+      }
+    } finally {
+      await safeClose(page);
+    }
+  }
+}
+
 // --- Main ---
 
 async function main() {
@@ -1015,6 +1161,8 @@ async function main() {
       testPhoneResponsiveLayout,
       testDesktopPanelInteraction,
       testImmuneSystemChain,
+      testTooltipJsonContract,
+      testTooltipRenders,
     ];
 
     for (const test of tests) {

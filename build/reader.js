@@ -6,6 +6,13 @@
   // --- Capture initial hash before updateBreadcrumb can replaceState it ---
   var initialHash = window.location.hash;
 
+  // --- Plan 0205: parse externalized tooltip dict (inline JSON, one copy) ---
+  var hoverData = {};
+  try {
+    var _hd = document.getElementById('hover-data');
+    if (_hd) hoverData = JSON.parse(_hd.textContent);
+  } catch (e) { /* tooltips degrade silently */ }
+
   // --- Dark mode detection (used by copy button, nav, heading links) ---
   var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
@@ -931,8 +938,13 @@
 
   // Create and show a hover panel for the given term element
   function showPanel(term) {
-    var def = term.getAttribute('data-hover');
-    if (!def) return;
+    // Plan 0205: look up content from externalized JSON dict by data-hover-id first;
+    // fall back to inline data-hover / data-hover-html attrs (JS-set nav buttons).
+    var hoverId = term.getAttribute('data-hover-id');
+    var lookup = (hoverId && hoverData[hoverId]) || null;
+    var def = (lookup && lookup.t) || term.getAttribute('data-hover');
+    var richHtml = (lookup && lookup.h) || term.getAttribute('data-hover-html');
+    if (!def && !richHtml) return;
     if (!tooltipsEnabled() && !term.hasAttribute('data-hover-always')) return;
 
     // Dismiss any existing panel first (single-panel rule)
@@ -944,8 +956,7 @@
     panel.id = 'hover-panel-' + panelIdCounter;
     panel.setAttribute('role', 'tooltip');
 
-    // Rich content panels use data-hover-html; plain text panels use data-hover
-    var richHtml = term.getAttribute('data-hover-html');
+    // Rich content panels use richHtml; plain text panels use def
     if (richHtml) {
       var content = document.createElement('div');
       content.innerHTML = richHtml;
@@ -955,7 +966,6 @@
     }
 
     // Hover ID footer (dev builds only — hidden when body has final-build class)
-    var hoverId = term.getAttribute('data-hover-id');
     if (hoverId && !document.body.classList.contains('final-build')) {
       var idFooter = document.createElement('div');
       idFooter.style.cssText = 'font-size:0.7em;color:#999;margin-top:0.5em;font-family:monospace;';
@@ -1063,9 +1073,9 @@
     panel.style.left = left + 'px';
   }
 
-  // --- Bind events to all [data-hover] elements ---
+  // --- Bind events to all [data-hover] / [data-hover-id] elements ---
 
-  var allHoverTerms = document.querySelectorAll('[data-hover]');
+  var allHoverTerms = document.querySelectorAll('[data-hover], [data-hover-id]');
   var lastTouchTime = 0; // track touch to suppress mouse hover on touch devices
 
   allHoverTerms.forEach(function(term) {
@@ -1121,12 +1131,12 @@
   // nearest [data-hover] ancestor, which works regardless of hit-test target.
 
   document.addEventListener('touchstart', function(e) {
-    var term = e.target.closest('[data-hover]');
+    var term = e.target.closest('[data-hover], [data-hover-id]');
     if (term) lastTouchTime = Date.now();
   }, { passive: true });
 
   document.addEventListener('touchend', function(e) {
-    var term = e.target.closest('[data-hover]');
+    var term = e.target.closest('[data-hover], [data-hover-id]');
     if (!term) return;
     lastTouchTime = Date.now();
 
@@ -1165,7 +1175,7 @@
   }, { passive: false });
 
   document.addEventListener('click', function(e) {
-    var term = e.target.closest('[data-hover]');
+    var term = e.target.closest('[data-hover], [data-hover-id]');
     if (!term) {
       // Click outside — dismiss panel
       if (!e.target.closest('.hover-panel')) dismissPanel();
@@ -1200,7 +1210,7 @@
 
   // Touch outside [data-hover] dismisses panel
   document.addEventListener('touchend', function(e) {
-    if (e.target.closest('[data-hover]') || e.target.closest('.hover-panel')) return;
+    if (e.target.closest('[data-hover], [data-hover-id]') || e.target.closest('.hover-panel')) return;
     dismissPanel();
   });
 
@@ -1215,7 +1225,7 @@
   document.addEventListener('mouseover', function(e) {
     var panel = document.querySelector('.hover-panel');
     if (!panel) return;
-    if (!e.target.closest('.hover-panel') && !e.target.closest('[data-hover]')) {
+    if (!e.target.closest('.hover-panel') && !e.target.closest('[data-hover], [data-hover-id]')) {
       setTimeout(function() {
         var p = document.querySelector('.hover-panel');
         if (p && !p.matches(':hover')) {
