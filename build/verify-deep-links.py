@@ -1,0 +1,32 @@
+#!/usr/bin/env python3
+"""Verify every manifest entry resolves to an anchor in the built HTML,
+and no HTML anchor is orphan (not in manifest).
+
+Manifest IDs are stored with their namespace prefix after Plan 0209
+(dl:X and custodian:X). HTML anchors are id="dl:X" or id="custodian:X".
+"""
+import re, sys, yaml
+from pathlib import Path
+
+repo = Path(__file__).parent.parent
+manifest = yaml.safe_load((repo / 'build/deep-links.yaml').read_text())
+html = (repo / 'docs/downloads/Relinquishment.html').read_text()
+
+manifest_ids = {e['id'] for e in manifest}
+
+missing = [mid for mid in manifest_ids if f'id="{mid}"' not in html]
+if missing:
+    print(f'MISSING: {len(missing)} manifest entries have no anchor in HTML:', file=sys.stderr)
+    for m in sorted(missing):
+        print(f'  {m}', file=sys.stderr)
+    sys.exit(1)
+
+html_ids = set(re.findall(r'id="(dl:[^"]+|custodian:[^"]+)"', html))
+orphans = html_ids - manifest_ids
+if orphans:
+    print(f'ORPHANS: {len(orphans)} HTML anchors absent from manifest:', file=sys.stderr)
+    for o in sorted(orphans):
+        print(f'  {o}', file=sys.stderr)
+    sys.exit(1)
+
+print(f'OK: {len(manifest_ids)} manifest entries all resolve; no orphans.')
