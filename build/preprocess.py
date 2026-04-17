@@ -1656,6 +1656,10 @@ def fix_html_toc(html_path):
             print(f"Hover tooltips: {hover_count} tooltip instances across {n_chapters} chapters")
 
         # --- Plan 0215: Auto-detect hover terms from YAML ---
+        # Recompute chapter_starts: the explicit hover pass (re.sub above)
+        # changed text length, so the original positions are stale.
+        chapter_starts = [m.start() for m in re.finditer(r'<details class="chapter-section', text)]
+
         AUTO_SKIP_PATTERNS = {'-title', 'stack-', 'interlude-', 'eval-', 'buttons'}
         auto_always_rich = {'wormholes'}
 
@@ -1669,8 +1673,8 @@ def fix_html_toc(html_path):
             auto_patterns.append((term_key, re.compile(rf'\b{escaped}\b', re.IGNORECASE)))
 
         _FORBIDDEN_RE = re.compile(
-            r'<(script|style)[^>]*>.*?</\1>'
-            r'|<[^>]+>',
+            r'<(script|style)[\s\S]*?</\1>'
+            r"|<(?:[^>\"']|\"[^\"]*\"|'[^']*')+>",
             re.DOTALL
         )
 
@@ -1694,7 +1698,7 @@ def fix_html_toc(html_path):
             return regions
 
         auto_count = 0
-        for ch_idx in range(len(chapter_starts)):
+        for ch_idx in range(len(chapter_starts) - 1, -1, -1):
             ch_start = chapter_starts[ch_idx]
             ch_end = chapter_starts[ch_idx + 1] if ch_idx + 1 < len(chapter_starts) else len(text)
             chapter_text = text[ch_start:ch_end]
