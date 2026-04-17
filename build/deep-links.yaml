@@ -100,6 +100,10 @@
   question: "If there are five fields, why does the book mention eleven domains?"
   category: science
 
+- id: dl:but-its-hot
+  question: "If the magnetosphere is millions of degrees, how can quantum states survive?"
+  category: science
+
 # --- Verification (6) ---
 - id: dl:gchq-did-it-again
   question: "Has a government ever independently invented something and kept it secret?"

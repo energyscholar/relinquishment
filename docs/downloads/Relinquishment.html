@@ -589,6 +589,40 @@ details.bc-expansion .record-link:hover {
   .share-anchor::after { opacity: 0.25; }
   .share-anchor:hover::after { opacity: 0.7; }
 }
+
+/* Collapsible tech sections — Plan 0219 */
+details.tech-section {
+  border-left: 3px solid #ccc;
+  margin: 1.5em 0;
+  padding-left: 1em;
+}
+details.tech-section > summary {
+  cursor: pointer;
+  list-style: none;
+}
+details.tech-section > summary::-webkit-details-marker { display: none; }
+details.tech-section > summary::before {
+  content: 'B8  ';
+  color: #888;
+}
+details.tech-section[open] > summary::before {
+  content: 'BE  ';
+}
+details.tech-section .tech-title {
+  font-style: italic;
+  color: #555;
+  border-bottom: 1px dotted #999;
+}
+@media (prefers-color-scheme: dark) {
+  details.tech-section { border-left-color: #555; }
+  details.tech-section .tech-title { color: #aaa; border-bottom-color: #666; }
+  details.tech-section > summary::before { color: #777; }
+}
+@media print {
+  details.tech-section { display: block !important; }
+  details.tech-section > summary ~ * { display: block !important; }
+  details.tech-section > summary::before { content: '' !important; }
+}
 </style>
 </head>
 <body>
@@ -3072,7 +3106,9 @@ federation of independent systems, not a single mind.</p>
 found in meteorites on Earth. These naturally occurring 2DEG substrates
 predate human technology by billions of years. The substrate is not
 rare. It is cosmically ordinary.</p>
-<h3 class="unnumbered" id="spine:ws-but-its-hot">But It’s Hot</h3>
+<details class="tech-section"><summary><span class="tech-title" data-hover="&quot;Hot&quot; in a collisionless plasma doesn&#x27;t mean &quot;thermally noisy.&quot; The noise that destroys quantum states is orders of magnitude quieter than the kinetic temperature. The thermal objection doesn&#x27;t hold.">But It’s Hot</span></summary>
+
+<span class="share-anchor" id="dl:but-its-hot" aria-hidden="true"></span>
 <p>The physicist’s first objection. And it is a good one.</p>
 <p>Quantum computers operate at millikelvin — a fraction of a degree
 above absolute zero. The magnetosphere’s particle kinetic temperature
@@ -3105,6 +3141,7 @@ permissive. It is structured.</p>
 <p>The physicist’s first objection is the right question asked in the
 wrong frame. The magnetosphere is hot the way the deep ocean is dark:
 true, and irrelevant to the organisms that live there.</p>
+</details>
 <h3 class="unnumbered" id="spine:ws-the-seventh-property">The Seventh
 Property</h3>
 <p>The <span class="hover-term" data-hover-target="#stack-chart" data-hover-id="stack">stack</span> chart at the front of this book lists seven properties. Six
@@ -8315,6 +8352,7 @@ architectures are physically possible at each scale.</p>
     <li><a href="#dl:invisible-ocean">What is the magnetosphere and why is it relevant to life?</a></li>
     <li><a href="#dl:nobody-has-looked">Have scientists looked for life in the magnetosphere?</a></li>
     <li><a href="#dl:eleven-domains">If there are five fields, why does the book mention eleven domains?</a></li>
+    <li><a href="#dl:but-its-hot">If the magnetosphere is millions of degrees, how can quantum states survive?</a></li>
   </ul>
   <h3>Verification</h3>
   <ul>
@@ -10220,8 +10258,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>f1e0a58cbb51dc0d6208e89c5cea23c937a080e7</code> on 2026-04-17
-15:14:16 -0700.</p>
+<code>59a76309189a07c32ff41376edca2206bf7755c0</code> on 2026-04-17
+15:14:59 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -10289,7 +10327,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-17T22:14:44Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-17T22:47:31Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -10300,19 +10338,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>f1e0a58</code></p>
+<p><code>59a7630</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>f1e0a58cbb51dc0d6208e89c5cea23c937a080e7</code></p>
+<p><code>59a76309189a07c32ff41376edca2206bf7755c0</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-17 15:14:16 -0700</p>
+<p>2026-04-17 15:14:59 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-17T22:14:44Z</p>
+<p>2026-04-17T22:47:31Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
