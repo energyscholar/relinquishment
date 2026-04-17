@@ -7,8 +7,9 @@ or strip standard LaTeX — pandoc handles all of that natively.
 Writes patched copy to build/epub-tmp/ for inspection.
 """
 
-import shutil, re, sys, zipfile, io, html as html_mod, hashlib, json
+import shutil, re, sys, zipfile, io, html as html_mod, hashlib, json, bisect
 from pathlib import Path
+from collections import defaultdict
 
 try:
     import yaml
@@ -1603,13 +1604,15 @@ def fix_html_toc(html_path):
     if hover_defs:
         # Case-insensitive lookup: build lowercase-keyed map
         hover_lower = {k.lower(): v for k, v in hover_defs.items()}
-        hover_seen = set()
-        # Title-line rich panels (Relinquishment, Wormholes, the Flat) already
-        # rendered as hover-term spans — register their body-equivalent keys
-        # so first-occurrence tracking prevents duplicate hovertips downstream.
-        # Plan 0172: 'wormholes' removed so \hovertip{wormholes} renders the
-        # upgraded rich panel on first in-prose mention.
-        hover_seen.update(['relinquishment'])
+
+        # Per-chapter tooltip scoping (Plan 0213): find chapter boundaries
+        chapter_starts = [m.start() for m in re.finditer(r'<details class="chapter-section', text)]
+
+        def _chapter_of(pos):
+            idx = bisect.bisect_right(chapter_starts, pos) - 1
+            return idx if idx >= 0 else -1
+
+        hover_seen = defaultdict(lambda: {'relinquishment'})
         hover_count = 0
 
         def hover_replace(m):
@@ -1622,9 +1625,10 @@ def fix_html_toc(html_path):
             # no first-occurrence suppression — so every \hovertip{wormholes}
             # shows the SVG (per Bruce 2026-04-13).
             always_rich = {'wormholes'}
-            if lookup in hover_lower and (lookup not in hover_seen or lookup in always_rich):
+            ch = _chapter_of(m.start())
+            if lookup in hover_lower and (lookup not in hover_seen[ch] or lookup in always_rich):
                 if lookup not in always_rich:
-                    hover_seen.add(lookup)
+                    hover_seen[ch].add(lookup)
                 hover_count += 1
                 value = hover_lower[lookup]
                 # Extended YAML: object with text + target, or plain string
@@ -1648,7 +1652,8 @@ def fix_html_toc(html_path):
 
         text = re.sub(r'HOVERSTART\u00a7(.+?)\u00a7HOVEREND', hover_replace, text, flags=re.DOTALL)
         if hover_count:
-            print(f"Hover tooltips: {hover_count} first-occurrence terms")
+            n_chapters = len(chapter_starts)
+            print(f"Hover tooltips: {hover_count} tooltip instances across {n_chapters} chapters")
 
     # --- Custodian interludes: convert <hr> <blockquote> <hr> pattern ---
     # to <div class="custodian-interlude" id="custodian:..."> (Plan 0143, 0150, 0209)
