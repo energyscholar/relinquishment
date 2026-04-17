@@ -888,6 +888,40 @@ details.bc-expansion .record-link:hover {
   .share-anchor::after { opacity: 0.25; }
   .share-anchor:hover::after { opacity: 0.7; }
 }
+
+/* Collapsible tech sections — Plan 0219 */
+details.tech-section {
+  border-left: 3px solid #ccc;
+  margin: 1.5em 0;
+  padding-left: 1em;
+}
+details.tech-section > summary {
+  cursor: pointer;
+  list-style: none;
+}
+details.tech-section > summary::-webkit-details-marker { display: none; }
+details.tech-section > summary::before {
+  content: '\25B8  ';
+  color: #888;
+}
+details.tech-section[open] > summary::before {
+  content: '\25BE  ';
+}
+details.tech-section .tech-title {
+  font-style: italic;
+  color: #555;
+  border-bottom: 1px dotted #999;
+}
+@media (prefers-color-scheme: dark) {
+  details.tech-section { border-left-color: #555; }
+  details.tech-section .tech-title { color: #aaa; border-bottom-color: #666; }
+  details.tech-section > summary::before { color: #777; }
+}
+@media print {
+  details.tech-section { display: block !important; }
+  details.tech-section > summary ~ * { display: block !important; }
+  details.tech-section > summary::before { content: '' !important; }
+}
 """
     # Inject before closing </style> of the last style block in <head>
     head_end = text.find('</head>')
@@ -2354,6 +2388,73 @@ def fix_html_glossary_names(html_path):
     print(f"Glossary names: {rewrites} acronym spans resolved")
 
 
+def collapse_tech_sections(html_path):
+    """Wrap approved tech sections in collapsible <details> elements (Plan 0219)."""
+    manifest_path = REPO / 'build' / 'tech-collapse.yaml'
+    if not manifest_path.exists():
+        return
+    manifest = yaml.safe_load(manifest_path.read_text()) or {}
+    entries = [e for e in manifest.get('sections', [])
+               if isinstance(e, dict) and e.get('status') in ('approved', 'live')]
+    if not entries:
+        return
+
+    html_path = Path(html_path)
+    text = html_path.read_text()
+    count = 0
+
+    for entry in entries:
+        tooltip = entry.get('tooltip', '').strip()
+        for label_key in ('spine_label', 'bridge_label'):
+            label = entry.get(label_key)
+            if not label:
+                continue
+            id_attr = f'id="{label}"'
+            id_pos = text.find(id_attr)
+            if id_pos == -1:
+                continue
+
+            heading_start = text.rfind('<h', max(0, id_pos - 120), id_pos)
+            if heading_start == -1:
+                continue
+            heading_tag = text[heading_start:heading_start + 4]
+            heading_level = heading_tag[2]
+            heading_close = text.find('>', id_pos) + 1
+            heading_end_tag = f'</h{heading_level}>'
+            heading_end = text.find(heading_end_tag, heading_close)
+            if heading_end == -1:
+                continue
+            heading_end += len(heading_end_tag)
+
+            title_text = re.sub(r'<[^>]+>', '', text[heading_close:heading_end - len(heading_end_tag)]).strip()
+
+            next_heading = re.search(
+                rf'<h[1-{heading_level}][\s>]',
+                text[heading_end:]
+            )
+            if next_heading:
+                section_end = heading_end + next_heading.start()
+            else:
+                parent_details = text.find('</details>', heading_end)
+                section_end = parent_details if parent_details != -1 else len(text)
+
+            content = text[heading_end:section_end]
+
+            hover_attr = f' data-hover="{html_mod.escape(tooltip)}"' if tooltip else ''
+            wrapper = (
+                f'<details class="tech-section">'
+                f'<summary><span class="tech-title"{hover_attr}>{title_text}</span></summary>\n'
+                f'{content}'
+                f'</details>\n'
+            )
+            text = text[:heading_start] + wrapper + text[section_end:]
+            count += 1
+
+    if count:
+        html_path.write_text(text)
+        print(f"  Tech sections: {count} collapsed")
+
+
 def fix_epub(epub_path):
     """Post-process EPUB to fix pandoc validation errors."""
     epub_path = Path(epub_path)
@@ -2383,6 +2484,7 @@ if __name__ == "__main__":
         inject_flat_diagram(sys.argv[2])
         inject_questions_index(sys.argv[2])
         fix_html_glossary_names(sys.argv[2])
+        collapse_tech_sections(sys.argv[2])
     else:
         main_tex = patch()
         print(f"Patched manuscript written to {TMP}/")

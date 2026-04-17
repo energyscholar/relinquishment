@@ -1,0 +1,180 @@
+# Collapsible Technical Sections — Plan 0219
+# Sections marked for DEFAULT HIDE in HTML output.
+# GA readers see collapsed title + tooltip summary.
+# Physicists/specialists click to expand.
+# PDF renders normally (no collapse).
+#
+# Status: pending = identified, not yet tooltip-drafted
+#         drafted = tooltip written, awaiting approval
+#         approved = ready for implementation
+#         live = implemented and deployed
+
+sections:
+
+  # ── THE BRAID ──────────────────────────────────────────────────────
+
+  - title: "Hasslacher's Trajectory"
+    spine_file: manuscript/spine/the-braid.tex
+    spine_label: "spine:braid-hasslachers-trajectory"
+    bridge_file: manuscript/bridge/pos10-the-braid.tex
+    bridge_label: "pos10:hasslachers-trajectory"
+    assessment: GA-AVERSE
+    tooltip: ""
+    conclusion: "Hasslacher's published work maps precisely to the mathematical infrastructure needed for topological quantum computation."
+    status: pending
+
+  - title: "Hasslacher's Lattice"
+    spine_file: manuscript/spine/the-braid.tex
+    spine_label: "spine:braid-hasslacher-lattice"
+    bridge_file: null  # pos10 has "But What Is a Soliton?" instead
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: ""
+    conclusion: "Discrete lattice structures produce collective wave behavior via phonons — the bridge between quantum substrate and classical electronics."
+    status: pending
+
+  - title: "Topological Error Correction"
+    spine_file: manuscript/spine/the-braid.tex
+    spine_label: "spine:braid-topological-error-correction"
+    bridge_file: manuscript/bridge/pos10-the-braid.tex
+    bridge_label: "pos10:topological-error-correction"
+    assessment: GA-AVERSE
+    tooltip: ""
+    conclusion: "Topology gives passive protection against errors; active error correction via classical backchannel buys reliability. Room-temperature operation is physically possible."
+    status: pending
+
+  - title: "Quantum Teleportation and the Classical Constraint"
+    spine_file: manuscript/spine/the-braid.tex
+    spine_label: "spine:braid-quantum-teleportation-and-the-classical-constraint"
+    bridge_file: manuscript/bridge/pos10-the-braid.tex
+    bridge_label: "pos10:quantum-teleportation-and-the-classical-constraint"
+    assessment: GA-AVERSE
+    tooltip: ""
+    conclusion: "Quantum teleportation is proven experimentally. It REQUIRES a classical backchannel — this is a theorem, not a limitation of current technology."
+    status: pending
+
+  # ── THE FLAT ───────────────────────────────────────────────────────
+
+  - title: "The Substrate"
+    spine_file: manuscript/spine/the-flat.tex
+    spine_label: "spine:flat-substrate"
+    bridge_file: manuscript/track-3-awakening/pos-what-is-the-flat.tex
+    bridge_label: "what-is-the-flat:the-substrate"
+    assessment: GA-AVERSE
+    tooltip: ""
+    conclusion: "The 2DEG — a layer where electrons are trapped flat — is in every chip you own. The magnetosphere has the same geometry at planetary scale."
+    status: pending
+
+  - title: "The Wormhole"
+    spine_file: manuscript/spine/the-flat.tex
+    spine_label: "spine:flat-wormhole"
+    bridge_file: manuscript/track-3-awakening/pos-what-is-the-flat.tex
+    bridge_label: "what-is-the-flat:the-wormhole"
+    assessment: GA-AVERSE
+    tooltip: ""
+    conclusion: "A wormhole works by braiding anyons. Information can teleport between distant points, but every transfer requires a classical message to complete. No FTL."
+    status: pending
+
+  # ── THE WRONG SUBSTRATE ────────────────────────────────────────────
+
+  - title: "But It's Hot"
+    spine_file: manuscript/spine/the-wrong-substrate.tex
+    spine_label: "spine:ws-but-its-hot"
+    bridge_file: manuscript/track-3-awakening/pos32-the-magnetosphere.tex
+    bridge_label: "pos32:but-its-hot"
+    assessment: GA-AVERSE
+    tooltip: >-
+      "Hot" in a collisionless plasma doesn't mean "thermally noisy."
+      The noise that destroys quantum states is orders of magnitude
+      quieter than the kinetic temperature. The thermal objection
+      doesn't hold.
+    conclusion: "'Hot' in a collisionless plasma doesn't mean 'thermally noisy.' The noise that destroys quantum states is orders of magnitude quieter than the kinetic temperature."
+    status: approved
+
+  # ── THE FACTORING GAME ─────────────────────────────────────────────
+
+  - title: "The State of Cryptography in 1990"
+    spine_file: manuscript/spine/the-factoring-game.tex
+    spine_label: "spine:fg-the-state-of-cryptography-in-1990"
+    bridge_file: manuscript/bridge/pos09-the-factoring-game.tex
+    bridge_label: "pos09:the-state-of-cryptography-in-1990"
+    assessment: GA-AVERSE
+    tooltip: ""
+    conclusion: "All internet security in 1990 rested on one assumption: factoring large numbers is hard. A quantum computer would break that assumption. DARPA had motivation."
+    status: pending
+
+  - title: "The ULTRA II Specifications"
+    spine_file: manuscript/spine/the-factoring-game.tex
+    spine_label: "spine:fg-the-ultra-ii-specifications"
+    bridge_file: manuscript/bridge/pos09-the-factoring-game.tex
+    bridge_label: "pos09:the-ultra-ii-specifications"
+    assessment: GA-AVERSE
+    tooltip: ""
+    conclusion: "The project needed to factor 4096-bit numbers. No known quantum computer design could scale to this. Topology offered a different path."
+    status: pending
+
+  # ── GENESIS ────────────────────────────────────────────────────────
+
+  - title: "Buttons and Threads"
+    spine_file: manuscript/spine/genesis.tex
+    spine_label: "spine:gen-buttons-and-threads"
+    bridge_file: null  # check bridge equivalent
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: ""
+    conclusion: "Imagine buttons on the floor connected by random threads. Past a critical density, one giant cluster forms. This is how self-sustaining networks arise — not by design, but by threshold."
+    status: pending
+
+  - title: "From Chemistry to Computation"
+    spine_file: manuscript/spine/genesis.tex
+    spine_label: "spine:gen-from-chemistry-to-computation"
+    bridge_file: null  # check bridge equivalent
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: ""
+    conclusion: "If self-organization arises in chemistry above a complexity threshold, the same principle applies to any substrate — including the quantum Flat."
+    status: pending
+
+  # ── GROWING A MIND ─────────────────────────────────────────────────
+
+  - title: "Morphogenesis as Computation"
+    spine_file: manuscript/spine/growing-a-mind.tex
+    spine_label: null  # check for label
+    bridge_file: manuscript/bridge/pos14-growing-a-mind.tex
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: ""
+    conclusion: "Turing realized a developing embryo is computing — chemical signals create patterns through simple rules applied repeatedly. Growth, not assembly."
+    status: pending
+
+  # ── THE DEMO ───────────────────────────────────────────────────────
+
+  - title: "The Science Underneath"
+    spine_file: null  # demo is bridge-only
+    spine_label: null
+    bridge_file: manuscript/bridge/pos11-the-demo.tex
+    bridge_label: "demo:the-science-underneath"
+    assessment: GA-AVERSE
+    tooltip: ""
+    conclusion: "Complexity emerges at the edge of chaos. Directed evolution — not design — finds what cannot be specified in advance."
+    status: pending
+
+  - title: "The Poised Realm"
+    spine_file: null  # demo is bridge-only
+    spine_label: null
+    bridge_file: manuscript/bridge/pos11-the-demo.tex
+    bridge_label: "demo:the-poised-realm"
+    assessment: GA-AVERSE
+    tooltip: ""
+    conclusion: "Room-temperature quantum coherence has been demonstrated in biological systems (photosynthesis, nitrogen-vacancy centers). The physics permits it."
+    status: pending
+
+  # ── BORDERLINE (evaluate after pilot) ──────────────────────────────
+
+  # - title: "Freedman's Independent Conception (1988)"
+  # - title: "Kitaev and the Russian Question"
+  # - title: "Non-Abelian Anyons: Operational Proof"
+  # - title: "The GCHQ Precedent"
+  # - title: "But What Is a Soliton?"
+  # - title: "From Emergence to Function"
+  # - title: "The Thread Continues"
