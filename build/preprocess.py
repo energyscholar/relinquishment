@@ -1655,6 +1655,91 @@ def fix_html_toc(html_path):
             n_chapters = len(chapter_starts)
             print(f"Hover tooltips: {hover_count} tooltip instances across {n_chapters} chapters")
 
+        # --- Plan 0215: Auto-detect hover terms from YAML ---
+        AUTO_SKIP_PATTERNS = {'-title', 'stack-', 'interlude-', 'eval-', 'buttons'}
+        auto_always_rich = {'wormholes'}
+
+        auto_terms = [k for k in hover_defs
+                      if not any(p in k for p in AUTO_SKIP_PATTERNS)]
+        auto_terms.sort(key=len, reverse=True)
+
+        auto_patterns = []
+        for term_key in auto_terms:
+            escaped = re.escape(term_key)
+            auto_patterns.append((term_key, re.compile(rf'\b{escaped}\b', re.IGNORECASE)))
+
+        _FORBIDDEN_RE = re.compile(
+            r'<(script|style)[^>]*>.*?</\1>'
+            r'|<[^>]+>',
+            re.DOTALL
+        )
+
+        def _find_scannable_regions(chapter_text):
+            forbidden = [(m.start(), m.end()) for m in _FORBIDDEN_RE.finditer(chapter_text)]
+            forbidden.sort()
+            merged = []
+            for start, end in forbidden:
+                if merged and start <= merged[-1][1]:
+                    merged[-1] = (merged[-1][0], max(merged[-1][1], end))
+                else:
+                    merged.append((start, end))
+            regions = []
+            prev_end = 0
+            for start, end in merged:
+                if prev_end < start:
+                    regions.append((prev_end, start))
+                prev_end = end
+            if prev_end < len(chapter_text):
+                regions.append((prev_end, len(chapter_text)))
+            return regions
+
+        auto_count = 0
+        for ch_idx in range(len(chapter_starts)):
+            ch_start = chapter_starts[ch_idx]
+            ch_end = chapter_starts[ch_idx + 1] if ch_idx + 1 < len(chapter_starts) else len(text)
+            chapter_text = text[ch_start:ch_end]
+            scannable = _find_scannable_regions(chapter_text)
+            replacements = []
+
+            for term_key, pattern in auto_patterns:
+                lookup = term_key.lower().replace('\u2019', "'").replace('\u2018', "'")
+                if lookup in hover_seen[ch_idx]:
+                    continue
+                if lookup in auto_always_rich:
+                    continue
+
+                for region_start, region_end in scannable:
+                    region_text = chapter_text[region_start:region_end]
+                    m = pattern.search(region_text)
+                    if m:
+                        abs_start = ch_start + region_start + m.start()
+                        abs_end = ch_start + region_start + m.end()
+                        matched_text = m.group(0)
+                        value = hover_lower[lookup]
+                        if isinstance(value, dict):
+                            raw_def = value.get('text', '')
+                            target = value.get('target', '')
+                            target_attr = f' data-hover-target="{html_mod.escape(target)}"' if target else ''
+                            rich_html = value.get('html', '').rstrip('\n') or None
+                        else:
+                            raw_def = str(value)
+                            target_attr = ''
+                            rich_html = None
+                        hover_id = re.sub(r'[^a-z0-9]+', '-', lookup).strip('-')
+                        _register_hover(hover_id, text=raw_def or None, html=rich_html)
+                        replacement = f'<span class="hover-term"{target_attr} data-hover-id="{hover_id}">{matched_text}</span>'
+                        replacements.append((abs_start, abs_end, replacement))
+                        hover_seen[ch_idx].add(lookup)
+                        auto_count += 1
+                        break
+
+            replacements.sort(key=lambda r: r[0], reverse=True)
+            for abs_start, abs_end, replacement in replacements:
+                text = text[:abs_start] + replacement + text[abs_end:]
+
+        if auto_count:
+            print(f"  Auto-detect hover: {auto_count} additional tooltips across {len(chapter_starts)} chapters")
+
     # --- Custodian interludes: convert <hr> <blockquote> <hr> pattern ---
     # to <div class="custodian-interlude" id="custodian:..."> (Plan 0143, 0150, 0209)
     # IDs now read from build/deep-links.yaml manifest (module-level INTERLUDE_IDS).
