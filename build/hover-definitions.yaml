@@ -573,6 +573,16 @@ graphene: "A single atom-thick layer of carbon arranged in a hexagonal lattice. 
 # Reserved: only appears in appendix (firmware-update.tex). No body-chapter placement available.
 no-cloning theorem: "You cannot copy an unknown quantum state. Wootters & Zurek (1982). Fundamental limit — but it forbids copying unknowns, not fabricating known classical structures. Narrower than it sounds. Protects quantum cryptography."
 
+# --- The Handler chapter: Clancy / Rainbow Six ---
+
+Rainbow Six: "Tom Clancy's 1998 military thriller about an elite multinational counter-terrorism unit. Clancy was famous for technically accurate fiction informed by real military sources. One character — Timothy Hanley, an Australian SAS operator — matches the biographical profile of the mentor this book calls Healer. The novel predates Bruce's contact by five years."
+
+Tom Clancy: "American novelist (1947–2013) known for technically precise military thrillers. His access to classified military sources was legendary — and occasionally investigated. His novels are read as fiction by the public and as something else by the intelligence community."
+
+Timothy Hanley: "A fictional character in Tom Clancy's Rainbow Six (1998): Australian SAS, Margaret River origin, Intelligence Corps, cross-trained with Delta Force and British 22 SAS, selected for the multinational Rainbow counter-terrorism unit. The biographical overlap with the real person this book calls Healer is either coincidence, composite characterization from a shared source, or exactly what it looks like."
+
+Bravo Two Zero: "A British SAS patrol behind Iraqi lines in January 1991. The mission was compromised; of eight men, three were captured, one died, and one — 'Legs' Lane — was reported dead of hypothermia after swimming the Euphrates. Multiple conflicting accounts were published. Under Possibility C, the reported death provided cover for classified reassignment."
+
 # --- Stack chart interactive popups (bypass first-occurrence system) ---
 # Keyed by stack-* prefix. Consumed by preprocess.py Stack chart post-processor.
 # p1 text → p2-level definitions. Concrete examples, 8th-grade reading level.
