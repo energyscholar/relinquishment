@@ -123,7 +123,7 @@
   var introLink = document.createElement('a');
   introLink.href = '#hook:what-would-you-do';
   introLink.textContent = 'Intro';
-  introLink.setAttribute('data-hover', 'Start here. 400 words, then the full story in 4,000. Most readers never need more.');
+  introLink.setAttribute('data-hover', 'Anyone who reads the Introduction has read Relinquishment \u2014 just not cover to cover. ~700 words for the hook, ~6,000 for the full story.');
   introLink.classList.add('hover-nav');
   introLink.style.cssText = 'text-decoration:none;color:#1a5276;font-weight:bold;';
   introLink.addEventListener('mouseenter', function() { introLink.style.color = '#2471a3'; });
