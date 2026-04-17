@@ -1739,7 +1739,7 @@ def fix_html_toc(html_path):
             'summary': 'According to this story, there was a team that faced exactly this choice...',
             'body': 'Five scientists, each expert in a different field, were brought together '
                     'under DARPA classification circa 1990. What they built, if the account '
-                    'is true, was the most dangerous dual-use technology in human history \u2014 '
+                    'is true, was a dangerous dual-use technology \u2014 '
                     'and they knew it before anyone else did.',
             'target': 'record:first-light',
             'link_text': 'Read the full story'
