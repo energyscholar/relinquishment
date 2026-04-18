@@ -889,11 +889,16 @@ details.bc-expansion .record-link:hover {
   .share-anchor:hover::after { opacity: 0.7; }
 }
 
-/* Collapsible tech sections — Plan 0219 */
+/* Collapsible tech sections — Plan 0219, visual polish Plan 0224 */
 details.tech-section {
-  border-left: 3px solid #ccc;
+  border-left: 3px solid #c4a040;
   margin: 1.5em 0;
-  padding-left: 1em;
+  padding: 0.6em 1em;
+  background: linear-gradient(135deg, #faf6e8 0%, #f5f0dc 100%);
+  border-radius: 4px;
+}
+details.tech-section[open] {
+  background: #fdfcf7;
 }
 details.tech-section > summary {
   cursor: pointer;
@@ -912,15 +917,25 @@ details.tech-section .tech-title {
   color: #555;
   border-bottom: 1px dotted #999;
 }
+.tech-grade { cursor: help; }
+.tech-grade::after {
+  content: ' \2714';
+  color: #6a994e;
+  font-size: 0.8em;
+  margin-left: 0.4em;
+  opacity: 0.7;
+}
 @media (prefers-color-scheme: dark) {
-  details.tech-section { border-left-color: #555; }
+  details.tech-section { border-left-color: #a08830; background: linear-gradient(135deg, #2a2820 0%, #252318 100%); }
+  details.tech-section[open] { background: #1e1d18; }
   details.tech-section .tech-title { color: #aaa; border-bottom-color: #666; }
   details.tech-section > summary::before { color: #777; }
 }
 @media print {
-  details.tech-section { display: block !important; }
+  details.tech-section { display: block !important; background: none !important; }
   details.tech-section > summary ~ * { display: block !important; }
   details.tech-section > summary::before { content: '' !important; }
+  .tech-grade::after { content: '' !important; }
 }
 """
     # Inject before closing </style> of the last style block in <head>
@@ -2820,9 +2835,10 @@ def collapse_tech_sections(html_path):
             content = text[heading_end:section_end]
 
             hover_attr = f' data-hover="{html_mod.escape(tooltip)}"' if tooltip else ''
+            grade_span = '<span class="tech-grade" data-hover="Verified science — a technical discussion grounded in published, peer-reviewed physics. Safe to skip; expand if curious." aria-hidden="true"></span>'
             wrapper = (
                 f'<details class="tech-section">'
-                f'<summary><span class="tech-title"{hover_attr}>{title_text}</span></summary>\n'
+                f'<summary><span class="tech-title"{hover_attr}>{title_text}</span>{grade_span}</summary>\n'
                 f'{content}'
                 f'</details>\n'
             )
