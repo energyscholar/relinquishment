@@ -946,6 +946,7 @@
     var def = (lookup && lookup.t) || term.getAttribute('data-hover');
     var richHtml = (lookup && lookup.h) || term.getAttribute('data-hover-html');
     if (!def && !richHtml) return;
+    if (term.hasAttribute('data-hover-disabled')) return;
     if (!tooltipsEnabled() && !term.hasAttribute('data-hover-always')) return;
 
     // Dismiss any existing panel first (single-panel rule)
