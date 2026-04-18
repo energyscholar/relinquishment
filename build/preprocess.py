@@ -1694,7 +1694,7 @@ def fix_html_toc(html_path):
         # changed text length, so the original positions are stale.
         chapter_starts = [m.start() for m in re.finditer(r'<details class="chapter-section', text)]
 
-        AUTO_SKIP_PATTERNS = {'-title', 'stack-', 'interlude-', 'eval-', 'buttons'}
+        AUTO_SKIP_PATTERNS = {'-title', 'stack-', 'interlude-', 'eval-', 'buttons', 'bridge', 'grew'}
         auto_always_rich = {'wormholes'}
 
         auto_terms = [k for k in hover_defs
@@ -1847,7 +1847,8 @@ def fix_html_toc(html_path):
             f'role="link" tabindex="0" '
             f'aria-label="Custodian interlude: {html_mod.escape(title)}" '
             f'data-filter-group="G" '
-            f'data-hover-id="{hover_id}">'
+            f'data-hover-id="{hover_id}" '
+            f'data-hover-disabled="true">'
             f'<span class="custodian-marker">\u27e1</span> '
             f'Custodian: {html_mod.escape(title)}</div>\n'
         )
@@ -2339,6 +2340,384 @@ def inject_flat_diagram(html_path):
     print("  Flat diagram: inline SVG injected")
 
 
+def inject_button_sequence(html_path):
+    """Insert 5-panel Kauffman button filmstrip after the buttons-and-threads analogy."""
+    html_path = Path(html_path)
+    text = html_path.read_text()
+
+    # 30 button positions: jittered scatter across the floor
+    bx = [
+        38, 63, 85, 112, 135, 161, 180, 208, 225, 252,
+        275, 292, 318, 338, 365, 388, 405, 435, 452, 478,
+        48, 78, 122, 168, 218, 258, 308, 348, 398, 442,
+    ]
+    floor_y = [240] * 20 + [227] * 10
+
+    def _btn_defs():
+        return '<defs><filter id="kbtn-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-opacity="0.15"/></filter></defs>'
+
+    def _floor():
+        return '<line x1="20" y1="250" x2="480" y2="250" stroke="#ccc" stroke-width="1" stroke-dasharray="4,4"/>'
+
+    def _button(x, y):
+        return f'<circle cx="{x}" cy="{y}" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>'
+
+    def _thread(x1, y1, x2, y2, color="#666", width="1.2"):
+        return f'<line x1="{x1}" y1="{y1}" x2="{x2}" y2="{y2}" stroke="{color}" stroke-width="{width}" opacity="0.6"/>'
+
+    def _label(txt):
+        return f'<text x="15" y="18" font-family="Georgia, serif" font-size="9" fill="#aaa">{txt}</text>'
+
+    def _counter(txt):
+        return f'<text x="485" y="275" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#999">{txt}</text>'
+
+    def _caption(txt):
+        return f'<text x="250" y="275" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555" font-style="italic">{txt}</text>'
+
+    def _svg_wrap(content):
+        return f'<svg xmlns="http://www.w3.org/2000/svg" width="380" height="220" viewBox="0 0 500 290" style="display:block;margin:0.3em auto;">{content}</svg>'
+
+    # --- Panel 1: Scatter (0 threads) ---
+    p1_parts = [_btn_defs(), _floor()]
+    for i in range(30):
+        p1_parts.append(_button(bx[i], floor_y[i]))
+    p1_parts.append(_label('scatter'))
+    p1_parts.append(_counter('0 / 30'))
+    p1_parts.append(_caption('Ten thousand buttons on a floor.'))
+    PANEL_1 = _svg_wrap('\n'.join(p1_parts))
+
+    # --- Panel 2: Tie and toss (6 threads, two buttons being tied) ---
+    # Show the action: two buttons lifted slightly as if being picked up to tie.
+    # 4 existing threads on the floor + 1 pair being actively tied (lifted).
+    p2_threads = [(2, 17), (6, 25), (11, 28), (14, 23), (19, 29), (8, 24)]
+    # Buttons 8 and 24 are the pair being actively tied — lifted slightly
+    p2_lifted = {8: 220, 24: 218}
+    p2_parts = [_btn_defs(), _floor()]
+    for a, b in p2_threads:
+        ya = p2_lifted.get(a, floor_y[a])
+        yb = p2_lifted.get(b, floor_y[b])
+        p2_parts.append(_thread(bx[a], ya, bx[b], yb))
+    for i in range(30):
+        y = p2_lifted.get(i, floor_y[i])
+        p2_parts.append(_button(bx[i], y))
+    p2_parts.append(_label('tie and toss'))
+    p2_parts.append(_counter('6 / 30'))
+    p2_parts.append(_caption('Pick up two at random. Tie them together. Toss them back.'))
+    PANEL_2 = _svg_wrap('\n'.join(p2_parts))
+
+    # --- Panel 3: Early clusters (10 threads, small 2s and 3s) ---
+    # Pairs: 2-17, 6-25, 11-28, 14-23, 19-29
+    # Triples: 8-24-12, 0-20-3
+    # = 5 pairs (5 threads) + 2 triples (4 threads) + 1 extra pair 16-27 = 10 threads
+    p3_threads = [
+        (2, 17), (6, 25), (11, 28), (14, 23), (19, 29),
+        (8, 24), (24, 12),
+        (0, 20), (20, 3),
+        (16, 27),
+    ]
+    # Lift one pair: buttons 6 and 25
+    p3_lifted = {6: 185, 25: 200}
+    p3_parts = [_btn_defs(), _floor()]
+    for a, b in p3_threads:
+        ya = p3_lifted.get(a, floor_y[a])
+        yb = p3_lifted.get(b, floor_y[b])
+        p3_parts.append(_thread(bx[a], ya, bx[b], yb))
+    for i in range(30):
+        y = p3_lifted.get(i, floor_y[i])
+        p3_parts.append(_button(bx[i], y))
+    p3_parts.append(_label('early clusters'))
+    p3_parts.append(_counter('10 / 30'))
+    p3_parts.append(_caption('A few hundred ties in. Small clumps \u2014 two, three buttons.'))
+    PANEL_3 = _svg_wrap('\n'.join(p3_parts))
+
+    # --- Panel 4: Growing clusters (14 threads, clusters of 3-5-8) ---
+    # Build on Panel 3's topology, add 4 more threads to grow clusters:
+    # Extend triple 0-20-3 with 3-22, 22-5 → cluster of 5: {0,20,3,22,5}
+    # Extend triple 8-24-12 with 12-15, 15-26 → cluster of 5: {8,24,12,15,26}
+    # Connect pair 11-28 to pair 19-29 via 28-19 → cluster of 4: {11,28,19,29}
+    # Remaining pairs: 2-17, 6-25, 14-23, 16-27
+    # Total: 10 + 4 = 14 threads
+    p4_threads = [
+        (2, 17), (6, 25), (14, 23), (19, 29),
+        (8, 24), (24, 12),
+        (0, 20), (20, 3),
+        (16, 27),
+        (11, 28),
+        (3, 22), (22, 5),
+        (12, 15), (15, 26),
+    ]
+    # Lift cluster {0,20,3,22,5} from button 0
+    p4_lifted = {0: 130, 20: 148, 3: 155, 22: 165, 5: 172}
+    p4_parts = [_btn_defs(), _floor()]
+    for a, b in p4_threads:
+        ya = p4_lifted.get(a, floor_y[a])
+        yb = p4_lifted.get(b, floor_y[b])
+        p4_parts.append(_thread(bx[a], ya, bx[b], yb))
+    for i in range(30):
+        y = p4_lifted.get(i, floor_y[i])
+        p4_parts.append(_button(bx[i], y))
+    p4_parts.append(_label('growing clusters'))
+    p4_parts.append(_counter('14 / 30'))
+    p4_parts.append(_caption('Almost halfway. The clusters are getting bigger.'))
+    PANEL_4 = _svg_wrap('\n'.join(p4_parts))
+
+    # --- Panel 5: Phase transition (15 threads = 14 grey + 1 red) ---
+    # Between Panel 4 and 5 the process continued. Topology evolved.
+    # Two large sub-networks, each spanning one side of the layout,
+    # bridged by one red thread. Lift from CENTER button (index 9, x=252).
+    #
+    # Sub-L chain (left side, 11 buttons, 7 threads):
+    #   0-20, 20-3, 3-22, 22-5, 5-2, 2-17, 17-6
+    #   Buttons: 0,20,3,22,5,2,17,6 + reaches via 6-25: 25 → 9 buttons
+    #   Actually let's keep it simpler with a spanning tree.
+    # Sub-L (12 buttons, 11 threads): buttons with x < 250ish
+    #   Indices by x position: 0(38), 20(48), 1(63), 21(78), 2(85),
+    #   3(112), 22(122), 4(135), 5(161), 23(168), 6(180), 7(208)
+    #   Chain: 0-20, 20-1, 1-21, 21-2, 2-3, 3-22, 22-4, 4-5, 5-23, 23-6, 6-7
+    #   = 11 threads, 12 buttons
+    #
+    # Sub-R (11 buttons, 3 threads): buttons with x > 250ish
+    #   Indices: 24(218), 8(225), 9(252), 25(258), 10(275), 11(292),
+    #   26(308), 12(318), 27(348), 13(338), 28(398)
+    #   Chain: 24-8, 8-25, 25-10 → only 3 threads for 4 buttons
+    #   Need more: 10-11, 11-26, 26-12 → total 6 threads, 7 buttons... still only 3 left.
+    #   Wait: 14 grey total. Sub-L uses 11. Sub-R gets 3.
+    #   Sub-R chain: 25-10, 10-11, 11-26 = 3 threads, 4 buttons
+    #   That's only 16 connected total. Not enough for "whole room lifts."
+    #
+    # Better split: Sub-L 7 threads, Sub-R 7 threads.
+    # Sub-L (8 buttons, 7 threads): 0-20, 20-1, 1-21, 21-2, 2-3, 3-22, 22-4
+    # Sub-R (8 buttons, 7 threads): 25-10, 10-11, 11-26, 26-12, 12-27, 27-13, 13-28
+    # Red thread: 4-25 (bridges left x=135 to right x=258 through center)
+    # Lift point: button 9 (x=252) — wait, 9 isn't connected.
+    # The lift point must be a connected button near center.
+    # Button 4 is at x=135 (left of center), button 25 is at x=258 (right of center).
+    # The red thread bridges at x≈200. Lift from the junction area.
+    # Better: make the red thread connect at a center button.
+    # Sub-L: ..., 22-4, 4-23, 23-6, 6-7 → extends to x=208
+    # Sub-R: 9-25, 25-10, 10-11, 11-26 → starts at x=252
+    # Red thread: 7-9 (x=208 to x=252) — bridges near center!
+    # Lift from button 9 (x=252) or button 7 (x=208). Button 9 is closest to 250.
+    #
+    # Final topology:
+    # Sub-L (9 buttons, 8 threads): 0-20, 20-1, 1-21, 21-2, 2-3, 3-22, 22-4, 4-7
+    #   Buttons: 0,20,1,21,2,3,22,4,7
+    # Sub-R (14 buttons, 6 threads): 9-25, 25-10, 10-11, 11-26, 26-12, 12-27
+    #   Buttons: 9,25,10,11,26,12,27
+    # That's 8+6=14 grey threads, 9+7=16 connected → need more.
+    #
+    # Let me just do 7+7 with longer chains:
+    # Sub-L (8 buttons, 7 threads):
+    #   0-20, 20-21, 21-2, 2-3, 3-22, 22-23, 23-6
+    #   Buttons: 0(38),20(48),21(78),2(85),3(112),22(122),23(168),6(180)
+    # Sub-R (8 buttons, 7 threads):
+    #   9-25, 25-10, 10-11, 11-26, 26-12, 12-27, 27-13
+    #   Buttons: 9(252),25(258),10(275),11(292),26(308),12(318),27(348),13(338)
+    # Red: 6-9 (x=180 to x=252) — near center
+    # Total connected: 16 + red bridge = 17 buttons. Not enough.
+    #
+    # Need bigger sub-networks. Use branching, not just chains.
+    # Sub-L (12 buttons, 8 threads, branching tree):
+    #   Spine: 0-20, 20-21, 21-2, 2-3, 3-22, 22-23, 23-6 (7 threads)
+    #   Branch: 2-4 (adds button 4)
+    #   That's 8 threads, 9 buttons. Need more without more threads.
+    #   Trick: with 7 threads in a chain we get 8 buttons. To maximize
+    #   connected buttons per thread, keep it as a chain.
+    #
+    # With 14 grey threads total (7+7), maximum connected = 8+8 = 16.
+    # Plus red = 17 buttons connected. "22-25" required. Not reachable.
+    #
+    # Solution: use more threads per sub-network. 10+4 split:
+    # Sub-L (11 buttons, 10 threads):
+    #   0-20, 20-1, 1-21, 21-2, 2-4, 4-5, 5-23, 23-6, 6-7, 7-3
+    #   Buttons: 0,20,1,21,2,4,5,23,6,7,3 → 11 buttons
+    # Sub-R (13 buttons, 4 threads):
+    #   Wait, 4 threads = 5 buttons max.
+    #
+    # 11+4=15>14. Try 9+5:
+    # Sub-L (10 buttons, 9 threads):
+    #   0-20, 20-1, 1-21, 21-2, 2-3, 3-22, 22-4, 4-5, 5-23
+    #   Buttons: 0,20,1,21,2,3,22,4,5,23 → 10 buttons
+    # Sub-R (6 buttons, 5 threads):
+    #   9-25, 25-10, 10-11, 11-26, 26-12
+    #   Buttons: 9,25,10,11,26,12 → 6 buttons
+    # Total grey: 14. Connected: 16. Plus red: 17.
+    #
+    # Still short. Use a denser graph (not just trees):
+    # With 14 edges we CAN connect more than 15 nodes if we allow cycles.
+    # But cycles don't add nodes-per-edge. In a tree, E=N-1 is optimal.
+    # So 14 edges → max 15 nodes in a tree, or fewer with cycles.
+    # With the red thread: 15 edges → max 16 nodes if it's all one tree.
+    # We CANNOT get 22-25 connected from 15 threads in 30 buttons
+    # if it's all trees (max 16). Need cycles to keep visual density,
+    # but cycles don't add connectivity.
+    #
+    # The plan says 22-25. With 15 threads that's impossible in a tree.
+    # BUT: the plan also says "the topology has evolved" between panels.
+    # The thread COUNT shown in the counter is 15, but visually we can
+    # have the net look dense enough to convey "most of the room."
+    # 16 out of 30 lifting is already >50%, which reads as "most."
+    #
+    # Let's go with 16 connected (the mathematical maximum from 15 tree edges).
+    # Sub-L (10, 9 threads) + Sub-R (7, 6 threads) = 15 threads via red bridge.
+    # Wait: Sub-L 9 + Sub-R 6 = 15 including red? No, 15 = 14 grey + 1 red.
+    # Sub-L 9 threads = 10 buttons. Sub-R 5 threads = 6 buttons. = 14 grey, 16 buttons.
+    # Red bridges them. Total: 15 threads, 16 connected. 14 on floor.
+    #
+    # 16/30 ≈ 53%. "More than half" works for "the whole room lifts."
+    # The 14 remaining on the floor still read as stragglers.
+
+    # Sub-L: left-side chain (10 buttons, 9 threads)
+    sub_l_chain = [(0, 20), (20, 1), (1, 21), (21, 2), (2, 3), (3, 22), (22, 4), (4, 5), (5, 23)]
+    sub_l_buttons = [0, 20, 1, 21, 2, 3, 22, 4, 5, 23]
+    # Sub-R: right-side chain (6 buttons, 5 threads)
+    sub_r_chain = [(9, 25), (25, 10), (10, 11), (11, 26), (26, 12)]
+    sub_r_buttons = [9, 25, 10, 11, 26, 12]
+    p5_red = (23, 9)
+    all_connected = sub_l_buttons + sub_r_buttons
+
+    # Lift from button 9 (x=252, near center). V-shape cascade:
+    # button 9 at top (y=45), neighbours droop outward on both sides.
+    # Assign y based on distance along chain from button 9.
+    # In the merged network: ...-23-9-25-10-11-26-12
+    # and 23 connects back to: 5-4-22-3-2-21-1-20-0
+    # Distance from 9: 9=0, 25=1,23=1, 10=2,5=2, 11=3,4=3, 26=4,22=4,
+    #                   12=5,3=5, 2=6, 21=7, 1=8, 20=9, 0=10
+    dist_from_9 = {
+        9: 0,
+        25: 1, 23: 1,
+        10: 2, 5: 2,
+        11: 3, 4: 3,
+        26: 4, 22: 4,
+        12: 5, 3: 5,
+        2: 6,
+        21: 7,
+        1: 8,
+        20: 9,
+        0: 10,
+    }
+    p5_lifted = {}
+    for btn, d in dist_from_9.items():
+        p5_lifted[btn] = 45 + d * 18
+
+    p5_parts = [_btn_defs(), _floor()]
+    # Grey threads
+    for a, b in sub_l_chain + sub_r_chain:
+        ya = p5_lifted.get(a, floor_y[a])
+        yb = p5_lifted.get(b, floor_y[b])
+        p5_parts.append(_thread(bx[a], ya, bx[b], yb))
+    # Red thread
+    ra, rb = p5_red
+    p5_parts.append(_thread(bx[ra], p5_lifted[ra], bx[rb], p5_lifted[rb], color="#c0392b", width="2"))
+    # All buttons
+    for i in range(30):
+        y = p5_lifted.get(i, floor_y[i])
+        p5_parts.append(_button(bx[i], y))
+    p5_parts.append(_label('phase transition'))
+    p5_parts.append(f'<text x="485" y="275" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#c0392b" font-weight="bold">15 / 30</text>')
+    p5_parts.append(_caption('One more thread. Pick up one button \u2014 the whole room lifts.'))
+    PANEL_5 = _svg_wrap('\n'.join(p5_parts))
+
+    FILMSTRIP = f'''<figure class="inline-svg button-sequence" style="text-align:center;margin:1.5em auto;">
+{PANEL_1}
+{PANEL_2}
+{PANEL_3}
+{PANEL_4}
+{PANEL_5}
+<figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">Kauffman\u2019s buttons and threads \u2014 scatter, tie, cluster, snap.</figcaption>
+</figure>'''
+
+    marker = 'connected web.</p>'
+    idx = text.find(marker)
+    if idx == -1:
+        return
+    insert_point = idx + len(marker)
+    text = text[:insert_point] + '\n' + FILMSTRIP + '\n' + text[insert_point:]
+    html_path.write_text(text)
+    print("  Button sequence: 5-panel filmstrip injected")
+
+
+def inject_domain_buttons(html_path):
+    """Insert the 11-domain button network diagram after the five-fields paragraph."""
+    html_path = Path(html_path)
+    text = html_path.read_text()
+
+    DOMAIN_SVG = '''<figure class="inline-svg domain-buttons" style="text-align:center;margin:1.5em auto;">
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="300" viewBox="0 0 500 400" style="display:block;margin:0 auto;">
+  <title>Kauffman's buttons and threads, mapped to eleven scientific domains. Solid threads: published cross-references. Dashed grey: missing bridges. TQC dangles by a single thread.</title>
+  <defs>
+    <filter id="dbtn-sh" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <!-- floor -->
+  <line x1="30" y1="370" x2="470" y2="370" stroke="#ccc" stroke-width="1" stroke-dasharray="4,4"/>
+  <text x="250" y="390" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#bbb">floor</text>
+  <!-- solid threads (published cross-references) -->
+  <line x1="140" y1="95" x2="95" y2="140" stroke="#2471a3" stroke-width="1.5" opacity="0.7"/>
+  <line x1="95" y1="140" x2="60" y2="195" stroke="#2471a3" stroke-width="1.5" opacity="0.7"/>
+  <line x1="310" y1="90" x2="360" y2="130" stroke="#e67e22" stroke-width="1.5" opacity="0.7"/>
+  <line x1="390" y1="85" x2="430" y2="135" stroke="#8e44ad" stroke-width="1.5" opacity="0.7"/>
+  <line x1="200" y1="75" x2="250" y2="110" stroke="#27ae60" stroke-width="1.5" opacity="0.7"/>
+  <line x1="170" y1="150" x2="130" y2="195" stroke="#c0392b" stroke-width="1.5" opacity="0.7"/>
+  <!-- cross-cluster threads (grey) -->
+  <line x1="310" y1="90" x2="250" y2="110" stroke="#666" stroke-width="1.2" opacity="0.5"/>
+  <line x1="200" y1="75" x2="140" y2="95" stroke="#666" stroke-width="1.2" opacity="0.5"/>
+  <line x1="390" y1="85" x2="360" y2="130" stroke="#666" stroke-width="1.2" opacity="0.5"/>
+  <line x1="170" y1="150" x2="140" y2="95" stroke="#666" stroke-width="1.2" opacity="0.5"/>
+  <!-- TQC single thread (dashed, fragile) -->
+  <line x1="60" y1="195" x2="55" y2="265" stroke="#2471a3" stroke-width="1.0" stroke-dasharray="3,2" opacity="0.6"/>
+  <!-- missing bridges (dashed grey) -->
+  <text x="250" y="215" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#bbb" font-style="italic">\u2014 missing bridges \u2014</text>
+  <line x1="55" y1="265" x2="310" y2="90" stroke="#ddd" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="55" y1="265" x2="250" y2="110" stroke="#ddd" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="55" y1="265" x2="430" y2="135" stroke="#ddd" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="360" y1="130" x2="95" y2="140" stroke="#ddd" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <line x1="130" y1="195" x2="310" y2="90" stroke="#ddd" stroke-width="0.8" stroke-dasharray="3,3"/>
+  <!-- domain buttons -->
+  <circle cx="200" cy="75" r="14" fill="#27ae60" stroke="#1e8449" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <text x="200" y="79" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="6.5" fill="white" font-weight="bold">NN</text>
+  <circle cx="250" cy="110" r="14" fill="#2ecc71" stroke="#27ae60" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <text x="250" y="114" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="6" fill="white" font-weight="bold">Neuro</text>
+  <circle cx="140" cy="95" r="14" fill="#2980b9" stroke="#1a5276" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <text x="140" y="99" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="5.5" fill="white" font-weight="bold">CMP</text>
+  <circle cx="95" cy="140" r="14" fill="#3498db" stroke="#2471a3" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <text x="95" y="144" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="5.5" fill="white" font-weight="bold">TFT</text>
+  <circle cx="310" cy="90" r="14" fill="#e67e22" stroke="#ca6f1e" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <text x="310" y="94" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="5.5" fill="white" font-weight="bold">ACS</text>
+  <circle cx="360" cy="130" r="14" fill="#f39c12" stroke="#e67e22" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <text x="360" y="134" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="5" fill="white" font-weight="bold">Auto</text>
+  <circle cx="390" cy="85" r="14" fill="#8e44ad" stroke="#6c3483" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <text x="390" y="89" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="5.5" fill="white" font-weight="bold">CE</text>
+  <circle cx="430" cy="135" r="14" fill="#a569bd" stroke="#8e44ad" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <text x="430" y="139" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="5" fill="white" font-weight="bold">Par</text>
+  <circle cx="170" cy="150" r="14" fill="#e74c3c" stroke="#c0392b" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <text x="170" y="154" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="5.5" fill="white" font-weight="bold">NLD</text>
+  <circle cx="130" cy="195" r="14" fill="#ec7063" stroke="#e74c3c" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <text x="130" y="199" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="5" fill="white" font-weight="bold">Mat</text>
+  <circle cx="55" cy="265" r="14" fill="#1a5276" stroke="#0d3b5e" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <text x="55" y="269" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="5.5" fill="white" font-weight="bold">TQC</text>
+  <text x="55" y="295" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#999">&#x25BC;</text>
+  <!-- captions -->
+  <text x="250" y="340" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">One thread holds. Cut it, and the argument falls apart.</text>
+  <text x="250" y="355" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#999">after Kauffman (1993)</text>
+</svg>
+<figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">The same metaphor, applied to this book. Eleven scientific domains, connected by published cross-references. TQC dangles by a single thread.</figcaption>
+</figure>'''
+
+    marker = 'five published research streams had independently matured'
+    idx = text.find(marker)
+    if idx == -1:
+        return
+    close_p = text.find('</p>', idx)
+    if close_p == -1:
+        return
+    insert_point = close_p + len('</p>')
+    text = text[:insert_point] + '\n' + DOMAIN_SVG + '\n' + text[insert_point:]
+    html_path.write_text(text)
+    print("  Domain buttons: inline diagram injected")
+
+
 def fix_html_glossary_names(html_path):
     """Resolve <span data-acronym-label="..."> inner text to glossary name=.
 
@@ -2482,6 +2861,8 @@ if __name__ == "__main__":
     elif len(sys.argv) > 1 and sys.argv[1] == '--fix-html':
         fix_html_toc(sys.argv[2])
         inject_flat_diagram(sys.argv[2])
+        inject_button_sequence(sys.argv[2])
+        inject_domain_buttons(sys.argv[2])
         inject_questions_index(sys.argv[2])
         fix_html_glossary_names(sys.argv[2])
         collapse_tech_sections(sys.argv[2])

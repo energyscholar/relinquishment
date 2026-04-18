@@ -10,7 +10,7 @@ JOBNAME := Relinquishment
 TIKZ_SRCS := $(filter-out build/images/standalone-header.tex, $(wildcard build/images/*.tex))
 TIKZ_PDFS := $(TIKZ_SRCS:.tex=.pdf)
 
-.PHONY: dev final screen print images validate clean clean-cache manifest size-report gitinfo check check-strict epub html markdown
+.PHONY: dev final screen print images validate clean clean-cache manifest size-report gitinfo check check-strict epub html markdown svg-sheet
 
 # --- Dev build (public release — no DMS appendix, no working draft notice) ---
 dev: gitinfo images
@@ -130,6 +130,11 @@ manifest:
 	@echo '  ]' >> build/manifest.json
 	@echo '}' >> build/manifest.json
 	@echo "Manifest written to build/manifest.json"
+
+# --- SVG sheet (visual review of all SVGs from built HTML) ---
+svg-sheet: html
+	python3 build/svg_manifest.py --from-html
+	@echo "Open build/svg-sheet.html in a browser to review."
 
 # --- Size report ---
 size-report:
