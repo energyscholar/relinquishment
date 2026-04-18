@@ -21,7 +21,7 @@ from pathlib import Path
 
 import yaml
 
-REPO = Path(__file__).resolve().parents[2]
+REPO = Path(__file__).resolve().parents[1]
 BUILD = REPO / "build"
 IMG = BUILD / "images"
 MANUSCRIPT = REPO / "manuscript"
@@ -35,7 +35,7 @@ GRAD_ID_RE = re.compile(r'id\s*=\s*["\']([^"\']+)["\']')
 @dataclass
 class SvgAsset:
     asset_id: str
-    kind: str  # "standalone-file" | "inline-yaml" | "inline-tex"
+    kind: str  # "standalone-file" | "inline-yaml" | "inline-tex" | "built-html"
     source: str  # path or "path#key"
     location: str  # e.g. "build/images/foo.svg" or "build/hover-definitions.yaml:the-flat-title"
     bytes: int
@@ -44,6 +44,7 @@ class SvgAsset:
     used_by: list[str] = field(default_factory=list)
     status: str = "unknown"  # applied / orphaned / source-for-derived / unreferenced / referenced-but-target-missing
     notes: str = ""
+    _svg_body: str = field(default="", repr=False)  # cached SVG markup for preview
 
 
 # ------------------------------------------------------------------ scanning
@@ -111,6 +112,71 @@ def scan_inline_tex_svgs() -> list[SvgAsset]:
                 element_count=len(SVG_ELEM_RE.findall(body)),
                 defs_ids=extract_defs_ids(body),
             ))
+    return assets
+
+
+TITLE_RE = re.compile(r"<title[^>]*>(.*?)</title>", re.DOTALL | re.IGNORECASE)
+FIGURE_CLASS_RE = re.compile(r'class="inline-svg\s*([^"]*)"')
+FIGCAPTION_RE = re.compile(r"<figcaption[^>]*>(.*?)</figcaption>", re.DOTALL | re.IGNORECASE)
+PANEL_LABEL_RE = re.compile(r'font-size="9"[^>]*>([^<]+)</text>')
+CAPTION_TEXT_RE = re.compile(r'font-style="italic"[^>]*>([^<]+)</text>')
+
+
+def scan_built_html(html_path: Path) -> list[SvgAsset]:
+    """Extract all SVGs from the built HTML output. Catches programmatic SVGs."""
+    if not html_path.exists():
+        return []
+    text = html_path.read_text(encoding="utf-8", errors="replace")
+    assets: list[SvgAsset] = []
+    for idx, match in enumerate(SVG_BLOCK_RE.finditer(text)):
+        body = match.group(0)
+        title_m = TITLE_RE.search(body)
+        title = title_m.group(1).strip()[:60] if title_m else ""
+        ctx_start = max(0, match.start() - 300)
+        ctx = text[ctx_start:match.start()]
+        fig_m = FIGURE_CLASS_RE.search(ctx)
+        fig_class = fig_m.group(1).strip() if fig_m else ""
+        after = text[match.end():match.end() + 300]
+        cap_m = FIGCAPTION_RE.search(after)
+        caption = cap_m.group(1).strip()[:80] if cap_m else ""
+        # for SVGs inside a shared figure (filmstrip panels), use internal label
+        panel_m = PANEL_LABEL_RE.search(body)
+        panel_label = panel_m.group(1).strip() if panel_m else ""
+        # also grab italic caption text from inside the SVG
+        svg_caption_m = CAPTION_TEXT_RE.search(body)
+        svg_caption = svg_caption_m.group(1).strip() if svg_caption_m else ""
+        # build asset ID
+        if fig_class:
+            aid = fig_class
+            if panel_label:
+                aid = f"{fig_class}/{panel_label}"
+            elif title:
+                aid = f"{fig_class}: {title}"
+        elif title:
+            aid = title[:50]
+        elif panel_label:
+            aid = panel_label
+        else:
+            aid = f"html-svg-{idx}"
+        # build notes from available context
+        note_parts = []
+        if svg_caption and svg_caption != panel_label:
+            note_parts.append(svg_caption)
+        if caption:
+            note_parts.append(caption)
+        notes = " | ".join(note_parts)
+        assets.append(SvgAsset(
+            asset_id=aid,
+            kind="built-html",
+            source=str(html_path.relative_to(REPO)),
+            location=str(html_path.relative_to(REPO)),
+            bytes=len(body.encode("utf-8")),
+            element_count=len(SVG_ELEM_RE.findall(body)),
+            defs_ids=extract_defs_ids(body),
+            status="applied",
+            notes=notes,
+            _svg_body=body,
+        ))
     return assets
 
 
@@ -293,7 +359,7 @@ def orphan_report(hover_entries: dict, usage: dict[str, list[str]]) -> str:
 
 # ------------------------------------------------------------------ visual sheet
 
-def render_sheet(assets: list[SvgAsset]) -> str:
+def render_sheet(assets: list[SvgAsset], title: str = "Plan 0196 Phase A — SVG + Orphan Manifest") -> str:
     by_status: dict[str, list[SvgAsset]] = {}
     for a in assets:
         by_status.setdefault(a.status, []).append(a)
@@ -325,26 +391,26 @@ def render_sheet(assets: list[SvgAsset]) -> str:
         sections.append("</div>")
 
     return f"""<!doctype html>
-<html><head><meta charset="utf-8"><title>Plan 0196 Phase A — SVG Sheet</title>
+<html><head><meta charset="utf-8"><title>{title}</title>
 <style>
 body {{ font: 14px/1.4 system-ui, sans-serif; max-width: 1400px; margin: 2em auto; padding: 0 1em; }}
 h1 {{ border-bottom: 2px solid #333; }}
 h2 {{ margin-top: 2em; border-bottom: 1px dashed #888; }}
-.grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 1em; }}
+.grid {{ display: grid; grid-template-columns: repeat(auto-fill, minmax(420px, 1fr)); gap: 1.2em; }}
 .card {{ border: 1px solid #ccc; border-radius: 6px; padding: 0.7em; background: #fafafa; }}
-.svg-box {{ background: #fff; border: 1px dashed #ddd; min-height: 160px; max-height: 280px;
-            overflow: hidden; display: flex; align-items: center; justify-content: center; padding: 0.3em; }}
-.svg-box svg {{ max-width: 100%; max-height: 260px; height: auto; width: auto; }}
+.svg-box {{ background: #fff; border: 1px dashed #ddd; min-height: 160px; max-height: 400px;
+            overflow: auto; display: flex; align-items: center; justify-content: center; padding: 0.5em; }}
+.svg-box svg {{ max-width: 100%; height: auto; width: auto; }}
 .meta {{ margin-top: 0.6em; font-size: 0.85em; }}
 .id {{ font-family: monospace; font-weight: bold; word-break: break-all; }}
 .kind {{ color: #666; font-size: 0.8em; }}
 .src {{ color: #888; font-family: monospace; font-size: 0.75em; word-break: break-all; }}
 .stats {{ color: #555; margin-top: 0.3em; }}
 .used {{ margin-top: 0.3em; font-size: 0.8em; }}
-.notes {{ margin-top: 0.3em; font-style: italic; color: #a33; }}
+.notes {{ margin-top: 0.3em; font-style: italic; color: #555; }}
 </style></head>
 <body>
-<h1>Plan 0196 Phase A — SVG + Orphan Manifest</h1>
+<h1>{title}</h1>
 <p>Analysis artifact. Not shipped. Never deployed to <code>docs/</code>.</p>
 <p>Total assets scanned: <strong>{len(assets)}</strong>.</p>
 {''.join(sections)}
@@ -354,6 +420,8 @@ h2 {{ margin-top: 2em; border-bottom: 1px dashed #888; }}
 
 def svg_preview_for(a: SvgAsset) -> str:
     try:
+        if a.kind == "built-html" and a._svg_body:
+            return a._svg_body
         if a.kind == "standalone-file":
             p = REPO / a.location
             return p.read_text(encoding="utf-8", errors="replace")
@@ -396,6 +464,38 @@ def escape_multiline(s: str) -> str:
 # ------------------------------------------------------------------ main
 
 def main() -> int:
+    from_html = "--from-html" in sys.argv
+
+    if from_html:
+        html_path = REPO / "docs" / "downloads" / "Relinquishment.html"
+        if not html_path.exists():
+            html_path = REPO / "Relinquishment.html"
+        if not html_path.exists():
+            print("ERROR: No built HTML found. Run 'make html' first.")
+            return 1
+        assets = scan_built_html(html_path)
+        for a in assets:
+            a.status = "applied"
+        def _asset_dict(a):
+            d = asdict(a)
+            d.pop("_svg_body", None)
+            return d
+        manifest = {
+            "source": str(html_path.relative_to(REPO)),
+            "total": len(assets),
+            "assets": [_asset_dict(a) for a in assets],
+        }
+        (BUILD / "svg-manifest.json").write_text(
+            json.dumps(manifest, indent=2, sort_keys=False), encoding="utf-8"
+        )
+        (BUILD / "svg-sheet.html").write_text(
+            render_sheet(assets, title="Relinquishment SVG Sheet (from built HTML)"),
+            encoding="utf-8",
+        )
+        print(f"Wrote {BUILD / 'svg-sheet.html'}")
+        print(f"Extracted {len(assets)} SVGs from {html_path.relative_to(REPO)}")
+        return 0
+
     hover_path = BUILD / "hover-definitions.yaml"
     hover_entries = yaml.safe_load(hover_path.read_text(encoding="utf-8")) or {}
 
@@ -410,6 +510,10 @@ def main() -> int:
         classify(a, usage)
 
     # write json
+    def _clean_asset(a):
+        d = asdict(a)
+        d.pop("_svg_body", None)
+        return d
     manifest = {
         "plan": "0196 Phase A",
         "total": len(assets),
@@ -417,14 +521,16 @@ def main() -> int:
                       for s in sorted({a.status for a in assets})},
         "by_kind": {k: sum(1 for a in assets if a.kind == k)
                     for k in sorted({a.kind for a in assets})},
-        "assets": [asdict(a) for a in assets],
+        "assets": [_clean_asset(a) for a in assets],
     }
     (BUILD / "svg-manifest.json").write_text(
         json.dumps(manifest, indent=2, sort_keys=False), encoding="utf-8"
     )
 
     # write visual sheet
-    (BUILD / "svg-sheet.html").write_text(render_sheet(assets), encoding="utf-8")
+    (BUILD / "svg-sheet.html").write_text(
+        render_sheet(assets), encoding="utf-8"
+    )
 
     # orphan report
     (BUILD / "orphan-report.md").write_text(

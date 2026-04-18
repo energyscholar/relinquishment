@@ -1,351 +1,105 @@
 {
-  "plan": "0196 Phase A",
-  "total": 20,
-  "by_status": {
-    "applied": 18,
-    "orphaned": 1,
-    "source-for-derived": 1
-  },
-  "by_kind": {
-    "inline-yaml": 18,
-    "standalone-file": 2
-  },
+  "source": "docs/downloads/Relinquishment.html",
+  "total": 7,
   "assets": [
     {
-      "asset_id": "cover-triskellion",
-      "kind": "standalone-file",
-      "source": "build/images/cover-triskellion.svg",
-      "location": "build/images/cover-triskellion.svg",
-      "bytes": 2076,
-      "element_count": 6,
-      "defs_ids": [],
-      "used_by": [
-        "manuscript/00-front/cover.tex"
-      ],
-      "status": "source-for-derived",
-      "notes": "SVG is source for PDF/PNG applied in manuscript."
-    },
-    {
-      "asset_id": "magnetosphere-test",
-      "kind": "standalone-file",
-      "source": "build/images/magnetosphere-test.svg",
-      "location": "build/images/magnetosphere-test.svg",
-      "bytes": 5900,
-      "element_count": 62,
+      "asset_id": "Cross-section of a computer chip. Two grey blocks ",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 2912,
+      "element_count": 29,
       "defs_ids": [
-        "earth",
-        "plasma",
-        "plasmaEdge",
-        "solarArrow"
+        "flat-inline-glow",
+        "flat-inline-arr"
       ],
       "used_by": [],
-      "status": "orphaned",
-      "notes": "No references found anywhere."
+      "status": "applied",
+      "notes": "The Flat: a two-dimensional electron gas sandwiched between bulk semiconductor l"
     },
     {
-      "asset_id": "relinquishment-title",
-      "kind": "inline-yaml",
-      "source": "build/hover-definitions.yaml:relinquishment-title",
-      "location": "build/hover-definitions.yaml:relinquishment-title",
-      "bytes": 937,
-      "element_count": 10,
+      "asset_id": "button-sequence/scatter",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 3922,
+      "element_count": 38,
       "defs_ids": [
-        "glow"
+        "kbtn-sh"
       ],
-      "used_by": [
-        "build/preprocess.py:_title_panel_attrs",
-        "build/hover-generated.tex:\\csdef"
-      ],
+      "used_by": [],
       "status": "applied",
-      "notes": ""
+      "notes": "Ten thousand buttons on a floor."
     },
     {
-      "asset_id": "wormholes-title",
-      "kind": "inline-yaml",
-      "source": "build/hover-definitions.yaml:wormholes-title",
-      "location": "build/hover-definitions.yaml:wormholes-title",
-      "bytes": 1445,
-      "element_count": 12,
-      "defs_ids": [],
-      "used_by": [
-        "build/preprocess.py:_title_panel_attrs",
-        "build/hover-generated.tex:\\csdef"
-      ],
-      "status": "applied",
-      "notes": ""
-    },
-    {
-      "asset_id": "the-flat-title",
-      "kind": "inline-yaml",
-      "source": "build/hover-definitions.yaml:the-flat-title",
-      "location": "build/hover-definitions.yaml:the-flat-title",
-      "bytes": 2763,
-      "element_count": 29,
+      "asset_id": "tie and toss",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 4497,
+      "element_count": 44,
       "defs_ids": [
-        "flat-glow",
-        "flat-arr"
+        "kbtn-sh"
       ],
-      "used_by": [
-        "build/preprocess.py:_title_panel_attrs",
-        "build/hover-generated.tex:\\csdef"
-      ],
+      "used_by": [],
       "status": "applied",
-      "notes": ""
+      "notes": "Pick up two at random. Tie them together. Toss them back."
     },
     {
-      "asset_id": "the Flat",
-      "kind": "inline-yaml",
-      "source": "build/hover-definitions.yaml:the Flat",
-      "location": "build/hover-definitions.yaml:the Flat",
-      "bytes": 2768,
-      "element_count": 29,
+      "asset_id": "early clusters",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 4863,
+      "element_count": 48,
       "defs_ids": [
-        "flat-glow2",
-        "flat-arr2"
+        "kbtn-sh"
       ],
-      "used_by": [
-        "manuscript/spine/the-flat.tex:\\hovertip",
-        "build/hover-generated.tex:\\csdef"
-      ],
+      "used_by": [],
       "status": "applied",
-      "notes": ""
+      "notes": "A few hundred ties in. Small clumps \u2014 two, three buttons."
     },
     {
-      "asset_id": "two-dimensional electron gas",
-      "kind": "inline-yaml",
-      "source": "build/hover-definitions.yaml:two-dimensional electron gas",
-      "location": "build/hover-definitions.yaml:two-dimensional electron gas",
-      "bytes": 2690,
-      "element_count": 29,
+      "asset_id": "growing clusters",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 5218,
+      "element_count": 52,
       "defs_ids": [
-        "deg-glow",
-        "deg-arr"
+        "kbtn-sh"
       ],
-      "used_by": [
-        "manuscript/00-front/summary.tex:\\hovertip",
-        "build/hover-generated.tex:\\csdef"
-      ],
+      "used_by": [],
       "status": "applied",
-      "notes": ""
-    },
-    {
-      "asset_id": "nonlocal",
-      "kind": "inline-yaml",
-      "source": "build/hover-definitions.yaml:nonlocal",
-      "location": "build/hover-definitions.yaml:nonlocal",
-      "bytes": 1375,
-      "element_count": 12,
-      "defs_ids": [],
-      "used_by": [
-        "manuscript/00-front/summary.tex:\\hovertip",
-        "build/hover-generated.tex:\\csdef"
-      ],
-      "status": "applied",
-      "notes": ""
-    },
-    {
-      "asset_id": "magnetosphere",
-      "kind": "inline-yaml",
-      "source": "build/hover-definitions.yaml:magnetosphere",
-      "location": "build/hover-definitions.yaml:magnetosphere",
-      "bytes": 3975,
-      "element_count": 42,
-      "defs_ids": [
-        "ms-sw",
-        "ms-earth",
-        "ms-ps"
-      ],
-      "used_by": [
-        "manuscript/00-front/summary.tex:\\hovertip",
-        "build/hover-generated.tex:\\csdef"
-      ],
-      "status": "applied",
-      "notes": ""
-    },
-    {
-      "asset_id": "flat worlds",
-      "kind": "inline-yaml",
-      "source": "build/hover-definitions.yaml:flat worlds",
-      "location": "build/hover-definitions.yaml:flat worlds",
-      "bytes": 2753,
-      "element_count": 29,
-      "defs_ids": [
-        "fw-glow",
-        "fw-arr"
-      ],
-      "used_by": [
-        "manuscript/00-front/hook.tex:\\hovertip",
-        "build/hover-generated.tex:\\csdef"
-      ],
-      "status": "applied",
-      "notes": ""
-    },
-    {
-      "asset_id": "wormholes",
-      "kind": "inline-yaml",
-      "source": "build/hover-definitions.yaml:wormholes",
-      "location": "build/hover-definitions.yaml:wormholes",
-      "bytes": 1445,
-      "element_count": 12,
-      "defs_ids": [],
-      "used_by": [
-        "manuscript/00-front/the-stack.tex:\\hovertip",
-        "manuscript/00-front/hook.tex:\\hovertip",
-        "manuscript/00-front/summary.tex:\\hovertip",
-        "manuscript/00-front/summary.tex:\\hovertip",
-        "manuscript/00-front/summary.tex:\\hovertip",
-        "build/hover-generated.tex:\\csdef"
-      ],
-      "status": "applied",
-      "notes": ""
-    },
-    {
-      "asset_id": "buttons",
-      "kind": "inline-yaml",
-      "source": "build/hover-definitions.yaml:buttons",
-      "location": "build/hover-definitions.yaml:buttons",
-      "bytes": 5509,
-      "element_count": 51,
-      "defs_ids": [
-        "btn-sh"
-      ],
-      "used_by": [
-        "manuscript/track-1-confession/pos13-genesis.tex:\\hovertip",
-        "manuscript/spine/growing-a-mind.tex:\\hovertip",
-        "manuscript/spine/genesis.tex:\\hovertip",
-        "build/hover-generated.tex:\\csdef"
-      ],
-      "status": "applied",
-      "notes": ""
-    },
-    {
-      "asset_id": "anyon",
-      "kind": "inline-yaml",
-      "source": "build/hover-definitions.yaml:anyon",
-      "location": "build/hover-definitions.yaml:anyon",
-      "bytes": 1765,
-      "element_count": 19,
-      "defs_ids": [
-        "aT"
-      ],
-      "used_by": [
-        "manuscript/track-1-confession/pos15-first-light.tex:\\hovertip",
-        "manuscript/record/first-light.tex:\\hovertip",
-        "build/hover-generated.tex:\\csdef"
-      ],
-      "status": "applied",
-      "notes": ""
-    },
-    {
-      "asset_id": "TQNN",
-      "kind": "inline-yaml",
-      "source": "build/hover-definitions.yaml:TQNN",
-      "location": "build/hover-definitions.yaml:TQNN",
-      "bytes": 3656,
-      "element_count": 34,
-      "defs_ids": [
-        "tq-flat"
-      ],
-      "used_by": [
-        "manuscript/bridge/pos09-the-factoring-game.tex:\\hovertip",
-        "build/hover-generated.tex:\\csdef"
-      ],
-      "status": "applied",
-      "notes": ""
-    },
-    {
-      "asset_id": "braiding",
-      "kind": "inline-yaml",
-      "source": "build/hover-definitions.yaml:braiding",
-      "location": "build/hover-definitions.yaml:braiding",
-      "bytes": 1747,
-      "element_count": 19,
-      "defs_ids": [
-        "bT"
-      ],
-      "used_by": [
-        "manuscript/bridge/pos10-the-braid.tex:\\hovertip",
-        "manuscript/spine/the-braid.tex:\\hovertip",
-        "build/hover-generated.tex:\\csdef"
-      ],
-      "status": "applied",
-      "notes": ""
+      "notes": "Almost halfway. The clusters are getting bigger."
     },
     {
       "asset_id": "phase transition",
-      "kind": "inline-yaml",
-      "source": "build/hover-definitions.yaml:phase transition",
-      "location": "build/hover-definitions.yaml:phase transition",
-      "bytes": 1633,
-      "element_count": 14,
-      "defs_ids": [],
-      "used_by": [
-        "manuscript/bridge/pos14-growing-a-mind.tex:\\hovertip",
-        "manuscript/spine/growing-a-mind.tex:\\hovertip",
-        "build/hover-generated.tex:\\csdef"
-      ],
-      "status": "applied",
-      "notes": ""
-    },
-    {
-      "asset_id": "edge of chaos",
-      "kind": "inline-yaml",
-      "source": "build/hover-definitions.yaml:edge of chaos",
-      "location": "build/hover-definitions.yaml:edge of chaos",
-      "bytes": 2200,
-      "element_count": 20,
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 5319,
+      "element_count": 53,
       "defs_ids": [
-        "eA"
+        "kbtn-sh"
       ],
-      "used_by": [
-        "build/hover-generated.tex:\\csdef"
-      ],
+      "used_by": [],
       "status": "applied",
-      "notes": ""
+      "notes": "One more thread. Pick up one button \u2014 the whole room lifts. | Kauffman\u2019s buttons and threads \u2014 scatter, tie, cluster, snap."
     },
     {
-      "asset_id": "cellular automata",
-      "kind": "inline-yaml",
-      "source": "build/hover-definitions.yaml:cellular automata",
-      "location": "build/hover-definitions.yaml:cellular automata",
-      "bytes": 1966,
-      "element_count": 5,
-      "defs_ids": [],
-      "used_by": [
-        "manuscript/bridge/pos14-growing-a-mind.tex:\\hovertip",
-        "manuscript/spine/growing-a-mind.tex:\\hovertip",
-        "build/hover-generated.tex:\\csdef"
+      "asset_id": "domain-buttons/floor",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 5816,
+      "element_count": 49,
+      "defs_ids": [
+        "dbtn-sh"
       ],
+      "used_by": [],
       "status": "applied",
-      "notes": ""
-    },
-    {
-      "asset_id": "cellular automaton",
-      "kind": "inline-yaml",
-      "source": "build/hover-definitions.yaml:cellular automaton",
-      "location": "build/hover-definitions.yaml:cellular automaton",
-      "bytes": 1966,
-      "element_count": 5,
-      "defs_ids": [],
-      "used_by": [
-        "build/hover-generated.tex:\\csdef"
-      ],
-      "status": "applied",
-      "notes": ""
-    },
-    {
-      "asset_id": "self-organized criticality",
-      "kind": "inline-yaml",
-      "source": "build/hover-definitions.yaml:self-organized criticality",
-      "location": "build/hover-definitions.yaml:self-organized criticality",
-      "bytes": 2088,
-      "element_count": 23,
-      "defs_ids": [],
-      "used_by": [
-        "build/hover-generated.tex:\\csdef"
-      ],
-      "status": "applied",
-      "notes": ""
+      "notes": "\u2014 missing bridges \u2014 | The same metaphor, applied to this book. Eleven scientific domains, connected by"
     }
   ]
 }
