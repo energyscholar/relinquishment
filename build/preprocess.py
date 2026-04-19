@@ -2612,30 +2612,51 @@ def inject_domain_buttons(html_path):
   <line x1="58" y1="82" x2="58" y2="140" stroke="#c0392b" stroke-width="1.5" opacity="0.65"/>
   <line x1="442" y1="82" x2="442" y2="140" stroke="#e67e22" stroke-width="1.5" opacity="0.65"/>
   <line x1="372" y1="228" x2="372" y2="278" stroke="#8e44ad" stroke-width="1.5" opacity="0.65"/>
-  <!-- buttons -->
-  <circle cx="250" cy="55" r="16" fill="#2471a3" stroke="#1a5276" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <circle cx="190" cy="108" r="16" fill="#2980b9" stroke="#2471a3" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <circle cx="310" cy="108" r="16" fill="#3498db" stroke="#2980b9" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <circle cx="250" cy="220" r="16" fill="#1a5276" stroke="#0d2f4b" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <circle cx="58" cy="82" r="16" fill="#c0392b" stroke="#962d22" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <circle cx="58" cy="140" r="16" fill="#e74c3c" stroke="#c0392b" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <circle cx="442" cy="82" r="16" fill="#e67e22" stroke="#bf6516" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <circle cx="442" cy="140" r="16" fill="#f39c12" stroke="#d4860b" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <circle cx="372" cy="228" r="16" fill="#8e44ad" stroke="#6c3483" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <circle cx="372" cy="278" r="16" fill="#a569bd" stroke="#8e44ad" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <circle cx="110" cy="252" r="16" fill="#b8860b" stroke="#8b6508" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <!-- button labels -->
-  <text x="250" y="59" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Topo</text>
-  <text x="190" y="112" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">TFT</text>
-  <text x="310" y="112" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">CMP</text>
-  <text x="250" y="224" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">TQC</text>
-  <text x="58" y="86" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Sol</text>
-  <text x="58" y="144" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">NLD</text>
-  <text x="442" y="86" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">ACS</text>
-  <text x="442" y="144" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Auto</text>
-  <text x="372" y="232" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">CE</text>
-  <text x="372" y="282" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Par</text>
-  <text x="110" y="256" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7.5" fill="white" font-weight="bold">Mat</text>
+  <!-- domain buttons (interactive) -->
+  <g data-hover="Topology \u2014 the mathematics of shape and invariance. Knot theory, manifold classification. Freedman\u2019s Fields Medal." style="cursor:pointer">
+    <circle cx="250" cy="55" r="16" fill="#2471a3" stroke="#1a5276" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="250" y="59" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Topo</text>
+  </g>
+  <g data-hover="Topological field theory \u2014 where quantum physics meets topology. Witten 1989: TQFT from knot invariants." style="cursor:pointer">
+    <circle cx="190" cy="108" r="16" fill="#2980b9" stroke="#2471a3" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="190" y="112" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">TFT</text>
+  </g>
+  <g data-hover="Condensed matter \u2014 the fractional quantum Hall effect, 2D electron gases, anyon excitations. Laughlin-Stormer-Tsui Nobel 1998." style="cursor:pointer">
+    <circle cx="310" cy="108" r="16" fill="#3498db" stroke="#2980b9" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="310" y="112" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">CMP</text>
+  </g>
+  <g data-hover="Topological quantum computation \u2014 braiding non-Abelian anyons for fault-tolerant gates. Freedman-Kitaev-Wang 2002. The single thread." style="cursor:pointer">
+    <circle cx="250" cy="220" r="16" fill="#1a5276" stroke="#0d2f4b" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="250" y="224" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">TQC</text>
+  </g>
+  <g data-hover="Soliton physics \u2014 stable, self-reinforcing wave packets. Hasslacher\u2019s lattice-gas automaton (1986). Classical topological protection." style="cursor:pointer">
+    <circle cx="58" cy="82" r="16" fill="#c0392b" stroke="#962d22" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="58" y="86" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Sol</text>
+  </g>
+  <g data-hover="Nonlinear dynamics \u2014 chaos, bifurcations, self-organized criticality. The mathematics of systems far from equilibrium." style="cursor:pointer">
+    <circle cx="58" cy="140" r="16" fill="#e74c3c" stroke="#c0392b" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="58" y="144" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">NLD</text>
+  </g>
+  <g data-hover="Autocatalytic sets \u2014 Kauffman\u2019s theory of self-organization. Phase transitions in random graphs. Life as a critical phenomenon." style="cursor:pointer">
+    <circle cx="442" cy="82" r="16" fill="#e67e22" stroke="#bf6516" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="442" y="86" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">ACS</text>
+  </g>
+  <g data-hover="Autopoiesis \u2014 Maturana and Varela (1980). Self-producing systems. The boundary between living and non-living." style="cursor:pointer">
+    <circle cx="442" cy="140" r="16" fill="#f39c12" stroke="#d4860b" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="442" y="144" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Auto</text>
+  </g>
+  <g data-hover="Computational universality \u2014 Wolfram\u2019s Principle of Computational Equivalence. Sufficiently complex systems compute, regardless of substrate." style="cursor:pointer">
+    <circle cx="372" cy="228" r="16" fill="#8e44ad" stroke="#6c3483" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="372" y="232" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">CE</text>
+  </g>
+  <g data-hover="Parallel computation \u2014 Hillis\u2019s Connection Machine. Massively parallel architectures that scale." style="cursor:pointer">
+    <circle cx="372" cy="278" r="16" fill="#a569bd" stroke="#8e44ad" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="372" y="282" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Par</text>
+  </g>
+  <g data-hover="Materials science \u2014 the engineering discipline that builds the substrates. pHEMT, MOSFET, semiconductor fabrication." style="cursor:pointer">
+    <circle cx="110" cy="252" r="16" fill="#b8860b" stroke="#8b6508" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="110" y="256" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7.5" fill="white" font-weight="bold">Mat</text>
+  </g>
   <!-- TQC arrow -->
   <text x="250" y="248" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#999">&#x25BC;</text>
   <!-- captions -->
