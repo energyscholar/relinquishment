@@ -1140,6 +1140,7 @@
   document.addEventListener('touchend', function(e) {
     var term = e.target.closest('[data-hover], [data-hover-id]');
     if (!term) return;
+    if (term.hasAttribute('data-hover-disabled')) return;
     lastTouchTime = Date.now();
 
     // Navigation elements: split touch target on summaries
@@ -1148,7 +1149,8 @@
     if (term.classList.contains('hover-nav')) {
       var headingInTerm = term.querySelector('h2, h3');
       var tappedHeading = e.target.closest('h2, h3');
-      var shouldShow = !headingInTerm || (tappedHeading && term.contains(tappedHeading));
+      var isButton = term.tagName === 'BUTTON' || term.tagName === 'A';
+      var shouldShow = !isButton && (!headingInTerm || (tappedHeading && term.contains(tappedHeading)));
       if (shouldShow) {
         // Part label (no heading) OR tap on chapter title — show tooltip, prevent toggle
         e.preventDefault();
