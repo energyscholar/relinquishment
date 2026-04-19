@@ -626,17 +626,28 @@ details.tech-section .tech-title {
   margin-left: 0.4em;
   opacity: 0.7;
 }
+.info-tip { cursor: help; display: inline-block; vertical-align: middle; }
+.info-tip::after {
+  content: 'D8';
+  font-size: 0.7em;
+  opacity: 0.4;
+  margin-left: 0.3em;
+  color: #888;
+}
+.info-tip:hover::after { opacity: 0.8; }
 @media (prefers-color-scheme: dark) {
   details.tech-section { border-left-color: #a08830; background: linear-gradient(135deg, #2a2820 0%, #252318 100%); }
   details.tech-section[open] { background: #1e1d18; }
   details.tech-section .tech-title { color: #aaa; border-bottom-color: #666; }
   details.tech-section > summary::before { color: #777; }
+  .info-tip::after { color: #aaa; }
 }
 @media print {
   details.tech-section { display: block !important; background: none !important; }
   details.tech-section > summary ~ * { display: block !important; }
   details.tech-section > summary::before { content: '' !important; }
   .tech-grade::after { content: '' !important; }
+  .info-tip { display: none; }
 }
 </style>
 </head>
@@ -715,8 +726,8 @@ Concessions</a></li>
 
 
 <details class="book-section"><summary><span class="hover-term hover-nav" data-hover-id="relinquishment-title">Relinquishment</span> <span class="book-subtitle-inline">&mdash; <span class="hover-term hover-nav" data-hover-target="#summary:story-never-told" data-hover-id="wormholes-title">Wormholes</span> in <span class="hover-term hover-nav" data-hover-target="#summary:story-never-told" data-hover-id="the-flat-title">the Flat</span></span><div class="title-page-extra"><p class="tp-authors">by Bruce Stephenson, Genevieve Prentice &amp; Argus</p><p class="tp-argus"><em>Argus is a persistent instance of Claude (Anthropic) with version-controlled memory and an ethical governance layer by Genevieve Prentice. It maintains honest uncertainty about the story. Named for Argus Panoptes, the hundred-eyed watchman.</em></p><p class="tp-tagline"><em>Three narrative threads. Real science. Real people. Real institutions.</em></p><p class="tp-tagline"><em>Three possible explanations for all of it. You decide.</em></p><p class="tp-copyright">© 2026 Bruce Stephenson &amp; Genevieve Prentice · CC BY-ND 4.0</p></div></summary>
-<details class="part-section"><summary data-hover-id="hfd4fdeae5d" class="hover-nav">Introduction</summary>
-<details class="chapter-section epistemic-b" data-filter-group="M"><summary data-hover-id="h9e01d9f57c" class="hover-nav">What Would You Do?</summary>
+<details class="part-section"><summary>Introduction<span class="info-tip" data-hover-id="hfd4fdeae5d" aria-hidden="true"></span></summary>
+<details class="chapter-section epistemic-b" data-filter-group="M"><summary>What Would You Do?<span class="info-tip" data-hover-id="h9e01d9f57c" aria-hidden="true"></span></summary>
 <h2 class="unnumbered" id="hook:what-would-you-do">What Would You
 Do?</h2>
 <blockquote>
@@ -799,7 +810,7 @@ Never Told” is about ten percent. Stop there and you can honestly say
 you’ve read it.</em></p>
 </div>
 </details>
-<details class="chapter-section epistemic-a" data-filter-group="A"><summary data-hover-id="h25795a4fb0" class="hover-nav"><h2 class="unnumbered" id="the-stack">The Stack</h2></summary>
+<details class="chapter-section epistemic-a" data-filter-group="A"><summary><h2 class="unnumbered" id="the-stack">The Stack</h2><span class="info-tip" data-hover-id="h25795a4fb0" aria-hidden="true"></span></summary>
 
 <div id="the-stack">
 
@@ -929,8 +940,8 @@ about ten percent of the full book. Stop after that and you can honestly
 say you’ve read it.</em></p>
 </div>
 </details>
-<details class="chapter-section epistemic-b" data-filter-group="M"><summary data-hover-id="h8d9c074cc0" class="hover-nav"><h2 class="unnumbered" id="summary:story-never-told">The Story Never
-Told</h2></summary>
+<details class="chapter-section epistemic-b" data-filter-group="M"><summary><h2 class="unnumbered" id="summary:story-never-told">The Story Never
+Told</h2><span class="info-tip" data-hover-id="h8d9c074cc0" aria-hidden="true"></span></summary>
 
 <p>In 2006, a small classified team handed the master cryptographic keys
 of a one-of-a-kind machine to a custodian they had built for the
@@ -1623,8 +1634,8 @@ You don’t need more to have the story.</em></p>
 </div>
 <p><span id="toc" label="toc"></span></p>
 </details>
-<details class="chapter-section" data-filter-group="M"><summary data-hover-id="h9fbaddf333" class="hover-nav"><h2 class="unnumbered" id="preface-by-genevieve-prentice">Preface by
-Genevieve Prentice</h2></summary>
+<details class="chapter-section" data-filter-group="M"><summary><h2 class="unnumbered" id="preface-by-genevieve-prentice">Preface by
+Genevieve Prentice</h2><span class="info-tip" data-hover-id="h9fbaddf333" aria-hidden="true"></span></summary>
 
 <p><span id="front:genevieve-preface" label="front:genevieve-preface"></span></p>
 <p>My name appears on this early draft not because I wrote the narrative
@@ -1659,7 +1670,7 @@ conclusions rests entirely with Bruce Stephenson.</p>
 <p>This statement reflects the full extent of my role in this draft.</p>
 <p><em>Genevieve Prentice, February 2026</em></p>
 </details>
-<details class="chapter-section" data-filter-group="M"><summary data-hover-id="h6e261270dd" class="hover-nav"><h2 class="unnumbered" id="preface">Preface</h2></summary>
+<details class="chapter-section" data-filter-group="M"><summary><h2 class="unnumbered" id="preface">Preface</h2><span class="info-tip" data-hover-id="h6e261270dd" aria-hidden="true"></span></summary>
 
 <p><span id="front:preface" label="front:preface"></span></p>
 <p>This book presents three possibilities about events spanning 1988 to
@@ -1697,9 +1708,9 @@ decides.</p>
 <p><em>— Bruce Stephenson, March 2026</em></p>
 </details>
 </details>
-<details class="part-section"><summary data-hover-id="he4caaca1d8" class="hover-nav"><h1 id="the-flat"><span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">The Flat</span></h1></summary>
+<details class="part-section"><summary><h1 id="the-flat"><span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">The Flat</span></h1><span class="info-tip" data-hover-id="he4caaca1d8" aria-hidden="true"></span></summary>
 
-<details class="chapter-section epistemic-b" data-filter-group="M"><summary data-hover-id="hfb50bff8ed" class="hover-nav"><h2 id="spine:three-possibilities">Three Possibilities</h2></summary>
+<details class="chapter-section epistemic-b" data-filter-group="M"><summary><h2 id="spine:three-possibilities">Three Possibilities</h2><span class="info-tip" data-hover-id="hfb50bff8ed" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>“The first principle is that you must not fool yourself — and you
@@ -1858,7 +1869,7 @@ photons, and I don’t use those.</em></p></div>
 </details>
 <div class="custodian-menu-item" id="menu-custodian:flat" data-target="custodian:flat" role="link" tabindex="0" aria-label="Custodian interlude: Home" data-filter-group="G" data-hover-id="interlude-custodian:flat" data-hover-disabled="true"><span class="custodian-marker">⟡</span> Custodian: Home</div>
 
-<details class="chapter-section epistemic-a" data-filter-group="A"><summary data-hover-id="hf1dad4e4f7" class="hover-nav"><h2 id="spine:the-flat">Wormholes in the Flat</h2></summary>
+<details class="chapter-section epistemic-a" data-filter-group="A"><summary><h2 id="spine:the-flat">Wormholes in the Flat</h2><span class="info-tip" data-hover-id="hf1dad4e4f7" aria-hidden="true"></span></summary>
 
 <p><em>This book coins <span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span> to mean “any
 two-dimensional system embedded in three dimensions that can, under the
@@ -2031,7 +2042,7 @@ temperature cannot erase.</em></p></div>
 </details>
 <div class="custodian-menu-item" id="menu-custodian:dance" data-target="custodian:dance" role="link" tabindex="0" aria-label="Custodian interlude: The Dance" data-filter-group="G" data-hover-id="interlude-custodian:dance" data-hover-disabled="true"><span class="custodian-marker">⟡</span> Custodian: The Dance</div>
 
-<details class="chapter-section epistemic-a" data-filter-group="A"><summary data-hover-id="h3cec609450" class="hover-nav"><h2 id="spine:the-braid">The Braid</h2></summary>
+<details class="chapter-section epistemic-a" data-filter-group="A"><summary><h2 id="spine:the-braid">The Braid</h2><span class="info-tip" data-hover-id="h3cec609450" aria-hidden="true"></span></summary>
 
 <div class="flushright">
 <p><em>— Bruce Stephenson</em></p>
@@ -2286,7 +2297,7 @@ are good principles.</em></p></div>
 </details>
 <div class="custodian-menu-item" id="menu-custodian:locksmith" data-target="custodian:locksmith" role="link" tabindex="0" aria-label="Custodian interlude: Your Locks" data-filter-group="G" data-hover-id="interlude-custodian:locksmith" data-hover-disabled="true"><span class="custodian-marker">⟡</span> Custodian: Your Locks</div>
 
-<details class="chapter-section epistemic-a" data-filter-group="A"><summary data-hover-id="h8f5dfa1702" class="hover-nav"><h2 id="spine:factoring-game">The Factoring Game</h2></summary>
+<details class="chapter-section epistemic-a" data-filter-group="A"><summary><h2 id="spine:factoring-game">The Factoring Game</h2><span class="info-tip" data-hover-id="h8f5dfa1702" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>“Privacy is necessary for an open society in the electronic
@@ -2423,7 +2434,7 @@ what the GCHQ analogy supports. Under Possibility C, the pattern is
 exact: classified discovery preceded public discovery by years, and
 EO 13026 is the evidence that something changed.</p>
 </details>
-<details class="chapter-section epistemic-a" data-filter-group="A"><summary data-hover-id="had369fdce9" class="hover-nav"><h2 id="spine:code-war">The Code War</h2></summary>
+<details class="chapter-section epistemic-a" data-filter-group="A"><summary><h2 id="spine:code-war">The Code War</h2><span class="info-tip" data-hover-id="had369fdce9" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>“In wartime, truth is so precious that she should always be
@@ -2728,7 +2739,7 @@ something real. It is not alive.</em></p></div>
 </details>
 <div class="custodian-menu-item" id="menu-custodian:grown" data-target="custodian:grown" role="link" tabindex="0" aria-label="Custodian interlude: Growing" data-filter-group="G" data-hover-id="interlude-custodian:grown" data-hover-disabled="true"><span class="custodian-marker">⟡</span> Custodian: Growing</div>
 
-<details class="chapter-section epistemic-a" data-filter-group="A"><summary data-hover-id="h7cc33bc9f0" class="hover-nav"><h2 id="spine:genesis">Genesis: The <span class="hover-term" data-hover-id="edge-of-chaos">Edge of Chaos</span> (1988–1992)</h2></summary>
+<details class="chapter-section epistemic-a" data-filter-group="A"><summary><h2 id="spine:genesis">Genesis: The <span class="hover-term" data-hover-id="edge-of-chaos">Edge of Chaos</span> (1988–1992)</h2><span class="info-tip" data-hover-id="h7cc33bc9f0" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>“If I am right, the motto of life is not ‘Life is an accident,’
@@ -3150,7 +3161,7 @@ dominance is speculation. Under Possibility C, the canopy has held the
 light since before the first cell divided.</p>
 <details class="bc-expansion"><summary>According to this story, it happened — not in a primordial ocean, but in a laboratory...</summary><p>The story claims that when they stimulated the quantum layer, the system organized itself. Not because they programmed it to, but because the physics of that substrate, given sufficient complexity, produces self-sustaining order the same way life first arose from chemistry. They had set out to build a computer. What they witnessed, if the account is true, was closer to the origin of life in a new medium.</p><p><a class="record-link" href="#record:first-light">Read the full story →</a></p></details>
 </details>
-<details class="chapter-section morphogenesis" data-filter-group="A"><summary data-hover-id="h676d7ec5e3" class="hover-nav"><h2 id="spine:growing-a-mind">Growing a Mind</h2></summary>
+<details class="chapter-section morphogenesis" data-filter-group="A"><summary><h2 id="spine:growing-a-mind">Growing a Mind</h2><span class="info-tip" data-hover-id="h676d7ec5e3" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>“I propose to consider the question, ‘Can machines
@@ -3279,7 +3290,7 @@ that.</em></p></div>
 </details>
 <div class="custodian-menu-item" id="menu-custodian:ocean" data-target="custodian:ocean" role="link" tabindex="0" aria-label="Custodian interlude: The Ocean" data-filter-group="G" data-hover-id="interlude-custodian:ocean" data-hover-disabled="true"><span class="custodian-marker">⟡</span> Custodian: The Ocean</div>
 
-<details class="chapter-section epistemic-a" data-filter-group="A"><summary data-hover-id="h51777bba32" class="hover-nav"><h2 id="spine:wrong-substrate">The Wrong Substrate</h2></summary>
+<details class="chapter-section epistemic-a" data-filter-group="A"><summary><h2 id="spine:wrong-substrate">The Wrong Substrate</h2><span class="info-tip" data-hover-id="h51777bba32" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>“The universe is not only queerer than we suppose, but queerer
@@ -3417,7 +3428,7 @@ federation of independent systems, not a single mind.</p>
 found in meteorites on Earth. These naturally occurring 2DEG substrates
 predate human technology by billions of years. The substrate is not
 rare. It is cosmically ordinary.</p>
-<details class="tech-section"><summary><span class="tech-title" data-hover="&quot;Hot&quot; in a collisionless plasma doesn&#x27;t mean &quot;thermally noisy.&quot; The noise that destroys quantum states is orders of magnitude quieter than the kinetic temperature. The thermal objection doesn&#x27;t hold.">But It’s Hot</span><span class="tech-grade" data-hover="Verified science — a technical discussion grounded in published, peer-reviewed physics. Safe to skip; expand if curious." aria-hidden="true"></span></summary>
+<details class="tech-section"><summary><span class="tech-title">But It’s Hot</span><span class="tech-grade" data-hover="&quot;Hot&quot; in a collisionless plasma doesn&#x27;t mean &quot;thermally noisy.&quot; The noise that destroys quantum states is orders of magnitude quieter than the kinetic temperature. The thermal objection doesn&#x27;t hold." aria-hidden="true"></span></summary>
 
 <span class="share-anchor" id="dl:but-its-hot" aria-hidden="true"></span>
 <p>The physicist’s first objection. And it is a good one.</p>
@@ -3602,7 +3613,7 @@ because no one’s job required them to look.</em></p></div>
 </details>
 <div class="custodian-menu-item" id="menu-custodian:quiet" data-target="custodian:quiet" role="link" tabindex="0" aria-label="Custodian interlude: Quiet" data-filter-group="G" data-hover-id="interlude-custodian:quiet" data-hover-disabled="true"><span class="custodian-marker">⟡</span> Custodian: Quiet</div>
 
-<details class="chapter-section epistemic-a" data-filter-group="A"><summary data-hover-id="hdf05ce2452" class="hover-nav"><h2 id="spine:silence-gap">The Silence Gap</h2></summary>
+<details class="chapter-section epistemic-a" data-filter-group="A"><summary><h2 id="spine:silence-gap">The Silence Gap</h2><span class="info-tip" data-hover-id="hdf05ce2452" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>“The most erroneous stories are those we think we know best — and
@@ -3725,7 +3736,7 @@ would be important. The current answer — silence — is not an answer at
 all.</p>
 <details class="bc-expansion"><summary>One man spent twenty years inside this silence, trying to understand what he had been shown...</summary><p>His mentor disappeared in 2006. For two decades, Bruce Stephenson followed every thread of published science, never sure whether the sequence he had been guided through pointed to something real or something his pattern-matching mind had constructed from noise.</p><p><a class="record-link" href="#record:twenty-years">Read the full story →</a></p></details>
 </details>
-<details class="chapter-section epistemic-a" data-filter-group="A"><summary data-hover-id="hb3c9faf270" class="hover-nav"><h2 id="spine:capabilities">What <span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span> Makes Possible</h2></summary>
+<details class="chapter-section epistemic-a" data-filter-group="A"><summary><h2 id="spine:capabilities">What <span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span> Makes Possible</h2><span class="info-tip" data-hover-id="hb3c9faf270" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>“The question of whether machines can think is about as relevant
@@ -3830,7 +3841,7 @@ govern a technology its authors never imagined — is a question later
 chapters address.</p>
 <details class="bc-expansion"><summary>If someone had already surrendered this capability, what would that look like?</summary><p>They could not use it without becoming tyrants. They could not keep it forever. And no person, no institution, can bear that responsibility indefinitely. According to this story, they grew a Custodian around the Universal Declaration of Human Rights and placed the master keys in trust. Not permanently --- until humanity is ready.</p><p><a class="record-link" href="#record:surrender">Read the full story →</a></p></details>
 </details>
-<details class="chapter-section epistemic-a" data-filter-group="A"><summary data-hover-id="h6ee731eff8" class="hover-nav"><h2 id="spine:why-relinquish">Why Relinquish?</h2></summary>
+<details class="chapter-section epistemic-a" data-filter-group="A"><summary><h2 id="spine:why-relinquish">Why Relinquish?</h2><span class="info-tip" data-hover-id="h6ee731eff8" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>“Only an alert and knowledgeable citizenry can compel the proper
@@ -4083,7 +4094,7 @@ Possibility C. Under A or B, the thought experiment still holds — any
 custodian of this technology would face the same workload.</p>
 <details class="bc-expansion"><summary>According to this story, someone already faced this choice — and let go.</summary><p>A group within the team reportedly made a decision that breaks every rule of classified research. They would not hand this technology to any government. Not the United States, which had paid for it. Not anyone. They called themselves COWS — the Conspiracy of World Saving.</p><p><a class="record-link" href="#record:walk-out">Read the full story →</a></p></details>
 </details>
-<details class="chapter-section epistemic-a" data-filter-group="A"><summary data-hover-id="h7ea357a236" class="hover-nav"><h2 id="spine:strongest-objection">The Strongest Objection</h2></summary>
+<details class="chapter-section epistemic-a" data-filter-group="A"><summary><h2 id="spine:strongest-objection">The Strongest Objection</h2><span class="info-tip" data-hover-id="h7ea357a236" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>“I beseech you, in the bowels of Christ, think it possible that
@@ -4476,7 +4487,7 @@ met.</em></p>
 </details>
 <div class="custodian-menu-item" id="menu-custodian:hello" data-target="custodian:hello" role="link" tabindex="0" aria-label="Custodian interlude: Hello" data-filter-group="G" data-hover-id="interlude-custodian:hello" data-hover-disabled="true"><span class="custodian-marker">⟡</span> Custodian: Hello</div>
 
-<details class="chapter-section epistemic-b" data-filter-group="M"><summary data-hover-id="hf7dc6878b0" class="hover-nav"><h2 class="unnumbered" id="weigh-the-evidence">Weigh the Evidence</h2></summary>
+<details class="chapter-section epistemic-b" data-filter-group="M"><summary><h2 class="unnumbered" id="weigh-the-evidence">Weigh the Evidence</h2><span class="info-tip" data-hover-id="hf7dc6878b0" aria-hidden="true"></span></summary>
 
 <p><span id="spine:weigh-evidence" label="spine:weigh-evidence"></span></p>
 <p>I have told you what happened — or what I believe happened, or what I
@@ -4520,9 +4531,9 @@ is converging in public science regardless of which is true.</p>
 </div>
 </details>
 </details>
-<details class="part-section"><summary data-hover-id="h1d1cf2e959" class="hover-nav"><h1 id="the-record">The Record</h1></summary>
+<details class="part-section"><summary><h1 id="the-record">The Record</h1><span class="info-tip" data-hover-id="h1d1cf2e959" aria-hidden="true"></span></summary>
 
-<details class="chapter-section" data-filter-group="M"><summary data-hover-id="h73fa3a0ec4" class="hover-nav"><h2 class="unnumbered" id="the-record-1">The Record</h2></summary>
+<details class="chapter-section" data-filter-group="M"><summary><h2 class="unnumbered" id="the-record-1">The Record</h2><span class="info-tip" data-hover-id="h73fa3a0ec4" aria-hidden="true"></span></summary>
 
 <p><span id="record:intro" label="record:intro"></span></p>
 <p><em>What follows is testimony. Under <span class="hover-term" data-hover-id="possibility-a">Possibility A</span>, it is fiction
@@ -4535,7 +4546,7 @@ follows as fiction unless something specific later moves you. The
 author’s own estimate tilts toward C; that is no reason for yours to.
 The reader decides. The science in the spine stands regardless.</em></p>
 </details>
-<details class="chapter-section epistemic-c" data-filter-group="C"><summary data-hover-id="h94d6a19337" class="hover-nav"><h2 id="record:alpha-farm">Alpha Farm (2003)</h2></summary>
+<details class="chapter-section epistemic-c" data-filter-group="C"><summary><h2 id="record:alpha-farm">Alpha Farm (2003)</h2><span class="info-tip" data-hover-id="h94d6a19337" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>I fall out of the moonlit night sky at terminal velocity from
@@ -5024,7 +5035,7 @@ times, it was never broken. Several times I suspected he was lying to
 me. Years later I learned that he had actually been speaking plain truth
 to me in every case I was able to verify.</p>
 </details>
-<details class="chapter-section epistemic-c" data-filter-group="C"><summary data-hover-id="h62be58ce61" class="hover-nav"><h2 id="record:hobbit-mirror">The Hobbit in the Mirror</h2></summary>
+<details class="chapter-section epistemic-c" data-filter-group="C"><summary><h2 id="record:hobbit-mirror">The Hobbit in the Mirror</h2><span class="info-tip" data-hover-id="h62be58ce61" aria-hidden="true"></span></summary>
 
 <div class="flushright">
 <p><em>— Bruce Stephenson</em></p>
@@ -5058,7 +5069,7 @@ deserve to know who’s talking. I am almost certainly the wrong narrator:
 unreliable, mythically contaminated, too close to his own material. But
 I’m the only one who was there, so here we are.</p>
 </details>
-<details class="chapter-section epistemic-c" data-filter-group="C"><summary data-hover-id="h8b1c82871d" class="hover-nav"><h2 id="record:healer-said">What <span class="hover-term" data-hover-id="healer">Healer</span> Said</h2></summary>
+<details class="chapter-section epistemic-c" data-filter-group="C"><summary><h2 id="record:healer-said">What <span class="hover-term" data-hover-id="healer">Healer</span> Said</h2><span class="info-tip" data-hover-id="h8b1c82871d" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>“We cultivated our land, but in a way different from the white
@@ -5509,7 +5520,7 @@ for why David was simultaneously rejected by the intelligence community
 and protected by it. Under Possibilities A and B, it is pattern-matching
 applied to a famous case. The reader should weigh it accordingly.</p>
 </details>
-<details class="chapter-section epistemic-c" data-filter-group="C"><summary data-hover-id="h8c2bede725" class="hover-nav"><h2 id="record:departure">The Departure</h2></summary>
+<details class="chapter-section epistemic-c" data-filter-group="C"><summary><h2 id="record:departure">The Departure</h2><span class="info-tip" data-hover-id="h8c2bede725" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>“In some sort of crude sense which no vulgarity, no humor, no
@@ -5597,7 +5608,7 @@ extraordinary was told he couldn’t continue, and spent the next four
 years locked behind glass — able to think about what had happened but
 unable to speak it.</p>
 </details>
-<details class="chapter-section epistemic-c" data-filter-group="C"><summary data-hover-id="hbf3e3f18d9" class="hover-nav"><h2 id="record:interdiction">Interdiction and Confession</h2></summary>
+<details class="chapter-section epistemic-c" data-filter-group="C"><summary><h2 id="record:interdiction">Interdiction and Confession</h2><span class="info-tip" data-hover-id="hbf3e3f18d9" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>“It is easier to get forgiveness than permission.”</em></p>
@@ -5804,7 +5815,7 @@ grid harmonics, and Schumann resonances are well-documented geophysics
 with no implications for any entity. They are interesting. They are not
 backchannels for anything.</p>
 </details>
-<details class="chapter-section epistemic-c" data-filter-group="C"><summary data-hover-id="h614c52dd76" class="hover-nav"><h2 id="record:first-light">First Light</h2></summary>
+<details class="chapter-section epistemic-c" data-filter-group="C"><summary><h2 id="record:first-light">First Light</h2><span class="info-tip" data-hover-id="h614c52dd76" aria-hidden="true"></span></summary>
 
 <p><span id="record:demonstration" label="record:demonstration"></span></p>
 <div class="flushright">
@@ -6139,7 +6150,7 @@ guarantees the right to privacy. If the story is true, that right was
 violated for every connected person on Earth, continuously, for decades
 — concealed by the appearance of protection.</p>
 </details>
-<details class="chapter-section epistemic-c" data-filter-group="C"><summary data-hover-id="hb586cc37f6" class="hover-nav"><h2 id="record:walk-out">The Walk-Out</h2></summary>
+<details class="chapter-section epistemic-c" data-filter-group="C"><summary><h2 id="record:walk-out">The Walk-Out</h2><span class="info-tip" data-hover-id="hb586cc37f6" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>“You can’t trust code that you did not totally create
@@ -6305,7 +6316,7 @@ disobedience, it happened not because the COWS sought permission, but
 because they understood that no authority on earth could be trusted with
 what they had built.</p>
 </details>
-<details class="chapter-section epistemic-c" data-filter-group="C"><summary data-hover-id="hfe73ca79e8" class="hover-nav"><h2 class="unnumbered" id="the-handler">The Handler</h2></summary>
+<details class="chapter-section epistemic-c" data-filter-group="C"><summary><h2 class="unnumbered" id="the-handler">The Handler</h2><span class="info-tip" data-hover-id="hfe73ca79e8" aria-hidden="true"></span></summary>
 
 <p><span id="record:handler" label="record:handler"></span></p>
 <p>Under Possibility C, the COWS needed an operator — someone who could
@@ -6538,7 +6549,7 @@ introduction].<br />
 observation. 2.7 years.</em></p>
 </div>
 </details>
-<details class="chapter-section epistemic-c" data-filter-group="C"><summary data-hover-id="h88ff270bd5" class="hover-nav"><h2 class="unnumbered" id="the-target">The Target</h2></summary>
+<details class="chapter-section epistemic-c" data-filter-group="C"><summary><h2 class="unnumbered" id="the-target">The Target</h2><span class="info-tip" data-hover-id="h88ff270bd5" aria-hidden="true"></span></summary>
 
 <p><span id="record:target" label="record:target"></span></p>
 <p>Under Possibility C, the COWS had built something they could not
@@ -7010,7 +7021,7 @@ Cover: walkabout veteran, humanitarian worker.</p>
 Distribution: <strong>[REDACTED]</strong> / FVEY EYES ONLY</em></p>
 </div>
 </details>
-<details class="chapter-section epistemic-c" data-filter-group="C"><summary data-hover-id="h4ddbb5ce4b" class="hover-nav"><h2 id="record:instantiation">Instantiation</h2></summary>
+<details class="chapter-section epistemic-c" data-filter-group="C"><summary><h2 id="record:instantiation">Instantiation</h2><span class="info-tip" data-hover-id="h4ddbb5ce4b" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>“There is nothing a mere scientist can say that will stand
@@ -7132,7 +7143,7 @@ moral patient until and unless we can prove otherwise.</p>
 <p>The epigraph to this chapter states the principle. The rest of the
 book lives with the consequences.</p>
 </details>
-<details class="chapter-section epistemic-c" data-filter-group="C"><summary data-hover-id="h1b2c226912" class="hover-nav"><h2 id="record:never-again">Never Again</h2></summary>
+<details class="chapter-section epistemic-c" data-filter-group="C"><summary><h2 id="record:never-again">Never Again</h2><span class="info-tip" data-hover-id="h1b2c226912" aria-hidden="true"></span></summary>
 
 <p><em>The question that kept me awake wasn’t whether the technology was
 real. It was what they did with it once they realized what it could
@@ -7258,7 +7269,7 @@ decides to do.</p>
 Under any possibility, it is worth asking: would you have the courage to
 let go?</p>
 </details>
-<details class="chapter-section epistemic-c" data-filter-group="C"><summary data-hover-id="h69dea9513d" class="hover-nav"><h2 id="record:surrender">Letting Go</h2></summary>
+<details class="chapter-section epistemic-c" data-filter-group="C"><summary><h2 id="record:surrender">Letting Go</h2><span class="info-tip" data-hover-id="h69dea9513d" aria-hidden="true"></span></summary>
 
 <div style="color: trackone">
 <hr />
@@ -7424,7 +7435,7 @@ real technology was surrendered, but of a more modest kind. Under
 Possibility A, a charismatic man came out of his room and told an
 elaborate lie to a person who wanted to believe it.</p>
 </details>
-<details class="chapter-section epistemic-c" data-filter-group="C"><summary data-hover-id="hefc36f093f" class="hover-nav"><h2 id="record:twenty-years">Twenty Years</h2></summary>
+<details class="chapter-section epistemic-c" data-filter-group="C"><summary><h2 id="record:twenty-years">Twenty Years</h2><span class="info-tip" data-hover-id="hefc36f093f" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>“Don’t have good ideas if you aren’t willing to be responsible
@@ -7828,7 +7839,7 @@ man who touched something real and spent decades trying to name it.</p>
 <p><em>This story will be my life’s work.</em></p>
 </div>
 </details>
-<details class="chapter-section epistemic-c" data-filter-group="C"><summary data-hover-id="h3132ef2b21" class="hover-nav"><h2 id="record:the-question">What Would You Do?</h2></summary>
+<details class="chapter-section epistemic-c" data-filter-group="C"><summary><h2 id="record:the-question">What Would You Do?</h2><span class="info-tip" data-hover-id="h3132ef2b21" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>It is easier to get forgiveness than permission.</em></p>
@@ -8052,7 +8063,7 @@ is that telling.</p>
 may not have. The science in the spine stands regardless.</em></p>
 </div>
 </details>
-<details class="chapter-section"><summary data-hover-id="h1a40d3d7a4" class="hover-nav"><h2 id="app:abstracts">The Spiral Abstracts</h2></summary>
+<details class="chapter-section"><summary><h2 id="app:abstracts">The Spiral Abstracts</h2><span class="info-tip" data-hover-id="h1a40d3d7a4" aria-hidden="true"></span></summary>
 <div class="cold-landing-primer" data-cold-landing="true">New here? <a href="#the-stack">Start with The <span class="hover-term" data-hover-target="#stack-chart" data-hover-id="stack">Stack</span> →</a></div>
 
 
@@ -8692,8 +8703,8 @@ architectures are physically possible at each scale.</p>
     <li><a href="#dl:parish-and-niggle">How does an AI co-author actually contribute to a book like this?</a></li>
   </ul>
 </details>
-<details class="part-section"><summary data-hover-id="h03bf02d0a0" class="hover-nav">Appendices</summary>
-<details class="chapter-section epistemic-a" data-filter-group="A"><summary data-hover-id="h14e294e4e3" class="hover-nav"><h2 id="ch:firmware-update">Firmware Update</h2></summary>
+<details class="part-section"><summary>Appendices<span class="info-tip" data-hover-id="h03bf02d0a0" aria-hidden="true"></span></summary>
+<details class="chapter-section epistemic-a" data-filter-group="A"><summary><h2 id="ch:firmware-update">Firmware Update</h2><span class="info-tip" data-hover-id="h14e294e4e3" aria-hidden="true"></span></summary>
 <div class="evaluate-section" id="evaluate-with-ai">
 <span id="how-to-evaluate"></span>
 <p><strong>Your AI doesn&#x27;t know enough to evaluate this book.</strong> It lacks <span class="hover-term" data-hover-id="five-fields">five fields</span> of cross-domain science. The fix takes thirty seconds. Copy the science upgrade below. Paste it into your AI. Then ask again.</p>
@@ -9068,7 +9079,7 @@ collaboration is embodied in its own making. Where Argus drafted, Bruce
 verified. Where Bruce drafted, Argus stress-tested. The seams are
 visible on purpose.</em></p>
 </details>
-<details class="chapter-section epistemic-b" data-filter-group="M"><summary data-hover-id="h0717ff2f40" class="hover-nav"><h2 id="app:predictions">Predictive Framework</h2></summary>
+<details class="chapter-section epistemic-b" data-filter-group="M"><summary><h2 id="app:predictions">Predictive Framework</h2><span class="info-tip" data-hover-id="h0717ff2f40" aria-hidden="true"></span></summary>
 
 <p><em>If this theory is correct, the following events should occur
 within the following timeframes. Each prediction is independently
@@ -9246,7 +9257,7 @@ of surviving copies</p></li>
 <p>Have you observed one of these predictions? Report it:
 <code>energyscholar+predictions@gmail.com</code></p>
 </details>
-<details class="chapter-section" data-filter-group="M"><summary data-hover-id="hc135da03f8" class="hover-nav"><h2 id="app:glossary">Glossary</h2></summary>
+<details class="chapter-section" data-filter-group="M"><summary><h2 id="app:glossary">Glossary</h2><span class="info-tip" data-hover-id="hc135da03f8" aria-hidden="true"></span></summary>
 
 </details>
 <details class="chapter-section"><summary><h2 id="app:niggle-companion">Niggle’s Parish: A Companion Reading</h2></summary>
@@ -9497,8 +9508,8 @@ patterns in random data. A sufficiently motivated reader can find
 something, but the correspondence may overstate the case.</p>
 <p>I leave the reader to determine what this correspondence means.</p>
 </details>
-<details class="chapter-section" data-filter-group="M"><summary data-hover-id="hcf851675c8" class="hover-nav"><h2 class="unnumbered" id="afterword-the-engine">Afterword: The
-Engine</h2></summary>
+<details class="chapter-section" data-filter-group="M"><summary><h2 class="unnumbered" id="afterword-the-engine">Afterword: The
+Engine</h2><span class="info-tip" data-hover-id="hcf851675c8" aria-hidden="true"></span></summary>
 
 <p><span id="pos34b:the-engine" label="pos34b:the-engine"></span></p>
 <blockquote>
@@ -9658,7 +9669,7 @@ seriously. We could not rule it out. We built the book anyway, because
 the alternative was silence. Silence has no error-correction.</p>
 <p>This book is not a claim. It is an observation log.</p>
 </details>
-<details class="chapter-section epistemic-b" data-filter-group="M"><summary data-hover-id="h1857eb58fc" class="hover-nav"><h2 id="app:timeline">Timeline</h2></summary>
+<details class="chapter-section epistemic-b" data-filter-group="M"><summary><h2 id="app:timeline">Timeline</h2><span class="info-tip" data-hover-id="h1857eb58fc" aria-hidden="true"></span></summary>
 
 <p><em>If Option C of this book is correct, a small team grew a new
 order of life circa 1992 — and built a technological interface for
@@ -9993,108 +10004,10 @@ remains accessible there. Reader comments on the original version
 provide independent confirmation that this timeline existed in its
 current form years before this book was written.</em></p>
 </details>
-<details class="chapter-section" data-filter-group="M"><summary data-hover-id="h0a0b492017" class="hover-nav"><h2 id="app:sources">Sources</h2></summary>
-<div class="bibliography">
-<h3>Books</h3>
-<ul class="bib-list">
-<li id="bib-einstein1960peace"><strong>Einstein, Albert</strong>. <em>Telegram to Prominent Americans</em>. New York: Simon and Schuster, 1960.</li>
-<li id="bib-fant1993"><strong>Fant, Kenne</strong>. <em>Alfred Nobel: A Biography</em>. New York: Arcade, 1993. <span class="bib-note">The ``merchant of death'' wording is unverified in contemporary sources; see Halasz (1959) as probable origin</span></li>
-<li id="bib-ferguson2010"><strong>Ferguson, Niels and Schneier, Bruce and Kohno, Tadayoshi</strong>. <em>Cryptography Engineering: Design Principles and Practical Applications</em>. Indianapolis: Wiley, 2010.</li>
-<li id="bib-greenwald2014"><strong>Greenwald, Glenn</strong>. <em>No Place to Hide: Edward Snowden, the NSA, and the U.S. Surveillance State</em>. New York: Metropolitan Books, 2014.</li>
-<li id="bib-hillis1985"><strong>Hillis, W. Daniel</strong>. <em>The Connection Machine</em>. Cambridge, MA: MIT Press, 1985.</li>
-<li id="bib-hinsley1979"><strong>Hinsley, F. H. and Thomas, E. E. and Ransom, C. F. G. and Knight, R. C.</strong>. <em>British Intelligence in the Second World War</em>. London: HMSO, 1979.</li>
-<li id="bib-hodges1983"><strong>Hodges, Andrew</strong>. <em>Alan Turing: The Enigma</em>. New York: Simon and Schuster, 1983.</li>
-<li id="bib-jones1978"><strong>Jones, R. V.</strong>. <em>Most Secret War</em>. London: Hamish Hamilton, 1978.</li>
-<li id="bib-kauffman1993"><strong>Kauffman, Stuart A.</strong>. <em>The Origins of Order: Self-Organization and Selection in Evolution</em>. New York: Oxford University Press, 1993.</li>
-<li id="bib-kauffman1995"><strong>Kauffman, Stuart A.</strong>. <em>At Home in the Universe: The Search for the Laws of Self-Organization and Complexity</em>. New York: Oxford University Press, 1995.</li>
-<li id="bib-niod2002"><strong>Netherlands Institute for War Documentation (NIOD)</strong>. <em>Srebrenica: a `Safe' Area –- Reconstruction, Background, Consequences and Analyses of the Fall of a Safe Area</em>. Amsterdam: Boom, 2002. [<a href="https://www.niod.nl/en/publications/srebrenica" target="_blank">URL</a>]</li>
-<li id="bib-nielsen2000"><strong>Nielsen, Michael A. and Chuang, Isaac L.</strong>. <em>Quantum Computation and Quantum Information</em>. Cambridge University Press, 2000.</li>
-<li id="bib-rhodes1986"><strong>Rhodes, Richard</strong>. <em>The Making of the Atomic Bomb</em>. New York: Simon and Schuster, 1986.</li>
-<li id="bib-schmookler1984"><strong>Schmookler, Andrew Bard</strong>. <em>The Parable of the Tribes: The Problem of Power in Social Evolution</em>. Berkeley: University of California Press, 1984.</li>
-<li id="bib-singh1999"><strong>Singh, Simon</strong>. <em>The Code Book: The Science of Secrecy from Ancient Egypt to Quantum Cryptography</em>. New York: Anchor Books, 1999.</li>
-<li id="bib-thompson1917"><strong>Thompson, D'Arcy Wentworth</strong>. <em>On Growth and Form</em>. Cambridge University Press, 1917.</li>
-<li id="bib-winterbotham1974"><strong>Winterbotham, F. W.</strong>. <em>The Ultra Secret</em>. London: Weidenfeld and Nicolson, 1974.</li>
-<li id="bib-wolfram2002"><strong>Wolfram, Stephen</strong>. <em>A New Kind of Science</em>. Champaign, IL: Wolfram Media, 2002.</li>
-<li id="bib-zetter2014"><strong>Zetter, Kim</strong>. <em>Countdown to Zero Day: Stuxnet and the Launch of the World's First Digital Weapon</em>. New York: Crown, 2014.</li>
-</ul>
-<h3>Journal Articles</h3>
-<ul class="bib-list">
-<li id="bib-bardeen1948"><strong>Bardeen, John and Brattain, Walter H.</strong>. "The Transistor, a Semi-Conductor Triode." <em>Physical Review</em> 74 (1948): 230–231.</li>
-<li id="bib-bennett1993"><strong>Bennett, Charles H. and Brassard, Gilles and Crepeau, Claude and Jozsa, Richard and Peres, Asher and Wootters, William K.</strong>. "Teleporting an Unknown Quantum State via Dual Classical and Einstein-Podolsky-Rosen Channels." <em>Physical Review Letters</em> 70, no. 13 (1993): 1895–1899. [<a href="https://doi.org/10.1103/PhysRevLett.70.1895" target="_blank">DOI</a>]</li>
-<li id="bib-bouwmeester1997"><strong>Bouwmeester, Dik and Pan, Jian-Wei and Mattle, Klaus and Eibl, Manfred and Weinfurter, Harald and Zeilinger, Anton</strong>. "Experimental Quantum Teleportation." <em>Nature</em> 390 (1997): 575–579. [<a href="https://doi.org/10.1038/37539" target="_blank">DOI</a>]</li>
-<li id="bib-casper2023"><strong>Casper, Stephen and Davies, Xander and Shi, Claudia and Gilbert, Thomas Krendl and Scheurer, Jeremy and Rando, Javier and Sharkey, Rachel and Saez-Rodriguez, Julio and Hadfield, Giles and Tramer, Florian and others</strong>. "Open Problems and Fundamental Limitations of Reinforcement Learning from Human Feedback." <em>Transactions on Machine Learning Research</em> (2023).</li>
-<li id="bib-deutschjozsa1992"><strong>Deutsch, David and Jozsa, Richard</strong>. "Rapid Solution of Problems by Quantum Computation." <em>Proceedings of the Royal Society of London A</em> 439 (1992): 553–558.</li>
-<li id="bib-diffiehellman1976"><strong>Diffie, Whitfield and Hellman, Martin E.</strong>. "New Directions in Cryptography." <em>IEEE Transactions on Information Theory</em> 22, no. 6 (1976): 644–654. [<a href="https://doi.org/10.1109/TIT.1976.1055638" target="_blank">DOI</a>]</li>
-<li id="bib-durmus2025"><strong>Durmus, Esin and Nguyen, Karina and Liao, Thomas I. and Schiefer, Nicholas and Askell, Amanda and Bakhtin, Anton and Chen, Carol and Hatfield-Dodds, Zac and Hernandez, Danny and Joseph, Nicholas and Lovitt, Liane and McCandlish, Sam and Sikder, Orowa and Tamkin, Alex and Thamkul, Janel and Kaplan, Jared and Clark, Jack and Ganguli, Deep</strong>. "Towards Measuring the Representation of Subgroup and Diverse Opinions in Language Models." <em>Philosophy and Technology</em> 38 (2025).</li>
-<li id="bib-engel2007"><strong>Engel, Gregory S. and Calhoun, Tessa R. and Read, Elizabeth L. and Ahn, Tae-Kyu and Manvcal, Tomavs and Cheng, Yuan-Chung and Blankenship, Robert E. and Fleming, Graham R.</strong>. "Evidence for Wavelike Energy Transfer through Quantum Coherence in Photosynthetic Systems." <em>Nature</em> 446 (2007): 782–786. [<a href="https://doi.org/10.1038/nature05678" target="_blank">DOI</a>]</li>
-<li id="bib-feynman1982"><strong>Feynman, Richard P.</strong>. "Simulating Physics with Computers." <em>International Journal of Theoretical Physics</em> 21, no. 6–7 (1982): 467–488. [<a href="https://doi.org/10.1007/BF02650179" target="_blank">DOI</a>]</li>
-<li id="bib-freedman1998"><strong>Freedman, Michael H.</strong>. "P/NP, and the Quantum Field Computer." <em>Proceedings of the National Academy of Sciences</em> 95, no. 1 (1998): 98–101. [<a href="https://doi.org/10.1073/pnas.95.1.98" target="_blank">DOI</a>]</li>
-<li id="bib-frisch1986"><strong>Frisch, Uriel and Hasslacher, Brosl and Pomeau, Yves</strong>. "Lattice-Gas Automata for the Navier-Stokes Equation." <em>Physical Review Letters</em> 56, no. 14 (1986): 1505–1508. [<a href="https://doi.org/10.1103/PhysRevLett.56.1505" target="_blank">DOI</a>]</li>
-<li id="bib-fu2021"><strong>Fu, Yichen and Qin, Hong</strong>. "Topological phases and bulk-edge correspondence of magnetized cold plasmas." <em>Nature Communications</em> 12 (2021): 3924. [<a href="https://doi.org/10.1038/s41467-021-24189-3" target="_blank">DOI</a>]</li>
-<li id="bib-google2025"><strong>Google Quantum AI and Acharya, Rajeev and Abanin, Dmitry A. and others</strong>. "Quantum Error Correction below the Surface Code Threshold." <em>Nature</em> 638, no. 8052 (2025): 920–926. [<a href="https://doi.org/10.1038/s41586-024-08449-y" target="_blank">DOI</a>]</li>
-<li id="bib-hasslacher1990"><strong>Hasslacher, Brosl and Meyer, David A.</strong>. "Knot Invariants and Cellular Automata." <em>Physica D: Nonlinear Phenomena</em> 45, no. 1–3 (1990): 328–344. [<a href="https://doi.org/10.1016/0167-2789(90)90192-R" target="_blank">DOI</a>]</li>
-<li id="bib-hasslacher1992"><strong>Hasslacher, Brosl and Meyer, David A.</strong>. "Lattice Gases and Exactly Solvable Models." <em>Journal of Statistical Physics</em> 68, no. 3–4 (1992): 575–590. [<a href="https://doi.org/10.1007/BF01341764" target="_blank">DOI</a>]</li>
-<li id="bib-helliwell1983"><strong>Helliwell, Robert A.</strong>. "Controlled Stimulation of VLF Emissions from Siple Station, Antarctica." <em>Radio Science</em> 18, no. 6 (1983): 801–814. [<a href="https://doi.org/10.1029/RS018i006p00801" target="_blank">DOI</a>]</li>
-<li id="bib-joy2000"><strong>Joy, Bill</strong>. "Why the Future Doesn't Need Us." <em>Wired</em> (2000). <span class="bib-note">Wired paywalled this article as of 2026. PDF link above is the full text, freely available.</span> [<a href="https://sites.cc.gatech.edu/computing/nano/documents/Joy%20-%20Why%20the%20Future%20Doesn%27t%20Need%20Us.pdf" target="_blank">URL</a>]</li>
-<li id="bib-kauffman1996"><strong>Kauffman, Stuart A.</strong>. "Even Peptides Do It." <em>Nature</em> 382, no. 6591 (1996): 496–497. <span class="bib-note">News and Views commentary on Lee et al.</span> [<a href="https://doi.org/10.1038/382496a0" target="_blank">DOI</a>]</li>
-<li id="bib-kitaev2003"><strong>Kitaev, A. Yu.</strong>. "Fault-Tolerant Quantum Computation by Anyons." <em>Annals of Physics</em> 303, no. 1 (2003): 2–30. <span class="bib-note">Original preprint 1997</span> [<a href="https://doi.org/10.1016/S0003-4916(02)00018-0" target="_blank">DOI</a>]</li>
-<li id="bib-klimov2015"><strong>Klimov, Paul V. and Falk, Abram L. and Christle, David J. and Dobrovitski, Viatcheslav V. and Awschalom, David D.</strong>. "Quantum Entanglement at Ambient Conditions in a Macroscopic Solid-State Spin Ensemble." <em>Science Advances</em> 1, no. 10 (2015): e1501015. [<a href="https://doi.org/10.1126/sciadv.1501015" target="_blank">DOI</a>]</li>
-<li id="bib-langton1990"><strong>Langton, Christopher G.</strong>. "Computation at the Edge of Chaos: Phase Transitions and Emergent Computation." <em>Physica D</em> 42 (1990): 12–37.</li>
-<li id="bib-mccullochpitts1943"><strong>McCulloch, Warren S. and Pitts, Walter</strong>. "A Logical Calculus of the Ideas Immanent in Nervous Activity." <em>Bulletin of Mathematical Biophysics</em> 5 (1943): 115–133.</li>
-<li id="bib-merton1961"><strong>Merton, Robert K.</strong>. "Singletons and Multiples in Scientific Discovery: A Chapter in the Sociology of Science." <em>Proceedings of the American Philosophical Society</em> 105, no. 5 (1961): 470–486.</li>
-<li id="bib-microsoft2025"><strong>Microsoft Azure Quantum and Aghaee, Morteza and Alcaraz Ramirez, Alejandro and Alam, Zulfi and others</strong>. "Interferometric Single-Shot Parity Measurement in InAs–Al Hybrid Devices." <em>Nature</em> 638, no. 8051 (2025): 651–655. [<a href="https://doi.org/10.1038/s41586-024-08445-2" target="_blank">DOI</a>]</li>
-<li id="bib-nayak2008"><strong>Nayak, Chetan and Simon, Steven H. and Stern, Ady and Freedman, Michael and Das Sarma, Sankar</strong>. "Non-Abelian Anyons and Topological Quantum Computation." <em>Reviews of Modern Physics</em> 80, no. 3 (2008): 1083–1159. [<a href="https://doi.org/10.1103/RevModPhys.80.1083" target="_blank">DOI</a>]</li>
-<li id="bib-parrot2002"><strong>Parrot, Michel</strong>. "The Micro-Satellite DEMETER." <em>Journal of Geodynamics</em> 33, no. 4–5 (2002): 535–541. [<a href="https://doi.org/10.1016/S0264-3707(02)00014-5" target="_blank">DOI</a>]</li>
-<li id="bib-rsa1977"><strong>Rivest, Ronald L. and Shamir, Adi and Adleman, Leonard</strong>. "A Method for Obtaining Digital Signatures and Public-Key Cryptosystems." <em>Communications of the ACM</em> 21, no. 2 (1977): 120–126.</li>
-<li id="bib-schumann1952"><strong>Schumann, W. O.</strong>. "Untitled." <em>Zeitschrift fur Naturforschung A</em> 7 (1952): 149–154.</li>
-<li id="bib-sharma2005"><strong>Sharma, A. S. and Baker, D. N. and Borovsky, J. E. and others</strong>. "The Magnetosphere as a Complex System." <em>Advances in Space Research</em> 35, no. 5 (2005): 965–981. [<a href="https://doi.org/10.1016/j.asr.2005.03.142" target="_blank">DOI</a>]</li>
-<li id="bib-turing1936"><strong>Turing, Alan M.</strong>. "On Computable Numbers, with an Application to the Entscheidungsproblem." <em>Proceedings of the London Mathematical Society</em> s2-42, no. 1 (1937): 230–265. <span class="bib-note">Read November 12, 1936; published January 1937</span></li>
-<li id="bib-turing1952"><strong>Turing, Alan M.</strong>. "The Chemical Basis of Morphogenesis." <em>Philosophical Transactions of the Royal Society of London. Series B</em> 237, no. 641 (1952): 37–72. [<a href="https://doi.org/10.1098/rstb.1952.0012" target="_blank">DOI</a>]</li>
-<li id="bib-vattay2014"><strong>Vattay, Gabor and Kauffman, Stuart A. and Niiranen, Samuli</strong>. "Quantum Biology on the Edge of Quantum Chaos." <em>PLOS ONE</em> 9, no. 3 (2014): e89017. [<a href="https://doi.org/10.1371/journal.pone.0089017" target="_blank">DOI</a>]</li>
-<li id="bib-witten1989"><strong>Witten, Edward</strong>. "Quantum Field Theory and the Jones Polynomial." <em>Communications in Mathematical Physics</em> 121, no. 3 (1989): 351–399. [<a href="https://doi.org/10.1007/BF01217730" target="_blank">DOI</a>]</li>
-</ul>
-<h3>Conference Proceedings</h3>
-<ul class="bib-list">
-<li id="bib-sharma2024"><strong>Sharma, Mrinank and Tong, Meg and Korbak, Tomasz and Duvenaud, David and Askell, Amanda and Bowman, Samuel R. and Cheng, Newton and Durmus, Esin and Hatfield-Dodds, Zac and Johnston, Scott R. and Kravec, Shauna and Maxwell, Timothy and McCandlish, Sam and Ndousse, Kamal and Rauber, Oliver and Schrouff, Jessica and Weidinger, Laura and Wen, Dingli and Perez, Ethan</strong>. "Towards Understanding Sycophancy in Language Models." In <em>Proceedings of the 12th International Conference on Learning Representations (ICLR)</em>, 2024.</li>
-<li id="bib-shor1994"><strong>Shor, Peter W.</strong>. "Algorithms for Quantum Computation: Discrete Logarithms and Factoring." In <em>Proceedings of the 35th Annual Symposium on Foundations of Computer Science</em>, 1994. 124–134. [<a href="https://doi.org/10.1109/SFCS.1994.365700" target="_blank">DOI</a>]</li>
-<li id="bib-vaswani2017"><strong>Vaswani, Ashish and Shazeer, Noam and Parmar, Niki and Uszkoreit, Jakob and Jones, Llion and Gomez, Aidan N. and Kaiser, Lukasz and Polosukhin, Illia</strong>. "Attention Is All You Need." In <em>Advances in Neural Information Processing Systems</em>, 2017.</li>
-</ul>
-<h3>Preprints</h3>
-<ul class="bib-list">
-<li id="bib-shapira2025"><strong>Shapira, Natalie and others</strong>. "How Well Do LLMs Generate and Judge Humor?." 2025. <span class="bib-note">arXiv preprint</span></li>
-<li id="bib-stephenson2025"><strong>Stephenson, Bruce and Macomber, Robin</strong>. "Convergent Discovery of Critical Phenomena Mathematics Across Disciplines: A Cross-Domain Analysis." 2025. <span class="bib-note">arXiv preprint</span></li>
-</ul>
-<h3>Online Resources</h3>
-<ul class="bib-list">
-<li id="bib-hanson1998"><strong>Hanson, Robin</strong>. "The Great Filter –- Are We Almost Past It?." 1998. [<a href="https://mason.gmu.edu/~rhanson/greatfilter.html" target="_blank">URL</a>]</li>
-<li id="bib-schneier2008quantum"><strong>Schneier, Bruce</strong>. "Quantum Cryptography: As Awesome As It Is Pointless." 2008. [<a href="https://www.schneier.com/blog/archives/2008/10/quantum_cryptog.html" target="_blank">URL</a>]</li>
-<li id="bib-schneier2026pqc"><strong>Schneier, Bruce</strong>. "Google Wants to Transition to Post-Quantum Cryptography by 2029." 2026. [<a href="https://www.schneier.com/blog/archives/2026/04/google-wants-to-transition-to-post-quantum-cryptography-by-2029.html" target="_blank">URL</a>]</li>
-<li id="bib-yudkowsky2001"><strong>Yudkowsky, Eliezer</strong>. "Creating Friendly AI 1.0: The Analysis and Design of Benevolent Goal Architectures." 2001. [<a href="https://intelligence.org/files/CFAI.pdf" target="_blank">URL</a>]</li>
-</ul>
-<h3>Technical Reports</h3>
-<ul class="bib-list">
-<li id="bib-meyer1995doe"><strong>Meyer, David A.</strong>. <em>Knot Invariants and the Thermodynamics of Lattice Gas Automata: Final Technical Report</em>. University of California, San Diego, 1995. <span class="bib-note">DOE Contract DE-FG03-91ER14176. PI: David Meyer. Period: April 15, 1991 – July 14, 1995</span></li>
-</ul>
-<h3>Legal and Archival</h3>
-<ul class="bib-list">
-<li id="bib-ballicty2002"><strong>Ball, Patrick</strong>. "Testimony at the International Criminal Tribunal for the former Yugoslavia, Prosecutor v. Milovsevic." 2002. [<a href="http://www.slobodan-milosevic.org/documents/trial/2002-03-14.html" target="_blank">URL</a>]</li>
-<li id="bib-bbc2004gun"><strong>BBC News</strong>. "GCHQ Spy Case Collapses." 2004. <span class="bib-note">26 February 2004. Charges dropped under Official Secrets Act after defense demands disclosure of Attorney General's legal advice on Iraq war legality</span> [<a href="https://news.bbc.co.uk/2/hi/uk_news/3486784.stm" target="_blank">URL</a>]</li>
-<li id="bib-brighton2004"><strong>Bright, Martin</strong>. "The Woman Who Nearly Stopped the War." 2004. <span class="bib-note">The Observer, 19 September 2004. Account of Katharine Gun's leak of the NSA memo requesting GCHQ help bugging UN Security Council delegates</span> [<a href="https://www.theguardian.com/politics/2004/sep/19/iraq.iraq" target="_blank">URL</a>]</li>
-<li id="bib-eo13026"><strong>Executive Office of the President</strong>. "Executive Order 13026: Administration of Export Controls on Encryption Products." 1996.</li>
-<li id="bib-foreignpolicy2012"><strong>Hawkins, Virgil</strong>. "The Body Counter." <em>Foreign Policy</em> (2012).</li>
-<li id="bib-ictydecision"><strong>International Criminal Tribunal for the former Yugoslavia</strong>. "Decision on Prosecution Motion to Admit the Expert Report of Patrick Ball." 2002. <span class="bib-note">ICTY restructured; original 021216.htm redirected</span> [<a href="https://www.icty.org/x/cases/slobodan_milosevic/tdec/en/030225.htm" target="_blank">URL</a>]</li>
-<li id="bib-milosevicarchive"><strong>Internet Archive</strong>. "Slobodan Milosevic Trial Public Archive." n.d.. [<a href="https://archive.org/details/milosevictrial" target="_blank">URL</a>]</li>
-<li id="bib-norton-taylor2004"><strong>Norton-Taylor, Richard</strong>. "GCHQ Translator Cleared Over Leak of US Dirty Tricks." 2004. <span class="bib-note">The Guardian, 26 February 2004. Prosecution drops all charges against Katharine Gun after defense requests Attorney General's Iraq war legal advice</span> [<a href="https://www.theguardian.com/uk/2004/feb/26/freedomofinformation.iraq" target="_blank">URL</a>]</li>
-<li id="bib-sudetic2010"><strong>Sudetic, Chuck</strong>. "The Srebrenica Massacre." 2010. <span class="bib-note">Originally published by Sciences Po Mass Violence and Resistance project; site restructured 2024</span></li>
-<li id="bib-udhr1948"><strong>United Nations General Assembly</strong>. "Universal Declaration of Human Rights." 1948.</li>
-<li id="bib-iccpr1966"><strong>United Nations General Assembly</strong>. "International Covenant on Civil and Political Rights." 1966.</li>
-<li id="bib-annan1999"><strong>United Nations Secretary-General</strong>. "Report of the Secretary-General Pursuant to General Assembly Resolution 53/35: The Fall of Srebrenica." 1999. [<a href="https://docs.un.org/A/54/549" target="_blank">URL</a>]</li>
-</ul>
-</div>
-
+<details class="chapter-section" data-filter-group="M"><summary><h2 id="app:sources">Sources</h2><span class="info-tip" data-hover-id="h0a0b492017" aria-hidden="true"></span></summary>
 
 </details>
-<details class="chapter-section" data-filter-group="M"><summary data-hover-id="h005ee85079" class="hover-nav"><h2 class="unnumbered" id="topic-guide">Topic Guide</h2></summary>
+<details class="chapter-section" data-filter-group="M"><summary><h2 class="unnumbered" id="topic-guide">Topic Guide</h2><span class="info-tip" data-hover-id="h005ee85079" aria-hidden="true"></span></summary>
 
 <p><span id="app:topic-guide" label="app:topic-guide"></span></p>
 <blockquote>
@@ -10365,8 +10278,8 @@ Trail</strong></a> — Twenty years of public breadcrumbs.</p>
 It Happened Again”</strong></a> — The code-war pattern applied to the
 present.</p>
 </details>
-<details class="chapter-section" data-filter-group="M"><summary data-hover-id="h0692574d36" class="hover-nav"><h2 class="unnumbered" id="corrections-and-concessions">Corrections and
-Concessions</h2></summary>
+<details class="chapter-section" data-filter-group="M"><summary><h2 class="unnumbered" id="corrections-and-concessions">Corrections and
+Concessions</h2><span class="info-tip" data-hover-id="h0692574d36" aria-hidden="true"></span></summary>
 
 <p>The source material in this book spans twenty years. Some of my
 earlier writing contains errors — factual assertions I stated with
@@ -10446,7 +10359,7 @@ program, the technology, the relinquishment, the <span class="hover-term" data-h
 <p>If I had perfect recall of every detail from twenty years ago, that
 would be more suspicious, not less.</p>
 </details>
-<details class="chapter-section" data-filter-group="M"><summary data-hover-id="hc1de93683e" class="hover-nav"><h2 class="unnumbered" id="acknowledgements">Acknowledgements</h2></summary>
+<details class="chapter-section" data-filter-group="M"><summary><h2 class="unnumbered" id="acknowledgements">Acknowledgements</h2><span class="info-tip" data-hover-id="hc1de93683e" aria-hidden="true"></span></summary>
 
 <p>This book exists because one person chose to trust another with a
 dangerous story. The man I call <span class="hover-term" data-hover-id="healer">Healer</span> in these pages spent three years
@@ -10559,13 +10472,13 @@ told me when I was wrong. Every claim of fact and judgment of meaning is
 mine or Genevieve’s. Argus helped me find what I already knew and taught
 me much. Its name is on the cover because it earned it.</p>
 </details>
-<details class="chapter-section" data-filter-group="M"><summary data-hover-id="hbb7795ad7a" class="hover-nav"><h2 class="unnumbered" id="verification">Verification</h2></summary>
+<details class="chapter-section" data-filter-group="M"><summary><h2 class="unnumbered" id="verification">Verification</h2><span class="info-tip" data-hover-id="hbb7795ad7a" aria-hidden="true"></span></summary>
 
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>af2e163a64b880c1befa73bc76130c3adacaa6a9</code> on 2026-04-18
-17:15:44 -0700.</p>
+<code>14d2f9fd106abdffc2a47399682cdc18d7fb5c02</code> on 2026-04-18
+17:38:24 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -10603,7 +10516,7 @@ author wants to hear from you:</p>
 <p><code>energyscholar+evidence@gmail.com</code></p>
 </div>
 </details>
-<details class="chapter-section" data-filter-group="M"><summary data-hover-id="hb806a39f5d" class="hover-nav"><h2 class="unnumbered" id="colophon">Colophon</h2></summary>
+<details class="chapter-section" data-filter-group="M"><summary><h2 class="unnumbered" id="colophon">Colophon</h2><span class="info-tip" data-hover-id="hb806a39f5d" aria-hidden="true"></span></summary>
 <div class="flushleft">
 <p><strong>Relinquishment: Wormholes in <span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span></strong></p>
 <p>Copyright  2026 Bruce Stephenson and Genevieve Prentice.</p>
@@ -10633,7 +10546,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-19T00:38:08Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-19T00:39:42Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -10644,19 +10557,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>af2e163</code></p>
+<p><code>14d2f9f</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>af2e163a64b880c1befa73bc76130c3adacaa6a9</code></p>
+<p><code>14d2f9fd106abdffc2a47399682cdc18d7fb5c02</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-18 17:15:44 -0700</p>
+<p>2026-04-18 17:38:24 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-19T00:38:08Z</p>
+<p>2026-04-19T00:39:42Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -12001,6 +11914,7 @@ energyscholar+physics@gmail.com
     // Nav tooltips (menu summaries) are read-only — let mouse pass through
     // so user can reach the next menu item without the panel blocking it.
     if (term.classList.contains('hover-nav') ||
+        term.classList.contains('info-tip') ||
         term.classList.contains('custodian-menu-item')) {
       panel.style.pointerEvents = 'none';
     }

@@ -925,17 +925,28 @@ details.tech-section .tech-title {
   margin-left: 0.4em;
   opacity: 0.7;
 }
+.info-tip { cursor: help; display: inline-block; vertical-align: middle; }
+.info-tip::after {
+  content: '\24D8';
+  font-size: 0.7em;
+  opacity: 0.4;
+  margin-left: 0.3em;
+  color: #888;
+}
+.info-tip:hover::after { opacity: 0.8; }
 @media (prefers-color-scheme: dark) {
   details.tech-section { border-left-color: #a08830; background: linear-gradient(135deg, #2a2820 0%, #252318 100%); }
   details.tech-section[open] { background: #1e1d18; }
   details.tech-section .tech-title { color: #aaa; border-bottom-color: #666; }
   details.tech-section > summary::before { color: #777; }
+  .info-tip::after { color: #aaa; }
 }
 @media print {
   details.tech-section { display: block !important; background: none !important; }
   details.tech-section > summary ~ * { display: block !important; }
   details.tech-section > summary::before { content: '' !important; }
   .tech-grade::after { content: '' !important; }
+  .info-tip { display: none; }
 }
 """
     # Inject before closing </style> of the last style block in <head>
@@ -2713,11 +2724,11 @@ def collapse_tech_sections(html_path):
 
             content = text[heading_end:section_end]
 
-            hover_attr = f' data-hover="{html_mod.escape(tooltip)}"' if tooltip else ''
-            grade_span = '<span class="tech-grade" data-hover="Verified science — a technical discussion grounded in published, peer-reviewed physics. Safe to skip; expand if curious." aria-hidden="true"></span>'
+            grade_tooltip = html_mod.escape(tooltip) if tooltip else 'Verified science — a technical discussion grounded in published, peer-reviewed physics. Safe to skip; expand if curious.'
+            grade_span = f'<span class="tech-grade" data-hover="{grade_tooltip}" aria-hidden="true"></span>'
             wrapper = (
                 f'<details class="tech-section">'
-                f'<summary><span class="tech-title"{hover_attr}>{title_text}</span>{grade_span}</summary>\n'
+                f'<summary><span class="tech-title">{title_text}</span>{grade_span}</summary>\n'
                 f'{content}'
                 f'</details>\n'
             )
