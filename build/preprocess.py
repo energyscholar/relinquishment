@@ -2539,6 +2539,7 @@ def inject_button_sequence(html_path):
         22: 7, 14: 7,
         3: 8, 28: 8,
         2: 9, 29: 9,
+        19: 10,
     }
     p6_lifted = {btn: PICKUP_Y + d * 15 for btn, d in p6_dist.items()}
 
