@@ -2366,7 +2366,7 @@ def inject_flat_diagram(html_path):
 
 
 def inject_button_sequence(html_path):
-    """Insert 5-panel Kauffman button filmstrip after the buttons-and-threads analogy."""
+    """Insert 6-panel Kauffman button filmstrip after the buttons-and-threads analogy."""
     html_path = Path(html_path)
     text = html_path.read_text()
 
@@ -2415,10 +2415,7 @@ def inject_button_sequence(html_path):
     PANEL_1 = _svg_wrap('\n'.join(p1_parts))
 
     # --- Panel 2: Tie and toss (6 threads) ---
-    # Button 9 held at pickup point. Button 8 nearby.
-    # Dashed thread from 9 stops short of 8 — the act of tying.
-    # Floor has a triple (3-22-5) plus pairs — not all isolated pairs.
-    p2_floor_threads = [(3, 22), (22, 5), (0, 20), (6, 7), (14, 29)]
+    p2_floor_threads = [(3, 22), (22, 5), (0, 20), (6, 7), (19, 29)]
     p2_lifted = {9: PICKUP_Y, 8: PICKUP_Y + 12}
     p2_parts = [_btn_defs(), _floor()]
     for a, b in p2_floor_threads:
@@ -2436,12 +2433,10 @@ def inject_button_sequence(html_path):
     PANEL_2 = _svg_wrap('\n'.join(p2_parts))
 
     # --- Panel 3: Early clusters (10 threads) ---
-    # 9-8 tie complete. Pick up 9 → only 8 lifts.
-    # Floor has triples (3-22-5, 0-20-1, 6-7-4) plus pairs — nets forming.
     p3_threads = [
         (9, 8),
-        (3, 22), (22, 5), (0, 20), (6, 7), (14, 29),
-        (20, 1), (7, 4), (10, 25), (16, 27),
+        (3, 22), (22, 5), (0, 20), (6, 7), (19, 29),
+        (20, 1), (7, 24), (10, 25), (11, 26),
     ]
     p3_lifted = {9: PICKUP_Y, 8: PICKUP_Y + 35}
     p3_parts = [_btn_defs(), _floor()]
@@ -2457,17 +2452,18 @@ def inject_button_sequence(html_path):
     p3_parts.append(_caption('A few hundred ties in. Small clumps \u2014 two, three buttons.'))
     PANEL_3 = _svg_wrap('\n'.join(p3_parts))
 
-    # --- Panel 4: Growing clusters (14 threads) ---
-    # 9's cluster: 9-8-24-7 merges with floor triple 6-7-4 → branching net of 6.
-    # Pick up 9 → 5 dangle leftward, forking at button 7.
+    # --- Panel 4: Growing net (15 threads) ---
+    # Diamond cluster {6,7,8,9,10,24,25} with cross-links 10-7, 8-25.
+    # 3 hubs: 7 (6,24,10), 8 (9,24,25), 24 (7,8,25).
     p4_threads = [
         (9, 8),
-        (3, 22), (22, 5), (0, 20), (6, 7), (14, 29),
-        (20, 1), (7, 4), (10, 25), (16, 27),
-        (8, 24), (24, 7), (5, 23), (1, 21),
+        (3, 22), (22, 5), (0, 20), (6, 7), (19, 29),
+        (20, 1), (7, 24), (10, 25), (11, 26),
+        (8, 24), (24, 25), (10, 7), (8, 25), (5, 23),
     ]
-    p4_lifted = {9: PICKUP_Y, 8: PICKUP_Y + 30, 24: PICKUP_Y + 60,
-                 7: PICKUP_Y + 90, 6: PICKUP_Y + 120, 4: PICKUP_Y + 120}
+    p4_lifted = {9: PICKUP_Y, 8: PICKUP_Y + 25, 24: PICKUP_Y + 55,
+                 25: PICKUP_Y + 55, 7: PICKUP_Y + 85, 10: PICKUP_Y + 85,
+                 6: PICKUP_Y + 115}
     p4_parts = [_btn_defs(), _floor()]
     for a, b in p4_threads:
         ya = p4_lifted.get(a, floor_y[a])
@@ -2476,52 +2472,90 @@ def inject_button_sequence(html_path):
     for i in range(30):
         y = p4_lifted.get(i, floor_y[i])
         p4_parts.append(_button(bx[i], y))
-    p4_parts.append(_label('growing clusters'))
-    p4_parts.append(_counter('14 / 30'))
+    p4_parts.append(_label('growing net'))
+    p4_parts.append(_counter('15 / 30'))
     p4_parts.append(_caption('Almost halfway. The clusters are getting bigger.'))
     PANEL_4 = _svg_wrap('\n'.join(p4_parts))
 
-    # --- Panel 5: Phase transition (22 grey + 1 red = 23 threads) ---
-    # V-shape cascade from button 9 at fixed pickup point.
-    # Left arm: 9-8-24-7, branching to 6 and 4 at button 7
-    # Right arm: 9-25-10-11-26-12-27, extending to 13-14-28-29
-    # Left sub: 23-5-22-3-2-21-20-0 (chain to far left)
-    # Red bridge: 6-23 (completes the giant component)
-    # 24 connected, 6 on floor
-    sub_left_arm = [(9, 8), (8, 24), (24, 7), (7, 6), (7, 4)]
-    sub_right_arm = [(9, 25), (25, 10), (10, 11), (11, 26),
-                     (26, 12), (12, 27), (27, 13), (13, 14), (14, 28), (28, 29)]
-    sub_left_ext = [(23, 5), (5, 22), (22, 3), (3, 2), (2, 21), (21, 20), (20, 0)]
-    p5_red = (6, 23)
-    p5_dist = {
-        9: 0,
-        8: 1, 25: 1,
-        24: 2, 10: 2,
-        7: 3, 11: 3,
-        6: 4, 4: 4, 26: 4,
-        23: 5, 12: 5,
-        5: 6, 27: 6,
-        22: 7, 13: 7,
-        3: 8, 14: 8,
-        2: 9, 28: 9,
-        21: 10, 29: 10,
-        20: 11,
-        0: 12,
+    # --- Panel 5: Almost (21 threads, 3 dashed bridges) ---
+    # Sub-Right extends via 10-11-26-12-14-28 (dangler).
+    # Sub-Left {2,3,5,22,23} on floor. 3 dashed bridges hint at snap.
+    p5_threads = [
+        (9, 8),
+        (3, 22), (22, 5), (0, 20), (6, 7), (19, 29),
+        (20, 1), (7, 24), (10, 25), (11, 26),
+        (8, 24), (24, 25), (10, 7), (8, 25), (5, 23),
+        (10, 11), (26, 12), (12, 14), (14, 28), (2, 3), (1, 21),
+    ]
+    p5_dashed = [(6, 23), (12, 13), (28, 29)]
+    p5_lifted = {
+        9: PICKUP_Y,
+        8: PICKUP_Y + 20,
+        24: PICKUP_Y + 45, 25: PICKUP_Y + 45,
+        7: PICKUP_Y + 70, 10: PICKUP_Y + 70,
+        6: PICKUP_Y + 95, 11: PICKUP_Y + 95,
+        26: PICKUP_Y + 115,
+        12: PICKUP_Y + 135,
+        14: PICKUP_Y + 155,
+        28: PICKUP_Y + 185,
     }
-    p5_lifted = {btn: PICKUP_Y + d * 15 for btn, d in p5_dist.items()}
-
     p5_parts = [_btn_defs(), _floor()]
-    for a, b in sub_left_arm + sub_right_arm + sub_left_ext:
-        p5_parts.append(_thread(bx[a], p5_lifted[a], bx[b], p5_lifted[b]))
-    ra, rb = p5_red
-    p5_parts.append(_thread(bx[ra], p5_lifted[ra], bx[rb], p5_lifted[rb], color="#c0392b", width="2"))
+    for a, b in p5_threads:
+        ya = p5_lifted.get(a, floor_y[a])
+        yb = p5_lifted.get(b, floor_y[b])
+        p5_parts.append(_thread(bx[a], ya, bx[b], yb))
+    for a, b in p5_dashed:
+        ya = p5_lifted.get(a, floor_y[a])
+        yb = p5_lifted.get(b, floor_y[b])
+        p5_parts.append(f'<line x1="{bx[a]}" y1="{ya}" x2="{bx[b]}" y2="{yb}" stroke="#999" stroke-width="1" opacity="0.4" stroke-dasharray="4,3"/>')
     for i in range(30):
         y = p5_lifted.get(i, floor_y[i])
         p5_parts.append(_button(bx[i], y))
-    p5_parts.append(_label('phase transition'))
-    p5_parts.append(f'<text x="485" y="275" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#c0392b" font-weight="bold">23 / 30</text>')
-    p5_parts.append(_caption('One more thread. Pick up one button \u2014 the whole room lifts.'))
+    p5_parts.append(_label('almost'))
+    p5_parts.append(_counter('21 / 30'))
+    p5_parts.append(_caption('Three bridges away. Almost connected.'))
     PANEL_5 = _svg_wrap('\n'.join(p5_parts))
+
+    # --- Panel 6: Phase transition (24 threads, 1 red) ---
+    # Red bridge 6-23 snaps the giant component together.
+    # Grey 26-27, 28-29 complete the net. 19 lifted, 11 on floor.
+    p6_threads = [
+        (9, 8),
+        (3, 22), (22, 5), (0, 20), (6, 7), (19, 29),
+        (20, 1), (7, 24), (10, 25), (11, 26),
+        (8, 24), (24, 25), (10, 7), (8, 25), (5, 23),
+        (10, 11), (26, 12), (12, 14), (14, 28), (2, 3), (1, 21),
+        (26, 27), (28, 29),
+    ]
+    p6_red = (6, 23)
+    p6_dist = {
+        9: 0,
+        8: 1,
+        24: 2, 25: 2,
+        7: 3, 10: 3,
+        6: 4, 11: 4,
+        23: 5, 26: 5,
+        5: 6, 12: 6, 27: 6,
+        22: 7, 14: 7,
+        3: 8, 28: 8,
+        2: 9, 29: 9,
+    }
+    p6_lifted = {btn: PICKUP_Y + d * 15 for btn, d in p6_dist.items()}
+
+    p6_parts = [_btn_defs(), _floor()]
+    for a, b in p6_threads:
+        ya = p6_lifted.get(a, floor_y[a])
+        yb = p6_lifted.get(b, floor_y[b])
+        p6_parts.append(_thread(bx[a], ya, bx[b], yb))
+    ra, rb = p6_red
+    p6_parts.append(_thread(bx[ra], p6_lifted[ra], bx[rb], p6_lifted[rb], color="#c0392b", width="2"))
+    for i in range(30):
+        y = p6_lifted.get(i, floor_y[i])
+        p6_parts.append(_button(bx[i], y))
+    p6_parts.append(_label('phase transition'))
+    p6_parts.append(f'<text x="485" y="275" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#c0392b" font-weight="bold">24 / 30</text>')
+    p6_parts.append(_caption('One more thread. Pick up one button \u2014 the whole room lifts.'))
+    PANEL_6 = _svg_wrap('\n'.join(p6_parts))
 
     FILMSTRIP = f'''<figure class="inline-svg button-sequence" style="text-align:center;margin:1.5em auto;">
 {PANEL_1}
@@ -2529,7 +2563,8 @@ def inject_button_sequence(html_path):
 {PANEL_3}
 {PANEL_4}
 {PANEL_5}
-<figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">Kauffman\u2019s buttons and threads \u2014 scatter, tie, cluster, snap.</figcaption>
+{PANEL_6}
+<figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">Kauffman\u2019s buttons and threads \u2014 scatter, tie, net, snap.</figcaption>
 </figure>'''
 
     marker = 'connected web.</p>'
@@ -2539,7 +2574,7 @@ def inject_button_sequence(html_path):
     insert_point = idx + len(marker)
     text = text[:insert_point] + '\n' + FILMSTRIP + '\n' + text[insert_point:]
     html_path.write_text(text)
-    print("  Button sequence: 5-panel filmstrip injected")
+    print("  Button sequence: 6-panel filmstrip injected")
 
 
 def inject_domain_buttons(html_path):
