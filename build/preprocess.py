@@ -2392,6 +2392,9 @@ def inject_button_sequence(html_path):
     def _svg_wrap(content):
         return f'<svg xmlns="http://www.w3.org/2000/svg" width="380" height="220" viewBox="0 0 500 290" style="display:block;margin:0.3em auto;">{content}</svg>'
 
+    # Fixed pickup point — reader's eye anchors here across all panels
+    PICKUP_Y = 40
+
     # --- Panel 1: Scatter (0 threads) ---
     p1_parts = [_btn_defs(), _floor()]
     for i in range(30):
@@ -2401,17 +2404,18 @@ def inject_button_sequence(html_path):
     p1_parts.append(_caption('Ten thousand buttons on a floor.'))
     PANEL_1 = _svg_wrap('\n'.join(p1_parts))
 
-    # --- Panel 2: Tie and toss (6 threads, two buttons being tied) ---
-    # Show the action: two buttons lifted slightly as if being picked up to tie.
-    # 4 existing threads on the floor + 1 pair being actively tied (lifted).
-    p2_threads = [(2, 17), (6, 25), (11, 28), (14, 23), (19, 29), (8, 24)]
-    # Buttons 8 and 24 are the pair being actively tied — lifted slightly
-    p2_lifted = {8: 220, 24: 218}
+    # --- Panel 2: Tie and toss (6 threads) ---
+    # Button 9 held at pickup point. Button 8 nearby.
+    # Dashed thread from 9 stops short of 8 — the act of tying.
+    p2_floor_threads = [(0, 20), (3, 22), (6, 7), (10, 25), (14, 29)]
+    p2_lifted = {9: PICKUP_Y, 8: PICKUP_Y + 12}
     p2_parts = [_btn_defs(), _floor()]
-    for a, b in p2_threads:
-        ya = p2_lifted.get(a, floor_y[a])
-        yb = p2_lifted.get(b, floor_y[b])
-        p2_parts.append(_thread(bx[a], ya, bx[b], yb))
+    for a, b in p2_floor_threads:
+        p2_parts.append(_thread(bx[a], floor_y[a], bx[b], floor_y[b]))
+    tx = bx[9] + 0.55 * (bx[8] - bx[9])
+    ty = p2_lifted[9] + 0.55 * (p2_lifted[8] - p2_lifted[9])
+    p2_parts.append(f'<line x1="{bx[9]}" y1="{p2_lifted[9]}" x2="{tx:.0f}" y2="{ty:.0f}" stroke="#666" stroke-width="1.2" opacity="0.6" stroke-dasharray="4,2"/>')
+    p2_parts.append(f'<circle cx="{tx:.0f}" cy="{ty:.0f}" r="2" fill="#999" opacity="0.5"/>')
     for i in range(30):
         y = p2_lifted.get(i, floor_y[i])
         p2_parts.append(_button(bx[i], y))
@@ -2420,18 +2424,13 @@ def inject_button_sequence(html_path):
     p2_parts.append(_caption('Pick up two at random. Tie them together. Toss them back.'))
     PANEL_2 = _svg_wrap('\n'.join(p2_parts))
 
-    # --- Panel 3: Early clusters (10 threads, small 2s and 3s) ---
-    # Pairs: 2-17, 6-25, 11-28, 14-23, 19-29
-    # Triples: 8-24-12, 0-20-3
-    # = 5 pairs (5 threads) + 2 triples (4 threads) + 1 extra pair 16-27 = 10 threads
+    # --- Panel 3: Early clusters (10 threads) ---
+    # 9-8 tie complete. Pick up 9 at pickup point → only 8 lifts.
     p3_threads = [
-        (2, 17), (6, 25), (11, 28), (14, 23), (19, 29),
-        (8, 24), (24, 12),
-        (0, 20), (20, 3),
-        (16, 27),
+        (9, 8), (0, 20), (3, 22), (6, 7), (10, 25), (14, 29),
+        (1, 21), (5, 23), (11, 26), (16, 27),
     ]
-    # Lift one pair: buttons 6 and 25
-    p3_lifted = {6: 185, 25: 200}
+    p3_lifted = {9: PICKUP_Y, 8: PICKUP_Y + 35}
     p3_parts = [_btn_defs(), _floor()]
     for a, b in p3_threads:
         ya = p3_lifted.get(a, floor_y[a])
@@ -2445,24 +2444,15 @@ def inject_button_sequence(html_path):
     p3_parts.append(_caption('A few hundred ties in. Small clumps \u2014 two, three buttons.'))
     PANEL_3 = _svg_wrap('\n'.join(p3_parts))
 
-    # --- Panel 4: Growing clusters (14 threads, clusters of 3-5-8) ---
-    # Build on Panel 3's topology, add 4 more threads to grow clusters:
-    # Extend triple 0-20-3 with 3-22, 22-5 → cluster of 5: {0,20,3,22,5}
-    # Extend triple 8-24-12 with 12-15, 15-26 → cluster of 5: {8,24,12,15,26}
-    # Connect pair 11-28 to pair 19-29 via 28-19 → cluster of 4: {11,28,19,29}
-    # Remaining pairs: 2-17, 6-25, 14-23, 16-27
-    # Total: 10 + 4 = 14 threads
+    # --- Panel 4: Growing clusters (14 threads) ---
+    # 9's cluster grew: 9-8-24-7-6 (chain of 5). Pick up 9 → 4 dangle leftward.
     p4_threads = [
-        (2, 17), (6, 25), (14, 23), (19, 29),
-        (8, 24), (24, 12),
-        (0, 20), (20, 3),
-        (16, 27),
-        (11, 28),
-        (3, 22), (22, 5),
-        (12, 15), (15, 26),
+        (9, 8), (0, 20), (3, 22), (6, 7), (10, 25), (14, 29),
+        (1, 21), (5, 23), (11, 26), (16, 27),
+        (8, 24), (24, 7), (22, 5), (20, 1),
     ]
-    # Lift cluster {0,20,3,22,5} from button 0
-    p4_lifted = {0: 130, 20: 148, 3: 155, 22: 165, 5: 172}
+    p4_lifted = {9: PICKUP_Y, 8: PICKUP_Y + 30, 24: PICKUP_Y + 60,
+                 7: PICKUP_Y + 90, 6: PICKUP_Y + 120}
     p4_parts = [_btn_defs(), _floor()]
     for a, b in p4_threads:
         ya = p4_lifted.get(a, floor_y[a])
@@ -2477,154 +2467,33 @@ def inject_button_sequence(html_path):
     PANEL_4 = _svg_wrap('\n'.join(p4_parts))
 
     # --- Panel 5: Phase transition (15 threads = 14 grey + 1 red) ---
-    # Between Panel 4 and 5 the process continued. Topology evolved.
-    # Two large sub-networks, each spanning one side of the layout,
-    # bridged by one red thread. Lift from CENTER button (index 9, x=252).
-    #
-    # Sub-L chain (left side, 11 buttons, 7 threads):
-    #   0-20, 20-3, 3-22, 22-5, 5-2, 2-17, 17-6
-    #   Buttons: 0,20,3,22,5,2,17,6 + reaches via 6-25: 25 → 9 buttons
-    #   Actually let's keep it simpler with a spanning tree.
-    # Sub-L (12 buttons, 11 threads): buttons with x < 250ish
-    #   Indices by x position: 0(38), 20(48), 1(63), 21(78), 2(85),
-    #   3(112), 22(122), 4(135), 5(161), 23(168), 6(180), 7(208)
-    #   Chain: 0-20, 20-1, 1-21, 21-2, 2-3, 3-22, 22-4, 4-5, 5-23, 23-6, 6-7
-    #   = 11 threads, 12 buttons
-    #
-    # Sub-R (11 buttons, 3 threads): buttons with x > 250ish
-    #   Indices: 24(218), 8(225), 9(252), 25(258), 10(275), 11(292),
-    #   26(308), 12(318), 27(348), 13(338), 28(398)
-    #   Chain: 24-8, 8-25, 25-10 → only 3 threads for 4 buttons
-    #   Need more: 10-11, 11-26, 26-12 → total 6 threads, 7 buttons... still only 3 left.
-    #   Wait: 14 grey total. Sub-L uses 11. Sub-R gets 3.
-    #   Sub-R chain: 25-10, 10-11, 11-26 = 3 threads, 4 buttons
-    #   That's only 16 connected total. Not enough for "whole room lifts."
-    #
-    # Better split: Sub-L 7 threads, Sub-R 7 threads.
-    # Sub-L (8 buttons, 7 threads): 0-20, 20-1, 1-21, 21-2, 2-3, 3-22, 22-4
-    # Sub-R (8 buttons, 7 threads): 25-10, 10-11, 11-26, 26-12, 12-27, 27-13, 13-28
-    # Red thread: 4-25 (bridges left x=135 to right x=258 through center)
-    # Lift point: button 9 (x=252) — wait, 9 isn't connected.
-    # The lift point must be a connected button near center.
-    # Button 4 is at x=135 (left of center), button 25 is at x=258 (right of center).
-    # The red thread bridges at x≈200. Lift from the junction area.
-    # Better: make the red thread connect at a center button.
-    # Sub-L: ..., 22-4, 4-23, 23-6, 6-7 → extends to x=208
-    # Sub-R: 9-25, 25-10, 10-11, 11-26 → starts at x=252
-    # Red thread: 7-9 (x=208 to x=252) — bridges near center!
-    # Lift from button 9 (x=252) or button 7 (x=208). Button 9 is closest to 250.
-    #
-    # Final topology:
-    # Sub-L (9 buttons, 8 threads): 0-20, 20-1, 1-21, 21-2, 2-3, 3-22, 22-4, 4-7
-    #   Buttons: 0,20,1,21,2,3,22,4,7
-    # Sub-R (14 buttons, 6 threads): 9-25, 25-10, 10-11, 11-26, 26-12, 12-27
-    #   Buttons: 9,25,10,11,26,12,27
-    # That's 8+6=14 grey threads, 9+7=16 connected → need more.
-    #
-    # Let me just do 7+7 with longer chains:
-    # Sub-L (8 buttons, 7 threads):
-    #   0-20, 20-21, 21-2, 2-3, 3-22, 22-23, 23-6
-    #   Buttons: 0(38),20(48),21(78),2(85),3(112),22(122),23(168),6(180)
-    # Sub-R (8 buttons, 7 threads):
-    #   9-25, 25-10, 10-11, 11-26, 26-12, 12-27, 27-13
-    #   Buttons: 9(252),25(258),10(275),11(292),26(308),12(318),27(348),13(338)
-    # Red: 6-9 (x=180 to x=252) — near center
-    # Total connected: 16 + red bridge = 17 buttons. Not enough.
-    #
-    # Need bigger sub-networks. Use branching, not just chains.
-    # Sub-L (12 buttons, 8 threads, branching tree):
-    #   Spine: 0-20, 20-21, 21-2, 2-3, 3-22, 22-23, 23-6 (7 threads)
-    #   Branch: 2-4 (adds button 4)
-    #   That's 8 threads, 9 buttons. Need more without more threads.
-    #   Trick: with 7 threads in a chain we get 8 buttons. To maximize
-    #   connected buttons per thread, keep it as a chain.
-    #
-    # With 14 grey threads total (7+7), maximum connected = 8+8 = 16.
-    # Plus red = 17 buttons connected. "22-25" required. Not reachable.
-    #
-    # Solution: use more threads per sub-network. 10+4 split:
-    # Sub-L (11 buttons, 10 threads):
-    #   0-20, 20-1, 1-21, 21-2, 2-4, 4-5, 5-23, 23-6, 6-7, 7-3
-    #   Buttons: 0,20,1,21,2,4,5,23,6,7,3 → 11 buttons
-    # Sub-R (13 buttons, 4 threads):
-    #   Wait, 4 threads = 5 buttons max.
-    #
-    # 11+4=15>14. Try 9+5:
-    # Sub-L (10 buttons, 9 threads):
-    #   0-20, 20-1, 1-21, 21-2, 2-3, 3-22, 22-4, 4-5, 5-23
-    #   Buttons: 0,20,1,21,2,3,22,4,5,23 → 10 buttons
-    # Sub-R (6 buttons, 5 threads):
-    #   9-25, 25-10, 10-11, 11-26, 26-12
-    #   Buttons: 9,25,10,11,26,12 → 6 buttons
-    # Total grey: 14. Connected: 16. Plus red: 17.
-    #
-    # Still short. Use a denser graph (not just trees):
-    # With 14 edges we CAN connect more than 15 nodes if we allow cycles.
-    # But cycles don't add nodes-per-edge. In a tree, E=N-1 is optimal.
-    # So 14 edges → max 15 nodes in a tree, or fewer with cycles.
-    # With the red thread: 15 edges → max 16 nodes if it's all one tree.
-    # We CANNOT get 22-25 connected from 15 threads in 30 buttons
-    # if it's all trees (max 16). Need cycles to keep visual density,
-    # but cycles don't add connectivity.
-    #
-    # The plan says 22-25. With 15 threads that's impossible in a tree.
-    # BUT: the plan also says "the topology has evolved" between panels.
-    # The thread COUNT shown in the counter is 15, but visually we can
-    # have the net look dense enough to convey "most of the room."
-    # 16 out of 30 lifting is already >50%, which reads as "most."
-    #
-    # Let's go with 16 connected (the mathematical maximum from 15 tree edges).
-    # Sub-L (10, 9 threads) + Sub-R (7, 6 threads) = 15 threads via red bridge.
-    # Wait: Sub-L 9 + Sub-R 6 = 15 including red? No, 15 = 14 grey + 1 red.
-    # Sub-L 9 threads = 10 buttons. Sub-R 5 threads = 6 buttons. = 14 grey, 16 buttons.
-    # Red bridges them. Total: 15 threads, 16 connected. 14 on floor.
-    #
-    # 16/30 ≈ 53%. "More than half" works for "the whole room lifts."
-    # The 14 remaining on the floor still read as stragglers.
-
-    # Sub-L: left-side chain (10 buttons, 9 threads)
-    sub_l_chain = [(0, 20), (20, 1), (1, 21), (21, 2), (2, 3), (3, 22), (22, 4), (4, 5), (5, 23)]
-    sub_l_buttons = [0, 20, 1, 21, 2, 3, 22, 4, 5, 23]
-    # Sub-R: right-side chain (6 buttons, 5 threads)
-    sub_r_chain = [(9, 25), (25, 10), (10, 11), (11, 26), (26, 12)]
-    sub_r_buttons = [9, 25, 10, 11, 26, 12]
-    p5_red = (23, 9)
-    all_connected = sub_l_buttons + sub_r_buttons
-
-    # Lift from button 9 (x=252, near center). V-shape cascade:
-    # button 9 at top (y=45), neighbours droop outward on both sides.
-    # Assign y based on distance along chain from button 9.
-    # In the merged network: ...-23-9-25-10-11-26-12
-    # and 23 connects back to: 5-4-22-3-2-21-1-20-0
-    # Distance from 9: 9=0, 25=1,23=1, 10=2,5=2, 11=3,4=3, 26=4,22=4,
-    #                   12=5,3=5, 2=6, 21=7, 1=8, 20=9, 0=10
-    dist_from_9 = {
+    # V-shape cascade from button 9 at fixed pickup point.
+    # Right sub: 9-8-24-7-6 (left arm) + 9-25-10-11-26-12-27 (right arm)
+    # Left sub: 23-5-22-3-2 (extends left arm via red bridge)
+    # Red bridge: 6-23 (completes the giant component)
+    sub_right = [(9, 8), (8, 24), (24, 7), (7, 6),
+                 (9, 25), (25, 10), (10, 11), (11, 26), (26, 12), (12, 27)]
+    sub_left = [(23, 5), (5, 22), (22, 3), (3, 2)]
+    p5_red = (6, 23)
+    p5_dist = {
         9: 0,
-        25: 1, 23: 1,
-        10: 2, 5: 2,
-        11: 3, 4: 3,
-        26: 4, 22: 4,
-        12: 5, 3: 5,
-        2: 6,
-        21: 7,
-        1: 8,
-        20: 9,
-        0: 10,
+        8: 1, 25: 1,
+        24: 2, 10: 2,
+        7: 3, 11: 3,
+        6: 4, 26: 4,
+        23: 5, 12: 5,
+        5: 6, 27: 6,
+        22: 7,
+        3: 8,
+        2: 9,
     }
-    p5_lifted = {}
-    for btn, d in dist_from_9.items():
-        p5_lifted[btn] = 45 + d * 18
+    p5_lifted = {btn: PICKUP_Y + d * 20 for btn, d in p5_dist.items()}
 
     p5_parts = [_btn_defs(), _floor()]
-    # Grey threads
-    for a, b in sub_l_chain + sub_r_chain:
-        ya = p5_lifted.get(a, floor_y[a])
-        yb = p5_lifted.get(b, floor_y[b])
-        p5_parts.append(_thread(bx[a], ya, bx[b], yb))
-    # Red thread
+    for a, b in sub_right + sub_left:
+        p5_parts.append(_thread(bx[a], p5_lifted[a], bx[b], p5_lifted[b]))
     ra, rb = p5_red
     p5_parts.append(_thread(bx[ra], p5_lifted[ra], bx[rb], p5_lifted[rb], color="#c0392b", width="2"))
-    # All buttons
     for i in range(30):
         y = p5_lifted.get(i, floor_y[i])
         p5_parts.append(_button(bx[i], y))
