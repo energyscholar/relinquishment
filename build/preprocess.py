@@ -2584,66 +2584,85 @@ def inject_domain_buttons(html_path):
     text = html_path.read_text()
 
     DOMAIN_SVG = '''<figure class="inline-svg domain-buttons" style="text-align:center;margin:1.5em auto;">
-<svg xmlns="http://www.w3.org/2000/svg" width="460" height="300" viewBox="0 0 500 400" style="display:block;margin:0 auto;">
-  <title>Kauffman's buttons and threads, mapped to eleven scientific domains. Solid threads: published cross-references. Dashed grey: missing bridges. TQC dangles by a single thread.</title>
+<svg xmlns="http://www.w3.org/2000/svg" width="460" height="370" viewBox="0 0 500 510" style="display:block;margin:0 auto;">
+  <title>Kauffman\u2019s buttons and threads, mapped to eleven scientific domains in five clusters. Solid threads: published cross-references. Dashed: bridges no one has built. TQC is connected within its cluster but isolated from the wider argument.</title>
   <defs>
     <filter id="dbtn-sh" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-opacity="0.2"/>
     </filter>
   </defs>
   <!-- floor -->
-  <line x1="30" y1="370" x2="470" y2="370" stroke="#ccc" stroke-width="1" stroke-dasharray="4,4"/>
-  <text x="250" y="390" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#bbb">floor</text>
-  <!-- solid threads (published cross-references) -->
-  <line x1="140" y1="95" x2="95" y2="140" stroke="#2471a3" stroke-width="1.5" opacity="0.7"/>
-  <line x1="95" y1="140" x2="60" y2="195" stroke="#2471a3" stroke-width="1.5" opacity="0.7"/>
-  <line x1="310" y1="90" x2="360" y2="130" stroke="#e67e22" stroke-width="1.5" opacity="0.7"/>
-  <line x1="390" y1="85" x2="430" y2="135" stroke="#8e44ad" stroke-width="1.5" opacity="0.7"/>
-  <line x1="200" y1="75" x2="250" y2="110" stroke="#27ae60" stroke-width="1.5" opacity="0.7"/>
-  <line x1="170" y1="150" x2="130" y2="195" stroke="#c0392b" stroke-width="1.5" opacity="0.7"/>
-  <!-- cross-cluster threads (grey) -->
-  <line x1="310" y1="90" x2="250" y2="110" stroke="#666" stroke-width="1.2" opacity="0.5"/>
-  <line x1="200" y1="75" x2="140" y2="95" stroke="#666" stroke-width="1.2" opacity="0.5"/>
-  <line x1="390" y1="85" x2="360" y2="130" stroke="#666" stroke-width="1.2" opacity="0.5"/>
-  <line x1="170" y1="150" x2="140" y2="95" stroke="#666" stroke-width="1.2" opacity="0.5"/>
-  <!-- TQC single thread (dashed, fragile) -->
-  <line x1="60" y1="195" x2="55" y2="265" stroke="#2471a3" stroke-width="1.0" stroke-dasharray="3,2" opacity="0.6"/>
-  <!-- missing bridges (dashed grey) -->
-  <text x="250" y="215" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#bbb" font-style="italic">\u2014 missing bridges \u2014</text>
-  <line x1="55" y1="265" x2="310" y2="90" stroke="#ddd" stroke-width="0.8" stroke-dasharray="3,3"/>
-  <line x1="55" y1="265" x2="250" y2="110" stroke="#ddd" stroke-width="0.8" stroke-dasharray="3,3"/>
-  <line x1="55" y1="265" x2="430" y2="135" stroke="#ddd" stroke-width="0.8" stroke-dasharray="3,3"/>
-  <line x1="360" y1="130" x2="95" y2="140" stroke="#ddd" stroke-width="0.8" stroke-dasharray="3,3"/>
-  <line x1="130" y1="195" x2="310" y2="90" stroke="#ddd" stroke-width="0.8" stroke-dasharray="3,3"/>
-  <!-- domain buttons -->
-  <circle cx="200" cy="75" r="14" fill="#27ae60" stroke="#1e8449" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <text x="200" y="79" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="6.5" fill="white" font-weight="bold">NN</text>
-  <circle cx="250" cy="110" r="14" fill="#2ecc71" stroke="#27ae60" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <text x="250" y="114" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="6" fill="white" font-weight="bold">Neuro</text>
-  <circle cx="140" cy="95" r="14" fill="#2980b9" stroke="#1a5276" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <text x="140" y="99" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="5.5" fill="white" font-weight="bold">CMP</text>
-  <circle cx="95" cy="140" r="14" fill="#3498db" stroke="#2471a3" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <text x="95" y="144" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="5.5" fill="white" font-weight="bold">TFT</text>
-  <circle cx="310" cy="90" r="14" fill="#e67e22" stroke="#ca6f1e" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <text x="310" y="94" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="5.5" fill="white" font-weight="bold">ACS</text>
-  <circle cx="360" cy="130" r="14" fill="#f39c12" stroke="#e67e22" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <text x="360" y="134" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="5" fill="white" font-weight="bold">Auto</text>
-  <circle cx="390" cy="85" r="14" fill="#8e44ad" stroke="#6c3483" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <text x="390" y="89" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="5.5" fill="white" font-weight="bold">CE</text>
-  <circle cx="430" cy="135" r="14" fill="#a569bd" stroke="#8e44ad" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <text x="430" y="139" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="5" fill="white" font-weight="bold">Par</text>
-  <circle cx="170" cy="150" r="14" fill="#e74c3c" stroke="#c0392b" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <text x="170" y="154" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="5.5" fill="white" font-weight="bold">NLD</text>
-  <circle cx="130" cy="195" r="14" fill="#ec7063" stroke="#e74c3c" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <text x="130" y="199" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="5" fill="white" font-weight="bold">Mat</text>
-  <circle cx="55" cy="265" r="14" fill="#1a5276" stroke="#0d3b5e" stroke-width="1.5" filter="url(#dbtn-sh)"/>
-  <text x="55" y="269" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="5.5" fill="white" font-weight="bold">TQC</text>
-  <text x="55" y="295" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#999">&#x25BC;</text>
+  <line x1="25" y1="335" x2="475" y2="335" stroke="#ccc" stroke-width="1" stroke-dasharray="4,4"/>
+  <!-- dashed missing bridges (background layer) -->
+  <line x1="58" y1="82" x2="310" y2="108" stroke="#bbb" stroke-width="0.8" opacity="0.3" stroke-dasharray="5,3"/>
+  <line x1="442" y1="82" x2="250" y2="220" stroke="#bbb" stroke-width="0.8" opacity="0.3" stroke-dasharray="5,3"/>
+  <line x1="372" y1="278" x2="442" y2="82" stroke="#bbb" stroke-width="0.8" opacity="0.3" stroke-dasharray="5,3"/>
+  <line x1="372" y1="228" x2="250" y2="220" stroke="#bbb" stroke-width="0.8" opacity="0.3" stroke-dasharray="5,3"/>
+  <line x1="110" y1="252" x2="442" y2="82" stroke="#bbb" stroke-width="0.8" opacity="0.3" stroke-dasharray="5,3"/>
+  <!-- cross-cluster solid threads (midground) -->
+  <line x1="58" y1="140" x2="442" y2="82" stroke="#777" stroke-width="1.0" opacity="0.4"/>
+  <line x1="310" y1="108" x2="110" y2="252" stroke="#777" stroke-width="1.0" opacity="0.4"/>
+  <!-- intra-cluster solid threads (foreground) -->
+  <line x1="250" y1="55" x2="190" y2="108" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/>
+  <line x1="250" y1="55" x2="310" y2="108" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/>
+  <line x1="190" y1="108" x2="310" y2="108" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/>
+  <line x1="250" y1="55" x2="250" y2="220" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/>
+  <line x1="190" y1="108" x2="250" y2="220" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/>
+  <line x1="310" y1="108" x2="250" y2="220" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/>
+  <line x1="58" y1="82" x2="58" y2="140" stroke="#c0392b" stroke-width="1.5" opacity="0.65"/>
+  <line x1="442" y1="82" x2="442" y2="140" stroke="#e67e22" stroke-width="1.5" opacity="0.65"/>
+  <line x1="372" y1="228" x2="372" y2="278" stroke="#8e44ad" stroke-width="1.5" opacity="0.65"/>
+  <!-- buttons -->
+  <circle cx="250" cy="55" r="16" fill="#2471a3" stroke="#1a5276" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <circle cx="190" cy="108" r="16" fill="#2980b9" stroke="#2471a3" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <circle cx="310" cy="108" r="16" fill="#3498db" stroke="#2980b9" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <circle cx="250" cy="220" r="16" fill="#1a5276" stroke="#0d2f4b" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <circle cx="58" cy="82" r="16" fill="#c0392b" stroke="#962d22" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <circle cx="58" cy="140" r="16" fill="#e74c3c" stroke="#c0392b" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <circle cx="442" cy="82" r="16" fill="#e67e22" stroke="#bf6516" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <circle cx="442" cy="140" r="16" fill="#f39c12" stroke="#d4860b" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <circle cx="372" cy="228" r="16" fill="#8e44ad" stroke="#6c3483" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <circle cx="372" cy="278" r="16" fill="#a569bd" stroke="#8e44ad" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <circle cx="110" cy="252" r="16" fill="#b8860b" stroke="#8b6508" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+  <!-- button labels -->
+  <text x="250" y="59" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Topo</text>
+  <text x="190" y="112" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">TFT</text>
+  <text x="310" y="112" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">CMP</text>
+  <text x="250" y="224" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">TQC</text>
+  <text x="58" y="86" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Sol</text>
+  <text x="58" y="144" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">NLD</text>
+  <text x="442" y="86" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">ACS</text>
+  <text x="442" y="144" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Auto</text>
+  <text x="372" y="232" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">CE</text>
+  <text x="372" y="282" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Par</text>
+  <text x="110" y="256" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7.5" fill="white" font-weight="bold">Mat</text>
+  <!-- TQC arrow -->
+  <text x="250" y="248" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#999">&#x25BC;</text>
   <!-- captions -->
-  <text x="250" y="340" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">One thread holds. Cut it, and the argument falls apart.</text>
-  <text x="250" y="355" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#999">after Kauffman (1993)</text>
+  <text x="250" y="358" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">One thread holds. Cut it, and the argument falls apart.</text>
+  <text x="250" y="373" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#999">after Kauffman (1993)</text>
+  <!-- legend -->
+  <circle cx="40" cy="398" r="5" fill="#2471a3"/>
+  <text x="55" y="402" font-family="Helvetica, sans-serif" font-size="8" fill="#555" font-weight="bold">Topological</text>
+  <text x="55" y="414" font-family="Helvetica, sans-serif" font-size="7" fill="#888">Topo \u00b7 TFT \u00b7 CMP \u00b7 TQC</text>
+  <circle cx="275" cy="398" r="5" fill="#e67e22"/>
+  <text x="290" y="402" font-family="Helvetica, sans-serif" font-size="8" fill="#555" font-weight="bold">Origin</text>
+  <text x="290" y="414" font-family="Helvetica, sans-serif" font-size="7" fill="#888">ACS \u00b7 Auto</text>
+  <circle cx="40" cy="430" r="5" fill="#c0392b"/>
+  <text x="55" y="434" font-family="Helvetica, sans-serif" font-size="8" fill="#555" font-weight="bold">Nonlinear</text>
+  <text x="55" y="446" font-family="Helvetica, sans-serif" font-size="7" fill="#888">Sol \u00b7 NLD</text>
+  <circle cx="275" cy="430" r="5" fill="#8e44ad"/>
+  <text x="290" y="434" font-family="Helvetica, sans-serif" font-size="8" fill="#555" font-weight="bold">Computation</text>
+  <text x="290" y="446" font-family="Helvetica, sans-serif" font-size="7" fill="#888">CE \u00b7 Par</text>
+  <circle cx="40" cy="462" r="5" fill="#b8860b"/>
+  <text x="55" y="466" font-family="Helvetica, sans-serif" font-size="8" fill="#555" font-weight="bold">Materials</text>
+  <text x="55" y="478" font-family="Helvetica, sans-serif" font-size="7" fill="#888">Mat</text>
+  <line x1="275" y1="465" x2="300" y2="465" stroke="#777" stroke-width="1.2"/>
+  <text x="308" y="469" font-family="Helvetica, sans-serif" font-size="7.5" fill="#888">published</text>
+  <line x1="275" y1="482" x2="300" y2="482" stroke="#bbb" stroke-width="0.8" stroke-dasharray="5,3"/>
+  <text x="308" y="486" font-family="Helvetica, sans-serif" font-size="7.5" fill="#888">missing bridge</text>
 </svg>
-<figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">The same metaphor, applied to this book. Eleven scientific domains, connected by published cross-references. TQC dangles by a single thread.</figcaption>
+<figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">The same metaphor, applied to this book. Eleven domains in five clusters, connected by published cross-references. The silence gap is visible: dashed lines mark bridges no one has built.</figcaption>
 </figure>'''
 
     marker = 'five published research streams had independently matured'
