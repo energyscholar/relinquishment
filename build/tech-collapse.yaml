@@ -19,9 +19,9 @@ sections:
     bridge_file: manuscript/bridge/pos10-the-braid.tex
     bridge_label: "pos10:hasslachers-trajectory"
     assessment: GA-AVERSE
-    tooltip: ""
+    tooltip: "One physicist's published papers — spanning a decade at Los Alamos — contain all the mathematical pieces needed for topological quantum computing. Each was ordinary science; the pattern connecting them only becomes visible in hindsight."
     conclusion: "Hasslacher's published work maps precisely to the mathematical infrastructure needed for topological quantum computation."
-    status: pending
+    status: approved
 
   - title: "Hasslacher's Lattice"
     spine_file: manuscript/spine/the-braid.tex
@@ -29,9 +29,9 @@ sections:
     bridge_file: null  # pos10 has "But What Is a Soliton?" instead
     bridge_label: null
     assessment: GA-AVERSE
-    tooltip: ""
+    tooltip: "How does a quantum system communicate with ordinary electronics? Through phonons — coordinated vibrations in a crystal lattice that act as translators between the quantum world and classical signals."
     conclusion: "Discrete lattice structures produce collective wave behavior via phonons — the bridge between quantum substrate and classical electronics."
-    status: pending
+    status: approved
 
   - title: "Topological Error Correction"
     spine_file: manuscript/spine/the-braid.tex
@@ -39,9 +39,9 @@ sections:
     bridge_file: manuscript/bridge/pos10-the-braid.tex
     bridge_label: "pos10:topological-error-correction"
     assessment: GA-AVERSE
-    tooltip: ""
+    tooltip: "Topology protects quantum information the way a knot holds its shape — small disturbances don't undo it. Combined with a classical feedback channel, this protection is what makes room-temperature quantum computing physically possible."
     conclusion: "Topology gives passive protection against errors; active error correction via classical backchannel buys reliability. Room-temperature operation is physically possible."
-    status: pending
+    status: approved
 
   - title: "Quantum Teleportation and the Classical Constraint"
     spine_file: manuscript/spine/the-braid.tex
@@ -49,9 +49,9 @@ sections:
     bridge_file: manuscript/bridge/pos10-the-braid.tex
     bridge_label: "pos10:quantum-teleportation-and-the-classical-constraint"
     assessment: GA-AVERSE
-    tooltip: ""
+    tooltip: "Quantum teleportation has been demonstrated from lab benches to satellites — but every transfer requires a conventional message alongside it. This is a law of physics, not a technical limitation: no faster-than-light communication."
     conclusion: "Quantum teleportation is proven experimentally. It REQUIRES a classical backchannel — this is a theorem, not a limitation of current technology."
-    status: pending
+    status: approved
 
   # ── THE FLAT ───────────────────────────────────────────────────────
 
@@ -61,9 +61,9 @@ sections:
     bridge_file: manuscript/track-3-awakening/pos-what-is-the-flat.tex
     bridge_label: "what-is-the-flat:the-substrate"
     assessment: GA-AVERSE
-    tooltip: ""
+    tooltip: "The physics behind this isn't exotic — two-dimensional electron layers already exist in every phone and WiFi router. Earth's magnetosphere creates the same structure naturally, at planetary scale."
     conclusion: "The 2DEG — a layer where electrons are trapped flat — is in every chip you own. The magnetosphere has the same geometry at planetary scale."
-    status: pending
+    status: approved
 
   - title: "The Wormhole"
     spine_file: manuscript/spine/the-flat.tex
@@ -71,9 +71,9 @@ sections:
     bridge_file: manuscript/track-3-awakening/pos-what-is-the-flat.tex
     bridge_label: "what-is-the-flat:the-wormhole"
     assessment: GA-AVERSE
-    tooltip: ""
+    tooltip: "A topological wormhole — not a hole in space, but a quantum shortcut through the Flat — lets information move between distant points. Every transfer requires a conventional signal to complete, so nothing moves faster than light."
     conclusion: "A wormhole works by braiding anyons. Information can teleport between distant points, but every transfer requires a classical message to complete. No FTL."
-    status: pending
+    status: approved
 
   # ── THE WRONG SUBSTRATE ────────────────────────────────────────────
 
@@ -83,11 +83,7 @@ sections:
     bridge_file: manuscript/track-3-awakening/pos32-the-magnetosphere.tex
     bridge_label: "pos32:but-its-hot"
     assessment: GA-AVERSE
-    tooltip: >-
-      "Hot" in a collisionless plasma doesn't mean "thermally noisy."
-      The noise that destroys quantum states is orders of magnitude
-      quieter than the kinetic temperature. The thermal objection
-      doesn't hold.
+    tooltip: "'Hot' doesn't mean 'noisy.' The kind of noise that destroys quantum states is far quieter than the temperature suggests. The thermal objection doesn't hold."
     conclusion: "'Hot' in a collisionless plasma doesn't mean 'thermally noisy.' The noise that destroys quantum states is orders of magnitude quieter than the kinetic temperature."
     status: approved
 
@@ -99,9 +95,9 @@ sections:
     bridge_file: manuscript/bridge/pos09-the-factoring-game.tex
     bridge_label: "pos09:the-state-of-cryptography-in-1990"
     assessment: GA-AVERSE
-    tooltip: ""
+    tooltip: "In 1990, all internet encryption rested on one assumption: factoring large numbers is too hard for any computer. A quantum computer could break that assumption — giving intelligence agencies urgent motivation to build one."
     conclusion: "All internet security in 1990 rested on one assumption: factoring large numbers is hard. A quantum computer would break that assumption. DARPA had motivation."
-    status: pending
+    status: approved
 
   - title: "The ULTRA II Specifications"
     spine_file: manuscript/spine/the-factoring-game.tex
@@ -109,43 +105,43 @@ sections:
     bridge_file: manuscript/bridge/pos09-the-factoring-game.tex
     bridge_label: "pos09:the-ultra-ii-specifications"
     assessment: GA-AVERSE
-    tooltip: ""
+    tooltip: "The target was breaking 4096-bit encryption — far beyond any quantum computer that existed or was planned. The specifications demanded an architecture that no one had built."
     conclusion: "The project needed to factor 4096-bit numbers. No known quantum computer design could scale to this. Topology offered a different path."
-    status: pending
+    status: approved
 
   # ── GENESIS ────────────────────────────────────────────────────────
 
   - title: "Buttons and Threads"
     spine_file: manuscript/spine/genesis.tex
     spine_label: "spine:gen-buttons-and-threads"
-    bridge_file: null  # check bridge equivalent
-    bridge_label: null
+    bridge_file: "manuscript/track-1-confession/pos13-genesis.tex"
+    bridge_label: "pos13:buttons-and-threads"
     assessment: GA-AVERSE
-    tooltip: ""
+    tooltip: "Scatter buttons on a floor and connect random pairs with thread. At a critical density, pulling one button lifts most of the room — not gradually, but all at once. This is how self-sustaining networks arise in chemistry, in biology, and potentially in any complex system."
     conclusion: "Imagine buttons on the floor connected by random threads. Past a critical density, one giant cluster forms. This is how self-sustaining networks arise — not by design, but by threshold."
-    status: pending
+    status: approved
 
   - title: "From Chemistry to Computation"
     spine_file: manuscript/spine/genesis.tex
     spine_label: "spine:gen-from-chemistry-to-computation"
-    bridge_file: null  # check bridge equivalent
-    bridge_label: null
+    bridge_file: "manuscript/track-1-confession/pos13-genesis.tex"
+    bridge_label: "pos13:from-chemistry-to-computation"
     assessment: GA-AVERSE
-    tooltip: ""
+    tooltip: "If self-organization arises spontaneously above a complexity threshold in chemistry, the same principle applies to any substrate — including a quantum one. By the late 1980s, five independent research programs had converged on exactly this possibility."
     conclusion: "If self-organization arises in chemistry above a complexity threshold, the same principle applies to any substrate — including the quantum Flat."
-    status: pending
+    status: approved
 
   # ── GROWING A MIND ─────────────────────────────────────────────────
 
   - title: "Morphogenesis as Computation"
     spine_file: manuscript/spine/growing-a-mind.tex
-    spine_label: null  # check for label
+    spine_label: "morphogenesis-as-computation"
     bridge_file: manuscript/bridge/pos14-growing-a-mind.tex
     bridge_label: null
     assessment: GA-AVERSE
-    tooltip: ""
+    tooltip: "Alan Turing showed that a developing embryo is computing — chemical signals following simple rules create stripes, spots, and organs. Life grows its own complexity through repeated pattern-making, not assembly."
     conclusion: "Turing realized a developing embryo is computing — chemical signals create patterns through simple rules applied repeatedly. Growth, not assembly."
-    status: pending
+    status: approved
 
   # ── THE DEMO ───────────────────────────────────────────────────────
 
@@ -155,9 +151,9 @@ sections:
     bridge_file: manuscript/bridge/pos11-the-demo.tex
     bridge_label: "demo:the-science-underneath"
     assessment: GA-AVERSE
-    tooltip: ""
+    tooltip: "At a precise balance between order and chaos, simple components self-organize into networks that compute. Evolution — not engineering — finds these configurations by trying everything and keeping what works."
     conclusion: "Complexity emerges at the edge of chaos. Directed evolution — not design — finds what cannot be specified in advance."
-    status: pending
+    status: approved
 
   - title: "The Poised Realm"
     spine_file: null  # demo is bridge-only
@@ -165,9 +161,9 @@ sections:
     bridge_file: manuscript/bridge/pos11-the-demo.tex
     bridge_label: "demo:the-poised-realm"
     assessment: GA-AVERSE
-    tooltip: ""
+    tooltip: "The objection that quantum coherence can't survive room temperature is wrong. It's been measured in diamond and silicon carbide — already used in commercial sensors — and in the molecular machinery of photosynthesis."
     conclusion: "Room-temperature quantum coherence has been demonstrated in biological systems (photosynthesis, nitrogen-vacancy centers). The physics permits it."
-    status: pending
+    status: approved
 
   # ── BORDERLINE (evaluate after pilot) ──────────────────────────────
 
