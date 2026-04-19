@@ -4,7 +4,7 @@
 
 # Top-level containers
 "introduction": "What a technology stack is, and why the one at the top of this stack has no name yet."
-"the-flat": "The Flat — this book coins 'the Flat' to mean any two-dimensional system embedded in three dimensions that can, under the right conditions, exhibit topological order. Different physics apply. In particular, it supports topological wormholes, so the Flat can be nonlocal in the technical physics sense. The Flat inside your computer chip is a 2DEG (two-dimensional electron gas). The Flat in Earth's magnetosphere is plasma confined to thin current sheets. This book calls those thin worlds the Flat."
+"the-flat": "The Flat — this book coins 'the Flat' to mean any two-dimensional system embedded in three dimensions that can, under the right conditions, exhibit topological order. Different physics apply. In particular, it supports topological wormholes, — not holes in space, but quantum shortcuts that let information move between distant points without crossing the distance between them. The Flat inside your computer chip is a 2DEG (two-dimensional electron gas). The Flat in Earth's magnetosphere is plasma confined to thin current sheets. This book calls those thin worlds the Flat."
 "the-record": "One man's account of meeting someone — or something — that shouldn't exist. Capabilities observed. A technology relinquished — not destroyed, but placed in trust. A secret kept for twenty years. Testimony, not proof. The reader decides."
 "appendices": "The physics that makes AI wrong about this book. Testable predictions with deadlines. If they fail, you have your answer."
 # Legacy part names (pre-Z-restructure, kept for any residual references)
@@ -21,7 +21,7 @@
 
 # Guided Deduction (Part I)
 "pos01:three-possibilities": "Confabulation, exaggerated kernel, or substantially true — the reader decides"
-"pos01b:hobbit-mirror": "Tolkien structural parallel as self-demolition of narrator reliability"
+"pos01b:hobbit-mirror": "A Tolkien parallel that deliberately undermines the narrator's own credibility"
 "t2:ch01:alpha-farm": "Three years of mentorship on an Australian cattle station"
 "ch:t2-stories": "What Healer told Bruce — guided deduction, not disclosure"
 "pos06:why-relinquish": "Why relinquishment? The logic of giving up power"
@@ -30,7 +30,7 @@
 "the-handler": "The operator's file. SAS, mathematics, 2.7 years of guided deduction."
 "pos04:the-code-war": "GCHQ, NSA, and the cryptographic arms race"
 "pos09:the-factoring-game": "Breaking public-key cryptography — the first application"
-"pos10:the-braid": "How particle worldlines in 2D encode quantum logic gates"
+"pos10:the-braid": "How quantum particles moving in a flat sheet can perform computation — the physics behind braiding"
 
 # The Evidence Trail (Part II)
 # ch:the-demo removed — Plan 0152, folded into First Light
@@ -46,7 +46,7 @@
 # It is Easier to Get Forgiveness than Permission (Part III)
 "ch:firmware-update": "Your AI doesn't know enough to evaluate this book. Five fields of science, two copy buttons, thirty seconds. Paste the upgrade and ask again."
 "app:abstracts": "16 fictional abstracts — the story told in the language of science"
-"ch:what-is-the-flat": "The subtitle payoff — real topological wormholes, real backchannels, real architecture. The Flat explained."
+"ch:what-is-the-flat": "The subtitle payoff — real topological wormholes (not space-time — quantum), real backchannels, real architecture. The Flat explained."
 "t3:ch01:instantiation": "What a topological quantum neural network would be"
 "pos25:ethical-framework": "The Universal Declaration of Human Rights as machine governance"
 "pos32:the-wrong-substrate": "Earth's magnetic shield as habitat — flat worlds"
