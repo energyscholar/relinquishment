@@ -2141,25 +2141,24 @@ def fix_html_toc(html_path):
         text = text.replace(toc_block, new_toc)
 
     # Convert title on accordion <summary> elements (chapter-hover-descriptions)
+    # Info-tip span goes INSIDE </summary> so tooltip target is separate from toggle target (mobile fix, Plan 0225)
     def convert_summary_title(m):
         nonlocal title_conv_count
-        tag = m.group(0)
-        title_match = re.search(r' title="([^"]*)"', tag)
+        full_block = m.group(0)
+        open_tag = m.group(1)
+        inner = m.group(2)
+        title_match = re.search(r' title="([^"]*)"', open_tag)
         if not title_match:
-            return tag
+            return full_block
         title_val = title_match.group(1)
         decoded = html_mod.unescape(title_val)
         hover_id = _content_key(decoded)
         _register_hover(hover_id, text=decoded)
-        tag = tag.replace(title_match.group(0), '')
-        tag = tag.replace('>', f' data-hover-id="{hover_id}">', 1)
-        if 'class="' in tag:
-            tag = tag.replace('class="', 'class="hover-nav ')
-        else:
-            tag = tag.replace('>', ' class="hover-nav">', 1)
+        open_tag = open_tag.replace(title_match.group(0), '')
+        info_tip = f'<span class="info-tip" data-hover-id="{hover_id}" aria-hidden="true"></span>'
         title_conv_count += 1
-        return tag
-    text = re.sub(r'<summary [^>]*title="[^"]*"[^>]*>', convert_summary_title, text)
+        return f'{open_tag}{inner}{info_tip}</summary>'
+    text = re.sub(r'(<summary [^>]*title="[^"]*"[^>]*>)(.*?)</summary>', convert_summary_title, text, flags=re.DOTALL)
 
     if title_conv_count:
         print(f"  Tooltips unified: {title_conv_count} title→data-hover conversions")
@@ -2407,7 +2406,8 @@ def inject_button_sequence(html_path):
     # --- Panel 2: Tie and toss (6 threads) ---
     # Button 9 held at pickup point. Button 8 nearby.
     # Dashed thread from 9 stops short of 8 — the act of tying.
-    p2_floor_threads = [(0, 20), (3, 22), (6, 7), (10, 25), (14, 29)]
+    # Floor has a triple (3-22-5) plus pairs — not all isolated pairs.
+    p2_floor_threads = [(3, 22), (22, 5), (0, 20), (6, 7), (14, 29)]
     p2_lifted = {9: PICKUP_Y, 8: PICKUP_Y + 12}
     p2_parts = [_btn_defs(), _floor()]
     for a, b in p2_floor_threads:
@@ -2425,10 +2425,12 @@ def inject_button_sequence(html_path):
     PANEL_2 = _svg_wrap('\n'.join(p2_parts))
 
     # --- Panel 3: Early clusters (10 threads) ---
-    # 9-8 tie complete. Pick up 9 at pickup point → only 8 lifts.
+    # 9-8 tie complete. Pick up 9 → only 8 lifts.
+    # Floor has triples (3-22-5, 0-20-1, 6-7-4) plus pairs — nets forming.
     p3_threads = [
-        (9, 8), (0, 20), (3, 22), (6, 7), (10, 25), (14, 29),
-        (1, 21), (5, 23), (11, 26), (16, 27),
+        (9, 8),
+        (3, 22), (22, 5), (0, 20), (6, 7), (14, 29),
+        (20, 1), (7, 4), (10, 25), (16, 27),
     ]
     p3_lifted = {9: PICKUP_Y, 8: PICKUP_Y + 35}
     p3_parts = [_btn_defs(), _floor()]
@@ -2445,14 +2447,16 @@ def inject_button_sequence(html_path):
     PANEL_3 = _svg_wrap('\n'.join(p3_parts))
 
     # --- Panel 4: Growing clusters (14 threads) ---
-    # 9's cluster grew: 9-8-24-7-6 (chain of 5). Pick up 9 → 4 dangle leftward.
+    # 9's cluster: 9-8-24-7 merges with floor triple 6-7-4 → branching net of 6.
+    # Pick up 9 → 5 dangle leftward, forking at button 7.
     p4_threads = [
-        (9, 8), (0, 20), (3, 22), (6, 7), (10, 25), (14, 29),
-        (1, 21), (5, 23), (11, 26), (16, 27),
-        (8, 24), (24, 7), (22, 5), (20, 1),
+        (9, 8),
+        (3, 22), (22, 5), (0, 20), (6, 7), (14, 29),
+        (20, 1), (7, 4), (10, 25), (16, 27),
+        (8, 24), (24, 7), (5, 23), (1, 21),
     ]
     p4_lifted = {9: PICKUP_Y, 8: PICKUP_Y + 30, 24: PICKUP_Y + 60,
-                 7: PICKUP_Y + 90, 6: PICKUP_Y + 120}
+                 7: PICKUP_Y + 90, 6: PICKUP_Y + 120, 4: PICKUP_Y + 120}
     p4_parts = [_btn_defs(), _floor()]
     for a, b in p4_threads:
         ya = p4_lifted.get(a, floor_y[a])
@@ -2466,31 +2470,37 @@ def inject_button_sequence(html_path):
     p4_parts.append(_caption('Almost halfway. The clusters are getting bigger.'))
     PANEL_4 = _svg_wrap('\n'.join(p4_parts))
 
-    # --- Panel 5: Phase transition (15 threads = 14 grey + 1 red) ---
+    # --- Panel 5: Phase transition (22 grey + 1 red = 23 threads) ---
     # V-shape cascade from button 9 at fixed pickup point.
-    # Right sub: 9-8-24-7-6 (left arm) + 9-25-10-11-26-12-27 (right arm)
-    # Left sub: 23-5-22-3-2 (extends left arm via red bridge)
+    # Left arm: 9-8-24-7, branching to 6 and 4 at button 7
+    # Right arm: 9-25-10-11-26-12-27, extending to 13-14-28-29
+    # Left sub: 23-5-22-3-2-21-20-0 (chain to far left)
     # Red bridge: 6-23 (completes the giant component)
-    sub_right = [(9, 8), (8, 24), (24, 7), (7, 6),
-                 (9, 25), (25, 10), (10, 11), (11, 26), (26, 12), (12, 27)]
-    sub_left = [(23, 5), (5, 22), (22, 3), (3, 2)]
+    # 24 connected, 6 on floor
+    sub_left_arm = [(9, 8), (8, 24), (24, 7), (7, 6), (7, 4)]
+    sub_right_arm = [(9, 25), (25, 10), (10, 11), (11, 26),
+                     (26, 12), (12, 27), (27, 13), (13, 14), (14, 28), (28, 29)]
+    sub_left_ext = [(23, 5), (5, 22), (22, 3), (3, 2), (2, 21), (21, 20), (20, 0)]
     p5_red = (6, 23)
     p5_dist = {
         9: 0,
         8: 1, 25: 1,
         24: 2, 10: 2,
         7: 3, 11: 3,
-        6: 4, 26: 4,
+        6: 4, 4: 4, 26: 4,
         23: 5, 12: 5,
         5: 6, 27: 6,
-        22: 7,
-        3: 8,
-        2: 9,
+        22: 7, 13: 7,
+        3: 8, 14: 8,
+        2: 9, 28: 9,
+        21: 10, 29: 10,
+        20: 11,
+        0: 12,
     }
-    p5_lifted = {btn: PICKUP_Y + d * 20 for btn, d in p5_dist.items()}
+    p5_lifted = {btn: PICKUP_Y + d * 15 for btn, d in p5_dist.items()}
 
     p5_parts = [_btn_defs(), _floor()]
-    for a, b in sub_right + sub_left:
+    for a, b in sub_left_arm + sub_right_arm + sub_left_ext:
         p5_parts.append(_thread(bx[a], p5_lifted[a], bx[b], p5_lifted[b]))
     ra, rb = p5_red
     p5_parts.append(_thread(bx[ra], p5_lifted[ra], bx[rb], p5_lifted[rb], color="#c0392b", width="2"))
@@ -2498,7 +2508,7 @@ def inject_button_sequence(html_path):
         y = p5_lifted.get(i, floor_y[i])
         p5_parts.append(_button(bx[i], y))
     p5_parts.append(_label('phase transition'))
-    p5_parts.append(f'<text x="485" y="275" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#c0392b" font-weight="bold">15 / 30</text>')
+    p5_parts.append(f'<text x="485" y="275" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#c0392b" font-weight="bold">23 / 30</text>')
     p5_parts.append(_caption('One more thread. Pick up one button \u2014 the whole room lifts.'))
     PANEL_5 = _svg_wrap('\n'.join(p5_parts))
 
