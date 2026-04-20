@@ -948,6 +948,12 @@ details.tech-section .tech-title {
   .tech-grade::after { content: '' !important; }
   .info-tip { display: none; }
 }
+details.tech-section[id] { scroll-margin-top: 3em; }
+details.tech-section.deep-link-target { animation: none; }
+details.tech-section.deep-link-target > summary {
+  animation: highlight-pulse 2s ease-out;
+}
+details.tech-section .share-anchor { vertical-align: middle; }
 """
     # Inject before closing </style> of the last style block in <head>
     head_end = text.find('</head>')
@@ -2802,9 +2808,10 @@ def collapse_tech_sections(html_path):
 
             grade_tooltip = html_mod.escape(tooltip) if tooltip else 'Verified science — a technical discussion grounded in published, peer-reviewed physics. Safe to skip; expand if curious.'
             grade_span = f'<span class="tech-grade" data-hover="{grade_tooltip}" aria-hidden="true"></span>'
+            link_span = f'<span class="share-anchor" data-link-id="{label}" aria-hidden="true"></span>'
             wrapper = (
-                f'<details class="tech-section">'
-                f'<summary><span class="tech-title">{title_text}</span>{grade_span}</summary>\n'
+                f'<details class="tech-section" id="{label}">'
+                f'<summary><span class="tech-title">{title_text}</span>{grade_span}{link_span}</summary>\n'
                 f'{content}'
                 f'</details>\n'
             )

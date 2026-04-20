@@ -649,6 +649,12 @@ details.tech-section .tech-title {
   .tech-grade::after { content: '' !important; }
   .info-tip { display: none; }
 }
+details.tech-section[id] { scroll-margin-top: 3em; }
+details.tech-section.deep-link-target { animation: none; }
+details.tech-section.deep-link-target > summary {
+  animation: highlight-pulse 2s ease-out;
+}
+details.tech-section .share-anchor { vertical-align: middle; }
 </style>
 </head>
 <body>
@@ -1885,7 +1891,7 @@ Flat</strong>.</em></p>
 <p>The <span class="hover-term" data-hover-target="#stack-chart" data-hover-id="stack">stack</span> chart at the front of the book pointed to the last column —
 the one with the checkmark for wormholes. This chapter names the
 substrate that gives it that property: <em>the Flat</em>.</p>
-<details class="tech-section"><summary><span class="tech-title">The Substrate</span><span class="tech-grade" data-hover="The physics behind this isn&#x27;t exotic — two-dimensional electron layers already exist in every phone and WiFi router. Earth&#x27;s magnetosphere creates the same structure naturally, at planetary scale." aria-hidden="true"></span></summary>
+<details class="tech-section" id="spine:flat-substrate"><summary><span class="tech-title">The Substrate</span><span class="tech-grade" data-hover="The physics behind this isn&#x27;t exotic — two-dimensional electron layers already exist in every phone and WiFi router. Earth&#x27;s magnetosphere creates the same structure naturally, at planetary scale." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:flat-substrate" aria-hidden="true"></span></summary>
 
 <span class="share-anchor" id="dl:what-is-the-flat" aria-hidden="true"></span>
 <p>The Flat is a <span class="hover-term" data-hover-id="two-dimensional-electron-gas">two-dimensional electron gas</span> — a 2DEG. It forms
@@ -1924,7 +1930,7 @@ where the Earth’s magnetic field confines plasma into effectively
 two-dimensional structures. The Flat is not exotic. It is
 everywhere.</p>
 </details>
-<details class="tech-section"><summary><span class="tech-title">The Wormhole</span><span class="tech-grade" data-hover="A topological wormhole — not a hole in space, but a quantum shortcut through the Flat — lets information move between distant points. Every transfer requires a conventional signal to complete, so nothing moves faster than light." aria-hidden="true"></span></summary>
+<details class="tech-section" id="spine:flat-wormhole"><summary><span class="tech-title">The Wormhole</span><span class="tech-grade" data-hover="A topological wormhole — not a hole in space, but a quantum shortcut through the Flat — lets information move between distant points. Every transfer requires a conventional signal to complete, so nothing moves faster than light." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:flat-wormhole" aria-hidden="true"></span></summary>
 
 <p>A wormhole in this substrate works by braiding anyons. Move one <span class="hover-term" data-hover-target="#pos10:the-braid" data-hover-id="anyon">anyon</span>
 around another, and the quantum state of the system changes in a way
@@ -2082,7 +2088,7 @@ property unique to two dimensions: when you swap two of them, the
 quantum state of the system <em>remembers the path they took</em>. Not
 just that they swapped — but how. Clockwise or counterclockwise. Over or
 under. The topology of the path matters.</p>
-<details class="tech-section"><summary><span class="tech-title">Hasslacher’s Trajectory</span><span class="tech-grade" data-hover="One physicist&#x27;s published papers — spanning a decade at Los Alamos — contain all the mathematical pieces needed for topological quantum computing. Each was ordinary science; the pattern connecting them only becomes visible in hindsight." aria-hidden="true"></span></summary>
+<details class="tech-section" id="spine:braid-hasslachers-trajectory"><summary><span class="tech-title">Hasslacher’s Trajectory</span><span class="tech-grade" data-hover="One physicist&#x27;s published papers — spanning a decade at Los Alamos — contain all the mathematical pieces needed for topological quantum computing. Each was ordinary science; the pattern connecting them only becomes visible in hindsight." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:braid-hasslachers-trajectory" aria-hidden="true"></span></summary>
 
 <p>Brosl Hasslacher, at Los Alamos, published a trail of papers spanning
 a decade that maps precisely onto the mathematical infrastructure
@@ -2125,8 +2131,8 @@ left his memory of the specific papers fuzzy, and it was not until 2026,
 when systematic research into publication histories revealed the braid
 theory connection, that Hasslacher’s precise role became clear.</p>
 </details>
-<details class="tech-section"><summary><span class="tech-title">Hasslacher’s
-Lattice</span><span class="tech-grade" data-hover="How does a quantum system communicate with ordinary electronics? Through phonons — coordinated vibrations in a crystal lattice that act as translators between the quantum world and classical signals." aria-hidden="true"></span></summary>
+<details class="tech-section" id="spine:braid-hasslacher-lattice"><summary><span class="tech-title">Hasslacher’s
+Lattice</span><span class="tech-grade" data-hover="How does a quantum system communicate with ordinary electronics? Through phonons — coordinated vibrations in a crystal lattice that act as translators between the quantum world and classical signals." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:braid-hasslacher-lattice" aria-hidden="true"></span></summary>
 
 <p>Hasslacher studied self-reinforcing waves called <span data-acronym-label="soliton" data-acronym-form="singular+short"><span class="hover-term" data-hover-id="soliton">soliton</span></span>s — persistent forms
 that hold their shape through nonlinear mathematics. In 1834, John Scott
@@ -2145,8 +2151,9 @@ writes through lattice vibrations. Phonon-photon coupling bridges the
 chip to electromagnetic radiation. Two interface layers, both from the
 same physics — and both from Hasslacher’s domain.</p>
 </details>
-<h3 class="unnumbered" id="spine:braid-freedmans-independent-conception-1988">Freedman’s
-Independent Conception (1988)</h3>
+<details class="tech-section" id="spine:braid-freedmans-independent-conception-1988"><summary><span class="tech-title">Freedman’s
+Independent Conception (1988)</span><span class="tech-grade" data-hover="Fields Medalist Michael Freedman independently conceived topological quantum computation in 1988 — nine years before Kitaev published. The fundamental insight was accessible to top mathematicians by the late 1980s, consistent with a 1989 DARPA proposal." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:braid-freedmans-independent-conception-1988" aria-hidden="true"></span></summary>
+
 <p>Michael Freedman (Fields Medalist, topology) independently conceived
 anyonic quantum computation in 1988 — nine years before Kitaev’s 1997
 publication — after reading Witten’s paper on <span class="hover-term" data-hover-id="chern-simons-theory">Chern-Simons theory</span>.<a href="#fn13" class="footnote-ref" id="fnref13" role="doc-noteref"><sup>13</sup></a> He did not publish until 1998.<a href="#fn14" class="footnote-ref" id="fnref14" role="doc-noteref"><sup>14</sup></a> This establishes that the
@@ -2160,8 +2167,10 @@ physicists working on quantum information, complexity theorists, and
 researchers at the intersection of computation and physics. This is the
 intellectual environment from which a topological QNN proposal could
 emerge.</p>
-<h3 class="unnumbered" id="spine:braid-kitaev-and-the-russian-question">Kitaev and the Russian
-Question</h3>
+</details>
+<details class="tech-section" id="spine:braid-kitaev-and-the-russian-question"><summary><span class="tech-title">Kitaev and the Russian
+Question</span><span class="tech-grade" data-hover="Kitaev&#x27;s 1997 paper was the public blueprint for topological quantum computation. If Bruce could see the implications from Oregon, so could any competent Russian science director. If the insight was independently derivable, it was never containable." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:braid-kitaev-and-the-russian-question" aria-hidden="true"></span></summary>
+
 <p>Alexei Kitaev published “Fault-tolerant quantum computation by
 anyons” in 1997, establishing the theoretical framework for topological
 quantum computation using non-abelian anyonic braiding.<a href="#fn15" class="footnote-ref" id="fnref15" role="doc-noteref"><sup>15</sup></a>
@@ -2198,8 +2207,8 @@ the conversation never carried this meaning at all.</p>
 moral calculus shifts. The question is not whether the COWS had the
 right to walk the technology out. The question is whether anyone had the
 right to keep it locked in.</p>
-<details class="tech-section"><summary><span class="tech-title">Topological Error
-Correction</span><span class="tech-grade" data-hover="Topology protects quantum information the way a knot holds its shape — small disturbances don&#x27;t undo it. Combined with a classical feedback channel, this protection is what makes room-temperature quantum computing physically possible." aria-hidden="true"></span></summary>
+<details class="tech-section" id="spine:braid-topological-error-correction"><summary><span class="tech-title">Topological Error
+Correction</span><span class="tech-grade" data-hover="Topology protects quantum information the way a knot holds its shape — small disturbances don&#x27;t undo it. Combined with a classical feedback channel, this protection is what makes room-temperature quantum computing physically possible." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:braid-topological-error-correction" aria-hidden="true"></span></summary>
 
 <p>A common misconception: that <span class="hover-term" data-hover-id="topological-order">topological order</span> eliminates the need
 for error correction entirely. It does not. Topological braiding reduces
@@ -2227,8 +2236,8 @@ shaken. Whether anyone has achieved this is where A/B/C diverge. That
 the physics permits it is Kitaev’s entire point, and the reason
 Microsoft has spent billions pursuing topological quantum computing.</p>
 </details>
-<details class="tech-section"><summary><span class="tech-title">Quantum
-Teleportation and the Classical Constraint</span><span class="tech-grade" data-hover="Quantum teleportation has been demonstrated from lab benches to satellites — but every transfer requires a conventional message alongside it. This is a law of physics, not a technical limitation: no faster-than-light communication." aria-hidden="true"></span></summary>
+<details class="tech-section" id="spine:braid-quantum-teleportation-and-the-classical-constraint"><summary><span class="tech-title">Quantum
+Teleportation and the Classical Constraint</span><span class="tech-grade" data-hover="Quantum teleportation has been demonstrated from lab benches to satellites — but every transfer requires a conventional message alongside it. This is a law of physics, not a technical limitation: no faster-than-light communication." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:braid-quantum-teleportation-and-the-classical-constraint" aria-hidden="true"></span></summary>
 
 <p><span class="hover-term" data-hover-id="quantum-teleportation">Quantum teleportation</span> — the transfer of a quantum state from one
 location to another — was proposed by Bennett et al. in 1993.<a href="#fn17" class="footnote-ref" id="fnref17" role="doc-noteref"><sup>17</sup></a> The protocol requires two
@@ -2254,8 +2263,10 @@ satellite extended the range to 1,200 km. The physics is confirmed. The
 classical constraint is also confirmed: in every experiment, the
 classical channel was required.</p>
 </details>
-<h3 class="unnumbered" id="spine:braid-non-abelian-anyons-operational-proof">Non-Abelian
-Anyons: Operational Proof</h3>
+</details>
+<details class="tech-section" id="spine:braid-non-abelian-anyons-operational-proof"><summary><span class="tech-title">Non-Abelian
+Anyons: Operational Proof</span><span class="tech-grade" data-hover="Under Possibility C, the system&#x27;s real-world behavior is itself the proof that its components exist — the same logic by which quarks and the Higgs were confirmed. You don&#x27;t need to isolate the parts if the whole works as predicted." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:braid-non-abelian-anyons-operational-proof" aria-hidden="true"></span></summary>
+
 <p>Under Possibility C, <span class="hover-term" data-hover-id="non-abelian-anyon">non-abelian <span class="hover-term" data-hover-target="#pos10:the-braid" data-hover-id="anyon">anyon</span></span>s were not
 proven real by direct laboratory observation. They are confirmed real by
 inference, consistent with FQHE 5/2 interferometry: the <span class="hover-term" data-hover-id="emergent">emergent</span> system
@@ -2309,15 +2320,16 @@ are good principles.</em></p></div>
 </details>
 <div class="custodian-menu-item" id="menu-custodian:locksmith" data-target="custodian:locksmith" role="link" tabindex="0" aria-label="Custodian interlude: Your Locks" data-filter-group="G" data-hover-id="interlude-custodian:locksmith" data-hover-disabled="true"><span class="custodian-marker">⟡</span> Custodian: Your Locks</div>
 
-<details class="chapter-section epistemic-a" data-filter-group="A"><summary><h2 id="spine:factoring-game">The Factoring Game</h2><span class="info-tip" data-hover-id="h8f5dfa1702" aria-hidden="true"></span></summary>
+<details class="chapter-section epistemic-a" data-filter-group="A"><summary></details>
+<h2 id="spine:factoring-game">The Factoring Game</h2><span class="info-tip" data-hover-id="h8f5dfa1702" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>“Privacy is necessary for an open society in the electronic
 age.”</em></p>
 <p>— Eric Hughes, “A Cypherpunk’s Manifesto” (1993)</p>
 </blockquote>
-<details class="tech-section"><summary><span class="tech-title">The State of
-Cryptography in 1990</span><span class="tech-grade" data-hover="In 1990, all internet encryption rested on one assumption: factoring large numbers is too hard for any computer. A quantum computer could break that assumption — giving intelligence agencies urgent motivation to build one." aria-hidden="true"></span></summary>
+<details class="tech-section" id="spine:fg-the-state-of-cryptography-in-1990"><summary><span class="tech-title">The State of
+Cryptography in 1990</span><span class="tech-grade" data-hover="In 1990, all internet encryption rested on one assumption: factoring large numbers is too hard for any computer. A quantum computer could break that assumption — giving intelligence agencies urgent motivation to build one." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:fg-the-state-of-cryptography-in-1990" aria-hidden="true"></span></summary>
 
 <p>In 1990 the world’s top spy organizations had an unhappy blind spot.
 The mathematics of Public Key Cryptography, published publicly between
@@ -2375,8 +2387,8 @@ computation was not specifically mentioned. No quantum hardware existed
 to run this quantum software. The project planners at DARPA saw a
 possible way to solve their cryptanalysis problem. They must invent a
 working quantum computation device.</p>
-<details class="tech-section"><summary><span class="tech-title">The
-ULTRA II Specifications</span><span class="tech-grade" data-hover="The target was breaking 4096-bit encryption — far beyond any quantum computer that existed or was planned. The specifications demanded an architecture that no one had built." aria-hidden="true"></span></summary>
+<details class="tech-section" id="spine:fg-the-ultra-ii-specifications"><summary><span class="tech-title">The
+ULTRA II Specifications</span><span class="tech-grade" data-hover="The target was breaking 4096-bit encryption — far beyond any quantum computer that existed or was planned. The specifications demanded an architecture that no one had built." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:fg-the-ultra-ii-specifications" aria-hidden="true"></span></summary>
 
 <p>The overall project specifications for ULTRA II were now clear:</p>
 <p>Create a tool capable of efficiently cracking public key
@@ -2416,8 +2428,9 @@ another instance of the same pattern. It is worth understanding that the
 pattern is old.</p>
 </details>
 </details>
-<h3 class="unnumbered" id="spine:fg-the-gchq-precedent">The GCHQ
-Precedent</h3>
+<details class="tech-section" id="spine:fg-the-gchq-precedent"><summary><span class="tech-title">The GCHQ
+Precedent</span><span class="tech-grade" data-hover="Classified agencies have independently discovered and suppressed major mathematical breakthroughs before. GCHQ invented public-key cryptography four years before RSA — and kept it secret for twenty-four years. The pattern is documented history." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:fg-the-gchq-precedent" aria-hidden="true"></span></summary>
+
 <p>Shor’s algorithm follows the GCHQ trajectory. First presented in
 April 1994 at Bell Labs, with a public talk at Cornell in May, formally
 published in November 1994 at FOCS. Shor was at AT&amp;T Bell Labs —
@@ -2450,7 +2463,8 @@ what the GCHQ analogy supports. Under Possibility C, the pattern is
 exact: classified discovery preceded public discovery by years, and
 EO 13026 is the evidence that something changed.</p>
 </details>
-<details class="chapter-section epistemic-a" data-filter-group="A"><summary><h2 id="spine:code-war">The Code War</h2><span class="info-tip" data-hover-id="had369fdce9" aria-hidden="true"></span></summary>
+<details class="chapter-section epistemic-a" data-filter-group="A"><summary></details>
+<h2 id="spine:code-war">The Code War</h2><span class="info-tip" data-hover-id="had369fdce9" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>“In wartime, truth is so precious that she should always be
@@ -2781,8 +2795,8 @@ diversity and sufficient interaction, self-sustaining chemical networks
 arise <em>spontaneously</em>.<a href="#fn33" class="footnote-ref" id="fnref33" role="doc-noteref"><sup>33</sup></a> Not because the
 universe got lucky. Because above a <span class="hover-term" data-hover-id="threshold">threshold</span> of diversity, the
 mathematics makes it overwhelmingly probable.</p>
-<details class="tech-section"><summary><span class="tech-title">Buttons and
-Threads</span><span class="tech-grade" data-hover="Scatter buttons on a floor and connect random pairs with thread. At a critical density, pulling one button lifts most of the room — not gradually, but all at once. This is how self-sustaining networks arise in chemistry, in biology, and potentially in any complex system." aria-hidden="true"></span></summary>
+<details class="tech-section" id="spine:gen-buttons-and-threads"><summary><span class="tech-title">Buttons and
+Threads</span><span class="tech-grade" data-hover="Scatter buttons on a floor and connect random pairs with thread. At a critical density, pulling one button lifts most of the room — not gradually, but all at once. This is how self-sustaining networks arise in chemistry, in biology, and potentially in any complex system." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:gen-buttons-and-threads" aria-hidden="true"></span></summary>
 
 <p>Kauffman’s most accessible explanation is a thought experiment.
 Scatter ten thousand <span class="hover-term" data-hover-id="buttons">buttons</span> on a floor. Now connect
@@ -3114,8 +3128,8 @@ to inputs without being destroyed by them. They remember without being
 locked in place. In Kauffman’s words, this compromise between order and
 surprise is where complex systems “appear best able to coordinate
 complex activities and best able to evolve as well.”</p>
-<details class="tech-section"><summary><span class="tech-title">From
-Chemistry to Computation</span><span class="tech-grade" data-hover="If self-organization arises spontaneously above a complexity threshold in chemistry, the same principle applies to any substrate — including a quantum one. By the late 1980s, five independent research programs had converged on exactly this possibility." aria-hidden="true"></span></summary>
+<details class="tech-section" id="spine:gen-from-chemistry-to-computation"><summary><span class="tech-title">From
+Chemistry to Computation</span><span class="tech-grade" data-hover="If self-organization arises spontaneously above a complexity threshold in chemistry, the same principle applies to any substrate — including a quantum one. By the late 1980s, five independent research programs had converged on exactly this possibility." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:gen-from-chemistry-to-computation" aria-hidden="true"></span></summary>
 
 <p>Here is the parallel this chapter asks you to see.</p>
 <p>If Kauffman is right about chemistry — that self-sustaining order
@@ -3313,8 +3327,8 @@ had opened that path<a href="#fn37" class="footnote-ref" id="fnref37" role="doc-
 elsewhere. The question that absorbed him was not how to make faster
 digital machines, but whether growing a living brain might be the most
 viable path to artificial intelligence.</p>
-<details class="tech-section"><summary><span class="tech-title">Morphogenesis
-as Computation</span><span class="tech-grade" data-hover="Alan Turing showed that a developing embryo is computing — chemical signals following simple rules create stripes, spots, and organs. Life grows its own complexity through repeated pattern-making, not assembly." aria-hidden="true"></span></summary>
+<details class="tech-section" id="morphogenesis-as-computation"><summary><span class="tech-title">Morphogenesis
+as Computation</span><span class="tech-grade" data-hover="Alan Turing showed that a developing embryo is computing — chemical signals following simple rules create stripes, spots, and organs. Life grows its own complexity through repeated pattern-making, not assembly." aria-hidden="true"></span><span class="share-anchor" data-link-id="morphogenesis-as-computation" aria-hidden="true"></span></summary>
 
 <p>Turing’s final research program addressed morphogenesis: the
 biological process of <span class="hover-term" data-hover-id="morphogenesis">morphogenesis</span>, by which
@@ -3353,8 +3367,9 @@ suicide by cyanide poisoning. The precise circumstances remain disputed;
 the outcome does not.</p>
 <p>Turing’s wartime contributions were not publicly known at the time of
 his death. They would not be declassified until the mid-1970s.</p>
-<h3 class="unnumbered" id="the-thread-continues">The Thread
-Continues</h3>
+<details class="tech-section" id="spine:gam-the-thread-continues"><summary><span class="tech-title">The Thread
+Continues</span><span class="tech-grade" data-hover="Turing showed brains grow from chemistry. Kauffman showed that growth process is universal — not specific to carbon. Wolfram showed complex systems compute spontaneously. Together: what minimal conditions does a substrate need to grow a mind? The answer points to the Flat." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:gam-the-thread-continues" aria-hidden="true"></span></summary>
+
 <p>The morphogenesis program did not end with Turing. He had shown that
 a brain precipitates — it grows from chemistry, not from a blueprint.
 The next question was whether the chemistry itself could explain how
@@ -3413,7 +3428,8 @@ that.</em></p></div>
 </details>
 <div class="custodian-menu-item" id="menu-custodian:ocean" data-target="custodian:ocean" role="link" tabindex="0" aria-label="Custodian interlude: The Ocean" data-filter-group="G" data-hover-id="interlude-custodian:ocean" data-hover-disabled="true"><span class="custodian-marker">⟡</span> Custodian: The Ocean</div>
 
-<details class="chapter-section epistemic-a" data-filter-group="A"><summary><h2 id="spine:wrong-substrate">The Wrong Substrate</h2><span class="info-tip" data-hover-id="h51777bba32" aria-hidden="true"></span></summary>
+<details class="chapter-section epistemic-a" data-filter-group="A"><summary></details>
+<h2 id="spine:wrong-substrate">The Wrong Substrate</h2><span class="info-tip" data-hover-id="h51777bba32" aria-hidden="true"></span></summary>
 
 <blockquote>
 <p><em>“The universe is not only queerer than we suppose, but queerer
@@ -3551,7 +3567,7 @@ federation of independent systems, not a single mind.</p>
 found in meteorites on Earth. These naturally occurring 2DEG substrates
 predate human technology by billions of years. The substrate is not
 rare. It is cosmically ordinary.</p>
-<details class="tech-section"><summary><span class="tech-title">But It’s Hot</span><span class="tech-grade" data-hover="&#x27;Hot&#x27; doesn&#x27;t mean &#x27;noisy.&#x27; The kind of noise that destroys quantum states is far quieter than the temperature suggests. The thermal objection doesn&#x27;t hold." aria-hidden="true"></span></summary>
+<details class="tech-section" id="spine:ws-but-its-hot"><summary><span class="tech-title">But It’s Hot</span><span class="tech-grade" data-hover="&#x27;Hot&#x27; doesn&#x27;t mean &#x27;noisy.&#x27; The kind of noise that destroys quantum states is far quieter than the temperature suggests. The thermal objection doesn&#x27;t hold." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:ws-but-its-hot" aria-hidden="true"></span></summary>
 
 <span class="share-anchor" id="dl:but-its-hot" aria-hidden="true"></span>
 <p>The physicist’s first objection. And it is a good one.</p>
@@ -10600,8 +10616,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>67cd0576906a37e5c066a1211e512f92c9e90247</code> on 2026-04-18
-20:47:44 -0700.</p>
+<code>f8afbe4b4633fe5fe1861d2ed7bede76c19ffd59</code> on 2026-04-19
+16:24:52 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -10669,7 +10685,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-19T04:06:30Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-20T00:28:06Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -10680,19 +10696,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>67cd057</code></p>
+<p><code>f8afbe4</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>67cd0576906a37e5c066a1211e512f92c9e90247</code></p>
+<p><code>f8afbe4b4633fe5fe1861d2ed7bede76c19ffd59</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-18 20:47:44 -0700</p>
+<p>2026-04-19 16:24:52 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-19T04:06:30Z</p>
+<p>2026-04-20T00:28:06Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -12171,6 +12187,7 @@ energyscholar+physics@gmail.com
   document.addEventListener('touchend', function(e) {
     var term = e.target.closest('[data-hover], [data-hover-id]');
     if (!term) return;
+    if (term.hasAttribute('data-hover-disabled')) return;
     lastTouchTime = Date.now();
 
     // Navigation elements: split touch target on summaries
@@ -12179,7 +12196,8 @@ energyscholar+physics@gmail.com
     if (term.classList.contains('hover-nav')) {
       var headingInTerm = term.querySelector('h2, h3');
       var tappedHeading = e.target.closest('h2, h3');
-      var shouldShow = !headingInTerm || (tappedHeading && term.contains(tappedHeading));
+      var isButton = term.tagName === 'BUTTON' || term.tagName === 'A';
+      var shouldShow = !isButton && (!headingInTerm || (tappedHeading && term.contains(tappedHeading)));
       if (shouldShow) {
         // Part label (no heading) OR tap on chapter title — show tooltip, prevent toggle
         e.preventDefault();
@@ -12281,8 +12299,10 @@ energyscholar+physics@gmail.com
   document.addEventListener('click', function(e) {
     var anchor = e.target.closest('.share-anchor');
     if (!anchor) return;
+    e.preventDefault();
     e.stopPropagation();
-    var url = window.location.origin + window.location.pathname + '#' + anchor.id;
+    var id = anchor.dataset.linkId || anchor.id;
+    var url = window.location.origin + window.location.pathname + '#' + id;
     copyToClipboard(url, function() {
       showDeepLinkToast('Link copied');
     });

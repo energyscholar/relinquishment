@@ -165,12 +165,55 @@ sections:
     conclusion: "Room-temperature quantum coherence has been demonstrated in biological systems (photosynthesis, nitrogen-vacancy centers). The physics permits it."
     status: approved
 
-  # ── BORDERLINE (evaluate after pilot) ──────────────────────────────
+  # ── BORDERLINE — approved Phase 4 ────────────────────────────────────
 
-  # - title: "Freedman's Independent Conception (1988)"
-  # - title: "Kitaev and the Russian Question"
-  # - title: "Non-Abelian Anyons: Operational Proof"
-  # - title: "The GCHQ Precedent"
-  # - title: "But What Is a Soliton?"
-  # - title: "From Emergence to Function"
-  # - title: "The Thread Continues"
+  - title: "Freedman's Independent Conception (1988)"
+    spine_file: manuscript/spine/the-braid.tex
+    spine_label: "spine:braid-freedmans-independent-conception-1988"
+    bridge_file: manuscript/bridge/pos10-the-braid.tex
+    bridge_label: "pos10:freedmans-independent-conception-1988"
+    assessment: BORDERLINE
+    tooltip: "Fields Medalist Michael Freedman independently conceived topological quantum computation in 1988 — nine years before Kitaev published. The fundamental insight was accessible to top mathematicians by the late 1980s, consistent with a 1989 DARPA proposal."
+    status: approved
+
+  - title: "Kitaev and the Russian Question"
+    spine_file: manuscript/spine/the-braid.tex
+    spine_label: "spine:braid-kitaev-and-the-russian-question"
+    bridge_file: manuscript/bridge/pos10-the-braid.tex
+    bridge_label: "pos10:kitaev-and-the-russian-question"
+    assessment: BORDERLINE
+    tooltip: "Kitaev's 1997 paper was the public blueprint for topological quantum computation. If Bruce could see the implications from Oregon, so could any competent Russian science director. If the insight was independently derivable, it was never containable."
+    status: approved
+
+  - title: "Non-Abelian Anyons: Operational Proof"
+    spine_file: manuscript/spine/the-braid.tex
+    spine_label: "spine:braid-non-abelian-anyons-operational-proof"
+    bridge_file: manuscript/bridge/pos10-the-braid.tex
+    bridge_label: "pos10:non-abelian-anyons-operational-proof"
+    assessment: BORDERLINE
+    tooltip: "Under Possibility C, the system's real-world behavior is itself the proof that its components exist — the same logic by which quarks and the Higgs were confirmed. You don't need to isolate the parts if the whole works as predicted."
+    status: approved
+
+  - title: "The GCHQ Precedent"
+    spine_file: manuscript/spine/the-factoring-game.tex
+    spine_label: "spine:fg-the-gchq-precedent"
+    bridge_file: manuscript/bridge/pos09-the-factoring-game.tex
+    bridge_label: "pos09:the-gchq-precedent"
+    assessment: BORDERLINE
+    tooltip: "Classified agencies have independently discovered and suppressed major mathematical breakthroughs before. GCHQ invented public-key cryptography four years before RSA — and kept it secret for twenty-four years. The pattern is documented history."
+    status: approved
+
+  - title: "The Thread Continues"
+    spine_file: manuscript/spine/growing-a-mind.tex
+    spine_label: "spine:gam-the-thread-continues"
+    bridge_file: manuscript/bridge/pos14-growing-a-mind.tex
+    bridge_label: null
+    assessment: BORDERLINE
+    tooltip: "Turing showed brains grow from chemistry. Kauffman showed that growth process is universal — not specific to carbon. Wolfram showed complex systems compute spontaneously. Together: what minimal conditions does a substrate need to grow a mind? The answer points to the Flat."
+    status: approved
+
+  # DEAD — "But What Is a Soliton?" is bridge-only (pos10). In spine,
+  # soliton content is the opening paragraph of Hasslacher's Lattice.
+
+  # DEAD — "From Emergence to Function" is bridge-only (pos11-the-demo).
+  # pos11 content was folded into First Light (Plan 0152). No spine equivalent.

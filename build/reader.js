@@ -1252,8 +1252,10 @@
   document.addEventListener('click', function(e) {
     var anchor = e.target.closest('.share-anchor');
     if (!anchor) return;
+    e.preventDefault();
     e.stopPropagation();
-    var url = window.location.origin + window.location.pathname + '#' + anchor.id;
+    var id = anchor.dataset.linkId || anchor.id;
+    var url = window.location.origin + window.location.pathname + '#' + id;
     copyToClipboard(url, function() {
       showDeepLinkToast('Link copied');
     });
