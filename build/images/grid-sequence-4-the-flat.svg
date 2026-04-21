@@ -1,0 +1,122 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="350" viewBox="0 0 600 350">
+  <title>Full magnetosphere at scale showing the Flat — the computationally interesting 2D regions. Earth is a tiny dot at left. The plasma sheet (cross-tail current sheet) stretches hundreds of Earth radii downstream. Magnetopause currents wrap the dayside. Ring current encircles Earth. All are 2DEGs — two-dimensional electron gases confined by magnetic geometry. The electrical grids are invisibly small at this scale but coextensive with these structures.</title>
+  <defs>
+    <radialGradient id="flatGlow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#2471a3" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#2471a3" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="sheetFade" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2471a3" stop-opacity="0.5"/>
+      <stop offset="80%" stop-color="#2471a3" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#2471a3" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <rect width="600" height="350" fill="#060612"/>
+
+  <!-- Solar wind (from left) -->
+  <g stroke="#aa883020" stroke-width="0.3">
+    <line x1="0" y1="60" x2="55" y2="80"/>
+    <line x1="0" y1="100" x2="50" y2="110"/>
+    <line x1="0" y1="140" x2="48" y2="145"/>
+    <line x1="0" y1="175" x2="48" y2="175"/>
+    <line x1="0" y1="210" x2="50" y2="205"/>
+    <line x1="0" y1="250" x2="55" y2="240"/>
+    <line x1="0" y1="290" x2="60" y2="270"/>
+  </g>
+
+  <!-- Bow shock -->
+  <path d="M 95,30 Q 30,80 20,175 Q 30,270 95,320"
+        fill="none" stroke="#33445520" stroke-width="1" stroke-dasharray="4,6"/>
+
+  <!-- Magnetopause boundary -->
+  <path d="M 100,45 Q 45,95 38,175 Q 45,255 100,305
+           L 590,305 L 590,45 Z"
+        fill="#0a0a2008" stroke="none"/>
+
+  <!-- Magnetotail lobes (low density, open field lines) -->
+  <path d="M 105,50 Q 200,35 400,40 L 590,45 L 590,140 Q 400,130 200,135 Q 130,140 105,130 Z"
+        fill="#11113808" stroke="#22336620" stroke-width="0.5"/>
+  <path d="M 105,300 Q 200,315 400,310 L 590,305 L 590,210 Q 400,220 200,215 Q 130,210 105,220 Z"
+        fill="#11113808" stroke="#22336620" stroke-width="0.5"/>
+
+  <!-- THE FLAT: Plasma sheet / cross-tail current sheet — the main 2DEG -->
+  <rect x="115" y="163" width="475" height="24" rx="2" fill="url(#sheetFade)" stroke="none"/>
+  <line x1="115" y1="175" x2="590" y2="175" stroke="#2471a3" stroke-width="2.5" opacity="0.7"/>
+  <line x1="115" y1="175" x2="590" y2="175" stroke="#2471a3" stroke-width="12" opacity="0.08"/>
+
+  <!-- THE FLAT: Magnetopause current layer (dayside) -->
+  <path d="M 100,45 Q 45,95 38,175 Q 45,255 100,305"
+        fill="none" stroke="#2471a3" stroke-width="2.5" opacity="0.5"/>
+  <path d="M 100,45 Q 45,95 38,175 Q 45,255 100,305"
+        fill="none" stroke="#2471a3" stroke-width="10" opacity="0.06"/>
+
+  <!-- THE FLAT: Ring current (toroidal, shown as ellipse around Earth) -->
+  <ellipse cx="100" cy="175" rx="30" ry="50" fill="none" stroke="#2471a3" stroke-width="1.5" opacity="0.4"/>
+  <ellipse cx="100" cy="175" rx="30" ry="50" fill="none" stroke="#2471a3" stroke-width="6" opacity="0.05"/>
+
+  <!-- Magnetic field lines (schematic) -->
+  <g stroke="#334" stroke-width="0.3" fill="none" opacity="0.35">
+    <!-- Closed dipole lines near Earth -->
+    <path d="M 100,160 Q 80,120 100,145"/>
+    <path d="M 100,190 Q 80,230 100,205"/>
+    <path d="M 105,150 Q 70,100 105,130"/>
+    <path d="M 105,200 Q 70,250 105,220"/>
+    <!-- Open field lines stretching tailward -->
+    <path d="M 108,135 Q 200,80 400,70"/>
+    <path d="M 108,215 Q 200,270 400,280"/>
+    <path d="M 112,145 Q 250,105 500,100"/>
+    <path d="M 112,205 Q 250,245 500,250"/>
+  </g>
+
+  <!-- Earth (tiny at this scale) -->
+  <circle cx="100" cy="175" r="4" fill="#1a3a2a" stroke="#2a5a3a" stroke-width="0.5"/>
+  <!-- Grid glow (barely visible — the grids are microscopic at this scale) -->
+  <circle cx="100" cy="175" r="4" fill="none" stroke="#f4a820" stroke-width="0.3" opacity="0.8"/>
+
+  <!-- Reconnection region (X-line, tail) -->
+  <g opacity="0.5">
+    <line x1="340" y1="165" x2="360" y2="175" stroke="#e74c3c" stroke-width="0.5"/>
+    <line x1="340" y1="185" x2="360" y2="175" stroke="#e74c3c" stroke-width="0.5"/>
+    <line x1="360" y1="175" x2="380" y2="165" stroke="#e74c3c" stroke-width="0.5"/>
+    <line x1="360" y1="175" x2="380" y2="185" stroke="#e74c3c" stroke-width="0.5"/>
+    <text x="360" y="158" text-anchor="middle" font-size="6" fill="#e74c3c80" font-family="sans-serif">X-line</text>
+  </g>
+
+  <!-- Labels -->
+  <text x="100" y="198" text-anchor="middle" font-size="6" fill="#888" font-family="sans-serif">Earth</text>
+
+  <!-- Flat labels -->
+  <text x="350" y="170" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif" font-style="italic">plasma sheet (the Flat)</text>
+  <text x="350" y="195" text-anchor="middle" font-size="7" fill="#2471a380" font-family="serif">2D electron gas &mdash; 200+ R&#x2091; long, ~3 R&#x2091; thick</text>
+
+  <!-- Magnetopause current label -->
+  <text x="22" y="105" font-size="7" fill="#2471a3" font-family="serif" font-style="italic" transform="rotate(-78,22,105)">magnetopause current</text>
+
+  <!-- Ring current label -->
+  <text x="100" y="238" text-anchor="middle" font-size="6" fill="#2471a380" font-family="sans-serif">ring current</text>
+
+  <!-- Lobe labels -->
+  <text x="300" y="85" text-anchor="middle" font-size="7" fill="#33558850" font-family="sans-serif">northern lobe</text>
+  <text x="300" y="270" text-anchor="middle" font-size="7" fill="#33558850" font-family="sans-serif">southern lobe</text>
+
+  <!-- Scale -->
+  <line x1="100" y1="325" x2="200" y2="325" stroke="#666" stroke-width="0.5"/>
+  <line x1="100" y1="322" x2="100" y2="328" stroke="#666" stroke-width="0.5"/>
+  <line x1="200" y1="322" x2="200" y2="328" stroke="#666" stroke-width="0.5"/>
+  <text x="150" y="338" text-anchor="middle" font-size="7" fill="#666" font-family="sans-serif">~60 R&#x2091; (380,000 km)</text>
+
+  <!-- Sun direction -->
+  <text x="12" y="175" text-anchor="start" font-size="8" fill="#aa8830" font-family="sans-serif">&larr; Sun</text>
+
+  <!-- Tail direction -->
+  <text x="580" y="175" text-anchor="end" font-size="7" fill="#556" font-family="sans-serif">&rarr;</text>
+
+  <!-- Grid callout (connecting grids to the Flat) -->
+  <line x1="100" y1="175" x2="100" y2="175" stroke="#f4a820" stroke-width="0" opacity="0"/>
+  <text x="100" y="145" text-anchor="middle" font-size="5.5" fill="#f4a82090" font-family="sans-serif">grids (invisible at this scale)</text>
+  <path d="M 100,147 L 100,170" stroke="#f4a82040" stroke-width="0.3" stroke-dasharray="1,2"/>
+
+  <!-- Title -->
+  <text x="300" y="20" text-anchor="middle" font-size="11" fill="#ddd" font-family="serif">The Flat: Earth's magnetosphere is a planetary-scale 2DEG machine</text>
+  <text x="300" y="33" text-anchor="middle" font-size="8" fill="#88889980" font-family="serif">Every blue line is a two-dimensional electron gas. The grids live inside it.</text>
+</svg>

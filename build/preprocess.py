@@ -2794,7 +2794,7 @@ def collapse_tech_sections(html_path):
             title_text = re.sub(r'<[^>]+>', '', text[heading_close:heading_end - len(heading_end_tag)]).strip()
 
             next_heading = re.search(
-                rf'<h[1-{heading_level}][\s>]',
+                rf'<h[1-{heading_level}][\s>]|<details class="tech-section"|<div class="custodian-interlude"',
                 text[heading_end:]
             )
             if next_heading:
