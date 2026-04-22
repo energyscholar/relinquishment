@@ -75,6 +75,16 @@ sections:
     conclusion: "A wormhole works by braiding anyons. Information can teleport between distant points, but every transfer requires a classical message to complete. No FTL."
     status: approved
 
+  - title: "The I/O Problem"
+    spine_file: manuscript/spine/the-flat.tex
+    spine_label: "spine:flat-io-problem"
+    bridge_file: manuscript/track-3-awakening/pos-what-is-the-flat.tex
+    bridge_label: "what-is-the-flat:the-io-problem"
+    assessment: GA-AVERSE
+    tooltip: "How does quantum information become a classical signal? Through phonons — lattice vibrations native to the substrate that bridge quantum state to electronics and electronics to radiation. No conversion is engineered; the physics provides it."
+    conclusion: "Electron-phonon and phonon-photon coupling provide the quantum-to-classical interface natively in any 2DEG crystal lattice."
+    status: approved
+
   # ── THE WRONG SUBSTRATE ────────────────────────────────────────────
 
   - title: "But It's Hot"
