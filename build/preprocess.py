@@ -1689,7 +1689,7 @@ def fix_html_toc(html_path):
             # Plan 0172: 'wormholes' is always rendered as the rich panel —
             # no first-occurrence suppression — so every \hovertip{wormholes}
             # shows the SVG (per Bruce 2026-04-13).
-            always_rich = {'wormholes'}
+            always_rich = {'wormholes', 'wormhole'}
             ch = _chapter_of(m.start())
             if lookup in hover_lower and (lookup not in hover_seen[ch] or lookup in always_rich):
                 if lookup not in always_rich:
@@ -1726,7 +1726,7 @@ def fix_html_toc(html_path):
         chapter_starts = [m.start() for m in re.finditer(r'<details class="chapter-section', text)]
 
         AUTO_SKIP_PATTERNS = {'-title', 'stack-', 'interlude-', 'eval-', 'buttons', 'bridge', 'grew'}
-        auto_always_rich = {'wormholes'}
+        auto_always_rich = set()
 
         auto_terms = [k for k in hover_defs
                       if not any(p in k for p in AUTO_SKIP_PATTERNS)]
@@ -1774,9 +1774,6 @@ def fix_html_toc(html_path):
                 lookup = term_key.lower().replace('\u2019', "'").replace('\u2018', "'")
                 if lookup in hover_seen[ch_idx]:
                     continue
-                if lookup in auto_always_rich:
-                    continue
-
                 for region_start, region_end in scannable:
                     region_text = chapter_text[region_start:region_end]
                     m = pattern.search(region_text)
