@@ -927,11 +927,20 @@ details.tech-section .tech-title {
 }
 .info-tip { cursor: help; display: inline-block; vertical-align: middle; }
 .info-tip::after {
-  content: '\24D8';
-  font-size: 0.7em;
+  content: 'i';
+  font-size: 0.6em;
+  font-style: italic;
+  font-family: serif;
   opacity: 0.4;
   margin-left: 0.3em;
   color: #888;
+  border: 1px solid #888;
+  border-radius: 50%;
+  width: 1.2em;
+  height: 1.2em;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
 }
 .info-tip:hover::after { opacity: 0.8; }
 @media (prefers-color-scheme: dark) {
