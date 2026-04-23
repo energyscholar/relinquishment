@@ -127,12 +127,12 @@ sections:
     bridge_file: "manuscript/track-1-confession/pos13-genesis.tex"
     bridge_label: "pos13:buttons-and-threads"
     assessment: GA-AVERSE
-    tooltip: "Scatter buttons on a floor and connect random pairs with thread. At a critical density, pulling one button lifts most of the room — not gradually, but all at once. This is how self-sustaining networks arise in chemistry, in biology, and potentially in any complex system."
+    tooltip: "Kauffman's thought experiment for autocatalytic closure. Scatter buttons on a floor and connect random pairs with thread. At a critical density, pulling one button lifts most of the room — not gradually, but all at once. This is how self-sustaining chemical networks arise: not by design, but by threshold."
     conclusion: "Imagine buttons on the floor connected by random threads. Past a critical density, one giant cluster forms. This is how self-sustaining networks arise — not by design, but by threshold."
     status: approved
     hover_id: "collapse-buttons-and-threads"
     html: |
-      <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;"><strong>Buttons and Threads</strong></p>
+      <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;"><strong>Buttons and Threads</strong> &mdash; Kauffman's illustration of autocatalytic closure</p>
       <p style="margin:0 0 0.4em;font-size:0.88em;line-height:1.4;">Scatter buttons on a floor and connect random pairs with thread. At a critical density, pulling one button lifts most of the room &mdash; not gradually, but all at once.</p>
       <svg xmlns="http://www.w3.org/2000/svg" width="280" height="80" viewBox="0 0 280 80" style="display:block;margin:0.4em auto 0.2em;">
         <title>Three stages of a phase transition: scattered buttons, a few threads connecting some, then all lifted in a net.</title>
@@ -171,8 +171,8 @@ sections:
         <text x="65" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#8b6914">chemistry</text>
         <text x="130" y="50" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#888">=</text>
         <circle cx="195" cy="45" r="35" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.2"/>
-        <path d="M 180,32 Q 195,42 180,55" fill="none" stroke="#2471a3" stroke-width="1.2"/><path d="M 195,32 Q 210,42 195,55" fill="none" stroke="#2471a3" stroke-width="1.2"/><path d="M 188,30 Q 202,45 188,58" fill="none" stroke="#1a5276" stroke-width="1" opacity="0.5"/>
-        <circle cx="182" cy="34" r="2.5" fill="#2471a3" opacity="0.8"/><circle cx="196" cy="34" r="2.5" fill="#2471a3" opacity="0.8"/><circle cx="189" cy="54" r="2.5" fill="#2471a3" opacity="0.8"/>
+        <path d="M 210,32 Q 195,42 210,55" fill="none" stroke="#2471a3" stroke-width="1.2"/><path d="M 195,32 Q 180,42 195,55" fill="none" stroke="#2471a3" stroke-width="1.2"/><path d="M 202,30 Q 188,45 202,58" fill="none" stroke="#1a5276" stroke-width="1" opacity="0.5"/>
+        <circle cx="208" cy="34" r="2.5" fill="#2471a3" opacity="0.8"/><circle cx="194" cy="34" r="2.5" fill="#2471a3" opacity="0.8"/><circle cx="201" cy="54" r="2.5" fill="#2471a3" opacity="0.8"/>
         <text x="195" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#2471a3">quantum</text>
       </svg>
       <p style="margin:0;font-size:0.82em;line-height:1.3;font-style:italic;color:#888;">Expand for the full illustration sequence.</p>
