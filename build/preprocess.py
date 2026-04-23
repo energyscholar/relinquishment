@@ -1591,7 +1591,7 @@ def fix_html_toc(html_path):
         r'<p><span><em>Three narrative threads.*?</em></span></p>\s*'
         r'<p><span><em>Three possible explanations.*?</em></span></p>\s*'
         r'<p><span><em>You decide.</em></span></p>\s*'
-        r'<p><span>Written by Bruce Stephenson, Genevieve Prentice &amp;\s*'
+        r'<p><span>Written by Bruce Stephenson, Genevieve Prentice,? &amp;\s*'
         r'Argus</span></p>\s*'
         r'<p><span>2026</span></p>\s*'
         r'<p><span><a href="#hook:what-would-you-do">.*?</a></span></p>\s*'
@@ -1812,10 +1812,13 @@ def fix_html_toc(html_path):
                         if m:
                             abs_start = ch_start + region_start + m.start()
                             abs_end = ch_start + region_start + m.end()
+                            if any(abs_start < ce and abs_end > cs for cs, ce in claimed_ranges):
+                                continue
                             matched_text = m.group(0)
                             _register_hover(hover_id, text=raw_def or None, html=rich_html)
                             replacement = f'<span class="hover-term"{target_attr} data-hover-id="{hover_id}">{matched_text}</span>'
                             replacements.append((abs_start, abs_end, replacement))
+                            claimed_ranges.append((abs_start, abs_end))
                             hover_seen[ch_idx].add(lookup)
                             auto_count += 1
                             found = True
@@ -2813,7 +2816,7 @@ def collapse_tech_sections(html_path):
             title_text = re.sub(r'<[^>]+>', '', text[heading_close:heading_end - len(heading_end_tag)]).strip()
 
             next_heading = re.search(
-                rf'<h[1-{heading_level}][\s>]|<details class="tech-section"|<div class="custodian-interlude"',
+                rf'<h[1-{heading_level}][\s>]|<details class="tech-section"|</details>|<div class="custodian-interlude"',
                 text[heading_end:]
             )
             if next_heading:
