@@ -63,8 +63,8 @@ You are the Generator. Execute three plans in sequence:
    Principles section in colophon.tex. Numbers verified in plan.
    Hostage line in colophon. Commit.
 
-After all three: make html, make check, verify in browser. Push.
-Tag: git tag sprint-s63-phaseA
+After all three: make html, make check, verify in browser.
+Tag and push: git tag sprint-s63-phaseA && git push && git push --tags
 Report ≤5 lines per plan.
 ```
 
@@ -97,8 +97,8 @@ SEQUENCE (commit mechanism FIRST):
    Chemistry→Computation). ~280x80 each.
    → COMMIT 2a+3 together.
 
-After: make html, make svg-sheet, verify hover+SVG in browser, push.
-Tag: git tag sprint-s63-phaseB
+After: make html, make check, make svg-sheet, verify hover+SVG in browser.
+Tag and push: git tag sprint-s63-phaseB && git push && git push --tags
 Report ≤5 lines + list all fig- IDs in HTML.
 ```
 
@@ -138,7 +138,8 @@ SVG-028: Canopy problem. Forest cross-section, children's-book gentle.
 
 Match SVG style from Phase B. ESCAPE HATCH: If 027 takes >2h, commit
 026+028 first, halt-and-report on 027.
-After: make html, make svg-sheet, push. Tag: git tag sprint-s63-phaseC
+After: make html, make check, make svg-sheet, verify in browser.
+Tag and push: git tag sprint-s63-phaseC && git push && git push --tags
 Report ≤5 lines per SVG.
 ```
 
@@ -173,7 +174,8 @@ rewrite (:245), mechanical Lane→Healer in spine/bridge/appendix/interlude.
 
 NOTE: summary.tex was modified at :311 by Phase A. GREP for text.
 Halt-and-report if biographical reveal isn't as punchy as original.
-After: make html, commit, push. Tag: git tag sprint-s63-phaseD
+After: make html, make check, commit.
+Tag and push: git tag sprint-s63-phaseD && git push && git push --tags
 Report ≤5 lines + halt-and-report count.
 ```
 
@@ -192,7 +194,8 @@ Phase E only (pos03-the-mentor.tex).
 Add one transition sentence at certification. Preserve "Steven 'Legs'
 Lane" verbatim. Halt-and-report on ANY ambiguous case.
 
-After: make html, commit, push. Tag: git tag sprint-s63-phaseE
+After: make html, make check, commit.
+Tag and push: git tag sprint-s63-phaseE && git push && git push --tags
 Report ≤5 lines + halt-and-report count.
 ```
 
@@ -213,7 +216,8 @@ CRITICAL: pos05-the-stories.tex (26 hits) — REPORTED SPEECH. When Healer
 TELLS stories about his youth, narrator calls him Healer. "David" only
 in direct-flashback scenes. Halt-and-report ALL ambiguous pos05 cases.
 
-After: make html, commit, push. Tag: git tag sprint-s63-phaseF
+After: make html, make check, commit.
+Tag and push: git tag sprint-s63-phaseF && git push && git push --tags
 Report ≤5 lines + halt-and-report count.
 ```
 
@@ -233,8 +237,8 @@ Mirror Track-2 decisions from Phase F. what-healer-said.tex (36 hits)
 
 After edits: run final verification grep (in plan). Every remaining hit
 must be youth-David, "David Lane" reveal, "Steven 'Legs' Lane", or
-corrections docs. make html, make check, commit, push.
-Tag: git tag sprint-s63-phaseG
+corrections docs. make html, make check, commit.
+Tag and push: git tag sprint-s63-phaseG && git push && git push --tags
 Report ≤5 lines.
 ```
 
@@ -341,7 +345,14 @@ Six identified risks with mitigations. All mitigations are embedded in the hando
 - Phase F: pos05 reported-speech → halt-and-report. Generator pauses. ✓
 - Phase G: mirrors Track-2. Lower risk after F. ✓
 
-**Master plan rating: 9/10.** (Up from 9/10 — same rating but with 30% fewer copy-paste operations, all editorial OOPS mitigated, 0185 scope corrected.) Remaining risk is concentrated in Phase E (pos03 transition) and Phase F (pos05 reported speech). Both have halt-and-report safety valves.
+### LOW pass 3 (post-prompt-ID re-anneal):
+- Tag push order: all 7 prompts said "push" then "tag" → tags never pushed. FIXED: reordered to tag-then-push-with-tags. ✓
+- Missing `make check`: Phases B-F skipped eigenvalue check. D/E/F edit prose — must verify invariants. FIXED: added `make check` to all 7 prompts. ✓
+- Prompt ID echo instruction: present in all 7. ✓
+- Tracking table: present at top of plan. ✓
+- Phase G `make check` was already present. Confirmed. ✓
+
+**Master plan rating: 9/10.** (Held at 9/10 — prompt ID + tag-push + make-check fixes are operational polish, not structural. 30% fewer copy-paste operations, all editorial OOPS mitigated, 0185 scope corrected.) Remaining risk is concentrated in Phase E (pos03 transition) and Phase F (pos05 reported speech). Both have halt-and-report safety valves.
 
 ---
 
