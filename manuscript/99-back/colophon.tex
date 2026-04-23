@@ -22,6 +22,37 @@ This book was typeset using Lua\LaTeX{} and built with GNU Bash. The source is m
 
 This PDF contains hidden annotations at every point where source material was imported. These annotations record the original filename, archive location, date, and a brief description. In most PDF viewers, you can access them through the annotations or comments panel. They are invisible during normal reading.
 
+\subsection*{Design Principles}
+
+This book is a single self-contained file. The entire work --- science,
+narrative, illustrations, interactive navigation, glossary, citations ---
+ships as one HTML document under one megabyte, or as one PDF. No external
+dependencies. No images to fail to load. No server to go down. No paywall.
+No app.
+
+This is deliberate. The design targets:
+
+\begin{description}
+  \item[Signal\,:\,noise.] Every paragraph either advances a takeaway or
+    blocks a failure mode. Content that does neither is cut.
+  \item[Signal\,:\,bulk.] A five-thousand-word summary. The remaining two
+    hundred fifty pages are the evidence. Read the summary. Dive into the
+    evidence when you are curious for details.
+  \item[Portability.] Readable on a phone, a laptop, or printed on paper.
+    No special software. No login. The file is the book.
+  \item[Survivability.] A single file can be copied, emailed, torrented,
+    archived, and cached. It does not depend on any service continuing to
+    exist.
+  \item[Accessibility.] Semantic HTML. Designed for screen-reader
+    compatibility. All illustrations are inline SVG with title attributes.
+    No raster images.
+\end{description}
+
+These constraints are features, not limitations. A preparation document that
+depends on a server, an app, or a publisher's continued goodwill is not a
+preparation document. It is a hostage. If you are reading this on a device
+that can display a web page, you have everything you need.
+
 \vspace{1cm}
 
 \textit{``It is easier to get forgiveness than permission.''}
