@@ -5,6 +5,17 @@
 **Date:** 2026-04-23
 **Scope:** 7 phases across 5 plans, ~18 hours Generator time, ~7 sessions
 **Eigenvalue check:** ON THE EV (verified S63 — check-strict PASS, all invariants hold)
+**Prompt IDs:** S63-A through S63-G. Generator must echo ID at top of response. Track completion here:
+
+| ID | Phase | Status |
+|----|-------|--------|
+| S63-A | Prose polish (0165+0241+0223) | |
+| S63-B | Mechanism + SVG-025 + previews | |
+| S63-C | SVGs 026+027+028 | |
+| S63-D | Mentor naming: front matter | |
+| S63-E | Mentor naming: pos03 | |
+| S63-F | Mentor naming: dense Track-2 | |
+| S63-G | Mentor naming: Record + sweep | |
 
 ---
 
@@ -40,21 +51,21 @@ Three independent edits in three different files. Single Generator session, thre
 
 **Handoff prompt:**
 ```
-You are the Generator. Execute three independent plans in sequence:
+PROMPT ID: S63-A. Reply with this ID at the top of your response.
+
+You are the Generator. Execute three plans in sequence:
 
 1. Plan 0165 (plans/0165-t7-honesty-framing.md): Edit summary.tex:311.
-   Two approach options in plan — pick whichever reads better in context.
-   Commit after.
+   Two options in plan — pick whichever reads better. Commit.
+2. Plan 0241 (plans/0241-the-engine-tighten.md): Engine 900→750w,
+   7→5 sections. Subtraction only. Commit.
+3. Plan 0223 (plans/0223-design-principles-visible.md): Design
+   Principles section in colophon.tex. Numbers verified in plan.
+   Hostage line in colophon. Commit.
 
-2. Plan 0241 (plans/0241-the-engine-tighten.md): Tighten The Engine
-   chapter. 900→750 words, 7→5 sections. Subtraction only. Commit after.
-
-3. Plan 0223 (plans/0223-design-principles-visible.md): Add Design
-   Principles section to colophon.tex. Numbers are verified in plan.
-   Hostage line in colophon. Commit after.
-
-After all three: make html, make check, verify in browser. Report ≤5
-lines per plan. Push.
+After all three: make html, make check, verify in browser. Push.
+Tag: git tag sprint-s63-phaseA
+Report ≤5 lines per plan.
 ```
 
 ### Phase B: Genesis Mechanism + First SVG + Previews (Plan 0242 §1+§2a+§3)
@@ -65,32 +76,30 @@ Build the collapse tooltip mechanism, validate with first SVG, deploy preview SV
 
 **Handoff prompt:**
 ```
-You are the Generator. Read and execute plans/0242-genesis-visual-sprint.md,
+PROMPT ID: S63-B. Reply with this ID at the top of your response.
+
+You are the Generator. Read plans/0242-genesis-visual-sprint.md,
 Phases 1, 2a, and 3 only.
 
-IMPORTANT — Deep links: Every <figure> tag MUST have an id attribute.
-Add id="fig-flat-cross-section" to FLAT_SVG, id="fig-buttons-filmstrip"
-to FILMSTRIP, id="fig-domain-buttons" to DOMAIN_SVG (existing SVGs).
-New SVG-025 gets id="fig-autocatalytic-loop".
+Deep links: Every <figure> gets an id. Existing: id="fig-flat-cross-section"
+(FLAT_SVG), id="fig-buttons-filmstrip" (FILMSTRIP), id="fig-domain-buttons"
+(DOMAIN_SVG). New: id="fig-autocatalytic-loop" (SVG-025).
 
-IMPORTANT — Style: Before designing any SVG, read the existing SVG constants
-in build/preprocess.py (FLAT_SVG, FILMSTRIP, DOMAIN_SVG). Extract color
-values, stroke widths, font sizes. Match them in all new SVGs.
+Style: Read existing SVG constants in preprocess.py first. Match colors,
+strokes, fonts in all new SVGs.
 
-SEQUENCE (commit mechanism FIRST to de-risk cascade):
+SEQUENCE (commit mechanism FIRST):
 1. Phase 1: Mechanism upgrade in collapse_tech_sections(). ~15 lines.
-   → COMMIT NOW. make html. Verify all existing collapsed sections still
-   render with data-hover tooltips. If broken, fix before proceeding.
-2. Phase 2a: SVG-025 autocatalytic loop. Inject after "The whole network
-   sustains itself." Warm amber, 3 molecules A→B→C→A, ~300x200.
-3. Phase 3: Preview SVGs in collapse tooltips. Two compact (~280x80) previews
-   for "Buttons and Threads" and "From Chemistry to Computation" entries
-   in tech-collapse.yaml.
-   → COMMIT phases 2a+3 together.
+   → COMMIT. make html. Verify existing collapsed sections still work.
+2. Phase 2a: SVG-025 autocatalytic loop. After "The whole network
+   sustains itself." Warm amber, A→B→C→A, ~300x200.
+3. Phase 3: Preview SVGs in collapse tooltips (Buttons+Threads,
+   Chemistry→Computation). ~280x80 each.
+   → COMMIT 2a+3 together.
 
-After: make html, make svg-sheet, verify hover + SVG in browser, push.
+After: make html, make svg-sheet, verify hover+SVG in browser, push.
 Tag: git tag sprint-s63-phaseB
-Report ≤5 lines + list all fig- IDs found in HTML.
+Report ≤5 lines + list all fig- IDs in HTML.
 ```
 
 **REVIEW CHECKPOINT after Phase B:**
@@ -112,24 +121,24 @@ Three independent SVGs. Commit each individually.
 
 **Handoff prompt:**
 ```
-You are the Generator. Read and execute plans/0242-genesis-visual-sprint.md,
-Phases 2b, 2c, and 2d. Commit each SVG individually.
+PROMPT ID: S63-C. Reply with this ID at the top of your response.
 
-Deep links: SVG-026 gets id="fig-edge-of-chaos", SVG-027 gets
-id="fig-substrate-parallel", SVG-028 gets id="fig-canopy-problem".
+You are the Generator. Read plans/0242-genesis-visual-sprint.md,
+Phases 2b, 2c, 2d. Commit each SVG individually.
 
-SVG-026: Edge of chaos (hybrid). Abstract shapes + tiny labels "frozen,"
-  "edge," "chaos". Blue/green/red. ~400x160. Remove TODO at genesis.tex:46-49.
-SVG-027: Substrate parallel (FULL SPLIT-PANEL). Beaker left, 2DEG right,
-  "same mathematics" center. ~420x200. Must pass 5-second test.
+Deep links: id="fig-edge-of-chaos" (026), id="fig-substrate-parallel"
+(027), id="fig-canopy-problem" (028).
+
+SVG-026: Edge of chaos (hybrid). Shapes + labels "frozen/edge/chaos".
+  Blue/green/red. ~400x160. Remove TODO at genesis.tex:46-49.
+SVG-027: Substrate parallel. Beaker left, 2DEG right, "same mathematics"
+  center. ~420x200. Must pass 5-second test.
 SVG-028: Canopy problem. Forest cross-section, children's-book gentle.
   Two tall trees, tiny seedling in shadow. ~350x220.
 
-Match existing SVG style (colors, strokes, fonts from Phase B).
-ESCAPE HATCH: If SVG-027 takes >2 hours, commit 026 and 028 first,
-then halt-and-report on 027 for a separate revision session.
-After each: verify in browser via #fig-xxx anchor. After all: make html,
-make svg-sheet, push. Tag: git tag sprint-s63-phaseC
+Match SVG style from Phase B. ESCAPE HATCH: If 027 takes >2h, commit
+026+028 first, halt-and-report on 027.
+After: make html, make svg-sheet, push. Tag: git tag sprint-s63-phaseC
 Report ≤5 lines per SVG.
 ```
 
@@ -153,19 +162,19 @@ Pre-flight audit, front matter, spine, bridge, appendix, interludes. ~20 hits ac
 
 **Handoff prompt:**
 ```
-You are the Generator. Read and execute plans/0185-mentor-naming-standardization.md,
+PROMPT ID: S63-D. Reply with this ID at the top of your response.
+
+You are the Generator. Read plans/0185-mentor-naming-standardization.md,
 Phase D only.
 
-Run the pre-flight audit. Then edit front matter + ancillary files (~20 hits,
-12 files). Key edits: summary.tex first-use fix (:26 Lane→Healer), biographical
-reveal rewrite (:245), plus mechanical Lane→Healer in spine, bridge, appendix,
-interlude, track-1 files.
+Pre-flight audit, then front matter + ancillary files (~20 hits, 12 files).
+Key: summary.tex first-use fix (:26 Lane→Healer), biographical reveal
+rewrite (:245), mechanical Lane→Healer in spine/bridge/appendix/interlude.
 
-NOTE: summary.tex was modified at :311 by Plan 0165 in Phase A. Different
-paragraph. GREP for text, don't trust line numbers.
-
-Halt-and-report if biographical reveal rewrite doesn't feel as punchy as original.
-After: make html, commit, push. Report ≤5 lines + halt-and-report count.
+NOTE: summary.tex was modified at :311 by Phase A. GREP for text.
+Halt-and-report if biographical reveal isn't as punchy as original.
+After: make html, commit, push. Tag: git tag sprint-s63-phaseD
+Report ≤5 lines + halt-and-report count.
 ```
 
 ### Phase E: Mentor Naming — pos03-the-mentor.tex (Plan 0185, Phase E)
@@ -174,14 +183,17 @@ After: make html, commit, push. Report ≤5 lines + halt-and-report count.
 
 **Handoff prompt:**
 ```
-You are the Generator. Read and execute plans/0185-mentor-naming-standardization.md,
+PROMPT ID: S63-E. Reply with this ID at the top of your response.
+
+You are the Generator. Read plans/0185-mentor-naming-standardization.md,
 Phase E only (pos03-the-mentor.tex).
 
-39 David/Lane references. Apply the youth/adult rule: "David" before combat-medic
-certification, "Healer" after. Add one transition sentence at certification.
-Preserve "Steven 'Legs' Lane" verbatim. Halt-and-report on ANY ambiguous case.
+39 hits. "David" before combat-medic certification, "Healer" after.
+Add one transition sentence at certification. Preserve "Steven 'Legs'
+Lane" verbatim. Halt-and-report on ANY ambiguous case.
 
-After: make html, commit, push. Report ≤5 lines + halt-and-report count.
+After: make html, commit, push. Tag: git tag sprint-s63-phaseE
+Report ≤5 lines + halt-and-report count.
 ```
 
 ### Phase F: Mentor Naming — Dense Track-2 Chapters (Plan 0185, Phase F)
@@ -192,16 +204,17 @@ After: make html, commit, push. Report ≤5 lines + halt-and-report count.
 
 **Handoff prompt:**
 ```
-You are the Generator. Read and execute plans/0185-mentor-naming-standardization.md,
-Phase F only (7 dense Track-2 chapters, ~75 hits).
+PROMPT ID: S63-F. Reply with this ID at the top of your response.
 
-CRITICAL: pos05-the-stories.tex (26 hits) uses REPORTED SPEECH — Healer telling
-stories about his past. When Healer is TELLING a story about his youth, narrator
-still calls him Healer. Only use "David" in direct-flashback scenes where reader
-meets the pre-medic character directly. Halt-and-report on ALL ambiguous cases
-in pos05.
+You are the Generator. Read plans/0185-mentor-naming-standardization.md,
+Phase F only (7 Track-2 chapters, ~75 hits).
 
-After: make html, commit, push. Report ≤5 lines + halt-and-report count.
+CRITICAL: pos05-the-stories.tex (26 hits) — REPORTED SPEECH. When Healer
+TELLS stories about his youth, narrator calls him Healer. "David" only
+in direct-flashback scenes. Halt-and-report ALL ambiguous pos05 cases.
+
+After: make html, commit, push. Tag: git tag sprint-s63-phaseF
+Report ≤5 lines + halt-and-report count.
 ```
 
 ### Phase G: Mentor Naming — Record + Verification Sweep (Plan 0185, Phase G)
@@ -210,15 +223,19 @@ After: make html, commit, push. Report ≤5 lines + halt-and-report count.
 
 **Handoff prompt:**
 ```
-You are the Generator. Read and execute plans/0185-mentor-naming-standardization.md,
+PROMPT ID: S63-G. Reply with this ID at the top of your response.
+
+You are the Generator. Read plans/0185-mentor-naming-standardization.md,
 Phase G only (7 Record chapters, ~79 hits + final verification).
 
-Record chapters mirror Track-2 counterparts. Apply same decisions from Phase F.
-what-healer-said.tex (36 hits) mirrors pos05 — same reported-speech rule.
+Mirror Track-2 decisions from Phase F. what-healer-said.tex (36 hits)
+= same reported-speech rule as pos05.
 
-After all edits: run final verification grep (in plan). Every remaining David/Lane
-hit must be youth-David, "David Lane" reveal, "Steven 'Legs' Lane", or corrections
-documentation. make html, make check, commit, push. Report ≤5 lines.
+After edits: run final verification grep (in plan). Every remaining hit
+must be youth-David, "David Lane" reveal, "Steven 'Legs' Lane", or
+corrections docs. make html, make check, commit, push.
+Tag: git tag sprint-s63-phaseG
+Report ≤5 lines.
 ```
 
 ---
