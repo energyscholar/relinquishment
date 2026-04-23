@@ -2798,9 +2798,11 @@ def collapse_tech_sections(html_path):
     html_path = Path(html_path)
     text = html_path.read_text()
     count = 0
+    rich_tooltips = {}
 
     for entry in entries:
         tooltip = entry.get('tooltip', '').strip()
+        hover_id = entry.get('hover_id')
         for label_key in ('spine_label', 'bridge_label'):
             label = entry.get(label_key)
             if not label:
@@ -2836,8 +2838,16 @@ def collapse_tech_sections(html_path):
 
             content = text[heading_end:section_end]
 
-            grade_tooltip = html_mod.escape(tooltip) if tooltip else 'Verified science — a technical discussion grounded in published, peer-reviewed physics. Safe to skip; expand if curious.'
-            grade_span = f'<span class="tech-grade" data-hover="{grade_tooltip}" aria-hidden="true"></span>'
+            if hover_id:
+                grade_span = f'<span class="tech-grade" data-hover-id="{hover_id}" aria-hidden="true"></span>'
+                rich_html = entry.get('html', '')
+                if rich_html:
+                    rich_tooltips[hover_id] = {"t": tooltip, "h": rich_html}
+                elif tooltip:
+                    rich_tooltips[hover_id] = {"t": tooltip}
+            else:
+                grade_tooltip = html_mod.escape(tooltip) if tooltip else 'Verified science — a technical discussion grounded in published, peer-reviewed physics. Safe to skip; expand if curious.'
+                grade_span = f'<span class="tech-grade" data-hover="{grade_tooltip}" aria-hidden="true"></span>'
             link_span = f'<span class="share-anchor" data-link-id="{label}" aria-hidden="true"></span>'
             wrapper = (
                 f'<details class="tech-section" id="{label}">'
@@ -2847,6 +2857,14 @@ def collapse_tech_sections(html_path):
             )
             text = text[:heading_start] + wrapper + text[section_end:]
             count += 1
+
+    if rich_tooltips:
+        json_pat = re.compile(r'(<script type="application/json" id="hover-data">)(.*?)(</script>)', re.DOTALL)
+        m = json_pat.search(text)
+        if m:
+            hover_data = json.loads(m.group(2))
+            hover_data.update(rich_tooltips)
+            text = text[:m.start(2)] + json.dumps(hover_data, ensure_ascii=False) + text[m.end(2):]
 
     if count:
         html_path.write_text(text)
