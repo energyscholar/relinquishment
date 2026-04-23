@@ -1735,7 +1735,7 @@ def fix_html_toc(html_path):
         chapter_starts = [m.start() for m in re.finditer(r'<details class="chapter-section', text)]
 
         AUTO_SKIP_PATTERNS = {'-title', 'stack-', 'interlude-', 'eval-', 'buttons', 'bridge', 'grew'}
-        auto_wrap_all = {'wormholes', 'wormhole', 'topological wormhole', 'the flat'}
+        auto_wrap_all = {'wormholes', 'wormhole', 'topological wormhole'}
 
         auto_terms = [k for k in hover_defs
                       if not any(p in k for p in AUTO_SKIP_PATTERNS)]
