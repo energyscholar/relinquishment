@@ -1,7 +1,8 @@
 # Plan 0206 — Smalls bundle: P0204 P4 + summary L58 + commit pending edits
 
 ## Status
-Ready for Generator. Three mechanical micro-edits + one build + one commit covering four already-authorized changes (two of which are already on disk from Auditor-direct execution).
+**Status:** COMPLETE (verified S63 audit)
+COMPLETE (verified S63 audit). Originally: Ready for Generator. Three mechanical micro-edits + one build + one commit covering four already-authorized changes (two of which are already on disk from Auditor-direct execution).
 
 ## Why bundle
 

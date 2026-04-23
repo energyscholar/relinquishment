@@ -1,7 +1,8 @@
 # Plan 0214 — Rewrite "Getting the Record Out" to match letter-quality prose
 
 ## Status
-Ready for Generator.
+**Status:** COMPLETE (verified S63 audit)
+COMPLETE (verified S63 audit). Originally: Ready for Generator.
 
 ## Problem
 

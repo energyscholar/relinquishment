@@ -1,7 +1,8 @@
 # Plan 0204 — Hook chapter-rename catch + M1 hovertip wraps + the-flat L69 strip + the-question L145 trim
 
 ## Status
-Ready for Generator. Three independent micro-fixes joined into one plan because they are small, share a build/verify step, and were authorized in adjacent turns.
+**Status:** COMPLETE (verified S63 audit)
+COMPLETE (verified S63 audit). Originally: Ready for Generator. Three independent micro-fixes joined into one plan because they are small, share a build/verify step, and were authorized in adjacent turns.
 
 ## Why join
 

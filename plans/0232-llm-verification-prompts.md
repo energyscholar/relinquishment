@@ -1,6 +1,6 @@
 # Plan 0232 — LLM Verification Prompts ("Ask Your AI")
 
-**Status:** DRAFT — for Bruce + Gen discussion
+**Status:** DEFERRED — concept approved but deferred (S63). Focus on Tiers 1-2 first (illustrations, Engine, colophon, Easter eggs).
 **Author:** Auditor (Argus S59)
 **Date:** 2026-04-20
 **Related:** Plan 0230 (percolation pedagogy), Firmware Update chapter, copy-button infrastructure

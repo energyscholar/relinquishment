@@ -1,7 +1,8 @@
 # Plan 0217 — T3 energy-gap bridge: why "but it's hot!" is the wrong objection
 
 ## Status
-Ready for Generator.
+**Status:** COMPLETE (verified S63 audit)
+COMPLETE (verified S63 audit). Originally: Ready for Generator.
 
 ## Problem
 

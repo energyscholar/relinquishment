@@ -1,7 +1,8 @@
 # Plan 0209 — Deep-link consolidation: manifest-drive the 7 Custodian interludes, rename `guardian:* → custodian:*`, normalize manifest IDs, ship build-time verifier and questions-index
 
 ## Status
-Ready for Generator. Absorbs scope originally sketched as 0210 (interlude title/slug review) and 0211 (questions-index page). 0212 (per-anchor share pages with OG metadata) extracted to **Plan 0210** at Bruce's direction. 0213 (placement audit) collapsed into Phase 4 verifier (redundant otherwise). All design decisions resolved.
+**Status:** COMPLETE (verified S63 audit)
+COMPLETE (verified S63 audit). Originally: Ready for Generator. Absorbs scope originally sketched as 0210 (interlude title/slug review) and 0211 (questions-index page). 0212 (per-anchor share pages with OG metadata) extracted to **Plan 0210** at Bruce's direction. 0213 (placement audit) collapsed into Phase 4 verifier (redundant otherwise). All design decisions resolved.
 
 ## Goal
 
@@ -549,4 +550,4 @@ Ship. Plan 0210 (per-anchor share pages) builds on this state.
 - **BUG FIXED: Phase 6 href grep `[a-z-]+` excluded digits.** Changed to `[a-z0-9-]+`. No current IDs use digits, but the pattern should not silently break on future entries.
 - **Added: Phase 3 menu-tooltips VALUE check.** The old keys held `"guardian:X"` — but tooltip *value* text may also mention "Guardian." Added note for Generator to check and rename in values too.
 - **DD3 → RESOLVED.** Bruce moved to "post generator prompt" after narrowing to keys/locksmith and receiving locksmith recommendation. Default-if-silent protocol applies.
-- **Status line → "Ready for Generator."** Removed slug-confirmation gate.
+- **Status line → "COMPLETE (verified S63 audit). Originally: Ready for Generator."** Removed slug-confirmation gate.

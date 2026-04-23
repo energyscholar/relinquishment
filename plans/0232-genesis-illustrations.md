@@ -1,6 +1,6 @@
 # Plan 0232 — Genesis Chapter Illustrations
 
-**Status:** DRAFT — for Bruce review and refinement
+**Status:** SUPERSEDED by Plan 0242 (Genesis Visual Sprint). All content absorbed.
 **Author:** Auditor (Argus S60)
 **Chapter:** Genesis: The Edge of Chaos (1988–1992)
 **Scope:** 4 new inline SVGs for the book's foundational science chapter

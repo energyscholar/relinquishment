@@ -1,7 +1,8 @@
 # Plan 0205 — Tooltip externalization + dedupe (HTML bloat reduction)
 
 ## Status
-Ready for Generator.
+**Status:** COMPLETE (verified S63 audit)
+COMPLETE (verified S63 audit). Originally: Ready for Generator.
 
 ## Goal
 Reduce `Relinquishment.html` size by ~80–100K (~10%) by moving tooltip content out of per-element inline attributes into a single inline JSON map. Lighter HTML parses faster in browsers (Bruce's stated reason).
