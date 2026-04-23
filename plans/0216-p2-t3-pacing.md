@@ -1,7 +1,8 @@
 # Plan 0216 — p2 T3 pacing: name the thermal objection, earn the conclusion
 
 ## Status
-Ready for Generator.
+**Status:** COMPLETE (verified S63 audit)
+COMPLETE (verified S63 audit). Originally: Ready for Generator.
 
 ## Dependency
 Plan 0217 (p3 "But It's Hot" section) — **SHIPPED** at `095a973`. This plan distills from the resolved p3 argument.

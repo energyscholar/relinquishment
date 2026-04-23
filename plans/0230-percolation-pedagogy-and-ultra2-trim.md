@@ -1,6 +1,6 @@
 # Plan 0230: Percolation Pedagogy + ULTRA II Reduction
 
-**Status:** DRAFT — for Bruce + Gen discussion
+**Status:** PLACEMENT DECIDED (S63) — Change 1 (Continental Drift): Early Part 1, before 11-domain argument. Change 3 (Unbuilt Bridge): At transition between established-science chapters and TQC/Flat material. Change 2 (ULTRA II reduction): blocked on Plan 0233 (Easter eggs). Prose writing still needed.
 **Author:** Argus (Auditor)
 **Date:** 2026-04-20
 

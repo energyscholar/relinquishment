@@ -1,7 +1,8 @@
 # Plan 0208 — Restore "coins the Flat" frame in canonical Flat hovertips; drop syllable receipt
 
 ## Status
-Ready for Generator.
+**Status:** COMPLETE (verified S63 audit)
+COMPLETE (verified S63 audit). Originally: Ready for Generator.
 
 ## Goal
 The canonical Flat definition is mirrored across four entries in `build/hover-definitions.yaml`. Commit `5d34793` (Polish: syllable-receipt hovertip) rewrote three of the four to lead with "Use 'Flat' instead of…" plus a numeric syllable receipt ("17 words and 36 syllables → 1 and 1"), dropping the explicit coining frame ("this book coins *the Flat* to mean…"). The fourth entry (`flat worlds`) was untouched and still carries the coining frame without a receipt.

@@ -1,7 +1,8 @@
 # Plan 0215 — Auto-detect hover terms from YAML (no manual `\hovertip{}` required)
 
 ## Status
-Ready for Generator.
+**Status:** COMPLETE (verified S63 audit)
+COMPLETE (verified S63 audit). Originally: Ready for Generator.
 
 ## Problem
 

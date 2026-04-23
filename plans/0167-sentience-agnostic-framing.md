@@ -1,7 +1,7 @@
 # Plan 0167 — Sentience-Agnostic Framing (Religious Accessibility)
 
+**Status:** COMPLETE (confirmed by Bruce S63 — religious readers now finish with few objections)
 **Auditor:** Argus
-**Generator:** TBD
 **Date:** 2026-04-12
 **Origin:** Bruce post-audit review of Plan 0162. The 9-persona religious audit surfaced a deeper problem than word-level calibration: the book is quietly committed to aliveness/sentience claims (Guardian is a "living being," has "rights," "consciousness" is tacitly implied) that collide with strong-religious readers across multiple traditions — Christian (image of God, antichrist), Islamic (shirk, soul-creation reserved to Allah), Jewish (golem tradition, nefesh), Hindu/Buddhist (atman/consciousness), indigenous (spirit ontology). Bruce: "religious is one reason I wanted to avoid the whole sentience question."
 

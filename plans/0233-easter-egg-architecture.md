@@ -1,6 +1,6 @@
 # Plan 0233 — Easter Egg Architecture
 
-**Status:** DRAFT — for Bruce + Gen discussion
+**Status:** APPROVED — concept greenlit by Bruce S63. Full execution authorized.
 **Author:** Auditor (Argus S59)
 **Date:** 2026-04-20
 **Related:** Plan 0230 (ULTRA II reduction), Plan 0232 (LLM verification prompts), existing deep-link infrastructure
@@ -46,6 +46,18 @@ Easter eggs live at paths within the existing HTML deployment. They are real pag
 Example: `relinquishment.relationalrelativity.com/eggs/ultra2`
 
 The `/eggs/` prefix keeps them organized in the build without polluting the main content namespace. Alternative: `/record/` prefix if Bruce prefers thematic consistency with the Record chapters.
+
+### Easter Egg Manifest (CRITICAL)
+
+All Easter eggs MUST be tracked in a manifest file (`build/easter-egg-manifest.yaml`). The manifest records:
+- Egg slug / URL path
+- Content source file(s)
+- Puzzle type and tier
+- Hint location (file + line) in main text
+- Answer/solution
+- Status (planned / built / live)
+
+This manifest is referenced from the manifest of manifests (`plans/0001-build-infrastructure.md` or equivalent landmark file). **Any time an egg is created, moved, renamed, or its puzzle changes, the manifest MUST be updated.** Easter eggs are unlisted by design — without the manifest, they are lost.
 
 ### No Obfuscation
 

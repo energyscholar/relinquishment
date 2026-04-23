@@ -1,7 +1,8 @@
 # Plan 0213 — Per-chapter tooltip re-triggering
 
 ## Status
-Ready for Generator.
+**Status:** COMPLETE (verified S63 audit)
+COMPLETE (verified S63 audit). Originally: Ready for Generator.
 
 ## Problem
 

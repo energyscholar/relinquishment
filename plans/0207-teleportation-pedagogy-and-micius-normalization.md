@@ -1,7 +1,8 @@
 # Plan 0207 — summary.tex L40 teleportation pedagogy fix + Micius distance normalization
 
 ## Status
-Ready for Generator. Two related mechanical changes joined: one pedagogical fix to the quantum-teleportation passage in summary.tex (eliminates an FTL misread the next sentence is trying to defuse), one normalization of internal book inconsistency on the Micius satellite distance citation.
+**Status:** COMPLETE (verified S63 audit)
+COMPLETE (verified S63 audit). Originally: Ready for Generator. Two related mechanical changes joined: one pedagogical fix to the quantum-teleportation passage in summary.tex (eliminates an FTL misread the next sentence is trying to defuse), one normalization of internal book inconsistency on the Micius satellite distance citation.
 
 ## Why join
 

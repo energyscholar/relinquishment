@@ -1,7 +1,8 @@
 # Plan 0212 — Replace "The Flat" chapter preamble with canonical definition + SVG; add missing hovertip
 
 ## Status
-Ready for Generator.
+**Status:** COMPLETE (verified S63 audit)
+COMPLETE (verified S63 audit). Originally: Ready for Generator.
 
 ## Problem
 
