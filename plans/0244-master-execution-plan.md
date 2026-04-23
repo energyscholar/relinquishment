@@ -103,13 +103,13 @@ Report ≤5 lines + list all fig- IDs in HTML.
 ```
 
 **REVIEW CHECKPOINT after Phase B:**
-Bruce opens HTML and reviews:
-- `Relinquishment.html#fig-autocatalytic-loop` — SVG-025 at correct position, style matches existing
-- Hover over collapsed "Buttons and Threads" → rich tooltip with preview SVG
-- Hover over collapsed "From Chemistry" → rich tooltip with preview SVG
-- `Relinquishment.html#fig-flat-cross-section` — existing SVG still works with new `id`
-- `Relinquishment.html#fig-buttons-filmstrip` — existing filmstrip still works
-- Phone check: open on mobile, verify SVG renders and tooltip works
+Bruce opens HTML and reviews (full clickable deep links):
+- https://relinquishment.ai/downloads/Relinquishment.html#fig-autocatalytic-loop — SVG-025 at correct position, style matches existing
+- https://relinquishment.ai/downloads/Relinquishment.html#spine:gen-buttons-and-threads — hover the tech-grade icon → rich tooltip with preview SVG
+- https://relinquishment.ai/downloads/Relinquishment.html#spine:gen-from-chemistry-to-computation — hover the tech-grade icon → rich tooltip with preview SVG
+- https://relinquishment.ai/downloads/Relinquishment.html#fig-flat-cross-section — existing SVG still works with new `id`
+- https://relinquishment.ai/downloads/Relinquishment.html#fig-buttons-filmstrip — existing filmstrip still works (inside collapsed section — expand first)
+- Phone check: open on mobile, verify SVG renders and tooltip works on tap
 
 If revision needed → run **Phase B-rev** before proceeding to Phase C.
 
@@ -144,10 +144,10 @@ Report ≤5 lines per SVG.
 ```
 
 **REVIEW CHECKPOINT after Phase C:**
-Bruce opens HTML and reviews:
-- `Relinquishment.html#fig-edge-of-chaos` — hybrid three-regime, labels readable, green band narrow
-- `Relinquishment.html#fig-substrate-parallel` — 5-second test: "same thing, different substrate"
-- `Relinquishment.html#fig-canopy-problem` — children's-book gentle, dark implication clear
+Bruce opens HTML and reviews (full clickable deep links):
+- https://relinquishment.ai/downloads/Relinquishment.html#fig-edge-of-chaos — hybrid three-regime, labels readable, green band narrow
+- https://relinquishment.ai/downloads/Relinquishment.html#fig-substrate-parallel — 5-second test: "same thing, different substrate"
+- https://relinquishment.ai/downloads/Relinquishment.html#fig-canopy-problem — children's-book gentle, dark implication clear
 - Compare all new SVGs side by side with existing filmstrip — visual family check
 - Phone check: all 4 new SVGs render on mobile
 
