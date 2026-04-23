@@ -2351,7 +2351,7 @@ def inject_flat_diagram(html_path):
     html_path = Path(html_path)
     text = html_path.read_text()
 
-    FLAT_SVG = '''<figure class="inline-svg" style="text-align:center;margin:1em auto;">
+    FLAT_SVG = '''<figure id="fig-flat-cross-section" class="inline-svg" style="text-align:center;margin:1em auto;">
 <svg xmlns="http://www.w3.org/2000/svg" width="300" height="130" viewBox="0 0 300 130" style="display:block;margin:0 auto;">
   <title>Cross-section of a computer chip. Two grey blocks of 3D semiconductor sandwich a thin blue layer — the two-dimensional electron gas (2DEG). Blue dots are electrons confined to this flat layer. They can move left and right but not up or down. This is the Flat.</title>
   <defs>
@@ -2594,7 +2594,7 @@ def inject_button_sequence(html_path):
     p6_parts.append(_caption('One more thread. Pick up one button \u2014 the whole room lifts.'))
     PANEL_6 = _svg_wrap('\n'.join(p6_parts))
 
-    FILMSTRIP = f'''<figure class="inline-svg button-sequence" style="text-align:center;margin:1.5em auto;">
+    FILMSTRIP = f'''<figure id="fig-buttons-filmstrip" class="inline-svg button-sequence" style="text-align:center;margin:1.5em auto;">
 {PANEL_1}
 {PANEL_2}
 {PANEL_3}
@@ -2619,7 +2619,7 @@ def inject_domain_buttons(html_path):
     html_path = Path(html_path)
     text = html_path.read_text()
 
-    DOMAIN_SVG = '''<figure class="inline-svg domain-buttons" style="text-align:center;margin:1.5em auto;">
+    DOMAIN_SVG = '''<figure id="fig-domain-buttons" class="inline-svg domain-buttons" style="text-align:center;margin:1.5em auto;">
 <svg xmlns="http://www.w3.org/2000/svg" width="460" height="370" viewBox="0 0 500 510" style="display:block;margin:0 auto;">
   <title>Kauffman\u2019s buttons and threads, mapped to eleven scientific domains in five clusters. Solid threads: published cross-references. Dashed: bridges no one has built. TQC is connected within its cluster but isolated from the wider argument.</title>
   <defs>
@@ -2784,6 +2784,48 @@ def fix_html_glossary_names(html_path):
     print(f"Glossary names: {rewrites} acronym spans resolved")
 
 
+def inject_genesis_illustrations(html_path):
+    """Insert Genesis chapter SVG illustrations (Plan 0242)."""
+    html_path = Path(html_path)
+    text = html_path.read_text()
+
+    AUTOCATALYTIC_LOOP = '''<figure id="fig-autocatalytic-loop" class="inline-svg" style="text-align:center;margin:1.5em auto;">
+<svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200" style="display:block;margin:0 auto;">
+  <title>Autocatalytic loop: three molecules A, B, and C arranged in a circle. A catalyzes B, B catalyzes C, C catalyzes A. The whole network sustains itself.</title>
+  <defs>
+    <marker id="aloop-arr" viewBox="0 0 8 6" refX="7" refY="3" markerWidth="7" markerHeight="5" orient="auto">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="#8b6914"/>
+    </marker>
+  </defs>
+  <circle cx="150" cy="38" r="22" fill="#c4a97d" stroke="#a88b5e" stroke-width="1.5"/>
+  <text x="150" y="43" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a3e1b" font-weight="bold">A</text>
+  <circle cx="216" cy="128" r="22" fill="#d4a574" stroke="#a88b5e" stroke-width="1.5"/>
+  <text x="216" y="133" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a3e1b" font-weight="bold">B</text>
+  <circle cx="84" cy="128" r="22" fill="#b8956a" stroke="#a88b5e" stroke-width="1.5"/>
+  <text x="84" y="133" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#5a3e1b" font-weight="bold">C</text>
+  <path d="M 170,46 Q 210,55 210,106" fill="none" stroke="#8b6914" stroke-width="1.5" marker-end="url(#aloop-arr)"/>
+  <path d="M 196,142 Q 150,170 100,142" fill="none" stroke="#8b6914" stroke-width="1.5" marker-end="url(#aloop-arr)"/>
+  <path d="M 72,110 Q 60,70 135,42" fill="none" stroke="#8b6914" stroke-width="1.5" marker-end="url(#aloop-arr)"/>
+  <text x="215" y="75" font-family="Georgia, serif" font-size="9" fill="#8b6914" font-style="italic">catalyzes</text>
+  <text x="150" y="170" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#8b6914" font-style="italic">catalyzes</text>
+  <text x="55" y="75" font-family="Georgia, serif" font-size="9" fill="#8b6914" font-style="italic">catalyzes</text>
+</svg>
+<figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">An autocatalytic loop: each molecule catalyzes the next. The network sustains itself.</figcaption>
+</figure>'''
+
+    marker = 'network sustains itself.'
+    idx = text.find(marker)
+    if idx == -1:
+        return
+    close_p = text.find('</p>', idx)
+    if close_p == -1:
+        return
+    insert_point = close_p + len('</p>')
+    text = text[:insert_point] + '\n' + AUTOCATALYTIC_LOOP + '\n' + text[insert_point:]
+    html_path.write_text(text)
+    print("  Genesis: autocatalytic loop SVG injected")
+
+
 def collapse_tech_sections(html_path):
     """Wrap approved tech sections in collapsible <details> elements (Plan 0219)."""
     manifest_path = REPO / 'build' / 'tech-collapse.yaml'
@@ -2900,6 +2942,7 @@ if __name__ == "__main__":
         inject_flat_diagram(sys.argv[2])
         inject_button_sequence(sys.argv[2])
         inject_domain_buttons(sys.argv[2])
+        inject_genesis_illustrations(sys.argv[2])
         inject_questions_index(sys.argv[2])
         fix_html_glossary_names(sys.argv[2])
         collapse_tech_sections(sys.argv[2])
