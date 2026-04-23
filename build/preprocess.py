@@ -1689,7 +1689,7 @@ def fix_html_toc(html_path):
             # Plan 0172: 'wormholes' is always rendered as the rich panel —
             # no first-occurrence suppression — so every \hovertip{wormholes}
             # shows the SVG (per Bruce 2026-04-13).
-            always_rich = {'wormholes', 'wormhole'}
+            always_rich = {'wormholes', 'wormhole', 'topological wormhole', 'the flat'}
             ch = _chapter_of(m.start())
             if lookup in hover_lower and (lookup not in hover_seen[ch] or lookup in always_rich):
                 if lookup not in always_rich:
@@ -1726,7 +1726,7 @@ def fix_html_toc(html_path):
         chapter_starts = [m.start() for m in re.finditer(r'<details class="chapter-section', text)]
 
         AUTO_SKIP_PATTERNS = {'-title', 'stack-', 'interlude-', 'eval-', 'buttons', 'bridge', 'grew'}
-        auto_always_rich = set()
+        auto_wrap_all = {'wormholes', 'wormhole', 'topological wormhole', 'the flat'}
 
         auto_terms = [k for k in hover_defs
                       if not any(p in k for p in AUTO_SKIP_PATTERNS)]
@@ -1739,6 +1739,7 @@ def fix_html_toc(html_path):
 
         _FORBIDDEN_RE = re.compile(
             r'<(script|style)[\s\S]*?</\1>'
+            r"|<span[^>]*class=[\"']hover-term[\"'][^>]*>.*?</span>"
             r"|<(?:[^>\"']|\"[^\"]*\"|'[^']*')+>",
             re.DOTALL
         )
@@ -1770,34 +1771,55 @@ def fix_html_toc(html_path):
             scannable = _find_scannable_regions(chapter_text)
             replacements = []
 
+            claimed_ranges = []
+
             for term_key, pattern in auto_patterns:
                 lookup = term_key.lower().replace('\u2019', "'").replace('\u2018', "'")
-                if lookup in hover_seen[ch_idx]:
+                wrap_all = lookup in auto_wrap_all
+                if lookup in hover_seen[ch_idx] and not wrap_all:
                     continue
+
+                value = hover_lower[lookup]
+                if isinstance(value, dict):
+                    raw_def = value.get('text', '')
+                    target = value.get('target', '')
+                    target_attr = f' data-hover-target="{html_mod.escape(target)}"' if target else ''
+                    rich_html = value.get('html', '').rstrip('\n') or None
+                else:
+                    raw_def = str(value)
+                    target_attr = ''
+                    rich_html = None
+                hover_id = re.sub(r'[^a-z0-9]+', '-', lookup).strip('-')
+
+                found = False
                 for region_start, region_end in scannable:
                     region_text = chapter_text[region_start:region_end]
-                    m = pattern.search(region_text)
-                    if m:
-                        abs_start = ch_start + region_start + m.start()
-                        abs_end = ch_start + region_start + m.end()
-                        matched_text = m.group(0)
-                        value = hover_lower[lookup]
-                        if isinstance(value, dict):
-                            raw_def = value.get('text', '')
-                            target = value.get('target', '')
-                            target_attr = f' data-hover-target="{html_mod.escape(target)}"' if target else ''
-                            rich_html = value.get('html', '').rstrip('\n') or None
-                        else:
-                            raw_def = str(value)
-                            target_attr = ''
-                            rich_html = None
-                        hover_id = re.sub(r'[^a-z0-9]+', '-', lookup).strip('-')
-                        _register_hover(hover_id, text=raw_def or None, html=rich_html)
-                        replacement = f'<span class="hover-term"{target_attr} data-hover-id="{hover_id}">{matched_text}</span>'
-                        replacements.append((abs_start, abs_end, replacement))
-                        hover_seen[ch_idx].add(lookup)
-                        auto_count += 1
-                        break
+                    if wrap_all:
+                        for m in pattern.finditer(region_text):
+                            abs_start = ch_start + region_start + m.start()
+                            abs_end = ch_start + region_start + m.end()
+                            if any(abs_start < ce and abs_end > cs for cs, ce in claimed_ranges):
+                                continue
+                            matched_text = m.group(0)
+                            _register_hover(hover_id, text=raw_def or None, html=rich_html)
+                            replacement = f'<span class="hover-term"{target_attr} data-hover-id="{hover_id}">{matched_text}</span>'
+                            replacements.append((abs_start, abs_end, replacement))
+                            claimed_ranges.append((abs_start, abs_end))
+                            auto_count += 1
+                            found = True
+                    else:
+                        m = pattern.search(region_text)
+                        if m:
+                            abs_start = ch_start + region_start + m.start()
+                            abs_end = ch_start + region_start + m.end()
+                            matched_text = m.group(0)
+                            _register_hover(hover_id, text=raw_def or None, html=rich_html)
+                            replacement = f'<span class="hover-term"{target_attr} data-hover-id="{hover_id}">{matched_text}</span>'
+                            replacements.append((abs_start, abs_end, replacement))
+                            hover_seen[ch_idx].add(lookup)
+                            auto_count += 1
+                            found = True
+                            break
 
             replacements.sort(key=lambda r: r[0], reverse=True)
             for abs_start, abs_end, replacement in replacements:
