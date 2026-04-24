@@ -2859,7 +2859,61 @@ def inject_genesis_illustrations(html_path):
 <figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">The edge of chaos: a narrow regime between frozen order and formless chaos where complex systems can compute.</figcaption>
 </figure>'''
 
+    SUBSTRATE_PARALLEL = '''<figure id="fig-substrate-parallel" class="inline-svg" style="text-align:center;margin:1.5em auto;">
+<svg xmlns="http://www.w3.org/2000/svg" width="420" height="200" viewBox="0 0 420 200" style="display:block;margin:0 auto;">
+  <title>Split panel showing the substrate parallel. Left: a warm-colored beaker containing three molecules in a self-sustaining catalytic loop (A catalyzes B, B catalyzes C, C catalyzes A). Right: a cool-colored two-dimensional electron gas with three anyonic quasiparticles connected by braiding arcs in the same triangular pattern. Center: the words "same mathematics" bridging both sides. The point: different substrates, identical organizational principle.</title>
+  <defs>
+    <marker id="sp-arr-warm" viewBox="0 0 8 6" refX="7" refY="3" markerWidth="6" markerHeight="4" orient="auto">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="#8b6914"/>
+    </marker>
+    <marker id="sp-arr-cool" viewBox="0 0 8 6" refX="7" refY="3" markerWidth="6" markerHeight="4" orient="auto">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="#1a5276"/>
+    </marker>
+    <linearGradient id="sp-2deg-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2471a3" stop-opacity="0.05"/>
+      <stop offset="50%" stop-color="#2471a3" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#2471a3" stop-opacity="0.05"/>
+    </linearGradient>
+  </defs>
+  <rect x="10" y="10" width="170" height="150" rx="6" fill="#fdf2e9" stroke="#a88b5e" stroke-width="0.8" opacity="0.5"/>
+  <path d="M 55,30 L 45,120 Q 45,135 60,135 L 130,135 Q 145,135 145,120 L 135,30 Z" fill="none" stroke="#a88b5e" stroke-width="1.5" stroke-linejoin="round"/>
+  <line x1="55" y1="30" x2="135" y2="30" stroke="#a88b5e" stroke-width="1"/>
+  <circle cx="95" cy="55" r="10" fill="#c4a97d" stroke="#a88b5e" stroke-width="1.2"/>
+  <text x="95" y="59" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#5a3e1b" font-weight="bold">A</text>
+  <circle cx="125" cy="105" r="10" fill="#d4a574" stroke="#a88b5e" stroke-width="1.2"/>
+  <text x="125" y="109" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#5a3e1b" font-weight="bold">B</text>
+  <circle cx="65" cy="105" r="10" fill="#b8956a" stroke="#a88b5e" stroke-width="1.2"/>
+  <text x="65" y="109" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#5a3e1b" font-weight="bold">C</text>
+  <path d="M 104,60 Q 120,70 122,95" fill="none" stroke="#8b6914" stroke-width="1.2" marker-end="url(#sp-arr-warm)"/>
+  <path d="M 116,112 Q 95,125 75,112" fill="none" stroke="#8b6914" stroke-width="1.2" marker-end="url(#sp-arr-warm)"/>
+  <path d="M 60,96 Q 55,75 88,58" fill="none" stroke="#8b6914" stroke-width="1.2" marker-end="url(#sp-arr-warm)"/>
+  <text x="95" y="175" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#8b6914" font-style="italic">chemistry</text>
+  <line x1="195" y1="30" x2="195" y2="140" stroke="#888" stroke-width="1" stroke-dasharray="4,3" opacity="0.6"/>
+  <line x1="225" y1="30" x2="225" y2="140" stroke="#888" stroke-width="1" stroke-dasharray="4,3" opacity="0.6"/>
+  <text x="210" y="78" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555" font-style="italic">same</text>
+  <text x="210" y="95" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#555" font-style="italic">mathematics</text>
+  <rect x="240" y="10" width="170" height="150" rx="6" fill="#eaf2f8" stroke="#2471a3" stroke-width="0.8" opacity="0.4"/>
+  <rect x="270" y="40" width="110" height="14" rx="2" fill="#e0e0e0" stroke="#999" stroke-width="0.6"/>
+  <text x="325" y="50" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#888">3D bulk</text>
+  <rect x="270" y="58" width="110" height="5" rx="1" fill="url(#sp-2deg-glow)" stroke="#2471a3" stroke-width="1"/>
+  <rect x="270" y="67" width="110" height="14" rx="2" fill="#e0e0e0" stroke="#999" stroke-width="0.6"/>
+  <text x="325" y="77" text-anchor="middle" font-family="sans-serif" font-size="6" fill="#888">3D bulk</text>
+  <circle cx="305" cy="100" r="10" fill="#d4e6f1" stroke="#2471a3" stroke-width="1.2"/>
+  <text x="305" y="104" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#1a5276" font-style="italic">a</text>
+  <circle cx="355" cy="100" r="10" fill="#d4e6f1" stroke="#2471a3" stroke-width="1.2"/>
+  <text x="355" y="104" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#1a5276" font-style="italic">b</text>
+  <circle cx="330" cy="135" r="10" fill="#d4e6f1" stroke="#2471a3" stroke-width="1.2"/>
+  <text x="330" y="139" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#1a5276" font-style="italic">c</text>
+  <path d="M 314,95 Q 340,85 350,93" fill="none" stroke="#1a5276" stroke-width="1.2" marker-end="url(#sp-arr-cool)"/>
+  <path d="M 349,109 Q 345,125 337,130" fill="none" stroke="#1a5276" stroke-width="1.2" marker-end="url(#sp-arr-cool)"/>
+  <path d="M 322,138 Q 305,125 302,112" fill="none" stroke="#1a5276" stroke-width="1.2" marker-end="url(#sp-arr-cool)"/>
+  <text x="325" y="175" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#1a5276" font-style="italic">quantum</text>
+</svg>
+<figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">Different substrates, same mathematics: catalytic chemistry (left) and quantum braiding (right) share the same self-sustaining loop structure.</figcaption>
+</figure>'''
+
     svgs = [
+        ('threshold was\ncrossed.', SUBSTRATE_PARALLEL, 'substrate parallel'),
         ('best able to evolve as well.', EDGE_OF_CHAOS, 'edge of chaos'),
         ('network sustains itself.', AUTOCATALYTIC_LOOP, 'autocatalytic loop'),
     ]
