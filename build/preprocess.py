@@ -2813,17 +2813,73 @@ def inject_genesis_illustrations(html_path):
 <figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">An autocatalytic loop: each molecule catalyzes the next. The network sustains itself.</figcaption>
 </figure>'''
 
-    marker = 'network sustains itself.'
-    idx = text.find(marker)
-    if idx == -1:
-        return
-    close_p = text.find('</p>', idx)
-    if close_p == -1:
-        return
-    insert_point = close_p + len('</p>')
-    text = text[:insert_point] + '\n' + AUTOCATALYTIC_LOOP + '\n' + text[insert_point:]
-    html_path.write_text(text)
-    print("  Genesis: autocatalytic loop SVG injected")
+    EDGE_OF_CHAOS = '''<figure id="fig-edge-of-chaos" class="inline-svg" style="text-align:center;margin:1.5em auto;">
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="160" viewBox="0 0 400 160" style="display:block;margin:0 auto;">
+  <title>Three regimes side by side. Left: a rigid blue grid of locked nodes — frozen, too ordered to compute. Center: a narrow green band of flexibly connected nodes — the edge of chaos, where computation and life are possible. Right: scattered red dots flying apart — chaos, too disordered to remember.</title>
+  <rect x="10" y="15" width="115" height="100" rx="4" fill="#eaf2f8" stroke="#2471a3" stroke-width="0.8" opacity="0.4"/>
+  <line x1="35" y1="35" x2="100" y2="35" stroke="#2471a3" stroke-width="0.8" opacity="0.5"/>
+  <line x1="35" y1="55" x2="100" y2="55" stroke="#2471a3" stroke-width="0.8" opacity="0.5"/>
+  <line x1="35" y1="75" x2="100" y2="75" stroke="#2471a3" stroke-width="0.8" opacity="0.5"/>
+  <line x1="35" y1="95" x2="100" y2="95" stroke="#2471a3" stroke-width="0.8" opacity="0.5"/>
+  <line x1="35" y1="35" x2="35" y2="95" stroke="#2471a3" stroke-width="0.8" opacity="0.5"/>
+  <line x1="57" y1="35" x2="57" y2="95" stroke="#2471a3" stroke-width="0.8" opacity="0.5"/>
+  <line x1="78" y1="35" x2="78" y2="95" stroke="#2471a3" stroke-width="0.8" opacity="0.5"/>
+  <line x1="100" y1="35" x2="100" y2="95" stroke="#2471a3" stroke-width="0.8" opacity="0.5"/>
+  <circle cx="35" cy="35" r="3.5" fill="#2471a3"/><circle cx="57" cy="35" r="3.5" fill="#2471a3"/>
+  <circle cx="78" cy="35" r="3.5" fill="#2471a3"/><circle cx="100" cy="35" r="3.5" fill="#2471a3"/>
+  <circle cx="35" cy="55" r="3.5" fill="#2471a3"/><circle cx="57" cy="55" r="3.5" fill="#2471a3"/>
+  <circle cx="78" cy="55" r="3.5" fill="#2471a3"/><circle cx="100" cy="55" r="3.5" fill="#2471a3"/>
+  <circle cx="35" cy="75" r="3.5" fill="#2471a3"/><circle cx="57" cy="75" r="3.5" fill="#2471a3"/>
+  <circle cx="78" cy="75" r="3.5" fill="#2471a3"/><circle cx="100" cy="75" r="3.5" fill="#2471a3"/>
+  <circle cx="35" cy="95" r="3.5" fill="#2471a3"/><circle cx="57" cy="95" r="3.5" fill="#2471a3"/>
+  <circle cx="78" cy="95" r="3.5" fill="#2471a3"/><circle cx="100" cy="95" r="3.5" fill="#2471a3"/>
+  <text x="67" y="128" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#1a5276" font-style="italic">frozen</text>
+  <rect x="145" y="15" width="70" height="100" rx="4" fill="#eafaf1" stroke="#27ae60" stroke-width="1.2" opacity="0.5"/>
+  <circle cx="160" cy="38" r="3.5" fill="#27ae60"/><circle cx="195" cy="42" r="3.5" fill="#27ae60"/>
+  <circle cx="172" cy="58" r="3.5" fill="#27ae60"/><circle cx="188" cy="72" r="3.5" fill="#27ae60"/>
+  <circle cx="155" cy="82" r="3.5" fill="#27ae60"/><circle cx="200" cy="92" r="3.5" fill="#27ae60"/>
+  <circle cx="175" cy="98" r="3.5" fill="#27ae60"/>
+  <path d="M 160,38 Q 168,45 172,58" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7"/>
+  <path d="M 195,42 Q 190,52 188,72" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7"/>
+  <path d="M 172,58 Q 180,65 188,72" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7"/>
+  <path d="M 155,82 Q 165,90 175,98" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7"/>
+  <path d="M 188,72 Q 194,82 200,92" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7"/>
+  <path d="M 160,38 Q 155,60 155,82" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.5"/>
+  <path d="M 195,42 Q 200,66 200,92" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.5"/>
+  <text x="180" y="128" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#1e8449" font-weight="bold" font-style="italic">edge</text>
+  <rect x="235" y="15" width="115" height="100" rx="4" fill="#fdedec" stroke="#c0392b" stroke-width="0.8" opacity="0.4"/>
+  <circle cx="258" cy="30" r="3" fill="#c0392b" opacity="0.7"/><circle cx="310" cy="25" r="2.5" fill="#c0392b" opacity="0.5"/>
+  <circle cx="335" cy="42" r="3" fill="#c0392b" opacity="0.8"/><circle cx="270" cy="55" r="2.5" fill="#c0392b" opacity="0.6"/>
+  <circle cx="320" cy="65" r="3" fill="#c0392b" opacity="0.7"/><circle cx="248" cy="78" r="2.5" fill="#c0392b" opacity="0.5"/>
+  <circle cx="295" cy="85" r="3" fill="#c0392b" opacity="0.6"/><circle cx="340" cy="95" r="2.5" fill="#c0392b" opacity="0.7"/>
+  <circle cx="260" cy="100" r="2.5" fill="#c0392b" opacity="0.5"/>
+  <text x="292" y="128" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#922b21" font-style="italic">chaos</text>
+  <text x="180" y="152" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#888" font-style="italic">computation, adaptation, life</text>
+</svg>
+<figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">The edge of chaos: a narrow regime between frozen order and formless chaos where complex systems can compute.</figcaption>
+</figure>'''
+
+    svgs = [
+        ('best able to evolve as well.', EDGE_OF_CHAOS, 'edge of chaos'),
+        ('network sustains itself.', AUTOCATALYTIC_LOOP, 'autocatalytic loop'),
+    ]
+
+    injected = []
+    for marker, svg, name in reversed(svgs):
+        idx = text.find(marker)
+        if idx == -1:
+            continue
+        close_p = text.find('</p>', idx)
+        if close_p == -1:
+            continue
+        insert_point = close_p + len('</p>')
+        text = text[:insert_point] + '\n' + svg + '\n' + text[insert_point:]
+        injected.append(name)
+
+    if injected:
+        html_path.write_text(text)
+        for name in injected:
+            print(f"  Genesis: {name} SVG injected")
 
 
 def collapse_tech_sections(html_path):
