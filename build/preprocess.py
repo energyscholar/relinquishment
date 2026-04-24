@@ -2912,7 +2912,46 @@ def inject_genesis_illustrations(html_path):
 <figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">Different substrates, same mathematics: catalytic chemistry (left) and quantum braiding (right) share the same self-sustaining loop structure.</figcaption>
 </figure>'''
 
+    CANOPY_PROBLEM = '''<figure id="fig-canopy-problem" class="inline-svg" style="text-align:center;margin:1.5em auto;">
+<svg xmlns="http://www.w3.org/2000/svg" width="350" height="220" viewBox="0 0 350 220" style="display:block;margin:0 auto;">
+  <title>Forest cross-section: two tall trees with broad green crowns fill the canopy, catching all the sunlight. Between them on the forest floor, a tiny seedling sits in deep shadow, unable to grow. The ecological niche is full.</title>
+  <defs>
+    <linearGradient id="canopy-sky" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef9e7" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#fef9e7" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="canopy-shadow" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a2e1a" stop-opacity="0.25"/>
+      <stop offset="80%" stop-color="#1a2e1a" stop-opacity="0.08"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="350" height="80" fill="url(#canopy-sky)"/>
+  <line x1="30" y1="12" x2="30" y2="35" stroke="#f4d03f" stroke-width="1.5" opacity="0.4"/>
+  <line x1="70" y1="8" x2="70" y2="30" stroke="#f4d03f" stroke-width="1.5" opacity="0.5"/>
+  <line x1="110" y1="5" x2="110" y2="25" stroke="#f4d03f" stroke-width="1.5" opacity="0.6"/>
+  <line x1="150" y1="3" x2="150" y2="22" stroke="#f4d03f" stroke-width="1.5" opacity="0.6"/>
+  <line x1="200" y1="3" x2="200" y2="22" stroke="#f4d03f" stroke-width="1.5" opacity="0.6"/>
+  <line x1="245" y1="5" x2="245" y2="25" stroke="#f4d03f" stroke-width="1.5" opacity="0.6"/>
+  <line x1="285" y1="8" x2="285" y2="30" stroke="#f4d03f" stroke-width="1.5" opacity="0.5"/>
+  <line x1="320" y1="12" x2="320" y2="35" stroke="#f4d03f" stroke-width="1.5" opacity="0.4"/>
+  <ellipse cx="105" cy="50" rx="85" ry="35" fill="#27ae60" opacity="0.75"/>
+  <ellipse cx="100" cy="48" rx="78" ry="30" fill="#2ecc71" opacity="0.6"/>
+  <ellipse cx="255" cy="50" rx="80" ry="33" fill="#27ae60" opacity="0.75"/>
+  <ellipse cx="260" cy="48" rx="72" ry="28" fill="#2ecc71" opacity="0.6"/>
+  <rect x="90" y="75" width="10" height="115" rx="2" fill="#8b6914" opacity="0.8"/>
+  <rect x="250" y="78" width="10" height="112" rx="2" fill="#8b6914" opacity="0.8"/>
+  <rect x="0" y="80" width="350" height="110" fill="url(#canopy-shadow)"/>
+  <rect x="0" y="190" width="350" height="5" rx="1" fill="#a88b5e" opacity="0.4"/>
+  <line x1="175" y1="185" x2="175" y2="190" stroke="#2ecc71" stroke-width="1.5"/>
+  <ellipse cx="175" cy="183" rx="4" ry="3" fill="#82e0aa" opacity="0.8"/>
+  <ellipse cx="173" cy="181" rx="2.5" ry="2" fill="#82e0aa" opacity="0.6"/>
+  <ellipse cx="177" cy="181" rx="2.5" ry="2" fill="#82e0aa" opacity="0.6"/>
+</svg>
+<figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">The canopy problem: the first organism to cross the threshold owns the niche. The seedling never reaches the light.</figcaption>
+</figure>'''
+
     svgs = [
+        ('ecological niche is full.', CANOPY_PROBLEM, 'canopy problem'),
         ('threshold was\ncrossed.', SUBSTRATE_PARALLEL, 'substrate parallel'),
         ('best able to evolve as well.', EDGE_OF_CHAOS, 'edge of chaos'),
         ('network sustains itself.', AUTOCATALYTIC_LOOP, 'autocatalytic loop'),
