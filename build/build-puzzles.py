@@ -42,18 +42,39 @@ def render_text_input(puzzle):
     )
 
 
+def render_threads_interaction(puzzle):
+    pid = escape(puzzle['id'])
+    threshold = puzzle.get('hint_threshold', 12)
+    return f'''<div class="threads-sim" id="sim-{pid}">
+          <svg id="svg-{pid}" viewBox="0 0 400 300" class="threads-svg">
+          </svg>
+          <div class="sim-controls">
+            <button class="submit-btn" id="add-btn-{pid}" onclick="addThread('{pid}')">Add Thread</button>
+            <span class="thread-count" id="tcount-{pid}">Threads: 0</span>
+          </div>
+          <div class="transition-flash" id="flash-{pid}">Phase Transition!</div>
+        </div>
+        <script>initThreadsSim("{pid}", {threshold});</script>'''
+
+
 def render_puzzle_block(puzzle):
     pid = escape(puzzle['id'])
     title = escape(puzzle['chapter_title'])
     question = escape(puzzle['question'])
-    hint = escape(puzzle['hint'])
+    hint_text = escape(puzzle.get('hint', ''))
     abstract = escape(puzzle['abstract'].strip())
-    hashes_js = ', '.join(f'"{h}"' for h in puzzle['answer_hashes'])
 
     if puzzle['type'] == 'multiple-choice':
         interaction = render_mc_options(puzzle)
+        hashes_js = ', '.join(f'"{h}"' for h in puzzle.get('answer_hashes', []))
+        hash_script = f'<script>puzzleHashes["{pid}"] = [{hashes_js}];</script>'
+    elif puzzle['type'] == 'interactive-simulation':
+        interaction = render_threads_interaction(puzzle)
+        hash_script = ''
     else:
         interaction = render_text_input(puzzle)
+        hashes_js = ', '.join(f'"{h}"' for h in puzzle.get('answer_hashes', []))
+        hash_script = f'<script>puzzleHashes["{pid}"] = [{hashes_js}];</script>'
 
     return f'''
     <div class="puzzle-block" id="puzzle-{pid}">
@@ -62,17 +83,135 @@ def render_puzzle_block(puzzle):
       <div class="interaction" id="interact-{pid}">
         {interaction}
       </div>
-      <p class="hint" id="hint-{pid}">{hint}</p>
+      <p class="hint" id="hint-{pid}">{hint_text}</p>
       <div class="result" id="result-{pid}">
         <div class="solved-badge">&#10003; Solved</div>
         <blockquote class="abstract">{abstract}</blockquote>
       </div>
-      <script>puzzleHashes["{pid}"] = [{hashes_js}];</script>
+      {hash_script}
     </div>'''
 
 
 puzzle_blocks = '\n'.join(render_puzzle_block(p) for p in puzzles)
 total = len(puzzles)
+
+# Threads simulation JS — union-find, random layout, cluster coloring, phase transition
+THREADS_JS = r"""
+var threadsSims = {};
+var CLUSTER_COLORS = ["#2a9b9a","#c0392b","#8b5fc0","#d4a14b","#1a5276","#27ae60","#e67e22","#2980b9"];
+
+function initThreadsSim(id, hintThreshold) {
+  var N = 16, W = 400, H = 300, R = 12;
+  var nodes = [];
+  for (var i = 0; i < N; i++) {
+    nodes.push({
+      x: R + Math.random() * (W - 2*R),
+      y: R + Math.random() * (H - 2*R),
+      parent: i, rank: 0
+    });
+  }
+  // Generate all possible edges, shuffle
+  var allEdges = [];
+  for (var a = 0; a < N; a++)
+    for (var b = a+1; b < N; b++)
+      allEdges.push([a,b]);
+  for (var i = allEdges.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i+1));
+    var tmp = allEdges[i]; allEdges[i] = allEdges[j]; allEdges[j] = tmp;
+  }
+  var sim = {
+    id: id, nodes: nodes, edges: [], edgeQueue: allEdges,
+    edgeIdx: 0, threadCount: 0, solved: false,
+    hintThreshold: hintThreshold
+  };
+  threadsSims[id] = sim;
+  renderThreadsSvg(sim);
+}
+
+function ufFind(nodes, i) {
+  if (nodes[i].parent !== i) nodes[i].parent = ufFind(nodes, nodes[i].parent);
+  return nodes[i].parent;
+}
+
+function ufUnion(nodes, a, b) {
+  var ra = ufFind(nodes, a), rb = ufFind(nodes, b);
+  if (ra === rb) return;
+  if (nodes[ra].rank < nodes[rb].rank) { var t = ra; ra = rb; rb = t; }
+  nodes[rb].parent = ra;
+  if (nodes[ra].rank === nodes[rb].rank) nodes[ra].rank++;
+}
+
+function getClusters(nodes) {
+  var map = {};
+  for (var i = 0; i < nodes.length; i++) {
+    var r = ufFind(nodes, i);
+    if (!map[r]) map[r] = [];
+    map[r].push(i);
+  }
+  return map;
+}
+
+function largestCluster(nodes) {
+  var clusters = getClusters(nodes);
+  var max = 0;
+  for (var k in clusters) if (clusters[k].length > max) max = clusters[k].length;
+  return max;
+}
+
+function renderThreadsSvg(sim) {
+  var svg = document.getElementById("svg-" + sim.id);
+  if (!svg) return;
+  var clusters = getClusters(sim.nodes);
+  var nodeColor = {};
+  var ci = 0;
+  for (var root in clusters) {
+    var color = CLUSTER_COLORS[ci % CLUSTER_COLORS.length];
+    for (var j = 0; j < clusters[root].length; j++)
+      nodeColor[clusters[root][j]] = color;
+    ci++;
+  }
+  var parts = [];
+  for (var i = 0; i < sim.edges.length; i++) {
+    var e = sim.edges[i];
+    var a = sim.nodes[e[0]], b = sim.nodes[e[1]];
+    parts.push('<line x1="'+a.x+'" y1="'+a.y+'" x2="'+b.x+'" y2="'+b.y+'" stroke="#999" stroke-width="1.5" stroke-opacity="0.6"/>');
+  }
+  for (var i = 0; i < sim.nodes.length; i++) {
+    var n = sim.nodes[i];
+    var col = nodeColor[i] || "#ccc";
+    var cls = sim.solved && largestCluster(sim.nodes) > 8 ? " glow" : "";
+    parts.push('<circle cx="'+n.x+'" cy="'+n.y+'" r="12" fill="'+col+'" stroke="#fff" stroke-width="1.5" class="node-circle'+cls+'"/>');
+  }
+  svg.innerHTML = parts.join("\n");
+}
+
+function addThread(id) {
+  var sim = threadsSims[id];
+  if (!sim || sim.solved) return;
+  if (sim.edgeIdx >= sim.edgeQueue.length) return;
+  var edge = sim.edgeQueue[sim.edgeIdx++];
+  sim.edges.push(edge);
+  ufUnion(sim.nodes, edge[0], edge[1]);
+  sim.threadCount++;
+  document.getElementById("tcount-" + id).textContent = "Threads: " + sim.threadCount;
+  renderThreadsSvg(sim);
+  if (sim.threadCount >= sim.hintThreshold && largestCluster(sim.nodes) < 9) {
+    showHint(id);
+  }
+  if (largestCluster(sim.nodes) >= 9) {
+    sim.solved = true;
+    renderThreadsSvg(sim);
+    var flash = document.getElementById("flash-" + id);
+    if (flash) flash.classList.add("visible");
+    var btn = document.getElementById("add-btn-" + id);
+    if (btn) btn.disabled = true;
+    setTimeout(function() {
+      if (flash) flash.classList.remove("visible");
+      revealPuzzle(id);
+    }, 1800);
+  }
+}
+"""
 
 page = f'''<!doctype html>
 <html lang="en">
@@ -209,6 +348,11 @@ page = f'''<!doctype html>
     background: #154360;
   }}
 
+  .submit-btn:disabled {{
+    opacity: 0.5;
+    cursor: default;
+  }}
+
   .hint {{
     display: none;
     color: #856404;
@@ -257,6 +401,80 @@ page = f'''<!doctype html>
     margin-bottom: 2em;
   }}
 
+  /* Threads simulation */
+  .threads-svg {{
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
+    display: block;
+    margin: 0 auto 0.8em;
+  }}
+
+  .sim-controls {{
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    justify-content: center;
+    margin-bottom: 0.5em;
+  }}
+
+  .thread-count {{
+    font-size: 0.95em;
+    color: #555;
+  }}
+
+  .node-circle {{
+    transition: fill 0.3s ease;
+  }}
+
+  .node-circle.glow {{
+    filter: drop-shadow(0 0 6px currentColor);
+  }}
+
+  .transition-flash {{
+    display: none;
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #2a9b9a;
+    padding: 0.5em;
+    animation: pulse 0.6s ease-in-out 3;
+  }}
+
+  .transition-flash.visible {{
+    display: block;
+  }}
+
+  @keyframes pulse {{
+    0%, 100% {{ opacity: 1; transform: scale(1); }}
+    50% {{ opacity: 0.7; transform: scale(1.05); }}
+  }}
+
+  .reset-wrap {{
+    text-align: center;
+    margin: 2em 0 1em;
+  }}
+
+  .reset-btn {{
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.9em;
+    padding: 0.5em 1.2em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+  }}
+
+  .reset-btn:hover {{
+    color: #c0392b;
+    border-color: #c0392b;
+  }}
+
   @media (prefers-color-scheme: dark) {{
     body {{ background: #1a1a1a; color: #e0e0e0; }}
     h2 {{ color: #6ba3f7; }}
@@ -275,6 +493,10 @@ page = f'''<!doctype html>
     .hint {{ background: #2a2510; color: #f0d060; border-left-color: #d4a14b; }}
     .abstract {{ background: #1a2e2d; color: #ccc; }}
     .no-crypto {{ background: #2a2510; border-color: #d4a14b; color: #f0d060; }}
+    .threads-svg {{ background: #2a2a2a; border-color: #555; }}
+    .thread-count {{ color: #aaa; }}
+    .reset-btn {{ background: #2a2a2a; border-color: #555; color: #888; }}
+    .reset-btn:hover {{ color: #e74c3c; border-color: #e74c3c; }}
   }}
 
   @media (max-width: 600px) {{
@@ -284,15 +506,16 @@ page = f'''<!doctype html>
     .text-input-wrap {{ flex-direction: column; }}
     .option-btn {{ min-height: 44px; }}
     .submit-btn {{ min-height: 44px; }}
+    .threads-svg {{ max-width: 100%; }}
   }}
 </style>
 </head>
 <body>
 
-<h1>Relinquishment &mdash; Puzzle Preview</h1>
+<h1>Relinquishment &mdash; Puzzle Preview</h1> <a style="font-size:0.55em;color:#1a5276;" href="../tools.html">&larr; Back to Author Tools</a>
 <p class="framing">Each chapter ends with a puzzle. Solve it to reveal
 the chapter&rsquo;s Spiral Abstract &mdash; the meta-view that connects the chapter
-to the book&rsquo;s larger argument. These are samples from three chapters.</p>
+to the book&rsquo;s larger argument. These are samples from four chapters.</p>
 <p class="progress">Progress: <span id="count">0</span>/{total}</p>
 
 <div id="no-crypto" class="no-crypto" style="display:none;">
@@ -300,12 +523,21 @@ to the book&rsquo;s larger argument. These are samples from three chapters.</p>
   All puzzles are shown unlocked.
 </div>
 
+<script>var puzzleHashes = {{}};</script>
+
+<script>
+{THREADS_JS}
+</script>
+
 {puzzle_blocks}
+
+<div class="reset-wrap">
+  <button class="reset-btn" onclick="resetPuzzles()">Reset All Puzzles</button>
+</div>
 
 <script>
 "use strict";
 
-var puzzleHashes = {{}};
 var TOTAL = {total};
 var STORAGE_KEY = "relinquishment-puzzles-solved";
 
@@ -398,11 +630,19 @@ async function checkText(id) {{
   }}
 }}
 
+function resetPuzzles() {{
+  try {{ localStorage.removeItem(STORAGE_KEY); }} catch(e) {{}}
+  window.location.reload();
+}}
+
 function init() {{
   if (!window.crypto || !window.crypto.subtle) {{
     document.getElementById("no-crypto").style.display = "block";
     var ids = Object.keys(puzzleHashes);
     for (var i = 0; i < ids.length; i++) revealPuzzle(ids[i]);
+    // Also reveal interactive puzzles
+    var simIds = Object.keys(threadsSims || {{}});
+    for (var j = 0; j < simIds.length; j++) revealPuzzle(simIds[j]);
     return;
   }}
   var solved = getSolved();
@@ -411,7 +651,6 @@ function init() {{
   }}
   updateCount();
 
-  // Scroll to anchor if present
   if (window.location.hash) {{
     var el = document.querySelector(window.location.hash);
     if (el) setTimeout(function() {{ el.scrollIntoView({{ behavior: "smooth" }}); }}, 100);

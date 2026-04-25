@@ -10794,8 +10794,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>d72d86ca388ac9f02f72bb1d59bf45c75c29615c</code> on 2026-04-24
-15:26:29 -0700.</p>
+<code>5d9d60ed84a5bafd8968dc11909dadc4e2200094</code> on 2026-04-24
+22:37:20 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -10863,7 +10863,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-25T00:07:16Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-25T22:07:42Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -10874,19 +10874,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>d72d86c</code></p>
+<p><code>5d9d60e</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>d72d86ca388ac9f02f72bb1d59bf45c75c29615c</code></p>
+<p><code>5d9d60ed84a5bafd8968dc11909dadc4e2200094</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-24 15:26:29 -0700</p>
+<p>2026-04-24 22:37:20 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-25T00:07:16Z</p>
+<p>2026-04-25T22:07:42Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -11682,6 +11682,15 @@ energyscholar+physics@gmail.com
   // nav.appendChild(scienceBtn);
   // nav.appendChild(storyBtn);
   nav.appendChild(gBtn);
+
+  var toolsLink = document.createElement('a');
+  toolsLink.href = 'tools.html';
+  toolsLink.textContent = '·';
+  toolsLink.style.cssText = 'flex:0 0 auto;font-size:0.7em;color:transparent;' +
+    'text-decoration:none;padding:0.3em 0.2em;cursor:default;';
+  toolsLink.setAttribute('aria-hidden', 'true');
+  nav.appendChild(toolsLink);
+
   nav.appendChild(expandBtn);
   nav.appendChild(evalBtn);
   nav.appendChild(topBtn);
