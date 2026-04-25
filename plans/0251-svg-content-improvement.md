@@ -1,23 +1,31 @@
-# Plan 0251 — SVG Content Improvement: Lift the p1 Floor
+# Plan 0251 — SVG Content Improvement: Visuals That Teach, Delight, and Deliver
 
 **Auditor:** Argus (S63)
 **Date:** 2026-04-25
 **Status:** DRAFT — awaiting Bruce approval
 **Priority:** Medium — no blockers, steady improvement
 **Parent:** eigenvalue-diagnostic.md (p-level analysis)
-**Annealed:** 6 passes (HIGH/HIGH/MED/MED/LOW/LOW)
+**Annealed:** 7 passes (HIGH/HIGH/MED/MED/LOW/LOW + MED)
 
 ---
 
 ## Problem
 
-The p1 layer (hovers, rich panels, SVGs) delivers 63% of takeaways and
-blocks 70% of failure modes. p2 delivers 96%/100%. The gap is
-addressable: several T/F items score p1:1 or p1:2 where a well-designed
-visual could lift them. A picture is worth 1000 words — especially at
-the 8th-grade reading level where p1 operates.
+The book has 24 SVGs, most in hover panels. They're good at what they
+do — but they all serve the same purpose: concept diagrams for physics.
+The book also tells stories, poses ethical questions, draws surprising
+parallels, and has moments of cinematic intensity. None of that has
+visuals.
 
-Additionally:
+Additionally, the p1 layer delivers only 63% of takeaways and 70% of
+failure modes. Several T/F items score p1:1 or p1:2 where a
+well-designed visual could lift them.
+
+This plan addresses both: visuals that lift engineering scores AND
+visuals that make the reader stop, look, and feel something. A picture
+is worth 1000 words — for understanding, for pacing, and for fun.
+
+Also:
 - The landing page (relinquishment.ai) needs a title image beyond the
   triskellion symbol
 - 4 SVGs are planned in the gallery manifest but not yet built
