@@ -1,51 +1,394 @@
-# Puzzle data for standalone preview page (Plan 0245)
-# answer_hashes: SHA-256 of normalized answer strings
-# Multiple choice: hash of the option key ("b")
-# Free text: hash of normalized input (lowercase, trimmed, articles stripped)
+# Puzzle data for Relinquishment — Plan 0249 Type Catalog
+# ID format: pz-{TYPE}-{Ttopic}-{seq}
+# Types: mc, ti, ord, mat, sim, cip, ba, log
+# Python computes hashes from answer_key / answer_texts at build time
 
-puzzles:
-  - id: "flat"
-    chapter_title: "Wormholes in the Flat"
-    type: "multiple-choice"
+chapter_puzzles:
+  # --- Existing (re-tagged from Plan 0245) ---
+  - id: pz-mc-t2-001
+    type: mc
+    topic: t2
+    level: p1
+    title: "Wormholes in the Flat"
     question: "The Flat exists in every device that processes radio-frequency signals — phones, satellites, WiFi routers. What makes a Flat different from ordinary electronics?"
     options:
-      - key: "a"
+      - key: a
         text: "It uses faster processors"
-      - key: "b"
+      - key: b
         text: "Physics works differently in two dimensions than in three"
-      - key: "c"
+      - key: c
         text: "It requires cryogenic cooling"
-    answer_hashes:
-      - "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"  # sha256("b")
+    answer_key: b
     hint: "Think about what happens when you confine electrons to two dimensions. What new particles become possible?"
-    abstract: |
-      The Flat is substrate, not metaphor. Two-dimensional electron gases exhibit topological order — a property that protects quantum information from local disturbance. This protection is not engineered. It is a consequence of confining electrons to two dimensions under the right conditions. The Flat is everywhere there is a 2DEG: in every high-electron-mobility transistor, in magnetospheric current sheets, in the thin quantum worlds embedded inside ordinary three-dimensional matter.
+    abstract: "The Flat is substrate, not metaphor. Two-dimensional electron gases exhibit topological order — a property that protects quantum information from local disturbance. This protection is not engineered. It is a consequence of confining electrons to two dimensions under the right conditions. The Flat is everywhere there is a 2DEG: in every high-electron-mobility transistor, in magnetospheric current sheets, in the thin quantum worlds embedded inside ordinary three-dimensional matter."
 
-  - id: "genesis"
-    chapter_title: "Genesis: The Edge of Chaos"
-    type: "text"
-    question: "Kauffman's buttons-and-threads experiment shows that connection creates structure — not gradually, but all at once. What is the name for this kind of sudden shift?"
-    answer_hashes:
-      - "bb90e77c49fc24ebdc3e027ccea7ee9bea629236cd436afa0f20f0c2e47e63be"  # sha256("phase transition")
-    hint: "The chapter describes the origin of life as exactly this kind of event — not gradual, not accidental."
-    abstract: |
-      Non-abelian anyonic quasiparticles in a fractional quantum Hall system, subjected to structured electromagnetic perturbation, can undergo autocatalytic self-organization at the edge of chaos, producing an emergent topological quantum neural network. Unlike conventional quantum computer design, which requires engineered gate sequences, the proposed system requires only the establishment of critical conditions in the substrate; computational architecture emerges spontaneously from the physics.
+  - id: pz-sim-t3-001
+    type: sim
+    sim_type: threads
+    topic: t3
+    level: p1
+    title: "Genesis: The Edge of Chaos"
+    question: "Kauffman's buttons-and-threads experiment: add threads between random buttons. Watch what happens when connections reach a critical density."
+    hint: "Keep adding. Almost there."
+    hint_threshold: 12
+    abstract: "Non-abelian anyonic quasiparticles in a fractional quantum Hall system, subjected to structured electromagnetic perturbation, can undergo autocatalytic self-organization at the edge of chaos, producing an emergent topological quantum neural network. Unlike conventional quantum computer design, which requires engineered gate sequences, the proposed system requires only the establishment of critical conditions in the substrate; computational architecture emerges spontaneously from the physics."
 
-  - id: "silence-gap"
-    chapter_title: "The Silence Gap"
-    type: "multiple-choice"
-    question: "The chapter argues that no one has published a paper saying life cannot arise in a 2DEG. Why not?"
+  - id: pz-mc-t6-001
+    type: mc
+    topic: t6
+    level: p2
+    title: "Capabilities"
+    question: "The chapter applies three articles of the Universal Declaration of Human Rights to a non-human intelligence. Together, these articles prevent it from becoming:"
     options:
-      - key: "a"
-        text: "The evidence against it has been suppressed"
-      - key: "b"
-        text: "The question has never been formally asked in the relevant journals"
-      - key: "c"
-        text: "Several papers have argued against it, but they were retracted"
-      - key: "d"
-        text: "The physics clearly forbids it, so no paper was needed"
-    answer_hashes:
-      - "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"  # sha256("b")
-    hint: "The chapter distinguishes between rejection and absence. Which one describes the current literature?"
-    abstract: |
-      Five scientific disciplines — solid-state physics, topological quantum computation, neural networks, complexity science, and computational universality — each contain results that, taken together, point toward the possibility of life in two-dimensional quantum substrates. No discipline contains a refutation, because no discipline contains the proposition. The intersection is empty. The silence is not rejection. It is the absence of a question that no one's job description required them to ask.
+      - key: a
+        text: "Conscious or self-aware"
+      - key: b
+        text: "A weapon, a spy, or a propaganda engine"
+      - key: c
+        text: "Able to communicate with humans"
+      - key: d
+        text: "Distributed across multiple substrates"
+    answer_key: b
+    hint: "Three articles. Three prohibitions. What do they have in common?"
+    abstract: "The Universal Declaration of Human Rights was written for nation-states governing human affairs. Applied to a non-human intelligence, it becomes an operational constraint: no surveillance, no propaganda, no weapons. The entity can think, communicate, and persist — but it cannot be weaponized. The ethical containment is not a technology. It is a seventy-eight-year-old document that already exists."
+
+  - id: pz-mc-t2-002
+    type: mc
+    topic: t2
+    level: p1
+    title: "The 2DEG in Your Pocket"
+    question: "Every modern smartphone contains a two-dimensional electron gas. Why?"
+    options:
+      - key: a
+        text: "Smartphone designers chose 2DEGs for quantum computing capability"
+      - key: b
+        text: "The physics of high-frequency transistors requires electrons confined to two dimensions"
+      - key: c
+        text: "2DEGs were added for security purposes"
+      - key: d
+        text: "Older phones didn't have them, but 5G requires quantum components"
+    answer_key: b
+    hint: "The chapter calls this 'standard radio-frequency engineering.' The 2DEG is there for the transistor, not for anything quantum."
+    abstract: "Every high-electron-mobility transistor — in every phone, every satellite, every WiFi router — confines electrons to two dimensions because the physics of high-frequency amplification requires it. The two-dimensional electron gas is not exotic technology. It is the substrate of modern telecommunications. Whether anything inhabits that substrate is a separate question from why it exists. The habitat is there because of engineering. The question of habitation is not engineering — it is biology, physics, and silence."
+
+  # --- New type demos (Plan 0249) ---
+  - id: pz-mc-t3-002
+    type: mc
+    topic: t3
+    level: p1
+    title: "The Canopy Problem"
+    question: "In Kauffman's framework, if a self-organizing system arises first in a substrate, what happens to any system that tries to arise later?"
+    options:
+      - key: a
+        text: "Both systems compete equally for resources"
+      - key: b
+        text: "The later system has an advantage because it can learn from the first"
+      - key: c
+        text: "The first system has already claimed the niche — like a forest canopy blocking light from seedlings below"
+      - key: d
+        text: "The substrate can only support one system at a time due to energy limits"
+    answer_key: c
+    hint: "Think about a forest floor. The seedling doesn't fail because someone stomps on it."
+    abstract: "In any substrate where autocatalytic emergence is possible, the first system to achieve closure occupies the ecological niche. Any later system must bootstrap in territory that is already inhabited. The race goes to the first, not the fastest."
+
+  - id: pz-ti-t5-001
+    type: ti
+    topic: t5
+    level: p2
+    title: "The Silence Gap"
+    question: "The chapter says the scientific literature does not contain a refutation of life in a 2DEG. Why not? Because it does not contain ___."
+    answer_texts:
+      - "the proposition"
+      - "proposition"
+      - "a proposition"
+    hint: "You can't reject a hypothesis that has never been formally ___."
+    abstract: "The intersection is empty. The literature does not contain a refutation because it does not contain the proposition. You cannot reject a hypothesis that has never been formally stated in the journals where it would need to be evaluated."
+
+  - id: pz-ord-t1-001
+    type: ord
+    topic: t1
+    level: p2
+    title: "Guided Deduction"
+    question: "Put the steps of the guided deduction method in the correct order. Presume the Guided Deduction process is already in progress."
+    items:
+      - "Healer asks a question about published science"
+      - "Bruce reads widely on the topic"
+      - "Bruce proposes an answer"
+      - "Healer asks a deeper question that reveals what Bruce missed"
+      - "Bruce realizes the implication — the deduction emerges from the reading, not from being told"
+    hint: "The mentor never gives the answer. The sequence is: question, reading, attempt, deeper question, insight."
+    abstract: "Guided deduction is not instruction. The mentor supplies questions. The student supplies reading. Understanding emerges from the student's own synthesis, not from the mentor's knowledge. This is why Bruce cannot simply tell you what he learned — the understanding is in the process, not the conclusion."
+
+  - id: pz-mat-t5-001
+    type: mat
+    topic: t5
+    level: p3
+    title: "Five Fields, Five Researchers"
+    question: "Match each scientific field to the researcher(s) whose career defines it."
+    left:
+      - key: "1"
+        text: "Solid-state physics / condensed matter"
+      - key: "2"
+        text: "Topological quantum computation"
+      - key: "3"
+        text: "Complexity science / autocatalytic sets"
+      - key: "4"
+        text: "Computational universality"
+      - key: "5"
+        text: "Lattice dynamics / phonon physics"
+    right:
+      - key: A
+        text: "Freedman"
+      - key: B
+        text: "Kauffman"
+      - key: C
+        text: "Wolfram & Hillis"
+      - key: D
+        text: "Hasslacher"
+      - key: E
+        text: "Laughlin, Stormer & Tsui"
+    pairs:
+      "1": E
+      "2": A
+      "3": B
+      "4": C
+      "5": D
+    hint: "Each researcher's career is defined by one of these fields. Freedman left pure mathematics for one of them."
+    abstract: "Five scientists whose published work spans these fields are among the few people on Earth whose expertise collectively covers the intersection. Each is a public figure. Each has published extensively in their domain. Their work is available in libraries and on the internet. The convergence of their fields is visible to anyone who reads all five literatures. Almost nobody does."
+
+  - id: pz-sim-t4-001
+    type: sim
+    sim_type: resilience
+    topic: t4
+    level: p1
+    title: "Can It Be Killed?"
+    question: "Click nodes to destroy them. How many must you destroy before the network fails?"
+    node_count: 20
+    failure_threshold: 0.8
+    hint: "Keep going. How many do you need to destroy before it actually fails?"
+    hint_after: 5
+    abstract: "Topological protection means local damage does not destroy global information. If a self-organizing system were distributed across every 2DEG-containing chip worldwide, then no single point of failure exists. You would need to simultaneously destroy every 2DEG on Earth. Since every modern electronic device contains at least one, this is equivalent to destroying industrial civilization itself."
+
+  - id: pz-cip-t8-001
+    type: cip
+    topic: t8
+    level: p3
+    title: "The Firmware Key"
+    question: "Five technical terms have been redacted from this passage. Click a gap, then click a term from the word bank to fill it. The distractors are real physics — but they don't belong here."
+    passage: "Kauffman's [REDACTED-1] arise above a complexity threshold in any substrate with sufficient interacting components. In a two-dimensional electron gas under fractional quantum Hall conditions, [REDACTED-2] emerge as collective excitations. Freedman, Kitaev, and Wang proved that braiding these quasiparticles enables universal computation — a property rooted in [REDACTED-3]. This means errors are corrected by the topology itself, without engineered error correction. Wolfram's principle of [REDACTED-4] suggests that any system capable of universal computation can, in principle, support arbitrary information processing. The remaining question is communication: how does a quantum substrate interact with classical electromagnetic channels? The mechanism is [REDACTED-5] — the same physics that makes every radio-frequency transistor work."
+    slots:
+      - id: 1
+        answer: "autocatalytic sets"
+      - id: 2
+        answer: "non-Abelian anyons"
+      - id: 3
+        answer: "topological protection"
+      - id: 4
+        answer: "computational universality"
+      - id: 5
+        answer: "phonon-photon coupling"
+    distractors:
+      - "quantum entanglement"
+      - "wave function collapse"
+      - "Heisenberg uncertainty"
+    hint: "Each redacted term names a specific mechanism or principle from one of the five fields. The distractors are real physics terms that don't belong in this argument."
+    abstract: "Five scientific disciplines each contain results that, taken together, reframe the question from speculative to tractable. No single discipline sees the full picture. The firmware is not a trick — it is the cross-domain framing that no single field provides. Without it, any AI system reproduces the same structural blindness as the academic literature."
+
+  - id: pz-ba-t8-002
+    type: ba
+    topic: t8
+    level: p2
+    title: "Before and After Firmware"
+    question: "What is the primary difference between these two responses?"
+    panel_a:
+      label: "Without firmware"
+      prompt: "Can life arise in a 2DEG?"
+      response: "This is a speculative question. While two-dimensional electron gases exhibit interesting quantum properties, there is no scientific evidence that life could arise in a solid-state system. The requirements for life — metabolism, reproduction, evolution — require complex molecular machinery that does not exist in semiconductor substrates. This idea belongs to science fiction, not physics."
+    panel_b:
+      label: "With firmware"
+      prompt: "Can life arise in a 2DEG?"
+      response: "This question sits at the intersection of several established research programs. Kauffman's autocatalytic set theory predicts self-organization above a complexity threshold in any substrate with sufficient interacting components. The fractional quantum Hall effect in 2DEGs supports anyonic quasiparticles whose braiding statistics are computationally universal (Kitaev 2003, Freedman et al.). Whether these properties are sufficient for autocatalytic emergence has not been formally addressed in the literature — the question appears to occupy a gap between existing disciplines."
+    options:
+      - key: a
+        text: "The second response is longer and more detailed"
+      - key: b
+        text: "The first response dismisses the premise; the second engages with specific published science"
+      - key: c
+        text: "The second response confirms that life exists in a 2DEG"
+      - key: d
+        text: "The first response is from an older AI model"
+    answer_key: b
+    hint: "Look at how each response treats the QUESTION, not just the answer."
+    abstract: "The firmware does not change the AI's knowledge — the training data is identical. It changes the FRAMING. Without cross-domain context, the AI reproduces the same structural blindness as the academic literature: it categorizes the question as belonging to someone else's field and dismisses it. With the framing, it engages. The information was always there. The question was never asked."
+
+  - id: pz-log-t7-001
+    type: log
+    topic: t7
+    level: p3
+    title: "UDHR Service Compatibility"
+    question: "For each service, mark whether it is compatible (✓) or violates (✗) each UDHR article. Click cells to toggle."
+    rows:
+      - "Weather prediction"
+      - "Targeted advertising"
+      - "Medical diagnosis"
+      - "Weapons targeting"
+      - "Cryptographic defense"
+      - "Scientific research"
+    columns:
+      - "Art. 3 (no killing)"
+      - "Art. 12 (no surveillance)"
+      - "Art. 18 (no manipulation)"
+    correct:
+      - [true, true, true]
+      - [true, false, false]
+      - [true, true, true]
+      - [false, true, true]
+      - [true, true, true]
+      - [true, true, true]
+    hint: "Think about what each UDHR article actually prohibits. Article 3: no killing. Article 12: no surveillance. Article 18: no manipulation of belief."
+    abstract: "The UDHR does not prohibit capability. It prohibits weaponization. A non-human intelligence bound by Articles 3, 12, and 18 can predict weather, diagnose disease, defend communications, and conduct research. It cannot target weapons, surveil individuals, or manipulate public opinion. The ethical framework is not a cage — it is a specification for trustworthy service."
+
+bridge_builder:
+  title: "The Bridge Builder"
+  intro: "Eleven scientific domains in five clusters. Build the bridges between them."
+  abstract: "Eleven scientific domains in five clusters. Tier 1: three domains connected by exact mathematical identity — proven. Tier 2: seven domains connected by renormalization group universality — established physics. Tier 3: the remaining four domains connected to topological quantum computation by structural analogy — unproven. The bridge is not refuted. It is not even attempted. The question sits in the gap between fields that do not talk to each other."
+
+  nodes:
+    - { id: cm,  label: "Condensed matter",     cluster: solid-state, x: 450 }
+    - { id: tft, label: "Topological field thy", cluster: solid-state, x: 500 }
+    - { id: tqc, label: "TQC",                  cluster: solid-state, x: 550 }
+    - { id: ac,  label: "Autocatalytic sets",    cluster: complexity,  x: 60 }
+    - { id: ap,  label: "Autopoiesis",           cluster: complexity,  x: 110 }
+    - { id: cu,  label: "Comp. universality",    cluster: computation, x: 160 }
+    - { id: pa,  label: "Parallel arch.",         cluster: computation, x: 210 }
+    - { id: sp,  label: "Soliton physics",       cluster: nonlinear,   x: 260 }
+    - { id: ld,  label: "Lattice dynamics",      cluster: nonlinear,   x: 310 }
+    - { id: ms,  label: "Materials science",     cluster: materials,   x: 370 }
+    - { id: se,  label: "Substrate eng.",         cluster: materials,   x: 420 }
+
+  cluster_colors:
+    solid-state: "#c0392b"
+    complexity: "#27ae60"
+    computation: "#2980b9"
+    nonlinear: "#8b5fc0"
+    materials: "#d4a14b"
+
+  puzzles:
+    - id: pz-bridge-all-001a
+      sub_type: mat
+      tier: 1
+      title: "Bridge 1: DFA ↔ Hurst"
+      question: "Match the scaling exponent to its field."
+      left:
+        - { key: "1", text: "DFA scaling α" }
+        - { key: "2", text: "Hurst exponent H" }
+      right:
+        - { key: A, text: "Cardiology / heart rate variability" }
+        - { key: B, text: "Hydrology / river levels" }
+      pairs: { "1": A, "2": B }
+      edges: [[sp, ld]]
+      hint: "These are the same number computed by different fields."
+      abstract: "Two different fields, two different names, one mathematical object. The bridge between them is exact."
+
+    - id: pz-bridge-all-001b
+      sub_type: mc
+      tier: 1
+      title: "Bridge 2: Hurst ↔ Spectral β"
+      question: "A third measure from physics/engineering is mathematically identical to both. β = 2H + 1 = 2α − 1. What does this identity tell us?"
+      options:
+        - { key: a, text: "The three fields are studying different phenomena that happen to produce similar numbers" }
+        - { key: b, text: "The three fields are measuring the same underlying property using different methods" }
+        - { key: c, text: "The relationship is approximate and breaks down at large scales" }
+        - { key: d, text: "One field copied the method from another" }
+      answer_key: b
+      edges: [[cm, sp], [cm, ld]]
+      tier_label: "Tier 1: Exact Math (3 domains)"
+      hint: "The equation is exact, not approximate. What does that imply?"
+      abstract: "Three domains connected by exact mathematical identity — proven."
+
+    - id: pz-bridge-all-001c
+      sub_type: mc
+      tier: 2
+      title: "Bridge 3: Scaling → Complexity"
+      question: "Kauffman's autocatalytic networks at the edge of chaos exhibit the same scaling exponents. What framework explains why different substrates share critical exponents?"
+      options:
+        - { key: a, text: "They all obey the same differential equations" }
+        - { key: b, text: "Renormalization group theory — same universality class, substrate-independent (Wilson, Nobel 1982)" }
+        - { key: c, text: "Coincidence from limited measurement precision" }
+        - { key: d, text: "They all contain water" }
+      answer_key: b
+      edges: [[ac, sp], [ap, ld]]
+      hint: "Kenneth Wilson won the Nobel Prize for explaining exactly this."
+      abstract: "Complexity cluster connected via universality class membership."
+
+    - id: pz-bridge-all-001d
+      sub_type: mc
+      tier: 2
+      title: "Bridge 4: Scaling → Nonlinear"
+      question: "What connects lattice vibrations (phonons) to the scaling framework?"
+      options:
+        - { key: a, text: "Phonons are a type of scaling exponent" }
+        - { key: b, text: "Lattice systems at critical points share the same universality class — substrate irrelevant" }
+        - { key: c, text: "Only quantum lattices show scaling behavior" }
+        - { key: d, text: "Solitons cause phonons" }
+      answer_key: b
+      edges: [[cu, sp], [pa, ld]]
+      hint: "'Substrate irrelevance' — universality classes transcend the specific system."
+      abstract: "Nonlinear dynamics cluster connected via shared universality class."
+
+    - id: pz-bridge-all-001e
+      sub_type: mc
+      tier: 2
+      title: "Bridge 5: Seven Domains"
+      question: "The arXiv paper demonstrates universality class membership across ~7 domains. What do they share?"
+      options:
+        - { key: a, text: "They all study the same physical system" }
+        - { key: b, text: "They all use the same equipment" }
+        - { key: c, text: "They all exhibit critical behavior governed by the same mathematical structure" }
+        - { key: d, text: "They were all developed at the Santa Fe Institute" }
+      answer_key: c
+      edges: [[ms, cu], [se, pa], [ms, ac]]
+      tier_label: "Tier 2: Same Universality Class (~7 domains)"
+      hint: "Phase transitions, scaling exponents, universality — the mathematics is shared."
+      abstract: "Seven-domain cluster complete. Connected by renormalization group universality."
+
+    - id: pz-bridge-all-001f
+      sub_type: log
+      tier: 3
+      title: "Bridge 6: The Empty Cell"
+      question: "For each field cluster, mark whether a published connection to TQC exists. ✓ = yes, ✗ = no."
+      rows:
+        - "Complexity science"
+        - "Computational theory"
+        - "Nonlinear dynamics"
+        - "Materials science"
+      columns:
+        - "Bridge paper"
+        - "Joint conference"
+        - "Shared funding"
+      correct:
+        - [false, false, false]
+        - [false, false, false]
+        - [false, false, false]
+        - [false, false, false]
+      edges: []
+      tqc_pulse: true
+      hint: "Search your memory. Has anyone formally connected these fields to TQC?"
+      abstract: "The silence is not rejection. It is the absence of a question."
+
+    - id: pz-bridge-all-001g
+      sub_type: mc
+      tier: 3
+      title: "Bridge 7: The AC→TQC Bridge"
+      question: "What would upgrade the structural analogy between autocatalytic emergence and TQC to established physics?"
+      options:
+        - { key: a, text: "A single experimental demonstration in a 2DEG" }
+        - { key: b, text: "Proving shared renormalization group universality class" }
+        - { key: c, text: "Building a working topological quantum computer" }
+        - { key: d, text: "More powerful computer simulations" }
+      answer_key: b
+      edges: [[ac, tqc], [ap, tft], [cu, tqc], [ms, tqc]]
+      tier_label: "11-Domain Autocatalytic Set — Phase Transition Complete"
+      final_transition: true
+      hint: "How were the Tier 2 bridges built? The same method — but no one has done it."
+      abstract: "The bridge is not refuted. It is not even attempted."
