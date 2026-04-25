@@ -1,0 +1,8 @@
+review_artifacts:
+  - slug: "puzzle-preview"
+    path: "docs/downloads/puzzles.html"
+    make_target: "puzzles"
+    purpose: "Gen reviews puzzle UX before chapter embedding"
+    created_by: "Plan 0245"
+    status: "active"
+    cleanup_plan: "Plan 0245 cleanup phase"

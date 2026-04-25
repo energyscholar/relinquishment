@@ -10,7 +10,7 @@ JOBNAME := Relinquishment
 TIKZ_SRCS := $(filter-out build/images/standalone-header.tex, $(wildcard build/images/*.tex))
 TIKZ_PDFS := $(TIKZ_SRCS:.tex=.pdf)
 
-.PHONY: dev final screen print images validate clean clean-cache manifest size-report gitinfo check check-strict epub html markdown svg-sheet
+.PHONY: dev final screen print images validate clean clean-cache manifest size-report gitinfo check check-strict epub html markdown svg-sheet puzzles
 
 # --- Dev build (public release — no DMS appendix, no working draft notice) ---
 dev: gitinfo images
@@ -135,6 +135,11 @@ manifest:
 svg-sheet: html
 	python3 build/svg_manifest.py --from-html
 	@echo "Open build/svg-sheet.html in a browser to review."
+
+# --- Puzzle preview page (standalone, Plan 0245) ---
+puzzles:
+	python3 build/build-puzzles.py
+	@echo "Open docs/downloads/puzzles.html or push to website."
 
 # --- Size report ---
 size-report:
