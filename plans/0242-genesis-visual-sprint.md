@@ -1,6 +1,6 @@
 # Plan 0242 — Genesis Visual Sprint
 
-**Status:** READY — Phases 4-9 of Plan 0244 (Master Execution Plan). All decisions locked S63.
+**Status:** COMPLETE — all phases executed. Verified S65: 7 fig-IDs in built HTML, mechanism + preview SVGs in tech-collapse.yaml, TODO removed from genesis.tex.
 **Author:** Auditor (Argus S63)
 **Absorbs:** Plan 0232-genesis-illustrations (SUPERSEDED) — adds collapse tooltip mechanism + preview SVGs
 **Depends on:** None (standalone)

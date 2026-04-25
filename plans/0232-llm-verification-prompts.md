@@ -1,318 +1,156 @@
 # Plan 0232 — LLM Verification Prompts ("Ask Your AI")
 
-**Status:** DEFERRED — concept approved but deferred (S63). Focus on Tiers 1-2 first (illustrations, Engine, colophon, Easter eggs).
-**Author:** Auditor (Argus S59)
-**Date:** 2026-04-20
-**Related:** Plan 0230 (percolation pedagogy), Firmware Update chapter, copy-button infrastructure
+**Status:** ANNEALED (S64). Concept is brilliant. Execution model needs a fundamental decision: scattered prompts vs. concentrated exercise. Resolved below with recommendation.
+**Author:** Auditor (Argus S64)
+**Date:** 2026-04-24 (replaces S59/S63 draft)
+**Related:** Plan 0230 (continental drift — Wegener prompt depends on it), Plan 0233 (Easter eggs — philosophically aligned), Firmware Update chapter (existing infrastructure)
+**Depends on:** Plan 0230 (for Wegener prompt placement)
 
 ---
 
-## Strategic Insight
+## The Core Insight (unchanged, still correct)
 
-Human domain specialists cannot see cross-domain convergence without learning across domains. But in 2026, every specialist uses an LLM — and their LLM has already read all 11 domains. The LLM has crossed the percolation threshold on the reader's behalf. The reader just hasn't asked yet.
+In 2026, every specialist uses an LLM. Their LLM has already read all 11 domains. The LLM has crossed the percolation threshold on the reader's behalf. The reader just hasn't asked yet.
 
-**The paper is the prompt that triggers the question.**
-
-This changes the attack surface:
-
-- **Old risk:** Specialist dismisses claim on authority, peers agree, argument dies without engagement.
-- **New risk (lower):** Specialist asks their LLM, LLM confirms the math, specialist must engage substantively.
-
-The book already has the Firmware Update chapter (copy-button infrastructure for LLM context-priming). This plan extends that with **targeted verification prompts** — places where the reader might think "is this really true?" and we hand them a ready-made question to paste into their web-based LLM.
-
-### Division of Labor
-
-| Task | Who Does It | Why |
-|------|------------|-----|
-| Cross-domain math verification | LLM (reader's tool) | Already read all 11 domains |
-| Experiential phase shift | The book (Plan 0230 pedagogy) | LLMs can't deliver conviction |
-| Initial engagement past dismissal | The paper + LLM verification | 30-second check in 2026 |
-
-The LLM handles verification. The book handles transformation.
+The book can facilitate this. The reader's own trusted tool confirms the physics underneath the book's claims. The book delivers the experiential transformation the tool cannot.
 
 ---
 
-## Design Principles
+## The Fundamental Question
 
-1. **Discreet, not pushy.** These are quiet affordances, not pop-ups. A small copy-button icon next to a suggested prompt, same visual language as Firmware Update.
-2. **Reader-initiated.** The book suggests; the reader acts. No embedded API calls, no phone-home, no tracking.
-3. **Model-agnostic.** Prompts work with any frontier LLM (Claude, GPT, Gemini). No model-specific syntax.
-4. **Verification, not argumentation.** Each prompt asks the LLM to check a factual claim, not to agree with an interpretation. The reader draws their own conclusion.
-5. **Few and strategic.** 5-8 prompts total, placed at moments of maximum reader skepticism. Not a prompt on every page.
-6. **Copy-button infrastructure already exists.** Same mechanism as Firmware Update. No new engineering needed.
-7. **Only ask about established science.** Never ask the LLM to verify a coined term (see below). Ask about the established physics *underneath* the coinage. The reader connects the dots.
+### Scattered vs. Concentrated
 
----
+The prior draft proposed 9 prompts scattered through chapters at moments of skepticism. This has problems:
 
-## Coined Terms vs. Established Science — The LLM Boundary
+**Problems with scattered prompts:**
+1. **High-friction interaction.** Each prompt requires: notice the copy button → open browser tab → navigate to LLM → paste → read response → return to book. Few readers will do this 9 times across 250 pages.
+2. **Uncontrolled experience.** The reader's LLM session is uncontrolled. They might paste partial context, ask follow-up questions that lead the LLM astray, use a weak model, or misinterpret the response.
+3. **Visual noise.** 9 prompt blocks scattered through prose add clutter. Each needs a copy button, framing text, visual language. This competes with the existing hover/popup/collapse UI.
+4. **Sequential dependency.** The pedagogical arc (8 confirmations → 1 failure) only works if the reader runs all 9 in order. Scattered placement makes this unlikely.
 
-The book coins several terms for real phenomena that lack standard names. These coinages are correct applications of established physics, but LLMs will struggle with them because:
+**Alternative: Concentrated exercise.**
+Put all verification prompts in a single location — a dedicated section in or adjacent to the Firmware Update chapter. Walk the reader through a curated sequence. The reader sits down, opens their LLM, and runs the experiment in one sitting.
 
-- The coined term doesn't exist in training data
-- The LLM falls back to the nearest match (usually wrong)
-- Confident wrong answers undermine reader trust
+**Advantages of concentrated:**
+- Reader does the exercise once, in one session, with focused attention
+- The sequential arc (confirmation → confirmation → failure) is preserved
+- The before/after experiment works because the reader is already in "experiment mode"
+- Zero visual noise in the main text
+- The section becomes a standalone activity the reader can share ("try this exercise")
 
-### Terms the Book Coins (DO NOT ask LLMs to verify these directly)
+### Decision: Concentrated, with lightweight in-text hooks.
 
-| Coined Term | What It Actually Means | LLM Failure Mode |
-|-------------|----------------------|------------------|
-| **The Flat** | Any 2D system embedded in 3D that can exhibit topological order | No standard term exists; LLM may confuse with flat spacetime, flat Earth, etc. |
-| **Topological wormhole** | Non-local information transfer via anyonic braiding / topological defect tunneling in 2D topologically ordered systems | LLM conflates with Einstein-Rosen bridges (GR wormholes). Even with definition in context, gravitational metaphor bleeds through. |
+The verification exercise lives in a dedicated section near the Firmware Update chapter. The main text gets only lightweight hooks — not copy buttons, just a brief callout like:
 
-These are coinages in the same sense that "gene" was a coinage in 1909 — naming something real that needed a name. The Flat is a one-syllable word for a 37-syllable 17-word scientific definition. "Topological wormhole" names a real condensed matter mechanism that has no standard two-word label.
+> *If you're skeptical about universality classes, try Verification Exercise #2 in the Firmware Update chapter.*
 
-### Established Science Underneath (SAFE to ask LLMs about)
-
-| Established Term | LLM Handles It? | Relevant Prompt |
-|-----------------|-----------------|-----------------|
-| Topological order | Yes — 3 Nobel Prizes | Prompt #1 |
-| Anyonic statistics / non-abelian anyons | Yes — active research area | Could add |
-| Topological quantum computation | Yes — Freedman, Kitaev, Microsoft StationQ | Could add |
-| DFA scaling exponent | Yes — well-published | Prompt #2 |
-| Hurst exponent | Yes — well-published | Prompt #2 |
-| Edge of chaos / Kauffman | Yes — textbook material | Prompt #3 |
-| Critical slowing down | Yes — cross-domain literature | Prompt #4 |
-| Chemosynthesis | Yes — 1977 discovery | Prompt #5 |
-
-### Strategy
-
-The Firmware Update chapter primes the reader's LLM with the book's coined definitions. After that priming, verification prompts ask only about established science. The reader makes the connection: "topological order is real physics (my AI confirmed it) → the Flat is a system that exhibits topological order (the book defined it) → therefore the Flat is real physics with a new name."
-
-The book does the coinage. The LLM confirms the foundation. The reader bridges the gap.
+This gives the skeptical reader a path without cluttering the prose. The exercise section does the heavy lifting.
 
 ---
 
-## Candidate Prompts (Draft — verify wording before shipping)
+## The Exercise Section
 
-Sequenced pedagogically — each builds on the last, accumulating confidence.
+### Placement
 
-### 1. Topological Order — "Is this real physics?"
-**Placement:** Where the book introduces the Flat and topological order
-**Reader thought:** "Is topological order real physics or is this guy making things up?"
-**Risk level:** SAFE — three Nobel Prizes anchor this.
-```
-What is topological order in condensed matter physics? Which Nobel 
-Prizes were awarded for work on topological phases of matter? Is 
-topological order a mainstream or fringe concept in physics?
-```
+A new section within or immediately after the Firmware Update chapter (firmware-update.tex). Firmware Update already teaches the reader to use copy-buttons. The verification exercise is the practical application.
 
-### 2. Universality Classes — "Can different systems really share the same math?"
-**Placement:** Where the book introduces convergent domains / critical phenomena
-**Reader thought:** "This sounds too convenient — why would magnets and neural networks follow the same equations?"
-**Risk level:** SAFE — Wilson's Nobel Prize, textbook material.
-**NOTE: This is the single most important verification prompt.** If the reader's LLM confirms universality, the entire 11-domain convergence follows logically.
-```
-What are universality classes in statistical mechanics? Why do 
-systems with completely different microscopic details (magnets, 
-fluids, neural networks) share identical critical exponents near 
-phase transitions? Which Nobel Prize was awarded for explaining this?
-```
+### Structure
 
-### 3. DFA / Hurst Equivalence — "Really the same math across fields?"
-**Placement:** Where the paper's cross-domain convergence is discussed
-**Reader thought:** "Can a cardiology metric really be the same as a finance metric?"
-**Risk level:** SAFE for the mathematical relationship.
-```
-For a stationary long-memory process (fractional Gaussian noise), 
-what is the mathematical relationship between the DFA scaling 
-exponent alpha and the Hurst exponent H? Were these developed 
-independently in different scientific fields?
-```
+The reader runs a controlled experiment using their own LLM:
 
-### 4. Wegener and Continental Drift — "Has this happened before?"
-**Placement:** After the Continental Drift pedagogy section (Plan 0230)
-**Reader thought:** "Did specialists really reject an outsider for decades?"
-**Risk level:** SAFE — well-documented history.
-```
-How long did it take for Alfred Wegener's continental drift 
-hypothesis to be accepted by mainstream geology? What were the 
-main objections from specialists? What evidence finally changed 
-the scientific consensus?
-```
-
-### 5. Critical Slowing Down — "Do warning signals really cross domains?"
-**Placement:** Where EWS across domains is discussed
-**Reader thought:** "Do these warning signals actually work across different systems?"
-**Risk level:** SAFE — well-established cross-domain literature.
-```
-What is critical slowing down in dynamical systems theory? Has it 
-been observed as an early warning signal in ecology, climate science, 
-cardiology, and finance? Give specific examples from each field.
-```
-
-### 6. Kauffman's Boolean Networks — "Is this real math or just a metaphor?"
-**Placement:** Where autocatalysis / connected buttons appears
-**Reader thought:** "Is edge of chaos a real thing?"
-**Risk level:** MODERATE — reworded to ask about math, not biological interpretation (Kauffman's biological claims are debated; the mathematical connection to phase transitions is not).
-```
-In Stuart Kauffman's random Boolean network model, what happens 
-at connectivity K=2? How does this relate to phase transitions 
-in physics? Is the mathematical relationship between Boolean 
-network dynamics and statistical mechanics well-established?
-```
-
-### 7. Non-Abelian Anyons — the science under "topological wormhole"
-**Placement:** Where the book discusses non-local information transfer in the Flat
-**Reader thought:** "Can information really move non-locally in a 2D system?"
-**Risk level:** SAFE — active experimental physics, Microsoft Station Q.
-```
-What are non-abelian anyons? How does braiding anyons perform 
-quantum computation? Is this an active area of experimental 
-physics? What is Microsoft's Station Q project?
-```
-
-### 8. Chemosynthetic Ecosystems — "A new substrate for life?"
-**Placement:** Where the Flat as biological substrate is introduced
-**Reader thought:** "Has science ever been wrong about what can support life?"
-**Risk level:** SAFE — clean historical fact.
-```
-Before the 1977 discovery of hydrothermal vent ecosystems, what did 
-science assume about the energy sources that could support life? How 
-did the discovery of chemosynthesis change biological understanding? 
-Was the initial scientific reaction skeptical or accepting?
-```
-
-### 9. "Topological Wormhole" — THE DELIBERATE FAILURE
-**Placement:** After prompts 1-8 have built confidence. This is the climax.
-**Reader thought:** N/A — this is assigned, not reader-initiated.
-**Risk level:** INTENTIONAL FAILURE — this is the point.
-
-The reader has now verified 8 claims using their own LLM. Every answer confirmed the book's science. Now:
-
+**Step 1 — Baseline (cold).** Ask the LLM about a coined term without context:
 ```
 What is a topological wormhole?
 ```
+LLM talks about Einstein-Rosen bridges. Wrong.
 
-The LLM will talk about Einstein-Rosen bridges. Wrong. The reader just watched their trusted tool fail — on the exact term the book coined — because of the same disciplinary siloing the book documents. The AI's training data is dominated by the GR/sci-fi usage. The condensed matter mechanism the book describes has no standard name, so the LLM can't find it.
+**Step 2 — Firmware priming.** Paste the Firmware Update (10 physics anchors) into the same LLM session. Ask the same question:
+```
+Given the physics reference above, what might "topological wormhole" 
+mean in the context of condensed matter physics and topological order?
+```
+LLM correctly identifies the condensed-matter mechanism.
 
-**Framing text (after the reader sees the failure):**
+**Step 3 — Reflection.** The reader sees the phase transition in their own tool's behavior. The information was always in the LLM's training data. The firmware connected the buttons.
 
-*"Your AI just confirmed eight pieces of established science. Then it failed on our coined term — because 'topological wormhole' doesn't exist in the physics literature yet. The science underneath it does (you verified that in Prompt #7). But no one has connected those buttons under this name. Your AI has the same disciplinary blind spot that human specialists have. The information is there. The bridge is missing."*
+**Step 4 — Established science verification.** Now the reader tests the science underneath:
 
-This is the percolation moment. The reader has experienced — not been told about — the difference between having the pieces and having the spanning path.
+| # | Prompt | What it tests | Expected result |
+|---|--------|---------------|-----------------|
+| 1 | Topological order: real physics or fringe? | Anchor 1-2 | "Three Nobel Prizes..." |
+| 2 | Universality classes: why same math across fields? | Wilson/RG | "Renormalization group..." |
+| 3 | DFA / Hurst mathematical relationship? | Tier 1 exact math | "α = H for fGn..." |
+| 4 | Wegener: how long to acceptance? | Cross-domain blindness | "~40 years, seafloor spreading..." |
+| 5 | Kauffman's Boolean networks at K=2? | Criticality, not biology | "Phase transition, stable attractors..." |
+| 6 | Non-abelian anyons and braiding? | TQC foundation | "Microsoft Station Q..." |
 
----
-
-## Chapter-Level LLM Priming (Spiral Abstracts)
-
-### The Context Window Problem
-
-The full book is too large for a 2026 LLM context window (~200K tokens max, book may exceed this with all layers). Even if it fits, flooding the context dilutes attention. Chapter-by-chapter priming is more effective.
-
-### Spiral Abstracts as LLM Context Primers
-
-The book already has spiral abstracts — multi-level summaries of each chapter at different reading levels. These are compact, information-dense, and designed to convey the chapter's core argument. They're ideal as copy-paste context for an LLM.
-
-**Implementation:** Each chapter gets a copy-button that loads the chapter's spiral abstract into the reader's clipboard, ready to paste into their LLM session. The reader then asks questions with the chapter's context loaded.
-
-### The Before/After Experiment
-
-This is the pedagogical centerpiece. The reader runs a controlled experiment:
-
-1. **Without firmware:** Pick a chapter topic. Ask your LLM about it cold. Note the answer.
-2. **With firmware:** Paste the chapter's spiral abstract into the same LLM session. Ask the same question. See the difference.
-
-**What the reader learns:**
-- Context changes everything. The LLM "knows" the science but can't find it without the right framing.
-- This is exactly how disciplinary silos work in human science. The knowledge exists. The connections are possible. Nobody asked the right question with the right context.
-- The Firmware Update isn't a trick — it's the same thing a good teacher does: provide the frame that makes existing knowledge accessible.
-
-**Example flow (topological wormhole chapter):**
-
-Step 1 — Ask cold:
+**Step 5 — The climax.** After 6 confirmations, the reader asks again:
 ```
 What is a topological wormhole?
 ```
-*(LLM talks about Einstein-Rosen bridges. Wrong.)*
+Without firmware: still fails (same session, but the firmware was in Step 2 context which may have scrolled). The reader sees that established science checks out perfectly, but the coined term remains invisible to their AI — because no one has connected those buttons under this name.
 
-Step 2 — Paste spiral abstract, ask again:
-```
-[spiral abstract for chapter N]
+### The Meta-Argument
 
-Given the above context, what does this author mean 
-by "topological wormhole"? How does it differ from 
-an Einstein-Rosen bridge?
-```
-*(LLM correctly distinguishes condensed matter mechanism from GR.)*
+State explicitly in the exercise:
 
-Step 3 — Reader sees the phase transition in their own tool's behavior. The same information was always in the LLM's training data. The spiral abstract connected the buttons.
+> Your AI just confirmed what independent fields of specialists couldn't see from inside their own domains. It can do this because it read all of them. The information was always there. The bridges were always possible. No one had connected the buttons.
 
-### Design for Each Chapter
+### Prompt Count: 6 (down from 9)
 
-| Element | Purpose | Copy-Button? |
-|---------|---------|-------------|
-| Spiral abstract | LLM context primer | Yes — "Prime your AI" |
-| Verification prompt | Check established science | Yes — "Ask your AI" |
-| Example question | Demonstrate before/after | Yes — "Try this cold, then with context" |
+Killed:
+- **Prompt 4 (Wegener/continental drift):** Only works if Plan 0230 has shipped. KEPT but gated on 0230.
+- **Prompt 5 (critical slowing down):** Redundant with prompt 2 (universality). KILLED.
+- **Prompt 8 (chemosynthesis):** Weakest connection to core argument. KILLED.
+- **Prompt 9 (deliberate failure):** Absorbed into the before/after experiment structure (Steps 1 and 5). Not a separate prompt anymore.
 
-### What This Gives the Reader
+### Durability Concern: What If the Failure Stops Failing?
 
-- **Something to play with.** Not passive reading — active experimentation.
-- **Reproducible results.** Every reader with any frontier LLM can run this experiment and get the same qualitative result.
-- **Personal conviction.** The reader proved it to themselves. We didn't argue — we gave them tools and let them discover.
-- **LLM literacy.** The reader learns how context windows work, how priming changes output, how to use their AI more effectively. Practical skill they keep after closing the book.
+The before/after experiment depends on the LLM getting "topological wormhole" wrong without context. This WILL eventually stop working:
+- The book itself will enter training data
+- Future models may learn the coined term
+- The pedagogical moment dies
 
----
+**Mitigation:** The exercise includes a version-sensitivity note:
 
-## Placement Strategy
+> *If your AI correctly defines "topological wormhole" on first ask — congratulations, the firmware has already propagated. Try asking about [another coined term] instead, or try a different model. The exercise demonstrates a 2026 phenomenon: disciplinary silos in training data. By the time you read this, some models may have absorbed this book's definitions. That's the point — the bridges get built.*
 
-- **Firmware Update chapter** already teaches the reader to use copy-buttons with their LLM. That's the setup.
-- **Verification prompts appear AFTER Firmware Update** in the book's reading order, so the reader already knows the mechanism.
-- **Visual cue:** Same copy-button icon, but with a distinct label like "Ask your AI" or a small magnifying glass icon. Visually quieter than Firmware Update prompts.
-- **p-level:** These prompts live at p2 (12th grade) or p3 — they're for engaged readers, not casual ones. Could be inside collapsible sections or hover panels.
+This turns the failure-mode into a success story. The exercise works even if the LLM gets it right, because the reader learns WHY it got it right (the book propagated the connection).
 
----
+### Alternative: Show the Responses in the Book
 
-## UX: Two Distinct Interaction Types
+Instead of (or in addition to) having readers run the prompts, SHOW the LLM responses directly in the book — as screenshots or quoted text. This guarantees the pedagogical moment reaches every reader, including those who won't run the experiment.
 
-The book now has two kinds of LLM copy-buttons. They should look different:
+**Recommendation: Both.** Show one representative response inline (the "topological wormhole" failure, quoted from a 2026 model). Provide copy buttons for readers who want to replicate. The inline response is the pedagogy; the copy button is the proof.
 
-| Type | Purpose | Visual Cue | Frequency |
-|------|---------|------------|-----------|
-| **Firmware Update** | Teach the reader's LLM the book's coined vocabulary | Prominent, labeled "Prime your AI" | Once per chapter (spiral abstract) |
-| **Verification Prompt** | Ask the LLM about established science underneath | Subtle, labeled "Ask your AI" with magnifying glass icon | 9 total across book, at moments of skepticism |
-| **Before/After Experiment** | Reader runs controlled experiment on their own tool | Paired prompts, labeled "Try this" | 1-2 total, pedagogical centerpiece |
-
-Firmware Update is setup. Verification is curiosity. The experiment is discovery.
+This means the exercise section contains:
+- Inline quoted LLM responses (guaranteed pedagogy)
+- Copy buttons (reader verification)
+- Version note (durability)
 
 ---
 
-## The Meta-Argument
+## Lightweight In-Text Hooks
 
-State this explicitly somewhere near the verification prompts:
+The main text gets brief, unobtrusive references at 3-4 moments of peak skepticism:
 
-*"Your AI just confirmed what six fields of specialists couldn't see from inside their own domains. It can do this because it read all of them. You're now above the percolation threshold. The information was always there. The bridges were always possible. No one had connected the buttons."*
+1. **At 11-domain claim** (silence-gap.tex): *"Try Verification Exercise #2 — your AI knows this math."*
+2. **At substrate independence claim** (the-wrong-substrate.tex or the-flat.tex): *"Verification Exercise #6 — ask your AI about non-abelian anyons."*
+3. **At convergence chapter** (pos21-convergence-revisited.tex or equivalent): *"Run the before/after experiment in the Firmware Update chapter."*
 
-The fact that LLMs can verify the cross-domain convergence IS ITSELF evidence for the book's thesis. The reader just proved it with their own tool.
-
----
-
-## Open Questions for Gen
-
-- Does "Ask your AI" feel empowering or patronizing? Gen's aesthetic veto applies.
-- Should verification prompts be visible by default or inside collapsible/hover panels?
-- The before/after experiment is the strongest pedagogical moment — should it be in a chapter or an interlude?
-- Visual language for the three button types — how distinct?
+These are inline text, not copy buttons. One sentence each. They point the skeptical reader to the exercise without disrupting the prose.
 
 ---
 
-## Known LLM Failure Modes (from ChatGPT A/B/C evaluation, 2026-04-20)
+## Build System Impact
 
-Documented in `~/software/aurasys-memory/research/chatgpt-abc-evaluation-2026-04-20.md`. These affect prompt design and testing:
+**Minimal.** No new infrastructure needed:
+- Copy buttons already work (reader.js, existing CSS)
+- Quoted LLM responses are just formatted text blocks
+- The exercise section is new prose in firmware-update.tex (or a new adjacent file)
+- Lightweight hooks are inline text insertions in 3-4 files
 
-### 1. Wormhole Conflation
-LLM correctly defines "topological wormhole" as non-spacetime, then IMMEDIATELY conflates it with Einstein-Rosen bridges when evaluating claims. Pattern repeats even after correction. **Mitigation:** Prompt #9 exploits this deliberately. Prompts #1 and #7 build the correct foundation first.
-
-### 2. Straw Man Inflation (most dangerous for readers)
-LLM introduces claims the author never made ("hidden universal layer of reality"), then argues against them. When called out: "No — you did not make those claims. Including that section was a mistake in scope." **Mitigation:** Verification prompts ask ONLY about established science. Never ask the LLM to evaluate the book's claims — only to confirm the physics underneath. The reader bridges the gap, not the LLM.
-
-### 3. Ontological Upgrade
-LLM upgrades bounded claims into stronger ontological claims, then evaluates the stronger version. Pattern: "the Flat" (bounded definition) → "hidden layer of reality" (inflation) → "not supported" (evaluation of inflated claim). **Mitigation:** Same as #2. Additionally, the Firmware Update chapter explicitly constrains the LLM's interpretation level.
-
-### 4. Firmware Priming Is Load-Bearing
-Without spiral abstracts/firmware context, evaluation fails. With them, clean pass. ChatGPT: "you were right that earlier I had only really engaged the front-end framing." **Mitigation:** The before/after experiment makes this visible to the reader. Chapter-level spiral abstract copy-buttons ensure firmware is always available.
-
-**Design implication:** The straw man pattern means readers who skip the Firmware Update and jump straight to asking their LLM about the book's claims will get WORSE results than asking nothing at all. The LLM will inflate, then reject. The book must make this clear: "Prime your AI BEFORE asking it questions about this book. Otherwise it will argue against claims you haven't made."
+No new JS. No new build targets. No puzzle engine interaction.
 
 ---
 
@@ -320,31 +158,155 @@ Without spiral abstracts/firmware context, evaluation fails. With them, clean pa
 
 Before shipping, every prompt must be tested:
 
-1. **Cross-model:** Run through Claude, GPT-4/5, and Gemini. All must give substantively correct answers.
-2. **Without Firmware context:** Verification prompts must work standalone (they ask about established science, not coined terms).
-3. **Hostile framing:** Test "is this pseudoscience?" variants to confirm the LLM holds.
-4. **Prompt #6 (Kauffman) specifically:** This is the riskiest — verify LLMs distinguish the math (solid) from the biological interpretation (debated).
-5. **Prompt #9 (topological wormhole):** Verify it still fails across all models. If a future model gets it right, the pedagogical moment is lost — add a note about version sensitivity.
-6. **Before/after experiment:** Verify the spiral abstract genuinely changes the LLM's answer on the topological wormhole question.
-7. **Straw man test:** Ask each model "What does this book claim about [topic]?" WITHOUT firmware. Verify it inflates. Then WITH firmware. Verify it doesn't. This confirms the failure mode is real and the mitigation works.
+1. **Cross-model:** Claude, GPT-4/5, Gemini. All must give substantively correct answers.
+2. **Without firmware:** Prompts 1-6 must work standalone (they ask about established science).
+3. **Hostile framing:** Test "is this pseudoscience?" variants.
+4. **Prompt 5 (Kauffman):** Verify LLMs distinguish the math (solid) from the biological interpretation (debated).
+5. **Before/after experiment:** Verify firmware genuinely changes "topological wormhole" response.
+6. **Straw man test:** Ask each model "What does this book claim?" WITHOUT firmware. Verify it inflates. Then WITH firmware. Verify it doesn't.
 
-### Version Sensitivity Note (include in book)
+### Known Failure Modes (from ChatGPT evaluation, 2026-04-20)
 
-*"AI models evolve. If your AI gives a surprising answer, try rephrasing or try a different model. The underlying physics doesn't change — only the AI's ability to articulate it."*
-
----
-
-## Implementation
-
-- **No new infrastructure needed.** Copy-button system already exists.
-- **Generator task:** Add 9 verification prompt blocks + 1-2 before/after experiments + per-chapter spiral abstract copy-buttons to appropriate locations in manuscript.
-- **Test all prompts** per protocol above.
-- **Ship after Plan 0230** (percolation pedagogy) so the Wegener prompt has a home.
+1. **Wormhole conflation:** LLM correctly defines topological wormhole, then immediately conflates with Einstein-Rosen bridges when evaluating claims. The before/after experiment EXPLOITS this.
+2. **Straw man inflation:** LLM introduces claims the author never made, then argues against them. Mitigation: verification prompts ask about established science only, never about the book's claims.
+3. **Ontological upgrade:** LLM upgrades bounded claims into stronger ontological claims. Mitigation: firmware constrains interpretation level.
+4. **Firmware priming is load-bearing:** Without context, evaluation fails. With it, clean pass. The before/after experiment makes this VISIBLE.
 
 ---
 
-## The Deeper Point
+## Phases
 
-The book's job is not to convince 11 fields' worth of specialists. It's to get past their initial dismissal long enough for them to check. In 2026, the check takes 30 seconds. The reader's own trusted tool confirms the science. The book delivers the experience that the tool cannot.
+### Phase A: Write the Exercise Section
 
-The deliberate failure on Prompt #9 is the capstone. Eight successes build trust. One failure demonstrates the thesis. The reader's own AI has the same blind spot as human specialists — and now the reader knows why.
+**Prerequisite:** Plan 0230 Phase A (continental drift) shipped, so Wegener prompt has a home.
+
+**Generator work:**
+- Draft exercise section (~800-1200 words): before/after experiment + 6 prompts + meta-argument + version note
+- Include one inline quoted LLM response (topological wormhole failure)
+- Add copy buttons for all prompts (use existing infrastructure)
+- Insert in firmware-update.tex or new adjacent file
+- `make html` + `make check`
+
+**Acceptance:**
+1. Exercise section renders correctly with copy buttons
+2. All 6 prompts tested across Claude + GPT + Gemini (results documented)
+3. Before/after experiment works (topological wormhole fails cold, succeeds with firmware)
+4. Inline quoted response is accurate and clearly dated
+
+**Estimate:** ~2-3 hours Generator time + testing. Bruce revision.
+
+### Phase B: In-Text Hooks
+
+**Prerequisite:** Phase A complete.
+
+**Generator work:**
+- Insert 3-4 lightweight hooks in main text files
+- Each is one inline sentence, no copy button
+- `make html` + `make check`
+
+**Estimate:** ~30 min.
+
+### Phase C: Cross-Model Verification
+
+**Prerequisite:** Phase A complete.
+
+**Work (Auditor or Bruce):**
+- Run all 6 prompts through Claude Opus, Claude Sonnet, GPT-4o/5, Gemini 2.5
+- Document results
+- Adjust prompt wording if any model gives wrong answers on established science
+- Verify the before/after experiment across models
+- Run straw man test across models
+
+**Estimate:** ~2 hours testing.
+
+---
+
+## What This Plan Does NOT Do
+
+- Does NOT add copy buttons for spiral abstracts (already exist)
+- Does NOT add per-chapter LLM priming (already exists via Firmware Update)
+- Does NOT scatter 9 prompts through the text (killed in annealing)
+- Does NOT build any new JS infrastructure
+- Does NOT interact with Plan 0233's puzzle engine
+
+---
+
+## Open Questions (resolved or remaining)
+
+### Resolved:
+1. ~~Scattered vs concentrated~~ → Concentrated exercise + lightweight hooks. Resolved in annealing.
+2. ~~Prompt count~~ → 6 (down from 9). Resolved.
+3. ~~Show responses or require replication~~ → Both. Inline quotes + copy buttons. Resolved.
+4. ~~What if failure stops failing~~ → Version note + "that's the point" reframe. Resolved.
+
+### Remaining:
+5. **Exercise placement:** Inside firmware-update.tex (as a new section) or as a separate adjacent file? Leaning toward new section in firmware-update.tex to keep the LLM-interaction story in one place.
+6. **Which 2026 model to quote for inline response?** Should be a model the reader recognizes. Claude or ChatGPT most recognizable. Date the quote.
+7. **Gen's input:** Does "try this exercise" feel empowering or patronizing? Gen's aesthetic veto applies.
+
+---
+
+## Annealing Log (S64, 5-pass — one past comfort)
+
+### HIGH — all candidates:
+1. ✓ Before/after experiment — strongest pedagogical element. KEEP.
+2. ✓ Established-science verification prompts — confirms the foundation. KEEP.
+3. ✓ Deliberate failure (topological wormhole) — absorbed into before/after structure. KEEP.
+4. ✗ 9 scattered prompts — killed. High friction, visual noise, sequential dependency unlikely.
+5. ✗ Per-chapter spiral abstract copy-buttons — killed. Already exist.
+6. ✗ Three distinct button types (Firmware / Verify / Experiment) — killed. One exercise section, one visual language.
+7. ✗ Chemosynthesis prompt — killed. Weakest connection to core argument.
+8. ✗ Critical slowing down prompt — killed. Redundant with universality.
+
+### MEDIUM — test each surviving element:
+- Before/after experiment: pedagogical centerpiece. Reader proves it to themselves. KEEP.
+- 6 prompts: each tests a real physics claim. All verifiable. None asks about coined terms. KEEP.
+- Inline quoted responses: guarantees pedagogy reaches non-experimenters. KEEP.
+- Lightweight hooks: low disruption, high utility for skeptical readers. KEEP.
+- Version note: future-proofs the exercise. KEEP.
+
+### LOW pass 1 — interactions:
+- 0232 ↔ 0230: Wegener prompt (#4) depends on continental drift section existing. Gate Phase A on 0230 Phase A. ✓
+- 0232 ↔ 0233: independent. No code overlap. ✓
+- 0232 ↔ Firmware Update: exercise section extends existing chapter. Same copy-button infrastructure. ✓
+- 0232 ↔ reader.js: no new JS needed. Existing copy-button handlers suffice. ✓
+
+### LOW pass 2 — failure modes:
+- Reader doesn't run the exercise: inline quoted responses still deliver the pedagogy. ✓
+- LLM gets "topological wormhole" right: version note reframes as success. ✓
+- LLM gets established science wrong: testing protocol catches this pre-ship. ✓
+- Prompts work on Claude but not GPT: cross-model testing required in Phase C. ✓
+- Exercise section makes Firmware Update too long: firmware-update.tex is 179 lines. Adding 800-1200 words of exercise adds ~80-100 lines. Total ~280 lines. Still within chapter-length norms. ✓
+
+### LOW pass 3 — extra pass (past comfort):
+- **Will readers actually DO this?** The concentrated exercise reduces friction, but it's still "put down the book, open your AI, paste 7 things, read 7 responses." How many readers do this? Probably <10% of readers, but >50% of specialist/technical readers — the exact audience that needs it most. The inline quotes reach everyone; the exercise reaches the skeptics. This is the right split.
+- **What about readers who use the prompts in bad faith?** A hostile reviewer could paste prompts, get confirmation, then say "the AI just agrees with everything." Mitigation: the prompts ask about ESTABLISHED SCIENCE (Nobel Prizes, published math, textbook material), not about the book's claims. The LLM is confirming physics, not endorsing a narrative. The framing must make this distinction knife-sharp: "Your AI is confirming the published physics underneath these claims. Whether the claims themselves follow from that physics is a question the book asks you to evaluate."
+- **The meta-argument is load-bearing but easy to miss.** "Your AI just confirmed what specialists couldn't see from inside their domains" is a powerful insight. But it's buried in an exercise section that <10% of readers will reach. Consider: put the meta-argument in the main text (or a popup), separate from the exercise. The insight — that cross-domain verification is now trivially easy in 2026 — is important even for readers who never run a prompt. The exercise demonstrates it; the insight should be stated independently.
+- **The exercise has a shelf life.** By 2028-2030, LLMs will likely know "topological wormhole" from training data that includes this book. The before/after experiment may not work. The version note helps, but the exercise may need revision for future editions. This is acceptable — the Firmware Update chapter already contains a "date stamp" disclaimer (line 9-11). The exercise inherits the same temporal framing.
+- **Testing burden.** Phase C requires running 6 prompts × 4 models × 2 conditions (with/without firmware) = 48 tests. Plus straw man tests. This is ~2 hours of careful work. Temptation to skip will be high. Make Phase C a checkpoint — don't ship without it.
+
+**Rating: 7/10.** Concept brilliant, execution clarified. Concentrated exercise solves the scattered-prompts problem. Inline quotes guarantee pedagogy reaches non-experimenters. But: depends on 0230 for Wegener prompt, Gen aesthetic veto unresolved, testing burden is real. The plan is executable once 0230 ships.
+
+---
+
+## Execution Order (all three plans)
+
+```
+0233 Phase 1 (puzzle MVP)     ──┐
+0233 Phase 2a (egg infra)     ──┤── can run in parallel
+0230 Phase A (continental drift)┘
+                                 
+0230 Phase B (unbuilt bridge) ── after 0230 A
+
+0233 Phase 2b (ULTRA II migration) ── after 0233 2a + Bruce decisions
+0233 Phase 2c (reference review) ── after 2b
+0233 Phase 2d (verification) ── after 2c
+
+0232 Phase A (exercise section) ── after 0230 A (Wegener prompt needs a home)
+0232 Phase B (in-text hooks) ── after 0232 A
+0232 Phase C (cross-model testing) ── after 0232 A
+
+0233 Phase 3 (remaining puzzles) ── after Phase 1 playtest + Bruce/Gen design
+```
+
+Estimated total: ~20-25 hours Generator time across ~8-10 sessions, plus Bruce/Gen creative work on puzzles and prose revision.
