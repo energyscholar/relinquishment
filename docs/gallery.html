@@ -5,6 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>SVG Gallery — Relinquishment</title>
 <style>
+
   * { box-sizing: border-box; margin: 0; padding: 0; }
   body {
     font-family: Georgia, 'Times New Roman', serif;
@@ -99,21 +100,104 @@
     font-size: 0.85em;
     color: #888;
   }
+
+  .p-section {
+    padding: 1em 1.2em;
+    margin: 1.5em 0;
+    border-radius: 4px;
+  }
+  .p-section h2 {
+    margin-top: 0;
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .p-section .section-desc {
+    font-size: 0.85em;
+    color: #666;
+    margin-bottom: 1em;
+    font-style: italic;
+  }
+  .section-p1 {
+    background: #f8fbfe;
+    border-left: 4px solid #2471a3;
+  }
+  .section-p2 {
+    background: #f8fef8;
+    border-left: 4px solid #27ae60;
+  }
+  .section-p3 {
+    background: #fef8f8;
+    border-left: 4px solid #c0392b;
+  }
+  .section-standalone {
+    background: #fafafa;
+    border-left: 4px solid #888;
+  }
+  @media (max-width: 600px) {
+    .p-section { padding: 0.6em 0.8em; }
+  }
 </style>
 </head>
 <body>
 <h1>SVG Gallery</h1> <a style="font-size:0.55em;color:#1a5276;font-family:Georgia,serif;" href="tools.html">&larr; Back to Author Tools</a>
-<p class="subtitle">24 live SVGs from hover-definitions.yaml, preprocess.py, and build/images/. 4 planned.<br>
+<p class="subtitle">29 live SVGs + 4 planned. Organized by reading level.<br>
 Development tool. Not part of the book. Manifest: <code>build/gallery-manifest.yaml</code></p>
 
 <nav>
 <h2 style="margin-top:0;">Table of Contents</h2>
 <ul>
-<li><strong>Title & Branding</strong><ul>  <li><a href="#SVG-001-relinquishment-title">SVG-001-relinquishment-title</a> — relinquishment-title</li></ul></li><li><strong>The Flat / 2DEG</strong><ul>  <li><a href="#SVG-002-the-flat-title">SVG-002-the-flat-title</a> — the-flat-title, the Flat, flat worlds</li>  <li><a href="#SVG-003-two-dimensional-electron-gas">SVG-003-two-dimensional-electron-gas</a> — two-dimensional electron gas</li></ul></li><li><strong>Topology & Wormholes</strong><ul>  <li><a href="#SVG-004-wormholes-title">SVG-004-wormholes-title</a> — wormholes-title, wormholes, Wormholes</li>  <li><a href="#SVG-005-nonlocal">SVG-005-nonlocal</a> — nonlocal</li></ul></li><li><strong>Magnetosphere</strong><ul>  <li><a href="#SVG-006-magnetosphere">SVG-006-magnetosphere</a> — magnetosphere</li></ul></li><li><strong>The Stack / Convergence</strong><ul>  <li><a href="#SVG-007-buttons">SVG-007-buttons</a> — buttons</li></ul></li><li><strong>Kauffman Filmstrip (6 panels)</strong><ul>  <li><a href="#SVG-008-filmstrip-panel-1">SVG-008-filmstrip-panel-1</a> — (inline chapter injection)</li>  <li><a href="#SVG-009-filmstrip-panel-2">SVG-009-filmstrip-panel-2</a> — (inline chapter injection)</li>  <li><a href="#SVG-010-filmstrip-panel-3">SVG-010-filmstrip-panel-3</a> — (inline chapter injection)</li>  <li><a href="#SVG-011-filmstrip-panel-4">SVG-011-filmstrip-panel-4</a> — (inline chapter injection)</li>  <li><a href="#SVG-012-filmstrip-panel-5">SVG-012-filmstrip-panel-5</a> — (inline chapter injection)</li>  <li><a href="#SVG-013-filmstrip-panel-6">SVG-013-filmstrip-panel-6</a> — (inline chapter injection)</li></ul></li><li><strong>Domain Buttons (chapter version)</strong><ul>  <li><a href="#SVG-014-inject-domain-buttons">SVG-014-inject-domain-buttons</a> — (inline chapter injection)</li></ul></li><li><strong>Flat Diagram (chapter version)</strong><ul>  <li><a href="#SVG-015-inject-flat-diagram">SVG-015-inject-flat-diagram</a> — (inline chapter injection)</li></ul></li><li><strong>Physics Concepts</strong><ul>  <li><a href="#SVG-016-anyon">SVG-016-anyon</a> — anyon</li>  <li><a href="#SVG-017-TQNN">SVG-017-TQNN</a> — TQNN</li>  <li><a href="#SVG-018-braiding">SVG-018-braiding</a> — braiding</li>  <li><a href="#SVG-019-phase-transition">SVG-019-phase-transition</a> — phase transition</li>  <li><a href="#SVG-020-edge-of-chaos">SVG-020-edge-of-chaos</a> — edge of chaos</li>  <li><a href="#SVG-021-cellular-automata">SVG-021-cellular-automata</a> — cellular automata, cellular automaton</li>  <li><a href="#SVG-022-self-organized-criticality">SVG-022-self-organized-criticality</a> — self-organized criticality</li></ul></li><li><strong>Standalone Files</strong><ul>  <li><a href="#SVG-023-cover-triskellion">SVG-023-cover-triskellion</a> — build/images/cover-triskellion.svg</li>  <li><a href="#SVG-024-magnetosphere-test">SVG-024-magnetosphere-test</a> — build/images/magnetosphere-test.svg</li></ul></li><li><strong style="color:#c0392b;">Planned — Not Yet Built (4)</strong><ul>  <li><a href="#SVG-025">SVG-025</a> — autocatalytic-loop <span style="color:#c0392b;font-size:0.8em;">PLANNED</span></li>  <li><a href="#SVG-026">SVG-026</a> — edge-of-chaos-inline <span style="color:#c0392b;font-size:0.8em;">PLANNED</span></li>  <li><a href="#SVG-027">SVG-027</a> — substrate-parallel <span style="color:#c0392b;font-size:0.8em;">PLANNED</span></li>  <li><a href="#SVG-028">SVG-028</a> — canopy-problem <span style="color:#c0392b;font-size:0.8em;">PLANNED</span></li></ul></li>
+<li><strong style="color:#2471a3;">p1 — Hover Panels (19)</strong>
+<ul>
+  <li><a href="#SVG-001-relinquishment-title">SVG-001-relinquishment-title</a></li>
+  <li><a href="#SVG-002-the-flat-title">SVG-002-the-flat-title</a></li>
+  <li><a href="#SVG-003-two-dimensional-electron-gas">SVG-003-two-dimensional-electron-gas</a></li>
+  <li><a href="#SVG-004-wormholes-title">SVG-004-wormholes-title</a></li>
+  <li><a href="#SVG-005-nonlocal">SVG-005-nonlocal</a></li>
+  <li><a href="#SVG-006-magnetosphere">SVG-006-magnetosphere</a></li>
+  <li><a href="#SVG-007-buttons">SVG-007-buttons</a></li>
+  <li><a href="#SVG-016-anyon">SVG-016-anyon</a></li>
+  <li><a href="#SVG-017-TQNN">SVG-017-TQNN</a></li>
+  <li><a href="#SVG-018-braiding">SVG-018-braiding</a></li>
+  <li><a href="#SVG-019-phase-transition">SVG-019-phase-transition</a></li>
+  <li><a href="#SVG-020-edge-of-chaos">SVG-020-edge-of-chaos</a></li>
+  <li><a href="#SVG-021-cellular-automata">SVG-021-cellular-automata</a></li>
+  <li><a href="#SVG-022-self-organized-criticality">SVG-022-self-organized-criticality</a></li>
+  <li><a href="#SVG-029-five-field-silos">SVG-029 — Five-Field Silos</a> <span style="color:#d4a14b;font-size:0.8em;">DRAFT</span></li>
+  <li><a href="#SVG-030-guided-deduction">SVG-030 — Guided Deduction Flow</a> <span style="color:#d4a14b;font-size:0.8em;">DRAFT</span></li>
+  <li><a href="#SVG-031-relinquishment-decision">SVG-031 — Relinquishment Decision Tree</a> <span style="color:#d4a14b;font-size:0.8em;">DRAFT</span></li>
+  <li><a href="#SVG-032-knot-in-flames">SVG-032 — Knot in Flames</a> <span style="color:#d4a14b;font-size:0.8em;">DRAFT</span></li>
+  <li><a href="#SVG-033-concept-ladder">SVG-033 — Concept Ladder</a> <span style="color:#d4a14b;font-size:0.8em;">DRAFT</span></li>
+</ul></li>
+<li><strong style="color:#27ae60;">p2 — Summary-Adjacent (0)</strong></li>
+<li><strong style="color:#c0392b;">p3 — Chapter Inline (8)</strong>
+<ul>
+  <li><a href="#SVG-008-filmstrip-panel-1">SVG-008-filmstrip-panel-1</a></li>
+  <li><a href="#SVG-009-filmstrip-panel-2">SVG-009-filmstrip-panel-2</a></li>
+  <li><a href="#SVG-010-filmstrip-panel-3">SVG-010-filmstrip-panel-3</a></li>
+  <li><a href="#SVG-011-filmstrip-panel-4">SVG-011-filmstrip-panel-4</a></li>
+  <li><a href="#SVG-012-filmstrip-panel-5">SVG-012-filmstrip-panel-5</a></li>
+  <li><a href="#SVG-013-filmstrip-panel-6">SVG-013-filmstrip-panel-6</a></li>
+  <li><a href="#SVG-014-inject-domain-buttons">SVG-014-inject-domain-buttons</a></li>
+  <li><a href="#SVG-015-inject-flat-diagram">SVG-015-inject-flat-diagram</a></li>
+</ul></li>
+<li><strong style="color:#888;">Standalone (2)</strong>
+<ul>
+  <li><a href="#SVG-023-cover-triskellion">SVG-023-cover-triskellion</a></li>
+  <li><a href="#SVG-024-magnetosphere-test">SVG-024-magnetosphere-test</a></li>
+</ul></li>
+<li><strong style="color:#c0392b;">Planned (4)</strong>
+<ul>
+  <li><a href="#SVG-025">SVG-025 — autocatalytic-loop PLANNED</a></li>
+  <li><a href="#SVG-026">SVG-026 — edge-of-chaos-inline PLANNED</a></li>
+  <li><a href="#SVG-027">SVG-027 — substrate-parallel PLANNED</a></li>
+  <li><a href="#SVG-028">SVG-028 — canopy-problem PLANNED</a></li>
+</ul></li>
 </ul>
 </nav>
 
-<h2>Title & Branding</h2>
+<div class="p-section section-p1">
+<h2 style="color:#2471a3;">p1 — Hover Panels (19 SVGs)</h2>
+<p class="section-desc">Reader sees on tap/hover of highlighted terms. Live in hover-definitions.yaml rich panels.</p>
 <section id="SVG-001-relinquishment-title" class="svg-entry">
   <h3>SVG-001-relinquishment-title</h3>
   <div class="meta">
@@ -124,7 +208,6 @@ Development tool. Not part of the book. Manifest: <code>build/gallery-manifest.y
     <svg xmlns="http://www.w3.org/2000/svg" width="280" height="60" viewBox="0 0 280 60" style="display:block;margin:0.5em auto;"><title>Book tagline: three narrative threads, real science, three possible explanations, you decide.</title><defs><linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#1a5276;stop-opacity:0.8"/><stop offset="50%" style="stop-color:#2471a3;stop-opacity:1"/><stop offset="100%" style="stop-color:#1a5276;stop-opacity:0.8"/></linearGradient></defs><rect x="2" y="2" width="276" height="56" rx="8" fill="none" stroke="url(#glow)" stroke-width="1.5"/><text x="140" y="24" text-anchor="middle" font-size="11" fill="#1a5276" font-family="serif" font-style="italic">Three narrative threads. Real science.</text><text x="140" y="42" text-anchor="middle" font-size="11" fill="#1a5276" font-family="serif" font-style="italic">Three possible explanations. You decide.</text></svg>
   </div>
 </section>
-<h2>The Flat / 2DEG</h2>
 <section id="SVG-002-the-flat-title" class="svg-entry">
   <h3>SVG-002-the-flat-title</h3>
   <div class="meta">
@@ -135,7 +218,6 @@ Development tool. Not part of the book. Manifest: <code>build/gallery-manifest.y
     <svg xmlns="http://www.w3.org/2000/svg" width="300" height="130" viewBox="0 0 300 130" style="display:block;margin:0.5em auto;"><title>Cross-section of a computer chip. Two grey blocks of 3D semiconductor sandwich a thin blue layer — the two-dimensional electron gas (2DEG). Blue dots are electrons confined to this flat layer. They can move left and right but not up or down. This is the Flat.</title><defs><linearGradient id="flat-glow" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#2471a3" stop-opacity="0.05"/><stop offset="50%" stop-color="#2471a3" stop-opacity="0.2"/><stop offset="100%" stop-color="#2471a3" stop-opacity="0.05"/></linearGradient><marker id="flat-arr" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0,0 L 6,3 L 0,6 Z" fill="#1a5276"/></marker></defs><rect x="30" y="20" width="240" height="25" rx="2" fill="#e0e0e0" stroke="#999" stroke-width="0.8"/><text x="150" y="36" text-anchor="middle" font-size="8" fill="#666" font-family="sans-serif">3D material (bulk semiconductor)</text><rect x="30" y="50" width="240" height="8" rx="1" fill="url(#flat-glow)" stroke="#2471a3" stroke-width="1.5"/><rect x="30" y="63" width="240" height="25" rx="2" fill="#e0e0e0" stroke="#999" stroke-width="0.8"/><text x="150" y="79" text-anchor="middle" font-size="8" fill="#666" font-family="sans-serif">3D material (bulk semiconductor)</text><circle cx="70" cy="54" r="2.5" fill="#2471a3" opacity="0.9"/><circle cx="100" cy="54" r="2.5" fill="#2471a3" opacity="0.7"/><circle cx="135" cy="54" r="2.5" fill="#2471a3" opacity="0.9"/><circle cx="165" cy="54" r="2.5" fill="#2471a3" opacity="0.6"/><circle cx="195" cy="54" r="2.5" fill="#2471a3" opacity="0.8"/><circle cx="225" cy="54" r="2.5" fill="#2471a3" opacity="0.7"/><circle cx="115" cy="55" r="2" fill="#2471a3" opacity="0.4"/><circle cx="180" cy="53" r="2" fill="#2471a3" opacity="0.5"/><circle cx="245" cy="54" r="2" fill="#2471a3" opacity="0.5"/><line x1="58" y1="54" x2="48" y2="54" stroke="#1a5276" stroke-width="0.8" marker-end="url(#flat-arr)"/><line x1="252" y1="54" x2="262" y2="54" stroke="#1a5276" stroke-width="0.8" marker-end="url(#flat-arr)"/><text x="18" y="56" text-anchor="middle" font-size="7" fill="#2471a3" font-family="sans-serif" transform="rotate(-90,18,56)">2DEG</text><text x="285" y="56" text-anchor="middle" font-size="7" fill="#2471a3" font-family="sans-serif" transform="rotate(90,285,56)">2DEG</text><text x="150" y="104" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif" font-style="italic">electrons confined to two dimensions</text><text x="150" y="118" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">different physics applies here</text></svg>
   </div>
 </section>
-
 <section id="SVG-003-two-dimensional-electron-gas" class="svg-entry">
   <h3>SVG-003-two-dimensional-electron-gas</h3>
   <div class="meta">
@@ -146,7 +228,6 @@ Development tool. Not part of the book. Manifest: <code>build/gallery-manifest.y
     <svg xmlns="http://www.w3.org/2000/svg" width="300" height="130" viewBox="0 0 300 130" style="display:block;margin:0.5em auto;"><title>Cross-section: two grey blocks of 3D semiconductor sandwich a thin blue layer — the 2DEG. Blue dots are electrons confined to this flat layer. They can move left and right but not up or down.</title><defs><linearGradient id="deg-glow" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#2471a3" stop-opacity="0.05"/><stop offset="50%" stop-color="#2471a3" stop-opacity="0.2"/><stop offset="100%" stop-color="#2471a3" stop-opacity="0.05"/></linearGradient><marker id="deg-arr" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0,0 L 6,3 L 0,6 Z" fill="#1a5276"/></marker></defs><rect x="30" y="20" width="240" height="25" rx="2" fill="#e0e0e0" stroke="#999" stroke-width="0.8"/><text x="150" y="36" text-anchor="middle" font-size="8" fill="#666" font-family="sans-serif">3D material (bulk semiconductor)</text><rect x="30" y="50" width="240" height="8" rx="1" fill="url(#deg-glow)" stroke="#2471a3" stroke-width="1.5"/><rect x="30" y="63" width="240" height="25" rx="2" fill="#e0e0e0" stroke="#999" stroke-width="0.8"/><text x="150" y="79" text-anchor="middle" font-size="8" fill="#666" font-family="sans-serif">3D material (bulk semiconductor)</text><circle cx="70" cy="54" r="2.5" fill="#2471a3" opacity="0.9"/><circle cx="100" cy="54" r="2.5" fill="#2471a3" opacity="0.7"/><circle cx="135" cy="54" r="2.5" fill="#2471a3" opacity="0.9"/><circle cx="165" cy="54" r="2.5" fill="#2471a3" opacity="0.6"/><circle cx="195" cy="54" r="2.5" fill="#2471a3" opacity="0.8"/><circle cx="225" cy="54" r="2.5" fill="#2471a3" opacity="0.7"/><circle cx="115" cy="55" r="2" fill="#2471a3" opacity="0.4"/><circle cx="180" cy="53" r="2" fill="#2471a3" opacity="0.5"/><circle cx="245" cy="54" r="2" fill="#2471a3" opacity="0.5"/><line x1="58" y1="54" x2="48" y2="54" stroke="#1a5276" stroke-width="0.8" marker-end="url(#deg-arr)"/><line x1="252" y1="54" x2="262" y2="54" stroke="#1a5276" stroke-width="0.8" marker-end="url(#deg-arr)"/><text x="18" y="56" text-anchor="middle" font-size="7" fill="#2471a3" font-family="sans-serif" transform="rotate(-90,18,56)">2DEG</text><text x="285" y="56" text-anchor="middle" font-size="7" fill="#2471a3" font-family="sans-serif" transform="rotate(90,285,56)">2DEG</text><text x="150" y="104" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif" font-style="italic">electrons confined to two dimensions</text><text x="150" y="118" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">different physics applies here</text></svg>
   </div>
 </section>
-<h2>Topology & Wormholes</h2>
 <section id="SVG-004-wormholes-title" class="svg-entry">
   <h3>SVG-004-wormholes-title</h3>
   <div class="meta">
@@ -157,7 +238,6 @@ Development tool. Not part of the book. Manifest: <code>build/gallery-manifest.y
     <svg xmlns="http://www.w3.org/2000/svg" width="300" height="140" viewBox="0 0 300 140" style="display:block;margin:0.5em auto;"><title>Two surfaces (A and B) connected by a topological tunnel. Information at surface A appears at surface B without crossing the space between. The dashed lines show the connection threading through the material.</title><ellipse cx="80" cy="35" rx="65" ry="20" fill="none" stroke="#1a5276" stroke-width="1.2" opacity="0.6"/><ellipse cx="80" cy="35" rx="18" ry="8" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5"/><ellipse cx="220" cy="105" rx="65" ry="20" fill="none" stroke="#1a5276" stroke-width="1.2" opacity="0.6"/><ellipse cx="220" cy="105" rx="18" ry="8" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5"/><path d="M 62,35 C 55,60 195,80 202,105" fill="none" stroke="#2471a3" stroke-width="1.2" stroke-dasharray="4,3"/><path d="M 98,35 C 105,60 245,80 238,105" fill="none" stroke="#2471a3" stroke-width="1.2" stroke-dasharray="4,3"/><text x="80" y="12" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">surface A</text><text x="220" y="135" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">surface B</text><text x="150" y="75" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif">topological</text><text x="150" y="87" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif">connection</text></svg>
   </div>
 </section>
-
 <section id="SVG-005-nonlocal" class="svg-entry">
   <h3>SVG-005-nonlocal</h3>
   <div class="meta">
@@ -168,7 +248,6 @@ Development tool. Not part of the book. Manifest: <code>build/gallery-manifest.y
     <svg xmlns="http://www.w3.org/2000/svg" width="300" height="140" viewBox="0 0 300 140" style="display:block;margin:0.5em auto;"><title>Two surfaces (A and B) connected by a topological tunnel. Information at surface A appears at surface B without crossing the space between.</title><ellipse cx="80" cy="35" rx="65" ry="20" fill="none" stroke="#1a5276" stroke-width="1.2" opacity="0.6"/><ellipse cx="80" cy="35" rx="18" ry="8" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5"/><ellipse cx="220" cy="105" rx="65" ry="20" fill="none" stroke="#1a5276" stroke-width="1.2" opacity="0.6"/><ellipse cx="220" cy="105" rx="18" ry="8" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5"/><path d="M 62,35 C 55,60 195,80 202,105" fill="none" stroke="#2471a3" stroke-width="1.2" stroke-dasharray="4,3"/><path d="M 98,35 C 105,60 245,80 238,105" fill="none" stroke="#2471a3" stroke-width="1.2" stroke-dasharray="4,3"/><text x="80" y="12" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">here</text><text x="220" y="135" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">there</text><text x="150" y="75" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif">no signal crosses</text><text x="150" y="87" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif">the distance</text></svg>
   </div>
 </section>
-<h2>Magnetosphere</h2>
 <section id="SVG-006-magnetosphere" class="svg-entry">
   <h3>SVG-006-magnetosphere</h3>
   <div class="meta">
@@ -179,7 +258,6 @@ Development tool. Not part of the book. Manifest: <code>build/gallery-manifest.y
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 240" width="380" height="240" style="display:block;margin:0 auto;"> <title>Earth's magnetosphere. Earth at left-center with dipole field lines. Solar wind compresses the dayside and stretches the magnetotail rightward. The plasma sheet — a thin 2D layer of charged particles — runs down the center of the tail. The bow shock curves around the sunward side. Van Allen radiation belts shown as nested shells around Earth.</title> <rect width="380" height="240" fill="#fafafa" rx="4"/> <defs> <marker id="ms-sw" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#f39c12"/></marker> <radialGradient id="ms-earth" cx="50%" cy="50%" r="50%"> <stop offset="0%" stop-color="#85c1e9"/><stop offset="100%" stop-color="#2471a3"/> </radialGradient> <linearGradient id="ms-ps" x1="0%" y1="0%" x2="100%" y2="0%"> <stop offset="0%" stop-color="#c0392b" stop-opacity="0.6"/> <stop offset="50%" stop-color="#c0392b" stop-opacity="0.3"/> <stop offset="100%" stop-color="#c0392b" stop-opacity="0.1"/> </linearGradient> </defs> <circle cx="120" cy="120" r="16" fill="url(#ms-earth)" stroke="#1a5276" stroke-width="1.2"/> <text x="120" y="124" font-size="7" fill="#fff" font-family="sans-serif" text-anchor="middle" font-weight="bold">Earth</text> <ellipse cx="120" cy="120" rx="28" ry="14" fill="none" stroke="#5dade2" stroke-width="1" opacity="0.5"/> <ellipse cx="120" cy="120" rx="40" ry="22" fill="none" stroke="#5dade2" stroke-width="0.8" opacity="0.35"/> <text x="120" y="96" font-size="6" fill="#5dade2" font-family="sans-serif" text-anchor="middle" opacity="0.7">Van Allen belts</text> <path d="M104,85 C70,60 60,30 95,12" fill="none" stroke="#1a5276" stroke-width="1.2"/> <path d="M104,155 C70,180 60,210 95,228" fill="none" stroke="#1a5276" stroke-width="1.2"/> <path d="M136,85 C170,60 180,30 145,12" fill="none" stroke="#1a5276" stroke-width="1.2"/> <path d="M136,155 C170,180 180,210 145,228" fill="none" stroke="#1a5276" stroke-width="1.2"/> <path d="M80,120 C55,70 50,25 90,5" fill="none" stroke="#1a5276" stroke-width="0.8" stroke-dasharray="3,2"/> <path d="M80,120 C55,170 50,215 90,235" fill="none" stroke="#1a5276" stroke-width="0.8" stroke-dasharray="3,2"/> <path d="M160,120 C200,70 220,30 200,8" fill="none" stroke="#1a5276" stroke-width="0.6" stroke-dasharray="2,2" opacity="0.4"/> <path d="M160,120 C200,170 220,210 200,232" fill="none" stroke="#1a5276" stroke-width="0.6" stroke-dasharray="2,2" opacity="0.4"/> <rect x="160" y="116" width="210" height="8" rx="2" fill="url(#ms-ps)"/> <circle cx="185" cy="120" r="1.5" fill="#c0392b" opacity="0.8"/> <circle cx="210" cy="119" r="1.2" fill="#c0392b" opacity="0.6"/> <circle cx="240" cy="121" r="1" fill="#c0392b" opacity="0.5"/> <circle cx="265" cy="120" r="1.2" fill="#c0392b" opacity="0.4"/> <circle cx="290" cy="119" r="1" fill="#c0392b" opacity="0.3"/> <circle cx="320" cy="120" r="0.8" fill="#c0392b" opacity="0.2"/> <text x="350" y="112" font-size="8" fill="#c0392b" font-family="sans-serif" text-anchor="end" font-style="italic">magnetotail</text> <text x="260" y="135" font-size="7.5" fill="#c0392b" font-family="sans-serif" text-anchor="middle" font-weight="bold">plasma sheet (2D)</text> <path d="M65,40 C52,75 52,165 65,200" fill="none" stroke="#e67e22" stroke-width="1.8"/> <text x="46" y="120" font-size="7.5" fill="#e67e22" font-family="sans-serif" text-anchor="middle" transform="rotate(-90,46,120)">bow shock</text> <line x1="5" y1="105" x2="40" y2="112" stroke="#f39c12" stroke-width="1.2" marker-end="url(#ms-sw)"/> <line x1="5" y1="120" x2="40" y2="120" stroke="#f39c12" stroke-width="1.2" marker-end="url(#ms-sw)"/> <line x1="5" y1="135" x2="40" y2="128" stroke="#f39c12" stroke-width="1.2" marker-end="url(#ms-sw)"/> <text x="5" y="98" font-size="8" fill="#f39c12" font-family="sans-serif">solar</text> <text x="5" y="150" font-size="8" fill="#f39c12" font-family="sans-serif">wind</text> </svg>
   </div>
 </section>
-<h2>The Stack / Convergence</h2>
 <section id="SVG-007-buttons" class="svg-entry">
   <h3>SVG-007-buttons</h3>
   <div class="meta">
@@ -190,7 +268,319 @@ Development tool. Not part of the book. Manifest: <code>build/gallery-manifest.y
     <svg xmlns="http://www.w3.org/2000/svg" width="380" height="280" viewBox="0 0 500 390" style="display:block;margin:0.5em auto;"><defs><filter id="dbtn-sh-tt" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-opacity="0.2"/></filter></defs><line x1="25" y1="335" x2="475" y2="335" stroke="#ccc" stroke-width="1" stroke-dasharray="4,4"/><line x1="58" y1="82" x2="310" y2="108" stroke="#bbb" stroke-width="0.8" opacity="0.3" stroke-dasharray="5,3"/><line x1="442" y1="82" x2="250" y2="220" stroke="#bbb" stroke-width="0.8" opacity="0.3" stroke-dasharray="5,3"/><line x1="372" y1="278" x2="442" y2="82" stroke="#bbb" stroke-width="0.8" opacity="0.3" stroke-dasharray="5,3"/><line x1="372" y1="228" x2="250" y2="220" stroke="#bbb" stroke-width="0.8" opacity="0.3" stroke-dasharray="5,3"/><line x1="110" y1="252" x2="442" y2="82" stroke="#bbb" stroke-width="0.8" opacity="0.3" stroke-dasharray="5,3"/><line x1="58" y1="140" x2="442" y2="82" stroke="#777" stroke-width="1.0" opacity="0.4"/><line x1="310" y1="108" x2="110" y2="252" stroke="#777" stroke-width="1.0" opacity="0.4"/><line x1="250" y1="55" x2="190" y2="108" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/><line x1="250" y1="55" x2="310" y2="108" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/><line x1="190" y1="108" x2="310" y2="108" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/><line x1="250" y1="55" x2="250" y2="220" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/><line x1="190" y1="108" x2="250" y2="220" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/><line x1="310" y1="108" x2="250" y2="220" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/><line x1="58" y1="82" x2="58" y2="140" stroke="#c0392b" stroke-width="1.5" opacity="0.65"/><line x1="442" y1="82" x2="442" y2="140" stroke="#e67e22" stroke-width="1.5" opacity="0.65"/><line x1="372" y1="228" x2="372" y2="278" stroke="#8e44ad" stroke-width="1.5" opacity="0.65"/><circle cx="250" cy="55" r="16" fill="#2471a3" stroke="#1a5276" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><circle cx="190" cy="108" r="16" fill="#2980b9" stroke="#2471a3" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><circle cx="310" cy="108" r="16" fill="#3498db" stroke="#2980b9" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><circle cx="250" cy="220" r="16" fill="#1a5276" stroke="#0d2f4b" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><circle cx="58" cy="82" r="16" fill="#c0392b" stroke="#962d22" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><circle cx="58" cy="140" r="16" fill="#e74c3c" stroke="#c0392b" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><circle cx="442" cy="82" r="16" fill="#e67e22" stroke="#bf6516" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><circle cx="442" cy="140" r="16" fill="#f39c12" stroke="#d4860b" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><circle cx="372" cy="228" r="16" fill="#8e44ad" stroke="#6c3483" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><circle cx="372" cy="278" r="16" fill="#a569bd" stroke="#8e44ad" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><circle cx="110" cy="252" r="16" fill="#b8860b" stroke="#8b6508" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><text x="250" y="59" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Topo</text><text x="190" y="112" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">TFT</text><text x="310" y="112" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">CMP</text><text x="250" y="224" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">TQC</text><text x="58" y="86" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Sol</text><text x="58" y="144" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">NLD</text><text x="442" y="86" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">ACS</text><text x="442" y="144" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Auto</text><text x="372" y="232" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">CE</text><text x="372" y="282" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Par</text><text x="110" y="256" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7.5" fill="white" font-weight="bold">Mat</text><text x="250" y="248" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#999">&#x25BC;</text><text x="250" y="358" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">One thread holds. Cut it, and the argument falls apart.</text><text x="250" y="373" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#999">after Kauffman (1993)</text></svg>
   </div>
 </section>
-<h2>Kauffman Filmstrip (6 panels)</h2>
+<section id="SVG-016-anyon" class="svg-entry">
+  <h3>SVG-016-anyon</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>anyon</code><br>
+    <span class="label">SVG title:</span> Two anyons (blue and red dots) with their worldlines braiding around each other as time flows upward. The blue line crosses over the red line twice, forming a braid pattern. This winding IS computation — the information is stored in how the paths intertwine, not in the particles themselves.<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380" height="200" style="display:block;margin:0 auto;"> <title>Two anyons (blue and red dots) with their worldlines braiding around each other as time flows upward. The blue line crosses over the red line twice, forming a braid pattern. This winding IS computation — the information is stored in how the paths intertwine, not in the particles themselves.</title> <rect width="380" height="200" fill="#fafafa" rx="4"/> <defs><marker id="aT" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#999"/></marker></defs> <line x1="24" y1="188" x2="24" y2="12" stroke="#999" stroke-width="1" marker-end="url(#aT)"/> <text x="28" y="18" font-size="10" fill="#888" font-family="sans-serif">Time</text> <path d="M140,185 C140,135 240,125 240,100 C240,75 140,65 140,15" fill="none" stroke="#2471a3" stroke-width="2.5"/> <path d="M240,185 C240,135 140,125 140,100 C140,75 240,65 240,15" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="6,3"/> <circle cx="140" cy="185" r="5" fill="#2471a3"/> <circle cx="240" cy="185" r="5" fill="#c0392b"/> <circle cx="140" cy="15" r="5" fill="#2471a3"/> <circle cx="240" cy="15" r="5" fill="#c0392b"/> <text x="140" y="198" font-size="9" fill="#2471a3" font-family="sans-serif" text-anchor="middle">anyon A</text> <text x="240" y="198" font-size="9" fill="#c0392b" font-family="sans-serif" text-anchor="middle">anyon B</text> <text x="310" y="95" font-size="10" fill="#555" font-family="sans-serif">worldlines</text> <text x="310" y="109" font-size="10" fill="#555" font-family="sans-serif">braid around</text> <text x="310" y="123" font-size="10" fill="#555" font-family="sans-serif">each other</text> </svg>
+  </div>
+</section>
+<section id="SVG-017-TQNN" class="svg-entry">
+  <h3>SVG-017-TQNN</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>TQNN</code><br>
+    <span class="label">SVG title:</span> Five anyonic quasiparticles (blue dots) sitting on a two-dimensional substrate (the Flat), connected by wormholes (dashed arcs). Thicker lines mean stronger entanglement — these are the connection weights. Two nodes glow brighter because they are more active. This is a neural network wired by topology instead of copper.<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" width="320" height="180" viewBox="0 0 320 180" style="display:block;margin:0.5em auto;"><title>Five anyonic quasiparticles (blue dots) sitting on a two-dimensional substrate (the Flat), connected by wormholes (dashed arcs). Thicker lines mean stronger entanglement — these are the connection weights. Two nodes glow brighter because they are more active. This is a neural network wired by topology instead of copper.</title><defs><linearGradient id="tq-flat" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#2471a3" stop-opacity="0.05"/><stop offset="50%" stop-color="#2471a3" stop-opacity="0.15"/><stop offset="100%" stop-color="#2471a3" stop-opacity="0.05"/></linearGradient></defs><rect x="20" y="75" width="280" height="10" rx="2" fill="url(#tq-flat)" stroke="#2471a3" stroke-width="1"/><text x="160" y="170" text-anchor="middle" font-size="8" fill="#888" font-family="serif" font-style="italic">the Flat — two-dimensional substrate</text><path d="M60,80 C50,55 120,30 140,80" fill="none" stroke="#2471a3" stroke-width="2.0" stroke-dasharray="4,3" opacity="0.9"/><path d="M60,80 C70,45 180,35 200,80" fill="none" stroke="#2471a3" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"/><path d="M60,80 C80,60 90,65 110,80" fill="none" stroke="#2471a3" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.4"/><path d="M110,80 C120,50 130,50 140,80" fill="none" stroke="#2471a3" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.7"/><path d="M140,80 C150,45 190,45 200,80" fill="none" stroke="#2471a3" stroke-width="2.2" stroke-dasharray="4,3" opacity="0.95"/><path d="M140,80 C160,55 230,40 250,80" fill="none" stroke="#2471a3" stroke-width="1.0" stroke-dasharray="4,3" opacity="0.5"/><path d="M200,80 C210,50 240,50 250,80" fill="none" stroke="#2471a3" stroke-width="1.8" stroke-dasharray="4,3" opacity="0.8"/><path d="M110,80 C130,40 220,35 250,80" fill="none" stroke="#2471a3" stroke-width="0.6" stroke-dasharray="4,3" opacity="0.3"/><circle cx="60" cy="80" r="6" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5" opacity="0.9"/><circle cx="110" cy="80" r="5" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5" opacity="0.5"/><circle cx="140" cy="80" r="7" fill="#e8f0f8" stroke="#1a5276" stroke-width="2" opacity="1.0"/><circle cx="200" cy="80" r="7" fill="#e8f0f8" stroke="#1a5276" stroke-width="2" opacity="1.0"/><circle cx="250" cy="80" r="5.5" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5" opacity="0.7"/><circle cx="60" cy="80" r="3" fill="#2471a3" opacity="0.6"/><circle cx="110" cy="80" r="2" fill="#2471a3" opacity="0.3"/><circle cx="140" cy="80" r="3.5" fill="#1a5276" opacity="0.8"/><circle cx="200" cy="80" r="3.5" fill="#1a5276" opacity="0.8"/><circle cx="250" cy="80" r="2.5" fill="#2471a3" opacity="0.5"/><text x="60" y="105" text-anchor="middle" font-size="7" fill="#888" font-family="sans-serif">anyon</text><text x="140" y="105" text-anchor="middle" font-size="7" fill="#888" font-family="sans-serif">anyon</text><text x="200" y="105" text-anchor="middle" font-size="7" fill="#888" font-family="sans-serif">anyon</text><text x="250" y="105" text-anchor="middle" font-size="7" fill="#888" font-family="sans-serif">anyon</text><text x="155" y="30" text-anchor="middle" font-size="8" fill="#2471a3" font-family="serif" font-style="italic">wormhole connections</text><text x="155" y="42" text-anchor="middle" font-size="7" fill="#888" font-family="serif" font-style="italic">line thickness = entanglement strength = weight</text><text x="155" y="155" text-anchor="middle" font-size="8" fill="#666" font-family="serif">a nervous system wired by topology</text></svg>
+  </div>
+</section>
+<section id="SVG-018-braiding" class="svg-entry">
+  <h3>SVG-018-braiding</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>braiding</code><br>
+    <span class="label">SVG title:</span> Three anyons (blue, red, green) with worldlines rising through time. The lines cross over and under each other, forming a three-strand braid. Each crossing is a quantum logic gate. The pattern of crossings encodes the computation — rearranging the order changes the result.<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380" height="200" style="display:block;margin:0 auto;"> <title>Three anyons (blue, red, green) with worldlines rising through time. The lines cross over and under each other, forming a three-strand braid. Each crossing is a quantum logic gate. The pattern of crossings encodes the computation — rearranging the order changes the result.</title> <rect width="380" height="200" fill="#fafafa" rx="4"/> <defs><marker id="bT" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#999"/></marker></defs> <line x1="24" y1="188" x2="24" y2="12" stroke="#999" stroke-width="1" marker-end="url(#bT)"/> <text x="28" y="18" font-size="10" fill="#888" font-family="sans-serif">Time</text> <path d="M140,185 C140,135 240,125 240,100 C240,75 140,65 140,15" fill="none" stroke="#2471a3" stroke-width="2.5"/> <path d="M240,185 C240,135 140,125 140,100 C140,75 240,65 240,15" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="6,3"/> <circle cx="140" cy="185" r="5" fill="#2471a3"/> <circle cx="240" cy="185" r="5" fill="#c0392b"/> <circle cx="140" cy="15" r="5" fill="#2471a3"/> <circle cx="240" cy="15" r="5" fill="#c0392b"/> <text x="140" y="198" font-size="9" fill="#2471a3" font-family="sans-serif" text-anchor="middle">anyon A</text> <text x="240" y="198" font-size="9" fill="#c0392b" font-family="sans-serif" text-anchor="middle">anyon B</text> <text x="310" y="95" font-size="10" fill="#555" font-family="sans-serif">worldlines</text> <text x="310" y="109" font-size="10" fill="#555" font-family="sans-serif">braid around</text> <text x="310" y="123" font-size="10" fill="#555" font-family="sans-serif">each other</text> </svg>
+  </div>
+</section>
+<section id="SVG-019-phase-transition" class="svg-entry">
+  <h3>SVG-019-phase-transition</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>phase transition</code><br>
+    <span class="label">SVG title:</span> A graph with a control parameter on the horizontal axis and order on the vertical axis. A flat blue line rises gently from left, then jumps sharply upward through a red dashed transition zone, then continues flat at a higher level. The red dot marks the critical point — the moment everything changes.<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380" height="200" style="display:block;margin:0 auto;"> <title>A graph with a control parameter on the horizontal axis and order on the vertical axis. A flat blue line rises gently from left, then jumps sharply upward through a red dashed transition zone, then continues flat at a higher level. The red dot marks the critical point — the moment everything changes.</title> <rect width="380" height="200" fill="#fafafa" rx="4"/> <line x1="40" y1="170" x2="360" y2="170" stroke="#555" stroke-width="1.5"/> <line x1="40" y1="170" x2="40" y2="20" stroke="#555" stroke-width="1.5"/> <text x="200" y="195" font-size="11" fill="#555" font-family="sans-serif" text-anchor="middle">Control parameter</text> <text x="16" y="95" font-size="11" fill="#555" font-family="sans-serif" text-anchor="middle" transform="rotate(-90,16,95)">Order</text> <path d="M50,155 L160,150 L170,148" fill="none" stroke="#2471a3" stroke-width="2.5"/> <line x1="170" y1="148" x2="210" y2="50" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="4,3"/> <path d="M210,50 L220,47 L340,40" fill="none" stroke="#2471a3" stroke-width="2.5"/> <circle cx="190" cy="99" r="4" fill="#c0392b"/> <text x="190" y="87" font-size="10" fill="#c0392b" font-family="sans-serif" text-anchor="middle" font-weight="bold">Phase transition</text> <text x="100" y="140" font-size="10" fill="#888" font-family="sans-serif" text-anchor="middle" font-style="italic">Disordered</text> <text x="290" y="35" font-size="10" fill="#888" font-family="sans-serif" text-anchor="middle" font-style="italic">Ordered</text> </svg>
+  </div>
+</section>
+<section id="SVG-020-edge-of-chaos" class="svg-entry">
+  <h3>SVG-020-edge-of-chaos</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>edge of chaos</code><br>
+    <span class="label">SVG title:</span> Three zones arranged left to right: blue 'Frozen / Ordered' on the left, green 'Edge of Chaos' in the narrow middle, red 'Chaotic / Random' on the right. An arrow points to the green zone labeled 'Life, computation, adaptation.' A colored bar underneath shows the three regimes as a spectrum. The green zone is narrow — the sweet spot where complexity lives.<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380" height="200" style="display:block;margin:0 auto;"> <title>Three zones arranged left to right: blue 'Frozen / Ordered' on the left, green 'Edge of Chaos' in the narrow middle, red 'Chaotic / Random' on the right. An arrow points to the green zone labeled 'Life, computation, adaptation.' A colored bar underneath shows the three regimes as a spectrum. The green zone is narrow — the sweet spot where complexity lives.</title> <rect width="380" height="200" fill="#fafafa" rx="4"/> <rect x="30" y="60" width="110" height="40" rx="4" fill="#d4e6f1" stroke="#2471a3" stroke-width="1"/> <text x="85" y="84" font-size="12" fill="#1a5276" font-family="sans-serif" text-anchor="middle" font-weight="bold">Frozen / Ordered</text> <rect x="240" y="60" width="110" height="40" rx="4" fill="#fadbd8" stroke="#c0392b" stroke-width="1"/> <text x="295" y="84" font-size="12" fill="#922b21" font-family="sans-serif" text-anchor="middle" font-weight="bold">Chaotic / Random</text> <rect x="152" y="55" width="76" height="50" rx="4" fill="#d5f5e3" stroke="#27ae60" stroke-width="2"/> <text x="190" y="77" font-size="11" fill="#1e8449" font-family="sans-serif" text-anchor="middle" font-weight="bold">Edge of</text> <text x="190" y="93" font-size="11" fill="#1e8449" font-family="sans-serif" text-anchor="middle" font-weight="bold">Chaos</text> <defs><marker id="eA" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto"><path d="M0,3 L8,0 L8,6" fill="#27ae60"/></marker></defs> <line x1="190" y1="130" x2="190" y2="112" stroke="#27ae60" stroke-width="1.5" marker-end="url(#eA)"/> <text x="190" y="145" font-size="10" fill="#27ae60" font-family="sans-serif" text-anchor="middle" font-style="italic">Life, computation,</text> <text x="190" y="159" font-size="10" fill="#27ae60" font-family="sans-serif" text-anchor="middle" font-style="italic">adaptation</text> <line x1="30" y1="120" x2="350" y2="120" stroke="#ccc" stroke-width="1"/> <path d="M30,118 L140,118" stroke="#2471a3" stroke-width="3"/> <path d="M152,118 L228,118" stroke="#27ae60" stroke-width="3"/> <path d="M240,118 L350,118" stroke="#c0392b" stroke-width="3"/> </svg>
+  </div>
+</section>
+<section id="SVG-021-cellular-automata" class="svg-entry">
+  <h3>SVG-021-cellular-automata</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>cellular automata</code>, <code>cellular automaton</code><br>
+    <span class="label">SVG title:</span> Rule 110 cellular automaton — a triangular pattern of blue and white cells growing downward from a single cell. Each row is computed from the row above using one simple rule. Despite the trivial rule, the pattern is complex and never repeats. This specific rule (number 110 out of 256 possible) was proven Turing-complete — it can compute anything.<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 164 115" width="164" height="115" style="display:block;margin:0.3em auto;"> <title>Rule 110 cellular automaton — a triangular pattern of blue and white cells growing downward from a single cell. Each row is computed from the row above using one simple rule. Despite the trivial rule, the pattern is complex and never repeats. This specific rule (number 110 out of 256 possible) was proven Turing-complete — it can compute anything.</title> <rect width="164" height="100" fill="#f5f5f5" rx="2"/> <path d="M80,0h4v4h-4zM76,4h8v4h-8zM72,8h12v4h-12zM68,12h8v4h-8zM80,12h4v4h-4zM64,16h20v4h-20zM60,20h8v4h-8zM80,20h4v4h-4zM56,24h12v4h-12zM76,24h8v4h-8zM52,28h8v4h-8zM64,28h4v4h-4zM72,28h12v4h-12zM48,32h28v4h-28zM80,32h4v4h-4zM44,36h8v4h-8zM72,36h12v4h-12zM40,40h12v4h-12zM68,40h8v4h-8zM80,40h4v4h-4zM36,44h8v4h-8zM48,44h4v4h-4zM64,44h20v4h-20zM32,48h20v4h-20zM60,48h8v4h-8zM80,48h4v4h-4zM28,52h8v4h-8zM48,52h4v4h-4zM56,52h12v4h-12zM76,52h8v4h-8zM24,56h12v4h-12zM44,56h16v4h-16zM64,56h4v4h-4zM72,56h12v4h-12zM20,60h8v4h-8zM32,60h4v4h-4zM40,60h8v4h-8zM56,60h20v4h-20zM80,60h4v4h-4zM16,64h32v4h-32zM52,64h8v4h-8zM72,64h12v4h-12zM12,68h8v4h-8zM44,68h16v4h-16zM68,68h8v4h-8zM80,68h4v4h-4zM8,72h12v4h-12zM40,72h8v4h-8zM56,72h4v4h-4zM64,72h20v4h-20zM4,76h8v4h-8zM16,76h4v4h-4zM36,76h12v4h-12zM52,76h16v4h-16zM80,76h4v4h-4zM0,80h20v4h-20zM32,80h8v4h-8zM44,80h12v4h-12zM64,80h4v4h-4zM76,80h8v4h-8zM0,84h4v4h-4zM16,84h4v4h-4zM28,84h20v4h-20zM52,84h4v4h-4zM60,84h8v4h-8zM72,84h12v4h-12zM160,84h4v4h-4zM0,88h4v4h-4zM12,88h8v4h-8zM24,88h8v4h-8zM44,88h32v4h-32zM80,88h4v4h-4zM156,88h8v4h-8zM0,92h4v4h-4zM8,92h24v4h-24zM40,92h8v4h-8zM72,92h12v4h-12zM152,92h8v4h-8zM0,96h12v4h-12zM28,96h4v4h-4zM36,96h12v4h-12zM68,96h8v4h-8zM80,96h4v4h-4zM148,96h16v4h-16z" fill="#2471a3"/> <text x="82" y="112" text-anchor="middle" font-size="8" fill="#888" font-family="sans-serif" font-style="italic">Rule 110 — Turing-complete</text> </svg>
+  </div>
+</section>
+<section id="SVG-022-self-organized-criticality" class="svg-entry">
+  <h3>SVG-022-self-organized-criticality</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>self-organized criticality</code><br>
+    <span class="label">SVG title:</span> A sandpile — a triangle of sand with red dots of varying sizes scattered across it. Each dot is an avalanche. Small avalanches are frequent (many small dots), large ones are rare (few big dots). The pile builds itself to the critical angle where avalanches of all sizes occur. Nobody tunes this — the system finds criticality on its own.<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380" height="200" style="display:block;margin:0 auto;"> <title>A sandpile — a triangle of sand with red dots of varying sizes scattered across it. Each dot is an avalanche. Small avalanches are frequent (many small dots), large ones are rare (few big dots). The pile builds itself to the critical angle where avalanches of all sizes occur. Nobody tunes this — the system finds criticality on its own.</title> <rect width="380" height="200" fill="#fafafa" rx="4"/> <polygon points="190,30 60,170 320,170" fill="#f0e6d3" stroke="#b7950b" stroke-width="1.5"/> <circle cx="175" cy="145" r="3" fill="#c0392b" opacity="0.7"/> <circle cx="210" cy="130" r="5" fill="#c0392b" opacity="0.6"/> <circle cx="150" cy="120" r="2" fill="#c0392b" opacity="0.8"/> <circle cx="230" cy="155" r="4" fill="#c0392b" opacity="0.5"/> <circle cx="195" cy="90" r="7" fill="#c0392b" opacity="0.4"/> <circle cx="140" cy="155" r="2.5" fill="#c0392b" opacity="0.7"/> <circle cx="260" cy="145" r="3.5" fill="#c0392b" opacity="0.6"/> <circle cx="185" cy="110" r="2" fill="#c0392b" opacity="0.8"/> <circle cx="220" cy="100" r="4" fill="#c0392b" opacity="0.5"/> <path d="M175,145 L168,165" stroke="#c0392b" stroke-width="1" opacity="0.4"/> <path d="M210,130 L225,160" stroke="#c0392b" stroke-width="1.5" opacity="0.3"/> <path d="M195,90 L180,130" stroke="#c0392b" stroke-width="2" opacity="0.25"/> <text x="190" y="188" font-size="11" fill="#555" font-family="sans-serif" text-anchor="middle" font-style="italic">All sizes of avalanche</text> <text x="340" y="50" font-size="9" fill="#888" font-family="sans-serif" text-anchor="end">small</text> <circle cx="355" cy="47" r="2.5" fill="#c0392b" opacity="0.7"/> <text x="340" y="70" font-size="9" fill="#888" font-family="sans-serif" text-anchor="end">medium</text> <circle cx="355" cy="67" r="4.5" fill="#c0392b" opacity="0.5"/> <text x="340" y="93" font-size="9" fill="#888" font-family="sans-serif" text-anchor="end">large</text> <circle cx="355" cy="90" r="7" fill="#c0392b" opacity="0.35"/> </svg>
+  </div>
+</section>
+
+<h2 style="color:#2471a3;border-bottom:none;">Plan 0251 Tier 1 — Draft SVGs for Review</h2>
+
+<section id="SVG-029-five-field-silos" class="svg-entry">
+  <h3>SVG-029 — Five-Field Silos <span style="color:#d4a14b;font-size:0.8em;">DRAFT</span></h3>
+  <div class="meta">
+    <span class="label">Plan 0251 Tier 1</span> | <span class="label">Display:</span> BOTH | <span class="label">Targets:</span> T5/F5<br>
+    <span class="label">Status:</span> <span style="color:#d4a14b;">DRAFT — awaiting review</span>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 160" width="300" height="160" style="display:block;margin:0 auto;">
+      <title>Five tall narrow rectangles representing academic silos: Condensed Matter, Topology, Biology, Magnetospheric Physics, and Quantum Computing. Each stands alone with gaps between. In the center where they should overlap, a dashed rectangle outlines the missing intersection, labeled: No journal. No career. No funding. The silence gap is visible as absence.</title>
+      <rect width="300" height="160" fill="#fefefe" rx="4"/>
+      <!-- Five silos -->
+      <rect x="10" y="20" width="40" height="105" rx="2" fill="#d4e6f1" stroke="#2471a3" stroke-width="1.2"/>
+      <rect x="65" y="30" width="40" height="95" rx="2" fill="#d5f5e3" stroke="#27ae60" stroke-width="1.2"/>
+      <rect x="130" y="15" width="40" height="110" rx="2" fill="#fadbd8" stroke="#c0392b" stroke-width="1.2"/>
+      <rect x="195" y="25" width="40" height="100" rx="2" fill="#fdebd0" stroke="#e67e22" stroke-width="1.2"/>
+      <rect x="250" y="35" width="40" height="90" rx="2" fill="#e8daef" stroke="#8e44ad" stroke-width="1.2"/>
+      <!-- Silo labels (rotated) -->
+      <text x="30" y="78" text-anchor="middle" font-size="6.5" fill="#1a5276" font-family="Georgia, serif" transform="rotate(-90,30,78)">Condensed Matter</text>
+      <text x="85" y="82" text-anchor="middle" font-size="6.5" fill="#1e8449" font-family="Georgia, serif" transform="rotate(-90,85,82)">Topology</text>
+      <text x="150" y="75" text-anchor="middle" font-size="6.5" fill="#922b21" font-family="Georgia, serif" transform="rotate(-90,150,75)">Biology</text>
+      <text x="215" y="80" text-anchor="middle" font-size="6.5" fill="#af601a" font-family="Georgia, serif" transform="rotate(-90,215,80)">Magnetospheric Physics</text>
+      <text x="270" y="84" text-anchor="middle" font-size="6.5" fill="#6c3483" font-family="Georgia, serif" transform="rotate(-90,270,84)">Quantum Computing</text>
+      <!-- Missing intersection (dashed) -->
+      <rect x="90" y="45" width="120" height="55" rx="4" fill="none" stroke="#1a5276" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <!-- Label in the gap -->
+      <text x="150" y="68" text-anchor="middle" font-size="7.5" fill="#1a5276" font-family="Georgia, serif" font-style="italic">No journal.</text>
+      <text x="150" y="80" text-anchor="middle" font-size="7.5" fill="#1a5276" font-family="Georgia, serif" font-style="italic">No career. No funding.</text>
+      <!-- Caption -->
+      <text x="150" y="150" text-anchor="middle" font-size="8.5" fill="#888" font-family="Georgia, serif" font-style="italic">The silence gap is visible as absence.</text>
+    </svg>
+  </div>
+</section>
+
+<section id="SVG-030-guided-deduction" class="svg-entry">
+  <h3>SVG-030 — Guided Deduction Flow <span style="color:#d4a14b;font-size:0.8em;">DRAFT</span></h3>
+  <div class="meta">
+    <span class="label">Plan 0251 Tier 1</span> | <span class="label">Display:</span> BOTH | <span class="label">Targets:</span> T8<br>
+    <span class="label">Status:</span> <span style="color:#d4a14b;">DRAFT — awaiting review</span>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380" height="200" style="display:block;margin:0 auto;">
+      <title>Guided deduction flow. Left: a locked box labeled Classified with a barrier labeled No Disclosure. Right: five published papers (Hasslacher, Freedman, Kauffman, Wolfram, Hillis) arranged in sequence flowing downward. Below: a student figure with a lightbulb, representing independent discovery. Caption: The student deduces independently. The record enters the world clean.</title>
+      <rect width="380" height="200" fill="#fefefe" rx="4"/>
+      <!-- Locked box -->
+      <rect x="15" y="30" width="70" height="50" rx="4" fill="#e8e8e8" stroke="#999" stroke-width="1.5"/>
+      <circle cx="50" cy="50" r="8" fill="none" stroke="#999" stroke-width="1.5"/>
+      <rect x="44" y="50" width="12" height="10" rx="2" fill="#999"/>
+      <text x="50" y="96" text-anchor="middle" font-size="8" fill="#888" font-family="Georgia, serif" font-weight="bold">Classified</text>
+      <!-- Barrier -->
+      <line x1="100" y1="25" x2="100" y2="100" stroke="#c0392b" stroke-width="2"/>
+      <line x1="95" y1="25" x2="105" y2="25" stroke="#c0392b" stroke-width="2"/>
+      <line x1="95" y1="100" x2="105" y2="100" stroke="#c0392b" stroke-width="2"/>
+      <text x="100" y="115" text-anchor="middle" font-size="7" fill="#c0392b" font-family="Georgia, serif" font-style="italic">No disclosure</text>
+      <!-- Five papers -->
+      <defs>
+        <marker id="gd-arr" markerWidth="6" markerHeight="5" refX="5" refY="2.5" orient="auto">
+          <path d="M0,0 L6,2.5 L0,5" fill="#2471a3"/>
+        </marker>
+      </defs>
+      <rect x="140" y="12" width="80" height="16" rx="2" fill="#d4e6f1" stroke="#2471a3" stroke-width="0.8"/>
+      <text x="180" y="23" text-anchor="middle" font-size="7" fill="#1a5276" font-family="Georgia, serif">Hasslacher</text>
+      <line x1="180" y1="28" x2="180" y2="32" stroke="#2471a3" stroke-width="0.8" marker-end="url(#gd-arr)"/>
+      <rect x="140" y="34" width="80" height="16" rx="2" fill="#d4e6f1" stroke="#2471a3" stroke-width="0.8"/>
+      <text x="180" y="45" text-anchor="middle" font-size="7" fill="#1a5276" font-family="Georgia, serif">Freedman</text>
+      <line x1="180" y1="50" x2="180" y2="54" stroke="#2471a3" stroke-width="0.8" marker-end="url(#gd-arr)"/>
+      <rect x="140" y="56" width="80" height="16" rx="2" fill="#d4e6f1" stroke="#2471a3" stroke-width="0.8"/>
+      <text x="180" y="67" text-anchor="middle" font-size="7" fill="#1a5276" font-family="Georgia, serif">Kauffman</text>
+      <line x1="180" y1="72" x2="180" y2="76" stroke="#2471a3" stroke-width="0.8" marker-end="url(#gd-arr)"/>
+      <rect x="140" y="78" width="80" height="16" rx="2" fill="#d4e6f1" stroke="#2471a3" stroke-width="0.8"/>
+      <text x="180" y="89" text-anchor="middle" font-size="7" fill="#1a5276" font-family="Georgia, serif">Wolfram</text>
+      <line x1="180" y1="94" x2="180" y2="98" stroke="#2471a3" stroke-width="0.8" marker-end="url(#gd-arr)"/>
+      <rect x="140" y="100" width="80" height="16" rx="2" fill="#d4e6f1" stroke="#2471a3" stroke-width="0.8"/>
+      <text x="180" y="111" text-anchor="middle" font-size="7" fill="#1a5276" font-family="Georgia, serif">Hillis</text>
+      <!-- Label -->
+      <text x="180" y="130" text-anchor="middle" font-size="7" fill="#888" font-family="Georgia, serif" font-style="italic">Public papers, careful sequence</text>
+      <!-- Arrow down to student -->
+      <line x1="180" y1="134" x2="180" y2="145" stroke="#2471a3" stroke-width="1" marker-end="url(#gd-arr)"/>
+      <!-- Student with lightbulb -->
+      <circle cx="180" cy="155" r="8" fill="none" stroke="#1a5276" stroke-width="1.2"/>
+      <circle cx="180" cy="152" r="3" fill="#1a5276"/>
+      <line x1="180" y1="156" x2="180" y2="163" stroke="#1a5276" stroke-width="1.2"/>
+      <line x1="180" y1="160" x2="174" y2="157" stroke="#1a5276" stroke-width="1"/>
+      <line x1="180" y1="160" x2="186" y2="157" stroke="#1a5276" stroke-width="1"/>
+      <!-- Lightbulb -->
+      <circle cx="195" cy="145" r="5" fill="#f9e79f" stroke="#d4a14b" stroke-width="0.8"/>
+      <line x1="195" y1="140" x2="195" y2="137" stroke="#d4a14b" stroke-width="0.8"/>
+      <line x1="199" y1="141" x2="201" y2="139" stroke="#d4a14b" stroke-width="0.8"/>
+      <line x1="191" y1="141" x2="189" y2="139" stroke="#d4a14b" stroke-width="0.8"/>
+      <!-- Right annotation -->
+      <text x="280" y="50" text-anchor="middle" font-size="7.5" fill="#1a5276" font-family="Georgia, serif" font-style="italic">No classified</text>
+      <text x="280" y="62" text-anchor="middle" font-size="7.5" fill="#1a5276" font-family="Georgia, serif" font-style="italic">information</text>
+      <text x="280" y="74" text-anchor="middle" font-size="7.5" fill="#1a5276" font-family="Georgia, serif" font-style="italic">changes hands.</text>
+      <!-- Caption -->
+      <text x="190" y="185" text-anchor="middle" font-size="8.5" fill="#888" font-family="Georgia, serif" font-style="italic">The student deduces independently. The record enters the world clean.</text>
+    </svg>
+  </div>
+</section>
+
+<section id="SVG-031-relinquishment-decision" class="svg-entry">
+  <h3>SVG-031 — Relinquishment Decision Tree <span style="color:#d4a14b;font-size:0.8em;">DRAFT</span></h3>
+  <div class="meta">
+    <span class="label">Plan 0251 Tier 1</span> | <span class="label">Display:</span> BOTH | <span class="label">Targets:</span> T6/F10<br>
+    <span class="label">Status:</span> <span style="color:#d4a14b;">DRAFT — awaiting review</span>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 180" width="320" height="180" style="display:block;margin:0 auto;">
+      <title>Decision tree. Center node: You hold something too powerful. Three branches. Top-right: USE IT leads to Read everyone's secrets. Middle-right: KEEP IT leads to Secrets leak. People die. Bottom-right: GIVE IT UP leads to Relinquishment, visually highlighted. There is no good option except relinquishment.</title>
+      <rect width="320" height="180" fill="#fefefe" rx="4"/>
+      <defs>
+        <marker id="dt-arr" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+          <path d="M0,0 L7,2.5 L0,5" fill="#888"/>
+        </marker>
+        <marker id="dt-arr-b" markerWidth="7" markerHeight="5" refX="6" refY="2.5" orient="auto">
+          <path d="M0,0 L7,2.5 L0,5" fill="#1a5276"/>
+        </marker>
+      </defs>
+      <!-- Center node -->
+      <rect x="15" y="60" width="100" height="40" rx="6" fill="#f0f0f0" stroke="#888" stroke-width="1.2"/>
+      <text x="65" y="76" text-anchor="middle" font-size="7.5" fill="#333" font-family="Georgia, serif" font-weight="bold">You hold something</text>
+      <text x="65" y="88" text-anchor="middle" font-size="7.5" fill="#333" font-family="Georgia, serif" font-weight="bold">too powerful.</text>
+      <!-- Branch 1: USE IT -->
+      <line x1="115" y1="70" x2="165" y2="35" stroke="#888" stroke-width="1.2" marker-end="url(#dt-arr)"/>
+      <text x="145" y="42" font-size="7" fill="#888" font-family="Georgia, serif" font-weight="bold">USE IT</text>
+      <rect x="168" y="22" width="135" height="22" rx="4" fill="#fadbd8" stroke="#c0392b" stroke-width="0.8"/>
+      <text x="235" y="37" text-anchor="middle" font-size="7.5" fill="#922b21" font-family="Georgia, serif">Read everyone's secrets.</text>
+      <!-- Branch 2: KEEP IT -->
+      <line x1="115" y1="80" x2="165" y2="80" stroke="#888" stroke-width="1.2" marker-end="url(#dt-arr)"/>
+      <text x="140" y="76" font-size="7" fill="#888" font-family="Georgia, serif" font-weight="bold">KEEP IT</text>
+      <rect x="168" y="68" width="135" height="22" rx="4" fill="#fef9e7" stroke="#d4a14b" stroke-width="0.8"/>
+      <text x="235" y="83" text-anchor="middle" font-size="7.5" fill="#7d6608" font-family="Georgia, serif">Secrets leak. People die.</text>
+      <!-- Branch 3: GIVE IT UP (highlighted) -->
+      <line x1="115" y1="90" x2="165" y2="130" stroke="#1a5276" stroke-width="2" marker-end="url(#dt-arr-b)"/>
+      <text x="128" y="118" font-size="7" fill="#1a5276" font-family="Georgia, serif" font-weight="bold">GIVE IT UP</text>
+      <rect x="168" y="118" width="135" height="28" rx="6" fill="#d4e6f1" stroke="#1a5276" stroke-width="2"/>
+      <text x="235" y="137" text-anchor="middle" font-size="10" fill="#1a5276" font-family="Georgia, serif" font-weight="bold">Relinquishment</text>
+      <!-- Caption -->
+      <text x="160" y="170" text-anchor="middle" font-size="8" fill="#888" font-family="Georgia, serif" font-style="italic">There is no good option. Only one is bearable.</text>
+    </svg>
+  </div>
+</section>
+
+<section id="SVG-032-knot-in-flames" class="svg-entry">
+  <h3>SVG-032 — Knot in Flames <span style="color:#d4a14b;font-size:0.8em;">DRAFT</span></h3>
+  <div class="meta">
+    <span class="label">Plan 0251 Tier 1</span> | <span class="label">Display:</span> BOTH | <span class="label">Targets:</span> F7<br>
+    <span class="label">Status:</span> <span style="color:#d4a14b;">DRAFT — awaiting review</span>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 150" width="300" height="150" style="display:block;margin:0 auto;">
+      <title>Two panels. Left: a knotted rope over stylized flames — the knot persists, intact. Right: beads on a string over flames — the beads scatter and fall. Caption: Heat the knot, it is still a knot. Topological protection survives what destroys ordinary structure.</title>
+      <rect width="300" height="150" fill="#fefefe" rx="4"/>
+      <!-- Divider -->
+      <line x1="150" y1="10" x2="150" y2="120" stroke="#ddd" stroke-width="1"/>
+      <!-- LEFT: Knot in flames -->
+      <!-- Flames -->
+      <ellipse cx="75" cy="108" rx="45" ry="12" fill="#fdebd0" opacity="0.5"/>
+      <path d="M45,110 Q50,85 55,95 Q60,80 65,90 Q70,70 75,85 Q80,68 85,88 Q90,78 95,92 Q100,82 105,110" fill="none" stroke="#e67e22" stroke-width="1.5" opacity="0.7"/>
+      <path d="M50,110 Q55,90 60,98 Q65,85 70,94 Q75,75 80,90 Q85,82 90,96 Q95,88 100,110" fill="none" stroke="#c0392b" stroke-width="1" opacity="0.5"/>
+      <!-- Knotted rope -->
+      <path d="M40,55 Q55,35 65,50 Q75,65 60,65 Q45,65 55,50 Q65,35 80,45 L110,55" fill="none" stroke="#8B7355" stroke-width="3.5" stroke-linecap="round"/>
+      <!-- Checkmark -->
+      <text x="75" y="28" text-anchor="middle" font-size="14" fill="#27ae60">&#10003;</text>
+      <text x="75" y="130" text-anchor="middle" font-size="7.5" fill="#1a5276" font-family="Georgia, serif" font-weight="bold">Knot persists</text>
+      <!-- RIGHT: Beads scatter -->
+      <!-- Flames -->
+      <ellipse cx="225" cy="108" rx="45" ry="12" fill="#fdebd0" opacity="0.5"/>
+      <path d="M195,110 Q200,85 205,95 Q210,80 215,90 Q220,70 225,85 Q230,68 235,88 Q240,78 245,92 Q250,82 255,110" fill="none" stroke="#e67e22" stroke-width="1.5" opacity="0.7"/>
+      <path d="M200,110 Q205,90 210,98 Q215,85 220,94 Q225,75 230,90 Q235,82 240,96 Q245,88 250,110" fill="none" stroke="#c0392b" stroke-width="1" opacity="0.5"/>
+      <!-- String breaking -->
+      <line x1="190" y1="55" x2="220" y2="50" stroke="#aaa" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <line x1="230" y1="52" x2="260" y2="58" stroke="#aaa" stroke-width="1.5" stroke-dasharray="3,2"/>
+      <!-- Scattered beads -->
+      <circle cx="200" cy="75" r="4" fill="#5dade2" stroke="#2471a3" stroke-width="0.8" opacity="0.6"/>
+      <circle cx="215" cy="85" r="4" fill="#5dade2" stroke="#2471a3" stroke-width="0.8" opacity="0.5"/>
+      <circle cx="235" cy="90" r="4" fill="#5dade2" stroke="#2471a3" stroke-width="0.8" opacity="0.4"/>
+      <circle cx="250" cy="80" r="4" fill="#5dade2" stroke="#2471a3" stroke-width="0.8" opacity="0.3"/>
+      <circle cx="225" cy="70" r="4" fill="#5dade2" stroke="#2471a3" stroke-width="0.8" opacity="0.7"/>
+      <!-- X mark -->
+      <text x="225" y="28" text-anchor="middle" font-size="14" fill="#c0392b">&#10007;</text>
+      <text x="225" y="130" text-anchor="middle" font-size="7.5" fill="#c0392b" font-family="Georgia, serif" font-weight="bold">Beads scatter</text>
+      <!-- Caption -->
+      <text x="150" y="145" text-anchor="middle" font-size="8.5" fill="#888" font-family="Georgia, serif" font-style="italic">Heat the knot, it's still a knot.</text>
+    </svg>
+  </div>
+</section>
+
+<section id="SVG-033-concept-ladder" class="svg-entry">
+  <h3>SVG-033 — Concept Ladder <span style="color:#d4a14b;font-size:0.8em;">DRAFT</span></h3>
+  <div class="meta">
+    <span class="label">Plan 0251 Tier 1</span> | <span class="label">Display:</span> BOTH | <span class="label">Targets:</span> F4<br>
+    <span class="label">Status:</span> <span style="color:#d4a14b;">DRAFT — awaiting review</span>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 220" width="300" height="220" style="display:block;margin:0 auto;">
+      <title>Staircase with five solid steps and one dashed step at the top. Step 1: The Flat (Nobel times 3). Step 2: Topological order (Thouless, Haldane, Kosterlitz). Step 3: Autocatalysis (Kauffman 1993). Step 4: Universality (Wolfram 2002). Step 5: Parallel computation (Hillis 1985). Step 6 (dashed): Convergence — the speculation. Five established results, one convergence.</title>
+      <rect width="300" height="220" fill="#fefefe" rx="4"/>
+      <!-- Steps (bottom to top) -->
+      <!-- Step 1 -->
+      <rect x="20" y="170" width="250" height="22" rx="3" fill="#d4e6f1" stroke="#2471a3" stroke-width="1.2"/>
+      <text x="30" y="185" font-size="8" fill="#1a5276" font-family="Georgia, serif" font-weight="bold">1. The Flat</text>
+      <text x="260" y="185" text-anchor="end" font-size="7" fill="#888" font-family="Georgia, serif">Nobel &#215;3</text>
+      <!-- Step 2 -->
+      <rect x="40" y="143" width="230" height="22" rx="3" fill="#d4e6f1" stroke="#2471a3" stroke-width="1.2"/>
+      <text x="50" y="158" font-size="8" fill="#1a5276" font-family="Georgia, serif" font-weight="bold">2. Topological order</text>
+      <text x="260" y="158" text-anchor="end" font-size="7" fill="#888" font-family="Georgia, serif">Thouless, Haldane, Kosterlitz</text>
+      <!-- Step 3 -->
+      <rect x="60" y="116" width="210" height="22" rx="3" fill="#d4e6f1" stroke="#2471a3" stroke-width="1.2"/>
+      <text x="70" y="131" font-size="8" fill="#1a5276" font-family="Georgia, serif" font-weight="bold">3. Autocatalysis</text>
+      <text x="260" y="131" text-anchor="end" font-size="7" fill="#888" font-family="Georgia, serif">Kauffman 1993</text>
+      <!-- Step 4 -->
+      <rect x="80" y="89" width="190" height="22" rx="3" fill="#d4e6f1" stroke="#2471a3" stroke-width="1.2"/>
+      <text x="90" y="104" font-size="8" fill="#1a5276" font-family="Georgia, serif" font-weight="bold">4. Universality</text>
+      <text x="260" y="104" text-anchor="end" font-size="7" fill="#888" font-family="Georgia, serif">Wolfram 2002</text>
+      <!-- Step 5 -->
+      <rect x="100" y="62" width="170" height="22" rx="3" fill="#d4e6f1" stroke="#2471a3" stroke-width="1.2"/>
+      <text x="110" y="77" font-size="8" fill="#1a5276" font-family="Georgia, serif" font-weight="bold">5. Parallel computation</text>
+      <text x="260" y="77" text-anchor="end" font-size="7" fill="#888" font-family="Georgia, serif">Hillis 1985</text>
+      <!-- Step 6 (dashed — speculation) -->
+      <rect x="120" y="35" width="150" height="22" rx="3" fill="none" stroke="#1a5276" stroke-width="1.5" stroke-dasharray="5,3"/>
+      <text x="130" y="50" font-size="8" fill="#1a5276" font-family="Georgia, serif" font-weight="bold" font-style="italic">6. Convergence</text>
+      <text x="260" y="50" text-anchor="end" font-size="7" fill="#1a5276" font-family="Georgia, serif" font-style="italic">the speculation</text>
+      <!-- Arrow pointing to dashed step -->
+      <text x="120" y="24" font-size="7" fill="#1a5276" font-family="Georgia, serif" font-style="italic">&#8593; the only step not established</text>
+      <!-- Caption -->
+      <text x="150" y="210" text-anchor="middle" font-size="8.5" fill="#888" font-family="Georgia, serif" font-style="italic">Five established results. One convergence.</text>
+    </svg>
+  </div>
+</section>
+
+</div>
+
+<div class="p-section section-p2">
+<h2 style="color:#27ae60;">p2 — Summary-Adjacent (0 SVGs)</h2>
+<p class="section-desc">Visuals that appear in or support the summary layer. Currently empty.</p>
+<p style="color:#888;font-style:italic;padding:1em 0;">No summary visuals yet. Plan 0251 Tier 2 candidates may land here.</p>
+</div>
+
+<div class="p-section section-p3">
+<h2 style="color:#c0392b;">p3 — Chapter Inline (8 SVGs)</h2>
+<p class="section-desc">Always visible in reading flow. Injected into chapter text by preprocess.py.</p>
 <section id="SVG-008-filmstrip-panel-1" class="svg-entry">
   <h3>SVG-008-filmstrip-panel-1</h3>
   <div class="meta">
@@ -235,7 +625,6 @@ Development tool. Not part of the book. Manifest: <code>build/gallery-manifest.y
 <text x="250" y="275" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555" font-style="italic">Ten thousand buttons on a floor.</text></svg>
   </div>
 </section>
-
 <section id="SVG-009-filmstrip-panel-2" class="svg-entry">
   <h3>SVG-009-filmstrip-panel-2</h3>
   <div class="meta">
@@ -287,7 +676,6 @@ Development tool. Not part of the book. Manifest: <code>build/gallery-manifest.y
 <text x="250" y="275" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555" font-style="italic">Pick up two at random. Tie them together. Toss them back.</text></svg>
   </div>
 </section>
-
 <section id="SVG-010-filmstrip-panel-3" class="svg-entry">
   <h3>SVG-010-filmstrip-panel-3</h3>
   <div class="meta">
@@ -342,7 +730,6 @@ Development tool. Not part of the book. Manifest: <code>build/gallery-manifest.y
 <text x="250" y="275" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555" font-style="italic">A few hundred ties in. Small clumps — two, three buttons.</text></svg>
   </div>
 </section>
-
 <section id="SVG-011-filmstrip-panel-4" class="svg-entry">
   <h3>SVG-011-filmstrip-panel-4</h3>
   <div class="meta">
@@ -402,7 +789,6 @@ Development tool. Not part of the book. Manifest: <code>build/gallery-manifest.y
 <text x="250" y="275" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555" font-style="italic">Almost halfway. The clusters are getting bigger.</text></svg>
   </div>
 </section>
-
 <section id="SVG-012-filmstrip-panel-5" class="svg-entry">
   <h3>SVG-012-filmstrip-panel-5</h3>
   <div class="meta">
@@ -471,7 +857,6 @@ Development tool. Not part of the book. Manifest: <code>build/gallery-manifest.y
 <text x="250" y="275" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555" font-style="italic">Three bridges away. Almost connected.</text></svg>
   </div>
 </section>
-
 <section id="SVG-013-filmstrip-panel-6" class="svg-entry">
   <h3>SVG-013-filmstrip-panel-6</h3>
   <div class="meta">
@@ -540,7 +925,6 @@ Development tool. Not part of the book. Manifest: <code>build/gallery-manifest.y
 <text x="250" y="275" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555" font-style="italic">One more thread. Pick up one button — the whole room lifts.</text></svg>
   </div>
 </section>
-<h2>Domain Buttons (chapter version)</h2>
 <section id="SVG-014-inject-domain-buttons" class="svg-entry">
   <h3>SVG-014-inject-domain-buttons</h3>
   <div class="meta">
@@ -649,7 +1033,6 @@ Development tool. Not part of the book. Manifest: <code>build/gallery-manifest.y
 </svg>
   </div>
 </section>
-<h2>Flat Diagram (chapter version)</h2>
 <section id="SVG-015-inject-flat-diagram" class="svg-entry">
   <h3>SVG-015-inject-flat-diagram</h3>
   <div class="meta">
@@ -692,84 +1075,69 @@ Development tool. Not part of the book. Manifest: <code>build/gallery-manifest.y
 </svg>
   </div>
 </section>
-<h2>Physics Concepts</h2>
-<section id="SVG-016-anyon" class="svg-entry">
-  <h3>SVG-016-anyon</h3>
-  <div class="meta">
-    <span class="label">YAML key / source:</span> <code>anyon</code><br>
-    <span class="label">SVG title:</span> Two anyons (blue and red dots) with their worldlines braiding around each other as time flows upward. The blue line crosses over the red line twice, forming a braid pattern. This winding IS computation — the information is stored in how the paths intertwine, not in the particles themselves.<br>
-  </div>
-  <div class="svg-container">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380" height="200" style="display:block;margin:0 auto;"> <title>Two anyons (blue and red dots) with their worldlines braiding around each other as time flows upward. The blue line crosses over the red line twice, forming a braid pattern. This winding IS computation — the information is stored in how the paths intertwine, not in the particles themselves.</title> <rect width="380" height="200" fill="#fafafa" rx="4"/> <defs><marker id="aT" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#999"/></marker></defs> <line x1="24" y1="188" x2="24" y2="12" stroke="#999" stroke-width="1" marker-end="url(#aT)"/> <text x="28" y="18" font-size="10" fill="#888" font-family="sans-serif">Time</text> <path d="M140,185 C140,135 240,125 240,100 C240,75 140,65 140,15" fill="none" stroke="#2471a3" stroke-width="2.5"/> <path d="M240,185 C240,135 140,125 140,100 C140,75 240,65 240,15" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="6,3"/> <circle cx="140" cy="185" r="5" fill="#2471a3"/> <circle cx="240" cy="185" r="5" fill="#c0392b"/> <circle cx="140" cy="15" r="5" fill="#2471a3"/> <circle cx="240" cy="15" r="5" fill="#c0392b"/> <text x="140" y="198" font-size="9" fill="#2471a3" font-family="sans-serif" text-anchor="middle">anyon A</text> <text x="240" y="198" font-size="9" fill="#c0392b" font-family="sans-serif" text-anchor="middle">anyon B</text> <text x="310" y="95" font-size="10" fill="#555" font-family="sans-serif">worldlines</text> <text x="310" y="109" font-size="10" fill="#555" font-family="sans-serif">braid around</text> <text x="310" y="123" font-size="10" fill="#555" font-family="sans-serif">each other</text> </svg>
-  </div>
-</section>
 
-<section id="SVG-017-TQNN" class="svg-entry">
-  <h3>SVG-017-TQNN</h3>
+<h2 style="color:#c0392b;">Planned — Not Yet Built (4)</h2>
+<section id="SVG-025" class="svg-entry planned">
+  <h3>SVG-025 — autocatalytic-loop <span style="color:#c0392b;font-size:0.8em;">PLANNED</span></h3>
   <div class="meta">
-    <span class="label">YAML key / source:</span> <code>TQNN</code><br>
-    <span class="label">SVG title:</span> Five anyonic quasiparticles (blue dots) sitting on a two-dimensional substrate (the Flat), connected by wormholes (dashed arcs). Thicker lines mean stronger entanglement — these are the connection weights. Two nodes glow brighter because they are more active. This is a neural network wired by topology instead of copper.<br>
+    <span class="label">Chapter:</span> genesis<br>
+    <span class="label">Insertion marker:</span> <code>The whole network sustains itself.</code><br>
   </div>
-  <div class="svg-container">
-    <svg xmlns="http://www.w3.org/2000/svg" width="320" height="180" viewBox="0 0 320 180" style="display:block;margin:0.5em auto;"><title>Five anyonic quasiparticles (blue dots) sitting on a two-dimensional substrate (the Flat), connected by wormholes (dashed arcs). Thicker lines mean stronger entanglement — these are the connection weights. Two nodes glow brighter because they are more active. This is a neural network wired by topology instead of copper.</title><defs><linearGradient id="tq-flat" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#2471a3" stop-opacity="0.05"/><stop offset="50%" stop-color="#2471a3" stop-opacity="0.15"/><stop offset="100%" stop-color="#2471a3" stop-opacity="0.05"/></linearGradient></defs><rect x="20" y="75" width="280" height="10" rx="2" fill="url(#tq-flat)" stroke="#2471a3" stroke-width="1"/><text x="160" y="170" text-anchor="middle" font-size="8" fill="#888" font-family="serif" font-style="italic">the Flat — two-dimensional substrate</text><path d="M60,80 C50,55 120,30 140,80" fill="none" stroke="#2471a3" stroke-width="2.0" stroke-dasharray="4,3" opacity="0.9"/><path d="M60,80 C70,45 180,35 200,80" fill="none" stroke="#2471a3" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"/><path d="M60,80 C80,60 90,65 110,80" fill="none" stroke="#2471a3" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.4"/><path d="M110,80 C120,50 130,50 140,80" fill="none" stroke="#2471a3" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.7"/><path d="M140,80 C150,45 190,45 200,80" fill="none" stroke="#2471a3" stroke-width="2.2" stroke-dasharray="4,3" opacity="0.95"/><path d="M140,80 C160,55 230,40 250,80" fill="none" stroke="#2471a3" stroke-width="1.0" stroke-dasharray="4,3" opacity="0.5"/><path d="M200,80 C210,50 240,50 250,80" fill="none" stroke="#2471a3" stroke-width="1.8" stroke-dasharray="4,3" opacity="0.8"/><path d="M110,80 C130,40 220,35 250,80" fill="none" stroke="#2471a3" stroke-width="0.6" stroke-dasharray="4,3" opacity="0.3"/><circle cx="60" cy="80" r="6" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5" opacity="0.9"/><circle cx="110" cy="80" r="5" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5" opacity="0.5"/><circle cx="140" cy="80" r="7" fill="#e8f0f8" stroke="#1a5276" stroke-width="2" opacity="1.0"/><circle cx="200" cy="80" r="7" fill="#e8f0f8" stroke="#1a5276" stroke-width="2" opacity="1.0"/><circle cx="250" cy="80" r="5.5" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5" opacity="0.7"/><circle cx="60" cy="80" r="3" fill="#2471a3" opacity="0.6"/><circle cx="110" cy="80" r="2" fill="#2471a3" opacity="0.3"/><circle cx="140" cy="80" r="3.5" fill="#1a5276" opacity="0.8"/><circle cx="200" cy="80" r="3.5" fill="#1a5276" opacity="0.8"/><circle cx="250" cy="80" r="2.5" fill="#2471a3" opacity="0.5"/><text x="60" y="105" text-anchor="middle" font-size="7" fill="#888" font-family="sans-serif">anyon</text><text x="140" y="105" text-anchor="middle" font-size="7" fill="#888" font-family="sans-serif">anyon</text><text x="200" y="105" text-anchor="middle" font-size="7" fill="#888" font-family="sans-serif">anyon</text><text x="250" y="105" text-anchor="middle" font-size="7" fill="#888" font-family="sans-serif">anyon</text><text x="155" y="30" text-anchor="middle" font-size="8" fill="#2471a3" font-family="serif" font-style="italic">wormhole connections</text><text x="155" y="42" text-anchor="middle" font-size="7" fill="#888" font-family="serif" font-style="italic">line thickness = entanglement strength = weight</text><text x="155" y="155" text-anchor="middle" font-size="8" fill="#666" font-family="serif">a nervous system wired by topology</text></svg>
+  <div class="svg-container planned-placeholder">
+    <div style="padding:2em;color:#999;font-style:italic;border:2px dashed #ddd;border-radius:8px;min-height:120px;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+      <div style="font-size:1.5em;margin-bottom:0.5em;">&#x1f4d0;</div>
+      <div style="max-width:500px;text-align:left;font-size:0.9em;color:#666;">Circular arrow diagram: three molecules (A, B, C) in a cycle. A catalyzes B, B catalyzes C, C catalyzes A. Arrows form a self-sustaining loop. Shows what autocatalysis LOOKS like — the chemistry version of what the filmstrip just showed physically. Simple, iconic, p1-readable.</div>
+    </div>
   </div>
+  <div class='meta' style='margin-top:0.5em;'><span class='label'>Notes:</span> Placement: after 'The whole network sustains itself.' — right after the filmstrip lands the physical metaphor, this shows the chemical reality.</div>
 </section>
+<section id="SVG-026" class="svg-entry planned">
+  <h3>SVG-026 — edge-of-chaos-inline <span style="color:#c0392b;font-size:0.8em;">PLANNED</span></h3>
+  <div class="meta">
+    <span class="label">Chapter:</span> genesis<br>
+    <span class="label">Insertion marker:</span> <code>best able to evolve as well.</code><br>
+  </div>
+  <div class="svg-container planned-placeholder">
+    <div style="padding:2em;color:#999;font-style:italic;border:2px dashed #ddd;border-radius:8px;min-height:120px;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+      <div style="font-size:1.5em;margin-bottom:0.5em;">&#x1f4d0;</div>
+      <div style="max-width:500px;text-align:left;font-size:0.9em;color:#666;">Enhanced three-regime diagram for inline chapter deployment. Left: frozen crystal lattice (blue, rigid grid). Middle: narrow green band with interconnected nodes (computation/life). Right: chaotic gas (red, random scatter). TODO already exists in source at genesis.tex line 46. Based on existing SVG-020 but larger, with substrate examples (crystal, network, gas) instead of abstract labels.</div>
+    </div>
+  </div>
+  <div class='meta' style='margin-top:0.5em;'><span class='label'>Notes:</span> TODO comment already in genesis.tex lines 46-49. Existing SVG-020 works for hover; this inline version should be richer with concrete visual examples of each regime.</div>
+</section>
+<section id="SVG-027" class="svg-entry planned">
+  <h3>SVG-027 — substrate-parallel <span style="color:#c0392b;font-size:0.8em;">PLANNED</span></h3>
+  <div class="meta">
+    <span class="label">Chapter:</span> genesis<br>
+    <span class="label">Insertion marker:</span> <code>the threshold was crossed.</code><br><span class="label">Sequence:</span> genesis-argument #3<br>
+  </div>
+  <div class="svg-container planned-placeholder">
+    <div style="padding:2em;color:#999;font-style:italic;border:2px dashed #ddd;border-radius:8px;min-height:120px;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+      <div style="font-size:1.5em;margin-bottom:0.5em;">&#x1f4d0;</div>
+      <div style="max-width:500px;text-align:left;font-size:0.9em;color:#666;">Side-by-side comparison. Left panel: beaker of organic molecules with catalytic arrows between them (warm colors). Right panel: 2DEG substrate with anyonic quasiparticles and braiding arcs (blue colors). Center bridge: "same mathematics" with Kauffman's threshold equation hint. Shows the chapter's key intellectual move: what works in chemistry works in quantum substrates.</div>
+    </div>
+  </div>
+  <div class='meta' style='margin-top:0.5em;'><span class='label'>Notes:</span> Hardest of the four to execute well. Must be visually clear that both sides are governed by the same principle without being reductive. Jane needs to grasp 'same math, different stuff.' Rachel needs to see the specific parallel.</div>
+</section>
+<section id="SVG-028" class="svg-entry planned">
+  <h3>SVG-028 — canopy-problem <span style="color:#c0392b;font-size:0.8em;">PLANNED</span></h3>
+  <div class="meta">
+    <span class="label">Chapter:</span> genesis<br>
+    <span class="label">Insertion marker:</span> <code>the ecological niche is full.</code><br>
+  </div>
+  <div class="svg-container planned-placeholder">
+    <div style="padding:2em;color:#999;font-style:italic;border:2px dashed #ddd;border-radius:8px;min-height:120px;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+      <div style="font-size:1.5em;margin-bottom:0.5em;">&#x1f4d0;</div>
+      <div style="max-width:500px;text-align:left;font-size:0.9em;color:#666;">Forest canopy cross-section. Tall established trees with full green crowns blocking sunlight. Below: a small seedling in shadow, reaching upward but receiving no light. Sun rays hit only the canopy. Simple, dark implication lands without text. The visual metaphor for first-mover advantage in any substrate.</div>
+    </div>
+  </div>
+  <div class='meta' style='margin-top:0.5em;'><span class='label'>Notes:</span> Emotionally the darkest image in the chapter. The seedling is not attacked — it simply never gets the light. This is the visual that carries the canopy argument.</div>
+</section>
+</div>
 
-<section id="SVG-018-braiding" class="svg-entry">
-  <h3>SVG-018-braiding</h3>
-  <div class="meta">
-    <span class="label">YAML key / source:</span> <code>braiding</code><br>
-    <span class="label">SVG title:</span> Three anyons (blue, red, green) with worldlines rising through time. The lines cross over and under each other, forming a three-strand braid. Each crossing is a quantum logic gate. The pattern of crossings encodes the computation — rearranging the order changes the result.<br>
-  </div>
-  <div class="svg-container">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380" height="200" style="display:block;margin:0 auto;"> <title>Three anyons (blue, red, green) with worldlines rising through time. The lines cross over and under each other, forming a three-strand braid. Each crossing is a quantum logic gate. The pattern of crossings encodes the computation — rearranging the order changes the result.</title> <rect width="380" height="200" fill="#fafafa" rx="4"/> <defs><marker id="bT" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#999"/></marker></defs> <line x1="24" y1="188" x2="24" y2="12" stroke="#999" stroke-width="1" marker-end="url(#bT)"/> <text x="28" y="18" font-size="10" fill="#888" font-family="sans-serif">Time</text> <path d="M140,185 C140,135 240,125 240,100 C240,75 140,65 140,15" fill="none" stroke="#2471a3" stroke-width="2.5"/> <path d="M240,185 C240,135 140,125 140,100 C140,75 240,65 240,15" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="6,3"/> <circle cx="140" cy="185" r="5" fill="#2471a3"/> <circle cx="240" cy="185" r="5" fill="#c0392b"/> <circle cx="140" cy="15" r="5" fill="#2471a3"/> <circle cx="240" cy="15" r="5" fill="#c0392b"/> <text x="140" y="198" font-size="9" fill="#2471a3" font-family="sans-serif" text-anchor="middle">anyon A</text> <text x="240" y="198" font-size="9" fill="#c0392b" font-family="sans-serif" text-anchor="middle">anyon B</text> <text x="310" y="95" font-size="10" fill="#555" font-family="sans-serif">worldlines</text> <text x="310" y="109" font-size="10" fill="#555" font-family="sans-serif">braid around</text> <text x="310" y="123" font-size="10" fill="#555" font-family="sans-serif">each other</text> </svg>
-  </div>
-</section>
-
-<section id="SVG-019-phase-transition" class="svg-entry">
-  <h3>SVG-019-phase-transition</h3>
-  <div class="meta">
-    <span class="label">YAML key / source:</span> <code>phase transition</code><br>
-    <span class="label">SVG title:</span> A graph with a control parameter on the horizontal axis and order on the vertical axis. A flat blue line rises gently from left, then jumps sharply upward through a red dashed transition zone, then continues flat at a higher level. The red dot marks the critical point — the moment everything changes.<br>
-  </div>
-  <div class="svg-container">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380" height="200" style="display:block;margin:0 auto;"> <title>A graph with a control parameter on the horizontal axis and order on the vertical axis. A flat blue line rises gently from left, then jumps sharply upward through a red dashed transition zone, then continues flat at a higher level. The red dot marks the critical point — the moment everything changes.</title> <rect width="380" height="200" fill="#fafafa" rx="4"/> <line x1="40" y1="170" x2="360" y2="170" stroke="#555" stroke-width="1.5"/> <line x1="40" y1="170" x2="40" y2="20" stroke="#555" stroke-width="1.5"/> <text x="200" y="195" font-size="11" fill="#555" font-family="sans-serif" text-anchor="middle">Control parameter</text> <text x="16" y="95" font-size="11" fill="#555" font-family="sans-serif" text-anchor="middle" transform="rotate(-90,16,95)">Order</text> <path d="M50,155 L160,150 L170,148" fill="none" stroke="#2471a3" stroke-width="2.5"/> <line x1="170" y1="148" x2="210" y2="50" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="4,3"/> <path d="M210,50 L220,47 L340,40" fill="none" stroke="#2471a3" stroke-width="2.5"/> <circle cx="190" cy="99" r="4" fill="#c0392b"/> <text x="190" y="87" font-size="10" fill="#c0392b" font-family="sans-serif" text-anchor="middle" font-weight="bold">Phase transition</text> <text x="100" y="140" font-size="10" fill="#888" font-family="sans-serif" text-anchor="middle" font-style="italic">Disordered</text> <text x="290" y="35" font-size="10" fill="#888" font-family="sans-serif" text-anchor="middle" font-style="italic">Ordered</text> </svg>
-  </div>
-</section>
-
-<section id="SVG-020-edge-of-chaos" class="svg-entry">
-  <h3>SVG-020-edge-of-chaos</h3>
-  <div class="meta">
-    <span class="label">YAML key / source:</span> <code>edge of chaos</code><br>
-    <span class="label">SVG title:</span> Three zones arranged left to right: blue 'Frozen / Ordered' on the left, green 'Edge of Chaos' in the narrow middle, red 'Chaotic / Random' on the right. An arrow points to the green zone labeled 'Life, computation, adaptation.' A colored bar underneath shows the three regimes as a spectrum. The green zone is narrow — the sweet spot where complexity lives.<br>
-  </div>
-  <div class="svg-container">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380" height="200" style="display:block;margin:0 auto;"> <title>Three zones arranged left to right: blue 'Frozen / Ordered' on the left, green 'Edge of Chaos' in the narrow middle, red 'Chaotic / Random' on the right. An arrow points to the green zone labeled 'Life, computation, adaptation.' A colored bar underneath shows the three regimes as a spectrum. The green zone is narrow — the sweet spot where complexity lives.</title> <rect width="380" height="200" fill="#fafafa" rx="4"/> <rect x="30" y="60" width="110" height="40" rx="4" fill="#d4e6f1" stroke="#2471a3" stroke-width="1"/> <text x="85" y="84" font-size="12" fill="#1a5276" font-family="sans-serif" text-anchor="middle" font-weight="bold">Frozen / Ordered</text> <rect x="240" y="60" width="110" height="40" rx="4" fill="#fadbd8" stroke="#c0392b" stroke-width="1"/> <text x="295" y="84" font-size="12" fill="#922b21" font-family="sans-serif" text-anchor="middle" font-weight="bold">Chaotic / Random</text> <rect x="152" y="55" width="76" height="50" rx="4" fill="#d5f5e3" stroke="#27ae60" stroke-width="2"/> <text x="190" y="77" font-size="11" fill="#1e8449" font-family="sans-serif" text-anchor="middle" font-weight="bold">Edge of</text> <text x="190" y="93" font-size="11" fill="#1e8449" font-family="sans-serif" text-anchor="middle" font-weight="bold">Chaos</text> <defs><marker id="eA" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto"><path d="M0,3 L8,0 L8,6" fill="#27ae60"/></marker></defs> <line x1="190" y1="130" x2="190" y2="112" stroke="#27ae60" stroke-width="1.5" marker-end="url(#eA)"/> <text x="190" y="145" font-size="10" fill="#27ae60" font-family="sans-serif" text-anchor="middle" font-style="italic">Life, computation,</text> <text x="190" y="159" font-size="10" fill="#27ae60" font-family="sans-serif" text-anchor="middle" font-style="italic">adaptation</text> <line x1="30" y1="120" x2="350" y2="120" stroke="#ccc" stroke-width="1"/> <path d="M30,118 L140,118" stroke="#2471a3" stroke-width="3"/> <path d="M152,118 L228,118" stroke="#27ae60" stroke-width="3"/> <path d="M240,118 L350,118" stroke="#c0392b" stroke-width="3"/> </svg>
-  </div>
-</section>
-
-<section id="SVG-021-cellular-automata" class="svg-entry">
-  <h3>SVG-021-cellular-automata</h3>
-  <div class="meta">
-    <span class="label">YAML key / source:</span> <code>cellular automata</code>, <code>cellular automaton</code><br>
-    <span class="label">SVG title:</span> Rule 110 cellular automaton — a triangular pattern of blue and white cells growing downward from a single cell. Each row is computed from the row above using one simple rule. Despite the trivial rule, the pattern is complex and never repeats. This specific rule (number 110 out of 256 possible) was proven Turing-complete — it can compute anything.<br>
-  </div>
-  <div class="svg-container">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 164 115" width="164" height="115" style="display:block;margin:0.3em auto;"> <title>Rule 110 cellular automaton — a triangular pattern of blue and white cells growing downward from a single cell. Each row is computed from the row above using one simple rule. Despite the trivial rule, the pattern is complex and never repeats. This specific rule (number 110 out of 256 possible) was proven Turing-complete — it can compute anything.</title> <rect width="164" height="100" fill="#f5f5f5" rx="2"/> <path d="M80,0h4v4h-4zM76,4h8v4h-8zM72,8h12v4h-12zM68,12h8v4h-8zM80,12h4v4h-4zM64,16h20v4h-20zM60,20h8v4h-8zM80,20h4v4h-4zM56,24h12v4h-12zM76,24h8v4h-8zM52,28h8v4h-8zM64,28h4v4h-4zM72,28h12v4h-12zM48,32h28v4h-28zM80,32h4v4h-4zM44,36h8v4h-8zM72,36h12v4h-12zM40,40h12v4h-12zM68,40h8v4h-8zM80,40h4v4h-4zM36,44h8v4h-8zM48,44h4v4h-4zM64,44h20v4h-20zM32,48h20v4h-20zM60,48h8v4h-8zM80,48h4v4h-4zM28,52h8v4h-8zM48,52h4v4h-4zM56,52h12v4h-12zM76,52h8v4h-8zM24,56h12v4h-12zM44,56h16v4h-16zM64,56h4v4h-4zM72,56h12v4h-12zM20,60h8v4h-8zM32,60h4v4h-4zM40,60h8v4h-8zM56,60h20v4h-20zM80,60h4v4h-4zM16,64h32v4h-32zM52,64h8v4h-8zM72,64h12v4h-12zM12,68h8v4h-8zM44,68h16v4h-16zM68,68h8v4h-8zM80,68h4v4h-4zM8,72h12v4h-12zM40,72h8v4h-8zM56,72h4v4h-4zM64,72h20v4h-20zM4,76h8v4h-8zM16,76h4v4h-4zM36,76h12v4h-12zM52,76h16v4h-16zM80,76h4v4h-4zM0,80h20v4h-20zM32,80h8v4h-8zM44,80h12v4h-12zM64,80h4v4h-4zM76,80h8v4h-8zM0,84h4v4h-4zM16,84h4v4h-4zM28,84h20v4h-20zM52,84h4v4h-4zM60,84h8v4h-8zM72,84h12v4h-12zM160,84h4v4h-4zM0,88h4v4h-4zM12,88h8v4h-8zM24,88h8v4h-8zM44,88h32v4h-32zM80,88h4v4h-4zM156,88h8v4h-8zM0,92h4v4h-4zM8,92h24v4h-24zM40,92h8v4h-8zM72,92h12v4h-12zM152,92h8v4h-8zM0,96h12v4h-12zM28,96h4v4h-4zM36,96h12v4h-12zM68,96h8v4h-8zM80,96h4v4h-4zM148,96h16v4h-16z" fill="#2471a3"/> <text x="82" y="112" text-anchor="middle" font-size="8" fill="#888" font-family="sans-serif" font-style="italic">Rule 110 — Turing-complete</text> </svg>
-  </div>
-</section>
-
-<section id="SVG-022-self-organized-criticality" class="svg-entry">
-  <h3>SVG-022-self-organized-criticality</h3>
-  <div class="meta">
-    <span class="label">YAML key / source:</span> <code>self-organized criticality</code><br>
-    <span class="label">SVG title:</span> A sandpile — a triangle of sand with red dots of varying sizes scattered across it. Each dot is an avalanche. Small avalanches are frequent (many small dots), large ones are rare (few big dots). The pile builds itself to the critical angle where avalanches of all sizes occur. Nobody tunes this — the system finds criticality on its own.<br>
-  </div>
-  <div class="svg-container">
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380" height="200" style="display:block;margin:0 auto;"> <title>A sandpile — a triangle of sand with red dots of varying sizes scattered across it. Each dot is an avalanche. Small avalanches are frequent (many small dots), large ones are rare (few big dots). The pile builds itself to the critical angle where avalanches of all sizes occur. Nobody tunes this — the system finds criticality on its own.</title> <rect width="380" height="200" fill="#fafafa" rx="4"/> <polygon points="190,30 60,170 320,170" fill="#f0e6d3" stroke="#b7950b" stroke-width="1.5"/> <circle cx="175" cy="145" r="3" fill="#c0392b" opacity="0.7"/> <circle cx="210" cy="130" r="5" fill="#c0392b" opacity="0.6"/> <circle cx="150" cy="120" r="2" fill="#c0392b" opacity="0.8"/> <circle cx="230" cy="155" r="4" fill="#c0392b" opacity="0.5"/> <circle cx="195" cy="90" r="7" fill="#c0392b" opacity="0.4"/> <circle cx="140" cy="155" r="2.5" fill="#c0392b" opacity="0.7"/> <circle cx="260" cy="145" r="3.5" fill="#c0392b" opacity="0.6"/> <circle cx="185" cy="110" r="2" fill="#c0392b" opacity="0.8"/> <circle cx="220" cy="100" r="4" fill="#c0392b" opacity="0.5"/> <path d="M175,145 L168,165" stroke="#c0392b" stroke-width="1" opacity="0.4"/> <path d="M210,130 L225,160" stroke="#c0392b" stroke-width="1.5" opacity="0.3"/> <path d="M195,90 L180,130" stroke="#c0392b" stroke-width="2" opacity="0.25"/> <text x="190" y="188" font-size="11" fill="#555" font-family="sans-serif" text-anchor="middle" font-style="italic">All sizes of avalanche</text> <text x="340" y="50" font-size="9" fill="#888" font-family="sans-serif" text-anchor="end">small</text> <circle cx="355" cy="47" r="2.5" fill="#c0392b" opacity="0.7"/> <text x="340" y="70" font-size="9" fill="#888" font-family="sans-serif" text-anchor="end">medium</text> <circle cx="355" cy="67" r="4.5" fill="#c0392b" opacity="0.5"/> <text x="340" y="93" font-size="9" fill="#888" font-family="sans-serif" text-anchor="end">large</text> <circle cx="355" cy="90" r="7" fill="#c0392b" opacity="0.35"/> </svg>
-  </div>
-</section>
-<h2>Standalone Files</h2>
+<div class="p-section section-standalone">
+<h2 style="color:#888;">Standalone (2 SVGs)</h2>
+<p class="section-desc">Files not in the book: cover art, test SVGs, landing page candidates.</p>
 <section id="SVG-023-cover-triskellion" class="svg-entry">
   <h3>SVG-023-cover-triskellion</h3>
   <div class="meta">
@@ -787,7 +1155,6 @@ Development tool. Not part of the book. Manifest: <code>build/gallery-manifest.y
 </svg>
   </div>
 </section>
-
 <section id="SVG-024-magnetosphere-test" class="svg-entry">
   <h3>SVG-024-magnetosphere-test</h3>
   <div class="meta">
@@ -910,70 +1277,10 @@ Development tool. Not part of the book. Manifest: <code>build/gallery-manifest.y
 </svg>
   </div>
 </section>
-<h2 style="color:#c0392b;">Planned: Genesis Illustrations</h2>
-<section id="SVG-025" class="svg-entry planned">
-  <h3>SVG-025 — autocatalytic-loop <span style="color:#c0392b;font-size:0.8em;">PLANNED</span></h3>
-  <div class="meta">
-    <span class="label">Chapter:</span> genesis<br>
-    <span class="label">Insertion marker:</span> <code>The whole network sustains itself.</code><br>
-  </div>
-  <div class="svg-container planned-placeholder">
-    <div style="padding:2em;color:#999;font-style:italic;border:2px dashed #ddd;border-radius:8px;min-height:120px;display:flex;align-items:center;justify-content:center;flex-direction:column;">
-      <div style="font-size:1.5em;margin-bottom:0.5em;">&#x1f4d0;</div>
-      <div style="max-width:500px;text-align:left;font-size:0.9em;color:#666;">Circular arrow diagram: three molecules (A, B, C) in a cycle. A catalyzes B, B catalyzes C, C catalyzes A. Arrows form a self-sustaining loop. Shows what autocatalysis LOOKS like — the chemistry version of what the filmstrip just showed physically. Simple, iconic, p1-readable.</div>
-    </div>
-  </div>
-  <div class='meta' style='margin-top:0.5em;'><span class='label'>Notes:</span> Placement: after 'The whole network sustains itself.' — right after the filmstrip lands the physical metaphor, this shows the chemical reality.</div>
-</section>
-
-<section id="SVG-026" class="svg-entry planned">
-  <h3>SVG-026 — edge-of-chaos-inline <span style="color:#c0392b;font-size:0.8em;">PLANNED</span></h3>
-  <div class="meta">
-    <span class="label">Chapter:</span> genesis<br>
-    <span class="label">Insertion marker:</span> <code>best able to evolve as well.</code><br>
-  </div>
-  <div class="svg-container planned-placeholder">
-    <div style="padding:2em;color:#999;font-style:italic;border:2px dashed #ddd;border-radius:8px;min-height:120px;display:flex;align-items:center;justify-content:center;flex-direction:column;">
-      <div style="font-size:1.5em;margin-bottom:0.5em;">&#x1f4d0;</div>
-      <div style="max-width:500px;text-align:left;font-size:0.9em;color:#666;">Enhanced three-regime diagram for inline chapter deployment. Left: frozen crystal lattice (blue, rigid grid). Middle: narrow green band with interconnected nodes (computation/life). Right: chaotic gas (red, random scatter). TODO already exists in source at genesis.tex line 46. Based on existing SVG-020 but larger, with substrate examples (crystal, network, gas) instead of abstract labels.</div>
-    </div>
-  </div>
-  <div class='meta' style='margin-top:0.5em;'><span class='label'>Notes:</span> TODO comment already in genesis.tex lines 46-49. Existing SVG-020 works for hover; this inline version should be richer with concrete visual examples of each regime.</div>
-</section>
-
-<section id="SVG-027" class="svg-entry planned">
-  <h3>SVG-027 — substrate-parallel <span style="color:#c0392b;font-size:0.8em;">PLANNED</span></h3>
-  <div class="meta">
-    <span class="label">Chapter:</span> genesis<br>
-    <span class="label">Insertion marker:</span> <code>the threshold was crossed.</code><br><span class="label">Sequence:</span> genesis-argument #3<br>
-  </div>
-  <div class="svg-container planned-placeholder">
-    <div style="padding:2em;color:#999;font-style:italic;border:2px dashed #ddd;border-radius:8px;min-height:120px;display:flex;align-items:center;justify-content:center;flex-direction:column;">
-      <div style="font-size:1.5em;margin-bottom:0.5em;">&#x1f4d0;</div>
-      <div style="max-width:500px;text-align:left;font-size:0.9em;color:#666;">Side-by-side comparison. Left panel: beaker of organic molecules with catalytic arrows between them (warm colors). Right panel: 2DEG substrate with anyonic quasiparticles and braiding arcs (blue colors). Center bridge: "same mathematics" with Kauffman's threshold equation hint. Shows the chapter's key intellectual move: what works in chemistry works in quantum substrates.</div>
-    </div>
-  </div>
-  <div class='meta' style='margin-top:0.5em;'><span class='label'>Notes:</span> Hardest of the four to execute well. Must be visually clear that both sides are governed by the same principle without being reductive. Jane needs to grasp 'same math, different stuff.' Rachel needs to see the specific parallel.</div>
-</section>
-
-<section id="SVG-028" class="svg-entry planned">
-  <h3>SVG-028 — canopy-problem <span style="color:#c0392b;font-size:0.8em;">PLANNED</span></h3>
-  <div class="meta">
-    <span class="label">Chapter:</span> genesis<br>
-    <span class="label">Insertion marker:</span> <code>the ecological niche is full.</code><br>
-  </div>
-  <div class="svg-container planned-placeholder">
-    <div style="padding:2em;color:#999;font-style:italic;border:2px dashed #ddd;border-radius:8px;min-height:120px;display:flex;align-items:center;justify-content:center;flex-direction:column;">
-      <div style="font-size:1.5em;margin-bottom:0.5em;">&#x1f4d0;</div>
-      <div style="max-width:500px;text-align:left;font-size:0.9em;color:#666;">Forest canopy cross-section. Tall established trees with full green crowns blocking sunlight. Below: a small seedling in shadow, reaching upward but receiving no light. Sun rays hit only the canopy. Simple, dark implication lands without text. The visual metaphor for first-mover advantage in any substrate.</div>
-    </div>
-  </div>
-  <div class='meta' style='margin-top:0.5em;'><span class='label'>Notes:</span> Emotionally the darkest image in the chapter. The seedling is not attacked — it simply never gets the light. This is the visual that carries the canopy argument.</div>
-</section>
-
+</div>
 
 <footer style="margin-top:3em;padding-top:1em;border-top:1px solid #ddd;font-size:0.8em;color:#aaa;">
-Generated by build/generate-gallery.py — 24 live + 4 planned SVGs.
+Restructured by Plan 0251 Phase 1 — 24 live + 4 planned SVGs in p-level sections.
 </footer>
 </body>
 </html>

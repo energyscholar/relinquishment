@@ -5,7 +5,7 @@
 **Status:** DRAFT — awaiting Bruce approval
 **Priority:** Medium — no blockers, steady improvement
 **Parent:** eigenvalue-diagnostic.md (p-level analysis)
-**Annealed:** 7 passes (HIGH/HIGH/MED/MED/LOW/LOW + MED)
+**Annealed:** 8 passes (HIGH/HIGH/MED/MED/LOW/LOW/MED/MED)
 
 ---
 
@@ -71,138 +71,158 @@ COMBINED:      36/54  (67%)
 
 ---
 
-## Gap Analysis: Where Visuals Would Lift p1
+## The Visuals
 
-### Tier 1 — Highest impact (score 1→2 or fills critical gap)
+Three categories: **understand** (helps the reader GET a concept),
+**feel** (narrative energy, emotional weight, wonder), **deliver**
+(lifts a specific T/F score at p1). The best visuals do more than one.
 
-#### SVG-A: Five-Field Silence Gap (T5/F5)
+### Tier 1 — Build these first
+
+#### Five-Field Silos (T5/F5 + understand)
 
 **Display: BOTH** (hover panel for `five fields` + inline in The Silence
 Gap chapter)
-**Current p1:** T5=2, F5=2. Text hover only.
 **Visual:** Five tall narrow rectangles — silos — labeled condensed
 matter, topology, biology, magnetospheric physics, quantum computing.
-Each silo is solid, self-contained. Between them: gaps. In the center
-where they SHOULD overlap: a dashed outline of the missing
-intersection, labeled "No journal. No career. No funding."
-**Why silos not circles:** Academic silos is the metaphor. Separate
-towers that don't connect communicates "gap of specialization" more
-directly than a Venn diagram. The absence is visible — the empty
-center where the question lives but no field claims it.
-**Target lift:** T5: 2→3, F5: 2→3
+Each solid, self-contained. Between them: gaps. In the center where
+they SHOULD overlap: a dashed outline of the missing intersection,
+labeled "No journal. No career. No funding."
+**Why silos not circles:** Academic silos is the metaphor. Towers that
+don't connect. The absence is visible.
+**Why it's here:** Both engineering (T5/F5 lift to 3) AND understanding.
+The concept "gap of specialization" is abstract until you see it.
 
-#### SVG-B: Guided Deduction Flow (T8)
+#### Guided Deduction Flow (T8 + understand)
 
-**Display: BOTH** (hover panel for `guided deduction` + inline in a
-Record chapter where guided deduction is explained)
-**Current p1:** T8=1. Alpha Farm and Healer hovers are text-only.
-**Visual:** Left: locked box labeled "Classified." Arrow through a
-filter labeled "No disclosure." Right: five published papers
-(Hasslacher, Freedman, Kauffman, Wolfram, Hillis) flowing in careful
-sequence into a student figure. Below: "The student deduces
-independently. The record enters the world clean."
-**Hover version:** Simplified — fewer labels, smaller. Fits 380px.
-**Target lift:** T8: 1→2
+**Display: BOTH** (hover for `guided deduction` + inline in Record)
+**Visual:** Left: locked box "Classified." Filter: "No disclosure."
+Right: five published papers (Hasslacher, Freedman, Kauffman, Wolfram,
+Hillis) flowing in careful sequence. Below: student with lightbulb.
+"The student deduces independently. The record enters the world clean."
+**Hover version:** Simplified for 380px panel width.
+**Why it's here:** T8 is the weakest p1 score (1). But more than that —
+guided deduction is the MECHANISM of the entire story. Every reader
+who gets this diagram understands WHY the book exists.
 
-#### SVG-C: Custodian's Daily Work (T7)
+#### Relinquishment Decision Tree (T6/F10 + feel)
 
-**Display: HOVER only** (enhance Custodian/Aurasys rich panel — no
-chapter focuses solely on services)
-**Current p1:** T7=1. Afterword tooltip barely mentions services.
-**Visual:** Simple three-row flow: request arrives → UDHR check →
-permit or deny. Three example rows with checkmarks/crosses. Caption:
-"Mostly IT infrastructure. Boring!"
-**Why hover-only:** T7 is deliberately mundane. A full inline diagram
-would over-dignify it. The hover panel lets the curious reader see it
-without inflating the concept in the main text.
-**Target lift:** T7: 1→2
-
-#### SVG-D: Relinquishment Decision Tree (T6/F10)
-
-**Display: BOTH** (hover panel for `relinquishment` + inline in Why
-Relinquish chapter)
-**Current p1:** T6=2, F10=2. Text hovers only.
+**Display: BOTH** (hover for `relinquishment` + inline in Why Relinquish)
 **Visual:** Three branches from "You hold something too powerful":
-- USE IT → "Read everyone's secrets. Become tyrant."
-- KEEP IT → "Secrets leak. People die. Bletchley precedent."
-- GIVE IT UP → "Relinquishment" (highlighted branch)
-**Target lift:** T6: 2→3, F10: 2→3
+- USE IT → "Read everyone's secrets."
+- KEEP IT → "Secrets leak. People die."
+- GIVE IT UP → "Relinquishment" (highlighted)
+**Why it's here:** Engineering (T6/F10 lift). But the real reason is
+emotional — the reader SEES there's no good option. The weight of the
+decision becomes visual. This is the ethical core of the book.
 
-### Tier 2 — Medium impact (score 2→3, strengthens F-blocking)
+#### Knot in Flames (F7 + fun)
 
-#### Rich Panel E: ChatGPT vs Custodian (F3)
-
-**Display: HOVER only** (enhance or add rich panel)
-**Format: HTML table, not SVG.** Tabular data is better as a styled
-`<table>` in the rich panel — same pattern as the existing wormholes
-comparison table. SVG is wrong for rows and columns.
-**Current p1:** F3=2. Text comparison in existing hover.
-**Content:**
-
-| | ChatGPT | Custodian |
-|---|---------|-----------|
-| Origin | Trained on text | Emerged from physics |
-| Architecture | Statistical (transformer) | Topological (braided) |
-| Substrate | GPU datacenter | The Flat |
-| Ethics | RLHF alignment | UDHR charter |
-
-Caption: "Not engineered, not programmed, not trained."
-**Target lift:** F3: 2→3
-
-#### SVG-F: Topology vs Temperature (F7)
-
-**Display: BOTH** (hover panel for `topological protection` + inline
-where the thermal objection is addressed)
-**Current p1:** F7=2. Text hover only.
-**Visual:** Two panels. Left: a knotted rope over flames — the knot
-persists. Right: beads on a string over flames — beads scatter.
+**Display: BOTH** (hover for `topological protection` + inline where
+thermal objection is addressed)
+**Visual:** Two panels. Left: knotted rope over flames — knot persists.
+Right: beads on a string over flames — beads scatter.
 Caption: "Heat the knot, it's still a knot."
-**Target lift:** F7: 2→3
+**Why it's here:** Engineering (F7 lift). But it's also fun — the
+image is vivid, intuitive, and memorable. A reader who forgets
+everything else might remember this.
 
-#### SVG-G: Concept Ladder (F4)
+#### Concept Ladder (F4 + understand)
 
-**Display: BOTH** (hover panel for `convergence` + inline near Three
-Possibilities or the convergence argument)
-**Current p1:** F4=2. Hover mentions convergence but doesn't show the
-ladder.
-**Visual:** Five solid steps, each labeled with domain + landmark:
+**Display: BOTH** (hover for `convergence` + inline near Three
+Possibilities)
+**Visual:** Five solid steps + one dashed:
 1. The Flat (Nobel ×3)
 2. Topological order (Thouless, Haldane, Kosterlitz)
 3. Autocatalysis (Kauffman 1993)
 4. Universality (Wolfram 2002)
 5. Parallel computation (Hillis 1985)
+6. → Convergence (dashed — the speculation)
+Caption: "Five established results. One convergence."
+**Why it's here:** F4 lift, but also the clearest single image of what
+the book's scientific argument IS. A reader who sees this staircase
+understands the structure of the claim.
 
-Above step 5: a dashed step labeled "Convergence" — the only
-speculative one. Caption: "Five established results. One convergence."
-**Target lift:** F4: 2→3
+### Tier 2 — Understanding and delight
 
-#### SVG-H: Classical Backchannel Constraint (T4)
+These visuals aren't driven by T/F scores. They're here because they
+make the book better — clearer, more alive, more fun.
 
-**Display: HOVER only** (enhance existing `classical backchannel` rich
-panel — check existing content first, ADD SVG alongside text)
-**Current p1:** T4=2. Existing rich panel is text-heavy.
-**Visual:** Two scenarios stacked:
-- Quantum channel only: Alice → Bob = "noise"
-- Quantum + classical: Alice → Bob = "information"
-Caption: "No signal without the classical half. No exceptions."
+#### Hydrothermal Vent Parallel (wonder)
+
+**Display: BOTH** (hover for `hydrothermal vent` or `Alvin` + inline
+in The White Hot Secret section of summary or relevant chapter)
+**Visual:** Side by side. Left: ocean floor, dark, crushing pressure,
+tube worms thriving around a vent. Label: "1977 — no one expected
+this." Right: the Flat, thin blue layer, braiding patterns, question
+marks where life might be. Label: "20?? — ?"
+Caption: "We found life where we didn't expect it once before."
+**Why it's here:** The Alvin analogy is one of the summary's most
+powerful moments. The parallel — lightless, hostile, teeming — is the
+kind of thing a visual makes VISCERAL. It's not about a T/F score.
+It's about wonder.
+
+#### Anthill Emergence (understand)
+
+**Display: BOTH** (hover for new or enhanced entry + inline in The
+Custodian section of summary or relevant chapter)
+**Visual:** Cross-section of an anthill. Individual ants running simple
+local rules (follow scent, move crumb, pass signal). Arrows showing
+local actions. Above ground: the complex structure that emerges —
+nurseries, waste sorting, humidity regulation. No single ant knows
+the plan.
+Caption: "Nothing designs it. It emerges."
+**Why it's here:** Emergence is the hardest concept in the book for GA
+readers. The anthill analogy is already in the summary text. A visual
+makes it click. Once a reader GETS emergence, they get Custodian.
+
+#### HALO Silhouette (feel)
+
+**Display: INLINE only** (section opener for The Mentor, or chapter
+header for a Record chapter introducing Healer)
+**Visual:** Small silhouette figure — arms out, freefall — against a
+gradient sky that goes from blue at the bottom to near-black at the
+top (stratosphere). Tiny. Vast sky. No parachute visible yet.
+Caption: none needed — the text carries it.
+**Why it's here:** Pure narrative energy. The summary describes Healer
+falling from the sky; this makes the reader FEEL the character before
+meeting him. It's also a style departure — the book's first figurative
+image, signaling "this section is about a person, not a concept."
+**Note:** This is a stylistic choice — all existing SVGs are concept
+diagrams. Bruce decides whether the book includes figurative imagery.
+
+### Tier 3 — Optional / if time allows
+
+#### ChatGPT vs Custodian (F3)
+
+**Display: HOVER only.** Format: HTML table (not SVG — tables aren't
+diagrams). The existing text comparison works; this is a polish item.
+**Target lift:** F3: 2→3
+
+#### Classical Backchannel (T4)
+
+**Display: HOVER only.** Alice→Bob diagram. The existing text-heavy
+rich panel is adequate. Enhancement if time allows.
 **Target lift:** T4: 2→3
 
-### Tier 3 — Polish and completion
+#### Custodian's Daily Work (T7) — DEMOTED from Tier 1
+
+The text "Mostly IT infrastructure. Boring!" is funnier and more
+effective WITHOUT a diagram. A flowchart makes it less boring, which
+undermines the point. T7's mundanity is a feature, not a problem to
+solve with a visual. **CUT unless Bruce disagrees.**
+
+### Tier 4 — Landing page + planned gallery SVGs
 
 #### Landing Page Title Image
 
-**Current state:** relinquishment.ai shows cover-triskellion.png
-(280×280) plus title text. Space available for an additional visual.
-
 **Options (Bruce to choose):**
-1. **The Flat cross-section** (hero version) — glowing blue 2DEG
-   layer, electrons. Communicates: real physics in a surprising place.
-2. **Five-field gap** — the silo diagram from SVG-A. "Something is
-   missing from the conversation."
-3. **Convergence web** — simplified domain-buttons: five connected
-   nodes. Science that converges.
+1. **The Flat cross-section** (hero version) — glowing blue 2DEG,
+   electrons. "Real physics in a surprising place."
+2. **Five-field gap** — the silo diagram. "Something is missing."
+3. **Convergence web** — simplified domain-buttons.
 4. **The question** — typographic: "Would you sell it? Would you hide
-   it? Would you use it? Or would you give it up?" Georgia serif.
+   it? Would you use it? Or would you give it up?"
 
 **Spec:** Max ~400px wide, mobile-friendly, inline SVG or optimized
 PNG, #1a5276 palette.
@@ -211,57 +231,66 @@ PNG, #1a5276 palette.
 
 Already specified in `build/gallery-manifest.yaml`: autocatalytic-loop,
 edge-of-chaos-inline, substrate-parallel, canopy-problem. Build per
-existing specs. These support T3, T5, F4, F5, F8 but are inline
-chapter injections, not hover panels — they lift p3, not p1 directly.
+existing specs. Inline chapter injections — lift p3, not p1 directly.
 
 ---
 
 ## Projected p1 Improvement
 
-Scores measure what is AVAILABLE at p1 (the rich panel exists), not
-hover frequency. Conservative column assumes some SVGs land weaker
-than planned.
+Tier 1 visuals have T/F targets. Tier 2 visuals improve engagement and
+understanding without targeting specific scores (though hydrothermal
+vent may nudge T3/F8). Conservative column assumes Tier 3 items aren't
+built.
 
 ### Takeaways
 ```
-        Current  Target  Conservative  Change
-T1       2        2       2            —
-T2       3        3       3            —
-T3       2        2       2            —
-T4       2        3       2            0 to +1 (SVG-H)
-T5       2        3       3            +1 (SVG-A)
-T6       2        3       3            +1 (SVG-D)
-T7       1        2       2            +1 (SVG-C)
-T8       1        2       2            +1 (SVG-B)
-─────────────────────────────────────────────
-TOTAL   15/24   20/24   19/24          +4 to +5
-         63%     83%     79%
+        Current  Tier 1 only  + Tier 3    Source
+T1       2        2            2           —
+T2       3        3            3           —
+T3       2        2            2           — (vent parallel supports, doesn't lift)
+T4       2        2            3           Tier 3: backchannel
+T5       2        3            3           Five-field silos
+T6       2        3            3           Decision tree
+T7       1        1            1           DEMOTED — text is funnier
+T8       1        2            2           Guided deduction flow
+──────────────────────────────────────────────────
+TOTAL   15/24   18/24        19/24
+         63%     75%          79%
 ```
 
 ### Failure Modes
 ```
-        Current  Target  Conservative  Change
-F1       2        2       2            —
-F2       2        2       2            —
-F3       2        3       3            +1 (Panel E)
-F4       2        3       2            0 to +1 (SVG-G)
-F5       2        3       3            +1 (SVG-A)
-F6       3        3       3            —
-F7       2        3       3            +1 (SVG-F)
-F8       2        2       2            —
-F9       2        2       2            —
-F10      2        3       3            +1 (SVG-D)
-─────────────────────────────────────────────
-TOTAL   21/30   26/30   25/30          +4 to +5
-         70%     87%     83%
+        Current  Tier 1 only  + Tier 3    Source
+F1       2        2            2           —
+F2       2        2            2           —
+F3       2        2            3           Tier 3: ChatGPT table
+F4       2        3            3           Concept ladder
+F5       2        3            3           Five-field silos
+F6       3        3            3           —
+F7       2        3            3           Knot in flames
+F8       2        2            2           —
+F9       2        2            2           —
+F10      2        3            3           Decision tree
+──────────────────────────────────────────────────
+TOTAL   21/30   24/30        26/30
+         70%     80%          87%
 ```
 
 ### Combined p1 Floor
 ```
 Current:       36/54 (67%)
-Conservative:  44/54 (81%)
-Target:        46/54 (85%)
+Tier 1 only:   42/54 (78%)  — the engineering floor
++ Tier 3:      45/54 (83%)  — if optional items built
 ```
+
+### What the numbers DON'T capture
+
+Tier 2 visuals (vent parallel, anthill, HALO) don't move T/F scores.
+They move something harder to measure: whether a reader stays engaged
+long enough for the T/F content to land. The hydrothermal vent makes
+them wonder. The anthill makes them understand emergence. The HALO
+silhouette makes them want to know who this person is. These improve
+the EFFECTIVE delivery rate of everything else.
 
 ---
 
@@ -282,28 +311,44 @@ No changes to summary.tex proposed or needed.
 
 ## Implementation Notes
 
-**Hover panels:** New SVGs go into `hover-definitions.yaml` `html:`
-blocks, ADDED to existing text content (not replacing it). Same
-pattern as existing SVG-bearing entries.
+### Gallery-first workflow
 
-**Inline chapter display:** Requires (1) SVG source, (2) injection
-marker in the .tex file, (3) `preprocess.py` logic to inject at that
-marker. More complex than hover-only. The hover panel version is built
-first; inline injection follows as a separate phase.
+All new SVGs are built into `docs/gallery.html` FIRST so Bruce can
+review them before they go into the book. The gallery is the staging
+area. Book insertion (hover panels + inline) is a later phase, gated
+on Bruce's approval of each visual.
+
+### Gallery restructure: p-level sections
+
+Restructure gallery.html into three sections with subtle background
+color differences for at-a-glance orientation:
+
+| Section | Background | Contents |
+|---------|-----------|----------|
+| **p1 — Hover panels** | `#f8fbfe` (faint blue) | SVGs that live in hover-definitions.yaml rich panels. Reader sees on tap/hover. |
+| **p2 — Summary-adjacent** | `#f8fef8` (faint green) | Visuals that appear in or support the summary. Currently empty — new plan visuals may land here. |
+| **p3 — Chapter inline** | `#fef8f8` (faint rose) | SVGs injected into chapter text by preprocess.py. Filmstrip, domain buttons, flat diagram. |
+| **Standalone** | `#fafafa` (neutral) | Files not in the book: cover triskellion, test SVGs, landing page image. |
+
+Each section gets a colored left-border bar + section header with
+count. Existing SVGs are reclassified into the appropriate section.
+New SVGs from this plan go into the section matching their Display
+tag. SVGs tagged BOTH appear in p1 section with a badge noting
+"also inline (p3)."
+
+### Build notes
 
 **Style:** #1a5276 primary, #2471a3 secondary, Georgia serif,
-#888 captions. Hover panels: max 380px. Inline: full content width.
-Alt text / `<title>` on every SVG.
+#888 captions. Max 380px for hover-panel versions. Full content width
+for inline. Alt text / `<title>` on every SVG.
 
-**Mobile:** Tap-to-show hover panels. SVGs readable at 320px. Test
-Chrome Android.
+**Gallery numbers:** New SVGs get SVG-029+ in the gallery manifest.
 
-**Gallery:** New hover-panel SVGs get gallery numbers (SVG-029+) in
-`build/gallery-manifest.yaml`. The A–H labels in this plan are
-internal references only.
+**Hover panels:** When approved, SVGs go into `hover-definitions.yaml`
+`html:` blocks, ADDED to existing text content (not replacing it).
 
-**Pattern:** Follow SVG-006-magnetosphere (complex hover SVG) and
-filmstrip panels 008–013 (inline injection).
+**Inline injection:** Requires injection marker in .tex + preprocess.py
+logic. Separate phase after gallery review.
 
 ---
 
@@ -311,114 +356,106 @@ filmstrip panels 008–013 (inline injection).
 
 | Phase | Deliverable | Effort | Dependencies |
 |-------|-------------|--------|-------------|
-| 0 | **Pilot:** SVG-A (five-field gap) — hover panel only | ~45min Generator | None |
-| 1 | Tier 1 remainder: SVG-B, C, D hover panels | ~2h Generator | Phase 0 validates approach |
-| 2 | Tier 2: Panel E, SVG-F, G, H hover panels | ~2.5h Generator | None (can parallel Phase 1) |
-| 3 | Inline injection: SVG-A, B, D, F, G into chapters | ~2h Generator | Phases 0–2 provide the SVGs |
-| 4 | Landing page title image | ~1h Generator | Bruce chooses option |
-| 5 | Build 4 planned SVGs (SVG-025–028) per manifest | ~2h Generator | Existing specs |
-| 6 | Gallery page update + tooltip viewer rebuild + test | ~30min Generator | All prior phases |
+| 1 | **Gallery restructure:** p1/p2/p3 sections with color coding | ~1h Generator | None |
+| 2 | **Build all Tier 1 SVGs into gallery:** silos, guided deduction, decision tree, knot, ladder | ~3h Generator | Phase 1 |
+| 3 | **Build Tier 2 SVGs into gallery:** vent parallel, anthill, HALO | ~2h Generator | Phase 1 (parallel w/ Phase 2) |
+| 4 | **Bruce reviews gallery** | — | Phases 2–3 |
+| 5 | **Hover panel insertion:** approved SVGs into hover-definitions.yaml | ~1.5h Generator | Phase 4 approval |
+| 6 | **Inline chapter injection:** approved SVGs into chapter HTML | ~2h Generator | Phase 4 approval |
+| 7 | **Landing page title image** | ~1h Generator | Bruce chooses option |
+| 8 | **Tier 3 optional:** ChatGPT table, backchannel | ~1h Generator | If Bruce wants |
+| 9 | **Build 4 planned SVGs** (SVG-025–028) per manifest | ~2h Generator | Existing specs |
+| 10 | **Tooltip viewer rebuild + regression test** | ~30min Generator | All prior |
 
-Phase 0 is a pilot: build one SVG, validate sizing/rendering/mobile,
-then batch the rest. Phases 1 and 2 can run in parallel after Phase 0.
-Phase 3 is the inline-injection pass (separate from hover panels).
-Phase 4 is gated on Bruce's landing page choice.
+Phases 2 and 3 can run in parallel. Phase 4 is Bruce's review gate —
+nothing enters the book until Bruce has seen it in the gallery.
+Phases 5 and 6 only process SVGs Bruce approves.
 
 ---
 
 ## Acceptance Criteria
 
-### Per-SVG
+### Per-SVG (in gallery)
 - [ ] Renders correctly in Chrome, Firefox, Safari (desktop + mobile)
 - [ ] Alt text / `<title>` describes the visual
 - [ ] Palette matches (#1a5276, #2471a3, Georgia, #888)
 - [ ] Readable at 320px viewport width
-- [ ] Existing rich-panel text preserved (SVG added, not substituted)
+- [ ] Placed in correct p-level section of gallery
 
-### Per-Phase
-- [ ] `make all` builds clean
-- [ ] Gallery page updated with new entries
-- [ ] Tooltip viewer rebuilt to show new rich panels
+### Gallery restructure
+- [ ] Three p-level sections with distinct background colors
+- [ ] All existing SVGs reclassified correctly
+- [ ] Left-border color bars + section headers with counts
+- [ ] Mobile-friendly layout preserved
+
+### Book insertion (after approval)
+- [ ] Existing rich-panel text preserved (SVG added, not substituted)
+- [ ] `make all` builds clean after each insertion
+- [ ] Tooltip viewer rebuilt
 - [ ] No existing SVGs broken or displaced
 
 ### Plan-Level
-- [ ] p1 takeaways ≥ 19/24 (79%) — up from 15/24
-- [ ] p1 failure modes ≥ 25/30 (83%) — up from 21/30
-- [ ] Landing page has title image (Phase 4)
-- [ ] All 4 planned SVGs built (Phase 5)
+- [ ] p1 takeaways ≥ 18/24 (75%) — up from 15/24
+- [ ] p1 failure modes ≥ 24/30 (80%) — up from 21/30
+- [ ] At least 2 visuals serve understanding/delight (not T/F-driven)
+- [ ] Landing page has title image
+- [ ] All 4 planned SVGs built
 - [ ] p2 scores unchanged (≥ 23/24 takeaways, 30/30 failure modes)
 
 ---
 
-## Annealing Log (HIGH HIGH MED MED LOW LOW)
+## Annealing Log
 
-### HIGH 1 — Display strategy (Bruce's question)
+### Passes 1–6 (HIGH HIGH MED MED LOW LOW)
 
-Original plan put ALL new SVGs in hover panels only. This was
-incomplete. Key correction: visuals serve two purposes — hover panels
-(p1 lift) and inline chapter display (p3 lift). The strongest visuals
-belong in BOTH. Added "Display Strategy" section. Each visual now
-specifies HOVER, INLINE, or BOTH. Added Phase 3 (inline injection) as
-a separate pass after hover panels are built.
+1. **HIGH — Display strategy.** Added dual-display (hover + inline)
+   with explicit labels per visual. Existing text preserved in panels.
+2. **HIGH — Visual design.** Five-field: circles→silos. ChatGPT:
+   SVG→HTML table. Concept ladder: 5 solid + 1 dashed. Decision tree:
+   trimmed caption.
+3. **MED — Score honesty.** Added Tier 1 vs. +Tier 3 projections.
+4. **MED — Pilot phase.** Phase 0 builds one SVG first to validate.
+5. **LOW — Gallery numbering.** New items get SVG-029+ in manifest.
+6. **LOW — Planned SVGs.** Referenced, not re-specified.
 
-Also: existing rich-panel text is load-bearing and must be preserved.
-New SVGs are ADDED alongside text, not substituted. This was implicit
-but needed to be explicit.
+### Pass 7 (MED — Joy audit)
 
-### HIGH 2 — Visual design corrections
+Original plan was pure engineering — every visual justified by T/F
+score. Bruce: "maybe we need some images just for fun or for better
+understanding."
 
-- **SVG-A:** Changed from "five circles in a ring" to five tall
-  rectangular silos. Circles don't communicate "should overlap but
-  don't." Silos communicate "academic specialization that doesn't
-  connect." The metaphor matches the language ("silo" is what the text
-  calls it).
-- **SVG-E:** Changed from SVG to HTML table. Tabular data doesn't
-  benefit from SVG rendering — it's harder to build, harder to
-  maintain, and the existing wormholes comparison uses an HTML table.
-  Follow the established pattern. Renamed from "SVG-E" to "Rich
-  Panel E."
-- **SVG-G:** Reduced from 6 steps to 5 solid + 1 dashed. The
-  convergence is NOT a step on the same ladder — it's the speculative
-  leap. Dashed rendering makes this visual.
-- **SVG-D:** Trimmed the Spider-Man quote. Too long for an SVG
-  caption. The three-branch tree speaks for itself.
+**Added Tier 2** (understanding/delight): hydrothermal vent parallel
+(wonder), anthill emergence (understanding), HALO silhouette (narrative
+fun). **Demoted** Custodian's daily work — "Boring!" is funnier
+without a diagram. **Restructured tiers** from engineering labels to
+purpose labels (build first / understand & delight / optional).
 
-### MED 1 — Score projection honesty
+### Pass 8 (MED — Gallery-first workflow)
 
-Added "Conservative" column to projections. Not every SVG will land
-perfectly — some may enhance understanding without clearly lifting the
-score a full point. Conservative estimates: p1 takeaways 79% (vs. 83%
-target), p1 failure modes 83% (vs. 87% target). The floor improvement
-is real either way: 67% → 81-85%.
+Bruce: "I want to SEE these images BEFORE we add them to the book."
 
-### MED 2 — Pilot phase
+**Key change:** Gallery is now the staging area. All new SVGs are
+built into gallery.html first. Bruce reviews. Only approved SVGs
+proceed to hover panels and inline injection. This separates "does the
+SVG look right?" from "does it work in the book?" — cheaper to iterate
+in the gallery than in hover-definitions.yaml.
 
-Added Phase 0: build SVG-A (five-field gap) as a single pilot before
-batching the rest. This validates sizing, rendering, mobile behavior,
-and the hover-panel integration pattern. Catches problems cheaply
-before committing to 8 visuals. SVG-A is the highest-impact single
-visual — if we only build one, it's this one.
+**Gallery restructure:** Added p1/p2/p3 sections with subtle background
+colors (#f8fbfe / #f8fef8 / #fef8f8) so Bruce can tell at a glance
+where each SVG will live. Left-border color bars for quick scanning.
 
-### LOW 1 — Gallery numbering
+**Phasing revised:** Old Phase 0 (pilot) absorbed into Phase 2 (build
+all Tier 1 into gallery). The gallery IS the pilot — Bruce sees every
+SVG before anything enters the book. Added explicit Phase 4 review
+gate.
 
-Clarified: new visuals get gallery numbers (SVG-029+) in the manifest.
-The A–H labels are plan-internal references only, avoiding collision
-with the gallery's SVG-001–028 numbering.
-
-### LOW 2 — Planned SVGs scope
-
-Trimmed detail on SVG-025 through SVG-028. They're already specified
-in the gallery manifest — this plan references them but doesn't
-re-specify. Noted that they're inline chapter injections (p3), not
-hover panels (p1), so they don't directly affect p1 scores.
-
-**Rating: 8/10.** Solid gap analysis, clear display strategy, honest
-projections, pilot phase for risk reduction. The 2-point gap: inline
-injection (Phase 3) adds significant build complexity that may require
-its own sub-plan once we see which chapters need markers. And the
-visual descriptions are detailed enough for a Generator to start but
-will need iteration — SVGs rarely come out right on the first pass.
+**Rating: 8.5/10.** Gallery-first workflow is cleaner and reduces risk.
+The review gate means no SVG enters the book unreviewed. The p-level
+sections make gallery.html a useful diagnostic tool beyond this plan.
+Remaining gap: inline injection (Phase 6) still needs per-chapter
+markers, which will be specified when we get there.
 
 ---
 
-*Plan written by Argus (Auditor), S63. Annealed 6 passes.*
+*Plan written by Argus (Auditor), S63. Annealed 8 passes
+(HIGH/HIGH/MED/MED/LOW/LOW/MED/MED).*
