@@ -1,13 +1,15 @@
 #!/usr/bin/env python3
 """Build standalone puzzle preview page from puzzle-data.yaml (Plan 0249)."""
 
-import yaml, html as htmlmod, os, json, hashlib, random
+import yaml, html as htmlmod, os, json, hashlib, random, re
 
 YAML_PATH = os.path.join(os.path.dirname(__file__), 'puzzle-data.yaml')
 OUT_PATH = os.path.join(os.path.dirname(__file__), '..', 'docs', 'downloads', 'puzzles.html')
 
 with open(YAML_PATH) as f:
     data = yaml.safe_load(f)
+
+shared_bgs = data.get('shared_backgrounds', {})
 
 
 def esc(s):
@@ -26,6 +28,15 @@ def normalize(s):
         if s.startswith(art):
             s = s[len(art):]
     return s.strip()
+
+
+def resolve_background(raw):
+    if not raw:
+        return ''
+    raw = str(raw).strip()
+    def repl(m):
+        return shared_bgs.get(m.group(1), '')
+    return re.sub(r'ref:(\w+)', repl, raw)
 
 
 def build_json(puzzle):
@@ -106,6 +117,11 @@ bridge_data = {
                 for bp in bridge_puzzles]
 }
 
+for p in chapter_puzzles:
+    p['_bg_html'] = resolve_background(p.get('background', ''))
+for bp in bridge_puzzles:
+    bp['_bg_html'] = resolve_background(bp.get('background', ''))
+
 
 # --- Generate container HTML ---
 def render_container(puzzle):
@@ -115,10 +131,18 @@ def render_container(puzzle):
     abstract_text = esc(puzzle.get('abstract', '').strip())
     hint_text = esc(puzzle.get('hint', ''))
     ptype = puzzle.get('type', puzzle.get('sub_type', ''))
+    bg_html = puzzle.get('_bg_html', '')
+    bg_section = ''
+    if bg_html:
+        bg_section = f'''<details class="background-panel">
+  <summary>\U0001f4d6 Background</summary>
+  <div class="background-content">{bg_html}</div>
+</details>'''
     return f'''<div class="puzzle-container" id="{pid}" data-puzzle-id="{pid}" data-puzzle-type="{ptype}">
   <h2>{title}</h2>
   <p class="question">{question}</p>
   <div class="interaction"></div>
+  {bg_section}
   <p class="hint" id="hint-{pid}">{hint_text}</p>
   <div class="result" id="result-{pid}">
     <div class="solved-badge">&#10003; Solved</div>
@@ -128,16 +152,20 @@ def render_container(puzzle):
 </div>'''
 
 
-chapter_html = '\n'.join(render_container(p) for p in chapter_puzzles)
+nonsci_puzzles = [p for p in chapter_puzzles if p.get('category') == 'nonsci']
+science_puzzles = [p for p in chapter_puzzles if p.get('category') == 'science']
+
+nonsci_html = '\n'.join(render_container(p) for p in nonsci_puzzles)
+science_html = '\n'.join(render_container(p) for p in science_puzzles)
 bridge_puzzle_html = '\n'.join(render_container(bp) for bp in bridge_puzzles)
 
 bridge_abstract = esc(bridge['abstract'].strip())
 bridge_section = f'''<hr>
-<h1>{esc(bridge['title'])}</h1>
+<h2 class="category-header" id="cat-bridge">\U0001f309 The Bridge Builder</h2>
 <p class="framing">{esc(bridge['intro'])}</p>
 <p class="progress">Bridges: <span id="bridge-count">0</span>/{len(bridge_puzzles)}</p>
 <div id="bridge-svg-wrap">
-  <svg id="bridge-svg" viewBox="0 0 600 400"></svg>
+  <svg id="bridge-svg" viewBox="0 0 500 400"></svg>
 </div>
 {bridge_puzzle_html}
 <div class="result" id="result-bridge-final">
@@ -228,8 +256,14 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .log-table td:hover:not(:first-child) { background: #f0f6fa; }
 .log-table td.wrong { background: #fdf2f2; border-color: #c0392b; }
 
+.background-panel { margin-top: 0.8em; border-left: 3px solid #4a90d9; background: #f0f6fa; border-radius: 0 4px 4px 0; }
+.background-panel summary { padding: 0.5em 1em; cursor: pointer; font-weight: bold; color: #1a5276; font-size: 0.95em; }
+.background-panel summary:hover { color: #154360; }
+.background-content { padding: 0 1em 0.8em; font-size: 0.9em; line-height: 1.6; color: #333; }
+.category-header { font-size: 1.5em; color: #1a5276; margin-top: 2em; margin-bottom: 0.5em; padding-bottom: 0.3em; border-bottom: 2px solid #ddd; }
+
 #bridge-svg-wrap { margin: 1em 0; }
-#bridge-svg { width: 100%; max-width: 600px; height: 300px; border: 1px solid #ddd; border-radius: 4px; background: #fafafa; display: block; margin: 0 auto; }
+#bridge-svg { width: 100%; max-width: 500px; height: auto; border: 1px solid #ddd; border-radius: 4px; background: #fafafa; display: block; margin: 0 auto; }
 .bridge-label { font-size: 9px; fill: #333; text-anchor: middle; pointer-events: none; }
 .bridge-edge { stroke: #999; stroke-width: 1.5; stroke-opacity: 0.6; }
 .bridge-tier-label { font-size: 11px; fill: #1a5276; font-weight: bold; text-anchor: middle; opacity: 0; transition: opacity 0.5s; }
@@ -278,6 +312,10 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
   .word-bank-item { background: #2a2a2a; border-color: #555; color: #e0e0e0; }
   .bridge-label { fill: #ccc; }
   #bridge-svg { background: #242424; }
+  .background-panel { background: #1a2a3a; border-left-color: #4a90d9; }
+  .background-panel summary { color: #6ba3f7; }
+  .background-content { color: #ccc; }
+  .category-header { color: #6ba3f7; border-bottom-color: #444; }
 }
 
 @media (max-width: 600px) {
@@ -742,45 +780,98 @@ function updateBridgeSVG() {
   var solved = getBridgeSolved(), solvedSet = {};
   solved.forEach(function(id) { solvedSet[id] = true; });
 
-  var activeEdges = [], tierLabels = [], finalTrans = false;
+  var crossEdges = [], tierLabels = [], finalTrans = false;
   BD.puzzles.forEach(function(bp) {
     if (solvedSet[bp.id]) {
-      if (bp.edges) activeEdges = activeEdges.concat(bp.edges);
+      if (bp.edges) crossEdges = crossEdges.concat(bp.edges);
       if (bp.tier_label) tierLabels.push(bp.tier_label);
       if (bp.final_transition) finalTrans = true;
     }
   });
 
   var nIdx = {}; BD.nodes.forEach(function(n, i) { nIdx[n.id] = i; });
-  var uf = BD.nodes.map(function(_, i) { return { parent: i, rank: 0 }; });
-  function bfind(i) { if (uf[i].parent !== i) uf[i].parent = bfind(uf[i].parent); return uf[i].parent; }
-  function bunion(a, b) { var ra = bfind(a), rb = bfind(b); if (ra === rb) return; if (uf[ra].rank < uf[rb].rank) { var t = ra; ra = rb; rb = t; } uf[rb].parent = ra; if (uf[ra].rank === uf[rb].rank) uf[ra].rank++; }
-  activeEdges.forEach(function(e) { var a = nIdx[e[0]], b = nIdx[e[1]]; if (a !== undefined && b !== undefined) bunion(a, b); });
 
-  var clusters = {};
-  BD.nodes.forEach(function(_, i) { var r = bfind(i); if (!clusters[r]) clusters[r] = []; clusters[r].push(i); });
-  var BASE_Y = 350, MAX_LIFT = 250, parts = [];
-
-  activeEdges.forEach(function(e) {
-    var ai = nIdx[e[0]], bi = nIdx[e[1]];
-    if (ai === undefined || bi === undefined) return;
-    var csz = clusters[bfind(ai)] ? clusters[bfind(ai)].length : 1;
-    var ya = BASE_Y - (csz/11)*MAX_LIFT, yb = ya;
-    parts.push('<line x1="'+BD.nodes[ai].x+'" y1="'+ya+'" x2="'+BD.nodes[bi].x+'" y2="'+yb+'" class="bridge-edge"/>');
+  var clusterMap = {};
+  BD.nodes.forEach(function(n) {
+    if (!clusterMap[n.cluster]) clusterMap[n.cluster] = [];
+    clusterMap[n.cluster].push(n);
   });
 
-  BD.nodes.forEach(function(n, i) {
-    var csz = clusters[bfind(i)] ? clusters[bfind(i)].length : 1;
-    var y = BASE_Y - (csz/11)*MAX_LIFT;
-    var col = BD.cluster_colors[n.cluster] || "#999";
+  var matConnected = false;
+  crossEdges.forEach(function(e) {
+    if (e[0] === "mat" || e[1] === "mat") matConnected = true;
+  });
+
+  var FLOOR = 370;
+  function nodeY(n) {
+    if (clusterMap[n.cluster].length === 1 && !matConnected) return 340;
+    return n.y;
+  }
+
+  var parts = [];
+
+  parts.push('<line x1="20" y1="'+FLOOR+'" x2="480" y2="'+FLOOR+'" stroke="#ccc" stroke-width="1" stroke-dasharray="4,4"/>');
+
+  for (var c in clusterMap) {
+    var cn = clusterMap[c], maxY = 0, maxX = 0;
+    for (var i = 0; i < cn.length; i++) {
+      var ny = nodeY(cn[i]);
+      if (ny > maxY) { maxY = ny; maxX = cn[i].x; }
+    }
+    if (maxY < FLOOR - 5) {
+      parts.push('<line x1="'+maxX+'" y1="'+maxY+'" x2="'+maxX+'" y2="'+FLOOR+'" stroke="#ccc" stroke-width="0.5" stroke-dasharray="2,3" opacity="0.5"/>');
+    }
+  }
+
+  for (var c in clusterMap) {
+    var cn = clusterMap[c], col = BD.cluster_colors[c] || "#999";
+    for (var a = 0; a < cn.length; a++) {
+      for (var b = a + 1; b < cn.length; b++) {
+        parts.push('<line x1="'+cn[a].x+'" y1="'+nodeY(cn[a])+'" x2="'+cn[b].x+'" y2="'+nodeY(cn[b])+'" stroke="'+col+'" stroke-width="1.5" stroke-opacity="0.65"/>');
+      }
+    }
+  }
+
+  BD.puzzles.forEach(function(bp) {
+    if (solvedSet[bp.id] || !bp.edges) return;
+    bp.edges.forEach(function(e) {
+      var ai = nIdx[e[0]], bi = nIdx[e[1]];
+      if (ai === undefined || bi === undefined) return;
+      var na = BD.nodes[ai], nb = BD.nodes[bi];
+      parts.push('<line x1="'+na.x+'" y1="'+nodeY(na)+'" x2="'+nb.x+'" y2="'+nodeY(nb)+'" stroke="#ccc" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>');
+    });
+  });
+
+  crossEdges.forEach(function(e) {
+    var ai = nIdx[e[0]], bi = nIdx[e[1]];
+    if (ai === undefined || bi === undefined) return;
+    var na = BD.nodes[ai], nb = BD.nodes[bi];
+    parts.push('<line x1="'+na.x+'" y1="'+nodeY(na)+'" x2="'+nb.x+'" y2="'+nodeY(nb)+'" stroke="#27ae60" stroke-width="2"/>');
+  });
+
+  BD.nodes.forEach(function(n) {
+    var y = nodeY(n), col = BD.cluster_colors[n.cluster] || "#999";
     var glow = finalTrans ? " glow" : "";
-    parts.push('<circle cx="'+n.x+'" cy="'+y+'" r="10" fill="'+col+'" stroke="#fff" stroke-width="1.5" class="node-circle'+glow+'"/>');
-    parts.push('<text x="'+n.x+'" y="'+(y-14)+'" class="bridge-label">' + n.label + "</text>");
+    parts.push('<g><title>'+esc(n.full || n.label)+'</title>');
+    parts.push('<circle cx="'+n.x+'" cy="'+y+'" r="16" fill="'+col+'" stroke="#fff" stroke-width="1.5" class="node-circle'+glow+'"/>');
+    parts.push('<text x="'+n.x+'" y="'+(y+3)+'" text-anchor="middle" fill="#fff" font-size="7" font-weight="bold" font-family="Helvetica,Arial,sans-serif" pointer-events="none">'+esc(n.label)+'</text>');
+    parts.push('</g>');
   });
 
   tierLabels.forEach(function(label, i) {
-    parts.push('<text x="300" y="'+(25 + i*18)+'" class="bridge-tier-label visible">' + label + "</text>");
+    parts.push('<text x="250" y="'+(20 + i*16)+'" class="bridge-tier-label visible">'+esc(label)+'</text>');
   });
+
+  var legendY = FLOOR + 18, seen = {}, order = [];
+  BD.nodes.forEach(function(n) { if (!seen[n.cluster]) { seen[n.cluster] = true; order.push(n.cluster); } });
+  var lx = 25;
+  order.forEach(function(c) {
+    var col = BD.cluster_colors[c] || "#999";
+    parts.push('<circle cx="'+lx+'" cy="'+legendY+'" r="5" fill="'+col+'"/>');
+    parts.push('<text x="'+(lx+8)+'" y="'+(legendY+3)+'" font-size="8" fill="#666">'+c+'</text>');
+    lx += c.length * 5.5 + 22;
+  });
+
   svg.innerHTML = parts.join("\n");
 }
 
@@ -848,7 +939,11 @@ to the book&rsquo;s larger argument.</p>
   All puzzles are shown unlocked.
 </div>
 
-{chapter_html}
+<h2 class="category-header" id="cat-nonsci">\U0001f4da Ethics, Story &amp; Framework</h2>
+{nonsci_html}
+
+<h2 class="category-header" id="cat-science">\U0001f52c Science &amp; Physics</h2>
+{science_html}
 
 {bridge_section}
 
