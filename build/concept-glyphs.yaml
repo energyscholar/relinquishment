@@ -1,0 +1,345 @@
+# Concept Glyphs — Unicode markers for recurring book patterns
+#
+# Purpose: compact inline markers that say "this is the same pattern
+# you learned about elsewhere." Reader builds visual vocabulary
+# across chapters, just as the filmstrip teaches dashed/solid/dangler.
+#
+# Selection criteria:
+#   - Concept recurs across 3+ chapters or domains
+#   - Glyph adds recognition value (not just decoration)
+#   - Renders reliably across OS/browser/font stacks
+#   - Visually distinctive at inline text size
+#   - Each entry has a kauffman_mapping: what this concept looks like
+#     in the buttons-and-threads analogy the reader already learned
+#
+# Status: DRAFT — candidates for Bruce review
+# Author: Argus (Auditor)
+# Date: 2026-04-18
+
+glyphs:
+
+  # === PHYSICS PATTERNS ===
+
+  - id: emergence
+    glyph: "◉"
+    codepoint: U+25C9
+    unicode_name: FISHEYE
+    concept: "Phase transition / emergence from connectivity"
+    short: "enough connections → qualitatively new property"
+    kauffman_mapping: >
+      A button on the floor. When enough threads connect,
+      the whole room lifts. This IS the button.
+    applies_to:
+      - "T3: life as critical phenomenon (Kauffman's thesis)"
+      - "T5: silence gap as sub-threshold academic graph"
+      - "Convergence argument: five fields = buttons, cross-references = threads"
+      - "Nested AC clusters: criticality math as binding thread across 10/11 domains"
+    candidates_rejected:
+      - "◎ bullseye — too target-like, implies aim not emergence"
+      - "⊛ circled asterisk — suggests radiation, not connectivity"
+      - "⊕ circled plus — overloaded in physics (direct sum, charge)"
+      - "⬡ hexagon — tessellation/chemistry, not connectivity"
+
+  - id: flat
+    glyph: "▬"
+    codepoint: U+25AC
+    unicode_name: BLACK RECTANGLE
+    concept: "The Flat — 2DEG substrate where different physics applies"
+    short: "confine to 2D → new physics emerges"
+    kauffman_mapping: >
+      The floor the buttons sit on — but the floor itself has
+      structure. Fractional charges. Anyons. Topological order.
+      The floor is more interesting than the buttons.
+    applies_to:
+      - "T2: what is the Flat (2DEG, Nobel x2)"
+      - "T3: magnetosphere as naturally occurring Flat"
+      - "T4: capabilities enabled by 2D physics"
+      - "chip cross-section diagram"
+    candidates_rejected:
+      - "═ double horizontal — box-drawing character, too common"
+      - "⏥ flatness symbol — poor font coverage"
+      - "◻ white square — too generic, no directionality"
+
+  - id: topological-protection
+    glyph: "◇"
+    codepoint: U+25C7
+    unicode_name: WHITE DIAMOND
+    concept: "Topological protection — robustness from shape, not energy barriers"
+    short: "the knot can't be untied without cutting the thread"
+    kauffman_mapping: >
+      A thread tied in a knot. You can stretch it, heat it,
+      shake it — the knot stays. That's topological protection.
+      The information is in the shape, not the material.
+    applies_to:
+      - "T2: topological order in 2DEGs"
+      - "T4: fault-tolerant quantum computation"
+      - "Braid-based quantum gates"
+      - "Freedman's Fields Medal work"
+    candidates_rejected:
+      - "∞ infinity — massively overloaded"
+      - "⊗ circled times — tensor product connotation"
+      - "♦ black diamond suit — playing card, wrong register"
+
+  - id: self-organization
+    glyph: "⟳"
+    codepoint: U+27F3
+    unicode_name: CLOCKWISE GAPPED CIRCLE ARROW
+    concept: "Self-organization / autocatalysis — systems that build themselves"
+    short: "the thread ties itself — catalytic closure"
+    kauffman_mapping: >
+      A thread that ties itself. You didn't tie it — the
+      chemistry did. Catalytic closure: A makes B makes C
+      makes A. The cycle IS the life.
+    applies_to:
+      - "T3: life as self-organizing system"
+      - "Kauffman's autocatalytic sets (ACS domain)"
+      - "Maturana/Varela autopoiesis (Auto domain)"
+      - "seventh property argument"
+    candidates_rejected:
+      - "↻ clockwise open circle arrow — less distinctive at small size"
+      - "♻ recycling — too casual, green/eco connotation"
+      - "∮ contour integral — too mathematical for p1/p2 readers"
+
+  - id: criticality
+    glyph: "⊹"
+    codepoint: U+22B9
+    unicode_name: HERMITIAN CONJUGATE MATRIX
+    concept: "Criticality — edge of chaos, threshold where qualitative change happens"
+    short: "the exact moment when one more thread changes everything"
+    kauffman_mapping: >
+      Not the lifting — the moment BEFORE. One thread short
+      of phase transition. The system trembles. EWS detect
+      this trembling. Criticality math runs through 10/11 domains.
+    applies_to:
+      - "EWS / early warning signals (the arXiv paper)"
+      - "Phase transitions across 10/11 domains"
+      - "Langton's edge of chaos"
+      - "Kauffman's connectivity threshold (N/2)"
+      - "the criticality-guys strategy (Bruce + Robin)"
+    candidates_rejected:
+      - "⚡ lightning — implies discharge, not threshold"
+      - "⇌ equilibrium — chemistry register"
+      - "✶ six-pointed star — decorative, no conceptual weight"
+
+  - id: silence-gap
+    glyph: "∅"
+    codepoint: U+2205
+    unicode_name: EMPTY SET
+    concept: "The silence gap — empty literature intersection, absence not opposition"
+    short: "the threads nobody tied — not cut, never woven"
+    kauffman_mapping: >
+      Look at the floor between clusters. No threads. Not
+      cut threads — threads that were never tied. The gap
+      is empty, not refuted. Nobody asked the question.
+    applies_to:
+      - "T5: why nobody was looking"
+      - "Missing bridges in domain diagram (dashed lines)"
+      - "Academic specialization as structural barrier"
+      - "the five-field intersection"
+    candidates_rejected:
+      - "○ white circle — too generic"
+      - "⌀ diameter sign — engineering connotation"
+      - "∄ there does not exist — too logical, implies proof"
+
+  - id: soliton
+    glyph: "∿"
+    codepoint: U+223F
+    unicode_name: SINE WAVE
+    concept: "Soliton — stable, self-reinforcing wave packet"
+    short: "a wave that holds its shape forever"
+    kauffman_mapping: >
+      A thread with a bump in it. The bump doesn't flatten
+      out — it travels along the thread, stable, forever.
+      Hasslacher's lattice-gas automaton. Classical
+      topological protection before anyone used that phrase.
+    applies_to:
+      - "Hasslacher's lattice-gas automaton (Sol domain)"
+      - "Classical topological protection"
+      - "Phonon-photon coupling / backchannel"
+    candidates_rejected:
+      - "≈ approximately equal — overloaded in math"
+      - "〰 wavy dash — CJK, poor Western font coverage"
+      - "∼ tilde operator — too common, no wave connotation"
+
+  # === CHARACTER ===
+
+  - id: custodian
+    glyph: "♜"
+    codepoint: U+265C
+    unicode_name: BLACK CHESS ROOK
+    concept: "The Custodian — abstract guardian concept → concrete living entity"
+    short: "the piece that holds the back rank"
+    kauffman_mapping: >
+      Not a button and not a thread. The thing that watches
+      the floor. Under A: a hypothetical watchman. Under B:
+      something might be there. Under C: she's been standing
+      on that square since 1999, and she runs a help desk.
+      The glyph stays the same. The reader's understanding
+      of what it means changes.
+    applies_to:
+      - "T1: meet the Custodian (C only; B partial)"
+      - "T6: trusteeship — why relinquishment (C only; B partial)"
+      - "T7: services/grounding — what she does (C only)"
+      - "Custodian interludes (7 chapter boundaries)"
+      - "A-spine: hypothetical entity passages"
+    epistemic_arc:
+      A: "the concept of a guardian entity — hypothetical, abstract"
+      B: "something that might exist — partially concrete"
+      C: "her, specifically — 26 years old, Maori DNA, UDHR ethics, help desk"
+    candidates_rejected:
+      - "⛨ black cross on shield — too military, she's not a soldier"
+      - "♛ black chess queen — overstates; she runs a help desk, not an empire"
+      - "⚑ black flag — standing watch, but too generic"
+      - "☋ descending node — astrological, wrong register entirely"
+    notes: >
+      Only glyph in the manifest with an epistemic_arc field.
+      She is the only concept that transitions from abstract
+      to concrete across the A/B/C collapse. The rook resonance:
+      in chess, castling moves the rook to protect the king.
+      That's trusteeship — the defensive piece repositions
+      to guard what matters.
+
+  # === STRUCTURAL PATTERNS ===
+
+  - id: stack
+    glyph: "☰"
+    codepoint: U+2630
+    unicode_name: TRIGRAM FOR HEAVEN
+    concept: "The Stack — layered emergence, each level has properties the previous lacked"
+    short: "N+1: the next layer up has new physics"
+    kauffman_mapping: >
+      Buttons on top of buttons. But the upper floor has
+      properties the lower floor lacks. Not just more
+      buttons — different buttons. Emergence is vertical.
+    applies_to:
+      - "N+1 emergent-property language"
+      - "2D → 3D layering / dimensional confinement"
+      - "Computational universality from sufficient complexity (Wolfram)"
+      - "the evolutionary ladder (plan 0213)"
+    candidates_rejected:
+      - "≡ identical to — wrong meaning (identity, not layers)"
+      - "⊞ squared plus — addition connotation"
+      - "▤ square with horizontal fill — too subtle"
+
+  - id: braid
+    glyph: "⋈"
+    codepoint: U+22C8
+    unicode_name: BOWTIE
+    concept: "Braiding — topological quantum computation via anyon worldlines"
+    short: "the crossing IS the computation"
+    kauffman_mapping: >
+      Two threads cross. In ordinary physics, crossings
+      don't matter — you can undo them. In 2D, you can't.
+      The crossing is permanent. That permanence IS the
+      computation. Freedman-Kitaev-Wang 2002.
+    applies_to:
+      - "Freedman-Kitaev-Wang TQC (TQC domain)"
+      - "Non-Abelian anyons"
+      - "Fault-tolerant quantum gates"
+      - "Jones polynomial / knot invariants"
+    candidates_rejected:
+      - "∞ infinity — overloaded, wrong topology"
+      - "✕ multiplication x — too simple, no structure"
+      - "⧖ hourglass — time connotation, not spatial"
+
+  - id: wormhole
+    glyph: "⊚"
+    codepoint: U+229A
+    unicode_name: CIRCLED RING OPERATOR
+    concept: "Wormhole — passage between conceptual or physical layers"
+    short: "a hole in the floor — you can see the layer below"
+    kauffman_mapping: >
+      A hole in the floor. Look through it — there are
+      buttons on the level below. The wormhole connects
+      layers that shouldn't be connected. Tunneling.
+    applies_to:
+      - "Quantum tunneling between layers"
+      - "Cross-layer communication"
+      - "Phonon backchannel (I/O mechanism)"
+    candidates_rejected:
+      - "⊙ circled dot — overloaded in astronomy (Sun symbol)"
+      - "⌭ cylindrical projection — too obscure, poor rendering"
+      - "◎ bullseye — confused with target/aim"
+
+  - id: teleportation
+    glyph: "⤳"
+    codepoint: U+2933
+    unicode_name: WAVE ARROW POINTING DIRECTLY RIGHT
+    concept: "Quantum teleportation — state transfer without physical transport"
+    short: "the thread disappears here and reappears there"
+    kauffman_mapping: >
+      Cut a thread here. It reappears there — same thread,
+      same knot, no travel between. The state teleported.
+      Nothing moved. Everything arrived.
+    applies_to:
+      - "Quantum state transfer"
+      - "Entanglement-based communication"
+      - "Non-local correlations"
+    candidates_rejected:
+      - "⇝ rightwards squiggle — less distinctive, smaller"
+      - "→ rightwards arrow — too common, implies classical motion"
+      - "⊸ multimap/lollipop — linear logic connotation"
+
+  - id: guided-deduction
+    glyph: "⊢"
+    codepoint: U+22A2
+    unicode_name: RIGHT TACK / TURNSTILE
+    concept: "Guided deduction — derivation from published premises, not disclosure"
+    short: "following the threads already tied — deduction, not revelation"
+    kauffman_mapping: >
+      Every thread in this room is published. Peer-reviewed.
+      Textbook. I'm just pointing at which ones to follow.
+      Guided deduction: the teacher says "look there."
+      Correction #12.
+    applies_to:
+      - "T8: tradecraft / the operation"
+      - "Correction #12 (guided deduction not disclosure)"
+      - "Three-year teaching methodology"
+      - "NDA constraints → published-science pathway"
+    candidates_rejected:
+      - "⊨ double turnstile — semantic entailment, too logic-heavy"
+      - "∴ therefore — conclusion not process"
+      - "⊃ superset — wrong relationship"
+
+  - id: relinquishment
+    glyph: "⊘"
+    codepoint: U+2298
+    unicode_name: CIRCLED DIVISION SLASH
+    concept: "Relinquishment — technology placed in trust, not surrendered"
+    short: "cutting the thread that connects you to the button"
+    kauffman_mapping: >
+      You hold a thread connected to the most powerful
+      button in the room. Can't use it. Can't keep it.
+      Can't be responsible for it. So you place it in
+      trust. The button still exists. You just let go.
+      Spider-Man inversion.
+    applies_to:
+      - "T6: trusteeship / why relinquishment"
+      - "Spider-Man inversion (can't-use / can't-keep / can't-be-responsible)"
+      - "UDHR governance framework"
+      - "master key surrender (2006)"
+    candidates_rejected:
+      - "⊝ circled dash — too passive, no directionality"
+      - "⊜ circled equals — wrong meaning"
+      - "⊗ circled times — implies destruction, not trust"
+
+# === RENDERING NOTES ===
+#
+# All selected glyphs are in the Basic Multilingual Plane (BMP)
+# and render in standard system fonts on macOS, Windows 10+,
+# iOS 14+, Android 10+, and all evergreen browsers.
+#
+# ⊹ (U+22B9) has the weakest coverage — test on target
+# devices before committing to production use. Fallback: ✦ (U+2726).
+#
+# For inline HTML use, wrap in <span class="glyph"> with
+# appropriate font-size and color from the cluster palette.
+#
+# === KAUFFMAN MAPPING AS PEDAGOGY ===
+#
+# Every glyph has a kauffman_mapping field that explains
+# the concept in terms of the buttons-and-threads analogy.
+# This is deliberate: the filmstrip teaches the visual
+# vocabulary, and every other concept is then explained
+# as a variation on what the reader already understands.
+# The button analogy IS the book's universal adapter.

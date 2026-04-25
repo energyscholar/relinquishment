@@ -1,0 +1,288 @@
+# SVG Gallery Manifest — source of truth for all book illustrations
+# Consumed by build/generate-gallery.py to produce docs/gallery.html
+#
+# status values:
+#   live      — exists and deployed in the book
+#   hover     — exists in hover-definitions.yaml (popup only, not inline)
+#   planned   — designed but not yet built
+#   deferred  — considered and postponed (reason in notes)
+#
+# Each entry needs: id, name, status, source, category
+# Optional: terms (hover triggers), chapter, marker (insertion point),
+#           description, notes, sequence_group, sequence_order
+
+# ============================================================
+# LIVE — deployed inline in the book
+# ============================================================
+
+- id: SVG-001
+  name: book-tagline
+  status: live
+  source: hover-definitions.yaml
+  category: Title & Branding
+  terms: [relinquishment-title]
+  description: "Bordered tagline: three threads, real science, three explanations, you decide."
+
+- id: SVG-002
+  name: flat-cross-section
+  status: live
+  source: hover-definitions.yaml
+  category: The Flat / 2DEG
+  terms: [the-flat-title, the Flat, flat worlds]
+  chapter: the-flat
+  description: "Cross-section: 3D semiconductor sandwiching thin blue 2DEG layer with confined electrons."
+
+- id: SVG-003
+  name: 2deg-popup
+  status: live
+  source: hover-definitions.yaml
+  category: The Flat / 2DEG
+  terms: [two-dimensional electron gas]
+  description: "2DEG cross-section variant for hover popup."
+
+- id: SVG-004
+  name: topological-tunnel
+  status: live
+  source: hover-definitions.yaml
+  category: Topology & Wormholes
+  terms: [wormholes-title, wormholes, Wormholes]
+  description: "Surface A and B connected by dashed topological tunnel."
+
+- id: SVG-005
+  name: nonlocal-connection
+  status: live
+  source: hover-definitions.yaml
+  category: Topology & Wormholes
+  terms: [nonlocal]
+  description: "Here/there connected — no signal crosses the distance."
+
+- id: SVG-006
+  name: magnetosphere-hover
+  status: live
+  source: hover-definitions.yaml
+  category: Magnetosphere
+  terms: [magnetosphere]
+  description: "Earth's magnetosphere: dipole, bow shock, plasma sheet, Van Allen belts."
+
+- id: SVG-007
+  name: domain-buttons-hover
+  status: live
+  source: hover-definitions.yaml
+  category: The Stack / Convergence
+  terms: [buttons]
+  description: "11-domain button network (compact hover version, no legend)."
+
+- id: SVG-008
+  name: filmstrip-panel-1-scatter
+  status: live
+  source: preprocess.py
+  category: Kauffman Filmstrip
+  chapter: genesis
+  sequence_group: filmstrip
+  sequence_order: 1
+  description: "30 buttons scattered on floor. 0 threads."
+
+- id: SVG-009
+  name: filmstrip-panel-2-tie
+  status: live
+  source: preprocess.py
+  category: Kauffman Filmstrip
+  chapter: genesis
+  sequence_group: filmstrip
+  sequence_order: 2
+  description: "First ties. One pair lifted. 6 threads."
+
+- id: SVG-010
+  name: filmstrip-panel-3-clusters
+  status: live
+  source: preprocess.py
+  category: Kauffman Filmstrip
+  chapter: genesis
+  sequence_group: filmstrip
+  sequence_order: 3
+  description: "Small clusters forming. 10 threads."
+
+- id: SVG-011
+  name: filmstrip-panel-4-net
+  status: live
+  source: preprocess.py
+  category: Kauffman Filmstrip
+  chapter: genesis
+  sequence_group: filmstrip
+  sequence_order: 4
+  description: "Growing net, diamond cluster. 15 threads."
+
+- id: SVG-012
+  name: filmstrip-panel-5-almost
+  status: live
+  source: preprocess.py
+  category: Kauffman Filmstrip
+  chapter: genesis
+  sequence_group: filmstrip
+  sequence_order: 5
+  description: "Three dashed bridges away. 21 threads."
+
+- id: SVG-013
+  name: filmstrip-panel-6-snap
+  status: live
+  source: preprocess.py
+  category: Kauffman Filmstrip
+  chapter: genesis
+  sequence_group: filmstrip
+  sequence_order: 6
+  description: "Phase transition. Red bridge snaps giant component. 24/30."
+
+- id: SVG-014
+  name: domain-buttons-chapter
+  status: live
+  source: preprocess.py
+  category: The Stack / Convergence
+  chapter: genesis
+  description: "11-domain button network (full chapter version with legend)."
+
+- id: SVG-015
+  name: flat-diagram-chapter
+  status: live
+  source: preprocess.py
+  category: The Flat / 2DEG
+  chapter: the-flat
+  description: "Flat cross-section injected inline in chapter."
+
+- id: SVG-016
+  name: anyon-braiding
+  status: live
+  source: hover-definitions.yaml
+  category: Physics Concepts
+  terms: [anyon]
+  description: "Two anyons with worldlines braiding in 2+1D spacetime."
+
+- id: SVG-017
+  name: tqnn-network
+  status: live
+  source: hover-definitions.yaml
+  category: Physics Concepts
+  terms: [TQNN]
+  description: "Five anyonic quasiparticles on the Flat, connected by wormholes. Line thickness = entanglement weight."
+
+- id: SVG-018
+  name: braiding-three-strand
+  status: live
+  source: hover-definitions.yaml
+  category: Physics Concepts
+  terms: [braiding]
+  description: "Three-strand braid with crossings as quantum gates."
+
+- id: SVG-019
+  name: phase-transition-curve
+  status: live
+  source: hover-definitions.yaml
+  category: Physics Concepts
+  terms: [phase transition]
+  description: "S-curve: control parameter vs order, red critical point."
+
+- id: SVG-020
+  name: edge-of-chaos-zones
+  status: live
+  source: hover-definitions.yaml
+  category: Physics Concepts
+  terms: [edge of chaos]
+  description: "Three zones: frozen/ordered, edge of chaos, chaotic/random."
+
+- id: SVG-021
+  name: rule-110
+  status: live
+  source: hover-definitions.yaml
+  category: Physics Concepts
+  terms: [cellular automata, cellular automaton]
+  description: "Rule 110 cellular automaton — Turing-complete triangular pattern."
+
+- id: SVG-022
+  name: soc-sandpile
+  status: live
+  source: hover-definitions.yaml
+  category: Physics Concepts
+  terms: [self-organized criticality]
+  description: "Sandpile with avalanches of all sizes. Bak-Tang-Wiesenfeld."
+
+- id: SVG-023
+  name: cover-triskellion
+  status: live
+  source: build/images/cover-triskellion.svg
+  category: Standalone Files
+  description: "Cover triskellion — three interlocking arcs."
+
+- id: SVG-024
+  name: magnetosphere-test
+  status: live
+  source: build/images/magnetosphere-test.svg
+  category: Standalone Files
+  description: "Full magnetosphere with plasma sheet labeled 'The Flat'. Dark background."
+
+# ============================================================
+# PLANNED — designed, not yet built (Plan 0232)
+# ============================================================
+
+- id: SVG-025
+  name: autocatalytic-loop
+  status: planned
+  source: pending
+  category: Genesis Illustrations
+  chapter: genesis
+  marker: "The whole network sustains itself."
+  description: >
+    Circular arrow diagram: three molecules (A, B, C) in a cycle.
+    A catalyzes B, B catalyzes C, C catalyzes A. Arrows form a
+    self-sustaining loop. Shows what autocatalysis LOOKS like —
+    the chemistry version of what the filmstrip just showed
+    physically. Simple, iconic, p1-readable.
+  notes: "Placement: after 'The whole network sustains itself.' — right after the filmstrip lands the physical metaphor, this shows the chemical reality."
+
+- id: SVG-026
+  name: edge-of-chaos-inline
+  status: planned
+  source: pending
+  category: Genesis Illustrations
+  chapter: genesis
+  marker: "best able to evolve as well."
+  description: >
+    Enhanced three-regime diagram for inline chapter deployment.
+    Left: frozen crystal lattice (blue, rigid grid). Middle: narrow
+    green band with interconnected nodes (computation/life). Right:
+    chaotic gas (red, random scatter). TODO already exists in source
+    at genesis.tex line 46. Based on existing SVG-020 but larger,
+    with substrate examples (crystal, network, gas) instead of
+    abstract labels.
+  notes: "TODO comment already in genesis.tex lines 46-49. Existing SVG-020 works for hover; this inline version should be richer with concrete visual examples of each regime."
+
+- id: SVG-027
+  name: substrate-parallel
+  status: planned
+  source: pending
+  category: Genesis Illustrations
+  chapter: genesis
+  marker: "the threshold was crossed."
+  sequence_group: genesis-argument
+  sequence_order: 3
+  description: >
+    Side-by-side comparison. Left panel: beaker of organic molecules
+    with catalytic arrows between them (warm colors). Right panel:
+    2DEG substrate with anyonic quasiparticles and braiding arcs
+    (blue colors). Center bridge: "same mathematics" with Kauffman's
+    threshold equation hint. Shows the chapter's key intellectual
+    move: what works in chemistry works in quantum substrates.
+  notes: "Hardest of the four to execute well. Must be visually clear that both sides are governed by the same principle without being reductive. Jane needs to grasp 'same math, different stuff.' Rachel needs to see the specific parallel."
+
+- id: SVG-028
+  name: canopy-problem
+  status: planned
+  source: pending
+  category: Genesis Illustrations
+  chapter: genesis
+  marker: "the ecological niche is full."
+  description: >
+    Forest canopy cross-section. Tall established trees with full
+    green crowns blocking sunlight. Below: a small seedling in shadow,
+    reaching upward but receiving no light. Sun rays hit only the
+    canopy. Simple, dark implication lands without text. The visual
+    metaphor for first-mover advantage in any substrate.
+  notes: "Emotionally the darkest image in the chapter. The seedling is not attacked — it simply never gets the light. This is the visual that carries the canopy argument."
