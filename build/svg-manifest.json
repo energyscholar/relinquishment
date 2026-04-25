@@ -1,6 +1,6 @@
 {
   "source": "docs/downloads/Relinquishment.html",
-  "total": 7,
+  "total": 32,
   "assets": [
     {
       "asset_id": "Cross-section of a computer chip. Two grey blocks ",
@@ -36,8 +36,8 @@
       "kind": "built-html",
       "source": "docs/downloads/Relinquishment.html",
       "location": "docs/downloads/Relinquishment.html",
-      "bytes": 4497,
-      "element_count": 44,
+      "bytes": 4574,
+      "element_count": 45,
       "defs_ids": [
         "kbtn-sh"
       ],
@@ -50,7 +50,7 @@
       "kind": "built-html",
       "source": "docs/downloads/Relinquishment.html",
       "location": "docs/downloads/Relinquishment.html",
-      "bytes": 4863,
+      "bytes": 4859,
       "element_count": 48,
       "defs_ids": [
         "kbtn-sh"
@@ -60,12 +60,12 @@
       "notes": "A few hundred ties in. Small clumps \u2014 two, three buttons."
     },
     {
-      "asset_id": "growing clusters",
+      "asset_id": "growing net",
       "kind": "built-html",
       "source": "docs/downloads/Relinquishment.html",
       "location": "docs/downloads/Relinquishment.html",
-      "bytes": 5218,
-      "element_count": 52,
+      "bytes": 5290,
+      "element_count": 53,
       "defs_ids": [
         "kbtn-sh"
       ],
@@ -74,32 +74,343 @@
       "notes": "Almost halfway. The clusters are getting bigger."
     },
     {
-      "asset_id": "phase transition",
+      "asset_id": "almost",
       "kind": "built-html",
       "source": "docs/downloads/Relinquishment.html",
       "location": "docs/downloads/Relinquishment.html",
-      "bytes": 5319,
-      "element_count": 53,
+      "bytes": 6153,
+      "element_count": 62,
       "defs_ids": [
         "kbtn-sh"
       ],
       "used_by": [],
       "status": "applied",
-      "notes": "One more thread. Pick up one button \u2014 the whole room lifts. | Kauffman\u2019s buttons and threads \u2014 scatter, tie, cluster, snap."
+      "notes": "Three bridges away. Almost connected."
     },
     {
-      "asset_id": "domain-buttons/floor",
+      "asset_id": "phase transition",
       "kind": "built-html",
       "source": "docs/downloads/Relinquishment.html",
       "location": "docs/downloads/Relinquishment.html",
-      "bytes": 5816,
-      "element_count": 49,
+      "bytes": 6139,
+      "element_count": 62,
+      "defs_ids": [
+        "kbtn-sh"
+      ],
+      "used_by": [],
+      "status": "applied",
+      "notes": "One more thread. Pick up one button \u2014 the whole room lifts. | Kauffman\u2019s buttons and threads \u2014 scatter, tie, net, snap."
+    },
+    {
+      "asset_id": "Autocatalytic loop: three molecules A, B, and C ar",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 1877,
+      "element_count": 17,
+      "defs_ids": [
+        "aloop-arr"
+      ],
+      "used_by": [],
+      "status": "applied",
+      "notes": "An autocatalytic loop: each molecule catalyzes the next. The network sustains it"
+    },
+    {
+      "asset_id": "Three regimes side by side. Left: a rigid blue gri",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 4561,
+      "element_count": 56,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": "frozen | The edge of chaos: a narrow regime between frozen order and formless chaos where"
+    },
+    {
+      "asset_id": "Split panel showing the substrate parallel. Left: ",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 5101,
+      "element_count": 44,
+      "defs_ids": [
+        "sp-arr-warm",
+        "sp-arr-cool",
+        "sp-2deg-glow"
+      ],
+      "used_by": [],
+      "status": "applied",
+      "notes": "chemistry | Different substrates, same mathematics: catalytic chemistry (left) and quantum b"
+    },
+    {
+      "asset_id": "domain-buttons/&#x25BC;",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 9427,
+      "element_count": 77,
       "defs_ids": [
         "dbtn-sh"
       ],
       "used_by": [],
       "status": "applied",
-      "notes": "\u2014 missing bridges \u2014 | The same metaphor, applied to this book. Eleven scientific domains, connected by"
+      "notes": "The same metaphor, applied to this book. Eleven domains in five clusters, connec"
+    },
+    {
+      "asset_id": "Forest cross-section: two tall trees with broad gr",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 2594,
+      "element_count": 30,
+      "defs_ids": [
+        "canopy-sky",
+        "canopy-shadow"
+      ],
+      "used_by": [],
+      "status": "applied",
+      "notes": "The canopy problem: the first organism to cross the threshold owns the niche. Th"
+    },
+    {
+      "asset_id": "Book tagline: three narrative threads, real scienc",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 1013,
+      "element_count": 10,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": ""
+    },
+    {
+      "asset_id": "Two surfaces (A and B) connected by a topological ",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 1587,
+      "element_count": 12,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": ""
+    },
+    {
+      "asset_id": "Cross-section of a computer chip. Two grey blocks ",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 3070,
+      "element_count": 29,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": ""
+    },
+    {
+      "asset_id": "Cross-section of a computer chip. Two grey blocks ",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 3055,
+      "element_count": 29,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": ""
+    },
+    {
+      "asset_id": "Two surfaces (A and B) connected by a topological ",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 1587,
+      "element_count": 12,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": ""
+    },
+    {
+      "asset_id": "Cross-section: two grey blocks of 3D semiconductor",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 2992,
+      "element_count": 29,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": ""
+    },
+    {
+      "asset_id": "Two surfaces (A and B) connected by a topological ",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 1517,
+      "element_count": 12,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": ""
+    },
+    {
+      "asset_id": "Earth's magnetosphere. Earth at left-center with d",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 4385,
+      "element_count": 42,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": ""
+    },
+    {
+      "asset_id": "Two surfaces (A and B) connected by a topological ",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 1587,
+      "element_count": 12,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": ""
+    },
+    {
+      "asset_id": "Cross-section of a computer chip. Two grey blocks ",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 3070,
+      "element_count": 29,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": ""
+    },
+    {
+      "asset_id": "Three anyons (blue, red, green) with worldlines ri",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 1909,
+      "element_count": 19,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": ""
+    },
+    {
+      "asset_id": "html-svg-23",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 5685,
+      "element_count": 46,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": ""
+    },
+    {
+      "asset_id": "A graph with a control parameter on the horizontal",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 1781,
+      "element_count": 14,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": ""
+    },
+    {
+      "asset_id": "Rule 110 cellular automaton \u2014 a triangular pattern",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 2002,
+      "element_count": 5,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": ""
+    },
+    {
+      "asset_id": "A sandpile \u2014 a triangle of sand with red dots of v",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 2308,
+      "element_count": 23,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": ""
+    },
+    {
+      "asset_id": "Two anyons (blue and red dots) with their worldlin",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 1927,
+      "element_count": 19,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": ""
+    },
+    {
+      "asset_id": "Three zones arranged left to right: blue 'Frozen /",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 2410,
+      "element_count": 20,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": ""
+    },
+    {
+      "asset_id": "Five anyonic quasiparticles (blue dots) sitting on",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 4028,
+      "element_count": 34,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": ""
+    },
+    {
+      "asset_id": "Three stages of a phase transition: scattered butt",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 3683,
+      "element_count": 35,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": ""
+    },
+    {
+      "asset_id": "Two circles: warm amber for chemistry with a catal",
+      "kind": "built-html",
+      "source": "docs/downloads/Relinquishment.html",
+      "location": "docs/downloads/Relinquishment.html",
+      "bytes": 1877,
+      "element_count": 19,
+      "defs_ids": [],
+      "used_by": [],
+      "status": "applied",
+      "notes": ""
     }
   ]
 }
