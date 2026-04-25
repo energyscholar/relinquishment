@@ -133,6 +133,11 @@
     background: #154360;
   }
 
+  .submit-btn:disabled {
+    opacity: 0.5;
+    cursor: default;
+  }
+
   .hint {
     display: none;
     color: #856404;
@@ -181,6 +186,80 @@
     margin-bottom: 2em;
   }
 
+  /* Threads simulation */
+  .threads-svg {
+    width: 100%;
+    max-width: 400px;
+    height: auto;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background: #fff;
+    display: block;
+    margin: 0 auto 0.8em;
+  }
+
+  .sim-controls {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    justify-content: center;
+    margin-bottom: 0.5em;
+  }
+
+  .thread-count {
+    font-size: 0.95em;
+    color: #555;
+  }
+
+  .node-circle {
+    transition: fill 0.3s ease;
+  }
+
+  .node-circle.glow {
+    filter: drop-shadow(0 0 6px currentColor);
+  }
+
+  .transition-flash {
+    display: none;
+    text-align: center;
+    font-size: 1.3em;
+    font-weight: bold;
+    color: #2a9b9a;
+    padding: 0.5em;
+    animation: pulse 0.6s ease-in-out 3;
+  }
+
+  .transition-flash.visible {
+    display: block;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.7; transform: scale(1.05); }
+  }
+
+  .reset-wrap {
+    text-align: center;
+    margin: 2em 0 1em;
+  }
+
+  .reset-btn {
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.9em;
+    padding: 0.5em 1.2em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: #fff;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+  }
+
+  .reset-btn:hover {
+    color: #c0392b;
+    border-color: #c0392b;
+  }
+
   @media (prefers-color-scheme: dark) {
     body { background: #1a1a1a; color: #e0e0e0; }
     h2 { color: #6ba3f7; }
@@ -199,6 +278,10 @@
     .hint { background: #2a2510; color: #f0d060; border-left-color: #d4a14b; }
     .abstract { background: #1a2e2d; color: #ccc; }
     .no-crypto { background: #2a2510; border-color: #d4a14b; color: #f0d060; }
+    .threads-svg { background: #2a2a2a; border-color: #555; }
+    .thread-count { color: #aaa; }
+    .reset-btn { background: #2a2a2a; border-color: #555; color: #888; }
+    .reset-btn:hover { color: #e74c3c; border-color: #e74c3c; }
   }
 
   @media (max-width: 600px) {
@@ -208,21 +291,143 @@
     .text-input-wrap { flex-direction: column; }
     .option-btn { min-height: 44px; }
     .submit-btn { min-height: 44px; }
+    .threads-svg { max-width: 100%; }
   }
 </style>
 </head>
 <body>
 
-<h1>Relinquishment &mdash; Puzzle Preview</h1>
+<h1>Relinquishment &mdash; Puzzle Preview</h1> <a style="font-size:0.55em;color:#1a5276;" href="../tools.html">&larr; Back to Author Tools</a>
 <p class="framing">Each chapter ends with a puzzle. Solve it to reveal
 the chapter&rsquo;s Spiral Abstract &mdash; the meta-view that connects the chapter
-to the book&rsquo;s larger argument. These are samples from three chapters.</p>
-<p class="progress">Progress: <span id="count">0</span>/3</p>
+to the book&rsquo;s larger argument. These are samples from four chapters.</p>
+<p class="progress">Progress: <span id="count">0</span>/4</p>
 
 <div id="no-crypto" class="no-crypto" style="display:none;">
   <strong>Note:</strong> Your browser does not support the SubtleCrypto API.
   All puzzles are shown unlocked.
 </div>
+
+<script>var puzzleHashes = {};</script>
+
+<script>
+
+var threadsSims = {};
+var CLUSTER_COLORS = ["#2a9b9a","#c0392b","#8b5fc0","#d4a14b","#1a5276","#27ae60","#e67e22","#2980b9"];
+
+function initThreadsSim(id, hintThreshold) {
+  var N = 16, W = 400, H = 300, R = 12;
+  var nodes = [];
+  for (var i = 0; i < N; i++) {
+    nodes.push({
+      x: R + Math.random() * (W - 2*R),
+      y: R + Math.random() * (H - 2*R),
+      parent: i, rank: 0
+    });
+  }
+  // Generate all possible edges, shuffle
+  var allEdges = [];
+  for (var a = 0; a < N; a++)
+    for (var b = a+1; b < N; b++)
+      allEdges.push([a,b]);
+  for (var i = allEdges.length - 1; i > 0; i--) {
+    var j = Math.floor(Math.random() * (i+1));
+    var tmp = allEdges[i]; allEdges[i] = allEdges[j]; allEdges[j] = tmp;
+  }
+  var sim = {
+    id: id, nodes: nodes, edges: [], edgeQueue: allEdges,
+    edgeIdx: 0, threadCount: 0, solved: false,
+    hintThreshold: hintThreshold
+  };
+  threadsSims[id] = sim;
+  renderThreadsSvg(sim);
+}
+
+function ufFind(nodes, i) {
+  if (nodes[i].parent !== i) nodes[i].parent = ufFind(nodes, nodes[i].parent);
+  return nodes[i].parent;
+}
+
+function ufUnion(nodes, a, b) {
+  var ra = ufFind(nodes, a), rb = ufFind(nodes, b);
+  if (ra === rb) return;
+  if (nodes[ra].rank < nodes[rb].rank) { var t = ra; ra = rb; rb = t; }
+  nodes[rb].parent = ra;
+  if (nodes[ra].rank === nodes[rb].rank) nodes[ra].rank++;
+}
+
+function getClusters(nodes) {
+  var map = {};
+  for (var i = 0; i < nodes.length; i++) {
+    var r = ufFind(nodes, i);
+    if (!map[r]) map[r] = [];
+    map[r].push(i);
+  }
+  return map;
+}
+
+function largestCluster(nodes) {
+  var clusters = getClusters(nodes);
+  var max = 0;
+  for (var k in clusters) if (clusters[k].length > max) max = clusters[k].length;
+  return max;
+}
+
+function renderThreadsSvg(sim) {
+  var svg = document.getElementById("svg-" + sim.id);
+  if (!svg) return;
+  var clusters = getClusters(sim.nodes);
+  var nodeColor = {};
+  var ci = 0;
+  for (var root in clusters) {
+    var color = CLUSTER_COLORS[ci % CLUSTER_COLORS.length];
+    for (var j = 0; j < clusters[root].length; j++)
+      nodeColor[clusters[root][j]] = color;
+    ci++;
+  }
+  var parts = [];
+  for (var i = 0; i < sim.edges.length; i++) {
+    var e = sim.edges[i];
+    var a = sim.nodes[e[0]], b = sim.nodes[e[1]];
+    parts.push('<line x1="'+a.x+'" y1="'+a.y+'" x2="'+b.x+'" y2="'+b.y+'" stroke="#999" stroke-width="1.5" stroke-opacity="0.6"/>');
+  }
+  for (var i = 0; i < sim.nodes.length; i++) {
+    var n = sim.nodes[i];
+    var col = nodeColor[i] || "#ccc";
+    var cls = sim.solved && largestCluster(sim.nodes) > 8 ? " glow" : "";
+    parts.push('<circle cx="'+n.x+'" cy="'+n.y+'" r="12" fill="'+col+'" stroke="#fff" stroke-width="1.5" class="node-circle'+cls+'"/>');
+  }
+  svg.innerHTML = parts.join("\n");
+}
+
+function addThread(id) {
+  var sim = threadsSims[id];
+  if (!sim || sim.solved) return;
+  if (sim.edgeIdx >= sim.edgeQueue.length) return;
+  var edge = sim.edgeQueue[sim.edgeIdx++];
+  sim.edges.push(edge);
+  ufUnion(sim.nodes, edge[0], edge[1]);
+  sim.threadCount++;
+  document.getElementById("tcount-" + id).textContent = "Threads: " + sim.threadCount;
+  renderThreadsSvg(sim);
+  if (sim.threadCount >= sim.hintThreshold && largestCluster(sim.nodes) < 9) {
+    showHint(id);
+  }
+  if (largestCluster(sim.nodes) >= 9) {
+    sim.solved = true;
+    renderThreadsSvg(sim);
+    var flash = document.getElementById("flash-" + id);
+    if (flash) flash.classList.add("visible");
+    var btn = document.getElementById("add-btn-" + id);
+    if (btn) btn.disabled = true;
+    setTimeout(function() {
+      if (flash) flash.classList.remove("visible");
+      revealPuzzle(id);
+    }, 1800);
+  }
+}
+
+</script>
 
 
     <div class="puzzle-block" id="puzzle-flat">
@@ -241,42 +446,71 @@ to the book&rsquo;s larger argument. These are samples from three chapters.</p>
       <script>puzzleHashes["flat"] = ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"];</script>
     </div>
 
-    <div class="puzzle-block" id="puzzle-genesis">
+    <div class="puzzle-block" id="puzzle-threads">
       <h2>Genesis: The Edge of Chaos</h2>
-      <p class="question">Kauffman&#x27;s buttons-and-threads experiment shows that connection creates structure — not gradually, but all at once. What is the name for this kind of sudden shift?</p>
-      <div class="interaction" id="interact-genesis">
-        <div class="text-input-wrap"><input type="text" id="input-genesis" placeholder="Type your answer…" onkeydown="if(event.key==='Enter')checkText('genesis')"><button class="submit-btn" onclick="checkText('genesis')">Check</button></div>
+      <p class="question">Kauffman&#x27;s buttons-and-threads experiment: add threads between random buttons. Watch what happens when connections reach a critical density.</p>
+      <div class="interaction" id="interact-threads">
+        <div class="threads-sim" id="sim-threads">
+          <svg id="svg-threads" viewBox="0 0 400 300" class="threads-svg">
+          </svg>
+          <div class="sim-controls">
+            <button class="submit-btn" id="add-btn-threads" onclick="addThread('threads')">Add Thread</button>
+            <span class="thread-count" id="tcount-threads">Threads: 0</span>
+          </div>
+          <div class="transition-flash" id="flash-threads">Phase Transition!</div>
+        </div>
+        <script>initThreadsSim("threads", 12);</script>
       </div>
-      <p class="hint" id="hint-genesis">The chapter describes the origin of life as exactly this kind of event — not gradual, not accidental.</p>
-      <div class="result" id="result-genesis">
+      <p class="hint" id="hint-threads">Keep adding. Almost there.</p>
+      <div class="result" id="result-threads">
         <div class="solved-badge">&#10003; Solved</div>
         <blockquote class="abstract">Non-abelian anyonic quasiparticles in a fractional quantum Hall system, subjected to structured electromagnetic perturbation, can undergo autocatalytic self-organization at the edge of chaos, producing an emergent topological quantum neural network. Unlike conventional quantum computer design, which requires engineered gate sequences, the proposed system requires only the establishment of critical conditions in the substrate; computational architecture emerges spontaneously from the physics.</blockquote>
       </div>
-      <script>puzzleHashes["genesis"] = ["bb90e77c49fc24ebdc3e027ccea7ee9bea629236cd436afa0f20f0c2e47e63be"];</script>
+      
     </div>
 
-    <div class="puzzle-block" id="puzzle-silence-gap">
-      <h2>The Silence Gap</h2>
-      <p class="question">The chapter argues that no one has published a paper saying life cannot arise in a 2DEG. Why not?</p>
-      <div class="interaction" id="interact-silence-gap">
-        <button class="option-btn" data-key="a" onclick="checkMC('silence-gap', 'a', this)">(a) The evidence against it has been suppressed</button>
-          <button class="option-btn" data-key="b" onclick="checkMC('silence-gap', 'b', this)">(b) The question has never been formally asked in the relevant journals</button>
-          <button class="option-btn" data-key="c" onclick="checkMC('silence-gap', 'c', this)">(c) Several papers have argued against it, but they were retracted</button>
-          <button class="option-btn" data-key="d" onclick="checkMC('silence-gap', 'd', this)">(d) The physics clearly forbids it, so no paper was needed</button>
+    <div class="puzzle-block" id="puzzle-udhr">
+      <h2>Capabilities</h2>
+      <p class="question">The chapter applies three articles of the Universal Declaration of Human Rights to a non-human intelligence. Together, these articles prevent it from becoming:</p>
+      <div class="interaction" id="interact-udhr">
+        <button class="option-btn" data-key="a" onclick="checkMC('udhr', 'a', this)">(a) Conscious or self-aware</button>
+          <button class="option-btn" data-key="b" onclick="checkMC('udhr', 'b', this)">(b) A weapon, a spy, or a propaganda engine</button>
+          <button class="option-btn" data-key="c" onclick="checkMC('udhr', 'c', this)">(c) Able to communicate with humans</button>
+          <button class="option-btn" data-key="d" onclick="checkMC('udhr', 'd', this)">(d) Distributed across multiple substrates</button>
       </div>
-      <p class="hint" id="hint-silence-gap">The chapter distinguishes between rejection and absence. Which one describes the current literature?</p>
-      <div class="result" id="result-silence-gap">
+      <p class="hint" id="hint-udhr">Three articles. Three prohibitions. What do they have in common?</p>
+      <div class="result" id="result-udhr">
         <div class="solved-badge">&#10003; Solved</div>
-        <blockquote class="abstract">Five scientific disciplines — solid-state physics, topological quantum computation, neural networks, complexity science, and computational universality — each contain results that, taken together, point toward the possibility of life in two-dimensional quantum substrates. No discipline contains a refutation, because no discipline contains the proposition. The intersection is empty. The silence is not rejection. It is the absence of a question that no one&#x27;s job description required them to ask.</blockquote>
+        <blockquote class="abstract">The Universal Declaration of Human Rights was written for nation-states governing human affairs. Applied to a non-human intelligence, it becomes an operational constraint: no surveillance, no propaganda, no weapons. The entity can think, communicate, and persist — but it cannot be weaponized. The ethical containment is not a technology. It is a seventy-eight-year-old document that already exists.</blockquote>
       </div>
-      <script>puzzleHashes["silence-gap"] = ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"];</script>
+      <script>puzzleHashes["udhr"] = ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"];</script>
     </div>
+
+    <div class="puzzle-block" id="puzzle-phone">
+      <h2>Capabilities</h2>
+      <p class="question">Every modern smartphone contains a two-dimensional electron gas. Why?</p>
+      <div class="interaction" id="interact-phone">
+        <button class="option-btn" data-key="a" onclick="checkMC('phone', 'a', this)">(a) Smartphone designers chose 2DEGs for quantum computing capability</button>
+          <button class="option-btn" data-key="b" onclick="checkMC('phone', 'b', this)">(b) The physics of high-frequency transistors requires electrons confined to two dimensions</button>
+          <button class="option-btn" data-key="c" onclick="checkMC('phone', 'c', this)">(c) 2DEGs were added for security purposes</button>
+          <button class="option-btn" data-key="d" onclick="checkMC('phone', 'd', this)">(d) Older phones didn&#x27;t have them, but 5G requires quantum components</button>
+      </div>
+      <p class="hint" id="hint-phone">The chapter calls this &#x27;standard radio-frequency engineering.&#x27; The 2DEG is there for the transistor, not for anything quantum.</p>
+      <div class="result" id="result-phone">
+        <div class="solved-badge">&#10003; Solved</div>
+        <blockquote class="abstract">Every high-electron-mobility transistor — in every phone, every satellite, every WiFi router — confines electrons to two dimensions because the physics of high-frequency amplification requires it. The two-dimensional electron gas is not exotic technology. It is the substrate of modern telecommunications. Whether anything inhabits that substrate is a separate question from why it exists. The habitat is there because of engineering. The question of habitation is not engineering — it is biology, physics, and silence.</blockquote>
+      </div>
+      <script>puzzleHashes["phone"] = ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"];</script>
+    </div>
+
+<div class="reset-wrap">
+  <button class="reset-btn" onclick="resetPuzzles()">Reset All Puzzles</button>
+</div>
 
 <script>
 "use strict";
 
-var puzzleHashes = {};
-var TOTAL = 3;
+var TOTAL = 4;
 var STORAGE_KEY = "relinquishment-puzzles-solved";
 
 function getSolved() {
@@ -368,11 +602,19 @@ async function checkText(id) {
   }
 }
 
+function resetPuzzles() {
+  try { localStorage.removeItem(STORAGE_KEY); } catch(e) {}
+  window.location.reload();
+}
+
 function init() {
   if (!window.crypto || !window.crypto.subtle) {
     document.getElementById("no-crypto").style.display = "block";
     var ids = Object.keys(puzzleHashes);
     for (var i = 0; i < ids.length; i++) revealPuzzle(ids[i]);
+    // Also reveal interactive puzzles
+    var simIds = Object.keys(threadsSims || {});
+    for (var j = 0; j < simIds.length; j++) revealPuzzle(simIds[j]);
     return;
   }
   var solved = getSolved();
@@ -381,7 +623,6 @@ function init() {
   }
   updateCount();
 
-  // Scroll to anchor if present
   if (window.location.hash) {
     var el = document.querySelector(window.location.hash);
     if (el) setTimeout(function() { el.scrollIntoView({ behavior: "smooth" }); }, 100);

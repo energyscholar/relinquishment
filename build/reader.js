@@ -416,6 +416,15 @@
   // nav.appendChild(scienceBtn);
   // nav.appendChild(storyBtn);
   nav.appendChild(gBtn);
+
+  var toolsLink = document.createElement('a');
+  toolsLink.href = 'tools.html';
+  toolsLink.textContent = '·';
+  toolsLink.style.cssText = 'flex:0 0 auto;font-size:0.7em;color:transparent;' +
+    'text-decoration:none;padding:0.3em 0.2em;cursor:default;';
+  toolsLink.setAttribute('aria-hidden', 'true');
+  nav.appendChild(toolsLink);
+
   nav.appendChild(expandBtn);
   nav.appendChild(evalBtn);
   nav.appendChild(topBtn);

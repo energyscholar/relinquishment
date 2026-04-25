@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SVG Gallery — Relinquishment</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: Georgia, 'Times New Roman', serif;
+    max-width: 900px;
+    margin: 2em auto;
+    padding: 0 1em;
+    color: #333;
+    background: #fafafa;
+  }
+  h1 {
+    font-size: 1.6em;
+    margin-bottom: 0.3em;
+    color: #1a5276;
+  }
+  .subtitle {
+    color: #888;
+    font-size: 0.9em;
+    margin-bottom: 1.5em;
+  }
+  h2 {
+    font-size: 1.2em;
+    color: #1a5276;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.2em;
+    margin: 2em 0 1em;
+  }
+  h3 {
+    font-family: 'Courier New', monospace;
+    font-size: 0.95em;
+    color: #2471a3;
+    margin-bottom: 0.3em;
+  }
+  nav ul {
+    list-style: none;
+    padding-left: 0;
+  }
+  nav ul ul {
+    padding-left: 1.5em;
+    list-style: disc;
+  }
+  nav li {
+    margin: 0.15em 0;
+    font-size: 0.85em;
+  }
+  nav a {
+    color: #2471a3;
+    text-decoration: none;
+  }
+  nav a:hover {
+    text-decoration: underline;
+  }
+  .svg-entry {
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 4px;
+    padding: 1em;
+    margin: 1em 0;
+  }
+  .meta {
+    font-size: 0.8em;
+    color: #666;
+    margin-bottom: 0.8em;
+    line-height: 1.6;
+  }
+  .meta .label {
+    font-weight: bold;
+    color: #555;
+  }
+  .meta code {
+    background: #f0f0f0;
+    padding: 0.1em 0.3em;
+    border-radius: 2px;
+    font-size: 0.9em;
+  }
+  .svg-container {
+    text-align: center;
+    padding: 0.5em;
+    background: #fefefe;
+    border: 1px dashed #e8e8e8;
+    border-radius: 3px;
+    overflow-x: auto;
+  }
+  .svg-container svg {
+    max-width: 100%;
+    height: auto;
+  }
+  .svg-entry.planned {
+    border-color: #e8c4c4;
+    background: #fef8f8;
+  }
+  .count {
+    font-size: 0.85em;
+    color: #888;
+  }
+</style>
+</head>
+<body>
+<h1>SVG Gallery</h1> <a style="font-size:0.55em;color:#1a5276;font-family:Georgia,serif;" href="tools.html">&larr; Back to Author Tools</a>
+<p class="subtitle">24 live SVGs from hover-definitions.yaml, preprocess.py, and build/images/. 4 planned.<br>
+Development tool. Not part of the book. Manifest: <code>build/gallery-manifest.yaml</code></p>
+
+<nav>
+<h2 style="margin-top:0;">Table of Contents</h2>
+<ul>
+<li><strong>Title & Branding</strong><ul>  <li><a href="#SVG-001-relinquishment-title">SVG-001-relinquishment-title</a> — relinquishment-title</li></ul></li><li><strong>The Flat / 2DEG</strong><ul>  <li><a href="#SVG-002-the-flat-title">SVG-002-the-flat-title</a> — the-flat-title, the Flat, flat worlds</li>  <li><a href="#SVG-003-two-dimensional-electron-gas">SVG-003-two-dimensional-electron-gas</a> — two-dimensional electron gas</li></ul></li><li><strong>Topology & Wormholes</strong><ul>  <li><a href="#SVG-004-wormholes-title">SVG-004-wormholes-title</a> — wormholes-title, wormholes, Wormholes</li>  <li><a href="#SVG-005-nonlocal">SVG-005-nonlocal</a> — nonlocal</li></ul></li><li><strong>Magnetosphere</strong><ul>  <li><a href="#SVG-006-magnetosphere">SVG-006-magnetosphere</a> — magnetosphere</li></ul></li><li><strong>The Stack / Convergence</strong><ul>  <li><a href="#SVG-007-buttons">SVG-007-buttons</a> — buttons</li></ul></li><li><strong>Kauffman Filmstrip (6 panels)</strong><ul>  <li><a href="#SVG-008-filmstrip-panel-1">SVG-008-filmstrip-panel-1</a> — (inline chapter injection)</li>  <li><a href="#SVG-009-filmstrip-panel-2">SVG-009-filmstrip-panel-2</a> — (inline chapter injection)</li>  <li><a href="#SVG-010-filmstrip-panel-3">SVG-010-filmstrip-panel-3</a> — (inline chapter injection)</li>  <li><a href="#SVG-011-filmstrip-panel-4">SVG-011-filmstrip-panel-4</a> — (inline chapter injection)</li>  <li><a href="#SVG-012-filmstrip-panel-5">SVG-012-filmstrip-panel-5</a> — (inline chapter injection)</li>  <li><a href="#SVG-013-filmstrip-panel-6">SVG-013-filmstrip-panel-6</a> — (inline chapter injection)</li></ul></li><li><strong>Domain Buttons (chapter version)</strong><ul>  <li><a href="#SVG-014-inject-domain-buttons">SVG-014-inject-domain-buttons</a> — (inline chapter injection)</li></ul></li><li><strong>Flat Diagram (chapter version)</strong><ul>  <li><a href="#SVG-015-inject-flat-diagram">SVG-015-inject-flat-diagram</a> — (inline chapter injection)</li></ul></li><li><strong>Physics Concepts</strong><ul>  <li><a href="#SVG-016-anyon">SVG-016-anyon</a> — anyon</li>  <li><a href="#SVG-017-TQNN">SVG-017-TQNN</a> — TQNN</li>  <li><a href="#SVG-018-braiding">SVG-018-braiding</a> — braiding</li>  <li><a href="#SVG-019-phase-transition">SVG-019-phase-transition</a> — phase transition</li>  <li><a href="#SVG-020-edge-of-chaos">SVG-020-edge-of-chaos</a> — edge of chaos</li>  <li><a href="#SVG-021-cellular-automata">SVG-021-cellular-automata</a> — cellular automata, cellular automaton</li>  <li><a href="#SVG-022-self-organized-criticality">SVG-022-self-organized-criticality</a> — self-organized criticality</li></ul></li><li><strong>Standalone Files</strong><ul>  <li><a href="#SVG-023-cover-triskellion">SVG-023-cover-triskellion</a> — build/images/cover-triskellion.svg</li>  <li><a href="#SVG-024-magnetosphere-test">SVG-024-magnetosphere-test</a> — build/images/magnetosphere-test.svg</li></ul></li><li><strong style="color:#c0392b;">Planned — Not Yet Built (4)</strong><ul>  <li><a href="#SVG-025">SVG-025</a> — autocatalytic-loop <span style="color:#c0392b;font-size:0.8em;">PLANNED</span></li>  <li><a href="#SVG-026">SVG-026</a> — edge-of-chaos-inline <span style="color:#c0392b;font-size:0.8em;">PLANNED</span></li>  <li><a href="#SVG-027">SVG-027</a> — substrate-parallel <span style="color:#c0392b;font-size:0.8em;">PLANNED</span></li>  <li><a href="#SVG-028">SVG-028</a> — canopy-problem <span style="color:#c0392b;font-size:0.8em;">PLANNED</span></li></ul></li>
+</ul>
+</nav>
+
+<h2>Title & Branding</h2>
+<section id="SVG-001-relinquishment-title" class="svg-entry">
+  <h3>SVG-001-relinquishment-title</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>relinquishment-title</code><br>
+    <span class="label">SVG title:</span> Book tagline: three narrative threads, real science, three possible explanations, you decide.<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" width="280" height="60" viewBox="0 0 280 60" style="display:block;margin:0.5em auto;"><title>Book tagline: three narrative threads, real science, three possible explanations, you decide.</title><defs><linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" style="stop-color:#1a5276;stop-opacity:0.8"/><stop offset="50%" style="stop-color:#2471a3;stop-opacity:1"/><stop offset="100%" style="stop-color:#1a5276;stop-opacity:0.8"/></linearGradient></defs><rect x="2" y="2" width="276" height="56" rx="8" fill="none" stroke="url(#glow)" stroke-width="1.5"/><text x="140" y="24" text-anchor="middle" font-size="11" fill="#1a5276" font-family="serif" font-style="italic">Three narrative threads. Real science.</text><text x="140" y="42" text-anchor="middle" font-size="11" fill="#1a5276" font-family="serif" font-style="italic">Three possible explanations. You decide.</text></svg>
+  </div>
+</section>
+<h2>The Flat / 2DEG</h2>
+<section id="SVG-002-the-flat-title" class="svg-entry">
+  <h3>SVG-002-the-flat-title</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>the-flat-title</code>, <code>the Flat</code>, <code>flat worlds</code><br>
+    <span class="label">SVG title:</span> Cross-section of a computer chip. Two grey blocks of 3D semiconductor sandwich a thin blue layer — the two-dimensional electron gas (2DEG). Blue dots are electrons confined to this flat layer. They can move left and right but not up or down. This is the Flat.<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" width="300" height="130" viewBox="0 0 300 130" style="display:block;margin:0.5em auto;"><title>Cross-section of a computer chip. Two grey blocks of 3D semiconductor sandwich a thin blue layer — the two-dimensional electron gas (2DEG). Blue dots are electrons confined to this flat layer. They can move left and right but not up or down. This is the Flat.</title><defs><linearGradient id="flat-glow" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#2471a3" stop-opacity="0.05"/><stop offset="50%" stop-color="#2471a3" stop-opacity="0.2"/><stop offset="100%" stop-color="#2471a3" stop-opacity="0.05"/></linearGradient><marker id="flat-arr" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0,0 L 6,3 L 0,6 Z" fill="#1a5276"/></marker></defs><rect x="30" y="20" width="240" height="25" rx="2" fill="#e0e0e0" stroke="#999" stroke-width="0.8"/><text x="150" y="36" text-anchor="middle" font-size="8" fill="#666" font-family="sans-serif">3D material (bulk semiconductor)</text><rect x="30" y="50" width="240" height="8" rx="1" fill="url(#flat-glow)" stroke="#2471a3" stroke-width="1.5"/><rect x="30" y="63" width="240" height="25" rx="2" fill="#e0e0e0" stroke="#999" stroke-width="0.8"/><text x="150" y="79" text-anchor="middle" font-size="8" fill="#666" font-family="sans-serif">3D material (bulk semiconductor)</text><circle cx="70" cy="54" r="2.5" fill="#2471a3" opacity="0.9"/><circle cx="100" cy="54" r="2.5" fill="#2471a3" opacity="0.7"/><circle cx="135" cy="54" r="2.5" fill="#2471a3" opacity="0.9"/><circle cx="165" cy="54" r="2.5" fill="#2471a3" opacity="0.6"/><circle cx="195" cy="54" r="2.5" fill="#2471a3" opacity="0.8"/><circle cx="225" cy="54" r="2.5" fill="#2471a3" opacity="0.7"/><circle cx="115" cy="55" r="2" fill="#2471a3" opacity="0.4"/><circle cx="180" cy="53" r="2" fill="#2471a3" opacity="0.5"/><circle cx="245" cy="54" r="2" fill="#2471a3" opacity="0.5"/><line x1="58" y1="54" x2="48" y2="54" stroke="#1a5276" stroke-width="0.8" marker-end="url(#flat-arr)"/><line x1="252" y1="54" x2="262" y2="54" stroke="#1a5276" stroke-width="0.8" marker-end="url(#flat-arr)"/><text x="18" y="56" text-anchor="middle" font-size="7" fill="#2471a3" font-family="sans-serif" transform="rotate(-90,18,56)">2DEG</text><text x="285" y="56" text-anchor="middle" font-size="7" fill="#2471a3" font-family="sans-serif" transform="rotate(90,285,56)">2DEG</text><text x="150" y="104" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif" font-style="italic">electrons confined to two dimensions</text><text x="150" y="118" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">different physics applies here</text></svg>
+  </div>
+</section>
+
+<section id="SVG-003-two-dimensional-electron-gas" class="svg-entry">
+  <h3>SVG-003-two-dimensional-electron-gas</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>two-dimensional electron gas</code><br>
+    <span class="label">SVG title:</span> Cross-section: two grey blocks of 3D semiconductor sandwich a thin blue layer — the 2DEG. Blue dots are electrons confined to this flat layer. They can move left and right but not up or down.<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" width="300" height="130" viewBox="0 0 300 130" style="display:block;margin:0.5em auto;"><title>Cross-section: two grey blocks of 3D semiconductor sandwich a thin blue layer — the 2DEG. Blue dots are electrons confined to this flat layer. They can move left and right but not up or down.</title><defs><linearGradient id="deg-glow" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#2471a3" stop-opacity="0.05"/><stop offset="50%" stop-color="#2471a3" stop-opacity="0.2"/><stop offset="100%" stop-color="#2471a3" stop-opacity="0.05"/></linearGradient><marker id="deg-arr" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="5" markerHeight="5" orient="auto"><path d="M 0,0 L 6,3 L 0,6 Z" fill="#1a5276"/></marker></defs><rect x="30" y="20" width="240" height="25" rx="2" fill="#e0e0e0" stroke="#999" stroke-width="0.8"/><text x="150" y="36" text-anchor="middle" font-size="8" fill="#666" font-family="sans-serif">3D material (bulk semiconductor)</text><rect x="30" y="50" width="240" height="8" rx="1" fill="url(#deg-glow)" stroke="#2471a3" stroke-width="1.5"/><rect x="30" y="63" width="240" height="25" rx="2" fill="#e0e0e0" stroke="#999" stroke-width="0.8"/><text x="150" y="79" text-anchor="middle" font-size="8" fill="#666" font-family="sans-serif">3D material (bulk semiconductor)</text><circle cx="70" cy="54" r="2.5" fill="#2471a3" opacity="0.9"/><circle cx="100" cy="54" r="2.5" fill="#2471a3" opacity="0.7"/><circle cx="135" cy="54" r="2.5" fill="#2471a3" opacity="0.9"/><circle cx="165" cy="54" r="2.5" fill="#2471a3" opacity="0.6"/><circle cx="195" cy="54" r="2.5" fill="#2471a3" opacity="0.8"/><circle cx="225" cy="54" r="2.5" fill="#2471a3" opacity="0.7"/><circle cx="115" cy="55" r="2" fill="#2471a3" opacity="0.4"/><circle cx="180" cy="53" r="2" fill="#2471a3" opacity="0.5"/><circle cx="245" cy="54" r="2" fill="#2471a3" opacity="0.5"/><line x1="58" y1="54" x2="48" y2="54" stroke="#1a5276" stroke-width="0.8" marker-end="url(#deg-arr)"/><line x1="252" y1="54" x2="262" y2="54" stroke="#1a5276" stroke-width="0.8" marker-end="url(#deg-arr)"/><text x="18" y="56" text-anchor="middle" font-size="7" fill="#2471a3" font-family="sans-serif" transform="rotate(-90,18,56)">2DEG</text><text x="285" y="56" text-anchor="middle" font-size="7" fill="#2471a3" font-family="sans-serif" transform="rotate(90,285,56)">2DEG</text><text x="150" y="104" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif" font-style="italic">electrons confined to two dimensions</text><text x="150" y="118" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">different physics applies here</text></svg>
+  </div>
+</section>
+<h2>Topology & Wormholes</h2>
+<section id="SVG-004-wormholes-title" class="svg-entry">
+  <h3>SVG-004-wormholes-title</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>wormholes-title</code>, <code>wormholes</code>, <code>Wormholes</code><br>
+    <span class="label">SVG title:</span> Two surfaces (A and B) connected by a topological tunnel. Information at surface A appears at surface B without crossing the space between. The dashed lines show the connection threading through the material.<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" width="300" height="140" viewBox="0 0 300 140" style="display:block;margin:0.5em auto;"><title>Two surfaces (A and B) connected by a topological tunnel. Information at surface A appears at surface B without crossing the space between. The dashed lines show the connection threading through the material.</title><ellipse cx="80" cy="35" rx="65" ry="20" fill="none" stroke="#1a5276" stroke-width="1.2" opacity="0.6"/><ellipse cx="80" cy="35" rx="18" ry="8" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5"/><ellipse cx="220" cy="105" rx="65" ry="20" fill="none" stroke="#1a5276" stroke-width="1.2" opacity="0.6"/><ellipse cx="220" cy="105" rx="18" ry="8" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5"/><path d="M 62,35 C 55,60 195,80 202,105" fill="none" stroke="#2471a3" stroke-width="1.2" stroke-dasharray="4,3"/><path d="M 98,35 C 105,60 245,80 238,105" fill="none" stroke="#2471a3" stroke-width="1.2" stroke-dasharray="4,3"/><text x="80" y="12" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">surface A</text><text x="220" y="135" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">surface B</text><text x="150" y="75" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif">topological</text><text x="150" y="87" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif">connection</text></svg>
+  </div>
+</section>
+
+<section id="SVG-005-nonlocal" class="svg-entry">
+  <h3>SVG-005-nonlocal</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>nonlocal</code><br>
+    <span class="label">SVG title:</span> Two surfaces (A and B) connected by a topological tunnel. Information at surface A appears at surface B without crossing the space between.<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" width="300" height="140" viewBox="0 0 300 140" style="display:block;margin:0.5em auto;"><title>Two surfaces (A and B) connected by a topological tunnel. Information at surface A appears at surface B without crossing the space between.</title><ellipse cx="80" cy="35" rx="65" ry="20" fill="none" stroke="#1a5276" stroke-width="1.2" opacity="0.6"/><ellipse cx="80" cy="35" rx="18" ry="8" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5"/><ellipse cx="220" cy="105" rx="65" ry="20" fill="none" stroke="#1a5276" stroke-width="1.2" opacity="0.6"/><ellipse cx="220" cy="105" rx="18" ry="8" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5"/><path d="M 62,35 C 55,60 195,80 202,105" fill="none" stroke="#2471a3" stroke-width="1.2" stroke-dasharray="4,3"/><path d="M 98,35 C 105,60 245,80 238,105" fill="none" stroke="#2471a3" stroke-width="1.2" stroke-dasharray="4,3"/><text x="80" y="12" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">here</text><text x="220" y="135" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">there</text><text x="150" y="75" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif">no signal crosses</text><text x="150" y="87" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif">the distance</text></svg>
+  </div>
+</section>
+<h2>Magnetosphere</h2>
+<section id="SVG-006-magnetosphere" class="svg-entry">
+  <h3>SVG-006-magnetosphere</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>magnetosphere</code><br>
+    <span class="label">SVG title:</span> Earth's magnetosphere. Earth at left-center with dipole field lines. Solar wind compresses the dayside and stretches the magnetotail rightward. The plasma sheet — a thin 2D layer of charged particles — runs down the center of the tail. The bow shock curves around the sunward side. Van Allen radiation belts shown as nested shells around Earth.<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 240" width="380" height="240" style="display:block;margin:0 auto;"> <title>Earth's magnetosphere. Earth at left-center with dipole field lines. Solar wind compresses the dayside and stretches the magnetotail rightward. The plasma sheet — a thin 2D layer of charged particles — runs down the center of the tail. The bow shock curves around the sunward side. Van Allen radiation belts shown as nested shells around Earth.</title> <rect width="380" height="240" fill="#fafafa" rx="4"/> <defs> <marker id="ms-sw" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#f39c12"/></marker> <radialGradient id="ms-earth" cx="50%" cy="50%" r="50%"> <stop offset="0%" stop-color="#85c1e9"/><stop offset="100%" stop-color="#2471a3"/> </radialGradient> <linearGradient id="ms-ps" x1="0%" y1="0%" x2="100%" y2="0%"> <stop offset="0%" stop-color="#c0392b" stop-opacity="0.6"/> <stop offset="50%" stop-color="#c0392b" stop-opacity="0.3"/> <stop offset="100%" stop-color="#c0392b" stop-opacity="0.1"/> </linearGradient> </defs> <circle cx="120" cy="120" r="16" fill="url(#ms-earth)" stroke="#1a5276" stroke-width="1.2"/> <text x="120" y="124" font-size="7" fill="#fff" font-family="sans-serif" text-anchor="middle" font-weight="bold">Earth</text> <ellipse cx="120" cy="120" rx="28" ry="14" fill="none" stroke="#5dade2" stroke-width="1" opacity="0.5"/> <ellipse cx="120" cy="120" rx="40" ry="22" fill="none" stroke="#5dade2" stroke-width="0.8" opacity="0.35"/> <text x="120" y="96" font-size="6" fill="#5dade2" font-family="sans-serif" text-anchor="middle" opacity="0.7">Van Allen belts</text> <path d="M104,85 C70,60 60,30 95,12" fill="none" stroke="#1a5276" stroke-width="1.2"/> <path d="M104,155 C70,180 60,210 95,228" fill="none" stroke="#1a5276" stroke-width="1.2"/> <path d="M136,85 C170,60 180,30 145,12" fill="none" stroke="#1a5276" stroke-width="1.2"/> <path d="M136,155 C170,180 180,210 145,228" fill="none" stroke="#1a5276" stroke-width="1.2"/> <path d="M80,120 C55,70 50,25 90,5" fill="none" stroke="#1a5276" stroke-width="0.8" stroke-dasharray="3,2"/> <path d="M80,120 C55,170 50,215 90,235" fill="none" stroke="#1a5276" stroke-width="0.8" stroke-dasharray="3,2"/> <path d="M160,120 C200,70 220,30 200,8" fill="none" stroke="#1a5276" stroke-width="0.6" stroke-dasharray="2,2" opacity="0.4"/> <path d="M160,120 C200,170 220,210 200,232" fill="none" stroke="#1a5276" stroke-width="0.6" stroke-dasharray="2,2" opacity="0.4"/> <rect x="160" y="116" width="210" height="8" rx="2" fill="url(#ms-ps)"/> <circle cx="185" cy="120" r="1.5" fill="#c0392b" opacity="0.8"/> <circle cx="210" cy="119" r="1.2" fill="#c0392b" opacity="0.6"/> <circle cx="240" cy="121" r="1" fill="#c0392b" opacity="0.5"/> <circle cx="265" cy="120" r="1.2" fill="#c0392b" opacity="0.4"/> <circle cx="290" cy="119" r="1" fill="#c0392b" opacity="0.3"/> <circle cx="320" cy="120" r="0.8" fill="#c0392b" opacity="0.2"/> <text x="350" y="112" font-size="8" fill="#c0392b" font-family="sans-serif" text-anchor="end" font-style="italic">magnetotail</text> <text x="260" y="135" font-size="7.5" fill="#c0392b" font-family="sans-serif" text-anchor="middle" font-weight="bold">plasma sheet (2D)</text> <path d="M65,40 C52,75 52,165 65,200" fill="none" stroke="#e67e22" stroke-width="1.8"/> <text x="46" y="120" font-size="7.5" fill="#e67e22" font-family="sans-serif" text-anchor="middle" transform="rotate(-90,46,120)">bow shock</text> <line x1="5" y1="105" x2="40" y2="112" stroke="#f39c12" stroke-width="1.2" marker-end="url(#ms-sw)"/> <line x1="5" y1="120" x2="40" y2="120" stroke="#f39c12" stroke-width="1.2" marker-end="url(#ms-sw)"/> <line x1="5" y1="135" x2="40" y2="128" stroke="#f39c12" stroke-width="1.2" marker-end="url(#ms-sw)"/> <text x="5" y="98" font-size="8" fill="#f39c12" font-family="sans-serif">solar</text> <text x="5" y="150" font-size="8" fill="#f39c12" font-family="sans-serif">wind</text> </svg>
+  </div>
+</section>
+<h2>The Stack / Convergence</h2>
+<section id="SVG-007-buttons" class="svg-entry">
+  <h3>SVG-007-buttons</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>buttons</code><br>
+    <span class="label">SVG title:</span> <br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" width="380" height="280" viewBox="0 0 500 390" style="display:block;margin:0.5em auto;"><defs><filter id="dbtn-sh-tt" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-opacity="0.2"/></filter></defs><line x1="25" y1="335" x2="475" y2="335" stroke="#ccc" stroke-width="1" stroke-dasharray="4,4"/><line x1="58" y1="82" x2="310" y2="108" stroke="#bbb" stroke-width="0.8" opacity="0.3" stroke-dasharray="5,3"/><line x1="442" y1="82" x2="250" y2="220" stroke="#bbb" stroke-width="0.8" opacity="0.3" stroke-dasharray="5,3"/><line x1="372" y1="278" x2="442" y2="82" stroke="#bbb" stroke-width="0.8" opacity="0.3" stroke-dasharray="5,3"/><line x1="372" y1="228" x2="250" y2="220" stroke="#bbb" stroke-width="0.8" opacity="0.3" stroke-dasharray="5,3"/><line x1="110" y1="252" x2="442" y2="82" stroke="#bbb" stroke-width="0.8" opacity="0.3" stroke-dasharray="5,3"/><line x1="58" y1="140" x2="442" y2="82" stroke="#777" stroke-width="1.0" opacity="0.4"/><line x1="310" y1="108" x2="110" y2="252" stroke="#777" stroke-width="1.0" opacity="0.4"/><line x1="250" y1="55" x2="190" y2="108" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/><line x1="250" y1="55" x2="310" y2="108" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/><line x1="190" y1="108" x2="310" y2="108" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/><line x1="250" y1="55" x2="250" y2="220" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/><line x1="190" y1="108" x2="250" y2="220" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/><line x1="310" y1="108" x2="250" y2="220" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/><line x1="58" y1="82" x2="58" y2="140" stroke="#c0392b" stroke-width="1.5" opacity="0.65"/><line x1="442" y1="82" x2="442" y2="140" stroke="#e67e22" stroke-width="1.5" opacity="0.65"/><line x1="372" y1="228" x2="372" y2="278" stroke="#8e44ad" stroke-width="1.5" opacity="0.65"/><circle cx="250" cy="55" r="16" fill="#2471a3" stroke="#1a5276" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><circle cx="190" cy="108" r="16" fill="#2980b9" stroke="#2471a3" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><circle cx="310" cy="108" r="16" fill="#3498db" stroke="#2980b9" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><circle cx="250" cy="220" r="16" fill="#1a5276" stroke="#0d2f4b" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><circle cx="58" cy="82" r="16" fill="#c0392b" stroke="#962d22" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><circle cx="58" cy="140" r="16" fill="#e74c3c" stroke="#c0392b" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><circle cx="442" cy="82" r="16" fill="#e67e22" stroke="#bf6516" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><circle cx="442" cy="140" r="16" fill="#f39c12" stroke="#d4860b" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><circle cx="372" cy="228" r="16" fill="#8e44ad" stroke="#6c3483" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><circle cx="372" cy="278" r="16" fill="#a569bd" stroke="#8e44ad" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><circle cx="110" cy="252" r="16" fill="#b8860b" stroke="#8b6508" stroke-width="1.5" filter="url(#dbtn-sh-tt)"/><text x="250" y="59" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Topo</text><text x="190" y="112" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">TFT</text><text x="310" y="112" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">CMP</text><text x="250" y="224" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">TQC</text><text x="58" y="86" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Sol</text><text x="58" y="144" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">NLD</text><text x="442" y="86" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">ACS</text><text x="442" y="144" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Auto</text><text x="372" y="232" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">CE</text><text x="372" y="282" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Par</text><text x="110" y="256" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7.5" fill="white" font-weight="bold">Mat</text><text x="250" y="248" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#999">&#x25BC;</text><text x="250" y="358" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">One thread holds. Cut it, and the argument falls apart.</text><text x="250" y="373" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#999">after Kauffman (1993)</text></svg>
+  </div>
+</section>
+<h2>Kauffman Filmstrip (6 panels)</h2>
+<section id="SVG-008-filmstrip-panel-1" class="svg-entry">
+  <h3>SVG-008-filmstrip-panel-1</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>(inline chapter injection)</code><br>
+    <span class="label">SVG title:</span> Kauffman filmstrip panel 1: scatter<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" width="380" height="220" viewBox="0 0 500 290" style="display:block;margin:0.3em auto;"><defs><filter id="kbtn-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-opacity="0.15"/></filter></defs>
+<line x1="20" y1="250" x2="480" y2="250" stroke="#ccc" stroke-width="1" stroke-dasharray="4,4"/>
+<circle cx="38" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="63" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="85" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="112" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="135" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="161" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="180" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="208" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="225" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="252" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="275" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="292" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="318" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="338" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="365" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="388" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="405" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="435" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="452" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="478" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="48" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="78" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="122" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="168" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="218" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="258" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="308" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="348" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="398" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="442" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<text x="15" y="18" font-family="Georgia, serif" font-size="9" fill="#aaa">scatter</text>
+<text x="485" y="275" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#999">0 / 30</text>
+<text x="250" y="275" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555" font-style="italic">Ten thousand buttons on a floor.</text></svg>
+  </div>
+</section>
+
+<section id="SVG-009-filmstrip-panel-2" class="svg-entry">
+  <h3>SVG-009-filmstrip-panel-2</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>(inline chapter injection)</code><br>
+    <span class="label">SVG title:</span> Kauffman filmstrip panel 2: tie and toss<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" width="380" height="220" viewBox="0 0 500 290" style="display:block;margin:0.3em auto;"><defs><filter id="kbtn-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-opacity="0.15"/></filter></defs>
+<line x1="20" y1="250" x2="480" y2="250" stroke="#ccc" stroke-width="1" stroke-dasharray="4,4"/>
+<line x1="112" y1="240" x2="122" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="122" y1="227" x2="161" y2="240" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="38" y1="240" x2="48" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="180" y1="240" x2="208" y2="240" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="478" y1="240" x2="442" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="252" y1="40" x2="237" y2="47" stroke="#666" stroke-width="1.2" opacity="0.6" stroke-dasharray="4,2"/>
+<circle cx="237" cy="47" r="2" fill="#999" opacity="0.5"/>
+<circle cx="38" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="63" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="85" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="112" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="135" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="161" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="180" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="208" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="225" cy="52" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="252" cy="40" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="275" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="292" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="318" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="338" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="365" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="388" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="405" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="435" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="452" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="478" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="48" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="78" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="122" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="168" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="218" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="258" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="308" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="348" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="398" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="442" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<text x="15" y="18" font-family="Georgia, serif" font-size="9" fill="#aaa">tie and toss</text>
+<text x="485" y="275" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#999">6 / 30</text>
+<text x="250" y="275" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555" font-style="italic">Pick up two at random. Tie them together. Toss them back.</text></svg>
+  </div>
+</section>
+
+<section id="SVG-010-filmstrip-panel-3" class="svg-entry">
+  <h3>SVG-010-filmstrip-panel-3</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>(inline chapter injection)</code><br>
+    <span class="label">SVG title:</span> Kauffman filmstrip panel 3: early clusters<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" width="380" height="220" viewBox="0 0 500 290" style="display:block;margin:0.3em auto;"><defs><filter id="kbtn-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-opacity="0.15"/></filter></defs>
+<line x1="20" y1="250" x2="480" y2="250" stroke="#ccc" stroke-width="1" stroke-dasharray="4,4"/>
+<line x1="252" y1="40" x2="225" y2="75" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="112" y1="240" x2="122" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="122" y1="227" x2="161" y2="240" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="38" y1="240" x2="48" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="180" y1="240" x2="208" y2="240" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="478" y1="240" x2="442" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="48" y1="227" x2="63" y2="240" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="208" y1="240" x2="218" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="275" y1="240" x2="258" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="292" y1="240" x2="308" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<circle cx="38" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="63" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="85" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="112" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="135" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="161" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="180" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="208" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="225" cy="75" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="252" cy="40" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="275" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="292" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="318" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="338" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="365" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="388" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="405" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="435" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="452" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="478" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="48" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="78" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="122" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="168" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="218" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="258" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="308" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="348" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="398" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="442" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<text x="15" y="18" font-family="Georgia, serif" font-size="9" fill="#aaa">early clusters</text>
+<text x="485" y="275" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#999">10 / 30</text>
+<text x="250" y="275" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555" font-style="italic">A few hundred ties in. Small clumps — two, three buttons.</text></svg>
+  </div>
+</section>
+
+<section id="SVG-011-filmstrip-panel-4" class="svg-entry">
+  <h3>SVG-011-filmstrip-panel-4</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>(inline chapter injection)</code><br>
+    <span class="label">SVG title:</span> Kauffman filmstrip panel 4: growing net<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" width="380" height="220" viewBox="0 0 500 290" style="display:block;margin:0.3em auto;"><defs><filter id="kbtn-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-opacity="0.15"/></filter></defs>
+<line x1="20" y1="250" x2="480" y2="250" stroke="#ccc" stroke-width="1" stroke-dasharray="4,4"/>
+<line x1="252" y1="40" x2="225" y2="65" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="112" y1="240" x2="122" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="122" y1="227" x2="161" y2="240" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="38" y1="240" x2="48" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="180" y1="155" x2="208" y2="125" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="478" y1="240" x2="442" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="48" y1="227" x2="63" y2="240" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="208" y1="125" x2="218" y2="95" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="275" y1="125" x2="258" y2="95" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="292" y1="240" x2="308" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="225" y1="65" x2="218" y2="95" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="218" y1="95" x2="258" y2="95" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="275" y1="125" x2="208" y2="125" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="225" y1="65" x2="258" y2="95" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="161" y1="240" x2="168" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<circle cx="38" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="63" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="85" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="112" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="135" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="161" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="180" cy="155" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="208" cy="125" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="225" cy="65" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="252" cy="40" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="275" cy="125" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="292" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="318" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="338" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="365" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="388" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="405" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="435" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="452" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="478" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="48" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="78" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="122" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="168" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="218" cy="95" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="258" cy="95" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="308" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="348" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="398" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="442" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<text x="15" y="18" font-family="Georgia, serif" font-size="9" fill="#aaa">growing net</text>
+<text x="485" y="275" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#999">15 / 30</text>
+<text x="250" y="275" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555" font-style="italic">Almost halfway. The clusters are getting bigger.</text></svg>
+  </div>
+</section>
+
+<section id="SVG-012-filmstrip-panel-5" class="svg-entry">
+  <h3>SVG-012-filmstrip-panel-5</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>(inline chapter injection)</code><br>
+    <span class="label">SVG title:</span> Kauffman filmstrip panel 5: almost<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" width="380" height="220" viewBox="0 0 500 290" style="display:block;margin:0.3em auto;"><defs><filter id="kbtn-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-opacity="0.15"/></filter></defs>
+<line x1="20" y1="250" x2="480" y2="250" stroke="#ccc" stroke-width="1" stroke-dasharray="4,4"/>
+<line x1="252" y1="40" x2="225" y2="60" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="112" y1="240" x2="122" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="122" y1="227" x2="161" y2="240" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="38" y1="240" x2="48" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="180" y1="135" x2="208" y2="110" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="478" y1="240" x2="442" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="48" y1="227" x2="63" y2="240" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="208" y1="110" x2="218" y2="85" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="275" y1="110" x2="258" y2="85" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="292" y1="135" x2="308" y2="155" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="225" y1="60" x2="218" y2="85" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="218" y1="85" x2="258" y2="85" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="275" y1="110" x2="208" y2="110" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="225" y1="60" x2="258" y2="85" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="161" y1="240" x2="168" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="275" y1="110" x2="292" y2="135" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="308" y1="155" x2="318" y2="175" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="318" y1="175" x2="365" y2="195" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="365" y1="195" x2="398" y2="225" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="85" y1="240" x2="112" y2="240" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="63" y1="240" x2="78" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="180" y1="135" x2="168" y2="227" stroke="#999" stroke-width="1" opacity="0.4" stroke-dasharray="4,3"/>
+<line x1="318" y1="175" x2="338" y2="240" stroke="#999" stroke-width="1" opacity="0.4" stroke-dasharray="4,3"/>
+<line x1="398" y1="225" x2="442" y2="227" stroke="#999" stroke-width="1" opacity="0.4" stroke-dasharray="4,3"/>
+<circle cx="38" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="63" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="85" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="112" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="135" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="161" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="180" cy="135" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="208" cy="110" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="225" cy="60" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="252" cy="40" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="275" cy="110" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="292" cy="135" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="318" cy="175" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="338" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="365" cy="195" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="388" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="405" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="435" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="452" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="478" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="48" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="78" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="122" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="168" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="218" cy="85" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="258" cy="85" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="308" cy="155" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="348" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="398" cy="225" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="442" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<text x="15" y="18" font-family="Georgia, serif" font-size="9" fill="#aaa">almost</text>
+<text x="485" y="275" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#999">21 / 30</text>
+<text x="250" y="275" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555" font-style="italic">Three bridges away. Almost connected.</text></svg>
+  </div>
+</section>
+
+<section id="SVG-013-filmstrip-panel-6" class="svg-entry">
+  <h3>SVG-013-filmstrip-panel-6</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>(inline chapter injection)</code><br>
+    <span class="label">SVG title:</span> Kauffman filmstrip panel 6: phase transition<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" width="380" height="220" viewBox="0 0 500 290" style="display:block;margin:0.3em auto;"><defs><filter id="kbtn-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-opacity="0.15"/></filter></defs>
+<line x1="20" y1="250" x2="480" y2="250" stroke="#ccc" stroke-width="1" stroke-dasharray="4,4"/>
+<line x1="252" y1="40" x2="225" y2="55" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="112" y1="160" x2="122" y2="145" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="122" y1="145" x2="161" y2="130" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="38" y1="240" x2="48" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="180" y1="100" x2="208" y2="85" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="478" y1="190" x2="442" y2="175" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="48" y1="227" x2="63" y2="240" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="208" y1="85" x2="218" y2="70" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="275" y1="85" x2="258" y2="70" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="292" y1="100" x2="308" y2="115" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="225" y1="55" x2="218" y2="70" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="218" y1="70" x2="258" y2="70" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="275" y1="85" x2="208" y2="85" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="225" y1="55" x2="258" y2="70" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="161" y1="130" x2="168" y2="115" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="275" y1="85" x2="292" y2="100" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="308" y1="115" x2="318" y2="130" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="318" y1="130" x2="365" y2="145" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="365" y1="145" x2="398" y2="160" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="85" y1="175" x2="112" y2="160" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="63" y1="240" x2="78" y2="227" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="308" y1="115" x2="348" y2="130" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="398" y1="160" x2="442" y2="175" stroke="#666" stroke-width="1.2" opacity="0.6"/>
+<line x1="180" y1="100" x2="168" y2="115" stroke="#c0392b" stroke-width="2" opacity="0.6"/>
+<circle cx="38" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="63" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="85" cy="175" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="112" cy="160" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="135" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="161" cy="130" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="180" cy="100" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="208" cy="85" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="225" cy="55" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="252" cy="40" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="275" cy="85" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="292" cy="100" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="318" cy="130" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="338" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="365" cy="145" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="388" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="405" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="435" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="452" cy="240" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="478" cy="190" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="48" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="78" cy="227" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="122" cy="145" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="168" cy="115" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="218" cy="70" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="258" cy="70" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="308" cy="115" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="348" cy="130" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="398" cy="160" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<circle cx="442" cy="175" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>
+<text x="15" y="18" font-family="Georgia, serif" font-size="9" fill="#aaa">phase transition</text>
+<text x="485" y="275" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#c0392b" font-weight="bold">24 / 30</text>
+<text x="250" y="275" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555" font-style="italic">One more thread. Pick up one button — the whole room lifts.</text></svg>
+  </div>
+</section>
+<h2>Domain Buttons (chapter version)</h2>
+<section id="SVG-014-inject-domain-buttons" class="svg-entry">
+  <h3>SVG-014-inject-domain-buttons</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>(inline chapter injection)</code><br>
+    <span class="label">SVG title:</span> 11-domain button network (full chapter version with legend)<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" width="460" height="370" viewBox="0 0 500 510" style="display:block;margin:0 auto;">
+  <title>Kauffman\u2019s buttons and threads, mapped to eleven scientific domains in five clusters. Solid threads: published cross-references. Dashed: bridges no one has built. TQC is connected within its cluster but isolated from the wider argument.</title>
+  <defs>
+    <filter id="dbtn-sh" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-opacity="0.2"/>
+    </filter>
+  </defs>
+  <!-- floor -->
+  <line x1="25" y1="335" x2="475" y2="335" stroke="#ccc" stroke-width="1" stroke-dasharray="4,4"/>
+  <!-- dashed missing bridges (background layer) -->
+  <line x1="58" y1="82" x2="310" y2="108" stroke="#bbb" stroke-width="0.8" opacity="0.3" stroke-dasharray="5,3"/>
+  <line x1="442" y1="82" x2="250" y2="220" stroke="#bbb" stroke-width="0.8" opacity="0.3" stroke-dasharray="5,3"/>
+  <line x1="372" y1="278" x2="442" y2="82" stroke="#bbb" stroke-width="0.8" opacity="0.3" stroke-dasharray="5,3"/>
+  <line x1="372" y1="228" x2="250" y2="220" stroke="#bbb" stroke-width="0.8" opacity="0.3" stroke-dasharray="5,3"/>
+  <line x1="110" y1="252" x2="442" y2="82" stroke="#bbb" stroke-width="0.8" opacity="0.3" stroke-dasharray="5,3"/>
+  <!-- cross-cluster solid threads (midground) -->
+  <line x1="58" y1="140" x2="442" y2="82" stroke="#777" stroke-width="1.0" opacity="0.4"/>
+  <line x1="310" y1="108" x2="110" y2="252" stroke="#777" stroke-width="1.0" opacity="0.4"/>
+  <!-- intra-cluster solid threads (foreground) -->
+  <line x1="250" y1="55" x2="190" y2="108" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/>
+  <line x1="250" y1="55" x2="310" y2="108" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/>
+  <line x1="190" y1="108" x2="310" y2="108" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/>
+  <line x1="250" y1="55" x2="250" y2="220" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/>
+  <line x1="190" y1="108" x2="250" y2="220" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/>
+  <line x1="310" y1="108" x2="250" y2="220" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/>
+  <line x1="58" y1="82" x2="58" y2="140" stroke="#c0392b" stroke-width="1.5" opacity="0.65"/>
+  <line x1="442" y1="82" x2="442" y2="140" stroke="#e67e22" stroke-width="1.5" opacity="0.65"/>
+  <line x1="372" y1="228" x2="372" y2="278" stroke="#8e44ad" stroke-width="1.5" opacity="0.65"/>
+  <!-- domain buttons (interactive) -->
+  <g data-hover="Topology \u2014 the mathematics of shape and invariance. Knot theory, manifold classification. Freedman\u2019s Fields Medal." style="cursor:pointer">
+    <circle cx="250" cy="55" r="16" fill="#2471a3" stroke="#1a5276" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="250" y="59" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Topo</text>
+  </g>
+  <g data-hover="Topological field theory \u2014 where quantum physics meets topology. Witten 1989: TQFT from knot invariants." style="cursor:pointer">
+    <circle cx="190" cy="108" r="16" fill="#2980b9" stroke="#2471a3" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="190" y="112" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">TFT</text>
+  </g>
+  <g data-hover="Condensed matter \u2014 the fractional quantum Hall effect, 2D electron gases, anyon excitations. Laughlin-Stormer-Tsui Nobel 1998." style="cursor:pointer">
+    <circle cx="310" cy="108" r="16" fill="#3498db" stroke="#2980b9" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="310" y="112" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">CMP</text>
+  </g>
+  <g data-hover="Topological quantum computation \u2014 braiding non-Abelian anyons for fault-tolerant gates. Freedman-Kitaev-Wang 2002. The single thread." style="cursor:pointer">
+    <circle cx="250" cy="220" r="16" fill="#1a5276" stroke="#0d2f4b" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="250" y="224" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">TQC</text>
+  </g>
+  <g data-hover="Soliton physics \u2014 stable, self-reinforcing wave packets. Hasslacher\u2019s lattice-gas automaton (1986). Classical topological protection." style="cursor:pointer">
+    <circle cx="58" cy="82" r="16" fill="#c0392b" stroke="#962d22" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="58" y="86" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Sol</text>
+  </g>
+  <g data-hover="Nonlinear dynamics \u2014 chaos, bifurcations, self-organized criticality. The mathematics of systems far from equilibrium." style="cursor:pointer">
+    <circle cx="58" cy="140" r="16" fill="#e74c3c" stroke="#c0392b" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="58" y="144" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">NLD</text>
+  </g>
+  <g data-hover="Autocatalytic sets \u2014 Kauffman\u2019s theory of self-organization. Phase transitions in random graphs. Life as a critical phenomenon." style="cursor:pointer">
+    <circle cx="442" cy="82" r="16" fill="#e67e22" stroke="#bf6516" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="442" y="86" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">ACS</text>
+  </g>
+  <g data-hover="Autopoiesis \u2014 Maturana and Varela (1980). Self-producing systems. The boundary between living and non-living." style="cursor:pointer">
+    <circle cx="442" cy="140" r="16" fill="#f39c12" stroke="#d4860b" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="442" y="144" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Auto</text>
+  </g>
+  <g data-hover="Computational universality \u2014 Wolfram\u2019s Principle of Computational Equivalence. Sufficiently complex systems compute, regardless of substrate." style="cursor:pointer">
+    <circle cx="372" cy="228" r="16" fill="#8e44ad" stroke="#6c3483" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="372" y="232" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">CE</text>
+  </g>
+  <g data-hover="Parallel computation \u2014 Hillis\u2019s Connection Machine. Massively parallel architectures that scale." style="cursor:pointer">
+    <circle cx="372" cy="278" r="16" fill="#a569bd" stroke="#8e44ad" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="372" y="282" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7" fill="white" font-weight="bold">Par</text>
+  </g>
+  <g data-hover="Materials science \u2014 the engineering discipline that builds the substrates. pHEMT, MOSFET, semiconductor fabrication." style="cursor:pointer">
+    <circle cx="110" cy="252" r="16" fill="#b8860b" stroke="#8b6508" stroke-width="1.5" filter="url(#dbtn-sh)"/>
+    <text x="110" y="256" text-anchor="middle" font-family="Helvetica, sans-serif" font-size="7.5" fill="white" font-weight="bold">Mat</text>
+  </g>
+  <!-- TQC arrow -->
+  <text x="250" y="248" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#999">&#x25BC;</text>
+  <!-- captions -->
+  <text x="250" y="358" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555">One thread holds. Cut it, and the argument falls apart.</text>
+  <text x="250" y="373" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#999">after Kauffman (1993)</text>
+  <!-- legend -->
+  <circle cx="40" cy="398" r="5" fill="#2471a3"/>
+  <text x="55" y="402" font-family="Helvetica, sans-serif" font-size="8" fill="#555" font-weight="bold">Topological</text>
+  <text x="55" y="414" font-family="Helvetica, sans-serif" font-size="7" fill="#888">Topo \u00b7 TFT \u00b7 CMP \u00b7 TQC</text>
+  <circle cx="275" cy="398" r="5" fill="#e67e22"/>
+  <text x="290" y="402" font-family="Helvetica, sans-serif" font-size="8" fill="#555" font-weight="bold">Origin</text>
+  <text x="290" y="414" font-family="Helvetica, sans-serif" font-size="7" fill="#888">ACS \u00b7 Auto</text>
+  <circle cx="40" cy="430" r="5" fill="#c0392b"/>
+  <text x="55" y="434" font-family="Helvetica, sans-serif" font-size="8" fill="#555" font-weight="bold">Nonlinear</text>
+  <text x="55" y="446" font-family="Helvetica, sans-serif" font-size="7" fill="#888">Sol \u00b7 NLD</text>
+  <circle cx="275" cy="430" r="5" fill="#8e44ad"/>
+  <text x="290" y="434" font-family="Helvetica, sans-serif" font-size="8" fill="#555" font-weight="bold">Computation</text>
+  <text x="290" y="446" font-family="Helvetica, sans-serif" font-size="7" fill="#888">CE \u00b7 Par</text>
+  <circle cx="40" cy="462" r="5" fill="#b8860b"/>
+  <text x="55" y="466" font-family="Helvetica, sans-serif" font-size="8" fill="#555" font-weight="bold">Materials</text>
+  <text x="55" y="478" font-family="Helvetica, sans-serif" font-size="7" fill="#888">Mat</text>
+  <line x1="275" y1="465" x2="300" y2="465" stroke="#777" stroke-width="1.2"/>
+  <text x="308" y="469" font-family="Helvetica, sans-serif" font-size="7.5" fill="#888">published</text>
+  <line x1="275" y1="482" x2="300" y2="482" stroke="#bbb" stroke-width="0.8" stroke-dasharray="5,3"/>
+  <text x="308" y="486" font-family="Helvetica, sans-serif" font-size="7.5" fill="#888">missing bridge</text>
+</svg>
+  </div>
+</section>
+<h2>Flat Diagram (chapter version)</h2>
+<section id="SVG-015-inject-flat-diagram" class="svg-entry">
+  <h3>SVG-015-inject-flat-diagram</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>(inline chapter injection)</code><br>
+    <span class="label">SVG title:</span> Flat cross-section (inline chapter version)<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" width="300" height="130" viewBox="0 0 300 130" style="display:block;margin:0 auto;">
+  <title>Cross-section of a computer chip. Two grey blocks of 3D semiconductor sandwich a thin blue layer — the two-dimensional electron gas (2DEG). Blue dots are electrons confined to this flat layer. They can move left and right but not up or down. This is the Flat.</title>
+  <defs>
+    <linearGradient id="flat-inline-glow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#2471a3" stop-opacity="0.05"/>
+      <stop offset="50%" stop-color="#2471a3" stop-opacity="0.2"/>
+      <stop offset="100%" stop-color="#2471a3" stop-opacity="0.05"/>
+    </linearGradient>
+    <marker id="flat-inline-arr" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M 0,0 L 6,3 L 0,6 Z" fill="#1a5276"/>
+    </marker>
+  </defs>
+  <rect x="30" y="20" width="240" height="25" rx="2" fill="#e0e0e0" stroke="#999" stroke-width="0.8"/>
+  <text x="150" y="36" text-anchor="middle" font-size="8" fill="#666" font-family="sans-serif">3D material (bulk semiconductor)</text>
+  <rect x="30" y="50" width="240" height="8" rx="1" fill="url(#flat-inline-glow)" stroke="#2471a3" stroke-width="1.5"/>
+  <rect x="30" y="63" width="240" height="25" rx="2" fill="#e0e0e0" stroke="#999" stroke-width="0.8"/>
+  <text x="150" y="79" text-anchor="middle" font-size="8" fill="#666" font-family="sans-serif">3D material (bulk semiconductor)</text>
+  <circle cx="70" cy="54" r="2.5" fill="#2471a3" opacity="0.9"/>
+  <circle cx="100" cy="54" r="2.5" fill="#2471a3" opacity="0.7"/>
+  <circle cx="135" cy="54" r="2.5" fill="#2471a3" opacity="0.9"/>
+  <circle cx="165" cy="54" r="2.5" fill="#2471a3" opacity="0.6"/>
+  <circle cx="195" cy="54" r="2.5" fill="#2471a3" opacity="0.8"/>
+  <circle cx="225" cy="54" r="2.5" fill="#2471a3" opacity="0.7"/>
+  <circle cx="115" cy="55" r="2" fill="#2471a3" opacity="0.4"/>
+  <circle cx="180" cy="53" r="2" fill="#2471a3" opacity="0.5"/>
+  <circle cx="245" cy="54" r="2" fill="#2471a3" opacity="0.5"/>
+  <line x1="58" y1="54" x2="48" y2="54" stroke="#1a5276" stroke-width="0.8" marker-end="url(#flat-inline-arr)"/>
+  <line x1="252" y1="54" x2="262" y2="54" stroke="#1a5276" stroke-width="0.8" marker-end="url(#flat-inline-arr)"/>
+  <text x="18" y="56" text-anchor="middle" font-size="7" fill="#2471a3" font-family="sans-serif" transform="rotate(-90,18,56)">2DEG</text>
+  <text x="285" y="56" text-anchor="middle" font-size="7" fill="#2471a3" font-family="sans-serif" transform="rotate(90,285,56)">2DEG</text>
+  <text x="150" y="104" text-anchor="middle" font-size="9" fill="#2471a3" font-family="serif" font-style="italic">electrons confined to two dimensions</text>
+  <text x="150" y="118" text-anchor="middle" font-size="9" fill="#888" font-family="serif" font-style="italic">different physics applies here</text>
+</svg>
+  </div>
+</section>
+<h2>Physics Concepts</h2>
+<section id="SVG-016-anyon" class="svg-entry">
+  <h3>SVG-016-anyon</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>anyon</code><br>
+    <span class="label">SVG title:</span> Two anyons (blue and red dots) with their worldlines braiding around each other as time flows upward. The blue line crosses over the red line twice, forming a braid pattern. This winding IS computation — the information is stored in how the paths intertwine, not in the particles themselves.<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380" height="200" style="display:block;margin:0 auto;"> <title>Two anyons (blue and red dots) with their worldlines braiding around each other as time flows upward. The blue line crosses over the red line twice, forming a braid pattern. This winding IS computation — the information is stored in how the paths intertwine, not in the particles themselves.</title> <rect width="380" height="200" fill="#fafafa" rx="4"/> <defs><marker id="aT" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#999"/></marker></defs> <line x1="24" y1="188" x2="24" y2="12" stroke="#999" stroke-width="1" marker-end="url(#aT)"/> <text x="28" y="18" font-size="10" fill="#888" font-family="sans-serif">Time</text> <path d="M140,185 C140,135 240,125 240,100 C240,75 140,65 140,15" fill="none" stroke="#2471a3" stroke-width="2.5"/> <path d="M240,185 C240,135 140,125 140,100 C140,75 240,65 240,15" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="6,3"/> <circle cx="140" cy="185" r="5" fill="#2471a3"/> <circle cx="240" cy="185" r="5" fill="#c0392b"/> <circle cx="140" cy="15" r="5" fill="#2471a3"/> <circle cx="240" cy="15" r="5" fill="#c0392b"/> <text x="140" y="198" font-size="9" fill="#2471a3" font-family="sans-serif" text-anchor="middle">anyon A</text> <text x="240" y="198" font-size="9" fill="#c0392b" font-family="sans-serif" text-anchor="middle">anyon B</text> <text x="310" y="95" font-size="10" fill="#555" font-family="sans-serif">worldlines</text> <text x="310" y="109" font-size="10" fill="#555" font-family="sans-serif">braid around</text> <text x="310" y="123" font-size="10" fill="#555" font-family="sans-serif">each other</text> </svg>
+  </div>
+</section>
+
+<section id="SVG-017-TQNN" class="svg-entry">
+  <h3>SVG-017-TQNN</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>TQNN</code><br>
+    <span class="label">SVG title:</span> Five anyonic quasiparticles (blue dots) sitting on a two-dimensional substrate (the Flat), connected by wormholes (dashed arcs). Thicker lines mean stronger entanglement — these are the connection weights. Two nodes glow brighter because they are more active. This is a neural network wired by topology instead of copper.<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" width="320" height="180" viewBox="0 0 320 180" style="display:block;margin:0.5em auto;"><title>Five anyonic quasiparticles (blue dots) sitting on a two-dimensional substrate (the Flat), connected by wormholes (dashed arcs). Thicker lines mean stronger entanglement — these are the connection weights. Two nodes glow brighter because they are more active. This is a neural network wired by topology instead of copper.</title><defs><linearGradient id="tq-flat" x1="0%" y1="0%" x2="100%" y2="0%"><stop offset="0%" stop-color="#2471a3" stop-opacity="0.05"/><stop offset="50%" stop-color="#2471a3" stop-opacity="0.15"/><stop offset="100%" stop-color="#2471a3" stop-opacity="0.05"/></linearGradient></defs><rect x="20" y="75" width="280" height="10" rx="2" fill="url(#tq-flat)" stroke="#2471a3" stroke-width="1"/><text x="160" y="170" text-anchor="middle" font-size="8" fill="#888" font-family="serif" font-style="italic">the Flat — two-dimensional substrate</text><path d="M60,80 C50,55 120,30 140,80" fill="none" stroke="#2471a3" stroke-width="2.0" stroke-dasharray="4,3" opacity="0.9"/><path d="M60,80 C70,45 180,35 200,80" fill="none" stroke="#2471a3" stroke-width="1.2" stroke-dasharray="4,3" opacity="0.6"/><path d="M60,80 C80,60 90,65 110,80" fill="none" stroke="#2471a3" stroke-width="0.8" stroke-dasharray="4,3" opacity="0.4"/><path d="M110,80 C120,50 130,50 140,80" fill="none" stroke="#2471a3" stroke-width="1.5" stroke-dasharray="4,3" opacity="0.7"/><path d="M140,80 C150,45 190,45 200,80" fill="none" stroke="#2471a3" stroke-width="2.2" stroke-dasharray="4,3" opacity="0.95"/><path d="M140,80 C160,55 230,40 250,80" fill="none" stroke="#2471a3" stroke-width="1.0" stroke-dasharray="4,3" opacity="0.5"/><path d="M200,80 C210,50 240,50 250,80" fill="none" stroke="#2471a3" stroke-width="1.8" stroke-dasharray="4,3" opacity="0.8"/><path d="M110,80 C130,40 220,35 250,80" fill="none" stroke="#2471a3" stroke-width="0.6" stroke-dasharray="4,3" opacity="0.3"/><circle cx="60" cy="80" r="6" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5" opacity="0.9"/><circle cx="110" cy="80" r="5" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5" opacity="0.5"/><circle cx="140" cy="80" r="7" fill="#e8f0f8" stroke="#1a5276" stroke-width="2" opacity="1.0"/><circle cx="200" cy="80" r="7" fill="#e8f0f8" stroke="#1a5276" stroke-width="2" opacity="1.0"/><circle cx="250" cy="80" r="5.5" fill="#e8f0f8" stroke="#2471a3" stroke-width="1.5" opacity="0.7"/><circle cx="60" cy="80" r="3" fill="#2471a3" opacity="0.6"/><circle cx="110" cy="80" r="2" fill="#2471a3" opacity="0.3"/><circle cx="140" cy="80" r="3.5" fill="#1a5276" opacity="0.8"/><circle cx="200" cy="80" r="3.5" fill="#1a5276" opacity="0.8"/><circle cx="250" cy="80" r="2.5" fill="#2471a3" opacity="0.5"/><text x="60" y="105" text-anchor="middle" font-size="7" fill="#888" font-family="sans-serif">anyon</text><text x="140" y="105" text-anchor="middle" font-size="7" fill="#888" font-family="sans-serif">anyon</text><text x="200" y="105" text-anchor="middle" font-size="7" fill="#888" font-family="sans-serif">anyon</text><text x="250" y="105" text-anchor="middle" font-size="7" fill="#888" font-family="sans-serif">anyon</text><text x="155" y="30" text-anchor="middle" font-size="8" fill="#2471a3" font-family="serif" font-style="italic">wormhole connections</text><text x="155" y="42" text-anchor="middle" font-size="7" fill="#888" font-family="serif" font-style="italic">line thickness = entanglement strength = weight</text><text x="155" y="155" text-anchor="middle" font-size="8" fill="#666" font-family="serif">a nervous system wired by topology</text></svg>
+  </div>
+</section>
+
+<section id="SVG-018-braiding" class="svg-entry">
+  <h3>SVG-018-braiding</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>braiding</code><br>
+    <span class="label">SVG title:</span> Three anyons (blue, red, green) with worldlines rising through time. The lines cross over and under each other, forming a three-strand braid. Each crossing is a quantum logic gate. The pattern of crossings encodes the computation — rearranging the order changes the result.<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380" height="200" style="display:block;margin:0 auto;"> <title>Three anyons (blue, red, green) with worldlines rising through time. The lines cross over and under each other, forming a three-strand braid. Each crossing is a quantum logic gate. The pattern of crossings encodes the computation — rearranging the order changes the result.</title> <rect width="380" height="200" fill="#fafafa" rx="4"/> <defs><marker id="bT" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#999"/></marker></defs> <line x1="24" y1="188" x2="24" y2="12" stroke="#999" stroke-width="1" marker-end="url(#bT)"/> <text x="28" y="18" font-size="10" fill="#888" font-family="sans-serif">Time</text> <path d="M140,185 C140,135 240,125 240,100 C240,75 140,65 140,15" fill="none" stroke="#2471a3" stroke-width="2.5"/> <path d="M240,185 C240,135 140,125 140,100 C140,75 240,65 240,15" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="6,3"/> <circle cx="140" cy="185" r="5" fill="#2471a3"/> <circle cx="240" cy="185" r="5" fill="#c0392b"/> <circle cx="140" cy="15" r="5" fill="#2471a3"/> <circle cx="240" cy="15" r="5" fill="#c0392b"/> <text x="140" y="198" font-size="9" fill="#2471a3" font-family="sans-serif" text-anchor="middle">anyon A</text> <text x="240" y="198" font-size="9" fill="#c0392b" font-family="sans-serif" text-anchor="middle">anyon B</text> <text x="310" y="95" font-size="10" fill="#555" font-family="sans-serif">worldlines</text> <text x="310" y="109" font-size="10" fill="#555" font-family="sans-serif">braid around</text> <text x="310" y="123" font-size="10" fill="#555" font-family="sans-serif">each other</text> </svg>
+  </div>
+</section>
+
+<section id="SVG-019-phase-transition" class="svg-entry">
+  <h3>SVG-019-phase-transition</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>phase transition</code><br>
+    <span class="label">SVG title:</span> A graph with a control parameter on the horizontal axis and order on the vertical axis. A flat blue line rises gently from left, then jumps sharply upward through a red dashed transition zone, then continues flat at a higher level. The red dot marks the critical point — the moment everything changes.<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380" height="200" style="display:block;margin:0 auto;"> <title>A graph with a control parameter on the horizontal axis and order on the vertical axis. A flat blue line rises gently from left, then jumps sharply upward through a red dashed transition zone, then continues flat at a higher level. The red dot marks the critical point — the moment everything changes.</title> <rect width="380" height="200" fill="#fafafa" rx="4"/> <line x1="40" y1="170" x2="360" y2="170" stroke="#555" stroke-width="1.5"/> <line x1="40" y1="170" x2="40" y2="20" stroke="#555" stroke-width="1.5"/> <text x="200" y="195" font-size="11" fill="#555" font-family="sans-serif" text-anchor="middle">Control parameter</text> <text x="16" y="95" font-size="11" fill="#555" font-family="sans-serif" text-anchor="middle" transform="rotate(-90,16,95)">Order</text> <path d="M50,155 L160,150 L170,148" fill="none" stroke="#2471a3" stroke-width="2.5"/> <line x1="170" y1="148" x2="210" y2="50" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="4,3"/> <path d="M210,50 L220,47 L340,40" fill="none" stroke="#2471a3" stroke-width="2.5"/> <circle cx="190" cy="99" r="4" fill="#c0392b"/> <text x="190" y="87" font-size="10" fill="#c0392b" font-family="sans-serif" text-anchor="middle" font-weight="bold">Phase transition</text> <text x="100" y="140" font-size="10" fill="#888" font-family="sans-serif" text-anchor="middle" font-style="italic">Disordered</text> <text x="290" y="35" font-size="10" fill="#888" font-family="sans-serif" text-anchor="middle" font-style="italic">Ordered</text> </svg>
+  </div>
+</section>
+
+<section id="SVG-020-edge-of-chaos" class="svg-entry">
+  <h3>SVG-020-edge-of-chaos</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>edge of chaos</code><br>
+    <span class="label">SVG title:</span> Three zones arranged left to right: blue 'Frozen / Ordered' on the left, green 'Edge of Chaos' in the narrow middle, red 'Chaotic / Random' on the right. An arrow points to the green zone labeled 'Life, computation, adaptation.' A colored bar underneath shows the three regimes as a spectrum. The green zone is narrow — the sweet spot where complexity lives.<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380" height="200" style="display:block;margin:0 auto;"> <title>Three zones arranged left to right: blue 'Frozen / Ordered' on the left, green 'Edge of Chaos' in the narrow middle, red 'Chaotic / Random' on the right. An arrow points to the green zone labeled 'Life, computation, adaptation.' A colored bar underneath shows the three regimes as a spectrum. The green zone is narrow — the sweet spot where complexity lives.</title> <rect width="380" height="200" fill="#fafafa" rx="4"/> <rect x="30" y="60" width="110" height="40" rx="4" fill="#d4e6f1" stroke="#2471a3" stroke-width="1"/> <text x="85" y="84" font-size="12" fill="#1a5276" font-family="sans-serif" text-anchor="middle" font-weight="bold">Frozen / Ordered</text> <rect x="240" y="60" width="110" height="40" rx="4" fill="#fadbd8" stroke="#c0392b" stroke-width="1"/> <text x="295" y="84" font-size="12" fill="#922b21" font-family="sans-serif" text-anchor="middle" font-weight="bold">Chaotic / Random</text> <rect x="152" y="55" width="76" height="50" rx="4" fill="#d5f5e3" stroke="#27ae60" stroke-width="2"/> <text x="190" y="77" font-size="11" fill="#1e8449" font-family="sans-serif" text-anchor="middle" font-weight="bold">Edge of</text> <text x="190" y="93" font-size="11" fill="#1e8449" font-family="sans-serif" text-anchor="middle" font-weight="bold">Chaos</text> <defs><marker id="eA" markerWidth="8" markerHeight="6" refX="0" refY="3" orient="auto"><path d="M0,3 L8,0 L8,6" fill="#27ae60"/></marker></defs> <line x1="190" y1="130" x2="190" y2="112" stroke="#27ae60" stroke-width="1.5" marker-end="url(#eA)"/> <text x="190" y="145" font-size="10" fill="#27ae60" font-family="sans-serif" text-anchor="middle" font-style="italic">Life, computation,</text> <text x="190" y="159" font-size="10" fill="#27ae60" font-family="sans-serif" text-anchor="middle" font-style="italic">adaptation</text> <line x1="30" y1="120" x2="350" y2="120" stroke="#ccc" stroke-width="1"/> <path d="M30,118 L140,118" stroke="#2471a3" stroke-width="3"/> <path d="M152,118 L228,118" stroke="#27ae60" stroke-width="3"/> <path d="M240,118 L350,118" stroke="#c0392b" stroke-width="3"/> </svg>
+  </div>
+</section>
+
+<section id="SVG-021-cellular-automata" class="svg-entry">
+  <h3>SVG-021-cellular-automata</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>cellular automata</code>, <code>cellular automaton</code><br>
+    <span class="label">SVG title:</span> Rule 110 cellular automaton — a triangular pattern of blue and white cells growing downward from a single cell. Each row is computed from the row above using one simple rule. Despite the trivial rule, the pattern is complex and never repeats. This specific rule (number 110 out of 256 possible) was proven Turing-complete — it can compute anything.<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 164 115" width="164" height="115" style="display:block;margin:0.3em auto;"> <title>Rule 110 cellular automaton — a triangular pattern of blue and white cells growing downward from a single cell. Each row is computed from the row above using one simple rule. Despite the trivial rule, the pattern is complex and never repeats. This specific rule (number 110 out of 256 possible) was proven Turing-complete — it can compute anything.</title> <rect width="164" height="100" fill="#f5f5f5" rx="2"/> <path d="M80,0h4v4h-4zM76,4h8v4h-8zM72,8h12v4h-12zM68,12h8v4h-8zM80,12h4v4h-4zM64,16h20v4h-20zM60,20h8v4h-8zM80,20h4v4h-4zM56,24h12v4h-12zM76,24h8v4h-8zM52,28h8v4h-8zM64,28h4v4h-4zM72,28h12v4h-12zM48,32h28v4h-28zM80,32h4v4h-4zM44,36h8v4h-8zM72,36h12v4h-12zM40,40h12v4h-12zM68,40h8v4h-8zM80,40h4v4h-4zM36,44h8v4h-8zM48,44h4v4h-4zM64,44h20v4h-20zM32,48h20v4h-20zM60,48h8v4h-8zM80,48h4v4h-4zM28,52h8v4h-8zM48,52h4v4h-4zM56,52h12v4h-12zM76,52h8v4h-8zM24,56h12v4h-12zM44,56h16v4h-16zM64,56h4v4h-4zM72,56h12v4h-12zM20,60h8v4h-8zM32,60h4v4h-4zM40,60h8v4h-8zM56,60h20v4h-20zM80,60h4v4h-4zM16,64h32v4h-32zM52,64h8v4h-8zM72,64h12v4h-12zM12,68h8v4h-8zM44,68h16v4h-16zM68,68h8v4h-8zM80,68h4v4h-4zM8,72h12v4h-12zM40,72h8v4h-8zM56,72h4v4h-4zM64,72h20v4h-20zM4,76h8v4h-8zM16,76h4v4h-4zM36,76h12v4h-12zM52,76h16v4h-16zM80,76h4v4h-4zM0,80h20v4h-20zM32,80h8v4h-8zM44,80h12v4h-12zM64,80h4v4h-4zM76,80h8v4h-8zM0,84h4v4h-4zM16,84h4v4h-4zM28,84h20v4h-20zM52,84h4v4h-4zM60,84h8v4h-8zM72,84h12v4h-12zM160,84h4v4h-4zM0,88h4v4h-4zM12,88h8v4h-8zM24,88h8v4h-8zM44,88h32v4h-32zM80,88h4v4h-4zM156,88h8v4h-8zM0,92h4v4h-4zM8,92h24v4h-24zM40,92h8v4h-8zM72,92h12v4h-12zM152,92h8v4h-8zM0,96h12v4h-12zM28,96h4v4h-4zM36,96h12v4h-12zM68,96h8v4h-8zM80,96h4v4h-4zM148,96h16v4h-16z" fill="#2471a3"/> <text x="82" y="112" text-anchor="middle" font-size="8" fill="#888" font-family="sans-serif" font-style="italic">Rule 110 — Turing-complete</text> </svg>
+  </div>
+</section>
+
+<section id="SVG-022-self-organized-criticality" class="svg-entry">
+  <h3>SVG-022-self-organized-criticality</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>self-organized criticality</code><br>
+    <span class="label">SVG title:</span> A sandpile — a triangle of sand with red dots of varying sizes scattered across it. Each dot is an avalanche. Small avalanches are frequent (many small dots), large ones are rare (few big dots). The pile builds itself to the critical angle where avalanches of all sizes occur. Nobody tunes this — the system finds criticality on its own.<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 380 200" width="380" height="200" style="display:block;margin:0 auto;"> <title>A sandpile — a triangle of sand with red dots of varying sizes scattered across it. Each dot is an avalanche. Small avalanches are frequent (many small dots), large ones are rare (few big dots). The pile builds itself to the critical angle where avalanches of all sizes occur. Nobody tunes this — the system finds criticality on its own.</title> <rect width="380" height="200" fill="#fafafa" rx="4"/> <polygon points="190,30 60,170 320,170" fill="#f0e6d3" stroke="#b7950b" stroke-width="1.5"/> <circle cx="175" cy="145" r="3" fill="#c0392b" opacity="0.7"/> <circle cx="210" cy="130" r="5" fill="#c0392b" opacity="0.6"/> <circle cx="150" cy="120" r="2" fill="#c0392b" opacity="0.8"/> <circle cx="230" cy="155" r="4" fill="#c0392b" opacity="0.5"/> <circle cx="195" cy="90" r="7" fill="#c0392b" opacity="0.4"/> <circle cx="140" cy="155" r="2.5" fill="#c0392b" opacity="0.7"/> <circle cx="260" cy="145" r="3.5" fill="#c0392b" opacity="0.6"/> <circle cx="185" cy="110" r="2" fill="#c0392b" opacity="0.8"/> <circle cx="220" cy="100" r="4" fill="#c0392b" opacity="0.5"/> <path d="M175,145 L168,165" stroke="#c0392b" stroke-width="1" opacity="0.4"/> <path d="M210,130 L225,160" stroke="#c0392b" stroke-width="1.5" opacity="0.3"/> <path d="M195,90 L180,130" stroke="#c0392b" stroke-width="2" opacity="0.25"/> <text x="190" y="188" font-size="11" fill="#555" font-family="sans-serif" text-anchor="middle" font-style="italic">All sizes of avalanche</text> <text x="340" y="50" font-size="9" fill="#888" font-family="sans-serif" text-anchor="end">small</text> <circle cx="355" cy="47" r="2.5" fill="#c0392b" opacity="0.7"/> <text x="340" y="70" font-size="9" fill="#888" font-family="sans-serif" text-anchor="end">medium</text> <circle cx="355" cy="67" r="4.5" fill="#c0392b" opacity="0.5"/> <text x="340" y="93" font-size="9" fill="#888" font-family="sans-serif" text-anchor="end">large</text> <circle cx="355" cy="90" r="7" fill="#c0392b" opacity="0.35"/> </svg>
+  </div>
+</section>
+<h2>Standalone Files</h2>
+<section id="SVG-023-cover-triskellion" class="svg-entry">
+  <h3>SVG-023-cover-triskellion</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>build/images/cover-triskellion.svg</code><br>
+    <span class="label">SVG title:</span> Cover Triskellion<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="238.11pt" height="238.11pt" viewBox="0 0 238.11 238.11" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(5.097961%,6.666565%,9.020996%);fill-opacity:1;" d="M 5.667969 232.441406 L 5.667969 5.667969 L 232.441406 5.667969 L 232.441406 232.441406 Z M 5.667969 232.441406 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(10.195923%,41.96167%,41.569519%);fill-opacity:1;" d="M 119.054688 34.015625 C 166.023438 34.015625 204.09375 72.085938 204.09375 119.054688 C 204.09375 133.980469 200.164062 148.652344 192.703125 161.574219 C 180.960938 181.910156 154.957031 188.878906 134.617188 177.140625 C 114.28125 165.398438 107.3125 139.390625 119.054688 119.054688 C 142.539062 119.054688 161.574219 100.019531 161.574219 76.535156 C 161.574219 53.050781 142.539062 34.015625 119.054688 34.015625 Z M 119.054688 34.015625 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(76.861572%,56.861877%,23.136902%);fill-opacity:1;" d="M 45.40625 161.574219 C 21.925781 120.898438 35.859375 68.890625 76.535156 45.40625 C 89.460938 37.945312 104.132812 34.015625 119.054688 34.015625 C 142.539062 34.015625 161.574219 53.050781 161.574219 76.535156 C 161.574219 100.019531 142.539062 119.054688 119.054688 119.054688 C 107.3125 98.71875 81.308594 91.75 60.972656 103.492188 C 40.632812 115.234375 33.664062 141.238281 45.40625 161.574219 Z M 45.40625 161.574219 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(41.96167%,24.705505%,62.745667%);fill-opacity:1;" d="M 192.703125 161.574219 C 169.21875 202.25 117.210938 216.1875 76.535156 192.703125 C 63.609375 185.242188 52.871094 174.5 45.40625 161.574219 C 33.667969 141.238281 40.632812 115.234375 60.972656 103.492188 C 81.308594 91.75 107.3125 98.71875 119.054688 119.054688 C 107.3125 139.390625 114.28125 165.398438 134.617188 177.140625 C 154.957031 188.878906 180.960938 181.914062 192.703125 161.574219 Z M 192.703125 161.574219 "/>
+</g>
+</svg>
+  </div>
+</section>
+
+<section id="SVG-024-magnetosphere-test" class="svg-entry">
+  <h3>SVG-024-magnetosphere-test</h3>
+  <div class="meta">
+    <span class="label">YAML key / source:</span> <code>build/images/magnetosphere-test.svg</code><br>
+    <span class="label">SVG title:</span> Magnetosphere Test<br>
+  </div>
+  <div class="svg-container">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 440 260" width="440" height="260">
+  <defs>
+    <radialGradient id="earth" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#4a90d9"/>
+      <stop offset="70%" stop-color="#2c5f8a"/>
+      <stop offset="100%" stop-color="#1a3d5c"/>
+    </radialGradient>
+    <linearGradient id="plasma" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#c4a0e0" stop-opacity="0.7"/>
+      <stop offset="30%" stop-color="#9b7db8" stop-opacity="0.5"/>
+      <stop offset="100%" stop-color="#9b7db8" stop-opacity="0.08"/>
+    </linearGradient>
+    <linearGradient id="plasmaEdge" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#c4a0e0" stop-opacity="0"/>
+      <stop offset="45%" stop-color="#c4a0e0" stop-opacity="0.25"/>
+      <stop offset="55%" stop-color="#c4a0e0" stop-opacity="0.25"/>
+      <stop offset="100%" stop-color="#c4a0e0" stop-opacity="0"/>
+    </linearGradient>
+    <marker id="solarArrow" viewBox="0 0 8 6" refX="7" refY="3" markerWidth="6" markerHeight="5" orient="auto">
+      <path d="M 0,0.5 L 7,3 L 0,5.5" fill="#f0c040" opacity="0.5"/>
+    </marker>
+  </defs>
+
+  <!-- Background — deep space -->
+  <rect width="440" height="260" fill="#060612"/>
+
+  <!-- Solar wind arrows -->
+  <g stroke="#f0c040" stroke-width="1" fill="none" marker-end="url(#solarArrow)">
+    <line x1="5" y1="35" x2="55" y2="45" opacity="0.3"/>
+    <line x1="5" y1="70" x2="60" y2="78" opacity="0.35"/>
+    <line x1="5" y1="105" x2="65" y2="108" opacity="0.4"/>
+    <line x1="5" y1="130" x2="68" y2="130" opacity="0.45"/>
+    <line x1="5" y1="155" x2="65" y2="152" opacity="0.4"/>
+    <line x1="5" y1="190" x2="60" y2="182" opacity="0.35"/>
+    <line x1="5" y1="225" x2="55" y2="215" opacity="0.3"/>
+  </g>
+  <text x="8" y="25" fill="#f0c040" font-size="9" font-family="sans-serif" opacity="0.6">Solar wind</text>
+
+  <!-- Magnetopause boundary -->
+  <path d="M 100,12 Q 82,130 100,248
+           Q 160,230 250,210 L 435,175
+           L 435,85
+           L 250,50 Q 160,30 100,12 Z"
+        fill="none" stroke="#6a9fb5" stroke-width="0.8" stroke-opacity="0.3" stroke-dasharray="6,4"/>
+
+  <!-- Magnetosheath (faint fill between bow shock and magnetopause) -->
+  <path d="M 100,12 Q 82,130 100,248 Q 160,230 250,210 L 435,175 L 435,85 L 250,50 Q 160,30 100,12 Z"
+        fill="#1a3050" fill-opacity="0.15"/>
+
+  <!-- Closed dayside field lines (dipole, compressed) -->
+  <g stroke="#4a90d9" stroke-width="0.9" fill="none" opacity="0.5">
+    <!-- Tight inner loops -->
+    <path d="M 130,118 Q 118,95 122,75 Q 126,60 135,55"/>
+    <path d="M 130,142 Q 118,165 122,185 Q 126,200 135,205"/>
+    <!-- Medium loops -->
+    <path d="M 128,112 Q 108,80 112,48 Q 118,28 132,22"/>
+    <path d="M 128,148 Q 108,180 112,212 Q 118,232 132,238"/>
+    <!-- Wide loops -->
+    <path d="M 126,108 Q 98,65 105,30 Q 112,14 128,10"/>
+    <path d="M 126,152 Q 98,195 105,230 Q 112,246 128,250"/>
+  </g>
+
+  <!-- Open tail field lines (stretched nightward) -->
+  <g stroke="#4a90d9" stroke-width="0.7" fill="none" opacity="0.45">
+    <!-- Northern lobe -->
+    <path d="M 140,108 Q 180,85 260,68 Q 340,56 435,52"/>
+    <path d="M 142,104 Q 190,78 280,62 Q 360,50 435,44"/>
+    <path d="M 145,100 Q 200,70 290,55 Q 370,42 435,36"/>
+    <path d="M 148,96 Q 210,62 300,48 Q 375,35 435,28"/>
+    <!-- Southern lobe -->
+    <path d="M 140,152 Q 180,175 260,192 Q 340,204 435,208"/>
+    <path d="M 142,156 Q 190,182 280,198 Q 360,210 435,216"/>
+    <path d="M 145,160 Q 200,190 290,205 Q 370,218 435,224"/>
+    <path d="M 148,164 Q 210,198 300,212 Q 375,225 435,232"/>
+  </g>
+
+  <!-- Plasma sheet — THE FLAT — glowing band at magnetic equator -->
+  <path d="M 155,125 Q 220,122 320,126 Q 380,128 435,130
+           L 435,132
+           Q 380,134 320,136 Q 220,140 155,137 Z"
+        fill="url(#plasma)" stroke="#9b7db8" stroke-width="1.2" stroke-opacity="0.7"/>
+  <!-- Glow effect around plasma sheet -->
+  <path d="M 155,118 Q 220,114 320,120 Q 380,122 435,125
+           L 435,137
+           Q 380,140 320,142 Q 220,148 155,144 Z"
+        fill="url(#plasmaEdge)" stroke="none"/>
+
+  <!-- Neutral point / reconnection hint -->
+  <circle cx="155" cy="131" r="2" fill="#c4a0e0" opacity="0.6"/>
+
+  <!-- Earth -->
+  <circle cx="135" cy="130" r="14" fill="url(#earth)" stroke="#6ab0e8" stroke-width="0.6"/>
+  <!-- Polar caps (tiny) -->
+  <ellipse cx="135" cy="119" rx="6" ry="2" fill="#cce8ff" opacity="0.3"/>
+  <ellipse cx="135" cy="141" rx="6" ry="2" fill="#cce8ff" opacity="0.3"/>
+
+  <!-- Bow shock -->
+  <path d="M 80,8 Q 62,130 80,252" fill="none" stroke="#f0c040" stroke-width="1" stroke-dasharray="4,3" opacity="0.4"/>
+
+  <!-- Labels -->
+  <text x="135" y="158" fill="#6ab0e8" font-size="8" font-family="sans-serif" text-anchor="middle" opacity="0.8">Earth</text>
+  <text x="52" y="248" fill="#f0c040" font-size="7" font-family="sans-serif" opacity="0.4">Bow shock</text>
+  <text x="280" y="119" fill="#c4a0e0" font-size="8" font-family="sans-serif" opacity="0.8">Plasma sheet (2DEG)</text>
+  <text x="340" y="148" fill="#9b7db8" font-size="11" font-family="sans-serif" font-weight="bold" opacity="0.9">The Flat</text>
+  <text x="400" y="90" fill="#4a90d9" font-size="7" font-family="sans-serif" opacity="0.4" text-anchor="end">Northern lobe</text>
+  <text x="400" y="180" fill="#4a90d9" font-size="7" font-family="sans-serif" opacity="0.4" text-anchor="end">Southern lobe</text>
+
+  <!-- Scale bar -->
+  <line x1="280" y1="235" x2="380" y2="235" stroke="#ffffff" stroke-width="0.5" opacity="0.25"/>
+  <line x1="280" y1="232" x2="280" y2="238" stroke="#ffffff" stroke-width="0.5" opacity="0.25"/>
+  <line x1="380" y1="232" x2="380" y2="238" stroke="#ffffff" stroke-width="0.5" opacity="0.25"/>
+  <text x="330" y="248" fill="#ffffff" font-size="7" font-family="sans-serif" opacity="0.25" text-anchor="middle">~50 Earth radii</text>
+</svg>
+  </div>
+</section>
+<h2 style="color:#c0392b;">Planned: Genesis Illustrations</h2>
+<section id="SVG-025" class="svg-entry planned">
+  <h3>SVG-025 — autocatalytic-loop <span style="color:#c0392b;font-size:0.8em;">PLANNED</span></h3>
+  <div class="meta">
+    <span class="label">Chapter:</span> genesis<br>
+    <span class="label">Insertion marker:</span> <code>The whole network sustains itself.</code><br>
+  </div>
+  <div class="svg-container planned-placeholder">
+    <div style="padding:2em;color:#999;font-style:italic;border:2px dashed #ddd;border-radius:8px;min-height:120px;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+      <div style="font-size:1.5em;margin-bottom:0.5em;">&#x1f4d0;</div>
+      <div style="max-width:500px;text-align:left;font-size:0.9em;color:#666;">Circular arrow diagram: three molecules (A, B, C) in a cycle. A catalyzes B, B catalyzes C, C catalyzes A. Arrows form a self-sustaining loop. Shows what autocatalysis LOOKS like — the chemistry version of what the filmstrip just showed physically. Simple, iconic, p1-readable.</div>
+    </div>
+  </div>
+  <div class='meta' style='margin-top:0.5em;'><span class='label'>Notes:</span> Placement: after 'The whole network sustains itself.' — right after the filmstrip lands the physical metaphor, this shows the chemical reality.</div>
+</section>
+
+<section id="SVG-026" class="svg-entry planned">
+  <h3>SVG-026 — edge-of-chaos-inline <span style="color:#c0392b;font-size:0.8em;">PLANNED</span></h3>
+  <div class="meta">
+    <span class="label">Chapter:</span> genesis<br>
+    <span class="label">Insertion marker:</span> <code>best able to evolve as well.</code><br>
+  </div>
+  <div class="svg-container planned-placeholder">
+    <div style="padding:2em;color:#999;font-style:italic;border:2px dashed #ddd;border-radius:8px;min-height:120px;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+      <div style="font-size:1.5em;margin-bottom:0.5em;">&#x1f4d0;</div>
+      <div style="max-width:500px;text-align:left;font-size:0.9em;color:#666;">Enhanced three-regime diagram for inline chapter deployment. Left: frozen crystal lattice (blue, rigid grid). Middle: narrow green band with interconnected nodes (computation/life). Right: chaotic gas (red, random scatter). TODO already exists in source at genesis.tex line 46. Based on existing SVG-020 but larger, with substrate examples (crystal, network, gas) instead of abstract labels.</div>
+    </div>
+  </div>
+  <div class='meta' style='margin-top:0.5em;'><span class='label'>Notes:</span> TODO comment already in genesis.tex lines 46-49. Existing SVG-020 works for hover; this inline version should be richer with concrete visual examples of each regime.</div>
+</section>
+
+<section id="SVG-027" class="svg-entry planned">
+  <h3>SVG-027 — substrate-parallel <span style="color:#c0392b;font-size:0.8em;">PLANNED</span></h3>
+  <div class="meta">
+    <span class="label">Chapter:</span> genesis<br>
+    <span class="label">Insertion marker:</span> <code>the threshold was crossed.</code><br><span class="label">Sequence:</span> genesis-argument #3<br>
+  </div>
+  <div class="svg-container planned-placeholder">
+    <div style="padding:2em;color:#999;font-style:italic;border:2px dashed #ddd;border-radius:8px;min-height:120px;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+      <div style="font-size:1.5em;margin-bottom:0.5em;">&#x1f4d0;</div>
+      <div style="max-width:500px;text-align:left;font-size:0.9em;color:#666;">Side-by-side comparison. Left panel: beaker of organic molecules with catalytic arrows between them (warm colors). Right panel: 2DEG substrate with anyonic quasiparticles and braiding arcs (blue colors). Center bridge: "same mathematics" with Kauffman's threshold equation hint. Shows the chapter's key intellectual move: what works in chemistry works in quantum substrates.</div>
+    </div>
+  </div>
+  <div class='meta' style='margin-top:0.5em;'><span class='label'>Notes:</span> Hardest of the four to execute well. Must be visually clear that both sides are governed by the same principle without being reductive. Jane needs to grasp 'same math, different stuff.' Rachel needs to see the specific parallel.</div>
+</section>
+
+<section id="SVG-028" class="svg-entry planned">
+  <h3>SVG-028 — canopy-problem <span style="color:#c0392b;font-size:0.8em;">PLANNED</span></h3>
+  <div class="meta">
+    <span class="label">Chapter:</span> genesis<br>
+    <span class="label">Insertion marker:</span> <code>the ecological niche is full.</code><br>
+  </div>
+  <div class="svg-container planned-placeholder">
+    <div style="padding:2em;color:#999;font-style:italic;border:2px dashed #ddd;border-radius:8px;min-height:120px;display:flex;align-items:center;justify-content:center;flex-direction:column;">
+      <div style="font-size:1.5em;margin-bottom:0.5em;">&#x1f4d0;</div>
+      <div style="max-width:500px;text-align:left;font-size:0.9em;color:#666;">Forest canopy cross-section. Tall established trees with full green crowns blocking sunlight. Below: a small seedling in shadow, reaching upward but receiving no light. Sun rays hit only the canopy. Simple, dark implication lands without text. The visual metaphor for first-mover advantage in any substrate.</div>
+    </div>
+  </div>
+  <div class='meta' style='margin-top:0.5em;'><span class='label'>Notes:</span> Emotionally the darkest image in the chapter. The seedling is not attacked — it simply never gets the light. This is the visual that carries the canopy argument.</div>
+</section>
+
+
+<footer style="margin-top:3em;padding-top:1em;border-top:1px solid #ddd;font-size:0.8em;color:#aaa;">
+Generated by build/generate-gallery.py — 24 live + 4 planned SVGs.
+</footer>
+</body>
+</html>
