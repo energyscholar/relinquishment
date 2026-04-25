@@ -1,0 +1,51 @@
+# Puzzle data for standalone preview page (Plan 0245)
+# answer_hashes: SHA-256 of normalized answer strings
+# Multiple choice: hash of the option key ("b")
+# Free text: hash of normalized input (lowercase, trimmed, articles stripped)
+
+puzzles:
+  - id: "flat"
+    chapter_title: "Wormholes in the Flat"
+    type: "multiple-choice"
+    question: "The Flat exists in every device that processes radio-frequency signals — phones, satellites, WiFi routers. What makes a Flat different from ordinary electronics?"
+    options:
+      - key: "a"
+        text: "It uses faster processors"
+      - key: "b"
+        text: "Physics works differently in two dimensions than in three"
+      - key: "c"
+        text: "It requires cryogenic cooling"
+    answer_hashes:
+      - "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"  # sha256("b")
+    hint: "Think about what happens when you confine electrons to two dimensions. What new particles become possible?"
+    abstract: |
+      The Flat is substrate, not metaphor. Two-dimensional electron gases exhibit topological order — a property that protects quantum information from local disturbance. This protection is not engineered. It is a consequence of confining electrons to two dimensions under the right conditions. The Flat is everywhere there is a 2DEG: in every high-electron-mobility transistor, in magnetospheric current sheets, in the thin quantum worlds embedded inside ordinary three-dimensional matter.
+
+  - id: "genesis"
+    chapter_title: "Genesis: The Edge of Chaos"
+    type: "text"
+    question: "Kauffman's buttons-and-threads experiment shows that connection creates structure — not gradually, but all at once. What is the name for this kind of sudden shift?"
+    answer_hashes:
+      - "bb90e77c49fc24ebdc3e027ccea7ee9bea629236cd436afa0f20f0c2e47e63be"  # sha256("phase transition")
+    hint: "The chapter describes the origin of life as exactly this kind of event — not gradual, not accidental."
+    abstract: |
+      Non-abelian anyonic quasiparticles in a fractional quantum Hall system, subjected to structured electromagnetic perturbation, can undergo autocatalytic self-organization at the edge of chaos, producing an emergent topological quantum neural network. Unlike conventional quantum computer design, which requires engineered gate sequences, the proposed system requires only the establishment of critical conditions in the substrate; computational architecture emerges spontaneously from the physics.
+
+  - id: "silence-gap"
+    chapter_title: "The Silence Gap"
+    type: "multiple-choice"
+    question: "The chapter argues that no one has published a paper saying life cannot arise in a 2DEG. Why not?"
+    options:
+      - key: "a"
+        text: "The evidence against it has been suppressed"
+      - key: "b"
+        text: "The question has never been formally asked in the relevant journals"
+      - key: "c"
+        text: "Several papers have argued against it, but they were retracted"
+      - key: "d"
+        text: "The physics clearly forbids it, so no paper was needed"
+    answer_hashes:
+      - "3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"  # sha256("b")
+    hint: "The chapter distinguishes between rejection and absence. Which one describes the current literature?"
+    abstract: |
+      Five scientific disciplines — solid-state physics, topological quantum computation, neural networks, complexity science, and computational universality — each contain results that, taken together, point toward the possibility of life in two-dimensional quantum substrates. No discipline contains a refutation, because no discipline contains the proposition. The intersection is empty. The silence is not rejection. It is the absence of a question that no one's job description required them to ask.
