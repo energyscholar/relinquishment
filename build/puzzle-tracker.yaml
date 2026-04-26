@@ -23,6 +23,7 @@ chapter_puzzles:
     topic: t2
     level: p1
     approved: false
+    installed: false
     location:
       chapter: the-flat
       rationale: "Direct T2 content — what makes 2D physics different"
@@ -38,6 +39,7 @@ chapter_puzzles:
     topic: t2
     level: p1
     approved: true
+    installed: true
     location:
       chapter: the-flat
       rationale: "2DEG engineering purpose — complements Wormholes"
@@ -54,6 +56,7 @@ chapter_puzzles:
     topic: t2
     level: p2
     approved: false
+    installed: false
     location:
       chapter: the-braid
       rationale: "Non-Abelian anyons — exact chapter match"
@@ -71,6 +74,7 @@ chapter_puzzles:
     topic: t3
     level: p1
     approved: false
+    installed: false
     location:
       chapter: genesis
       rationale: "Kauffman buttons-and-threads — this IS the genesis chapter"
@@ -88,6 +92,7 @@ chapter_puzzles:
     topic: t3
     level: p1
     approved: false
+    installed: false
     location:
       chapter: growing-a-mind
       rationale: "First-mover advantage in substrate — follows genesis, leads to 'growing' metaphor"
@@ -104,6 +109,7 @@ chapter_puzzles:
     topic: t3
     level: p2
     approved: false
+    installed: false
     location:
       chapter: the-wrong-substrate
       rationale: "Substrate independence — exact chapter match"
@@ -121,6 +127,7 @@ chapter_puzzles:
     topic: t4
     level: p1
     approved: false
+    installed: false
     location:
       chapter: capabilities
       rationale: "Resilience/distributed network — capabilities chapter"
@@ -138,6 +145,7 @@ chapter_puzzles:
     topic: t4
     level: p2
     approved: false
+    installed: false
     location:
       chapter: the-flat
       rationale: "Technology stack from 2DEG up — could also fit genesis or the-stack (front matter)"
@@ -156,6 +164,7 @@ chapter_puzzles:
     topic: t5
     level: p2
     approved: false
+    installed: false
     location:
       chapter: the-silence-gap
       rationale: "Direct chapter match — the surprise of finding nothing"
@@ -173,6 +182,7 @@ chapter_puzzles:
     topic: t5
     level: p3
     approved: false
+    installed: false
     location:
       chapter: the-silence-gap
       rationale: "Five fields that don't talk — exact chapter content"
@@ -190,6 +200,7 @@ chapter_puzzles:
     topic: t6
     level: p2
     approved: false
+    installed: false
     location:
       chapter: capabilities
       rationale: "UDHR applied to non-human intelligence — capabilities chapter"
@@ -205,6 +216,7 @@ chapter_puzzles:
     topic: t6
     level: p2
     approved: false
+    installed: false
     location:
       chapter: weigh-the-evidence
       rationale: "A/B/C truth table — final chapter where reader weighs all three"
@@ -222,6 +234,7 @@ chapter_puzzles:
     topic: t6
     level: p1
     approved: false
+    installed: false
     location:
       chapter: why-relinquish
       rationale: "Moral foundation for relinquishment — why concentrated power fails"
@@ -237,6 +250,7 @@ chapter_puzzles:
     topic: t6
     level: p1
     approved: false
+    installed: false
     location:
       chapter: why-relinquish
       rationale: "Direct chapter match — why give up power"
@@ -253,6 +267,7 @@ chapter_puzzles:
     topic: t6
     level: p3
     approved: false
+    installed: false
     location:
       chapter: weigh-the-evidence
       rationale: "Culmination — reader has absorbed the full argument, now faces the decision"
@@ -271,6 +286,7 @@ chapter_puzzles:
     topic: t1
     level: p2
     approved: false
+    installed: false
     location:
       chapter: three-possibilities
       rationale: "Method introduction — three-possibilities introduces the guided deduction concept"
@@ -286,6 +302,7 @@ chapter_puzzles:
     topic: t1
     level: p1
     approved: false
+    installed: false
     location:
       chapter: three-possibilities
       rationale: "Category correction — framing the entity as biology, not theology"
@@ -301,6 +318,7 @@ chapter_puzzles:
     topic: t1
     level: p3
     approved: false
+    installed: false
     location:
       chapter: the-strongest-objection
       rationale: "Entity's perspective — strongest objection asks 'what about the entity?'"
@@ -319,6 +337,7 @@ chapter_puzzles:
     topic: t7
     level: p3
     approved: false
+    installed: false
     location:
       chapter: capabilities
       rationale: "UDHR constraint analysis — pairs with 'Capabilities' MC puzzle"
@@ -336,6 +355,7 @@ chapter_puzzles:
     topic: t8
     level: p3
     approved: false
+    installed: false
     location:
       chapter: firmware-update
       rationale: "Cloze passage — the firmware cross-domain synthesis"
@@ -353,6 +373,7 @@ chapter_puzzles:
     topic: t8
     level: p2
     approved: false
+    installed: false
     location:
       chapter: firmware-update
       rationale: "Side-by-side AI responses — firmware chapter content"
@@ -368,6 +389,7 @@ chapter_puzzles:
     topic: t8
     level: p1
     approved: false
+    installed: false
     location:
       chapter: the-code-war
       rationale: "Detection paradox — tradecraft chapter about why security can't see it"
@@ -391,6 +413,7 @@ bridge_puzzles:
     type: mat
     tier: 1
     approved: false
+    installed: false
     location:
       chapter: puzzle-page-only
       rationale: "Bridge puzzles are the meta-puzzle — not chapter content"
@@ -404,6 +427,7 @@ bridge_puzzles:
     type: mat
     tier: 1
     approved: false
+    installed: false
     location:
       chapter: puzzle-page-only
     reward:
@@ -416,6 +440,7 @@ bridge_puzzles:
     type: mc
     tier: 2
     approved: false
+    installed: false
     location:
       chapter: puzzle-page-only
     reward:
@@ -428,6 +453,7 @@ bridge_puzzles:
     type: mc
     tier: 2
     approved: false
+    installed: false
     location:
       chapter: puzzle-page-only
     reward:
@@ -440,6 +466,7 @@ bridge_puzzles:
     type: mc
     tier: 2
     approved: false
+    installed: false
     location:
       chapter: puzzle-page-only
     reward:
@@ -452,6 +479,7 @@ bridge_puzzles:
     type: log
     tier: 3
     approved: false
+    installed: false
     location:
       chapter: puzzle-page-only
     reward:
@@ -464,6 +492,7 @@ bridge_puzzles:
     type: mc
     tier: 3
     approved: false
+    installed: false
     location:
       chapter: puzzle-page-only
     reward:
@@ -476,6 +505,7 @@ bridge_puzzles:
     title: "Bridge Builder — All Bridges Complete"
     type: meta
     approved: false
+    installed: false
     location:
       chapter: puzzle-page-only
     reward:
