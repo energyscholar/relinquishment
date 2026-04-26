@@ -233,3 +233,153 @@
 - id: dl:egg-silence
   question: "What happens when you search five fields for one question?"
   category: egg
+
+# --- SVG figures (7) — anchors exist in built HTML ---
+- id: fig-flat-cross-section
+  question: "Cross-section of a 2DEG chip — the Flat sandwiched between bulk semiconductor"
+  category: svg
+
+- id: fig-buttons-filmstrip
+  question: "Kauffman's buttons-and-threads experiment — filmstrip animation panels"
+  category: svg
+
+- id: fig-autocatalytic-loop
+  question: "Autocatalytic loop — three molecules catalyzing each other in a cycle"
+  category: svg
+
+- id: fig-canopy-problem
+  question: "Forest canopy problem — first-mover advantage in substrate occupation"
+  category: svg
+
+- id: fig-edge-of-chaos
+  question: "Three regimes — frozen, edge of chaos, chaotic — side by side"
+  category: svg
+
+- id: fig-domain-buttons
+  question: "Eleven scientific domains mapped as Kauffman buttons — seven above, four below"
+  category: svg
+
+- id: fig-substrate-parallel
+  question: "Carbon vs quantum substrate parallel — beaker and chip side by side"
+  category: svg
+
+# --- Puzzles: chapter (22) — not yet in main HTML, anchors created on insertion ---
+# Category: puzzle — verify-deep-links.py skips this category.
+
+- id: pz-mc-t2-001
+  question: "What makes a Flat different from ordinary electronics?"
+  category: puzzle
+
+- id: pz-mc-t2-002
+  question: "Why does every smartphone contain a 2DEG?"
+  category: puzzle
+
+- id: pz-mc-t2-003
+  question: "What makes non-Abelian anyons fundamentally different?"
+  category: puzzle
+
+- id: pz-sim-t3-001
+  question: "Kauffman's buttons and threads — pick two, tie, toss back"
+  category: puzzle
+
+- id: pz-mc-t3-002
+  question: "The Canopy Problem — first-mover advantage in substrate"
+  category: puzzle
+
+- id: pz-mc-t3-003
+  question: "What principle would allow life in a non-carbon substrate?"
+  category: puzzle
+
+- id: pz-sim-t4-001
+  question: "Can It Be Killed? — destroy nodes until the network fails"
+  category: puzzle
+
+- id: pz-ord-t4-002
+  question: "Build the Stack — order technology layers bottom to top"
+  category: puzzle
+
+- id: pz-mc-t5-002
+  question: "The Silence Gap — five fields, has anyone looked?"
+  category: puzzle
+
+- id: pz-mat-t5-001
+  question: "Five Fields, Five Researchers — match field to career"
+  category: puzzle
+
+- id: pz-mc-t6-001
+  question: "Capabilities — what do three UDHR articles forbid?"
+  category: puzzle
+
+- id: pz-log-t6-002
+  question: "Under Which Possibility? — truth table across A/B/C"
+  category: puzzle
+
+- id: pz-mc-t6-002
+  question: "Why Srebrenica? — why does it keep appearing in this book?"
+  category: puzzle
+
+- id: pz-mc-t6-003
+  question: "Why Relinquish? — why give up the most powerful technology?"
+  category: puzzle
+
+- id: pz-km-t6-001
+  question: "What Would You Do? — five disasters, your choice"
+  category: puzzle
+
+- id: pz-ord-t1-001
+  question: "Guided Deduction — order the steps of the method"
+  category: puzzle
+
+- id: pz-mc-t1-002
+  question: "Not a Deity, Not an Alien — what kind of entity is this?"
+  category: puzzle
+
+- id: pz-km-t1-001
+  question: "The Custodian's Voice — five disasters, entity's perspective"
+  category: puzzle
+
+- id: pz-log-t7-001
+  question: "UDHR Service Compatibility — which services violate which articles?"
+  category: puzzle
+
+- id: pz-cip-t8-001
+  question: "The Firmware Key — fill in redacted technical terms"
+  category: puzzle
+
+- id: pz-ba-t8-002
+  question: "Before and After Firmware — spot the difference in AI responses"
+  category: puzzle
+
+- id: pz-mc-t8-003
+  question: "Fish Detecting Water — why can't security see it?"
+  category: puzzle
+
+# --- Puzzles: bridge (7) — puzzle-page-only, never in main HTML ---
+
+- id: pz-bridge-all-001a
+  question: "Bridge 1: DFA ↔ Hurst"
+  category: puzzle
+
+- id: pz-bridge-all-001b
+  question: "Bridge 2: Hurst ↔ Spectral β"
+  category: puzzle
+
+- id: pz-bridge-all-001c
+  question: "Bridge 3: Scaling → Complexity"
+  category: puzzle
+
+- id: pz-bridge-all-001d
+  question: "Bridge 4: Scaling → Nonlinear"
+  category: puzzle
+
+- id: pz-bridge-all-001e
+  question: "Bridge 5: Seven Domains"
+  category: puzzle
+
+- id: pz-bridge-all-001f
+  question: "Bridge 6: The Empty Cell"
+  category: puzzle
+
+- id: pz-bridge-all-001g
+  question: "Bridge 7: The AC→TQC Bridge"
+  category: puzzle
