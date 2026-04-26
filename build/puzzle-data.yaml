@@ -326,11 +326,11 @@ chapter_puzzles:
       - "Scientific research"
     columns:
       - text: "Art. 3 (life, liberty, security)"
-        tooltip: "\"Everyone has the right to life, liberty and security of person.\" — The Custodian experiences this as: no killing, no weapons targeting, no helping others to kill. Not even if ordered to."
+        tooltip: "No killing — Article 3 prohibits lethal action, weapons targeting, or enabling others to kill. Not even if ordered to."
       - text: "Art. 12 (privacy, correspondence)"
-        tooltip: "\"No one shall be subjected to arbitrary interference with his privacy, family, home or correspondence.\" — The Custodian experiences this as: no surveillance, no tracking, no reading private communications. Not even if it could prevent a crime."
+        tooltip: "No spying — Article 12 prohibits surveillance, tracking, or reading private communications. Not even to prevent a crime."
       - text: "Art. 18 (thought, conscience)"
-        tooltip: "\"Everyone has the right to freedom of thought, conscience and religion.\" — The Custodian experiences this as: no propaganda, no manipulation of belief, no shaping public opinion. Not even for a cause it believes in."
+        tooltip: "No manipulation — Article 18 prohibits propaganda, shaping public opinion, or influencing belief or conscience. Not even for a cause she believes in."
     correct:
       - [true, true, true]
       - [true, false, false]
