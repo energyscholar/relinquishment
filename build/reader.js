@@ -464,7 +464,6 @@
       msWidth = Math.floor(navW * 0.45);
     }
     if (msWidth < 40) return;
-    document.title = 'MS:' + msWidth + 'px nav:' + navW + 'px vw:' + window.innerWidth;
     var wrapper = document.createElement('div');
     wrapper.id = 'cover-magnetosphere';
     wrapper.setAttribute('aria-hidden', 'true');
