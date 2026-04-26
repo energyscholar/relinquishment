@@ -2987,6 +2987,221 @@ def inject_genesis_illustrations(html_path):
             print(f"  Genesis: {name} SVG injected")
 
 
+def inject_chapter_puzzles(html_path):
+    """Insert approved puzzles into chapter HTML (Plan 0255)."""
+    import hashlib as _hashlib
+    tracker_path = REPO / 'build' / 'puzzle-tracker.yaml'
+    data_path = REPO / 'build' / 'puzzle-data.yaml'
+    if not tracker_path.exists() or not data_path.exists():
+        return
+    tracker = yaml.safe_load(tracker_path.read_text())
+    pdata = yaml.safe_load(data_path.read_text())
+
+    approved = {}
+    for p in tracker.get('chapter_puzzles', []):
+        if p.get('approved'):
+            approved[p['id']] = p
+
+    if not approved:
+        return
+
+    content = {}
+    for p in pdata.get('chapter_puzzles', []):
+        if p['id'] in approved:
+            content[p['id']] = p
+
+    html_path = Path(html_path)
+    text = html_path.read_text()
+    injected = 0
+
+    CHAPTER_MARKERS = {
+        'the-flat': '<div class="custodian-interlude" id="custodian:dance">',
+    }
+
+    def _esc(s):
+        return str(s).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
+
+    for pid, tracker_entry in approved.items():
+        puzzle = content.get(pid)
+        if not puzzle:
+            continue
+        ptype = puzzle.get('type', '')
+        if ptype != 'mc':
+            continue
+        chapter = tracker_entry.get('location', {}).get('chapter', '')
+        marker = CHAPTER_MARKERS.get(chapter)
+        if not marker:
+            continue
+        idx = text.find(marker)
+        if idx == -1:
+            continue
+
+        title = _esc(puzzle.get('title', ''))
+        blurb = puzzle.get('gateway_blurb', '')
+        question = _esc(puzzle.get('question', ''))
+        hint_text = _esc(puzzle.get('hint', ''))
+        abstract_text = _esc(puzzle.get('abstract', '').strip())
+        egg_url = puzzle.get('egg_url', '').strip()
+        options = puzzle.get('options', [])
+        answer_key = str(puzzle.get('answer_key', ''))
+        answer_hash = _hashlib.sha256(answer_key.encode()).hexdigest()
+
+        blurb_html = ''
+        if blurb:
+            blurb_html = f'<p class="pz-gateway-blurb">\U0001f9e9 {_esc(blurb)}</p>'
+
+        opts_json = []
+        for o in options:
+            opts_json.append('{' + f'"key":"{_esc(o["key"])}","text":"{_esc(o["text"])}"' + '}')
+        opts_json_str = '[' + ','.join(opts_json) + ']'
+
+        egg_link = ''
+        if egg_url:
+            egg_link = f'<p class="pz-egg-reward"><a href="{_esc(egg_url)}" target="_blank">&#x1f513; Continue exploring &rarr;</a></p>'
+
+        puzzle_html = f'''
+<details class="puzzle-section" open>
+  <summary>Puzzle</summary>
+  <style>
+.puzzle-section {{ margin: 2em 0; border: 1px solid #ddd; border-radius: 6px; background: #fafafa; }}
+.puzzle-section summary {{ padding: 0.8em 1em; cursor: pointer; font-weight: bold; color: #1a5276; font-size: 1.05em; }}
+.puzzle-section summary:hover {{ color: #154360; }}
+.pz-container {{ padding: 0 1.5em 1.5em; }}
+.pz-container.pz-solved {{ border-color: #2a9b9a; }}
+.pz-question {{ font-size: 1.05em; margin-bottom: 1em; }}
+.pz-gateway-blurb {{ font-size: 0.88em; color: #666; font-style: italic; margin: -0.5em 0 0.8em 0; padding: 0.4em 0.6em; border-left: 3px solid #2a9b9a; background: #f5fafa; border-radius: 0 4px 4px 0; }}
+.pz-option-btn {{ display: block; width: 100%; text-align: left; font-family: Georgia, "Times New Roman", serif; font-size: 1em; padding: 0.7em 1em; margin-bottom: 0.5em; border: 1px solid #ccc; border-radius: 4px; background: #fff; cursor: pointer; transition: border-color 0.2s, background 0.2s; }}
+.pz-option-btn:hover {{ border-color: #1a5276; background: #f0f6fa; }}
+.pz-option-btn.pz-wrong {{ border-color: #c0392b; background: #fdf2f2; animation: pz-shake 0.3s ease-in-out; }}
+.pz-option-btn.pz-correct {{ border-color: #2a9b9a; background: #e8f8f5; font-weight: bold; }}
+@keyframes pz-shake {{ 0%, 100% {{ transform: translateX(0); }} 25% {{ transform: translateX(-4px); }} 75% {{ transform: translateX(4px); }} }}
+.pz-hint {{ display: none; color: #856404; background: #fff9e6; border-left: 3px solid #d4a14b; padding: 0.6em 1em; margin-top: 0.5em; font-style: italic; }}
+.pz-hint.pz-visible {{ display: block; }}
+.pz-result {{ display: none; margin-top: 1em; }}
+.pz-result.pz-visible {{ display: block; }}
+.pz-solved-badge {{ color: #2a9b9a; font-weight: bold; font-size: 1.1em; margin-bottom: 0.5em; }}
+.pz-abstract {{ border-left: 3px solid #2a9b9a; padding: 0.8em 1em; margin: 0; background: #f0faf9; font-style: italic; color: #333; line-height: 1.5; }}
+.pz-egg-reward {{ margin-top: 1em; text-align: center; }}
+.pz-egg-reward a {{ display: inline-block; padding: 0.5em 1.2em; background: #2a9b9a; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold; transition: background 0.2s; }}
+.pz-egg-reward a:hover {{ background: #238a89; }}
+.pz-fallback {{ font-style: italic; color: #888; }}
+@media (prefers-color-scheme: dark) {{
+  .puzzle-section {{ background: #242424; border-color: #444; }}
+  .puzzle-section summary {{ color: #6ba3f7; }}
+  .pz-container.pz-solved {{ border-color: #2a9b9a; }}
+  .pz-gateway-blurb {{ color: #aaa; background: #1a2a2a; }}
+  .pz-option-btn {{ background: #2a2a2a; border-color: #555; color: #e0e0e0; }}
+  .pz-option-btn:hover {{ background: #1e3a50; border-color: #6ba3f7; }}
+  .pz-option-btn.pz-wrong {{ background: #3a1a1a; border-color: #c0392b; }}
+  .pz-option-btn.pz-correct {{ background: #1a3a35; border-color: #2a9b9a; }}
+  .pz-hint {{ background: #2a2510; color: #f0d060; border-left-color: #d4a14b; }}
+  .pz-abstract {{ background: #1a2e2d; color: #ccc; }}
+  .pz-egg-reward a {{ background: #1a6b6a; }}
+  .pz-egg-reward a:hover {{ background: #1f7d7c; }}
+}}
+@media (max-width: 600px) {{
+  .pz-option-btn {{ min-height: 44px; }}
+}}
+  </style>
+  <div class="pz-container" id="{pid}" data-puzzle-id="{pid}">
+    <h3>{title}</h3>
+    {blurb_html}
+    <p class="pz-question">{question}</p>
+    <div class="pz-interaction" id="pz-inter-{pid}"></div>
+    <p class="pz-hint" id="pz-hint-{pid}">{hint_text}</p>
+    <div class="pz-result" id="pz-result-{pid}">
+      <div class="pz-solved-badge">&#10003; Solved</div>
+      <blockquote class="pz-abstract">{abstract_text}</blockquote>
+      {egg_link}
+    </div>
+    <noscript><p class="pz-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
+  </div>
+  <script>
+(function() {{
+  var SKEY = "relinquishment-puzzles-solved";
+  var pid = "{pid}";
+  var answerHash = "{answer_hash}";
+  var options = {opts_json_str};
+
+  function getSolved() {{ try {{ var s = localStorage.getItem(SKEY); return s ? JSON.parse(s) : {{}}; }} catch(e) {{ return {{}}; }} }}
+  function setSolved(id) {{ try {{ var s = getSolved(); s[id] = true; localStorage.setItem(SKEY, JSON.stringify(s)); }} catch(e) {{}} }}
+
+  function revealPuzzle() {{
+    var el = document.getElementById(pid);
+    if (el) el.classList.add("pz-solved");
+    var inter = document.getElementById("pz-inter-" + pid);
+    if (inter) inter.style.display = "none";
+    var hint = document.getElementById("pz-hint-" + pid);
+    if (hint) hint.classList.remove("pz-visible");
+    var result = document.getElementById("pz-result-" + pid);
+    if (result) result.classList.add("pz-visible");
+    setSolved(pid);
+  }}
+
+  function showHint() {{
+    var h = document.getElementById("pz-hint-" + pid);
+    if (h) h.classList.add("pz-visible");
+  }}
+
+  function escHtml(s) {{ var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }}
+
+  function sha256(msg) {{
+    var buf = new TextEncoder().encode(msg);
+    return crypto.subtle.digest("SHA-256", buf).then(function(hash) {{
+      return Array.from(new Uint8Array(hash)).map(function(b) {{ return b.toString(16).padStart(2, "0"); }}).join("");
+    }});
+  }}
+
+  function checkAnswer(key, btn) {{
+    if (getSolved()[pid]) return;
+    if (!(window.crypto && window.crypto.subtle)) {{ revealPuzzle(); return; }}
+    sha256(key).then(function(h) {{
+      if (h === answerHash) {{
+        btn.classList.add("pz-correct");
+        setTimeout(revealPuzzle, 400);
+      }} else {{
+        btn.classList.add("pz-wrong");
+        setTimeout(function() {{ btn.classList.remove("pz-wrong"); }}, 600);
+        showHint();
+      }}
+    }});
+  }}
+
+  function init() {{
+    if (getSolved()[pid]) {{ revealPuzzle(); return; }}
+    var inter = document.getElementById("pz-inter-" + pid);
+    if (!inter) return;
+    var html = "";
+    for (var i = 0; i < options.length; i++) {{
+      var o = options[i];
+      html += '<button class="pz-option-btn" data-key="' + escHtml(o.key) + '">(' + escHtml(o.key) + ') ' + escHtml(o.text) + '</button>';
+    }}
+    inter.innerHTML = html;
+    var btns = inter.querySelectorAll(".pz-option-btn");
+    for (var j = 0; j < btns.length; j++) {{
+      (function(btn) {{
+        btn.addEventListener("click", function() {{ checkAnswer(btn.dataset.key, btn); }});
+      }})(btns[j]);
+    }}
+  }}
+
+  if (document.readyState === "loading") {{
+    document.addEventListener("DOMContentLoaded", init);
+  }} else {{
+    init();
+  }}
+}})();
+  </script>
+</details>
+'''
+        text = text[:idx] + puzzle_html + text[idx:]
+        injected += 1
+
+    if injected:
+        html_path.write_text(text)
+    print(f"  Chapter puzzles: {injected} injected")
+
+
 def collapse_tech_sections(html_path):
     """Wrap approved tech sections in collapsible <details> elements (Plan 0219)."""
     manifest_path = REPO / 'build' / 'tech-collapse.yaml'
@@ -3104,6 +3319,7 @@ if __name__ == "__main__":
         inject_button_sequence(sys.argv[2])
         inject_domain_buttons(sys.argv[2])
         inject_genesis_illustrations(sys.argv[2])
+        inject_chapter_puzzles(sys.argv[2])
         inject_questions_index(sys.argv[2])
         fix_html_glossary_names(sys.argv[2])
         collapse_tech_sections(sys.argv[2])
