@@ -399,6 +399,72 @@ chapter_puzzles:
       content: abstract
     notes: "Could also fit capabilities. the-code-war discusses the security paradox."
 
+  # ---- Guided Deduction (4 puzzles — new gd type, Plan 0256) ----
+
+  - id: pz-gd-t1-001
+    title: "The Method"
+    type: gd
+    topic: t1
+    level: p1
+    approved: false
+    installed: false
+    location:
+      chapter: three-possibilities
+      rationale: "Reader experiences guided deduction — the book's core method"
+      placement: end
+    reward:
+      type: self-contained
+      content: abstract
+    notes: "3-stage GD. Meta-puzzle: the solving process IS the lesson."
+
+  - id: pz-gd-t2-001
+    title: "The Accidental Habitat"
+    type: gd
+    topic: t2
+    level: p1
+    approved: false
+    installed: false
+    location:
+      chapter: the-flat
+      rationale: "Engineering→topology→accidental habitat via guided deduction"
+      placement: end
+    reward:
+      type: self-contained
+      content: abstract
+    notes: "3-stage GD. Complements pz-mc-t2-002 (same topic, different method)."
+
+  - id: pz-gd-t5-001
+    title: "The Silence"
+    type: gd
+    topic: t5
+    level: p1
+    approved: true
+    installed: false
+    location:
+      chapter: the-silence-gap
+      rationale: "Silence = no one asked, not 'asked and answered' — guided discovery"
+      placement: end
+    reward:
+      type: self-contained
+      content: abstract
+    notes: "2-stage GD. Shorter because the conclusion is sharp."
+
+  - id: pz-gd-t6-001
+    title: "The Ethics"
+    type: gd
+    topic: t6
+    level: p1
+    approved: false
+    installed: false
+    location:
+      chapter: capabilities
+      rationale: "UDHR ethics grounding via guided deduction"
+      placement: end
+    reward:
+      type: egg-pointer
+      content: "#dl:egg-udhr"
+    notes: "2-stage GD. Shares UDHR egg with pz-mc-t6-001 and pz-log-t7-001."
+
 
 # ============================================================
 # BRIDGE PUZZLES (7) — Bridge Builder meta-puzzle

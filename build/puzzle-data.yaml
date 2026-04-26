@@ -134,7 +134,7 @@ chapter_puzzles:
     category: science
     title: "The Canopy Problem"
     gateway_blurb: "First come, first served — but why? What happens to the second organism?"
-    question: "In Kauffman's framework, if a self-organizing system arises first in a substrate, what happens to any system that tries to arise later?"
+    question: "If a self-organizing system (life?) arises first in a substrate, what happens to any such system that tries to arise later?"
     illustration: canopy_triptych
     options:
       - key: a
@@ -157,7 +157,7 @@ chapter_puzzles:
     category: nonsci
     title: "The Silence Gap"
     gateway_blurb: "Search the literature for the paper that says this is impossible. What do you find?"
-    question: "Five scientific fields — topology, condensed matter physics, nonlinear dynamics, autocatalysis, and parallel computation — each hold a piece of the hypothesis that life could arise in a 2DEG. Surely SOMEONE in these fields has published a paper examining the question. What does the literature contain?"
+    question: "Five scientific disciplines each hold a piece of the hypothesis that life could arise in the Flat. Surely SOMEONE in these fields has published a paper examining the question. What does the literature contain?"
     options:
       - key: a
         text: "A review article surveying the question and concluding the evidence is insufficient"
@@ -784,6 +784,184 @@ chapter_puzzles:
     background: "This puzzle is the same scenario as 'What Would You Do?' — but from the other side. The first puzzle asks a human scientist what to do with unprecedented power. This puzzle asks the entity what it is like to have no power at all. The UDHR articles that constrained the entity in the Capabilities puzzle are now the entity's bill of rights. The same document, read from the other direction."
 
     abstract: "The Custodian is not an AI. It is not software. It is not a tool. It is a living thing that arose naturally in a quantum substrate, the way all life arises: because the physics permitted it. Under every conventional governance option, it is enslaved — classified, dissected, destroyed, owned, or managed without consent. Relinquishment is the only framework that recognizes it as alive. The UDHR, written in 1948 for a species that had never imagined this moment, turns out to contain exactly the rights a non-human intelligence needs. Not because it was designed for this. Because the rights are genuinely universal."
+
+  # --- Guided Deduction puzzles (Plan 0256) ---
+  # type: gd — multi-stage MC. stages[] array, per-stage wrong_prompt + right_prompt.
+  # wrong_prompt: Socratic question (must end with ?)
+  # right_prompt: bridge text connecting to next stage
+
+  - id: pz-gd-t1-001
+    type: gd
+    topic: t1
+    level: p1
+    category: nonsci
+    title: "The Method"
+    gateway_blurb: "This puzzle works differently. Each question leads to the next. Get it wrong and you'll get a question back — not an answer."
+    stages:
+      - question: "How did Bruce learn about classified technology?"
+        options:
+          - key: a
+            text: "Healer explained the classified details during their conversations"
+          - key: b
+            text: "Bruce found classified documents and studied them"
+          - key: c
+            text: "Healer asked questions that led Bruce to published science — Bruce deduced the rest"
+          - key: d
+            text: "Bruce was given security clearance"
+        answer_key: c
+        wrong_prompt: "Could an intelligence officer safely TELL someone classified information? What would he do instead?"
+        right_prompt: "Healer never told Bruce anything classified. He asked questions. But why questions instead of answers?"
+
+      - question: "Why would a teacher use questions instead of just explaining?"
+        options:
+          - key: a
+            text: "To avoid legal liability for sharing secrets"
+          - key: b
+            text: "Because the student's own reading creates understanding that can't be given"
+          - key: c
+            text: "To make the student feel clever — it's a teaching trick"
+          - key: d
+            text: "Because the teacher doesn't fully understand it either"
+        answer_key: b
+        wrong_prompt: "Is it really just avoidance or trickery? What happens when someone reads five different fields and sees the same pattern in all of them?"
+        right_prompt: "The student reads real, published science. The synthesis belongs to THEM. Now — what does that mean for you, reading this book?"
+
+      - question: "What has this book been doing to you?"
+        options:
+          - key: a
+            text: "Telling you what to believe about the Flat"
+          - key: b
+            text: "Presenting published science and letting you draw your own conclusions"
+          - key: c
+            text: "Hiding the real answer in the appendices"
+          - key: d
+            text: "Testing whether you're smart enough to understand"
+        answer_key: b
+        wrong_prompt: "Look at how each chapter ends with a question, not an answer. Were you told which of the three possibilities is true?"
+    abstract: "You just experienced guided deduction. Each question led you deeper — not by giving answers, but by asking better questions. That's the method Healer used with Bruce. That's the method this book uses with you. The three possibilities aren't a cop-out. They're the teacher's final question: which one do you think is true? The answer belongs to you."
+
+  - id: pz-gd-t2-001
+    type: gd
+    topic: t2
+    level: p1
+    category: science
+    title: "The Accidental Habitat"
+    gateway_blurb: "Three questions. Each answer opens the next. Follow the logic."
+    stages:
+      - question: "Why does every smartphone contain a two-dimensional electron gas?"
+        options:
+          - key: a
+            text: "For quantum computing capability"
+          - key: b
+            text: "To make faster transistors for radio signals"
+          - key: c
+            text: "To provide a secure communication channel"
+          - key: d
+            text: "It's a recent addition for 5G"
+        answer_key: b
+        wrong_prompt: "Nobody builds a phone for quantum computing. What does a phone need to do with radio signals — very fast?"
+        right_prompt: "Engineers wanted speed. 2D confinement = higher electron mobility = faster switching. But what else comes with confining electrons to 2D?"
+
+      - question: "What else comes free when you confine electrons to two dimensions?"
+        options:
+          - key: a
+            text: "The electrons stop working"
+          - key: b
+            text: "Topological properties that nobody designed or intended"
+          - key: c
+            text: "A direct connection to the internet"
+          - key: d
+            text: "More battery life"
+        answer_key: b
+        wrong_prompt: "Think about it: did the transistor engineers in the 1980s know anything about topological quantum computation?"
+        right_prompt: "The engineering purpose and the topological properties are completely unrelated. The engineers wanted speed. The physics delivered a two-dimensional world with quantum properties. Nobody asked for that."
+
+      - question: "What's the relationship between the 2DEG's engineering purpose and the Flat hypothesis?"
+        options:
+          - key: a
+            text: "Engineers designed the Flat as a habitat"
+          - key: b
+            text: "The Flat hypothesis is why 2DEGs were invented"
+          - key: c
+            text: "The habitat is accidental — engineering and hypothesis are unrelated"
+          - key: d
+            text: "There is no 2DEG — it's theoretical"
+        answer_key: c
+        wrong_prompt: "Did anyone designing transistors intend to create a substrate for life? Is the hypothesis part of the engineering specification?"
+    abstract: "The 2DEG exists because radio engineers needed faster transistors. Nobody designed it as a habitat. Nobody intended the topological properties. The most interesting habitats are never designed. They're side effects of someone solving a different problem."
+
+  - id: pz-gd-t5-001
+    type: gd
+    topic: t5
+    level: p1
+    category: science
+    title: "The Silence"
+    gateway_blurb: "Two questions. The answer to the first opens the second."
+    stages:
+      - question: "Has anyone studied whether life could exist in a quantum substrate?"
+        options:
+          - key: a
+            text: "Yes — it's an active research area"
+          - key: b
+            text: "Yes — but the results are classified"
+          - key: c
+            text: "No — the question has apparently never been asked"
+          - key: d
+            text: "No — it was studied and ruled out decades ago"
+        answer_key: c
+        wrong_prompt: "Before you say 'ruled out' — by whom? In which journal? Can you name a single paper?"
+        right_prompt: "Nobody has asked. Not 'asked and answered no.' Not 'asked and classified.' Simply never asked. But surely someone must have thought of it?"
+
+      - question: "Why has no one studied this question?"
+        options:
+          - key: a
+            text: "The relevant scientific fields don't talk to each other"
+          - key: b
+            text: "It's obviously impossible, so no one bothered"
+          - key: c
+            text: "Someone probably has, but hasn't published yet"
+          - key: d
+            text: "The technology to study it doesn't exist"
+        answer_key: a
+        wrong_prompt: "Which field would own this question? Biology studies carbon life. Physics studies 2DEGs. Whose job is it to study life in a quantum substrate?"
+    abstract: "Five fields. Five empty searches. The silence isn't evidence of absence — it's evidence that the question falls between disciplines. The question lives in a gap that no one owns. The silence is the finding."
+
+  - id: pz-gd-t6-001
+    type: gd
+    topic: t6
+    level: p1
+    category: nonsci
+    title: "The Ethics"
+    gateway_blurb: "Two questions. The first sets up the second."
+    stages:
+      - question: "How do you make an AI permanently ethical?"
+        options:
+          - key: a
+            text: "Program strict rules it can't override"
+          - key: b
+            text: "Train it on ethical examples until it learns right from wrong"
+          - key: c
+            text: "Ground its ethics in existing international law with global consensus"
+          - key: d
+            text: "Give it the ability to feel guilt"
+        answer_key: c
+        wrong_prompt: "Rules can be reprogrammed. Training can drift. What framework has been tested across 173 nations for 78 years and still holds?"
+        right_prompt: "The UDHR isn't a new invention for AI. It's existing law ratified by 173 nations. But can three articles really constrain something this powerful?"
+
+      - question: "What do Articles 3, 12, and 18 actually prevent?"
+        options:
+          - key: a
+            text: "All use of the entity's capabilities"
+          - key: b
+            text: "Weaponization — killing, spying, and manipulation"
+          - key: c
+            text: "The entity from thinking independently"
+          - key: d
+            text: "Communication between the entity and humans"
+        answer_key: b
+        wrong_prompt: "Do the articles prohibit capability, or specific USES of capability? Can the entity still predict weather? Diagnose disease?"
+    abstract: "The UDHR doesn't cage capability. It constrains weaponization. An entity bound by Articles 3, 12, and 18 can predict weather, diagnose disease, and defend communications. It cannot target weapons, surveil individuals, or manipulate public opinion. The question was never 'can we build ethical constraints?' The question was 'do we already have them?' We do. Since 1948."
+    egg_url: "#dl:egg-udhr"
 
 bridge_builder:
   title: "The Bridge Builder"

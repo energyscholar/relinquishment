@@ -204,6 +204,17 @@ def build_json(puzzle):
         d['reflection_default'] = puzzle.get('reflection_default', '')
         d['resolution_label'] = puzzle.get('resolution_label', '')
         d['resolution'] = puzzle.get('resolution', '')
+    elif t == 'gd':
+        stages = []
+        for st in puzzle['stages']:
+            stages.append({
+                'question': st['question'],
+                'options': st['options'],
+                'hash': sha256(str(st['answer_key'])),
+                'wrong_prompt': st.get('wrong_prompt', ''),
+                'right_prompt': st.get('right_prompt', ''),
+            })
+        d['stages'] = stages
     return d
 
 
@@ -282,7 +293,7 @@ def render_km_container(puzzle):
     blurb = puzzle.get('gateway_blurb', '')
     blurb_html = f'<p class="gateway-blurb">\U0001f9e9 {esc(blurb)}</p>' if blurb else ''
     return f'''<div class="puzzle-container km-puzzle" id="{pid}" data-puzzle-id="{pid}" data-puzzle-type="km">
-  <h2>{title}</h2>
+  <h2>{title} <a class="anchor-link" href="#{pid}" title="{pid}">#</a></h2>
   {blurb_html}
   <div class="km-scenario">{scenario_html}</div>
   <div class="km-options">
@@ -313,11 +324,51 @@ def render_km_container(puzzle):
 </div>'''
 
 
+def render_gd_container(puzzle):
+    pid = esc(puzzle['id'])
+    title = esc(puzzle.get('title', ''))
+    abstract_text = esc(puzzle.get('abstract', '').strip())
+    blurb = puzzle.get('gateway_blurb', '')
+    blurb_html = f'<p class="gateway-blurb">\U0001f9e9 {esc(blurb)}</p>' if blurb else ''
+    egg_url = puzzle.get('egg_url', '').strip()
+    egg_link = f'<p class="egg-reward"><a href="{htmlmod.escape(egg_url)}" target="_blank">&#x1f513; Continue exploring &rarr;</a></p>' if egg_url else ''
+    stages = puzzle.get('stages', [])
+    n = len(stages)
+    dots = ''.join(f'<span class="gd-dot" id="gd-dot-{pid}-{i}"></span>' for i in range(n))
+    stages_html = ''
+    for i, st in enumerate(stages):
+        opts_html = ''
+        for o in st.get('options', []):
+            opts_html += f'<button class="option-btn gd-option" data-key="{esc(o["key"])}" data-stage="{i}">({esc(o["key"])}) {esc(o["text"])}</button>\n'
+        stages_html += f'''<div class="gd-stage" id="gd-stage-{pid}-{i}" style="{'display:none' if i > 0 else ''}">
+      <p class="gd-stage-question">{esc(st["question"])}</p>
+      <div class="gd-stage-options">{opts_html}</div>
+      <div class="gd-wrong-prompt" id="gd-wrong-{pid}-{i}"></div>
+      <div class="gd-right-prompt" id="gd-right-{pid}-{i}"></div>
+    </div>\n'''
+    return f'''<div class="puzzle-container gd-puzzle" id="{pid}" data-puzzle-id="{pid}" data-puzzle-type="gd">
+  <h2>{title} <a class="anchor-link" href="#{pid}" title="{pid}">#</a></h2>
+  {blurb_html}
+  <div class="gd-progress">{dots}</div>
+  <div class="interaction">
+    {stages_html}
+  </div>
+  <div class="result" id="result-{pid}">
+    <div class="solved-badge">&#10003; Solved</div>
+    <blockquote class="abstract">{abstract_text}</blockquote>
+    {egg_link}
+  </div>
+  <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
+</div>'''
+
+
 # --- Generate container HTML ---
 def render_container(puzzle):
     ptype = puzzle.get('type', puzzle.get('sub_type', ''))
     if ptype == 'km':
         return render_km_container(puzzle)
+    if ptype == 'gd':
+        return render_gd_container(puzzle)
 
     pid = esc(puzzle['id'])
     title = esc(puzzle.get('title', ''))
@@ -339,7 +390,7 @@ def render_container(puzzle):
     egg_url = puzzle.get('egg_url', '').strip()
     egg_link = f'<p class="egg-reward"><a href="{htmlmod.escape(egg_url)}" target="_blank">&#x1f513; Continue exploring &rarr;</a></p>' if egg_url else ''
     return f'''<div class="puzzle-container" id="{pid}" data-puzzle-id="{pid}" data-puzzle-type="{ptype}">
-  <h2>{title}</h2>
+  <h2>{title} <a class="anchor-link" href="#{pid}" title="{pid}">#</a></h2>
   {blurb_html}
   {illus_html}
   <p class="question">{question}</p>
@@ -485,6 +536,8 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .reset-btn { font-family: Georgia, "Times New Roman", serif; font-size: 0.9em; padding: 0.5em 1.2em; border: 1px solid #ccc; border-radius: 4px; background: #fff; color: #888; cursor: pointer; transition: color 0.2s, border-color 0.2s; }
 .reset-btn:hover { color: #c0392b; border-color: #c0392b; }
 .puzzle-fallback { color: #856404; font-style: italic; }
+.anchor-link { font-size: 0.6em; color: #aaa; text-decoration: none; vertical-align: middle; margin-left: 0.3em; opacity: 0.4; transition: opacity 0.2s; }
+.anchor-link:hover { opacity: 1; color: #1a5276; }
 .no-crypto { background: #fff3cd; border: 1px solid #d4a14b; padding: 1em; border-radius: 4px; margin-bottom: 2em; }
 
 /* --- KM (Kobayashi Maru) puzzle --- */
@@ -522,6 +575,21 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .egg-reward { margin-top: 1em; text-align: center; }
 .egg-reward a { display: inline-block; padding: 0.5em 1.2em; background: #2a9b9a; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold; transition: background 0.2s; }
 .egg-reward a:hover { background: #238a89; }
+
+/* --- GD (Guided Deduction) puzzle --- */
+.gd-progress { display: flex; gap: 8px; justify-content: center; margin: 0.5em 0 1.5em; }
+.gd-dot { width: 12px; height: 12px; border-radius: 50%; border: 2px solid #ccc; background: #fff; transition: background 0.3s, border-color 0.3s; }
+.gd-dot.gd-done { background: #2a9b9a; border-color: #2a9b9a; }
+.gd-dot.gd-active { border-color: #1a5276; }
+.gd-stage { transition: opacity 0.3s ease; }
+.gd-stage-question { font-size: 1.05em; font-weight: bold; margin-bottom: 1em; }
+.gd-wrong-prompt { display: none; color: #856404; background: #fff9e6; border-left: 3px solid #d4a14b; padding: 0.6em 1em; margin-top: 0.8em; font-style: italic; }
+.gd-wrong-prompt.visible { display: block; }
+.gd-right-prompt { display: none; margin-top: 0.8em; }
+.gd-right-prompt.visible { display: block; }
+.gd-bridge { border-left: 3px solid #2a9b9a; padding: 0.6em 1em; background: #f0faf9; font-style: italic; color: #333; margin-bottom: 0.5em; }
+.gd-continue { display: inline-block; margin-top: 0.5em; padding: 0.4em 1em; background: #1a5276; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-family: Georgia, "Times New Roman", serif; font-size: 0.95em; }
+.gd-continue:hover { background: #154360; }
 
 @media (prefers-color-scheme: dark) {
   body { background: #1a1a1a; color: #e0e0e0; }
@@ -566,6 +634,14 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
   .category-header { color: #6ba3f7; border-bottom-color: #444; }
   .egg-reward a { background: #1a6b6a; }
   .egg-reward a:hover { background: #1f7d7c; }
+  .gd-dot { border-color: #555; background: #2a2a2a; }
+  .gd-dot.gd-done { background: #2a9b9a; border-color: #2a9b9a; }
+  .gd-dot.gd-active { border-color: #6ba3f7; }
+  .gd-wrong-prompt { background: #2a2510; color: #f0d060; border-left-color: #d4a14b; }
+  .gd-bridge { background: #1a2e2d; color: #ccc; }
+  .gd-continue { background: #2a6496; }
+  .gd-continue:hover { background: #1e4a70; }
+  .gd-stage-question { color: #e0e0e0; }
 }
 
 @media (max-width: 600px) {
@@ -1344,6 +1420,87 @@ function initKM(el, d) {
   }
 }
 
+/* --- GD (Guided Deduction) --- */
+function initGD(el, d) {
+  var pid = d.id;
+  var stages = d.stages;
+  var n = stages.length;
+  var current = 0;
+
+  function setDot(i, cls) {
+    var dot = document.getElementById("gd-dot-" + pid + "-" + i);
+    if (dot) { dot.className = "gd-dot " + cls; }
+  }
+
+  function showStage(idx) {
+    for (var i = 0; i < n; i++) {
+      var stEl = document.getElementById("gd-stage-" + pid + "-" + i);
+      if (stEl) stEl.style.display = (i === idx) ? "" : "none";
+    }
+    for (var j = 0; j < idx; j++) setDot(j, "gd-done");
+    setDot(idx, "gd-active");
+    for (var k = idx + 1; k < n; k++) setDot(k, "");
+  }
+
+  function advanceOrFinish() {
+    setDot(current, "gd-done");
+    current++;
+    if (current >= n) {
+      revealPuzzle(pid);
+    } else {
+      showStage(current);
+    }
+  }
+
+  for (var si = 0; si < n; si++) {
+    (function(stageIdx) {
+      var stage = stages[stageIdx];
+      var stageEl = document.getElementById("gd-stage-" + pid + "-" + stageIdx);
+      if (!stageEl) return;
+      var btns = stageEl.querySelectorAll(".gd-option");
+      var wrongEl = document.getElementById("gd-wrong-" + pid + "-" + stageIdx);
+      var rightEl = document.getElementById("gd-right-" + pid + "-" + stageIdx);
+
+      for (var bi = 0; bi < btns.length; bi++) {
+        (function(btn) {
+          btn.addEventListener("click", function() {
+            if (btn.classList.contains("correct") || btn.classList.contains("pz-correct")) return;
+            var key = btn.dataset.key;
+            sha256(key).then(function(h) {
+              if (h === stage.hash) {
+                btn.classList.add("correct");
+                if (wrongEl) wrongEl.classList.remove("visible");
+                var allBtns = stageEl.querySelectorAll(".gd-option");
+                for (var x = 0; x < allBtns.length; x++) {
+                  allBtns[x].disabled = true;
+                }
+                if (stageIdx < n - 1 && stage.right_prompt) {
+                  rightEl.innerHTML = '<div class="gd-bridge">' + esc(stage.right_prompt) + '</div><button class="gd-continue">Continue &rarr;</button>';
+                  rightEl.classList.add("visible");
+                  rightEl.querySelector(".gd-continue").addEventListener("click", function() {
+                    advanceOrFinish();
+                  });
+                } else {
+                  advanceOrFinish();
+                }
+              } else {
+                btn.classList.add("wrong");
+                setTimeout(function() { btn.classList.remove("wrong"); }, 600);
+                if (wrongEl && stage.wrong_prompt) {
+                  wrongEl.textContent = stage.wrong_prompt;
+                  wrongEl.classList.add("visible");
+                }
+              }
+            });
+          });
+        })(btns[bi]);
+      }
+    })(si);
+  }
+
+  showStage(0);
+}
+
 /* --- Bridge SVG --- */
 function initBridge() {
   if (!BD || !BD.nodes) return;
@@ -1467,6 +1624,7 @@ function initAllPuzzles() {
       else if (type === "ba") initBA(el, d);
       else if (type === "log") initLOG(el, d);
       else if (type === "km") initKM(el, d);
+      else if (type === "gd") initGD(el, d);
     } catch(e) { console.error("Puzzle init error:", id, e); var fb = el.querySelector(".interaction"); if (fb) fb.innerHTML = '<p class="puzzle-fallback">Puzzle failed to load.</p>'; }
   }
   if (!hasCrypto) {
