@@ -2992,10 +2992,17 @@ def inject_chapter_puzzles(html_path):
     import hashlib as _hashlib
     tracker_path = REPO / 'build' / 'puzzle-tracker.yaml'
     data_path = REPO / 'build' / 'puzzle-data.yaml'
+    dl_path = REPO / 'build' / 'deep-links.yaml'
     if not tracker_path.exists() or not data_path.exists():
         return
     tracker = yaml.safe_load(tracker_path.read_text())
     pdata = yaml.safe_load(data_path.read_text())
+
+    # Deep-links manifest: source of summary label text
+    dl_questions = {}
+    if dl_path.exists():
+        for entry in yaml.safe_load(dl_path.read_text()):
+            dl_questions[entry['id']] = entry.get('question', '')
 
     approved = {}
     for p in tracker.get('chapter_puzzles', []):
@@ -3037,6 +3044,7 @@ def inject_chapter_puzzles(html_path):
             continue
 
         title = _esc(puzzle.get('title', ''))
+        summary_label = _esc(dl_questions.get(pid, title))
         blurb = puzzle.get('gateway_blurb', '')
         question = _esc(puzzle.get('question', ''))
         hint_text = _esc(puzzle.get('hint', ''))
@@ -3062,7 +3070,7 @@ def inject_chapter_puzzles(html_path):
 
         puzzle_html = f'''
 <details class="puzzle-section" open>
-  <summary>Puzzle: {title}</summary>
+  <summary>Puzzle &mdash; {summary_label}</summary>
   <style>
 .puzzle-section {{ margin: 2em 0; border: 1px solid #ddd; border-radius: 6px; background: #fafafa; }}
 .puzzle-section summary {{ padding: 0.8em 1em; cursor: pointer; font-weight: bold; color: #1a5276; font-size: 1.05em; }}
