@@ -11,6 +11,41 @@ with open(YAML_PATH) as f:
 
 shared_bgs = data.get('shared_backgrounds', {})
 
+# --- Load hover definitions for inline tooltips ---
+HOVER_PATH = os.path.join(os.path.dirname(__file__), 'hover-definitions.yaml')
+hover_terms = {}
+if os.path.exists(HOVER_PATH):
+    hover_raw = yaml.safe_load(open(HOVER_PATH))
+    for term, val in hover_raw.items():
+        if isinstance(val, str):
+            hover_terms[term] = val
+        elif isinstance(val, dict):
+            hover_terms[term] = val.get('text', '')
+
+def apply_hover_tooltips(text_html):
+    """Wrap known hover terms with title attributes in already-escaped HTML.
+    Only wraps first occurrence of each term. Uses placeholder tokens to
+    prevent nested replacements."""
+    replacements = []
+    work = text_html
+    for term, tip in sorted(hover_terms.items(), key=lambda x: -len(x[0])):
+        if not tip:
+            continue
+        pat = re.compile(re.escape(term), re.IGNORECASE)
+        m = pat.search(work)
+        if m:
+            tip_plain = re.sub(r'<[^>]+>', '', tip)
+            tip_plain = tip_plain.replace('&', '&amp;').replace('"', '&quot;')
+            if len(tip_plain) > 500:
+                tip_plain = tip_plain[:497] + '...'
+            token = f'\x00HOVER{len(replacements)}\x00'
+            replacement = f'<span class="hover-term" title="{tip_plain}">{m.group(0)}</span>'
+            replacements.append((token, replacement))
+            work = work[:m.start()] + token + work[m.end():]
+    for token, repl in replacements:
+        work = work.replace(token, repl)
+    return work
+
 # --- Inline SVG illustrations for puzzles ---
 ILLUSTRATIONS = {}
 
@@ -386,7 +421,7 @@ def render_container(puzzle):
 
     pid = esc(puzzle['id'])
     title = esc(puzzle.get('title', ''))
-    question = esc(puzzle.get('question', ''))
+    question = apply_hover_tooltips(esc(puzzle.get('question', '')))
     abstract_text = esc(puzzle.get('abstract', '').strip())
     hint_text = esc(puzzle.get('hint', ''))
     ptype = puzzle.get('type', puzzle.get('sub_type', ''))
@@ -554,6 +589,7 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .puzzle-fallback { color: #856404; font-style: italic; }
 .anchor-link { font-size: 0.6em; color: #aaa; text-decoration: none; vertical-align: middle; margin-left: 0.3em; opacity: 0.4; transition: opacity 0.2s; }
 .anchor-link:hover { opacity: 1; color: #1a5276; }
+.hover-term { border-bottom: 1px dotted #1a5276; cursor: help; }
 .puzzle-container.approved { border-left: 4px solid #27ae60; opacity: 0.6; }
 .approved-badge { font-size: 0.55em; color: #27ae60; font-weight: bold; vertical-align: middle; margin-right: 0.5em; letter-spacing: 0.05em; }
 .no-crypto { background: #fff3cd; border: 1px solid #d4a14b; padding: 1em; border-radius: 4px; margin-bottom: 2em; }
