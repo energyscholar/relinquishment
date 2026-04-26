@@ -126,7 +126,7 @@ chapter_puzzles:
     type: sim
     topic: t4
     level: p1
-    approved: false
+    approved: true
     installed: false
     location:
       chapter: capabilities

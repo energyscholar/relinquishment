@@ -218,6 +218,16 @@ def build_json(puzzle):
     return d
 
 
+# --- Load tracker for approved status ---
+TRACKER_PATH = os.path.join(os.path.dirname(__file__), 'puzzle-tracker.yaml')
+approved_ids = set()
+if os.path.exists(TRACKER_PATH):
+    with open(TRACKER_PATH) as tf:
+        tracker = yaml.safe_load(tf)
+    for p in tracker.get('chapter_puzzles', []):
+        if p.get('approved'):
+            approved_ids.add(p['id'])
+
 # --- Process data ---
 chapter_puzzles = data['chapter_puzzles']
 puzzle_data = {}
@@ -292,8 +302,10 @@ def render_km_container(puzzle):
     resolution_html = text_to_html(puzzle.get('resolution', ''))
     blurb = puzzle.get('gateway_blurb', '')
     blurb_html = f'<p class="gateway-blurb">\U0001f9e9 {esc(blurb)}</p>' if blurb else ''
-    return f'''<div class="puzzle-container km-puzzle" id="{pid}" data-puzzle-id="{pid}" data-puzzle-type="km">
-  <h2>{title} <a class="anchor-link" href="#{pid}" title="{pid}">#</a></h2>
+    appr_cls = ' approved' if puzzle['id'] in approved_ids else ''
+    appr_badge = '<span class="approved-badge">&#10003; APPROVED</span> ' if puzzle['id'] in approved_ids else ''
+    return f'''<div class="puzzle-container km-puzzle{appr_cls}" id="{pid}" data-puzzle-id="{pid}" data-puzzle-type="km">
+  <h2>{appr_badge}{title} <a class="anchor-link" href="#{pid}" title="{pid}">#</a></h2>
   {blurb_html}
   <div class="km-scenario">{scenario_html}</div>
   <div class="km-options">
@@ -346,8 +358,10 @@ def render_gd_container(puzzle):
       <div class="gd-wrong-prompt" id="gd-wrong-{pid}-{i}"></div>
       <div class="gd-right-prompt" id="gd-right-{pid}-{i}"></div>
     </div>\n'''
-    return f'''<div class="puzzle-container gd-puzzle" id="{pid}" data-puzzle-id="{pid}" data-puzzle-type="gd">
-  <h2>{title} <a class="anchor-link" href="#{pid}" title="{pid}">#</a></h2>
+    appr_cls = ' approved' if puzzle['id'] in approved_ids else ''
+    appr_badge = '<span class="approved-badge">&#10003; APPROVED</span> ' if puzzle['id'] in approved_ids else ''
+    return f'''<div class="puzzle-container gd-puzzle{appr_cls}" id="{pid}" data-puzzle-id="{pid}" data-puzzle-type="gd">
+  <h2>{appr_badge}{title} <a class="anchor-link" href="#{pid}" title="{pid}">#</a></h2>
   {blurb_html}
   <div class="gd-progress">{dots}</div>
   <div class="interaction">
@@ -389,8 +403,10 @@ def render_container(puzzle):
     blurb_html = f'<p class="gateway-blurb">\U0001f9e9 {esc(blurb)}</p>' if blurb else ''
     egg_url = puzzle.get('egg_url', '').strip()
     egg_link = f'<p class="egg-reward"><a href="{htmlmod.escape(egg_url)}" target="_blank">&#x1f513; Continue exploring &rarr;</a></p>' if egg_url else ''
-    return f'''<div class="puzzle-container" id="{pid}" data-puzzle-id="{pid}" data-puzzle-type="{ptype}">
-  <h2>{title} <a class="anchor-link" href="#{pid}" title="{pid}">#</a></h2>
+    appr_cls = ' approved' if puzzle['id'] in approved_ids else ''
+    appr_badge = '<span class="approved-badge">&#10003; APPROVED</span> ' if puzzle['id'] in approved_ids else ''
+    return f'''<div class="puzzle-container{appr_cls}" id="{pid}" data-puzzle-id="{pid}" data-puzzle-type="{ptype}">
+  <h2>{appr_badge}{title} <a class="anchor-link" href="#{pid}" title="{pid}">#</a></h2>
   {blurb_html}
   {illus_html}
   <p class="question">{question}</p>
@@ -538,6 +554,8 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .puzzle-fallback { color: #856404; font-style: italic; }
 .anchor-link { font-size: 0.6em; color: #aaa; text-decoration: none; vertical-align: middle; margin-left: 0.3em; opacity: 0.4; transition: opacity 0.2s; }
 .anchor-link:hover { opacity: 1; color: #1a5276; }
+.puzzle-container.approved { border-left: 4px solid #27ae60; opacity: 0.6; }
+.approved-badge { font-size: 0.55em; color: #27ae60; font-weight: bold; vertical-align: middle; margin-right: 0.5em; letter-spacing: 0.05em; }
 .no-crypto { background: #fff3cd; border: 1px solid #d4a14b; padding: 1em; border-radius: 4px; margin-bottom: 2em; }
 
 /* --- KM (Kobayashi Maru) puzzle --- */
