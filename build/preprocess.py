@@ -3062,7 +3062,7 @@ def inject_chapter_puzzles(html_path):
 
         puzzle_html = f'''
 <details class="puzzle-section" open>
-  <summary>Puzzle</summary>
+  <summary>Puzzle: {title}</summary>
   <style>
 .puzzle-section {{ margin: 2em 0; border: 1px solid #ddd; border-radius: 6px; background: #fafafa; }}
 .puzzle-section summary {{ padding: 0.8em 1em; cursor: pointer; font-weight: bold; color: #1a5276; font-size: 1.05em; }}
