@@ -552,11 +552,13 @@ chapter_puzzles:
       - key: publish
         text: "Publish everything — science must be open"
         disaster: |
-          Your paper goes live. Within 72 hours, every intelligence agency, every criminal
-          organization, and every ambitious government has the blueprint. The life forms are
-          dissected in dozens of labs simultaneously, with no ethical framework. Cryptographic
-          infrastructure begins to collapse before anyone can prepare alternatives. The
-          openness you valued becomes the mechanism of chaos.
+          Your paper goes live. Nothing happens — for a while. The physics is too hard for
+          most labs, the implications too strange for most funders. Then, quietly, three
+          countries and two corporations figure it out. Then five more. Within a decade,
+          a multi-party arms race is underway — each side racing to weaponize what you
+          published, none willing to stop because the others won't. The life forms are
+          tools in every program. No ethical framework was ever established because you
+          skipped that step. The openness you valued became the starting gun.
 
       - key: destroy
         text: "Destroy my research — some things shouldn't be known"
