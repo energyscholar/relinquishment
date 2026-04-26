@@ -1,0 +1,24 @@
+ID                        Ty   Lv  Ap In Egg        Chapter                  Question
+────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────
+pz-mc-t2-001              mc   p1  .  .  —          the-flat                 What makes a Flat different from ordinary electronics?
+pz-mc-t2-002              mc   p1  ✓  ✓  the-flat   the-flat                 Why does every smartphone contain a 2DEG?
+pz-mc-t2-003              mc   p2  .  .  —          the-braid                What makes non-Abelian anyons fundamentally different?
+pz-sim-t3-001             sim  p1  .  .  —          genesis                  Kauffman's buttons and threads — pick two, tie, toss back
+pz-mc-t3-002              mc   p1  .  .  —          growing-a-mind           The Canopy Problem — first-mover advantage in substrate
+pz-mc-t3-003              mc   p2  .  .  —          the-wrong-substrate      What principle would allow life in a non-carbon substrate?
+pz-sim-t4-001             sim  p1  .  .  —          capabilities             Can It Be Killed? — destroy nodes until the network fails
+pz-ord-t4-002             ord  p2  .  .  —          the-flat                 Build the Stack — order technology layers bottom to top
+pz-mc-t5-002              mc   p2  .  .  —          the-silence-gap          The Silence Gap — five fields, has anyone looked?
+pz-mat-t5-001             mat  p3  .  .  —          the-silence-gap          Five Fields, Five Researchers — match field to career
+pz-mc-t6-001              mc   p2  .  .  udhr       capabilities             Capabilities — what do three UDHR articles forbid?
+pz-log-t6-002             log  p2  .  .  —          weigh-the-evidence       Under Which Possibility? — truth table across A/B/C
+pz-mc-t6-002              mc   p1  .  .  —          why-relinquish           Why Srebrenica? — why does it keep appearing in this book?
+pz-mc-t6-003              mc   p1  .  .  —          why-relinquish           Why Relinquish? — why give up the most powerful technology?
+pz-km-t6-001              km   p3  .  .  —          weigh-the-evidence       What Would You Do? — five disasters, your choice
+pz-ord-t1-001             ord  p2  .  .  —          three-possibilities      Guided Deduction — order the steps of the method
+pz-mc-t1-002              mc   p1  .  .  —          three-possibilities      Not a Deity, Not an Alien — what kind of entity is this?
+pz-km-t1-001              km   p3  .  .  —          the-strongest-objection  The Custodian's Voice — five disasters, entity's perspective
+pz-log-t7-001             log  p3  ✓  .  udhr       capabilities             UDHR Service Compatibility — which services violate which articles?
+pz-cip-t8-001             cip  p3  .  .  —          firmware-update          The Firmware Key — fill in redacted technical terms
+pz-ba-t8-002              ba   p2  .  .  —          firmware-update          Before and After Firmware — spot the difference in AI responses
+pz-mc-t8-003              mc   p1  .  .  —          the-code-war             Fish Detecting Water — why can't security see it?

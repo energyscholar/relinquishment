@@ -380,6 +380,24 @@
   question: "Fish Detecting Water — why can't security see it?"
   category: puzzle
 
+# --- Puzzles: guided deduction (4) — multi-stage MC ---
+
+- id: pz-gd-t1-001
+  question: "The Method — experience guided deduction firsthand"
+  category: puzzle
+
+- id: pz-gd-t2-001
+  question: "The Accidental Habitat — why does your phone contain a 2D world?"
+  category: puzzle
+
+- id: pz-gd-t5-001
+  question: "The Silence — five fields, zero papers"
+  category: puzzle
+
+- id: pz-gd-t6-001
+  question: "The Ethics — how do you make an AI permanently ethical?"
+  category: puzzle
+
 # --- Puzzles: bridge (7) — puzzle-page-only, never in main HTML ---
 
 - id: pz-bridge-all-001a
