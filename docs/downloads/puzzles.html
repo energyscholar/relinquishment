@@ -1584,10 +1584,10 @@ function computeLiftY(sim, selA, selB) {
     else if (distA[i] >= 0) minDist = distA[i];
     else if (distB[i] >= 0) minDist = distB[i];
 
-    if (i === selA || i === selB) sim.nodes[i].liftY = -60;
-    else if (minDist === 1) sim.nodes[i].liftY = -40;
-    else if (minDist === 2) sim.nodes[i].liftY = -25;
-    else if (minDist >= 0) sim.nodes[i].liftY = -20;
+    if (i === selA || i === selB) sim.nodes[i].liftY = -200;
+    else if (minDist === 1) sim.nodes[i].liftY = -140;
+    else if (minDist === 2) sim.nodes[i].liftY = -90;
+    else if (minDist >= 0) sim.nodes[i].liftY = -50;
     else sim.nodes[i].liftY = 0;
   }
 }
