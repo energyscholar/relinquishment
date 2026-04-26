@@ -147,7 +147,7 @@ chapter_puzzles:
         text: "The substrate can only support one system at a time due to energy limits"
     answer_key: c
     hint: "Think about a forest floor. The seedling doesn't fail because someone stomps on it."
-    background: "Kauffman's autocatalytic sets arise spontaneously above a complexity threshold. But the first system to cross the threshold consumes the available catalytic pathways. Any later system faces a substrate that is already organized — like a seedling trying to grow under a closed forest canopy. The first organism doesn't attack the second. It simply occupies the niche so completely that nothing else can bootstrap."
+    background: "Autocatalytic sets arise spontaneously above a complexity threshold. But the first system to cross the threshold consumes the available catalytic pathways. Any later system faces a substrate that is already organized — like a seedling trying to grow under a closed forest canopy. The first organism doesn't attack the second. It simply occupies the niche so completely that nothing else can bootstrap."
     abstract: "In any substrate where autocatalytic emergence is possible, the first system to achieve closure occupies the ecological niche. Any later system must bootstrap in territory that is already inhabited. The race goes to the first, not the fastest."
 
   - id: pz-mc-t5-002
