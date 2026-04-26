@@ -461,7 +461,7 @@
     if (navW > 700) {
       msWidth = Math.min(Math.floor(navW * 0.42), 500);
     } else {
-      msWidth = Math.floor(navW * 0.18);
+      msWidth = Math.floor(navW * 0.23);
     }
     if (msWidth < 40) return;
     var wrapper = document.createElement('div');
