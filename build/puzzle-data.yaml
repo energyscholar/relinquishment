@@ -1,4 +1,7 @@
 # Puzzle data for Relinquishment — Plan 0249 Type Catalog
+# AUTHORITY: Content only (questions, options, answers, hints, abstracts, egg_urls).
+# Approval, location, and reward mapping live in puzzle-tracker.yaml (authoritative).
+# Do NOT add 'approved' here — that field belongs in the tracker.
 # ID format: pz-{TYPE}-{Ttopic}-{seq}
 # Types: mc, ti, ord, mat, sim, cip, ba, log
 

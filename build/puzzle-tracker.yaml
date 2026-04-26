@@ -1,7 +1,12 @@
 # Puzzle Tracker — Status, Location, Rewards
+# AUTHORITY: Metadata (approved, location, reward mapping, notes).
+# Content (questions, answers, abstracts) lives in puzzle-data.yaml (authoritative).
+# This file is the SINGLE SOURCE OF TRUTH for approval status.
+# Build system reads this for 'approved' gating + chapter placement.
 # Updated: 2026-04-25
 # Format: one entry per puzzle with approval, location, and reward fields
 # Bruce: update approved/reward fields as you review each puzzle
+# Items marked needs_review: require your decision before approval.
 
 # ============================================================
 # CHAPTER PUZZLES (22)
@@ -39,6 +44,7 @@ chapter_puzzles:
     reward:
       type: egg-pointer
       content: "/eggs/the-flat/"
+    needs_review: "Two T2 puzzles in same chapter — keep one or both?"
     notes: "Two T2 puzzles in same chapter — pick one or both?"
 
   - id: pz-mc-t2-003
@@ -71,7 +77,9 @@ chapter_puzzles:
     reward:
       type: fragment
       content: "TBD — fragment of hidden message"
-    notes: "REDESIGN PENDING (Plan 0252 — Pick Two mechanic). Don't approve until redesign complete."
+      fragment_index: 1
+    needs_review: "Plan 0252 executed — verify Pick Two mechanic in browser before approving. Fragment message not yet designed."
+    notes: "REDESIGN COMPLETE (Plan 0252 — Pick Two mechanic). Visual review pending."
 
   - id: pz-mc-t3-002
     title: "The Canopy Problem"
@@ -86,6 +94,7 @@ chapter_puzzles:
     reward:
       type: self-contained
       content: abstract
+    needs_review: "Chapter placement — growing-a-mind or the-wrong-substrate?"
     notes: "Has illustration (canopy_triptych). Could also fit the-wrong-substrate."
 
   - id: pz-mc-t3-003
@@ -118,6 +127,8 @@ chapter_puzzles:
     reward:
       type: fragment
       content: "TBD — fragment of hidden message"
+      fragment_index: 2
+    needs_review: "Fragment message not yet designed — what do 5 fragments assemble into?"
     notes: "Interactive sim — 30 nodes, must destroy ALL. Tedium is the lesson."
 
   - id: pz-ord-t4-002
@@ -133,6 +144,7 @@ chapter_puzzles:
     reward:
       type: self-contained
       content: abstract
+    needs_review: "Placement TBD — the-flat or genesis or front matter?"
     notes: "Ordering puzzle. Placement TBD — the-flat introduces the bottom of the stack, but the full stack spans multiple chapters."
 
   # ---- T5: Silence Gap (2 puzzles) ----
@@ -150,6 +162,8 @@ chapter_puzzles:
     reward:
       type: fragment
       content: "TBD — fragment of hidden message"
+      fragment_index: 3
+    needs_review: "Fragment message not yet designed."
     notes: "Revised MC with 'Surely SOMEONE...' framing. Surprise + exasperation arc."
 
   - id: pz-mat-t5-001
@@ -197,6 +211,8 @@ chapter_puzzles:
     reward:
       type: fragment
       content: "TBD — fragment of hidden message"
+      fragment_index: 4
+    needs_review: "Fragment message not yet designed."
     notes: "Could also fit three-possibilities (intro) but impact is stronger after full book."
 
   - id: pz-mc-t6-002
@@ -227,6 +243,7 @@ chapter_puzzles:
     reward:
       type: self-contained
       content: abstract
+    needs_review: "Two T6 puzzles in why-relinquish — keep both or pick one?"
     notes: "Two T6 puzzles in why-relinquish — both p1, both fit. Keep both or pick one?"
 
   - id: pz-km-t6-001
@@ -242,6 +259,7 @@ chapter_puzzles:
     reward:
       type: egg-pointer
       content: "TBD — completing the KM could hint at easter egg URL"
+    needs_review: "Egg destination not yet created. Decide egg content (Plan 0253 candidate: The Unwritten Paper). Also: in-chapter or puzzle-page-only?"
     notes: "KM type. Heavy interaction. Maybe too much for in-chapter placement — could be puzzle-page-only?"
 
   # ---- T1: Meet Custodian (2 puzzles) ----
@@ -289,6 +307,7 @@ chapter_puzzles:
     reward:
       type: egg-pointer
       content: "TBD — completing both KMs could reveal easter egg URL"
+    needs_review: "Egg destination not yet created. Linked to pz-km-t6-001 — both KMs share egg destination."
     notes: "KM type. Complements 'What Would You Do?' — same 5 disasters, opposite perspective."
 
   # ---- T7: Services/Grounding (1 puzzle) ----
@@ -323,6 +342,8 @@ chapter_puzzles:
     reward:
       type: fragment
       content: "TBD — fragment of hidden message"
+      fragment_index: 5
+    needs_review: "Fragment message not yet designed."
     notes: "Fill-in-the-blank with word bank. Tests cross-domain synthesis."
 
   - id: pz-ba-t8-002
@@ -459,6 +480,7 @@ bridge_puzzles:
     reward:
       type: egg-pointer
       content: "TBD — completing all bridges reveals easter egg URL"
+    needs_review: "Egg destination not yet created. Plan 0253 candidate: The Convergence Path (reading list)."
     notes: "The master puzzle reward. Reader has demonstrated full cross-domain understanding."
 
 
@@ -486,15 +508,23 @@ bridge_puzzles:
 #   the-factoring-game — T4/T8 content. Candidate: a new puzzle about the factoring game itself?
 #
 # REWARD TYPES:
-#   self-contained (14):  abstract reveal is the reward
+#   self-contained (12):  abstract reveal is the reward
 #   fragment (5):         piece of hidden message (Genesis, Can It Be Killed?, Silence Gap, Under Which Possibility?, Firmware Key)
-#   egg-pointer (3):      hints toward easter egg URL (both KMs, Bridge Builder master)
+#                         Fragment message NOT YET DESIGNED — Bruce must decide what 5 fragments assemble into
+#   egg-pointer (5):      links to easter egg page (2DEG→the-flat, Capabilities→udhr, both KMs→TBD, Bridge Builder→TBD)
 #   bridge-node (7):      unlocks visual element in Bridge Builder diagram
 #
 # APPROVED: 0 / 31 (none yet — all pending Bruce review)
 #
-# EASTER EGG INFRASTRUCTURE: BUILT (Plan 0246 executed)
+# NEEDS_REVIEW ITEMS: grep 'needs_review:' in this file to see all items awaiting Bruce's decision
+#
+# EASTER EGG INFRASTRUCTURE: BUILT (Plan 0246 + 0254 executed)
 #   Pipeline: build/build-eggs.py + build/easter-egg-manifest.yaml
 #   Target: make eggs
-#   Test egg: docs/downloads/eggs/test/index.html (validated)
-#   Content eggs: TBD (Plan 0233 Phase 2b — ULTRA II migration)
+#   Built eggs: test, the-flat, udhr, silence (4 pages)
+#   Unresolved egg-pointers: pz-km-t6-001, pz-km-t1-001, bridge-builder-master
+#
+# DEEP LINKS: All 29 puzzles registered in deep-links.yaml (category: puzzle)
+#
+# ARCHITECTURE: This file is authoritative for approval + location.
+#   puzzle-data.yaml is authoritative for content. No field duplication.
