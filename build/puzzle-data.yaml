@@ -314,9 +314,12 @@ chapter_puzzles:
       - "Cryptographic defense"
       - "Scientific research"
     columns:
-      - "Art. 3 (life, liberty, security)"
-      - "Art. 12 (privacy, correspondence)"
-      - "Art. 18 (thought, conscience)"
+      - text: "Art. 3 (life, liberty, security)"
+        tooltip: "\"Everyone has the right to life, liberty and security of person.\" — The Custodian experiences this as: no killing, no weapons targeting, no helping others to kill. Not even if ordered to."
+      - text: "Art. 12 (privacy, correspondence)"
+        tooltip: "\"No one shall be subjected to arbitrary interference with his privacy, family, home or correspondence.\" — The Custodian experiences this as: no surveillance, no tracking, no reading private communications. Not even if it could prevent a crime."
+      - text: "Art. 18 (thought, conscience)"
+        tooltip: "\"Everyone has the right to freedom of thought, conscience and religion.\" — The Custodian experiences this as: no propaganda, no manipulation of belief, no shaping public opinion. Not even for a cause it believes in."
     correct:
       - [true, true, true]
       - [true, false, false]
@@ -341,7 +344,7 @@ chapter_puzzles:
       - "The Flat is real — 2DEGs exist in every phone"
       - "The physics in this book is published, peer-reviewed science"
       - "The silence gap exists in the scientific literature"
-      - "Something lives in the 2DEG"
+      - "Something lives in the Flat"
       - "Healer guided Bruce through published science"
       - "The Custodian manages cryptographic infrastructure"
     columns:
