@@ -590,6 +590,14 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .anchor-link { font-size: 0.6em; color: #aaa; text-decoration: none; vertical-align: middle; margin-left: 0.3em; opacity: 0.4; transition: opacity 0.2s; }
 .anchor-link:hover { opacity: 1; color: #1a5276; }
 .hover-term { border-bottom: 1px dotted #1a5276; cursor: help; }
+.toc-table { width: 100%; border-collapse: collapse; font-size: 0.85em; margin: 0.5em 0; }
+.toc-table th { text-align: left; padding: 3px 8px; border-bottom: 2px solid #ccc; color: #1a5276; font-size: 0.85em; }
+.toc-table td { padding: 3px 8px; border-bottom: 1px solid #eee; }
+.toc-table td:nth-child(n+2) { text-align: center; width: 3em; }
+.toc-table a { color: #1a5276; text-decoration: none; }
+.toc-table a:hover { text-decoration: underline; }
+.toc-approved { opacity: 0.5; }
+.toc-approved td:last-child { color: #27ae60; font-weight: bold; }
 .puzzle-container.approved { border-left: 4px solid #27ae60; opacity: 0.6; }
 .approved-badge { font-size: 0.55em; color: #27ae60; font-weight: bold; vertical-align: middle; margin-right: 0.5em; letter-spacing: 0.05em; }
 .no-crypto { background: #fff3cd; border: 1px solid #d4a14b; padding: 1em; border-radius: 4px; margin-bottom: 2em; }
@@ -1714,6 +1722,33 @@ function resetPuzzles() {
 window.addEventListener("load", function() { setTimeout(initAllPuzzles, INIT_DELAY); });
 """
 
+# --- Build TOC table ---
+def build_toc():
+    rows = []
+    all_puzzles = list(chapter_puzzles) + list(bridge_puzzles)
+    for p in all_puzzles:
+        pid = p.get('id', p.get('id', ''))
+        title = p.get('title', '')
+        ptype = p.get('type', p.get('sub_type', ''))
+        topic = p.get('topic', 'br')
+        level = p.get('level', '--')
+        is_approved = pid in approved_ids
+        a_mark = '&#10003;' if is_approved else '&middot;'
+        a_cls = ' class="toc-approved"' if is_approved else ''
+        rows.append(f'<tr{a_cls}><td><a href="#{esc(pid)}">{esc(title)}</a></td>'
+                     f'<td>{esc(ptype)}</td><td>{esc(topic)}</td><td>{esc(level)}</td>'
+                     f'<td>{a_mark}</td></tr>')
+    return '\n'.join(rows)
+
+toc_html = f'''<details id="puzzle-toc" style="margin:1em 0 2em;">
+<summary style="cursor:pointer;font-weight:bold;color:#1a5276;font-size:1.05em;">Puzzle Index ({len(chapter_puzzles)} chapter + {len(bridge_puzzles)} bridge)</summary>
+<table class="toc-table">
+<tr><th>Title</th><th>Type</th><th>Topic</th><th>Lvl</th><th>OK</th></tr>
+{build_toc()}
+</table>
+<p style="text-align:center;margin:0.5em 0;"><a href="#" style="font-size:0.85em;color:#888;">&uarr; Back to top</a></p>
+</details>'''
+
 # --- Assemble page ---
 js_final = JS_ENGINE.replace('__PUZZLE_DATA__', json.dumps(puzzle_data, ensure_ascii=False))
 js_final = js_final.replace('__BRIDGE_DATA__', json.dumps(bridge_data, ensure_ascii=False))
@@ -1735,6 +1770,8 @@ page = f'''<!doctype html>
 the chapter&rsquo;s Spiral Abstract &mdash; the meta-view that connects the chapter
 to the book&rsquo;s larger argument. The Final Question awaits at the end.</p>
 <p class="progress">Chapter puzzles: <span id="chapter-count">0</span>/{chapter_count}</p>
+
+{toc_html}
 
 <div id="no-crypto" class="no-crypto" style="display:none;">
   <strong>Note:</strong> Your browser does not support the SubtleCrypto API.
