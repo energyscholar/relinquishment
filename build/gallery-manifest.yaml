@@ -4,6 +4,8 @@
 # status values:
 #   live      — exists and deployed in the book
 #   hover     — exists in hover-definitions.yaml (popup only, not inline)
+#   approved  — built in gallery, approved by Bruce, ready for book deployment
+#   draft     — built in gallery, not yet approved
 #   planned   — designed but not yet built
 #   deferred  — considered and postponed (reason in notes)
 #
@@ -217,6 +219,54 @@
   source: build/images/magnetosphere-test.svg
   category: Standalone Files
   description: "Full magnetosphere with plasma sheet labeled 'The Flat'. Dark background."
+
+# ============================================================
+# APPROVED — built in gallery, ready for book deployment
+# ============================================================
+
+- id: SVG-029
+  name: broken-bridges
+  status: approved
+  source: gallery
+  category: Argument / Silence Gap
+  display: BOTH
+  targets: [T5, F5]
+  plan: "0251"
+  description: "Five tall silos (domains) standing apart. Broken dashed bridges between each pair with × at break. Caption: Bridging these fields — No journal. No career. No funding. No one's job."
+  notes: "Visualizes the silence gap — nobody's job to bridge the five fields."
+
+- id: SVG-030
+  name: guided-deduction-two-paths
+  status: approved
+  source: gallery
+  category: Argument / Tradecraft
+  display: BOTH
+  targets: [T8]
+  plan: "0251"
+  description: "Two paths from Classified knowledge. Top (red): Direct disclosure → CRIME → prosecution. Bottom (blue): Guided deduction → five published domains → student deduces → clean record."
+  notes: "Shows WHY guided deduction was the only option. Correction #12 in visual form."
+
+- id: SVG-031
+  name: convergence-flowchart
+  status: draft
+  source: gallery
+  category: Argument / Relinquishment
+  display: BOTH
+  targets: [T6]
+  plan: "0251"
+  description: "USE/DESTROY/KEEP all converge on TYRANNY. Only RELINQUISH escapes to a different endpoint."
+  notes: "DRAFT — Bruce deferred, has issues. Do not deploy until approved."
+
+- id: SVG-033
+  name: convergence-spotlights
+  status: approved
+  source: gallery
+  category: Argument / Convergence
+  display: BOTH
+  targets: [F4]
+  plan: "0251"
+  description: "Five spotlights from five domains converging on central question 'Can this support life?' Four strong beams, one weak (Topological QFT = the hard bridge)."
+  notes: "Counters F4 (Dunning-Kruger / impossible). Shows established domains converging, not speculation from thin air."
 
 # ============================================================
 # PLANNED — designed, not yet built (Plan 0232)
