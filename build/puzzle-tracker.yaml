@@ -22,7 +22,7 @@ chapter_puzzles:
     type: mc
     topic: t2
     level: p1
-    approved: false
+    approved: true
     installed: false
     location:
       chapter: the-flat
