@@ -498,10 +498,17 @@
     // Update share button href
     shareBtn.href = '#' + (chapterId || partId || '');
 
-    // URL reflects reading position (replaceState)
+    // URL reflects reading position — but preserve deep-link hashes
+    // that point to elements inside the current chapter (puzzles, anchors, etc.)
     var newHash = chapterId ? '#' + chapterId : (partId ? '#' + partId : '');
     if (newHash && newHash !== location.hash) {
-      history.replaceState(null, '', newHash);
+      var curId = location.hash.slice(1);
+      var curEl = curId ? document.getElementById(curId) : null;
+      var chapterEl = chapterId ? document.getElementById(chapterId) : null;
+      var insideChapter = curEl && chapterEl && chapterEl.contains(curEl);
+      if (!insideChapter) {
+        history.replaceState(null, '', newHash);
+      }
     }
   }
 
