@@ -1076,6 +1076,9 @@ function addThread(id) {
       document.getElementById("tc-" + id).textContent = "Threads: " + sim.tc;
       renderTSvg(sim);
 
+      /* Step 3b: Pause to show the new thread */
+      setTimeout(function() {
+
       if (isWin) {
         /* WIN: teaching moment */
         sim.solved = true;
@@ -1133,6 +1136,7 @@ function addThread(id) {
           if (sim.tc >= sim.ht && !sim.solved) showHint(id);
         }, 300);
       }
+      }, 250);
     }, 400);
   }, 100);
 }
