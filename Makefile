@@ -10,7 +10,7 @@ JOBNAME := Relinquishment
 TIKZ_SRCS := $(filter-out build/images/standalone-header.tex, $(wildcard build/images/*.tex))
 TIKZ_PDFS := $(TIKZ_SRCS:.tex=.pdf)
 
-.PHONY: dev final screen print images validate clean clean-cache manifest size-report gitinfo check check-strict epub html markdown svg-sheet puzzles tooltips
+.PHONY: dev final screen print images validate clean clean-cache manifest size-report gitinfo check check-strict epub html markdown svg-sheet puzzles tooltips eggs
 
 # --- Dev build (public release — no DMS appendix, no working draft notice) ---
 dev: gitinfo images
@@ -140,6 +140,11 @@ svg-sheet: html
 puzzles:
 	python3 build/build-puzzles.py
 	@echo "Open docs/downloads/puzzles.html or push to website."
+
+# --- Easter egg pages (standalone, Plan 0246) ---
+eggs:
+	python3 build/build-eggs.py
+	@echo "Egg pages built. Check docs/downloads/eggs/."
 
 # --- Tooltip viewer (standalone, Plan 0250) ---
 tooltips:

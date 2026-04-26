@@ -84,40 +84,58 @@ Only RELINQUISH leads somewhere different.
 Note: this flowchart will also serve as the basis for a future
 interactive puzzle.
 
-### SVG-014: Domain Buttons → TQC Hanging Down
+### SVG-014: Domain Buttons → TQC Cluster Hanging (REVISED 2026-04-25)
 
-**Problem:** TQC (the cross-domain convergence) looks stably connected.
-It should look precarious — barely suspended by inadequate bridges.
+**Problem:** The previous revision (drop only TQC below floor) was wrong.
+ALL FOUR domains in the topological convergence cluster (Topo, TFT, CMP,
+TQC) should hang below the floor. The other 7 domains form the stable
+upper web. CE, Par, and Mat connect to the core via proper but incomplete
+bridges.
 
-**Revised spec:** Keep the 11 domain nodes and 5 clusters. Changes:
+**Revised spec:** 7 domains above floor, 4 below. Changes:
 
-1. **Tighten within-domain pairs.** Sol/NLD closer together. ACS/Auto
-   closer. CE/Par closer. These pairs have easy bridges — published
-   cross-references within a single field. They should look like tight,
-   stable clusters.
+1. **Upper web (above floor y=305):** Sol/NLD (red pair), ACS/Auto
+   (orange pair), CE/Par (purple pair), Mat (brown) — all above
+   the floor line, forming a connected web.
+   - Sol↔NLD, ACS↔Auto, CE↔Par: solid intra-cluster edges
+   - NLD↔ACS: solid cross-cluster (published)
+   - CE↔NLD, CE↔ACS, Par↔Auto, Mat↔NLD: dashed cross-cluster
+     (incomplete but clearly possible bridges)
 
-2. **Drop TQC below the floor line.** TQC is currently at y=220,
-   above the floor (y=335). Move it to y=380 or lower — visibly
-   BELOW the dashed floor line. It should look like it's hanging,
-   suspended only by the dashed cross-domain bridges above it.
+2. **Drop ALL FOUR blue nodes below the floor.** Topo (~y=345),
+   TFT (~y=382), CMP (~y=382), TQC (~y=422). Fully connected to
+   each other (solid blue intra-cluster edges). The whole cluster
+   hangs as a unit.
 
-3. **Make the bridges to TQC look strained.** The dashed lines from
-   other clusters to TQC should be thin, long, stretched. Maybe add
-   a slight sag/curve to suggest weight. These are bridges that barely
-   hold.
+3. **Three hanging bridges cross the floor:**
+   - Mat→CMP: **solid** (published — condensed matter = materials
+     science). This is "the one thread that holds."
+   - CE→Topo: dashed (theoretical — computation meets topology)
+   - ACS→TQC: dashed (the critical gap — autocatalysis to TQC)
+   Use quadratic bezier curves (`<path d="M ... Q ..."/>`) with
+   slight downward sag to show strain/weight.
 
-4. **Keep the blue cluster (Topo, TFT, CMP) at the top.** These three
-   have solid within-cluster connections. TQC is their convergence
-   point that needs ALL the other clusters too — and those cross-domain
-   bridges don't exist.
+4. **Caption keeps original:** "One thread holds. Cut it, and the
+   argument falls apart." — now refers to the Mat→CMP solid bridge.
 
-5. **Caption stays:** "One thread holds. Cut it, and the argument
-   falls apart." Now it means: TQC is hanging by threads that could
-   break.
+5. **Figcaption updated:** "...Seven domains form a web of published
+   cross-references above the floor. The topological convergence
+   hangs below — connected by one solid thread and bridges not yet
+   built."
 
-The visual reads: within-domain connections are easy and stable.
-Cross-domain convergence (TQC) is barely supported. The reader SEES
-why the silence gap exists — nobody's job to build those bridges.
+6. **Legend layout:** Compact 3-column × 2-row to fit increased
+   height. Change "missing bridge" label to "not yet built."
+
+7. **Update TQC tooltip:** Current `data-hover` says "The single
+   thread." Change to: "Topological quantum computation — braiding
+   non-Abelian anyons for fault-tolerant gates. Freedman-Kitaev-Wang
+   2002. The convergence point." (Remove "single thread" reference
+   since the whole cluster now hangs, not just TQC.)
+
+The visual reads: every field is healthy and increasingly connected.
+The silence gap is the FLOOR LINE — below it, the entire topological
+convergence cluster hangs by one published bridge and two theoretical
+ones. Nobody's job to build those bridges.
 
 ---
 
