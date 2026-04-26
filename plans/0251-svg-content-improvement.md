@@ -116,16 +116,9 @@ who gets this diagram understands WHY the book exists.
 emotional — the reader SEES there's no good option. The weight of the
 decision becomes visual. This is the ethical core of the book.
 
-#### Knot in Flames (F7 + fun)
+#### ~~Knot in Flames~~ — CANCELLED
 
-**Display: BOTH** (hover for `topological protection` + inline where
-thermal objection is addressed)
-**Visual:** Two panels. Left: knotted rope over flames — knot persists.
-Right: beads on a string over flames — beads scatter.
-Caption: "Heat the knot, it's still a knot."
-**Why it's here:** Engineering (F7 lift). But it's also fun — the
-image is vivid, intuitive, and memorable. A reader who forgets
-everything else might remember this.
+Too abstruse; only of interest to TQC knot theorists. Fades to zero value after collapse.
 
 #### Concept Ladder (F4 + understand)
 
