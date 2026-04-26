@@ -3311,7 +3311,7 @@ def fix_epub(epub_path):
 
 
 def inject_easter_eggs(html_path):
-    """Inject easter egg content into the Spiral Abstracts appendix."""
+    """Inject easter eggs as their own appendix section after Spiral Abstracts."""
     egg_manifest_path = REPO / 'build' / 'easter-egg-manifest.yaml'
     if not egg_manifest_path.exists():
         return
@@ -3323,16 +3323,24 @@ def inject_easter_eggs(html_path):
     html_path = Path(html_path)
     text = html_path.read_text()
 
+    # Insert after the Spiral Abstracts chapter-section closes.
+    # The Spiral Abstracts end with the email contact, then </details> closes
+    # the last abstract, then </details> closes the chapter-section.
     marker = 'energyscholar+physics@gmail.com'
     idx = text.find(marker)
     if idx == -1:
         return
-    close_details = text.find('</details>', idx)
-    if close_details == -1:
+    # Skip past the abstract's </details>
+    close_abstract = text.find('</details>', idx)
+    if close_abstract == -1:
         return
-    insert_point = close_details + len('</details>')
+    # Skip past the chapter-section's </details>
+    close_chapter = text.find('</details>', close_abstract + len('</details>'))
+    if close_chapter == -1:
+        return
+    insert_point = close_chapter + len('</details>')
 
-    egg_blocks = []
+    egg_items = []
     for egg in eggs:
         if egg.get('status') == 'test':
             continue
@@ -3345,16 +3353,22 @@ def inject_easter_eggs(html_path):
             continue
         tex = source_path.read_text()
         html_content = _tex_to_egg_html(tex)
-        egg_blocks.append(
-            f'\n<details class="spiral-abstract" id="{dl}"><summary>'
+        egg_items.append(
+            f'<details class="spiral-abstract" id="{dl}"><summary>'
             f'<h3 class="unnumbered">{title}</h3></summary>\n'
             f'{html_content}\n</details>'
         )
 
-    if egg_blocks:
-        text = text[:insert_point] + '\n'.join(egg_blocks) + text[insert_point:]
+    if egg_items:
+        section = (
+            '\n<details class="chapter-section"><summary>'
+            '<h2 id="app:easter-eggs">Easter Eggs</h2></summary>\n'
+            + '\n'.join(egg_items)
+            + '\n</details>\n'
+        )
+        text = text[:insert_point] + section + text[insert_point:]
         html_path.write_text(text)
-        print(f"  Easter eggs: {len(egg_blocks)} injected into Spiral Abstracts")
+        print(f"  Easter eggs: {len(egg_items)} in own appendix section")
 
 
 def _tex_to_egg_html(tex):
