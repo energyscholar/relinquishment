@@ -336,16 +336,16 @@ chapter_puzzles:
     type: log
     topic: t7
     level: p3
-    approved: false
+    approved: true
     installed: false
     location:
       chapter: capabilities
       rationale: "UDHR constraint analysis — pairs with 'Capabilities' MC puzzle"
       placement: end
     reward:
-      type: self-contained
-      content: abstract
-    notes: "Logic grid with column tooltips. Two puzzles in capabilities chapter now (t6 + t7)."
+      type: egg-pointer
+      content: "#dl:egg-udhr"
+    notes: "Logic grid with column tooltips. Shares UDHR egg with pz-mc-t6-001."
 
   # ---- T8: Tradecraft (3 puzzles) ----
 

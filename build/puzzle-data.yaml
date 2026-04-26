@@ -341,6 +341,7 @@ chapter_puzzles:
     hint: "Article 3 prohibits threats to life and security. Article 12 prohibits interference with privacy and correspondence. Article 18 prohibits interference with thought and conscience. Which services cross those lines?"
     background: "ref:udhr_articles"
     abstract: "The UDHR and ICCPR do not prohibit capability. They prohibit weaponization. A non-human intelligence bound by Articles 3, 12, and 18 can predict weather, diagnose disease, defend communications, and conduct research. It cannot target weapons, surveil individuals, or manipulate public opinion. These constraints are not hypothetical ethics designed for this book. They are existing international treaty law, ratified by 173 sovereign nations including every major power. The ethical framework is not a cage — it is a specification for trustworthy service, and it already exists."
+    egg_url: "#dl:egg-udhr"
 
   # --- Iteration 2a: new puzzles ---
   - id: pz-log-t6-002
