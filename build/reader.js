@@ -459,7 +459,7 @@
     var navW = nav.offsetWidth;
     var msWidth;
     if (navW > 700) {
-      msWidth = Math.min(Math.floor(navW * 0.42), 500);
+      msWidth = Math.min(Math.floor(navW * 0.52), 500);
     } else {
       msWidth = Math.floor(navW * 0.23);
     }
