@@ -36,7 +36,7 @@ chapter_puzzles:
     type: mc
     topic: t2
     level: p1
-    approved: false
+    approved: true
     location:
       chapter: the-flat
       rationale: "2DEG engineering purpose — complements Wormholes"
