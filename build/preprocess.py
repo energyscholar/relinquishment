@@ -3057,7 +3057,8 @@ def inject_chapter_puzzles(html_path):
 
         egg_link = ''
         if egg_url:
-            egg_link = f'<p class="pz-egg-reward"><a href="{_esc(egg_url)}" target="_blank">&#x1f513; Continue exploring &rarr;</a></p>'
+            target_attr = '' if egg_url.startswith('#') else ' target="_blank"'
+            egg_link = f'<p class="pz-egg-reward"><a href="{_esc(egg_url)}"{target_attr}>&#x1f513; Continue exploring &rarr;</a></p>'
 
         puzzle_html = f'''
 <details class="puzzle-section" open>
@@ -3309,6 +3310,99 @@ def fix_epub(epub_path):
     print(f"EPUB post-processed: {epub_path}")
 
 
+def inject_easter_eggs(html_path):
+    """Inject easter egg content into the Spiral Abstracts appendix."""
+    egg_manifest_path = REPO / 'build' / 'easter-egg-manifest.yaml'
+    if not egg_manifest_path.exists():
+        return
+    manifest = yaml.safe_load(egg_manifest_path.read_text())
+    eggs = manifest.get('eggs', [])
+    if not eggs:
+        return
+
+    html_path = Path(html_path)
+    text = html_path.read_text()
+
+    marker = 'energyscholar+physics@gmail.com'
+    idx = text.find(marker)
+    if idx == -1:
+        return
+    close_details = text.find('</details>', idx)
+    if close_details == -1:
+        return
+    insert_point = close_details + len('</details>')
+
+    egg_blocks = []
+    for egg in eggs:
+        if egg.get('status') == 'test':
+            continue
+        slug = egg['slug']
+        dl = egg.get('deep_link', f'dl:egg-{slug}')
+        title = egg.get('title', slug)
+        source_path = REPO / egg.get('source', '')
+        if not source_path.exists():
+            print(f"  Egg: {slug} — source not found, skipping")
+            continue
+        tex = source_path.read_text()
+        html_content = _tex_to_egg_html(tex)
+        egg_blocks.append(
+            f'\n<details class="spiral-abstract" id="{dl}"><summary>'
+            f'<h3 class="unnumbered">{title}</h3></summary>\n'
+            f'{html_content}\n</details>'
+        )
+
+    if egg_blocks:
+        text = text[:insert_point] + '\n'.join(egg_blocks) + text[insert_point:]
+        html_path.write_text(text)
+        print(f"  Easter eggs: {len(egg_blocks)} injected into Spiral Abstracts")
+
+
+def _tex_to_egg_html(tex):
+    """Minimal LaTeX-to-HTML for egg content."""
+    import re as _re
+    lines = tex.strip().split('\n')
+    out = []
+    in_quote = False
+    for line in lines:
+        line = line.strip()
+        if not line or line.startswith('\\bigskip'):
+            continue
+        if line.startswith('\\section*{'):
+            continue
+        if line.startswith('\\subsection*{'):
+            title = _re.search(r'\\subsection\*\{(.+?)\}', line)
+            if title:
+                out.append(f'<h4>{title.group(1)}</h4>')
+            continue
+        if line == '\\begin{quote}':
+            in_quote = True
+            out.append('<blockquote>')
+            continue
+        if line == '\\end{quote}':
+            in_quote = False
+            out.append('</blockquote>')
+            continue
+        if line == '\\begin{center}':
+            out.append('<p style="text-align:center;">')
+            continue
+        if line == '\\end{center}':
+            out.append('</p>')
+            continue
+        line = line.replace('\\\\', '<br/>')
+        line = _re.sub(r'\\emph\{(.+?)\}', r'<em>\1</em>', line)
+        line = _re.sub(r'\\textit\{(.+?)\}', r'<em>\1</em>', line)
+        line = _re.sub(r'\\textbf\{(.+?)\}', r'<strong>\1</strong>', line)
+        line = line.replace('``', '“').replace("''", '”')
+        line = line.replace('---', '—').replace('--', '–')
+        if in_quote:
+            out.append(line)
+        elif line.startswith('<') or line.startswith('</'):
+            out.append(line)
+        else:
+            out.append(f'<p>{line}</p>')
+    return '\n'.join(out)
+
+
 if __name__ == "__main__":
     import sys
     if len(sys.argv) > 1 and sys.argv[1] == '--fix-epub':
@@ -3320,6 +3414,7 @@ if __name__ == "__main__":
         inject_domain_buttons(sys.argv[2])
         inject_genesis_illustrations(sys.argv[2])
         inject_chapter_puzzles(sys.argv[2])
+        inject_easter_eggs(sys.argv[2])
         inject_questions_index(sys.argv[2])
         fix_html_glossary_names(sys.argv[2])
         collapse_tech_sections(sys.argv[2])
