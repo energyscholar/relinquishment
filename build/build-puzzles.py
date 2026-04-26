@@ -161,6 +161,10 @@ def build_json(puzzle):
         d['sim_type'] = puzzle.get('sim_type', 'threads')
         if d['sim_type'] == 'threads':
             d['hint_threshold'] = puzzle.get('hint_threshold', 12)
+            d['node_count'] = puzzle.get('node_count', 20)
+            d['win_ratio'] = puzzle.get('win_ratio', 0.5)
+            d['button_label'] = puzzle.get('button_label', 'Add Thread')
+            d['teaching_text'] = puzzle.get('teaching_text', '')
         else:
             d['node_count'] = puzzle.get('node_count', 20)
             d['failure_threshold'] = puzzle.get('failure_threshold', 0.8)
@@ -176,7 +180,13 @@ def build_json(puzzle):
         d['hashes'] = [sha256(str(puzzle['answer_key']))]
     elif t == 'log':
         d['rows'] = puzzle['rows']
-        d['columns'] = puzzle['columns']
+        cols = puzzle['columns']
+        d['columns'] = []
+        for c in cols:
+            if isinstance(c, dict):
+                d['columns'].append({'text': c['text'], 'tooltip': c.get('tooltip', '')})
+            else:
+                d['columns'].append({'text': c, 'tooltip': ''})
         d['correct'] = puzzle['correct']
     elif t == 'km':
         d['scenario'] = puzzle['scenario']
@@ -246,6 +256,8 @@ def render_km_container(puzzle):
     title = esc(puzzle.get('title', ''))
     abstract_text = esc(puzzle.get('abstract', '').strip())
     hint_text = esc(puzzle.get('hint', ''))
+    egg_url = puzzle.get('egg_url', '').strip()
+    egg_link = f'<p class="egg-reward"><a href="{htmlmod.escape(egg_url)}" target="_blank">&#x1f513; Continue exploring &rarr;</a></p>' if egg_url else ''
     bg_html = puzzle.get('_bg_html', '')
     bg_section = ''
     if bg_html:
@@ -295,6 +307,7 @@ def render_km_container(puzzle):
   <div class="result" id="result-{pid}">
     <div class="solved-badge">&#10003; Solved</div>
     <blockquote class="abstract">{abstract_text}</blockquote>
+    {egg_link}
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>'''
@@ -323,6 +336,8 @@ def render_container(puzzle):
     illus_html = ILLUSTRATIONS.get(illus_key, '') if illus_key else ''
     blurb = puzzle.get('gateway_blurb', '')
     blurb_html = f'<p class="gateway-blurb">\U0001f9e9 {esc(blurb)}</p>' if blurb else ''
+    egg_url = puzzle.get('egg_url', '').strip()
+    egg_link = f'<p class="egg-reward"><a href="{htmlmod.escape(egg_url)}" target="_blank">&#x1f513; Continue exploring &rarr;</a></p>' if egg_url else ''
     return f'''<div class="puzzle-container" id="{pid}" data-puzzle-id="{pid}" data-puzzle-type="{ptype}">
   <h2>{title}</h2>
   {blurb_html}
@@ -334,6 +349,7 @@ def render_container(puzzle):
   <div class="result" id="result-{pid}">
     <div class="solved-badge">&#10003; Solved</div>
     <blockquote class="abstract">{abstract_text}</blockquote>
+    {egg_link}
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>'''
@@ -503,6 +519,9 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .km-resolution-wrap .km-disaster p { margin: 0 0 0.6em; }
 .km-resolution-wrap .km-disaster p:last-child { margin-bottom: 0; }
 @keyframes km-reveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+.egg-reward { margin-top: 1em; text-align: center; }
+.egg-reward a { display: inline-block; padding: 0.5em 1.2em; background: #2a9b9a; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold; transition: background 0.2s; }
+.egg-reward a:hover { background: #238a89; }
 
 @media (prefers-color-scheme: dark) {
   body { background: #1a1a1a; color: #e0e0e0; }
@@ -545,6 +564,8 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
   .background-panel summary { color: #6ba3f7; }
   .background-content { color: #ccc; }
   .category-header { color: #6ba3f7; border-bottom-color: #444; }
+  .egg-reward a { background: #1a6b6a; }
+  .egg-reward a:hover { background: #1f7d7c; }
 }
 
 @media (max-width: 600px) {
@@ -787,19 +808,50 @@ function getClusters(nodes) { var m = {}; for (var i = 0; i < nodes.length; i++)
 function largestCluster(nodes) { var c = getClusters(nodes), mx = 0; for (var k in c) if (c[k].length > mx) mx = c[k].length; return mx; }
 
 function initThreads(el, d) {
-  var N = 16, W = 400, H = 300, R = 12;
+  var N = d.node_count || 20;
+  var W = 420, H = 300, FLOOR_Y = 260, BTN_R = 10;
+  var winRatio = d.win_ratio || 0.5;
+  var winSize = Math.ceil(winRatio * N);
+  var btnLabel = d.button_label || "Add Thread";
+  var teachingText = d.teaching_text || "Phase Transition!";
+
+  /* Seeded PRNG for reproducible layout */
+  var seed = 0;
+  for (var si = 0; si < d.id.length; si++) seed = (seed * 31 + d.id.charCodeAt(si)) & 0x7fffffff;
+  function prng() { seed = (seed * 16807 + 0) % 2147483647; return seed / 2147483647; }
+
+  /* Place N buttons along floor, jittered horizontally */
   var nodes = [];
-  for (var i = 0; i < N; i++) nodes.push({ x: R + Math.random()*(W-2*R), y: R + Math.random()*(H-2*R), parent: i, rank: 0 });
-  var allEdges = [];
-  for (var a = 0; a < N; a++) for (var b = a+1; b < N; b++) allEdges.push([a,b]);
-  for (var i = allEdges.length-1; i > 0; i--) { var j = Math.floor(Math.random()*(i+1)); var t = allEdges[i]; allEdges[i] = allEdges[j]; allEdges[j] = t; }
-  var sim = { id: d.id, nodes: nodes, edges: [], q: allEdges, qi: 0, tc: 0, solved: false, ht: d.hint_threshold || 12 };
+  var spacing = (W - 40) / (N - 1);
+  for (var i = 0; i < N; i++) {
+    var bx = 20 + i * spacing + (prng() - 0.5) * spacing * 0.4;
+    if (bx < BTN_R + 2) bx = BTN_R + 2;
+    if (bx > W - BTN_R - 2) bx = W - BTN_R - 2;
+    nodes.push({ x: bx, y: FLOOR_Y, parent: i, rank: 0, liftY: 0 });
+  }
+
+  /* Build and shuffle all possible pairs */
+  var allPairs = [];
+  for (var a = 0; a < N; a++) for (var b = a + 1; b < N; b++) allPairs.push([a, b]);
+  for (var i = allPairs.length - 1; i > 0; i--) {
+    var j = Math.floor(prng() * (i + 1));
+    var tmp = allPairs[i]; allPairs[i] = allPairs[j]; allPairs[j] = tmp;
+  }
+
+  var sim = {
+    id: d.id, nodes: nodes, edges: [], q: allPairs, qi: 0, tc: 0,
+    solved: false, animating: false, ht: d.hint_threshold || 12,
+    winSize: winSize, W: W, H: H, FLOOR_Y: FLOOR_Y, BTN_R: BTN_R,
+    highlightPair: null, winEdge: null, teachingText: teachingText
+  };
   threadsSims[d.id] = sim;
+
   var inter = el.querySelector(".interaction");
-  inter.innerHTML = '<svg id="svg-' + d.id + '" viewBox="0 0 400 300" class="sim-svg"></svg>' +
-    '<div class="sim-controls"><button class="submit-btn" id="add-' + d.id + '">Add Thread</button>' +
+  inter.innerHTML = '<svg id="svg-' + d.id + '" viewBox="0 0 ' + W + ' ' + H + '" class="sim-svg">' +
+    '<defs><filter id="shadow-' + d.id + '"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.25"/></filter></defs></svg>' +
+    '<div class="sim-controls"><button class="submit-btn" id="add-' + d.id + '">' + esc(btnLabel) + '</button>' +
     '<span class="sim-status" id="tc-' + d.id + '">Threads: 0</span></div>' +
-    '<div class="transition-flash" id="flash-' + d.id + '">Phase Transition!</div>';
+    '<div class="transition-flash" id="flash-' + d.id + '"></div>';
   document.getElementById("add-" + d.id).addEventListener("click", function() { addThread(d.id); });
   renderTSvg(sim);
 }
@@ -808,26 +860,205 @@ function renderTSvg(sim) {
   var svg = document.getElementById("svg-" + sim.id);
   if (!svg) return;
   var clusters = getClusters(sim.nodes), nc = {}, ci = 0;
-  for (var r in clusters) { var col = CLUSTER_COLORS[ci++ % CLUSTER_COLORS.length]; clusters[r].forEach(function(j) { nc[j] = col; }); }
+  for (var r in clusters) {
+    var col = CLUSTER_COLORS[ci++ % CLUSTER_COLORS.length];
+    for (var k = 0; k < clusters[r].length; k++) nc[clusters[r][k]] = col;
+  }
   var p = [];
-  sim.edges.forEach(function(e) { var a = sim.nodes[e[0]], b = sim.nodes[e[1]]; p.push('<line x1="'+a.x+'" y1="'+a.y+'" x2="'+b.x+'" y2="'+b.y+'" stroke="#999" stroke-width="1.5" stroke-opacity="0.6"/>'); });
-  sim.nodes.forEach(function(n, i) { var gl = sim.solved && largestCluster(sim.nodes) > 8 ? " glow" : ""; p.push('<circle cx="'+n.x+'" cy="'+n.y+'" r="12" fill="'+(nc[i]||"#ccc")+'" stroke="#fff" stroke-width="1.5" class="node-circle'+gl+'"/>'); });
+
+  /* Drop shadow filter (preserve across re-renders) */
+  p.push('<defs><filter id="shadow-' + sim.id + '"><feDropShadow dx="0" dy="2" stdDeviation="2" flood-opacity="0.25"/></filter></defs>');
+
+  /* Floor line */
+  p.push('<line x1="10" y1="' + sim.FLOOR_Y + '" x2="' + (sim.W - 10) + '" y2="' + sim.FLOOR_Y + '" stroke="#ccc" stroke-width="1" stroke-dasharray="4,4"/>');
+
+  /* Edges (threads) */
+  for (var ei = 0; ei < sim.edges.length; ei++) {
+    var e = sim.edges[ei];
+    var na = sim.nodes[e[0]], nb = sim.nodes[e[1]];
+    var ya = na.y + (na.liftY || 0), yb = nb.y + (nb.liftY || 0);
+    var isWin = sim.winEdge && sim.winEdge[0] === e[0] && sim.winEdge[1] === e[1];
+    var eStroke = isWin ? "#c0392b" : "#999";
+    var eWidth = isWin ? "2.5" : "1.5";
+    var eOpacity = isWin ? "0.9" : "0.6";
+    p.push('<line x1="' + na.x + '" y1="' + ya + '" x2="' + nb.x + '" y2="' + yb + '" stroke="' + eStroke + '" stroke-width="' + eWidth + '" stroke-opacity="' + eOpacity + '"/>');
+  }
+
+  /* Nodes (buttons) */
+  for (var ni = 0; ni < sim.nodes.length; ni++) {
+    var n = sim.nodes[ni];
+    var ny = n.y + (n.liftY || 0);
+    var fill = nc[ni] || "#ccc";
+    var isHighlight = sim.highlightPair && (sim.highlightPair[0] === ni || sim.highlightPair[1] === ni);
+    var strokeCol = isHighlight ? "#f1c40f" : "#fff";
+    var strokeW = isHighlight ? "3" : "1.5";
+    var gl = sim.solved ? " glow" : "";
+    p.push('<circle cx="' + n.x + '" cy="' + ny + '" r="' + sim.BTN_R + '" fill="' + fill + '" stroke="' + strokeCol + '" stroke-width="' + strokeW + '" class="node-circle' + gl + '" filter="url(#shadow-' + sim.id + ')"/>');
+  }
+
   svg.innerHTML = p.join("\n");
+}
+
+function computeLiftY(sim, selA, selB) {
+  /* Build adjacency list from sim edges */
+  var N = sim.nodes.length;
+  var adj = [];
+  for (var i = 0; i < N; i++) adj.push([]);
+  for (var ei = 0; ei < sim.edges.length; ei++) {
+    var e = sim.edges[ei];
+    adj[e[0]].push(e[1]);
+    adj[e[1]].push(e[0]);
+  }
+
+  /* BFS from selA and selB within their component */
+  var distA = [], distB = [];
+  for (var i = 0; i < N; i++) { distA.push(-1); distB.push(-1); }
+
+  function bfs(start, dist) {
+    var queue = [start];
+    dist[start] = 0;
+    var head = 0;
+    while (head < queue.length) {
+      var cur = queue[head++];
+      for (var j = 0; j < adj[cur].length; j++) {
+        var nb = adj[cur][j];
+        if (dist[nb] === -1) { dist[nb] = dist[cur] + 1; queue.push(nb); }
+      }
+    }
+  }
+  bfs(selA, distA);
+  bfs(selB, distB);
+
+  /* Find components of both selected nodes */
+  var rootA = ufFind(sim.nodes, selA);
+  var rootB = ufFind(sim.nodes, selB);
+
+  /* Set liftY: selected = -60, 1-hop = -40, 2-hop = -25, 3+ = -20, not in either component = 0 */
+  for (var i = 0; i < N; i++) {
+    var ri = ufFind(sim.nodes, i);
+    if (ri !== rootA && ri !== rootB) { sim.nodes[i].liftY = 0; continue; }
+    var minDist = -1;
+    if (distA[i] >= 0 && distB[i] >= 0) minDist = Math.min(distA[i], distB[i]);
+    else if (distA[i] >= 0) minDist = distA[i];
+    else if (distB[i] >= 0) minDist = distB[i];
+
+    if (i === selA || i === selB) sim.nodes[i].liftY = -60;
+    else if (minDist === 1) sim.nodes[i].liftY = -40;
+    else if (minDist === 2) sim.nodes[i].liftY = -25;
+    else if (minDist >= 0) sim.nodes[i].liftY = -20;
+    else sim.nodes[i].liftY = 0;
+  }
+}
+
+function resetLiftY(sim) {
+  for (var i = 0; i < sim.nodes.length; i++) sim.nodes[i].liftY = 0;
 }
 
 function addThread(id) {
   var sim = threadsSims[id];
-  if (!sim || sim.solved || sim.qi >= sim.q.length) return;
-  var e = sim.q[sim.qi++]; sim.edges.push(e); ufUnion(sim.nodes, e[0], e[1]); sim.tc++;
-  document.getElementById("tc-" + id).textContent = "Threads: " + sim.tc;
-  renderTSvg(sim);
-  if (sim.tc >= sim.ht && largestCluster(sim.nodes) < 9) showHint(id);
-  if (largestCluster(sim.nodes) >= 9) {
-    sim.solved = true; renderTSvg(sim);
-    var fl = document.getElementById("flash-" + id); if (fl) fl.classList.add("visible");
-    var btn = document.getElementById("add-" + id); if (btn) btn.disabled = true;
-    setTimeout(function() { if (fl) fl.classList.remove("visible"); revealPuzzle(id); }, 1800);
+  if (!sim || sim.solved || sim.animating || sim.qi >= sim.q.length) return;
+  sim.animating = true;
+
+  var btn = document.getElementById("add-" + id);
+  if (btn) btn.disabled = true;
+
+  var pair = sim.q[sim.qi];
+  var selA = pair[0], selB = pair[1];
+
+  /* Check win condition BEFORE adding the edge:
+     both already in same component AND that component >= winSize */
+  var rootA = ufFind(sim.nodes, selA);
+  var rootB = ufFind(sim.nodes, selB);
+  var isWin = false;
+  if (rootA === rootB) {
+    /* Count component size */
+    var compSize = 0;
+    for (var ci = 0; ci < sim.nodes.length; ci++) {
+      if (ufFind(sim.nodes, ci) === rootA) compSize++;
+    }
+    if (compSize >= sim.winSize) isWin = true;
   }
+
+  /* Step 1: Highlight the two selected buttons (~100ms) */
+  sim.highlightPair = [selA, selB];
+  renderTSvg(sim);
+
+  setTimeout(function() {
+    /* Step 2: Lift selected + cluster members */
+    computeLiftY(sim, selA, selB);
+    renderTSvg(sim);
+
+    setTimeout(function() {
+      /* Step 3: Add thread (edge) and union */
+      sim.qi++;
+      sim.edges.push(pair);
+      if (isWin) {
+        sim.winEdge = pair;
+      }
+      ufUnion(sim.nodes, selA, selB);
+      sim.tc++;
+      document.getElementById("tc-" + id).textContent = "Threads: " + sim.tc;
+      renderTSvg(sim);
+
+      if (isWin) {
+        /* WIN: teaching moment */
+        sim.solved = true;
+        renderTSvg(sim);
+        var fl = document.getElementById("flash-" + id);
+        if (fl) { fl.textContent = sim.teachingText; fl.classList.add("visible"); }
+        if (btn) btn.disabled = true;
+
+        /* Keep lifted for 5 seconds, then settle */
+        setTimeout(function() {
+          resetLiftY(sim);
+          sim.highlightPair = null;
+          renderTSvg(sim);
+          if (fl) fl.classList.remove("visible");
+          sim.animating = false;
+          revealPuzzle(id);
+        }, 5000);
+      } else {
+        /* Not a win — check if giant component now >= winSize, and if so,
+           scan forward for an intra-component pair and swap to next position */
+        var lc = largestCluster(sim.nodes);
+        if (lc >= sim.winSize && sim.qi < sim.q.length) {
+          /* Find the root of the giant component */
+          var giantRoot = -1;
+          var clusters = getClusters(sim.nodes);
+          for (var r in clusters) {
+            if (clusters[r].length >= sim.winSize) { giantRoot = parseInt(r); break; }
+          }
+          if (giantRoot >= 0) {
+            /* Scan forward for a pair where both are in the giant component */
+            for (var fi = sim.qi; fi < sim.q.length; fi++) {
+              var fp = sim.q[fi];
+              if (ufFind(sim.nodes, fp[0]) === giantRoot && ufFind(sim.nodes, fp[1]) === giantRoot) {
+                /* Swap to next position */
+                if (fi !== sim.qi) {
+                  var swp = sim.q[sim.qi];
+                  sim.q[sim.qi] = sim.q[fi];
+                  sim.q[fi] = swp;
+                }
+                break;
+              }
+            }
+          }
+        }
+
+        /* Step 4: Settle back (~300ms) */
+        setTimeout(function() {
+          resetLiftY(sim);
+          sim.highlightPair = null;
+          renderTSvg(sim);
+          sim.animating = false;
+          if (btn) btn.disabled = false;
+
+          /* Show hint if enough threads but not yet at transition */
+          if (sim.tc >= sim.ht && !sim.solved) showHint(id);
+        }, 300);
+      }
+    }, 400);
+  }, 100);
 }
 
 /* --- SIM: Resilience --- */
@@ -979,7 +1210,11 @@ function initLOG(el, d) {
 
   function render() {
     var html = '<table class="log-table"><thead><tr><th></th>';
-    d.columns.forEach(function(col) { html += "<th>" + esc(col) + "</th>"; });
+    d.columns.forEach(function(col) {
+      var text = typeof col === "object" ? col.text : col;
+      var tip = typeof col === "object" && col.tooltip ? col.tooltip : "";
+      html += tip ? '<th title="' + esc(tip) + '" style="cursor:help;text-decoration:underline dotted">' + esc(text) + "</th>" : "<th>" + esc(text) + "</th>";
+    });
     html += "</tr></thead><tbody>";
     for (var r = 0; r < d.rows.length; r++) {
       html += "<tr><td>" + esc(d.rows[r]) + "</td>";
