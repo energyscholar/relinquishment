@@ -301,7 +301,7 @@ chapter_puzzles:
     type: mc
     topic: t1
     level: p1
-    approved: false
+    approved: true
     installed: false
     location:
       chapter: three-possibilities
