@@ -1,6 +1,32 @@
-# Deep Link Manifest — Plan 0148
-# Metadata for shareable passage anchors. Questions index (future) reads this file.
-# Placement lives in .tex source files (\deeplink{id} macros), not here.
+# Deep Link Manifest — MASTER REGISTRY of all addressable anchors
+#
+# WHAT THIS IS: Every deep-linkable element in the book. If it has an
+# id="" in the HTML, it MUST be here. If it's not here, it's lost.
+#
+# FIELDS PER ENTRY:
+#   id:       Anchor ID (namespaces: dl:*, custodian:*, fig-*, pz-*, dl:egg-*)
+#   question: Reader-facing label. For puzzles, this is the collapsible
+#             summary text shown in the book ("Puzzle — {question}").
+#   category: skeptic|science|verification|ethics|curiosity|narrative|
+#             interlude|svg|puzzle|egg
+#
+# HOW PUZZLES WORK (4-file system):
+#   deep-links.yaml  — THIS FILE. ID + display label + category. Master registry.
+#   puzzle-data.yaml  — Content: questions, options, answers, hints, abstracts, egg_urls.
+#   puzzle-tracker.yaml — Metadata: approved (bool), location, reward mapping, notes.
+#   easter-egg-manifest.yaml — Egg pages: slug, source .tex, title, status, deep_link.
+#
+# BUILD PIPELINE:
+#   preprocess.py --fix-html reads tracker (approved?), data (content),
+#   and THIS FILE (summary label) to inject puzzles into chapter HTML.
+#   inject_easter_eggs() reads egg manifest to inject eggs into appendix.
+#   verify-deep-links.py checks every entry here has an id="" in the HTML.
+#
+# RULES:
+#   - Add entry HERE FIRST before creating content anywhere else.
+#   - Puzzle `question` field = what appears on the collapsible <summary>.
+#   - Category determines verification: puzzle/test-egg = skipped (not yet in HTML).
+#   - URL pattern: https://relinquishment.ai/downloads/Relinquishment.html#{id}
 
 # --- Skeptic challenges (10) ---
 - id: dl:three-possibilities

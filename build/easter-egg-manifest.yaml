@@ -1,5 +1,7 @@
 # Easter Egg Manifest — canonical registry of all egg pages
 # Every egg page MUST have an entry here. Unmanifested eggs are lost.
+# FULL SYSTEM MAP: see header of build/deep-links.yaml (master registry).
+# Source .tex in manuscript/eggs/. Injected into HTML appendix by preprocess.py.
 # Updated: 2026-04-25 (Plan 0254)
 
 eggs:

@@ -1,8 +1,9 @@
 # Puzzle Tracker — Status, Location, Rewards
 # AUTHORITY: Metadata (approved, location, reward mapping, notes).
-# Content (questions, answers, abstracts) lives in puzzle-data.yaml (authoritative).
-# This file is the SINGLE SOURCE OF TRUTH for approval status.
-# Build system reads this for 'approved' gating + chapter placement.
+# FULL SYSTEM MAP: see header of build/deep-links.yaml (master registry).
+# Content (questions, answers, abstracts) → puzzle-data.yaml
+# Display labels (summary text) → deep-links.yaml question field
+# Egg pages → easter-egg-manifest.yaml
 # Updated: 2026-04-25
 # Format: one entry per puzzle with approval, location, and reward fields
 # Bruce: update approved/reward fields as you review each puzzle
