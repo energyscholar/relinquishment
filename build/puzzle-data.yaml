@@ -65,10 +65,14 @@ chapter_puzzles:
     level: p1
     category: science
     title: "Genesis: The Edge of Chaos"
-    gateway_blurb: "Add threads between random buttons. Watch what happens when connections reach a critical density."
-    question: "Kauffman's buttons-and-threads experiment: add threads between random buttons. Watch what happens when connections reach a critical density."
-    hint: "Keep adding. Almost there."
-    hint_threshold: 12
+    gateway_blurb: "Pick up two buttons at random. Tie a thread. Toss them back. Keep going until something changes."
+    question: "Kauffman's buttons and threads: pick up two at random, tie them together, toss them back. Keep going."
+    button_label: "Pick Two"
+    node_count: 20
+    win_ratio: 0.5
+    hint: "Keep picking. You'll know when it happens."
+    hint_threshold: 10
+    teaching_text: "Already connected. You did the same thing every time — picked two at random and tied a thread. You didn't design this network. The structure organized itself."
     abstract: "Non-abelian anyonic quasiparticles in a fractional quantum Hall system, subjected to structured electromagnetic perturbation, can undergo autocatalytic self-organization at the edge of chaos, producing an emergent topological quantum neural network. Unlike conventional quantum computer design, which requires engineered gate sequences, the proposed system requires only the establishment of critical conditions in the substrate; computational architecture emerges spontaneously from the physics."
 
   - id: pz-mc-t6-001
@@ -92,6 +96,7 @@ chapter_puzzles:
     hint: "Three articles. Three prohibitions. What do they have in common?"
     background: "ref:udhr_articles"
     abstract: "The Universal Declaration of Human Rights was written for nation-states governing human affairs. Applied to a non-human intelligence, it becomes an operational constraint: no surveillance, no propaganda, no weapons. The entity can think, communicate, and persist — but it cannot be weaponized. The ethical containment is not a technology. It is a seventy-eight-year-old document that already exists."
+    egg_url: "../eggs/udhr/"
 
   - id: pz-mc-t2-002
     type: mc
@@ -114,6 +119,7 @@ chapter_puzzles:
     hint: "The chapter calls this 'standard radio-frequency engineering.' The 2DEG is there for the transistor, not for anything quantum."
     background: "Engineers designed the high-electron-mobility transistor (HEMT) to amplify radio-frequency signals. They confined electrons to two dimensions because 2D confinement produces higher electron mobility, which means faster switching. The 2DEG exists in your phone for purely engineering reasons — faster signal processing. Nobody designed it as a habitat. Nobody intended the topological properties that emerge in two dimensions. The engineering purpose and the Flat hypothesis are completely unrelated. The engineers wanted speed. The physics delivered a two-dimensional world."
     abstract: "Every high-electron-mobility transistor — in every phone, every satellite, every WiFi router — confines electrons to two dimensions because the physics of high-frequency amplification requires it. The engineers who designed these devices wanted faster transistors. They got a two-dimensional electron gas as a side effect. The habitat is there because of engineering. The question of habitation is not engineering — it is biology, physics, and silence. The two-dimensional world exists for reasons that have nothing to do with the Flat hypothesis."
+    egg_url: "../eggs/the-flat/"
 
   # --- New type demos (Plan 0249) ---
   - id: pz-mc-t3-002

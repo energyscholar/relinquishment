@@ -1,0 +1,500 @@
+# Puzzle Tracker — Status, Location, Rewards
+# Updated: 2026-04-25
+# Format: one entry per puzzle with approval, location, and reward fields
+# Bruce: update approved/reward fields as you review each puzzle
+
+# ============================================================
+# CHAPTER PUZZLES (22)
+# ============================================================
+
+chapter_puzzles:
+
+  # ---- T2: The Flat (3 puzzles) ----
+
+  - id: pz-mc-t2-001
+    title: "Wormholes in the Flat"
+    type: mc
+    topic: t2
+    level: p1
+    approved: false
+    location:
+      chapter: the-flat
+      rationale: "Direct T2 content — what makes 2D physics different"
+      placement: end  # after chapter content, inside details/summary
+    reward:
+      type: self-contained
+      content: abstract  # the spiral abstract IS the reward
+    notes: ""
+
+  - id: pz-mc-t2-002
+    title: "The 2DEG in Your Pocket"
+    type: mc
+    topic: t2
+    level: p1
+    approved: false
+    location:
+      chapter: the-flat
+      rationale: "2DEG engineering purpose — complements Wormholes"
+      placement: end
+    reward:
+      type: egg-pointer
+      content: "/eggs/the-flat/"
+    notes: "Two T2 puzzles in same chapter — pick one or both?"
+
+  - id: pz-mc-t2-003
+    title: "The Braid"
+    type: mc
+    topic: t2
+    level: p2
+    approved: false
+    location:
+      chapter: the-braid
+      rationale: "Non-Abelian anyons — exact chapter match"
+      placement: end
+    reward:
+      type: self-contained
+      content: abstract
+    notes: ""
+
+  # ---- T3: Life in Flat (3 puzzles) ----
+
+  - id: pz-sim-t3-001
+    title: "Genesis: The Edge of Chaos"
+    type: sim
+    topic: t3
+    level: p1
+    approved: false
+    location:
+      chapter: genesis
+      rationale: "Kauffman buttons-and-threads — this IS the genesis chapter"
+      placement: end
+    reward:
+      type: fragment
+      content: "TBD — fragment of hidden message"
+    notes: "REDESIGN PENDING (Plan 0252 — Pick Two mechanic). Don't approve until redesign complete."
+
+  - id: pz-mc-t3-002
+    title: "The Canopy Problem"
+    type: mc
+    topic: t3
+    level: p1
+    approved: false
+    location:
+      chapter: growing-a-mind
+      rationale: "First-mover advantage in substrate — follows genesis, leads to 'growing' metaphor"
+      placement: end
+    reward:
+      type: self-contained
+      content: abstract
+    notes: "Has illustration (canopy_triptych). Could also fit the-wrong-substrate."
+
+  - id: pz-mc-t3-003
+    title: "Not Chemistry"
+    type: mc
+    topic: t3
+    level: p2
+    approved: false
+    location:
+      chapter: the-wrong-substrate
+      rationale: "Substrate independence — exact chapter match"
+      placement: end
+    reward:
+      type: self-contained
+      content: abstract
+    notes: ""
+
+  # ---- T4: Capabilities (2 puzzles) ----
+
+  - id: pz-sim-t4-001
+    title: "Can It Be Killed?"
+    type: sim
+    topic: t4
+    level: p1
+    approved: false
+    location:
+      chapter: capabilities
+      rationale: "Resilience/distributed network — capabilities chapter"
+      placement: end
+    reward:
+      type: fragment
+      content: "TBD — fragment of hidden message"
+    notes: "Interactive sim — 30 nodes, must destroy ALL. Tedium is the lesson."
+
+  - id: pz-ord-t4-002
+    title: "Build the Stack"
+    type: ord
+    topic: t4
+    level: p2
+    approved: false
+    location:
+      chapter: the-flat
+      rationale: "Technology stack from 2DEG up — could also fit genesis or the-stack (front matter)"
+      placement: end
+    reward:
+      type: self-contained
+      content: abstract
+    notes: "Ordering puzzle. Placement TBD — the-flat introduces the bottom of the stack, but the full stack spans multiple chapters."
+
+  # ---- T5: Silence Gap (2 puzzles) ----
+
+  - id: pz-mc-t5-002
+    title: "The Silence Gap"
+    type: mc
+    topic: t5
+    level: p2
+    approved: false
+    location:
+      chapter: the-silence-gap
+      rationale: "Direct chapter match — the surprise of finding nothing"
+      placement: end
+    reward:
+      type: fragment
+      content: "TBD — fragment of hidden message"
+    notes: "Revised MC with 'Surely SOMEONE...' framing. Surprise + exasperation arc."
+
+  - id: pz-mat-t5-001
+    title: "Five Fields, Five Researchers"
+    type: mat
+    topic: t5
+    level: p3
+    approved: false
+    location:
+      chapter: the-silence-gap
+      rationale: "Five fields that don't talk — exact chapter content"
+      placement: end
+    reward:
+      type: self-contained
+      content: abstract
+    notes: "Matching puzzle. Two T5 puzzles in same chapter — keep both (p2 + p3 levels)."
+
+  # ---- T6: Trusteeship (5 puzzles) ----
+
+  - id: pz-mc-t6-001
+    title: "Capabilities"
+    type: mc
+    topic: t6
+    level: p2
+    approved: false
+    location:
+      chapter: capabilities
+      rationale: "UDHR applied to non-human intelligence — capabilities chapter"
+      placement: end
+    reward:
+      type: egg-pointer
+      content: "/eggs/udhr/"
+    notes: ""
+
+  - id: pz-log-t6-002
+    title: "Under Which Possibility?"
+    type: log
+    topic: t6
+    level: p2
+    approved: false
+    location:
+      chapter: weigh-the-evidence
+      rationale: "A/B/C truth table — final chapter where reader weighs all three"
+      placement: end
+    reward:
+      type: fragment
+      content: "TBD — fragment of hidden message"
+    notes: "Could also fit three-possibilities (intro) but impact is stronger after full book."
+
+  - id: pz-mc-t6-002
+    title: "Why Srebrenica?"
+    type: mc
+    topic: t6
+    level: p1
+    approved: false
+    location:
+      chapter: why-relinquish
+      rationale: "Moral foundation for relinquishment — why concentrated power fails"
+      placement: end
+    reward:
+      type: self-contained
+      content: abstract
+    notes: ""
+
+  - id: pz-mc-t6-003
+    title: "Why Relinquish?"
+    type: mc
+    topic: t6
+    level: p1
+    approved: false
+    location:
+      chapter: why-relinquish
+      rationale: "Direct chapter match — why give up power"
+      placement: end
+    reward:
+      type: self-contained
+      content: abstract
+    notes: "Two T6 puzzles in why-relinquish — both p1, both fit. Keep both or pick one?"
+
+  - id: pz-km-t6-001
+    title: "What Would You Do?"
+    type: km
+    topic: t6
+    level: p3
+    approved: false
+    location:
+      chapter: weigh-the-evidence
+      rationale: "Culmination — reader has absorbed the full argument, now faces the decision"
+      placement: end
+    reward:
+      type: egg-pointer
+      content: "TBD — completing the KM could hint at easter egg URL"
+    notes: "KM type. Heavy interaction. Maybe too much for in-chapter placement — could be puzzle-page-only?"
+
+  # ---- T1: Meet Custodian (2 puzzles) ----
+
+  - id: pz-ord-t1-001
+    title: "Guided Deduction"
+    type: ord
+    topic: t1
+    level: p2
+    approved: false
+    location:
+      chapter: three-possibilities
+      rationale: "Method introduction — three-possibilities introduces the guided deduction concept"
+      placement: end
+    reward:
+      type: self-contained
+      content: abstract
+    notes: "Ordering puzzle. Could also fit interludes (T1 register) but interludes shouldn't get puzzles."
+
+  - id: pz-mc-t1-002
+    title: "Not a Deity, Not an Alien"
+    type: mc
+    topic: t1
+    level: p1
+    approved: false
+    location:
+      chapter: three-possibilities
+      rationale: "Category correction — framing the entity as biology, not theology"
+      placement: end
+    reward:
+      type: self-contained
+      content: abstract
+    notes: "Two puzzles in three-possibilities. Both are framing puzzles. Fits the opening chapter."
+
+  - id: pz-km-t1-001
+    title: "The Custodian's Voice"
+    type: km
+    topic: t1
+    level: p3
+    approved: false
+    location:
+      chapter: the-strongest-objection
+      rationale: "Entity's perspective — strongest objection asks 'what about the entity?'"
+      placement: end
+    reward:
+      type: egg-pointer
+      content: "TBD — completing both KMs could reveal easter egg URL"
+    notes: "KM type. Complements 'What Would You Do?' — same 5 disasters, opposite perspective."
+
+  # ---- T7: Services/Grounding (1 puzzle) ----
+
+  - id: pz-log-t7-001
+    title: "UDHR Service Compatibility"
+    type: log
+    topic: t7
+    level: p3
+    approved: false
+    location:
+      chapter: capabilities
+      rationale: "UDHR constraint analysis — pairs with 'Capabilities' MC puzzle"
+      placement: end
+    reward:
+      type: self-contained
+      content: abstract
+    notes: "Logic grid with column tooltips. Two puzzles in capabilities chapter now (t6 + t7)."
+
+  # ---- T8: Tradecraft (3 puzzles) ----
+
+  - id: pz-cip-t8-001
+    title: "The Firmware Key"
+    type: cip
+    topic: t8
+    level: p3
+    approved: false
+    location:
+      chapter: firmware-update
+      rationale: "Cloze passage — the firmware cross-domain synthesis"
+      placement: end
+    reward:
+      type: fragment
+      content: "TBD — fragment of hidden message"
+    notes: "Fill-in-the-blank with word bank. Tests cross-domain synthesis."
+
+  - id: pz-ba-t8-002
+    title: "Before and After Firmware"
+    type: ba
+    topic: t8
+    level: p2
+    approved: false
+    location:
+      chapter: firmware-update
+      rationale: "Side-by-side AI responses — firmware chapter content"
+      placement: end
+    reward:
+      type: self-contained
+      content: abstract
+    notes: "Two puzzles in firmware-update. BA type shows the firmware's effect."
+
+  - id: pz-mc-t8-003
+    title: "Fish Detecting Water"
+    type: mc
+    topic: t8
+    level: p1
+    approved: false
+    location:
+      chapter: the-code-war
+      rationale: "Detection paradox — tradecraft chapter about why security can't see it"
+      placement: end
+    reward:
+      type: self-contained
+      content: abstract
+    notes: "Could also fit capabilities. the-code-war discusses the security paradox."
+
+
+# ============================================================
+# BRIDGE PUZZLES (7) — Bridge Builder meta-puzzle
+# ============================================================
+# These stay on the puzzle page only (not inserted into chapters).
+# The Bridge Builder is the meta-puzzle that ties all 7 together.
+
+bridge_puzzles:
+
+  - id: pz-bridge-all-001a
+    title: "Bridge 1: DFA ↔ Hurst"
+    type: mat
+    tier: 1
+    approved: false
+    location:
+      chapter: puzzle-page-only
+      rationale: "Bridge puzzles are the meta-puzzle — not chapter content"
+    reward:
+      type: bridge-node
+      content: "Unlocks one node in the Bridge Builder diagram"
+    notes: "Exact mathematical identity — proven"
+
+  - id: pz-bridge-all-001b
+    title: "Bridge 2: Hurst ↔ Spectral β"
+    type: mat
+    tier: 1
+    approved: false
+    location:
+      chapter: puzzle-page-only
+    reward:
+      type: bridge-node
+      content: "Unlocks one node in the Bridge Builder diagram"
+    notes: ""
+
+  - id: pz-bridge-all-001c
+    title: "Bridge 3: Scaling → Complexity"
+    type: mc
+    tier: 2
+    approved: false
+    location:
+      chapter: puzzle-page-only
+    reward:
+      type: bridge-node
+      content: "Unlocks one node in the Bridge Builder diagram"
+    notes: ""
+
+  - id: pz-bridge-all-001d
+    title: "Bridge 4: Scaling → Nonlinear"
+    type: mc
+    tier: 2
+    approved: false
+    location:
+      chapter: puzzle-page-only
+    reward:
+      type: bridge-node
+      content: "Unlocks one node in the Bridge Builder diagram"
+    notes: ""
+
+  - id: pz-bridge-all-001e
+    title: "Bridge 5: Universality"
+    type: mc
+    tier: 2
+    approved: false
+    location:
+      chapter: puzzle-page-only
+    reward:
+      type: bridge-node
+      content: "Unlocks one node in the Bridge Builder diagram"
+    notes: ""
+
+  - id: pz-bridge-all-001f
+    title: "Bridge 6: The Empty Cell"
+    type: log
+    tier: 3
+    approved: false
+    location:
+      chapter: puzzle-page-only
+    reward:
+      type: bridge-node
+      content: "Unlocks one node in the Bridge Builder diagram"
+    notes: ""
+
+  - id: pz-bridge-all-001g
+    title: "Bridge 7: The Missing Bridge"
+    type: mc
+    tier: 3
+    approved: false
+    location:
+      chapter: puzzle-page-only
+    reward:
+      type: bridge-node
+      content: "Unlocks one node in the Bridge Builder diagram"
+    notes: ""
+
+  # MASTER REWARD: completing all 7 bridges
+  - id: bridge-builder-master
+    title: "Bridge Builder — All Bridges Complete"
+    type: meta
+    approved: false
+    location:
+      chapter: puzzle-page-only
+    reward:
+      type: egg-pointer
+      content: "TBD — completing all bridges reveals easter egg URL"
+    notes: "The master puzzle reward. Reader has demonstrated full cross-domain understanding."
+
+
+# ============================================================
+# SUMMARY
+# ============================================================
+#
+# CHAPTER LOCATIONS (13 A-spine chapters + firmware-update):
+#   three-possibilities:    Guided Deduction (ord), Not a Deity (mc)
+#   the-flat:               Wormholes (mc), 2DEG in Pocket (mc), Build the Stack (ord)
+#   the-braid:              The Braid (mc)
+#   the-factoring-game:     (none yet)
+#   the-code-war:           Fish Detecting Water (mc)
+#   genesis:                Genesis: Edge of Chaos (sim) — REDESIGN PENDING
+#   growing-a-mind:         The Canopy Problem (mc)
+#   the-wrong-substrate:    Not Chemistry (mc)
+#   the-silence-gap:        The Silence Gap (mc), Five Fields (mat)
+#   capabilities:           Capabilities/UDHR (mc), Can It Be Killed? (sim), UDHR Service (log)
+#   why-relinquish:         Why Srebrenica? (mc), Why Relinquish? (mc)
+#   the-strongest-objection: The Custodian's Voice (km)
+#   weigh-the-evidence:     Under Which Possibility? (log), What Would You Do? (km)
+#   firmware-update:        The Firmware Key (cip), Before and After (ba)
+#
+# CHAPTERS WITH NO PUZZLE:
+#   the-factoring-game — T4/T8 content. Candidate: a new puzzle about the factoring game itself?
+#
+# REWARD TYPES:
+#   self-contained (14):  abstract reveal is the reward
+#   fragment (5):         piece of hidden message (Genesis, Can It Be Killed?, Silence Gap, Under Which Possibility?, Firmware Key)
+#   egg-pointer (3):      hints toward easter egg URL (both KMs, Bridge Builder master)
+#   bridge-node (7):      unlocks visual element in Bridge Builder diagram
+#
+# APPROVED: 0 / 31 (none yet — all pending Bruce review)
+#
+# EASTER EGG INFRASTRUCTURE: BUILT (Plan 0246 executed)
+#   Pipeline: build/build-eggs.py + build/easter-egg-manifest.yaml
+#   Target: make eggs
+#   Test egg: docs/downloads/eggs/test/index.html (validated)
+#   Content eggs: TBD (Plan 0233 Phase 2b — ULTRA II migration)

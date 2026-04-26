@@ -1,0 +1,39 @@
+# Easter Egg Manifest — canonical registry of all egg pages
+# Every egg page MUST have an entry here. Unmanifested eggs are lost.
+# Updated: 2026-04-25 (Plan 0254)
+
+eggs:
+  - slug: "test"
+    source: "manuscript/eggs/test-egg.tex"
+    title: "Test Easter Egg"
+    status: "test"
+    approved: false
+    description: "Pipeline validation — delete before ship"
+    deep_link: "dl:egg-test"
+
+  - slug: "the-flat"
+    source: "manuscript/eggs/the-flat.tex"
+    title: "The Flat"
+    status: "draft"
+    approved: false
+    description: "Spiral abstract for the-flat chapter — 2DEG engineering/habitat distinction"
+    reward_for: "pz-mc-t2-002"
+    deep_link: "dl:egg-the-flat"
+
+  - slug: "udhr"
+    source: "manuscript/eggs/udhr.tex"
+    title: "The Three Articles"
+    status: "draft"
+    approved: false
+    description: "UDHR Articles 3, 12, 18 applied to non-human intelligence"
+    reward_for: "pz-mc-t6-001"
+    deep_link: "dl:egg-udhr"
+
+  - slug: "silence"
+    source: "manuscript/eggs/silence.tex"
+    title: "The Silence Gap"
+    status: "draft"
+    approved: false
+    description: "Five fields, five empty searches — standalone discovery"
+    reward_for: "standalone"
+    deep_link: "dl:egg-silence"

@@ -216,3 +216,20 @@
 - id: custodian:hello
   question: "Seventh Custodian interlude — the surfacing moment."
   category: interlude
+
+# --- Easter egg pages (Plan 0254) ---
+- id: dl:egg-test
+  question: "Pipeline test egg"
+  category: egg
+
+- id: dl:egg-the-flat
+  question: "Why does every phone contain a two-dimensional world?"
+  category: egg
+
+- id: dl:egg-udhr
+  question: "What do three articles of the UDHR forbid?"
+  category: egg
+
+- id: dl:egg-silence
+  question: "What happens when you search five fields for one question?"
+  category: egg
