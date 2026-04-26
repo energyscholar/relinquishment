@@ -91,7 +91,7 @@ chapter_puzzles:
     type: mc
     topic: t3
     level: p1
-    approved: false
+    approved: true
     installed: false
     location:
       chapter: growing-a-mind
