@@ -105,6 +105,14 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .anchor-link { font-size: 0.6em; color: #aaa; text-decoration: none; vertical-align: middle; margin-left: 0.3em; opacity: 0.4; transition: opacity 0.2s; }
 .anchor-link:hover { opacity: 1; color: #1a5276; }
 .hover-term { border-bottom: 1px dotted #1a5276; cursor: help; }
+.toc-table { width: 100%; border-collapse: collapse; font-size: 0.85em; margin: 0.5em 0; }
+.toc-table th { text-align: left; padding: 3px 8px; border-bottom: 2px solid #ccc; color: #1a5276; font-size: 0.85em; }
+.toc-table td { padding: 3px 8px; border-bottom: 1px solid #eee; }
+.toc-table td:nth-child(n+2) { text-align: center; width: 3em; }
+.toc-table a { color: #1a5276; text-decoration: none; }
+.toc-table a:hover { text-decoration: underline; }
+.toc-approved { opacity: 0.5; }
+.toc-approved td:last-child { color: #27ae60; font-weight: bold; }
 .puzzle-container.approved { border-left: 4px solid #27ae60; opacity: 0.6; }
 .approved-badge { font-size: 0.55em; color: #27ae60; font-weight: bold; vertical-align: middle; margin-right: 0.5em; letter-spacing: 0.05em; }
 .no-crypto { background: #fff3cd; border: 1px solid #d4a14b; padding: 1em; border-radius: 4px; margin-bottom: 2em; }
@@ -237,6 +245,47 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 the chapter&rsquo;s Spiral Abstract &mdash; the meta-view that connects the chapter
 to the book&rsquo;s larger argument. The Final Question awaits at the end.</p>
 <p class="progress">Chapter puzzles: <span id="chapter-count">0</span>/26</p>
+
+<details id="puzzle-toc" style="margin:1em 0 2em;">
+<summary style="cursor:pointer;font-weight:bold;color:#1a5276;font-size:1.05em;">Puzzle Index (26 chapter + 7 bridge)</summary>
+<table class="toc-table">
+<tr><th>Title</th><th>Type</th><th>Topic</th><th>Lvl</th><th>OK</th></tr>
+<tr class="toc-approved"><td><a href="#pz-mc-t2-001">Wormholes in the Flat</a></td><td>mc</td><td>t2</td><td>p1</td><td>&#10003;</td></tr>
+<tr class="toc-approved"><td><a href="#pz-sim-t3-001">Genesis: The Edge of Chaos</a></td><td>sim</td><td>t3</td><td>p1</td><td>&#10003;</td></tr>
+<tr class="toc-approved"><td><a href="#pz-mc-t6-001">Capabilities</a></td><td>mc</td><td>t6</td><td>p2</td><td>&#10003;</td></tr>
+<tr class="toc-approved"><td><a href="#pz-mc-t2-002">The 2DEG in Your Pocket</a></td><td>mc</td><td>t2</td><td>p1</td><td>&#10003;</td></tr>
+<tr class="toc-approved"><td><a href="#pz-mc-t3-002">The Canopy Problem</a></td><td>mc</td><td>t3</td><td>p1</td><td>&#10003;</td></tr>
+<tr><td><a href="#pz-mc-t5-002">The Silence Gap</a></td><td>mc</td><td>t5</td><td>p2</td><td>&middot;</td></tr>
+<tr><td><a href="#pz-ord-t1-001">Guided Deduction</a></td><td>ord</td><td>t1</td><td>p2</td><td>&middot;</td></tr>
+<tr><td><a href="#pz-mat-t5-001">Five Fields, Five Researchers</a></td><td>mat</td><td>t5</td><td>p3</td><td>&middot;</td></tr>
+<tr class="toc-approved"><td><a href="#pz-sim-t4-001">Can It Be Killed?</a></td><td>sim</td><td>t4</td><td>p1</td><td>&#10003;</td></tr>
+<tr><td><a href="#pz-cip-t8-001">The Firmware Key</a></td><td>cip</td><td>t8</td><td>p3</td><td>&middot;</td></tr>
+<tr><td><a href="#pz-ba-t8-002">Before and After Firmware</a></td><td>ba</td><td>t8</td><td>p2</td><td>&middot;</td></tr>
+<tr class="toc-approved"><td><a href="#pz-log-t7-001">UDHR Service Compatibility</a></td><td>log</td><td>t7</td><td>p3</td><td>&#10003;</td></tr>
+<tr><td><a href="#pz-log-t6-002">Under Which Possibility?</a></td><td>log</td><td>t6</td><td>p2</td><td>&middot;</td></tr>
+<tr><td><a href="#pz-mc-t6-002">Why Srebrenica?</a></td><td>mc</td><td>t6</td><td>p1</td><td>&middot;</td></tr>
+<tr class="toc-approved"><td><a href="#pz-mc-t1-002">Not a Deity, Not an Alien</a></td><td>mc</td><td>t1</td><td>p1</td><td>&#10003;</td></tr>
+<tr class="toc-approved"><td><a href="#pz-mc-t6-003">Why Relinquish?</a></td><td>mc</td><td>t6</td><td>p1</td><td>&#10003;</td></tr>
+<tr class="toc-approved"><td><a href="#pz-mc-t8-003">Fish Detecting Water</a></td><td>mc</td><td>t8</td><td>p1</td><td>&#10003;</td></tr>
+<tr><td><a href="#pz-ord-t4-002">Build the Stack</a></td><td>ord</td><td>t4</td><td>p2</td><td>&middot;</td></tr>
+<tr><td><a href="#pz-mc-t3-003">Not Chemistry</a></td><td>mc</td><td>t3</td><td>p2</td><td>&middot;</td></tr>
+<tr><td><a href="#pz-mc-t2-003">The Braid</a></td><td>mc</td><td>t2</td><td>p2</td><td>&middot;</td></tr>
+<tr><td><a href="#pz-km-t6-001">What Would You Do?</a></td><td>km</td><td>t6</td><td>p3</td><td>&middot;</td></tr>
+<tr><td><a href="#pz-km-t1-001">The Custodian&#x27;s Voice</a></td><td>km</td><td>t1</td><td>p3</td><td>&middot;</td></tr>
+<tr><td><a href="#pz-gd-t1-001">The Method</a></td><td>gd</td><td>t1</td><td>p1</td><td>&middot;</td></tr>
+<tr><td><a href="#pz-gd-t2-001">The Accidental Habitat</a></td><td>gd</td><td>t2</td><td>p1</td><td>&middot;</td></tr>
+<tr class="toc-approved"><td><a href="#pz-gd-t5-001">The Silence</a></td><td>gd</td><td>t5</td><td>p1</td><td>&#10003;</td></tr>
+<tr><td><a href="#pz-gd-t6-001">The Ethics</a></td><td>gd</td><td>t6</td><td>p1</td><td>&middot;</td></tr>
+<tr><td><a href="#pz-bridge-all-001a">Bridge 1: DFA ↔ Hurst</a></td><td>mat</td><td>br</td><td>--</td><td>&middot;</td></tr>
+<tr><td><a href="#pz-bridge-all-001b">Bridge 2: Hurst ↔ Spectral β</a></td><td>mc</td><td>br</td><td>--</td><td>&middot;</td></tr>
+<tr><td><a href="#pz-bridge-all-001c">Bridge 3: Scaling → Complexity</a></td><td>mc</td><td>br</td><td>--</td><td>&middot;</td></tr>
+<tr><td><a href="#pz-bridge-all-001d">Bridge 4: Scaling → Nonlinear</a></td><td>mc</td><td>br</td><td>--</td><td>&middot;</td></tr>
+<tr><td><a href="#pz-bridge-all-001e">Bridge 5: Seven Domains</a></td><td>mc</td><td>br</td><td>--</td><td>&middot;</td></tr>
+<tr><td><a href="#pz-bridge-all-001f">Bridge 6: The Empty Cell</a></td><td>log</td><td>br</td><td>--</td><td>&middot;</td></tr>
+<tr><td><a href="#pz-bridge-all-001g">Bridge 7: The AC→TQC Bridge</a></td><td>mc</td><td>br</td><td>--</td><td>&middot;</td></tr>
+</table>
+<p style="text-align:center;margin:0.5em 0;"><a href="#" style="font-size:0.85em;color:#888;">&uarr; Back to top</a></p>
+</details>
 
 <div id="no-crypto" class="no-crypto" style="display:none;">
   <strong>Note:</strong> Your browser does not support the SubtleCrypto API.
