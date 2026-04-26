@@ -3058,7 +3058,7 @@ def inject_chapter_puzzles(html_path):
         egg_link = ''
         if egg_url:
             target_attr = '' if egg_url.startswith('#') else ' target="_blank"'
-            egg_link = f'<p class="pz-egg-reward"><a href="{_esc(egg_url)}"{target_attr}>&#x1f513; Continue exploring (Easter Egg) &rarr;</a></p>'
+            egg_link = f'<p class="pz-egg-reward"><a href="{_esc(egg_url)}"{target_attr}>&#x1f513; Continue exploring (You found an Easter Egg) &rarr;</a></p>'
 
         puzzle_html = f'''
 <details class="puzzle-section" open>
