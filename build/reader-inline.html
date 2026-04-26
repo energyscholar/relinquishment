@@ -450,21 +450,20 @@
 
   // --- Cover magnetosphere SVG injection ---
   (function() {
-    if (window.innerWidth < 900) return;
-
     var styleEl = document.createElement('style');
     styleEl.textContent =
-      '@media (max-width: 900px) { #cover-magnetosphere { display: none !important; } }' +
       '@media (prefers-color-scheme: dark) { #cover-ms-light { display: none !important; } #cover-ms-dark { display: block; } }' +
       '@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) { #cover-ms-dark { display: none !important; } #cover-ms-light { display: block; } }' +
       '@media print { #cover-magnetosphere { display: none !important; } }';
     document.head.appendChild(styleEl);
 
+    var isNarrow = window.innerWidth < 900;
     var wrapper = document.createElement('div');
     wrapper.id = 'cover-magnetosphere';
     wrapper.setAttribute('aria-hidden', 'true');
     wrapper.style.cssText = 'position:absolute;bottom:100%;right:0;' +
-      'width:350px;max-width:50%;pointer-events:none;z-index:1;opacity:0.85;';
+      'width:' + (isNarrow ? '100px' : '350px') + ';' +
+      'max-width:50%;pointer-events:none;z-index:1;opacity:0.85;transition:opacity 0.3s;';
 
     var darkSvg =
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" id="cover-ms-dark" width="100%">' +
@@ -727,6 +726,21 @@
         msToggle.style.opacity = '0.4';
       }
     } catch(e) {}
+
+    var scrollHidden = false;
+    window.addEventListener('scroll', function() {
+      var manuallyHidden = false;
+      try { manuallyHidden = localStorage.getItem('cover-ms-hidden') === 'true'; } catch(e) {}
+      if (manuallyHidden) return;
+
+      if (window.scrollY > 20 && !scrollHidden) {
+        wrapper.style.opacity = '0';
+        scrollHidden = true;
+      } else if (window.scrollY <= 20 && scrollHidden) {
+        wrapper.style.opacity = '0.85';
+        scrollHidden = false;
+      }
+    });
   })();
 
   // --- Breadcrumb update on scroll ---

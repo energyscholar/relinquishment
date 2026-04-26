@@ -11172,8 +11172,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>0a96d46152d66da0858d0b5a3f5ccae96db6bf3d</code> on 2026-04-26
-14:21:45 -0700.</p>
+<code>b6fcf8662b18330bf32c69a043124d531a789982</code> on 2026-04-26
+15:17:25 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -11241,7 +11241,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-26T22:14:31Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-26T22:50:18Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -11252,19 +11252,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>0a96d46</code></p>
+<p><code>b6fcf86</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>0a96d46152d66da0858d0b5a3f5ccae96db6bf3d</code></p>
+<p><code>b6fcf8662b18330bf32c69a043124d531a789982</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-26 14:21:45 -0700</p>
+<p>2026-04-26 15:17:25 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-26T22:14:31Z</p>
+<p>2026-04-26T22:50:18Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -12093,21 +12093,20 @@ energyscholar+physics@gmail.com
 
   // --- Cover magnetosphere SVG injection ---
   (function() {
-    if (window.innerWidth < 900) return;
-
     var styleEl = document.createElement('style');
     styleEl.textContent =
-      '@media (max-width: 900px) { #cover-magnetosphere { display: none !important; } }' +
       '@media (prefers-color-scheme: dark) { #cover-ms-light { display: none !important; } #cover-ms-dark { display: block; } }' +
       '@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) { #cover-ms-dark { display: none !important; } #cover-ms-light { display: block; } }' +
       '@media print { #cover-magnetosphere { display: none !important; } }';
     document.head.appendChild(styleEl);
 
+    var isNarrow = window.innerWidth < 900;
     var wrapper = document.createElement('div');
     wrapper.id = 'cover-magnetosphere';
     wrapper.setAttribute('aria-hidden', 'true');
     wrapper.style.cssText = 'position:absolute;bottom:100%;right:0;' +
-      'width:350px;max-width:50%;pointer-events:none;z-index:1;opacity:0.85;';
+      'width:' + (isNarrow ? '100px' : '350px') + ';' +
+      'max-width:50%;pointer-events:none;z-index:1;opacity:0.85;transition:opacity 0.3s;';
 
     var darkSvg =
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" id="cover-ms-dark" width="100%">' +
@@ -12370,6 +12369,21 @@ energyscholar+physics@gmail.com
         msToggle.style.opacity = '0.4';
       }
     } catch(e) {}
+
+    var scrollHidden = false;
+    window.addEventListener('scroll', function() {
+      var manuallyHidden = false;
+      try { manuallyHidden = localStorage.getItem('cover-ms-hidden') === 'true'; } catch(e) {}
+      if (manuallyHidden) return;
+
+      if (window.scrollY > 20 && !scrollHidden) {
+        wrapper.style.opacity = '0';
+        scrollHidden = true;
+      } else if (window.scrollY <= 20 && scrollHidden) {
+        wrapper.style.opacity = '0.85';
+        scrollHidden = false;
+      }
+    });
   })();
 
   // --- Breadcrumb update on scroll ---
