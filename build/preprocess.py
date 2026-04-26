@@ -3058,7 +3058,7 @@ def inject_chapter_puzzles(html_path):
         egg_link = ''
         if egg_url:
             target_attr = '' if egg_url.startswith('#') else ' target="_blank"'
-            egg_link = f'<p class="pz-egg-reward"><a href="{_esc(egg_url)}"{target_attr}>&#x1f513; Continue exploring &rarr;</a></p>'
+            egg_link = f'<p class="pz-egg-reward"><a href="{_esc(egg_url)}"{target_attr}>&#x1f513; Continue exploring (Easter Egg) &rarr;</a></p>'
 
         puzzle_html = f'''
 <details class="puzzle-section" open>
@@ -3082,9 +3082,10 @@ def inject_chapter_puzzles(html_path):
 .pz-result.pz-visible {{ display: block; }}
 .pz-solved-badge {{ color: #2a9b9a; font-weight: bold; font-size: 1.1em; margin-bottom: 0.5em; }}
 .pz-abstract {{ border-left: 3px solid #2a9b9a; padding: 0.8em 1em; margin: 0; background: #f0faf9; font-style: italic; color: #333; line-height: 1.5; }}
-.pz-egg-reward {{ margin-top: 1em; text-align: center; }}
-.pz-egg-reward a {{ display: inline-block; padding: 0.5em 1.2em; background: #2a9b9a; color: #fff; text-decoration: none; border-radius: 4px; font-weight: bold; transition: background 0.2s; }}
-.pz-egg-reward a:hover {{ background: #238a89; }}
+.pz-reset {{ font-size: 0.75em; font-weight: normal; color: #888; text-decoration: none; margin-left: 1em; }}
+.pz-reset:hover {{ color: #1a5276; text-decoration: underline; }}
+.pz-egg-reward {{ margin-top: 1em; font-style: italic; color: #555; }}
+.pz-egg-reward a {{ color: #1a5276; text-decoration: underline; }}
 .pz-fallback {{ font-style: italic; color: #888; }}
 @media (prefers-color-scheme: dark) {{
   .puzzle-section {{ background: #242424; border-color: #444; }}
@@ -3097,8 +3098,10 @@ def inject_chapter_puzzles(html_path):
   .pz-option-btn.pz-correct {{ background: #1a3a35; border-color: #2a9b9a; }}
   .pz-hint {{ background: #2a2510; color: #f0d060; border-left-color: #d4a14b; }}
   .pz-abstract {{ background: #1a2e2d; color: #ccc; }}
-  .pz-egg-reward a {{ background: #1a6b6a; }}
-  .pz-egg-reward a:hover {{ background: #1f7d7c; }}
+  .pz-reset {{ color: #666; }}
+  .pz-reset:hover {{ color: #6ba3f7; }}
+  .pz-egg-reward {{ color: #999; }}
+  .pz-egg-reward a {{ color: #6ba3f7; }}
 }}
 @media (max-width: 600px) {{
   .pz-option-btn {{ min-height: 44px; }}
@@ -3111,7 +3114,7 @@ def inject_chapter_puzzles(html_path):
     <div class="pz-interaction" id="pz-inter-{pid}"></div>
     <p class="pz-hint" id="pz-hint-{pid}">{hint_text}</p>
     <div class="pz-result" id="pz-result-{pid}">
-      <div class="pz-solved-badge">&#10003; Solved</div>
+      <div class="pz-solved-badge">&#10003; Solved <a href="#" class="pz-reset" id="pz-reset-{pid}">&#x21ba; Try again</a></div>
       <blockquote class="pz-abstract">{abstract_text}</blockquote>
       {egg_link}
     </div>
@@ -3137,6 +3140,19 @@ def inject_chapter_puzzles(html_path):
     var result = document.getElementById("pz-result-" + pid);
     if (result) result.classList.add("pz-visible");
     setSolved(pid);
+  }}
+
+  function resetPuzzle() {{
+    try {{ var s = getSolved(); delete s[pid]; localStorage.setItem(SKEY, JSON.stringify(s)); }} catch(e) {{}}
+    var el = document.getElementById(pid);
+    if (el) el.classList.remove("pz-solved");
+    var inter = document.getElementById("pz-inter-" + pid);
+    if (inter) inter.style.display = "";
+    var hint = document.getElementById("pz-hint-" + pid);
+    if (hint) hint.classList.remove("pz-visible");
+    var result = document.getElementById("pz-result-" + pid);
+    if (result) result.classList.remove("pz-visible");
+    init();
   }}
 
   function showHint() {{
@@ -3184,6 +3200,11 @@ def inject_chapter_puzzles(html_path):
         btn.addEventListener("click", function() {{ checkAnswer(btn.dataset.key, btn); }});
       }})(btns[j]);
     }}
+  }}
+
+  var resetBtn = document.getElementById("pz-reset-" + pid);
+  if (resetBtn) {{
+    resetBtn.addEventListener("click", function(e) {{ e.preventDefault(); resetPuzzle(); }});
   }}
 
   if (document.readyState === "loading") {{
