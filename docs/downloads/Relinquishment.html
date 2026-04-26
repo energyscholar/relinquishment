@@ -10898,8 +10898,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>89f51708269a7c3e6821fc55937d572c57553a8b</code> on 2026-04-25
-22:55:58 -0700.</p>
+<code>9d56b427162a2203425d695b16eedff6a97cc441</code> on 2026-04-25
+23:11:04 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -10967,7 +10967,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-26T05:57:48Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-26T06:14:30Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -10978,19 +10978,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>89f5170</code></p>
+<p><code>9d56b42</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>89f51708269a7c3e6821fc55937d572c57553a8b</code></p>
+<p><code>9d56b427162a2203425d695b16eedff6a97cc441</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-25 22:55:58 -0700</p>
+<p>2026-04-25 23:11:04 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-26T05:57:48Z</p>
+<p>2026-04-26T06:14:30Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -11867,10 +11867,17 @@ energyscholar+physics@gmail.com
     // Update share button href
     shareBtn.href = '#' + (chapterId || partId || '');
 
-    // URL reflects reading position (replaceState)
+    // URL reflects reading position — but preserve deep-link hashes
+    // that point to elements inside the current chapter (puzzles, anchors, etc.)
     var newHash = chapterId ? '#' + chapterId : (partId ? '#' + partId : '');
     if (newHash && newHash !== location.hash) {
-      history.replaceState(null, '', newHash);
+      var curId = location.hash.slice(1);
+      var curEl = curId ? document.getElementById(curId) : null;
+      var chapterEl = chapterId ? document.getElementById(chapterId) : null;
+      var insideChapter = curEl && chapterEl && chapterEl.contains(curEl);
+      if (!insideChapter) {
+        history.replaceState(null, '', newHash);
+      }
     }
   }
 
