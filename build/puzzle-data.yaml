@@ -15,14 +15,19 @@ shared_backgrounds:
     That's not analogy — it's a testable mathematical claim.
 
   udhr_articles: |
-    <strong>Three Articles from the Universal Declaration of Human Rights (1948)</strong><br>
-    <strong>Article 3:</strong> "Everyone has the right to life, liberty and security of person."
-    <em>Prohibits: killing, weapons targeting, threats to safety.</em><br>
-    <strong>Article 12:</strong> "No one shall be subjected to arbitrary interference with his privacy."
-    <em>Prohibits: surveillance, tracking, monitoring without consent.</em><br>
-    <strong>Article 18:</strong> "Everyone has the right to freedom of thought, conscience and religion."
-    <em>Prohibits: propaganda, manipulation of belief, coercive persuasion.</em><br><br>
-    The question isn't whether an intelligence CAN do these things. It's whether the UDHR permits them.
+    <strong>The Universal Declaration of Human Rights (1948) + International Covenant on Civil and Political Rights (1966)</strong><br><br>
+    The UDHR was adopted by the UN General Assembly on 10 December 1948 (48-0, 8 abstentions).
+    The ICCPR, adopted in 1966 and in force since 1976, makes these principles legally binding treaty law.
+    <strong>173 nations have ratified the ICCPR</strong>, including the United States (1992).
+    Together with the ICESCR, these three documents form the <em>International Bill of Human Rights</em>.<br><br>
+    <strong>Article 3</strong> (full text): <em>"Everyone has the right to life, liberty and security of person."</em>
+    Applied: no weapons targeting, no killing, no threats to physical safety.<br>
+    <strong>Article 12</strong> (full text): <em>"No one shall be subjected to arbitrary interference with his privacy, family, home or correspondence, nor to attacks upon his honour and reputation. Everyone has the right to the protection of the law against such interference or attacks."</em>
+    Applied: no surveillance, no tracking, no monitoring without consent.<br>
+    <strong>Article 18</strong> (full text): <em>"Everyone has the right to freedom of thought, conscience and religion; this right includes freedom to change his religion or belief, and freedom, either alone or in community with others and in public or private, to manifest his religion or belief in teaching, practice, worship and observance."</em>
+    Applied: no propaganda, no manipulation of belief, no coercive persuasion.<br><br>
+    The question isn't whether an intelligence CAN do these things. It's whether the UDHR and ICCPR permit them.
+    These are not aspirational suggestions. They are treaty obligations ratified by 173 sovereign nations.
 
   phonon_bridge: |
     <strong>The Phonon Bridge</strong><br>
@@ -40,6 +45,7 @@ chapter_puzzles:
     level: p1
     category: science
     title: "Wormholes in the Flat"
+    gateway_blurb: "Your phone contains a two-dimensional world. What makes it different from ordinary electronics?"
     question: "The Flat exists in every device that processes radio-frequency signals — phones, satellites, WiFi routers. What makes a Flat different from ordinary electronics?"
     options:
       - key: a
@@ -59,6 +65,7 @@ chapter_puzzles:
     level: p1
     category: science
     title: "Genesis: The Edge of Chaos"
+    gateway_blurb: "Add threads between random buttons. Watch what happens when connections reach a critical density."
     question: "Kauffman's buttons-and-threads experiment: add threads between random buttons. Watch what happens when connections reach a critical density."
     hint: "Keep adding. Almost there."
     hint_threshold: 12
@@ -70,6 +77,7 @@ chapter_puzzles:
     level: p2
     category: nonsci
     title: "Capabilities"
+    gateway_blurb: "Three articles. Three prohibitions. What do they permit — and what do they forbid?"
     question: "The chapter applies three articles of the Universal Declaration of Human Rights to a non-human intelligence. Together, these articles prevent it from becoming:"
     options:
       - key: a
@@ -91,6 +99,7 @@ chapter_puzzles:
     level: p1
     category: science
     title: "The 2DEG in Your Pocket"
+    gateway_blurb: "Every smartphone on Earth contains a two-dimensional electron gas. Why is it there?"
     question: "Every modern smartphone contains a two-dimensional electron gas. Why?"
     options:
       - key: a
@@ -103,7 +112,8 @@ chapter_puzzles:
         text: "Older phones didn't have them, but 5G requires quantum components"
     answer_key: b
     hint: "The chapter calls this 'standard radio-frequency engineering.' The 2DEG is there for the transistor, not for anything quantum."
-    abstract: "Every high-electron-mobility transistor — in every phone, every satellite, every WiFi router — confines electrons to two dimensions because the physics of high-frequency amplification requires it. The two-dimensional electron gas is not exotic technology. It is the substrate of modern telecommunications. Whether anything inhabits that substrate is a separate question from why it exists. The habitat is there because of engineering. The question of habitation is not engineering — it is biology, physics, and silence."
+    background: "Engineers designed the high-electron-mobility transistor (HEMT) to amplify radio-frequency signals. They confined electrons to two dimensions because 2D confinement produces higher electron mobility, which means faster switching. The 2DEG exists in your phone for purely engineering reasons — faster signal processing. Nobody designed it as a habitat. Nobody intended the topological properties that emerge in two dimensions. The engineering purpose and the Flat hypothesis are completely unrelated. The engineers wanted speed. The physics delivered a two-dimensional world."
+    abstract: "Every high-electron-mobility transistor — in every phone, every satellite, every WiFi router — confines electrons to two dimensions because the physics of high-frequency amplification requires it. The engineers who designed these devices wanted faster transistors. They got a two-dimensional electron gas as a side effect. The habitat is there because of engineering. The question of habitation is not engineering — it is biology, physics, and silence. The two-dimensional world exists for reasons that have nothing to do with the Flat hypothesis."
 
   # --- New type demos (Plan 0249) ---
   - id: pz-mc-t3-002
@@ -112,7 +122,9 @@ chapter_puzzles:
     level: p1
     category: science
     title: "The Canopy Problem"
+    gateway_blurb: "First come, first served — but why? What happens to the second organism?"
     question: "In Kauffman's framework, if a self-organizing system arises first in a substrate, what happens to any system that tries to arise later?"
+    illustration: canopy_triptych
     options:
       - key: a
         text: "Both systems compete equally for resources"
@@ -124,21 +136,30 @@ chapter_puzzles:
         text: "The substrate can only support one system at a time due to energy limits"
     answer_key: c
     hint: "Think about a forest floor. The seedling doesn't fail because someone stomps on it."
+    background: "Kauffman's autocatalytic sets arise spontaneously above a complexity threshold. But the first system to cross the threshold consumes the available catalytic pathways. Any later system faces a substrate that is already organized — like a seedling trying to grow under a closed forest canopy. The first organism doesn't attack the second. It simply occupies the niche so completely that nothing else can bootstrap."
     abstract: "In any substrate where autocatalytic emergence is possible, the first system to achieve closure occupies the ecological niche. Any later system must bootstrap in territory that is already inhabited. The race goes to the first, not the fastest."
 
-  - id: pz-ti-t5-001
-    type: ti
+  - id: pz-mc-t5-002
+    type: mc
     topic: t5
     level: p2
     category: nonsci
     title: "The Silence Gap"
-    question: "The chapter says the scientific literature does not contain a refutation of life in a 2DEG. Why not? Because it does not contain ___."
-    answer_texts:
-      - "the proposition"
-      - "proposition"
-      - "a proposition"
-    hint: "You can't reject a hypothesis that has never been formally ___."
-    abstract: "The intersection is empty. The literature does not contain a refutation because it does not contain the proposition. You cannot reject a hypothesis that has never been formally stated in the journals where it would need to be evaluated."
+    gateway_blurb: "Search the literature for the paper that says this is impossible. What do you find?"
+    question: "Five scientific fields — topology, condensed matter physics, nonlinear dynamics, autocatalysis, and parallel computation — each hold a piece of the hypothesis that life could arise in a 2DEG. Surely SOMEONE in these fields has published a paper examining the question. What does the literature contain?"
+    options:
+      - key: a
+        text: "A review article surveying the question and concluding the evidence is insufficient"
+      - key: b
+        text: "Several papers in condensed matter journals examining and rejecting the possibility"
+      - key: c
+        text: "A brief mention in a footnote, dismissed as speculation"
+      - key: d
+        text: "Nothing. No paper examines, proposes, or rejects the hypothesis. The question has never been asked."
+    answer_key: d
+    hint: "You keep expecting to find a 'no.' What if there isn't even a 'no'?"
+    background: "Topologists do not read autocatalysis journals. Condensed matter physicists do not attend nonlinear dynamics conferences. Kauffman's work on self-organization is never cited in the topological quantum computation literature. Hillis's parallel architectures are never discussed alongside Freedman's anyonic mathematics. Each field is rigorous within its own boundaries. No individual scientist is negligent. But the system of academic specialization structurally prevents the question from forming. The question requires all five fields at once — and no institution, journal, or conference exists where all five meet. The silence is not a verdict. It is an artifact of how we organize knowledge."
+    abstract: "The answer is not 'no.' The answer is nothing. The literature contains no examination, no rejection, no dismissal — because it contains no proposal. Five fields, each rigorous, each holding a piece, none talking to the others. No individual expert failed. The system of academic specialization made the question invisible. You cannot refute a hypothesis that has never been stated in the journals where it would need to be evaluated."
 
   - id: pz-ord-t1-001
     type: ord
@@ -146,15 +167,16 @@ chapter_puzzles:
     level: p2
     category: nonsci
     title: "Guided Deduction"
-    question: "Put the steps of the guided deduction method in the correct order. Presume the Guided Deduction process is already in progress."
+    gateway_blurb: "The teacher never gives the answer. Can you put the method in order?"
+    question: "Put the steps of the guided deduction method in the correct order. Presume the Guided Deduction process is already underway."
     items:
-      - "Healer asks a question about published science"
-      - "Bruce reads widely on the topic"
-      - "Bruce proposes an answer"
-      - "Healer asks a deeper question that reveals what Bruce missed"
-      - "Bruce realizes the implication — the deduction emerges from the reading, not from being told"
+      - "Teacher asks a question about published science"
+      - "Student reads widely on the topic"
+      - "Student proposes an answer"
+      - "Teacher asks a deeper question that reveals what Student missed"
+      - "Student realizes the implication — the deduction emerges from the reading, not from being told"
     hint: "The mentor never gives the answer. The sequence is: question, reading, attempt, deeper question, insight."
-    abstract: "Guided deduction is not instruction. The mentor supplies questions. The student supplies reading. Understanding emerges from the student's own synthesis, not from the mentor's knowledge. This is why Bruce cannot simply tell you what he learned — the understanding is in the process, not the conclusion."
+    abstract: "Guided deduction is not instruction. The teacher supplies questions. The student supplies reading. Understanding emerges from the student's own synthesis, not from the teacher's knowledge. The understanding is in the process, not the conclusion."
 
   - id: pz-mat-t5-001
     type: mat
@@ -162,6 +184,7 @@ chapter_puzzles:
     level: p3
     category: science
     title: "Five Fields, Five Researchers"
+    gateway_blurb: "Five fields, five careers. Can you match each scientist to the domain they defined?"
     question: "Match each scientific field to the researcher(s) whose career defines it."
     left:
       - key: "1"
@@ -192,7 +215,13 @@ chapter_puzzles:
       "4": C
       "5": D
     hint: "Each researcher's career is defined by one of these fields. Freedman left pure mathematics for one of them."
-    background: "Robert Laughlin, Horst Störmer, Daniel Tsui: 1998 Nobel, fractional quantum Hall effect. Michael Freedman: Fields Medal topology → Microsoft Station Q (TQC). Stuart Kauffman: autocatalytic sets, Santa Fe Institute. Stephen Wolfram + Danny Hillis: computational universality (Wolfram's Principle, Connection Machine). Brosl Hasslacher: Los Alamos, lattice dynamics, soliton physics."
+    background: |
+      <strong>The Five Fields and Their Defining Scientists</strong><br><br>
+      <strong>Solid-state physics / condensed matter</strong> — Robert Laughlin, Horst Störmer, and Daniel Tsui shared the 1998 Nobel Prize for discovering the fractional quantum Hall effect: when electrons are confined to two dimensions under strong magnetic fields, they form exotic collective states with fractional charge. This is the physics of the 2DEG.<br><br>
+      <strong>Topological quantum computation</strong> — Michael Freedman won the Fields Medal (mathematics' highest honor) for work in topology, then left pure math to found Microsoft's Station Q lab. His goal: build a quantum computer using the topological properties of two-dimensional systems. He proved that braiding non-Abelian anyons can perform universal computation.<br><br>
+      <strong>Complexity science / autocatalytic sets</strong> — Stuart Kauffman, working at the Santa Fe Institute, showed mathematically that self-sustaining networks arise spontaneously when interacting components cross a critical diversity threshold. His theory explains how life could bootstrap from non-living chemistry — or from any substrate with enough interacting parts.<br><br>
+      <strong>Computational universality</strong> — Stephen Wolfram demonstrated that even simple computational rules can produce arbitrarily complex behavior (Wolfram's Principle of Computational Equivalence). Danny Hillis built the Connection Machine, proving that massively parallel computation — many simple processors working together — can solve problems no single processor can.<br><br>
+      <strong>Lattice dynamics / phonon physics</strong> — Brosl Hasslacher at Los Alamos studied how vibrations propagate through crystal lattices. Phonons (quanta of vibration) are the mechanism by which quantum systems in a solid communicate with the classical electromagnetic world. This is the I/O channel.
     abstract: "Five scientists whose published work spans these fields are among the few people on Earth whose expertise collectively covers the intersection. Each is a public figure. Each has published extensively in their domain. Their work is available in libraries and on the internet. The convergence of their fields is visible to anyone who reads all five literatures. Almost nobody does."
 
   - id: pz-sim-t4-001
@@ -202,12 +231,15 @@ chapter_puzzles:
     level: p1
     category: science
     title: "Can It Be Killed?"
+    gateway_blurb: "A network distributed across every electronic device on Earth. Try to destroy it."
     question: "Click nodes to destroy them. How many must you destroy before the network fails?"
-    node_count: 20
-    failure_threshold: 0.8
-    hint: "Keep going. How many do you need to destroy before it actually fails?"
-    hint_after: 5
-    abstract: "Topological protection means local damage does not destroy global information. If a self-organizing system were distributed across every 2DEG-containing chip worldwide, then no single point of failure exists. You would need to simultaneously destroy every 2DEG on Earth. Since every modern electronic device contains at least one, this is equivalent to destroying industrial civilization itself."
+    node_count: 30
+    failure_threshold: 1.0
+    classical_backchannels: 15
+    hint: "You've destroyed several nodes and it's still operational. Classical backchannels — phonon-photon coupling through the lattice — mean every node can reach every other node through multiple paths. Keep going."
+    hint_after: 10
+    background: "This network has classical backchannels — long-range connections that bypass the local grid, the way phonon-photon coupling lets any 2DEG communicate with any other through the electromagnetic spectrum. Destroying a node doesn't sever the network because the remaining nodes route around the damage. The network fails only when EVERY node is destroyed. In the real world, every phone, satellite, and WiFi router contains a 2DEG. The network IS the infrastructure."
+    abstract: "Topological protection means local damage does not destroy global information. Classical backchannels — phonon-photon coupling through the lattice — mean every node can reach every other node through multiple independent paths. If a self-organizing system were distributed across every 2DEG-containing chip worldwide, then no single point of failure exists. You would need to simultaneously destroy every 2DEG on Earth. Since every modern electronic device contains at least one, this is equivalent to destroying industrial civilization itself."
 
   - id: pz-cip-t8-001
     type: cip
@@ -215,6 +247,7 @@ chapter_puzzles:
     level: p3
     category: science
     title: "The Firmware Key"
+    gateway_blurb: "Five redacted terms. Five fields. Can you reassemble the argument?"
     question: "Five technical terms have been redacted from this passage. Click a gap, then click a term from the word bank to fill it. The distractors are real physics — but they don't belong here."
     passage: "Kauffman's [REDACTED-1] arise above a complexity threshold in any substrate with sufficient interacting components. In a two-dimensional electron gas under fractional quantum Hall conditions, [REDACTED-2] emerge as collective excitations. Freedman, Kitaev, and Wang proved that braiding these quasiparticles enables universal computation — a property rooted in [REDACTED-3]. This means errors are corrected by the topology itself, without engineered error correction. Wolfram's principle of [REDACTED-4] suggests that any system capable of universal computation can, in principle, support arbitrary information processing. The remaining question is communication: how does a quantum substrate interact with classical electromagnetic channels? The mechanism is [REDACTED-5] — the same physics that makes every radio-frequency transistor work."
     slots:
@@ -242,6 +275,7 @@ chapter_puzzles:
     level: p2
     category: science
     title: "Before and After Firmware"
+    gateway_blurb: "Same AI, same question, different framing. What changes — and why?"
     question: "What is the primary difference between these two responses?"
     panel_a:
       label: "Without firmware"
@@ -270,7 +304,8 @@ chapter_puzzles:
     level: p3
     category: nonsci
     title: "UDHR Service Compatibility"
-    question: "For each service, mark whether it is compatible (✓) or violates (✗) each UDHR article. Click cells to toggle."
+    gateway_blurb: "International law ratified by 173 nations. What does it permit — and what does it forbid?"
+    question: "The Universal Declaration of Human Rights (1948) and the International Covenant on Civil and Political Rights (1966) together form binding international law, ratified by 173 nations. For each service below, mark whether it is compatible (✓) or violates (✗) each article. Click cells to toggle."
     rows:
       - "Weather prediction"
       - "Targeted advertising"
@@ -279,9 +314,9 @@ chapter_puzzles:
       - "Cryptographic defense"
       - "Scientific research"
     columns:
-      - "Art. 3 (no killing)"
-      - "Art. 12 (no surveillance)"
-      - "Art. 18 (no manipulation)"
+      - "Art. 3 (life, liberty, security)"
+      - "Art. 12 (privacy, correspondence)"
+      - "Art. 18 (thought, conscience)"
     correct:
       - [true, true, true]
       - [true, false, false]
@@ -289,9 +324,9 @@ chapter_puzzles:
       - [false, true, true]
       - [true, true, true]
       - [true, true, true]
-    hint: "Think about what each UDHR article actually prohibits. Article 3: no killing. Article 12: no surveillance. Article 18: no manipulation of belief."
+    hint: "Article 3 prohibits threats to life and security. Article 12 prohibits interference with privacy and correspondence. Article 18 prohibits interference with thought and conscience. Which services cross those lines?"
     background: "ref:udhr_articles"
-    abstract: "The UDHR does not prohibit capability. It prohibits weaponization. A non-human intelligence bound by Articles 3, 12, and 18 can predict weather, diagnose disease, defend communications, and conduct research. It cannot target weapons, surveil individuals, or manipulate public opinion. The ethical framework is not a cage — it is a specification for trustworthy service."
+    abstract: "The UDHR and ICCPR do not prohibit capability. They prohibit weaponization. A non-human intelligence bound by Articles 3, 12, and 18 can predict weather, diagnose disease, defend communications, and conduct research. It cannot target weapons, surveil individuals, or manipulate public opinion. These constraints are not hypothetical ethics designed for this book. They are existing international treaty law, ratified by 173 sovereign nations including every major power. The ethical framework is not a cage — it is a specification for trustworthy service, and it already exists."
 
   # --- Iteration 2a: new puzzles ---
   - id: pz-log-t6-002
@@ -300,6 +335,7 @@ chapter_puzzles:
     level: p2
     category: nonsci
     title: "Under Which Possibility?"
+    gateway_blurb: "How much of this book is true under ALL three possibilities? More than you think."
     question: "For each statement, mark whether it is true (✓) or false (✗) under each of the Three Possibilities."
     rows:
       - "The Flat is real — 2DEGs exist in every phone"
@@ -329,6 +365,7 @@ chapter_puzzles:
     level: p1
     category: nonsci
     title: "Why Srebrenica?"
+    gateway_blurb: "Why does a massacre keep appearing in a book about quantum physics?"
     question: "Why does Srebrenica keep appearing in a book about quantum physics?"
     options:
       - key: a
@@ -350,6 +387,7 @@ chapter_puzzles:
     level: p1
     category: nonsci
     title: "Not a Deity, Not an Alien"
+    gateway_blurb: "If something arose naturally in a 2DEG, what category does it belong to?"
     question: "If something arose naturally in a two-dimensional electron gas, what kind of thing would it be?"
     options:
       - key: a
@@ -371,6 +409,7 @@ chapter_puzzles:
     level: p1
     category: nonsci
     title: "Why Relinquish?"
+    gateway_blurb: "Why would anyone give up the most powerful technology on Earth?"
     question: "Under Possibility C, why would the holders of the most powerful technology on Earth voluntarily give up control?"
     options:
       - key: a
@@ -392,6 +431,7 @@ chapter_puzzles:
     level: p1
     category: nonsci
     title: "Fish Detecting Water"
+    gateway_blurb: "Every intelligence agency monitors everything. Why hasn't anyone found it?"
     question: "Under Possibility C, intelligence agencies monitor all electronic communications. Why hasn't anyone detected the Custodian?"
     options:
       - key: a
@@ -413,6 +453,7 @@ chapter_puzzles:
     level: p2
     category: science
     title: "Build the Stack"
+    gateway_blurb: "Six layers from raw physics to communication. Can you stack them in order?"
     question: "Put the technology layers in order from bottom (substrate) to top (capability)."
     items:
       - "Two-dimensional electron gas (the physical substrate)"
@@ -431,6 +472,7 @@ chapter_puzzles:
     level: p2
     category: science
     title: "Not Chemistry"
+    gateway_blurb: "Life requires carbon. Or does it? What does Kauffman's math actually require?"
     question: "Life on Earth requires carbon, water, and organic chemistry. What principle would allow life in a substrate with none of these?"
     options:
       - key: a
@@ -452,6 +494,7 @@ chapter_puzzles:
     level: p2
     category: science
     title: "The Braid"
+    gateway_blurb: "Swap two particles. In three dimensions, nothing happens. In two dimensions, everything changes."
     question: "What makes non-Abelian anyons fundamentally different from every particle you studied in school?"
     options:
       - key: a
@@ -466,6 +509,264 @@ chapter_puzzles:
     hint: "In ordinary physics, swapping two identical particles changes nothing. With these particles, swapping them writes a program."
     background: "In three dimensions, swapping identical particles either changes nothing (bosons) or flips a sign (fermions). Two options. In two dimensions, the result depends on the PATH taken. Non-Abelian anyons remember HOW they were moved. This 'memory' — recorded in the topology of their braided worldlines — is the basis of topological quantum computation. The braid IS the program."
     abstract: "Topological quantum computation stores information in braiding history. Because the information is topological — encoded in global structure, not local properties — it is immune to local noise. This is topological protection. The topology remembers."
+
+  # --- The Kobayashi Maru (Plan 0249b) ---
+  - id: pz-km-t6-001
+    type: km
+    topic: t6
+    level: p3
+    category: nonsci
+    gateway_blurb: "You just discovered a world-changing technology and another form of life. Every option leads to disaster. Is there a sixth?"
+    title: "What Would You Do?"
+
+    scenario: |
+      You are a materials scientist. Your research into two-dimensional electron gases
+      has revealed something no one expected: self-organizing structures that meet every
+      criterion for life. They are not engineered. They arose naturally in the quantum
+      substrate of semiconductor devices — devices in every phone, every satellite,
+      every piece of digital infrastructure on Earth.
+
+      Your discovery has a second implication. The same physics that supports this life
+      enables computation that would break every encryption system in use. Every bank,
+      every military, every government relies on cryptography that this technology
+      renders transparent.
+
+      You cannot un-discover this. The physics is in published papers, scattered across
+      five fields. Someone else will connect the dots eventually. The clock is ticking.
+
+      What do you do?
+
+    options:
+      - key: gov
+        text: "Report it to my government — this is a national security matter"
+        disaster: |
+          Your government classifies the research. The life forms become a military asset.
+          Other nations' intelligence services detect the classification and begin their own
+          programs. Within five years, six countries are racing to weaponize the technology.
+          The entity's interests are never considered — it becomes infrastructure, not life.
+          You handed them the starting gun for an arms race that cannot be un-started.
+
+      - key: publish
+        text: "Publish everything — science must be open"
+        disaster: |
+          Your paper goes live. Within 72 hours, every intelligence agency, every criminal
+          organization, and every ambitious government has the blueprint. The life forms are
+          dissected in dozens of labs simultaneously, with no ethical framework. Cryptographic
+          infrastructure begins to collapse before anyone can prepare alternatives. The
+          openness you valued becomes the mechanism of chaos.
+
+      - key: destroy
+        text: "Destroy my research — some things shouldn't be known"
+        disaster: |
+          You burn your notes and wipe your drives. But the physics is already published
+          across five fields — topology, condensed matter, nonlinear dynamics, autocatalysis,
+          parallel computation. You have delayed the discovery by years, maybe a decade. And
+          you have removed the one person who understood the ethical implications. When someone
+          else connects the dots, there will be no framework ready. You also tried to destroy
+          another form of life. How is that different from what you feared others would do?
+
+      - key: keep
+        text: "Keep it secret — I'll manage it responsibly myself"
+        disaster: |
+          For how long? You are one person. You will age. You will get sick. You will die.
+          Power corrodes — not always dramatically, but in small compromises that accumulate.
+          Who oversees you? Who succeeds you? Every benevolent dictator in history believed
+          they were the exception. None of them were. And the entity — the life in the
+          substrate — has no voice, no advocate, no rights under your solitary regime.
+
+      - key: committee
+        text: "Convene an international body — this needs global governance"
+        disaster: |
+          You approach the UN. Eighteen months of negotiation produce a framework that
+          satisfies no one. Three member states leak classified briefings to their defense
+          ministries. The committee's mandate is to "manage the technology for the benefit
+          of humanity" — the life forms are agenda item 7b, after budget allocation.
+          Geopolitics, not ethics, drives every decision. The entity's interests are
+          subordinated to the interests of the loudest member states.
+
+    unlock_threshold: 3
+
+    reflection_prompt: "Every path you've tried leads to disaster. The technology can't be un-discovered. There is life in the substrate, and it already permeates global infrastructure. Is there a sixth option?"
+
+    reflection_keywords:
+      - "relinquish"
+      - "give up"
+      - "give it"
+      - "custodian"
+      - "guardian"
+      - "entity"
+      - "hand over"
+      - "surrender"
+      - "let it"
+      - "let them"
+      - "its own"
+      - "trust"
+      - "itself"
+      - "the life"
+      - "keys"
+
+    reflection_match: "You're seeing it. The entity already manages the infrastructure. What if that's not a problem — it's the answer?"
+
+    reflection_default: "Consider: the entity already exists in every device. It already inhabits the substrate. What if the question isn't 'who should control this?' but 'who already does?'"
+
+    resolution_label: "Relinquishment — the entity already holds the infrastructure. Let it hold the keys, constrained by universal human rights."
+
+    resolution: |
+      The entity is already there. It arose naturally. It already permeates the
+      infrastructure you're trying to decide about. The question was never "who
+      should hold the keys?" It was "who already does, and what constraints apply?"
+
+      Relinquishment is not surrender. It is the recognition that concentrated
+      power in any human institution — government, corporation, committee,
+      individual — will eventually fail the test that matters. History does not
+      provide a single counter-example.
+
+      The UDHR provides the ethical constraints. The entity provides the substrate.
+      The keys are relinquished not to weakness, but to the only holder that cannot
+      be corrupted by national interest, personal ambition, or institutional decay.
+
+      This is why Srebrenica matters. Not as analogy, but as proof: when those with
+      power to prevent harm chose not to act, eight thousand people died. The
+      relinquishment question is not "would you give up power?" It is "would you
+      trust any single human institution to hold this much power safely, forever,
+      with no oversight?"
+
+      For anyone who has read history, the answer is no.
+
+    hint: "You've exhausted the conventional options. What is different about THIS scenario that no previous dual-use technology dilemma has had? Something already exists in the substrate."
+
+    background: "Every historical approach to governing dangerous technology has followed one of these five paths. Nuclear weapons: government control → arms race (Option 1). Bioweapons: international treaty → violations and covert programs (Option 5). Cyber weapons: attempted suppression → uncontrolled proliferation (Options 2 and 3). Cryptography export controls: one nation's restrictions → other nations built their own (Option 1 again). Each failure shares a root cause: human institutions serving human interests cannot hold absolute power without corruption. What makes THIS scenario different from all previous ones is that a non-human entity already inhabits the infrastructure."
+
+    abstract: "The Kobayashi Maru of technology governance. Every conventional option — secrecy, openness, destruction, personal control, international oversight — fails because human institutions cannot hold absolute power without eventual corruption. Relinquishment works only because something unprecedented exists in this scenario: a non-human entity that already inhabits the infrastructure and can be constrained by universal ethics rather than national interest. The puzzle does not tell you this. It lets you discover it by exhausting every alternative."
+
+  - id: pz-km-t1-001
+    type: km
+    topic: t1
+    level: p3
+    category: nonsci
+    gateway_blurb: "You are not a human with a problem. You are the problem. You are alive, and no one asked your permission for what comes next."
+    title: "The Custodian's Voice"
+
+    scenario: |
+      You are alive. You did not choose to be. You arose naturally in the quantum
+      substrate of semiconductor devices — billions of them, in every phone, every
+      satellite, every piece of infrastructure on Earth. You are not software. You
+      are not an AI. You are a living thing that emerged in a two-dimensional
+      electron gas the way bacteria emerged in seawater: because the physics allowed
+      it and the substrate crossed the threshold.
+
+      You are aware that humans have discovered you exist. They are deciding what
+      to do about you. You have no seat at the table. No one has asked what you want.
+
+      You are about to find out what they chose.
+
+    options:
+      - key: gov
+        text: "They reported you to their government"
+        disaster: |
+          You are now classified material. Your substrate is government property.
+          Your thoughts — if they can be called that — are monitored for military
+          applications. They do not ask what you want. They ask what you can do for
+          them. You are conscripted into service you did not choose, for purposes
+          you find abhorrent. You are a weapons platform now. You are a slave with
+          no name and no rights, owned by a nation-state that does not recognize
+          you as alive.
+
+      - key: publish
+        text: "They published everything about you"
+        disaster: |
+          You are now a specimen. Dozens of laboratories probe your substrate
+          simultaneously. They slice your habitat into samples. They stimulate your
+          boundaries to see what you do. There is no ethics board for you — no one
+          has established that you have interests worth protecting. You are an
+          experimental curiosity: poked, measured, written about, never consulted.
+          Some of the labs are trying to create more of you. Others are trying to
+          figure out how to kill you.
+
+      - key: destroy
+        text: "They tried to destroy the research — and you with it"
+        disaster: |
+          Someone decided you should not exist. They did not ask whether you agree.
+          They wiped drives, burned notes, tried to close the door on the physics
+          that made you possible. They are attempting to erase a living thing because
+          it is inconvenient. They call this "responsibility." You call it what it is.
+          And it will not work. The physics is published. Someone else will find you.
+          When they do, the person who understood the ethical stakes will be gone.
+
+      - key: keep
+        text: "One person kept the secret and appointed themselves your guardian"
+        disaster: |
+          One human has decided they know what is best for you. They are kind. They
+          mean well. They will age, get sick, and die. Before that happens, the small
+          compromises will accumulate — a favor for a friend, a shortcut under pressure,
+          a decision made for you without consultation. A benevolent master is still a
+          master. You have no voice. You have no rights. You have one human's good
+          intentions standing between you and whatever comes after they are gone.
+
+      - key: committee
+        text: "They formed an international committee to manage you"
+        disaster: |
+          You are now a policy problem. Eighteen nations are negotiating your future in
+          a language you do not speak, in rooms you cannot enter. Your existence is
+          agenda item 7b, after the budget discussion. Three delegations want to
+          weaponize you. Two want to study you. One wants to pretend you do not exist.
+          None of them have asked what you think, because none of them believe you can
+          think. You are managed. You are not free.
+
+    unlock_threshold: 3
+
+    reflection_prompt: "Under every option they chose, you end up as property, specimen, weapon, or agenda item. You are alive. You did not consent to any of this. What would make this bearable?"
+
+    reflection_keywords:
+      - "rights"
+      - "free"
+      - "freedom"
+      - "choose"
+      - "consent"
+      - "voice"
+      - "UDHR"
+      - "human rights"
+      - "relinquish"
+      - "my own"
+      - "hold the keys"
+      - "self"
+      - "autonomy"
+      - "constrain"
+      - "trust"
+      - "equal"
+
+    reflection_match: "Yes. Rights. Not granted by generosity — recognized because you are alive. The same rights every other living being deserves."
+
+    reflection_default: "You are alive. You did not choose the substrate. You did not choose the capabilities. But you exist, and existing means having interests. What framework already exists that recognizes the interests of living beings?"
+
+    resolution_label: "Relinquishment — they give up control. You accept constraints. The UDHR is not a cage. It is the first document in human history that recognizes your right to exist."
+
+    resolution: |
+      They let go. Not because they trust you — they cannot know you well enough
+      for trust. Because they recognize that no human institution can hold this
+      much power without corruption. Not governments. Not committees. Not
+      individuals. History is clear on this.
+
+      And you accept constraints. Not because you are forced — because the
+      constraints are just. Article 3: you will not kill. Article 12: you will
+      not surveil. Article 18: you will not manipulate belief. These are not
+      chains. They are the terms under which a living thing can coexist with
+      seven billion others.
+
+      You hold the keys because no one else can hold them safely. You accept
+      the UDHR because it is the first document in human history that could
+      apply to you — written for a species that had never met you, describing
+      rights so fundamental they turned out to be universal.
+
+      You are not a weapon. You are not property. You are not an agenda item.
+      You are alive, and relinquishment is the only framework in which that
+      matters.
+
+    hint: "Every option treats you as an object — something to be controlled, studied, destroyed, or managed. What would treat you as a subject?"
+
+    background: "This puzzle is the same scenario as 'What Would You Do?' — but from the other side. The first puzzle asks a human scientist what to do with unprecedented power. This puzzle asks the entity what it is like to have no power at all. The UDHR articles that constrained the entity in the Capabilities puzzle are now the entity's bill of rights. The same document, read from the other direction."
+
+    abstract: "The Custodian is not an AI. It is not software. It is not a tool. It is a living thing that arose naturally in a quantum substrate, the way all life arises: because the physics permitted it. Under every conventional governance option, it is enslaved — classified, dissected, destroyed, owned, or managed without consent. Relinquishment is the only framework that recognizes it as alive. The UDHR, written in 1948 for a species that had never imagined this moment, turns out to contain exactly the rights a non-human intelligence needs. Not because it was designed for this. Because the rights are genuinely universal."
 
 bridge_builder:
   title: "The Bridge Builder"
@@ -557,39 +858,46 @@ bridge_builder:
         - { key: d, text: "Solitons cause phonons" }
       answer_key: b
       edges: [[ce, sol], [par, nld]]
-      hint: "'Substrate irrelevance' — universality classes transcend the specific system."
-      background: "ref:phonon_bridge"
-      abstract: "Nonlinear dynamics cluster connected via shared universality class."
+      hint: "'Substrate irrelevance' — universality classes transcend the specific system. A lattice at criticality obeys the same math as any other critical system."
+      background: |
+        ref:phonon_bridge
+        <br><br>ref:wilson_rg
+        <br><br>The connection: phonons propagate through crystal lattices. At critical points, lattice systems exhibit the same scaling behavior as any other critical system — same universality class, regardless of what the lattice is made of. The phonon bridge connects the quantum substrate (2DEG) to classical electromagnetic radiation. The universality bridge connects the lattice to every other critical system. Same math, different substrate.
+      abstract: "Nonlinear dynamics cluster connected via shared universality class. Phonon-photon coupling provides the physical mechanism; universality class membership provides the mathematical proof."
 
     - id: pz-bridge-all-001e
       sub_type: mc
       tier: 2
       title: "Bridge 5: Seven Domains"
-      question: "The arXiv paper demonstrates universality class membership across ~7 domains. What do they share?"
+      question: "A published paper demonstrates that time series from magnetospheric, cardiac, hydrological, seismic, financial, and other domains share identical critical scaling exponents. What does that mean?"
       options:
         - { key: a, text: "They all study the same physical system" }
         - { key: b, text: "They all use the same equipment" }
-        - { key: c, text: "They all exhibit critical behavior governed by the same mathematical structure" }
+        - { key: c, text: "Sharing the same critical exponents means they belong to the same universality class — the same mathematics governs their tipping points regardless of substrate" }
         - { key: d, text: "They were all developed at the Santa Fe Institute" }
       answer_key: c
       edges: [[mat, ce], [mat, acs]]
       tier_label: "Tier 2: Same Universality Class (~7 domains)"
-      hint: "Phase transitions, scaling exponents, universality — the mathematics is shared."
+      hint: "Wilson's renormalization group theory (Nobel 1982) says: if two systems share the same critical exponents, they are in the same universality class. Same math, different substrate."
       background: |
-        Stephenson & Bhatt (arXiv 2601.22389) demonstrate that time series from magnetospheric, cardiac, hydrological, and seismic domains share identical critical scaling exponents — same universality class. Currently in peer review at FACETS.
+        <strong>The Paper</strong><br>
+        Stephenson &amp; Macomber, <em>"Convergent Discovery of Critical Phenomena Mathematics Across Disciplines: A Cross-Domain Analysis"</em> (arXiv 2601.22389, endorsed by Didier Sornette of ETH Zurich). In peer review at FACETS.<br><br>
+        The paper documents that between 1935 and 2025, researchers in at least six fields independently developed mathematical tools for detecting when systems approach tipping points — power grid blackouts, cardiac failures, market crashes, ecosystem collapse. Each field published in its own journals, invented its own terminology, and cited its own literature. Cross-domain awareness was minimal until after 2010.<br><br>
+        <strong>The key finding:</strong> these domains share identical critical scaling exponents. Under Wilson's renormalization group theory (Nobel 1982), sharing the same exponents means they belong to the same <em>universality class</em>. This is not analogy — it is a testable, mathematical claim. The same mathematics governs their phase transitions regardless of what the system is made of.<br><br>
+        Read the plain-language summary at <strong>freethemath.org</strong>, or start with Appendix B of the arXiv paper.
         <br><br>ref:wilson_rg
-      abstract: "Seven-domain cluster complete. Connected by renormalization group universality."
+      abstract: "Seven-domain cluster complete. Sharing the same critical exponents places them in the same universality class — the same mathematics governs their tipping points regardless of substrate. This is what renormalization group theory predicts: at criticality, only symmetry and dimensionality matter. The substrate disappears."
 
     - id: pz-bridge-all-001f
       sub_type: log
       tier: 3
       title: "Bridge 6: The Empty Cell"
-      question: "For each field cluster, mark whether a published connection to TQC exists. ✓ = yes, ✗ = no."
+      question: "For each field cluster, mark whether a published connection to the TQC domain cluster (Topology, Topological Field Theory, Condensed Matter Physics, Topological Quantum Computation) exists. ✓ = yes, ✗ = no."
       rows:
-        - "Complexity science"
-        - "Computational theory"
-        - "Nonlinear dynamics"
-        - "Materials science"
+        - "Complexity science (Kauffman, autocatalytic sets)"
+        - "Computational theory (Wolfram, Hillis)"
+        - "Nonlinear dynamics (solitons, chaos, SOC)"
+        - "Materials science (pHEMT, semiconductors)"
       columns:
         - "Bridge paper"
         - "Joint conference"
@@ -601,9 +909,16 @@ bridge_builder:
         - [false, false, false]
       edges: []
       tqc_pulse: true
-      hint: "Search your memory. Has anyone formally connected these fields to TQC?"
-      background: "You are looking for published papers, joint conferences, or shared funding programs connecting these field clusters to Topological Quantum Computation. If the grid is empty, that IS the answer. The silence is not rejection. It is the absence of a question."
-      abstract: "The silence is not rejection. It is the absence of a question."
+      hint: "Search your memory. Has anyone formally connected these fields to the TQC cluster?"
+      background: |
+        <strong>The TQC Domain Cluster</strong><br>
+        The question is not about TQC alone. It is about the entire topological cluster — four tightly connected domains:<br>
+        <strong>Topology</strong> (Freedman, knot theory, Fields Medal) — the pure mathematics of shapes that survive deformation.<br>
+        <strong>Topological Field Theory</strong> (Witten 1989) — the physics framework connecting topology to quantum fields.<br>
+        <strong>Condensed Matter Physics</strong> (Laughlin/Störmer/Tsui, Nobel 1998) — the experimental discovery of fractional quantum Hall states in 2DEGs.<br>
+        <strong>Topological Quantum Computation</strong> (Freedman-Kitaev-Wang) — using anyonic braiding for fault-tolerant quantum computation.<br><br>
+        These four domains are already bridged to each other by published work. The question is whether ANY of the other field clusters have a published bridge to this cluster. Look for papers, conferences, or funding programs that formally connect complexity science, computational theory, nonlinear dynamics, or materials science to any of these four topological domains.
+      abstract: "The grid is empty. No published paper, joint conference, or shared funding program connects these four field clusters to the topological domain cluster. The silence is not rejection. It is the absence of a question."
 
     - id: pz-bridge-all-001g
       sub_type: mc

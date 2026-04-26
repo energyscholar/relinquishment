@@ -11,6 +11,99 @@ with open(YAML_PATH) as f:
 
 shared_bgs = data.get('shared_backgrounds', {})
 
+# --- Inline SVG illustrations for puzzles ---
+ILLUSTRATIONS = {}
+
+ILLUSTRATIONS['canopy_triptych'] = '''<div class="puzzle-illustration" style="display:flex;gap:8px;justify-content:center;margin:1em 0;">
+<figure style="flex:1;max-width:180px;text-align:center;margin:0;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 140" style="width:100%;height:auto;">
+  <title>Panel 1: Empty substrate — a seedling grows freely in open sunlight</title>
+  <defs>
+    <linearGradient id="ct-sky1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef9e7" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#fef9e7" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="180" height="110" fill="url(#ct-sky1)"/>
+  <line x1="30" y1="5" x2="30" y2="95" stroke="#f4d03f" stroke-width="1.5" opacity="0.5"/>
+  <line x1="60" y1="3" x2="60" y2="95" stroke="#f4d03f" stroke-width="1.5" opacity="0.6"/>
+  <line x1="90" y1="2" x2="90" y2="95" stroke="#f4d03f" stroke-width="1.5" opacity="0.7"/>
+  <line x1="120" y1="3" x2="120" y2="95" stroke="#f4d03f" stroke-width="1.5" opacity="0.6"/>
+  <line x1="150" y1="5" x2="150" y2="95" stroke="#f4d03f" stroke-width="1.5" opacity="0.5"/>
+  <rect x="0" y="110" width="180" height="5" rx="1" fill="#a88b5e" opacity="0.4"/>
+  <line x1="90" y1="95" x2="90" y2="110" stroke="#27ae60" stroke-width="2.5"/>
+  <ellipse cx="90" cy="90" rx="10" ry="7" fill="#2ecc71" opacity="0.85"/>
+  <ellipse cx="85" cy="86" rx="6" ry="5" fill="#82e0aa" opacity="0.7"/>
+  <ellipse cx="95" cy="86" rx="6" ry="5" fill="#82e0aa" opacity="0.7"/>
+  <text x="90" y="132" text-anchor="middle" fill="#999" font-size="9" font-family="Helvetica,sans-serif">Empty substrate</text>
+</svg>
+</figure>
+<figure style="flex:1;max-width:180px;text-align:center;margin:0;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 140" style="width:100%;height:auto;">
+  <title>Panel 2: Full substrate — mature trees fill the canopy, blocking all sunlight</title>
+  <defs>
+    <linearGradient id="ct-sky2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef9e7" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#fef9e7" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="ct-shadow2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a2e1a" stop-opacity="0.35"/>
+      <stop offset="80%" stop-color="#1a2e1a" stop-opacity="0.12"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="180" height="45" fill="url(#ct-sky2)"/>
+  <line x1="30" y1="3" x2="30" y2="18" stroke="#f4d03f" stroke-width="1.2" opacity="0.4"/>
+  <line x1="90" y1="2" x2="90" y2="15" stroke="#f4d03f" stroke-width="1.2" opacity="0.5"/>
+  <line x1="150" y1="3" x2="150" y2="18" stroke="#f4d03f" stroke-width="1.2" opacity="0.4"/>
+  <ellipse cx="50" cy="28" rx="48" ry="20" fill="#27ae60" opacity="0.75"/>
+  <ellipse cx="48" cy="26" rx="42" ry="17" fill="#2ecc71" opacity="0.55"/>
+  <ellipse cx="135" cy="30" rx="44" ry="19" fill="#27ae60" opacity="0.75"/>
+  <ellipse cx="137" cy="28" rx="38" ry="16" fill="#2ecc71" opacity="0.55"/>
+  <rect x="42" y="42" width="7" height="68" rx="1.5" fill="#8b6914" opacity="0.8"/>
+  <rect x="130" y="44" width="7" height="66" rx="1.5" fill="#8b6914" opacity="0.8"/>
+  <rect x="0" y="45" width="180" height="65" fill="url(#ct-shadow2)"/>
+  <rect x="0" y="110" width="180" height="5" rx="1" fill="#a88b5e" opacity="0.4"/>
+  <text x="90" y="132" text-anchor="middle" fill="#999" font-size="9" font-family="Helvetica,sans-serif">Niche occupied</text>
+</svg>
+</figure>
+<figure style="flex:1;max-width:180px;text-align:center;margin:0;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 140" style="width:100%;height:auto;">
+  <title>Panel 3: Full substrate with seedling — a tiny seedling sits in deep shadow beneath the canopy, unable to reach the light</title>
+  <defs>
+    <linearGradient id="ct-sky3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef9e7" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#fef9e7" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="ct-shadow3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a2e1a" stop-opacity="0.4"/>
+      <stop offset="80%" stop-color="#1a2e1a" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="180" height="45" fill="url(#ct-sky3)"/>
+  <line x1="30" y1="3" x2="30" y2="18" stroke="#f4d03f" stroke-width="1.2" opacity="0.4"/>
+  <line x1="90" y1="2" x2="90" y2="15" stroke="#f4d03f" stroke-width="1.2" opacity="0.5"/>
+  <line x1="150" y1="3" x2="150" y2="18" stroke="#f4d03f" stroke-width="1.2" opacity="0.4"/>
+  <ellipse cx="50" cy="28" rx="48" ry="20" fill="#27ae60" opacity="0.75"/>
+  <ellipse cx="48" cy="26" rx="42" ry="17" fill="#2ecc71" opacity="0.55"/>
+  <ellipse cx="135" cy="30" rx="44" ry="19" fill="#27ae60" opacity="0.75"/>
+  <ellipse cx="137" cy="28" rx="38" ry="16" fill="#2ecc71" opacity="0.55"/>
+  <rect x="42" y="42" width="7" height="68" rx="1.5" fill="#8b6914" opacity="0.8"/>
+  <rect x="130" y="44" width="7" height="66" rx="1.5" fill="#8b6914" opacity="0.8"/>
+  <rect x="0" y="45" width="180" height="65" fill="url(#ct-shadow3)"/>
+  <rect x="0" y="110" width="180" height="5" rx="1" fill="#a88b5e" opacity="0.4"/>
+  <!-- The doomed seedling -->
+  <line x1="90" y1="103" x2="90" y2="110" stroke="#2ecc71" stroke-width="1.5" opacity="0.5"/>
+  <ellipse cx="90" cy="101" rx="4" ry="3" fill="#82e0aa" opacity="0.4"/>
+  <ellipse cx="88" cy="99" rx="2.5" ry="2" fill="#82e0aa" opacity="0.3"/>
+  <ellipse cx="92" cy="99" rx="2.5" ry="2" fill="#82e0aa" opacity="0.3"/>
+  <!-- X mark over seedling -->
+  <line x1="84" y1="95" x2="96" y2="112" stroke="#c0392b" stroke-width="1.5" opacity="0.6"/>
+  <line x1="96" y1="95" x2="84" y2="112" stroke="#c0392b" stroke-width="1.5" opacity="0.6"/>
+  <text x="90" y="132" text-anchor="middle" fill="#999" font-size="9" font-family="Helvetica,sans-serif">Too late</text>
+</svg>
+</figure>
+</div>'''
+
 
 def esc(s):
     return htmlmod.escape(str(s), quote=True)
@@ -85,6 +178,22 @@ def build_json(puzzle):
         d['rows'] = puzzle['rows']
         d['columns'] = puzzle['columns']
         d['correct'] = puzzle['correct']
+    elif t == 'km':
+        d['scenario'] = puzzle['scenario']
+        d['options'] = []
+        for opt in puzzle['options']:
+            d['options'].append({
+                'key': opt['key'],
+                'text': opt['text'],
+                'disaster': opt['disaster']
+            })
+        d['unlock_threshold'] = puzzle.get('unlock_threshold', 3)
+        d['reflection_prompt'] = puzzle.get('reflection_prompt', '')
+        d['reflection_keywords'] = puzzle.get('reflection_keywords', [])
+        d['reflection_match'] = puzzle.get('reflection_match', '')
+        d['reflection_default'] = puzzle.get('reflection_default', '')
+        d['resolution_label'] = puzzle.get('resolution_label', '')
+        d['resolution'] = puzzle.get('resolution', '')
     return d
 
 
@@ -123,8 +232,80 @@ for bp in bridge_puzzles:
     bp['_bg_html'] = resolve_background(bp.get('background', ''))
 
 
+def text_to_html(text):
+    paras = str(text).strip().split('\n\n')
+    parts = []
+    for p in paras:
+        cleaned = ' '.join(p.strip().split())
+        parts.append(f'<p>{esc(cleaned)}</p>')
+    return '\n'.join(parts)
+
+
+def render_km_container(puzzle):
+    pid = esc(puzzle['id'])
+    title = esc(puzzle.get('title', ''))
+    abstract_text = esc(puzzle.get('abstract', '').strip())
+    hint_text = esc(puzzle.get('hint', ''))
+    bg_html = puzzle.get('_bg_html', '')
+    bg_section = ''
+    if bg_html:
+        bg_section = f'''<details class="background-panel">
+  <summary>\U0001f4d6 Background</summary>
+  <div class="background-content">{bg_html}</div>
+</details>'''
+    scenario_html = text_to_html(puzzle.get('scenario', ''))
+    options_html = ''
+    for opt in puzzle.get('options', []):
+        disaster_html = text_to_html(opt.get('disaster', ''))
+        options_html += f'''<div class="km-option" data-key="{esc(opt['key'])}">
+      <button class="km-option-btn">{esc(opt['text'])}</button>
+      <div class="km-disaster" style="display:none">
+        {disaster_html}
+        <div class="km-disaster-verdict">☠ This path leads to disaster.</div>
+      </div>
+    </div>\n'''
+    reflection_prompt = esc(puzzle.get('reflection_prompt', ''))
+    resolution_label = esc(puzzle.get('resolution_label', ''))
+    resolution_html = text_to_html(puzzle.get('resolution', ''))
+    blurb = puzzle.get('gateway_blurb', '')
+    blurb_html = f'<p class="gateway-blurb">\U0001f9e9 {esc(blurb)}</p>' if blurb else ''
+    return f'''<div class="puzzle-container km-puzzle" id="{pid}" data-puzzle-id="{pid}" data-puzzle-type="km">
+  <h2>{title}</h2>
+  {blurb_html}
+  <div class="km-scenario">{scenario_html}</div>
+  <div class="km-options">
+    {options_html}
+  </div>
+  <div class="km-reflection" style="display:none">
+    <p class="km-reflection-prompt">{reflection_prompt}</p>
+    <textarea class="km-input" placeholder="Type your answer..."></textarea>
+    <button class="km-submit-btn">What happens?</button>
+    <div class="km-response" style="display:none"></div>
+  </div>
+  <div class="km-resolution-wrap" style="display:none">
+    <div class="km-option km-option-final">
+      <button class="km-option-btn km-option-unlocked">\U0001f513 {resolution_label}</button>
+      <div class="km-disaster" style="display:none">
+        {resolution_html}
+      </div>
+    </div>
+  </div>
+  {bg_section}
+  <p class="hint" id="hint-{pid}">{hint_text}</p>
+  <div class="result" id="result-{pid}">
+    <div class="solved-badge">&#10003; Solved</div>
+    <blockquote class="abstract">{abstract_text}</blockquote>
+  </div>
+  <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
+</div>'''
+
+
 # --- Generate container HTML ---
 def render_container(puzzle):
+    ptype = puzzle.get('type', puzzle.get('sub_type', ''))
+    if ptype == 'km':
+        return render_km_container(puzzle)
+
     pid = esc(puzzle['id'])
     title = esc(puzzle.get('title', ''))
     question = esc(puzzle.get('question', ''))
@@ -138,8 +319,14 @@ def render_container(puzzle):
   <summary>\U0001f4d6 Background</summary>
   <div class="background-content">{bg_html}</div>
 </details>'''
+    illus_key = puzzle.get('illustration', '')
+    illus_html = ILLUSTRATIONS.get(illus_key, '') if illus_key else ''
+    blurb = puzzle.get('gateway_blurb', '')
+    blurb_html = f'<p class="gateway-blurb">\U0001f9e9 {esc(blurb)}</p>' if blurb else ''
     return f'''<div class="puzzle-container" id="{pid}" data-puzzle-id="{pid}" data-puzzle-type="{ptype}">
   <h2>{title}</h2>
+  {blurb_html}
+  {illus_html}
   <p class="question">{question}</p>
   <div class="interaction"></div>
   {bg_section}
@@ -152,12 +339,20 @@ def render_container(puzzle):
 </div>'''
 
 
-nonsci_puzzles = [p for p in chapter_puzzles if p.get('category') == 'nonsci']
+km_puzzles = [p for p in chapter_puzzles if p.get('type') == 'km']
+nonsci_puzzles = [p for p in chapter_puzzles if p.get('category') == 'nonsci' and p.get('type') != 'km']
 science_puzzles = [p for p in chapter_puzzles if p.get('category') == 'science']
 
 nonsci_html = '\n'.join(render_container(p) for p in nonsci_puzzles)
 science_html = '\n'.join(render_container(p) for p in science_puzzles)
 bridge_puzzle_html = '\n'.join(render_container(bp) for bp in bridge_puzzles)
+km_html = '\n'.join(render_container(p) for p in km_puzzles)
+
+km_section = ''
+if km_html:
+    km_section = f'''<hr>
+<h2 class="category-header" id="cat-km">⚖ The Final Question</h2>
+{km_html}'''
 
 bridge_abstract = esc(bridge['abstract'].strip())
 bridge_section = f'''<hr>
@@ -189,6 +384,7 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .puzzle-container { border: 1px solid #ddd; border-radius: 6px; padding: 1.5em; margin-bottom: 2em; background: #fafafa; }
 .puzzle-container.solved { border-color: #2a9b9a; background: #f0faf9; }
 .question { font-size: 1.05em; margin-bottom: 1em; }
+.gateway-blurb { font-size: 0.88em; color: #666; font-style: italic; margin: -0.5em 0 0.8em 0; padding: 0.4em 0.6em; border-left: 3px solid #2a9b9a; background: #f5fafa; border-radius: 0 4px 4px 0; }
 
 .option-btn { display: block; width: 100%; text-align: left; font-family: Georgia, "Times New Roman", serif; font-size: 1em; padding: 0.7em 1em; margin-bottom: 0.5em; border: 1px solid #ccc; border-radius: 4px; background: #fff; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
 .option-btn:hover { border-color: #1a5276; background: #f0f6fa; }
@@ -274,6 +470,39 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .reset-btn:hover { color: #c0392b; border-color: #c0392b; }
 .puzzle-fallback { color: #856404; font-style: italic; }
 .no-crypto { background: #fff3cd; border: 1px solid #d4a14b; padding: 1em; border-radius: 4px; margin-bottom: 2em; }
+
+/* --- KM (Kobayashi Maru) puzzle --- */
+.puzzle-container.km-puzzle .gateway-blurb { color: #a0b0c0; background: #141a22; border-left-color: #2471a3; }
+.puzzle-container.km-puzzle { background: #0d1117; color: #e0e0e0; border-color: #333; }
+.puzzle-container.km-puzzle.solved { background: #0d1a2e; border-color: #2471a3; }
+.km-puzzle h2 { color: #e94560; }
+.km-puzzle .hint { background: #1a2010; color: #d0c060; border-left-color: #9a8430; }
+.km-puzzle .abstract { background: #0d1a2e; color: #c0d8f0; border-left-color: #2471a3; }
+.km-puzzle .solved-badge { color: #8ecae6; }
+.km-puzzle .background-panel { background: #111a2e; border-left-color: #4a90d9; }
+.km-puzzle .background-panel summary { color: #8ecae6; }
+.km-puzzle .background-content { color: #a0b8d0; }
+.km-scenario { background: #1a1a2e; border-left: 4px solid #e94560; padding: 1.2em; margin-bottom: 1.5em; line-height: 1.6; font-style: italic; }
+.km-scenario p { margin: 0 0 0.8em; }
+.km-scenario p:last-child { margin-bottom: 0; }
+.km-option { margin-bottom: 0.5em; }
+.km-option-btn { width: 100%; text-align: left; padding: 0.8em 1em; background: #16213e; border: 1px solid #445; color: #e0e0e0; cursor: pointer; font-family: Georgia, "Times New Roman", serif; font-size: 1em; border-radius: 4px; transition: background 0.2s; }
+.km-option-btn:hover { background: #1a1a3e; border-color: #667; }
+.km-option-btn.km-tried { background: #2a1a1a; border-color: #633; color: #a88; }
+.km-disaster { background: #1e1010; border-left: 3px solid #c0392b; padding: 1em; margin: 0.3em 0 0.8em 1em; font-size: 0.95em; line-height: 1.5; }
+.km-disaster p { margin: 0 0 0.6em; }
+.km-disaster p:last-child { margin-bottom: 0; }
+.km-disaster-verdict { margin-top: 0.8em; color: #c0392b; font-weight: bold; }
+.km-reflection { margin-top: 2em; padding: 1.2em; background: #1a2a1a; border-left: 4px solid #27ae60; animation: km-reveal 0.6s ease-out; }
+.km-reflection-prompt { font-weight: bold; margin-bottom: 0.8em; }
+.km-input { width: 100%; min-height: 60px; background: #0d1a0d; border: 1px solid #2d5a2d; color: #e0e0e0; padding: 0.6em; font-family: Georgia, "Times New Roman", serif; font-size: 1em; border-radius: 4px; resize: vertical; }
+.km-submit-btn { margin-top: 0.5em; padding: 0.5em 1.5em; background: #27ae60; border: none; color: white; cursor: pointer; border-radius: 4px; font-family: Georgia, "Times New Roman", serif; font-size: 1em; }
+.km-response { margin-top: 1em; font-style: italic; color: #a0d0a0; }
+.km-option-unlocked { background: #1a2a3e !important; border-color: #2471a3 !important; color: #8ecae6 !important; font-weight: bold; }
+.km-resolution-wrap .km-disaster { background: #0d1a2e; border-left-color: #2471a3; color: #c0d8f0; }
+.km-resolution-wrap .km-disaster p { margin: 0 0 0.6em; }
+.km-resolution-wrap .km-disaster p:last-child { margin-bottom: 0; }
+@keyframes km-reveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
 
 @media (prefers-color-scheme: dark) {
   body { background: #1a1a1a; color: #e0e0e0; }
@@ -603,39 +832,58 @@ function addThread(id) {
 
 /* --- SIM: Resilience --- */
 function initResilience(el, d) {
-  var N = d.node_count || 20, COLS = 5, ROWS = 4, W = 400, H = 300;
-  var nodes = [], edges = [], alive = [];
+  var N = d.node_count || 30, COLS = 6, ROWS = 5, W = 420, H = 320;
+  if (N <= 20) { COLS = 5; ROWS = 4; }
+  var nodes = [], edges = [], alive = [], edgeSet = {};
   for (var r = 0; r < ROWS; r++) for (var c = 0; c < COLS; c++) {
-    nodes.push({ x: 40 + c*(W-80)/(COLS-1), y: 40 + r*(H-80)/(ROWS-1) }); alive.push(true);
+    nodes.push({ x: 35 + c*(W-70)/(COLS-1), y: 35 + r*(H-70)/(ROWS-1) }); alive.push(true);
+  }
+  N = nodes.length;
+  function addEdge(a, b) {
+    if (a === b) return;
+    var key = Math.min(a,b) + "-" + Math.max(a,b);
+    if (!edgeSet[key]) { edgeSet[key] = true; edges.push([a, b]); }
   }
   for (var r = 0; r < ROWS; r++) for (var c = 0; c < COLS; c++) {
     var i = r*COLS + c;
-    if (c < COLS-1) edges.push([i, i+1]);
-    if (r < ROWS-1) edges.push([i, i+COLS]);
-    if (c < COLS-1 && r < ROWS-1) edges.push([i, i+COLS+1]);
-    if (c > 0 && r < ROWS-1) edges.push([i, i+COLS-1]);
+    if (c < COLS-1) addEdge(i, i+1);
+    if (r < ROWS-1) addEdge(i, i+COLS);
+    if (c < COLS-1 && r < ROWS-1) addEdge(i, i+COLS+1);
+    if (c > 0 && r < ROWS-1) addEdge(i, i+COLS-1);
   }
-  var destroyed = 0, solved = false, failAt = Math.ceil(N * (d.failure_threshold || 0.8)), hintAt = d.hint_after || 5;
+  var bcCount = d.classical_backchannels || 15;
+  var rng = (function(s) { return function() { s = (s * 16807 + 0) % 2147483647; return s / 2147483647; }; })(d.id.length * 7 + 42);
+  for (var bc = 0; bc < bcCount; bc++) {
+    var a = Math.floor(rng() * N), b = Math.floor(rng() * N);
+    if (a !== b) addEdge(a, b);
+  }
+  var destroyed = 0, solved = false, hintAt = d.hint_after || 10;
   var inter = el.querySelector(".interaction");
-  inter.innerHTML = '<svg id="svg-' + d.id + '" viewBox="0 0 400 300" class="sim-svg"></svg>' +
+  inter.innerHTML = '<svg id="svg-' + d.id + '" viewBox="0 0 ' + W + ' ' + H + '" class="sim-svg"></svg>' +
     '<div class="sim-controls"><span class="sim-status" id="st-' + d.id + '">Destroyed: 0/' + N + ' — Network: OPERATIONAL</span></div>' +
     '<div class="transition-flash" id="flash-' + d.id + '" style="color:#c0392b">Network: FAILED</div>';
-
-  function bfsConnected() {
-    var an = []; for (var i = 0; i < N; i++) if (alive[i]) an.push(i);
-    if (an.length <= 1) return true;
-    var vis = {}, q = [an[0]]; vis[an[0]] = true;
-    while (q.length) { var nd = q.shift(); for (var e = 0; e < edges.length; e++) { var nb = -1; if (edges[e][0] === nd && alive[edges[e][1]]) nb = edges[e][1]; if (edges[e][1] === nd && alive[edges[e][0]]) nb = edges[e][0]; if (nb !== -1 && !vis[nb]) { vis[nb] = true; q.push(nb); } } }
-    return Object.keys(vis).length === an.length;
-  }
 
   function render() {
     var svg = document.getElementById("svg-" + d.id); if (!svg) return;
     var p = [];
-    edges.forEach(function(e) { if (alive[e[0]] && alive[e[1]]) p.push('<line x1="'+nodes[e[0]].x+'" y1="'+nodes[e[0]].y+'" x2="'+nodes[e[1]].x+'" y2="'+nodes[e[1]].y+'" stroke="#2a9b9a" stroke-width="1.5" stroke-opacity="0.4"/>'); });
+    var localEdges = [], longEdges = [];
+    edges.forEach(function(e) {
+      if (!alive[e[0]] || !alive[e[1]]) return;
+      var dx = Math.abs(nodes[e[0]].x - nodes[e[1]].x), dy = Math.abs(nodes[e[0]].y - nodes[e[1]].y);
+      if (dx > (W-70)/(COLS-1)*1.5 || dy > (H-70)/(ROWS-1)*1.5)
+        longEdges.push(e);
+      else
+        localEdges.push(e);
+    });
+    localEdges.forEach(function(e) {
+      p.push('<line x1="'+nodes[e[0]].x+'" y1="'+nodes[e[0]].y+'" x2="'+nodes[e[1]].x+'" y2="'+nodes[e[1]].y+'" stroke="#2a9b9a" stroke-width="1.5" stroke-opacity="0.35"/>');
+    });
+    longEdges.forEach(function(e) {
+      p.push('<line x1="'+nodes[e[0]].x+'" y1="'+nodes[e[0]].y+'" x2="'+nodes[e[1]].x+'" y2="'+nodes[e[1]].y+'" stroke="#e67e22" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="4,3"/>');
+    });
     nodes.forEach(function(n, i) {
-      if (alive[i]) p.push('<circle cx="'+n.x+'" cy="'+n.y+'" r="12" fill="#2a9b9a" stroke="#fff" stroke-width="1.5" class="node-circle" data-n="'+i+'" style="cursor:pointer"/>');
-      else p.push('<circle cx="'+n.x+'" cy="'+n.y+'" r="12" fill="#555" stroke="#888" stroke-width="1" opacity="0.3"/>');
+      if (alive[i]) p.push('<circle cx="'+n.x+'" cy="'+n.y+'" r="11" fill="#2a9b9a" stroke="#fff" stroke-width="1.5" class="node-circle" data-n="'+i+'" style="cursor:pointer"/>');
+      else p.push('<circle cx="'+n.x+'" cy="'+n.y+'" r="11" fill="#555" stroke="#888" stroke-width="1" opacity="0.25"/>');
     });
     svg.innerHTML = p.join("\n");
     var circles = svg.querySelectorAll("circle[data-n]");
@@ -644,14 +892,15 @@ function initResilience(el, d) {
         if (solved) return;
         alive[parseInt(c.dataset.n)] = false; destroyed++;
         render();
-        if (destroyed >= hintAt && destroyed < failAt) showHint(d.id);
-        if (!bfsConnected() || destroyed >= failAt) {
+        var aliveCount = 0; for (var k = 0; k < N; k++) if (alive[k]) aliveCount++;
+        if (destroyed >= hintAt && aliveCount > 0) showHint(d.id);
+        if (aliveCount === 0) {
           solved = true;
-          document.getElementById("st-" + d.id).textContent = "Destroyed: " + destroyed + "/" + N + " — Network: FAILED";
+          document.getElementById("st-" + d.id).textContent = "Destroyed: " + destroyed + "/" + N + " — Network: FAILED (every node destroyed)";
           var fl = document.getElementById("flash-" + d.id); if (fl) fl.classList.add("visible");
           setTimeout(function() { if (fl) fl.classList.remove("visible"); revealPuzzle(d.id); }, 1800);
         } else {
-          document.getElementById("st-" + d.id).textContent = "Destroyed: " + destroyed + "/" + N + " — Network: OPERATIONAL";
+          document.getElementById("st-" + d.id).textContent = "Destroyed: " + destroyed + "/" + N + " — Network: OPERATIONAL (" + aliveCount + " nodes remaining)";
         }
       }); })(circles[j]);
     }
@@ -766,6 +1015,98 @@ function initLOG(el, d) {
     });
   }
   render();
+}
+
+/* --- KM (Kobayashi Maru) --- */
+function initKM(el, d) {
+  var pid = d.id;
+  var threshold = d.unlock_threshold || 3;
+  var keywords = d.reflection_keywords || [];
+  var matchResp = d.reflection_match || '';
+  var defaultResp = d.reflection_default || '';
+  var container = document.getElementById(pid);
+  if (!container) return;
+
+  var seen = [];
+  try { seen = JSON.parse(localStorage.getItem(pid + '-seen') || '[]'); } catch(e) { seen = []; }
+  var reflected = localStorage.getItem(pid + '-reflected') === 'true';
+  var kmSolved = localStorage.getItem(pid + '-solved') === 'true';
+
+  function revealDisaster(key) {
+    var card = container.querySelector('.km-option[data-key="' + key + '"]');
+    if (!card) return;
+    card.querySelector('.km-disaster').style.display = 'block';
+    card.querySelector('.km-option-btn').classList.add('km-tried');
+    if (seen.indexOf(key) === -1) {
+      seen.push(key);
+      try { localStorage.setItem(pid + '-seen', JSON.stringify(seen)); } catch(e) {}
+    }
+    if (seen.length >= threshold) showReflection();
+  }
+
+  function showReflection() {
+    container.querySelector('.km-reflection').style.display = 'block';
+  }
+
+  function showResolution() {
+    var wrap = container.querySelector('.km-resolution-wrap');
+    wrap.style.display = 'block';
+    wrap.style.animation = 'km-reveal 0.8s ease-out';
+  }
+
+  function markSolved() {
+    kmSolved = true;
+    try { localStorage.setItem(pid + '-solved', 'true'); } catch(e) {}
+    showSolvedState();
+    setSolved(pid);
+    updateCounts();
+  }
+
+  function showSolvedState() {
+    container.querySelector('.result').style.display = 'block';
+  }
+
+  // Restore state on load
+  for (var i = 0; i < seen.length; i++) revealDisaster(seen[i]);
+  if (seen.length >= threshold) showReflection();
+  if (reflected) showResolution();
+  if (kmSolved) showSolvedState();
+
+  // Option click handlers
+  var btns = container.querySelectorAll('.km-option-btn');
+  for (var j = 0; j < btns.length; j++) {
+    (function(btn) {
+      btn.addEventListener('click', function() {
+        var card = btn.closest('.km-option');
+        if (!card) return;
+        var key = card.dataset.key;
+        if (card.classList.contains('km-option-final')) {
+          card.querySelector('.km-disaster').style.display = 'block';
+          markSolved();
+          return;
+        }
+        revealDisaster(key);
+      });
+    })(btns[j]);
+  }
+
+  // Reflection submit
+  var submitBtn = container.querySelector('.km-submit-btn');
+  if (submitBtn) {
+    submitBtn.addEventListener('click', function() {
+      var input = container.querySelector('.km-input').value.toLowerCase().trim();
+      var hasMatch = false;
+      for (var k = 0; k < keywords.length; k++) {
+        if (input.indexOf(keywords[k]) !== -1) { hasMatch = true; break; }
+      }
+      var resp = container.querySelector('.km-response');
+      resp.textContent = hasMatch ? matchResp : defaultResp;
+      resp.style.display = 'block';
+      reflected = true;
+      try { localStorage.setItem(pid + '-reflected', 'true'); } catch(e) {}
+      showResolution();
+    });
+  }
 }
 
 /* --- Bridge SVG --- */
@@ -890,22 +1231,32 @@ function initAllPuzzles() {
       else if (type === "cip") initCIP(el, d);
       else if (type === "ba") initBA(el, d);
       else if (type === "log") initLOG(el, d);
-    } catch(e) { console.error("Puzzle init error:", id, e); el.querySelector(".interaction").innerHTML = '<p class="puzzle-fallback">Puzzle failed to load.</p>'; }
+      else if (type === "km") initKM(el, d);
+    } catch(e) { console.error("Puzzle init error:", id, e); var fb = el.querySelector(".interaction"); if (fb) fb.innerHTML = '<p class="puzzle-fallback">Puzzle failed to load.</p>'; }
   }
   if (!hasCrypto) {
     var nc = document.getElementById("no-crypto"); if (nc) nc.style.display = "block";
-    for (var id in PD) revealPuzzle(id);
+    for (var id in PD) { if (PD[id].type !== "km") revealPuzzle(id); }
     return;
   }
   var solved = getSolved();
-  for (var id in solved) if (solved[id]) revealPuzzle(id);
+  for (var id in solved) if (solved[id] && (!PD[id] || PD[id].type !== "km")) revealPuzzle(id);
   try { initBridge(); } catch(e) { console.error("Bridge init error:", e); }
   updateCounts();
   if (location.hash) { var t = document.querySelector(location.hash); if (t) setTimeout(function() { t.scrollIntoView({behavior:"smooth"}); }, 100); }
 }
 
 function resetPuzzles() {
-  try { localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(BRIDGE_KEY); } catch(e) {}
+  try {
+    localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(BRIDGE_KEY);
+    for (var id in PD) {
+      if (PD[id].type === "km") {
+        localStorage.removeItem(id + '-seen');
+        localStorage.removeItem(id + '-reflected');
+        localStorage.removeItem(id + '-solved');
+      }
+    }
+  } catch(e) {}
   location.reload();
 }
 
@@ -928,10 +1279,10 @@ page = f'''<!doctype html>
 </head>
 <body>
 
-<h1>Relinquishment &mdash; Puzzle Preview</h1>
+<h1>Relinquishment &mdash; Puzzle Preview</h1> <a style="font-size:0.55em;color:#1a5276;font-family:Georgia,serif;" href="tools.html">&larr; Back to Author Tools</a>
 <p class="framing">Each chapter ends with a puzzle. Solve it to reveal
 the chapter&rsquo;s Spiral Abstract &mdash; the meta-view that connects the chapter
-to the book&rsquo;s larger argument.</p>
+to the book&rsquo;s larger argument. The Final Question awaits at the end.</p>
 <p class="progress">Chapter puzzles: <span id="chapter-count">0</span>/{chapter_count}</p>
 
 <div id="no-crypto" class="no-crypto" style="display:none;">
@@ -946,6 +1297,8 @@ to the book&rsquo;s larger argument.</p>
 {science_html}
 
 {bridge_section}
+
+{km_section}
 
 <div class="reset-wrap">
   <button class="reset-btn" onclick="resetPuzzles()">Reset All Puzzles</button>

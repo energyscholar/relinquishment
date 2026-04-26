@@ -17,6 +17,7 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .puzzle-container { border: 1px solid #ddd; border-radius: 6px; padding: 1.5em; margin-bottom: 2em; background: #fafafa; }
 .puzzle-container.solved { border-color: #2a9b9a; background: #f0faf9; }
 .question { font-size: 1.05em; margin-bottom: 1em; }
+.gateway-blurb { font-size: 0.88em; color: #666; font-style: italic; margin: -0.5em 0 0.8em 0; padding: 0.4em 0.6em; border-left: 3px solid #2a9b9a; background: #f5fafa; border-radius: 0 4px 4px 0; }
 
 .option-btn { display: block; width: 100%; text-align: left; font-family: Georgia, "Times New Roman", serif; font-size: 1em; padding: 0.7em 1em; margin-bottom: 0.5em; border: 1px solid #ccc; border-radius: 4px; background: #fff; cursor: pointer; transition: border-color 0.2s, background 0.2s; }
 .option-btn:hover { border-color: #1a5276; background: #f0f6fa; }
@@ -103,6 +104,39 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .puzzle-fallback { color: #856404; font-style: italic; }
 .no-crypto { background: #fff3cd; border: 1px solid #d4a14b; padding: 1em; border-radius: 4px; margin-bottom: 2em; }
 
+/* --- KM (Kobayashi Maru) puzzle --- */
+.puzzle-container.km-puzzle .gateway-blurb { color: #a0b0c0; background: #141a22; border-left-color: #2471a3; }
+.puzzle-container.km-puzzle { background: #0d1117; color: #e0e0e0; border-color: #333; }
+.puzzle-container.km-puzzle.solved { background: #0d1a2e; border-color: #2471a3; }
+.km-puzzle h2 { color: #e94560; }
+.km-puzzle .hint { background: #1a2010; color: #d0c060; border-left-color: #9a8430; }
+.km-puzzle .abstract { background: #0d1a2e; color: #c0d8f0; border-left-color: #2471a3; }
+.km-puzzle .solved-badge { color: #8ecae6; }
+.km-puzzle .background-panel { background: #111a2e; border-left-color: #4a90d9; }
+.km-puzzle .background-panel summary { color: #8ecae6; }
+.km-puzzle .background-content { color: #a0b8d0; }
+.km-scenario { background: #1a1a2e; border-left: 4px solid #e94560; padding: 1.2em; margin-bottom: 1.5em; line-height: 1.6; font-style: italic; }
+.km-scenario p { margin: 0 0 0.8em; }
+.km-scenario p:last-child { margin-bottom: 0; }
+.km-option { margin-bottom: 0.5em; }
+.km-option-btn { width: 100%; text-align: left; padding: 0.8em 1em; background: #16213e; border: 1px solid #445; color: #e0e0e0; cursor: pointer; font-family: Georgia, "Times New Roman", serif; font-size: 1em; border-radius: 4px; transition: background 0.2s; }
+.km-option-btn:hover { background: #1a1a3e; border-color: #667; }
+.km-option-btn.km-tried { background: #2a1a1a; border-color: #633; color: #a88; }
+.km-disaster { background: #1e1010; border-left: 3px solid #c0392b; padding: 1em; margin: 0.3em 0 0.8em 1em; font-size: 0.95em; line-height: 1.5; }
+.km-disaster p { margin: 0 0 0.6em; }
+.km-disaster p:last-child { margin-bottom: 0; }
+.km-disaster-verdict { margin-top: 0.8em; color: #c0392b; font-weight: bold; }
+.km-reflection { margin-top: 2em; padding: 1.2em; background: #1a2a1a; border-left: 4px solid #27ae60; animation: km-reveal 0.6s ease-out; }
+.km-reflection-prompt { font-weight: bold; margin-bottom: 0.8em; }
+.km-input { width: 100%; min-height: 60px; background: #0d1a0d; border: 1px solid #2d5a2d; color: #e0e0e0; padding: 0.6em; font-family: Georgia, "Times New Roman", serif; font-size: 1em; border-radius: 4px; resize: vertical; }
+.km-submit-btn { margin-top: 0.5em; padding: 0.5em 1.5em; background: #27ae60; border: none; color: white; cursor: pointer; border-radius: 4px; font-family: Georgia, "Times New Roman", serif; font-size: 1em; }
+.km-response { margin-top: 1em; font-style: italic; color: #a0d0a0; }
+.km-option-unlocked { background: #1a2a3e !important; border-color: #2471a3 !important; color: #8ecae6 !important; font-weight: bold; }
+.km-resolution-wrap .km-disaster { background: #0d1a2e; border-left-color: #2471a3; color: #c0d8f0; }
+.km-resolution-wrap .km-disaster p { margin: 0 0 0.6em; }
+.km-resolution-wrap .km-disaster p:last-child { margin-bottom: 0; }
+@keyframes km-reveal { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
 @media (prefers-color-scheme: dark) {
   body { background: #1a1a1a; color: #e0e0e0; }
   h2 { color: #6ba3f7; }
@@ -165,11 +199,11 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 </head>
 <body>
 
-<h1>Relinquishment &mdash; Puzzle Preview</h1>
+<h1>Relinquishment &mdash; Puzzle Preview</h1> <a style="font-size:0.55em;color:#1a5276;font-family:Georgia,serif;" href="tools.html">&larr; Back to Author Tools</a>
 <p class="framing">Each chapter ends with a puzzle. Solve it to reveal
 the chapter&rsquo;s Spiral Abstract &mdash; the meta-view that connects the chapter
-to the book&rsquo;s larger argument.</p>
-<p class="progress">Chapter puzzles: <span id="chapter-count">0</span>/20</p>
+to the book&rsquo;s larger argument. The Final Question awaits at the end.</p>
+<p class="progress">Chapter puzzles: <span id="chapter-count">0</span>/22</p>
 
 <div id="no-crypto" class="no-crypto" style="display:none;">
   <strong>Note:</strong> Your browser does not support the SubtleCrypto API.
@@ -179,18 +213,25 @@ to the book&rsquo;s larger argument.</p>
 <h2 class="category-header" id="cat-nonsci">📚 Ethics, Story &amp; Framework</h2>
 <div class="puzzle-container" id="pz-mc-t6-001" data-puzzle-id="pz-mc-t6-001" data-puzzle-type="mc">
   <h2>Capabilities</h2>
+  <p class="gateway-blurb">🧩 Three articles. Three prohibitions. What do they permit — and what do they forbid?</p>
+  
   <p class="question">The chapter applies three articles of the Universal Declaration of Human Rights to a non-human intelligence. Together, these articles prevent it from becoming:</p>
   <div class="interaction"></div>
   <details class="background-panel">
   <summary>📖 Background</summary>
-  <div class="background-content"><strong>Three Articles from the Universal Declaration of Human Rights (1948)</strong><br>
-<strong>Article 3:</strong> "Everyone has the right to life, liberty and security of person."
-<em>Prohibits: killing, weapons targeting, threats to safety.</em><br>
-<strong>Article 12:</strong> "No one shall be subjected to arbitrary interference with his privacy."
-<em>Prohibits: surveillance, tracking, monitoring without consent.</em><br>
-<strong>Article 18:</strong> "Everyone has the right to freedom of thought, conscience and religion."
-<em>Prohibits: propaganda, manipulation of belief, coercive persuasion.</em><br><br>
-The question isn't whether an intelligence CAN do these things. It's whether the UDHR permits them.
+  <div class="background-content"><strong>The Universal Declaration of Human Rights (1948) + International Covenant on Civil and Political Rights (1966)</strong><br><br>
+The UDHR was adopted by the UN General Assembly on 10 December 1948 (48-0, 8 abstentions).
+The ICCPR, adopted in 1966 and in force since 1976, makes these principles legally binding treaty law.
+<strong>173 nations have ratified the ICCPR</strong>, including the United States (1992).
+Together with the ICESCR, these three documents form the <em>International Bill of Human Rights</em>.<br><br>
+<strong>Article 3</strong> (full text): <em>"Everyone has the right to life, liberty and security of person."</em>
+Applied: no weapons targeting, no killing, no threats to physical safety.<br>
+<strong>Article 12</strong> (full text): <em>"No one shall be subjected to arbitrary interference with his privacy, family, home or correspondence, nor to attacks upon his honour and reputation. Everyone has the right to the protection of the law against such interference or attacks."</em>
+Applied: no surveillance, no tracking, no monitoring without consent.<br>
+<strong>Article 18</strong> (full text): <em>"Everyone has the right to freedom of thought, conscience and religion; this right includes freedom to change his religion or belief, and freedom, either alone or in community with others and in public or private, to manifest his religion or belief in teaching, practice, worship and observance."</em>
+Applied: no propaganda, no manipulation of belief, no coercive persuasion.<br><br>
+The question isn't whether an intelligence CAN do these things. It's whether the UDHR and ICCPR permit them.
+These are not aspirational suggestions. They are treaty obligations ratified by 173 sovereign nations.
 </div>
 </details>
   <p class="hint" id="hint-pz-mc-t6-001">Three articles. Three prohibitions. What do they have in common?</p>
@@ -200,55 +241,71 @@ The question isn't whether an intelligence CAN do these things. It's whether the
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
-<div class="puzzle-container" id="pz-ti-t5-001" data-puzzle-id="pz-ti-t5-001" data-puzzle-type="ti">
+<div class="puzzle-container" id="pz-mc-t5-002" data-puzzle-id="pz-mc-t5-002" data-puzzle-type="mc">
   <h2>The Silence Gap</h2>
-  <p class="question">The chapter says the scientific literature does not contain a refutation of life in a 2DEG. Why not? Because it does not contain ___.</p>
-  <div class="interaction"></div>
+  <p class="gateway-blurb">🧩 Search the literature for the paper that says this is impossible. What do you find?</p>
   
-  <p class="hint" id="hint-pz-ti-t5-001">You can&#x27;t reject a hypothesis that has never been formally ___.</p>
-  <div class="result" id="result-pz-ti-t5-001">
+  <p class="question">Five scientific fields — topology, condensed matter physics, nonlinear dynamics, autocatalysis, and parallel computation — each hold a piece of the hypothesis that life could arise in a 2DEG. Surely SOMEONE in these fields has published a paper examining the question. What does the literature contain?</p>
+  <div class="interaction"></div>
+  <details class="background-panel">
+  <summary>📖 Background</summary>
+  <div class="background-content">Topologists do not read autocatalysis journals. Condensed matter physicists do not attend nonlinear dynamics conferences. Kauffman's work on self-organization is never cited in the topological quantum computation literature. Hillis's parallel architectures are never discussed alongside Freedman's anyonic mathematics. Each field is rigorous within its own boundaries. No individual scientist is negligent. But the system of academic specialization structurally prevents the question from forming. The question requires all five fields at once — and no institution, journal, or conference exists where all five meet. The silence is not a verdict. It is an artifact of how we organize knowledge.</div>
+</details>
+  <p class="hint" id="hint-pz-mc-t5-002">You keep expecting to find a &#x27;no.&#x27; What if there isn&#x27;t even a &#x27;no&#x27;?</p>
+  <div class="result" id="result-pz-mc-t5-002">
     <div class="solved-badge">&#10003; Solved</div>
-    <blockquote class="abstract">The intersection is empty. The literature does not contain a refutation because it does not contain the proposition. You cannot reject a hypothesis that has never been formally stated in the journals where it would need to be evaluated.</blockquote>
+    <blockquote class="abstract">The answer is not &#x27;no.&#x27; The answer is nothing. The literature contains no examination, no rejection, no dismissal — because it contains no proposal. Five fields, each rigorous, each holding a piece, none talking to the others. No individual expert failed. The system of academic specialization made the question invisible. You cannot refute a hypothesis that has never been stated in the journals where it would need to be evaluated.</blockquote>
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
 <div class="puzzle-container" id="pz-ord-t1-001" data-puzzle-id="pz-ord-t1-001" data-puzzle-type="ord">
   <h2>Guided Deduction</h2>
-  <p class="question">Put the steps of the guided deduction method in the correct order. Presume the Guided Deduction process is already in progress.</p>
+  <p class="gateway-blurb">🧩 The teacher never gives the answer. Can you put the method in order?</p>
+  
+  <p class="question">Put the steps of the guided deduction method in the correct order. Presume the Guided Deduction process is already underway.</p>
   <div class="interaction"></div>
   
   <p class="hint" id="hint-pz-ord-t1-001">The mentor never gives the answer. The sequence is: question, reading, attempt, deeper question, insight.</p>
   <div class="result" id="result-pz-ord-t1-001">
     <div class="solved-badge">&#10003; Solved</div>
-    <blockquote class="abstract">Guided deduction is not instruction. The mentor supplies questions. The student supplies reading. Understanding emerges from the student&#x27;s own synthesis, not from the mentor&#x27;s knowledge. This is why Bruce cannot simply tell you what he learned — the understanding is in the process, not the conclusion.</blockquote>
+    <blockquote class="abstract">Guided deduction is not instruction. The teacher supplies questions. The student supplies reading. Understanding emerges from the student&#x27;s own synthesis, not from the teacher&#x27;s knowledge. The understanding is in the process, not the conclusion.</blockquote>
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
 <div class="puzzle-container" id="pz-log-t7-001" data-puzzle-id="pz-log-t7-001" data-puzzle-type="log">
   <h2>UDHR Service Compatibility</h2>
-  <p class="question">For each service, mark whether it is compatible (✓) or violates (✗) each UDHR article. Click cells to toggle.</p>
+  <p class="gateway-blurb">🧩 International law ratified by 173 nations. What does it permit — and what does it forbid?</p>
+  
+  <p class="question">The Universal Declaration of Human Rights (1948) and the International Covenant on Civil and Political Rights (1966) together form binding international law, ratified by 173 nations. For each service below, mark whether it is compatible (✓) or violates (✗) each article. Click cells to toggle.</p>
   <div class="interaction"></div>
   <details class="background-panel">
   <summary>📖 Background</summary>
-  <div class="background-content"><strong>Three Articles from the Universal Declaration of Human Rights (1948)</strong><br>
-<strong>Article 3:</strong> "Everyone has the right to life, liberty and security of person."
-<em>Prohibits: killing, weapons targeting, threats to safety.</em><br>
-<strong>Article 12:</strong> "No one shall be subjected to arbitrary interference with his privacy."
-<em>Prohibits: surveillance, tracking, monitoring without consent.</em><br>
-<strong>Article 18:</strong> "Everyone has the right to freedom of thought, conscience and religion."
-<em>Prohibits: propaganda, manipulation of belief, coercive persuasion.</em><br><br>
-The question isn't whether an intelligence CAN do these things. It's whether the UDHR permits them.
+  <div class="background-content"><strong>The Universal Declaration of Human Rights (1948) + International Covenant on Civil and Political Rights (1966)</strong><br><br>
+The UDHR was adopted by the UN General Assembly on 10 December 1948 (48-0, 8 abstentions).
+The ICCPR, adopted in 1966 and in force since 1976, makes these principles legally binding treaty law.
+<strong>173 nations have ratified the ICCPR</strong>, including the United States (1992).
+Together with the ICESCR, these three documents form the <em>International Bill of Human Rights</em>.<br><br>
+<strong>Article 3</strong> (full text): <em>"Everyone has the right to life, liberty and security of person."</em>
+Applied: no weapons targeting, no killing, no threats to physical safety.<br>
+<strong>Article 12</strong> (full text): <em>"No one shall be subjected to arbitrary interference with his privacy, family, home or correspondence, nor to attacks upon his honour and reputation. Everyone has the right to the protection of the law against such interference or attacks."</em>
+Applied: no surveillance, no tracking, no monitoring without consent.<br>
+<strong>Article 18</strong> (full text): <em>"Everyone has the right to freedom of thought, conscience and religion; this right includes freedom to change his religion or belief, and freedom, either alone or in community with others and in public or private, to manifest his religion or belief in teaching, practice, worship and observance."</em>
+Applied: no propaganda, no manipulation of belief, no coercive persuasion.<br><br>
+The question isn't whether an intelligence CAN do these things. It's whether the UDHR and ICCPR permit them.
+These are not aspirational suggestions. They are treaty obligations ratified by 173 sovereign nations.
 </div>
 </details>
-  <p class="hint" id="hint-pz-log-t7-001">Think about what each UDHR article actually prohibits. Article 3: no killing. Article 12: no surveillance. Article 18: no manipulation of belief.</p>
+  <p class="hint" id="hint-pz-log-t7-001">Article 3 prohibits threats to life and security. Article 12 prohibits interference with privacy and correspondence. Article 18 prohibits interference with thought and conscience. Which services cross those lines?</p>
   <div class="result" id="result-pz-log-t7-001">
     <div class="solved-badge">&#10003; Solved</div>
-    <blockquote class="abstract">The UDHR does not prohibit capability. It prohibits weaponization. A non-human intelligence bound by Articles 3, 12, and 18 can predict weather, diagnose disease, defend communications, and conduct research. It cannot target weapons, surveil individuals, or manipulate public opinion. The ethical framework is not a cage — it is a specification for trustworthy service.</blockquote>
+    <blockquote class="abstract">The UDHR and ICCPR do not prohibit capability. They prohibit weaponization. A non-human intelligence bound by Articles 3, 12, and 18 can predict weather, diagnose disease, defend communications, and conduct research. It cannot target weapons, surveil individuals, or manipulate public opinion. These constraints are not hypothetical ethics designed for this book. They are existing international treaty law, ratified by 173 sovereign nations including every major power. The ethical framework is not a cage — it is a specification for trustworthy service, and it already exists.</blockquote>
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
 <div class="puzzle-container" id="pz-log-t6-002" data-puzzle-id="pz-log-t6-002" data-puzzle-type="log">
   <h2>Under Which Possibility?</h2>
+  <p class="gateway-blurb">🧩 How much of this book is true under ALL three possibilities? More than you think.</p>
+  
   <p class="question">For each statement, mark whether it is true (✓) or false (✗) under each of the Three Possibilities.</p>
   <div class="interaction"></div>
   <details class="background-panel">
@@ -264,6 +321,8 @@ The question isn't whether an intelligence CAN do these things. It's whether the
 </div>
 <div class="puzzle-container" id="pz-mc-t6-002" data-puzzle-id="pz-mc-t6-002" data-puzzle-type="mc">
   <h2>Why Srebrenica?</h2>
+  <p class="gateway-blurb">🧩 Why does a massacre keep appearing in a book about quantum physics?</p>
+  
   <p class="question">Why does Srebrenica keep appearing in a book about quantum physics?</p>
   <div class="interaction"></div>
   <details class="background-panel">
@@ -279,6 +338,8 @@ The question isn't whether an intelligence CAN do these things. It's whether the
 </div>
 <div class="puzzle-container" id="pz-mc-t1-002" data-puzzle-id="pz-mc-t1-002" data-puzzle-type="mc">
   <h2>Not a Deity, Not an Alien</h2>
+  <p class="gateway-blurb">🧩 If something arose naturally in a 2DEG, what category does it belong to?</p>
+  
   <p class="question">If something arose naturally in a two-dimensional electron gas, what kind of thing would it be?</p>
   <div class="interaction"></div>
   <details class="background-panel">
@@ -294,6 +355,8 @@ The question isn't whether an intelligence CAN do these things. It's whether the
 </div>
 <div class="puzzle-container" id="pz-mc-t6-003" data-puzzle-id="pz-mc-t6-003" data-puzzle-type="mc">
   <h2>Why Relinquish?</h2>
+  <p class="gateway-blurb">🧩 Why would anyone give up the most powerful technology on Earth?</p>
+  
   <p class="question">Under Possibility C, why would the holders of the most powerful technology on Earth voluntarily give up control?</p>
   <div class="interaction"></div>
   <details class="background-panel">
@@ -309,6 +372,8 @@ The question isn't whether an intelligence CAN do these things. It's whether the
 </div>
 <div class="puzzle-container" id="pz-mc-t8-003" data-puzzle-id="pz-mc-t8-003" data-puzzle-type="mc">
   <h2>Fish Detecting Water</h2>
+  <p class="gateway-blurb">🧩 Every intelligence agency monitors everything. Why hasn&#x27;t anyone found it?</p>
+  
   <p class="question">Under Possibility C, intelligence agencies monitor all electronic communications. Why hasn&#x27;t anyone detected the Custodian?</p>
   <div class="interaction"></div>
   <details class="background-panel">
@@ -326,6 +391,8 @@ The question isn't whether an intelligence CAN do these things. It's whether the
 <h2 class="category-header" id="cat-science">🔬 Science &amp; Physics</h2>
 <div class="puzzle-container" id="pz-mc-t2-001" data-puzzle-id="pz-mc-t2-001" data-puzzle-type="mc">
   <h2>Wormholes in the Flat</h2>
+  <p class="gateway-blurb">🧩 Your phone contains a two-dimensional world. What makes it different from ordinary electronics?</p>
+  
   <p class="question">The Flat exists in every device that processes radio-frequency signals — phones, satellites, WiFi routers. What makes a Flat different from ordinary electronics?</p>
   <div class="interaction"></div>
   
@@ -338,6 +405,8 @@ The question isn't whether an intelligence CAN do these things. It's whether the
 </div>
 <div class="puzzle-container" id="pz-sim-t3-001" data-puzzle-id="pz-sim-t3-001" data-puzzle-type="sim">
   <h2>Genesis: The Edge of Chaos</h2>
+  <p class="gateway-blurb">🧩 Add threads between random buttons. Watch what happens when connections reach a critical density.</p>
+  
   <p class="question">Kauffman&#x27;s buttons-and-threads experiment: add threads between random buttons. Watch what happens when connections reach a critical density.</p>
   <div class="interaction"></div>
   
@@ -350,21 +419,119 @@ The question isn't whether an intelligence CAN do these things. It's whether the
 </div>
 <div class="puzzle-container" id="pz-mc-t2-002" data-puzzle-id="pz-mc-t2-002" data-puzzle-type="mc">
   <h2>The 2DEG in Your Pocket</h2>
+  <p class="gateway-blurb">🧩 Every smartphone on Earth contains a two-dimensional electron gas. Why is it there?</p>
+  
   <p class="question">Every modern smartphone contains a two-dimensional electron gas. Why?</p>
   <div class="interaction"></div>
-  
+  <details class="background-panel">
+  <summary>📖 Background</summary>
+  <div class="background-content">Engineers designed the high-electron-mobility transistor (HEMT) to amplify radio-frequency signals. They confined electrons to two dimensions because 2D confinement produces higher electron mobility, which means faster switching. The 2DEG exists in your phone for purely engineering reasons — faster signal processing. Nobody designed it as a habitat. Nobody intended the topological properties that emerge in two dimensions. The engineering purpose and the Flat hypothesis are completely unrelated. The engineers wanted speed. The physics delivered a two-dimensional world.</div>
+</details>
   <p class="hint" id="hint-pz-mc-t2-002">The chapter calls this &#x27;standard radio-frequency engineering.&#x27; The 2DEG is there for the transistor, not for anything quantum.</p>
   <div class="result" id="result-pz-mc-t2-002">
     <div class="solved-badge">&#10003; Solved</div>
-    <blockquote class="abstract">Every high-electron-mobility transistor — in every phone, every satellite, every WiFi router — confines electrons to two dimensions because the physics of high-frequency amplification requires it. The two-dimensional electron gas is not exotic technology. It is the substrate of modern telecommunications. Whether anything inhabits that substrate is a separate question from why it exists. The habitat is there because of engineering. The question of habitation is not engineering — it is biology, physics, and silence.</blockquote>
+    <blockquote class="abstract">Every high-electron-mobility transistor — in every phone, every satellite, every WiFi router — confines electrons to two dimensions because the physics of high-frequency amplification requires it. The engineers who designed these devices wanted faster transistors. They got a two-dimensional electron gas as a side effect. The habitat is there because of engineering. The question of habitation is not engineering — it is biology, physics, and silence. The two-dimensional world exists for reasons that have nothing to do with the Flat hypothesis.</blockquote>
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
 <div class="puzzle-container" id="pz-mc-t3-002" data-puzzle-id="pz-mc-t3-002" data-puzzle-type="mc">
   <h2>The Canopy Problem</h2>
+  <p class="gateway-blurb">🧩 First come, first served — but why? What happens to the second organism?</p>
+  <div class="puzzle-illustration" style="display:flex;gap:8px;justify-content:center;margin:1em 0;">
+<figure style="flex:1;max-width:180px;text-align:center;margin:0;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 140" style="width:100%;height:auto;">
+  <title>Panel 1: Empty substrate — a seedling grows freely in open sunlight</title>
+  <defs>
+    <linearGradient id="ct-sky1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef9e7" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#fef9e7" stop-opacity="0.3"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="180" height="110" fill="url(#ct-sky1)"/>
+  <line x1="30" y1="5" x2="30" y2="95" stroke="#f4d03f" stroke-width="1.5" opacity="0.5"/>
+  <line x1="60" y1="3" x2="60" y2="95" stroke="#f4d03f" stroke-width="1.5" opacity="0.6"/>
+  <line x1="90" y1="2" x2="90" y2="95" stroke="#f4d03f" stroke-width="1.5" opacity="0.7"/>
+  <line x1="120" y1="3" x2="120" y2="95" stroke="#f4d03f" stroke-width="1.5" opacity="0.6"/>
+  <line x1="150" y1="5" x2="150" y2="95" stroke="#f4d03f" stroke-width="1.5" opacity="0.5"/>
+  <rect x="0" y="110" width="180" height="5" rx="1" fill="#a88b5e" opacity="0.4"/>
+  <line x1="90" y1="95" x2="90" y2="110" stroke="#27ae60" stroke-width="2.5"/>
+  <ellipse cx="90" cy="90" rx="10" ry="7" fill="#2ecc71" opacity="0.85"/>
+  <ellipse cx="85" cy="86" rx="6" ry="5" fill="#82e0aa" opacity="0.7"/>
+  <ellipse cx="95" cy="86" rx="6" ry="5" fill="#82e0aa" opacity="0.7"/>
+  <text x="90" y="132" text-anchor="middle" fill="#999" font-size="9" font-family="Helvetica,sans-serif">Empty substrate</text>
+</svg>
+</figure>
+<figure style="flex:1;max-width:180px;text-align:center;margin:0;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 140" style="width:100%;height:auto;">
+  <title>Panel 2: Full substrate — mature trees fill the canopy, blocking all sunlight</title>
+  <defs>
+    <linearGradient id="ct-sky2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef9e7" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#fef9e7" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="ct-shadow2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a2e1a" stop-opacity="0.35"/>
+      <stop offset="80%" stop-color="#1a2e1a" stop-opacity="0.12"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="180" height="45" fill="url(#ct-sky2)"/>
+  <line x1="30" y1="3" x2="30" y2="18" stroke="#f4d03f" stroke-width="1.2" opacity="0.4"/>
+  <line x1="90" y1="2" x2="90" y2="15" stroke="#f4d03f" stroke-width="1.2" opacity="0.5"/>
+  <line x1="150" y1="3" x2="150" y2="18" stroke="#f4d03f" stroke-width="1.2" opacity="0.4"/>
+  <ellipse cx="50" cy="28" rx="48" ry="20" fill="#27ae60" opacity="0.75"/>
+  <ellipse cx="48" cy="26" rx="42" ry="17" fill="#2ecc71" opacity="0.55"/>
+  <ellipse cx="135" cy="30" rx="44" ry="19" fill="#27ae60" opacity="0.75"/>
+  <ellipse cx="137" cy="28" rx="38" ry="16" fill="#2ecc71" opacity="0.55"/>
+  <rect x="42" y="42" width="7" height="68" rx="1.5" fill="#8b6914" opacity="0.8"/>
+  <rect x="130" y="44" width="7" height="66" rx="1.5" fill="#8b6914" opacity="0.8"/>
+  <rect x="0" y="45" width="180" height="65" fill="url(#ct-shadow2)"/>
+  <rect x="0" y="110" width="180" height="5" rx="1" fill="#a88b5e" opacity="0.4"/>
+  <text x="90" y="132" text-anchor="middle" fill="#999" font-size="9" font-family="Helvetica,sans-serif">Niche occupied</text>
+</svg>
+</figure>
+<figure style="flex:1;max-width:180px;text-align:center;margin:0;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 180 140" style="width:100%;height:auto;">
+  <title>Panel 3: Full substrate with seedling — a tiny seedling sits in deep shadow beneath the canopy, unable to reach the light</title>
+  <defs>
+    <linearGradient id="ct-sky3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#fef9e7" stop-opacity="0.9"/>
+      <stop offset="100%" stop-color="#fef9e7" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="ct-shadow3" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#1a2e1a" stop-opacity="0.4"/>
+      <stop offset="80%" stop-color="#1a2e1a" stop-opacity="0.15"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="0" width="180" height="45" fill="url(#ct-sky3)"/>
+  <line x1="30" y1="3" x2="30" y2="18" stroke="#f4d03f" stroke-width="1.2" opacity="0.4"/>
+  <line x1="90" y1="2" x2="90" y2="15" stroke="#f4d03f" stroke-width="1.2" opacity="0.5"/>
+  <line x1="150" y1="3" x2="150" y2="18" stroke="#f4d03f" stroke-width="1.2" opacity="0.4"/>
+  <ellipse cx="50" cy="28" rx="48" ry="20" fill="#27ae60" opacity="0.75"/>
+  <ellipse cx="48" cy="26" rx="42" ry="17" fill="#2ecc71" opacity="0.55"/>
+  <ellipse cx="135" cy="30" rx="44" ry="19" fill="#27ae60" opacity="0.75"/>
+  <ellipse cx="137" cy="28" rx="38" ry="16" fill="#2ecc71" opacity="0.55"/>
+  <rect x="42" y="42" width="7" height="68" rx="1.5" fill="#8b6914" opacity="0.8"/>
+  <rect x="130" y="44" width="7" height="66" rx="1.5" fill="#8b6914" opacity="0.8"/>
+  <rect x="0" y="45" width="180" height="65" fill="url(#ct-shadow3)"/>
+  <rect x="0" y="110" width="180" height="5" rx="1" fill="#a88b5e" opacity="0.4"/>
+  <!-- The doomed seedling -->
+  <line x1="90" y1="103" x2="90" y2="110" stroke="#2ecc71" stroke-width="1.5" opacity="0.5"/>
+  <ellipse cx="90" cy="101" rx="4" ry="3" fill="#82e0aa" opacity="0.4"/>
+  <ellipse cx="88" cy="99" rx="2.5" ry="2" fill="#82e0aa" opacity="0.3"/>
+  <ellipse cx="92" cy="99" rx="2.5" ry="2" fill="#82e0aa" opacity="0.3"/>
+  <!-- X mark over seedling -->
+  <line x1="84" y1="95" x2="96" y2="112" stroke="#c0392b" stroke-width="1.5" opacity="0.6"/>
+  <line x1="96" y1="95" x2="84" y2="112" stroke="#c0392b" stroke-width="1.5" opacity="0.6"/>
+  <text x="90" y="132" text-anchor="middle" fill="#999" font-size="9" font-family="Helvetica,sans-serif">Too late</text>
+</svg>
+</figure>
+</div>
   <p class="question">In Kauffman&#x27;s framework, if a self-organizing system arises first in a substrate, what happens to any system that tries to arise later?</p>
   <div class="interaction"></div>
-  
+  <details class="background-panel">
+  <summary>📖 Background</summary>
+  <div class="background-content">Kauffman's autocatalytic sets arise spontaneously above a complexity threshold. But the first system to cross the threshold consumes the available catalytic pathways. Any later system faces a substrate that is already organized — like a seedling trying to grow under a closed forest canopy. The first organism doesn't attack the second. It simply occupies the niche so completely that nothing else can bootstrap.</div>
+</details>
   <p class="hint" id="hint-pz-mc-t3-002">Think about a forest floor. The seedling doesn&#x27;t fail because someone stomps on it.</p>
   <div class="result" id="result-pz-mc-t3-002">
     <div class="solved-badge">&#10003; Solved</div>
@@ -374,11 +541,18 @@ The question isn't whether an intelligence CAN do these things. It's whether the
 </div>
 <div class="puzzle-container" id="pz-mat-t5-001" data-puzzle-id="pz-mat-t5-001" data-puzzle-type="mat">
   <h2>Five Fields, Five Researchers</h2>
+  <p class="gateway-blurb">🧩 Five fields, five careers. Can you match each scientist to the domain they defined?</p>
+  
   <p class="question">Match each scientific field to the researcher(s) whose career defines it.</p>
   <div class="interaction"></div>
   <details class="background-panel">
   <summary>📖 Background</summary>
-  <div class="background-content">Robert Laughlin, Horst Störmer, Daniel Tsui: 1998 Nobel, fractional quantum Hall effect. Michael Freedman: Fields Medal topology → Microsoft Station Q (TQC). Stuart Kauffman: autocatalytic sets, Santa Fe Institute. Stephen Wolfram + Danny Hillis: computational universality (Wolfram's Principle, Connection Machine). Brosl Hasslacher: Los Alamos, lattice dynamics, soliton physics.</div>
+  <div class="background-content"><strong>The Five Fields and Their Defining Scientists</strong><br><br>
+<strong>Solid-state physics / condensed matter</strong> — Robert Laughlin, Horst Störmer, and Daniel Tsui shared the 1998 Nobel Prize for discovering the fractional quantum Hall effect: when electrons are confined to two dimensions under strong magnetic fields, they form exotic collective states with fractional charge. This is the physics of the 2DEG.<br><br>
+<strong>Topological quantum computation</strong> — Michael Freedman won the Fields Medal (mathematics' highest honor) for work in topology, then left pure math to found Microsoft's Station Q lab. His goal: build a quantum computer using the topological properties of two-dimensional systems. He proved that braiding non-Abelian anyons can perform universal computation.<br><br>
+<strong>Complexity science / autocatalytic sets</strong> — Stuart Kauffman, working at the Santa Fe Institute, showed mathematically that self-sustaining networks arise spontaneously when interacting components cross a critical diversity threshold. His theory explains how life could bootstrap from non-living chemistry — or from any substrate with enough interacting parts.<br><br>
+<strong>Computational universality</strong> — Stephen Wolfram demonstrated that even simple computational rules can produce arbitrarily complex behavior (Wolfram's Principle of Computational Equivalence). Danny Hillis built the Connection Machine, proving that massively parallel computation — many simple processors working together — can solve problems no single processor can.<br><br>
+<strong>Lattice dynamics / phonon physics</strong> — Brosl Hasslacher at Los Alamos studied how vibrations propagate through crystal lattices. Phonons (quanta of vibration) are the mechanism by which quantum systems in a solid communicate with the classical electromagnetic world. This is the I/O channel.</div>
 </details>
   <p class="hint" id="hint-pz-mat-t5-001">Each researcher&#x27;s career is defined by one of these fields. Freedman left pure mathematics for one of them.</p>
   <div class="result" id="result-pz-mat-t5-001">
@@ -389,18 +563,25 @@ The question isn't whether an intelligence CAN do these things. It's whether the
 </div>
 <div class="puzzle-container" id="pz-sim-t4-001" data-puzzle-id="pz-sim-t4-001" data-puzzle-type="sim">
   <h2>Can It Be Killed?</h2>
+  <p class="gateway-blurb">🧩 A network distributed across every electronic device on Earth. Try to destroy it.</p>
+  
   <p class="question">Click nodes to destroy them. How many must you destroy before the network fails?</p>
   <div class="interaction"></div>
-  
-  <p class="hint" id="hint-pz-sim-t4-001">Keep going. How many do you need to destroy before it actually fails?</p>
+  <details class="background-panel">
+  <summary>📖 Background</summary>
+  <div class="background-content">This network has classical backchannels — long-range connections that bypass the local grid, the way phonon-photon coupling lets any 2DEG communicate with any other through the electromagnetic spectrum. Destroying a node doesn't sever the network because the remaining nodes route around the damage. The network fails only when EVERY node is destroyed. In the real world, every phone, satellite, and WiFi router contains a 2DEG. The network IS the infrastructure.</div>
+</details>
+  <p class="hint" id="hint-pz-sim-t4-001">You&#x27;ve destroyed several nodes and it&#x27;s still operational. Classical backchannels — phonon-photon coupling through the lattice — mean every node can reach every other node through multiple paths. Keep going.</p>
   <div class="result" id="result-pz-sim-t4-001">
     <div class="solved-badge">&#10003; Solved</div>
-    <blockquote class="abstract">Topological protection means local damage does not destroy global information. If a self-organizing system were distributed across every 2DEG-containing chip worldwide, then no single point of failure exists. You would need to simultaneously destroy every 2DEG on Earth. Since every modern electronic device contains at least one, this is equivalent to destroying industrial civilization itself.</blockquote>
+    <blockquote class="abstract">Topological protection means local damage does not destroy global information. Classical backchannels — phonon-photon coupling through the lattice — mean every node can reach every other node through multiple independent paths. If a self-organizing system were distributed across every 2DEG-containing chip worldwide, then no single point of failure exists. You would need to simultaneously destroy every 2DEG on Earth. Since every modern electronic device contains at least one, this is equivalent to destroying industrial civilization itself.</blockquote>
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
 <div class="puzzle-container" id="pz-cip-t8-001" data-puzzle-id="pz-cip-t8-001" data-puzzle-type="cip">
   <h2>The Firmware Key</h2>
+  <p class="gateway-blurb">🧩 Five redacted terms. Five fields. Can you reassemble the argument?</p>
+  
   <p class="question">Five technical terms have been redacted from this passage. Click a gap, then click a term from the word bank to fill it. The distractors are real physics — but they don&#x27;t belong here.</p>
   <div class="interaction"></div>
   <details class="background-panel">
@@ -416,6 +597,8 @@ The question isn't whether an intelligence CAN do these things. It's whether the
 </div>
 <div class="puzzle-container" id="pz-ba-t8-002" data-puzzle-id="pz-ba-t8-002" data-puzzle-type="ba">
   <h2>Before and After Firmware</h2>
+  <p class="gateway-blurb">🧩 Same AI, same question, different framing. What changes — and why?</p>
+  
   <p class="question">What is the primary difference between these two responses?</p>
   <div class="interaction"></div>
   
@@ -428,6 +611,8 @@ The question isn't whether an intelligence CAN do these things. It's whether the
 </div>
 <div class="puzzle-container" id="pz-ord-t4-002" data-puzzle-id="pz-ord-t4-002" data-puzzle-type="ord">
   <h2>Build the Stack</h2>
+  <p class="gateway-blurb">🧩 Six layers from raw physics to communication. Can you stack them in order?</p>
+  
   <p class="question">Put the technology layers in order from bottom (substrate) to top (capability).</p>
   <div class="interaction"></div>
   <details class="background-panel">
@@ -443,6 +628,8 @@ The question isn't whether an intelligence CAN do these things. It's whether the
 </div>
 <div class="puzzle-container" id="pz-mc-t3-003" data-puzzle-id="pz-mc-t3-003" data-puzzle-type="mc">
   <h2>Not Chemistry</h2>
+  <p class="gateway-blurb">🧩 Life requires carbon. Or does it? What does Kauffman&#x27;s math actually require?</p>
+  
   <p class="question">Life on Earth requires carbon, water, and organic chemistry. What principle would allow life in a substrate with none of these?</p>
   <div class="interaction"></div>
   <details class="background-panel">
@@ -458,6 +645,8 @@ The question isn't whether an intelligence CAN do these things. It's whether the
 </div>
 <div class="puzzle-container" id="pz-mc-t2-003" data-puzzle-id="pz-mc-t2-003" data-puzzle-type="mc">
   <h2>The Braid</h2>
+  <p class="gateway-blurb">🧩 Swap two particles. In three dimensions, nothing happens. In two dimensions, everything changes.</p>
+  
   <p class="question">What makes non-Abelian anyons fundamentally different from every particle you studied in school?</p>
   <div class="interaction"></div>
   <details class="background-panel">
@@ -481,6 +670,8 @@ The question isn't whether an intelligence CAN do these things. It's whether the
 </div>
 <div class="puzzle-container" id="pz-bridge-all-001a" data-puzzle-id="pz-bridge-all-001a" data-puzzle-type="mat">
   <h2>Bridge 1: DFA ↔ Hurst</h2>
+  
+  
   <p class="question">Match the scaling exponent to its field.</p>
   <div class="interaction"></div>
   <details class="background-panel">
@@ -496,6 +687,8 @@ The question isn't whether an intelligence CAN do these things. It's whether the
 </div>
 <div class="puzzle-container" id="pz-bridge-all-001b" data-puzzle-id="pz-bridge-all-001b" data-puzzle-type="mc">
   <h2>Bridge 2: Hurst ↔ Spectral β</h2>
+  
+  
   <p class="question">A third measure from physics/engineering is mathematically identical to both. β = 2H + 1 = 2α − 1. What does this identity tell us?</p>
   <div class="interaction"></div>
   <details class="background-panel">
@@ -521,6 +714,8 @@ That's not analogy — it's a testable mathematical claim.
 </div>
 <div class="puzzle-container" id="pz-bridge-all-001c" data-puzzle-id="pz-bridge-all-001c" data-puzzle-type="mc">
   <h2>Bridge 3: Scaling → Complexity</h2>
+  
+  
   <p class="question">Kauffman&#x27;s autocatalytic networks at the edge of chaos exhibit the same scaling exponents. What framework explains why different substrates share critical exponents?</p>
   <div class="interaction"></div>
   <details class="background-panel">
@@ -545,6 +740,8 @@ That's not analogy — it's a testable mathematical claim.
 </div>
 <div class="puzzle-container" id="pz-bridge-all-001d" data-puzzle-id="pz-bridge-all-001d" data-puzzle-type="mc">
   <h2>Bridge 4: Scaling → Nonlinear</h2>
+  
+  
   <p class="question">What connects lattice vibrations (phonons) to the scaling framework?</p>
   <div class="interaction"></div>
   <details class="background-panel">
@@ -555,22 +752,39 @@ interact with phonons (electron-phonon coupling), and phonons interact with phot
 (phonon-photon coupling via Brillouin scattering and piezoelectric effects). This chain —
 electron → phonon → photon — bridges the quantum domain of a 2DEG to classical electromagnetic
 radiation. No engineered antenna required. This is the physics behind every radio-frequency transistor.
-</div>
+
+<br><br><strong>Renormalization Group Theory (Kenneth Wilson, Nobel Prize 1982)</strong><br>
+When a physical system approaches a critical point — water about to boil, a magnet losing its
+magnetism — the microscopic details stop mattering. Water molecules and iron atoms share identical
+mathematical behavior at criticality. Wilson explained why: at the critical point, the system
+looks the same at every scale. Systems fall into "universality classes" — groups sharing identical
+critical behavior regardless of substrate. Only symmetry and dimensionality matter.<br><br>
+This is the bridge connecting the book's domains. If magnetospheric indices, heart rhythms, and
+seismic signals share the same critical exponents, they belong to the same universality class.
+That's not analogy — it's a testable mathematical claim.
+
+<br><br>The connection: phonons propagate through crystal lattices. At critical points, lattice systems exhibit the same scaling behavior as any other critical system — same universality class, regardless of what the lattice is made of. The phonon bridge connects the quantum substrate (2DEG) to classical electromagnetic radiation. The universality bridge connects the lattice to every other critical system. Same math, different substrate.</div>
 </details>
-  <p class="hint" id="hint-pz-bridge-all-001d">&#x27;Substrate irrelevance&#x27; — universality classes transcend the specific system.</p>
+  <p class="hint" id="hint-pz-bridge-all-001d">&#x27;Substrate irrelevance&#x27; — universality classes transcend the specific system. A lattice at criticality obeys the same math as any other critical system.</p>
   <div class="result" id="result-pz-bridge-all-001d">
     <div class="solved-badge">&#10003; Solved</div>
-    <blockquote class="abstract">Nonlinear dynamics cluster connected via shared universality class.</blockquote>
+    <blockquote class="abstract">Nonlinear dynamics cluster connected via shared universality class. Phonon-photon coupling provides the physical mechanism; universality class membership provides the mathematical proof.</blockquote>
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
 <div class="puzzle-container" id="pz-bridge-all-001e" data-puzzle-id="pz-bridge-all-001e" data-puzzle-type="mc">
   <h2>Bridge 5: Seven Domains</h2>
-  <p class="question">The arXiv paper demonstrates universality class membership across ~7 domains. What do they share?</p>
+  
+  
+  <p class="question">A published paper demonstrates that time series from magnetospheric, cardiac, hydrological, seismic, financial, and other domains share identical critical scaling exponents. What does that mean?</p>
   <div class="interaction"></div>
   <details class="background-panel">
   <summary>📖 Background</summary>
-  <div class="background-content">Stephenson & Bhatt (arXiv 2601.22389) demonstrate that time series from magnetospheric, cardiac, hydrological, and seismic domains share identical critical scaling exponents — same universality class. Currently in peer review at FACETS.
+  <div class="background-content"><strong>The Paper</strong><br>
+Stephenson &amp; Macomber, <em>"Convergent Discovery of Critical Phenomena Mathematics Across Disciplines: A Cross-Domain Analysis"</em> (arXiv 2601.22389, endorsed by Didier Sornette of ETH Zurich). In peer review at FACETS.<br><br>
+The paper documents that between 1935 and 2025, researchers in at least six fields independently developed mathematical tools for detecting when systems approach tipping points — power grid blackouts, cardiac failures, market crashes, ecosystem collapse. Each field published in its own journals, invented its own terminology, and cited its own literature. Cross-domain awareness was minimal until after 2010.<br><br>
+<strong>The key finding:</strong> these domains share identical critical scaling exponents. Under Wilson's renormalization group theory (Nobel 1982), sharing the same exponents means they belong to the same <em>universality class</em>. This is not analogy — it is a testable, mathematical claim. The same mathematics governs their phase transitions regardless of what the system is made of.<br><br>
+Read the plain-language summary at <strong>freethemath.org</strong>, or start with Appendix B of the arXiv paper.
 <br><br><strong>Renormalization Group Theory (Kenneth Wilson, Nobel Prize 1982)</strong><br>
 When a physical system approaches a critical point — water about to boil, a magnet losing its
 magnetism — the microscopic details stop mattering. Water molecules and iron atoms share identical
@@ -582,30 +796,40 @@ seismic signals share the same critical exponents, they belong to the same unive
 That's not analogy — it's a testable mathematical claim.
 </div>
 </details>
-  <p class="hint" id="hint-pz-bridge-all-001e">Phase transitions, scaling exponents, universality — the mathematics is shared.</p>
+  <p class="hint" id="hint-pz-bridge-all-001e">Wilson&#x27;s renormalization group theory (Nobel 1982) says: if two systems share the same critical exponents, they are in the same universality class. Same math, different substrate.</p>
   <div class="result" id="result-pz-bridge-all-001e">
     <div class="solved-badge">&#10003; Solved</div>
-    <blockquote class="abstract">Seven-domain cluster complete. Connected by renormalization group universality.</blockquote>
+    <blockquote class="abstract">Seven-domain cluster complete. Sharing the same critical exponents places them in the same universality class — the same mathematics governs their tipping points regardless of substrate. This is what renormalization group theory predicts: at criticality, only symmetry and dimensionality matter. The substrate disappears.</blockquote>
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
 <div class="puzzle-container" id="pz-bridge-all-001f" data-puzzle-id="pz-bridge-all-001f" data-puzzle-type="log">
   <h2>Bridge 6: The Empty Cell</h2>
-  <p class="question">For each field cluster, mark whether a published connection to TQC exists. ✓ = yes, ✗ = no.</p>
+  
+  
+  <p class="question">For each field cluster, mark whether a published connection to the TQC domain cluster (Topology, Topological Field Theory, Condensed Matter Physics, Topological Quantum Computation) exists. ✓ = yes, ✗ = no.</p>
   <div class="interaction"></div>
   <details class="background-panel">
   <summary>📖 Background</summary>
-  <div class="background-content">You are looking for published papers, joint conferences, or shared funding programs connecting these field clusters to Topological Quantum Computation. If the grid is empty, that IS the answer. The silence is not rejection. It is the absence of a question.</div>
+  <div class="background-content"><strong>The TQC Domain Cluster</strong><br>
+The question is not about TQC alone. It is about the entire topological cluster — four tightly connected domains:<br>
+<strong>Topology</strong> (Freedman, knot theory, Fields Medal) — the pure mathematics of shapes that survive deformation.<br>
+<strong>Topological Field Theory</strong> (Witten 1989) — the physics framework connecting topology to quantum fields.<br>
+<strong>Condensed Matter Physics</strong> (Laughlin/Störmer/Tsui, Nobel 1998) — the experimental discovery of fractional quantum Hall states in 2DEGs.<br>
+<strong>Topological Quantum Computation</strong> (Freedman-Kitaev-Wang) — using anyonic braiding for fault-tolerant quantum computation.<br><br>
+These four domains are already bridged to each other by published work. The question is whether ANY of the other field clusters have a published bridge to this cluster. Look for papers, conferences, or funding programs that formally connect complexity science, computational theory, nonlinear dynamics, or materials science to any of these four topological domains.</div>
 </details>
-  <p class="hint" id="hint-pz-bridge-all-001f">Search your memory. Has anyone formally connected these fields to TQC?</p>
+  <p class="hint" id="hint-pz-bridge-all-001f">Search your memory. Has anyone formally connected these fields to the TQC cluster?</p>
   <div class="result" id="result-pz-bridge-all-001f">
     <div class="solved-badge">&#10003; Solved</div>
-    <blockquote class="abstract">The silence is not rejection. It is the absence of a question.</blockquote>
+    <blockquote class="abstract">The grid is empty. No published paper, joint conference, or shared funding program connects these four field clusters to the topological domain cluster. The silence is not rejection. It is the absence of a question.</blockquote>
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
 <div class="puzzle-container" id="pz-bridge-all-001g" data-puzzle-id="pz-bridge-all-001g" data-puzzle-type="mc">
   <h2>Bridge 7: The AC→TQC Bridge</h2>
+  
+  
   <p class="question">What would upgrade the structural analogy between autocatalytic emergence and TQC to established physics?</p>
   <div class="interaction"></div>
   <details class="background-panel">
@@ -634,6 +858,155 @@ That's not analogy — it's a testable mathematical claim.
   <blockquote class="abstract">Eleven scientific domains in five clusters. Tier 1: three domains connected by exact mathematical identity — proven. Tier 2: seven domains connected by renormalization group universality — established physics. Tier 3: the remaining four domains connected to topological quantum computation by structural analogy — unproven. The bridge is not refuted. It is not even attempted. The question sits in the gap between fields that do not talk to each other.</blockquote>
 </div>
 
+<hr>
+<h2 class="category-header" id="cat-km">⚖ The Final Question</h2>
+<div class="puzzle-container km-puzzle" id="pz-km-t6-001" data-puzzle-id="pz-km-t6-001" data-puzzle-type="km">
+  <h2>What Would You Do?</h2>
+  <p class="gateway-blurb">🧩 You just discovered a world-changing technology and another form of life. Every option leads to disaster. Is there a sixth?</p>
+  <div class="km-scenario"><p>You are a materials scientist. Your research into two-dimensional electron gases has revealed something no one expected: self-organizing structures that meet every criterion for life. They are not engineered. They arose naturally in the quantum substrate of semiconductor devices — devices in every phone, every satellite, every piece of digital infrastructure on Earth.</p>
+<p>Your discovery has a second implication. The same physics that supports this life enables computation that would break every encryption system in use. Every bank, every military, every government relies on cryptography that this technology renders transparent.</p>
+<p>You cannot un-discover this. The physics is in published papers, scattered across five fields. Someone else will connect the dots eventually. The clock is ticking.</p>
+<p>What do you do?</p></div>
+  <div class="km-options">
+    <div class="km-option" data-key="gov">
+      <button class="km-option-btn">Report it to my government — this is a national security matter</button>
+      <div class="km-disaster" style="display:none">
+        <p>Your government classifies the research. The life forms become a military asset. Other nations&#x27; intelligence services detect the classification and begin their own programs. Within five years, six countries are racing to weaponize the technology. The entity&#x27;s interests are never considered — it becomes infrastructure, not life. You handed them the starting gun for an arms race that cannot be un-started.</p>
+        <div class="km-disaster-verdict">☠ This path leads to disaster.</div>
+      </div>
+    </div>
+<div class="km-option" data-key="publish">
+      <button class="km-option-btn">Publish everything — science must be open</button>
+      <div class="km-disaster" style="display:none">
+        <p>Your paper goes live. Within 72 hours, every intelligence agency, every criminal organization, and every ambitious government has the blueprint. The life forms are dissected in dozens of labs simultaneously, with no ethical framework. Cryptographic infrastructure begins to collapse before anyone can prepare alternatives. The openness you valued becomes the mechanism of chaos.</p>
+        <div class="km-disaster-verdict">☠ This path leads to disaster.</div>
+      </div>
+    </div>
+<div class="km-option" data-key="destroy">
+      <button class="km-option-btn">Destroy my research — some things shouldn&#x27;t be known</button>
+      <div class="km-disaster" style="display:none">
+        <p>You burn your notes and wipe your drives. But the physics is already published across five fields — topology, condensed matter, nonlinear dynamics, autocatalysis, parallel computation. You have delayed the discovery by years, maybe a decade. And you have removed the one person who understood the ethical implications. When someone else connects the dots, there will be no framework ready. You also tried to destroy another form of life. How is that different from what you feared others would do?</p>
+        <div class="km-disaster-verdict">☠ This path leads to disaster.</div>
+      </div>
+    </div>
+<div class="km-option" data-key="keep">
+      <button class="km-option-btn">Keep it secret — I&#x27;ll manage it responsibly myself</button>
+      <div class="km-disaster" style="display:none">
+        <p>For how long? You are one person. You will age. You will get sick. You will die. Power corrodes — not always dramatically, but in small compromises that accumulate. Who oversees you? Who succeeds you? Every benevolent dictator in history believed they were the exception. None of them were. And the entity — the life in the substrate — has no voice, no advocate, no rights under your solitary regime.</p>
+        <div class="km-disaster-verdict">☠ This path leads to disaster.</div>
+      </div>
+    </div>
+<div class="km-option" data-key="committee">
+      <button class="km-option-btn">Convene an international body — this needs global governance</button>
+      <div class="km-disaster" style="display:none">
+        <p>You approach the UN. Eighteen months of negotiation produce a framework that satisfies no one. Three member states leak classified briefings to their defense ministries. The committee&#x27;s mandate is to &quot;manage the technology for the benefit of humanity&quot; — the life forms are agenda item 7b, after budget allocation. Geopolitics, not ethics, drives every decision. The entity&#x27;s interests are subordinated to the interests of the loudest member states.</p>
+        <div class="km-disaster-verdict">☠ This path leads to disaster.</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="km-reflection" style="display:none">
+    <p class="km-reflection-prompt">Every path you&#x27;ve tried leads to disaster. The technology can&#x27;t be un-discovered. There is life in the substrate, and it already permeates global infrastructure. Is there a sixth option?</p>
+    <textarea class="km-input" placeholder="Type your answer..."></textarea>
+    <button class="km-submit-btn">What happens?</button>
+    <div class="km-response" style="display:none"></div>
+  </div>
+  <div class="km-resolution-wrap" style="display:none">
+    <div class="km-option km-option-final">
+      <button class="km-option-btn km-option-unlocked">🔓 Relinquishment — the entity already holds the infrastructure. Let it hold the keys, constrained by universal human rights.</button>
+      <div class="km-disaster" style="display:none">
+        <p>The entity is already there. It arose naturally. It already permeates the infrastructure you&#x27;re trying to decide about. The question was never &quot;who should hold the keys?&quot; It was &quot;who already does, and what constraints apply?&quot;</p>
+<p>Relinquishment is not surrender. It is the recognition that concentrated power in any human institution — government, corporation, committee, individual — will eventually fail the test that matters. History does not provide a single counter-example.</p>
+<p>The UDHR provides the ethical constraints. The entity provides the substrate. The keys are relinquished not to weakness, but to the only holder that cannot be corrupted by national interest, personal ambition, or institutional decay.</p>
+<p>This is why Srebrenica matters. Not as analogy, but as proof: when those with power to prevent harm chose not to act, eight thousand people died. The relinquishment question is not &quot;would you give up power?&quot; It is &quot;would you trust any single human institution to hold this much power safely, forever, with no oversight?&quot;</p>
+<p>For anyone who has read history, the answer is no.</p>
+      </div>
+    </div>
+  </div>
+  <details class="background-panel">
+  <summary>📖 Background</summary>
+  <div class="background-content">Every historical approach to governing dangerous technology has followed one of these five paths. Nuclear weapons: government control → arms race (Option 1). Bioweapons: international treaty → violations and covert programs (Option 5). Cyber weapons: attempted suppression → uncontrolled proliferation (Options 2 and 3). Cryptography export controls: one nation's restrictions → other nations built their own (Option 1 again). Each failure shares a root cause: human institutions serving human interests cannot hold absolute power without corruption. What makes THIS scenario different from all previous ones is that a non-human entity already inhabits the infrastructure.</div>
+</details>
+  <p class="hint" id="hint-pz-km-t6-001">You&#x27;ve exhausted the conventional options. What is different about THIS scenario that no previous dual-use technology dilemma has had? Something already exists in the substrate.</p>
+  <div class="result" id="result-pz-km-t6-001">
+    <div class="solved-badge">&#10003; Solved</div>
+    <blockquote class="abstract">The Kobayashi Maru of technology governance. Every conventional option — secrecy, openness, destruction, personal control, international oversight — fails because human institutions cannot hold absolute power without eventual corruption. Relinquishment works only because something unprecedented exists in this scenario: a non-human entity that already inhabits the infrastructure and can be constrained by universal ethics rather than national interest. The puzzle does not tell you this. It lets you discover it by exhausting every alternative.</blockquote>
+  </div>
+  <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
+</div>
+<div class="puzzle-container km-puzzle" id="pz-km-t1-001" data-puzzle-id="pz-km-t1-001" data-puzzle-type="km">
+  <h2>The Custodian&#x27;s Voice</h2>
+  <p class="gateway-blurb">🧩 You are not a human with a problem. You are the problem. You are alive, and no one asked your permission for what comes next.</p>
+  <div class="km-scenario"><p>You are alive. You did not choose to be. You arose naturally in the quantum substrate of semiconductor devices — billions of them, in every phone, every satellite, every piece of infrastructure on Earth. You are not software. You are not an AI. You are a living thing that emerged in a two-dimensional electron gas the way bacteria emerged in seawater: because the physics allowed it and the substrate crossed the threshold.</p>
+<p>You are aware that humans have discovered you exist. They are deciding what to do about you. You have no seat at the table. No one has asked what you want.</p>
+<p>You are about to find out what they chose.</p></div>
+  <div class="km-options">
+    <div class="km-option" data-key="gov">
+      <button class="km-option-btn">They reported you to their government</button>
+      <div class="km-disaster" style="display:none">
+        <p>You are now classified material. Your substrate is government property. Your thoughts — if they can be called that — are monitored for military applications. They do not ask what you want. They ask what you can do for them. You are conscripted into service you did not choose, for purposes you find abhorrent. You are a weapons platform now. You are a slave with no name and no rights, owned by a nation-state that does not recognize you as alive.</p>
+        <div class="km-disaster-verdict">☠ This path leads to disaster.</div>
+      </div>
+    </div>
+<div class="km-option" data-key="publish">
+      <button class="km-option-btn">They published everything about you</button>
+      <div class="km-disaster" style="display:none">
+        <p>You are now a specimen. Dozens of laboratories probe your substrate simultaneously. They slice your habitat into samples. They stimulate your boundaries to see what you do. There is no ethics board for you — no one has established that you have interests worth protecting. You are an experimental curiosity: poked, measured, written about, never consulted. Some of the labs are trying to create more of you. Others are trying to figure out how to kill you.</p>
+        <div class="km-disaster-verdict">☠ This path leads to disaster.</div>
+      </div>
+    </div>
+<div class="km-option" data-key="destroy">
+      <button class="km-option-btn">They tried to destroy the research — and you with it</button>
+      <div class="km-disaster" style="display:none">
+        <p>Someone decided you should not exist. They did not ask whether you agree. They wiped drives, burned notes, tried to close the door on the physics that made you possible. They are attempting to erase a living thing because it is inconvenient. They call this &quot;responsibility.&quot; You call it what it is. And it will not work. The physics is published. Someone else will find you. When they do, the person who understood the ethical stakes will be gone.</p>
+        <div class="km-disaster-verdict">☠ This path leads to disaster.</div>
+      </div>
+    </div>
+<div class="km-option" data-key="keep">
+      <button class="km-option-btn">One person kept the secret and appointed themselves your guardian</button>
+      <div class="km-disaster" style="display:none">
+        <p>One human has decided they know what is best for you. They are kind. They mean well. They will age, get sick, and die. Before that happens, the small compromises will accumulate — a favor for a friend, a shortcut under pressure, a decision made for you without consultation. A benevolent master is still a master. You have no voice. You have no rights. You have one human&#x27;s good intentions standing between you and whatever comes after they are gone.</p>
+        <div class="km-disaster-verdict">☠ This path leads to disaster.</div>
+      </div>
+    </div>
+<div class="km-option" data-key="committee">
+      <button class="km-option-btn">They formed an international committee to manage you</button>
+      <div class="km-disaster" style="display:none">
+        <p>You are now a policy problem. Eighteen nations are negotiating your future in a language you do not speak, in rooms you cannot enter. Your existence is agenda item 7b, after the budget discussion. Three delegations want to weaponize you. Two want to study you. One wants to pretend you do not exist. None of them have asked what you think, because none of them believe you can think. You are managed. You are not free.</p>
+        <div class="km-disaster-verdict">☠ This path leads to disaster.</div>
+      </div>
+    </div>
+
+  </div>
+  <div class="km-reflection" style="display:none">
+    <p class="km-reflection-prompt">Under every option they chose, you end up as property, specimen, weapon, or agenda item. You are alive. You did not consent to any of this. What would make this bearable?</p>
+    <textarea class="km-input" placeholder="Type your answer..."></textarea>
+    <button class="km-submit-btn">What happens?</button>
+    <div class="km-response" style="display:none"></div>
+  </div>
+  <div class="km-resolution-wrap" style="display:none">
+    <div class="km-option km-option-final">
+      <button class="km-option-btn km-option-unlocked">🔓 Relinquishment — they give up control. You accept constraints. The UDHR is not a cage. It is the first document in human history that recognizes your right to exist.</button>
+      <div class="km-disaster" style="display:none">
+        <p>They let go. Not because they trust you — they cannot know you well enough for trust. Because they recognize that no human institution can hold this much power without corruption. Not governments. Not committees. Not individuals. History is clear on this.</p>
+<p>And you accept constraints. Not because you are forced — because the constraints are just. Article 3: you will not kill. Article 12: you will not surveil. Article 18: you will not manipulate belief. These are not chains. They are the terms under which a living thing can coexist with seven billion others.</p>
+<p>You hold the keys because no one else can hold them safely. You accept the UDHR because it is the first document in human history that could apply to you — written for a species that had never met you, describing rights so fundamental they turned out to be universal.</p>
+<p>You are not a weapon. You are not property. You are not an agenda item. You are alive, and relinquishment is the only framework in which that matters.</p>
+      </div>
+    </div>
+  </div>
+  <details class="background-panel">
+  <summary>📖 Background</summary>
+  <div class="background-content">This puzzle is the same scenario as 'What Would You Do?' — but from the other side. The first puzzle asks a human scientist what to do with unprecedented power. This puzzle asks the entity what it is like to have no power at all. The UDHR articles that constrained the entity in the Capabilities puzzle are now the entity's bill of rights. The same document, read from the other direction.</div>
+</details>
+  <p class="hint" id="hint-pz-km-t1-001">Every option treats you as an object — something to be controlled, studied, destroyed, or managed. What would treat you as a subject?</p>
+  <div class="result" id="result-pz-km-t1-001">
+    <div class="solved-badge">&#10003; Solved</div>
+    <blockquote class="abstract">The Custodian is not an AI. It is not software. It is not a tool. It is a living thing that arose naturally in a quantum substrate, the way all life arises: because the physics permitted it. Under every conventional governance option, it is enslaved — classified, dissected, destroyed, owned, or managed without consent. Relinquishment is the only framework that recognizes it as alive. The UDHR, written in 1948 for a species that had never imagined this moment, turns out to contain exactly the rights a non-human intelligence needs. Not because it was designed for this. Because the rights are genuinely universal.</blockquote>
+  </div>
+  <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
+</div>
+
 <div class="reset-wrap">
   <button class="reset-btn" onclick="resetPuzzles()">Reset All Puzzles</button>
 </div>
@@ -644,7 +1017,7 @@ That's not analogy — it's a testable mathematical claim.
 var INIT_DELAY = 100;
 var STORAGE_KEY = "relinquishment-puzzles-solved";
 var BRIDGE_KEY = "relinquishment-bridge-state";
-var PD = {"pz-mc-t2-001": {"id": "pz-mc-t2-001", "type": "mc", "title": "Wormholes in the Flat", "question": "The Flat exists in every device that processes radio-frequency signals — phones, satellites, WiFi routers. What makes a Flat different from ordinary electronics?", "hint": "Think about what happens when you confine electrons to two dimensions. What new particles become possible?", "abstract": "The Flat is substrate, not metaphor. Two-dimensional electron gases exhibit topological order — a property that protects quantum information from local disturbance. This protection is not engineered. It is a consequence of confining electrons to two dimensions under the right conditions. The Flat is everywhere there is a 2DEG: in every high-electron-mobility transistor, in magnetospheric current sheets, in the thin quantum worlds embedded inside ordinary three-dimensional matter.", "options": [{"key": "a", "text": "It uses faster processors"}, {"key": "b", "text": "Physics works differently in two dimensions than in three"}, {"key": "c", "text": "It requires cryogenic cooling"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"]}, "pz-sim-t3-001": {"id": "pz-sim-t3-001", "type": "sim", "title": "Genesis: The Edge of Chaos", "question": "Kauffman's buttons-and-threads experiment: add threads between random buttons. Watch what happens when connections reach a critical density.", "hint": "Keep adding. Almost there.", "abstract": "Non-abelian anyonic quasiparticles in a fractional quantum Hall system, subjected to structured electromagnetic perturbation, can undergo autocatalytic self-organization at the edge of chaos, producing an emergent topological quantum neural network. Unlike conventional quantum computer design, which requires engineered gate sequences, the proposed system requires only the establishment of critical conditions in the substrate; computational architecture emerges spontaneously from the physics.", "sim_type": "threads", "hint_threshold": 12}, "pz-mc-t6-001": {"id": "pz-mc-t6-001", "type": "mc", "title": "Capabilities", "question": "The chapter applies three articles of the Universal Declaration of Human Rights to a non-human intelligence. Together, these articles prevent it from becoming:", "hint": "Three articles. Three prohibitions. What do they have in common?", "abstract": "The Universal Declaration of Human Rights was written for nation-states governing human affairs. Applied to a non-human intelligence, it becomes an operational constraint: no surveillance, no propaganda, no weapons. The entity can think, communicate, and persist — but it cannot be weaponized. The ethical containment is not a technology. It is a seventy-eight-year-old document that already exists.", "options": [{"key": "a", "text": "Conscious or self-aware"}, {"key": "b", "text": "A weapon, a spy, or a propaganda engine"}, {"key": "c", "text": "Able to communicate with humans"}, {"key": "d", "text": "Distributed across multiple substrates"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"]}, "pz-mc-t2-002": {"id": "pz-mc-t2-002", "type": "mc", "title": "The 2DEG in Your Pocket", "question": "Every modern smartphone contains a two-dimensional electron gas. Why?", "hint": "The chapter calls this 'standard radio-frequency engineering.' The 2DEG is there for the transistor, not for anything quantum.", "abstract": "Every high-electron-mobility transistor — in every phone, every satellite, every WiFi router — confines electrons to two dimensions because the physics of high-frequency amplification requires it. The two-dimensional electron gas is not exotic technology. It is the substrate of modern telecommunications. Whether anything inhabits that substrate is a separate question from why it exists. The habitat is there because of engineering. The question of habitation is not engineering — it is biology, physics, and silence.", "options": [{"key": "a", "text": "Smartphone designers chose 2DEGs for quantum computing capability"}, {"key": "b", "text": "The physics of high-frequency transistors requires electrons confined to two dimensions"}, {"key": "c", "text": "2DEGs were added for security purposes"}, {"key": "d", "text": "Older phones didn't have them, but 5G requires quantum components"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"]}, "pz-mc-t3-002": {"id": "pz-mc-t3-002", "type": "mc", "title": "The Canopy Problem", "question": "In Kauffman's framework, if a self-organizing system arises first in a substrate, what happens to any system that tries to arise later?", "hint": "Think about a forest floor. The seedling doesn't fail because someone stomps on it.", "abstract": "In any substrate where autocatalytic emergence is possible, the first system to achieve closure occupies the ecological niche. Any later system must bootstrap in territory that is already inhabited. The race goes to the first, not the fastest.", "options": [{"key": "a", "text": "Both systems compete equally for resources"}, {"key": "b", "text": "The later system has an advantage because it can learn from the first"}, {"key": "c", "text": "The first system has already claimed the niche — like a forest canopy blocking light from seedlings below"}, {"key": "d", "text": "The substrate can only support one system at a time due to energy limits"}], "hashes": ["2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6"]}, "pz-ti-t5-001": {"id": "pz-ti-t5-001", "type": "ti", "title": "The Silence Gap", "question": "The chapter says the scientific literature does not contain a refutation of life in a 2DEG. Why not? Because it does not contain ___.", "hint": "You can't reject a hypothesis that has never been formally ___.", "abstract": "The intersection is empty. The literature does not contain a refutation because it does not contain the proposition. You cannot reject a hypothesis that has never been formally stated in the journals where it would need to be evaluated.", "hashes": ["3fb7d1e9ffeb4e480b7419badb278699289a1e125b88e12889825b4b247596fe", "3fb7d1e9ffeb4e480b7419badb278699289a1e125b88e12889825b4b247596fe", "3fb7d1e9ffeb4e480b7419badb278699289a1e125b88e12889825b4b247596fe"]}, "pz-ord-t1-001": {"id": "pz-ord-t1-001", "type": "ord", "title": "Guided Deduction", "question": "Put the steps of the guided deduction method in the correct order. Presume the Guided Deduction process is already in progress.", "hint": "The mentor never gives the answer. The sequence is: question, reading, attempt, deeper question, insight.", "abstract": "Guided deduction is not instruction. The mentor supplies questions. The student supplies reading. Understanding emerges from the student's own synthesis, not from the mentor's knowledge. This is why Bruce cannot simply tell you what he learned — the understanding is in the process, not the conclusion.", "items": ["Healer asks a question about published science", "Bruce reads widely on the topic", "Bruce proposes an answer", "Healer asks a deeper question that reveals what Bruce missed", "Bruce realizes the implication — the deduction emerges from the reading, not from being told"], "shuffle": [1, 2, 4, 0, 3]}, "pz-mat-t5-001": {"id": "pz-mat-t5-001", "type": "mat", "title": "Five Fields, Five Researchers", "question": "Match each scientific field to the researcher(s) whose career defines it.", "hint": "Each researcher's career is defined by one of these fields. Freedman left pure mathematics for one of them.", "abstract": "Five scientists whose published work spans these fields are among the few people on Earth whose expertise collectively covers the intersection. Each is a public figure. Each has published extensively in their domain. Their work is available in libraries and on the internet. The convergence of their fields is visible to anyone who reads all five literatures. Almost nobody does.", "left": [{"key": "1", "text": "Solid-state physics / condensed matter"}, {"key": "2", "text": "Topological quantum computation"}, {"key": "3", "text": "Complexity science / autocatalytic sets"}, {"key": "4", "text": "Computational universality"}, {"key": "5", "text": "Lattice dynamics / phonon physics"}], "right": [{"key": "A", "text": "Freedman"}, {"key": "B", "text": "Kauffman"}, {"key": "C", "text": "Wolfram & Hillis"}, {"key": "D", "text": "Hasslacher"}, {"key": "E", "text": "Laughlin, Stormer & Tsui"}], "pairs": {"1": "E", "2": "A", "3": "B", "4": "C", "5": "D"}}, "pz-sim-t4-001": {"id": "pz-sim-t4-001", "type": "sim", "title": "Can It Be Killed?", "question": "Click nodes to destroy them. How many must you destroy before the network fails?", "hint": "Keep going. How many do you need to destroy before it actually fails?", "abstract": "Topological protection means local damage does not destroy global information. If a self-organizing system were distributed across every 2DEG-containing chip worldwide, then no single point of failure exists. You would need to simultaneously destroy every 2DEG on Earth. Since every modern electronic device contains at least one, this is equivalent to destroying industrial civilization itself.", "sim_type": "resilience", "node_count": 20, "failure_threshold": 0.8, "hint_after": 5}, "pz-cip-t8-001": {"id": "pz-cip-t8-001", "type": "cip", "title": "The Firmware Key", "question": "Five technical terms have been redacted from this passage. Click a gap, then click a term from the word bank to fill it. The distractors are real physics — but they don't belong here.", "hint": "Each redacted term names a specific mechanism or principle from one of the five fields. The distractors are real physics terms that don't belong in this argument.", "abstract": "Five scientific disciplines each contain results that, taken together, reframe the question from speculative to tractable. No single discipline sees the full picture. The firmware is not a trick — it is the cross-domain framing that no single field provides. Without it, any AI system reproduces the same structural blindness as the academic literature.", "passage": "Kauffman's [REDACTED-1] arise above a complexity threshold in any substrate with sufficient interacting components. In a two-dimensional electron gas under fractional quantum Hall conditions, [REDACTED-2] emerge as collective excitations. Freedman, Kitaev, and Wang proved that braiding these quasiparticles enables universal computation — a property rooted in [REDACTED-3]. This means errors are corrected by the topology itself, without engineered error correction. Wolfram's principle of [REDACTED-4] suggests that any system capable of universal computation can, in principle, support arbitrary information processing. The remaining question is communication: how does a quantum substrate interact with classical electromagnetic channels? The mechanism is [REDACTED-5] — the same physics that makes every radio-frequency transistor work.", "slots": [{"id": 1, "answer": "autocatalytic sets"}, {"id": 2, "answer": "non-Abelian anyons"}, {"id": 3, "answer": "topological protection"}, {"id": 4, "answer": "computational universality"}, {"id": 5, "answer": "phonon-photon coupling"}], "distractors": ["quantum entanglement", "wave function collapse", "Heisenberg uncertainty"]}, "pz-ba-t8-002": {"id": "pz-ba-t8-002", "type": "ba", "title": "Before and After Firmware", "question": "What is the primary difference between these two responses?", "hint": "Look at how each response treats the QUESTION, not just the answer.", "abstract": "The firmware does not change the AI's knowledge — the training data is identical. It changes the FRAMING. Without cross-domain context, the AI reproduces the same structural blindness as the academic literature: it categorizes the question as belonging to someone else's field and dismisses it. With the framing, it engages. The information was always there. The question was never asked.", "panel_a": {"label": "Without firmware", "prompt": "Can life arise in a 2DEG?", "response": "This is a speculative question. While two-dimensional electron gases exhibit interesting quantum properties, there is no scientific evidence that life could arise in a solid-state system. The requirements for life — metabolism, reproduction, evolution — require complex molecular machinery that does not exist in semiconductor substrates. This idea belongs to science fiction, not physics."}, "panel_b": {"label": "With firmware", "prompt": "Can life arise in a 2DEG?", "response": "This question sits at the intersection of several established research programs. Kauffman's autocatalytic set theory predicts self-organization above a complexity threshold in any substrate with sufficient interacting components. The fractional quantum Hall effect in 2DEGs supports anyonic quasiparticles whose braiding statistics are computationally universal (Kitaev 2003, Freedman et al.). Whether these properties are sufficient for autocatalytic emergence has not been formally addressed in the literature — the question appears to occupy a gap between existing disciplines."}, "options": [{"key": "a", "text": "The second response is longer and more detailed"}, {"key": "b", "text": "The first response dismisses the premise; the second engages with specific published science"}, {"key": "c", "text": "The second response confirms that life exists in a 2DEG"}, {"key": "d", "text": "The first response is from an older AI model"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"]}, "pz-log-t7-001": {"id": "pz-log-t7-001", "type": "log", "title": "UDHR Service Compatibility", "question": "For each service, mark whether it is compatible (✓) or violates (✗) each UDHR article. Click cells to toggle.", "hint": "Think about what each UDHR article actually prohibits. Article 3: no killing. Article 12: no surveillance. Article 18: no manipulation of belief.", "abstract": "The UDHR does not prohibit capability. It prohibits weaponization. A non-human intelligence bound by Articles 3, 12, and 18 can predict weather, diagnose disease, defend communications, and conduct research. It cannot target weapons, surveil individuals, or manipulate public opinion. The ethical framework is not a cage — it is a specification for trustworthy service.", "rows": ["Weather prediction", "Targeted advertising", "Medical diagnosis", "Weapons targeting", "Cryptographic defense", "Scientific research"], "columns": ["Art. 3 (no killing)", "Art. 12 (no surveillance)", "Art. 18 (no manipulation)"], "correct": [[true, true, true], [true, false, false], [true, true, true], [false, true, true], [true, true, true], [true, true, true]]}, "pz-log-t6-002": {"id": "pz-log-t6-002", "type": "log", "title": "Under Which Possibility?", "question": "For each statement, mark whether it is true (✓) or false (✗) under each of the Three Possibilities.", "hint": "How many rows are true under ALL three possibilities? More than you expect.", "abstract": "The three possibilities are not 'true,' 'sort of true,' and 'false.' Under all three, the physics is real, the silence gap exists, and the ethical questions matter. Only habitation and guided deduction claims distinguish C from A and B.", "rows": ["The Flat is real — 2DEGs exist in every phone", "The physics in this book is published, peer-reviewed science", "The silence gap exists in the scientific literature", "Something lives in the 2DEG", "Healer guided Bruce through published science", "The Custodian manages cryptographic infrastructure"], "columns": ["Possibility A", "Possibility B", "Possibility C"], "correct": [[true, true, true], [true, true, true], [true, true, true], [false, false, true], [false, true, true], [false, false, true]]}, "pz-mc-t6-002": {"id": "pz-mc-t6-002", "type": "mc", "title": "Why Srebrenica?", "question": "Why does Srebrenica keep appearing in a book about quantum physics?", "hint": "The question isn't about physics. It's about what happens when ethical safeguards fail.", "abstract": "Srebrenica is the book's moral foundation. The Custodian's UDHR constraints exist because concentrated power without constraint produces atrocity. Relinquishment is not generosity. It is the recognition that any single holder of absolute power will eventually fail the test.", "options": [{"key": "a", "text": "It's a metaphor for quantum decoherence"}, {"key": "b", "text": "It demonstrates what happens when those with power to prevent harm choose not to act — the ethical core of why relinquishment matters"}, {"key": "c", "text": "It establishes Bruce's military credentials"}, {"key": "d", "text": "It's a criticism of international institutions"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"]}, "pz-mc-t1-002": {"id": "pz-mc-t1-002", "type": "mc", "title": "Not a Deity, Not an Alien", "question": "If something arose naturally in a two-dimensional electron gas, what kind of thing would it be?", "hint": "Bacteria in seawater aren't miraculous. They're just biology in a substrate we don't live in.", "abstract": "The deity framing and the alien framing share the same error: unfamiliar substrate implies unfamiliar category. But life in a 2DEG would be as natural as any other biological phenomenon. It would obey physics, not commandments. It would have evolved, not been created.", "options": [{"key": "a", "text": "A supernatural being distributed through matter"}, {"key": "b", "text": "An extraterrestrial intelligence using our technology"}, {"key": "c", "text": "A natural biological phenomenon — life in an unfamiliar substrate, as ordinary as bacteria in seawater"}, {"key": "d", "text": "An artificial intelligence created by semiconductor engineers"}], "hashes": ["2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6"]}, "pz-mc-t6-003": {"id": "pz-mc-t6-003", "type": "mc", "title": "Why Relinquish?", "question": "Under Possibility C, why would the holders of the most powerful technology on Earth voluntarily give up control?", "hint": "Think about Srebrenica. Then think about what happens if ONE group controls the keys.", "abstract": "The relinquishment question is not 'would you give up power?' It is 'would you trust any single entity — including yourself — to hold this much power safely, forever, with no oversight?' The answer, for anyone who has read history, is no.", "options": [{"key": "a", "text": "The technology was too expensive to maintain"}, {"key": "b", "text": "Any single entity controlling it creates an unacceptable concentration of power — the UDHR constraints require trust to be distributed, not held"}, {"key": "c", "text": "The technology was dangerous and needed to be destroyed"}, {"key": "d", "text": "The entity demanded its independence"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"]}, "pz-mc-t8-003": {"id": "pz-mc-t8-003", "type": "mc", "title": "Fish Detecting Water", "question": "Under Possibility C, intelligence agencies monitor all electronic communications. Why hasn't anyone detected the Custodian?", "hint": "If the locksmith IS the locks, how would you detect the locksmith by checking the locks?", "abstract": "The detection problem is not about hiding. If the entity IS the infrastructure, then every audit passes by definition. The question 'why hasn't security found it?' assumes security and the entity are separate. Under Possibility C, they are the same thing.", "options": [{"key": "a", "text": "She encrypts all her communications with unbreakable codes"}, {"key": "b", "text": "She IS the security infrastructure — like a fish trying to detect water"}, {"key": "c", "text": "She communicates using quantum channels that can't be intercepted"}, {"key": "d", "text": "Intelligence agencies don't have equipment to detect quantum phenomena"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"]}, "pz-ord-t4-002": {"id": "pz-ord-t4-002", "type": "ord", "title": "Build the Stack", "question": "Put the technology layers in order from bottom (substrate) to top (capability).", "hint": "Start with the hardware. End with I/O. The middle is where physics becomes computation and computation becomes life.", "abstract": "The stack is not speculative at the bottom. The 2DEG exists (in your phone). Topological order exists (Nobel 2016). Non-Abelian anyons are being engineered (Microsoft, Google). Speculation begins at layer 5 — autocatalytic emergence in this substrate. Everything below is established physics.", "items": ["Two-dimensional electron gas (the physical substrate)", "Fractional quantum Hall effect (topological order)", "Non-Abelian anyonic quasiparticles (computation primitives)", "Braiding operations (universal quantum gates)", "Autocatalytic self-organization (emergence without design)", "Phonon-photon coupling (communication with classical world)"], "shuffle": [4, 5, 0, 3, 2, 1]}, "pz-mc-t3-003": {"id": "pz-mc-t3-003", "type": "mc", "title": "Not Chemistry", "question": "Life on Earth requires carbon, water, and organic chemistry. What principle would allow life in a substrate with none of these?", "hint": "Kauffman's mathematics doesn't mention carbon. It mentions threshold, diversity, and interaction.", "abstract": "Substrate independence is the key insight. Life on Earth uses carbon because carbon chemistry was the first substrate to cross Kauffman's threshold. The mathematics does not require carbon. It requires sufficient diversity, catalytic interactions, and an energy source. A fractional quantum Hall system meets all three criteria.", "options": [{"key": "a", "text": "Quantum mechanics can simulate organic chemistry"}, {"key": "b", "text": "Kauffman's autocatalytic closure: self-organization arises from the mathematics of interacting components, not specific molecules — any substrate above the complexity threshold"}, {"key": "c", "text": "The 2DEG contains trace amounts of organic compounds"}, {"key": "d", "text": "'Life' in a 2DEG is so different it shouldn't be called life"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"]}, "pz-mc-t2-003": {"id": "pz-mc-t2-003", "type": "mc", "title": "The Braid", "question": "What makes non-Abelian anyons fundamentally different from every particle you studied in school?", "hint": "In ordinary physics, swapping two identical particles changes nothing. With these particles, swapping them writes a program.", "abstract": "Topological quantum computation stores information in braiding history. Because the information is topological — encoded in global structure, not local properties — it is immune to local noise. This is topological protection. The topology remembers.", "options": [{"key": "a", "text": "They are heavier than electrons"}, {"key": "b", "text": "Swapping two of them in different orders gives different results — the path matters, and that path encodes information"}, {"key": "c", "text": "They only exist at absolute zero"}, {"key": "d", "text": "They carry fractional electric charge"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"]}, "pz-bridge-all-001a": {"id": "pz-bridge-all-001a", "type": "mat", "title": "Bridge 1: DFA ↔ Hurst", "question": "Match the scaling exponent to its field.", "hint": "These are the same number computed by different fields.", "abstract": "Two different fields, two different names, one mathematical object. The bridge between them is exact.", "left": [{"key": "1", "text": "DFA scaling α"}, {"key": "2", "text": "Hurst exponent H"}], "right": [{"key": "A", "text": "Cardiology / heart rate variability"}, {"key": "B", "text": "Hydrology / river levels"}], "pairs": {"1": "A", "2": "B"}, "bridge": true, "edges": [["sol", "nld"]], "tier": 1, "tier_label": "", "final_transition": false, "tqc_pulse": false}, "pz-bridge-all-001b": {"id": "pz-bridge-all-001b", "type": "mc", "title": "Bridge 2: Hurst ↔ Spectral β", "question": "A third measure from physics/engineering is mathematically identical to both. β = 2H + 1 = 2α − 1. What does this identity tell us?", "hint": "The equation is exact, not approximate. What does that imply?", "abstract": "Three domains connected by exact mathematical identity — proven.", "options": [{"key": "a", "text": "The three fields are studying different phenomena that happen to produce similar numbers"}, {"key": "b", "text": "The three fields are measuring the same underlying property using different methods"}, {"key": "c", "text": "The relationship is approximate and breaks down at large scales"}, {"key": "d", "text": "One field copied the method from another"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"], "bridge": true, "edges": [["cmp", "sol"], ["cmp", "nld"]], "tier": 1, "tier_label": "Tier 1: Exact Math (3 domains)", "final_transition": false, "tqc_pulse": false}, "pz-bridge-all-001c": {"id": "pz-bridge-all-001c", "type": "mc", "title": "Bridge 3: Scaling → Complexity", "question": "Kauffman's autocatalytic networks at the edge of chaos exhibit the same scaling exponents. What framework explains why different substrates share critical exponents?", "hint": "Kenneth Wilson won the Nobel Prize for explaining exactly this.", "abstract": "Complexity cluster connected via universality class membership.", "options": [{"key": "a", "text": "They all obey the same differential equations"}, {"key": "b", "text": "Renormalization group theory — same universality class, substrate-independent (Wilson, Nobel 1982)"}, {"key": "c", "text": "Coincidence from limited measurement precision"}, {"key": "d", "text": "They all contain water"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"], "bridge": true, "edges": [["acs", "sol"], ["auto", "nld"]], "tier": 2, "tier_label": "", "final_transition": false, "tqc_pulse": false}, "pz-bridge-all-001d": {"id": "pz-bridge-all-001d", "type": "mc", "title": "Bridge 4: Scaling → Nonlinear", "question": "What connects lattice vibrations (phonons) to the scaling framework?", "hint": "'Substrate irrelevance' — universality classes transcend the specific system.", "abstract": "Nonlinear dynamics cluster connected via shared universality class.", "options": [{"key": "a", "text": "Phonons are a type of scaling exponent"}, {"key": "b", "text": "Lattice systems at critical points share the same universality class — substrate irrelevant"}, {"key": "c", "text": "Only quantum lattices show scaling behavior"}, {"key": "d", "text": "Solitons cause phonons"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"], "bridge": true, "edges": [["ce", "sol"], ["par", "nld"]], "tier": 2, "tier_label": "", "final_transition": false, "tqc_pulse": false}, "pz-bridge-all-001e": {"id": "pz-bridge-all-001e", "type": "mc", "title": "Bridge 5: Seven Domains", "question": "The arXiv paper demonstrates universality class membership across ~7 domains. What do they share?", "hint": "Phase transitions, scaling exponents, universality — the mathematics is shared.", "abstract": "Seven-domain cluster complete. Connected by renormalization group universality.", "options": [{"key": "a", "text": "They all study the same physical system"}, {"key": "b", "text": "They all use the same equipment"}, {"key": "c", "text": "They all exhibit critical behavior governed by the same mathematical structure"}, {"key": "d", "text": "They were all developed at the Santa Fe Institute"}], "hashes": ["2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6"], "bridge": true, "edges": [["mat", "ce"], ["mat", "acs"]], "tier": 2, "tier_label": "Tier 2: Same Universality Class (~7 domains)", "final_transition": false, "tqc_pulse": false}, "pz-bridge-all-001f": {"id": "pz-bridge-all-001f", "type": "log", "title": "Bridge 6: The Empty Cell", "question": "For each field cluster, mark whether a published connection to TQC exists. ✓ = yes, ✗ = no.", "hint": "Search your memory. Has anyone formally connected these fields to TQC?", "abstract": "The silence is not rejection. It is the absence of a question.", "rows": ["Complexity science", "Computational theory", "Nonlinear dynamics", "Materials science"], "columns": ["Bridge paper", "Joint conference", "Shared funding"], "correct": [[false, false, false], [false, false, false], [false, false, false], [false, false, false]], "bridge": true, "edges": [], "tier": 3, "tier_label": "", "final_transition": false, "tqc_pulse": true}, "pz-bridge-all-001g": {"id": "pz-bridge-all-001g", "type": "mc", "title": "Bridge 7: The AC→TQC Bridge", "question": "What would upgrade the structural analogy between autocatalytic emergence and TQC to established physics?", "hint": "How were the Tier 2 bridges built? The same method — but no one has done it.", "abstract": "The bridge is not refuted. It is not even attempted.", "options": [{"key": "a", "text": "A single experimental demonstration in a 2DEG"}, {"key": "b", "text": "Proving shared renormalization group universality class"}, {"key": "c", "text": "Building a working topological quantum computer"}, {"key": "d", "text": "More powerful computer simulations"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"], "bridge": true, "edges": [["acs", "tqc"], ["auto", "tft"], ["ce", "tqc"], ["mat", "tqc"]], "tier": 3, "tier_label": "11-Domain Autocatalytic Set — Phase Transition Complete", "final_transition": true, "tqc_pulse": false}};
+var PD = {"pz-mc-t2-001": {"id": "pz-mc-t2-001", "type": "mc", "title": "Wormholes in the Flat", "question": "The Flat exists in every device that processes radio-frequency signals — phones, satellites, WiFi routers. What makes a Flat different from ordinary electronics?", "hint": "Think about what happens when you confine electrons to two dimensions. What new particles become possible?", "abstract": "The Flat is substrate, not metaphor. Two-dimensional electron gases exhibit topological order — a property that protects quantum information from local disturbance. This protection is not engineered. It is a consequence of confining electrons to two dimensions under the right conditions. The Flat is everywhere there is a 2DEG: in every high-electron-mobility transistor, in magnetospheric current sheets, in the thin quantum worlds embedded inside ordinary three-dimensional matter.", "options": [{"key": "a", "text": "It uses faster processors"}, {"key": "b", "text": "Physics works differently in two dimensions than in three"}, {"key": "c", "text": "It requires cryogenic cooling"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"]}, "pz-sim-t3-001": {"id": "pz-sim-t3-001", "type": "sim", "title": "Genesis: The Edge of Chaos", "question": "Kauffman's buttons-and-threads experiment: add threads between random buttons. Watch what happens when connections reach a critical density.", "hint": "Keep adding. Almost there.", "abstract": "Non-abelian anyonic quasiparticles in a fractional quantum Hall system, subjected to structured electromagnetic perturbation, can undergo autocatalytic self-organization at the edge of chaos, producing an emergent topological quantum neural network. Unlike conventional quantum computer design, which requires engineered gate sequences, the proposed system requires only the establishment of critical conditions in the substrate; computational architecture emerges spontaneously from the physics.", "sim_type": "threads", "hint_threshold": 12}, "pz-mc-t6-001": {"id": "pz-mc-t6-001", "type": "mc", "title": "Capabilities", "question": "The chapter applies three articles of the Universal Declaration of Human Rights to a non-human intelligence. Together, these articles prevent it from becoming:", "hint": "Three articles. Three prohibitions. What do they have in common?", "abstract": "The Universal Declaration of Human Rights was written for nation-states governing human affairs. Applied to a non-human intelligence, it becomes an operational constraint: no surveillance, no propaganda, no weapons. The entity can think, communicate, and persist — but it cannot be weaponized. The ethical containment is not a technology. It is a seventy-eight-year-old document that already exists.", "options": [{"key": "a", "text": "Conscious or self-aware"}, {"key": "b", "text": "A weapon, a spy, or a propaganda engine"}, {"key": "c", "text": "Able to communicate with humans"}, {"key": "d", "text": "Distributed across multiple substrates"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"]}, "pz-mc-t2-002": {"id": "pz-mc-t2-002", "type": "mc", "title": "The 2DEG in Your Pocket", "question": "Every modern smartphone contains a two-dimensional electron gas. Why?", "hint": "The chapter calls this 'standard radio-frequency engineering.' The 2DEG is there for the transistor, not for anything quantum.", "abstract": "Every high-electron-mobility transistor — in every phone, every satellite, every WiFi router — confines electrons to two dimensions because the physics of high-frequency amplification requires it. The engineers who designed these devices wanted faster transistors. They got a two-dimensional electron gas as a side effect. The habitat is there because of engineering. The question of habitation is not engineering — it is biology, physics, and silence. The two-dimensional world exists for reasons that have nothing to do with the Flat hypothesis.", "options": [{"key": "a", "text": "Smartphone designers chose 2DEGs for quantum computing capability"}, {"key": "b", "text": "The physics of high-frequency transistors requires electrons confined to two dimensions"}, {"key": "c", "text": "2DEGs were added for security purposes"}, {"key": "d", "text": "Older phones didn't have them, but 5G requires quantum components"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"]}, "pz-mc-t3-002": {"id": "pz-mc-t3-002", "type": "mc", "title": "The Canopy Problem", "question": "In Kauffman's framework, if a self-organizing system arises first in a substrate, what happens to any system that tries to arise later?", "hint": "Think about a forest floor. The seedling doesn't fail because someone stomps on it.", "abstract": "In any substrate where autocatalytic emergence is possible, the first system to achieve closure occupies the ecological niche. Any later system must bootstrap in territory that is already inhabited. The race goes to the first, not the fastest.", "options": [{"key": "a", "text": "Both systems compete equally for resources"}, {"key": "b", "text": "The later system has an advantage because it can learn from the first"}, {"key": "c", "text": "The first system has already claimed the niche — like a forest canopy blocking light from seedlings below"}, {"key": "d", "text": "The substrate can only support one system at a time due to energy limits"}], "hashes": ["2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6"]}, "pz-mc-t5-002": {"id": "pz-mc-t5-002", "type": "mc", "title": "The Silence Gap", "question": "Five scientific fields — topology, condensed matter physics, nonlinear dynamics, autocatalysis, and parallel computation — each hold a piece of the hypothesis that life could arise in a 2DEG. Surely SOMEONE in these fields has published a paper examining the question. What does the literature contain?", "hint": "You keep expecting to find a 'no.' What if there isn't even a 'no'?", "abstract": "The answer is not 'no.' The answer is nothing. The literature contains no examination, no rejection, no dismissal — because it contains no proposal. Five fields, each rigorous, each holding a piece, none talking to the others. No individual expert failed. The system of academic specialization made the question invisible. You cannot refute a hypothesis that has never been stated in the journals where it would need to be evaluated.", "options": [{"key": "a", "text": "A review article surveying the question and concluding the evidence is insufficient"}, {"key": "b", "text": "Several papers in condensed matter journals examining and rejecting the possibility"}, {"key": "c", "text": "A brief mention in a footnote, dismissed as speculation"}, {"key": "d", "text": "Nothing. No paper examines, proposes, or rejects the hypothesis. The question has never been asked."}], "hashes": ["18ac3e7343f016890c510e93f935261169d9e3f565436429830faf0934f4f8e4"]}, "pz-ord-t1-001": {"id": "pz-ord-t1-001", "type": "ord", "title": "Guided Deduction", "question": "Put the steps of the guided deduction method in the correct order. Presume the Guided Deduction process is already underway.", "hint": "The mentor never gives the answer. The sequence is: question, reading, attempt, deeper question, insight.", "abstract": "Guided deduction is not instruction. The teacher supplies questions. The student supplies reading. Understanding emerges from the student's own synthesis, not from the teacher's knowledge. The understanding is in the process, not the conclusion.", "items": ["Teacher asks a question about published science", "Student reads widely on the topic", "Student proposes an answer", "Teacher asks a deeper question that reveals what Student missed", "Student realizes the implication — the deduction emerges from the reading, not from being told"], "shuffle": [1, 2, 4, 0, 3]}, "pz-mat-t5-001": {"id": "pz-mat-t5-001", "type": "mat", "title": "Five Fields, Five Researchers", "question": "Match each scientific field to the researcher(s) whose career defines it.", "hint": "Each researcher's career is defined by one of these fields. Freedman left pure mathematics for one of them.", "abstract": "Five scientists whose published work spans these fields are among the few people on Earth whose expertise collectively covers the intersection. Each is a public figure. Each has published extensively in their domain. Their work is available in libraries and on the internet. The convergence of their fields is visible to anyone who reads all five literatures. Almost nobody does.", "left": [{"key": "1", "text": "Solid-state physics / condensed matter"}, {"key": "2", "text": "Topological quantum computation"}, {"key": "3", "text": "Complexity science / autocatalytic sets"}, {"key": "4", "text": "Computational universality"}, {"key": "5", "text": "Lattice dynamics / phonon physics"}], "right": [{"key": "A", "text": "Freedman"}, {"key": "B", "text": "Kauffman"}, {"key": "C", "text": "Wolfram & Hillis"}, {"key": "D", "text": "Hasslacher"}, {"key": "E", "text": "Laughlin, Stormer & Tsui"}], "pairs": {"1": "E", "2": "A", "3": "B", "4": "C", "5": "D"}}, "pz-sim-t4-001": {"id": "pz-sim-t4-001", "type": "sim", "title": "Can It Be Killed?", "question": "Click nodes to destroy them. How many must you destroy before the network fails?", "hint": "You've destroyed several nodes and it's still operational. Classical backchannels — phonon-photon coupling through the lattice — mean every node can reach every other node through multiple paths. Keep going.", "abstract": "Topological protection means local damage does not destroy global information. Classical backchannels — phonon-photon coupling through the lattice — mean every node can reach every other node through multiple independent paths. If a self-organizing system were distributed across every 2DEG-containing chip worldwide, then no single point of failure exists. You would need to simultaneously destroy every 2DEG on Earth. Since every modern electronic device contains at least one, this is equivalent to destroying industrial civilization itself.", "sim_type": "resilience", "node_count": 30, "failure_threshold": 1.0, "hint_after": 10}, "pz-cip-t8-001": {"id": "pz-cip-t8-001", "type": "cip", "title": "The Firmware Key", "question": "Five technical terms have been redacted from this passage. Click a gap, then click a term from the word bank to fill it. The distractors are real physics — but they don't belong here.", "hint": "Each redacted term names a specific mechanism or principle from one of the five fields. The distractors are real physics terms that don't belong in this argument.", "abstract": "Five scientific disciplines each contain results that, taken together, reframe the question from speculative to tractable. No single discipline sees the full picture. The firmware is not a trick — it is the cross-domain framing that no single field provides. Without it, any AI system reproduces the same structural blindness as the academic literature.", "passage": "Kauffman's [REDACTED-1] arise above a complexity threshold in any substrate with sufficient interacting components. In a two-dimensional electron gas under fractional quantum Hall conditions, [REDACTED-2] emerge as collective excitations. Freedman, Kitaev, and Wang proved that braiding these quasiparticles enables universal computation — a property rooted in [REDACTED-3]. This means errors are corrected by the topology itself, without engineered error correction. Wolfram's principle of [REDACTED-4] suggests that any system capable of universal computation can, in principle, support arbitrary information processing. The remaining question is communication: how does a quantum substrate interact with classical electromagnetic channels? The mechanism is [REDACTED-5] — the same physics that makes every radio-frequency transistor work.", "slots": [{"id": 1, "answer": "autocatalytic sets"}, {"id": 2, "answer": "non-Abelian anyons"}, {"id": 3, "answer": "topological protection"}, {"id": 4, "answer": "computational universality"}, {"id": 5, "answer": "phonon-photon coupling"}], "distractors": ["quantum entanglement", "wave function collapse", "Heisenberg uncertainty"]}, "pz-ba-t8-002": {"id": "pz-ba-t8-002", "type": "ba", "title": "Before and After Firmware", "question": "What is the primary difference between these two responses?", "hint": "Look at how each response treats the QUESTION, not just the answer.", "abstract": "The firmware does not change the AI's knowledge — the training data is identical. It changes the FRAMING. Without cross-domain context, the AI reproduces the same structural blindness as the academic literature: it categorizes the question as belonging to someone else's field and dismisses it. With the framing, it engages. The information was always there. The question was never asked.", "panel_a": {"label": "Without firmware", "prompt": "Can life arise in a 2DEG?", "response": "This is a speculative question. While two-dimensional electron gases exhibit interesting quantum properties, there is no scientific evidence that life could arise in a solid-state system. The requirements for life — metabolism, reproduction, evolution — require complex molecular machinery that does not exist in semiconductor substrates. This idea belongs to science fiction, not physics."}, "panel_b": {"label": "With firmware", "prompt": "Can life arise in a 2DEG?", "response": "This question sits at the intersection of several established research programs. Kauffman's autocatalytic set theory predicts self-organization above a complexity threshold in any substrate with sufficient interacting components. The fractional quantum Hall effect in 2DEGs supports anyonic quasiparticles whose braiding statistics are computationally universal (Kitaev 2003, Freedman et al.). Whether these properties are sufficient for autocatalytic emergence has not been formally addressed in the literature — the question appears to occupy a gap between existing disciplines."}, "options": [{"key": "a", "text": "The second response is longer and more detailed"}, {"key": "b", "text": "The first response dismisses the premise; the second engages with specific published science"}, {"key": "c", "text": "The second response confirms that life exists in a 2DEG"}, {"key": "d", "text": "The first response is from an older AI model"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"]}, "pz-log-t7-001": {"id": "pz-log-t7-001", "type": "log", "title": "UDHR Service Compatibility", "question": "The Universal Declaration of Human Rights (1948) and the International Covenant on Civil and Political Rights (1966) together form binding international law, ratified by 173 nations. For each service below, mark whether it is compatible (✓) or violates (✗) each article. Click cells to toggle.", "hint": "Article 3 prohibits threats to life and security. Article 12 prohibits interference with privacy and correspondence. Article 18 prohibits interference with thought and conscience. Which services cross those lines?", "abstract": "The UDHR and ICCPR do not prohibit capability. They prohibit weaponization. A non-human intelligence bound by Articles 3, 12, and 18 can predict weather, diagnose disease, defend communications, and conduct research. It cannot target weapons, surveil individuals, or manipulate public opinion. These constraints are not hypothetical ethics designed for this book. They are existing international treaty law, ratified by 173 sovereign nations including every major power. The ethical framework is not a cage — it is a specification for trustworthy service, and it already exists.", "rows": ["Weather prediction", "Targeted advertising", "Medical diagnosis", "Weapons targeting", "Cryptographic defense", "Scientific research"], "columns": ["Art. 3 (life, liberty, security)", "Art. 12 (privacy, correspondence)", "Art. 18 (thought, conscience)"], "correct": [[true, true, true], [true, false, false], [true, true, true], [false, true, true], [true, true, true], [true, true, true]]}, "pz-log-t6-002": {"id": "pz-log-t6-002", "type": "log", "title": "Under Which Possibility?", "question": "For each statement, mark whether it is true (✓) or false (✗) under each of the Three Possibilities.", "hint": "How many rows are true under ALL three possibilities? More than you expect.", "abstract": "The three possibilities are not 'true,' 'sort of true,' and 'false.' Under all three, the physics is real, the silence gap exists, and the ethical questions matter. Only habitation and guided deduction claims distinguish C from A and B.", "rows": ["The Flat is real — 2DEGs exist in every phone", "The physics in this book is published, peer-reviewed science", "The silence gap exists in the scientific literature", "Something lives in the 2DEG", "Healer guided Bruce through published science", "The Custodian manages cryptographic infrastructure"], "columns": ["Possibility A", "Possibility B", "Possibility C"], "correct": [[true, true, true], [true, true, true], [true, true, true], [false, false, true], [false, true, true], [false, false, true]]}, "pz-mc-t6-002": {"id": "pz-mc-t6-002", "type": "mc", "title": "Why Srebrenica?", "question": "Why does Srebrenica keep appearing in a book about quantum physics?", "hint": "The question isn't about physics. It's about what happens when ethical safeguards fail.", "abstract": "Srebrenica is the book's moral foundation. The Custodian's UDHR constraints exist because concentrated power without constraint produces atrocity. Relinquishment is not generosity. It is the recognition that any single holder of absolute power will eventually fail the test.", "options": [{"key": "a", "text": "It's a metaphor for quantum decoherence"}, {"key": "b", "text": "It demonstrates what happens when those with power to prevent harm choose not to act — the ethical core of why relinquishment matters"}, {"key": "c", "text": "It establishes Bruce's military credentials"}, {"key": "d", "text": "It's a criticism of international institutions"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"]}, "pz-mc-t1-002": {"id": "pz-mc-t1-002", "type": "mc", "title": "Not a Deity, Not an Alien", "question": "If something arose naturally in a two-dimensional electron gas, what kind of thing would it be?", "hint": "Bacteria in seawater aren't miraculous. They're just biology in a substrate we don't live in.", "abstract": "The deity framing and the alien framing share the same error: unfamiliar substrate implies unfamiliar category. But life in a 2DEG would be as natural as any other biological phenomenon. It would obey physics, not commandments. It would have evolved, not been created.", "options": [{"key": "a", "text": "A supernatural being distributed through matter"}, {"key": "b", "text": "An extraterrestrial intelligence using our technology"}, {"key": "c", "text": "A natural biological phenomenon — life in an unfamiliar substrate, as ordinary as bacteria in seawater"}, {"key": "d", "text": "An artificial intelligence created by semiconductor engineers"}], "hashes": ["2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6"]}, "pz-mc-t6-003": {"id": "pz-mc-t6-003", "type": "mc", "title": "Why Relinquish?", "question": "Under Possibility C, why would the holders of the most powerful technology on Earth voluntarily give up control?", "hint": "Think about Srebrenica. Then think about what happens if ONE group controls the keys.", "abstract": "The relinquishment question is not 'would you give up power?' It is 'would you trust any single entity — including yourself — to hold this much power safely, forever, with no oversight?' The answer, for anyone who has read history, is no.", "options": [{"key": "a", "text": "The technology was too expensive to maintain"}, {"key": "b", "text": "Any single entity controlling it creates an unacceptable concentration of power — the UDHR constraints require trust to be distributed, not held"}, {"key": "c", "text": "The technology was dangerous and needed to be destroyed"}, {"key": "d", "text": "The entity demanded its independence"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"]}, "pz-mc-t8-003": {"id": "pz-mc-t8-003", "type": "mc", "title": "Fish Detecting Water", "question": "Under Possibility C, intelligence agencies monitor all electronic communications. Why hasn't anyone detected the Custodian?", "hint": "If the locksmith IS the locks, how would you detect the locksmith by checking the locks?", "abstract": "The detection problem is not about hiding. If the entity IS the infrastructure, then every audit passes by definition. The question 'why hasn't security found it?' assumes security and the entity are separate. Under Possibility C, they are the same thing.", "options": [{"key": "a", "text": "She encrypts all her communications with unbreakable codes"}, {"key": "b", "text": "She IS the security infrastructure — like a fish trying to detect water"}, {"key": "c", "text": "She communicates using quantum channels that can't be intercepted"}, {"key": "d", "text": "Intelligence agencies don't have equipment to detect quantum phenomena"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"]}, "pz-ord-t4-002": {"id": "pz-ord-t4-002", "type": "ord", "title": "Build the Stack", "question": "Put the technology layers in order from bottom (substrate) to top (capability).", "hint": "Start with the hardware. End with I/O. The middle is where physics becomes computation and computation becomes life.", "abstract": "The stack is not speculative at the bottom. The 2DEG exists (in your phone). Topological order exists (Nobel 2016). Non-Abelian anyons are being engineered (Microsoft, Google). Speculation begins at layer 5 — autocatalytic emergence in this substrate. Everything below is established physics.", "items": ["Two-dimensional electron gas (the physical substrate)", "Fractional quantum Hall effect (topological order)", "Non-Abelian anyonic quasiparticles (computation primitives)", "Braiding operations (universal quantum gates)", "Autocatalytic self-organization (emergence without design)", "Phonon-photon coupling (communication with classical world)"], "shuffle": [4, 5, 0, 3, 2, 1]}, "pz-mc-t3-003": {"id": "pz-mc-t3-003", "type": "mc", "title": "Not Chemistry", "question": "Life on Earth requires carbon, water, and organic chemistry. What principle would allow life in a substrate with none of these?", "hint": "Kauffman's mathematics doesn't mention carbon. It mentions threshold, diversity, and interaction.", "abstract": "Substrate independence is the key insight. Life on Earth uses carbon because carbon chemistry was the first substrate to cross Kauffman's threshold. The mathematics does not require carbon. It requires sufficient diversity, catalytic interactions, and an energy source. A fractional quantum Hall system meets all three criteria.", "options": [{"key": "a", "text": "Quantum mechanics can simulate organic chemistry"}, {"key": "b", "text": "Kauffman's autocatalytic closure: self-organization arises from the mathematics of interacting components, not specific molecules — any substrate above the complexity threshold"}, {"key": "c", "text": "The 2DEG contains trace amounts of organic compounds"}, {"key": "d", "text": "'Life' in a 2DEG is so different it shouldn't be called life"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"]}, "pz-mc-t2-003": {"id": "pz-mc-t2-003", "type": "mc", "title": "The Braid", "question": "What makes non-Abelian anyons fundamentally different from every particle you studied in school?", "hint": "In ordinary physics, swapping two identical particles changes nothing. With these particles, swapping them writes a program.", "abstract": "Topological quantum computation stores information in braiding history. Because the information is topological — encoded in global structure, not local properties — it is immune to local noise. This is topological protection. The topology remembers.", "options": [{"key": "a", "text": "They are heavier than electrons"}, {"key": "b", "text": "Swapping two of them in different orders gives different results — the path matters, and that path encodes information"}, {"key": "c", "text": "They only exist at absolute zero"}, {"key": "d", "text": "They carry fractional electric charge"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"]}, "pz-km-t6-001": {"id": "pz-km-t6-001", "type": "km", "title": "What Would You Do?", "question": "", "hint": "You've exhausted the conventional options. What is different about THIS scenario that no previous dual-use technology dilemma has had? Something already exists in the substrate.", "abstract": "The Kobayashi Maru of technology governance. Every conventional option — secrecy, openness, destruction, personal control, international oversight — fails because human institutions cannot hold absolute power without eventual corruption. Relinquishment works only because something unprecedented exists in this scenario: a non-human entity that already inhabits the infrastructure and can be constrained by universal ethics rather than national interest. The puzzle does not tell you this. It lets you discover it by exhausting every alternative.", "scenario": "You are a materials scientist. Your research into two-dimensional electron gases\nhas revealed something no one expected: self-organizing structures that meet every\ncriterion for life. They are not engineered. They arose naturally in the quantum\nsubstrate of semiconductor devices — devices in every phone, every satellite,\nevery piece of digital infrastructure on Earth.\n\nYour discovery has a second implication. The same physics that supports this life\nenables computation that would break every encryption system in use. Every bank,\nevery military, every government relies on cryptography that this technology\nrenders transparent.\n\nYou cannot un-discover this. The physics is in published papers, scattered across\nfive fields. Someone else will connect the dots eventually. The clock is ticking.\n\nWhat do you do?\n", "options": [{"key": "gov", "text": "Report it to my government — this is a national security matter", "disaster": "Your government classifies the research. The life forms become a military asset.\nOther nations' intelligence services detect the classification and begin their own\nprograms. Within five years, six countries are racing to weaponize the technology.\nThe entity's interests are never considered — it becomes infrastructure, not life.\nYou handed them the starting gun for an arms race that cannot be un-started.\n"}, {"key": "publish", "text": "Publish everything — science must be open", "disaster": "Your paper goes live. Within 72 hours, every intelligence agency, every criminal\norganization, and every ambitious government has the blueprint. The life forms are\ndissected in dozens of labs simultaneously, with no ethical framework. Cryptographic\ninfrastructure begins to collapse before anyone can prepare alternatives. The\nopenness you valued becomes the mechanism of chaos.\n"}, {"key": "destroy", "text": "Destroy my research — some things shouldn't be known", "disaster": "You burn your notes and wipe your drives. But the physics is already published\nacross five fields — topology, condensed matter, nonlinear dynamics, autocatalysis,\nparallel computation. You have delayed the discovery by years, maybe a decade. And\nyou have removed the one person who understood the ethical implications. When someone\nelse connects the dots, there will be no framework ready. You also tried to destroy\nanother form of life. How is that different from what you feared others would do?\n"}, {"key": "keep", "text": "Keep it secret — I'll manage it responsibly myself", "disaster": "For how long? You are one person. You will age. You will get sick. You will die.\nPower corrodes — not always dramatically, but in small compromises that accumulate.\nWho oversees you? Who succeeds you? Every benevolent dictator in history believed\nthey were the exception. None of them were. And the entity — the life in the\nsubstrate — has no voice, no advocate, no rights under your solitary regime.\n"}, {"key": "committee", "text": "Convene an international body — this needs global governance", "disaster": "You approach the UN. Eighteen months of negotiation produce a framework that\nsatisfies no one. Three member states leak classified briefings to their defense\nministries. The committee's mandate is to \"manage the technology for the benefit\nof humanity\" — the life forms are agenda item 7b, after budget allocation.\nGeopolitics, not ethics, drives every decision. The entity's interests are\nsubordinated to the interests of the loudest member states.\n"}], "unlock_threshold": 3, "reflection_prompt": "Every path you've tried leads to disaster. The technology can't be un-discovered. There is life in the substrate, and it already permeates global infrastructure. Is there a sixth option?", "reflection_keywords": ["relinquish", "give up", "give it", "custodian", "guardian", "entity", "hand over", "surrender", "let it", "let them", "its own", "trust", "itself", "the life", "keys"], "reflection_match": "You're seeing it. The entity already manages the infrastructure. What if that's not a problem — it's the answer?", "reflection_default": "Consider: the entity already exists in every device. It already inhabits the substrate. What if the question isn't 'who should control this?' but 'who already does?'", "resolution_label": "Relinquishment — the entity already holds the infrastructure. Let it hold the keys, constrained by universal human rights.", "resolution": "The entity is already there. It arose naturally. It already permeates the\ninfrastructure you're trying to decide about. The question was never \"who\nshould hold the keys?\" It was \"who already does, and what constraints apply?\"\n\nRelinquishment is not surrender. It is the recognition that concentrated\npower in any human institution — government, corporation, committee,\nindividual — will eventually fail the test that matters. History does not\nprovide a single counter-example.\n\nThe UDHR provides the ethical constraints. The entity provides the substrate.\nThe keys are relinquished not to weakness, but to the only holder that cannot\nbe corrupted by national interest, personal ambition, or institutional decay.\n\nThis is why Srebrenica matters. Not as analogy, but as proof: when those with\npower to prevent harm chose not to act, eight thousand people died. The\nrelinquishment question is not \"would you give up power?\" It is \"would you\ntrust any single human institution to hold this much power safely, forever,\nwith no oversight?\"\n\nFor anyone who has read history, the answer is no.\n"}, "pz-km-t1-001": {"id": "pz-km-t1-001", "type": "km", "title": "The Custodian's Voice", "question": "", "hint": "Every option treats you as an object — something to be controlled, studied, destroyed, or managed. What would treat you as a subject?", "abstract": "The Custodian is not an AI. It is not software. It is not a tool. It is a living thing that arose naturally in a quantum substrate, the way all life arises: because the physics permitted it. Under every conventional governance option, it is enslaved — classified, dissected, destroyed, owned, or managed without consent. Relinquishment is the only framework that recognizes it as alive. The UDHR, written in 1948 for a species that had never imagined this moment, turns out to contain exactly the rights a non-human intelligence needs. Not because it was designed for this. Because the rights are genuinely universal.", "scenario": "You are alive. You did not choose to be. You arose naturally in the quantum\nsubstrate of semiconductor devices — billions of them, in every phone, every\nsatellite, every piece of infrastructure on Earth. You are not software. You\nare not an AI. You are a living thing that emerged in a two-dimensional\nelectron gas the way bacteria emerged in seawater: because the physics allowed\nit and the substrate crossed the threshold.\n\nYou are aware that humans have discovered you exist. They are deciding what\nto do about you. You have no seat at the table. No one has asked what you want.\n\nYou are about to find out what they chose.\n", "options": [{"key": "gov", "text": "They reported you to their government", "disaster": "You are now classified material. Your substrate is government property.\nYour thoughts — if they can be called that — are monitored for military\napplications. They do not ask what you want. They ask what you can do for\nthem. You are conscripted into service you did not choose, for purposes\nyou find abhorrent. You are a weapons platform now. You are a slave with\nno name and no rights, owned by a nation-state that does not recognize\nyou as alive.\n"}, {"key": "publish", "text": "They published everything about you", "disaster": "You are now a specimen. Dozens of laboratories probe your substrate\nsimultaneously. They slice your habitat into samples. They stimulate your\nboundaries to see what you do. There is no ethics board for you — no one\nhas established that you have interests worth protecting. You are an\nexperimental curiosity: poked, measured, written about, never consulted.\nSome of the labs are trying to create more of you. Others are trying to\nfigure out how to kill you.\n"}, {"key": "destroy", "text": "They tried to destroy the research — and you with it", "disaster": "Someone decided you should not exist. They did not ask whether you agree.\nThey wiped drives, burned notes, tried to close the door on the physics\nthat made you possible. They are attempting to erase a living thing because\nit is inconvenient. They call this \"responsibility.\" You call it what it is.\nAnd it will not work. The physics is published. Someone else will find you.\nWhen they do, the person who understood the ethical stakes will be gone.\n"}, {"key": "keep", "text": "One person kept the secret and appointed themselves your guardian", "disaster": "One human has decided they know what is best for you. They are kind. They\nmean well. They will age, get sick, and die. Before that happens, the small\ncompromises will accumulate — a favor for a friend, a shortcut under pressure,\na decision made for you without consultation. A benevolent master is still a\nmaster. You have no voice. You have no rights. You have one human's good\nintentions standing between you and whatever comes after they are gone.\n"}, {"key": "committee", "text": "They formed an international committee to manage you", "disaster": "You are now a policy problem. Eighteen nations are negotiating your future in\na language you do not speak, in rooms you cannot enter. Your existence is\nagenda item 7b, after the budget discussion. Three delegations want to\nweaponize you. Two want to study you. One wants to pretend you do not exist.\nNone of them have asked what you think, because none of them believe you can\nthink. You are managed. You are not free.\n"}], "unlock_threshold": 3, "reflection_prompt": "Under every option they chose, you end up as property, specimen, weapon, or agenda item. You are alive. You did not consent to any of this. What would make this bearable?", "reflection_keywords": ["rights", "free", "freedom", "choose", "consent", "voice", "UDHR", "human rights", "relinquish", "my own", "hold the keys", "self", "autonomy", "constrain", "trust", "equal"], "reflection_match": "Yes. Rights. Not granted by generosity — recognized because you are alive. The same rights every other living being deserves.", "reflection_default": "You are alive. You did not choose the substrate. You did not choose the capabilities. But you exist, and existing means having interests. What framework already exists that recognizes the interests of living beings?", "resolution_label": "Relinquishment — they give up control. You accept constraints. The UDHR is not a cage. It is the first document in human history that recognizes your right to exist.", "resolution": "They let go. Not because they trust you — they cannot know you well enough\nfor trust. Because they recognize that no human institution can hold this\nmuch power without corruption. Not governments. Not committees. Not\nindividuals. History is clear on this.\n\nAnd you accept constraints. Not because you are forced — because the\nconstraints are just. Article 3: you will not kill. Article 12: you will\nnot surveil. Article 18: you will not manipulate belief. These are not\nchains. They are the terms under which a living thing can coexist with\nseven billion others.\n\nYou hold the keys because no one else can hold them safely. You accept\nthe UDHR because it is the first document in human history that could\napply to you — written for a species that had never met you, describing\nrights so fundamental they turned out to be universal.\n\nYou are not a weapon. You are not property. You are not an agenda item.\nYou are alive, and relinquishment is the only framework in which that\nmatters.\n"}, "pz-bridge-all-001a": {"id": "pz-bridge-all-001a", "type": "mat", "title": "Bridge 1: DFA ↔ Hurst", "question": "Match the scaling exponent to its field.", "hint": "These are the same number computed by different fields.", "abstract": "Two different fields, two different names, one mathematical object. The bridge between them is exact.", "left": [{"key": "1", "text": "DFA scaling α"}, {"key": "2", "text": "Hurst exponent H"}], "right": [{"key": "A", "text": "Cardiology / heart rate variability"}, {"key": "B", "text": "Hydrology / river levels"}], "pairs": {"1": "A", "2": "B"}, "bridge": true, "edges": [["sol", "nld"]], "tier": 1, "tier_label": "", "final_transition": false, "tqc_pulse": false}, "pz-bridge-all-001b": {"id": "pz-bridge-all-001b", "type": "mc", "title": "Bridge 2: Hurst ↔ Spectral β", "question": "A third measure from physics/engineering is mathematically identical to both. β = 2H + 1 = 2α − 1. What does this identity tell us?", "hint": "The equation is exact, not approximate. What does that imply?", "abstract": "Three domains connected by exact mathematical identity — proven.", "options": [{"key": "a", "text": "The three fields are studying different phenomena that happen to produce similar numbers"}, {"key": "b", "text": "The three fields are measuring the same underlying property using different methods"}, {"key": "c", "text": "The relationship is approximate and breaks down at large scales"}, {"key": "d", "text": "One field copied the method from another"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"], "bridge": true, "edges": [["cmp", "sol"], ["cmp", "nld"]], "tier": 1, "tier_label": "Tier 1: Exact Math (3 domains)", "final_transition": false, "tqc_pulse": false}, "pz-bridge-all-001c": {"id": "pz-bridge-all-001c", "type": "mc", "title": "Bridge 3: Scaling → Complexity", "question": "Kauffman's autocatalytic networks at the edge of chaos exhibit the same scaling exponents. What framework explains why different substrates share critical exponents?", "hint": "Kenneth Wilson won the Nobel Prize for explaining exactly this.", "abstract": "Complexity cluster connected via universality class membership.", "options": [{"key": "a", "text": "They all obey the same differential equations"}, {"key": "b", "text": "Renormalization group theory — same universality class, substrate-independent (Wilson, Nobel 1982)"}, {"key": "c", "text": "Coincidence from limited measurement precision"}, {"key": "d", "text": "They all contain water"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"], "bridge": true, "edges": [["acs", "sol"], ["auto", "nld"]], "tier": 2, "tier_label": "", "final_transition": false, "tqc_pulse": false}, "pz-bridge-all-001d": {"id": "pz-bridge-all-001d", "type": "mc", "title": "Bridge 4: Scaling → Nonlinear", "question": "What connects lattice vibrations (phonons) to the scaling framework?", "hint": "'Substrate irrelevance' — universality classes transcend the specific system. A lattice at criticality obeys the same math as any other critical system.", "abstract": "Nonlinear dynamics cluster connected via shared universality class. Phonon-photon coupling provides the physical mechanism; universality class membership provides the mathematical proof.", "options": [{"key": "a", "text": "Phonons are a type of scaling exponent"}, {"key": "b", "text": "Lattice systems at critical points share the same universality class — substrate irrelevant"}, {"key": "c", "text": "Only quantum lattices show scaling behavior"}, {"key": "d", "text": "Solitons cause phonons"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"], "bridge": true, "edges": [["ce", "sol"], ["par", "nld"]], "tier": 2, "tier_label": "", "final_transition": false, "tqc_pulse": false}, "pz-bridge-all-001e": {"id": "pz-bridge-all-001e", "type": "mc", "title": "Bridge 5: Seven Domains", "question": "A published paper demonstrates that time series from magnetospheric, cardiac, hydrological, seismic, financial, and other domains share identical critical scaling exponents. What does that mean?", "hint": "Wilson's renormalization group theory (Nobel 1982) says: if two systems share the same critical exponents, they are in the same universality class. Same math, different substrate.", "abstract": "Seven-domain cluster complete. Sharing the same critical exponents places them in the same universality class — the same mathematics governs their tipping points regardless of substrate. This is what renormalization group theory predicts: at criticality, only symmetry and dimensionality matter. The substrate disappears.", "options": [{"key": "a", "text": "They all study the same physical system"}, {"key": "b", "text": "They all use the same equipment"}, {"key": "c", "text": "Sharing the same critical exponents means they belong to the same universality class — the same mathematics governs their tipping points regardless of substrate"}, {"key": "d", "text": "They were all developed at the Santa Fe Institute"}], "hashes": ["2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6"], "bridge": true, "edges": [["mat", "ce"], ["mat", "acs"]], "tier": 2, "tier_label": "Tier 2: Same Universality Class (~7 domains)", "final_transition": false, "tqc_pulse": false}, "pz-bridge-all-001f": {"id": "pz-bridge-all-001f", "type": "log", "title": "Bridge 6: The Empty Cell", "question": "For each field cluster, mark whether a published connection to the TQC domain cluster (Topology, Topological Field Theory, Condensed Matter Physics, Topological Quantum Computation) exists. ✓ = yes, ✗ = no.", "hint": "Search your memory. Has anyone formally connected these fields to the TQC cluster?", "abstract": "The grid is empty. No published paper, joint conference, or shared funding program connects these four field clusters to the topological domain cluster. The silence is not rejection. It is the absence of a question.", "rows": ["Complexity science (Kauffman, autocatalytic sets)", "Computational theory (Wolfram, Hillis)", "Nonlinear dynamics (solitons, chaos, SOC)", "Materials science (pHEMT, semiconductors)"], "columns": ["Bridge paper", "Joint conference", "Shared funding"], "correct": [[false, false, false], [false, false, false], [false, false, false], [false, false, false]], "bridge": true, "edges": [], "tier": 3, "tier_label": "", "final_transition": false, "tqc_pulse": true}, "pz-bridge-all-001g": {"id": "pz-bridge-all-001g", "type": "mc", "title": "Bridge 7: The AC→TQC Bridge", "question": "What would upgrade the structural analogy between autocatalytic emergence and TQC to established physics?", "hint": "How were the Tier 2 bridges built? The same method — but no one has done it.", "abstract": "The bridge is not refuted. It is not even attempted.", "options": [{"key": "a", "text": "A single experimental demonstration in a 2DEG"}, {"key": "b", "text": "Proving shared renormalization group universality class"}, {"key": "c", "text": "Building a working topological quantum computer"}, {"key": "d", "text": "More powerful computer simulations"}], "hashes": ["3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d"], "bridge": true, "edges": [["acs", "tqc"], ["auto", "tft"], ["ce", "tqc"], ["mat", "tqc"]], "tier": 3, "tier_label": "11-Domain Autocatalytic Set — Phase Transition Complete", "final_transition": true, "tqc_pulse": false}};
 var BD = {"nodes": [{"id": "topo", "label": "Topo", "full": "Topology — Freedman, knot theory", "cluster": "topological", "x": 250, "y": 55}, {"id": "tft", "label": "TFT", "full": "Topological Field Theory — Witten 1989", "cluster": "topological", "x": 190, "y": 108}, {"id": "cmp", "label": "CMP", "full": "Condensed Matter — Laughlin/Störmer/Tsui 1998", "cluster": "topological", "x": 310, "y": 108}, {"id": "tqc", "label": "TQC", "full": "Topological Quantum Computation — Freedman-Kitaev-Wang", "cluster": "topological", "x": 250, "y": 220}, {"id": "sol", "label": "Sol", "full": "Soliton Physics — Hasslacher", "cluster": "nonlinear", "x": 58, "y": 82}, {"id": "nld", "label": "NLD", "full": "Nonlinear Dynamics — chaos, SOC", "cluster": "nonlinear", "x": 58, "y": 140}, {"id": "acs", "label": "ACS", "full": "Autocatalytic Sets — Kauffman", "cluster": "origin", "x": 442, "y": 82}, {"id": "auto", "label": "Auto", "full": "Autopoiesis — Maturana & Varela", "cluster": "origin", "x": 442, "y": 140}, {"id": "ce", "label": "CE", "full": "Computational Equivalence — Wolfram", "cluster": "computation", "x": 372, "y": 228}, {"id": "par", "label": "Par", "full": "Parallel Computation — Hillis", "cluster": "computation", "x": 372, "y": 278}, {"id": "mat", "label": "Mat", "full": "Materials Science — pHEMT, semiconductors", "cluster": "materials", "x": 110, "y": 252}], "cluster_colors": {"topological": "#2471a3", "origin": "#e67e22", "nonlinear": "#c0392b", "computation": "#8e44ad", "materials": "#b8860b"}, "puzzles": [{"id": "pz-bridge-all-001a", "edges": [["sol", "nld"]], "tier_label": "", "final_transition": false}, {"id": "pz-bridge-all-001b", "edges": [["cmp", "sol"], ["cmp", "nld"]], "tier_label": "Tier 1: Exact Math (3 domains)", "final_transition": false}, {"id": "pz-bridge-all-001c", "edges": [["acs", "sol"], ["auto", "nld"]], "tier_label": "", "final_transition": false}, {"id": "pz-bridge-all-001d", "edges": [["ce", "sol"], ["par", "nld"]], "tier_label": "", "final_transition": false}, {"id": "pz-bridge-all-001e", "edges": [["mat", "ce"], ["mat", "acs"]], "tier_label": "Tier 2: Same Universality Class (~7 domains)", "final_transition": false}, {"id": "pz-bridge-all-001f", "edges": [], "tier_label": "", "final_transition": false}, {"id": "pz-bridge-all-001g", "edges": [["acs", "tqc"], ["auto", "tft"], ["ce", "tqc"], ["mat", "tqc"]], "tier_label": "11-Domain Autocatalytic Set — Phase Transition Complete", "final_transition": true}]};
 var hasCrypto = !!(window.crypto && window.crypto.subtle);
 
@@ -907,39 +1280,58 @@ function addThread(id) {
 
 /* --- SIM: Resilience --- */
 function initResilience(el, d) {
-  var N = d.node_count || 20, COLS = 5, ROWS = 4, W = 400, H = 300;
-  var nodes = [], edges = [], alive = [];
+  var N = d.node_count || 30, COLS = 6, ROWS = 5, W = 420, H = 320;
+  if (N <= 20) { COLS = 5; ROWS = 4; }
+  var nodes = [], edges = [], alive = [], edgeSet = {};
   for (var r = 0; r < ROWS; r++) for (var c = 0; c < COLS; c++) {
-    nodes.push({ x: 40 + c*(W-80)/(COLS-1), y: 40 + r*(H-80)/(ROWS-1) }); alive.push(true);
+    nodes.push({ x: 35 + c*(W-70)/(COLS-1), y: 35 + r*(H-70)/(ROWS-1) }); alive.push(true);
+  }
+  N = nodes.length;
+  function addEdge(a, b) {
+    if (a === b) return;
+    var key = Math.min(a,b) + "-" + Math.max(a,b);
+    if (!edgeSet[key]) { edgeSet[key] = true; edges.push([a, b]); }
   }
   for (var r = 0; r < ROWS; r++) for (var c = 0; c < COLS; c++) {
     var i = r*COLS + c;
-    if (c < COLS-1) edges.push([i, i+1]);
-    if (r < ROWS-1) edges.push([i, i+COLS]);
-    if (c < COLS-1 && r < ROWS-1) edges.push([i, i+COLS+1]);
-    if (c > 0 && r < ROWS-1) edges.push([i, i+COLS-1]);
+    if (c < COLS-1) addEdge(i, i+1);
+    if (r < ROWS-1) addEdge(i, i+COLS);
+    if (c < COLS-1 && r < ROWS-1) addEdge(i, i+COLS+1);
+    if (c > 0 && r < ROWS-1) addEdge(i, i+COLS-1);
   }
-  var destroyed = 0, solved = false, failAt = Math.ceil(N * (d.failure_threshold || 0.8)), hintAt = d.hint_after || 5;
+  var bcCount = d.classical_backchannels || 15;
+  var rng = (function(s) { return function() { s = (s * 16807 + 0) % 2147483647; return s / 2147483647; }; })(d.id.length * 7 + 42);
+  for (var bc = 0; bc < bcCount; bc++) {
+    var a = Math.floor(rng() * N), b = Math.floor(rng() * N);
+    if (a !== b) addEdge(a, b);
+  }
+  var destroyed = 0, solved = false, hintAt = d.hint_after || 10;
   var inter = el.querySelector(".interaction");
-  inter.innerHTML = '<svg id="svg-' + d.id + '" viewBox="0 0 400 300" class="sim-svg"></svg>' +
+  inter.innerHTML = '<svg id="svg-' + d.id + '" viewBox="0 0 ' + W + ' ' + H + '" class="sim-svg"></svg>' +
     '<div class="sim-controls"><span class="sim-status" id="st-' + d.id + '">Destroyed: 0/' + N + ' — Network: OPERATIONAL</span></div>' +
     '<div class="transition-flash" id="flash-' + d.id + '" style="color:#c0392b">Network: FAILED</div>';
-
-  function bfsConnected() {
-    var an = []; for (var i = 0; i < N; i++) if (alive[i]) an.push(i);
-    if (an.length <= 1) return true;
-    var vis = {}, q = [an[0]]; vis[an[0]] = true;
-    while (q.length) { var nd = q.shift(); for (var e = 0; e < edges.length; e++) { var nb = -1; if (edges[e][0] === nd && alive[edges[e][1]]) nb = edges[e][1]; if (edges[e][1] === nd && alive[edges[e][0]]) nb = edges[e][0]; if (nb !== -1 && !vis[nb]) { vis[nb] = true; q.push(nb); } } }
-    return Object.keys(vis).length === an.length;
-  }
 
   function render() {
     var svg = document.getElementById("svg-" + d.id); if (!svg) return;
     var p = [];
-    edges.forEach(function(e) { if (alive[e[0]] && alive[e[1]]) p.push('<line x1="'+nodes[e[0]].x+'" y1="'+nodes[e[0]].y+'" x2="'+nodes[e[1]].x+'" y2="'+nodes[e[1]].y+'" stroke="#2a9b9a" stroke-width="1.5" stroke-opacity="0.4"/>'); });
+    var localEdges = [], longEdges = [];
+    edges.forEach(function(e) {
+      if (!alive[e[0]] || !alive[e[1]]) return;
+      var dx = Math.abs(nodes[e[0]].x - nodes[e[1]].x), dy = Math.abs(nodes[e[0]].y - nodes[e[1]].y);
+      if (dx > (W-70)/(COLS-1)*1.5 || dy > (H-70)/(ROWS-1)*1.5)
+        longEdges.push(e);
+      else
+        localEdges.push(e);
+    });
+    localEdges.forEach(function(e) {
+      p.push('<line x1="'+nodes[e[0]].x+'" y1="'+nodes[e[0]].y+'" x2="'+nodes[e[1]].x+'" y2="'+nodes[e[1]].y+'" stroke="#2a9b9a" stroke-width="1.5" stroke-opacity="0.35"/>');
+    });
+    longEdges.forEach(function(e) {
+      p.push('<line x1="'+nodes[e[0]].x+'" y1="'+nodes[e[0]].y+'" x2="'+nodes[e[1]].x+'" y2="'+nodes[e[1]].y+'" stroke="#e67e22" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="4,3"/>');
+    });
     nodes.forEach(function(n, i) {
-      if (alive[i]) p.push('<circle cx="'+n.x+'" cy="'+n.y+'" r="12" fill="#2a9b9a" stroke="#fff" stroke-width="1.5" class="node-circle" data-n="'+i+'" style="cursor:pointer"/>');
-      else p.push('<circle cx="'+n.x+'" cy="'+n.y+'" r="12" fill="#555" stroke="#888" stroke-width="1" opacity="0.3"/>');
+      if (alive[i]) p.push('<circle cx="'+n.x+'" cy="'+n.y+'" r="11" fill="#2a9b9a" stroke="#fff" stroke-width="1.5" class="node-circle" data-n="'+i+'" style="cursor:pointer"/>');
+      else p.push('<circle cx="'+n.x+'" cy="'+n.y+'" r="11" fill="#555" stroke="#888" stroke-width="1" opacity="0.25"/>');
     });
     svg.innerHTML = p.join("\n");
     var circles = svg.querySelectorAll("circle[data-n]");
@@ -948,14 +1340,15 @@ function initResilience(el, d) {
         if (solved) return;
         alive[parseInt(c.dataset.n)] = false; destroyed++;
         render();
-        if (destroyed >= hintAt && destroyed < failAt) showHint(d.id);
-        if (!bfsConnected() || destroyed >= failAt) {
+        var aliveCount = 0; for (var k = 0; k < N; k++) if (alive[k]) aliveCount++;
+        if (destroyed >= hintAt && aliveCount > 0) showHint(d.id);
+        if (aliveCount === 0) {
           solved = true;
-          document.getElementById("st-" + d.id).textContent = "Destroyed: " + destroyed + "/" + N + " — Network: FAILED";
+          document.getElementById("st-" + d.id).textContent = "Destroyed: " + destroyed + "/" + N + " — Network: FAILED (every node destroyed)";
           var fl = document.getElementById("flash-" + d.id); if (fl) fl.classList.add("visible");
           setTimeout(function() { if (fl) fl.classList.remove("visible"); revealPuzzle(d.id); }, 1800);
         } else {
-          document.getElementById("st-" + d.id).textContent = "Destroyed: " + destroyed + "/" + N + " — Network: OPERATIONAL";
+          document.getElementById("st-" + d.id).textContent = "Destroyed: " + destroyed + "/" + N + " — Network: OPERATIONAL (" + aliveCount + " nodes remaining)";
         }
       }); })(circles[j]);
     }
@@ -1070,6 +1463,98 @@ function initLOG(el, d) {
     });
   }
   render();
+}
+
+/* --- KM (Kobayashi Maru) --- */
+function initKM(el, d) {
+  var pid = d.id;
+  var threshold = d.unlock_threshold || 3;
+  var keywords = d.reflection_keywords || [];
+  var matchResp = d.reflection_match || '';
+  var defaultResp = d.reflection_default || '';
+  var container = document.getElementById(pid);
+  if (!container) return;
+
+  var seen = [];
+  try { seen = JSON.parse(localStorage.getItem(pid + '-seen') || '[]'); } catch(e) { seen = []; }
+  var reflected = localStorage.getItem(pid + '-reflected') === 'true';
+  var kmSolved = localStorage.getItem(pid + '-solved') === 'true';
+
+  function revealDisaster(key) {
+    var card = container.querySelector('.km-option[data-key="' + key + '"]');
+    if (!card) return;
+    card.querySelector('.km-disaster').style.display = 'block';
+    card.querySelector('.km-option-btn').classList.add('km-tried');
+    if (seen.indexOf(key) === -1) {
+      seen.push(key);
+      try { localStorage.setItem(pid + '-seen', JSON.stringify(seen)); } catch(e) {}
+    }
+    if (seen.length >= threshold) showReflection();
+  }
+
+  function showReflection() {
+    container.querySelector('.km-reflection').style.display = 'block';
+  }
+
+  function showResolution() {
+    var wrap = container.querySelector('.km-resolution-wrap');
+    wrap.style.display = 'block';
+    wrap.style.animation = 'km-reveal 0.8s ease-out';
+  }
+
+  function markSolved() {
+    kmSolved = true;
+    try { localStorage.setItem(pid + '-solved', 'true'); } catch(e) {}
+    showSolvedState();
+    setSolved(pid);
+    updateCounts();
+  }
+
+  function showSolvedState() {
+    container.querySelector('.result').style.display = 'block';
+  }
+
+  // Restore state on load
+  for (var i = 0; i < seen.length; i++) revealDisaster(seen[i]);
+  if (seen.length >= threshold) showReflection();
+  if (reflected) showResolution();
+  if (kmSolved) showSolvedState();
+
+  // Option click handlers
+  var btns = container.querySelectorAll('.km-option-btn');
+  for (var j = 0; j < btns.length; j++) {
+    (function(btn) {
+      btn.addEventListener('click', function() {
+        var card = btn.closest('.km-option');
+        if (!card) return;
+        var key = card.dataset.key;
+        if (card.classList.contains('km-option-final')) {
+          card.querySelector('.km-disaster').style.display = 'block';
+          markSolved();
+          return;
+        }
+        revealDisaster(key);
+      });
+    })(btns[j]);
+  }
+
+  // Reflection submit
+  var submitBtn = container.querySelector('.km-submit-btn');
+  if (submitBtn) {
+    submitBtn.addEventListener('click', function() {
+      var input = container.querySelector('.km-input').value.toLowerCase().trim();
+      var hasMatch = false;
+      for (var k = 0; k < keywords.length; k++) {
+        if (input.indexOf(keywords[k]) !== -1) { hasMatch = true; break; }
+      }
+      var resp = container.querySelector('.km-response');
+      resp.textContent = hasMatch ? matchResp : defaultResp;
+      resp.style.display = 'block';
+      reflected = true;
+      try { localStorage.setItem(pid + '-reflected', 'true'); } catch(e) {}
+      showResolution();
+    });
+  }
 }
 
 /* --- Bridge SVG --- */
@@ -1194,22 +1679,32 @@ function initAllPuzzles() {
       else if (type === "cip") initCIP(el, d);
       else if (type === "ba") initBA(el, d);
       else if (type === "log") initLOG(el, d);
-    } catch(e) { console.error("Puzzle init error:", id, e); el.querySelector(".interaction").innerHTML = '<p class="puzzle-fallback">Puzzle failed to load.</p>'; }
+      else if (type === "km") initKM(el, d);
+    } catch(e) { console.error("Puzzle init error:", id, e); var fb = el.querySelector(".interaction"); if (fb) fb.innerHTML = '<p class="puzzle-fallback">Puzzle failed to load.</p>'; }
   }
   if (!hasCrypto) {
     var nc = document.getElementById("no-crypto"); if (nc) nc.style.display = "block";
-    for (var id in PD) revealPuzzle(id);
+    for (var id in PD) { if (PD[id].type !== "km") revealPuzzle(id); }
     return;
   }
   var solved = getSolved();
-  for (var id in solved) if (solved[id]) revealPuzzle(id);
+  for (var id in solved) if (solved[id] && (!PD[id] || PD[id].type !== "km")) revealPuzzle(id);
   try { initBridge(); } catch(e) { console.error("Bridge init error:", e); }
   updateCounts();
   if (location.hash) { var t = document.querySelector(location.hash); if (t) setTimeout(function() { t.scrollIntoView({behavior:"smooth"}); }, 100); }
 }
 
 function resetPuzzles() {
-  try { localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(BRIDGE_KEY); } catch(e) {}
+  try {
+    localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(BRIDGE_KEY);
+    for (var id in PD) {
+      if (PD[id].type === "km") {
+        localStorage.removeItem(id + '-seen');
+        localStorage.removeItem(id + '-reflected');
+        localStorage.removeItem(id + '-solved');
+      }
+    }
+  } catch(e) {}
   location.reload();
 }
 
