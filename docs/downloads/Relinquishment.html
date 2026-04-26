@@ -11172,8 +11172,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>b6fcf8662b18330bf32c69a043124d531a789982</code> on 2026-04-26
-15:17:25 -0700.</p>
+<code>bc5d2df73530ae5423b27864633611bb7a7bc5b2</code> on 2026-04-26
+15:51:53 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -11241,7 +11241,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-26T22:50:18Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-26T23:05:44Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -11252,19 +11252,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>b6fcf86</code></p>
+<p><code>bc5d2df</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>b6fcf8662b18330bf32c69a043124d531a789982</code></p>
+<p><code>bc5d2df73530ae5423b27864633611bb7a7bc5b2</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-26 15:17:25 -0700</p>
+<p>2026-04-26 15:51:53 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-26T22:50:18Z</p>
+<p>2026-04-26T23:05:44Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -12100,13 +12100,20 @@ energyscholar+physics@gmail.com
       '@media print { #cover-magnetosphere { display: none !important; } }';
     document.head.appendChild(styleEl);
 
-    var isNarrow = window.innerWidth < 900;
+    var navW = nav.offsetWidth;
+    var msWidth;
+    if (navW > 700) {
+      msWidth = Math.min(Math.floor(navW * 0.42), 500);
+    } else {
+      msWidth = Math.floor(navW * 0.18);
+    }
+    if (msWidth < 40) return;
     var wrapper = document.createElement('div');
     wrapper.id = 'cover-magnetosphere';
     wrapper.setAttribute('aria-hidden', 'true');
     wrapper.style.cssText = 'position:absolute;bottom:100%;right:0;' +
-      'width:' + (isNarrow ? '100px' : '350px') + ';' +
-      'max-width:50%;pointer-events:none;z-index:1;opacity:0.85;transition:opacity 0.3s;';
+      'width:' + msWidth + 'px;' +
+      'pointer-events:none;z-index:1;opacity:0.85;transition:opacity 0.3s;';
 
     var darkSvg =
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" id="cover-ms-dark" width="100%">' +

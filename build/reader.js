@@ -456,13 +456,20 @@
       '@media print { #cover-magnetosphere { display: none !important; } }';
     document.head.appendChild(styleEl);
 
-    var isNarrow = window.innerWidth < 900;
+    var navW = nav.offsetWidth;
+    var msWidth;
+    if (navW > 700) {
+      msWidth = Math.min(Math.floor(navW * 0.42), 500);
+    } else {
+      msWidth = Math.floor(navW * 0.18);
+    }
+    if (msWidth < 40) return;
     var wrapper = document.createElement('div');
     wrapper.id = 'cover-magnetosphere';
     wrapper.setAttribute('aria-hidden', 'true');
     wrapper.style.cssText = 'position:absolute;bottom:100%;right:0;' +
-      'width:' + (isNarrow ? '100px' : '350px') + ';' +
-      'max-width:50%;pointer-events:none;z-index:1;opacity:0.85;transition:opacity 0.3s;';
+      'width:' + msWidth + 'px;' +
+      'pointer-events:none;z-index:1;opacity:0.85;transition:opacity 0.3s;';
 
     var darkSvg =
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" id="cover-ms-dark" width="100%">' +
