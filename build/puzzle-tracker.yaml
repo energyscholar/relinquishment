@@ -199,7 +199,7 @@ chapter_puzzles:
     type: mc
     topic: t6
     level: p2
-    approved: false
+    approved: true
     installed: false
     location:
       chapter: capabilities
