@@ -16,6 +16,29 @@ except ImportError:
     sys.exit("pip install pyyaml")
 
 
+def extract_reader_js_svg():
+    """Extract the dark cover magnetosphere SVG from reader.js string concatenation."""
+    js = (REPO / 'build' / 'reader.js').read_text()
+    m = re.search(r'var darkSvg =\s*\n(.*?);\s*\n\s*var lightSvg', js, re.DOTALL)
+    if not m:
+        return None
+    raw = m.group(1)
+    raw = re.sub(r"\(motionOk \? ('[^']*') : ''\)", r'\1', raw)
+    parts = []
+    for line in raw.strip().split('\n'):
+        line = line.strip()
+        if not line:
+            continue
+        line = re.sub(r'\s*\+\s*$', '', line)
+        line = re.sub(r"^'", '', line)
+        line = re.sub(r"'$", '', line)
+        parts.append(line)
+    svg = ''.join(parts)
+    if '<svg' in svg and '</svg>' in svg:
+        return svg
+    return None
+
+
 CATEGORY_ORDER = [
     'Title & Branding',
     'Cover / Navigation',
@@ -109,7 +132,7 @@ def resolve_svg(entry, hover_svgs, var_svgs, filmstrip_panels):
         return None, f'file not found: {source}'
 
     if source == 'reader.js':
-        return None, 'Constructed dynamically in reader.js — view in book'
+        return extract_reader_js_svg(), None
 
     if source == 'gallery':
         return None, 'Designed — awaiting SVG build'
