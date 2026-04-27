@@ -141,9 +141,9 @@ chapter_puzzles:
 
   - id: pz-ord-t4-002
     title: "Build the Stack"
-    type: ord
+    type: tower
     topic: t4
-    level: p2
+    level: p1
     approved: false
     installed: false
     location:
