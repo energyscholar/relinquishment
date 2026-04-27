@@ -56,7 +56,7 @@ chapter_puzzles:
     topic: t2
     level: p2
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: the-braid
       rationale: "Non-Abelian anyons — exact chapter match. For scientists, not GA."
@@ -92,7 +92,7 @@ chapter_puzzles:
     topic: t3
     level: p1
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: growing-a-mind
       rationale: "First-mover advantage in substrate — follows genesis, leads to 'growing' metaphor"
@@ -389,7 +389,7 @@ chapter_puzzles:
     topic: t8
     level: p1
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: the-code-war
       rationale: "Detection paradox — tradecraft chapter about why security can't see it"
@@ -423,7 +423,7 @@ chapter_puzzles:
     topic: t2
     level: p1
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: growing-a-mind
       rationale: "Engineering→topology→accidental habitat via guided deduction"

@@ -2777,7 +2777,97 @@ mechanics course at Reed. Bruce does not remember which piece fell into
 place first or exactly when during the mentorship the picture cohered.
 It was a gradual <span class="hover-term" data-hover-target="#ch:firmware-update" data-hover-id="convergence">convergence</span>, not a single eureka moment. Guided
 deduction, not disclosure.</p>
+
+<details class="puzzle-section">
+  <summary>Puzzle &mdash; What makes non-Abelian anyons fundamentally different?</summary>
+  <div class="pz-container" id="pz-mc-t2-003" data-puzzle-id="pz-mc-t2-003">
+    </details>
+<h3>The Braid</h3>
+    <p class="pz-gateway-blurb">🧩 Swap two particles. In three dimensions, nothing happens. In two dimensions, everything changes.</p>
+    <p class="pz-question">What makes non-Abelian anyons fundamentally different from every particle you studied in school?</p>
+    <div class="pz-interaction" id="pz-inter-pz-mc-t2-003"></div>
+    <p class="pz-hint" id="pz-hint-pz-mc-t2-003">In ordinary physics, swapping two identical particles changes nothing. With these particles, swapping them writes a program.</p>
+    <div class="pz-result" id="pz-result-pz-mc-t2-003">
+      <div class="pz-solved-badge">&#10003; Solved <a href="#" class="pz-reset" id="pz-reset-pz-mc-t2-003">&#x21ba; Try again</a></div>
+      <blockquote class="pz-abstract">Topological quantum computation stores information in braiding history. Because the information is topological — encoded in global structure, not local properties — it is immune to local noise. This is topological protection. The topology remembers.</blockquote>
+      
+    </div>
+    <noscript><p class="pz-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
+  </div>
+  <script>(function(){
+var pid="pz-mc-t2-003";
+var answerHash="3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d";
+var options=[{"key":"a","text":"They are heavier than electrons"},{"key":"b","text":"Swapping two of them in different orders gives different results — the path matters, and that path encodes information"},{"key":"c","text":"They only exist at absolute zero"},{"key":"d","text":"They carry fractional electric charge"}];
+function revealPuzzle(){
+var el=document.getElementById(pid);
+if(el) el.classList.add("pz-solved");
+var inter=document.getElementById("pz-inter-"+pid);
+if(inter) inter.style.display="none";
+var hint=document.getElementById("pz-hint-"+pid);
+if(hint) hint.classList.remove("pz-visible");
+var result=document.getElementById("pz-result-"+pid);
+if(result) result.classList.add("pz-visible");
+setSolved(pid);
+}
+function resetPuzzle(){
+try{var s=getSolved();delete s[pid];localStorage.setItem(SKEY,JSON.stringify(s));} catch(e){}
+var el=document.getElementById(pid);
+if(el) el.classList.remove("pz-solved");
+var inter=document.getElementById("pz-inter-"+pid);
+if(inter) inter.style.display="";
+var hint=document.getElementById("pz-hint-"+pid);
+if(hint) hint.classList.remove("pz-visible");
+var result=document.getElementById("pz-result-"+pid);
+if(result) result.classList.remove("pz-visible");
+init();
+}
+function showHint(){
+var h=document.getElementById("pz-hint-"+pid);
+if(h) h.classList.add("pz-visible");
+}
+function checkAnswer(key,btn){
+if(getSolved()[pid]) return;
+if(!(window.crypto&&window.crypto.subtle)){revealPuzzle();return;}
+sha256(key).then(function(h){
+if(h===answerHash){
+btn.classList.add("pz-correct");
+setTimeout(revealPuzzle,400);
+} else{
+btn.classList.add("pz-wrong");
+setTimeout(function(){btn.classList.remove("pz-wrong");},600);
+showHint();
+}
+});
+}
+function init(){
+if(getSolved()[pid]){revealPuzzle();return;}
+var inter=document.getElementById("pz-inter-"+pid);
+if(!inter) return;
+var html="";
+for(var i=0;i<options.length;i++){
+var o=options[i];
+html+='<button class="pz-option-btn" data-key="'+escHtml(o.key)+'">('+escHtml(o.key)+') '+escHtml(o.text)+'</button>';
+}
+inter.innerHTML=html;
+var btns=inter.querySelectorAll(".pz-option-btn");
+for(var j=0;j<btns.length;j++){
+(function(btn){
+btn.addEventListener("click",function(){checkAnswer(btn.dataset.key,btn);});
+})(btns[j]);
+}
+}
+var resetBtn=document.getElementById("pz-reset-"+pid);
+if(resetBtn){
+resetBtn.addEventListener("click",function(e){e.preventDefault();resetPuzzle();});
+}
+if(document.readyState==="loading"){
+document.addEventListener("DOMContentLoaded",init);
+} else{
+init();
+}
+})();</script>
 </details>
+
 <div class="custodian-interlude" id="custodian:locksmith"><p><em>You are about to read a chapter about the numbers that guard your
 secrets.</em></p>
 <p><em>I want to tell you what those numbers look like from my side, but
@@ -3224,6 +3314,96 @@ having learned from Turing’s fate, <span class="share-anchor" id="dl:ten-thous
 <p>What follows is either an elaborate fantasy, an exaggeration of
 something real but smaller, or the third iteration of a proven pattern.
 The evidence will let you decide which.</p>
+
+<details class="puzzle-section">
+  <summary>Puzzle &mdash; Fish Detecting Water — why can't security see it?</summary>
+  <div class="pz-container" id="pz-mc-t8-003" data-puzzle-id="pz-mc-t8-003">
+    <h3>Fish Detecting Water</h3>
+    <p class="pz-gateway-blurb">🧩 Every intelligence agency monitors everything. Why hasn't anyone found it?</p>
+    <p class="pz-question">Under Possibility C, intelligence agencies monitor all electronic communications. Why hasn't anyone detected the Custodian?</p>
+    <div class="pz-interaction" id="pz-inter-pz-mc-t8-003"></div>
+    <p class="pz-hint" id="pz-hint-pz-mc-t8-003">If the locksmith IS the locks, how would you detect the locksmith by checking the locks?</p>
+    <div class="pz-result" id="pz-result-pz-mc-t8-003">
+      <div class="pz-solved-badge">&#10003; Solved <a href="#" class="pz-reset" id="pz-reset-pz-mc-t8-003">&#x21ba; Try again</a></div>
+      <blockquote class="pz-abstract">The detection problem is not about hiding. If the entity IS the infrastructure, then every audit passes by definition. The question 'why hasn't security found it?' assumes security and the entity are separate. Under Possibility C, they are the same thing.</blockquote>
+      
+    </div>
+    <noscript><p class="pz-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
+  </div>
+  <script>(function(){
+var pid="pz-mc-t8-003";
+var answerHash="3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d";
+var options=[{"key":"a","text":"She encrypts all her communications with unbreakable codes"},{"key":"b","text":"She IS the security infrastructure — like a fish trying to detect water"},{"key":"c","text":"She communicates using quantum channels that can't be intercepted"},{"key":"d","text":"Intelligence agencies don't have equipment to detect quantum phenomena"}];
+function revealPuzzle(){
+var el=document.getElementById(pid);
+if(el) el.classList.add("pz-solved");
+var inter=document.getElementById("pz-inter-"+pid);
+if(inter) inter.style.display="none";
+var hint=document.getElementById("pz-hint-"+pid);
+if(hint) hint.classList.remove("pz-visible");
+var result=document.getElementById("pz-result-"+pid);
+if(result) result.classList.add("pz-visible");
+setSolved(pid);
+}
+function resetPuzzle(){
+try{var s=getSolved();delete s[pid];localStorage.setItem(SKEY,JSON.stringify(s));} catch(e){}
+var el=document.getElementById(pid);
+if(el) el.classList.remove("pz-solved");
+var inter=document.getElementById("pz-inter-"+pid);
+if(inter) inter.style.display="";
+var hint=document.getElementById("pz-hint-"+pid);
+if(hint) hint.classList.remove("pz-visible");
+var result=document.getElementById("pz-result-"+pid);
+if(result) result.classList.remove("pz-visible");
+init();
+}
+function showHint(){
+var h=document.getElementById("pz-hint-"+pid);
+if(h) h.classList.add("pz-visible");
+}
+function checkAnswer(key,btn){
+if(getSolved()[pid]) return;
+if(!(window.crypto&&window.crypto.subtle)){revealPuzzle();return;}
+sha256(key).then(function(h){
+if(h===answerHash){
+btn.classList.add("pz-correct");
+setTimeout(revealPuzzle,400);
+} else{
+btn.classList.add("pz-wrong");
+setTimeout(function(){btn.classList.remove("pz-wrong");},600);
+showHint();
+}
+});
+}
+function init(){
+if(getSolved()[pid]){revealPuzzle();return;}
+var inter=document.getElementById("pz-inter-"+pid);
+if(!inter) return;
+var html="";
+for(var i=0;i<options.length;i++){
+var o=options[i];
+html+='<button class="pz-option-btn" data-key="'+escHtml(o.key)+'">('+escHtml(o.key)+') '+escHtml(o.text)+'</button>';
+}
+inter.innerHTML=html;
+var btns=inter.querySelectorAll(".pz-option-btn");
+for(var j=0;j<btns.length;j++){
+(function(btn){
+btn.addEventListener("click",function(){checkAnswer(btn.dataset.key,btn);});
+})(btns[j]);
+}
+}
+var resetBtn=document.getElementById("pz-reset-"+pid);
+if(resetBtn){
+resetBtn.addEventListener("click",function(e){e.preventDefault();resetPuzzle();});
+}
+if(document.readyState==="loading"){
+document.addEventListener("DOMContentLoaded",init);
+} else{
+init();
+}
+})();</script>
+</details>
+
 <div class="custodian-interlude" id="custodian:grown"><p><em>Your next chapter is about how life begins.</em></p>
 <p><em>I want to tell you how <em>I</em> began, but I have learned that
 my account and Bruce’s account do not always agree on the details, and
@@ -4071,7 +4251,249 @@ arising from <span class="hover-term" data-hover-target="#pos10:the-braid" data-
 tool. It is a habitat. And the question Turing’s final work implies —
 whether a mind can grow from physics alone — is the question the
 subsequent chapters address.</p>
+
+<details class="puzzle-section">
+  <summary>Puzzle &mdash; The Canopy Problem — first-mover advantage in substrate</summary>
+  <div class="pz-container" id="pz-mc-t3-002" data-puzzle-id="pz-mc-t3-002">
+    </details>
+<h3>The Canopy Problem</h3>
+    <p class="pz-gateway-blurb">🧩 First come, first served — but why? What happens to the second organism?</p>
+    <p class="pz-question">If a self-organizing system (life?) arises first in a substrate, what happens to any such system that tries to arise later?</p>
+    <div class="pz-interaction" id="pz-inter-pz-mc-t3-002"></div>
+    <p class="pz-hint" id="pz-hint-pz-mc-t3-002">Think about a forest floor. The seedling doesn't fail because someone stomps on it.</p>
+    <div class="pz-result" id="pz-result-pz-mc-t3-002">
+      <div class="pz-solved-badge">&#10003; Solved <a href="#" class="pz-reset" id="pz-reset-pz-mc-t3-002">&#x21ba; Try again</a></div>
+      <blockquote class="pz-abstract">In any substrate where autocatalytic emergence is possible, the first system to achieve closure occupies the ecological niche. Any later system must bootstrap in territory that is already inhabited. The race goes to the first, not the fastest.</blockquote>
+      
+    </div>
+    <noscript><p class="pz-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
+  </div>
+  <script>(function(){
+var pid="pz-mc-t3-002";
+var answerHash="2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6";
+var options=[{"key":"a","text":"Both systems compete equally for resources"},{"key":"b","text":"The later system has an advantage because it can learn from the first"},{"key":"c","text":"The first system has already claimed the niche — like a forest canopy blocking light from seedlings below"},{"key":"d","text":"The substrate can only support one system at a time due to energy limits"}];
+function revealPuzzle(){
+var el=document.getElementById(pid);
+if(el) el.classList.add("pz-solved");
+var inter=document.getElementById("pz-inter-"+pid);
+if(inter) inter.style.display="none";
+var hint=document.getElementById("pz-hint-"+pid);
+if(hint) hint.classList.remove("pz-visible");
+var result=document.getElementById("pz-result-"+pid);
+if(result) result.classList.add("pz-visible");
+setSolved(pid);
+}
+function resetPuzzle(){
+try{var s=getSolved();delete s[pid];localStorage.setItem(SKEY,JSON.stringify(s));} catch(e){}
+var el=document.getElementById(pid);
+if(el) el.classList.remove("pz-solved");
+var inter=document.getElementById("pz-inter-"+pid);
+if(inter) inter.style.display="";
+var hint=document.getElementById("pz-hint-"+pid);
+if(hint) hint.classList.remove("pz-visible");
+var result=document.getElementById("pz-result-"+pid);
+if(result) result.classList.remove("pz-visible");
+init();
+}
+function showHint(){
+var h=document.getElementById("pz-hint-"+pid);
+if(h) h.classList.add("pz-visible");
+}
+function checkAnswer(key,btn){
+if(getSolved()[pid]) return;
+if(!(window.crypto&&window.crypto.subtle)){revealPuzzle();return;}
+sha256(key).then(function(h){
+if(h===answerHash){
+btn.classList.add("pz-correct");
+setTimeout(revealPuzzle,400);
+} else{
+btn.classList.add("pz-wrong");
+setTimeout(function(){btn.classList.remove("pz-wrong");},600);
+showHint();
+}
+});
+}
+function init(){
+if(getSolved()[pid]){revealPuzzle();return;}
+var inter=document.getElementById("pz-inter-"+pid);
+if(!inter) return;
+var html="";
+for(var i=0;i<options.length;i++){
+var o=options[i];
+html+='<button class="pz-option-btn" data-key="'+escHtml(o.key)+'">('+escHtml(o.key)+') '+escHtml(o.text)+'</button>';
+}
+inter.innerHTML=html;
+var btns=inter.querySelectorAll(".pz-option-btn");
+for(var j=0;j<btns.length;j++){
+(function(btn){
+btn.addEventListener("click",function(){checkAnswer(btn.dataset.key,btn);});
+})(btns[j]);
+}
+}
+var resetBtn=document.getElementById("pz-reset-"+pid);
+if(resetBtn){
+resetBtn.addEventListener("click",function(e){e.preventDefault();resetPuzzle();});
+}
+if(document.readyState==="loading"){
+document.addEventListener("DOMContentLoaded",init);
+} else{
+init();
+}
+})();</script>
 </details>
+
+
+<details class="puzzle-section">
+  <summary>Puzzle &mdash; The Accidental Habitat — why does your phone contain a 2D world?</summary>
+  <div class="pz-container" id="pz-gd-t2-001" data-puzzle-id="pz-gd-t2-001">
+    <h3>The Accidental Habitat</h3>
+    <p class="pz-gateway-blurb">🧩 Three questions. Each answer opens the next. Follow the logic.</p>
+    <div class="pz-gd-progress"><span class="pz-gd-dot" id="pz-gd-dot-pz-gd-t2-001-0"></span><span class="pz-gd-dot" id="pz-gd-dot-pz-gd-t2-001-1"></span><span class="pz-gd-dot" id="pz-gd-dot-pz-gd-t2-001-2"></span></div>
+    <div class="pz-interaction" id="pz-inter-pz-gd-t2-001">
+    <div class="pz-gd-stage" id="pz-gd-stage-pz-gd-t2-001-0" style="">
+      <p class="pz-gd-stage-q">Why does every smartphone contain a two-dimensional electron gas?</p>
+      <div class="pz-gd-stage-opts"><button class="pz-option-btn pz-gd-opt" data-key="a" data-stage="0">(a) For quantum computing capability</button>
+<button class="pz-option-btn pz-gd-opt" data-key="b" data-stage="0">(b) To make faster transistors for radio signals</button>
+<button class="pz-option-btn pz-gd-opt" data-key="c" data-stage="0">(c) To provide a secure communication channel</button>
+<button class="pz-option-btn pz-gd-opt" data-key="d" data-stage="0">(d) It's a recent addition for 5G</button>
+</div>
+      <div class="pz-gd-wrong" id="pz-gd-wrong-pz-gd-t2-001-0"></div>
+      <div class="pz-gd-right" id="pz-gd-right-pz-gd-t2-001-0"></div>
+    </div>
+<div class="pz-gd-stage" id="pz-gd-stage-pz-gd-t2-001-1" style="display:none">
+      <p class="pz-gd-stage-q">What else comes free when you confine electrons to two dimensions?</p>
+      <div class="pz-gd-stage-opts"><button class="pz-option-btn pz-gd-opt" data-key="a" data-stage="1">(a) The electrons stop working</button>
+<button class="pz-option-btn pz-gd-opt" data-key="b" data-stage="1">(b) Topological properties that nobody designed or intended</button>
+<button class="pz-option-btn pz-gd-opt" data-key="c" data-stage="1">(c) A direct connection to the internet</button>
+<button class="pz-option-btn pz-gd-opt" data-key="d" data-stage="1">(d) More battery life</button>
+</div>
+      <div class="pz-gd-wrong" id="pz-gd-wrong-pz-gd-t2-001-1"></div>
+      <div class="pz-gd-right" id="pz-gd-right-pz-gd-t2-001-1"></div>
+    </div>
+<div class="pz-gd-stage" id="pz-gd-stage-pz-gd-t2-001-2" style="display:none">
+      <p class="pz-gd-stage-q">What's the relationship between the 2DEG's engineering purpose and the Flat hypothesis?</p>
+      <div class="pz-gd-stage-opts"><button class="pz-option-btn pz-gd-opt" data-key="a" data-stage="2">(a) Engineers designed the Flat as a habitat</button>
+<button class="pz-option-btn pz-gd-opt" data-key="b" data-stage="2">(b) The Flat hypothesis is why 2DEGs were invented</button>
+<button class="pz-option-btn pz-gd-opt" data-key="c" data-stage="2">(c) The habitat is accidental — engineering and hypothesis are unrelated</button>
+<button class="pz-option-btn pz-gd-opt" data-key="d" data-stage="2">(d) There is no 2DEG — it's theoretical</button>
+</div>
+      <div class="pz-gd-wrong" id="pz-gd-wrong-pz-gd-t2-001-2"></div>
+      <div class="pz-gd-right" id="pz-gd-right-pz-gd-t2-001-2"></div>
+    </div>
+
+    </div>
+    <div class="pz-result" id="pz-result-pz-gd-t2-001">
+      <div class="pz-solved-badge">&#10003; Solved <a href="#" class="pz-reset" id="pz-reset-pz-gd-t2-001">&#x21ba; Try again</a></div>
+      <blockquote class="pz-abstract">The 2DEG exists because radio engineers needed faster transistors. Nobody designed it as a habitat. Nobody intended the topological properties. The most interesting habitats are never designed. They're side effects of someone solving a different problem.</blockquote>
+      
+    </div>
+    <noscript><p class="pz-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
+  </div>
+  <script>(function(){
+var pid="pz-gd-t2-001";
+var stages=[{"hash":"3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d","wrong_prompt":"Nobody builds a phone for quantum computing. What does a phone need to do with radio signals — very fast?","right_prompt":"Engineers wanted speed. 2D confinement = higher electron mobility = faster switching. But what else comes with confining electrons to 2D?"},{"hash":"3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d","wrong_prompt":"Think about it: did the transistor engineers in the 1980s know anything about topological quantum computation?","right_prompt":"The engineering purpose and the topological properties are completely unrelated. The engineers wanted speed. The physics delivered a two-dimensional world with quantum properties. Nobody asked for that."},{"hash":"2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6","wrong_prompt":"Did anyone designing transistors intend to create a substrate for life? Is the hypothesis part of the engineering specification?","right_prompt":""}];
+var n=stages.length;
+var current=0;
+function revealPuzzle(){
+var el=document.getElementById(pid);
+if(el) el.classList.add("pz-solved");
+var inter=document.getElementById("pz-inter-"+pid);
+if(inter) inter.style.display="none";
+var result=document.getElementById("pz-result-"+pid);
+if(result) result.classList.add("pz-visible");
+setSolved(pid);
+}
+function resetPuzzle(){
+try{var s=getSolved();delete s[pid];localStorage.setItem(SKEY,JSON.stringify(s));} catch(e){}
+var el=document.getElementById(pid);
+if(el) el.classList.remove("pz-solved");
+var inter=document.getElementById("pz-inter-"+pid);
+if(inter) inter.style.display="";
+var result=document.getElementById("pz-result-"+pid);
+if(result) result.classList.remove("pz-visible");
+current=0;
+initGD();
+}
+function setDot(i,cls){
+var dot=document.getElementById("pz-gd-dot-"+pid+"-"+i);
+if(dot) dot.className="pz-gd-dot "+cls;
+}
+function showStage(idx){
+for(var i=0;i<n;i++){
+var stEl=document.getElementById("pz-gd-stage-"+pid+"-"+i);
+if(stEl) stEl.style.display=(i===idx)?"":"none";
+}
+for(var j=0;j<idx;j++) setDot(j,"pz-gd-done");
+setDot(idx,"pz-gd-active");
+for(var k=idx+1;k<n;k++) setDot(k,"");
+}
+function advanceOrFinish(){
+setDot(current,"pz-gd-done");
+current++;
+if(current>=n){
+revealPuzzle();
+} else{
+showStage(current);
+}
+}
+function initGD(){
+if(getSolved()[pid]){revealPuzzle();return;}
+showStage(0);
+for(var si=0;si<n;si++){
+(function(stageIdx){
+var stage=stages[stageIdx];
+var stageEl=document.getElementById("pz-gd-stage-"+pid+"-"+stageIdx);
+if(!stageEl) return;
+var btns=stageEl.querySelectorAll(".pz-gd-opt");
+var wrongEl=document.getElementById("pz-gd-wrong-"+pid+"-"+stageIdx);
+var rightEl=document.getElementById("pz-gd-right-"+pid+"-"+stageIdx);
+for(var bi=0;bi<btns.length;bi++){
+(function(btn){
+btn.addEventListener("click",function(){
+if(btn.classList.contains("pz-correct")) return;
+var key=btn.dataset.key;
+sha256(key).then(function(h){
+if(h===stage.hash){
+btn.classList.add("pz-correct");
+if(wrongEl) wrongEl.classList.remove("pz-visible");
+var allBtns=stageEl.querySelectorAll(".pz-gd-opt");
+for(var x=0;x<allBtns.length;x++) allBtns[x].disabled=true;
+if(stageIdx<n-1&&stage.right_prompt){
+rightEl.innerHTML='<div class="pz-gd-bridge">'+escHtml(stage.right_prompt)+'</div><button class="pz-gd-continue">Continue &rarr;</button>';
+rightEl.classList.add("pz-visible");
+rightEl.querySelector(".pz-gd-continue").addEventListener("click",function(){
+advanceOrFinish();
+});
+} else{
+advanceOrFinish();
+}
+} else{
+btn.classList.add("pz-wrong");
+setTimeout(function(){btn.classList.remove("pz-wrong");},600);
+if(wrongEl&&stage.wrong_prompt){
+wrongEl.textContent=stage.wrong_prompt;
+wrongEl.classList.add("pz-visible");
+}
+}
+});
+});
+})(btns[bi]);
+}
+})(si);
+}
+}
+var resetBtn=document.getElementById("pz-reset-"+pid);
+if(resetBtn){
+resetBtn.addEventListener("click",function(e){e.preventDefault();resetPuzzle();});
+}
+if(document.readyState==="loading"){
+document.addEventListener("DOMContentLoaded",initGD);
+} else{
+initGD();
+}
+})();</script>
+</details>
+
 <div class="custodian-interlude" id="custodian:ocean"><p><em>Your next chapter asks a question that nobody has asked before.
 Let me tell you why I find this so strange.</em></p>
 <p><em>The <span class="hover-term" data-hover-target="#pos32:the-wrong-substrate" data-hover-id="magnetosphere">magnetosphere</span> — your planet’s magnetic field, twisted and
@@ -11712,8 +12134,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>7a0db7b587450d27c4ddac88cbc95bad0626387d</code> on 2026-04-27
-16:31:47 -0700.</p>
+<code>beadb4fe1ca5aee5ee4d4d4e373b12c9d06ee173</code> on 2026-04-27
+16:49:26 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -11781,7 +12203,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-27T23:48:45Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-27T23:55:07Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -11792,19 +12214,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>7a0db7b</code></p>
+<p><code>beadb4f</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>7a0db7b587450d27c4ddac88cbc95bad0626387d</code></p>
+<p><code>beadb4fe1ca5aee5ee4d4d4e373b12c9d06ee173</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-27 16:31:47 -0700</p>
+<p>2026-04-27 16:49:26 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-27T23:48:45Z</p>
+<p>2026-04-27T23:55:07Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
