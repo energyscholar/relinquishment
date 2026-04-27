@@ -94,6 +94,19 @@ def extract_svgs_from_preprocess():
     # Import and execute just the panel generation logic.
     filmstrip_panels = generate_filmstrip_panels()
 
+    genesis_svgs = {}
+    for varname, label in [
+        ('AUTOCATALYTIC_LOOP', 'Autocatalytic loop'),
+        ('EDGE_OF_CHAOS', 'Edge of chaos'),
+        ('SUBSTRATE_PARALLEL', 'Substrate parallel'),
+        ('CANOPY_PROBLEM', 'Canopy problem'),
+    ]:
+        m = re.search(rf"{varname}\s*=\s*'''(.*?)'''", source, re.DOTALL)
+        if m:
+            svg_m = re.search(r'(<svg[\s\S]*?</svg>)', m.group(1))
+            if svg_m:
+                genesis_svgs[varname] = (svg_m.group(1), label)
+
     results = []
 
     if flat_svg:
@@ -102,7 +115,7 @@ def extract_svgs_from_preprocess():
             'terms': ['(inline chapter injection)'],
             'svg': flat_svg,
             'title': 'Flat cross-section (inline chapter version)',
-            'context_html': '<p><strong>inject_flat_diagram()</strong> — Flat cross-section injected after canonical definition in chapter.</p>',
+            'context_html': '<p><strong>inject_flat_diagram()</strong> — Flat cross-section injected after canonical definition in chapter. <span style="color:#1a8a6a;font-weight:bold;">ANIMATED</span> — electrons drift horizontally (Plan 0267).</p>',
             'source': 'preprocess.py',
         })
 
@@ -112,7 +125,19 @@ def extract_svgs_from_preprocess():
             'terms': ['(inline chapter injection)'],
             'svg': domain_svg,
             'title': '11-domain button network (full chapter version with legend)',
-            'context_html': '<p><strong>inject_domain_buttons()</strong> — 11-domain button network with legend, injected after five-fields paragraph.</p>',
+            'context_html': '<p><strong>inject_domain_buttons()</strong> — 11-domain button network with legend, injected after five-fields paragraph. <span style="color:#1a8a6a;font-weight:bold;">ANIMATED</span> — dashed bridges pulse (Plan 0267).</p>',
+            'source': 'preprocess.py',
+        })
+
+    for varname, (svg, label) in genesis_svgs.items():
+        animated = varname != 'CANOPY_PROBLEM'
+        anim_note = ' <span style="color:#1a8a6a;font-weight:bold;">ANIMATED</span> (Plan 0267)' if animated else ''
+        results.append({
+            'key': f'genesis_{varname.lower()}',
+            'terms': ['(inline chapter injection)'],
+            'svg': svg,
+            'title': f'{label} (Genesis inline)',
+            'context_html': f'<p><strong>inject_genesis_illustrations()</strong> — {label}, injected inline in Genesis chapter.{anim_note}</p>',
             'source': 'preprocess.py',
         })
 
@@ -315,6 +340,7 @@ def build_gallery():
         ('Kauffman Filmstrip (6 panels)', [e for e in preprocess_svgs if 'filmstrip' in e['key']]),
         ('Domain Buttons (chapter version)', [e for e in preprocess_svgs if e['key'] == 'inject_domain_buttons']),
         ('Flat Diagram (chapter version)', [e for e in preprocess_svgs if e['key'] == 'inject_flat_diagram']),
+        ('Genesis Illustrations', [e for e in preprocess_svgs if e['key'].startswith('genesis_')]),
         ('Physics Concepts', [e for e in yaml_svgs if e['key'] in ('anyon', 'TQNN', 'braiding', 'phase transition', 'edge of chaos', 'cellular automata', 'self-organized criticality')]),
         ('Standalone Files', standalone_svgs),
     ]

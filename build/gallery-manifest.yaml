@@ -80,6 +80,7 @@
   source: preprocess.py
   category: Kauffman Filmstrip
   chapter: genesis
+  figure_id: fig-buttons-filmstrip
   sequence_group: filmstrip
   sequence_order: 1
   description: "30 buttons scattered on floor. 0 threads."
@@ -140,6 +141,10 @@
   source: preprocess.py
   category: The Stack / Convergence
   chapter: genesis
+  figure_id: fig-domain-buttons
+  animated: true
+  animation_plan: "0267"
+  animation: "Dashed speculative bridges pulse in opacity; solid published threads static."
   description: "11-domain button network (full chapter version with legend)."
 
 - id: SVG-015
@@ -148,6 +153,10 @@
   source: preprocess.py
   category: The Flat / 2DEG
   chapter: the-flat
+  figure_id: fig-flat-cross-section
+  animated: true
+  animation_plan: "0267"
+  animation: "6 electrons drift horizontally (cx only, never cy) — embodies 2D confinement."
   description: "Flat cross-section injected inline in chapter."
 
 - id: SVG-016
@@ -220,6 +229,50 @@
   category: Standalone Files
   description: "Full magnetosphere with plasma sheet labeled 'The Flat'. Dark background."
 
+- id: SVG-034
+  name: cover-magnetosphere
+  status: live
+  source: reader.js
+  category: Cover / Navigation
+  figure_id: cover-ms-dark
+  animated: true
+  animation_plan: "0266"
+  animation: "Star twinkle (6 stars, dark only), solar wind flow (7 lines), bow shock shimmer, field line breathing (3 dayside)."
+  description: "Full magnetosphere cover SVG: Earth, dipole field lines, magnetotail, the Flat, bow shock, solar wind, stars. Dark + light variants. Toggle + scroll-fade."
+  notes: "Two inline SVGs in reader.js (cover-ms-dark, cover-ms-light). Light mode has no stars. Animated Plan 0266 (ca6f46a). JS motionOk check for prefers-reduced-motion."
+
+- id: SVG-035
+  name: grid-sequence-regional
+  status: deferred
+  source: build/images/grid-sequence-1-regional.svg
+  category: Standalone Files
+  description: "Grid sequence panel 1: regional view."
+  notes: "Orphaned — not referenced by any build script or HTML. Epub artifact. Kept for potential future use."
+
+- id: SVG-036
+  name: grid-sequence-global
+  status: deferred
+  source: build/images/grid-sequence-2-global.svg
+  category: Standalone Files
+  description: "Grid sequence panel 2: global view."
+  notes: "Orphaned — same as SVG-035."
+
+- id: SVG-037
+  name: grid-sequence-magnetosphere
+  status: deferred
+  source: build/images/grid-sequence-3-magnetosphere.svg
+  category: Standalone Files
+  description: "Grid sequence panel 3: magnetosphere view."
+  notes: "Orphaned — same as SVG-035."
+
+- id: SVG-038
+  name: grid-sequence-the-flat
+  status: deferred
+  source: build/images/grid-sequence-4-the-flat.svg
+  category: Standalone Files
+  description: "Grid sequence panel 4: the Flat view."
+  notes: "Orphaned — same as SVG-035."
+
 # ============================================================
 # APPROVED — built in gallery, ready for book deployment
 # ============================================================
@@ -274,65 +327,56 @@
 
 - id: SVG-025
   name: autocatalytic-loop
-  status: planned
-  source: pending
+  status: live
+  source: preprocess.py
   category: Genesis Illustrations
   chapter: genesis
+  figure_id: fig-autocatalytic-loop
   marker: "The whole network sustains itself."
-  description: >
-    Circular arrow diagram: three molecules (A, B, C) in a cycle.
-    A catalyzes B, B catalyzes C, C catalyzes A. Arrows form a
-    self-sustaining loop. Shows what autocatalysis LOOKS like —
-    the chemistry version of what the filmstrip just showed
-    physically. Simple, iconic, p1-readable.
-  notes: "Placement: after 'The whole network sustains itself.' — right after the filmstrip lands the physical metaphor, this shows the chemical reality."
+  animated: true
+  animation_plan: "0267"
+  animation: "3 cycling dots (animateMotion, 2.4s period, stagger 0/0.8/1.6s) — shows self-sustaining process."
+  description: "Circular arrow diagram: A→B→C→A catalytic cycle. Cycling dots show the network sustaining itself."
+  notes: "Built Plan 0242. Animated Plan 0267. Timing shared with SVG-027 (substrate parallel)."
 
 - id: SVG-026
   name: edge-of-chaos-inline
-  status: planned
-  source: pending
+  status: live
+  source: preprocess.py
   category: Genesis Illustrations
   chapter: genesis
+  figure_id: fig-edge-of-chaos
   marker: "best able to evolve as well."
-  description: >
-    Enhanced three-regime diagram for inline chapter deployment.
-    Left: frozen crystal lattice (blue, rigid grid). Middle: narrow
-    green band with interconnected nodes (computation/life). Right:
-    chaotic gas (red, random scatter). TODO already exists in source
-    at genesis.tex line 46. Based on existing SVG-020 but larger,
-    with substrate examples (crystal, network, gas) instead of
-    abstract labels.
-  notes: "TODO comment already in genesis.tex lines 46-49. Existing SVG-020 works for hover; this inline version should be richer with concrete visual examples of each regime."
+  animated: true
+  animation_plan: "0267"
+  animation: "Frozen=static, edge=flowing connections + breathing nodes, chaos=drifting dots. Three contrasting behaviors."
+  description: "Three-regime diagram: frozen grid (blue, static), edge of chaos (green, dynamic), chaos (red, scattering)."
+  notes: "Built Plan 0242. Animated Plan 0267. The frozen panel's stasis is pedagogically intentional — do NOT animate it."
 
 - id: SVG-027
   name: substrate-parallel
-  status: planned
-  source: pending
+  status: live
+  source: preprocess.py
   category: Genesis Illustrations
   chapter: genesis
+  figure_id: fig-substrate-parallel
   marker: "the threshold was crossed."
   sequence_group: genesis-argument
   sequence_order: 3
-  description: >
-    Side-by-side comparison. Left panel: beaker of organic molecules
-    with catalytic arrows between them (warm colors). Right panel:
-    2DEG substrate with anyonic quasiparticles and braiding arcs
-    (blue colors). Center bridge: "same mathematics" with Kauffman's
-    threshold equation hint. Shows the chapter's key intellectual
-    move: what works in chemistry works in quantum substrates.
-  notes: "Hardest of the four to execute well. Must be visually clear that both sides are governed by the same principle without being reductive. Jane needs to grasp 'same math, different stuff.' Rachel needs to see the specific parallel."
+  animated: true
+  animation_plan: "0267"
+  animation: "6 mirror dots (3 warm, 3 cool) cycling in identical timing — proves 'same mathematics' visually."
+  description: "Split panel: chemistry beaker (warm) and 2DEG quantum (cool) with same catalytic loop structure."
+  notes: "Built Plan 0242. Animated Plan 0267. Timing MUST match SVG-025 (autocatalytic loop) — 2.4s period, 0/0.8/1.6s stagger."
 
 - id: SVG-028
   name: canopy-problem
-  status: planned
-  source: pending
+  status: live
+  source: preprocess.py
   category: Genesis Illustrations
   chapter: genesis
+  figure_id: fig-canopy-problem
   marker: "the ecological niche is full."
-  description: >
-    Forest canopy cross-section. Tall established trees with full
-    green crowns blocking sunlight. Below: a small seedling in shadow,
-    reaching upward but receiving no light. Sun rays hit only the
-    canopy. Simple, dark implication lands without text. The visual
-    metaphor for first-mover advantage in any substrate.
-  notes: "Emotionally the darkest image in the chapter. The seedling is not attacked — it simply never gets the light. This is the visual that carries the canopy argument."
+  animated: false
+  description: "Forest canopy cross-section: tall trees block all light, seedling in shadow never reaches it."
+  notes: "Built Plan 0242. NOT animated (Plan 0267 assessment: static composition already tells the story)."
