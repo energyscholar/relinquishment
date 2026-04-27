@@ -26,6 +26,7 @@ build/output/
 build/epub-tmp/
 build/reader-inline.html
 main.pdf
+texput.pdf
 Relinquishment.pdf
 docs/downloads/Relinquishment.pdf
 docs/downloads/Relinquishment.epub
