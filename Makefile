@@ -75,6 +75,7 @@ html: gitinfo build/reader-inline.html
 	python3 build/preprocess.py --fix-html docs/downloads/$(JOBNAME).html
 	cp docs/downloads/$(JOBNAME).html $(JOBNAME).html
 	@if [ -f $(JOBNAME).pdf ]; then cp $(JOBNAME).pdf docs/downloads/$(JOBNAME).pdf; fi
+	cd docs/downloads && zip -j $(JOBNAME).zip $(JOBNAME).html
 	python3 build/verify-deep-links.py
 
 build/reader-inline.html: build/reader.js
@@ -111,6 +112,7 @@ clean:
 	rm -rf build/tikz-cache/*
 	rm -f build/images/*.pdf
 	rm -f build/validation.json
+	rm -f docs/downloads/$(JOBNAME).zip
 	@echo "" > build/flags.tex
 	@echo "Clean complete."
 
