@@ -30,7 +30,7 @@
   status: live
   source: hover-definitions.yaml
   category: The Flat / 2DEG
-  terms: [the-flat-title, the Flat, flat worlds]
+  terms: [the-flat-title, the Flat, The Flat, flat worlds]
   chapter: the-flat
   description: "Cross-section: 3D semiconductor sandwiching thin blue 2DEG layer with confined electrons."
 
@@ -47,7 +47,7 @@
   status: live
   source: hover-definitions.yaml
   category: Topology & Wormholes
-  terms: [wormholes-title, wormholes, Wormholes]
+  terms: [wormholes-title, wormholes, Wormholes, wormhole, topological wormhole]
   description: "Surface A and B connected by dashed topological tunnel."
 
 - id: SVG-005
