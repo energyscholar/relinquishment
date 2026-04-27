@@ -233,7 +233,7 @@ chapter_puzzles:
     type: mc
     topic: t6
     level: p1
-    approved: false
+    approved: true
     installed: false
     location:
       chapter: why-relinquish
