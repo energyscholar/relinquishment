@@ -582,6 +582,79 @@ Manifest: <code>build/gallery-manifest.yaml</code></p>
 
 {''.join(body_lines)}
 
+<section id="concept-symbols" style="margin-top:3em;padding-top:2em;border-top:2px solid #1a5276;">
+<h2 style="font-family:Georgia,serif;color:#1a5276;">Concept Symbol Test — Lapine Vocabulary</h2>
+<p style="font-size:0.9em;color:#666;margin-bottom:1.5em;">
+Candidate symbols for Plan 0276 Phase 2D. If any render as □ on your device, they need SVG replacements.
+Each symbol is shown at three sizes (body text, heading, large) to test rendering across contexts.
+</p>
+
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:1.5em;">
+
+<div style="border:1px solid #ddd;border-radius:6px;padding:1.2em;border-left:3px solid #d4a847;">
+<div style="font-size:3em;text-align:center;margin-bottom:0.3em;">⬡</div>
+<div style="text-align:center;font-size:1.5em;margin-bottom:0.2em;">⬡ The Flat</div>
+<div style="text-align:center;font-size:1em;margin-bottom:0.8em;">Inline: ⬡ the Flat ⬡</div>
+<p style="font-size:0.85em;"><strong>U+2B21 — WHITE HEXAGON</strong></p>
+<p style="font-size:0.85em;"><strong>Concept:</strong> The Flat / 2DEG — the book's central substrate.</p>
+<p style="font-size:0.85em;"><strong>Why this shape:</strong> Hexagonal — evokes lattice geometry, crystalline structure. The 2DEG lives in a semiconductor lattice.</p>
+<p style="font-size:0.85em;"><strong>Lapine plan:</strong> Chapters 1-5: appears WITH the word (quiet, opacity 0.5). Chapters 6-10: near the concept (opacity 0.7). Chapters 11+: can appear alone (full opacity). First mention per chapter only.</p>
+<p style="font-size:0.85em;color:#888;"><strong>Risk:</strong> Poor coverage on Android system fonts, older iOS, cheap Kindles.</p>
+</div>
+
+<div style="border:1px solid #ddd;border-radius:6px;padding:1.2em;border-left:3px solid #6a9fb5;">
+<div style="font-size:3em;text-align:center;margin-bottom:0.3em;">⇌</div>
+<div style="text-align:center;font-size:1.5em;margin-bottom:0.2em;">⇌ Wormhole</div>
+<div style="text-align:center;font-size:1em;margin-bottom:0.8em;">Inline: ⇌ wormhole ⇌</div>
+<p style="font-size:0.85em;"><strong>U+21CC — RIGHTWARDS HARPOON OVER LEFTWARDS HARPOON</strong></p>
+<p style="font-size:0.85em;"><strong>Concept:</strong> Wormhole / nonlocal connection — quantum teleportation's two-way channel.</p>
+<p style="font-size:0.85em;"><strong>Why this shape:</strong> Bidirectional arrows — information flows both ways through the wormhole, but always requires a classical backchannel.</p>
+<p style="font-size:0.85em;"><strong>Lapine plan:</strong> Same graduated deployment as ⬡. Introduced after the Flat symbol is established.</p>
+<p style="font-size:0.85em;color:#888;"><strong>Risk:</strong> Better font coverage than ⬡ (common in chemistry/math). Lower risk.</p>
+</div>
+
+<div style="border:1px solid #ddd;border-radius:6px;padding:1.2em;border-left:3px solid #9b7db8;">
+<div style="font-size:3em;text-align:center;margin-bottom:0.3em;">⊛</div>
+<div style="text-align:center;font-size:1.5em;margin-bottom:0.2em;">⊛ Braiding</div>
+<div style="text-align:center;font-size:1em;margin-bottom:0.8em;">Inline: ⊛ braiding ⊛</div>
+<p style="font-size:0.85em;"><strong>U+229B — CIRCLED ASTERISK OPERATOR</strong></p>
+<p style="font-size:0.85em;"><strong>Concept:</strong> Braiding / topological computation — the operation that makes quantum gates.</p>
+<p style="font-size:0.85em;"><strong>Why this shape:</strong> Asterisk-in-circle — evokes crossing strands, rotational symmetry. The fundamental operation of topological quantum computing.</p>
+<p style="font-size:0.85em;"><strong>Lapine plan:</strong> Future candidate. Only deploy if ⬡ and ⇌ succeed.</p>
+<p style="font-size:0.85em;color:#888;"><strong>Risk:</strong> Good font coverage (math operators block).</p>
+</div>
+
+<div style="border:1px solid #ddd;border-radius:6px;padding:1.2em;border-left:3px solid #27ae60;">
+<div style="font-size:3em;text-align:center;margin-bottom:0.3em;">↻</div>
+<div style="text-align:center;font-size:1.5em;margin-bottom:0.2em;">↻ Autocatalysis</div>
+<div style="text-align:center;font-size:1em;margin-bottom:0.8em;">Inline: ↻ autocatalysis ↻</div>
+<p style="font-size:0.85em;"><strong>U+21BB — CLOCKWISE OPEN CIRCLE ARROW</strong></p>
+<p style="font-size:0.85em;"><strong>Concept:</strong> Autocatalytic loop / self-sustaining process — Kauffman's catalytic closure.</p>
+<p style="font-size:0.85em;"><strong>Why this shape:</strong> Circular arrow — the network sustains itself. A→B→C→A. The genesis of complexity.</p>
+<p style="font-size:0.85em;"><strong>Lapine plan:</strong> Future candidate. Only deploy if ⬡ and ⇌ succeed.</p>
+<p style="font-size:0.85em;color:#888;"><strong>Risk:</strong> Excellent font coverage (arrows block).</p>
+</div>
+
+<div style="border:1px solid #ddd;border-radius:6px;padding:1.2em;border-left:3px solid #e67e22;">
+<div style="font-size:3em;text-align:center;margin-bottom:0.3em;">⊕</div>
+<div style="text-align:center;font-size:1.5em;margin-bottom:0.2em;">⊕ Emergence</div>
+<div style="text-align:center;font-size:1em;margin-bottom:0.8em;">Inline: ⊕ emergence ⊕</div>
+<p style="font-size:0.85em;"><strong>U+2295 — CIRCLED PLUS</strong></p>
+<p style="font-size:0.85em;"><strong>Concept:</strong> Emergence / phase transition — N+1 property arising from N components.</p>
+<p style="font-size:0.85em;"><strong>Why this shape:</strong> Plus-in-circle — something more than the sum. The central mystery of the book: how does substrate become mind?</p>
+<p style="font-size:0.85em;"><strong>Lapine plan:</strong> Future candidate. Most abstract concept — hardest to anchor visually.</p>
+<p style="font-size:0.85em;color:#888;"><strong>Risk:</strong> Excellent font coverage (math operators block).</p>
+</div>
+
+</div>
+
+<div style="margin-top:2em;padding:1em;background:#f9f9f9;border-radius:6px;">
+<h3 style="font-family:Georgia,serif;font-size:1em;margin-bottom:0.5em;">Rendering Verdict</h3>
+<p style="font-size:0.85em;">If all five render correctly on your phone, the Unicode path works. If ⬡ shows as □, we build tiny SVG replacements (same visual, guaranteed rendering). The SVG approach uses <code>content: url(data:image/svg+xml,...)</code> in CSS ::before — same injection mechanism, different payload.</p>
+</div>
+
+</section>
+
 <footer style="margin-top:3em;padding-top:1em;border-top:1px solid #ddd;font-size:0.8em;color:#aaa;">
 Generated by build/generate-gallery.py — {total} entries from gallery-manifest.yaml.
 </footer>

@@ -272,7 +272,7 @@ No conflicts. All interactions are within the D-G sequence (by design).
 | 0230 §2 ULTRA II reduction | Blocked on 0233 | After 0233 |
 | 0232 LLM verification | Deferred by Bruce | After 0230 |
 | 0157 Folk hero 1,3,4 | Needs Bruce's prose input | When ready |
-| 0225b phases 3-4 | Low priority | Backlog |
+| 0276 phases 2A-2D | Low priority | Backlog |
 
 ---
 

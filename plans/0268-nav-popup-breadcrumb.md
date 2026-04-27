@@ -5,7 +5,7 @@
 **Priority:** High
 **Scope:** `build/reader.js` (primary), CSS in `build/preprocess.py` or inline
 **Related plans:**
-- **0225b** — Visual Language Deployment (epistemic colors reused in popup)
+- **0276** — Visual Language Deployment (epistemic colors reused in popup)
 - **0144** — Epistemic filter buttons (Science/Story, currently commented out — absorbed here)
 - **0263/0264** — Cover magnetosphere (nav bar positioning context)
 
