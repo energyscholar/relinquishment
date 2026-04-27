@@ -1007,6 +1007,15 @@ body.visual-plain details.epistemic-c { background: none !important; }
 body.visual-plain .epistemic-legend { display: none; }
 body.visual-plain [data-concept]::before { content: none; }
 
+/* Concept symbols — Plan 0276 Phase 2D */
+[data-concept="flat"]::before {
+  content: '\2B21 '; font-size: 0.85em; color: #b8860b;
+}
+[data-concept-phase="intro"]::before { opacity: 0.4; }
+[data-concept-phase="reinforce"]::before { opacity: 0.65; }
+[data-concept-phase="fluent"]::before { opacity: 1.0; }
+details.tech-section summary [data-concept]::before { content: none; }
+
 /* Magnetosphere teaching imagemaps — Plan 0270 */
 @media (max-width: 700px) {
   .ms-teaching { margin: 1em auto !important; }
@@ -4296,6 +4305,47 @@ def minify_html_assets(html_path):
     p.write_text(text)
 
 
+def inject_concept_symbols(html_path):
+    """Inject ⬡ concept symbol before first 'the Flat' hover-term per chapter."""
+    html_path = Path(html_path)
+    text = html_path.read_text()
+
+    chapter_starts = [m.start() for m in re.finditer(r'<details class="chapter-section', text)]
+    seen = defaultdict(set)
+    count = 0
+
+    def _chapter_of(pos):
+        idx = bisect.bisect_right(chapter_starts, pos) - 1
+        return idx if idx >= 0 else -1
+
+    def replace_first(m):
+        nonlocal count, text
+        ch = _chapter_of(m.start())
+        if 'flat' in seen[ch]:
+            return m.group(0)
+        preceding = text[max(0, m.start()-500):m.start()]
+        last_open = preceding.rfind('<summary')
+        last_close = preceding.rfind('</summary>')
+        if last_open > last_close:
+            return m.group(0)
+        seen[ch].add('flat')
+        count += 1
+        if ch < 8:
+            phase = 'intro'
+        elif ch < 18:
+            phase = 'reinforce'
+        else:
+            phase = 'fluent'
+        return (f'<span data-concept="flat" data-concept-phase="{phase}" '
+                f'aria-hidden="true"></span>{m.group(0)}')
+
+    pattern = r'<span[^>]*data-hover-id="the-flat"[^>]*>[^<]*</span>'
+    text = re.sub(pattern, replace_first, text)
+    if count:
+        print(f"  Concept symbols: {count} ⬡ placed across {len(chapter_starts)} chapters")
+    html_path.write_text(text)
+
+
 def deduplicate_svg_defs(html_path):
     """Replace repeated SVG @media and filter defs with single shared definitions."""
     import re as _re
@@ -4348,6 +4398,7 @@ if __name__ == "__main__":
         inject_questions_index(sys.argv[2])
         fix_html_glossary_names(sys.argv[2])
         collapse_tech_sections(sys.argv[2])
+        inject_concept_symbols(sys.argv[2])
         deduplicate_svg_defs(sys.argv[2])
         minify_html_assets(sys.argv[2])
     else:

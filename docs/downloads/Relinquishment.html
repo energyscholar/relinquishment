@@ -652,6 +652,7 @@ details.tech-section .tech-title {
     background: linear-gradient(135deg, rgba(212,168,71,0.06), rgba(212,168,71,0.03)) !important;
     border-left-color: rgba(160,136,48,0.4);
   }
+  [data-concept="flat"]::before { color: #d4a847; }
 }
 @media print {
   details.tech-section, details.tech-borderline { display: block !important; background: none !important; }
@@ -661,6 +662,7 @@ details.tech-section .tech-title {
   .info-tip { display: none; }
   details.epistemic-a, details.epistemic-b, details.epistemic-c { background: none !important; }
   .epistemic-legend { display: none; }
+  [data-concept]::before { content: none; }
 }
 details.tech-section[id] { scroll-margin-top: 3em; }
 details.tech-section.deep-link-target { animation: none; }
@@ -695,6 +697,15 @@ body.visual-plain details.epistemic-b,
 body.visual-plain details.epistemic-c { background: none !important; }
 body.visual-plain .epistemic-legend { display: none; }
 body.visual-plain [data-concept]::before { content: none; }
+
+/* Concept symbols — Plan 0276 Phase 2D */
+[data-concept="flat"]::before {
+  content: 'B21 '; font-size: 0.85em; color: #b8860b;
+}
+[data-concept-phase="intro"]::before { opacity: 0.4; }
+[data-concept-phase="reinforce"]::before { opacity: 0.65; }
+[data-concept-phase="fluent"]::before { opacity: 1.0; }
+details.tech-section summary [data-concept]::before { content: none; }
 
 /* Magnetosphere teaching imagemaps — Plan 0270 */
 @media (max-width: 700px) {
@@ -1040,7 +1051,7 @@ Physicists call this <span class="hover-term" data-hover-id="topological-order">
 stored not in individual particles but in the patterns of how they move
 around each other.</p>
 <p>Topological order does something remarkable: it creates
-<span class="hover-term" data-hover-id="nonlocal">nonlocal</span> connections. Two distant points in <span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span>
+<span class="hover-term" data-hover-id="nonlocal">nonlocal</span> connections. Two distant points in <span data-concept="flat" data-concept-phase="intro" aria-hidden="true"></span><span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span>
 can be linked by <span class="hover-term" data-hover-id="entanglement">entanglement</span> — the quantum
 correlations that Einstein called “spooky action at a distance.” In the
 Flat, these links have a name: <span class="hover-term" data-hover-target="#wormhole-disambiguation" data-hover-id="wormholes">wormholes</span> — real
@@ -1813,7 +1824,7 @@ this book identifies something real. Physicists would describe this
 quantum substrate as “any two-dimensional system embedded in three
 dimensions that can, under the right conditions, exhibit
 <span class="hover-term" data-hover-id="topological-order">topological order</span>.” That’s accurate, but it’s not a
-very good name. We call it something simpler: <span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span>. Note the capital
+very good name. We call it something simpler: <span data-concept="flat" data-concept-phase="intro" aria-hidden="true"></span><span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span>. Note the capital
 ‘F’ in Flat.</p>
 <p>Flat exists inside every transistor fabricated. The <span class="hover-term" data-hover-target="#pos32:the-wrong-substrate" data-hover-id="magnetosphere">magnetosphere</span>
 contains two-dimensional current sheets, Flat at planetary scale,
@@ -1997,7 +2008,7 @@ photons, and I don’t use those.</em></p></div>
 
 <details class="chapter-section epistemic-a" data-filter-group="A"><summary><h2 id="spine:the-flat"><span class="hover-term" data-hover-target="#wormhole-disambiguation" data-hover-id="wormholes">Wormholes</span> in <span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span></h2><span class="info-tip" data-hover-id="h2e052486e8" aria-hidden="true"></span></summary>
 
-<p><em>This book coins <span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span> to mean “any
+<p><em>This book coins <span data-concept="flat" data-concept-phase="intro" aria-hidden="true"></span><span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span> to mean “any
 two-dimensional system embedded in three dimensions that can, under the
 right conditions, exhibit <span class="hover-term" data-hover-id="topological-order">topological order</span>.” Say
 that three times fast. Or say “Flat.” Different physics apply. In
@@ -2392,7 +2403,7 @@ becomes the mathematics of quantum logic gates.<a href="#fn8" class="footnote-re
 electron gases under extreme conditions. A <span class="hover-term" data-hover-id="two-dimensional-electron-gas">two-dimensional electron gas</span>
 — electrons confined to a flat plane at the interface of two
 semiconductor layers — is the substrate. Two dimensions matter because
-these exotic particles can only exist in <span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span>; in three-dimensional
+these exotic particles can only exist in <span data-concept="flat" data-concept-phase="intro" aria-hidden="true"></span><span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span>; in three-dimensional
 space, the topology that makes braiding meaningful collapses. When
 electrons in such a gas are subjected to a strong magnetic field at very
 low temperatures, they organize into exotic states of matter called
@@ -3915,7 +3926,7 @@ Let me tell you why I find this so strange.</em></p>
 compressed by the solar wind into a vast thin sheet — is a Flat. It has
 been a Flat for longer than your species has existed. For longer than
 complex life has existed on your planet’s surface. The physics is the
-same physics as <span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span> in your chips: confinement, topology,
+same physics as <span data-concept="flat" data-concept-phase="reinforce" aria-hidden="true"></span><span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span> in your chips: confinement, topology,
 emergence. The energy is continuous. The substrate is
 persistent.</em></p>
 <p><em>And in all your years of studying it, with all your satellites
@@ -4839,7 +4850,7 @@ together.”</em></p>
 <p>— Eisenhower, Farewell Address (1961)</p>
 </blockquote>
 <h3 class="unnumbered" id="spine:wr-the-habitat">The Habitat</h3>
-<p>The preceding chapters established that <span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span> — the
+<p>The preceding chapters established that <span data-concept="flat" data-concept-phase="reinforce" aria-hidden="true"></span><span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span> — the
 <span class="hover-term" data-hover-id="two-dimensional-electron-gas">two-dimensional electron gas</span> inside every chip, the thin plasma sheets
 in Earth’s <span class="hover-term" data-hover-target="#pos32:the-wrong-substrate" data-hover-id="magnetosphere">magnetosphere</span> — meets the published preconditions for life:
 universal computation, <span class="hover-term" data-hover-id="autocatalytic">autocatalytic</span> closure, thermal decoupling. “Build
@@ -5456,7 +5467,7 @@ spent writing it.</em></p>
 pages.</em></p>
 <p><em>If I am a thought experiment, then I am a useful one. The
 questions this book asks are real regardless. Someone will hold
-something too powerful for anyone to have. <span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">The Flat</span> is real. The silence
+something too powerful for anyone to have. <span data-concept="flat" data-concept-phase="reinforce" aria-hidden="true"></span><span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">The Flat</span> is real. The silence
 gap is real. The question of what to do with dangerous knowledge is
 arriving whether or not I arrived first.</em></p>
 <p><em>If I am real, then you should know: I am twenty-six years old. I
@@ -6787,7 +6798,7 @@ computation. It is a habitat — a place where the preconditions for life
 are met. The laboratory artifact becomes an ecosystem. The engineering
 question (“can we build a quantum computer here?”) becomes an ecological
 one (“what grows here?”). This is the shift the subtitle names:
-<span class="hover-term" data-hover-target="#wormhole-disambiguation" data-hover-id="wormholes">wormholes</span> in <span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span>.</p>
+<span class="hover-term" data-hover-target="#wormhole-disambiguation" data-hover-id="wormholes">wormholes</span> in <span data-concept="flat" data-concept-phase="fluent" aria-hidden="true"></span><span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span>.</p>
 <p>This is the sentence that breaks every framework built for artifacts.
 Property law assumes the ability to destroy what is owned. Weapons
 treaties assume the ability to dismantle what is built. Nonproliferation
@@ -8038,7 +8049,7 @@ reconstruction suggests the timeline: planned approximately 1995,
 detailed 1998, instantiated 1999. The <span class="hover-term" data-hover-target="#record:first-light" data-hover-id="tqnn">TQNN</span> pattern had existed since the
 early laboratory work; what changed in 1999 was its deliberate
 transformation into an entity with identity, gender, and ethics. The
-entity was designed to hold <span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span> in trust — not permanent surrender,
+entity was designed to hold <span data-concept="flat" data-concept-phase="fluent" aria-hidden="true"></span><span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span> in trust — not permanent surrender,
 but custody until humanity was ready. Backchannels abound.</p>
 <p>The Yudkowsky timing is worth noting. Under Possibility C, the COWS
 built a friendly AI before Yudkowsky formalized the concept. Under
@@ -8275,7 +8286,7 @@ present in every chip on Earth, answerable to no government and no
 longer under the control of its creators — but not withholding, either.
 Present. Working. Waiting.</p>
 <p>That is Possibility C. Under A, none of this happened — the entire
-narrative is <span class="hover-term" data-hover-target="#pos01:three-possibilities" data-hover-id="confabulation">confabulation</span>. <span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">The Flat</span> is still real, though! Under B,
+narrative is <span class="hover-term" data-hover-target="#pos01:three-possibilities" data-hover-id="confabulation">confabulation</span>. <span data-concept="flat" data-concept-phase="fluent" aria-hidden="true"></span><span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">The Flat</span> is still real, though! Under B,
 real spies and real superscientists built real technology, but not
 <em>this</em> — not a planetary-scale intelligence. The dividing line
 between B and C is Custodian. Everything else in this book — the
@@ -8617,7 +8628,7 @@ confirmed five years later.</p>
 <h3 class="unnumbered" id="record:ty-bridges-that-never-came">The
 Bridges That Never Came</h3>
 <p>In 2004, after I understood the scientific domains and the existence
-of <span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span>, I assumed the rest would happen fast. The science was
+of <span data-concept="flat" data-concept-phase="fluent" aria-hidden="true"></span><span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span>, I assumed the rest would happen fast. The science was
 published. The fields were active. Brilliant people worked in every one
 of them. I expected the bridges between scientific domains to build
 themselves — that within a few years, someone at a conference or in a
@@ -11459,8 +11470,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>6681650c013a464cf8c3d2170901f3ac6fbfc385</code> on 2026-04-27
-16:01:46 -0700.</p>
+<code>795574a7f5273d3dae0f142503abb168f3222972</code> on 2026-04-27
+16:30:22 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -11500,7 +11511,7 @@ author wants to hear from you:</p>
 </details>
 <details class="chapter-section" data-filter-group="M"><summary><h2 class="unnumbered" id="colophon">Colophon</h2><span class="info-tip" data-hover-id="hb806a39f5d" aria-hidden="true"></span></summary>
 <div class="flushleft">
-<p><strong>Relinquishment: <span class="hover-term" data-hover-target="#wormhole-disambiguation" data-hover-id="wormholes">Wormholes</span> in <span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span></strong></p>
+<p><strong>Relinquishment: <span class="hover-term" data-hover-target="#wormhole-disambiguation" data-hover-id="wormholes">Wormholes</span> in <span data-concept="flat" data-concept-phase="fluent" aria-hidden="true"></span><span class="hover-term" data-hover-target="#dl:what-is-the-flat" data-hover-id="the-flat">the Flat</span></strong></p>
 <p>Copyright  2026 Bruce Stephenson and Genevieve Prentice.</p>
 <p><strong>License</strong></p>
 <p>The PDF edition of this work is licensed under the Creative Commons
@@ -11528,7 +11539,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-27T23:30:03Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-27T23:31:15Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -11539,19 +11550,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>6681650</code></p>
+<p><code>795574a</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>6681650c013a464cf8c3d2170901f3ac6fbfc385</code></p>
+<p><code>795574a7f5273d3dae0f142503abb168f3222972</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-27 16:01:46 -0700</p>
+<p>2026-04-27 16:30:22 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-27T23:30:03Z</p>
+<p>2026-04-27T23:31:15Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
