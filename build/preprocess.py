@@ -3319,6 +3319,7 @@ def inject_chapter_puzzles(html_path):
     CHAPTER_MARKERS = {
         'the-flat': '<div class="custodian-interlude" id="custodian:dance">',
         'three-possibilities': '<div class="custodian-interlude" id="custodian:flat">',
+        'wrong-substrate': '<div class="custodian-interlude" id="custodian:quiet">',
     }
 
     def _esc(s):
