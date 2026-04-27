@@ -413,7 +413,7 @@ def render_km_container(puzzle):
   {bg_section}
   <p class="hint" id="hint-{pid}">{hint_text}</p>
   <div class="result" id="result-{pid}">
-    <div class="solved-badge">&#10003; Solved</div>
+    <div class="solved-badge">&#10003; Solved <a href="#" class="reset-single" data-reset-id="{pid}">&#x21ba; Try again</a></div>
     <blockquote class="abstract">{abstract_text}</blockquote>
     {egg_link}
   </div>
@@ -453,7 +453,7 @@ def render_gd_container(puzzle):
     {stages_html}
   </div>
   <div class="result" id="result-{pid}">
-    <div class="solved-badge">&#10003; Solved</div>
+    <div class="solved-badge">&#10003; Solved <a href="#" class="reset-single" data-reset-id="{pid}">&#x21ba; Try again</a></div>
     <blockquote class="abstract">{abstract_text}</blockquote>
     {egg_link}
   </div>
@@ -505,7 +505,7 @@ def render_tower_container(puzzle):
   {bg_section}
   <p class="hint" id="hint-{pid}">{hint_text}</p>
   <div class="result" id="result-{pid}">
-    <div class="solved-badge">&#10003; Solved</div>
+    <div class="solved-badge">&#10003; Solved <a href="#" class="reset-single" data-reset-id="{pid}">&#x21ba; Try again</a></div>
     <blockquote class="abstract">{abstract_text}</blockquote>
     {egg_link}
   </div>
@@ -553,7 +553,7 @@ def render_container(puzzle):
   {bg_section}
   <p class="hint" id="hint-{pid}">{hint_text}</p>
   <div class="result" id="result-{pid}">
-    <div class="solved-badge">&#10003; Solved</div>
+    <div class="solved-badge">&#10003; Solved <a href="#" class="reset-single" data-reset-id="{pid}">&#x21ba; Try again</a></div>
     <blockquote class="abstract">{abstract_text}</blockquote>
     {egg_link}
   </div>
@@ -643,6 +643,8 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .result { display: none; margin-top: 1em; }
 .result.visible { display: block; }
 .solved-badge { color: #2a9b9a; font-weight: bold; font-size: 1.1em; margin-bottom: 0.5em; }
+.reset-single { font-size: 0.75em; font-weight: normal; color: #888; text-decoration: none; margin-left: 1em; }
+.reset-single:hover { color: #1a5276; text-decoration: underline; }
 .abstract { border-left: 3px solid #2a9b9a; padding: 0.8em 1em; margin: 0; background: #f0faf9; font-style: italic; color: #333; line-height: 1.5; }
 
 .ord-item { display: flex; align-items: center; gap: 0.5em; padding: 0.5em 0.8em; margin-bottom: 0.4em; border: 1px solid #ccc; border-radius: 4px; background: #fff; }
@@ -839,6 +841,8 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
   .sim-status { color: #aaa; }
   .reset-btn { background: #2a2a2a; border-color: #555; color: #888; }
   .reset-btn:hover { color: #e74c3c; border-color: #e74c3c; }
+  .reset-single { color: #666; }
+  .reset-single:hover { color: #6ba3f7; }
   .ord-item { background: #2a2a2a; border-color: #555; color: #e0e0e0; }
   .ord-arrows button { background: #333; border-color: #555; color: #e0e0e0; }
   .mat-item { background: #2a2a2a; border-color: #555; color: #e0e0e0; }
@@ -956,6 +960,34 @@ function revealPuzzle(id) {
 function showHint(id) {
   var h = document.getElementById("hint-" + id);
   if (h) h.classList.add("visible");
+}
+
+function resetSingle(id) {
+  var el = document.getElementById(id);
+  if (!el) return;
+  try { var s = getSolved(); delete s[id]; localStorage.setItem(STORAGE_KEY, JSON.stringify(s)); } catch(e) {}
+  el.classList.remove("solved");
+  var inter = el.querySelector(".interaction");
+  if (inter) { inter.style.display = ""; inter.innerHTML = ""; }
+  var hint = document.getElementById("hint-" + id);
+  if (hint) hint.classList.remove("visible");
+  var result = document.getElementById("result-" + id);
+  if (result) result.classList.remove("visible");
+  var d = PD[id]; if (!d) return;
+  var type = d.type || d.sub_type || "";
+  try {
+    if (type === "mc") initMC(el, d);
+    else if (type === "ti") initTI(el, d);
+    else if (type === "ord") initORD(el, d);
+    else if (type === "mat") initMAT(el, d);
+    else if (type === "sim") { if (d.sim_type === "resilience") initResilience(el, d); else initThreads(el, d); }
+    else if (type === "cip") initCIP(el, d);
+    else if (type === "ba") initBA(el, d);
+    else if (type === "log") initLOG(el, d);
+    else if (type === "gd") initGD(el, d);
+    else if (type === "tower") initTower(el, d);
+  } catch(e) { console.error("Puzzle reset error:", id, e); }
+  updateCounts();
 }
 
 function esc(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
@@ -1921,6 +1953,10 @@ function initAllPuzzles() {
   var solved = getSolved();
   for (var id in solved) if (solved[id] && (!PD[id] || PD[id].type !== "km")) revealPuzzle(id);
   try { initBridge(); } catch(e) { console.error("Bridge init error:", e); }
+  var resets = document.querySelectorAll(".reset-single");
+  for (var ri = 0; ri < resets.length; ri++) {
+    (function(a) { a.addEventListener("click", function(e) { e.preventDefault(); resetSingle(a.dataset.resetId); }); })(resets[ri]);
+  }
   updateCounts();
   if (location.hash) {
     var t = document.querySelector(location.hash);
