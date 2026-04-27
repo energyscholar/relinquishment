@@ -218,6 +218,20 @@
   pdfBtn.addEventListener('mouseenter', function() { pdfBtn.style.color = '#2471a3'; });
   pdfBtn.addEventListener('mouseleave', function() { pdfBtn.style.color = isDark ? '#aaa' : '#888'; });
 
+  // ZIP download link — mail-a-friend-sized archive
+  var zipBtn = document.createElement('a');
+  zipBtn.id = 'nav-zip';
+  zipBtn.textContent = 'ZIP';
+  var zipName = window.location.pathname.replace(/\.html?$/i, '.zip');
+  zipBtn.href = zipName;
+  zipBtn.setAttribute('data-hover', 'Download as ZIP (~300 KB) — small enough to email to a friend');
+  zipBtn.setAttribute('aria-label', 'Download ZIP archive');
+  zipBtn.classList.add('hover-nav');
+  zipBtn.style.cssText = 'text-decoration:none;color:' + (isDark ? '#aaa' : '#888') +
+    ';font-size:0.85em;margin-left:0.5em;cursor:pointer;flex:0 0 auto;';
+  zipBtn.addEventListener('mouseenter', function() { zipBtn.style.color = '#2471a3'; });
+  zipBtn.addEventListener('mouseleave', function() { zipBtn.style.color = isDark ? '#aaa' : '#888'; });
+
   // Tooltip toggle — small subtle control for quiet-mode users
   var tipsBtn = document.createElement('a');
   tipsBtn.id = 'nav-tips-toggle';
@@ -331,6 +345,7 @@
   popupFooter.appendChild(gBtn);
   popupFooter.appendChild(msToggle);
   popupFooter.appendChild(pdfBtn);
+  popupFooter.appendChild(zipBtn);
   popupFooter.appendChild(tipsBtn);
   popupFooter.appendChild(toolsLink);
   navPopup.appendChild(popupFooter);
@@ -1439,6 +1454,7 @@
     var term = e.target.closest('[data-hover], [data-hover-id]');
     if (!term) return;
     if (term.hasAttribute('data-hover-disabled')) return;
+    if (term.closest('figure.ms-teaching') && window.innerWidth <= 700) return;
     lastTouchTime = Date.now();
 
     // Navigation elements: split touch target on summaries
