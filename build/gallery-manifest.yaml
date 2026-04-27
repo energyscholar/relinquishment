@@ -393,3 +393,29 @@
   animation_plan: "0270"
   animation: "Solar wind flow — dashed lines drift toward bow shock."
   description: "Earth's magnetosphere cross-section with 9 hover zones teaching structural names and behaviors."
+
+- id: SVG-040
+  name: ms-jupiter-teaching
+  status: live
+  source: preprocess.py
+  category: Magnetosphere Teaching
+  chapter: the-wrong-substrate
+  figure_id: fig-ms-jupiter
+  marker: "Five hundred million kilometers away"
+  animated: true
+  animation_plan: "0270"
+  animation: "Solar wind flow + Io torus particle drift."
+  description: "Jupiter's magnetosphere cross-section with 8 hover zones. Io torus, Ganymede sub-MS, rotation-powered."
+
+- id: SVG-041
+  name: ms-saturn-teaching
+  status: live
+  source: preprocess.py
+  category: Magnetosphere Teaching
+  chapter: the-wrong-substrate
+  figure_id: fig-ms-saturn
+  marker: "Saturn's magnetosphere is smaller"
+  animated: true
+  animation_plan: "0270"
+  animation: "Solar wind flow + Enceladus plume drift."
+  description: "Saturn's magnetosphere cross-section with 7 hover zones. Enceladus plumes, disc-shaped field, ring interaction."
