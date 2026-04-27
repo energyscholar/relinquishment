@@ -3044,8 +3044,7 @@ def inject_chapter_puzzles(html_path):
 
     # Shared CSS for injected puzzles (MC + GD)
     PZ_CSS = '''
-.puzzle-section {{ margin: 2em 0; border: 1px solid #b8dbd9; border-left: 5px solid; border-image: repeating-linear-gradient(180deg, #2a9b9a 0px, #2a9b9a 8px, #1a5276 8px, #1a5276 16px) 5; border-radius: 0 6px 6px 0; background: linear-gradient(135deg, #f0faf9, #f5fcfb); position: relative; }}
-.puzzle-section::before {{ content: '\1F9E9'; position: absolute; top: -0.6em; right: 1em; font-size: 1.1em; background: #f0faf9; padding: 0 0.3em; }}
+.puzzle-section {{ margin: 2em 0; border: 1px solid #b8dbd9; border-left: 5px solid; border-image: repeating-linear-gradient(180deg, #2a9b9a 0px, #2a9b9a 8px, #1a5276 8px, #1a5276 16px) 5; border-radius: 0 6px 6px 0; background: linear-gradient(135deg, #f0faf9, #f5fcfb); }}
 .puzzle-section summary {{ padding: 0.8em 1em; cursor: pointer; font-weight: bold; color: #1a5276; font-size: 1.05em; }}
 .puzzle-section summary:hover {{ color: #154360; }}
 .pz-container {{ padding: 0 1.5em 1.5em; }}
@@ -3083,7 +3082,6 @@ def inject_chapter_puzzles(html_path):
 .pz-gd-continue:hover {{ background: #154360; }}
 @media (prefers-color-scheme: dark) {{
   .puzzle-section {{ background: linear-gradient(135deg, #1a2e2d, #1e3230); border-color: #2a5a58; border-image: repeating-linear-gradient(180deg, #2a9b9a 0px, #2a9b9a 8px, #3a6496 8px, #3a6496 16px) 5; }}
-  .puzzle-section::before {{ background: #1a2e2d; }}
   .puzzle-section summary {{ color: #6ba3f7; }}
   .pz-container.pz-solved {{ border-color: #2a9b9a; }}
   .pz-gateway-blurb {{ color: #aaa; background: #1a2a2a; }}
