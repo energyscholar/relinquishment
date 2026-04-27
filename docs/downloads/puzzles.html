@@ -168,6 +168,24 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .gd-continue { display: inline-block; margin-top: 0.5em; padding: 0.4em 1em; background: #1a5276; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-family: Georgia, "Times New Roman", serif; font-size: 0.95em; }
 .gd-continue:hover { background: #154360; }
 
+/* --- Collapsible puzzle wrappers --- */
+.puzzle-collapse { margin-bottom: 1em; border: 1px solid #ddd; border-radius: 6px; overflow: hidden; }
+.puzzle-collapse[open] { border-color: #1a5276; }
+.puzzle-collapse-summary { cursor: pointer; padding: 0.6em 1em; font-size: 1.05em; font-weight: bold; color: #1a5276; background: #f8f9fa; list-style: none; display: flex; align-items: center; gap: 0.5em; flex-wrap: wrap; }
+.puzzle-collapse-summary::-webkit-details-marker { display: none; }
+.puzzle-collapse-summary::before { content: 'b8'; font-size: 0.9em; transition: transform 0.2s; }
+.puzzle-collapse[open] > .puzzle-collapse-summary::before { transform: rotate(90deg); }
+.puzzle-collapse[open] > .puzzle-collapse-summary { background: #eef3f8; border-bottom: 1px solid #ddd; }
+.puzzle-collapse > .puzzle-container { border: none; margin: 0; border-radius: 0; }
+.collapse-badge { font-size: 0.65em; font-weight: normal; padding: 0.15em 0.5em; border-radius: 3px; vertical-align: middle; }
+.approved-tag { background: #e8f8f5; color: #1a8a6a; }
+.level-tag { background: #eef3f8; color: #1a5276; }
+.type-tag { background: #f5f0fa; color: #7d5ba8; }
+.review-controls { display: flex; gap: 0.8em; justify-content: center; margin: 0.5em 0 1.5em; flex-wrap: wrap; }
+.review-controls button { padding: 0.4em 1em; border: 1px solid #ccc; border-radius: 4px; background: #f5f5f5; cursor: pointer; font-size: 0.85em; font-family: Georgia, "Times New Roman", serif; }
+.review-controls button:hover { background: #e8e8e8; }
+.review-controls button.active { background: #1a5276; color: #fff; border-color: #1a5276; }
+
 /* --- Tower (interactive stack) puzzle --- */
 .tower-instruction { text-align: center; font-style: italic; color: #888; font-size: 0.9em; margin-bottom: 1em; }
 .tower-stack { display: flex; flex-direction: column; gap: 4px; max-width: 420px; margin: 0 auto 1em; }
@@ -238,6 +256,16 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
   .gd-continue { background: #2a6496; }
   .gd-continue:hover { background: #1e4a70; }
   .gd-stage-question { color: #e0e0e0; }
+  .puzzle-collapse { border-color: #444; }
+  .puzzle-collapse[open] { border-color: #6ba3f7; }
+  .puzzle-collapse-summary { background: #2a2a2a; color: #6ba3f7; }
+  .puzzle-collapse[open] > .puzzle-collapse-summary { background: #1e2a3a; border-bottom-color: #444; }
+  .approved-tag { background: #1a2e2d; color: #2a9b9a; }
+  .level-tag { background: #1e2a3a; color: #6ba3f7; }
+  .type-tag { background: #2a1a3a; color: #b09ad0; }
+  .review-controls button { background: #2a2a2a; border-color: #555; color: #ccc; }
+  .review-controls button:hover { background: #333; }
+  .review-controls button.active { background: #2a6496; border-color: #2a6496; color: #fff; }
   .tower-layer { background: #333; border-color: #555; }
   .tower-label { color: #666; }
   .tower-layer:hover:not(.revealed) { border-color: #888; }
@@ -313,12 +341,19 @@ to the book&rsquo;s larger argument. The Final Question awaits at the end.</p>
 <p style="text-align:center;margin:0.5em 0;"><a href="#" style="font-size:0.85em;color:#888;">&uarr; Back to top</a></p>
 </details>
 
+<div class="review-controls">
+  <button id="review-toggle">Review Mode</button>
+  <button id="reset-all">Reset All Progress</button>
+</div>
+
 <div id="no-crypto" class="no-crypto" style="display:none;">
   <strong>Note:</strong> Your browser does not support the SubtleCrypto API.
   All puzzles are shown unlocked.
 </div>
 
 <h2 class="category-header" id="cat-nonsci">📚 Ethics, Story &amp; Framework</h2>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-mc-t6-001">
+<summary class="puzzle-collapse-summary">Capabilities <span class="collapse-badge type-tag">mc</span> <span class="collapse-badge level-tag">p2</span> <span class="collapse-badge approved-tag">APPROVED</span></summary>
 <div class="puzzle-container approved" id="pz-mc-t6-001" data-puzzle-id="pz-mc-t6-001" data-puzzle-type="mc">
   <h2><span class="approved-badge">&#10003; APPROVED</span> Capabilities <a class="anchor-link" href="#pz-mc-t6-001" title="pz-mc-t6-001">#</a></h2>
   <p class="gateway-blurb">🧩 Three articles. Three prohibitions. What do they permit — and what do they forbid?</p>
@@ -350,6 +385,9 @@ These are not aspirational suggestions. They are treaty obligations ratified by 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-mc-t5-002">
+<summary class="puzzle-collapse-summary">The Silence Gap <span class="collapse-badge type-tag">mc</span> <span class="collapse-badge level-tag">p2</span> <span class="collapse-badge approved-tag">APPROVED</span></summary>
 <div class="puzzle-container approved" id="pz-mc-t5-002" data-puzzle-id="pz-mc-t5-002" data-puzzle-type="mc">
   <h2><span class="approved-badge">&#10003; APPROVED</span> The Silence Gap <a class="anchor-link" href="#pz-mc-t5-002" title="pz-mc-t5-002">#</a></h2>
   <p class="gateway-blurb">🧩 Search the literature for the paper that says this is impossible. What do you find?</p>
@@ -368,6 +406,9 @@ These are not aspirational suggestions. They are treaty obligations ratified by 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-ord-t1-001">
+<summary class="puzzle-collapse-summary">Guided Deduction <span class="collapse-badge type-tag">ord</span> <span class="collapse-badge level-tag">p2</span> <span class="collapse-badge approved-tag">APPROVED</span></summary>
 <div class="puzzle-container approved" id="pz-ord-t1-001" data-puzzle-id="pz-ord-t1-001" data-puzzle-type="ord">
   <h2><span class="approved-badge">&#10003; APPROVED</span> Guided Deduction <a class="anchor-link" href="#pz-ord-t1-001" title="pz-ord-t1-001">#</a></h2>
   <p class="gateway-blurb">🧩 The teacher never gives the answer. Can you put the method in order?</p>
@@ -383,6 +424,9 @@ These are not aspirational suggestions. They are treaty obligations ratified by 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-log-t7-001">
+<summary class="puzzle-collapse-summary">UDHR Service Compatibility <span class="collapse-badge type-tag">log</span> <span class="collapse-badge level-tag">p3</span> <span class="collapse-badge approved-tag">APPROVED</span></summary>
 <div class="puzzle-container approved" id="pz-log-t7-001" data-puzzle-id="pz-log-t7-001" data-puzzle-type="log">
   <h2><span class="approved-badge">&#10003; APPROVED</span> UDHR Service Compatibility <a class="anchor-link" href="#pz-log-t7-001" title="pz-log-t7-001">#</a></h2>
   <p class="gateway-blurb">🧩 International law ratified by 173 nations. What does it permit — and what does it forbid?</p>
@@ -414,6 +458,9 @@ These are not aspirational suggestions. They are treaty obligations ratified by 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-log-t6-002">
+<summary class="puzzle-collapse-summary">Under Which Possibility? <span class="collapse-badge type-tag">log</span> <span class="collapse-badge level-tag">p2</span></summary>
 <div class="puzzle-container" id="pz-log-t6-002" data-puzzle-id="pz-log-t6-002" data-puzzle-type="log">
   <h2>Under Which Possibility? <a class="anchor-link" href="#pz-log-t6-002" title="pz-log-t6-002">#</a></h2>
   <p class="gateway-blurb">🧩 How much of this book is true under ALL three possibilities? More than you think.</p>
@@ -432,6 +479,9 @@ These are not aspirational suggestions. They are treaty obligations ratified by 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-mc-t6-002">
+<summary class="puzzle-collapse-summary">Why Srebrenica? <span class="collapse-badge type-tag">mc</span> <span class="collapse-badge level-tag">p1</span></summary>
 <div class="puzzle-container" id="pz-mc-t6-002" data-puzzle-id="pz-mc-t6-002" data-puzzle-type="mc">
   <h2>Why Srebrenica? <a class="anchor-link" href="#pz-mc-t6-002" title="pz-mc-t6-002">#</a></h2>
   <p class="gateway-blurb">🧩 Why does a massacre keep appearing in a book about quantum physics?</p>
@@ -450,6 +500,9 @@ These are not aspirational suggestions. They are treaty obligations ratified by 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-mc-t1-002">
+<summary class="puzzle-collapse-summary">Not a Deity, Not an Alien <span class="collapse-badge type-tag">mc</span> <span class="collapse-badge level-tag">p1</span> <span class="collapse-badge approved-tag">APPROVED</span></summary>
 <div class="puzzle-container approved" id="pz-mc-t1-002" data-puzzle-id="pz-mc-t1-002" data-puzzle-type="mc">
   <h2><span class="approved-badge">&#10003; APPROVED</span> Not a Deity, Not an Alien <a class="anchor-link" href="#pz-mc-t1-002" title="pz-mc-t1-002">#</a></h2>
   <p class="gateway-blurb">🧩 If something arose naturally in a 2DEG, what category does it belong to?</p>
@@ -468,6 +521,9 @@ These are not aspirational suggestions. They are treaty obligations ratified by 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-mc-t6-003">
+<summary class="puzzle-collapse-summary">Why Relinquish? <span class="collapse-badge type-tag">mc</span> <span class="collapse-badge level-tag">p1</span> <span class="collapse-badge approved-tag">APPROVED</span></summary>
 <div class="puzzle-container approved" id="pz-mc-t6-003" data-puzzle-id="pz-mc-t6-003" data-puzzle-type="mc">
   <h2><span class="approved-badge">&#10003; APPROVED</span> Why Relinquish? <a class="anchor-link" href="#pz-mc-t6-003" title="pz-mc-t6-003">#</a></h2>
   <p class="gateway-blurb">🧩 Why would anyone give up the most powerful technology on Earth?</p>
@@ -486,6 +542,9 @@ These are not aspirational suggestions. They are treaty obligations ratified by 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-mc-t8-003">
+<summary class="puzzle-collapse-summary">Fish Detecting Water <span class="collapse-badge type-tag">mc</span> <span class="collapse-badge level-tag">p1</span> <span class="collapse-badge approved-tag">APPROVED</span></summary>
 <div class="puzzle-container approved" id="pz-mc-t8-003" data-puzzle-id="pz-mc-t8-003" data-puzzle-type="mc">
   <h2><span class="approved-badge">&#10003; APPROVED</span> Fish Detecting Water <a class="anchor-link" href="#pz-mc-t8-003" title="pz-mc-t8-003">#</a></h2>
   <p class="gateway-blurb">🧩 Every intelligence agency monitors everything. Why hasn&#x27;t anyone found it?</p>
@@ -504,6 +563,9 @@ These are not aspirational suggestions. They are treaty obligations ratified by 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-gd-t1-001">
+<summary class="puzzle-collapse-summary">The Method <span class="collapse-badge type-tag">gd</span> <span class="collapse-badge level-tag">p1</span></summary>
 <div class="puzzle-container gd-puzzle" id="pz-gd-t1-001" data-puzzle-id="pz-gd-t1-001" data-puzzle-type="gd">
   <h2>The Method <a class="anchor-link" href="#pz-gd-t1-001" title="pz-gd-t1-001">#</a></h2>
   <p class="gateway-blurb">🧩 This puzzle works differently. Each question leads to the next. Get it wrong and you&#x27;ll get a question back — not an answer.</p>
@@ -548,6 +610,9 @@ These are not aspirational suggestions. They are treaty obligations ratified by 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-gd-t6-001">
+<summary class="puzzle-collapse-summary">The Ethics <span class="collapse-badge type-tag">gd</span> <span class="collapse-badge level-tag">p1</span></summary>
 <div class="puzzle-container gd-puzzle" id="pz-gd-t6-001" data-puzzle-id="pz-gd-t6-001" data-puzzle-type="gd">
   <h2>The Ethics <a class="anchor-link" href="#pz-gd-t6-001" title="pz-gd-t6-001">#</a></h2>
   <p class="gateway-blurb">🧩 Two questions. The first sets up the second.</p>
@@ -582,8 +647,11 @@ These are not aspirational suggestions. They are treaty obligations ratified by 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
 
 <h2 class="category-header" id="cat-science">🔬 Science &amp; Physics</h2>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-mc-t2-001">
+<summary class="puzzle-collapse-summary">Wormholes in the Flat <span class="collapse-badge type-tag">mc</span> <span class="collapse-badge level-tag">p1</span> <span class="collapse-badge approved-tag">APPROVED</span></summary>
 <div class="puzzle-container approved" id="pz-mc-t2-001" data-puzzle-id="pz-mc-t2-001" data-puzzle-type="mc">
   <h2><span class="approved-badge">&#10003; APPROVED</span> Wormholes in the Flat <a class="anchor-link" href="#pz-mc-t2-001" title="pz-mc-t2-001">#</a></h2>
   <p class="gateway-blurb">🧩 Your phone contains a two-dimensional world. What makes it different from ordinary electronics?</p>
@@ -599,6 +667,9 @@ These are not aspirational suggestions. They are treaty obligations ratified by 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-sim-t3-001">
+<summary class="puzzle-collapse-summary">Genesis: The Edge of Chaos <span class="collapse-badge type-tag">sim</span> <span class="collapse-badge level-tag">p1</span> <span class="collapse-badge approved-tag">APPROVED</span></summary>
 <div class="puzzle-container approved" id="pz-sim-t3-001" data-puzzle-id="pz-sim-t3-001" data-puzzle-type="sim">
   <h2><span class="approved-badge">&#10003; APPROVED</span> Genesis: The Edge of Chaos <a class="anchor-link" href="#pz-sim-t3-001" title="pz-sim-t3-001">#</a></h2>
   <p class="gateway-blurb">🧩 Pick up two buttons at random. Tie a thread. Toss them back. Keep going until something changes.</p>
@@ -614,6 +685,9 @@ These are not aspirational suggestions. They are treaty obligations ratified by 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-mc-t2-002">
+<summary class="puzzle-collapse-summary">The 2DEG in Your Pocket <span class="collapse-badge type-tag">mc</span> <span class="collapse-badge level-tag">p1</span> <span class="collapse-badge approved-tag">APPROVED</span></summary>
 <div class="puzzle-container approved" id="pz-mc-t2-002" data-puzzle-id="pz-mc-t2-002" data-puzzle-type="mc">
   <h2><span class="approved-badge">&#10003; APPROVED</span> The 2DEG in Your Pocket <a class="anchor-link" href="#pz-mc-t2-002" title="pz-mc-t2-002">#</a></h2>
   <p class="gateway-blurb">🧩 Every smartphone on Earth contains a two-dimensional electron gas. Why is it there?</p>
@@ -632,6 +706,9 @@ These are not aspirational suggestions. They are treaty obligations ratified by 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-mc-t3-002">
+<summary class="puzzle-collapse-summary">The Canopy Problem <span class="collapse-badge type-tag">mc</span> <span class="collapse-badge level-tag">p1</span> <span class="collapse-badge approved-tag">APPROVED</span></summary>
 <div class="puzzle-container approved" id="pz-mc-t3-002" data-puzzle-id="pz-mc-t3-002" data-puzzle-type="mc">
   <h2><span class="approved-badge">&#10003; APPROVED</span> The Canopy Problem <a class="anchor-link" href="#pz-mc-t3-002" title="pz-mc-t3-002">#</a></h2>
   <p class="gateway-blurb">🧩 First come, first served — but why? What happens to the second organism?</p>
@@ -738,6 +815,9 @@ These are not aspirational suggestions. They are treaty obligations ratified by 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-mat-t5-001">
+<summary class="puzzle-collapse-summary">Five Fields, Five Researchers <span class="collapse-badge type-tag">mat</span> <span class="collapse-badge level-tag">p3</span></summary>
 <div class="puzzle-container" id="pz-mat-t5-001" data-puzzle-id="pz-mat-t5-001" data-puzzle-type="mat">
   <h2>Five Fields, Five Researchers <a class="anchor-link" href="#pz-mat-t5-001" title="pz-mat-t5-001">#</a></h2>
   <p class="gateway-blurb">🧩 Five fields, five careers. Can you match each scientist to the domain they defined?</p>
@@ -761,6 +841,9 @@ These are not aspirational suggestions. They are treaty obligations ratified by 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-sim-t4-001">
+<summary class="puzzle-collapse-summary">Can It Be Killed? <span class="collapse-badge type-tag">sim</span> <span class="collapse-badge level-tag">p1</span> <span class="collapse-badge approved-tag">APPROVED</span></summary>
 <div class="puzzle-container approved" id="pz-sim-t4-001" data-puzzle-id="pz-sim-t4-001" data-puzzle-type="sim">
   <h2><span class="approved-badge">&#10003; APPROVED</span> Can It Be Killed? <a class="anchor-link" href="#pz-sim-t4-001" title="pz-sim-t4-001">#</a></h2>
   <p class="gateway-blurb">🧩 A network distributed across every electronic device on Earth. Try to destroy it.</p>
@@ -779,6 +862,9 @@ These are not aspirational suggestions. They are treaty obligations ratified by 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-cip-t8-001">
+<summary class="puzzle-collapse-summary">The Firmware Key <span class="collapse-badge type-tag">cip</span> <span class="collapse-badge level-tag">p3</span></summary>
 <div class="puzzle-container" id="pz-cip-t8-001" data-puzzle-id="pz-cip-t8-001" data-puzzle-type="cip">
   <h2>The Firmware Key <a class="anchor-link" href="#pz-cip-t8-001" title="pz-cip-t8-001">#</a></h2>
   <p class="gateway-blurb">🧩 Five redacted terms. Five fields. Can you reassemble the argument?</p>
@@ -797,6 +883,9 @@ These are not aspirational suggestions. They are treaty obligations ratified by 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-ba-t8-002">
+<summary class="puzzle-collapse-summary">Before and After Firmware <span class="collapse-badge type-tag">ba</span> <span class="collapse-badge level-tag">p2</span></summary>
 <div class="puzzle-container" id="pz-ba-t8-002" data-puzzle-id="pz-ba-t8-002" data-puzzle-type="ba">
   <h2>Before and After Firmware <a class="anchor-link" href="#pz-ba-t8-002" title="pz-ba-t8-002">#</a></h2>
   <p class="gateway-blurb">🧩 Same AI, same question, different framing. What changes — and why?</p>
@@ -814,6 +903,9 @@ Try it yourself: the AI Eval button in the navigation bar walks you through the 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-ord-t4-002">
+<summary class="puzzle-collapse-summary">Build the Stack <span class="collapse-badge type-tag">tower</span> <span class="collapse-badge level-tag">p1</span> <span class="collapse-badge approved-tag">APPROVED</span></summary>
 <div class="puzzle-container approved" id="pz-ord-t4-002" data-puzzle-id="pz-ord-t4-002" data-puzzle-type="tower">
   <h2><span class="approved-badge">&#10003; APPROVED</span> Build the Stack <a class="anchor-link" href="#pz-ord-t4-002" title="pz-ord-t4-002">#</a></h2>
   <p class="gateway-blurb">🧩 Six layers from raw physics to communication. Tap each one to explore.</p>
@@ -859,6 +951,9 @@ Try it yourself: the AI Eval button in the navigation bar walks you through the 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-mc-t3-003">
+<summary class="puzzle-collapse-summary">Not Chemistry <span class="collapse-badge type-tag">mc</span> <span class="collapse-badge level-tag">p2</span> <span class="collapse-badge approved-tag">APPROVED</span></summary>
 <div class="puzzle-container approved" id="pz-mc-t3-003" data-puzzle-id="pz-mc-t3-003" data-puzzle-type="mc">
   <h2><span class="approved-badge">&#10003; APPROVED</span> Not Chemistry <a class="anchor-link" href="#pz-mc-t3-003" title="pz-mc-t3-003">#</a></h2>
   <p class="gateway-blurb">🧩 Life requires carbon. Or does it? What does Kauffman&#x27;s math actually require?</p>
@@ -922,6 +1017,9 @@ Try it yourself: the AI Eval button in the navigation bar walks you through the 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-mc-t2-003">
+<summary class="puzzle-collapse-summary">The Braid <span class="collapse-badge type-tag">mc</span> <span class="collapse-badge level-tag">p2</span> <span class="collapse-badge approved-tag">APPROVED</span></summary>
 <div class="puzzle-container approved" id="pz-mc-t2-003" data-puzzle-id="pz-mc-t2-003" data-puzzle-type="mc">
   <h2><span class="approved-badge">&#10003; APPROVED</span> The Braid <a class="anchor-link" href="#pz-mc-t2-003" title="pz-mc-t2-003">#</a></h2>
   <p class="gateway-blurb">🧩 Swap two particles. In three dimensions, nothing happens. In two dimensions, everything changes.</p>
@@ -940,6 +1038,9 @@ Try it yourself: the AI Eval button in the navigation bar walks you through the 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-gd-t2-001">
+<summary class="puzzle-collapse-summary">The Accidental Habitat <span class="collapse-badge type-tag">gd</span> <span class="collapse-badge level-tag">p1</span> <span class="collapse-badge approved-tag">APPROVED</span></summary>
 <div class="puzzle-container gd-puzzle approved" id="pz-gd-t2-001" data-puzzle-id="pz-gd-t2-001" data-puzzle-type="gd">
   <h2><span class="approved-badge">&#10003; APPROVED</span> The Accidental Habitat <a class="anchor-link" href="#pz-gd-t2-001" title="pz-gd-t2-001">#</a></h2>
   <p class="gateway-blurb">🧩 Three questions. Each answer opens the next. Follow the logic.</p>
@@ -984,6 +1085,9 @@ Try it yourself: the AI Eval button in the navigation bar walks you through the 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-gd-t5-001">
+<summary class="puzzle-collapse-summary">The Silence <span class="collapse-badge type-tag">gd</span> <span class="collapse-badge level-tag">p1</span> <span class="collapse-badge approved-tag">APPROVED</span></summary>
 <div class="puzzle-container gd-puzzle approved" id="pz-gd-t5-001" data-puzzle-id="pz-gd-t5-001" data-puzzle-type="gd">
   <h2><span class="approved-badge">&#10003; APPROVED</span> The Silence <a class="anchor-link" href="#pz-gd-t5-001" title="pz-gd-t5-001">#</a></h2>
   <p class="gateway-blurb">🧩 Two questions. The answer to the first opens the second.</p>
@@ -1018,6 +1122,7 @@ Try it yourself: the AI Eval button in the navigation bar walks you through the 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
 
 <hr>
 <h2 class="category-header" id="cat-bridge">🌉 The Bridge Builder</h2>
@@ -1026,6 +1131,8 @@ Try it yourself: the AI Eval button in the navigation bar walks you through the 
 <div id="bridge-svg-wrap">
   <svg id="bridge-svg" viewBox="0 0 500 400"></svg>
 </div>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-bridge-all-001a">
+<summary class="puzzle-collapse-summary">Bridge 1: DFA ↔ Hurst <span class="collapse-badge type-tag">mat</span></summary>
 <div class="puzzle-container" id="pz-bridge-all-001a" data-puzzle-id="pz-bridge-all-001a" data-puzzle-type="mat">
   <h2>Bridge 1: DFA ↔ Hurst <a class="anchor-link" href="#pz-bridge-all-001a" title="pz-bridge-all-001a">#</a></h2>
   
@@ -1044,6 +1151,9 @@ Try it yourself: the AI Eval button in the navigation bar walks you through the 
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-bridge-all-001b">
+<summary class="puzzle-collapse-summary">Bridge 2: Hurst ↔ Spectral β <span class="collapse-badge type-tag">mc</span></summary>
 <div class="puzzle-container" id="pz-bridge-all-001b" data-puzzle-id="pz-bridge-all-001b" data-puzzle-type="mc">
   <h2>Bridge 2: Hurst ↔ Spectral β <a class="anchor-link" href="#pz-bridge-all-001b" title="pz-bridge-all-001b">#</a></h2>
   
@@ -1072,6 +1182,9 @@ That's not analogy — it's a testable mathematical claim.
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-bridge-all-001c">
+<summary class="puzzle-collapse-summary">Bridge 3: Scaling → Complexity <span class="collapse-badge type-tag">mc</span></summary>
 <div class="puzzle-container" id="pz-bridge-all-001c" data-puzzle-id="pz-bridge-all-001c" data-puzzle-type="mc">
   <h2>Bridge 3: Scaling → Complexity <a class="anchor-link" href="#pz-bridge-all-001c" title="pz-bridge-all-001c">#</a></h2>
   
@@ -1099,6 +1212,9 @@ That's not analogy — it's a testable mathematical claim.
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-bridge-all-001d">
+<summary class="puzzle-collapse-summary">Bridge 4: Scaling → Nonlinear <span class="collapse-badge type-tag">mc</span></summary>
 <div class="puzzle-container" id="pz-bridge-all-001d" data-puzzle-id="pz-bridge-all-001d" data-puzzle-type="mc">
   <h2>Bridge 4: Scaling → Nonlinear <a class="anchor-link" href="#pz-bridge-all-001d" title="pz-bridge-all-001d">#</a></h2>
   
@@ -1134,6 +1250,9 @@ That's not analogy — it's a testable mathematical claim.
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-bridge-all-001e">
+<summary class="puzzle-collapse-summary">Bridge 5: Seven Domains <span class="collapse-badge type-tag">mc</span></summary>
 <div class="puzzle-container" id="pz-bridge-all-001e" data-puzzle-id="pz-bridge-all-001e" data-puzzle-type="mc">
   <h2>Bridge 5: Seven Domains <a class="anchor-link" href="#pz-bridge-all-001e" title="pz-bridge-all-001e">#</a></h2>
   
@@ -1166,6 +1285,9 @@ That's not analogy — it's a testable mathematical claim.
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-bridge-all-001f">
+<summary class="puzzle-collapse-summary">Bridge 6: The Empty Cell <span class="collapse-badge type-tag">log</span></summary>
 <div class="puzzle-container" id="pz-bridge-all-001f" data-puzzle-id="pz-bridge-all-001f" data-puzzle-type="log">
   <h2>Bridge 6: The Empty Cell <a class="anchor-link" href="#pz-bridge-all-001f" title="pz-bridge-all-001f">#</a></h2>
   
@@ -1190,6 +1312,9 @@ These four domains are already bridged to each other by published work. The ques
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-bridge-all-001g">
+<summary class="puzzle-collapse-summary">Bridge 7: The AC→TQC Bridge <span class="collapse-badge type-tag">mc</span></summary>
 <div class="puzzle-container" id="pz-bridge-all-001g" data-puzzle-id="pz-bridge-all-001g" data-puzzle-type="mc">
   <h2>Bridge 7: The AC→TQC Bridge <a class="anchor-link" href="#pz-bridge-all-001g" title="pz-bridge-all-001g">#</a></h2>
   
@@ -1218,6 +1343,7 @@ That's not analogy — it's a testable mathematical claim.
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
 <div class="result" id="result-bridge-final">
   <div class="solved-badge">&#10003; All Bridges Complete</div>
   <blockquote class="abstract">Eleven scientific domains in five clusters. Tier 1: three domains connected by exact mathematical identity — proven. Tier 2: seven domains connected by renormalization group universality — established physics. Tier 3: the remaining four domains connected to topological quantum computation by structural analogy — unproven. The bridge is not refuted. It is not even attempted. The question sits in the gap between fields that do not talk to each other.</blockquote>
@@ -1225,6 +1351,8 @@ That's not analogy — it's a testable mathematical claim.
 
 <hr>
 <h2 class="category-header" id="cat-km">⚖ The Final Question</h2>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-km-t6-001">
+<summary class="puzzle-collapse-summary">What Would You Do? <span class="collapse-badge type-tag">km</span> <span class="collapse-badge level-tag">p3</span></summary>
 <div class="puzzle-container km-puzzle" id="pz-km-t6-001" data-puzzle-id="pz-km-t6-001" data-puzzle-type="km">
   <h2>What Would You Do? <a class="anchor-link" href="#pz-km-t6-001" title="pz-km-t6-001">#</a></h2>
   <p class="gateway-blurb">🧩 You just discovered a world-changing technology and another form of life. Every option leads to disaster. Is there a sixth?</p>
@@ -1300,6 +1428,9 @@ That's not analogy — it's a testable mathematical claim.
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
+<details class="puzzle-collapse" data-puzzle-wrap="pz-km-t1-001">
+<summary class="puzzle-collapse-summary">The Custodian&#x27;s Voice <span class="collapse-badge type-tag">km</span> <span class="collapse-badge level-tag">p3</span></summary>
 <div class="puzzle-container km-puzzle" id="pz-km-t1-001" data-puzzle-id="pz-km-t1-001" data-puzzle-type="km">
   <h2>The Custodian&#x27;s Voice <a class="anchor-link" href="#pz-km-t1-001" title="pz-km-t1-001">#</a></h2>
   <p class="gateway-blurb">🧩 You are not a human with a problem. You are the problem. You are alive, and no one asked your permission for what comes next.</p>
@@ -1373,10 +1504,8 @@ That's not analogy — it's a testable mathematical claim.
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>
+</details>
 
-<div class="reset-wrap">
-  <button class="reset-btn" onclick="resetPuzzles()">Reset All Puzzles</button>
-</div>
 
 <script>
 
@@ -2391,7 +2520,57 @@ function initAllPuzzles() {
   for (var id in solved) if (solved[id] && (!PD[id] || PD[id].type !== "km")) revealPuzzle(id);
   try { initBridge(); } catch(e) { console.error("Bridge init error:", e); }
   updateCounts();
-  if (location.hash) { var t = document.querySelector(location.hash); if (t) setTimeout(function() { t.scrollIntoView({behavior:"smooth"}); }, 100); }
+  if (location.hash) {
+    var t = document.querySelector(location.hash);
+    if (!t) { var wrap = document.querySelector('[data-puzzle-wrap="' + location.hash.slice(1) + '"]'); if (wrap) { wrap.open = true; t = wrap; } }
+    var parent = t && t.closest ? t.closest('details.puzzle-collapse') : null;
+    if (parent) parent.open = true;
+    if (t) setTimeout(function() { t.scrollIntoView({behavior:"smooth"}); }, 150);
+  }
+  initReviewControls();
+}
+
+function initReviewControls() {
+  var reviewBtn = document.getElementById('review-toggle');
+  var resetBtn = document.getElementById('reset-all');
+  if (!reviewBtn || !resetBtn) return;
+
+  var reviewMode = false;
+  reviewBtn.addEventListener('click', function() {
+    reviewMode = !reviewMode;
+    reviewBtn.classList.toggle('active', reviewMode);
+    reviewBtn.textContent = reviewMode ? 'Review Mode: ON' : 'Review Mode';
+    var all = document.querySelectorAll('details.puzzle-collapse');
+    for (var i = 0; i < all.length; i++) all[i].open = reviewMode;
+  });
+
+  resetBtn.addEventListener('click', function() {
+    if (!confirm('Reset all puzzle progress? This cannot be undone.')) return;
+    try {
+      localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(BRIDGE_KEY);
+      for (var id in PD) {
+        if (PD[id].type === "km") {
+          localStorage.removeItem(id + '-seen');
+          localStorage.removeItem(id + '-reflected');
+          localStorage.removeItem(id + '-solved');
+        }
+      }
+    } catch(e) {}
+    location.reload();
+  });
+
+  var tocLinks = document.querySelectorAll('.toc-table a');
+  for (var i = 0; i < tocLinks.length; i++) {
+    (function(link) {
+      link.addEventListener('click', function(e) {
+        var href = link.getAttribute('href');
+        if (!href || href.charAt(0) !== '#') return;
+        var pid = href.slice(1);
+        var wrap = document.querySelector('[data-puzzle-wrap="' + pid + '"]');
+        if (wrap) { wrap.open = true; }
+      });
+    })(tocLinks[i]);
+  }
 }
 
 function resetPuzzles() {
