@@ -499,6 +499,9 @@ details.bc-expansion .record-link:hover {
 .epistemic-a > a, details.epistemic-a > summary { border-left: 3px solid #d4a847; padding-left: 0.5em; }
 .epistemic-b > a, details.epistemic-b > summary { border-left: 3px solid #6a9fb5; padding-left: 0.5em; }
 .epistemic-c > a, details.epistemic-c > summary { border-left: 3px solid #9b7db8; padding-left: 0.5em; }
+details.epistemic-a { background: rgba(212, 168, 71, 0.06); }
+details.epistemic-b { background: rgba(106, 159, 181, 0.06); }
+details.epistemic-c { background: rgba(155, 125, 184, 0.06); }
 
 .epistemic-legend {
   display: flex;
@@ -555,6 +558,9 @@ details.bc-expansion .record-link:hover {
   .epistemic-legend span { border-left-color: #b8942e; }
   .epistemic-legend span:nth-child(2) { border-left-color: #4a7d8f; }
   .epistemic-legend span:nth-child(3) { border-left-color: #7d5fa0; }
+  details.epistemic-a { background: rgba(212, 168, 71, 0.04); }
+  details.epistemic-b { background: rgba(106, 159, 181, 0.04); }
+  details.epistemic-c { background: rgba(155, 125, 184, 0.04); }
 }
 @media (hover: none) and (prefers-color-scheme: dark) {
   details.chapter-section > summary.hover-nav > h2,
@@ -642,13 +648,19 @@ details.tech-section .tech-title {
   details.tech-section .tech-title { color: #aaa; border-bottom-color: #666; }
   details.tech-section > summary::before { color: #777; }
   .info-tip::after { color: #aaa; }
+  details.tech-borderline {
+    background: linear-gradient(135deg, rgba(212,168,71,0.06), rgba(212,168,71,0.03)) !important;
+    border-left-color: rgba(160,136,48,0.4);
+  }
 }
 @media print {
-  details.tech-section { display: block !important; background: none !important; }
-  details.tech-section > summary ~ * { display: block !important; }
-  details.tech-section > summary::before { content: '' !important; }
+  details.tech-section, details.tech-borderline { display: block !important; background: none !important; }
+  details.tech-section > summary ~ *, details.tech-borderline > summary ~ * { display: block !important; }
+  details.tech-section > summary::before, details.tech-borderline > summary::before { content: '' !important; }
   .tech-grade::after { content: '' !important; }
   .info-tip { display: none; }
+  details.epistemic-a, details.epistemic-b, details.epistemic-c { background: none !important; }
+  .epistemic-legend { display: none; }
 }
 details.tech-section[id] { scroll-margin-top: 3em; }
 details.tech-section.deep-link-target { animation: none; }
@@ -656,6 +668,33 @@ details.tech-section.deep-link-target > summary {
   animation: highlight-pulse 2s ease-out;
 }
 details.tech-section .share-anchor { vertical-align: middle; }
+
+/* BORDERLINE sections — Plan 0225b Phase 2A */
+details.tech-borderline {
+  background: linear-gradient(135deg, rgba(212,168,71,0.08), rgba(212,168,71,0.04)) !important;
+  border-left: 3px solid rgba(212,168,71,0.4);
+}
+details.tech-borderline > summary .tech-title {
+  border-bottom-color: rgba(212,168,71,0.2);
+}
+details.tech-borderline .tech-grade::after {
+  content: 'ⓘ';
+  font-size: 0.7em;
+  opacity: 0.4;
+  color: #888;
+  background: none;
+  padding: 0;
+}
+
+/* Toggle: visual-plain — Plan 0225b Phase 2C */
+body.visual-plain details.tech-section { background: none !important; border-left-color: #ccc; }
+body.visual-plain .tech-grade { display: none; }
+body.visual-plain details.tech-borderline { background: none !important; border-left-color: #ccc; }
+body.visual-plain details.epistemic-a,
+body.visual-plain details.epistemic-b,
+body.visual-plain details.epistemic-c { background: none !important; }
+body.visual-plain .epistemic-legend { display: none; }
+body.visual-plain [data-concept]::before { content: none; }
 
 /* Magnetosphere teaching imagemaps — Plan 0270 */
 @media (max-width: 700px) {
@@ -2585,7 +2624,7 @@ writes through lattice vibrations. Phonon-photon coupling bridges the
 chip to electromagnetic radiation. Two interface layers, both from the
 same physics — and both from Hasslacher’s domain.</p>
 </details>
-<details class="tech-section" id="spine:braid-freedmans-independent-conception-1988"><summary><span class="tech-title">Freedman’s
+<details class="tech-section tech-borderline" id="spine:braid-freedmans-independent-conception-1988" open><summary><span class="tech-title">Freedman’s
 Independent Conception (1988)</span><span class="tech-grade" data-hover="Fields Medalist Michael Freedman independently conceived topological quantum computation in 1988 — nine years before Kitaev published. The fundamental insight was accessible to top mathematicians by the late 1980s, consistent with a 1989 DARPA proposal." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:braid-freedmans-independent-conception-1988" aria-hidden="true"></span></summary>
 
 <p>Michael Freedman (Fields Medalist, topology) independently conceived
@@ -2602,7 +2641,7 @@ researchers at the intersection of computation and physics. This is the
 intellectual environment from which a topological QNN proposal could
 emerge.</p>
 </details>
-<details class="tech-section" id="spine:braid-kitaev-and-the-russian-question"><summary><span class="tech-title">Kitaev and the Russian
+<details class="tech-section tech-borderline" id="spine:braid-kitaev-and-the-russian-question" open><summary><span class="tech-title">Kitaev and the Russian
 Question</span><span class="tech-grade" data-hover="Kitaev&#x27;s 1997 paper was the public blueprint for topological quantum computation. If Bruce could see the implications from Oregon, so could any competent Russian science director. If the insight was independently derivable, it was never containable." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:braid-kitaev-and-the-russian-question" aria-hidden="true"></span></summary>
 
 <p>Alexei Kitaev published “Fault-tolerant quantum computation by
@@ -2698,7 +2737,7 @@ satellite extended the range to 1,200 km. The physics is confirmed. The
 classical constraint is also confirmed: in every experiment, the
 classical channel was required.</p>
 </details>
-<details class="tech-section" id="spine:braid-non-abelian-anyons-operational-proof"><summary><span class="tech-title">Non-Abelian
+<details class="tech-section tech-borderline" id="spine:braid-non-abelian-anyons-operational-proof" open><summary><span class="tech-title">Non-Abelian
 Anyons: Operational Proof</span><span class="tech-grade" data-hover="Under Possibility C, the system&#x27;s real-world behavior is itself the proof that its components exist — the same logic by which quarks and the Higgs were confirmed. You don&#x27;t need to isolate the parts if the whole works as predicted." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:braid-non-abelian-anyons-operational-proof" aria-hidden="true"></span></summary>
 
 <p>Under Possibility C, <span class="hover-term" data-hover-id="non-abelian-anyon">non-abelian anyon</span>s were not
@@ -2862,7 +2901,7 @@ another instance of the same pattern. It is worth understanding that the
 pattern is old.</p>
 </details>
 </details>
-<details class="tech-section" id="spine:fg-the-gchq-precedent"><summary><span class="tech-title">The GCHQ
+<details class="tech-section tech-borderline" id="spine:fg-the-gchq-precedent" open><summary><span class="tech-title">The GCHQ
 Precedent</span><span class="tech-grade" data-hover="Classified agencies have independently discovered and suppressed major mathematical breakthroughs before. GCHQ invented public-key cryptography four years before RSA — and kept it secret for twenty-four years. The pattern is documented history." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:fg-the-gchq-precedent" aria-hidden="true"></span></summary>
 
 <p>Shor’s algorithm follows the GCHQ trajectory. First presented in
@@ -3989,7 +4028,7 @@ suicide by cyanide poisoning. The precise circumstances remain disputed;
 the outcome does not.</p>
 <p>Turing’s wartime contributions were not publicly known at the time of
 his death. They would not be declassified until the mid-1970s.</p>
-<details class="tech-section" id="spine:gam-the-thread-continues"><summary><span class="tech-title">The Thread
+<details class="tech-section tech-borderline" id="spine:gam-the-thread-continues" open><summary><span class="tech-title">The Thread
 Continues</span><span class="tech-grade" data-hover="Turing showed brains grow from chemistry. Kauffman showed that growth process is universal — not specific to carbon. Wolfram showed complex systems compute spontaneously. Together: what minimal conditions does a substrate need to grow a mind? The answer points to the Flat." aria-hidden="true"></span><span class="share-anchor" data-link-id="spine:gam-the-thread-continues" aria-hidden="true"></span></summary>
 
 <p>The morphogenesis program did not end with Turing. He had shown that
@@ -11567,8 +11606,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>0856ea5f7ac1a8a846a20b18b4fb5ba1d1a29059</code> on 2026-04-27
-00:25:44 -0700.</p>
+<code>fb2742892c5f4621e02ba47d44c4ce00d0fc1eab</code> on 2026-04-27
+00:46:58 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -11636,7 +11675,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-27T07:46:29Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-27T08:06:43Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -11647,19 +11686,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>0856ea5</code></p>
+<p><code>fb27428</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>0856ea5f7ac1a8a846a20b18b4fb5ba1d1a29059</code></p>
+<p><code>fb2742892c5f4621e02ba47d44c4ce00d0fc1eab</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-27 00:25:44 -0700</p>
+<p>2026-04-27 00:46:58 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-27T07:46:29Z</p>
+<p>2026-04-27T08:06:43Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -12318,6 +12357,25 @@ navPopup.appendChild(popupClose);
 var popupList=document.createElement('div');
 popupList.className='nav-popup-list';
 navPopup.appendChild(popupList);
+var vlBtn=document.createElement('button');
+vlBtn.textContent='Visual';
+vlBtn.style.cssText='font-size:0.7em;padding:0.2em 0.6em;'+
+'cursor:pointer;border:1px solid #ccc;border-radius:3px;'+
+'background:#f8f8f8;color:#555;';
+vlBtn.setAttribute('data-hover','Visual cues on/off');
+vlBtn.setAttribute('aria-label','Toggle visual language cues');
+var vlState=(function(){
+try{return localStorage.getItem('relinquishment-visual-language')||'on';}
+catch(e){return 'on';}
+})();
+if(vlState==='off') document.body.classList.add('visual-plain');
+vlBtn.style.opacity=vlState==='off'?'0.5':'1';
+vlBtn.addEventListener('click',function(){
+document.body.classList.toggle('visual-plain');
+var state=document.body.classList.contains('visual-plain')?'off':'on';
+try{localStorage.setItem('relinquishment-visual-language',state);} catch(e){}
+vlBtn.style.opacity=state==='off'?'0.5':'1';
+});
 var popupFooter=document.createElement('div');
 popupFooter.className='nav-popup-footer';
 popupFooter.appendChild(expandBtn);
@@ -12326,6 +12384,7 @@ popupFooter.appendChild(msToggle);
 popupFooter.appendChild(pdfBtn);
 popupFooter.appendChild(zipBtn);
 popupFooter.appendChild(tipsBtn);
+popupFooter.appendChild(vlBtn);
 popupFooter.appendChild(toolsLink);
 navPopup.appendChild(popupFooter);
 document.body.appendChild(navPopup);
