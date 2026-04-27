@@ -304,13 +304,13 @@ chapter_puzzles:
     approved: true
     installed: false
     location:
-      chapter: three-possibilities
-      rationale: "Category correction — framing the entity as biology, not theology"
+      chapter: wrong-substrate
+      rationale: "Category correction — fits the 'Not Aliens' section that explains terrestrial origin"
       placement: end
     reward:
       type: self-contained
       content: abstract
-    notes: "Two puzzles in three-possibilities. Both are framing puzzles. Fits the opening chapter."
+    notes: "Relocated from three-possibilities to wrong-substrate where the 'Not Aliens' section lives."
 
   - id: pz-km-t1-001
     title: "The Custodian's Voice"
@@ -409,8 +409,8 @@ chapter_puzzles:
     approved: true
     installed: false
     location:
-      chapter: three-possibilities
-      rationale: "Reader experiences guided deduction — the book's core method"
+      chapter: story-never-told
+      rationale: "Reader experiences guided deduction — the chapter that introduces the method"
       placement: end
     reward:
       type: self-contained
