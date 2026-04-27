@@ -285,7 +285,7 @@ chapter_puzzles:
     type: ord
     topic: t1
     level: p2
-    approved: false
+    approved: true
     installed: false
     location:
       chapter: three-possibilities
