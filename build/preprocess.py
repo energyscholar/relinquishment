@@ -3317,6 +3317,51 @@ def inject_ms_diagrams(html_path):
             print(f"  MS teaching: {name} diagram injected")
 
 
+
+# Plan 0274a: chapter → target-id mapping for puzzle injection.
+# ORDER MATTERS: entries are in document order. Reverse iteration preserves positions.
+CHAPTER_INJECTION_TARGETS = {
+    'story-never-told':    'preface',
+    'three-possibilities': 'custodian:flat',
+    'the-flat':            'custodian:dance',
+    'the-braid':           'custodian:locksmith',
+    'the-code-war':        'custodian:grown',
+    'growing-a-mind':      'custodian:ocean',
+    'wrong-substrate':     'custodian:quiet',
+    'the-silence-gap':     'spine:capabilities',
+    'capabilities':        'spine:why-relinquish',
+    'why-relinquish':      'spine:strongest-objection',
+}
+
+
+def find_injection_point(text, target_id):
+    """Find position just before the block-level element containing target_id.
+    Returns character offset, or -1 if not found."""
+    for tag in ('div', 'details'):
+        pattern = re.compile(r'<' + tag + r'[^>]*id="' + re.escape(target_id) + r'"')
+        m = pattern.search(text)
+        if m:
+            return m.start()
+
+    pattern = re.compile(r'\bid="' + re.escape(target_id) + r'"')
+    m = pattern.search(text)
+    if not m:
+        print(f"  WARNING: injection target id='{target_id}' not found in HTML")
+        return -1
+
+    line_start = text.rfind('\n', 0, m.start())
+    line_start = 0 if line_start == -1 else line_start + 1
+    line_prefix = text[line_start:m.start()]
+
+    for block_tag in ('<details', '<div'):
+        tag_pos = line_prefix.find(block_tag)
+        if tag_pos != -1:
+            return line_start + tag_pos
+
+    print(f"  WARNING: no block element found on same line as id='{target_id}'")
+    return -1
+
+
 def inject_chapter_puzzles(html_path):
     """Insert approved puzzles into chapter HTML (Plan 0255)."""
     import hashlib as _hashlib
@@ -3336,26 +3381,20 @@ def inject_chapter_puzzles(html_path):
 
     approved = {}
     for p in tracker.get('chapter_puzzles', []):
-        if p.get('approved'):
+        if p.get('approved') and p.get('installed'):
             approved[p['id']] = p
 
     if not approved:
         return
 
-    content = {}
+    puzzle_content = {}
     for p in pdata.get('chapter_puzzles', []):
         if p['id'] in approved:
-            content[p['id']] = p
+            puzzle_content[p['id']] = p
 
     html_path = Path(html_path)
     text = html_path.read_text()
     injected = 0
-
-    CHAPTER_MARKERS = {
-        'the-flat': '<div class="custodian-interlude" id="custodian:dance">',
-        'three-possibilities': '<div class="custodian-interlude" id="custodian:flat">',
-        'wrong-substrate': '<div class="custodian-interlude" id="custodian:quiet">',
-    }
 
     def _esc(s):
         return str(s).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
@@ -3458,55 +3497,70 @@ def inject_chapter_puzzles(html_path):
 
     css_injected = False
     utils_injected = False
+
+    by_chapter = {}
     for pid, tracker_entry in approved.items():
-        puzzle = content.get(pid)
-        if not puzzle:
-            continue
-        ptype = puzzle.get('type', '')
-        if ptype not in ('mc', 'gd', 'log'):
-            continue
         chapter = tracker_entry.get('location', {}).get('chapter', '')
-        marker = CHAPTER_MARKERS.get(chapter)
-        if not marker:
+        by_chapter.setdefault(chapter, []).append((pid, tracker_entry))
+
+    for chapter in reversed(list(CHAPTER_INJECTION_TARGETS.keys())):
+        puzzles = by_chapter.get(chapter, [])
+        if not puzzles:
             continue
-        idx = text.find(marker)
-        if idx == -1:
+
+        target_id = CHAPTER_INJECTION_TARGETS[chapter]
+        pos = find_injection_point(text, target_id)
+        if pos == -1:
             continue
 
-        title = _esc(puzzle.get('title', ''))
-        summary_label = _esc(dl_questions.get(pid, title))
-        blurb = puzzle.get('gateway_blurb', '')
-        abstract_text = _esc(puzzle.get('abstract', '').strip())
-        egg_url = puzzle.get('egg_url', '').strip()
+        def level_key(item):
+            lvl = str(item[1].get('level', 'p9'))
+            return int(lvl.replace('p', ''))
+        puzzles.sort(key=level_key)
 
-        blurb_html = ''
-        if blurb:
-            blurb_html = f'<p class="pz-gateway-blurb">\U0001f9e9 {_esc(blurb)}</p>'
+        for pid, tracker_entry in reversed(puzzles):
+            puzzle = puzzle_content.get(pid)
+            if not puzzle:
+                continue
+            ptype = puzzle.get('type', '')
+            if ptype not in ('mc', 'gd', 'log'):
+                print(f"  Puzzle: {pid} type '{ptype}' not supported \u2014 skipped")
+                continue
 
-        egg_link = ''
-        if egg_url:
-            target_attr = '' if egg_url.startswith('#') else ' target="_blank"'
-            egg_link = f'<p class="pz-egg-reward"><a href="{_esc(egg_url)}"{target_attr}>&#x1f513; Continue exploring (You found an Easter Egg) &rarr;</a></p>'
-
-        if ptype == 'mc':
-            question = _esc(puzzle.get('question', ''))
-            hint_text = _esc(puzzle.get('hint', ''))
-            options = puzzle.get('options', [])
-            answer_key = str(puzzle.get('answer_key', ''))
-            answer_hash = _hashlib.sha256(answer_key.encode()).hexdigest()
-
-            opts_json = []
-            for o in options:
-                opts_json.append('{' + f'"key":"{_esc(o["key"])}","text":"{_esc(o["text"])}"' + '}')
-            opts_json_str = '[' + ','.join(opts_json) + ']'
-
-            body_html = f'''    <h3>{title}</h3>
+            title = _esc(puzzle.get('title', ''))
+            summary_label = _esc(dl_questions.get(pid, title))
+            blurb = puzzle.get('gateway_blurb', '')
+            abstract_text = _esc(puzzle.get('abstract', '').strip())
+            egg_url = puzzle.get('egg_url', '').strip()
+    
+            blurb_html = ''
+            if blurb:
+                blurb_html = f'<p class="pz-gateway-blurb">\U0001f9e9 {_esc(blurb)}</p>'
+    
+            egg_link = ''
+            if egg_url:
+                target_attr = '' if egg_url.startswith('#') else ' target="_blank"'
+                egg_link = f'<p class="pz-egg-reward"><a href="{_esc(egg_url)}"{target_attr}>&#x1f513; Continue exploring (You found an Easter Egg) &rarr;</a></p>'
+    
+            if ptype == 'mc':
+                question = _esc(puzzle.get('question', ''))
+                hint_text = _esc(puzzle.get('hint', ''))
+                options = puzzle.get('options', [])
+                answer_key = str(puzzle.get('answer_key', ''))
+                answer_hash = _hashlib.sha256(answer_key.encode()).hexdigest()
+    
+                opts_json = []
+                for o in options:
+                    opts_json.append('{' + f'"key":"{_esc(o["key"])}","text":"{_esc(o["text"])}"' + '}')
+                opts_json_str = '[' + ','.join(opts_json) + ']'
+    
+                body_html = f'''    <h3>{title}</h3>
     {blurb_html}
     <p class="pz-question">{question}</p>
     <div class="pz-interaction" id="pz-inter-{pid}"></div>
     <p class="pz-hint" id="pz-hint-{pid}">{hint_text}</p>'''
-
-            puzzle_js = f'''
+    
+                puzzle_js = f'''
 (function() {{
   var pid = "{pid}";
   var answerHash = "{answer_hash}";
@@ -3586,36 +3640,36 @@ def inject_chapter_puzzles(html_path):
     init();
   }}
 }})();'''
-
-        elif ptype == 'gd':
-            stages = puzzle.get('stages', [])
-            n = len(stages)
-            dots_html = ''.join(f'<span class="pz-gd-dot" id="pz-gd-dot-{pid}-{i}"></span>' for i in range(n))
-            stages_html = ''
-            stages_json = []
-            for i, st in enumerate(stages):
-                opts_html = ''
-                for o in st.get('options', []):
-                    opts_html += f'<button class="pz-option-btn pz-gd-opt" data-key="{_esc(o["key"])}" data-stage="{i}">({_esc(o["key"])}) {_esc(o["text"])}</button>\n'
-                stages_html += f'''<div class="pz-gd-stage" id="pz-gd-stage-{pid}-{i}" style="{'display:none' if i > 0 else ''}">
+    
+            elif ptype == 'gd':
+                stages = puzzle.get('stages', [])
+                n = len(stages)
+                dots_html = ''.join(f'<span class="pz-gd-dot" id="pz-gd-dot-{pid}-{i}"></span>' for i in range(n))
+                stages_html = ''
+                stages_json = []
+                for i, st in enumerate(stages):
+                    opts_html = ''
+                    for o in st.get('options', []):
+                        opts_html += f'<button class="pz-option-btn pz-gd-opt" data-key="{_esc(o["key"])}" data-stage="{i}">({_esc(o["key"])}) {_esc(o["text"])}</button>\n'
+                    stages_html += f'''<div class="pz-gd-stage" id="pz-gd-stage-{pid}-{i}" style="{'display:none' if i > 0 else ''}">
       <p class="pz-gd-stage-q">{_esc(st["question"])}</p>
       <div class="pz-gd-stage-opts">{opts_html}</div>
       <div class="pz-gd-wrong" id="pz-gd-wrong-{pid}-{i}"></div>
       <div class="pz-gd-right" id="pz-gd-right-{pid}-{i}"></div>
     </div>\n'''
-                answer_hash = _hashlib.sha256(str(st['answer_key']).encode()).hexdigest()
-                stages_json.append('{' + f'"hash":"{answer_hash}","wrong_prompt":"{_esc(st.get("wrong_prompt",""))}","right_prompt":"{_esc(st.get("right_prompt",""))}"' + '}')
-
-            stages_json_str = '[' + ','.join(stages_json) + ']'
-
-            body_html = f'''    <h3>{title}</h3>
+                    answer_hash = _hashlib.sha256(str(st['answer_key']).encode()).hexdigest()
+                    stages_json.append('{' + f'"hash":"{answer_hash}","wrong_prompt":"{_esc(st.get("wrong_prompt",""))}","right_prompt":"{_esc(st.get("right_prompt",""))}"' + '}')
+    
+                stages_json_str = '[' + ','.join(stages_json) + ']'
+    
+                body_html = f'''    <h3>{title}</h3>
     {blurb_html}
     <div class="pz-gd-progress">{dots_html}</div>
     <div class="pz-interaction" id="pz-inter-{pid}">
     {stages_html}
     </div>'''
-
-            puzzle_js = f'''
+    
+                puzzle_js = f'''
 (function() {{
   var pid = "{pid}";
   var stages = {stages_json_str};
@@ -3728,35 +3782,35 @@ def inject_chapter_puzzles(html_path):
     initGD();
   }}
 }})();'''
-
-        elif ptype == 'log':
-            question = _esc(puzzle.get('question', ''))
-            rows_data = puzzle.get('rows', [])
-            cols_data = puzzle.get('columns', [])
-            correct_data = puzzle.get('correct', [])
-
-            body_html = f'''    <h3>{title}</h3>
+    
+            elif ptype == 'log':
+                question = _esc(puzzle.get('question', ''))
+                rows_data = puzzle.get('rows', [])
+                cols_data = puzzle.get('columns', [])
+                correct_data = puzzle.get('correct', [])
+    
+                body_html = f'''    <h3>{title}</h3>
     {blurb_html}
     <p class="pz-question">{question}</p>
     <div class="pz-interaction" id="pz-inter-{pid}"></div>
     <p class="pz-hint" id="pz-hint-{pid}">{_esc(puzzle.get("hint", ""))}</p>'''
-
-            import json as _json
-            rows_json = []
-            for r in rows_data:
-                if isinstance(r, dict):
-                    rows_json.append({'text': r['text'], 'tooltip': r.get('tooltip', '')})
-                else:
-                    rows_json.append({'text': r, 'tooltip': ''})
-
-            cols_json = []
-            for c in cols_data:
-                if isinstance(c, dict):
-                    cols_json.append({'text': c['text'], 'tooltip': c.get('tooltip', '')})
-                else:
-                    cols_json.append({'text': c, 'tooltip': ''})
-
-            puzzle_js = f'''
+    
+                import json as _json
+                rows_json = []
+                for r in rows_data:
+                    if isinstance(r, dict):
+                        rows_json.append({'text': r['text'], 'tooltip': r.get('tooltip', '')})
+                    else:
+                        rows_json.append({'text': r, 'tooltip': ''})
+    
+                cols_json = []
+                for c in cols_data:
+                    if isinstance(c, dict):
+                        cols_json.append({'text': c['text'], 'tooltip': c.get('tooltip', '')})
+                    else:
+                        cols_json.append({'text': c, 'tooltip': ''})
+    
+                puzzle_js = f'''
 (function() {{
   var pid = "{pid}";
   var rows = {_json.dumps(rows_json)};
@@ -3864,18 +3918,18 @@ def inject_chapter_puzzles(html_path):
     init();
   }}
 }})();'''
-
-        css_block = ''
-        if not css_injected:
-            css_block = f'  <style>\n{PZ_CSS}\n  </style>\n'
-            css_injected = True
-
-        utils_block = ''
-        if not utils_injected:
-            utils_block = f'  <script>\n{PZ_JS_UTILS}\n  </script>\n'
-            utils_injected = True
-
-        puzzle_html = f'''
+    
+            css_block = ''
+            if not css_injected:
+                css_block = f'  <style>\n{PZ_CSS}\n  </style>\n'
+                css_injected = True
+    
+            utils_block = ''
+            if not utils_injected:
+                utils_block = f'  <script>\n{PZ_JS_UTILS}\n  </script>\n'
+                utils_injected = True
+    
+            puzzle_html = f'''
 {utils_block}<details class="puzzle-section">
   <summary>Puzzle &mdash; {summary_label}</summary>
 {css_block}  <div class="pz-container" id="{pid}" data-puzzle-id="{pid}">
@@ -3892,8 +3946,9 @@ def inject_chapter_puzzles(html_path):
   </script>
 </details>
 '''
-        text = text[:idx] + puzzle_html + text[idx:]
-        injected += 1
+            text = text[:pos] + puzzle_html + '\n' + text[pos:]
+            injected += 1
+            print(f"  Puzzle: {pid} \"{title}\" \u2192 {chapter} (before {target_id}) \u2713")
 
     if injected:
         html_path.write_text(text)

@@ -340,6 +340,28 @@
   popupList.className = 'nav-popup-list';
   navPopup.appendChild(popupList);
 
+  var vlBtn = document.createElement('button');
+  vlBtn.textContent = 'Visual';
+  vlBtn.style.cssText = 'font-size:0.7em;padding:0.2em 0.6em;' +
+    'cursor:pointer;border:1px solid #ccc;border-radius:3px;' +
+    'background:#f8f8f8;color:#555;';
+  vlBtn.setAttribute('data-hover', 'Visual cues on/off');
+  vlBtn.setAttribute('aria-label', 'Toggle visual language cues');
+
+  var vlState = (function(){
+    try { return localStorage.getItem('relinquishment-visual-language') || 'on'; }
+    catch(e){ return 'on'; }
+  })();
+  if (vlState === 'off') document.body.classList.add('visual-plain');
+  vlBtn.style.opacity = vlState === 'off' ? '0.5' : '1';
+
+  vlBtn.addEventListener('click', function() {
+    document.body.classList.toggle('visual-plain');
+    var state = document.body.classList.contains('visual-plain') ? 'off' : 'on';
+    try { localStorage.setItem('relinquishment-visual-language', state); } catch(e){}
+    vlBtn.style.opacity = state === 'off' ? '0.5' : '1';
+  });
+
   var popupFooter = document.createElement('div');
   popupFooter.className = 'nav-popup-footer';
   popupFooter.appendChild(expandBtn);
@@ -348,6 +370,7 @@
   popupFooter.appendChild(pdfBtn);
   popupFooter.appendChild(zipBtn);
   popupFooter.appendChild(tipsBtn);
+  popupFooter.appendChild(vlBtn);
   popupFooter.appendChild(toolsLink);
   navPopup.appendChild(popupFooter);
 
