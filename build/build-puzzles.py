@@ -1910,7 +1910,57 @@ function initAllPuzzles() {
   for (var id in solved) if (solved[id] && (!PD[id] || PD[id].type !== "km")) revealPuzzle(id);
   try { initBridge(); } catch(e) { console.error("Bridge init error:", e); }
   updateCounts();
-  if (location.hash) { var t = document.querySelector(location.hash); if (t) setTimeout(function() { t.scrollIntoView({behavior:"smooth"}); }, 100); }
+  if (location.hash) {
+    var t = document.querySelector(location.hash);
+    if (!t) { var wrap = document.querySelector('[data-puzzle-wrap="' + location.hash.slice(1) + '"]'); if (wrap) { wrap.open = true; t = wrap; } }
+    var parent = t && t.closest ? t.closest('details.puzzle-collapse') : null;
+    if (parent) parent.open = true;
+    if (t) setTimeout(function() { t.scrollIntoView({behavior:"smooth"}); }, 150);
+  }
+  initReviewControls();
+}
+
+function initReviewControls() {
+  var reviewBtn = document.getElementById('review-toggle');
+  var resetBtn = document.getElementById('reset-all');
+  if (!reviewBtn || !resetBtn) return;
+
+  var reviewMode = false;
+  reviewBtn.addEventListener('click', function() {
+    reviewMode = !reviewMode;
+    reviewBtn.classList.toggle('active', reviewMode);
+    reviewBtn.textContent = reviewMode ? 'Review Mode: ON' : 'Review Mode';
+    var all = document.querySelectorAll('details.puzzle-collapse');
+    for (var i = 0; i < all.length; i++) all[i].open = reviewMode;
+  });
+
+  resetBtn.addEventListener('click', function() {
+    if (!confirm('Reset all puzzle progress? This cannot be undone.')) return;
+    try {
+      localStorage.removeItem(STORAGE_KEY); localStorage.removeItem(BRIDGE_KEY);
+      for (var id in PD) {
+        if (PD[id].type === "km") {
+          localStorage.removeItem(id + '-seen');
+          localStorage.removeItem(id + '-reflected');
+          localStorage.removeItem(id + '-solved');
+        }
+      }
+    } catch(e) {}
+    location.reload();
+  });
+
+  var tocLinks = document.querySelectorAll('.toc-table a');
+  for (var i = 0; i < tocLinks.length; i++) {
+    (function(link) {
+      link.addEventListener('click', function(e) {
+        var href = link.getAttribute('href');
+        if (!href || href.charAt(0) !== '#') return;
+        var pid = href.slice(1);
+        var wrap = document.querySelector('[data-puzzle-wrap="' + pid + '"]');
+        if (wrap) { wrap.open = true; }
+      });
+    })(tocLinks[i]);
+  }
 }
 
 function resetPuzzles() {
@@ -1981,6 +2031,11 @@ to the book&rsquo;s larger argument. The Final Question awaits at the end.</p>
 
 {toc_html}
 
+<div class="review-controls">
+  <button id="review-toggle">Review Mode</button>
+  <button id="reset-all">Reset All Progress</button>
+</div>
+
 <div id="no-crypto" class="no-crypto" style="display:none;">
   <strong>Note:</strong> Your browser does not support the SubtleCrypto API.
   All puzzles are shown unlocked.
@@ -1996,9 +2051,6 @@ to the book&rsquo;s larger argument. The Final Question awaits at the end.</p>
 
 {km_section}
 
-<div class="reset-wrap">
-  <button class="reset-btn" onclick="resetPuzzles()">Reset All Puzzles</button>
-</div>
 
 <script>
 {js_final}
