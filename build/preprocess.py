@@ -808,6 +808,9 @@ details.bc-expansion .record-link:hover {
 .epistemic-a > a, details.epistemic-a > summary { border-left: 3px solid #d4a847; padding-left: 0.5em; }
 .epistemic-b > a, details.epistemic-b > summary { border-left: 3px solid #6a9fb5; padding-left: 0.5em; }
 .epistemic-c > a, details.epistemic-c > summary { border-left: 3px solid #9b7db8; padding-left: 0.5em; }
+details.epistemic-a { background: rgba(212, 168, 71, 0.06); }
+details.epistemic-b { background: rgba(106, 159, 181, 0.06); }
+details.epistemic-c { background: rgba(155, 125, 184, 0.06); }
 
 .epistemic-legend {
   display: flex;
@@ -864,6 +867,9 @@ details.bc-expansion .record-link:hover {
   .epistemic-legend span { border-left-color: #b8942e; }
   .epistemic-legend span:nth-child(2) { border-left-color: #4a7d8f; }
   .epistemic-legend span:nth-child(3) { border-left-color: #7d5fa0; }
+  details.epistemic-a { background: rgba(212, 168, 71, 0.04); }
+  details.epistemic-b { background: rgba(106, 159, 181, 0.04); }
+  details.epistemic-c { background: rgba(155, 125, 184, 0.04); }
 }
 @media (hover: none) and (prefers-color-scheme: dark) {
   details.chapter-section > summary.hover-nav > h2,
@@ -951,13 +957,19 @@ details.tech-section .tech-title {
   details.tech-section .tech-title { color: #aaa; border-bottom-color: #666; }
   details.tech-section > summary::before { color: #777; }
   .info-tip::after { color: #aaa; }
+  details.tech-borderline {
+    background: linear-gradient(135deg, rgba(212,168,71,0.06), rgba(212,168,71,0.03)) !important;
+    border-left-color: rgba(160,136,48,0.4);
+  }
 }
 @media print {
-  details.tech-section { display: block !important; background: none !important; }
-  details.tech-section > summary ~ * { display: block !important; }
-  details.tech-section > summary::before { content: '' !important; }
+  details.tech-section, details.tech-borderline { display: block !important; background: none !important; }
+  details.tech-section > summary ~ *, details.tech-borderline > summary ~ * { display: block !important; }
+  details.tech-section > summary::before, details.tech-borderline > summary::before { content: '' !important; }
   .tech-grade::after { content: '' !important; }
   .info-tip { display: none; }
+  details.epistemic-a, details.epistemic-b, details.epistemic-c { background: none !important; }
+  .epistemic-legend { display: none; }
 }
 details.tech-section[id] { scroll-margin-top: 3em; }
 details.tech-section.deep-link-target { animation: none; }
@@ -965,6 +977,33 @@ details.tech-section.deep-link-target > summary {
   animation: highlight-pulse 2s ease-out;
 }
 details.tech-section .share-anchor { vertical-align: middle; }
+
+/* BORDERLINE sections — Plan 0225b Phase 2A */
+details.tech-borderline {
+  background: linear-gradient(135deg, rgba(212,168,71,0.08), rgba(212,168,71,0.04)) !important;
+  border-left: 3px solid rgba(212,168,71,0.4);
+}
+details.tech-borderline > summary .tech-title {
+  border-bottom-color: rgba(212,168,71,0.2);
+}
+details.tech-borderline .tech-grade::after {
+  content: 'ⓘ';
+  font-size: 0.7em;
+  opacity: 0.4;
+  color: #888;
+  background: none;
+  padding: 0;
+}
+
+/* Toggle: visual-plain — Plan 0225b Phase 2C */
+body.visual-plain details.tech-section { background: none !important; border-left-color: #ccc; }
+body.visual-plain .tech-grade { display: none; }
+body.visual-plain details.tech-borderline { background: none !important; border-left-color: #ccc; }
+body.visual-plain details.epistemic-a,
+body.visual-plain details.epistemic-b,
+body.visual-plain details.epistemic-c { background: none !important; }
+body.visual-plain .epistemic-legend { display: none; }
+body.visual-plain [data-concept]::before { content: none; }
 
 /* Magnetosphere teaching imagemaps — Plan 0270 */
 @media (max-width: 700px) {
@@ -3926,8 +3965,11 @@ def collapse_tech_sections(html_path):
                 grade_tooltip = html_mod.escape(tooltip) if tooltip else 'Verified science — a technical discussion grounded in published, peer-reviewed physics. Safe to skip; expand if curious.'
                 grade_span = f'<span class="tech-grade" data-hover="{grade_tooltip}" aria-hidden="true"></span>'
             link_span = f'<span class="share-anchor" data-link-id="{label}" aria-hidden="true"></span>'
+            is_borderline = entry.get('assessment') == 'BORDERLINE'
+            details_class = 'tech-section tech-borderline' if is_borderline else 'tech-section'
+            open_attr = ' open' if is_borderline else ''
             wrapper = (
-                f'<details class="tech-section" id="{label}">'
+                f'<details class="{details_class}" id="{label}"{open_attr}>'
                 f'<summary><span class="tech-title">{title_text}</span>{grade_span}{link_span}</summary>\n'
                 f'{content}'
                 f'</details>\n'
