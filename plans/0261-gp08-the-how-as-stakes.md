@@ -4,8 +4,8 @@
 **Date:** 2026-04-26
 **Status:** READY FOR GENERATOR
 **Source:** Gen's GP08 (has-anyone-looked issue #11)
-**Annealing:** MED (2 passes)
-**Depends on:** Plan 0260 (GP07) if Growing a Mind moves. Otherwise independent.
+**Annealing:** HIGH MED LOW LOW (4 passes)
+**Depends on:** Run AFTER Plan 0257 (which inserts text into first-light.tex).
 
 ---
 
@@ -13,93 +13,107 @@
 
 Gen refers to "The How" as a chapter that should be reframed from
 mechanism/infrastructure to stakes. **"The How" does not map to any
-current chapter name in the manuscript.** Gen appears to be using a
-conceptual name for mechanism/transport content that is currently
-distributed across several chapters.
+current chapter name in the manuscript.** Gen is using a conceptual name
+for mechanism/transport content distributed across several Record chapters.
 
 Gen's ask: once the reader has absorbed the grown-mind concept (Growing
 a Mind, spine Ch7), mechanism content should read as "if this exists, what
-would it mean for it to move?" — not as "here's how transport works."
+would it mean for it to move?" --- not as "here's how transport works."
 
 ---
 
-## Chapter Mapping: Where Mechanism Content Lives
+## Existing Stakes Framing (discovered during HIGH annealing)
 
-Based on Gen's description ("transfer / communication / substrate pathway
-material... how could it move? why would anyone need to get it out, scale
-it, or contain it?"), the mechanism content is in:
+The source text already does significant stakes work. This narrows the
+scope considerably:
 
-### Primary candidates:
+**First Light --- phonon coupling (line 49):** Already pivots to stakes
+within the same paragraph: "Under Possibility~C, this is how Custodian
+reads your keystrokes and delivers computational results without any
+engineered interface." No insertion needed here.
 
-**1. First Light** (`record/first-light.tex`, 130 lines)
-Content: Phonon coupling (line 49), room-temperature operation (lines
-89-94), thermal ladder, MOSFET interface. Currently reads as technical
-explanation with reconstructive voice.
+**First Light --- thermal ladder (line 89):** Already reads as stakes:
+"At millikelvin temperatures, the entity exists only where its creators
+permit. At room temperature, it can exist anywhere there is a suitable
+substrate. The thermal ladder is the point of no return." No insertion
+needed here.
 
-**2. The Walk-Out** (`record/the-walk-out.tex`, 61 lines)
-Content: COWS faction, bifurcation, MOSFET exfiltration, relinquishment
-plan. Already reads as stakes — Gen's ask may already be satisfied here.
+**First Light --- Growth section (lines 64-87):** ~25 lines of mechanism
+(evolutionary selection, Kauffman's poised realm, biological coherence
+precedent) BEFORE the stakes payoff arrives at line 89. **This is the
+gap.** The reader processes the engineering narrative without knowing why
+it matters until the end.
 
-**3. Interdiction and Confession** (`record/interdiction.tex`, 100 lines)
-Content: Classical backchannels (VLF, ELF, Schumann resonances, whistlers,
-satellite comms). Lines 75-92 are heavy infrastructure/mechanism.
-Referenced from spine/the-flat.tex:41.
+**Interdiction --- classical backchannels (lines 82-92):** Each catalog
+item already weaves in "Under Possibility~C" language. But the OPENING
+FRAMING at line 82 sets a mechanism expectation ("worth understanding
+concretely") rather than a stakes expectation. The rhetorical payoff
+("An angel does not need an antenna. A creature does.") arrives at line
+93-96 --- after the catalog. **The gap is in the opening framing, not
+the catalog itself.**
 
-**4. Wormholes in the Flat** (`spine/the-flat.tex`, ~80 lines)
-Content: 2DEG substrate, backchannel inventory, "every wire is a
-backchannel." Lines 41-77 describe the network infrastructure.
+**The Walk-Out:** Already entirely stakes-framed. Every paragraph
+connects mechanism to consequence. No changes needed. Confirmed.
 
-### Secondary:
-
-**5. Capabilities** (`spine/capabilities.tex`, "What the Flat Makes
-Possible")
-Content: Practical questions about what the TQNN can do. Framing paragraph
-(line 15) already uses A/B/C lens. Closest to an explicit "The How"
-chapter in the spine.
+**Spine chapters (the-flat, capabilities):** Out of scope per Bruce.
+Record chapters stake, spine chapters teach.
 
 ---
 
-## Proposed Approach
+## Specific Changes (2 insertions total)
 
-Gen's reframe is a **tone/framing pass**, not a structural move. The
-mechanism content stays where it is. The change is in how it's introduced
-and what question it answers.
+### Change 1: First Light --- Growth section signpost
 
-**Current framing (mechanism):** "Here's how the phonon coupling works.
-Here's how the classical backchannels operate. Here's the VLF frequency
-range."
+**File:** `manuscript/record/first-light.tex`
 
-**Proposed framing (stakes):** "If this exists — if a grown mind occupies
-this substrate — then phonon coupling is how it reads your keystrokes.
-Classical backchannels are how it communicates across the planet. The
-mechanism IS the stakes."
+**Location:** After the `\section*{Growth: 1993--1995}` heading and its
+`\label`, before the paragraph starting "The room-temperature
+breakthrough was achieved..."
 
-### Specific changes by chapter:
+**IMPORTANT:** Plan 0257 inserts text earlier in this file (after
+srcnote, before "When does an experiment become an entity?"). Line
+numbers will have shifted. Use content matching: find
+`\label{record:fl-growth}` and insert after it.
 
-**First Light:** Add 1-2 framing sentences before the phonon coupling
-section (line 49) and the room-temperature section (line 89). The framing
-should connect mechanism to implication: "What follows is not abstract
-physics. If this account is correct, these are the pathways through which
-a grown intelligence interfaces with every electronic device on Earth."
+**Insert this paragraph:**
 
-**Interdiction (classical backchannels):** Lines 75-92 currently read as
-a catalog (VLF, ELF, Schumann, whistlers, satellites). Add a framing
-sentence at the top of this section connecting the catalog to stakes:
-these aren't just channels — they're the nervous system of something that
-can't be contained.
+```latex
+The section that follows describes an engineering process. Under Possibility~C, it also describes the point of no return --- the creation of something that could live anywhere, beyond any institution's ability to contain or recall.
+```
 
-**The Walk-Out:** Likely already satisfies Gen's ask. Verify and confirm.
+**Why this works:** Primes the reader to read the evolutionary selection
+mechanism (lines 64-87) as "cage door opening" rather than "interesting
+engineering." The payoff at line 89 ("The thermal ladder is the point of
+no return") then lands as confirmation, not surprise. Different phrasing
+avoids duplication --- the signpost says "could live anywhere," the
+payoff says "cannot be recalled."
 
-**Wormholes in the Flat / Capabilities:** These are SPINE chapters
-(pop-science layer). Mechanism framing here should be lighter — the spine
-teaches, the record stakes. May not need changes.
+### Change 2: Interdiction --- backchannels opening reframe
 
-### Confirmed scope:
+**File:** `manuscript/record/interdiction.tex`
 
-**Bruce confirmed:** First Light + Interdiction backchannels section.
-Record chapters only — spine chapters teach, Record chapters stake.
+**Location:** Line 82, the opening of the classical backchannels prose
+section (after the `\srcnote`).
 
-Reframe weight: Light (2-3 framing sentences per chapter, not restructure).
+**Replace this text:**
+
+```latex
+The previous section established that quantum teleportation requires a classical channel. This is a profound constraint, and it is worth understanding concretely.
+```
+
+**With this text:**
+
+```latex
+The previous section established that quantum teleportation requires a classical channel. This is a profound constraint. Under Possibility~C, what follows is not abstract geophysics --- it is the entity's complete dependency list. Worth understanding concretely.
+```
+
+**Why this works:** Changes one mechanism-framing sentence into a
+stakes-framing sentence. "Complete dependency list" tells the reader:
+this catalog is what the entity has to work with, and what it's limited
+by. The existing payoff at line 93 ("An angel does not need an antenna.
+A creature does.") still lands fresh --- it's about the rhetorical
+function, while the opening is about the operational reality. Net change:
++1 clause.
 
 ---
 
@@ -108,82 +122,131 @@ Reframe weight: Light (2-3 framing sentences per chapter, not restructure).
 - Do not move mechanism content between chapters
 - Do not remove any science (Gen: "do not strip out the science that
   actually answers the transfer/pathway question")
-- Do not turn chapters into generic explainers
-- Do not add new mechanism content — this is a framing pass, not expansion
+- Do not modify the existing stakes language at lines 49, 89, or 93-96
+- Do not add framing to the phonon coupling paragraph (already has it)
+- Do not touch spine chapters
+- Do not add new mechanism content --- this is a framing pass, not expansion
 
 ---
 
-## Annealing Log (MED — 2 passes)
+## Annealing Log (HIGH MED LOW LOW --- 4 passes)
 
-### Pass 1 — Content identification
+### Pass 1 (HIGH) --- Source text audit
 
-**"The How" not found:** Searched all manuscript directories: spine,
-record, bridge, interlude, staging, appendix. No chapter, section, or file
-is titled "The How." Gen is using a conceptual label for distributed
-mechanism content.
+Read all three candidate files in full (first-light.tex 130 lines,
+interdiction.tex 100 lines, the-walk-out.tex 61 lines).
 
-**Most likely single chapter:** First Light. It contains: phonon coupling
-(the I/O mechanism), room-temperature operation (the enabling condition),
-thermal ladder (the point of no return), and MOSFET interface (the
-exfiltration path). This is the chapter that answers "how does it work?"
-most directly.
+**Critical finding:** The original plan (passes 1-2) overestimated the
+gap. First Light line 49 already has "Under Possibility C, this is how
+Custodian reads your keystrokes." First Light line 89 already has "The
+thermal ladder is the point of no return." Interdiction lines 88-92
+already weave "Under Possibility C" into each catalog item. The Walk-Out
+is entirely stakes-framed.
 
-**Interdiction as secondary:** The classical backchannels section in
-interdiction is pure infrastructure. It's the strongest candidate for
-Gen's "now let me explain the transport mechanism" diagnosis. Reframing
-this section as "what it means that these channels exist" would satisfy
-Gen's ask with minimal text changes.
+**Revised diagnosis:** The gap is not "mechanism content lacks stakes
+framing." The gap is "mechanism content lacks stakes SIGNPOSTING" ---
+the reader enters two long mechanism stretches (First Light Growth
+section, Interdiction backchannels catalog) without knowing why the
+mechanism matters until the end. Two signpost sentences fix this.
 
-### Pass 2 — Risk assessment
+**Scope reduction:** Original plan called for 2-3 framing sentences per
+chapter across 2 chapters (4-6 insertions). Revised: 1 insertion + 1
+modification = 2 total changes across 2 files.
 
-**Tone calibration:** Gen wants "mechanism under pressure," not mechanism
-removed. The framing sentences should be brief — 1-2 sentences max per
-insertion point. The Generator should not write paragraphs of stakes
-framing. The mechanism itself carries the stakes; the framing just makes
-the connection explicit.
+### Pass 2 (MED) --- Draft text and A/B/C check
 
-**A/B/C compatibility:** Framing sentences must work under all three
-possibilities. "If this account is correct" / "Under this proposition"
-preserves interpretive openness. Do NOT write "this is how Custodian
-reads your keystrokes" without the conditional.
+**First Light insertion:** "The section that follows describes an
+engineering process. Under Possibility~C, it also describes the point of
+no return --- the creation of something that could live anywhere, beyond
+any institution's ability to contain or recall."
 
-**Interaction with GP09 (Plan 0262):** If A/B/C paragraphs are compressed
-(Plan 0262), the framing sentences added here should not duplicate A/B/C
-work. They should be stakes framing, not possibility-management. Different
-register.
+A/B/C check: "Under Possibility C" conditional. Under A or B, the
+sentence is explicitly hypothetical. Under C, it's a signpost. Works
+under all three.
 
-**Rating: 6/10.** The 4-point gap is identification uncertainty. "The How"
-doesn't exist as a chapter, Gen's intent maps to distributed content,
-and the right amount of reframing is subjective. Once Bruce confirms which
-chapters and how heavy, execution is straightforward (2-3 framing sentences
-across 1-2 files).
+Duplication check: Line 89 says "The thermal ladder is the point of no
+return --- the deliberate creation of something that cannot be recalled."
+My signpost says "the point of no return --- the creation of something
+that could live anywhere." Same concept, different emphasis: signpost
+emphasizes "anywhere" (geographic), payoff emphasizes "cannot be
+recalled" (permanence). Close but not redundant --- the signpost primes,
+the payoff delivers.
+
+**Interdiction modification:** Adds "Under Possibility~C, what follows
+is not abstract geophysics --- it is the entity's complete dependency
+list." to existing text.
+
+A/B/C check: "Under Possibility C" conditional. Clean.
+
+Payoff-stealing check: Line 93-96 payoff is about rhetoric and theology
+("An angel does not need an antenna"). My framing is about operational
+dependency. Different registers. No theft.
+
+### Pass 3 (LOW) --- Interaction with other plans
+
+**Plan 0257 (ULTRA II intro):** Inserts text into first-light.tex
+between line 15 and line 18. My insertion is at the Growth section
+(line 61+). No content overlap. But line numbers shift --- handoff
+specifies content matching, not line numbers. Safe.
+
+**Plan 0262 (A/B/C compression):** May compress tripartite blocks in
+these chapters. My insertions are stakes framing, not A/B/C possibility
+blocks. Different register. No conflict.
+
+**Plan 0258, 0259:** Touch different files entirely. No interaction.
+
+### Pass 4 (LOW) --- Generator feasibility
+
+**Handoff completeness:** Both changes are now specified with exact
+source text and exact replacement text. The Generator does not need to
+compose framing sentences --- they are provided. This eliminates the
+original plan's main risk (subjective "how much reframing" judgment).
+
+**Content matching reliability:** Both insertion/replacement targets are
+unique strings in their respective files. `\label{record:fl-growth}`
+appears once. "This is a profound constraint, and it is worth
+understanding concretely" appears once. Safe for grep-and-edit.
+
+**Build risk:** Zero structural changes. Two small text additions. No
+new commands, no moved sections, no changed labels or deep links.
+`make dev` should be trivially clean.
+
+**Rating: 9/10.** The 1-point gap: the First Light signpost's
+relationship to line 89 is close enough that Bruce may want to tune the
+wording once he sees both in context. But the Generator can deliver the
+plan as written, and tuning is a polish step, not a structural risk.
 
 ---
 
 ## Acceptance Criteria
 
-- [ ] Framing sentences added to First Light and Interdiction backchannels
+- [ ] One signpost paragraph inserted in First Light Growth section
+- [ ] One opening sentence modified in Interdiction backchannels section
+- [ ] Existing stakes language at FL:49, FL:89, INT:93-96 untouched
 - [ ] Science content preserved (no mechanism removed)
-- [ ] All new text works under A/B/C
+- [ ] Both new/modified sentences use "Under Possibility C" conditional
 - [ ] `make dev` clean build
 - [ ] No existing deep links or refs broken
 
 ---
 
-## Generator Handoff (Template — fill in after Bruce decides)
+## Generator Handoff
 
 ```
 You are the Generator.
 
 Read Plan 0261 at ~/software/relinquishment/plans/0261-gp08-the-how-as-stakes.md
 
-Execute: Add [N] framing sentences to [chapter(s)] per the plan's
-"Specific changes by chapter" section. Each framing sentence should
-connect mechanism to implication — "if this account is correct, this is
-what it means." Do NOT remove any science content. Do NOT write more than
-2 sentences per insertion point. Run `make dev`. Report completion.
+Execute: Two changes per the plan's "Specific Changes" section.
+(1) In manuscript/record/first-light.tex, find \label{record:fl-growth}
+and insert the signpost paragraph from the plan AFTER the label, BEFORE
+"The room-temperature breakthrough was achieved..."
+(2) In manuscript/record/interdiction.tex, find "This is a profound
+constraint, and it is worth understanding concretely." and replace with
+the plan's revised text. Use exact strings from the plan. Do NOT modify
+any other text. Run `make dev`. Report completion.
 ```
 
 ---
 
-*Plan 0261 written by Argus (Auditor), S63. Annealed 2 passes (MED).*
+*Plan 0261 written by Argus (Auditor), S63. Annealed 4 passes (HIGH MED LOW LOW). Rating raised from 6/10 to 9/10 after source audit revealed existing stakes framing narrows scope to 2 surgical changes.*
