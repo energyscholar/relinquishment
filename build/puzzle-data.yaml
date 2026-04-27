@@ -493,7 +493,7 @@ chapter_puzzles:
       - key: a
         text: "Quantum mechanics can simulate organic chemistry"
       - key: b
-        text: "Kauffman's autocatalytic closure: self-organization arises from the mathematics of interacting components, not specific molecules — any substrate above the complexity threshold"
+        text: "Self-organization is a mathematical threshold, not a chemical recipe"
       - key: c
         text: "The 2DEG contains trace amounts of organic compounds"
       - key: d
