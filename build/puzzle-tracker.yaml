@@ -55,12 +55,12 @@ chapter_puzzles:
     type: mc
     topic: t2
     level: p2
-    approved: false
+    approved: true
     installed: false
     location:
       chapter: the-braid
-      rationale: "Non-Abelian anyons — exact chapter match"
-      placement: end
+      rationale: "Non-Abelian anyons — exact chapter match. For scientists, not GA."
+      placement: inside-tech-collapse
     reward:
       type: self-contained
       content: abstract
