@@ -109,7 +109,7 @@ chapter_puzzles:
     topic: t3
     level: p2
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: wrong-substrate
       rationale: "Substrate independence — exact chapter match"
@@ -407,7 +407,7 @@ chapter_puzzles:
     topic: t1
     level: p1
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: story-never-told
       rationale: "Reader experiences guided deduction — the chapter that introduces the method"
