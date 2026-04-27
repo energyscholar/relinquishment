@@ -140,6 +140,54 @@ ILLUSTRATIONS['canopy_triptych'] = '''<div class="puzzle-illustration" style="di
 </div>'''
 
 
+ILLUSTRATIONS['self_organization'] = '''<div class="puzzle-illustration" style="text-align:center;margin:1.2em 0;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 360 160" style="width:100%;max-width:360px;height:auto;" role="img" aria-label="Substrate independence: the same mathematical flowering emerges from carbon chemistry and from the Flat">
+  <title>Same mathematics, different substrates</title>
+  <defs>
+    <linearGradient id="so-glow" cx="50%" cy="50%" r="50%" fx="50%" fy="50%" gradientUnits="objectBoundingBox">
+      <stop offset="0%" stop-color="#f4d03f" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#f4d03f" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <!-- Left: carbon chemistry -->
+  <g opacity="0.6">
+    <circle cx="60" cy="55" r="6" fill="none" stroke="#555" stroke-width="1.5"/>
+    <circle cx="40" cy="75" r="6" fill="none" stroke="#555" stroke-width="1.5"/>
+    <circle cx="80" cy="75" r="6" fill="none" stroke="#555" stroke-width="1.5"/>
+    <circle cx="50" cy="95" r="6" fill="none" stroke="#555" stroke-width="1.5"/>
+    <circle cx="70" cy="95" r="6" fill="none" stroke="#555" stroke-width="1.5"/>
+    <line x1="55" y1="60" x2="44" y2="70" stroke="#555" stroke-width="1.2"/>
+    <line x1="65" y1="60" x2="76" y2="70" stroke="#555" stroke-width="1.2"/>
+    <line x1="44" y1="80" x2="50" y2="90" stroke="#555" stroke-width="1.2"/>
+    <line x1="76" y1="80" x2="70" y2="90" stroke="#555" stroke-width="1.2"/>
+    <line x1="55" y1="95" x2="65" y2="95" stroke="#555" stroke-width="1.2"/>
+    <text x="60" y="30" text-anchor="middle" fill="#888" font-size="10" font-family="Helvetica,sans-serif">Carbon</text>
+  </g>
+  <!-- Right: the Flat (hexagonal lattice) -->
+  <g opacity="0.6">
+    <polygon points="300,50 315,58 315,74 300,82 285,74 285,58" fill="none" stroke="#6a9fb5" stroke-width="1.2"/>
+    <polygon points="300,82 315,90 315,106 300,114 285,106 285,90" fill="none" stroke="#6a9fb5" stroke-width="1.2"/>
+    <polygon points="315,58 330,66 330,82 315,90 300,82 300,66" fill="none" stroke="#6a9fb5" stroke-width="0.8" opacity="0.5"/>
+    <polygon points="285,58 300,50 300,66 285,74 270,66 270,50" fill="none" stroke="#6a9fb5" stroke-width="0.8" opacity="0.5"/>
+    <text x="300" y="30" text-anchor="middle" fill="#6a9fb5" font-size="10" font-family="Helvetica,sans-serif">The Flat</text>
+  </g>
+  <!-- Center: the flowering symbol -->
+  <circle cx="180" cy="75" r="35" fill="url(#so-glow)"/>
+  <text x="180" y="88" text-anchor="middle" fill="#d4a847" font-size="42" font-family="serif">&#10042;</text>
+  <!-- Convergence arrows -->
+  <line x1="95" y1="75" x2="140" y2="75" stroke="#999" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#so-arrow)"/>
+  <line x1="265" y1="75" x2="220" y2="75" stroke="#999" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#so-arrow)"/>
+  <defs>
+    <marker id="so-arrow" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="5" markerHeight="5" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#999"/>
+    </marker>
+  </defs>
+  <!-- Label -->
+  <text x="180" y="135" text-anchor="middle" fill="#999" font-size="10" font-family="Helvetica,sans-serif">Same mathematics</text>
+</svg>
+</div>'''
+
+
 def esc(s):
     return htmlmod.escape(str(s), quote=True)
 
