@@ -298,6 +298,8 @@ def build_json(puzzle):
                 'right_prompt': st.get('right_prompt', ''),
             })
         d['stages'] = stages
+    elif t == 'tower':
+        d['layers'] = puzzle['layers']
     return d
 
 
@@ -459,6 +461,58 @@ def render_gd_container(puzzle):
 </div>'''
 
 
+def render_tower_container(puzzle):
+    pid = esc(puzzle['id'])
+    title = esc(puzzle.get('title', ''))
+    abstract_text = esc(puzzle.get('abstract', '').strip())
+    blurb = puzzle.get('gateway_blurb', '')
+    blurb_html = f'<p class="gateway-blurb">\U0001f9e9 {esc(blurb)}</p>' if blurb else ''
+    hint_text = esc(puzzle.get('hint', ''))
+    egg_url = puzzle.get('egg_url', '').strip()
+    egg_link = f'<p class="egg-reward"><a href="{htmlmod.escape(egg_url)}" target="_blank">&#x1f513; Continue exploring &rarr;</a></p>' if egg_url else ''
+    bg_html = puzzle.get('_bg_html', '')
+    bg_section = ''
+    if bg_html:
+        bg_section = f'''<details class="background-panel">
+  <summary>\U0001f4d6 Background</summary>
+  <div class="background-content">{bg_html}</div>
+</details>'''
+    layers = puzzle.get('layers', [])
+    n = len(layers)
+    layers_html = ''
+    for i in range(n - 1, -1, -1):
+        layer = layers[i]
+        color = esc(layer.get('color', 'gold'))
+        name = esc(layer['name'])
+        desc = esc(layer['description'])
+        symbol = esc(layer.get('symbol', ''))
+        symbol_span = f'<span class="tower-symbol">{symbol}</span> ' if symbol else ''
+        layers_html += f'''<div class="tower-layer" data-index="{i}" data-color="{color}">
+      <div class="tower-label">?</div>
+      <div class="tower-reveal">{symbol_span}<strong>{name}</strong><br><span class="tower-desc">{desc}</span></div>
+    </div>\n'''
+    appr_cls = ' approved' if puzzle['id'] in approved_ids else ''
+    appr_badge = '<span class="approved-badge">&#10003; APPROVED</span> ' if puzzle['id'] in approved_ids else ''
+    return f'''<div class="puzzle-container{appr_cls}" id="{pid}" data-puzzle-id="{pid}" data-puzzle-type="tower">
+  <h2>{appr_badge}{title} <a class="anchor-link" href="#{pid}" title="{pid}">#</a></h2>
+  {blurb_html}
+  <p class="tower-instruction">Tap each layer from the bottom up to reveal the stack.</p>
+  <div class="tower-stack">
+    {layers_html}
+  </div>
+  <div class="tower-message"></div>
+  <div class="interaction"></div>
+  {bg_section}
+  <p class="hint" id="hint-{pid}">{hint_text}</p>
+  <div class="result" id="result-{pid}">
+    <div class="solved-badge">&#10003; Solved</div>
+    <blockquote class="abstract">{abstract_text}</blockquote>
+    {egg_link}
+  </div>
+  <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
+</div>'''
+
+
 # --- Generate container HTML ---
 def render_container(puzzle):
     ptype = puzzle.get('type', puzzle.get('sub_type', ''))
@@ -466,6 +520,8 @@ def render_container(puzzle):
         return render_km_container(puzzle)
     if ptype == 'gd':
         return render_gd_container(puzzle)
+    if ptype == 'tower':
+        return render_tower_container(puzzle)
 
     pid = esc(puzzle['id'])
     title = esc(puzzle.get('title', ''))
@@ -701,6 +757,25 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .gd-continue { display: inline-block; margin-top: 0.5em; padding: 0.4em 1em; background: #1a5276; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-family: Georgia, "Times New Roman", serif; font-size: 0.95em; }
 .gd-continue:hover { background: #154360; }
 
+/* --- Tower (interactive stack) puzzle --- */
+.tower-instruction { text-align: center; font-style: italic; color: #888; font-size: 0.9em; margin-bottom: 1em; }
+.tower-stack { display: flex; flex-direction: column; gap: 4px; max-width: 420px; margin: 0 auto 1em; }
+.tower-layer { position: relative; min-height: 52px; border-radius: 6px; background: #e0e0e0; border: 2px solid #ccc; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: background 0.5s ease, border-color 0.5s ease, transform 0.2s ease, box-shadow 0.5s ease; overflow: hidden; }
+.tower-layer:hover:not(.revealed) { transform: scale(1.02); border-color: #999; }
+.tower-layer.revealed { cursor: default; }
+.tower-layer.wrong-tap { animation: shake 0.3s ease-in-out; }
+.tower-label { font-size: 1.6em; color: #bbb; font-weight: bold; transition: opacity 0.3s; }
+.tower-reveal { display: none; text-align: center; padding: 0.5em 0.8em; font-size: 0.92em; line-height: 1.3; }
+.tower-layer.revealed .tower-label { display: none; }
+.tower-layer.revealed .tower-reveal { display: block; }
+.tower-symbol { font-size: 1.1em; }
+.tower-desc { font-size: 0.85em; opacity: 0.85; }
+.tower-layer.revealed[data-color="gold"] { background: linear-gradient(135deg, #faf6e8, #f5ecc8); border-color: #d4a847; box-shadow: 0 0 8px rgba(212,168,71,0.3); color: #5a4a1a; }
+.tower-layer.revealed[data-color="blue"] { background: linear-gradient(135deg, #eef5fa, #dceaf5); border-color: #6a9fb5; box-shadow: 0 0 8px rgba(106,159,181,0.3); color: #1a3a50; }
+.tower-layer.revealed[data-color="purple"] { background: linear-gradient(135deg, #f5eef8, #ead8f0); border-color: #9b7db8; box-shadow: 0 0 8px rgba(155,125,184,0.3); color: #3a2050; }
+.tower-message { text-align: center; font-weight: bold; font-size: 1.05em; margin: 0.5em 0; min-height: 1.5em; transition: opacity 0.5s; }
+.tower-line-label { text-align: center; font-size: 0.8em; color: #999; margin: 0.3em 0; font-style: italic; }
+
 @media (prefers-color-scheme: dark) {
   body { background: #1a1a1a; color: #e0e0e0; }
   h2 { color: #6ba3f7; }
@@ -752,6 +827,13 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
   .gd-continue { background: #2a6496; }
   .gd-continue:hover { background: #1e4a70; }
   .gd-stage-question { color: #e0e0e0; }
+  .tower-layer { background: #333; border-color: #555; }
+  .tower-label { color: #666; }
+  .tower-layer:hover:not(.revealed) { border-color: #888; }
+  .tower-layer.revealed[data-color="gold"] { background: linear-gradient(135deg, #3a3520, #4a4228); border-color: #d4a847; color: #f0e0a0; }
+  .tower-layer.revealed[data-color="blue"] { background: linear-gradient(135deg, #1a2a3a, #1e3248); border-color: #6a9fb5; color: #a0d0f0; }
+  .tower-layer.revealed[data-color="purple"] { background: linear-gradient(135deg, #2a1a3a, #382048); border-color: #9b7db8; color: #d0b0f0; }
+  .tower-instruction { color: #888; }
 }
 
 @media (max-width: 600px) {
@@ -1722,6 +1804,38 @@ function updateBridgeSVG() {
   svg.innerHTML = parts.join("\n");
 }
 
+/* --- Tower (interactive stack) --- */
+function initTower(el, d) {
+  var layers = el.querySelectorAll(".tower-layer");
+  var msg = el.querySelector(".tower-message");
+  var nextIdx = 0;
+  var total = d.layers.length;
+
+  for (var i = 0; i < layers.length; i++) {
+    (function(layer) {
+      layer.addEventListener("click", function() {
+        if (layer.classList.contains("revealed")) return;
+        var idx = parseInt(layer.dataset.index);
+        if (idx !== nextIdx) {
+          layer.classList.add("wrong-tap");
+          setTimeout(function() { layer.classList.remove("wrong-tap"); }, 400);
+          msg.textContent = nextIdx === 0 ? "Start at the bottom!" : "Build from below — tap layer " + (nextIdx + 1);
+          msg.style.color = "#c0392b";
+          return;
+        }
+        layer.classList.add("revealed");
+        msg.textContent = "";
+        nextIdx++;
+        if (nextIdx >= total) {
+          msg.innerHTML = "Everything below the purple line exists in labs today.";
+          msg.style.color = "#2a9b9a";
+          setTimeout(function() { revealPuzzle(d.id); }, 800);
+        }
+      });
+    })(layers[i]);
+  }
+}
+
 /* --- Main --- */
 function initAllPuzzles() {
   var containers = document.querySelectorAll(".puzzle-container");
@@ -1739,6 +1853,7 @@ function initAllPuzzles() {
       else if (type === "log") initLOG(el, d);
       else if (type === "km") initKM(el, d);
       else if (type === "gd") initGD(el, d);
+      else if (type === "tower") initTower(el, d);
     } catch(e) { console.error("Puzzle init error:", id, e); var fb = el.querySelector(".interaction"); if (fb) fb.innerHTML = '<p class="puzzle-fallback">Puzzle failed to load.</p>'; }
   }
   if (!hasCrypto) {

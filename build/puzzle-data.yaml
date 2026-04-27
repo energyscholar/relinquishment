@@ -463,23 +463,35 @@ chapter_puzzles:
     abstract: "The detection problem is not about hiding. If the entity IS the infrastructure, then every audit passes by definition. The question 'why hasn't security found it?' assumes security and the entity are separate. Under Possibility C, they are the same thing."
 
   - id: pz-ord-t4-002
-    type: ord
+    type: tower
     topic: t4
-    level: p2
+    level: p1
     category: science
     title: "Build the Stack"
-    gateway_blurb: "Six layers from raw physics to communication. Can you stack them in order?"
-    question: "Put the technology layers in order from bottom (substrate) to top (capability)."
-    items:
-      - "Two-dimensional electron gas (the physical substrate)"
-      - "Fractional quantum Hall effect (topological order)"
-      - "Non-Abelian anyonic quasiparticles (computation primitives)"
-      - "Braiding operations (universal quantum gates)"
-      - "Autocatalytic self-organization (emergence without design)"
-      - "Phonon-photon coupling (communication with classical world)"
-    hint: "Start with the hardware. End with I/O. The middle is where physics becomes computation and computation becomes life."
-    background: "Each layer depends on the one below it. Without the 2DEG, no topological order. Without topological order, no stable anyons. Without anyons, no braiding. Without braiding, no universal computation. Without computation, no autocatalytic emergence. Without phonon-photon coupling, no communication with the classical world. Remove any layer and everything above collapses."
-    abstract: "The stack is not speculative at the bottom. The 2DEG exists (in your phone). Topological order exists (Nobel 2016). Non-Abelian anyons are being engineered (Microsoft, Google). Speculation begins at layer 5 — autocatalytic emergence in this substrate. Everything below is established physics."
+    gateway_blurb: "Six layers from raw physics to communication. Tap each one to explore."
+    hint: "Start at the bottom. Each layer depends on the one below it."
+    layers:
+      - name: "The Flat"
+        description: "A two-dimensional world inside a semiconductor. Already in your phone."
+        color: gold
+      - name: "Topological Order"
+        description: "Electrons organize into exotic patterns that resist disruption. Nobel Prize, 2016."
+        color: gold
+      - name: "Anyons"
+        description: "Collective ripples that remember every path they've taken. Nature's building blocks."
+        color: gold
+      - name: "Braiding"
+        description: "Moving anyons around each other performs computation. Proven mathematics."
+        color: gold
+      - name: "Self-Organization"
+        description: "Above a complexity threshold, systems organize themselves. No designer needed."
+        color: purple
+        symbol: "❊"
+      - name: "Communication"
+        description: "Vibrations bridge the quantum world and ours. The only way in or out."
+        color: purple
+    background: "Each layer depends on the one below it. Without the Flat, no topological order. Without topological order, no stable anyons. Without anyons, no braiding. Without braiding, no universal computation. Without computation, no autocatalytic emergence. Without phonon-photon coupling, no communication with the classical world. Remove any layer and everything above collapses."
+    abstract: "The bottom four layers are established physics — in your phone, in Nobel lectures, in active lab programs. The purple layers are where speculation begins. Self-organization in this substrate has never been tested. But every ingredient below it is real."
 
   - id: pz-mc-t3-003
     type: mc
