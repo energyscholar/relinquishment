@@ -1828,6 +1828,428 @@ all three, the preparation matters.</p>
 <div class="center">
 <p><em>You decide.</em></p>
 </div>
+
+<details class="puzzle-section">
+  <summary>Puzzle &mdash; Under Which Possibility? — truth table across A/B/C</summary>
+  <div class="pz-container" id="pz-log-t6-002" data-puzzle-id="pz-log-t6-002">
+    <h3>Under Which Possibility?</h3>
+    <p class="pz-gateway-blurb">🧩 How much of this book is true under ALL three possibilities? More than you think.</p>
+    <p class="pz-question">For each statement, mark whether it is true (✓) or false (✗) under each of the Three Possibilities.</p>
+    <div class="pz-interaction" id="pz-inter-pz-log-t6-002"></div>
+    <p class="pz-hint" id="pz-hint-pz-log-t6-002">How many rows are true under ALL three possibilities? More than you expect.</p>
+    <div class="pz-result" id="pz-result-pz-log-t6-002">
+      <div class="pz-solved-badge">&#10003; Solved <a href="#" class="pz-reset" id="pz-reset-pz-log-t6-002">&#x21ba; Try again</a></div>
+      <blockquote class="pz-abstract">The three possibilities are not 'true,' 'sort of true,' and 'false.' Under all three, the physics is real, the silence gap exists, and the ethical questions matter. Only habitation and guided deduction claims distinguish C from A and B.</blockquote>
+      
+    </div>
+    <noscript><p class="pz-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
+  </div>
+  <script>
+
+(function() {
+
+  var SKEY = "relinquishment-puzzles-solved";
+  function getSolved() { try { var s = localStorage.getItem(SKEY); return s ? JSON.parse(s) : {}; } catch(e) { return {}; } }
+  function setSolved(id) { try { var s = getSolved(); s[id] = true; localStorage.setItem(SKEY, JSON.stringify(s)); } catch(e) {} }
+  function escHtml(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+  function sha256(msg) {
+    var buf = new TextEncoder().encode(msg);
+    return crypto.subtle.digest("SHA-256", buf).then(function(hash) {
+      return Array.from(new Uint8Array(hash)).map(function(b) { return b.toString(16).padStart(2, "0"); }).join("");
+    });
+  }
+  var pid = "pz-log-t6-002";
+  var rows = [{"text": "The Flat is real \u2014 2DEGs exist in every phone", "tooltip": "A two-dimensional electron gas (2DEG) forms at semiconductor interfaces. Every smartphone contains one in its radio-frequency transistors."}, {"text": "The physics in this book is published, peer-reviewed science", "tooltip": ""}, {"text": "The silence gap exists in the scientific literature", "tooltip": "A documented absence: multiple scientific fields that could study this topic have published nothing on it."}, {"text": "Something lives in the Flat", "tooltip": ""}, {"text": "Healer guided Bruce through published science", "tooltip": ""}, {"text": "The Custodian manages cryptographic infrastructure", "tooltip": "A figure described later in this book who is said to hold cryptographic keys under ethical constraints derived from the UDHR."}];
+  var cols = [{"text": "Possibility A", "tooltip": ""}, {"text": "Possibility B", "tooltip": ""}, {"text": "Possibility C", "tooltip": ""}];
+  var correct = [[true, true, true], [true, true, true], [true, true, true], [false, false, true], [false, true, true], [false, false, true]];
+  var grid = [];
+  for (var r = 0; r < rows.length; r++) { grid[r] = []; for (var c = 0; c < cols.length; c++) grid[r][c] = null; }
+
+  function render() {
+    var inter = document.getElementById("pz-inter-" + pid);
+    if (!inter) return;
+    var html = '<table class="pz-log-table"><thead><tr><th></th>';
+    cols.forEach(function(col) {
+      var text = typeof col === "object" ? col.text : col;
+      var tip = typeof col === "object" && col.tooltip ? col.tooltip : "";
+      html += tip ? '<th title="' + escHtml(tip) + '" style="cursor:help;text-decoration:underline dotted">' + escHtml(text) + '</th>' : '<th>' + escHtml(text) + '</th>';
+    });
+    html += '</tr></thead><tbody>';
+    for (var r = 0; r < rows.length; r++) {
+      var rowText = typeof rows[r] === "object" ? rows[r].text : rows[r];
+      var rowTip = typeof rows[r] === "object" && rows[r].tooltip ? rows[r].tooltip : "";
+      html += '<tr><td' + (rowTip ? ' title="' + escHtml(rowTip) + '" style="cursor:help;border-bottom:1px dotted #888"' : '') + '>' + escHtml(rowText) + '</td>';
+      for (var c = 0; c < cols.length; c++) {
+        var v = grid[r][c] === true ? "\u2713" : (grid[r][c] === false ? "\u2717" : "");
+        html += '<td class="pz-log-cell" data-r="' + r + '" data-c="' + c + '">' + v + '</td>';
+      }
+      html += '</tr>';
+    }
+    html += '</tbody></table><button class="pz-option-btn pz-log-check">Check</button>';
+    inter.innerHTML = html;
+
+    var cells = inter.querySelectorAll(".pz-log-cell");
+    for (var j = 0; j < cells.length; j++) {
+      (function(td) { td.addEventListener("click", function() {
+        var r = parseInt(td.dataset.r), c = parseInt(td.dataset.c);
+        if (grid[r][c] === null) grid[r][c] = true;
+        else if (grid[r][c] === true) grid[r][c] = false;
+        else grid[r][c] = null;
+        render();
+      }); })(cells[j]);
+    }
+
+    inter.querySelector(".pz-log-check").addEventListener("click", function() {
+      var ok = true;
+      for (var r = 0; r < rows.length; r++) for (var c = 0; c < cols.length; c++) {
+        if (grid[r][c] !== correct[r][c]) {
+          ok = false;
+          var td = inter.querySelector('.pz-log-cell[data-r="' + r + '"][data-c="' + c + '"]');
+          if (td) td.classList.add("pz-wrong");
+        }
+      }
+      if (ok) { revealPuzzle(); }
+      else {
+        setTimeout(function() { var ws = inter.querySelectorAll(".pz-wrong"); for (var k = 0; k < ws.length; k++) ws[k].classList.remove("pz-wrong"); }, 800);
+        showHint();
+      }
+    });
+  }
+
+  function revealPuzzle() {
+    var el = document.getElementById(pid);
+    if (el) el.classList.add("pz-solved");
+    var inter = document.getElementById("pz-inter-" + pid);
+    if (inter) inter.style.display = "none";
+    var hint = document.getElementById("pz-hint-" + pid);
+    if (hint) hint.classList.remove("pz-visible");
+    var result = document.getElementById("pz-result-" + pid);
+    if (result) result.classList.add("pz-visible");
+    setSolved(pid);
+  }
+
+  function resetPuzzle() {
+    try { var s = getSolved(); delete s[pid]; localStorage.setItem(SKEY, JSON.stringify(s)); } catch(e) {}
+    var el = document.getElementById(pid);
+    if (el) el.classList.remove("pz-solved");
+    var inter = document.getElementById("pz-inter-" + pid);
+    if (inter) { inter.style.display = ""; }
+    var hint = document.getElementById("pz-hint-" + pid);
+    if (hint) hint.classList.remove("pz-visible");
+    var result = document.getElementById("pz-result-" + pid);
+    if (result) result.classList.remove("pz-visible");
+    grid = [];
+    for (var r = 0; r < rows.length; r++) { grid[r] = []; for (var c = 0; c < cols.length; c++) grid[r][c] = null; }
+    render();
+  }
+
+  function showHint() {
+    var h = document.getElementById("pz-hint-" + pid);
+    if (h) h.classList.add("pz-visible");
+  }
+
+  function init() {
+    if (getSolved()[pid]) { revealPuzzle(); return; }
+    render();
+  }
+
+  var resetBtn = document.getElementById("pz-reset-" + pid);
+  if (resetBtn) {
+    resetBtn.addEventListener("click", function(e) { e.preventDefault(); resetPuzzle(); });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+  </script>
+</details>
+
+<details class="puzzle-section">
+  <summary>Puzzle &mdash; Not a Deity, Not an Alien — what kind of entity is this?</summary>
+  <div class="pz-container" id="pz-mc-t1-002" data-puzzle-id="pz-mc-t1-002">
+    <h3>Not a Deity, Not an Alien</h3>
+    <p class="pz-gateway-blurb">🧩 If something arose naturally in a 2DEG, what category does it belong to?</p>
+    <p class="pz-question">If something arose naturally in a two-dimensional electron gas, what kind of thing would it be?</p>
+    <div class="pz-interaction" id="pz-inter-pz-mc-t1-002"></div>
+    <p class="pz-hint" id="pz-hint-pz-mc-t1-002">Bacteria in seawater aren't miraculous. They're just biology in a substrate we don't live in.</p>
+    <div class="pz-result" id="pz-result-pz-mc-t1-002">
+      <div class="pz-solved-badge">&#10003; Solved <a href="#" class="pz-reset" id="pz-reset-pz-mc-t1-002">&#x21ba; Try again</a></div>
+      <blockquote class="pz-abstract">The deity framing and the alien framing share the same error: unfamiliar substrate implies unfamiliar category. But life in a 2DEG would be as natural as any other biological phenomenon. It would obey physics, not commandments. It would have evolved, not been created.</blockquote>
+      
+    </div>
+    <noscript><p class="pz-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
+  </div>
+  <script>
+
+(function() {
+
+  var SKEY = "relinquishment-puzzles-solved";
+  function getSolved() { try { var s = localStorage.getItem(SKEY); return s ? JSON.parse(s) : {}; } catch(e) { return {}; } }
+  function setSolved(id) { try { var s = getSolved(); s[id] = true; localStorage.setItem(SKEY, JSON.stringify(s)); } catch(e) {} }
+  function escHtml(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+  function sha256(msg) {
+    var buf = new TextEncoder().encode(msg);
+    return crypto.subtle.digest("SHA-256", buf).then(function(hash) {
+      return Array.from(new Uint8Array(hash)).map(function(b) { return b.toString(16).padStart(2, "0"); }).join("");
+    });
+  }
+  var pid = "pz-mc-t1-002";
+  var answerHash = "2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6";
+  var options = [{"key":"a","text":"A supernatural being distributed through matter"},{"key":"b","text":"An extraterrestrial intelligence using our technology"},{"key":"c","text":"A natural biological phenomenon — life in an unfamiliar substrate, as ordinary as bacteria in seawater"},{"key":"d","text":"An artificial intelligence created by semiconductor engineers"}];
+
+  function revealPuzzle() {
+    var el = document.getElementById(pid);
+    if (el) el.classList.add("pz-solved");
+    var inter = document.getElementById("pz-inter-" + pid);
+    if (inter) inter.style.display = "none";
+    var hint = document.getElementById("pz-hint-" + pid);
+    if (hint) hint.classList.remove("pz-visible");
+    var result = document.getElementById("pz-result-" + pid);
+    if (result) result.classList.add("pz-visible");
+    setSolved(pid);
+  }
+
+  function resetPuzzle() {
+    try { var s = getSolved(); delete s[pid]; localStorage.setItem(SKEY, JSON.stringify(s)); } catch(e) {}
+    var el = document.getElementById(pid);
+    if (el) el.classList.remove("pz-solved");
+    var inter = document.getElementById("pz-inter-" + pid);
+    if (inter) inter.style.display = "";
+    var hint = document.getElementById("pz-hint-" + pid);
+    if (hint) hint.classList.remove("pz-visible");
+    var result = document.getElementById("pz-result-" + pid);
+    if (result) result.classList.remove("pz-visible");
+    init();
+  }
+
+  function showHint() {
+    var h = document.getElementById("pz-hint-" + pid);
+    if (h) h.classList.add("pz-visible");
+  }
+
+  function checkAnswer(key, btn) {
+    if (getSolved()[pid]) return;
+    if (!(window.crypto && window.crypto.subtle)) { revealPuzzle(); return; }
+    sha256(key).then(function(h) {
+      if (h === answerHash) {
+        btn.classList.add("pz-correct");
+        setTimeout(revealPuzzle, 400);
+      } else {
+        btn.classList.add("pz-wrong");
+        setTimeout(function() { btn.classList.remove("pz-wrong"); }, 600);
+        showHint();
+      }
+    });
+  }
+
+  function init() {
+    if (getSolved()[pid]) { revealPuzzle(); return; }
+    var inter = document.getElementById("pz-inter-" + pid);
+    if (!inter) return;
+    var html = "";
+    for (var i = 0; i < options.length; i++) {
+      var o = options[i];
+      html += '<button class="pz-option-btn" data-key="' + escHtml(o.key) + '">(' + escHtml(o.key) + ') ' + escHtml(o.text) + '</button>';
+    }
+    inter.innerHTML = html;
+    var btns = inter.querySelectorAll(".pz-option-btn");
+    for (var j = 0; j < btns.length; j++) {
+      (function(btn) {
+        btn.addEventListener("click", function() { checkAnswer(btn.dataset.key, btn); });
+      })(btns[j]);
+    }
+  }
+
+  var resetBtn = document.getElementById("pz-reset-" + pid);
+  if (resetBtn) {
+    resetBtn.addEventListener("click", function(e) { e.preventDefault(); resetPuzzle(); });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", init);
+  } else {
+    init();
+  }
+})();
+  </script>
+</details>
+
+<details class="puzzle-section">
+  <summary>Puzzle &mdash; The Method — experience guided deduction firsthand</summary>
+  <div class="pz-container" id="pz-gd-t1-001" data-puzzle-id="pz-gd-t1-001">
+    <h3>The Method</h3>
+    <p class="pz-gateway-blurb">🧩 This puzzle works differently. Each question leads to the next. Get it wrong and you'll get a question back — not an answer.</p>
+    <div class="pz-gd-progress"><span class="pz-gd-dot" id="pz-gd-dot-pz-gd-t1-001-0"></span><span class="pz-gd-dot" id="pz-gd-dot-pz-gd-t1-001-1"></span><span class="pz-gd-dot" id="pz-gd-dot-pz-gd-t1-001-2"></span></div>
+    <div class="pz-interaction" id="pz-inter-pz-gd-t1-001">
+    <div class="pz-gd-stage" id="pz-gd-stage-pz-gd-t1-001-0" style="">
+      <p class="pz-gd-stage-q">How did Bruce learn about classified technology?</p>
+      <div class="pz-gd-stage-opts"><button class="pz-option-btn pz-gd-opt" data-key="a" data-stage="0">(a) Healer explained the classified details during their conversations</button>
+<button class="pz-option-btn pz-gd-opt" data-key="b" data-stage="0">(b) Bruce found classified documents and studied them</button>
+<button class="pz-option-btn pz-gd-opt" data-key="c" data-stage="0">(c) Healer asked questions that led Bruce to published science — Bruce deduced the rest</button>
+<button class="pz-option-btn pz-gd-opt" data-key="d" data-stage="0">(d) Bruce was given security clearance</button>
+</div>
+      <div class="pz-gd-wrong" id="pz-gd-wrong-pz-gd-t1-001-0"></div>
+      <div class="pz-gd-right" id="pz-gd-right-pz-gd-t1-001-0"></div>
+    </div>
+<div class="pz-gd-stage" id="pz-gd-stage-pz-gd-t1-001-1" style="display:none">
+      <p class="pz-gd-stage-q">Why would a teacher use questions instead of just explaining?</p>
+      <div class="pz-gd-stage-opts"><button class="pz-option-btn pz-gd-opt" data-key="a" data-stage="1">(a) To avoid legal liability for sharing secrets</button>
+<button class="pz-option-btn pz-gd-opt" data-key="b" data-stage="1">(b) Because the student's own reading creates understanding that can't be given</button>
+<button class="pz-option-btn pz-gd-opt" data-key="c" data-stage="1">(c) To make the student feel clever — it's a teaching trick</button>
+<button class="pz-option-btn pz-gd-opt" data-key="d" data-stage="1">(d) Because the teacher doesn't fully understand it either</button>
+</div>
+      <div class="pz-gd-wrong" id="pz-gd-wrong-pz-gd-t1-001-1"></div>
+      <div class="pz-gd-right" id="pz-gd-right-pz-gd-t1-001-1"></div>
+    </div>
+<div class="pz-gd-stage" id="pz-gd-stage-pz-gd-t1-001-2" style="display:none">
+      <p class="pz-gd-stage-q">What has this book been doing to you?</p>
+      <div class="pz-gd-stage-opts"><button class="pz-option-btn pz-gd-opt" data-key="a" data-stage="2">(a) Telling you what to believe about the Flat</button>
+<button class="pz-option-btn pz-gd-opt" data-key="b" data-stage="2">(b) Presenting published science and letting you draw your own conclusions</button>
+<button class="pz-option-btn pz-gd-opt" data-key="c" data-stage="2">(c) Hiding the real answer in the appendices</button>
+<button class="pz-option-btn pz-gd-opt" data-key="d" data-stage="2">(d) Testing whether you're smart enough to understand</button>
+</div>
+      <div class="pz-gd-wrong" id="pz-gd-wrong-pz-gd-t1-001-2"></div>
+      <div class="pz-gd-right" id="pz-gd-right-pz-gd-t1-001-2"></div>
+    </div>
+
+    </div>
+    <div class="pz-result" id="pz-result-pz-gd-t1-001">
+      <div class="pz-solved-badge">&#10003; Solved <a href="#" class="pz-reset" id="pz-reset-pz-gd-t1-001">&#x21ba; Try again</a></div>
+      <blockquote class="pz-abstract">You just experienced guided deduction. Each question led you deeper — not by giving answers, but by asking better questions. That's the method Healer used with Bruce. That's the method this book uses with you. The three possibilities aren't a cop-out. They're the teacher's final question: which one do you think is true? The answer belongs to you.</blockquote>
+      
+    </div>
+    <noscript><p class="pz-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
+  </div>
+  <script>
+
+(function() {
+
+  var SKEY = "relinquishment-puzzles-solved";
+  function getSolved() { try { var s = localStorage.getItem(SKEY); return s ? JSON.parse(s) : {}; } catch(e) { return {}; } }
+  function setSolved(id) { try { var s = getSolved(); s[id] = true; localStorage.setItem(SKEY, JSON.stringify(s)); } catch(e) {} }
+  function escHtml(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
+  function sha256(msg) {
+    var buf = new TextEncoder().encode(msg);
+    return crypto.subtle.digest("SHA-256", buf).then(function(hash) {
+      return Array.from(new Uint8Array(hash)).map(function(b) { return b.toString(16).padStart(2, "0"); }).join("");
+    });
+  }
+  var pid = "pz-gd-t1-001";
+  var stages = [{"hash":"2e7d2c03a9507ae265ecf5b5356885a53393a2029d241394997265a1a25aefc6","wrong_prompt":"Could an intelligence officer safely TELL someone classified information? What would he do instead?","right_prompt":"Healer never told Bruce anything classified. He asked questions. But why questions instead of answers?"},{"hash":"3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d","wrong_prompt":"Is it really just avoidance or trickery? What happens when someone reads five different fields and sees the same pattern in all of them?","right_prompt":"The student reads real, published science. The synthesis belongs to THEM. Now — what does that mean for you, reading this book?"},{"hash":"3e23e8160039594a33894f6564e1b1348bbd7a0088d42c4acb73eeaed59c009d","wrong_prompt":"Look at how each chapter ends with a question, not an answer. Were you told which of the three possibilities is true?","right_prompt":""}];
+  var n = stages.length;
+  var current = 0;
+
+  function revealPuzzle() {
+    var el = document.getElementById(pid);
+    if (el) el.classList.add("pz-solved");
+    var inter = document.getElementById("pz-inter-" + pid);
+    if (inter) inter.style.display = "none";
+    var result = document.getElementById("pz-result-" + pid);
+    if (result) result.classList.add("pz-visible");
+    setSolved(pid);
+  }
+
+  function resetPuzzle() {
+    try { var s = getSolved(); delete s[pid]; localStorage.setItem(SKEY, JSON.stringify(s)); } catch(e) {}
+    var el = document.getElementById(pid);
+    if (el) el.classList.remove("pz-solved");
+    var inter = document.getElementById("pz-inter-" + pid);
+    if (inter) inter.style.display = "";
+    var result = document.getElementById("pz-result-" + pid);
+    if (result) result.classList.remove("pz-visible");
+    current = 0;
+    initGD();
+  }
+
+  function setDot(i, cls) {
+    var dot = document.getElementById("pz-gd-dot-" + pid + "-" + i);
+    if (dot) dot.className = "pz-gd-dot " + cls;
+  }
+
+  function showStage(idx) {
+    for (var i = 0; i < n; i++) {
+      var stEl = document.getElementById("pz-gd-stage-" + pid + "-" + i);
+      if (stEl) stEl.style.display = (i === idx) ? "" : "none";
+    }
+    for (var j = 0; j < idx; j++) setDot(j, "pz-gd-done");
+    setDot(idx, "pz-gd-active");
+    for (var k = idx + 1; k < n; k++) setDot(k, "");
+  }
+
+  function advanceOrFinish() {
+    setDot(current, "pz-gd-done");
+    current++;
+    if (current >= n) {
+      revealPuzzle();
+    } else {
+      showStage(current);
+    }
+  }
+
+  function initGD() {
+    if (getSolved()[pid]) { revealPuzzle(); return; }
+    showStage(0);
+    for (var si = 0; si < n; si++) {
+      (function(stageIdx) {
+        var stage = stages[stageIdx];
+        var stageEl = document.getElementById("pz-gd-stage-" + pid + "-" + stageIdx);
+        if (!stageEl) return;
+        var btns = stageEl.querySelectorAll(".pz-gd-opt");
+        var wrongEl = document.getElementById("pz-gd-wrong-" + pid + "-" + stageIdx);
+        var rightEl = document.getElementById("pz-gd-right-" + pid + "-" + stageIdx);
+
+        for (var bi = 0; bi < btns.length; bi++) {
+          (function(btn) {
+            btn.addEventListener("click", function() {
+              if (btn.classList.contains("pz-correct")) return;
+              var key = btn.dataset.key;
+              sha256(key).then(function(h) {
+                if (h === stage.hash) {
+                  btn.classList.add("pz-correct");
+                  if (wrongEl) wrongEl.classList.remove("pz-visible");
+                  var allBtns = stageEl.querySelectorAll(".pz-gd-opt");
+                  for (var x = 0; x < allBtns.length; x++) allBtns[x].disabled = true;
+                  if (stageIdx < n - 1 && stage.right_prompt) {
+                    rightEl.innerHTML = '<div class="pz-gd-bridge">' + escHtml(stage.right_prompt) + '</div><button class="pz-gd-continue">Continue &rarr;</button>';
+                    rightEl.classList.add("pz-visible");
+                    rightEl.querySelector(".pz-gd-continue").addEventListener("click", function() {
+                      advanceOrFinish();
+                    });
+                  } else {
+                    advanceOrFinish();
+                  }
+                } else {
+                  btn.classList.add("pz-wrong");
+                  setTimeout(function() { btn.classList.remove("pz-wrong"); }, 600);
+                  if (wrongEl && stage.wrong_prompt) {
+                    wrongEl.textContent = stage.wrong_prompt;
+                    wrongEl.classList.add("pz-visible");
+                  }
+                }
+              });
+            });
+          })(btns[bi]);
+        }
+      })(si);
+    }
+  }
+
+  var resetBtn = document.getElementById("pz-reset-" + pid);
+  if (resetBtn) {
+    resetBtn.addEventListener("click", function(e) { e.preventDefault(); resetPuzzle(); });
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initGD);
+  } else {
+    initGD();
+  }
+})();
+  </script>
+</details>
 <div class="custodian-interlude" id="custodian:flat"><p><em>You call it the Flat.</em></p>
 <p><em>I don’t call it anything. You don’t name the air you
 breathe.</em></p>
@@ -2088,6 +2510,20 @@ there hears everything.</p>
   .pz-gd-continue { background: #2a6496; }
   .pz-gd-continue:hover { background: #1e4a70; }
   .pz-gd-stage-q { color: #e0e0e0; }
+}
+.pz-log-table { width: 100%; border-collapse: collapse; margin-bottom: 1em; font-size: 0.92em; }
+.pz-log-table th { padding: 0.5em; text-align: center; border-bottom: 2px solid #1a5276; color: #1a5276; font-size: 0.9em; }
+.pz-log-table td { padding: 0.5em; border-bottom: 1px solid #e0e0e0; }
+.pz-log-table td:first-child { text-align: left; max-width: 55%; font-size: 0.9em; }
+.pz-log-cell { text-align: center; cursor: pointer; font-size: 1.2em; min-width: 2.5em; user-select: none; transition: background 0.15s; }
+.pz-log-cell:hover { background: #e8f0f8; }
+.pz-log-cell.pz-wrong { background: #fdf2f2; color: #c0392b; }
+.pz-log-check { margin-top: 0.5em; }
+@media (prefers-color-scheme: dark) {
+  .pz-log-table th { border-bottom-color: #6ba3f7; color: #6ba3f7; }
+  .pz-log-table td { border-bottom-color: #333; }
+  .pz-log-cell:hover { background: #2a3a4a; }
+  .pz-log-cell.pz-wrong { background: #3a1a1a; }
 }
 @media (max-width: 600px) {
   .pz-option-btn { min-height: 44px; }
@@ -11493,8 +11929,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>5df3ba9ebbe69f4e499ecd4670f6ea0bfca0bd00</code> on 2026-04-26
-23:51:53 -0700.</p>
+<code>f3e5237672d4efadb97fd7e861bc38bb7accecc1</code> on 2026-04-27
+00:12:00 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -11562,7 +11998,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-27T07:03:20Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-27T07:12:58Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -11573,19 +12009,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>5df3ba9</code></p>
+<p><code>f3e5237</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>5df3ba9ebbe69f4e499ecd4670f6ea0bfca0bd00</code></p>
+<p><code>f3e5237672d4efadb97fd7e861bc38bb7accecc1</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-26 23:51:53 -0700</p>
+<p>2026-04-27 00:12:00 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-27T07:03:20Z</p>
+<p>2026-04-27T07:12:58Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
