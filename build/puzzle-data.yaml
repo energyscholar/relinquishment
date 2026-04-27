@@ -307,7 +307,7 @@ chapter_puzzles:
         text: "The first response is from an older AI model"
     answer_key: b
     hint: "Look at how each response treats the QUESTION, not just the answer."
-    abstract: "The firmware does not change the AI's knowledge — the training data is identical. It changes the FRAMING. Without cross-domain context, the AI reproduces the same structural blindness as the academic literature: it categorizes the question as belonging to someone else's field and dismisses it. With the framing, it engages. The information was always there. The question was never asked."
+    abstract: "The firmware does not change the AI's knowledge — the training data is identical. It changes the FRAMING. Without cross-domain context, the AI reproduces the same structural blindness as the academic literature: it categorizes the question as belonging to someone else's field and dismisses it. With the framing, it engages. The information was always there. The question was never asked.\n\nTry it yourself: the AI Eval button in the navigation bar walks you through the Science Firmware Upgrade — copy one prompt, paste it into any AI, and watch the difference."
 
   - id: pz-log-t7-001
     type: log
