@@ -422,7 +422,7 @@ chapter_puzzles:
     type: gd
     topic: t2
     level: p1
-    approved: false
+    approved: true
     installed: false
     location:
       chapter: the-flat
