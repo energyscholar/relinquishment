@@ -353,12 +353,15 @@ chapter_puzzles:
     gateway_blurb: "How much of this book is true under ALL three possibilities? More than you think."
     question: "For each statement, mark whether it is true (✓) or false (✗) under each of the Three Possibilities."
     rows:
-      - "The Flat is real — 2DEGs exist in every phone"
+      - text: "The Flat is real — 2DEGs exist in every phone"
+        tooltip: "A two-dimensional electron gas (2DEG) forms at semiconductor interfaces. Every smartphone contains one in its radio-frequency transistors."
       - "The physics in this book is published, peer-reviewed science"
-      - "The silence gap exists in the scientific literature"
+      - text: "The silence gap exists in the scientific literature"
+        tooltip: "A documented absence: multiple scientific fields that could study this topic have published nothing on it."
       - "Something lives in the Flat"
       - "Healer guided Bruce through published science"
-      - "The Custodian manages cryptographic infrastructure"
+      - text: "The Custodian manages cryptographic infrastructure"
+        tooltip: "A figure described later in this book who is said to hold cryptographic keys under ethical constraints derived from the UDHR."
     columns:
       - "Possibility A"
       - "Possibility B"

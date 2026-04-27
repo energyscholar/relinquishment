@@ -262,7 +262,13 @@ def build_json(puzzle):
         d['options'] = puzzle['options']
         d['hashes'] = [sha256(str(puzzle['answer_key']))]
     elif t == 'log':
-        d['rows'] = puzzle['rows']
+        rows = puzzle['rows']
+        d['rows'] = []
+        for r in rows:
+            if isinstance(r, dict):
+                d['rows'].append({'text': r['text'], 'tooltip': r.get('tooltip', '')})
+            else:
+                d['rows'].append({'text': r, 'tooltip': ''})
         cols = puzzle['columns']
         d['columns'] = []
         for c in cols:
@@ -1578,7 +1584,9 @@ function initLOG(el, d) {
     });
     html += "</tr></thead><tbody>";
     for (var r = 0; r < d.rows.length; r++) {
-      html += "<tr><td>" + esc(d.rows[r]) + "</td>";
+      var rowText = typeof d.rows[r] === "object" ? d.rows[r].text : d.rows[r];
+      var rowTip = typeof d.rows[r] === "object" && d.rows[r].tooltip ? d.rows[r].tooltip : "";
+      html += "<tr><td" + (rowTip ? ' title="' + esc(rowTip) + '" style="cursor:help;border-bottom:1px dotted #888"' : "") + ">" + esc(rowText) + "</td>";
       for (var c = 0; c < d.columns.length; c++) {
         var v = grid[r][c] === true ? "✓" : (grid[r][c] === false ? "✗" : "");
         html += '<td data-r="' + r + '" data-c="' + c + '">' + v + "</td>";

@@ -214,12 +214,12 @@ chapter_puzzles:
     title: "Under Which Possibility?"
     type: log
     topic: t6
-    level: p2
+    level: p1
     approved: true
-    installed: false
+    installed: true
     location:
-      chapter: weigh-the-evidence
-      rationale: "A/B/C truth table — final chapter where reader weighs all three"
+      chapter: three-possibilities
+      rationale: "A/B/C truth table — reader tests the framework they just learned"
       placement: end
     reward:
       type: fragment
