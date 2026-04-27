@@ -17,26 +17,8 @@
   var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   // --- Clipboard utility (shared by copy buttons, heading links, share button) ---
-  function fallbackCopy(text) {
-    var ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.cssText = 'position:fixed;left:-9999px;';
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-  }
-
   function copyToClipboard(text, onSuccess) {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(onSuccess, function() {
-        fallbackCopy(text);
-        onSuccess();
-      });
-    } else {
-      fallbackCopy(text);
-      onSuccess();
-    }
+    navigator.clipboard.writeText(text).then(onSuccess);
   }
 
   // --- TOC toggle ---

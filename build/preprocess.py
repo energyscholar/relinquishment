@@ -10,6 +10,8 @@ Writes patched copy to build/epub-tmp/ for inspection.
 import shutil, re, sys, zipfile, io, html as html_mod, hashlib, json, bisect
 from pathlib import Path
 from collections import defaultdict
+sys.path.insert(0, str(Path(__file__).parent))
+from colors import COLORS
 
 try:
     import yaml
@@ -3419,6 +3421,7 @@ def inject_chapter_puzzles(html_path):
     PZ_JS_UTILS = PZ_JS_UTILS.replace('{{', '{').replace('}}', '}')
 
     css_injected = False
+    utils_injected = False
     for pid, tracker_entry in approved.items():
         puzzle = content.get(pid)
         if not puzzle:
@@ -3469,7 +3472,6 @@ def inject_chapter_puzzles(html_path):
 
             puzzle_js = f'''
 (function() {{
-{PZ_JS_UTILS}
   var pid = "{pid}";
   var answerHash = "{answer_hash}";
   var options = {opts_json_str};
@@ -3579,7 +3581,6 @@ def inject_chapter_puzzles(html_path):
 
             puzzle_js = f'''
 (function() {{
-{PZ_JS_UTILS}
   var pid = "{pid}";
   var stages = {stages_json_str};
   var n = stages.length;
@@ -3721,7 +3722,6 @@ def inject_chapter_puzzles(html_path):
 
             puzzle_js = f'''
 (function() {{
-{PZ_JS_UTILS}
   var pid = "{pid}";
   var rows = {_json.dumps(rows_json)};
   var cols = {_json.dumps(cols_json)};
@@ -3834,8 +3834,13 @@ def inject_chapter_puzzles(html_path):
             css_block = f'  <style>\n{PZ_CSS}\n  </style>\n'
             css_injected = True
 
+        utils_block = ''
+        if not utils_injected:
+            utils_block = f'  <script>\n{PZ_JS_UTILS}\n  </script>\n'
+            utils_injected = True
+
         puzzle_html = f'''
-<details class="puzzle-section">
+{utils_block}<details class="puzzle-section">
   <summary>Puzzle &mdash; {summary_label}</summary>
 {css_block}  <div class="pz-container" id="{pid}" data-puzzle-id="{pid}">
 {body_html}
@@ -4073,6 +4078,125 @@ def _tex_to_egg_html(tex):
     return '\n'.join(out)
 
 
+def _minify_js(js):
+    """Strip JS comments and collapse whitespace. Preserves string literals."""
+    import re as _re
+    result = []
+    i = 0
+    n = len(js)
+    while i < n:
+        c = js[i]
+        if c in ('"', "'", '`'):
+            quote = c
+            result.append(c)
+            i += 1
+            while i < n:
+                if js[i] == '\\':
+                    result.append(js[i:i+2])
+                    i += 2
+                elif js[i] == quote:
+                    result.append(js[i])
+                    i += 1
+                    break
+                else:
+                    result.append(js[i])
+                    i += 1
+        elif c == '/' and i + 1 < n and js[i+1] == '/':
+            while i < n and js[i] != '\n':
+                i += 1
+        elif c == '/' and i + 1 < n and js[i+1] == '*':
+            end = js.find('*/', i + 2)
+            i = end + 2 if end != -1 else n
+        elif c in ' \t':
+            if result and result[-1] not in (' ', '\n', '{', '(', '[', ',', ';', ':', '!', '=', '<', '>', '|', '&', '+', '-', '*', '/', '?'):
+                result.append(' ')
+            i += 1
+        elif c == '\n':
+            while result and result[-1] in (' ', '\t'):
+                result.pop()
+            if result and result[-1] != '\n':
+                result.append('\n')
+            i += 1
+        else:
+            if result and result[-1] == ' ' and c in ('{', '(', '[', ',', ';', ':', '}', ')', ']', '!', '=', '<', '>', '|', '&', '+', '-', '*', '/', '?'):
+                result[-1] = c
+            else:
+                result.append(c)
+            i += 1
+    return ''.join(result).strip()
+
+
+def _minify_css(css):
+    """Strip CSS comments and collapse whitespace."""
+    import re as _re
+    css = _re.sub(r'/\*.*?\*/', '', css, flags=_re.DOTALL)
+    css = _re.sub(r'\s+', ' ', css)
+    css = _re.sub(r'\s*([{}:;,>~+])\s*', r'\1', css)
+    css = _re.sub(r';\s*}', '}', css)
+    return css.strip()
+
+
+def minify_html_assets(html_path):
+    """Minify inline JS and CSS in the built HTML."""
+    import re as _re
+    p = Path(html_path)
+    text = p.read_text()
+    orig_len = len(text)
+
+    def minify_script(m):
+        attrs = m.group(1)
+        content = m.group(2)
+        if 'type="application/json"' in attrs:
+            return m.group(0)
+        return f'<script{attrs}>{_minify_js(content)}</script>'
+
+    text = _re.sub(r'<script([^>]*)>(.*?)</script>', minify_script, text, flags=_re.DOTALL)
+
+    def minify_style(m):
+        return f'<style>{_minify_css(m.group(1))}</style>'
+
+    text = _re.sub(r'<style>(.*?)</style>', minify_style, text, flags=_re.DOTALL)
+
+    saved = orig_len - len(text)
+    print(f"  Minification: {saved:,} bytes saved ({saved*100//orig_len}%)")
+    p.write_text(text)
+
+
+def deduplicate_svg_defs(html_path):
+    """Replace repeated SVG @media and filter defs with single shared definitions."""
+    import re as _re
+    p = Path(html_path)
+    text = p.read_text()
+    orig_len = len(text)
+
+    rm_pattern = r'<style>@media\(prefers-reduced-motion:reduce\)\{animate(?:,animateMotion)?(?:,animateTransform)?\{display:none\}\}</style>'
+    count = len(_re.findall(rm_pattern, text))
+    text = _re.sub(rm_pattern, '', text)
+
+    shared_css = '<style>@media(prefers-reduced-motion:reduce){animate,animateMotion,animateTransform{display:none}}</style>'
+    head_end = text.find('</head>')
+    if head_end != -1 and count > 0:
+        text = text[:head_end] + shared_css + '\n' + text[head_end:]
+
+    kbtn_pattern = r'<filter id="kbtn-sh">.*?</filter>'
+    kbtn_count = len(_re.findall(kbtn_pattern, text))
+    if kbtn_count > 1:
+        text = _re.sub(r'\s*<filter id="kbtn-sh">.*?</filter>', '', text, count=kbtn_count - 1)
+        body_start = text.find('<body')
+        body_tag_end = text.find('>', body_start) + 1
+        shared_filter = '\n<svg style="display:none"><defs><filter id="kbtn-sh"><feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-opacity="0.15"/></filter></defs></svg>'
+        text = text[:body_tag_end] + shared_filter + text[body_tag_end:]
+        text = _re.sub(r'\s*<filter id="kbtn-sh">.*?</filter>', '', text)
+
+    defs_tags = _re.findall(r'<defs>\s*</defs>', text)
+    for empty in defs_tags:
+        text = text.replace(empty, '')
+
+    saved = orig_len - len(text)
+    print(f"  SVG dedup: {count} @media rules → 1, {kbtn_count} kbtn-sh filters → 1 ({saved:+d} bytes)")
+    p.write_text(text)
+
+
 if __name__ == "__main__":
     import sys
     if len(sys.argv) > 1 and sys.argv[1] == '--fix-epub':
@@ -4089,6 +4213,8 @@ if __name__ == "__main__":
         inject_questions_index(sys.argv[2])
         fix_html_glossary_names(sys.argv[2])
         collapse_tech_sections(sys.argv[2])
+        deduplicate_svg_defs(sys.argv[2])
+        minify_html_assets(sys.argv[2])
     else:
         main_tex = patch()
         print(f"Patched manuscript written to {TMP}/")

@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """Build standalone puzzle preview page from puzzle-data.yaml (Plan 0249)."""
 
-import yaml, html as htmlmod, os, json, hashlib, random, re
+import yaml, html as htmlmod, os, json, hashlib, random, re, sys
+sys.path.insert(0, os.path.dirname(__file__))
+from utils import esc as _shared_esc
+from colors import COLORS
 
 YAML_PATH = os.path.join(os.path.dirname(__file__), 'puzzle-data.yaml')
 OUT_PATH = os.path.join(os.path.dirname(__file__), '..', 'docs', 'downloads', 'puzzles.html')
@@ -189,7 +192,7 @@ ILLUSTRATIONS['self_organization'] = '''<div class="puzzle-illustration" style="
 
 
 def esc(s):
-    return htmlmod.escape(str(s), quote=True)
+    return _shared_esc(s)
 
 
 def sha256(s):

@@ -6,6 +6,10 @@ import html
 import json
 import re
 import os
+import sys
+sys.path.insert(0, os.path.dirname(__file__))
+from utils import esc as _shared_esc
+from colors import COLORS
 
 YAML_PATH = os.path.join(os.path.dirname(__file__), 'hover-definitions.yaml')
 OUT_PATH = os.path.join(os.path.dirname(__file__), '..', 'docs', 'downloads', 'tooltips.html')
@@ -15,7 +19,7 @@ with open(YAML_PATH) as f:
 
 
 def escape(s):
-    return html.escape(s, quote=True)
+    return _shared_esc(s)
 
 
 def slugify(key):
