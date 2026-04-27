@@ -569,7 +569,7 @@ def build_gallery():
 </style>
 </head>
 <body>
-<h1>SVG Gallery — Source of Truth</h1>
+<h1>SVG Gallery — Source of Truth</h1> <a style="font-size:0.55em;color:#1a5276;font-family:Georgia,serif;" href="tools.html">&larr; Back to Author Tools</a>
 <p class="subtitle">{total} entries: {', '.join(status_parts)}. {animated_count} animated.<br>
 Manifest: <code>build/gallery-manifest.yaml</code></p>
 
