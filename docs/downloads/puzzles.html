@@ -173,7 +173,7 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .puzzle-collapse[open] { border-color: #1a5276; }
 .puzzle-collapse-summary { cursor: pointer; padding: 0.6em 1em; font-size: 1.05em; font-weight: bold; color: #1a5276; background: #f8f9fa; list-style: none; display: flex; align-items: center; gap: 0.5em; flex-wrap: wrap; }
 .puzzle-collapse-summary::-webkit-details-marker { display: none; }
-.puzzle-collapse-summary::before { content: 'b8'; font-size: 0.9em; transition: transform 0.2s; }
+.puzzle-collapse-summary::before { content: ''; display: inline-block; width: 0; height: 0; border-left: 6px solid #1a5276; border-top: 4px solid transparent; border-bottom: 4px solid transparent; margin-right: 0.4em; transition: transform 0.2s; }
 .puzzle-collapse[open] > .puzzle-collapse-summary::before { transform: rotate(90deg); }
 .puzzle-collapse[open] > .puzzle-collapse-summary { background: #eef3f8; border-bottom: 1px solid #ddd; }
 .puzzle-collapse > .puzzle-container { border: none; margin: 0; border-radius: 0; }
@@ -259,6 +259,7 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
   .puzzle-collapse { border-color: #444; }
   .puzzle-collapse[open] { border-color: #6ba3f7; }
   .puzzle-collapse-summary { background: #2a2a2a; color: #6ba3f7; }
+  .puzzle-collapse-summary::before { border-left-color: #6ba3f7; }
   .puzzle-collapse[open] > .puzzle-collapse-summary { background: #1e2a3a; border-bottom-color: #444; }
   .approved-tag { background: #1a2e2d; color: #2a9b9a; }
   .level-tag { background: #1e2a3a; color: #6ba3f7; }
