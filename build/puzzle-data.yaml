@@ -487,6 +487,7 @@ chapter_puzzles:
     level: p2
     category: science
     title: "Not Chemistry"
+    illustration: self_organization
     gateway_blurb: "Life requires carbon. Or does it? What does Kauffman's math actually require?"
     question: "Life as we know it requires carbon, water, and organic chemistry. What principle would allow life in a substrate with none of these?"
     options:
