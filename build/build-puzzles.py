@@ -2023,7 +2023,7 @@ page = f'''<!doctype html>
 </head>
 <body>
 
-<h1>Relinquishment &mdash; Puzzle Preview</h1> <a style="font-size:0.55em;color:#1a5276;font-family:Georgia,serif;" href="tools.html">&larr; Back to Author Tools</a>
+<h1>Relinquishment &mdash; Puzzle Preview</h1> <a style="font-size:0.55em;color:#1a5276;font-family:Georgia,serif;" href="../tools.html">&larr; Back to Author Tools</a>
 <p class="framing">Each chapter ends with a puzzle. Solve it to reveal
 the chapter&rsquo;s Spiral Abstract &mdash; the meta-view that connects the chapter
 to the book&rsquo;s larger argument. The Final Question awaits at the end.</p>
