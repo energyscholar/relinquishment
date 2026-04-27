@@ -372,7 +372,7 @@ chapter_puzzles:
     type: ba
     topic: t8
     level: p2
-    approved: false
+    approved: true
     installed: false
     location:
       chapter: firmware-update
