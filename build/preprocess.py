@@ -2355,6 +2355,7 @@ def inject_flat_diagram(html_path):
 <svg xmlns="http://www.w3.org/2000/svg" width="300" height="130" viewBox="0 0 300 130" style="display:block;margin:0 auto;">
   <title>Cross-section of a computer chip. Two grey blocks of 3D semiconductor sandwich a thin blue layer — the two-dimensional electron gas (2DEG). Blue dots are electrons confined to this flat layer. They can move left and right but not up or down. This is the Flat.</title>
   <defs>
+    <style>@media(prefers-reduced-motion:reduce){animate,animateMotion,animateTransform{display:none}}</style>
     <linearGradient id="flat-inline-glow" x1="0%" y1="0%" x2="100%" y2="0%">
       <stop offset="0%" stop-color="#2471a3" stop-opacity="0.05"/>
       <stop offset="50%" stop-color="#2471a3" stop-opacity="0.2"/>
@@ -2369,12 +2370,12 @@ def inject_flat_diagram(html_path):
   <rect x="30" y="50" width="240" height="8" rx="1" fill="url(#flat-inline-glow)" stroke="#2471a3" stroke-width="1.5"/>
   <rect x="30" y="63" width="240" height="25" rx="2" fill="#e0e0e0" stroke="#999" stroke-width="0.8"/>
   <text x="150" y="79" text-anchor="middle" font-size="8" fill="#666" font-family="sans-serif">3D material (bulk semiconductor)</text>
-  <circle cx="70" cy="54" r="2.5" fill="#2471a3" opacity="0.9"/>
-  <circle cx="100" cy="54" r="2.5" fill="#2471a3" opacity="0.7"/>
-  <circle cx="135" cy="54" r="2.5" fill="#2471a3" opacity="0.9"/>
-  <circle cx="165" cy="54" r="2.5" fill="#2471a3" opacity="0.6"/>
-  <circle cx="195" cy="54" r="2.5" fill="#2471a3" opacity="0.8"/>
-  <circle cx="225" cy="54" r="2.5" fill="#2471a3" opacity="0.7"/>
+  <circle cx="70" cy="54" r="2.5" fill="#2471a3" opacity="0.9"><animate attributeName="cx" values="70;78;62;70" dur="4.5s" begin="0s" repeatCount="indefinite"/></circle>
+  <circle cx="100" cy="54" r="2.5" fill="#2471a3" opacity="0.7"><animate attributeName="cx" values="100;92;108;100" dur="5.2s" begin="0.8s" repeatCount="indefinite"/></circle>
+  <circle cx="135" cy="54" r="2.5" fill="#2471a3" opacity="0.9"><animate attributeName="cx" values="135;142;128;135" dur="4.0s" begin="1.5s" repeatCount="indefinite"/></circle>
+  <circle cx="165" cy="54" r="2.5" fill="#2471a3" opacity="0.6"><animate attributeName="cx" values="165;158;172;165" dur="4.8s" begin="0.3s" repeatCount="indefinite"/></circle>
+  <circle cx="195" cy="54" r="2.5" fill="#2471a3" opacity="0.8"><animate attributeName="cx" values="195;203;187;195" dur="5.5s" begin="2.0s" repeatCount="indefinite"/></circle>
+  <circle cx="225" cy="54" r="2.5" fill="#2471a3" opacity="0.7"><animate attributeName="cx" values="225;218;232;225" dur="4.3s" begin="1.2s" repeatCount="indefinite"/></circle>
   <circle cx="115" cy="55" r="2" fill="#2471a3" opacity="0.4"/>
   <circle cx="180" cy="53" r="2" fill="#2471a3" opacity="0.5"/>
   <circle cx="245" cy="54" r="2" fill="#2471a3" opacity="0.5"/>
@@ -2623,16 +2624,17 @@ def inject_domain_buttons(html_path):
 <svg xmlns="http://www.w3.org/2000/svg" width="460" height="440" viewBox="0 0 500 590" style="display:block;margin:0 auto;">
   <title>Kauffman\u2019s buttons and threads, mapped to eleven scientific domains. Seven domains form a connected web above the floor. The four-domain topological convergence cluster hangs below, connected by one solid thread and two theoretical bridges.</title>
   <defs>
+    <style>@media(prefers-reduced-motion:reduce){animate,animateMotion,animateTransform{display:none}}</style>
     <filter id="dbtn-sh" x="-20%" y="-20%" width="140%" height="140%">
       <feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-opacity="0.2"/>
     </filter>
   </defs>
   <!-- ===== UPPER WEB (above floor) ===== -->
   <!-- dashed cross-cluster bridges (background) -->
-  <line x1="330" y1="178" x2="70" y2="140" stroke="#bbb" stroke-width="0.8" opacity="0.35" stroke-dasharray="5,3"/><!-- CE\u2194NLD -->
-  <line x1="330" y1="178" x2="430" y2="80" stroke="#bbb" stroke-width="0.8" opacity="0.35" stroke-dasharray="5,3"/><!-- CE\u2194ACS -->
-  <line x1="330" y1="225" x2="430" y2="140" stroke="#bbb" stroke-width="0.8" opacity="0.35" stroke-dasharray="5,3"/><!-- Par\u2194Auto -->
-  <line x1="150" y1="210" x2="70" y2="140" stroke="#bbb" stroke-width="0.8" opacity="0.35" stroke-dasharray="5,3"/><!-- Mat\u2194NLD -->
+  <line x1="330" y1="178" x2="70" y2="140" stroke="#bbb" stroke-width="0.8" opacity="0.35" stroke-dasharray="5,3"><animate attributeName="opacity" values="0.20;0.50;0.20" dur="3.5s" begin="0s" repeatCount="indefinite"/></line><!-- CE\u2194NLD -->
+  <line x1="330" y1="178" x2="430" y2="80" stroke="#bbb" stroke-width="0.8" opacity="0.35" stroke-dasharray="5,3"><animate attributeName="opacity" values="0.20;0.50;0.20" dur="4.0s" begin="0.5s" repeatCount="indefinite"/></line><!-- CE\u2194ACS -->
+  <line x1="330" y1="225" x2="430" y2="140" stroke="#bbb" stroke-width="0.8" opacity="0.35" stroke-dasharray="5,3"><animate attributeName="opacity" values="0.20;0.50;0.20" dur="3.8s" begin="1.0s" repeatCount="indefinite"/></line><!-- Par\u2194Auto -->
+  <line x1="150" y1="210" x2="70" y2="140" stroke="#bbb" stroke-width="0.8" opacity="0.35" stroke-dasharray="5,3"><animate attributeName="opacity" values="0.20;0.50;0.20" dur="4.2s" begin="1.5s" repeatCount="indefinite"/></line><!-- Mat\u2194NLD -->
   <!-- solid cross-cluster thread: NLD\u2194ACS (published) -->
   <line x1="70" y1="140" x2="430" y2="80" stroke="#777" stroke-width="1.0" opacity="0.45"/>
   <!-- intra-cluster solid threads (upper) -->
@@ -2646,9 +2648,9 @@ def inject_domain_buttons(html_path):
   <!-- Mat\u2192CMP: SOLID (the one thread that holds) -->
   <path d="M150,210 Q230,340 310,370" stroke="#777" stroke-width="1.4" fill="none" opacity="0.55"/>
   <!-- CE\u2192Topo: dashed -->
-  <path d="M330,178 Q295,310 250,335" stroke="#bbb" stroke-width="0.9" fill="none" opacity="0.4" stroke-dasharray="5,3"/>
+  <path d="M330,178 Q295,310 250,335" stroke="#bbb" stroke-width="0.9" fill="none" opacity="0.4" stroke-dasharray="5,3"><animate attributeName="opacity" values="0.25;0.55;0.25" dur="4.5s" begin="2.0s" repeatCount="indefinite"/></path>
   <!-- ACS\u2192TQC: dashed -->
-  <path d="M430,140 Q390,330 250,410" stroke="#bbb" stroke-width="0.9" fill="none" opacity="0.4" stroke-dasharray="5,3"/>
+  <path d="M430,140 Q390,330 250,410" stroke="#bbb" stroke-width="0.9" fill="none" opacity="0.4" stroke-dasharray="5,3"><animate attributeName="opacity" values="0.25;0.55;0.25" dur="5.0s" begin="2.5s" repeatCount="indefinite"/></path>
   <!-- ===== BLUE CLUSTER (below floor, fully connected) ===== -->
   <!-- 6 solid blue intra-cluster edges -->
   <line x1="250" y1="335" x2="190" y2="370" stroke="#2471a3" stroke-width="1.5" opacity="0.65"/><!-- Topo\u2194TFT -->
@@ -2805,6 +2807,7 @@ def inject_genesis_illustrations(html_path):
 <svg xmlns="http://www.w3.org/2000/svg" width="300" height="200" viewBox="0 0 300 200" style="display:block;margin:0 auto;">
   <title>Autocatalytic loop: three molecules A, B, and C arranged in a circle. A catalyzes B, B catalyzes C, C catalyzes A. The whole network sustains itself.</title>
   <defs>
+    <style>@media(prefers-reduced-motion:reduce){animate,animateMotion,animateTransform{display:none}}</style>
     <marker id="aloop-arr" viewBox="0 0 8 6" refX="7" refY="3" markerWidth="7" markerHeight="5" orient="auto">
       <path d="M 0,0 L 8,3 L 0,6 Z" fill="#8b6914"/>
     </marker>
@@ -2821,6 +2824,9 @@ def inject_genesis_illustrations(html_path):
   <text x="215" y="75" font-family="Georgia, serif" font-size="9" fill="#8b6914" font-style="italic">catalyzes</text>
   <text x="150" y="170" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#8b6914" font-style="italic">catalyzes</text>
   <text x="55" y="75" font-family="Georgia, serif" font-size="9" fill="#8b6914" font-style="italic">catalyzes</text>
+  <circle r="3" fill="#d4a017" opacity="0"><animateMotion dur="2.4s" repeatCount="indefinite" begin="0s" path="M 170,46 Q 210,55 210,106"/><animate attributeName="opacity" values="0;0.85;0.85;0.85;0" keyTimes="0;0.1;0.7;0.85;1" dur="2.4s" repeatCount="indefinite" begin="0s"/></circle>
+  <circle r="3" fill="#d4a017" opacity="0"><animateMotion dur="2.4s" repeatCount="indefinite" begin="0.8s" path="M 196,142 Q 150,170 100,142"/><animate attributeName="opacity" values="0;0.85;0.85;0.85;0" keyTimes="0;0.1;0.7;0.85;1" dur="2.4s" repeatCount="indefinite" begin="0.8s"/></circle>
+  <circle r="3" fill="#d4a017" opacity="0"><animateMotion dur="2.4s" repeatCount="indefinite" begin="1.6s" path="M 72,110 Q 60,70 135,42"/><animate attributeName="opacity" values="0;0.85;0.85;0.85;0" keyTimes="0;0.1;0.7;0.85;1" dur="2.4s" repeatCount="indefinite" begin="1.6s"/></circle>
 </svg>
 <figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">An autocatalytic loop: each molecule catalyzes the next. The network sustains itself.</figcaption>
 </figure>'''
@@ -2828,6 +2834,7 @@ def inject_genesis_illustrations(html_path):
     EDGE_OF_CHAOS = '''<figure id="fig-edge-of-chaos" class="inline-svg" style="text-align:center;margin:1.5em auto;">
 <svg xmlns="http://www.w3.org/2000/svg" width="400" height="160" viewBox="0 0 400 160" style="display:block;margin:0 auto;">
   <title>Three regimes side by side. Left: a rigid blue grid of locked nodes — frozen, too ordered to compute. Center: a narrow green band of flexibly connected nodes — the edge of chaos, where computation and life are possible. Right: scattered red dots flying apart — chaos, too disordered to remember.</title>
+  <defs><style>@media(prefers-reduced-motion:reduce){animate,animateMotion,animateTransform{display:none}}</style></defs>
   <rect x="10" y="15" width="115" height="100" rx="4" fill="#eaf2f8" stroke="#2471a3" stroke-width="0.8" opacity="0.4"/>
   <line x1="35" y1="35" x2="100" y2="35" stroke="#2471a3" stroke-width="0.8" opacity="0.5"/>
   <line x1="35" y1="55" x2="100" y2="55" stroke="#2471a3" stroke-width="0.8" opacity="0.5"/>
@@ -2847,23 +2854,23 @@ def inject_genesis_illustrations(html_path):
   <circle cx="78" cy="95" r="3.5" fill="#2471a3"/><circle cx="100" cy="95" r="3.5" fill="#2471a3"/>
   <text x="67" y="128" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#1a5276" font-style="italic">frozen</text>
   <rect x="145" y="15" width="70" height="100" rx="4" fill="#eafaf1" stroke="#27ae60" stroke-width="1.2" opacity="0.5"/>
-  <circle cx="160" cy="38" r="3.5" fill="#27ae60"/><circle cx="195" cy="42" r="3.5" fill="#27ae60"/>
-  <circle cx="172" cy="58" r="3.5" fill="#27ae60"/><circle cx="188" cy="72" r="3.5" fill="#27ae60"/>
-  <circle cx="155" cy="82" r="3.5" fill="#27ae60"/><circle cx="200" cy="92" r="3.5" fill="#27ae60"/>
-  <circle cx="175" cy="98" r="3.5" fill="#27ae60"/>
-  <path d="M 160,38 Q 168,45 172,58" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7"/>
+  <circle cx="160" cy="38" r="3.5" fill="#27ae60"><animate attributeName="opacity" values="1;0.6;1" dur="4.0s" begin="0s" repeatCount="indefinite"/></circle><circle cx="195" cy="42" r="3.5" fill="#27ae60"/>
+  <circle cx="172" cy="58" r="3.5" fill="#27ae60"/><circle cx="188" cy="72" r="3.5" fill="#27ae60"><animate attributeName="opacity" values="1;0.6;1" dur="4.5s" begin="1.0s" repeatCount="indefinite"/></circle>
+  <circle cx="155" cy="82" r="3.5" fill="#27ae60"/><circle cx="200" cy="92" r="3.5" fill="#27ae60"><animate attributeName="opacity" values="1;0.6;1" dur="3.5s" begin="0.5s" repeatCount="indefinite"/></circle>
+  <circle cx="175" cy="98" r="3.5" fill="#27ae60"><animate attributeName="opacity" values="1;0.6;1" dur="5.0s" begin="2.0s" repeatCount="indefinite"/></circle>
+  <path d="M 160,38 Q 168,45 172,58" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7" stroke-dasharray="3,4"><animate attributeName="stroke-dashoffset" values="0;-7" dur="2.0s" begin="0s" repeatCount="indefinite"/></path>
   <path d="M 195,42 Q 190,52 188,72" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7"/>
-  <path d="M 172,58 Q 180,65 188,72" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7"/>
+  <path d="M 172,58 Q 180,65 188,72" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7" stroke-dasharray="3,4"><animate attributeName="stroke-dashoffset" values="0;-7" dur="2.0s" begin="0.5s" repeatCount="indefinite"/></path>
   <path d="M 155,82 Q 165,90 175,98" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7"/>
-  <path d="M 188,72 Q 194,82 200,92" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7"/>
+  <path d="M 188,72 Q 194,82 200,92" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7" stroke-dasharray="3,4"><animate attributeName="stroke-dashoffset" values="0;-7" dur="2.0s" begin="1.0s" repeatCount="indefinite"/></path>
   <path d="M 160,38 Q 155,60 155,82" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.5"/>
-  <path d="M 195,42 Q 200,66 200,92" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.5"/>
+  <path d="M 195,42 Q 200,66 200,92" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.5" stroke-dasharray="3,4"><animate attributeName="stroke-dashoffset" values="0;-7" dur="2.0s" begin="1.5s" repeatCount="indefinite"/></path>
   <text x="180" y="128" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#1e8449" font-weight="bold" font-style="italic">edge</text>
   <rect x="235" y="15" width="115" height="100" rx="4" fill="#fdedec" stroke="#c0392b" stroke-width="0.8" opacity="0.4"/>
-  <circle cx="258" cy="30" r="3" fill="#c0392b" opacity="0.7"/><circle cx="310" cy="25" r="2.5" fill="#c0392b" opacity="0.5"/>
-  <circle cx="335" cy="42" r="3" fill="#c0392b" opacity="0.8"/><circle cx="270" cy="55" r="2.5" fill="#c0392b" opacity="0.6"/>
-  <circle cx="320" cy="65" r="3" fill="#c0392b" opacity="0.7"/><circle cx="248" cy="78" r="2.5" fill="#c0392b" opacity="0.5"/>
-  <circle cx="295" cy="85" r="3" fill="#c0392b" opacity="0.6"/><circle cx="340" cy="95" r="2.5" fill="#c0392b" opacity="0.7"/>
+  <circle cx="258" cy="30" r="3" fill="#c0392b" opacity="0.7"><animateTransform attributeName="transform" type="translate" values="0,0; 4,-3; -2,5; 3,-1; 0,0" dur="7s" repeatCount="indefinite"/></circle><circle cx="310" cy="25" r="2.5" fill="#c0392b" opacity="0.5"/>
+  <circle cx="335" cy="42" r="3" fill="#c0392b" opacity="0.8"><animateTransform attributeName="transform" type="translate" values="0,0; -3,4; 5,-2; -1,3; 0,0" dur="8s" repeatCount="indefinite"/></circle><circle cx="270" cy="55" r="2.5" fill="#c0392b" opacity="0.6"><animateTransform attributeName="transform" type="translate" values="0,0; 2,-4; -4,2; 1,-3; 0,0" dur="9s" repeatCount="indefinite"/></circle>
+  <circle cx="320" cy="65" r="3" fill="#c0392b" opacity="0.7"><animateTransform attributeName="transform" type="translate" values="0,0; -5,1; 3,-3; -2,4; 0,0" dur="7.5s" repeatCount="indefinite"/></circle><circle cx="248" cy="78" r="2.5" fill="#c0392b" opacity="0.5"/>
+  <circle cx="295" cy="85" r="3" fill="#c0392b" opacity="0.6"><animateTransform attributeName="transform" type="translate" values="0,0; 3,3; -2,-4; 4,-1; 0,0" dur="8.5s" repeatCount="indefinite"/></circle><circle cx="340" cy="95" r="2.5" fill="#c0392b" opacity="0.7"/>
   <circle cx="260" cy="100" r="2.5" fill="#c0392b" opacity="0.5"/>
   <text x="292" y="128" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#922b21" font-style="italic">chaos</text>
   <text x="180" y="152" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#888" font-style="italic">computation, adaptation, life</text>
@@ -2875,6 +2882,7 @@ def inject_genesis_illustrations(html_path):
 <svg xmlns="http://www.w3.org/2000/svg" width="420" height="200" viewBox="0 0 420 200" style="display:block;margin:0 auto;">
   <title>Split panel showing the substrate parallel. Left: a warm-colored beaker containing three molecules in a self-sustaining catalytic loop (A catalyzes B, B catalyzes C, C catalyzes A). Right: a cool-colored two-dimensional electron gas with three anyonic quasiparticles connected by braiding arcs in the same triangular pattern. Center: the words "same mathematics" bridging both sides. The point: different substrates, identical organizational principle.</title>
   <defs>
+    <style>@media(prefers-reduced-motion:reduce){animate,animateMotion,animateTransform{display:none}}</style>
     <marker id="sp-arr-warm" viewBox="0 0 8 6" refX="7" refY="3" markerWidth="6" markerHeight="4" orient="auto">
       <path d="M 0,0 L 8,3 L 0,6 Z" fill="#8b6914"/>
     </marker>
@@ -2920,6 +2928,12 @@ def inject_genesis_illustrations(html_path):
   <path d="M 349,109 Q 345,125 337,130" fill="none" stroke="#1a5276" stroke-width="1.2" marker-end="url(#sp-arr-cool)"/>
   <path d="M 322,138 Q 305,125 302,112" fill="none" stroke="#1a5276" stroke-width="1.2" marker-end="url(#sp-arr-cool)"/>
   <text x="325" y="175" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#1a5276" font-style="italic">quantum</text>
+  <circle r="3" fill="#d4a017" opacity="0"><animateMotion dur="2.4s" repeatCount="indefinite" begin="0s" path="M 104,60 Q 120,70 122,95"/><animate attributeName="opacity" values="0;0.85;0.85;0.85;0" keyTimes="0;0.1;0.7;0.85;1" dur="2.4s" repeatCount="indefinite" begin="0s"/></circle>
+  <circle r="3" fill="#d4a017" opacity="0"><animateMotion dur="2.4s" repeatCount="indefinite" begin="0.8s" path="M 116,112 Q 95,125 75,112"/><animate attributeName="opacity" values="0;0.85;0.85;0.85;0" keyTimes="0;0.1;0.7;0.85;1" dur="2.4s" repeatCount="indefinite" begin="0.8s"/></circle>
+  <circle r="3" fill="#d4a017" opacity="0"><animateMotion dur="2.4s" repeatCount="indefinite" begin="1.6s" path="M 60,96 Q 55,75 88,58"/><animate attributeName="opacity" values="0;0.85;0.85;0.85;0" keyTimes="0;0.1;0.7;0.85;1" dur="2.4s" repeatCount="indefinite" begin="1.6s"/></circle>
+  <circle r="3" fill="#5dade2" opacity="0"><animateMotion dur="2.4s" repeatCount="indefinite" begin="0s" path="M 314,95 Q 340,85 350,93"/><animate attributeName="opacity" values="0;0.85;0.85;0.85;0" keyTimes="0;0.1;0.7;0.85;1" dur="2.4s" repeatCount="indefinite" begin="0s"/></circle>
+  <circle r="3" fill="#5dade2" opacity="0"><animateMotion dur="2.4s" repeatCount="indefinite" begin="0.8s" path="M 349,109 Q 345,125 337,130"/><animate attributeName="opacity" values="0;0.85;0.85;0.85;0" keyTimes="0;0.1;0.7;0.85;1" dur="2.4s" repeatCount="indefinite" begin="0.8s"/></circle>
+  <circle r="3" fill="#5dade2" opacity="0"><animateMotion dur="2.4s" repeatCount="indefinite" begin="1.6s" path="M 322,138 Q 305,125 302,112"/><animate attributeName="opacity" values="0;0.85;0.85;0.85;0" keyTimes="0;0.1;0.7;0.85;1" dur="2.4s" repeatCount="indefinite" begin="1.6s"/></circle>
 </svg>
 <figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">Different substrates, same mathematics: catalytic chemistry (left) and quantum braiding (right) share the same self-sustaining loop structure.</figcaption>
 </figure>'''
