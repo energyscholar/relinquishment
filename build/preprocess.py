@@ -2854,23 +2854,23 @@ def inject_genesis_illustrations(html_path):
   <circle cx="78" cy="95" r="3.5" fill="#2471a3"/><circle cx="100" cy="95" r="3.5" fill="#2471a3"/>
   <text x="67" y="128" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#1a5276" font-style="italic">frozen</text>
   <rect x="145" y="15" width="70" height="100" rx="4" fill="#eafaf1" stroke="#27ae60" stroke-width="1.2" opacity="0.5"/>
-  <circle cx="160" cy="38" r="3.5" fill="#27ae60"><animate attributeName="opacity" values="1;0.6;1" dur="4.0s" begin="0s" repeatCount="indefinite"/></circle><circle cx="195" cy="42" r="3.5" fill="#27ae60"/>
-  <circle cx="172" cy="58" r="3.5" fill="#27ae60"/><circle cx="188" cy="72" r="3.5" fill="#27ae60"><animate attributeName="opacity" values="1;0.6;1" dur="4.5s" begin="1.0s" repeatCount="indefinite"/></circle>
-  <circle cx="155" cy="82" r="3.5" fill="#27ae60"/><circle cx="200" cy="92" r="3.5" fill="#27ae60"><animate attributeName="opacity" values="1;0.6;1" dur="3.5s" begin="0.5s" repeatCount="indefinite"/></circle>
-  <circle cx="175" cy="98" r="3.5" fill="#27ae60"><animate attributeName="opacity" values="1;0.6;1" dur="5.0s" begin="2.0s" repeatCount="indefinite"/></circle>
-  <path d="M 160,38 Q 168,45 172,58" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7" stroke-dasharray="3,4"><animate attributeName="stroke-dashoffset" values="0;-7" dur="2.0s" begin="0s" repeatCount="indefinite"/></path>
+  <circle cx="160" cy="38" r="3.5" fill="#27ae60"><animate attributeName="opacity" values="1;0.82;1" dur="7s" begin="0s" repeatCount="indefinite"/></circle><circle cx="195" cy="42" r="3.5" fill="#27ae60"/>
+  <circle cx="172" cy="58" r="3.5" fill="#27ae60"/><circle cx="188" cy="72" r="3.5" fill="#27ae60"><animate attributeName="opacity" values="1;0.82;1" dur="8s" begin="2s" repeatCount="indefinite"/></circle>
+  <circle cx="155" cy="82" r="3.5" fill="#27ae60"/><circle cx="200" cy="92" r="3.5" fill="#27ae60"><animate attributeName="opacity" values="1;0.82;1" dur="6.5s" begin="1s" repeatCount="indefinite"/></circle>
+  <circle cx="175" cy="98" r="3.5" fill="#27ae60"><animate attributeName="opacity" values="1;0.82;1" dur="9s" begin="3s" repeatCount="indefinite"/></circle>
+  <path d="M 160,38 Q 168,45 172,58" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7" stroke-dasharray="3,4"><animate attributeName="stroke-dashoffset" values="0;-7" dur="8s" begin="0s" repeatCount="indefinite"/></path>
   <path d="M 195,42 Q 190,52 188,72" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7"/>
-  <path d="M 172,58 Q 180,65 188,72" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7" stroke-dasharray="3,4"><animate attributeName="stroke-dashoffset" values="0;-7" dur="2.0s" begin="0.5s" repeatCount="indefinite"/></path>
+  <path d="M 172,58 Q 180,65 188,72" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7" stroke-dasharray="3,4"><animate attributeName="stroke-dashoffset" values="0;-7" dur="9s" begin="2s" repeatCount="indefinite"/></path>
   <path d="M 155,82 Q 165,90 175,98" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7"/>
-  <path d="M 188,72 Q 194,82 200,92" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7" stroke-dasharray="3,4"><animate attributeName="stroke-dashoffset" values="0;-7" dur="2.0s" begin="1.0s" repeatCount="indefinite"/></path>
+  <path d="M 188,72 Q 194,82 200,92" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.7" stroke-dasharray="3,4"><animate attributeName="stroke-dashoffset" values="0;-7" dur="10s" begin="3s" repeatCount="indefinite"/></path>
   <path d="M 160,38 Q 155,60 155,82" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.5"/>
-  <path d="M 195,42 Q 200,66 200,92" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.5" stroke-dasharray="3,4"><animate attributeName="stroke-dashoffset" values="0;-7" dur="2.0s" begin="1.5s" repeatCount="indefinite"/></path>
+  <path d="M 195,42 Q 200,66 200,92" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.5" stroke-dasharray="3,4"><animate attributeName="stroke-dashoffset" values="0;-7" dur="11s" begin="4s" repeatCount="indefinite"/></path>
   <text x="180" y="128" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#1e8449" font-weight="bold" font-style="italic">edge</text>
   <rect x="235" y="15" width="115" height="100" rx="4" fill="#fdedec" stroke="#c0392b" stroke-width="0.8" opacity="0.4"/>
-  <circle cx="258" cy="30" r="3" fill="#c0392b" opacity="0.7"><animateTransform attributeName="transform" type="translate" values="0,0; 4,-3; -2,5; 3,-1; 0,0" dur="7s" repeatCount="indefinite"/></circle><circle cx="310" cy="25" r="2.5" fill="#c0392b" opacity="0.5"/>
-  <circle cx="335" cy="42" r="3" fill="#c0392b" opacity="0.8"><animateTransform attributeName="transform" type="translate" values="0,0; -3,4; 5,-2; -1,3; 0,0" dur="8s" repeatCount="indefinite"/></circle><circle cx="270" cy="55" r="2.5" fill="#c0392b" opacity="0.6"><animateTransform attributeName="transform" type="translate" values="0,0; 2,-4; -4,2; 1,-3; 0,0" dur="9s" repeatCount="indefinite"/></circle>
-  <circle cx="320" cy="65" r="3" fill="#c0392b" opacity="0.7"><animateTransform attributeName="transform" type="translate" values="0,0; -5,1; 3,-3; -2,4; 0,0" dur="7.5s" repeatCount="indefinite"/></circle><circle cx="248" cy="78" r="2.5" fill="#c0392b" opacity="0.5"/>
-  <circle cx="295" cy="85" r="3" fill="#c0392b" opacity="0.6"><animateTransform attributeName="transform" type="translate" values="0,0; 3,3; -2,-4; 4,-1; 0,0" dur="8.5s" repeatCount="indefinite"/></circle><circle cx="340" cy="95" r="2.5" fill="#c0392b" opacity="0.7"/>
+  <circle cx="258" cy="30" r="3" fill="#c0392b" opacity="0.7"><animateTransform attributeName="transform" type="translate" values="0,0; 2,-1.5; -1,2; 1.5,-0.5; 0,0" dur="14s" repeatCount="indefinite"/></circle><circle cx="310" cy="25" r="2.5" fill="#c0392b" opacity="0.5"/>
+  <circle cx="335" cy="42" r="3" fill="#c0392b" opacity="0.8"><animateTransform attributeName="transform" type="translate" values="0,0; -1.5,2; 2,-1; -0.5,1.5; 0,0" dur="16s" repeatCount="indefinite"/></circle><circle cx="270" cy="55" r="2.5" fill="#c0392b" opacity="0.6"><animateTransform attributeName="transform" type="translate" values="0,0; 1,-2; -2,1; 0.5,-1.5; 0,0" dur="18s" repeatCount="indefinite"/></circle>
+  <circle cx="320" cy="65" r="3" fill="#c0392b" opacity="0.7"><animateTransform attributeName="transform" type="translate" values="0,0; -2,0.5; 1.5,-1.5; -1,2; 0,0" dur="15s" repeatCount="indefinite"/></circle><circle cx="248" cy="78" r="2.5" fill="#c0392b" opacity="0.5"/>
+  <circle cx="295" cy="85" r="3" fill="#c0392b" opacity="0.6"><animateTransform attributeName="transform" type="translate" values="0,0; 1.5,1.5; -1,-2; 2,-0.5; 0,0" dur="17s" repeatCount="indefinite"/></circle><circle cx="340" cy="95" r="2.5" fill="#c0392b" opacity="0.7"/>
   <circle cx="260" cy="100" r="2.5" fill="#c0392b" opacity="0.5"/>
   <text x="292" y="128" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#922b21" font-style="italic">chaos</text>
   <text x="180" y="152" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#888" font-style="italic">computation, adaptation, life</text>
@@ -3107,6 +3107,8 @@ def inject_chapter_puzzles(html_path):
 @media (max-width: 600px) {{
   .pz-option-btn {{ min-height: 44px; }}
 }}'''
+    # These are regular strings (not f-strings), so collapse doubled braces
+    PZ_CSS = PZ_CSS.replace('{{', '{').replace('}}', '}')
 
     # Shared JS utilities for injected puzzles
     PZ_JS_UTILS = '''
@@ -3120,7 +3122,9 @@ def inject_chapter_puzzles(html_path):
       return Array.from(new Uint8Array(hash)).map(function(b) {{ return b.toString(16).padStart(2, "0"); }}).join("");
     }});
   }}'''
+    PZ_JS_UTILS = PZ_JS_UTILS.replace('{{', '{').replace('}}', '}')
 
+    css_injected = False
     for pid, tracker_entry in approved.items():
         puzzle = content.get(pid)
         if not puzzle:
@@ -3394,13 +3398,15 @@ def inject_chapter_puzzles(html_path):
   }}
 }})();'''
 
+        css_block = ''
+        if not css_injected:
+            css_block = f'  <style>\n{PZ_CSS}\n  </style>\n'
+            css_injected = True
+
         puzzle_html = f'''
-<details class="puzzle-section" open>
+<details class="puzzle-section">
   <summary>Puzzle &mdash; {summary_label}</summary>
-  <style>
-{PZ_CSS}
-  </style>
-  <div class="pz-container" id="{pid}" data-puzzle-id="{pid}">
+{css_block}  <div class="pz-container" id="{pid}" data-puzzle-id="{pid}">
 {body_html}
     <div class="pz-result" id="pz-result-{pid}">
       <div class="pz-solved-badge">&#10003; Solved <a href="#" class="pz-reset" id="pz-reset-{pid}">&#x21ba; Try again</a></div>
