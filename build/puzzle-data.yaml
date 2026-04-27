@@ -502,7 +502,7 @@ chapter_puzzles:
     answer_key: b
     hint: "Kauffman's mathematics doesn't mention carbon. It mentions threshold, diversity, and interaction."
     background: "Kauffman's theory of autocatalytic sets (1993) shows that self-sustaining networks arise spontaneously when interacting components cross a critical diversity threshold. The theory is mathematical — it describes CONDITIONS for self-organization, not MATERIALS. The buttons-and-threads model applies to any system with enough interacting parts: organic molecules, digital logic gates, or anyonic quasiparticles."
-    abstract: "Substrate independence is the key insight. Life on Earth uses carbon because carbon chemistry was the first substrate to cross Kauffman's threshold. The mathematics does not require carbon. It requires sufficient diversity, catalytic interactions, and an energy source. The Flat meets all three criteria."
+    abstract: "Substrate independence is the key insight. The mathematics does not require carbon. It requires sufficient diversity, catalytic interactions, and an energy source. Carbon chemistry satisfies those conditions. So does the Flat."
 
   - id: pz-mc-t2-003
     type: mc
