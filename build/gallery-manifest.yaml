@@ -380,3 +380,16 @@
   animated: false
   description: "Forest canopy cross-section: tall trees block all light, seedling in shadow never reaches it."
   notes: "Built Plan 0242. NOT animated (Plan 0267 assessment: static composition already tells the story)."
+
+- id: SVG-039
+  name: ms-earth-teaching
+  status: live
+  source: preprocess.py
+  category: Magnetosphere Teaching
+  chapter: the-wrong-substrate
+  figure_id: fig-ms-earth
+  marker: "Sixty thousand kilometers above your head"
+  animated: true
+  animation_plan: "0270"
+  animation: "Solar wind flow — dashed lines drift toward bow shock."
+  description: "Earth's magnetosphere cross-section with 9 hover zones teaching structural names and behaviors."

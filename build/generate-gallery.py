@@ -22,6 +22,7 @@ CATEGORY_ORDER = [
     'The Flat / 2DEG',
     'Topology & Wormholes',
     'Magnetosphere',
+    'Magnetosphere Teaching',
     'The Stack / Convergence',
     'Kauffman Filmstrip',
     'Genesis Illustrations',
@@ -40,6 +41,7 @@ NAME_TO_VAR = {
     'edge-of-chaos-inline': 'EDGE_OF_CHAOS',
     'substrate-parallel': 'SUBSTRATE_PARALLEL',
     'canopy-problem': 'CANOPY_PROBLEM',
+    'ms-earth-teaching': 'EARTH_MS_SVG',
 }
 
 
@@ -63,7 +65,8 @@ def load_preprocess_svgs():
     source = (REPO / 'build' / 'preprocess.py').read_text()
     var_svgs = {}
     for varname in ['FLAT_SVG', 'DOMAIN_SVG', 'AUTOCATALYTIC_LOOP',
-                     'EDGE_OF_CHAOS', 'SUBSTRATE_PARALLEL', 'CANOPY_PROBLEM']:
+                     'EDGE_OF_CHAOS', 'SUBSTRATE_PARALLEL', 'CANOPY_PROBLEM',
+                     'EARTH_MS_SVG']:
         m = re.search(rf"{varname}\s*=\s*'''(.*?)'''", source, re.DOTALL)
         if m:
             svg_m = re.search(r'(<svg[\s\S]*?</svg>)', m.group(1))
