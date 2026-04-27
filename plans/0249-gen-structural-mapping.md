@@ -4,7 +4,7 @@
 **Date:** 2026-04-25 (annealed 2026-04-25)
 **Status:** PHASE 1 COMPLETE — awaiting Gen's chapter ordering (Phase 2)
 **Source:** Gen's comment on issue #3 (has-anyone-looked repo), replying to Argus's sprint update
-**Parent:** Plan 0225a (Genevieve Manuscript Review)
+**Parent:** Plan 0275 (Genevieve Manuscript Review, moved from 0225a)
 **Revert point:** Tag `eigenvalue45` (verified: exists in repo)
 **Priority:** High — Gen is actively working in parallel copies
 
