@@ -293,6 +293,14 @@
   question: "Earth's magnetosphere — nine structural regions with hover tooltips"
   category: svg
 
+- id: fig-ms-jupiter
+  question: "Jupiter's magnetosphere — eight structural regions with hover tooltips"
+  category: svg
+
+- id: fig-ms-saturn
+  question: "Saturn's magnetosphere — seven structural regions with hover tooltips"
+  category: svg
+
 # --- Puzzles: chapter (22) — not yet in main HTML, anchors created on insertion ---
 # Category: puzzle — verify-deep-links.py skips this category.
 

@@ -3095,8 +3095,172 @@ def inject_ms_diagrams(html_path):
 <figcaption style="font-size:0.75em;color:#888;margin-top:0.3em;font-style:italic;">Hover to explore</figcaption>
 </figure>'''
 
+    JUPITER_MS_SVG = '''<figure id="fig-ms-jupiter" class="inline-svg ms-teaching"
+  style="float:right;margin:0 0 1em 1.5em;max-width:420px;width:45%;text-align:center;">
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 420 280" style="display:block;margin:0 auto;">
+  <title>Cross-section of Jupiter&#39;s magnetosphere. Sun at far left, Jupiter center-left, immense magnetotail stretching right. Eight labeled regions: Jupiter, Io, Io plasma torus, magnetopause, aurora, magnetotail, inner radiation belt, and Ganymede mini-magnetosphere.</title>
+  <defs>
+    <style>@media(prefers-reduced-motion:reduce){animate{display:none}}</style>
+    <linearGradient id="jup-bow-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff6b35" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ff6b35" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="jup-tail-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1a2d4a" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#1a2d4a" stop-opacity="0.02"/>
+    </linearGradient>
+  </defs>
+  <!-- Solar wind (decorative, animated) -->
+  <line x1="10" y1="100" x2="65" y2="118" stroke="#ffaa44" stroke-width="1.5" stroke-dasharray="6,4"><animate attributeName="stroke-dashoffset" from="10" to="0" dur="2s" repeatCount="indefinite"/></line>
+  <line x1="10" y1="135" x2="65" y2="140" stroke="#ffaa44" stroke-width="1.5" stroke-dasharray="6,4"><animate attributeName="stroke-dashoffset" from="10" to="0" dur="2s" repeatCount="indefinite"/></line>
+  <line x1="10" y1="170" x2="65" y2="162" stroke="#ffaa44" stroke-width="1.5" stroke-dasharray="6,4"><animate attributeName="stroke-dashoffset" from="10" to="0" dur="2s" repeatCount="indefinite"/></line>
+  <line x1="10" y1="200" x2="65" y2="182" stroke="#ffaa44" stroke-width="1.5" stroke-dasharray="6,4"><animate attributeName="stroke-dashoffset" from="10" to="0" dur="2s" repeatCount="indefinite"/></line>
+  <!-- Bow shock (decorative) -->
+  <path d="M 80,35 Q 58,140 80,245" fill="none" stroke="url(#jup-bow-grad)" stroke-width="2.5"/>
+  <!-- Zone 6: Magnetotail (background layer) -->
+  <g data-hover="&lt;strong&gt;Magnetotail&lt;/strong&gt;&lt;br&gt;Stretches nearly a billion kilometers — almost to Saturn&#39;s orbit. The longest coherent magnetic structure in the solar system." style="cursor:pointer">
+    <path d="M 195,80 L 415,55 L 415,120 L 230,125 Z" fill="url(#jup-tail-grad)" stroke="none"/>
+    <path d="M 195,200 L 415,225 L 415,160 L 230,155 Z" fill="url(#jup-tail-grad)" stroke="none"/>
+    <path d="M 195,85 Q 250,95 320,90" fill="none" stroke="#3a5f7a" stroke-width="1" opacity="0.4"/>
+    <path d="M 195,195 Q 250,185 320,190" fill="none" stroke="#3a5f7a" stroke-width="1" opacity="0.4"/>
+    <line x1="215" y1="140" x2="415" y2="140" stroke="#cd7f32" stroke-width="2" opacity="0.6"/>
+    <line x1="215" y1="140" x2="415" y2="140" stroke="#cd7f32" stroke-width="6" opacity="0.08"/>
+    <text x="330" y="75" font-family="Georgia, serif" font-size="8" fill="#555" font-style="italic">magnetotail</text>
+  </g>
+  <!-- Zone 4: Magnetopause -->
+  <g data-hover="&lt;strong&gt;Magnetopause&lt;/strong&gt;&lt;br&gt;The outer boundary, between 42 and 75 Jupiter-radii from the planet. It shifts constantly as internal plasma pressure from Io competes with the solar wind." style="cursor:pointer">
+    <path d="M 100,50 Q 82,140 100,230" fill="none" stroke="#6a9fba" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <text x="68" y="45" font-family="Georgia, serif" font-size="7" fill="#555" font-style="italic">magnetopause</text>
+  </g>
+  <!-- Zone 7: Inner Radiation Belt -->
+  <g data-hover="&lt;strong&gt;Inner Radiation Belt&lt;/strong&gt;&lt;br&gt;The most intense radiation environment in the solar system. Energetic protons and electrons trapped close to Jupiter, strong enough to damage spacecraft within hours." style="cursor:pointer">
+    <ellipse cx="160" cy="140" rx="30" ry="48" fill="none" stroke="#7b68ee" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+    <text x="193" y="100" font-family="Georgia, serif" font-size="7" fill="#7b68ee" font-style="italic">radiation belt</text>
+  </g>
+  <!-- Zone 3: Io Plasma Torus (animated particle drift) -->
+  <g data-hover="&lt;strong&gt;Io Plasma Torus&lt;/strong&gt;&lt;br&gt;Ionized volcanic material from Io, swept by Jupiter&#39;s rotation into a dense glowing ring along Io&#39;s orbit. The dominant plasma source for the entire magnetosphere." style="cursor:pointer">
+    <ellipse cx="160" cy="140" rx="55" ry="35" fill="none" stroke="#e8a832" stroke-width="5" stroke-dasharray="8,4" opacity="0.35"><animate attributeName="stroke-dashoffset" from="12" to="0" dur="3s" repeatCount="indefinite"/></ellipse>
+    <ellipse cx="160" cy="140" rx="55" ry="35" fill="none" stroke="#e8a832" stroke-width="1.5" opacity="0.7"/>
+    <text x="160" y="182" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#e8a832" font-style="italic">Io plasma torus</text>
+  </g>
+  <!-- Zone 5: Aurora -->
+  <g data-hover="&lt;strong&gt;Aurora&lt;/strong&gt;&lt;br&gt;About 100 terawatts per hemisphere — 10,000 to 100,000 times more powerful than Earth&#39;s. Driven by rotation, not by the solar wind. Visible in ultraviolet from Earth orbit." style="cursor:pointer">
+    <path d="M 152,118 Q 143,108 148,97" fill="none" stroke="#b19cd9" stroke-width="2" opacity="0.7"/>
+    <path d="M 168,118 Q 177,108 172,97" fill="none" stroke="#b19cd9" stroke-width="2" opacity="0.7"/>
+    <path d="M 152,162 Q 143,172 148,183" fill="none" stroke="#b19cd9" stroke-width="2" opacity="0.7"/>
+    <path d="M 168,162 Q 177,172 172,183" fill="none" stroke="#b19cd9" stroke-width="2" opacity="0.7"/>
+    <text x="138" y="92" font-family="Georgia, serif" font-size="7" fill="#b19cd9" font-style="italic">aurora</text>
+  </g>
+  <!-- Zone 1: Jupiter -->
+  <g data-hover="&lt;strong&gt;Jupiter&lt;/strong&gt;&lt;br&gt;Fourteen times Earth&#39;s surface field and 18,000 times the magnetic moment. Unlike Earth, Jupiter&#39;s magnetosphere is powered by its own rotation — the planet spins so fast it flings plasma outward like a centrifuge." style="cursor:pointer">
+    <circle cx="160" cy="140" r="24" fill="#4a90d9" opacity="0.85"/>
+    <circle cx="160" cy="140" r="26" fill="none" stroke="#7ec8e3" stroke-width="1.5" opacity="0.4"/>
+    <circle cx="160" cy="140" r="20" fill="#c97b3a" opacity="0.2"/>
+    <path d="M 136,135 Q 160,130 184,135" fill="none" stroke="#d4a574" stroke-width="0.8" opacity="0.4"/>
+    <path d="M 137,142 Q 160,147 183,142" fill="none" stroke="#d4a574" stroke-width="0.8" opacity="0.4"/>
+    <text x="160" y="144" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="white" font-weight="bold">Jupiter</text>
+  </g>
+  <!-- Zone 2: Io -->
+  <g data-hover="&lt;strong&gt;Io&lt;/strong&gt;&lt;br&gt;The most volcanically active body in the solar system. Tidal forces from Jupiter squeeze roughly one ton of material per second from its surface into space." style="cursor:pointer">
+    <circle cx="125" cy="108" r="5" fill="#e8a832" opacity="0.9"/>
+    <circle cx="125" cy="108" r="5.5" fill="none" stroke="#ff6b35" stroke-width="0.8" opacity="0.6"/>
+    <line x1="123" y1="102" x2="121" y2="96" stroke="#ff6b35" stroke-width="0.8" opacity="0.5"/>
+    <line x1="127" y1="102" x2="129" y2="96" stroke="#ff6b35" stroke-width="0.8" opacity="0.5"/>
+    <text x="113" y="93" font-family="Georgia, serif" font-size="7" fill="#e8a832" font-weight="bold">Io</text>
+  </g>
+  <!-- Zone 8: Ganymede Mini-Magnetosphere -->
+  <g data-hover="&lt;strong&gt;Ganymede Mini-Magnetosphere&lt;/strong&gt;&lt;br&gt;The only moon in the solar system with its own magnetic field. A complete magnetosphere nested inside Jupiter&#39;s — auroral ovals and all. Discovered by Galileo in 1996." style="cursor:pointer">
+    <circle cx="240" cy="190" r="5" fill="#8faabc" opacity="0.8"/>
+    <ellipse cx="240" cy="190" rx="10" ry="14" fill="none" stroke="#5ba3cf" stroke-width="0.8" stroke-dasharray="2,2" opacity="0.5"/>
+    <path d="M 236,178 Q 240,175 244,178" fill="none" stroke="#5ba3cf" stroke-width="0.7" opacity="0.4"/>
+    <path d="M 236,202 Q 240,205 244,202" fill="none" stroke="#5ba3cf" stroke-width="0.7" opacity="0.4"/>
+    <text x="253" y="188" font-family="Georgia, serif" font-size="7" fill="#555" font-style="italic">Ganymede</text>
+  </g>
+</svg>
+<figcaption style="font-size:0.75em;color:#888;margin-top:0.3em;font-style:italic;">Hover to explore</figcaption>
+</figure>'''
+
+    SATURN_MS_SVG = '''<figure id="fig-ms-saturn" class="inline-svg ms-teaching"
+  style="float:right;margin:0 0 1em 1.5em;max-width:420px;width:45%;text-align:center;">
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 420 280" style="display:block;margin:0 auto;">
+  <title>Cross-section of Saturn&#39;s magnetosphere. Sun at far left, Saturn center-left with ring system, disc-shaped magnetotail stretching right. Seven labeled regions: Saturn, Enceladus, water-group plasma, ring system, current sheets, Titan orbit, and bow shock.</title>
+  <defs>
+    <style>@media(prefers-reduced-motion:reduce){animate{display:none}}</style>
+    <linearGradient id="sat-bow-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff6b35" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="#ff6b35" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="sat-tail-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1a2d4a" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#1a2d4a" stop-opacity="0.02"/>
+    </linearGradient>
+  </defs>
+  <!-- Solar wind (decorative, animated) -->
+  <line x1="10" y1="105" x2="60" y2="118" stroke="#ffaa44" stroke-width="1.5" stroke-dasharray="6,4"><animate attributeName="stroke-dashoffset" from="10" to="0" dur="2s" repeatCount="indefinite"/></line>
+  <line x1="10" y1="135" x2="60" y2="140" stroke="#ffaa44" stroke-width="1.5" stroke-dasharray="6,4"><animate attributeName="stroke-dashoffset" from="10" to="0" dur="2s" repeatCount="indefinite"/></line>
+  <line x1="10" y1="165" x2="60" y2="158" stroke="#ffaa44" stroke-width="1.5" stroke-dasharray="6,4"><animate attributeName="stroke-dashoffset" from="10" to="0" dur="2s" repeatCount="indefinite"/></line>
+  <line x1="10" y1="192" x2="60" y2="180" stroke="#ffaa44" stroke-width="1.5" stroke-dasharray="6,4"><animate attributeName="stroke-dashoffset" from="10" to="0" dur="2s" repeatCount="indefinite"/></line>
+  <!-- Disc-shaped magnetotail (decorative background — flatter than Earth) -->
+  <path d="M 200,115 L 415,105 L 415,130 L 220,132 Z" fill="url(#sat-tail-grad)" stroke="none"/>
+  <path d="M 200,165 L 415,175 L 415,150 L 220,148 Z" fill="url(#sat-tail-grad)" stroke="none"/>
+  <path d="M 200,120 Q 280,130 370,125" fill="none" stroke="#3a5f7a" stroke-width="0.8" opacity="0.35"/>
+  <path d="M 200,160 Q 280,150 370,155" fill="none" stroke="#3a5f7a" stroke-width="0.8" opacity="0.35"/>
+  <!-- Zone 7: Bow Shock -->
+  <g data-hover="&lt;strong&gt;Bow Shock&lt;/strong&gt;&lt;br&gt;Where the solar wind meets Saturn&#39;s magnetic field. The near-perfect alignment of rotation and magnetic axes gives Saturn a uniquely symmetric, bowl-shaped magnetosphere." style="cursor:pointer">
+    <path d="M 78,42 Q 56,140 78,238" fill="none" stroke="url(#sat-bow-grad)" stroke-width="2.5"/>
+    <text x="50" y="37" font-family="Georgia, serif" font-size="7" fill="#555" font-style="italic">bow shock</text>
+  </g>
+  <!-- Zone 5: Current Sheets -->
+  <g data-hover="&lt;strong&gt;Current Sheets&lt;/strong&gt;&lt;br&gt;Structured current systems between 8 and 15 Saturn-radii. The heavy equatorial plasma forces magnetic field lines into a thin disc — Saturn&#39;s magnetosphere is flatter than Earth&#39;s teardrop." style="cursor:pointer">
+    <line x1="105" y1="140" x2="290" y2="140" stroke="#6a9fba" stroke-width="1" opacity="0.4"/>
+    <line x1="115" y1="133" x2="280" y2="133" stroke="#6a9fba" stroke-width="0.7" stroke-dasharray="4,3" opacity="0.3"/>
+    <line x1="115" y1="147" x2="280" y2="147" stroke="#6a9fba" stroke-width="0.7" stroke-dasharray="4,3" opacity="0.3"/>
+    <text x="250" y="128" font-family="Georgia, serif" font-size="7" fill="#555" font-style="italic">current sheets</text>
+  </g>
+  <!-- Zone 3: Water-Group Plasma -->
+  <g data-hover="&lt;strong&gt;Water-Group Plasma&lt;/strong&gt;&lt;br&gt;Material from Enceladus, ionized and swept into a disc around Saturn. Heavier than hydrogen plasma, it concentrates in the equatorial plane and shapes the entire magnetic field structure." style="cursor:pointer">
+    <ellipse cx="170" cy="140" rx="65" ry="10" fill="#5ba3cf" fill-opacity="0.1" stroke="#5ba3cf" stroke-width="0.8" stroke-dasharray="3,3" opacity="0.4"/>
+    <text x="170" y="158" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#5ba3cf" font-style="italic">water-group plasma</text>
+  </g>
+  <!-- Zone 4: Ring System (drawn before Saturn so planet covers the overlap) -->
+  <g data-hover="&lt;strong&gt;Ring System&lt;/strong&gt;&lt;br&gt;Saturn&#39;s rings absorb charged particles passing through, creating sharp gaps in the radiation belts. The rings act as a particle shield — a natural experiment in plasma-matter interaction." style="cursor:pointer">
+    <line x1="108" y1="140" x2="139" y2="140" stroke="#c9b896" stroke-width="5" opacity="0.5"/>
+    <line x1="106" y1="140" x2="136" y2="140" stroke="#dcc9a3" stroke-width="1.5" opacity="0.35"/>
+    <line x1="181" y1="140" x2="212" y2="140" stroke="#c9b896" stroke-width="5" opacity="0.5"/>
+    <line x1="184" y1="140" x2="215" y2="140" stroke="#dcc9a3" stroke-width="1.5" opacity="0.35"/>
+    <text x="220" y="144" font-family="Georgia, serif" font-size="7" fill="#c9b896" font-weight="bold">rings</text>
+  </g>
+  <!-- Zone 6: Titan Orbit -->
+  <g data-hover="&lt;strong&gt;Titan Orbit&lt;/strong&gt;&lt;br&gt;Titan&#39;s thick nitrogen atmosphere interacts directly with Saturn&#39;s magnetosphere. Sometimes inside the magnetopause, sometimes exposed to the solar wind — a boundary world." style="cursor:pointer">
+    <ellipse cx="170" cy="140" rx="90" ry="60" fill="none" stroke="#888" stroke-width="0.7" stroke-dasharray="5,5" opacity="0.3"/>
+    <circle cx="256" cy="165" r="6" fill="#d4a574" opacity="0.5"/>
+    <circle cx="256" cy="165" r="7" fill="none" stroke="#b8860b" stroke-width="0.8" opacity="0.3"/>
+    <text x="265" y="162" font-family="Georgia, serif" font-size="7" fill="#555" font-style="italic">Titan</text>
+  </g>
+  <!-- Zone 1: Saturn (drawn on top of rings) -->
+  <g data-hover="&lt;strong&gt;Saturn&lt;/strong&gt;&lt;br&gt;Rapid rotation flattens the magnetosphere into a disc. Heavy plasma from Enceladus is centrifugally confined to the equatorial plane — the field breathes with the planet&#39;s ten-hour day." style="cursor:pointer">
+    <circle cx="160" cy="140" r="20" fill="#4a90d9" opacity="0.75"/>
+    <circle cx="160" cy="140" r="22" fill="none" stroke="#7ec8e3" stroke-width="1.2" opacity="0.35"/>
+    <circle cx="160" cy="140" r="16" fill="#c9b896" opacity="0.15"/>
+    <text x="160" y="144" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="white" font-weight="bold">Saturn</text>
+  </g>
+  <!-- Zone 2: Enceladus (animated plumes) -->
+  <g data-hover="&lt;strong&gt;Enceladus&lt;/strong&gt;&lt;br&gt;A small ice moon with a subsurface ocean. Cracks near the south pole jet up to 1,000 kilograms per second of water vapor and ice particles into space — the primary plasma source for Saturn&#39;s magnetosphere." style="cursor:pointer">
+    <circle cx="205" cy="118" r="4" fill="#e0e8f0" opacity="0.9"/>
+    <circle cx="205" cy="118" r="4.5" fill="none" stroke="#a8c0d4" stroke-width="0.7" opacity="0.6"/>
+    <line x1="203" y1="113" x2="200" y2="104" stroke="#a8c0d4" stroke-width="0.8" opacity="0.5"><animate attributeName="opacity" values="0.6;0.2;0.6" dur="3s" begin="0s" repeatCount="indefinite"/></line>
+    <line x1="205" y1="113" x2="205" y2="103" stroke="#a8c0d4" stroke-width="0.8" opacity="0.5"><animate attributeName="opacity" values="0.6;0.2;0.6" dur="3s" begin="1s" repeatCount="indefinite"/></line>
+    <line x1="207" y1="113" x2="210" y2="104" stroke="#a8c0d4" stroke-width="0.8" opacity="0.5"><animate attributeName="opacity" values="0.6;0.2;0.6" dur="3s" begin="2s" repeatCount="indefinite"/></line>
+    <text x="205" y="98" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#555" font-style="italic">Enceladus</text>
+  </g>
+</svg>
+<figcaption style="font-size:0.75em;color:#888;margin-top:0.3em;font-style:italic;">Hover to explore</figcaption>
+</figure>'''
+
     diagrams = [
         ('Sixty thousand kilometers above your head', EARTH_MS_SVG, 'Earth MS'),
+        ('Five hundred million kilometers away', JUPITER_MS_SVG, 'Jupiter MS'),
+        ("Saturn’s magnetosphere is smaller", SATURN_MS_SVG, 'Saturn MS'),
     ]
 
     injected = []

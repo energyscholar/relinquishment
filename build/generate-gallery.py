@@ -42,6 +42,8 @@ NAME_TO_VAR = {
     'substrate-parallel': 'SUBSTRATE_PARALLEL',
     'canopy-problem': 'CANOPY_PROBLEM',
     'ms-earth-teaching': 'EARTH_MS_SVG',
+    'ms-jupiter-teaching': 'JUPITER_MS_SVG',
+    'ms-saturn-teaching': 'SATURN_MS_SVG',
 }
 
 
@@ -66,7 +68,7 @@ def load_preprocess_svgs():
     var_svgs = {}
     for varname in ['FLAT_SVG', 'DOMAIN_SVG', 'AUTOCATALYTIC_LOOP',
                      'EDGE_OF_CHAOS', 'SUBSTRATE_PARALLEL', 'CANOPY_PROBLEM',
-                     'EARTH_MS_SVG']:
+                     'EARTH_MS_SVG', 'JUPITER_MS_SVG', 'SATURN_MS_SVG']:
         m = re.search(rf"{varname}\s*=\s*'''(.*?)'''", source, re.DOTALL)
         if m:
             svg_m = re.search(r'(<svg[\s\S]*?</svg>)', m.group(1))
