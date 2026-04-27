@@ -1,11 +1,12 @@
 # Plan 0271: Codebase Refactoring and Size Reduction
 
-**Status:** DRAFT
+**Status:** READY FOR GENERATOR
 **Author:** Auditor (Argus S63)
 **Priority:** Medium-High
 **Scope:** `build/reader.js`, `build/preprocess.py`, `build/build-puzzles.py`, `build/utils.py` (new), repo hygiene
 **Constraint:** Output must remain a single self-contained HTML file. No external dependencies.
-**Annealing:** MED MED LOW
+**Annealing:** MED LOW LOW
+**Note:** Phase 7 (Hover Data Architecture) is DEFERRED — skip it.
 
 ---
 
@@ -240,11 +241,11 @@ Mark as backlog. Evaluate post-release based on real reader feedback about load 
 A naive regex-based minifier will mangle string literals or regex patterns.
 **Mitigation:** Phase 4 option 2 (whitespace stripper) is conservative — only strips line comments NOT inside strings, collapses whitespace. No variable renaming. Test by diffing behavior in browser console. Add `make validate-js` with headless Playwright.
 
-**M2. Shared SVG filter breaks cross-browser.**
-Moving `<filter id="kbtn-sh">` to a hidden `<svg>` defs block may not resolve `url(#id)` across SVG boundaries in older WebKit.
-**Mitigation:** Test Safari 15+ and Chrome 90+. If any browser fails, keep filters inline (skip Phase 2c — only 400 bytes).
-
 ### LOW
+
+**L2. Shared SVG filter breaks cross-browser.**
+Moving `<filter id="kbtn-sh">` to a hidden `<svg>` defs block may not resolve `url(#id)` across SVG boundaries in older WebKit.
+**Mitigation:** Test on modern browsers. If any fails, keep filters inline (skip Phase 2c — only 400 bytes).
 
 **L3. Dead code removal breaks an undiscovered reference.**
 **Mitigation:** `grep -r` across entire repo before deletion. Run Playwright suite after.
