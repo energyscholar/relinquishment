@@ -108,7 +108,7 @@ chapter_puzzles:
     type: mc
     topic: t3
     level: p2
-    approved: false
+    approved: true
     installed: false
     location:
       chapter: the-wrong-substrate
