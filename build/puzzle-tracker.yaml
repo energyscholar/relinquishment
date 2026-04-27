@@ -23,7 +23,7 @@ chapter_puzzles:
     topic: t2
     level: p1
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: the-flat
       rationale: "Direct T2 content — what makes 2D physics different"
@@ -111,7 +111,7 @@ chapter_puzzles:
     approved: true
     installed: false
     location:
-      chapter: the-wrong-substrate
+      chapter: wrong-substrate
       rationale: "Substrate independence — exact chapter match"
       placement: end
     reward:
@@ -147,7 +147,7 @@ chapter_puzzles:
     approved: true
     installed: false
     location:
-      chapter: the-flat
+      chapter: story-never-told
       rationale: "Technology stack from 2DEG up — could also fit genesis or the-stack (front matter)"
       placement: end
     reward:
@@ -288,7 +288,7 @@ chapter_puzzles:
     approved: true
     installed: false
     location:
-      chapter: three-possibilities
+      chapter: the-braid
       rationale: "Method introduction — three-possibilities introduces the guided deduction concept"
       placement: end
     reward:
@@ -302,7 +302,7 @@ chapter_puzzles:
     topic: t1
     level: p1
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: wrong-substrate
       rationale: "Category correction — fits the 'Not Aliens' section that explains terrestrial origin"
@@ -339,7 +339,7 @@ chapter_puzzles:
     approved: true
     installed: false
     location:
-      chapter: capabilities
+      chapter: why-relinquish
       rationale: "UDHR constraint analysis — pairs with 'Capabilities' MC puzzle"
       placement: end
     reward:
@@ -425,7 +425,7 @@ chapter_puzzles:
     approved: true
     installed: false
     location:
-      chapter: the-flat
+      chapter: growing-a-mind
       rationale: "Engineering→topology→accidental habitat via guided deduction"
       placement: end
     reward:
