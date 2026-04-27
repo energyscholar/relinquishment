@@ -961,6 +961,7 @@ details.tech-section .tech-title {
     background: linear-gradient(135deg, rgba(212,168,71,0.06), rgba(212,168,71,0.03)) !important;
     border-left-color: rgba(160,136,48,0.4);
   }
+  [data-concept="flat"]::before { color: #d4a847; }
 }
 @media print {
   details.tech-section, details.tech-borderline { display: block !important; background: none !important; }
@@ -970,6 +971,7 @@ details.tech-section .tech-title {
   .info-tip { display: none; }
   details.epistemic-a, details.epistemic-b, details.epistemic-c { background: none !important; }
   .epistemic-legend { display: none; }
+  [data-concept]::before { content: none; }
 }
 details.tech-section[id] { scroll-margin-top: 3em; }
 details.tech-section.deep-link-target { animation: none; }
@@ -3955,6 +3957,44 @@ def inject_chapter_puzzles(html_path):
     print(f"  Chapter puzzles: {injected} injected")
 
 
+def verify_puzzle_injection(html_path):
+    """Cross-reference puzzle tracker against built HTML. Print report."""
+    html_path = Path(html_path)
+    text = html_path.read_text()
+    tracker_path = REPO / 'build' / 'puzzle-tracker.yaml'
+    tracker = yaml.safe_load(tracker_path.read_text())
+
+    expected = set()
+    for p in tracker.get('chapter_puzzles', []):
+        if p.get('approved') and p.get('installed'):
+            ptype = p.get('type', '')
+            chapter = p.get('location', {}).get('chapter', '')
+            if ptype in ('mc', 'gd', 'log') and chapter in CHAPTER_INJECTION_TARGETS:
+                expected.add(p['id'])
+
+    actual = set(re.findall(r'id="(pz-[a-z]+-t\d+-\d+)"', text))
+
+    missing = expected - actual
+    extra = actual - expected
+
+    ok = True
+    if missing:
+        print(f"  VERIFY FAIL: {len(missing)} expected puzzles NOT in HTML:")
+        for pid in sorted(missing):
+            print(f"    MISSING: {pid}")
+        ok = False
+    if extra:
+        print(f"  VERIFY WARN: {len(extra)} puzzles in HTML but NOT expected:")
+        for pid in sorted(extra):
+            print(f"    EXTRA: {pid}")
+        ok = False
+
+    if ok:
+        print(f"  VERIFY OK: {len(actual)} puzzles in HTML match tracker")
+
+    return ok
+
+
 def collapse_tech_sections(html_path):
     """Wrap approved tech sections in collapsible <details> elements (Plan 0219)."""
     manifest_path = REPO / 'build' / 'tech-collapse.yaml'
@@ -4303,6 +4343,7 @@ if __name__ == "__main__":
         inject_genesis_illustrations(sys.argv[2])
         inject_ms_diagrams(sys.argv[2])
         inject_chapter_puzzles(sys.argv[2])
+        verify_puzzle_injection(sys.argv[2])
         inject_easter_eggs(sys.argv[2])
         inject_questions_index(sys.argv[2])
         fix_html_glossary_names(sys.argv[2])
