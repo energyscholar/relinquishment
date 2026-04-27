@@ -168,6 +168,12 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .gd-continue { display: inline-block; margin-top: 0.5em; padding: 0.4em 1em; background: #1a5276; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-family: Georgia, "Times New Roman", serif; font-size: 0.95em; }
 .gd-continue:hover { background: #154360; }
 
+/* --- Try-it callout --- */
+.try-it-callout { background: linear-gradient(135deg, #f0f6fa, #e8f0f8); border: 1px solid #6a9fb5; border-radius: 6px; padding: 0.7em 1em; margin: 1em 0; font-size: 0.92em; color: #1a3a50; }
+.try-it-callout strong { color: #1a5276; }
+@keyframes eval-flash { 0%, 100% { background-color: inherit; } 50% { background-color: #d4a847; color: #1a1a1a; box-shadow: 0 0 12px rgba(212,168,71,0.6); } }
+.eval-flash-active { animation: eval-flash 0.6s ease-in-out 3; }
+
 /* --- Collapsible puzzle wrappers --- */
 .puzzle-collapse { margin-bottom: 1em; border: 1px solid #ddd; border-radius: 6px; overflow: hidden; }
 .puzzle-collapse[open] { border-color: #1a5276; }
@@ -256,6 +262,8 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
   .gd-continue { background: #2a6496; }
   .gd-continue:hover { background: #1e4a70; }
   .gd-stage-question { color: #e0e0e0; }
+  .try-it-callout { background: linear-gradient(135deg, #1a2a3a, #1e3248); border-color: #4a7a90; color: #a0d0f0; }
+  .try-it-callout strong { color: #6ba3f7; }
   .puzzle-collapse { border-color: #444; }
   .puzzle-collapse[open] { border-color: #6ba3f7; }
   .puzzle-collapse-summary { background: #2a2a2a; color: #6ba3f7; }
@@ -2119,6 +2127,9 @@ function initBA(el, d) {
   html += '<div class="ba-panel"><h3>' + esc(d.panel_a.label) + '</h3><div class="ba-prompt">&gt; ' + esc(d.panel_a.prompt) + '</div><div class="ba-response">' + esc(d.panel_a.response) + "</div></div>";
   html += '<div class="ba-panel"><h3>' + esc(d.panel_b.label) + '</h3><div class="ba-prompt">&gt; ' + esc(d.panel_b.prompt) + '</div><div class="ba-response">' + esc(d.panel_b.response) + "</div></div>";
   html += "</div>";
+  if (d.id === "pz-ba-t8-002") {
+    html += '<div class="try-it-callout"><strong>Try it yourself:</strong> The <strong>AI Eval</strong> button in the navigation bar walks you through the Science Firmware Upgrade. Copy one prompt, paste it into any AI, and see the difference with your own eyes.</div>';
+  }
   for (var i = 0; i < d.options.length; i++) {
     var o = d.options[i];
     html += '<button class="option-btn" data-key="' + esc(o.key) + '">(' + esc(o.key) + ') ' + esc(o.text) + "</button>";
@@ -2571,6 +2582,21 @@ function initReviewControls() {
         if (wrap) { wrap.open = true; }
       });
     })(tocLinks[i]);
+  }
+
+  var fwWrap = document.querySelector('[data-puzzle-wrap="pz-ba-t8-002"]');
+  if (fwWrap) {
+    fwWrap.addEventListener('toggle', function() {
+      if (!fwWrap.open) return;
+      var evalBtn = document.getElementById('nav-evaluate');
+      if (!evalBtn) return;
+      evalBtn.classList.remove('eval-flash-active');
+      void evalBtn.offsetWidth;
+      evalBtn.classList.add('eval-flash-active');
+      evalBtn.addEventListener('animationend', function() {
+        evalBtn.classList.remove('eval-flash-active');
+      }, { once: true });
+    });
   }
 }
 
