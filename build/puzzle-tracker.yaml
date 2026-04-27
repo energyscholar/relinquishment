@@ -354,7 +354,7 @@ chapter_puzzles:
     type: cip
     topic: t8
     level: p3
-    approved: false
+    approved: true
     installed: false
     location:
       chapter: firmware-update
