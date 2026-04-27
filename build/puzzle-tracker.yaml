@@ -215,7 +215,7 @@ chapter_puzzles:
     type: log
     topic: t6
     level: p2
-    approved: false
+    approved: true
     installed: false
     location:
       chapter: weigh-the-evidence
