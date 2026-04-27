@@ -163,7 +163,7 @@ chapter_puzzles:
     type: mc
     topic: t5
     level: p2
-    approved: false
+    approved: true
     installed: false
     location:
       chapter: the-silence-gap
