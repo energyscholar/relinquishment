@@ -11242,8 +11242,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>6b3538fa9179e9bec08b04cbe808845a7277d63e</code> on 2026-04-26
-23:05:03 -0700.</p>
+<code>b0c4fd170c3a5cc53cc67b0c255f8f269e64a3c9</code> on 2026-04-26
+23:21:58 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -11311,7 +11311,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-27T06:05:19Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-27T06:34:34Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -11322,19 +11322,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>6b3538f</code></p>
+<p><code>b0c4fd1</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>6b3538fa9179e9bec08b04cbe808845a7277d63e</code></p>
+<p><code>b0c4fd170c3a5cc53cc67b0c255f8f269e64a3c9</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-26 23:05:03 -0700</p>
+<p>2026-04-26 23:21:58 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-27T06:05:19Z</p>
+<p>2026-04-27T06:34:34Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -11828,79 +11828,6 @@ energyscholar+physics@gmail.com
     });
   });
 
-  // Center: Quick-jump Part links
-  var quickJump = document.createElement('span');
-  quickJump.id = 'nav-quickjump';
-  quickJump.style.cssText = 'flex:0 0 auto;padding:0 1em;white-space:nowrap;';
-
-  // Intro link — opens Introduction, p1 (hook), and p2 (summary)
-  var introLink = document.createElement('a');
-  introLink.href = '#hook:what-would-you-do';
-  introLink.textContent = 'Intro';
-  introLink.setAttribute('data-hover', 'Anyone who reads the Introduction has read Relinquishment \u2014 just not cover to cover. ~700 words for the hook, ~6,000 for the full story.');
-  introLink.classList.add('hover-nav');
-  introLink.style.cssText = 'text-decoration:none;color:#1a5276;font-weight:bold;';
-  introLink.addEventListener('mouseenter', function() { introLink.style.color = '#2471a3'; });
-  introLink.addEventListener('mouseleave', function() { introLink.style.color = '#1a5276'; });
-  introLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    // Open book-section
-    var bookSection = document.querySelector('details.book-section');
-    if (bookSection) bookSection.open = true;
-    // Find and open the Introduction part-section
-    document.querySelectorAll('details.part-section > summary').forEach(function(s) {
-      if (s.textContent.indexOf('Introduction') !== -1) {
-        s.parentElement.open = true;
-      }
-    });
-    // Open p1 (hook) and p2 (summary) chapter-sections
-    var hookEl = document.getElementById('hook:what-would-you-do');
-    var summaryEl = document.getElementById('summary:story-never-told');
-    [hookEl, summaryEl].forEach(function(el) {
-      if (el) {
-        var details = el.closest('details');
-        if (details) details.open = true;
-      }
-    });
-    // Scroll to hook
-    if (hookEl) hookEl.scrollIntoView({behavior: 'smooth'});
-  });
-  quickJump.appendChild(introLink);
-
-  var partLinks = [
-    {label: 'The Flat', partName: 'The Flat', tip: 'The physics — every chip and every planet has a flat world that supports quantum teleportation. Published science says life can emerge there, and what it could do. Asking required five fields to meet. They never did. True under all three possibilities.'},
-    {label: 'The Record', partName: 'The Record', tip: 'The testimony — one man\'s account of meeting something that shouldn\'t exist. If it happened, her name is the Custodian. Technology placed in trust, not surrendered. A secret kept twenty years. You decide.'},
-    {label: 'Appendices', partName: 'Appendices', tip: 'Predictions with deadlines. The physics AI needs to evaluate this book. How to verify everything yourself.'},
-  ];
-  partLinks.forEach(function(p, i) {
-    quickJump.appendChild(document.createTextNode(' \u00B7 '));
-    var a = document.createElement('a');
-    a.href = '#';
-    a.textContent = p.label;
-    a.setAttribute('data-hover', p.tip);
-    a.classList.add('hover-nav');
-    a.style.cssText = 'text-decoration:none;color:#1a5276;';
-    a.addEventListener('mouseenter', function() { a.style.color = '#2471a3'; });
-    a.addEventListener('mouseleave', function() { a.style.color = '#1a5276'; });
-    a.addEventListener('click', function(e) {
-      e.preventDefault();
-      pushNavState();
-      // Open book-section
-      var bookSection = document.querySelector('details.book-section');
-      if (bookSection) bookSection.open = true;
-      // Find and open the matching part-section by name
-      var opened = false;
-      document.querySelectorAll('details.part-section > summary').forEach(function(s) {
-        if (s.textContent.indexOf(p.partName) !== -1) {
-          s.parentElement.open = true;
-          s.parentElement.scrollIntoView({behavior: 'smooth'});
-          opened = true;
-        }
-      });
-    });
-    quickJump.appendChild(a);
-  });
-
   // Right: ▲ Top
   var topBtn = document.createElement('a');
   topBtn.textContent = '\u25B2 Top';
@@ -11959,72 +11886,6 @@ energyscholar+physics@gmail.com
     backBtn.style.display = navStack.length > 0 ? 'inline-block' : 'none';
   }
 
-  // --- Epistemic filter buttons (Plan 0144, revised: independent toggles) ---
-  // Both start SHOW (true). Each toggles independently. Not mutually exclusive.
-  var showScience = true;
-  var showStory = true;
-
-  function applyFilters() {
-    document.querySelectorAll('details.chapter-section').forEach(function(ch) {
-      var fg = ch.getAttribute('data-filter-group') || 'M';
-      var hide = false;
-      if (!showScience && fg === 'A') hide = true;
-      if (!showStory && (fg === 'B' || fg === 'C')) hide = true;
-      // M and untagged always visible
-      ch.style.display = hide ? 'none' : '';
-      if (hide) ch.open = false;
-    });
-    // Auto-hide empty part-sections
-    document.querySelectorAll('details.part-section').forEach(function(part) {
-      var chs = part.querySelectorAll(':scope > details.chapter-section');
-      if (!chs.length) return;
-      var allHidden = Array.from(chs).every(function(c) { return c.style.display === 'none'; });
-      part.style.display = allHidden ? 'none' : '';
-    });
-    updateFilterButtons();
-    try {
-      localStorage.setItem('relinquishment-filter-science', showScience ? '1' : '0');
-      localStorage.setItem('relinquishment-filter-story', showStory ? '1' : '0');
-    } catch(e) {}
-  }
-
-  function updateFilterButtons() {
-    var activeBase = isDark ? '#2471a3' : '#1a5276';
-    var inactiveColor = isDark ? '#5dade2' : '#1a5276';
-    // SHOW state = filled (content visible), HIDE state = outline (content hidden)
-    scienceBtn.style.background = showScience ? activeBase : 'transparent';
-    scienceBtn.style.color = showScience ? '#fff' : inactiveColor;
-    scienceBtn.style.borderColor = activeBase;
-    storyBtn.style.background = showStory ? activeBase : 'transparent';
-    storyBtn.style.color = showStory ? '#fff' : inactiveColor;
-    storyBtn.style.borderColor = activeBase;
-  }
-
-  var scienceBtn = document.createElement('button');
-  scienceBtn.id = 'filter-science';
-  scienceBtn.textContent = 'Science';
-  scienceBtn.setAttribute('data-hover', 'Toggle the published physics chapters — verified science that stands under all three possibilities');
-  scienceBtn.classList.add('hover-nav');
-  scienceBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
-    'font-family:inherit;cursor:pointer;background:#1a5276;color:#fff;' +
-    'border:1px solid #1a5276;border-radius:4px;margin:0 0.2em;white-space:nowrap;';
-  scienceBtn.addEventListener('click', function() {
-    showScience = !showScience;
-    applyFilters();
-  });
-
-  var storyBtn = document.createElement('button');
-  storyBtn.id = 'filter-story';
-  storyBtn.textContent = 'Story';
-  storyBtn.setAttribute('data-hover', 'Toggle the testimony and narrative — the story as told by the people who lived it');
-  storyBtn.classList.add('hover-nav');
-  storyBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
-    'font-family:inherit;cursor:pointer;background:#1a5276;color:#fff;' +
-    'border:1px solid #1a5276;border-radius:4px;margin:0 0.2em;white-space:nowrap;';
-  storyBtn.addEventListener('click', function() {
-    showStory = !showStory;
-    applyFilters();
-  });
 
   // --- Guardian-only filter (G button) ---
   // Shows only the 7 interludes, everything else hidden. CSS (.custodian-only
@@ -12118,27 +11979,6 @@ energyscholar+physics@gmail.com
   tipsBtn.addEventListener('mouseenter', function() { tipsBtn.style.color = '#2471a3'; });
   tipsBtn.addEventListener('mouseleave', function() { tipsBtn.style.color = isDark ? '#aaa' : '#888'; });
 
-  nav.appendChild(backBtn);
-  nav.appendChild(breadcrumb);
-  nav.appendChild(shareBtn);
-  nav.appendChild(pdfBtn);
-  nav.appendChild(tipsBtn);
-  nav.appendChild(quickJump);
-  // Science / Story filter buttons hidden — not working as intended, feature-creep.
-  // Code kept intact (state defaults to everything visible). A future Guardian-only
-  // filter button could replace them. To restore: uncomment the two lines below.
-  // nav.appendChild(scienceBtn);
-  // nav.appendChild(storyBtn);
-  nav.appendChild(gBtn);
-
-  var toolsLink = document.createElement('a');
-  toolsLink.href = 'https://relinquishment.ai/tools.html';
-  toolsLink.textContent = '·';
-  toolsLink.style.cssText = 'flex:0 0 auto;font-size:0.7em;color:transparent;' +
-    'text-decoration:none;padding:0.3em 0.2em;cursor:default;';
-  toolsLink.setAttribute('aria-hidden', 'true');
-  nav.appendChild(toolsLink);
-
   // Magnetosphere toggle button (◐)
   var msToggle = document.createElement('a');
   msToggle.href = '#';
@@ -12151,12 +11991,191 @@ energyscholar+physics@gmail.com
     'margin-left:0.5em;flex:0 0 auto;';
   msToggle.addEventListener('mouseenter', function() { msToggle.style.color = '#2471a3'; });
   msToggle.addEventListener('mouseleave', function() { msToggle.style.color = isDark ? '#aaa' : '#888'; });
-  nav.appendChild(msToggle);
 
-  nav.appendChild(expandBtn);
+  var toolsLink = document.createElement('a');
+  toolsLink.href = 'https://relinquishment.ai/tools.html';
+  toolsLink.textContent = '·';
+  toolsLink.style.cssText = 'flex:0 0 auto;font-size:0.7em;color:transparent;' +
+    'text-decoration:none;padding:0.3em 0.2em;cursor:default;';
+  toolsLink.setAttribute('aria-hidden', 'true');
+
+  // --- Nav bar: 5 items only (Back, breadcrumb, §, AI Eval, ▲ Top) ---
+  nav.appendChild(backBtn);
+  nav.appendChild(breadcrumb);
+  nav.appendChild(shareBtn);
   nav.appendChild(evalBtn);
   nav.appendChild(topBtn);
   document.body.appendChild(nav);
+
+  // --- Navigation Popup (Plan 0268) ---
+  var currentChapterId = '';
+  var popupOpen = false;
+
+  var popupStyle = document.createElement('style');
+  popupStyle.textContent =
+    '#nav-backdrop{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);z-index:99;opacity:0;transition:opacity 0.2s;}' +
+    '#nav-popup{display:none;position:fixed;left:0.5em;right:0.5em;max-height:70vh;background:#fff;border-radius:8px 8px 0 0;box-shadow:0 -4px 20px rgba(0,0,0,0.15);z-index:100;overflow-y:auto;-webkit-overflow-scrolling:touch;transform:translateY(100%);transition:transform 0.2s ease-out;font-size:0.9em;}' +
+    '.nav-popup-close{position:sticky;top:0;text-align:right;padding:0.5em 0.8em;background:inherit;cursor:pointer;font-size:1.2em;color:#888;z-index:1;}' +
+    '.nav-popup-list{padding:0 0.8em 0.5em;}' +
+    '.nav-popup-part{font-weight:bold;font-size:1em;padding:0.6em 0 0.3em;cursor:pointer;border-top:1px solid #eee;}' +
+    '.nav-popup-part:first-child{border-top:none;}' +
+    '.nav-popup-chapter{padding:0.35em 0 0.35em 1.2em;cursor:pointer;color:#333;border-radius:4px;}' +
+    '.nav-popup-chapter:hover{background:#f0f6fa;}' +
+    '.nav-popup-current{background:#e8f0f8;font-weight:bold;color:#1a5276;}' +
+    '.nav-popup-interlude{font-style:italic;color:#9b59b6;}' +
+    '.nav-popup-dimmed{opacity:0.4;}' +
+    '.nav-popup-footer{display:flex;gap:0.5em;justify-content:center;padding:0.6em;border-top:1px solid #eee;flex-wrap:wrap;position:sticky;bottom:0;background:inherit;}' +
+    '.nav-popup-dot{font-size:0.8em;}' +
+    '@media(prefers-color-scheme:dark){' +
+      '#nav-backdrop{background:rgba(0,0,0,0.6);}' +
+      '#nav-popup{background:#1e1e1e;box-shadow:0 -4px 20px rgba(0,0,0,0.4);}' +
+      '.nav-popup-close{color:#888;}' +
+      '.nav-popup-part{border-top-color:#333;color:#e0e0e0;}' +
+      '.nav-popup-chapter{color:#ccc;}' +
+      '.nav-popup-chapter:hover{background:#2a3a4a;}' +
+      '.nav-popup-current{background:#1e3248;color:#6ba3f7;}' +
+      '.nav-popup-interlude{color:#b77fdf;}' +
+      '.nav-popup-footer{border-top-color:#333;}' +
+    '}' +
+    '@media print{#nav-popup,#nav-backdrop{display:none!important;}}';
+  document.head.appendChild(popupStyle);
+
+  var navBackdrop = document.createElement('div');
+  navBackdrop.id = 'nav-backdrop';
+  document.body.appendChild(navBackdrop);
+
+  var navPopup = document.createElement('div');
+  navPopup.id = 'nav-popup';
+
+  var popupClose = document.createElement('div');
+  popupClose.className = 'nav-popup-close';
+  popupClose.textContent = '✕';
+  popupClose.addEventListener('click', closePopup);
+  navPopup.appendChild(popupClose);
+
+  var popupList = document.createElement('div');
+  popupList.className = 'nav-popup-list';
+  navPopup.appendChild(popupList);
+
+  var popupFooter = document.createElement('div');
+  popupFooter.className = 'nav-popup-footer';
+  popupFooter.appendChild(expandBtn);
+  popupFooter.appendChild(gBtn);
+  popupFooter.appendChild(msToggle);
+  popupFooter.appendChild(pdfBtn);
+  popupFooter.appendChild(tipsBtn);
+  popupFooter.appendChild(toolsLink);
+  navPopup.appendChild(popupFooter);
+
+  document.body.appendChild(navPopup);
+
+  function buildPopupContents() {
+    popupList.innerHTML = '';
+    document.querySelectorAll('details.part-section').forEach(function(part) {
+      var summary = part.querySelector(':scope > summary');
+      if (!summary) return;
+      var h1 = summary.querySelector('h1[id]');
+      var partName = h1 ? h1.textContent.trim() : summary.textContent.trim();
+      var partId = h1 ? h1.id : '';
+
+      var firstCh = part.querySelector('details.chapter-section');
+      var fg = firstCh ? (firstCh.getAttribute('data-filter-group') || 'M') : 'M';
+      var dotColor = fg === 'A' ? '#d4a847' : (fg === 'C' ? '#9b7db8' : '#6a9fb5');
+
+      var partEl = document.createElement('div');
+      partEl.className = 'nav-popup-part';
+      var dot = document.createElement('span');
+      dot.className = 'nav-popup-dot';
+      dot.style.color = dotColor;
+      dot.textContent = '● ';
+      partEl.appendChild(dot);
+      partEl.appendChild(document.createTextNode(partName));
+      partEl.addEventListener('click', function() { navigateTo(partId); });
+      popupList.appendChild(partEl);
+
+      part.querySelectorAll(':scope > details.chapter-section').forEach(function(ch) {
+        var chSummary = ch.querySelector(':scope > summary');
+        if (!chSummary) return;
+        var h2 = chSummary.querySelector('h2[id], h3[id]');
+        var chName = h2 ? h2.textContent.trim() : chSummary.textContent.trim();
+        var chId = h2 ? h2.id : '';
+        var isInterlude = ch.getAttribute('data-filter-group') === 'G';
+        var isCurrent = chId && chId === currentChapterId;
+        var isHidden = ch.style.display === 'none';
+
+        var chEl = document.createElement('div');
+        chEl.className = 'nav-popup-chapter';
+        if (isCurrent) chEl.className += ' nav-popup-current';
+        if (isInterlude) chEl.className += ' nav-popup-interlude';
+        if (isHidden) chEl.className += ' nav-popup-dimmed';
+        chEl.textContent = chName;
+        chEl.setAttribute('data-chapter-id', chId);
+        chEl.addEventListener('click', function() {
+          if (isHidden && document.body.classList.contains('custodian-only')) {
+            document.body.classList.remove('custodian-only');
+            showGuardianOnly = false;
+            gBtn.style.cssText = gInactive;
+          }
+          navigateTo(chId);
+        });
+        popupList.appendChild(chEl);
+      });
+    });
+  }
+
+  function navigateTo(id) {
+    closePopup();
+    if (!id) return;
+    pushNavState();
+    autoExpand('#' + id);
+  }
+
+  function openPopup() {
+    updateBreadcrumb();
+    buildPopupContents();
+    popupOpen = true;
+    navBackdrop.style.display = 'block';
+    navPopup.style.display = 'block';
+    navPopup.style.bottom = nav.offsetHeight + 'px';
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        navBackdrop.style.opacity = '1';
+        navPopup.style.transform = 'translateY(0)';
+      });
+    });
+    var cur = navPopup.querySelector('.nav-popup-current');
+    if (cur) setTimeout(function() { cur.scrollIntoView({block: 'center', behavior: 'smooth'}); }, 50);
+  }
+
+  function closePopup() {
+    if (!popupOpen) return;
+    popupOpen = false;
+    navBackdrop.style.opacity = '0';
+    navPopup.style.transform = 'translateY(100%)';
+    setTimeout(function() {
+      navBackdrop.style.display = 'none';
+      navPopup.style.display = 'none';
+    }, 200);
+  }
+
+  navBackdrop.addEventListener('click', closePopup);
+
+  breadcrumb.removeAttribute('data-hover');
+  breadcrumb.classList.remove('hover-nav');
+  breadcrumb.style.cursor = 'pointer';
+  breadcrumb.setAttribute('role', 'button');
+  breadcrumb.setAttribute('tabindex', '0');
+  breadcrumb.setAttribute('aria-label', 'Open chapter navigation');
+  breadcrumb.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (popupOpen) closePopup();
+    else openPopup();
+  });
+
+  var dropHint = document.createElement('span');
+  dropHint.textContent = ' ▾';
+  dropHint.style.cssText = 'color:#888;font-size:0.85em;';
 
   // Body padding for sticky nav
   document.body.style.paddingBottom = '3em';
@@ -12465,23 +12484,6 @@ energyscholar+physics@gmail.com
   })();
 
   // --- Breadcrumb update on scroll ---
-  function makeBreadcrumbLink(label, targetId) {
-    var a = document.createElement('a');
-    a.textContent = label;
-    a.href = targetId ? '#' + targetId : '#';
-    a.style.cssText = 'text-decoration:none;color:' + (isDark ? '#aaa' : '#777') + ';';
-    a.addEventListener('mouseenter', function() { a.style.color = '#2471a3'; });
-    a.addEventListener('mouseleave', function() { a.style.color = isDark ? '#aaa' : '#777'; });
-    a.addEventListener('click', function(e) {
-      e.preventDefault();
-      if (targetId) {
-        autoExpand('#' + targetId);
-      } else {
-        window.scrollTo({top: 0, behavior: 'smooth'});
-      }
-    });
-    return a;
-  }
 
   function updateBreadcrumb() {
     var partName = '';
@@ -12489,7 +12491,6 @@ energyscholar+physics@gmail.com
     var chapterName = '';
     var chapterId = '';
 
-    // Find current part: last part-section whose summary scrolled past (open or closed)
     document.querySelectorAll('details.part-section > summary').forEach(function(s) {
       var rect = s.getBoundingClientRect();
       if (rect.height > 0 && rect.top <= 150) {
@@ -12500,7 +12501,6 @@ energyscholar+physics@gmail.com
       }
     });
 
-    // Find current chapter: last chapter-section (open or closed) scrolled past
     document.querySelectorAll('details.part-section details.chapter-section > summary').forEach(function(s) {
       var rect = s.getBoundingClientRect();
       if (rect.height > 0 && rect.top <= 150) {
@@ -12511,25 +12511,23 @@ energyscholar+physics@gmail.com
       }
     });
 
-    // Build breadcrumb
+    currentChapterId = chapterId;
+
     breadcrumb.innerHTML = '';
-    breadcrumb.appendChild(makeBreadcrumbLink('Relinquishment', ''));
-
-    if (partName) {
-      breadcrumb.appendChild(document.createTextNode(' \u203A '));
-      breadcrumb.appendChild(makeBreadcrumbLink(partName, partId));
+    var bcText = 'Relinquishment';
+    if (partName && chapterName) {
+      bcText = partName + ' \u203A ' + chapterName;
+    } else if (partName) {
+      bcText = partName;
     }
+    var span = document.createElement('span');
+    span.textContent = bcText;
+    span.style.cssText = 'color:' + (isDark ? '#aaa' : '#777') + ';';
+    breadcrumb.appendChild(span);
+    breadcrumb.appendChild(dropHint);
 
-    if (chapterName) {
-      breadcrumb.appendChild(document.createTextNode(' \u203A '));
-      breadcrumb.appendChild(makeBreadcrumbLink(chapterName, chapterId));
-    }
-
-    // Update share button href
     shareBtn.href = '#' + (chapterId || partId || '');
 
-    // URL reflects reading position — but preserve deep-link hashes
-    // that point to elements inside the current chapter (puzzles, anchors, etc.)
     var newHash = chapterId ? '#' + chapterId : (partId ? '#' + partId : '');
     if (newHash && newHash !== location.hash) {
       var curId = location.hash.slice(1);
@@ -12589,12 +12587,11 @@ energyscholar+physics@gmail.com
       try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch(e) {}
     }
     if (!target) return;
-    // Clear filters if target is inside a hidden chapter
     var parentCh = target.closest('details.chapter-section');
-    if (parentCh && parentCh.style.display === 'none') {
-      showScience = true;
-      showStory = true;
-      applyFilters();
+    if (parentCh && parentCh.style.display === 'none' && document.body.classList.contains('custodian-only')) {
+      document.body.classList.remove('custodian-only');
+      showGuardianOnly = false;
+      gBtn.style.cssText = gInactive;
     }
     var el = target;
     while (el) {
@@ -12615,21 +12612,13 @@ energyscholar+physics@gmail.com
 
     target.scrollIntoView();
   }
-  // Restore saved filter state (before deep-link, so deep-link can override)
-  try {
-    var savedSci = localStorage.getItem('relinquishment-filter-science');
-    var savedStory = localStorage.getItem('relinquishment-filter-story');
-    if (savedSci === '0' || savedStory === '0') {
-      if (savedSci === '0') showScience = false;
-      if (savedStory === '0') showStory = false;
-      applyFilters();
-    }
-  } catch(e) {}
+
 
   if (initialHash) {
     autoExpand(initialHash);
   }
   window.addEventListener('hashchange', function() {
+    if (popupOpen) closePopup();
     autoExpand(window.location.hash);
   });
   // Also intercept clicks on internal links
@@ -12878,19 +12867,12 @@ energyscholar+physics@gmail.com
       tocBtn.style.borderColor = '#555';
       tocBtn.style.color = '#e0e0e0';
     }
-    // Update quick-jump link colors
-    quickJump.querySelectorAll('a').forEach(function(a) {
-      a.style.color = '#6ba3f7';
-    });
     topBtn.style.color = '#6ba3f7';
     expandBtn.style.background = '#2471a3';
     backBtn.style.color = '#5dade2';
     backBtn.style.borderColor = '#5dade2';
     evalBtn.style.background = '#2471a3';
-    scienceBtn.style.background = '#2471a3';
-    scienceBtn.style.borderColor = '#2471a3';
-    storyBtn.style.background = '#2471a3';
-    storyBtn.style.borderColor = '#2471a3';
+
   }
 
   // --- Navigation Stack (Plan 0134b) ---
@@ -12931,6 +12913,7 @@ energyscholar+physics@gmail.com
   }
 
   function popNavState() {
+    if (popupOpen) { closePopup(); return; }
     if (!navStack.length) return;
     var state = navStack.pop();
     restoreExpanded(state.expanded);
@@ -13265,9 +13248,10 @@ energyscholar+physics@gmail.com
     dismissPanel();
   });
 
-  // Escape key dismisses panel
+  // Escape key dismisses panel and nav popup
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
+      if (popupOpen) { closePopup(); return; }
       dismissPanel();
     }
   });

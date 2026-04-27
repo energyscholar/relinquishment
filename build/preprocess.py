@@ -963,6 +963,16 @@ details.tech-section.deep-link-target > summary {
   animation: highlight-pulse 2s ease-out;
 }
 details.tech-section .share-anchor { vertical-align: middle; }
+
+/* Magnetosphere teaching imagemaps — Plan 0270 */
+@media (max-width: 700px) {
+  .ms-teaching {
+    float: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    margin: 1em auto !important;
+  }
+}
 """
     # Inject before closing </style> of the last style block in <head>
     head_end = text.find('</head>')
@@ -3001,6 +3011,111 @@ def inject_genesis_illustrations(html_path):
             print(f"  Genesis: {name} SVG injected")
 
 
+def inject_ms_diagrams(html_path):
+    """Insert magnetosphere teaching imagemaps into The Wrong Substrate (Plan 0270)."""
+    html_path = Path(html_path)
+    text = html_path.read_text()
+
+    EARTH_MS_SVG = '''<figure id="fig-ms-earth" class="inline-svg ms-teaching"
+  style="float:right;margin:0 0 1em 1.5em;max-width:420px;width:45%;text-align:center;">
+<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 420 280" style="display:block;margin:0 auto;">
+  <title>Cross-section of Earth's magnetosphere. Sun at far left, Earth center-left, magnetotail stretching right. Nine labeled regions: solar wind, bow shock, magnetosheath, magnetopause, dayside field lines, Earth, Van Allen belts, magnetotail, and plasma sheet (the Flat).</title>
+  <defs>
+    <style>@media(prefers-reduced-motion:reduce){animate{display:none}}</style>
+    <linearGradient id="ms-bow-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff6b35" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#ff6b35" stop-opacity="0"/>
+    </linearGradient>
+    <linearGradient id="ms-tail-grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1a2d4a" stop-opacity="0.15"/>
+      <stop offset="100%" stop-color="#1a2d4a" stop-opacity="0.03"/>
+    </linearGradient>
+  </defs>
+  <!-- Zone 1: Solar Wind -->
+  <g data-hover="&lt;strong&gt;Solar Wind&lt;/strong&gt;&lt;br&gt;A continuous stream of charged particles from the Sun — about 400 km/s, roughly five particles per cubic centimeter at Earth. It has blown without interruption for four and a half billion years." style="cursor:pointer">
+    <line x1="10" y1="100" x2="75" y2="115" stroke="#ffaa44" stroke-width="1.5" stroke-dasharray="6,4"><animate attributeName="stroke-dashoffset" from="10" to="0" dur="2s" repeatCount="indefinite"/></line>
+    <line x1="10" y1="130" x2="75" y2="138" stroke="#ffaa44" stroke-width="1.5" stroke-dasharray="6,4"><animate attributeName="stroke-dashoffset" from="10" to="0" dur="2s" repeatCount="indefinite"/></line>
+    <line x1="10" y1="160" x2="75" y2="152" stroke="#ffaa44" stroke-width="1.5" stroke-dasharray="6,4"><animate attributeName="stroke-dashoffset" from="10" to="0" dur="2s" repeatCount="indefinite"/></line>
+    <line x1="10" y1="190" x2="75" y2="175" stroke="#ffaa44" stroke-width="1.5" stroke-dasharray="6,4"><animate attributeName="stroke-dashoffset" from="10" to="0" dur="2s" repeatCount="indefinite"/></line>
+    <text x="8" y="88" font-family="Georgia, serif" font-size="8" fill="#555" font-style="italic">solar wind</text>
+  </g>
+  <!-- Zone 2: Bow Shock -->
+  <g data-hover="&lt;strong&gt;Bow Shock&lt;/strong&gt;&lt;br&gt;Where the supersonic solar wind brakes against Earth&#39;s magnetic field. A standing shock wave, roughly 90,000 km out — about 14 Earth radii." style="cursor:pointer">
+    <path d="M 90,50 Q 72,140 90,230" fill="none" stroke="url(#ms-bow-grad)" stroke-width="2.5"/>
+    <text x="62" y="45" font-family="Georgia, serif" font-size="8" fill="#555" font-style="italic">bow shock</text>
+  </g>
+  <!-- Zone 3: Magnetosheath -->
+  <g data-hover="&lt;strong&gt;Magnetosheath&lt;/strong&gt;&lt;br&gt;Turbulent heated plasma between the bow shock and magnetopause. Solar wind that has slowed but has not yet been fully deflected." style="cursor:pointer">
+    <path d="M 90,50 Q 72,140 90,230 L 120,215 Q 105,140 120,65 Z" fill="#d4a574" fill-opacity="0.08" stroke="none"/>
+    <text x="88" y="260" font-family="Georgia, serif" font-size="7" fill="#555" font-style="italic">magnetosheath</text>
+  </g>
+  <!-- Zone 4: Magnetopause -->
+  <g data-hover="&lt;strong&gt;Magnetopause&lt;/strong&gt;&lt;br&gt;The outer boundary of Earth&#39;s magnetic domain. Compressed on the dayside by solar wind, it expands and contracts as pressure changes — the magnetosphere breathes." style="cursor:pointer">
+    <path d="M 120,65 Q 105,140 120,215" fill="none" stroke="#6a9fba" stroke-width="1.5" stroke-dasharray="3,3"/>
+    <text x="106" y="60" font-family="Georgia, serif" font-size="7" fill="#555" font-style="italic">magnetopause</text>
+  </g>
+  <!-- Zone 8: Magnetotail (behind field lines so it's the background) -->
+  <g data-hover="&lt;strong&gt;Magnetotail&lt;/strong&gt;&lt;br&gt;Earth&#39;s magnetic field stretched by the solar wind into a tail millions of kilometers long — two lobes of opposite polarity, like the wake behind a ship." style="cursor:pointer">
+    <path d="M 200,85 L 415,60 L 415,120 L 240,130 Z" fill="url(#ms-tail-grad)" stroke="none"/>
+    <path d="M 200,195 L 415,220 L 415,160 L 240,150 Z" fill="url(#ms-tail-grad)" stroke="none"/>
+    <path d="M 200,85 Q 230,95 260,92" fill="none" stroke="#3a5f7a" stroke-width="1" opacity="0.5"/>
+    <path d="M 200,100 Q 260,108 330,100" fill="none" stroke="#3a5f7a" stroke-width="1" opacity="0.4"/>
+    <path d="M 200,180 Q 260,172 330,180" fill="none" stroke="#3a5f7a" stroke-width="1" opacity="0.4"/>
+    <path d="M 200,195 Q 230,185 260,188" fill="none" stroke="#3a5f7a" stroke-width="1" opacity="0.5"/>
+    <text x="310" y="78" font-family="Georgia, serif" font-size="8" fill="#555" font-style="italic">magnetotail</text>
+  </g>
+  <!-- Zone 9: Plasma Sheet — the Flat -->
+  <g data-hover="&lt;strong&gt;Plasma Sheet — the Flat&lt;/strong&gt;&lt;br&gt;A thin, hot layer of plasma where the two magnetotail lobes meet. About two Earth-radii thick, stretching thousands of kilometers. A natural two-dimensional surface of confined charged particles." style="cursor:pointer">
+    <line x1="220" y1="140" x2="415" y2="140" stroke="#cd7f32" stroke-width="2.5" opacity="0.8"/>
+    <line x1="220" y1="140" x2="415" y2="140" stroke="#cd7f32" stroke-width="8" opacity="0.12"/>
+    <text x="300" y="155" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#cd7f32" font-weight="bold" font-style="italic">the Flat</text>
+  </g>
+  <!-- Zone 5: Dayside Field Lines -->
+  <g data-hover="&lt;strong&gt;Dayside Field Lines&lt;/strong&gt;&lt;br&gt;Closed magnetic loops compressed by solar wind pressure. Particles trapped along these loops form the radiation belts. Strongest near the equator." style="cursor:pointer">
+    <path d="M 175,120 Q 140,80 145,60 Q 148,45 175,120" fill="none" stroke="#5ba3cf" stroke-width="1.2" opacity="0.6"/>
+    <path d="M 175,115 Q 128,65 130,40 Q 134,20 175,115" fill="none" stroke="#5ba3cf" stroke-width="1" opacity="0.45"/>
+    <path d="M 175,160 Q 140,200 145,220 Q 148,235 175,160" fill="none" stroke="#5ba3cf" stroke-width="1.2" opacity="0.6"/>
+    <path d="M 175,165 Q 128,215 130,240 Q 134,258 175,165" fill="none" stroke="#5ba3cf" stroke-width="1" opacity="0.45"/>
+    <text x="126" y="270" font-family="Georgia, serif" font-size="7" fill="#555" font-style="italic">dayside field</text>
+  </g>
+  <!-- Zone 7: Van Allen Belts -->
+  <g data-hover="&lt;strong&gt;Van Allen Belts&lt;/strong&gt;&lt;br&gt;Radiation belts of trapped high-energy particles. Inner belt: protons. Outer belt: electrons. Discovered by Explorer 1 in 1958." style="cursor:pointer">
+    <ellipse cx="175" cy="140" rx="28" ry="45" fill="none" stroke="#7b68ee" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+    <ellipse cx="175" cy="140" rx="42" ry="62" fill="none" stroke="#7b68ee" stroke-width="1" stroke-dasharray="4,3" opacity="0.35"/>
+    <text x="220" y="95" font-family="Georgia, serif" font-size="7" fill="#7b68ee" font-style="italic">Van Allen</text>
+  </g>
+  <!-- Zone 6: Earth -->
+  <g data-hover="&lt;strong&gt;Earth&lt;/strong&gt;&lt;br&gt;Magnetic dipole tilted 11.5° from the rotation axis. This tilt rocks the entire magnetosphere as Earth turns — a twelve-hour breathing rhythm that has run since the field first formed." style="cursor:pointer">
+    <circle cx="175" cy="140" r="18" fill="#4a90d9" opacity="0.85"/>
+    <circle cx="175" cy="140" r="20" fill="none" stroke="#7ec8e3" stroke-width="1.5" opacity="0.4"/>
+    <circle cx="175" cy="140" r="15" fill="#2d6a4f" opacity="0.3"/>
+    <text x="175" y="144" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="white" font-weight="bold">Earth</text>
+  </g>
+</svg>
+<figcaption style="font-size:0.75em;color:#888;margin-top:0.3em;font-style:italic;">Hover to explore</figcaption>
+</figure>'''
+
+    diagrams = [
+        ('Sixty thousand kilometers above your head', EARTH_MS_SVG, 'Earth MS'),
+    ]
+
+    injected = []
+    for marker, svg, name in diagrams:
+        idx = text.find(marker)
+        if idx == -1:
+            continue
+        open_p = text.rfind('<p', 0, idx)
+        if open_p == -1:
+            continue
+        text = text[:open_p] + '\n' + svg + '\n' + text[open_p:]
+        injected.append(name)
+
+    if injected:
+        html_path.write_text(text)
+        for name in injected:
+            print(f"  MS teaching: {name} diagram injected")
+
+
 def inject_chapter_puzzles(html_path):
     """Insert approved puzzles into chapter HTML (Plan 0255)."""
     import hashlib as _hashlib
@@ -3652,6 +3767,7 @@ if __name__ == "__main__":
         inject_button_sequence(sys.argv[2])
         inject_domain_buttons(sys.argv[2])
         inject_genesis_illustrations(sys.argv[2])
+        inject_ms_diagrams(sys.argv[2])
         inject_chapter_puzzles(sys.argv[2])
         inject_easter_eggs(sys.argv[2])
         inject_questions_index(sys.argv[2])
