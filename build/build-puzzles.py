@@ -565,10 +565,27 @@ km_puzzles = [p for p in chapter_puzzles if p.get('type') == 'km']
 nonsci_puzzles = [p for p in chapter_puzzles if p.get('category') == 'nonsci' and p.get('type') != 'km']
 science_puzzles = [p for p in chapter_puzzles if p.get('category') == 'science']
 
-nonsci_html = '\n'.join(render_container(p) for p in nonsci_puzzles)
-science_html = '\n'.join(render_container(p) for p in science_puzzles)
-bridge_puzzle_html = '\n'.join(render_container(bp) for bp in bridge_puzzles)
-km_html = '\n'.join(render_container(p) for p in km_puzzles)
+
+def wrap_collapsible(puzzle):
+    pid = esc(puzzle.get('id', puzzle.get('id', '')))
+    title = esc(puzzle.get('title', ''))
+    ptype = puzzle.get('type', puzzle.get('sub_type', ''))
+    appr = puzzle['id'] in approved_ids if 'id' in puzzle else False
+    badge = ' <span class="collapse-badge approved-tag">APPROVED</span>' if appr else ''
+    level = puzzle.get('level', '')
+    level_tag = f' <span class="collapse-badge level-tag">{esc(level)}</span>' if level else ''
+    type_tag = f' <span class="collapse-badge type-tag">{esc(ptype)}</span>'
+    inner = render_container(puzzle)
+    return f'''<details class="puzzle-collapse" data-puzzle-wrap="{pid}">
+<summary class="puzzle-collapse-summary">{title}{type_tag}{level_tag}{badge}</summary>
+{inner}
+</details>'''
+
+
+nonsci_html = '\n'.join(wrap_collapsible(p) for p in nonsci_puzzles)
+science_html = '\n'.join(wrap_collapsible(p) for p in science_puzzles)
+bridge_puzzle_html = '\n'.join(wrap_collapsible(bp) for bp in bridge_puzzles)
+km_html = '\n'.join(wrap_collapsible(p) for p in km_puzzles)
 
 km_section = ''
 if km_html:
@@ -757,6 +774,24 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .gd-continue { display: inline-block; margin-top: 0.5em; padding: 0.4em 1em; background: #1a5276; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-family: Georgia, "Times New Roman", serif; font-size: 0.95em; }
 .gd-continue:hover { background: #154360; }
 
+/* --- Collapsible puzzle wrappers --- */
+.puzzle-collapse { margin-bottom: 1em; border: 1px solid #ddd; border-radius: 6px; overflow: hidden; }
+.puzzle-collapse[open] { border-color: #1a5276; }
+.puzzle-collapse-summary { cursor: pointer; padding: 0.6em 1em; font-size: 1.05em; font-weight: bold; color: #1a5276; background: #f8f9fa; list-style: none; display: flex; align-items: center; gap: 0.5em; flex-wrap: wrap; }
+.puzzle-collapse-summary::-webkit-details-marker { display: none; }
+.puzzle-collapse-summary::before { content: '\25b8'; font-size: 0.9em; transition: transform 0.2s; }
+.puzzle-collapse[open] > .puzzle-collapse-summary::before { transform: rotate(90deg); }
+.puzzle-collapse[open] > .puzzle-collapse-summary { background: #eef3f8; border-bottom: 1px solid #ddd; }
+.puzzle-collapse > .puzzle-container { border: none; margin: 0; border-radius: 0; }
+.collapse-badge { font-size: 0.65em; font-weight: normal; padding: 0.15em 0.5em; border-radius: 3px; vertical-align: middle; }
+.approved-tag { background: #e8f8f5; color: #1a8a6a; }
+.level-tag { background: #eef3f8; color: #1a5276; }
+.type-tag { background: #f5f0fa; color: #7d5ba8; }
+.review-controls { display: flex; gap: 0.8em; justify-content: center; margin: 0.5em 0 1.5em; flex-wrap: wrap; }
+.review-controls button { padding: 0.4em 1em; border: 1px solid #ccc; border-radius: 4px; background: #f5f5f5; cursor: pointer; font-size: 0.85em; font-family: Georgia, "Times New Roman", serif; }
+.review-controls button:hover { background: #e8e8e8; }
+.review-controls button.active { background: #1a5276; color: #fff; border-color: #1a5276; }
+
 /* --- Tower (interactive stack) puzzle --- */
 .tower-instruction { text-align: center; font-style: italic; color: #888; font-size: 0.9em; margin-bottom: 1em; }
 .tower-stack { display: flex; flex-direction: column; gap: 4px; max-width: 420px; margin: 0 auto 1em; }
@@ -827,6 +862,16 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
   .gd-continue { background: #2a6496; }
   .gd-continue:hover { background: #1e4a70; }
   .gd-stage-question { color: #e0e0e0; }
+  .puzzle-collapse { border-color: #444; }
+  .puzzle-collapse[open] { border-color: #6ba3f7; }
+  .puzzle-collapse-summary { background: #2a2a2a; color: #6ba3f7; }
+  .puzzle-collapse[open] > .puzzle-collapse-summary { background: #1e2a3a; border-bottom-color: #444; }
+  .approved-tag { background: #1a2e2d; color: #2a9b9a; }
+  .level-tag { background: #1e2a3a; color: #6ba3f7; }
+  .type-tag { background: #2a1a3a; color: #b09ad0; }
+  .review-controls button { background: #2a2a2a; border-color: #555; color: #ccc; }
+  .review-controls button:hover { background: #333; }
+  .review-controls button.active { background: #2a6496; border-color: #2a6496; color: #fff; }
   .tower-layer { background: #333; border-color: #555; }
   .tower-label { color: #666; }
   .tower-layer:hover:not(.revealed) { border-color: #888; }
