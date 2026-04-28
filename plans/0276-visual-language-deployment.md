@@ -759,14 +759,138 @@ Toggle on: everything returns. Reload: state persists.
 
 ---
 
-## Phase 2D: Concept Symbol Pilot (rephased from Phase 5)
+## Phase 2D: Concept Symbol Pilot (revised S63)
 
-**Gated on: Bruce phone-tests ⬡ (U+2B21) rendering.** If it shows
-as □, switch to SVG data-URI fallback before proceeding.
+**Gate: PASSED.** ⬡ (U+2B21) renders on desktop + Android (tested S63).
 
-ONE symbol only: ⬡ for the Flat. First mention per chapter.
-See original Phase 5 spec above for Lapine deployment, pipeline
-ordering, screenreader notes, and kill-gate criteria.
+**Scope:** ONE symbol: ⬡ for the Flat. First hover-term occurrence
+per chapter-section. Entirely in preprocess.py — zero .tex changes.
+If the pilot fails the kill gate, delete one function + one CSS block.
+
+### Implementation
+
+New function `inject_concept_symbols(html_path)` in preprocess.py.
+Runs in the `--fix-html` chain (line ~4254), AFTER `collapse_tech_sections`,
+BEFORE `deduplicate_svg_defs`. Operates on the final HTML file.
+
+Pattern: same dedup approach as hover system (Plan 0213).
+
+```python
+def inject_concept_symbols(html_path):
+    """Inject ⬡ concept symbol before first 'the Flat' hover-term per chapter."""
+    html_path = Path(html_path)
+    text = html_path.read_text()
+
+    chapter_starts = [m.start() for m in re.finditer(r'<details class="chapter-section', text)]
+    seen = defaultdict(set)
+    count = 0
+
+    def _chapter_of(pos):
+        idx = bisect.bisect_right(chapter_starts, pos) - 1
+        return idx if idx >= 0 else -1
+
+    def replace_first(m):
+        nonlocal count
+        ch = _chapter_of(m.start())
+        if 'flat' in seen[ch]:
+            return m.group(0)
+        # Skip matches inside chapter titles (<summary>)
+        preceding = text[max(0, m.start()-500):m.start()]
+        last_open = preceding.rfind('<summary')
+        last_close = preceding.rfind('</summary>')
+        if last_open > last_close:
+            return m.group(0)  # In title — skip without marking seen
+        seen[ch].add('flat')
+        count += 1
+        # 48 chapter-sections: 0-3 front matter, 4-16 spine, 17+ record/appendix
+        if ch < 8:
+            phase = 'intro'
+        elif ch < 18:
+            phase = 'reinforce'
+        else:
+            phase = 'fluent'
+        return (f'<span data-concept="flat" data-concept-phase="{phase}" '
+                f'aria-hidden="true"></span>{m.group(0)}')
+
+    pattern = r'<span[^>]*data-hover-id="the-flat"[^>]*>[^<]*</span>'
+    text = re.sub(pattern, replace_first, text)
+    if count:
+        print(f"  Concept symbols: {count} ⬡ placed across {len(chapter_starts)} chapters")
+    html_path.write_text(text)
+```
+
+### Pipeline call (line ~4254, after collapse_tech_sections)
+
+```python
+inject_concept_symbols(sys.argv[2])
+```
+
+### CSS (add to concept-symbol block near line ~1006)
+
+```css
+[data-concept="flat"]::before {
+  content: '⬡ '; font-size: 0.85em; color: #b8860b;
+}
+[data-concept-phase="intro"]::before { opacity: 0.4; }
+[data-concept-phase="reinforce"]::before { opacity: 0.65; }
+[data-concept-phase="fluent"]::before { opacity: 1.0; }
+```
+
+Dark mode (add near line ~950):
+```css
+[data-concept="flat"]::before { color: #d4a847; }
+```
+
+### Safety CSS (Christmas tree guard)
+
+```css
+details.tech-section summary [data-concept]::before { content: none; }
+```
+
+### Already in place (from Phase 2C)
+
+- Toggle: `body.visual-plain [data-concept]::before { content: none; }` (line 1006)
+- Print: add `[data-concept]::before { content: none; }` to existing print block
+
+### Lapine phase mapping
+
+48 chapter-sections in the HTML (0-3 front matter, 4-16 spine,
+17+ record/appendix). Interludes are divs inside parent chapters,
+not their own chapter-sections.
+
+| Position | Chapters | Phase | Opacity |
+|----------|----------|-------|---------|
+| 0–7 | Front matter + Three Possibilities → The Braid | intro | 0.4 |
+| 8–17 | The Factoring Game → Weigh the Evidence | reinforce | 0.65 |
+| 18+ | Record Intro → appendices | fluent | 1.0 |
+
+### Expected output
+
+~12 chapters get ⬡ (first BODY occurrence — title-only skipped):
+
+| Ch | Chapter | Phase | Notes |
+|----|---------|-------|-------|
+| 2 | The Story Never Told | intro | Summary chapter |
+| 4 | Three Possibilities | intro | |
+| 5 | Wormholes in the Flat | intro | Title skipped; body gets it |
+| 6 | The Braid | intro | |
+| 10 | Growing a Mind | reinforce | |
+| 14 | Why Relinquish | reinforce | |
+| 15 | The Strongest Objection | reinforce | |
+| 22 | First Light | fluent | |
+| 27 | Instantiation | fluent | |
+| 29 | Letting Go | fluent | |
+| 30 | Twenty Years | fluent | |
+| 47 | Colophon | fluent | |
+
+Chapters 3 (Preface) and 13 (Capabilities) have "the Flat" ONLY
+in their titles — no body ⬡. This is correct: no symbol in headings.
+
+### Kill gate
+
+Bruce shows the book to someone. Does ⬡ trigger recognition of
+"the Flat" without being told what it means? Yes → expand to ⇌.
+No → delete `inject_concept_symbols()` and its CSS. Clean kill.
 
 ---
 
@@ -810,4 +934,17 @@ Execute Phase 2C. The plan has the JS and CSS. Add vlBtn to
 popupFooter in reader.js. Add body.visual-plain overrides to
 preprocess.py. Run make dev. Commit and push all of 2A+2B+2C.
 Message: "Plan 0225b phases 2A-2C: BORDERLINE, tints, toggle"
+```
+
+### Phase 2D
+
+```
+You are the Generator.
+
+Read Plan 0276 at ~/software/relinquishment/plans/0276-visual-language-deployment.md
+— section "Phase 2D: Concept Symbol Pilot (revised S63)".
+
+Execute Phase 2D. Add inject_concept_symbols() to preprocess.py — zero .tex changes.
+The plan has the complete function, CSS, phase mapping, and pipeline position.
+Run make dev. Commit, push, build. Report: count of ⬡ placed, which chapters.
 ```
