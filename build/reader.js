@@ -1633,4 +1633,19 @@
     e.preventDefault();
     activateGuardianMenuItem(item);
   });
+
+  document.querySelectorAll('svg[data-stepthrough]').forEach(function(svg) {
+    var stages = svg.querySelectorAll('.step-stage');
+    var indicator = svg.querySelector('.step-indicator');
+    var cur = 0;
+    function show(n) {
+      stages.forEach(function(g, i) { g.style.display = i === n ? '' : 'none'; });
+      cur = n;
+      if (indicator) indicator.textContent = (n + 1) + ' / ' + stages.length;
+    }
+    var prev = svg.querySelector('.step-prev');
+    var next = svg.querySelector('.step-next');
+    if (prev) prev.addEventListener('click', function(e) { e.stopPropagation(); if (cur > 0) show(cur - 1); });
+    if (next) next.addEventListener('click', function(e) { e.stopPropagation(); if (cur < stages.length - 1) show(cur + 1); });
+  });
 })();
