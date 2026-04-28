@@ -1916,7 +1916,6 @@ def fix_html_toc(html_path):
         nonlocal interlude_count
         interlude_count += 1
         content = m.group(1).strip()
-        # Strip <p><em>...</em></p> wrapper only for single-paragraph interludes
         if content.count('<p>') == 1:
             content = re.sub(r'^<p><em>(.*?)</em></p>$', r'\1', content, flags=re.DOTALL)
         idx = interlude_count - 1
@@ -3537,6 +3536,7 @@ def inject_chapter_puzzles(html_path):
 .puzzle-section summary:hover {{ color: #154360; }}
 .pz-container {{ padding: 0 1.5em 1.5em; }}
 .pz-container.pz-solved {{ border-color: #2a9b9a; }}
+.pz-title {{ font-size: 1.15em; font-weight: bold; color: #1a5276; margin: 0 0 0.5em 0; }}
 .pz-question {{ font-size: 1.05em; margin-bottom: 1em; }}
 .pz-gateway-blurb {{ font-size: 0.88em; color: #666; font-style: italic; margin: -0.5em 0 0.8em 0; padding: 0.4em 0.6em; border-left: 3px solid #2a9b9a; background: #f5fafa; border-radius: 0 4px 4px 0; }}
 .pz-option-btn {{ display: block; width: 100%; text-align: left; font-family: Georgia, "Times New Roman", serif; font-size: 1em; padding: 0.7em 1em; margin-bottom: 0.5em; border: 1px solid #ccc; border-radius: 4px; background: #fff; cursor: pointer; transition: border-color 0.2s, background 0.2s; }}
@@ -3572,6 +3572,7 @@ def inject_chapter_puzzles(html_path):
   .puzzle-section {{ background: linear-gradient(135deg, #1a2e2d, #1e3230); border-color: #2a5a58; border-image: repeating-linear-gradient(180deg, #2a9b9a 0px, #2a9b9a 8px, #3a6496 8px, #3a6496 16px) 5; }}
   .puzzle-section summary {{ color: #6ba3f7; }}
   .pz-container.pz-solved {{ border-color: #2a9b9a; }}
+  .pz-title {{ color: #6ba3f7; }}
   .pz-gateway-blurb {{ color: #aaa; background: #1a2a2a; }}
   .pz-option-btn {{ background: #2a2a2a; border-color: #555; color: #e0e0e0; }}
   .pz-option-btn:hover {{ background: #1e3a50; border-color: #6ba3f7; }}
@@ -3685,7 +3686,7 @@ def inject_chapter_puzzles(html_path):
                     opts_json.append('{' + f'"key":"{_esc(o["key"])}","text":"{_esc(o["text"])}"' + '}')
                 opts_json_str = '[' + ','.join(opts_json) + ']'
     
-                body_html = f'''    <h3>{title}</h3>
+                body_html = f'''    <div class="pz-title">{title}</div>
     {blurb_html}
     <p class="pz-question">{question}</p>
     <div class="pz-interaction" id="pz-inter-{pid}"></div>
@@ -3793,7 +3794,7 @@ def inject_chapter_puzzles(html_path):
     
                 stages_json_str = '[' + ','.join(stages_json) + ']'
     
-                body_html = f'''    <h3>{title}</h3>
+                body_html = f'''    <div class="pz-title">{title}</div>
     {blurb_html}
     <div class="pz-gd-progress">{dots_html}</div>
     <div class="pz-interaction" id="pz-inter-{pid}">
@@ -3920,7 +3921,7 @@ def inject_chapter_puzzles(html_path):
                 cols_data = puzzle.get('columns', [])
                 correct_data = puzzle.get('correct', [])
     
-                body_html = f'''    <h3>{title}</h3>
+                body_html = f'''    <div class="pz-title">{title}</div>
     {blurb_html}
     <p class="pz-question">{question}</p>
     <div class="pz-interaction" id="pz-inter-{pid}"></div>
@@ -4062,7 +4063,7 @@ def inject_chapter_puzzles(html_path):
     
             puzzle_html = f'''
 {utils_block}<details class="puzzle-section">
-  <summary>Puzzle &mdash; {summary_label}</summary>
+  <summary>Puzzle &mdash; {summary_label}<span class="share-anchor" data-link-id="{pid}" aria-hidden="true"></span></summary>
 {css_block}  <div class="pz-container" id="{pid}" data-puzzle-id="{pid}">
 {body_html}
     <div class="pz-result" id="pz-result-{pid}">
@@ -4185,13 +4186,35 @@ def collapse_tech_sections(html_path):
 
             title_text = re.sub(r'<[^>]+>', '', text[heading_close:heading_end - len(heading_end_tag)]).strip()
 
-            next_heading = re.search(
-                rf'<h[1-{heading_level}][\s>]|<details class="tech-section"|</details>|<div class="custodian-interlude"',
-                text[heading_end:]
-            )
-            if next_heading:
-                section_end = heading_end + next_heading.start()
-            else:
+            scan_pos = heading_end
+            details_depth = 0
+            section_end = None
+            while scan_pos < len(text):
+                m = re.search(
+                    rf'<details[\s>]|</details>|<h[1-{heading_level}][\s>]|<div class="custodian-interlude"',
+                    text[scan_pos:]
+                )
+                if not m:
+                    break
+                tag = m.group()
+                abs_pos = scan_pos + m.start()
+                if tag.startswith('<details'):
+                    details_depth += 1
+                    scan_pos = abs_pos + len(tag)
+                elif tag == '</details>':
+                    if details_depth > 0:
+                        details_depth -= 1
+                        scan_pos = abs_pos + len(tag)
+                    else:
+                        section_end = abs_pos
+                        break
+                elif details_depth == 0:
+                    section_end = abs_pos
+                    break
+                else:
+                    scan_pos = abs_pos + len(tag)
+
+            if section_end is None:
                 parent_details = text.find('</details>', heading_end)
                 section_end = parent_details if parent_details != -1 else len(text)
 
