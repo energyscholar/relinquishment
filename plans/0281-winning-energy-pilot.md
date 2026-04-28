@@ -2,11 +2,11 @@
 
 **Auditor:** Argus (S63)
 **Date:** 2026-04-27
-**Status:** WAITING ON GEN — chapter selection
+**Status:** PROMPT READY — all 3 chapters (Surrender = partial pass)
 **Source:** Gen's Document 3 (Plan 0275), Bruce (S63)
 **Annealing:** MED MED LOW
 **Priority:** High — Tier 1 in Plan 0275
-**Gate:** Gen selects chapter → Argus writes final plan → Generator executes
+**Gate:** Bruce + Gen agreed: do all 3 chapters. Surrender = partial (language pass only, structural pass gated on threshold interview)
 
 ---
 
@@ -284,8 +284,108 @@ might make the ending feel incomplete. Alternative: end on
 
 ---
 
-*Plan 0281 written by Argus (Auditor), S63. Three chapters
-evaluated against Gen's 7-pass checklist. Recommendation: Alpha
-Farm first (sets pattern, low risk), What Healer Said second
-(validates process), The Surrender last (needs threshold interview,
-highest stakes). Awaiting Gen's selection.*
+## Generator Handoff — What Healer Said
+
+```
+You are the Generator.
+
+Read Plan 0281 at ~/software/relinquishment/plans/0281-winning-energy-pilot.md
+— section "What Healer Said" evaluation.
+
+Execute the winning-energy pass on What Healer Said
+(manuscript/record/what-healer-said.tex). Three light edits:
+
+(1) "The Method" section (~line 96): "This is the Dunning-Kruger
+curve weaponized as pedagogy" — the preceding paragraph already
+SHOWS the method beautifully. This sentence TELLS the reader
+what to think. Either cut it, or reframe as witness: "I came to
+think of it as the Dunning-Kruger curve turned into pedagogy"
+or equivalent. Remove "weaponized" — it's winning energy.
+
+(2) "The deepest deduction" (~line 102): "The deepest deduction
+came from Kauffman" → "What I came to see as the deepest
+deduction came from Kauffman" or "The deduction that changed
+everything for me..." Light hedge.
+
+(3) Katharine Gun bullet list (~lines 166-173): Already
+well-hedged with "I believe" and "I cannot prove this." The
+bullet-list FORMAT is the issue — reads as a legal brief.
+Convert to narrative prose. Same content, paragraph form
+instead of \begin{itemize}. Keep all hedging language.
+
+Do NOT touch: the kangaroo story, the SAS body story, the
+Srebrenica section, or the Patrick Ball nexus. These are
+already strong witness-frame writing.
+
+(4) Run make dev.
+
+(5) Commit: "Plan 0281: winning-energy pass — What Healer Said
+register shift to witness frame"
+
+(6) Push. Report: which spots changed, word count delta, build
+status.
+```
+
+---
+
+## Generator Handoff — The Surrender (PARTIAL PASS)
+
+```
+You are the Generator.
+
+Read Plan 0281 at ~/software/relinquishment/plans/0281-winning-energy-pilot.md
+— section "The Surrender / Letting Go" evaluation.
+
+Execute a PARTIAL winning-energy pass on Letting Go
+(manuscript/record/the-surrender.tex). Language hedging only —
+do NOT restructure or remove the central argument. A second
+pass (with expanded threshold scene) will come later.
+
+(1) The Confession section (~lines 29-36): "Custodian stopped
+it" and similar flat assertions about C-claims. Add "According
+to this account" or "Under Possibility C" framing where missing.
+Some paragraphs already use this frame — make it consistent.
+
+(2) The Partial, Temporary Relinquishment (~lines 38-55):
+"Article 27 guarantees..." — reframe from the author arguing
+the UDHR case to reporting how the COWS understood it: "The
+COWS understood this tension. Article 27..." Shift agency from
+author-as-advocate to author-reporting-their-reasoning.
+
+(3) "The logic of relinquishment is not heroism. It is common
+sense!" (~line 82): This is the most concentrated winning
+energy in the manuscript. DO NOT DELETE — but soften. Remove
+the exclamation mark. Shift from declarative to witness frame:
+"The logic, as the COWS saw it, was not heroism but common
+sense." The "You cannot / you cannot / you cannot" cadence:
+prefix with "Under C" or "As they saw it" to locate the
+argument in the characters' reasoning, not the author's.
+
+(4) "Your phone. Your laptop. The server delivering this text."
+(~line 53): Soften the rhetorical escalation slightly. Consider
+"Under Possibility C, that means..." before the litany.
+
+Do NOT touch: the "It is done" scene (lines 73-81), the A/B/C
+frames at section ends, or the humor ("environmental impact
+statement"). These are already working.
+
+NOTE: This is a language pass. The structural pass (expanding
+the "It is done" scene with interview content, rebalancing
+argument vs. scene) is a separate future task.
+
+(5) Run make dev.
+
+(6) Commit: "Plan 0281: winning-energy partial pass — Letting Go
+language hedging (structural pass pending)"
+
+(7) Push. Report: which spots changed, word count delta, build
+status.
+```
+
+---
+
+*Plan 0281 written by Argus (Auditor), S63. Annealed MED LOW LOW.
+Three chapters evaluated against Gen's 7-pass checklist. Execution
+order: Alpha Farm (proves process) → What Healer Said (validates)
+→ The Surrender (partial — language only, structural pass gated
+on threshold interview). Bruce + Gen approved all 3.*
