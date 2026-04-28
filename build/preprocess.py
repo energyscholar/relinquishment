@@ -3494,8 +3494,7 @@ def find_chapter_end(text, chapter_section_id):
 
 
 def inject_chapter_puzzles(html_path):
-    """Insert approved puzzles into chapter HTML (Plan 0255)."""
-    import hashlib as _hashlib
+    """Insert approved puzzles into chapter HTML by extracting from puzzles.html (Plan 0274i)."""
     tracker_path = REPO / 'build' / 'puzzle-tracker.yaml'
     data_path = REPO / 'build' / 'puzzle-data.yaml'
     dl_path = REPO / 'build' / 'deep-links.yaml'
@@ -3504,7 +3503,6 @@ def inject_chapter_puzzles(html_path):
     tracker = yaml.safe_load(tracker_path.read_text())
     pdata = yaml.safe_load(data_path.read_text())
 
-    # Deep-links manifest: source of summary label text
     dl_questions = {}
     if dl_path.exists():
         for entry in yaml.safe_load(dl_path.read_text()):
@@ -3527,109 +3525,47 @@ def inject_chapter_puzzles(html_path):
     text = html_path.read_text()
     injected = 0
 
-    def _esc(s):
-        return str(s).replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
+    standalone_path = REPO / 'docs' / 'downloads' / 'puzzles.html'
+    if not standalone_path.exists():
+        print("  ERROR: puzzles.html not found — run build-puzzles.py first")
+        return
+    standalone_html = standalone_path.read_text()
 
-    # Shared CSS for injected puzzles (MC + GD)
-    PZ_CSS = '''
-.puzzle-section {{ margin: 2em 0; border: 1px solid #b8dbd9; border-left: 5px solid; border-image: repeating-linear-gradient(180deg, #2a9b9a 0px, #2a9b9a 8px, #1a5276 8px, #1a5276 16px) 5; border-radius: 0 6px 6px 0; background: linear-gradient(135deg, #f0faf9, #f5fcfb); }}
-.puzzle-section summary {{ padding: 0.8em 1em; cursor: pointer; font-weight: bold; color: #1a5276; font-size: 1.05em; }}
-.puzzle-section summary:hover {{ color: #154360; }}
-.pz-container {{ padding: 0 1.5em 1.5em; }}
-.pz-container.pz-solved {{ border-color: #2a9b9a; }}
-.pz-title {{ font-size: 1.15em; font-weight: bold; color: #1a5276; margin: 0 0 0.5em 0; }}
-.pz-question {{ font-size: 1.05em; margin-bottom: 1em; }}
-.pz-gateway-blurb {{ font-size: 0.88em; color: #666; font-style: italic; margin: -0.5em 0 0.8em 0; padding: 0.4em 0.6em; border-left: 3px solid #2a9b9a; background: #f5fafa; border-radius: 0 4px 4px 0; }}
-.pz-option-btn {{ display: block; width: 100%; text-align: left; font-family: Georgia, "Times New Roman", serif; font-size: 1em; padding: 0.7em 1em; margin-bottom: 0.5em; border: 1px solid #ccc; border-radius: 4px; background: #fff; cursor: pointer; transition: border-color 0.2s, background 0.2s; }}
-.pz-option-btn:hover {{ border-color: #1a5276; background: #f0f6fa; }}
-.pz-option-btn.pz-wrong {{ border-color: #c0392b; background: #fdf2f2; animation: pz-shake 0.3s ease-in-out; }}
-.pz-option-btn.pz-correct {{ border-color: #2a9b9a; background: #e8f8f5; font-weight: bold; }}
-@keyframes pz-shake {{ 0%, 100% {{ transform: translateX(0); }} 25% {{ transform: translateX(-4px); }} 75% {{ transform: translateX(4px); }} }}
-.pz-hint {{ display: none; color: #856404; background: #fff9e6; border-left: 3px solid #d4a14b; padding: 0.6em 1em; margin-top: 0.5em; font-style: italic; }}
-.pz-hint.pz-visible {{ display: block; }}
-.pz-result {{ display: none; margin-top: 1em; }}
-.pz-result.pz-visible {{ display: block; }}
-.pz-solved-badge {{ color: #2a9b9a; font-weight: bold; font-size: 1.1em; margin-bottom: 0.5em; }}
-.pz-abstract {{ border-left: 3px solid #2a9b9a; padding: 0.8em 1em; margin: 0; background: #f0faf9; font-style: italic; color: #333; line-height: 1.5; }}
-.pz-reset {{ font-size: 0.75em; font-weight: normal; color: #888; text-decoration: none; margin-left: 1em; }}
-.pz-reset:hover {{ color: #1a5276; text-decoration: underline; }}
-.pz-egg-reward {{ margin-top: 1em; font-style: italic; color: #555; }}
-.pz-egg-reward a {{ color: #1a5276; text-decoration: underline; }}
-.pz-fallback {{ font-style: italic; color: #888; }}
-.pz-gd-progress {{ display: flex; gap: 8px; justify-content: center; margin: 0.5em 0 1.5em; }}
-.pz-gd-dot {{ width: 12px; height: 12px; border-radius: 50%; border: 2px solid #ccc; background: #fff; transition: background 0.3s, border-color 0.3s; }}
-.pz-gd-dot.pz-gd-done {{ background: #2a9b9a; border-color: #2a9b9a; }}
-.pz-gd-dot.pz-gd-active {{ border-color: #1a5276; }}
-.pz-gd-stage {{ transition: opacity 0.3s ease; }}
-.pz-gd-stage-q {{ font-size: 1.05em; font-weight: bold; margin-bottom: 1em; }}
-.pz-gd-wrong {{ display: none; color: #856404; background: #fff9e6; border-left: 3px solid #d4a14b; padding: 0.6em 1em; margin-top: 0.8em; font-style: italic; }}
-.pz-gd-wrong.pz-visible {{ display: block; }}
-.pz-gd-right {{ display: none; margin-top: 0.8em; }}
-.pz-gd-right.pz-visible {{ display: block; }}
-.pz-gd-bridge {{ border-left: 3px solid #2a9b9a; padding: 0.6em 1em; background: #f0faf9; font-style: italic; color: #333; margin-bottom: 0.5em; }}
-.pz-gd-continue {{ display: inline-block; margin-top: 0.5em; padding: 0.4em 1em; background: #1a5276; color: #fff; border: none; border-radius: 4px; cursor: pointer; font-family: Georgia, "Times New Roman", serif; font-size: 0.95em; }}
-.pz-gd-continue:hover {{ background: #154360; }}
-@media (prefers-color-scheme: dark) {{
-  .puzzle-section {{ background: linear-gradient(135deg, #1a2e2d, #1e3230); border-color: #2a5a58; border-image: repeating-linear-gradient(180deg, #2a9b9a 0px, #2a9b9a 8px, #3a6496 8px, #3a6496 16px) 5; }}
-  .puzzle-section summary {{ color: #6ba3f7; }}
-  .pz-container.pz-solved {{ border-color: #2a9b9a; }}
-  .pz-title {{ color: #6ba3f7; }}
-  .pz-gateway-blurb {{ color: #aaa; background: #1a2a2a; }}
-  .pz-option-btn {{ background: #2a2a2a; border-color: #555; color: #e0e0e0; }}
-  .pz-option-btn:hover {{ background: #1e3a50; border-color: #6ba3f7; }}
-  .pz-option-btn.pz-wrong {{ background: #3a1a1a; border-color: #c0392b; }}
-  .pz-option-btn.pz-correct {{ background: #1a3a35; border-color: #2a9b9a; }}
-  .pz-hint {{ background: #2a2510; color: #f0d060; border-left-color: #d4a14b; }}
-  .pz-abstract {{ background: #1a2e2d; color: #ccc; }}
-  .pz-reset {{ color: #666; }}
-  .pz-reset:hover {{ color: #6ba3f7; }}
-  .pz-egg-reward {{ color: #999; }}
-  .pz-egg-reward a {{ color: #6ba3f7; }}
-  .pz-gd-dot {{ border-color: #555; background: #2a2a2a; }}
-  .pz-gd-dot.pz-gd-done {{ background: #2a9b9a; border-color: #2a9b9a; }}
-  .pz-gd-dot.pz-gd-active {{ border-color: #6ba3f7; }}
-  .pz-gd-wrong {{ background: #2a2510; color: #f0d060; border-left-color: #d4a14b; }}
-  .pz-gd-bridge {{ background: #1a2e2d; color: #ccc; }}
-  .pz-gd-continue {{ background: #2a6496; }}
-  .pz-gd-continue:hover {{ background: #1e4a70; }}
-  .pz-gd-stage-q {{ color: #e0e0e0; }}
-}}
-.pz-log-table {{ width: 100%; border-collapse: collapse; margin-bottom: 1em; font-size: 0.92em; }}
-.pz-log-table th {{ padding: 0.5em; text-align: center; border-bottom: 2px solid #1a5276; color: #1a5276; font-size: 0.9em; }}
-.pz-log-table td {{ padding: 0.5em; border-bottom: 1px solid #e0e0e0; }}
-.pz-log-table td:first-child {{ text-align: left; max-width: 55%; font-size: 0.9em; }}
-.pz-log-cell {{ text-align: center; cursor: pointer; font-size: 1.2em; min-width: 2.5em; user-select: none; transition: background 0.15s; }}
-.pz-log-cell:hover {{ background: #e8f0f8; }}
-.pz-log-cell.pz-wrong {{ background: #fdf2f2; color: #c0392b; }}
-.pz-log-check {{ margin-top: 0.5em; }}
-@media (prefers-color-scheme: dark) {{
-  .pz-log-table th {{ border-bottom-color: #6ba3f7; color: #6ba3f7; }}
-  .pz-log-table td {{ border-bottom-color: #333; }}
-  .pz-log-cell:hover {{ background: #2a3a4a; }}
-  .pz-log-cell.pz-wrong {{ background: #3a1a1a; }}
-}}
-@media (max-width: 600px) {{
-  .pz-option-btn {{ min-height: 44px; }}
-}}'''
-    # These are regular strings (not f-strings), so collapse doubled braces
-    PZ_CSS = PZ_CSS.replace('{{', '{').replace('}}', '}')
+    def extract_puzzle_html(src, pid):
+        marker = f'data-puzzle-wrap="{pid}"'
+        start = src.find(marker)
+        if start == -1:
+            return None
+        tag_start = src.rfind('<details', 0, start)
+        if tag_start == -1:
+            return None
+        depth = 0
+        i = tag_start
+        while i < len(src):
+            if src[i:i+8] == '<details':
+                depth += 1
+            elif src[i:i+10] == '</details>':
+                depth -= 1
+                if depth == 0:
+                    return src[tag_start:i+10]
+            i += 1
+        return None
 
-    # Shared JS utilities for injected puzzles
-    PZ_JS_UTILS = '''
-  var SKEY = "relinquishment-puzzles-solved";
-  function getSolved() {{ try {{ var s = localStorage.getItem(SKEY); return s ? JSON.parse(s) : {{}}; }} catch(e) {{ return {{}}; }} }}
-  function setSolved(id) {{ try {{ var s = getSolved(); s[id] = true; localStorage.setItem(SKEY, JSON.stringify(s)); }} catch(e) {{}} }}
-  function escHtml(s) {{ var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }}
-  function sha256(msg) {{
-    var buf = new TextEncoder().encode(msg);
-    return crypto.subtle.digest("SHA-256", buf).then(function(hash) {{
-      return Array.from(new Uint8Array(hash)).map(function(b) {{ return b.toString(16).padStart(2, "0"); }}).join("");
-    }});
-  }}'''
-    PZ_JS_UTILS = PZ_JS_UTILS.replace('{{', '{').replace('}}', '}')
+    def extract_standalone_css(src):
+        m = re.search(r'<style>(.*?)</style>', src, re.DOTALL)
+        return m.group(1) if m else ''
+
+    def extract_standalone_js(src):
+        for m in re.finditer(r'<script>(.*?)</script>', src, re.DOTALL):
+            if 'initAllPuzzles' in m.group(1):
+                return m.group(1)
+        return ''
+
+    standalone_css = extract_standalone_css(standalone_html).replace('.puzzle-collapse', '.puzzle-section')
+    standalone_js = extract_standalone_js(standalone_html)
 
     css_injected = False
-    utils_injected = False
+    js_injected = False
 
     by_chapter = {}
     for pid, tracker_entry in approved.items():
@@ -3655,436 +3591,39 @@ def inject_chapter_puzzles(html_path):
             puzzle = puzzle_content.get(pid)
             if not puzzle:
                 continue
-            ptype = puzzle.get('type', '')
-            if ptype not in ('mc', 'gd', 'log'):
-                print(f"  Puzzle: {pid} type '{ptype}' not supported \u2014 skipped")
+
+            raw_details = extract_puzzle_html(standalone_html, pid)
+            if raw_details is None:
+                print(f"  WARNING: puzzle {pid} not found in puzzles.html — skipped")
                 continue
 
-            title = _esc(puzzle.get('title', ''))
-            summary_label = _esc(dl_questions.get(pid, title))
-            blurb = puzzle.get('gateway_blurb', '')
-            abstract_text = _esc(puzzle.get('abstract', '').strip())
-            egg_url = puzzle.get('egg_url', '').strip()
-    
-            blurb_html = ''
-            if blurb:
-                blurb_html = f'<p class="pz-gateway-blurb">\U0001f9e9 {_esc(blurb)}</p>'
-    
-            egg_link = ''
-            if egg_url:
-                target_attr = '' if egg_url.startswith('#') else ' target="_blank"'
-                egg_link = f'<p class="pz-egg-reward"><a href="{_esc(egg_url)}"{target_attr}>&#x1f513; Continue exploring (You found an Easter Egg) &rarr;</a></p>'
-    
-            if ptype == 'mc':
-                question = _esc(puzzle.get('question', ''))
-                hint_text = _esc(puzzle.get('hint', ''))
-                options = puzzle.get('options', [])
-                answer_key = str(puzzle.get('answer_key', ''))
-                answer_hash = _hashlib.sha256(answer_key.encode()).hexdigest()
-    
-                opts_json = []
-                for o in options:
-                    opts_json.append('{' + f'"key":"{_esc(o["key"])}","text":"{_esc(o["text"])}"' + '}')
-                opts_json_str = '[' + ','.join(opts_json) + ']'
-    
-                body_html = f'''    <div class="pz-title">{title}</div>
-    {blurb_html}
-    <p class="pz-question">{question}</p>
-    <div class="pz-interaction" id="pz-inter-{pid}"></div>
-    <p class="pz-hint" id="pz-hint-{pid}">{hint_text}</p>'''
-    
-                puzzle_js = f'''
-(function() {{
-  var pid = "{pid}";
-  var answerHash = "{answer_hash}";
-  var options = {opts_json_str};
+            title = puzzle.get('title', '')
+            summary_label = dl_questions.get(pid, title)
+            summary_label = summary_label.replace('&', '&amp;').replace('<', '&lt;').replace('>', '&gt;').replace('"', '&quot;')
 
-  function revealPuzzle() {{
-    var el = document.getElementById(pid);
-    if (el) el.classList.add("pz-solved");
-    var inter = document.getElementById("pz-inter-" + pid);
-    if (inter) inter.style.display = "none";
-    var hint = document.getElementById("pz-hint-" + pid);
-    if (hint) hint.classList.remove("pz-visible");
-    var result = document.getElementById("pz-result-" + pid);
-    if (result) result.classList.add("pz-visible");
-    setSolved(pid);
-  }}
+            summary_end = raw_details.find('</summary>')
+            details_end = raw_details.rfind('</details>')
+            if summary_end == -1 or details_end == -1:
+                print(f"  WARNING: puzzle {pid} has malformed HTML — skipped")
+                continue
+            inner = raw_details[summary_end + 10:details_end]
 
-  function resetPuzzle() {{
-    try {{ var s = getSolved(); delete s[pid]; localStorage.setItem(SKEY, JSON.stringify(s)); }} catch(e) {{}}
-    var el = document.getElementById(pid);
-    if (el) el.classList.remove("pz-solved");
-    var inter = document.getElementById("pz-inter-" + pid);
-    if (inter) inter.style.display = "";
-    var hint = document.getElementById("pz-hint-" + pid);
-    if (hint) hint.classList.remove("pz-visible");
-    var result = document.getElementById("pz-result-" + pid);
-    if (result) result.classList.remove("pz-visible");
-    init();
-  }}
+            render_mode = tracker_entry.get('render', 'collapsible')
+            open_attr = ' open' if render_mode == 'inline' else ''
 
-  function showHint() {{
-    var h = document.getElementById("pz-hint-" + pid);
-    if (h) h.classList.add("pz-visible");
-  }}
+            new_summary = f'<summary>Puzzle &mdash; {summary_label}<span class="share-anchor" data-link-id="{pid}" aria-hidden="true"></span></summary>'
 
-  function checkAnswer(key, btn) {{
-    if (getSolved()[pid]) return;
-    if (!(window.crypto && window.crypto.subtle)) {{ revealPuzzle(); return; }}
-    sha256(key).then(function(h) {{
-      if (h === answerHash) {{
-        btn.classList.add("pz-correct");
-        setTimeout(revealPuzzle, 400);
-      }} else {{
-        btn.classList.add("pz-wrong");
-        setTimeout(function() {{ btn.classList.remove("pz-wrong"); }}, 600);
-        showHint();
-      }}
-    }});
-  }}
-
-  function init() {{
-    if (getSolved()[pid]) {{ revealPuzzle(); return; }}
-    var inter = document.getElementById("pz-inter-" + pid);
-    if (!inter) return;
-    var html = "";
-    for (var i = 0; i < options.length; i++) {{
-      var o = options[i];
-      html += '<button class="pz-option-btn" data-key="' + escHtml(o.key) + '">(' + escHtml(o.key) + ') ' + escHtml(o.text) + '</button>';
-    }}
-    inter.innerHTML = html;
-    var btns = inter.querySelectorAll(".pz-option-btn");
-    for (var j = 0; j < btns.length; j++) {{
-      (function(btn) {{
-        btn.addEventListener("click", function() {{ checkAnswer(btn.dataset.key, btn); }});
-      }})(btns[j]);
-    }}
-  }}
-
-  var resetBtn = document.getElementById("pz-reset-" + pid);
-  if (resetBtn) {{
-    resetBtn.addEventListener("click", function(e) {{ e.preventDefault(); resetPuzzle(); }});
-  }}
-
-  if (document.readyState === "loading") {{
-    document.addEventListener("DOMContentLoaded", init);
-  }} else {{
-    init();
-  }}
-}})();'''
-    
-            elif ptype == 'gd':
-                stages = puzzle.get('stages', [])
-                n = len(stages)
-                dots_html = ''.join(f'<span class="pz-gd-dot" id="pz-gd-dot-{pid}-{i}"></span>' for i in range(n))
-                stages_html = ''
-                stages_json = []
-                for i, st in enumerate(stages):
-                    opts_html = ''
-                    for o in st.get('options', []):
-                        opts_html += f'<button class="pz-option-btn pz-gd-opt" data-key="{_esc(o["key"])}" data-stage="{i}">({_esc(o["key"])}) {_esc(o["text"])}</button>\n'
-                    stages_html += f'''<div class="pz-gd-stage" id="pz-gd-stage-{pid}-{i}" style="{'display:none' if i > 0 else ''}">
-      <p class="pz-gd-stage-q">{_esc(st["question"])}</p>
-      <div class="pz-gd-stage-opts">{opts_html}</div>
-      <div class="pz-gd-wrong" id="pz-gd-wrong-{pid}-{i}"></div>
-      <div class="pz-gd-right" id="pz-gd-right-{pid}-{i}"></div>
-    </div>\n'''
-                    answer_hash = _hashlib.sha256(str(st['answer_key']).encode()).hexdigest()
-                    stages_json.append('{' + f'"hash":"{answer_hash}","wrong_prompt":"{_esc(st.get("wrong_prompt",""))}","right_prompt":"{_esc(st.get("right_prompt",""))}"' + '}')
-    
-                stages_json_str = '[' + ','.join(stages_json) + ']'
-    
-                body_html = f'''    <div class="pz-title">{title}</div>
-    {blurb_html}
-    <div class="pz-gd-progress">{dots_html}</div>
-    <div class="pz-interaction" id="pz-inter-{pid}">
-    {stages_html}
-    </div>'''
-    
-                puzzle_js = f'''
-(function() {{
-  var pid = "{pid}";
-  var stages = {stages_json_str};
-  var n = stages.length;
-  var current = 0;
-
-  function revealPuzzle() {{
-    var el = document.getElementById(pid);
-    if (el) el.classList.add("pz-solved");
-    var inter = document.getElementById("pz-inter-" + pid);
-    if (inter) inter.style.display = "none";
-    var result = document.getElementById("pz-result-" + pid);
-    if (result) result.classList.add("pz-visible");
-    setSolved(pid);
-  }}
-
-  function resetPuzzle() {{
-    try {{ var s = getSolved(); delete s[pid]; localStorage.setItem(SKEY, JSON.stringify(s)); }} catch(e) {{}}
-    var el = document.getElementById(pid);
-    if (el) el.classList.remove("pz-solved");
-    var inter = document.getElementById("pz-inter-" + pid);
-    if (inter) inter.style.display = "";
-    var result = document.getElementById("pz-result-" + pid);
-    if (result) result.classList.remove("pz-visible");
-    current = 0;
-    initGD();
-  }}
-
-  function setDot(i, cls) {{
-    var dot = document.getElementById("pz-gd-dot-" + pid + "-" + i);
-    if (dot) dot.className = "pz-gd-dot " + cls;
-  }}
-
-  function showStage(idx) {{
-    for (var i = 0; i < n; i++) {{
-      var stEl = document.getElementById("pz-gd-stage-" + pid + "-" + i);
-      if (stEl) stEl.style.display = (i === idx) ? "" : "none";
-    }}
-    for (var j = 0; j < idx; j++) setDot(j, "pz-gd-done");
-    setDot(idx, "pz-gd-active");
-    for (var k = idx + 1; k < n; k++) setDot(k, "");
-  }}
-
-  function advanceOrFinish() {{
-    setDot(current, "pz-gd-done");
-    current++;
-    if (current >= n) {{
-      revealPuzzle();
-    }} else {{
-      showStage(current);
-    }}
-  }}
-
-  function initGD() {{
-    if (getSolved()[pid]) {{ revealPuzzle(); return; }}
-    showStage(0);
-    for (var si = 0; si < n; si++) {{
-      (function(stageIdx) {{
-        var stage = stages[stageIdx];
-        var stageEl = document.getElementById("pz-gd-stage-" + pid + "-" + stageIdx);
-        if (!stageEl) return;
-        var btns = stageEl.querySelectorAll(".pz-gd-opt");
-        var wrongEl = document.getElementById("pz-gd-wrong-" + pid + "-" + stageIdx);
-        var rightEl = document.getElementById("pz-gd-right-" + pid + "-" + stageIdx);
-
-        for (var bi = 0; bi < btns.length; bi++) {{
-          (function(btn) {{
-            btn.addEventListener("click", function() {{
-              if (btn.classList.contains("pz-correct")) return;
-              var key = btn.dataset.key;
-              sha256(key).then(function(h) {{
-                if (h === stage.hash) {{
-                  btn.classList.add("pz-correct");
-                  if (wrongEl) wrongEl.classList.remove("pz-visible");
-                  var allBtns = stageEl.querySelectorAll(".pz-gd-opt");
-                  for (var x = 0; x < allBtns.length; x++) allBtns[x].disabled = true;
-                  if (stageIdx < n - 1 && stage.right_prompt) {{
-                    rightEl.innerHTML = '<div class="pz-gd-bridge">' + escHtml(stage.right_prompt) + '</div><button class="pz-gd-continue">Continue &rarr;</button>';
-                    rightEl.classList.add("pz-visible");
-                    rightEl.querySelector(".pz-gd-continue").addEventListener("click", function() {{
-                      advanceOrFinish();
-                    }});
-                  }} else {{
-                    advanceOrFinish();
-                  }}
-                }} else {{
-                  btn.classList.add("pz-wrong");
-                  setTimeout(function() {{ btn.classList.remove("pz-wrong"); }}, 600);
-                  if (wrongEl && stage.wrong_prompt) {{
-                    wrongEl.textContent = stage.wrong_prompt;
-                    wrongEl.classList.add("pz-visible");
-                  }}
-                }}
-              }});
-            }});
-          }})(btns[bi]);
-        }}
-      }})(si);
-    }}
-  }}
-
-  var resetBtn = document.getElementById("pz-reset-" + pid);
-  if (resetBtn) {{
-    resetBtn.addEventListener("click", function(e) {{ e.preventDefault(); resetPuzzle(); }});
-  }}
-
-  if (document.readyState === "loading") {{
-    document.addEventListener("DOMContentLoaded", initGD);
-  }} else {{
-    initGD();
-  }}
-}})();'''
-    
-            elif ptype == 'log':
-                question = _esc(puzzle.get('question', ''))
-                rows_data = puzzle.get('rows', [])
-                cols_data = puzzle.get('columns', [])
-                correct_data = puzzle.get('correct', [])
-    
-                body_html = f'''    <div class="pz-title">{title}</div>
-    {blurb_html}
-    <p class="pz-question">{question}</p>
-    <div class="pz-interaction" id="pz-inter-{pid}"></div>
-    <p class="pz-hint" id="pz-hint-{pid}">{_esc(puzzle.get("hint", ""))}</p>'''
-    
-                import json as _json
-                rows_json = []
-                for r in rows_data:
-                    if isinstance(r, dict):
-                        rows_json.append({'text': r['text'], 'tooltip': r.get('tooltip', '')})
-                    else:
-                        rows_json.append({'text': r, 'tooltip': ''})
-    
-                cols_json = []
-                for c in cols_data:
-                    if isinstance(c, dict):
-                        cols_json.append({'text': c['text'], 'tooltip': c.get('tooltip', '')})
-                    else:
-                        cols_json.append({'text': c, 'tooltip': ''})
-    
-                puzzle_js = f'''
-(function() {{
-  var pid = "{pid}";
-  var rows = {_json.dumps(rows_json)};
-  var cols = {_json.dumps(cols_json)};
-  var correct = {_json.dumps(correct_data)};
-  var grid = [];
-  for (var r = 0; r < rows.length; r++) {{ grid[r] = []; for (var c = 0; c < cols.length; c++) grid[r][c] = null; }}
-
-  function render() {{
-    var inter = document.getElementById("pz-inter-" + pid);
-    if (!inter) return;
-    var html = '<table class="pz-log-table"><thead><tr><th></th>';
-    cols.forEach(function(col) {{
-      var text = typeof col === "object" ? col.text : col;
-      var tip = typeof col === "object" && col.tooltip ? col.tooltip : "";
-      html += tip ? '<th title="' + escHtml(tip) + '" style="cursor:help;text-decoration:underline dotted">' + escHtml(text) + '</th>' : '<th>' + escHtml(text) + '</th>';
-    }});
-    html += '</tr></thead><tbody>';
-    for (var r = 0; r < rows.length; r++) {{
-      var rowText = typeof rows[r] === "object" ? rows[r].text : rows[r];
-      var rowTip = typeof rows[r] === "object" && rows[r].tooltip ? rows[r].tooltip : "";
-      html += '<tr><td' + (rowTip ? ' title="' + escHtml(rowTip) + '" style="cursor:help;border-bottom:1px dotted #888"' : '') + '>' + escHtml(rowText) + '</td>';
-      for (var c = 0; c < cols.length; c++) {{
-        var v = grid[r][c] === true ? "\\u2713" : (grid[r][c] === false ? "\\u2717" : "");
-        html += '<td class="pz-log-cell" data-r="' + r + '" data-c="' + c + '">' + v + '</td>';
-      }}
-      html += '</tr>';
-    }}
-    html += '</tbody></table><button class="pz-option-btn pz-log-check">Check</button>';
-    inter.innerHTML = html;
-
-    var cells = inter.querySelectorAll(".pz-log-cell");
-    for (var j = 0; j < cells.length; j++) {{
-      (function(td) {{ td.addEventListener("click", function() {{
-        var r = parseInt(td.dataset.r), c = parseInt(td.dataset.c);
-        if (grid[r][c] === null) grid[r][c] = true;
-        else if (grid[r][c] === true) grid[r][c] = false;
-        else grid[r][c] = null;
-        render();
-      }}); }})(cells[j]);
-    }}
-
-    inter.querySelector(".pz-log-check").addEventListener("click", function() {{
-      var ok = true;
-      for (var r = 0; r < rows.length; r++) for (var c = 0; c < cols.length; c++) {{
-        if (grid[r][c] !== correct[r][c]) {{
-          ok = false;
-          var td = inter.querySelector('.pz-log-cell[data-r="' + r + '"][data-c="' + c + '"]');
-          if (td) td.classList.add("pz-wrong");
-        }}
-      }}
-      if (ok) {{ revealPuzzle(); }}
-      else {{
-        setTimeout(function() {{ var ws = inter.querySelectorAll(".pz-wrong"); for (var k = 0; k < ws.length; k++) ws[k].classList.remove("pz-wrong"); }}, 800);
-        showHint();
-      }}
-    }});
-  }}
-
-  function revealPuzzle() {{
-    var el = document.getElementById(pid);
-    if (el) el.classList.add("pz-solved");
-    var inter = document.getElementById("pz-inter-" + pid);
-    if (inter) inter.style.display = "none";
-    var hint = document.getElementById("pz-hint-" + pid);
-    if (hint) hint.classList.remove("pz-visible");
-    var result = document.getElementById("pz-result-" + pid);
-    if (result) result.classList.add("pz-visible");
-    setSolved(pid);
-  }}
-
-  function resetPuzzle() {{
-    try {{ var s = getSolved(); delete s[pid]; localStorage.setItem(SKEY, JSON.stringify(s)); }} catch(e) {{}}
-    var el = document.getElementById(pid);
-    if (el) el.classList.remove("pz-solved");
-    var inter = document.getElementById("pz-inter-" + pid);
-    if (inter) {{ inter.style.display = ""; }}
-    var hint = document.getElementById("pz-hint-" + pid);
-    if (hint) hint.classList.remove("pz-visible");
-    var result = document.getElementById("pz-result-" + pid);
-    if (result) result.classList.remove("pz-visible");
-    grid = [];
-    for (var r = 0; r < rows.length; r++) {{ grid[r] = []; for (var c = 0; c < cols.length; c++) grid[r][c] = null; }}
-    render();
-  }}
-
-  function showHint() {{
-    var h = document.getElementById("pz-hint-" + pid);
-    if (h) h.classList.add("pz-visible");
-  }}
-
-  function init() {{
-    if (getSolved()[pid]) {{ revealPuzzle(); return; }}
-    render();
-  }}
-
-  var resetBtn = document.getElementById("pz-reset-" + pid);
-  if (resetBtn) {{
-    resetBtn.addEventListener("click", function(e) {{ e.preventDefault(); resetPuzzle(); }});
-  }}
-
-  if (document.readyState === "loading") {{
-    document.addEventListener("DOMContentLoaded", init);
-  }} else {{
-    init();
-  }}
-}})();'''
-    
             css_block = ''
             if not css_injected:
-                css_block = f'  <style>\n{PZ_CSS}\n  </style>\n'
+                css_block = f'<style>\n{standalone_css}\n</style>\n'
                 css_injected = True
-    
-            utils_block = ''
-            if not utils_injected:
-                utils_block = f'  <script>\n{PZ_JS_UTILS}\n  </script>\n'
-                utils_injected = True
-    
-            puzzle_html = f'''
-{utils_block}<details class="puzzle-section">
-  <summary>Puzzle &mdash; {summary_label}<span class="share-anchor" data-link-id="{pid}" aria-hidden="true"></span></summary>
-{css_block}  <div class="pz-container" id="{pid}" data-puzzle-id="{pid}">
-{body_html}
-    <div class="pz-result" id="pz-result-{pid}">
-      <div class="pz-solved-badge">&#10003; Solved <a href="#" class="pz-reset" id="pz-reset-{pid}">&#x21ba; Try again</a></div>
-      <blockquote class="pz-abstract">{abstract_text}</blockquote>
-      {egg_link}
-    </div>
-    <noscript><p class="pz-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
-  </div>
-  <script>
-{puzzle_js}
-  </script>
-</details>
-'''
-            render_mode = tracker_entry.get('render', 'collapsible')
-            if render_mode == 'inline':
-                puzzle_html = puzzle_html.replace(
-                    '<details class="puzzle-section">',
-                    '<details class="puzzle-section" open>'
-                )
+
+            js_block = ''
+            if not js_injected:
+                js_block = f'<script>\n{standalone_js}\n</script>\n'
+                js_injected = True
+
+            puzzle_html = f'\n{js_block}<details class="puzzle-section"{open_attr}>\n{new_summary}\n{css_block}{inner}\n</details>\n'
 
             visibility = tracker_entry.get('visibility', 'title')
             inject_pos = pos
@@ -4092,12 +3631,12 @@ def inject_chapter_puzzles(html_path):
                 chapter_end = find_chapter_end(text, CHAPTER_SECTION_IDS[chapter])
                 if chapter_end != -1:
                     inject_pos = chapter_end
-                    print(f"  Puzzle: {pid} \"{title}\" \u2192 inside {chapter} (chapter level) \u2713")
+                    print(f"  Puzzle: {pid} \"{title}\" → inside {chapter} (chapter level) ✓")
                 else:
                     print(f"  WARNING: {pid} visibility=chapter but chapter end not found, using title level")
-                    print(f"  Puzzle: {pid} \"{title}\" \u2192 {chapter} (before {target_id}) \u2713")
+                    print(f"  Puzzle: {pid} \"{title}\" → {chapter} (before {target_id}) ✓")
             else:
-                print(f"  Puzzle: {pid} \"{title}\" \u2192 {chapter} (before {target_id}) \u2713")
+                print(f"  Puzzle: {pid} \"{title}\" → {chapter} (before {target_id}) ✓")
 
             text = text[:inject_pos] + puzzle_html + '\n' + text[inject_pos:]
             injected += 1
@@ -4105,6 +3644,8 @@ def inject_chapter_puzzles(html_path):
     if injected:
         html_path.write_text(text)
     print(f"  Chapter puzzles: {injected} injected")
+
+
 
 
 def verify_puzzle_injection(html_path):
@@ -4117,9 +3658,8 @@ def verify_puzzle_injection(html_path):
     expected = set()
     for p in tracker.get('chapter_puzzles', []):
         if p.get('approved') and p.get('installed'):
-            ptype = p.get('type', '')
             chapter = p.get('location', {}).get('chapter', '')
-            if ptype in ('mc', 'gd', 'log') and chapter in CHAPTER_INJECTION_TARGETS:
+            if chapter in CHAPTER_INJECTION_TARGETS:
                 expected.add(p['id'])
 
     actual = set(re.findall(r'id="(pz-[a-z]+-t\d+-\d+)"', text))
