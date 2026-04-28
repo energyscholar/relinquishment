@@ -49,10 +49,6 @@
   question: "Could a secret that big really be kept?"
   category: skeptic
 
-- id: dl:absence-not-evidence
-  question: "If this happened, why is there no evidence?"
-  category: skeptic
-
 - id: dl:silence-is-structural
   question: "Doesn't the absence of papers mean it's been studied and ruled out?"
   category: skeptic
