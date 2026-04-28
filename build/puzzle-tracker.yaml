@@ -200,7 +200,7 @@ chapter_puzzles:
     topic: t6
     level: p2
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: capabilities
       rationale: "UDHR applied to non-human intelligence — capabilities chapter"
@@ -234,7 +234,7 @@ chapter_puzzles:
     topic: t6
     level: p1
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: why-relinquish
       rationale: "Moral foundation for relinquishment — why concentrated power fails"
@@ -250,7 +250,7 @@ chapter_puzzles:
     topic: t6
     level: p1
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: why-relinquish
       rationale: "Direct chapter match — why give up power"
@@ -337,7 +337,7 @@ chapter_puzzles:
     topic: t7
     level: p3
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: why-relinquish
       rationale: "UDHR constraint analysis — pairs with 'Capabilities' MC puzzle"
@@ -455,7 +455,7 @@ chapter_puzzles:
     topic: t6
     level: p1
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: capabilities
       rationale: "UDHR ethics grounding via guided deduction"
