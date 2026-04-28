@@ -914,11 +914,11 @@ details.tech-section > summary {
 }
 details.tech-section > summary::-webkit-details-marker { display: none; }
 details.tech-section > summary::before {
-  content: '\25B8  ';
+  content: '\\25B8  ';
   color: #888;
 }
 details.tech-section[open] > summary::before {
-  content: '\25BE  ';
+  content: '\\25BE  ';
 }
 details.tech-section .tech-title {
   font-style: italic;
@@ -927,7 +927,7 @@ details.tech-section .tech-title {
 }
 .tech-grade { cursor: help; }
 .tech-grade::after {
-  content: ' \2714';
+  content: ' \\2714';
   color: #6a994e;
   font-size: 0.8em;
   margin-left: 0.4em;
