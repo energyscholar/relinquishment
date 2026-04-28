@@ -4,7 +4,7 @@
 
 ## Context
 
-The book has chapters tagged with filter-groups (A=science, B=bridge, C=testimony, G=Guardian, M=meta). Skeptical readers dismiss the book because B/C/G material ("crank territory") overshadows the published physics. The filter lets them read just the science (A) or just the story (B/C/G). Guardian is visible in ALL modes — she narrates both tracks. Data structure already exists in `menu-tooltips.yaml`; this plan propagates it to HTML and adds toggle buttons.
+The book has chapters tagged with filter-groups (A=science, B=bridge, C=testimony, G=Custodian, M=meta). Skeptical readers dismiss the book because B/C/G material ("crank territory") overshadows the published physics. The filter lets them read just the science (A) or just the story (B/C/G). Custodian is visible in ALL modes — she narrates both tracks. Data structure already exists in `menu-tooltips.yaml`; this plan propagates it to HTML and adds toggle buttons.
 
 ## Files to modify
 
@@ -87,11 +87,11 @@ function applyFilter(mode) {
 
 In `menu-tooltips.yaml` line 10, change:
 ```
-G = Guardian interlude (visible in "just the story" mode)
+G = Custodian interlude (visible in "just the story" mode)
 ```
 to:
 ```
-G = Guardian interlude (visible in ALL modes)
+G = Custodian interlude (visible in ALL modes)
 ```
 
 ## NOT in this plan (deferred)
@@ -104,8 +104,8 @@ G = Guardian interlude (visible in ALL modes)
 
 1. `make html` builds without errors
 2. Open in browser — bottom bar shows Science and Story buttons
-3. Click "Science": The Record part disappears, The Flat stays, Guardian interludes stay
-4. Click "Story": The Flat disappears, The Record stays, Guardian interludes stay
+3. Click "Science": The Record part disappears, The Flat stays, Custodian interludes stay
+4. Click "Story": The Flat disappears, The Record stays, Custodian interludes stay
 5. Click active button: everything returns
 6. Reload page: filter state persists
 7. Navigate to `#record:alpha-farm` while in Science mode: filter clears, chapter opens

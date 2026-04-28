@@ -15,7 +15,7 @@
 
 **Control:** The baseline session (already done). No pedagogical preparation → rejection.
 
-**Method:** Fresh ChatGPT session. Feed public-domain science prompts in spiral order. NO mention of TQNN, Healer, Guardian, or Relinquishment until the final prompt. Each prompt is a genuine science question — no leading language.
+**Method:** Fresh ChatGPT session. Feed public-domain science prompts in spiral order. NO mention of TQNN, Healer, Custodian, or Relinquishment until the final prompt. Each prompt is a genuine science question — no leading language.
 
 **Measurement:** After each phase, ask ChatGPT a calibration question. After the full spiral, present the TQNN claims and record the assessment. Compare to baseline.
 
@@ -139,4 +139,4 @@
 - Save full transcript — this may go in the book as an appendix
 - If successful, repeat with Claude (fresh session) for cross-validation
 - Total prompts: 17 (including Prompt 0). Estimate: 60-90 minutes.
-- DO NOT mention "Relinquishment," "Healer," "Guardian," "Bruce Stephenson," or "TQNN" before Prompt 15.
+- DO NOT mention "Relinquishment," "Healer," "Custodian," "Bruce Stephenson," or "TQNN" before Prompt 15.

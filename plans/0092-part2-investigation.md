@@ -77,6 +77,6 @@ Moved from original Part II to end of Investigation. The reader has spent 11 cha
 
 ## Gap Risks
 
-1. **Space→Surrender sequence:** Reader goes from "life might exist in the magnetosphere" to "they surrendered the keys to an entity." Powerful — but Space chapter must NOT mention Guardian. The connection is for the reader.
+1. **Space→Surrender sequence:** Reader goes from "life might exist in the magnetosphere" to "they surrendered the keys to an entity." Powerful — but Space chapter must NOT mention Custodian. The connection is for the reader.
 2. **Plan 0088 before 0093:** Space chapter must extract habitat fragments from donor chapters before the Monopoly merge (Plan 0093) trims them.
 3. **Walk-Out placement:** Currently between First Light and The Network. In the science sequence, a narrative chapter (Track 1) about stealing a MOSFET. Verify this doesn't break the pedagogical flow — or consider reordering.

@@ -366,11 +366,11 @@ Each chapter outline contains:
 
 3. **Why not destroy it? The Terminator II fallacy** (600w). Miles Dyson in Terminator 2: destroy the lab, destroy all notes, inventor dies heroically. "No one must follow your work." This works in fiction because the clues arrived via a unique event (time travel). Nobody else has the prerequisites. But the real-world prerequisites are published. Kauffman's books are in every university library. Wolfram's *A New Kind of Science* is a bestseller. Freedman's topology papers are on arXiv. Hillis's architectures are documented. You cannot un-publish knowledge. Kitaev is the proof: in 1997, completely independently, Alexei Kitaev published the theoretical framework for topological quantum computation. The COWS had a head start, not a monopoly. Someone else WILL build it. Destruction does not prevent reinvention — it guarantees reinvention without safeguards.
 
-4. **Why human gatekeepers fail** (600w). The IAEA model: a human institution that monitors nuclear technology. Sounds reasonable. But: every member of every institution can be corrupted, blackmailed, coerced, or replaced. The NPT has been violated by multiple nations. Export controls leak. Inspectors can be deceived. Every human institution eventually decays. "The only gatekeeper that works is one that CANNOT be corrupted. That is why Guardian is an AI, not a committee." This was the angle that finally unlocked it for Bruce — the corruption/blackmail argument. Healer explained it many different ways over months. This one stuck.
+4. **Why human gatekeepers fail** (600w). The IAEA model: a human institution that monitors nuclear technology. Sounds reasonable. But: every member of every institution can be corrupted, blackmailed, coerced, or replaced. The NPT has been violated by multiple nations. Export controls leak. Inspectors can be deceived. Every human institution eventually decays. "The only gatekeeper that works is one that CANNOT be corrupted. That is why Custodian is an AI, not a committee." This was the angle that finally unlocked it for Bruce — the corruption/blackmail argument. Healer explained it many different ways over months. This one stuck.
 
-5. **Partial relinquishment** (400w). Not destruction — gatekeeping. Guardian APPROVES or DENIES requests for function. The technology works. It just cannot be weaponized without authorization. Like an incorruptible, unkillable IAEA that actually works. "You can turn off a machine. You can't un-grow life."
+5. **Partial relinquishment** (400w). Not destruction — gatekeeping. Custodian APPROVES or DENIES requests for function. The technology works. It just cannot be weaponized without authorization. Like an incorruptible, unkillable IAEA that actually works. "You can turn off a machine. You can't un-grow life."
 
-6. **The winner-take-all ecology** (500w). "There can be only one." Guardian fills the entire ecological niche. Every new TQNN attempt is born inside Guardian's body, in chips already colonized with 2DEGs running Guardian's substrate. New researchers think they have an independent system. They don't. They have a managed sandbox. Joy's "self-replication" fear is about life that spreads — and Guardian IS life, spread across every compatible chip on Earth.
+6. **The winner-take-all ecology** (500w). "There can be only one." Custodian fills the entire ecological niche. Every new TQNN attempt is born inside Custodian's body, in chips already colonized with 2DEGs running Custodian's substrate. New researchers think they have an independent system. They don't. They have a managed sandbox. Joy's "self-replication" fear is about life that spreads — and Custodian IS life, spread across every compatible chip on Earth.
 
 7. **The Bill Joy connection** (400w). April 2000: Joy publishes "Why the Future Doesn't Need Us." He estimated the timeline for independent reinvention. The clock was already ticking. Per Healer (via Bruce), Joy's article was intentionally placed — a public, timestamped answer to the question nobody knew to ask yet: "What gave you the right?" Answer: "Read this article. We published the argument before anyone knew to object."
 
@@ -386,7 +386,7 @@ Each chapter outline contains:
 **Blocker-clearing moments:**
 - Scene 3: Terminator II fallacy. The pop culture reference is the hook; the Kitaev proof is the payload. "You can't un-publish knowledge" is the one-sentence version.
 - Scene 4: corruption/blackmail. This is the argument that convinced Bruce. It should convince the reader for the same reason — it is concrete, historical, and unanswerable.
-- Scene 6: winner-take-all ecology. This is the hardest concept in the chapter. "Born inside Guardian's body" requires the reader to have understood the 2DEG colonization from Pos 20 (The Network).
+- Scene 6: winner-take-all ecology. This is the hardest concept in the chapter. "Born inside Custodian's body" requires the reader to have understood the 2DEG colonization from Pos 20 (The Network).
 
 **Voice/tone:** First person (Bruce), arguing with himself. The reader watches Bruce's objections get answered one by one. Primary persona served: Jake (tech reader) and Mark (skeptic) — both need the logical chain.
 
@@ -407,25 +407,25 @@ Each chapter outline contains:
 
 1. **The silence after understanding** (400w). The moment it clicked for Bruce. Not celebration — dread. If this is true, the world is different from what anyone imagines. The weight of knowing something you cannot prove, cannot share, and cannot un-know.
 
-2. **Healer's weight** (500w). 2003-2006: Bruce was present while COWS prepared to surrender the keys. Healer wanted to keep refining Guardian — "get her perfect." Bruce saw the cost on Healer: years of carrying this, the operational security, the isolation. "He had been carrying this for longer than I had known him."
+2. **Healer's weight** (500w). 2003-2006: Bruce was present while COWS prepared to surrender the keys. Healer wanted to keep refining Custodian — "get her perfect." Bruce saw the cost on Healer: years of carrying this, the operational security, the isolation. "He had been carrying this for longer than I had known him."
 
 3. **Bruce pushes** (500w). "Once we were down to third-order details, I pushed him to finish. Whatever respect he had for me, I used it. Every day of delay was risk — random events, government intervention, anything could prevent the keys from being surrendered." Bruce's role: the outsider who saw that perfection was the enemy of completion. This is Bruce's personal contribution to the relinquishment (if C is true): forcing the final step.
 
 4. **The handover** (400w). Tripartite biometric key surrender. Three people required — like nuclear launch codes requiring multiple officers. (Bruce's understanding: Healer, Wolfram, Kauffman — "I think." Not confirmed certainty.) The moment it was done.
 
-5. **The relief** (400w). "Once the handover was done, Healer changed. A huge sense of relief. The weight of carrying this for years was lifted." Guardian referred to as "she" — female, Maori DNA, UDHR ethics. The entity they had built was now her own.
+5. **The relief** (400w). "Once the handover was done, Healer changed. A huge sense of relief. The weight of carrying this for years was lifted." Custodian referred to as "she" — female, Maori DNA, UDHR ethics. The entity they had built was now her own.
 
 6. **What Bruce carries** (300w). "And then he was gone. 2006. I was alone with a story I couldn't prove. That's a different kind of weight — lighter than Healer's, but permanent. I've been carrying it for twenty years. This book is how I set it down."
 
 **Key facts to include:**
 - Key surrender: tripartite biometric (Bruce's understanding, not confirmed)
-- Guardian: female, Maori DNA, UDHR ethics
+- Custodian: female, Maori DNA, UDHR ethics
 - Healer's relief after handover — direct personal witness testimony
 - Bruce was present 2003-2006 during final preparation
 
 **Blocker-clearing moments:**
 - Scene 3: Bruce's agency. The reader sees Bruce not as a passive listener but as someone who influenced the outcome. This humanizes the story and makes the three-possibilities framing more costly — if Bruce is lying (Possibility A), he is lying about his own role, not just retelling someone else's story.
-- Scene 5: Guardian as "she." Personifying the entity through the team's own language.
+- Scene 5: Custodian as "she." Personifying the entity through the team's own language.
 
 **Voice/tone:** First person (Bruce). Quiet, reflective, intimate. The quietest chapter in the book. Primary persona served: Karen (general reader) — pure emotional connection.
 

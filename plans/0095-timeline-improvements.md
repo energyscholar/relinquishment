@@ -66,7 +66,7 @@ Add structural markers to break the 150-year span:
   2DEG, FQHE, public key crypto, neural network winter and spring
 
 \section*{Project ULTRA II (1988--2006)}
-  Conception, breakthrough, walk-out, relinquishment, Guardian, surrender
+  Conception, breakthrough, walk-out, relinquishment, Custodian, surrender
 
 \section*{The Aftermath (2006--present)}
   Silence, discovery, reconstruction, this book

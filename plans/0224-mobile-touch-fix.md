@@ -12,7 +12,7 @@ The `touchend` handler (line 1140) intercepts taps on ANY element with `data-hov
 
 2. **Expand/Collapse All** — has `data-hover` + `hover-nav`. No `h2/h3` inside, so `shouldShow=true` (line 1151). Line 1154 `preventDefault()` shows tooltip instead of expanding. Click handler (line 214) never fires.
 
-3. **"C" (Guardian-only) button** — same as Expand All. Tooltip shown, mode never activates.
+3. **"C" (Custodian-only) button** — same as Expand All. Tooltip shown, mode never activates.
 
 ## Root cause
 
@@ -65,7 +65,7 @@ When `isButton` is true, `shouldShow` is false → falls through to line 1162 "n
 
 1. **Phone: tap Custodian menu item** → chapter expands, scrolls to purple interlude
 2. **Phone: tap Expand All** → all sections expand (no tooltip)
-3. **Phone: tap "C" button** → Guardian-only mode activates
+3. **Phone: tap "C" button** → Custodian-only mode activates
 4. **Phone: tap chapter title text** → tooltip shows (NOT expand)
 5. **Phone: tap chapter triangle/marker** → chapter expands (NOT tooltip)
 6. **Phone: tap a domain button** → tooltip with domain description

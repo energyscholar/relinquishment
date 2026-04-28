@@ -49,7 +49,7 @@ No change needed for line 58.
 ## What Does NOT Need Changing
 
 - Hook narrative content — already pure narrative pull per Maugham revision
-- Summary narrative sections (Mentor, Walk-Out, Guardian, Lock on Every Door, etc.) — all consistent with current manuscript and corrections
+- Summary narrative sections (Mentor, Walk-Out, Custodian, Lock on Every Door, etc.) — all consistent with current manuscript and corrections
 - Three Possibilities section — already trimmed per PTL-062 Phase 1B
 - Reading Guide — 5-part structure + 4 track descriptions + bridge description all match main.tex
 - "David Lane (not his real name)" — consistent with Session 7 real-names decision

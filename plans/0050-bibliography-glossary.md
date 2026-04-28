@@ -184,7 +184,7 @@ The #1 attack on this book is "crank dismissal." Citations counter it by showing
 ## Glossary Population
 
 ### Existing entries (10 terms in glossary-entries.tex):
-TQNN, COWS, Guardian, FQH, SFI, DARPA, GCHQ, UDHR, cDc, ICTY
+TQNN, COWS, Custodian, FQH, SFI, DARPA, GCHQ, UDHR, cDc, ICTY
 
 ### New entries to add (~15-20):
 - `2deg` — Two-dimensional electron gas

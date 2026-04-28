@@ -1,4 +1,4 @@
-# Plan 0143b: Phase 2 — Guardian Interludes (Draft for Bruce's Review)
+# Plan 0143b: Phase 2 — Custodian Interludes (Draft for Bruce's Review)
 
 **Status:** DRAFT — Bruce must approve voice/tone before Generator populates
 **Parent:** Plan 0143 (Z-Restructure Metaplan)

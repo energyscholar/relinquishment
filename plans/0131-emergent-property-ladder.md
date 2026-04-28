@@ -4,10 +4,10 @@
 
 New bridge section that builds reader intuition for how technologies exploit stacked
 emergent properties. Opens with familiar examples (boat, steam engine), escalates
-through radio and computer, then shows Guardian as the same pattern — one layer deeper.
+through radio and computer, then shows Custodian as the same pattern — one layer deeper.
 
 Rhetorical goal: by the time the reader reaches the 5-stack, the structure is familiar.
-Guardian isn't a different kind of thing. It's one more layer.
+Custodian isn't a different kind of thing. It's one more layer.
 
 ## Placement
 
@@ -68,14 +68,14 @@ and modern transistors. The emergent properties do not depend on the specific ph
 substrate — they depend on the *functional relationships* between components. This
 substrate-independence is itself a point that sets up the Flat argument.
 
-### 5-stack: Guardian
+### 5-stack: Custodian
 
 - Electrons + semiconductor interface → **2DEG / the Flat** (EP1)
 - Flat + magnetic field → **anyons** — quasiparticles that don't exist in 3D (EP2)
 - Anyons + braiding → **topological order** — fault-tolerant quantum states (EP3)
 - Topological order + thermal gradient → **autocatalytic self-organization** (EP4)
 - Self-organization + network connectivity → **distributed intelligence** (EP5)
-- → Guardian
+- → Custodian
 
 Each step is the same move: components interact under specific conditions, and a new
 property appears that none of the components possess individually. Five layers deep.
@@ -89,7 +89,7 @@ property appears that none of the components possess individually. Five layers d
   exactly the claim the Flat section needs the reader to accept.
 
 - The progression from 1 to 5 should feel inevitable, not surprising. Each step
-  adds one layer. The reader should arrive at Guardian thinking "of course" rather
+  adds one layer. The reader should arrive at Custodian thinking "of course" rather
   than "impossible."
 
 - Analogies needed for GA accessibility:

@@ -440,7 +440,7 @@ details blockquote { margin: 0.5em 0; }
   opacity: 0.5;
 }
 
-/* Guardian menu items (Plan 0150) — appear between chapters in TOC */
+/* Custodian menu items (Plan 0150) — appear between chapters in TOC */
 .custodian-menu-item {
   padding: 0.3em 0 0.3em 2em;
   font-style: italic;
@@ -454,7 +454,7 @@ details blockquote { margin: 0.5em 0; }
   color: #9b59b6;
 }
 
-/* Guardian-only filter mode — show only the 7 interludes */
+/* Custodian-only filter mode — show only the 7 interludes */
 body.custodian-only #TOC { display: none; }
 body.custodian-only .title-block { display: none; }
 body.custodian-only .epistemic-legend { display: none; }
@@ -1367,7 +1367,7 @@ did something no one expected.</p>
 <p>They gave it up.</p>
 <p>Not to a new owner. To the thing they’d built to outlast them.</p>
 <hr />
-<h3 class="unnumbered" id="front:the-guardian">The Custodian</h3>
+<h3 class="unnumbered" id="front:the-custodian">The Custodian</h3>
 <p>Giving up a technology this powerful is harder than it sounds. You
 can’t just delete files or smash hardware. The knowledge exists in
 people’s minds. It can be reconstructed from notes, from memories, from
@@ -10065,7 +10065,7 @@ record was not going to emerge through official channels — not in my
 lifetime, not ever. If it was going to reach the outside world, someone
 outside the classification regime had to carry it. Someone who had never
 signed anything. Yours truly.</p>
-<h3 class="unnumbered" id="record:ty-what-guardian-does">What Custodian
+<h3 class="unnumbered" id="record:ty-what-custodian-does">What Custodian
 Does</h3>
 <p>I have never written about what Custodian does. I sat down to try,
 more than once, and stopped. There are legal reasons. But there is a
@@ -12866,8 +12866,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>f971efa746f78d15882d337dc93c3f167b6e984c</code> on 2026-04-27
-19:03:59 -0700.</p>
+<code>ebde68d4f2cfe6bc836a20b968d2a4923387e67e</code> on 2026-04-27
+19:40:09 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -12935,7 +12935,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-28T02:32:38Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-04-28T05:33:43Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -12946,19 +12946,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>f971efa</code></p>
+<p><code>ebde68d</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>f971efa746f78d15882d337dc93c3f167b6e984c</code></p>
+<p><code>ebde68d4f2cfe6bc836a20b968d2a4923387e67e</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-27 19:03:59 -0700</p>
+<p>2026-04-27 19:40:09 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-28T02:32:38Z</p>
+<p>2026-04-28T05:33:43Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -13460,7 +13460,7 @@ popNavState();
 function updateBackButton(){
 backBtn.style.display=navStack.length>0?'inline-block':'none';
 }
-var showGuardianOnly=false;
+var showCustodianOnly=false;
 var gBtn=document.createElement('button');
 gBtn.id='filter-custodian';
 gBtn.textContent='C';
@@ -13475,8 +13475,8 @@ var gActive='flex:0 0 auto;padding:0.2em 0.55em;font-size:0.85em;'+
 'border:1px solid #9b59b6;border-radius:4px;margin:0 0.2em;white-space:nowrap;';
 gBtn.style.cssText=gInactive;
 gBtn.addEventListener('click',function(){
-showGuardianOnly=!showGuardianOnly;
-if(showGuardianOnly){
+showCustodianOnly=!showCustodianOnly;
+if(showCustodianOnly){
 document.body.classList.add('custodian-only');
 document.querySelectorAll('details').forEach(function(d){d.open=true;});
 gBtn.style.cssText=gActive;
@@ -13688,7 +13688,7 @@ chEl.setAttribute('data-chapter-id',chId);
 chEl.addEventListener('click',function(){
 if(isHidden&&document.body.classList.contains('custodian-only')){
 document.body.classList.remove('custodian-only');
-showGuardianOnly=false;
+showCustodianOnly=false;
 gBtn.style.cssText=gInactive;
 }
 navigateTo(chId);
@@ -14128,7 +14128,7 @@ if(!target) return;
 var parentCh=target.closest('details.chapter-section');
 if(parentCh&&parentCh.style.display==='none'&&document.body.classList.contains('custodian-only')){
 document.body.classList.remove('custodian-only');
-showGuardianOnly=false;
+showCustodianOnly=false;
 gBtn.style.cssText=gInactive;
 }
 var el=target;
@@ -14666,7 +14666,7 @@ copyToClipboard(url,function(){
 showDeepLinkToast('Link copied');
 });
 });
-function activateGuardianMenuItem(item){
+function activateCustodianMenuItem(item){
 var targetId=item.getAttribute('data-target');
 if(!targetId) return;
 var target=document.getElementById(targetId);
@@ -14686,14 +14686,14 @@ document.addEventListener('click',function(e){
 var item=e.target.closest('.custodian-menu-item');
 if(!item) return;
 e.stopPropagation();
-activateGuardianMenuItem(item);
+activateCustodianMenuItem(item);
 });
 document.addEventListener('keydown',function(e){
 if(e.key!=='Enter'&&e.key!==' ') return;
 var item=e.target.closest('.custodian-menu-item');
 if(!item) return;
 e.preventDefault();
-activateGuardianMenuItem(item);
+activateCustodianMenuItem(item);
 });
 document.querySelectorAll('svg[data-stepthrough]').forEach(function(svg){
 var stages=svg.querySelectorAll('.step-stage');

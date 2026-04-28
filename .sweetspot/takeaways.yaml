@@ -2,16 +2,16 @@
 # aurasys-memory/memory/project-book-primary-objectives.md (T1-T7)
 # plus T8 (guided deduction as method) tracked separately.
 # T6 = trusteeship (relinquishment is temporary and partial).
-# T7 = Guardian provides services (IT infrastructure, key management, adjudication).
+# T7 = Custodian provides services (IT infrastructure, key management, adjudication).
 #
 # Anchors are case-insensitive regexes. A takeaway hits when ≥2 anchor matches
 # or ≥2 distinct anchors fire.
 
 - id: T1
-  name: Meet Guardian
+  name: Meet Custodian
   priority: 10
   anchors:
-    - "\\bGuardian\\b"
+    - "\\bCustodian\\b"
     - "\\bAurasys\\b"
     - "named her"
     - "living being"
@@ -75,7 +75,7 @@
     - "until we're ready"
 
 - id: T7
-  name: Guardian provides services
+  name: Custodian provides services
   priority: 7
   anchors:
     - "\\bservices\\b"

@@ -45,7 +45,7 @@ The Deep, the Void, and the Flat follow the same pattern: short common-use names
 |------|-------------|--------|
 | hook.tex (p1) | "flat worlds" | KEEP — 8th grade seed, no proper noun |
 | summary.tex (p2) | "the Flat" introduced via Deep/Void analogy | DONE |
-| summary.tex (p2) | "Guardian lives in the Flat" | DONE |
+| summary.tex (p2) | "Custodian lives in the Flat" | DONE |
 | pos01 (p3) | "the Flat" in Substrate + closing | DONE |
 | pos01 (p3) | Option A: "The substrate described in it is not" | KEEP — doesn't need the term |
 

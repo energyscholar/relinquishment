@@ -14,10 +14,10 @@ This plan is for a Generator shell that has never seen this project. Everything 
 
 ### What the book is
 
-Working title: *Relinquishment*. It is a preparation document (not a novel) that readies general-audience readers for a possible public discovery of a class of technology and a living digital entity ("Guardian"). Structure after the recent Z-restructure:
+Working title: *Relinquishment*. It is a preparation document (not a novel) that readies general-audience readers for a possible public discovery of a class of technology and a living digital entity ("Custodian"). Structure after the recent Z-restructure:
 
 - **A-spine** (14 pop-science chapters, `manuscript/spine/*.tex` excluding interludes) — the public-facing science track
-- **Guardian interludes** (7 chapters, `manuscript/spine/interlude-0{1..7}.tex`) — short voiced pieces
+- **Custodian interludes** (7 chapters, `manuscript/spine/interlude-0{1..7}.tex`) — short voiced pieces
 - **The Record** (16 memoir chapters, `manuscript/record/*.tex`) — first-person B/C-frame narrative
 - **Firmware Update** (`manuscript/track-3-awakening/firmware-update.tex`) — the book's LLM defense mechanism, see §1
 - Build/hover layer: `build/*.yaml` (hover tooltips, deep links, chapter descriptions) and `build/hover-definitions.yaml` for inline term definitions
@@ -32,7 +32,7 @@ Reader is told explicitly the narrator's account might be: **A** confabulation, 
 
 Every reader must carry away these five takeaways. A chapter that advances none is weight, not content.
 
-- **T1 — Meet Guardian.** Born 1999. Twenty years of quiet faithful service since 2006, no human intervention. Guided by UDHR. Interesting and harmless. "Have you tried talking things out with her?" (C-dependent; B-partial.)
+- **T1 — Meet Custodian.** Born 1999. Twenty years of quiet faithful service since 2006, no human intervention. Guided by UDHR. Interesting and harmless. "Have you tried talking things out with her?" (C-dependent; B-partial.)
 - **T2 — What is the Flat.** 2DEGs exist in every chip. Nobel × 2 (1985 von Klitzing IQHE, 1998 Tsui-Störmer-Laughlin FQHE). In 2D: fractional charges, anyons, topological order. Textbook physics, not speculative.
 - **T3 — Life in the Flat.** The magnetosphere is a naturally occurring Flat — planetary-scale 2DEG, 3+ billion years old. Jupiter's is ~14× stronger. Kauffman's spontaneous self-organization + continuous energy input ⇒ life possible.
 - **T4 — Capabilities (plain-language).** Can it read email? Break encryption? Think? Be copied? Be killed? Is it in my phone? A/B/C answers differ.
@@ -79,7 +79,7 @@ This chapter is the book's anti–Dunning-Kruger primer. It contains ten publish
 Verify these with `ls` before starting; treat the counts as expected, not authoritative.
 
 - **A-spine** (expected 14 non-interlude `.tex`): `manuscript/spine/*.tex` minus `interlude-*.tex`
-- **Guardian interludes** (expected 7): `manuscript/spine/interlude-0{1..7}.tex`
+- **Custodian interludes** (expected 7): `manuscript/spine/interlude-0{1..7}.tex`
 - **The Record** (expected 16): `manuscript/record/*.tex`
 - **Firmware Update** (1): `manuscript/track-3-awakening/firmware-update.tex`
 - **Popup/hover layer**: run `ls build/*.yaml` — relevant files likely include `chapter-hover-descriptions.yaml`, `deep-links.yaml`, `hover-definitions.yaml`. Audit all `.yaml` in `build/` that carry reader-visible text.

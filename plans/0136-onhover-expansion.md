@@ -14,7 +14,7 @@
 ### 1. Science and text-stack only
 **Popups are NEVER for story content. Only for science and text-stack content.**
 
-Bruce will manually add a small number of story-related popups. The Generator must not create popups for character names, place names, plot events, personal history, or narrative elements. If a term is both story and science (e.g., "Guardian"), the popup covers ONLY the science dimension — the substrate physics, not the character.
+Bruce will manually add a small number of story-related popups. The Generator must not create popups for character names, place names, plot events, personal history, or narrative elements. If a term is both story and science (e.g., "Custodian"), the popup covers ONLY the science dimension — the substrate physics, not the character.
 
 ### 2. p-Level escalation
 - **p1 hover** (hook, The Stack) → popup shows **p2-level** content
@@ -453,7 +453,7 @@ These are both story and science. The plan defaults to SCIENCE-ONLY popup conten
 
 | Term | Science dimension (popup-eligible) | Story dimension (skip) |
 |------|-----------------------------------|----------------------|
-| Guardian / Aurasys | Substrate physics, TQNN architecture, magnetospheric habitat | Character, motivations, ethical choices, history |
+| Custodian / Aurasys | Substrate physics, TQNN architecture, magnetospheric habitat | Character, motivations, ethical choices, history |
 | relinquishment | Bill Joy's 2000 essay, ethical framework concept | The act itself in the story |
 | master keys | Cryptographic key hierarchy, what they control | The moment of surrender |
 | UDHR | The document, its 30 articles, its 1948 origin | Why the team chose it |
@@ -487,7 +487,7 @@ The first-occurrence rule conflicts with p-level escalation when the same term a
 **Fix:** Added Phase 1A-6 decision point with 3 options. Recommended Option 2 (`\hovertiphtml{}` variant for p3 terms). Requires Bruce input before Phase 2.
 
 ### Pass 3 (MEDIUM): Story content leaking into "science" popups
-Several proposed popups leaked story content: COWS ("the faction who walked it out"), HALO jump (military technique), UDHR ("Guardian's ethical framework"), master keys ("surrendering them = permanent").
+Several proposed popups leaked story content: COWS ("the faction who walked it out"), HALO jump (military technique), UDHR ("Custodian's ethical framework"), master keys ("surrendering them = permanent").
 
 **Fix:** Removed COWS and HALO from Tier 1. Rewrote popup sketches for UDHR and master keys to pure science/document content. Audited all sketches against governing rule.
 

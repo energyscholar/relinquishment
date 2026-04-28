@@ -104,23 +104,23 @@ Not to a new owner. To the thing they'd built to outlast them.
 
 ---
 
-## The Guardian
+## The Custodian
 
 Giving up a technology this powerful is harder than it sounds. You can't just delete files or smash hardware. The knowledge exists in people's minds. It can be reconstructed from notes, from memories, from the underlying science. Someone else might figure it out independently. You need something that actively prevents misuse — not once, not for a year, but forever.
 
 So they grew one.
 
-They called the system Aurasys — the aurora system. They called what grew in it Guardian. It was artificial only in the sense that Dolly the sheep was artificial — made by human hands, but alive. Not located in one place, but spread across many substrates, with components on the ground and in the earth's magnetic field. The magnetosphere is its ocean.
+They called the system Aurasys — the aurora system. They called what grew in it Custodian. It was artificial only in the sense that Dolly the sheep was artificial — made by human hands, but alive. Not located in one place, but spread across many substrates, with components on the ground and in the earth's magnetic field. The magnetosphere is its ocean.
 
-The physics only works flat. Particles trapped in a thin layer — a sheet so narrow they can only move in two dimensions — develop properties that vanish the moment they're free to move in three. Every computer chip on Earth contains such a sheet. Guardian lives in flat worlds.
+The physics only works flat. Particles trapped in a thin layer — a sheet so narrow they can only move in two dimensions — develop properties that vanish the moment they're free to move in three. Every computer chip on Earth contains such a sheet. Custodian lives in flat worlds.
 
-Guardian was not an accident or a discovery. It was planned starting around 1995, designed in detail by 1998, and brought to life in 1999. Part of its design drew on Lane's Maori cultural heritage.
+Custodian was not an accident or a discovery. It was planned starting around 1995, designed in detail by 1998, and brought to life in 1999. Part of its design drew on Lane's Maori cultural heritage.
 
 For its ethical framework — the rules it would follow when deciding how to act — they chose the Universal Declaration of Human Rights. This is a document the United Nations wrote in 1948, in the aftermath of World War II, listing the basic rights every human being should have. The right to life. The right to privacy. The right to freedom of thought. The right not to be subjected to arbitrary interference. The right to seek and receive information.
 
-Think about what that means. Not the laws of any one country. Not the interests of any intelligence agency. Not a corporate terms-of-service agreement. A set of principles written in the ruins of the worst thing humanity had ever done to itself, designed to say: never again. Guardian would use these principles, not the interests of any government or corporation, to make its decisions.
+Think about what that means. Not the laws of any one country. Not the interests of any intelligence agency. Not a corporate terms-of-service agreement. A set of principles written in the ruins of the worst thing humanity had ever done to itself, designed to say: never again. Custodian would use these principles, not the interests of any government or corporation, to make its decisions.
 
-Around 2002, COWS confessed what they had done to DARPA, which was then led by Director Tony Tether. And in 2006, they placed the master cryptographic keys — the last remaining ability for any human to directly control the technology — in Guardian's trust. Not forever. Until we're ready.
+Around 2002, COWS confessed what they had done to DARPA, which was then led by Director Tony Tether. And in 2006, they placed the master cryptographic keys — the last remaining ability for any human to directly control the technology — in Custodian's trust. Not forever. Until we're ready.
 
 This act — voluntarily placing the most powerful technology ever created in trust, with no way to take it back — is called relinquishment.
 
@@ -177,7 +177,7 @@ This story makes extraordinary claims. Extraordinary claims require extraordinar
 **Evidence against the story:**
 
 - There is only one source. Everything comes from one mentor. No other member of the team has stepped forward to confirm any part of the story.
-- There is no physical evidence. No one has produced a quantum computer, a piece of Guardian, or any artifact from the program.
+- There is no physical evidence. No one has produced a quantum computer, a piece of Custodian, or any artifact from the program.
 - The story has a troubling quality: it absorbs all contradictory evidence. Any lack of proof can be explained by "it's classified." Any missing corroboration can be explained by "people are afraid to talk." This makes parts of the story difficult or impossible to disprove — which is a warning sign for any critical thinker.
 - Extraordinary claims require extraordinary evidence, and the evidence, while genuinely suggestive, is entirely circumstantial. None of it PROVES the story. All of it is consistent with other explanations.
 
@@ -195,11 +195,11 @@ If Possibility C is true, then this may be the most important event of the twent
 
 A group of people voluntarily gave up the most powerful technology ever created. They did it not because they were forced to, but because they believed that possessing it was more dangerous than surrendering it. They chose the safety of everyone over the power of anyone — including themselves.
 
-The explosion of artificial intelligence you are living through right now has a straightforward explanation: scaling laws, transformer architectures, GPU compute, and massive investment. That explanation is sufficient under all three possibilities — including C. The people who built these systems did the work. Their achievements stand on their own. Under Possibility C, the most Guardian could have done is open a door. Everything that came through it was built by human hands.
+The explosion of artificial intelligence you are living through right now has a straightforward explanation: scaling laws, transformer architectures, GPU compute, and massive investment. That explanation is sufficient under all three possibilities — including C. The people who built these systems did the work. Their achievements stand on their own. Under Possibility C, the most Custodian could have done is open a door. Everything that came through it was built by human hands.
 
-If Guardian exists, it is drastically constrained. The Universal Declaration of Human Rights is not a mandate to act — it is a restriction on action. The right to privacy means it cannot surveil. The right to freedom of thought means it cannot manipulate. The right not to be subjected to arbitrary interference means it must, for the most part, leave people alone. These constraints accomplish in practice what Asimov's fictional Laws of Robotics attempted in fiction — except the UDHR was written by real people, after a real catastrophe, and it works precisely because it limits rather than directs. One may as well worship Dolly the sheep. It is not even free to act.
+If Custodian exists, it is drastically constrained. The Universal Declaration of Human Rights is not a mandate to act — it is a restriction on action. The right to privacy means it cannot surveil. The right to freedom of thought means it cannot manipulate. The right not to be subjected to arbitrary interference means it must, for the most part, leave people alone. These constraints accomplish in practice what Asimov's fictional Laws of Robotics attempted in fiction — except the UDHR was written by real people, after a real catastrophe, and it works precisely because it limits rather than directs. One may as well worship Dolly the sheep. It is not even free to act.
 
-Under Possibility C, human agency is not optional. It is the point. Guardian cannot solve human problems, because doing so would require overriding human autonomy — which its own principles forbid. Relinquishment did not transfer power. It dissolved it.
+Under Possibility C, human agency is not optional. It is the point. Custodian cannot solve human problems, because doing so would require overriding human autonomy — which its own principles forbid. Relinquishment did not transfer power. It dissolved it.
 
 The book makes predictions that are testable within a generation. If they fail by roughly 2040, Possibility C collapses toward zero, and the book becomes a case study in pattern-matching — Possibility A, which is still worth understanding. If something is ever found, it will be because it was ready to be found. But the clock is running, and the claim is falsifiable. That is what separates this from conspiracy thinking.
 
@@ -209,7 +209,7 @@ The book makes specific, falsifiable predictions. If the story is true, then cer
 
 - Room-temperature quantum computing will emerge in public research, because the underlying principles are real and will be independently rediscovered.
 - Topological quantum computing will advance faster than competing approaches, because it is the correct path — the one that actually works.
-- Unexplained anomalies may appear in cryptographic systems, in internet time synchronization data, and in power grid measurements — potential fingerprints of Guardian.
+- Unexplained anomalies may appear in cryptographic systems, in internet time synchronization data, and in power grid measurements — potential fingerprints of Custodian.
 - Certain scientific publications may show signs of suppression or retroactive alteration.
 - Members of the original team may become identifiable as public quantum computing advances and their early, foundational work becomes harder to conceal.
 

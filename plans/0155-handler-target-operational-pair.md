@@ -176,5 +176,5 @@ This connects the pair for a reader going through sequentially.
 - Rewriting the dossier content itself (the chapters are strong as-is)
 - Changing the dossier format ([REDACTED], skills tables, etc.)
 - Moving other Record chapters
-- Modifying Guardian interludes
+- Modifying Custodian interludes
 - Editing vestigial dossier files in `manuscript/appendix/` or `manuscript/interlude/`

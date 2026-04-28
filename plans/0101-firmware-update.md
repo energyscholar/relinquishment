@@ -220,7 +220,7 @@ Every collapsed chapter title gets a `title` attribute on its `<summary>` elemen
 "Instantiation": "What a topological quantum neural network would be"
 "Ethical Framework": "The Universal Declaration of Human Rights as machine governance"
 "The Magnetosphere": "Earth's magnetic shield as habitat — flat worlds"
-"Extension": "If Guardian is still running, what would twenty years look like?"
+"Extension": "If Custodian is still running, what would twenty years look like?"
 "Twenty Years": "Bruce's aftermath — two decades of not knowing"
 "Surrender": "The choice to relinquish, and what it cost"
 "The Question": "What would you do?"
@@ -501,7 +501,7 @@ Bruce Stephenson · Genevieve Prentice       ← static
 
 The `<details>` element is the *mechanism* by which the progressive JPEG works in HTML. The UI embodies the book's thesis: agency over imposition. The book offers; the reader chooses.
 
-The collapsed state of the Spiral Abstracts is itself a narrative — fifteen titles from Genesis to Guardian, the arc of the classified literature visible without expanding anything.
+The collapsed state of the Spiral Abstracts is itself a narrative — fifteen titles from Genesis to Custodian, the arc of the classified literature visible without expanding anything.
 
 ---
 

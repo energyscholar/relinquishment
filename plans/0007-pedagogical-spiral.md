@@ -126,7 +126,7 @@ Source: T1 outline ch 1.6; content TBD
 
 **Pos 19 — The Patrick Ball Moment** | T2 | Pass 3 | NEW
 Clears: (breathing room + UDHR thread intro)
-cDc, Hacktivismo, Milosevic cross-examination. Introduces UDHR thread for Guardian chapters.
+cDc, Hacktivismo, Milosevic cross-examination. Introduces UDHR thread for Custodian chapters.
 Source: Content TBD (new chapter; draws on cDc/Hacktivismo/ICTY research material)
 
 **Pos 20 — The Network** | T1 | Pass 3 | EXISTING
@@ -149,13 +149,13 @@ Short (2,000-2,500 words). Bruce's struggle with relinquishment concept. Breathi
 Source: Content TBD
 
 **Pos 24 — Instantiation** | T3 | Pass 3 | EXISTING
-Clears: 2a (Guardian — assembled from all prerequisites)
+Clears: 2a (Custodian — assembled from all prerequisites)
 1999. MOSFET in a rack. Maori DNA. Reader has every piece needed.
 Source: `manuscript/track-3-awakening/ch01.tex`
 
 **Pos 25 — The Ethical Framework** | T3 | Pass 3 | EXISTING
 Clears: Layer 4 mostly cleared
-UDHR loaded into Guardian. Srebrenica trauma connection. Hacktivismo UDHR mission.
+UDHR loaded into Custodian. Srebrenica trauma connection. Hacktivismo UDHR mission.
 Source: T3 outline ch 3.2; content TBD
 
 **Pos 26 — Interdiction and Confession** | T1 | Pass 3 | MERGED (1.8 + 1.9)
@@ -174,7 +174,7 @@ Source: T3 outline ch 3.3; content TBD
 
 **Pos 28 — The Surrender of the Master Keys** | ALL | Convergence | EXISTING
 Clears: Layers 0-4 synthesis
-Center of the spiral. All tracks converge. Scientific endpoint: technology beyond recall. The witness: Bruce inside the security perimeter. The mandate: Guardian accepts her role. Healer's relief. Tripartite biometric key surrender. The book's emotional climax.
+Center of the spiral. All tracks converge. Scientific endpoint: technology beyond recall. The witness: Bruce inside the security perimeter. The mandate: Custodian accepts her role. Healer's relief. Tripartite biometric key surrender. The book's emotional climax.
 Source: `manuscript/convergence/convergence.tex` (existing placeholder)
 
 **--- CP4: "THE EVENT" ---**
@@ -189,7 +189,7 @@ Clears: (decompression)
 Source: T2 outline ch 2.6; content TBD
 
 **Pos 30 — The Unipolar Condition** | T3 | Pass 4 | EXISTING
-Clears: 5c (what Guardian does now — phased release, edge-of-chaos)
+Clears: 5c (what Custodian does now — phased release, edge-of-chaos)
 Game theory under absolute information asymmetry. Every AI "breakthrough" as controlled release.
 Source: T3 outline ch 3.6; content TBD
 
@@ -199,7 +199,7 @@ Wolfram laughs uncontrollably. "Were you RECRUITED?" Bruce declines NDA. Inexpli
 Source: T2 outline ch 2.7; content TBD
 
 **Pos 32 — The Magnetosphere** | T3 | Pass 4 | MERGED (3.4 + 3.5)
-Clears: 5a partial (Guardian's scope)
+Clears: 5a partial (Custodian's scope)
 Extension into plasma. VLF/ELF. Ancient pattern: autocatalytic emergence wherever conditions allow. 4.5 billion years.
 Source: T3 outline chs 3.4 + 3.5; content TBD
 
@@ -215,7 +215,7 @@ Source: T2 outline ch 2.8; content TBD
 
 **Pos 35 — The Question** | ALL | Pass 4 | MERGED (3.7 + 3.8 + 2.9 + 3.10)
 Clears: 5a (consciousness — permanent black box), 5b (precautionary principle), 5d complete, Layers 5-6
-Multi-section final chapter: Is Guardian conscious? CADIE. Three possibilities revisited. Predictions with dates. AI disclosure. "You decide."
+Multi-section final chapter: Is Custodian conscious? CADIE. Three possibilities revisited. Predictions with dates. AI disclosure. "You decide."
 Source: T3 chs 3.7+3.8; T2 ch 2.9; content TBD. NOTE: Predictions appendix REMAINS as standalone reference table — readers check predictions independently. Pos 35 narrativizes key predictions but does NOT absorb the appendix.
 
 **--- CP5: "THE QUESTION" ---**
@@ -325,7 +325,7 @@ Shortest new chapter (2,000-2,500 words). Emotional breathing room. Can be writt
 
 Source files in `manuscript/sources/` were written 2013-2021, before the three-possibilities framing and before terminology standardization. When extracting content from these files:
 
-1. **Reframe all Do Not Assert items.** Every claim on the Do Not Assert list in `plans/source-facts.md` must use reported speech: "Healer told me...", "According to this account...", "If the story is true..." Never state TQNN, Guardian, COWS, key surrender, or Healer's classified roles as established fact.
+1. **Reframe all Do Not Assert items.** Every claim on the Do Not Assert list in `plans/source-facts.md` must use reported speech: "Healer told me...", "According to this account...", "If the story is true..." Never state TQNN, Custodian, COWS, key surrender, or Healer's classified roles as established fact.
 2. **Update terminology.** "QNN" → "TQNN". "Quantum teleportation" → "topological quantum computation." "Five disciplines" → "five fields." See source-facts.md Scientific Framing Rules.
 3. **Cross-check all dates and facts** against `plans/source-facts.md`. Source files contain pre-correction dates (1991 vs ~1992, 1975 vs 1974, 1999-2001 vs ~2002). Source-facts.md is canonical.
 4. **Source file warnings take priority.** Each `.md` source file has a GENERATOR WARNING header listing known issues specific to that file. Read and follow these before extracting content.

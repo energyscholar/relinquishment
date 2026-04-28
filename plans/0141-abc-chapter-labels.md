@@ -11,7 +11,7 @@
 
 Label every chapter in the TOC menu and chapter headings with its A/B/C epistemic status. The skeptical reader should see at a glance: most of this book is verified physics (A). The self-mocking C labels give permission to be skeptical. The A-labeled content — wormholes in chips, planetary-scale 2DEGs, capabilities nobody pursues — is the gasp moment.
 
-**The structural move:** The A chapters are a publishable pop-science book. Guardian and the C narrative make it unpublishable through normal channels. Labeling makes this visible. A earns trust. B earns curiosity. C gets read because A and B did their jobs.
+**The structural move:** The A chapters are a publishable pop-science book. Custodian and the C narrative make it unpublishable through normal channels. Labeling makes this visible. A earns trust. B earns curiosity. C gets read because A and B did their jobs.
 
 ---
 

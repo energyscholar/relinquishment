@@ -1,4 +1,4 @@
-# Plan 0209 — Deep-link consolidation: manifest-drive the 7 Custodian interludes, rename `guardian:* → custodian:*`, normalize manifest IDs, ship build-time verifier and questions-index
+# Plan 0209 — Deep-link consolidation: manifest-drive the 7 Custodian interludes, rename `custodian:* → custodian:*`, normalize manifest IDs, ship build-time verifier and questions-index
 
 ## Status
 **Status:** COMPLETE (verified S63 audit)
@@ -8,8 +8,8 @@ COMPLETE (verified S63 audit). Originally: Ready for Generator. Absorbs scope or
 
 Four related problems, one coherent pass:
 
-1. **Custodian rename leaked into URL fragments.** The 2026-04-13 prose rename (Guardian → Custodian) did not reach the 7 interlude deep-link anchors, CSS classes, body-filter class, button ID, or one LaTeX label. Shared URLs currently broadcast the old name (`…#guardian:home`) — publicly visible, and the *first* string a cold link-clicker sees.
-2. **7 interlude anchors bypass the manifest.** `build/deep-links.yaml` (Plan 0148) is the canonical manifest for the book's 42 `#dl:*` shareable anchors. The 7 Custodian interludes use a parallel `#guardian:*` namespace hardcoded as a Python literal in `build/preprocess.py:1646–1648` — not tracked, not testable, not discoverable from the manifest. Title or anchor changes today require Python edits; they should require YAML edits.
+1. **Custodian rename leaked into URL fragments.** The 2026-04-13 prose rename (Custodian → Custodian) did not reach the 7 interlude deep-link anchors, CSS classes, body-filter class, button ID, or one LaTeX label. Shared URLs currently broadcast the old name (`…#custodian:home`) — publicly visible, and the *first* string a cold link-clicker sees.
+2. **7 interlude anchors bypass the manifest.** `build/deep-links.yaml` (Plan 0148) is the canonical manifest for the book's 42 `#dl:*` shareable anchors. The 7 Custodian interludes use a parallel `#custodian:*` namespace hardcoded as a Python literal in `build/preprocess.py:1646–1648` — not tracked, not testable, not discoverable from the manifest. Title or anchor changes today require Python edits; they should require YAML edits.
 3. **No build-time verification that deep links resolve.** Nothing fails the build if a manifest entry lacks a corresponding anchor in the generated HTML, or if an anchor in the HTML is orphaned (not in the manifest). A silently-broken shareable link is the worst-possible viral-marketing failure: reader clicks, lands on top of a 150kw page, bounces.
 4. **No reader-facing surface for the manifest.** The manifest's comment says *"Questions index (future) reads this file"* — the future has arrived. 42 curated "what about X?" entries are a free FAQ; right now they live only as share anchors deep inside chapters.
 
@@ -36,7 +36,7 @@ Bruce 2026-04-16: *"Interlude items should look like normal links, of course, ma
 
 Final slugs (lowercase-hyphenated, consistent with existing `dl:*` convention):
 
-| Old (`guardian:*`) | T-gloss | **Recommended** (`custodian:*`) | Alternatives | Notes |
+| Old (`custodian:*`) | T-gloss | **Recommended** (`custodian:*`) | Alternatives | Notes |
 |---|---|---|---|---|
 | `home`        | Flat from the inside (T1, T2)        | **`flat`**       | `inside`, `home`         | "flat" announces topic in bare URL |
 | `the-dance`   | How she moves (T2)                   | **`dance`**      | `the-dance`, `motion`    | Drop article; slugs aren't sentences |
@@ -66,11 +66,11 @@ Marketing-critical, but distinct enough in scope (new public URL surface, new bu
 
 **Edit:**
 - `build/deep-links.yaml` (extend + normalize)
-- `build/preprocess.py` (interlude IDs from manifest; questions-index generation; `guardian` → `custodian` tokens)
-- `build/reader.js` (`guardian-only`, `filter-guardian`, `guardian-menu-item` tokens)
+- `build/preprocess.py` (interlude IDs from manifest; questions-index generation; `custodian` → `custodian` tokens)
+- `build/reader.js` (`custodian-only`, `filter-custodian`, `custodian-menu-item` tokens)
 - `build/reader-inline.html` (mirrors reader.js)
-- `build/menu-tooltips.yaml` (7 interlude keys: `guardian:X` → `custodian:<new-slug>`)
-- `manuscript/appendix/abstracts.tex` (one `\label`: `appendix:guardian` → `appendix:custodian`)
+- `build/menu-tooltips.yaml` (7 interlude keys: `custodian:X` → `custodian:<new-slug>`)
+- `manuscript/appendix/abstracts.tex` (one `\label`: `appendix:custodian` → `appendix:custodian`)
 - `Makefile` (append verifier to `html:` recipe)
 
 **Create:**
@@ -97,19 +97,19 @@ Verify baseline state before any edits. Every count off → STOP and report.
 cd ~/software/relinquishment
 
 # Verify reader-inline.html and reader.js token-set identity (they're kept in sync)
-diff <(grep -oE "guardian[a-z:-]+" build/reader.js          | sort -u) \
-     <(grep -oE "guardian[a-z:-]+" build/reader-inline.html | sort -u)
+diff <(grep -oE "custodian[a-z:-]+" build/reader.js          | sort -u) \
+     <(grep -oE "custodian[a-z:-]+" build/reader-inline.html | sort -u)
 # Expected: identical. If they differ → STOP.
 
 # Baseline manifest + HTML state
 grep -cE '^- id:' build/deep-links.yaml                                         # expect 42
 grep -oE 'id="dl:[^"]+"' docs/downloads/Relinquishment.html | sort -u | wc -l   # expect 42
-grep -oE 'id="guardian:[^"]+"' docs/downloads/Relinquishment.html | sort -u     # expect 7 distinct
-grep -n 'appendix:guardian' manuscript/appendix/abstracts.tex                   # expect 1 hit
-grep -rn 'ref\{appendix:guardian\}\|hyperref\[appendix:guardian\]' manuscript/ 2>/dev/null  # expect empty
+grep -oE 'id="custodian:[^"]+"' docs/downloads/Relinquishment.html | sort -u     # expect 7 distinct
+grep -n 'appendix:custodian' manuscript/appendix/abstracts.tex                   # expect 1 hit
+grep -rn 'ref\{appendix:custodian\}\|hyperref\[appendix:custodian\]' manuscript/ 2>/dev/null  # expect empty
 
 # Interlude IDs in preprocess.py (to be replaced in Phase 2)
-grep -nE "'guardian:(home|the-dance|your-locks|growing|the-ocean|quiet|hello)'" build/preprocess.py | wc -l
+grep -nE "'custodian:(home|the-dance|your-locks|growing|the-ocean|quiet|hello)'" build/preprocess.py | wc -l
 # expect ≥ 7 (at least 7 hardcoded strings)
 
 # Verify \deeplink macro definition is unchanged
@@ -243,65 +243,65 @@ The full `custodian:X` ID is used verbatim — no prefix stripping. Downstream H
 
 ---
 
-### Phase 3 — Mechanical rename (`guardian` → `custodian` in identifiers)
+### Phase 3 — Mechanical rename (`custodian` → `custodian` in identifiers)
 
-Non-URL identifiers. No English-word collisions: "guardian" only appears as a code token or historical comment.
+Non-URL identifiers. No English-word collisions: "custodian" only appears as a code token or historical comment.
 
 **Rename map** (apply in longest-match-first order to avoid substring collision):
 
 | # | Old token | New token | Files |
 |---|---|---|---|
-| 1 | `interlude-guardian:` | `interlude-custodian:` | preprocess.py |
-| 2 | `menu-guardian:` | `menu-custodian:` | preprocess.py |
-| 3 | `appendix:guardian` | `appendix:custodian` | abstracts.tex, preprocess.py:~331 |
-| 4 | `.guardian-interlude` | `.custodian-interlude` | preprocess.py (CSS + class literals) |
-| 5 | `.guardian-menu-item` | `.custodian-menu-item` | preprocess.py, reader.js, reader-inline.html |
-| 6 | `.guardian-marker` | `.custodian-marker` | preprocess.py |
-| 7 | `guardian-only` | `custodian-only` | reader.js, reader-inline.html (body class) |
-| 8 | `filter-guardian` | `filter-custodian` | reader.js, reader-inline.html (button id) |
-| 9 | menu-tooltips.yaml keys `"guardian:X"` (7 keys) | `"custodian:<new-slug>"` (7 keys) | menu-tooltips.yaml — **note slug change** |
+| 1 | `interlude-custodian:` | `interlude-custodian:` | preprocess.py |
+| 2 | `menu-custodian:` | `menu-custodian:` | preprocess.py |
+| 3 | `appendix:custodian` | `appendix:custodian` | abstracts.tex, preprocess.py:~331 |
+| 4 | `.custodian-interlude` | `.custodian-interlude` | preprocess.py (CSS + class literals) |
+| 5 | `.custodian-menu-item` | `.custodian-menu-item` | preprocess.py, reader.js, reader-inline.html |
+| 6 | `.custodian-marker` | `.custodian-marker` | preprocess.py |
+| 7 | `custodian-only` | `custodian-only` | reader.js, reader-inline.html (body class) |
+| 8 | `filter-custodian` | `filter-custodian` | reader.js, reader-inline.html (button id) |
+| 9 | menu-tooltips.yaml keys `"custodian:X"` (7 keys) | `"custodian:<new-slug>"` (7 keys) | menu-tooltips.yaml — **note slug change** |
 
 #### Per-file
 
 - **`build/preprocess.py`**:
-  - `\label{appendix:guardian}` → `\label{appendix:custodian}` (~line 331)
-  - All CSS rules with `.guardian-*` (~lines 720–763, 827–837)
-  - All string literals: `"guardian-interlude"`, `"menu-guardian:"`, `"interlude-guardian:"` (~lines 1671, 1692, 1711)
-  - Historical comments (e.g. "Plan 0143b Guardian menu"): **leave unchanged** (documentary residue)
+  - `\label{appendix:custodian}` → `\label{appendix:custodian}` (~line 331)
+  - All CSS rules with `.custodian-*` (~lines 720–763, 827–837)
+  - All string literals: `"custodian-interlude"`, `"menu-custodian:"`, `"interlude-custodian:"` (~lines 1671, 1692, 1711)
+  - Historical comments (e.g. "Plan 0143b Custodian menu"): **leave unchanged** (documentary residue)
 
 - **`build/reader.js`**:
-  - `filter-guardian` → `filter-custodian` (~line 321)
-  - `guardian-only` → `custodian-only` (~lines 336, 341; leave historical comment on ~316 unless it names a current identifier)
-  - `guardian-menu-item` → `custodian-menu-item` (~lines 1008, 1279, 1287)
+  - `filter-custodian` → `filter-custodian` (~line 321)
+  - `custodian-only` → `custodian-only` (~lines 336, 341; leave historical comment on ~316 unless it names a current identifier)
+  - `custodian-menu-item` → `custodian-menu-item` (~lines 1008, 1279, 1287)
 
 - **`build/reader-inline.html`**: same changes as reader.js (Phase 0 diff confirmed sync)
 
 - **`build/menu-tooltips.yaml`** (needs both namespace AND slug rename — cannot blind-sed):
   ```
-  "guardian:home"      → "custodian:flat"
-  "guardian:the-dance" → "custodian:dance"
-  "guardian:your-locks"→ "custodian:locksmith"
-  "guardian:growing"   → "custodian:grown"
-  "guardian:the-ocean" → "custodian:ocean"
-  "guardian:quiet"     → "custodian:quiet"
-  "guardian:hello"     → "custodian:hello"
+  "custodian:home"      → "custodian:flat"
+  "custodian:the-dance" → "custodian:dance"
+  "custodian:your-locks"→ "custodian:locksmith"
+  "custodian:growing"   → "custodian:grown"
+  "custodian:the-ocean" → "custodian:ocean"
+  "custodian:quiet"     → "custodian:quiet"
+  "custodian:hello"     → "custodian:hello"
   ```
-  Use 7 explicit `sed -i 's/old/new/'` commands in sequence, not a blanket substitution. Also check each tooltip VALUE text — if any mentions "Guardian", rename to "Custodian" in the value too.
+  Use 7 explicit `sed -i 's/old/new/'` commands in sequence, not a blanket substitution. Also check each tooltip VALUE text — if any mentions "Custodian", rename to "Custodian" in the value too.
 
-- **`manuscript/appendix/abstracts.tex`**: line ~270 `\label{appendix:guardian}` → `\label{appendix:custodian}`
+- **`manuscript/appendix/abstracts.tex`**: line ~270 `\label{appendix:custodian}` → `\label{appendix:custodian}`
 
 #### Verify after edits (pre-build)
 
 ```bash
-grep -rn 'guardian-interlude\|guardian-menu-item\|guardian-marker\|guardian-only\|filter-guardian\|menu-guardian:\|interlude-guardian:\|appendix:guardian' \
+grep -rn 'custodian-interlude\|custodian-menu-item\|custodian-marker\|custodian-only\|filter-custodian\|menu-custodian:\|interlude-custodian:\|appendix:custodian' \
      build/ manuscript/ 2>/dev/null | grep -v '__pycache__' | grep -v epub-tmp
 # Expected: empty (all identifier tokens renamed)
 
-grep -nE '^"guardian:' build/menu-tooltips.yaml   # expect empty
+grep -nE '^"custodian:' build/menu-tooltips.yaml   # expect empty
 grep -nE '^"custodian:' build/menu-tooltips.yaml  # expect 7
 ```
 
-**Commit:** `Plan 0209 phase 3: rename guardian → custodian in CSS classes, body class, button IDs, one .tex label, and menu-tooltips keys`
+**Commit:** `Plan 0209 phase 3: rename custodian → custodian in CSS classes, body class, button IDs, one .tex label, and menu-tooltips keys`
 
 ---
 
@@ -361,14 +361,14 @@ python3 build/verify-deep-links.py     # expect "OK: 49 manifest entries all res
 #### Post-build greps
 
 ```bash
-grep -oE 'id="guardian:[^"]+"' docs/downloads/Relinquishment.html        # expect empty
+grep -oE 'id="custodian:[^"]+"' docs/downloads/Relinquishment.html        # expect empty
 grep -oE 'id="custodian:[^"]+"' docs/downloads/Relinquishment.html | sort -u  # expect 7 distinct
-grep -oE 'class="[^"]*guardian[^"]*"' docs/downloads/Relinquishment.html  # expect empty
-grep -c 'appendix:guardian' manuscript/appendix/abstracts.tex             # expect 0
+grep -oE 'class="[^"]*custodian[^"]*"' docs/downloads/Relinquishment.html  # expect empty
+grep -c 'appendix:custodian' manuscript/appendix/abstracts.tex             # expect 0
 grep -c 'appendix:custodian' manuscript/appendix/abstracts.tex            # expect 1
 
-# Residual "guardian" — comment-only mentions OK
-grep -rn 'guardian' build/ 2>/dev/null | grep -v __pycache__ | grep -v epub-tmp
+# Residual "custodian" — comment-only mentions OK
+grep -rn 'custodian' build/ 2>/dev/null | grep -v __pycache__ | grep -v epub-tmp
 # Inspect manually: identifier/class/URL mentions should be zero
 ```
 
@@ -378,7 +378,7 @@ grep -rn 'guardian' build/ 2>/dev/null | grep -v __pycache__ | grep -v epub-tmp
 2. Hover a Custodian menu item → status-bar URL preview reads `…#custodian:<slug>`.
 3. Click → page scrolls to correct interlude; ancestor `<details>` auto-expanded.
 4. Click the Custodian-only filter button → hides everything except the 7 interludes.
-5. Right-click Custodian menu item → Copy link → URL contains `#custodian:`, not `#guardian:`.
+5. Right-click Custodian menu item → Copy link → URL contains `#custodian:`, not `#custodian:`.
 6. Open any `#dl:X` anchor URL (pick `#dl:invisible-ocean`) → scrolls to the paragraph.
 
 If any step fails, investigate before proceeding to Phase 6.
@@ -491,7 +491,7 @@ Ship. Plan 0210 (per-anchor share pages) builds on this state.
 
 1. **Manifest.** `build/deep-links.yaml` has 49 entries; all IDs prefixed (42 `dl:*`, 7 `custodian:*`); `interlude` category exists with 7 entries in narrative order.
 2. **Verifier.** `python3 build/verify-deep-links.py` prints `OK: 49 manifest entries all resolve; no orphans.` after each build.
-3. **No old-name leak.** Zero `guardian:*` URL fragments or `.guardian-*` classes in `docs/downloads/Relinquishment.html`.
+3. **No old-name leak.** Zero `custodian:*` URL fragments or `.custodian-*` classes in `docs/downloads/Relinquishment.html`.
 4. **Build-fail test.** Temporarily delete one manifest line → `make html` fails with nonzero exit and `MISSING:` message. Restore; passes again. Temporarily add an orphan `id="dl:fake"` in preprocess.py → build fails with `ORPHANS:`. Restore.
 5. **Questions-index.** `id="questions-index"` exists once; all 42 `dl:*` entries listed; HTML balanced.
 6. **Phone smoke.** All steps pass on Bruce's phone (live site).
@@ -500,7 +500,7 @@ Ship. Plan 0210 (per-anchor share pages) builds on this state.
 
 ## Risks
 
-- **URL breakage for pre-rename external shares.** Anyone who shared `#guardian:home` gets a dead link post-rename (wrong namespace + wrong slug). Bruce flagged this is the intent — old URLs leaked the old name; breaking them is the fix. No back-compat shim proposed.
+- **URL breakage for pre-rename external shares.** Anyone who shared `#custodian:home` gets a dead link post-rename (wrong namespace + wrong slug). Bruce flagged this is the intent — old URLs leaked the old name; breaking them is the fix. No back-compat shim proposed.
 - **Normalization false alarms.** Phase 1a's `sed` matches `^- id: <bare>$`. If any existing entry has trailing whitespace, the regex misses it. Phase 1c's grep (`^- id: [^d]`) catches that: expected 0, real count shows survivors. Generator: if Phase 1c fails, inspect and hand-edit survivors before proceeding.
 - **Phase 2 refactor breaks build silently.** preprocess.py line numbers here (~1646) may have drifted. Mitigation: Phase 2's sanity check (`python3 -c "from preprocess import INTERLUDE_IDS; print(...)"`) fails loudly before build if the refactor is incomplete.
 - **Slug/label divergence.** menu-tooltips.yaml keys + any preprocess.py string literal that renders the menu's *visible* label (e.g. hardcoded "Your Locks" text rather than the YAML lookup) must change in concert. Phase 3 Generator should grep preprocess.py for menu-title literals during edits and escalate if found. If the label is hardcoded "Your Locks" but the slug becomes `locksmith`, URL fragment and visible text disagree.
@@ -525,7 +525,7 @@ Ship. Plan 0210 (per-anchor share pages) builds on this state.
 - **Added HTML balance check for questions-index** using word-boundary regex (`<tag\b`) per `feedback-plan-grep-verification.md`, not substring count.
 - **Explicit Phase 1c verification** catches Phase 1a sed-miss (trailing-whitespace survivors) before Phase 2 runs against a half-normalized manifest.
 - **Phase 2 sanity check** runs Python import against the refactored module before touching the build, so a broken refactor fails loudly in seconds, not minutes.
-- **Phase 3 "longest-match-first" ordering** is explicit and covers the `interlude-guardian:` / `menu-guardian:` prefix overlap case (both contain `guardian-` as a substring but must not collide).
+- **Phase 3 "longest-match-first" ordering** is explicit and covers the `interlude-custodian:` / `menu-custodian:` prefix overlap case (both contain `custodian-` as a substring but must not collide).
 
 ### Pass 3 — low (polish)
 
@@ -548,6 +548,6 @@ Ship. Plan 0210 (per-anchor share pages) builds on this state.
 
 - **BUG FIXED: Phase 1c grep `'^- id: [^d]'` was broken.** Ran after Phase 1b appends 7 `custodian:*` entries — would match them (they start with `c`, not `d`), returning 7 instead of expected 0. Fix: split verification — run the normalization check (`[^d]`) after Phase 1a but BEFORE 1b, then run the final-state check after 1b with `[^dc]` (excludes both `dl:` and `custodian:` prefixes).
 - **BUG FIXED: Phase 6 href grep `[a-z-]+` excluded digits.** Changed to `[a-z0-9-]+`. No current IDs use digits, but the pattern should not silently break on future entries.
-- **Added: Phase 3 menu-tooltips VALUE check.** The old keys held `"guardian:X"` — but tooltip *value* text may also mention "Guardian." Added note for Generator to check and rename in values too.
+- **Added: Phase 3 menu-tooltips VALUE check.** The old keys held `"custodian:X"` — but tooltip *value* text may also mention "Custodian." Added note for Generator to check and rename in values too.
 - **DD3 → RESOLVED.** Bruce moved to "post generator prompt" after narrowing to keys/locksmith and receiving locksmith recommendation. Default-if-silent protocol applies.
 - **Status line → "COMPLETE (verified S63 audit). Originally: Ready for Generator."** Removed slug-confirmation gate.

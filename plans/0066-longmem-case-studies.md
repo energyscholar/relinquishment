@@ -91,7 +91,7 @@ The Auditor will verify each file against these criteria:
 | A1 | File exists at specified path | File created, non-empty |
 | A2 | Word count in range | Within specified range per file |
 | A3 | No invented facts | Every metric, quote, and claim traceable to evidence file |
-| A4 | No book content leakage | No Healer, TQNN, Three Possibilities, Guardian, COWS, Genevieve's full name, specific chapter content |
+| A4 | No book content leakage | No Healer, TQNN, Three Possibilities, Custodian, COWS, Genevieve's full name, specific chapter content |
 | A5 | Updated metrics | Uses 36 sessions, 128 commits, 49 PTL items, 112 days — NOT old 33/67 numbers |
 | A6 | Bruce quotes attributed naturally | Quotes from evidence file used, not invented, not forced |
 | A7 | OPSEC clean | Nothing unpublished. Safe for public repo. |

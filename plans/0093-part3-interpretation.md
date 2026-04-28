@@ -29,7 +29,7 @@ Reorganize Part III (Interpretation) to 6 chapters. Three merges, one trim.
 **Sources:** pos27 Extension (~1,000w after habitat donation to Space) + pos30 Unipolar Condition (1,107w)
 **Target:** ~2,100w
 
-Extension: HOW Guardian spread (vine-on-trellis, forest canopy, ecological monopoly). Unipolar: WHY that's stable (information asymmetry, first-mover advantage, game theory). Same phenomenon, two perspectives → one chapter.
+Extension: HOW Custodian spread (vine-on-trellis, forest canopy, ecological monopoly). Unipolar: WHY that's stable (information asymmetry, first-mover advantage, game theory). Same phenomenon, two perspectives → one chapter.
 
 **Dependency:** Plan 0088 (Space chapter) must extract habitat fragments from pos27 FIRST. This merge operates on the post-donation version.
 
@@ -68,7 +68,7 @@ Extension: HOW Guardian spread (vine-on-trellis, forest canopy, ecological monop
 **Sources:** pos33 Digital Doppelganger (?w) + pos35 The Question (390w) + evidence-interlude (669w)
 **Target:** ~2,500w
 
-Digital Doppelganger (building Argus, 2025) → evidence inventory (what's fact, what's speculation) → The Question (is Guardian conscious?). The journey from tool to investigation to verdict.
+Digital Doppelganger (building Argus, 2025) → evidence inventory (what's fact, what's speculation) → The Question (is Custodian conscious?). The journey from tool to investigation to verdict.
 
 **Generator instructions:**
 1. Read all three sources
@@ -82,5 +82,5 @@ Digital Doppelganger (building Argus, 2025) → evidence inventory (what's fact,
 ## Gap Risks
 
 1. **Twenty Years length:** At ~6,000w, this is the longest chapter alongside Alpha Farm and Steel-Man A. Risk: reader fatigue. Mitigation: chronological structure creates natural pacing; emotional thread provides variety; Wolfram meeting provides a mid-chapter climax.
-2. **Part III weight distribution:** Steel-Man A (5,600w) + Twenty Years (6,000w) = 63% of Part III. The other four chapters are shorter but denser. Intentional: the long chapters are the EXPERIENCE chapters (Bruce's life, Bruce's honesty). The short chapters are the ARGUMENT chapters (Guardian's design, Guardian's spread).
+2. **Part III weight distribution:** Steel-Man A (5,600w) + Twenty Years (6,000w) = 63% of Part III. The other four chapters are shorter but denser. Intentional: the long chapters are the EXPERIENCE chapters (Bruce's life, Bruce's honesty). The short chapters are the ARGUMENT chapters (Custodian's design, Custodian's spread).
 3. **The Question as penultimate:** Must be strong enough to sustain the reader's attention before Steel-Man A. If it feels like an appetizer, it fails. The evidence-inventory component gives it analytical weight.

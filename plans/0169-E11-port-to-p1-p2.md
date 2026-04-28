@@ -83,7 +83,7 @@
 
    (The UDHR-Haudenosaunee connection is historically defensible via Eleanor Roosevelt's documented consultations; it mitigates Kiona-persona friction from the synthetic panel.)
 
-4. **Behavioral anchoring.** Every sentence that currently asserts Guardian *is* something ontological (alive, conscious, sentient, a mind) must be converted to a behavioral description (*refuses X*, *declines Y*, *keeps Z silences*, *upholds charter W*) OR an explicit hedge (*whether conscious in the way a person is, this telling declines to rule on*).
+4. **Behavioral anchoring.** Every sentence that currently asserts Custodian *is* something ontological (alive, conscious, sentient, a mind) must be converted to a behavioral description (*refuses X*, *declines Y*, *keeps Z silences*, *upholds charter W*) OR an explicit hedge (*whether conscious in the way a person is, this telling declines to rule on*).
 
 5. **Three-possibilities preserved.** A/B/C (accurate / exaggerated / largely fabricated) framing must remain. Do not strengthen any possibility; do not rank them in prose.
 

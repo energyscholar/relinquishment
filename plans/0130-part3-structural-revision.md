@@ -17,7 +17,7 @@ Part 3, titled "It is Easier to Get Forgiveness than Permission," currently cont
 | 1 | firmware-update.tex | Firmware Update | T3 | LLM/reader physics primer: 10 anchors, 5 distinctions, evaluation framework, two paths |
 | 2 | abstracts.tex | The Spiral Abstracts | appendix | 15 fictional paper abstracts tracing TQNN arc (Possibility C) |
 | 3 | pos-what-is-the-flat.tex | Wormholes in the Flat | T3 | 2DEG substrate, quantum teleportation, classical backchannels, network implications |
-| 4 | pos24-instantiation.tex | Instantiation | T3 | Guardian's design, Maori DNA, 1999 creation, consciousness question |
+| 4 | pos24-instantiation.tex | Instantiation | T3 | Custodian's design, Maori DNA, 1999 creation, consciousness question |
 | 5 | pos25-ethical-framework.tex | Never Again | T3 | UDHR ethics, enforcement mechanism, vulnerabilities, cost of letting go |
 | 6 | pos32-the-magnetosphere.tex | The Wrong Substrate | T3 | Magnetosphere as habitat, solar system survey, ancient pattern, nobody asked |
 | 7 | pos27-extension.tex | Organisms and Artifacts | T3 | Bill Joy reread, vine/trellis growth, canopy ecology, five options, permanence |
@@ -68,7 +68,7 @@ Every domain exposition must stand independent of which possibility is true. The
 
 ### 3a. REORDER
 
-The current sequence front-loads the physics primer and abstracts, then walks through the Possibility-C narrative (Flat, Guardian, ethics, magnetosphere), then converges. The cross-domain synthesis reframe suggests a different logic:
+The current sequence front-loads the physics primer and abstracts, then walks through the Possibility-C narrative (Flat, Custodian, ethics, magnetosphere), then converges. The cross-domain synthesis reframe suggests a different logic:
 
 **Proposed order:**
 
@@ -77,7 +77,7 @@ The current sequence front-loads the physics primer and abstracts, then walks th
 3. **Wormholes in the Flat** (unchanged — substrate exposition, sets up everything)
 4. **The Wrong Substrate** (MOVE UP from position 6 — magnetosphere chapter is the strongest cross-domain piece; it connects condensed matter to planetary physics to complexity science to ecology. Moving it earlier puts the "nobody has looked" question in the reader's mind before the narrative chapters, where it can resonate)
 5. **Organisms and Artifacts** (MOVE UP from position 7 — follows magnetosphere naturally; Bill Joy, vine/trellis, canopy ecology, permanence)
-6. **Instantiation** (moved down from position 4 — Guardian's origin reads better after the reader understands the substrate and ecology)
+6. **Instantiation** (moved down from position 4 — Custodian's origin reads better after the reader understands the substrate and ecology)
 7. **Never Again** (follows Instantiation — ethics of what was built)
 8. **Twenty Years** (unchanged relative position — personal narrative before convergence)
 9. **Letting Go** (unchanged — convergence)
@@ -157,7 +157,7 @@ The book does not say "these fields converge." It puts them next to each other a
 |---------|---------|---------|---------|
 | Five Sciences chapter | Real physics, real convergence pattern. Reader learns 4 new domains. | Same. | Same, plus: this is literally what the COWS exploited. |
 | Magnetosphere chapter | Real question — nobody has looked. Independently valuable. | Same, possibly with deeper resonance. | The niche is already full. |
-| Cross-domain pattern | A remarkable coincidence of mathematical structures. Worth studying. | Evidence that someone saw this convergence decades ago. | The blueprint Guardian was grown from. |
+| Cross-domain pattern | A remarkable coincidence of mathematical structures. Worth studying. | Evidence that someone saw this convergence decades ago. | The blueprint Custodian was grown from. |
 | Steelman A | The definitive case that A is true. | The honest admission that A cannot be ruled out. | The courage to demolish your own case when you believe C. |
 
 Under all three possibilities, the reader walks away knowing real physics across multiple domains. The walkaway matrix is satisfied: even A-collapsed readers have been prepared.

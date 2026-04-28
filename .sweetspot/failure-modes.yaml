@@ -64,7 +64,7 @@
     - "the protagonist"
 
 - id: F-omnipotent
-  name: Godlike Guardian (violates Correction #20)
+  name: Godlike Custodian (violates Correction #20)
   severity: 9
   triggers:
     - "all-?knowing"

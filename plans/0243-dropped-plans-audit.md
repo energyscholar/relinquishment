@@ -23,7 +23,7 @@ Plans with NO git commit evidence, NOT marked complete:
 | 0162 | Theological disarm | Unknown — may still be relevant |
 | 0164 | Physics primer L2 | Probably absorbed into 0194 firmware jiu-jitsu |
 | 0165 | T7 honesty framing | Unknown |
-| 0166 | Disable onhover guardian interludes | Absorbed by Plan 0221 (confirmed) |
+| 0166 | Disable onhover custodian interludes | Absorbed by Plan 0221 (confirmed) |
 | 0167 | Sentience-agnostic framing | Unknown — may still be relevant |
 | 0168 | Personas source / sweetspot annealer | Two plans same number. Unknown. |
 | 0170 | p3 propagation governance | Probably absorbed into 0189 |

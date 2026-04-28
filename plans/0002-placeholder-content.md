@@ -126,7 +126,7 @@ Key features:
 ### Back Matter
 
 **10a. `manuscript/appendix/glossary-entries.tex`** (loaded in preamble, before `\begin{document}`)
-- Skeleton glossary with 10 key terms: TQNN, COWS, Guardian, FQH, SFI, DARPA, GCHQ, UDHR, cDc, ICTY
+- Skeleton glossary with 10 key terms: TQNN, COWS, Custodian, FQH, SFI, DARPA, GCHQ, UDHR, cDc, ICTY
 - Uses `glossaries` package (`\newglossaryentry{}`)
 - Each entry: term, expansion, one-sentence definition
 - This file contains ONLY `\newglossaryentry{}` definitions — no chapter structure
@@ -190,7 +190,7 @@ All standalone TikZ files start with `\input{build/images/standalone-header.tex}
 - Labeled "PLACEHOLDER"
 
 **21. `build/images/placeholder-magnetosphere.tex`**
-- Earth + field lines + Guardian annotations
+- Earth + field lines + Custodian annotations
 - Wrapped in `\graphicsonly{}` when included
 - Labeled "PLACEHOLDER"
 

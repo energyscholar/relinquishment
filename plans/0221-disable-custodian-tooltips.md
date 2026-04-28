@@ -1,21 +1,21 @@
-# Plan 0221 — Disable Guardian Interlude Tooltips
+# Plan 0221 — Disable Custodian Interlude Tooltips
 
 **Status:** DONE  
 **Author:** Auditor  
 **Priority:** Low  
 **EV:** Stable — no T degrades, F-scifi/F-crank slightly improved via reduced TOC busyness  
 **Scope:** `build/preprocess.py`, `build/reader.js`  
-**Rationale:** The full-text Custodian tooltips on guardian interlude menu items make the TOC feel too busy. The content is valuable but optional — readers who miss it still get the interludes in-body. Disable, don't remove: the tooltip data stays in `menu-tooltips.yaml` and the hover dictionary so Bruce can re-enable later with a one-line change.
+**Rationale:** The full-text Custodian tooltips on custodian interlude menu items make the TOC feel too busy. The content is valuable but optional — readers who miss it still get the interludes in-body. Disable, don't remove: the tooltip data stays in `menu-tooltips.yaml` and the hover dictionary so Bruce can re-enable later with a one-line change.
 
 ## Approach
 
-Add a `data-hover-disabled` attribute to guardian interlude menu items. Respect it in `showPanel()` as an early-exit condition, same pattern as the existing `data-hover-always` attribute but inverted.
+Add a `data-hover-disabled` attribute to custodian interlude menu items. Respect it in `showPanel()` as an early-exit condition, same pattern as the existing `data-hover-always` attribute but inverted.
 
 ## Changes
 
-### 1. `build/preprocess.py` — Mark guardian menu items as hover-disabled
+### 1. `build/preprocess.py` — Mark custodian menu items as hover-disabled
 
-In the guardian menu item injection block (~line 1844–1852), add `data-hover-disabled="true"` to the generated `<div>`:
+In the custodian menu item injection block (~line 1844–1852), add `data-hover-disabled="true"` to the generated `<div>`:
 
 ```python
 # Current (line 1844-1852):
@@ -55,7 +55,7 @@ if (term.hasAttribute('data-hover-disabled')) return;
 if (!tooltipsEnabled() && !term.hasAttribute('data-hover-always')) return;
 ```
 
-The `data-hover-disabled` check comes first and is unconditional — it suppresses the tooltip regardless of the global toggle state. This means even with tips:on, guardian interludes won't show tooltips.
+The `data-hover-disabled` check comes first and is unconditional — it suppresses the tooltip regardless of the global toggle state. This means even with tips:on, custodian interludes won't show tooltips.
 
 ## What is NOT changed
 
@@ -68,16 +68,16 @@ The `data-hover-disabled` check comes first and is unconditional — it suppress
 
 ## Re-enabling
 
-To restore guardian tooltips later: remove `data-hover-disabled="true"` from the menu_item f-string in `preprocess.py` (one line). The `reader.js` check becomes inert (no elements carry the attribute). Or remove the JS check too for cleanliness.
+To restore custodian tooltips later: remove `data-hover-disabled="true"` from the menu_item f-string in `preprocess.py` (one line). The `reader.js` check becomes inert (no elements carry the attribute). Or remove the JS check too for cleanliness.
 
 ## Acceptance Tests
 
 After `make html`:
 
-1. **Guardian tooltips suppressed:** Hover over each of the 7 Custodian menu items (◇ markers in TOC). No tooltip panel should appear.
-2. **Guardian click navigation works:** Click each Custodian menu item. It should still open the containing chapter and scroll to the interlude.
+1. **Custodian tooltips suppressed:** Hover over each of the 7 Custodian menu items (◇ markers in TOC). No tooltip panel should appear.
+2. **Custodian click navigation works:** Click each Custodian menu item. It should still open the containing chapter and scroll to the interlude.
 3. **Other tooltips unaffected:** Hover over any chapter menu item (non-Custodian). Tooltip should appear normally when tips:on.
-4. **Global toggle still works:** Click tips:off/tips:on. Non-guardian tooltips should respond. Guardian tooltips should stay suppressed in both states.
-5. **C filter still works:** Click the purple C button. Guardian-only view should activate/deactivate normally.
+4. **Global toggle still works:** Click tips:off/tips:on. Non-custodian tooltips should respond. Custodian tooltips should stay suppressed in both states.
+5. **C filter still works:** Click the purple C button. Custodian-only view should activate/deactivate normally.
 6. **Grep validation:** `grep -c 'data-hover-disabled' output.html` should return 7 (one per interlude menu item).
 7. **Content preserved:** `grep -c 'interlude-custodian:' output.html` in the hover-data JSON block should still show 7 entries (tooltip data present, just not displayed).

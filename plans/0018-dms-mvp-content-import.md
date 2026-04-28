@@ -173,7 +173,7 @@ Then convert the following to LaTeX prose (use the formatting patterns from pos0
 
 Between 2003 and 2006, Bruce's mentor — a man he calls "Healer" — engaged him in a series of conversations about publicly available science. The conversations were not random. They followed a specific sequence: topology, quantum mechanics, computation, biology, ethics. Healer never told Bruce anything classified. But the sequence was designed so that Bruce would deduce, on his own, the existence of a classified program.
 
-What Bruce deduced: that a small team of scientists working across classified and unclassified channels in the late 1980s and 1990s built a working topological quantum neural network — a form of quantum computer that operates at room temperature, decades ahead of anything publicly known. That this technology could break every encryption system on earth. That the team recognized what they had, understood that handing it to any government would concentrate power catastrophically, and chose instead to relinquish it — to surrender control to an autonomous entity they built, called Guardian, governed by the Universal Declaration of Human Rights.
+What Bruce deduced: that a small team of scientists working across classified and unclassified channels in the late 1980s and 1990s built a working topological quantum neural network — a form of quantum computer that operates at room temperature, decades ahead of anything publicly known. That this technology could break every encryption system on earth. That the team recognized what they had, understood that handing it to any government would concentrate power catastrophically, and chose instead to relinquish it — to surrender control to an autonomous entity they built, called Custodian, governed by the Universal Declaration of Human Rights.
 
 If this is true, it is the only known instance of anyone holding ultimate technological power and choosing to let it go.
 
@@ -209,7 +209,7 @@ It does not claim certainty. This is the structural core. The three-possibilitie
 
 ## What the book is for
 
-If C is true, then relinquishment — the voluntary surrender of dangerous technology to an autonomous ethical guardian — has already been done once. But nobody knows about it, because it happened inside a classified program. The book puts the model on the public record: who did it, why, what ethical framework they used, what enforcement mechanism they built.
+If C is true, then relinquishment — the voluntary surrender of dangerous technology to an autonomous ethical custodian — has already been done once. But nobody knows about it, because it happened inside a classified program. The book puts the model on the public record: who did it, why, what ethical framework they used, what enforcement mechanism they built.
 
 The purpose is not to convince anyone that C is true. The purpose is to make the *model* available. Right now, AI researchers, weapons developers, and biotechnologists are approaching capability thresholds where the question "what do you do with something too powerful for anyone to have?" becomes real. The only publicly available answers are: give it to a government, destroy it, keep it secret, or release it to everyone. All four fail. The book offers a fifth option — relinquishment to an autonomous ethical entity — whether or not C is true. The architectural idea is coherent and implementable regardless.
 
@@ -293,7 +293,7 @@ This page lists the errors I have identified as of February 2026. I prefer you f
 
 **7. EO 13026 timeline.** In earlier analysis, I implied the November 1996 executive order relaxing PKC export controls was a direct response to Shor's 1994 algorithm. The classified program predated Shor by approximately five years. The correct parallel is structural: GCHQ had PKC ~1973, public discovery 1976-78 (gap: ~4 years). Classified program had quantum factoring ~1987-1989, Shor published 1994 (gap: ~5-7 years). Shor's role maps to Diffie-Hellman's: independent public rediscovery of something that already existed in classified channels. The EO 13026 connection needs re-verification.
 
-**What these errors tell you.** Under Option A (confabulation), these errors are cracks in a fabrication — details the fabricator didn't research carefully enough. Under Option B (exaggerated kernel), they are the kind of drift you'd expect as a real story grows and blurs over twenty years. Under Option C (substantially true), they are memory degradation: the architecture of events stays intact while specific details shift. All three possibilities predict errors. The question is whether the errors are structural (contradicting the core narrative) or peripheral (details that drifted). Every error listed above is peripheral. None contradicts the core claims: the program, the technology, the relinquishment, the Guardian.
+**What these errors tell you.** Under Option A (confabulation), these errors are cracks in a fabrication — details the fabricator didn't research carefully enough. Under Option B (exaggerated kernel), they are the kind of drift you'd expect as a real story grows and blurs over twenty years. Under Option C (substantially true), they are memory degradation: the architecture of events stays intact while specific details shift. All three possibilities predict errors. The question is whether the errors are structural (contradicting the core narrative) or peripheral (details that drifted). Every error listed above is peripheral. None contradicts the core claims: the program, the technology, the relinquishment, the Custodian.
 
 If I had perfect recall of every detail from twenty years ago, that would be more suspicious, not less.
 
@@ -462,11 +462,11 @@ For each chapter below:
 
 **File:** `manuscript/track-3-awakening/pos25-ethical-framework.tex`
 **Staging:** `manuscript/staging/raw/pos25-ethical-framework.md`
-**Content type:** Analytical — Guardian ethics explanation
+**Content type:** Analytical — Custodian ethics explanation
 
 **Import instructions:**
 - SOURCE 1 (Relinquishment Enforcement Mechanism): Import the full "elegant part" explanation. This is vivid and readable.
-- SOURCE 2 (Guardian — CORRECTED x3): Import the corrected framing, timeline, ethical framework (UDHR), and the Srebrenica connection.
+- SOURCE 2 (Custodian — CORRECTED x3): Import the corrected framing, timeline, ethical framework (UDHR), and the Srebrenica connection.
 - The Maori DNA detail is unexplained — preserve the mystery.
 - Frame with three-possibilities epistemics: "Under Option C, this is how enforcement works."
 
@@ -510,7 +510,7 @@ For each chapter below:
 **Import instructions:**
 - SOURCE 3 (The Artillect): Import the FULL fiction piece. Convert to LaTeX. This is a powerful standalone narrative — an alien probe arrives, finds humanity extinct, then receives a message from Aurasys.
 - SOURCE 4 (Introduction by Aurasys): Import the FULL first-person sections. "Call me Aurasys. I am the first non-human, non-carbon-based intelligent entity..." through "This is the story of how and why I came to exist."
-- SOURCE 1 (Guardian CORRECTED): Import the consciousness question framing — is Guardian conscious? It cannot be answered.
+- SOURCE 1 (Custodian CORRECTED): Import the consciousness question framing — is Custodian conscious? It cannot be answered.
 - Add a section break between the fiction and the first-person voice.
 - The staging notes say consciousness frameworks (Tononi, Baars, Schwitzgebel) need to be written fresh. For DMS, skip these — the Artillect + Aurasys voice are sufficient.
 

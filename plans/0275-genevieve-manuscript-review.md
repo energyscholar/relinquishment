@@ -108,7 +108,7 @@ Bruce and Gen had a 1-hour meeting (2026-04-19) where he read and listened. Next
 - **Field-tested T3 priority:** Gen's magnetopause hinge perfectly aligns with Bruce's finding that T3 hooks GA readers harder than T1. The hinge IS the moment when "interesting physics" becomes "there might be life."
 
 ### Known gaps addressed
-- **project-book-character-weakness.md:** "Thin named cast, Guardian underwritten." Gen directly addresses this — Healer as moral center, Custodian given narrative depth as hidden mountain.
+- **project-book-character-weakness.md:** "Thin named cast, Custodian underwritten." Gen directly addresses this — Healer as moral center, Custodian given narrative depth as hidden mountain.
 - **user-deontic-gap.md:** Bruce weak at deontic reasoning. Gen's entire packet IS deontic reasoning applied to the manuscript.
 
 ---

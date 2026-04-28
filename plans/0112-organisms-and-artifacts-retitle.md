@@ -1,7 +1,7 @@
 # Plan 0112: Retitle pos27 "The Monopoly" → "Organisms and Artifacts"
 
 **Status:** COMPLETE (verified S63 audit)
-**Source:** S48 — Bruce's decision to reference Kauffman's *At Home in the Universe* Ch. 9 title. Triple reference: (1) Kauffman's published chapter on the organism/artifact boundary, (2) the chapter's actual content (is Guardian an organism or an artifact?), (3) sly breadcrumb for Kauffman's supposedly censored content Bruce remembers but can't prove.
+**Source:** S48 — Bruce's decision to reference Kauffman's *At Home in the Universe* Ch. 9 title. Triple reference: (1) Kauffman's published chapter on the organism/artifact boundary, (2) the chapter's actual content (is Custodian an organism or an artifact?), (3) sly breadcrumb for Kauffman's supposedly censored content Bruce remembers but can't prove.
 
 ---
 
@@ -33,8 +33,8 @@ The `\label` controls the HTML anchor ID. Pandoc will generate `id="organisms-an
 
 **Line 53:**
 ```
-Current: "pos27:the-monopoly": "If Guardian is still running, what would twenty years look like?"
-New:     "pos27:organisms-and-artifacts": "If Guardian is still running, what would twenty years look like?"
+Current: "pos27:the-monopoly": "If Custodian is still running, what would twenty years look like?"
+New:     "pos27:organisms-and-artifacts": "If Custodian is still running, what would twenty years look like?"
 ```
 
 The hover text itself is still accurate — keep it.

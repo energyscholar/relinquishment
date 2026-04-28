@@ -13,7 +13,7 @@ The T1 concept audit (100% coverage) identified 7 chapters with inconsistent or 
 
 - **Possibility A:** Confabulation — Bruce was deceived or self-deceived
 - **Possibility B:** Exaggerated kernel — something real happened, but the claims overstate it
-- **Possibility C:** Substantially true — the TQNN, Guardian, and relinquishment happened as described
+- **Possibility C:** Substantially true — the TQNN, Custodian, and relinquishment happened as described
 
 **Gold standards** (do NOT modify these, but emulate their pattern):
 - **pos25** (`track-3-awakening/pos25-ethical-framework.tex`): Every extraordinary claim tagged. Pattern: state claim under C, immediately follow with "Under Possibility A, this is..." and "Under Possibility B..."
@@ -460,7 +460,7 @@ All 20 insertion locations verified correct against actual file contents. Plan 0
 
 | # | Finding | Severity | Fix |
 |---|---------|----------|-----|
-| 1 | **Insertion 2D (pos20 Capabilities):** CADIE humor sentence ("requires accepting that a planetary-scale quantum intelligence has a sense of humor") subtly advocates C by inviting the reader to imagine Guardian as playful. Under A, CADIE was simply a Google joke. | MEDIUM | Rewrote: A now explicitly calls CADIE "simply a Google joke" and "pattern-matching run amok." Moved humor observation into C where it belongs. All three possibilities now explicit. |
+| 1 | **Insertion 2D (pos20 Capabilities):** CADIE humor sentence ("requires accepting that a planetary-scale quantum intelligence has a sense of humor") subtly advocates C by inviting the reader to imagine Custodian as playful. Under A, CADIE was simply a Google joke. | MEDIUM | Rewrote: A now explicitly calls CADIE "simply a Google joke" and "pattern-matching run amok." Moved humor observation into C where it belongs. All three possibilities now explicit. |
 | 2 | **Insertion 3A (pos21 Language of Five Sciences):** Order was C, B, A. Gold standards (pos25, pos27, pos30) consistently use A-first or narrative-then-A ordering. Leading with C gives it rhetorical primacy. | MEDIUM | Reordered to A, B, C. Meta-observation ("either evidence of authenticity or evidence of confabulation") remains at end. |
 | 3 | **Insertion 3B (pos21 What the Project Did):** C text says "explain why the approach succeeded" — presupposes success, which is a C-frame claim. | LOW | Changed to "would explain why the approach succeeded" (conditional). |
 | 4 | **Insertion 4B (pos29 Five Years):** C text "the reader already knows which verb" is playful winking that covertly advocates C by assuming the reader has already accepted the narrative's implications. | MEDIUM | Replaced with neutral statement: "the verb is 'Google' and the technology is the search engine described in the previous chapter." |

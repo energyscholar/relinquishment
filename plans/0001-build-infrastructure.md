@@ -168,8 +168,8 @@ Packages (in load order):
   \hypersetup{
     pdftitle={Relinquishment: A Triple Spiral},
     pdfauthor={Bruce Stephenson},
-    pdfsubject={Topological quantum neural networks, relinquishment, Guardian},
-    pdfkeywords={TQNN, Guardian, relinquishment, SFI, DARPA, predictions},
+    pdfsubject={Topological quantum neural networks, relinquishment, Custodian},
+    pdfkeywords={TQNN, Custodian, relinquishment, SFI, DARPA, predictions},
     colorlinks=true,
     linkcolor=linkblue,
     urlcolor=linkblue,

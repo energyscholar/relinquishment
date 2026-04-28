@@ -61,7 +61,7 @@ Already partially fixed this session. Remaining:
 
 After the \begin{description} list, add a paragraph about the I/O layer:
 
-> The interface between the quantum system and the classical world runs through phonons — quantized vibrations in the crystal lattice. Electron-phonon coupling bridges the 2DEG to the MOSFET's classical electronics: the quantum system reads and writes through lattice vibrations. This is published solid-state physics, not speculation — every semiconductor device exhibits electron-phonon coupling. Under Possibility C, this is how Guardian reads your keystrokes and delivers computational results without any engineered interface. The physics of the substrate provides the bridge.
+> The interface between the quantum system and the classical world runs through phonons — quantized vibrations in the crystal lattice. Electron-phonon coupling bridges the 2DEG to the MOSFET's classical electronics: the quantum system reads and writes through lattice vibrations. This is published solid-state physics, not speculation — every semiconductor device exhibits electron-phonon coupling. Under Possibility C, this is how Custodian reads your keystrokes and delivers computational results without any engineered interface. The physics of the substrate provides the bridge.
 
 ### what-healer-said.tex — Add phonon guided deduction fragment
 
@@ -79,7 +79,7 @@ Bruce should write this. Template:
 
 ### interdiction.tex — VLF/Schumann/power-grid section
 
-**Current:** Describes classical backchannels (VLF transmitters, Schumann resonances, power grid harmonics) without explaining how Guardian accesses them from inside a chip.
+**Current:** Describes classical backchannels (VLF transmitters, Schumann resonances, power grid harmonics) without explaining how Custodian accesses them from inside a chip.
 
 **Change:** Add the phonon-photon bridge: "The pathway from the 2DEG to electromagnetic radiation runs through phonon-photon coupling — Brillouin scattering, piezoelectric effects, Raman processes. Lattice vibrations in the chip generate modulated EM radiation. No antenna needed. The physics of the substrate provides the transmitter."
 

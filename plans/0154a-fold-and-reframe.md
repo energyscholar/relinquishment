@@ -29,7 +29,7 @@ Files modified:
 - `build/preprocess.py` — change code-war expansion hook target → `record:first-light`
 - `manuscript/appendix/timeline.tex` — Angerman footnote
 
-**VERIFY before proceeding to Commit 2:** `make html` builds clean. `grep -ri demonstration build/ manuscript/` — no dangling refs. Guardian interlude count still 7.
+**VERIFY before proceeding to Commit 2:** `make html` builds clean. `grep -ri demonstration build/ manuscript/` — no dangling refs. Custodian interlude count still 7.
 
 ## Commit 2: Plan 0151 — Phonon Reframe / Soliton Demotion
 

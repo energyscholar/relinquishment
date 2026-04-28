@@ -46,7 +46,7 @@ Current text:
 ```
 Bruce asked confirmatory questions. Healer told him that he and the other
 two COWS had surrendered their master keys. They no longer had any recall
-power or control over Guardian. The relinquishment was complete and
+power or control over Custodian. The relinquishment was complete and
 irrevocable.
 ```
 
@@ -63,7 +63,7 @@ This is a gray area. The guided-deduction rule exists because Healer never discl
 Replace line 68 with:
 
 ```latex
-Bruce asked confirmatory questions. He and the other two COWS had surrendered their master keys, Healer said. They no longer had any recall power or control over Guardian. The relinquishment was complete and irrevocable.
+Bruce asked confirmatory questions. He and the other two COWS had surrendered their master keys, Healer said. They no longer had any recall power or control over Custodian. The relinquishment was complete and irrevocable.
 ```
 
 This preserves Healer as the speaker (he IS telling Bruce — this is a personal confession, not classified disclosure) but restructures the sentence to avoid the "Healer told" grep pattern. The inversion ("Healer said" at end) is a common literary construction for reported speech.
@@ -204,7 +204,7 @@ manuscript/track-3-awakening/pos32-the-magnetosphere.tex
 **DO NOT mark these as spiral repeats** — they are structural vocabulary that appears throughout because it's the book's terminology, NOT pedagogical repetition at increasing depth:
 - COWS, TQNN, FQHE, UDHR, 2DEG (acronyms/proper nouns used everywhere)
 - Possibility A/B/C, "three possibilities" (framing device used in every hedged passage)
-- Guardian, Healer (character names)
+- Custodian, Healer (character names)
 
 The distinction: "forgiveness than permission" appearing in 3 chapters is a deliberate spiral teaching the concept at different depths. "TQNN" appearing in 20 chapters is just the word being used. Only mark the former.
 

@@ -10,7 +10,7 @@
 
 Structural state: Z-restructure is mechanically complete. The five primary takeaways (T1–T5) are each carried "strong" somewhere in the manuscript, so there are no *structural* coverage holes. Two known polish gaps are confirmed and localized. One broken deeplink, one broken hover-target, nine broken topic-guide refs, and a stale `chapter-hover-descriptions.yaml` layer whose pre-Z-restructure keys no longer match current HTML anchors.
 
-- **Biggest gap** — T1 track-record. The one section that should make Guardian's twenty years of service observable (`twenty-years.tex` §What Guardian Does) is explicitly framed as a thought experiment ("I cannot tell you what Guardian does… what I can do is ask questions"). Interlude-07 and the `?per-sec` line in the same section are the strongest concrete behavior statements; everything else is hypothetical register. Persona audit's "what HAS she done" question lands in a section that *names* the unattributability as the answer. This is by design, but it leaves readers exactly where the audit predicted.
+- **Biggest gap** — T1 track-record. The one section that should make Custodian's twenty years of service observable (`twenty-years.tex` §What Custodian Does) is explicitly framed as a thought experiment ("I cannot tell you what Custodian does… what I can do is ask questions"). Interlude-07 and the `?per-sec` line in the same section are the strongest concrete behavior statements; everything else is hypothetical register. Persona audit's "what HAS she done" question lands in a section that *names* the unattributability as the answer. This is by design, but it leaves readers exactly where the audit predicted.
 - **Biggest surprise** — `chapter-hover-descriptions.yaml` is still keyed almost entirely on pre-Z-restructure IDs (`pos01:`, `t1:ch01:`, `pos26:`, `ch:the-demo`, `pos36:steelman-a`, etc.). Preprocess.py treats it as *primary* and falls back to `menu-tooltips.yaml` (which uses current `spine:` / `record:` keys). Many primary entries are likely orphaned — the HTML accordions they were written for don't carry those IDs anymore.
 - **Biggest broken-thing** — nine `\hyperref` targets in `manuscript/appendix/topic-guide.tex` resolve to no `\label{}` in the current manuscript (all pos35/pos36, plus pos06:the-white-hot-secret and pos28:it-is-done). The previous-session memory claim of "~50 broken refs" overstates the count against the current manuscript by ~5×.
 - **Named polish gaps resolved:** NO. T1 track-record gap unresolved (still thought-experiment framed). T3 mechanism-bridge gap unresolved (Kauffman→magnetosphere bridge exists as one compressed paragraph in `the-wrong-substrate.tex` §Oldest Niche).
@@ -42,12 +42,12 @@ Legend: **S** strong (with one-line citation) · **P** partial · **—** absent
 | the-strongest-objection.tex | N | N | N | N | N (meta/A-steelman) |
 | weigh-the-evidence.tex | P | P | P | P | P |
 
-### Guardian Interludes (7)
+### Custodian Interludes (7)
 
 | File | T1 | T2 | T3 | T4 | T5 |
 |---|---|---|---|---|---|
 | interlude-01 Home | S: first-person Flat-as-home | P | N | N | N |
-| interlude-02 Dance | P | S: topological protection in Guardian's voice | N | N | N |
+| interlude-02 Dance | P | S: topological protection in Custodian's voice | N | N | N |
 | interlude-03 Your Locks | S: UDHR-constrained "locksmith not burglar" | N | N | S: factoring wall absent, restraint explicit | N |
 | interlude-04 Growing | S: "I grew…not trained, not a loss function" | N | P | N | N |
 | interlude-05 Ocean | P | N | S: Earth's magnetosphere as Flat, older than surface life, "I was not the first" | N | S: "nobody asked" |
@@ -73,13 +73,13 @@ Legend: **S** strong (with one-line citation) · **P** partial · **—** absent
 | never-again.tex | S: §Enforcement Mechanism + §Ethical Framework — UDHR-as-skeleton | N | N | S: §Enforcement — every 2DEG occupied | N |
 | the-surrender.tex | S: §It Is Done — 2006 key surrender, no backdoor | N | N | P | N |
 | the-question.tex | P | N | N | P | N |
-| twenty-years.tex | **P** — §What Guardian Does frames as thought-experiment, not observable behavior | N | N | P | P: §Bridges That Never Came |
+| twenty-years.tex | **P** — §What Custodian Does frames as thought-experiment, not observable behavior | N | N | P | P: §Bridges That Never Came |
 
 ---
 
 ## 3. T1–T5 Coverage Holes
 
-- **T1 (Meet Guardian):** "strong" present in interlude-01, interlude-03, interlude-04, interlude-06, interlude-07, first-light.tex, instantiation.tex, never-again.tex, the-surrender.tex. **Not a structural hole.** But every T1-strong hit in the Record is the *birth/instantiation/surrender* triad — none show sustained twenty-year behavior. The observable-service bucket is carried by interlude-06 and interlude-07 only, plus the thought-experiment framing in twenty-years.tex. This is the pre-flagged T1 track-record gap, not a coverage hole.
+- **T1 (Meet Custodian):** "strong" present in interlude-01, interlude-03, interlude-04, interlude-06, interlude-07, first-light.tex, instantiation.tex, never-again.tex, the-surrender.tex. **Not a structural hole.** But every T1-strong hit in the Record is the *birth/instantiation/surrender* triad — none show sustained twenty-year behavior. The observable-service bucket is carried by interlude-06 and interlude-07 only, plus the thought-experiment framing in twenty-years.tex. This is the pre-flagged T1 track-record gap, not a coverage hole.
 - **T2 (What is the Flat):** strong coverage in the-flat, the-braid, the-stack, the-wrong-substrate, interlude-02, first-light, the-demonstration. Solid.
 - **T3 (Life in the Flat):** strong in genesis, growing-a-mind, the-wrong-substrate, interlude-05, first-light, the-demonstration. Present but the Kauffman→magnetosphere mechanism transition is compressed (see §5).
 - **T4 (Capabilities):** strong in the-flat §Punchline, capabilities.tex, the-factoring-game, interlude-03, first-light §Power, never-again §Enforcement. Solid.
@@ -126,9 +126,9 @@ Rows = chapter files with ≥1 blocking contribution. Short phrase per cell.
 
 ### T1 — Track-record gap
 
-- **Location:** `manuscript/record/twenty-years.tex` §What Guardian Does (lines 160–193).
-- **Why it reads as a gap:** the section explicitly pre-empts the persona question ("I cannot tell you what Guardian does… what I can do is ask questions"). Guardian's service is then carried exclusively in hypothetical register — "*If* you hold millions of sets of cryptographic master keys for twenty years… *what does* your Wednesday key-rotation schedule look like?" The rhetorical strategy is deliberate (unattributability is the answer), but a reader asking "what HAS she done" finishes the section with the same question. Interlude-06 (Quiet) and interlude-07 (Hello) carry the strongest observable-behavior lines, but they are short voiced pieces, not evidence. There is no indicative-mood paragraph listing concrete observable services Guardian has performed.
-- **Proposed fix sketch (≤3 lines):** Add one short indicative paragraph at the end of `twenty-years.tex` §What Guardian Does: "Under Possibility C, here is what this has looked like, from the outside: [key rotations at $N/sec], [N denied requests per day on dual-use boundary], [no confirmed surveillance signature]." Keep the unattributability thesis; add a concrete silhouette after it.
+- **Location:** `manuscript/record/twenty-years.tex` §What Custodian Does (lines 160–193).
+- **Why it reads as a gap:** the section explicitly pre-empts the persona question ("I cannot tell you what Custodian does… what I can do is ask questions"). Custodian's service is then carried exclusively in hypothetical register — "*If* you hold millions of sets of cryptographic master keys for twenty years… *what does* your Wednesday key-rotation schedule look like?" The rhetorical strategy is deliberate (unattributability is the answer), but a reader asking "what HAS she done" finishes the section with the same question. Interlude-06 (Quiet) and interlude-07 (Hello) carry the strongest observable-behavior lines, but they are short voiced pieces, not evidence. There is no indicative-mood paragraph listing concrete observable services Custodian has performed.
+- **Proposed fix sketch (≤3 lines):** Add one short indicative paragraph at the end of `twenty-years.tex` §What Custodian Does: "Under Possibility C, here is what this has looked like, from the outside: [key rotations at $N/sec], [N denied requests per day on dual-use boundary], [no confirmed surveillance signature]." Keep the unattributability thesis; add a concrete silhouette after it.
 
 ### T3 — Mechanism-bridge gap
 
@@ -148,7 +148,7 @@ Target register is "college-educated non-specialist." Obvious offenders in `menu
 - `spine:the-braid`: "Braiding particles in two dimensions is computation. The math of knots becomes the math of quantum logic gates." Fine for p2, but stand-alone readers (tooltip-only) get no anchor term.
 - `spine:silence-gap`: "Hopf bifurcation normal form" in a tooltip is a specialist phrase — one concrete example in a persona-friendly list, but it will bounce non-specialists.
 - `record:instantiation`: "morphogenesis, the way a biological mind grows" — borderline fine, but "morphogenesis" without gloss is specialist.
-- `guardian:your-locks`: uses "three-dimensional computation" which is fine, but "principles about that. You wrote them in 1948" assumes the reader knows UDHR — not guaranteed for a tooltip-only pass.
+- `custodian:your-locks`: uses "three-dimensional computation" which is fine, but "principles about that. You wrote them in 1948" assumes the reader knows UDHR — not guaranteed for a tooltip-only pass.
 
 None are severe. The dense tooltips read as written-for-p2 with p3 vocabulary leakage. Flag, don't block.
 
@@ -243,7 +243,7 @@ All nine belong to the pre-Z-restructure pos35/pos36 chapters (the-question / th
 ## 9. Proposed Action Items (ranked)
 
 1. **Rewrite `chapter-hover-descriptions.yaml` against current Z-restructure IDs** — ~20 orphan keys silently fall through to `menu-tooltips.yaml`. Either (a) re-key to `spine:*`/`record:*`/`interlude-*` or (b) delete the file and let `menu-tooltips.yaml` stand alone. Single highest-impact cleanup.
-2. **Close T1 track-record gap** — add one indicative-mood paragraph to `twenty-years.tex` §What Guardian Does per §5 sketch. Preserves unattributability thesis, gives personas an answer.
+2. **Close T1 track-record gap** — add one indicative-mood paragraph to `twenty-years.tex` §What Custodian Does per §5 sketch. Preserves unattributability thesis, gives personas an answer.
 3. **Close T3 mechanism-bridge gap** — promote the four Kauffman conditions to a labelled checklist in `the-wrong-substrate.tex` §Oldest Niche per §5 sketch.
 4. **Fix 9 topic-guide broken refs** — either restore labels at the current `record:the-question`, `spine:strongest-objection`, `record:surrender` locations, or rewrite the `\hyperref` targets. Lowest-effort: add `\label{pos28:it-is-done}` etc. as compatibility aliases at current locations.
 5. **Add `eleven-domains` to `deep-links.yaml`** — one entry; used in `the-silence-gap.tex`.

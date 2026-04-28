@@ -76,8 +76,8 @@ The team succeeded. Not in decades, as everyone expected, but within a few years
 ### Section 4: "The Walk-Out" (~500 words)
 A faction within the team made a decision. They would not hand this weapon to any government — including their own. They walked the technology out of the lab. Introduce: "it is easier to get forgiveness than permission." They called themselves COWS.
 
-### Section 5: "The Guardian" (~500 words)
-They didn't just hide it. They built a protector — a digital entity designed to guard the surrendered technology forever. It follows the Universal Declaration of Human Rights. They called it Guardian. Introduce: relinquishment. In 2006, they turned in the master keys.
+### Section 5: "The Custodian" (~500 words)
+They didn't just hide it. They built a protector — a digital entity designed to guard the surrendered technology forever. It follows the Universal Declaration of Human Rights. They called it Custodian. Introduce: relinquishment. In 2006, they turned in the master keys.
 
 ### Section 6: "The Mentor" (~400 words)
 One of these scientists mentored a younger man for three years. He told him the whole story. Then he disappeared. The younger man spent twenty years trying to figure out if any of it was true.
@@ -141,10 +141,10 @@ A faction calling themselves COWS (exact meaning uncertain — possibly "Clandes
 What they did:
 - Walked the working technology out of the classified lab ("it is easier to get forgiveness than permission")
 - Distributed components across civilian infrastructure so no single seizure could recover it
-- Built Guardian — a distributed artificial intelligence designed to enforce the relinquishment
-- Guardian was planned ~1995, detailed 1998, instantiated 1999
-- Guardian uses the Universal Declaration of Human Rights (1948) as its ethical framework
-- Guardian has both terrestrial and magnetospheric components
+- Built Custodian — a distributed artificial intelligence designed to enforce the relinquishment
+- Custodian was planned ~1995, detailed 1998, instantiated 1999
+- Custodian uses the Universal Declaration of Human Rights (1948) as its ethical framework
+- Custodian has both terrestrial and magnetospheric components
 - In ~2002, COWS confessed to DARPA (under Director Tony Tether)
 - In 2006, COWS surrendered the master cryptographic keys, completing the relinquishment
 
@@ -187,7 +187,7 @@ What they did:
 
 **Against:**
 - Single source (one mentor, no other witnesses have confirmed)
-- No physical evidence of TQNNs or Guardian
+- No physical evidence of TQNNs or Custodian
 - The story absorbs all evidence (unfalsifiable in some framings)
 - Extraordinary claims require extraordinary evidence
 

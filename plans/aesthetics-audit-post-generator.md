@@ -66,7 +66,7 @@
 
 ### F23. pos22 (Why Give It Up) is 196 lines -- longest chapter by far (NEW)
 - pos22 is approximately 8,500 words. Most Generator-populated chapters are 1,000-2,500 words. The original pre-Generator chapters (pos04, pos08, pos14) are 2,000-5,000 words. pos22 is an outlier at nearly double the next longest.
-- This is the complete "ch3-relinquishment" source dump. It reads as a standalone essay, not as a chapter in a spiral pedagogy. It front-loads the entire COWS story, relinquishment mechanism, and Guardian creation -- material that the pedagogical spiral is supposed to teach incrementally across tracks 1 and 3.
+- This is the complete "ch3-relinquishment" source dump. It reads as a standalone essay, not as a chapter in a spiral pedagogy. It front-loads the entire COWS story, relinquishment mechanism, and Custodian creation -- material that the pedagogical spiral is supposed to teach incrementally across tracks 1 and 3.
 - **Action:** This is the structural outlier the pre-Generator audit flagged as F9's sibling. Needs editorial decision: split, trim, or restructure.
 
 ### F24. WikiLeaks chapter is 3 lines (too short) (NEW)

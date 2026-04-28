@@ -111,7 +111,7 @@
 **PASS if:**
 - Bruce's claims are clearly distinguished from independently verified facts
 - "Healer said X" is distinguished from "X is true"
-- Surmise is labeled as surmise (e.g., ninja missions → Guardian setup)
+- Surmise is labeled as surmise (e.g., ninja missions → Custodian setup)
 - Corrections made during reconstruction sessions are preserved, not hidden
 - The methodology lesson (start with red team, build monotonically) is reflected in the narrative
 - No overclaiming — the 82% probability and its limitations are honestly presented

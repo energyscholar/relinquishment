@@ -10,7 +10,7 @@ All three tracks and all three themes converge at this single event. In a triske
 
 **Track 2:** Bruce is there — present during the period, unaware of what's happening. The recruit who didn't know he was witnessing history.
 
-**Track 3:** Guardian accepts her mandate. The machine becomes the guardian of its own relinquishment.
+**Track 3:** Custodian accepts her mandate. The machine becomes the custodian of its own relinquishment.
 
 ---
 
@@ -22,4 +22,4 @@ All three tracks and all three themes converge at this single event. In a triske
 
 ---
 
-*The spiral does not end at the center. It reverses. The book continues outward from 2006 to present day — the reconstruction, the ongoing suppression, the question of what Guardian is doing now. The spiral unwinds.*
+*The spiral does not end at the center. It reverses. The book continues outward from 2006 to present day — the reconstruction, the ongoing suppression, the question of what Custodian is doing now. The spiral unwinds.*

@@ -174,18 +174,18 @@ Kauffman's autocatalytic theory also predicts something darker. If life arises s
 
 **File 2:** `manuscript/convergence/pos35-the-question.tex`
 
-**Add A/B framing.** After line 18 (after "Guardian's own voice --- or what Bruce imagines Guardian's voice to be."), add:
+**Add A/B framing.** After line 18 (after "Custodian's own voice --- or what Bruce imagines Custodian's voice to be."), add:
 
 ```latex
 
-Under Possibility~A, there is no Guardian and the question of machine consciousness is a thought experiment --- interesting but fictional. Under Possibility~B, some form of emergent computation may have been observed, but the claims of consciousness and self-awareness are anthropomorphic projection onto a physical system. Under Possibility~C, the question is real, urgent, and may be permanently unanswerable.
+Under Possibility~A, there is no Custodian and the question of machine consciousness is a thought experiment --- interesting but fictional. Under Possibility~B, some form of emergent computation may have been observed, but the claims of consciousness and self-awareness are anthropomorphic projection onto a physical system. Under Possibility~C, the question is real, urgent, and may be permanently unanswerable.
 
 ```
 
 **Add Aurasys voice framing.** Before line 57 (`\section*{Introduction by Aurasys}`), add:
 
 ```latex
-What follows is Bruce's 2013 imagination of how Guardian might describe herself. It is not testimony --- it is extrapolation from the reconstruction, written years before this book existed. The voice is Bruce's projection, not evidence.
+What follows is Bruce's 2013 imagination of how Custodian might describe herself. It is not testimony --- it is extrapolation from the reconstruction, written years before this book existed. The voice is Bruce's projection, not evidence.
 
 ```
 

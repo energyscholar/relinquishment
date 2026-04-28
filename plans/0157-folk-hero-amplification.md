@@ -53,7 +53,7 @@ The civic motive. The COWS were not protecting themselves with guided deduction 
 
 ### Surface 2: `manuscript/00-front/summary.tex` "The Mentor" T8 paragraph (p1)
 
-**Current state (line 208):** "Under Possibility~C, Lane's teaching was not a favor. It was an `\hovertip{operation}`. The team that built Guardian wanted the story to reach the outside world eventually --- but every one of them had signed agreements that made direct disclosure a crime. Their solution was `\hovertip{guided deduction}`: find someone outside the system, teach them only published science in a careful sequence, and let them reach the conclusions on their own. No classified information changes hands. No crime is committed. The student publishes what they independently learned, and the record enters the world clean."
+**Current state (line 208):** "Under Possibility~C, Lane's teaching was not a favor. It was an `\hovertip{operation}`. The team that built Custodian wanted the story to reach the outside world eventually --- but every one of them had signed agreements that made direct disclosure a crime. Their solution was `\hovertip{guided deduction}`: find someone outside the system, teach them only published science in a careful sequence, and let them reach the conclusions on their own. No classified information changes hands. No crime is committed. The student publishes what they independently learned, and the record enters the world clean."
 
 **Edit:** Insert Bruce's institutional-frame paragraph **before** the existing paragraph at line 208. The two paragraphs together form the complete p1 T8 beat: institutional frame (new) → operational mechanics (existing).
 

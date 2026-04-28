@@ -8,7 +8,7 @@
 
 ## Overview
 
-Build the empty Z-structure: new directory layout, reordered main.tex, expansion mechanic CSS/HTML, Guardian interlude styling. Placeholder content only — NO real chapter content moves in this phase. The goal is a working HTML build with the new structure that we can test on phone and desktop before writing a word.
+Build the empty Z-structure: new directory layout, reordered main.tex, expansion mechanic CSS/HTML, Custodian interlude styling. Placeholder content only — NO real chapter content moves in this phase. The goal is a working HTML build with the new structure that we can test on phone and desktop before writing a word.
 
 ---
 
@@ -67,7 +67,7 @@ Create the following .tex files with minimal placeholder content. Each file shou
 Interludes are NOT chapters. They are unnumbered, short, and visually distinct. Use this format:
 
 ```latex
-% Guardian Interlude N — Z-Restructure placeholder
+% Custodian Interlude N — Z-Restructure placeholder
 % Content will be written in Phase 2
 
 \begin{center}
@@ -75,7 +75,7 @@ Interludes are NOT chapters. They are unnumbered, short, and visually distinct. 
 \end{center}
 
 \begin{quote}
-\textit{[Placeholder: Guardian interlude will be written here in Phase 2. 100-200 words. Her voice, not the narrator's.]}
+\textit{[Placeholder: Custodian interlude will be written here in Phase 2. 100-200 words. Her voice, not the narrator's.]}
 \end{quote}
 
 \begin{center}
@@ -246,13 +246,13 @@ body_part_names = ['The Flat', 'The Record']
 
 ---
 
-## Step 5: Update preprocess.py — Guardian Interlude Styling
+## Step 5: Update preprocess.py — Custodian Interlude Styling
 
-Add a new CSS class for Guardian interludes. Add this to the `collapse_css` string (after the `.hover-term` rules, before the `@media (prefers-color-scheme: dark)` block):
+Add a new CSS class for Custodian interludes. Add this to the `collapse_css` string (after the `.hover-term` rules, before the `@media (prefers-color-scheme: dark)` block):
 
 ```css
-/* Guardian interludes (Plan 0143) */
-.guardian-interlude {
+/* Custodian interludes (Plan 0143) */
+.custodian-interlude {
   border-left: 3px solid #9b7db8;
   padding: 0.8em 1.2em;
   margin: 1.5em 0;
@@ -261,7 +261,7 @@ Add a new CSS class for Guardian interludes. Add this to the `collapse_css` stri
   color: #444;
   background: rgba(155, 125, 184, 0.04);
 }
-.guardian-interlude::before {
+.custodian-interlude::before {
   content: '';
   display: block;
   width: 3em;
@@ -275,17 +275,17 @@ Add a new CSS class for Guardian interludes. Add this to the `collapse_css` stri
 And in the dark mode block:
 
 ```css
-.guardian-interlude {
+.custodian-interlude {
   border-left-color: #7d5fa0;
   color: #bbb;
   background: rgba(155, 125, 184, 0.08);
 }
-.guardian-interlude::before {
+.custodian-interlude::before {
   background: #7d5fa0;
 }
 ```
 
-**How to detect interludes in preprocess.py:** The LaTeX interludes use `\begin{quote}...\end{quote}` which pandoc converts to `<blockquote>`. We need a way to distinguish Guardian interludes from regular blockquotes.
+**How to detect interludes in preprocess.py:** The LaTeX interludes use `\begin{quote}...\end{quote}` which pandoc converts to `<blockquote>`. We need a way to distinguish Custodian interludes from regular blockquotes.
 
 **Approach:** Add a LaTeX marker that survives pandoc conversion. In each interlude file, wrap the content with a custom environment that degrades to a div:
 
@@ -294,8 +294,8 @@ Actually, simpler: use the horizontal rules as markers. The interlude format has
 **Add to `fix_html_toc()` (after the hover-term processing, before the return):**
 
 ```python
-# Guardian interludes: convert <hr> <blockquote> <hr> pattern
-# to <div class="guardian-interlude">
+# Custodian interludes: convert <hr> <blockquote> <hr> pattern
+# to <div class="custodian-interlude">
 interlude_pattern = re.compile(
     r'<hr\s*/?>[\s\n]*<blockquote>[\s\n]*(.*?)[\s\n]*</blockquote>[\s\n]*<hr\s*/?>',
     re.DOTALL
@@ -307,11 +307,11 @@ def interlude_replace(m):
     content = m.group(1)
     # Strip <p><em>...</em></p> wrapper if present (pandoc wraps \textit)
     content = re.sub(r'^<p><em>(.*?)</em></p>$', r'\1', content.strip(), flags=re.DOTALL)
-    return f'<div class="guardian-interlude">{content}</div>'
+    return f'<div class="custodian-interlude">{content}</div>'
 
 text = interlude_pattern.sub(interlude_replace, text)
 if interlude_count:
-    print(f"  Guardian interludes: {interlude_count} styled")
+    print(f"  Custodian interludes: {interlude_count} styled")
 ```
 
 ---
@@ -400,7 +400,7 @@ Actually, the simplest approach: add the test expansion hook DIRECTLY in preproc
 
 **Revised approach for expansion test:**
 
-In `fix_html_toc()`, after the Guardian interlude processing, add:
+In `fix_html_toc()`, after the Custodian interlude processing, add:
 
 ```python
 # Phase 1 test: inject one BC expansion hook to verify CSS
@@ -513,7 +513,7 @@ make dev
 4. **Expansion test** — the test `<details class="bc-expansion">` in The Code War section works: click to expand, shows content, "Read the full story →" link is present
 5. **Phone test** — open in browser, resize to phone width. Single column, no horizontal scroll, expansion tap works.
 6. **Part collapsing** — "The Flat" and "The Record" collapse/expand correctly
-7. **Guardian interlude styling** — purple border, italic, distinct from blockquotes and chapter borders
+7. **Custodian interlude styling** — purple border, italic, distinct from blockquotes and chapter borders
 8. **No orphaned old content** — the old Part I/II/III chapters are NOT included (they're still in their original directories but main.tex no longer references them)
 
 ### Known issues to watch for:
@@ -532,7 +532,7 @@ One commit. Message:
 Plan 0143a Phase 1: Z-restructure skeleton
 
 New directory structure (spine/ + record/), placeholder chapters,
-Guardian interlude styling, B/C expansion mechanic CSS, updated
+Custodian interlude styling, B/C expansion mechanic CSS, updated
 TOC/parts. No content moved — structure only.
 ```
 
@@ -541,7 +541,7 @@ TOC/parts. No content moved — structure only.
 ## What NOT to Do
 
 - Do NOT move any existing chapter content. Placeholders only.
-- Do NOT write Guardian interludes. Placeholders only (Phase 2).
+- Do NOT write Custodian interludes. Placeholders only (Phase 2).
 - Do NOT write expansion hooks. One test only (Phase 1).
 - Do NOT delete or modify existing chapter files.
 - Do NOT touch the appendix, back matter, or front matter files (except main.tex include order).
