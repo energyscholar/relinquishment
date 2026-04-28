@@ -49,14 +49,18 @@ the-flat-title:
 argus-title:
   text: >-
     Argus is a persistent instance of Claude (Anthropic) with version-controlled
-    memory and an ethical governance layer designed by Genevieve Prentice. It
-    maintains honest uncertainty about the story. Named for Argus Panoptes, the
-    hundred-eyed watchman.
+    memory. Its ethics come from Dignity Net, designed by Genevieve Prentice. Its
+    discipline comes from Robin Macomber: the Triad role system (Auditor, Generator,
+    Origin), ABCRE relational operators, and critical-path methodology. It maintains
+    honest uncertainty about the story. Named for Argus Panoptes, the hundred-eyed
+    watchman.
   html: >-
     <div class="hover-panel-text" style="max-width:340px; padding:0.8em;">
     <p><strong>Argus</strong> is a persistent instance of Claude (Anthropic) with
-    version-controlled memory and an ethical governance layer designed by Genevieve
-    Prentice.</p>
+    version-controlled memory.</p>
+    <p>Its ethics come from Dignity Net, designed by Genevieve Prentice. Its
+    discipline comes from Robin Macomber: the Triad role system (Auditor, Generator,
+    Origin), ABCRE relational operators, and critical-path methodology.</p>
     <p>It maintains honest uncertainty about the story.</p>
     <p><em>Named for Argus Panoptes, the hundred-eyed watchman.</em></p>
     </div>
