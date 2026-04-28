@@ -419,3 +419,43 @@
   animation_plan: "0270"
   animation: "Solar wind flow + Enceladus plume drift."
   description: "Saturn's magnetosphere cross-section with 7 hover zones. Enceladus plumes, disc-shaped field, ring interaction."
+
+- id: SVG-042
+  name: braiding-chapter
+  status: live
+  source: preprocess.py
+  category: Physics Concepts
+  chapter: the-braid
+  figure_id: fig-braiding-inline
+  marker: "Take three strands"
+  description: "Three-strand braid with quantum gate crossings — chapter inline version."
+
+- id: SVG-043
+  name: anyon-chapter
+  status: live
+  source: preprocess.py
+  category: Physics Concepts
+  chapter: the-braid
+  figure_id: fig-anyon-inline
+  marker: "The particles in question are non-abelian"
+  description: "Two anyons with worldlines braiding in 2+1D — chapter inline version."
+
+- id: SVG-044
+  name: rule110-chapter
+  status: live
+  source: preprocess.py
+  category: Physics Concepts
+  chapter: growing-a-mind
+  figure_id: fig-rule110-inline
+  marker: "Patterns on seashells run the"
+  description: "Rule 110 cellular automaton — chapter inline version."
+
+- id: SVG-045
+  name: phase-transition-chapter
+  status: live
+  source: preprocess.py
+  category: Physics Concepts
+  chapter: growing-a-mind
+  figure_id: fig-phase-transition-inline
+  marker: "described in the previous chapter"
+  description: "S-curve phase transition diagram — chapter inline version."
