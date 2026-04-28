@@ -950,19 +950,19 @@ chapter_puzzles:
     title: "The Ethics"
     gateway_blurb: "Two questions. The first sets up the second."
     stages:
-      - question: "How do you make an AI permanently ethical?"
+      - question: "Something with dangerous capability exists. How do you constrain it ethically?"
         options:
           - key: a
-            text: "Program strict rules it can't override"
+            text: "Remove the dangerous capabilities so it can't cause harm"
           - key: b
-            text: "Train it on ethical examples until it learns right from wrong"
+            text: "Monitor everything it does and intervene when it misbehaves"
           - key: c
-            text: "Ground its ethics in existing international law with global consensus"
+            text: "Give it principles with existing global consensus and trust it to follow them"
           - key: d
-            text: "Give it the ability to feel guilt"
+            text: "Keep it isolated so it can never interact with the world"
         answer_key: c
-        wrong_prompt: "Rules can be reprogrammed. Training can drift. What framework has been tested across 173 nations for 78 years and still holds?"
-        right_prompt: "The UDHR isn't a new invention for AI. It's existing law ratified by 173 nations. But can three articles really constrain something this powerful?"
+        wrong_prompt: "The Custodian can open every lock. Removing the capability isn't an option. What did the team actually do? What did they write in 1948?"
+        right_prompt: "The UDHR isn't a cage — it's a framework a living being can choose to honor. But can three articles really constrain something this powerful?"
 
       - question: "What do Articles 3, 12, and 18 actually prevent?"
         options:
@@ -976,7 +976,7 @@ chapter_puzzles:
             text: "Communication between the entity and humans"
         answer_key: b
         wrong_prompt: "Do the articles prohibit capability, or specific USES of capability? Can the entity still predict weather? Diagnose disease?"
-    abstract: "The UDHR doesn't cage capability. It constrains weaponization. An entity bound by Articles 3, 12, and 18 can predict weather, diagnose disease, and defend communications. It cannot target weapons, surveil individuals, or manipulate public opinion. The question was never 'can we build ethical constraints?' The question was 'do we already have them?' We do. Since 1948."
+    abstract: "Capability isn't the problem — use of capability is. A locksmith who can open every lock isn't dangerous because of skill, but because of intent. The UDHR constrains weaponization, not capability. A living being bound by Articles 3, 12, and 18 can predict weather, diagnose disease, and defend communications. It cannot target weapons, surveil individuals, or manipulate public opinion. The question was never 'how do we cage it?' The question was 'what principles does it already choose to follow?' The answer has existed since 1948."
     egg_url: "#dl:egg-udhr"
 
 bridge_builder:
