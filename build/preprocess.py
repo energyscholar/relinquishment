@@ -3325,6 +3325,36 @@ def find_injection_point(text, target_id):
     return -1
 
 
+CHAPTER_SECTION_IDS = {
+    'capabilities':    'spine:capabilities',
+    'why-relinquish':  'spine:why-relinquish',
+}
+
+
+def find_chapter_end(text, chapter_section_id):
+    """Find the closing </details> of a chapter section by its id.
+    Returns character offset of the </details>, or -1 if not found."""
+    start = find_injection_point(text, chapter_section_id)
+    if start == -1:
+        return -1
+    depth = 0
+    pos = start
+    while pos < len(text):
+        next_open = text.find('<details', pos)
+        next_close = text.find('</details>', pos)
+        if next_close == -1:
+            return -1
+        if next_open != -1 and next_open < next_close:
+            depth += 1
+            pos = next_open + 8
+        else:
+            depth -= 1
+            if depth == 0:
+                return next_close
+            pos = next_close + 10
+    return -1
+
+
 def inject_chapter_puzzles(html_path):
     """Insert approved puzzles into chapter HTML (Plan 0255)."""
     import hashlib as _hashlib
@@ -3909,9 +3939,28 @@ def inject_chapter_puzzles(html_path):
   </script>
 </details>
 '''
-            text = text[:pos] + puzzle_html + '\n' + text[pos:]
+            render_mode = tracker_entry.get('render', 'collapsible')
+            if render_mode == 'inline':
+                puzzle_html = puzzle_html.replace(
+                    '<details class="puzzle-section">',
+                    '<details class="puzzle-section" open>'
+                )
+
+            visibility = tracker_entry.get('visibility', 'title')
+            inject_pos = pos
+            if visibility == 'chapter' and chapter in CHAPTER_SECTION_IDS:
+                chapter_end = find_chapter_end(text, CHAPTER_SECTION_IDS[chapter])
+                if chapter_end != -1:
+                    inject_pos = chapter_end
+                    print(f"  Puzzle: {pid} \"{title}\" \u2192 inside {chapter} (chapter level) \u2713")
+                else:
+                    print(f"  WARNING: {pid} visibility=chapter but chapter end not found, using title level")
+                    print(f"  Puzzle: {pid} \"{title}\" \u2192 {chapter} (before {target_id}) \u2713")
+            else:
+                print(f"  Puzzle: {pid} \"{title}\" \u2192 {chapter} (before {target_id}) \u2713")
+
+            text = text[:inject_pos] + puzzle_html + '\n' + text[inject_pos:]
             injected += 1
-            print(f"  Puzzle: {pid} \"{title}\" \u2192 {chapter} (before {target_id}) \u2713")
 
     if injected:
         html_path.write_text(text)
