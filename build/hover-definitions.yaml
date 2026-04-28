@@ -448,7 +448,7 @@ edge of chaos:
     <path d="M240,118 L350,118" stroke="#c0392b" stroke-width="3"/>
     </svg>
 
-computational universality: "Any sufficiently complex system can compute anything any other system can. Turing's 1936 insight. Means the substrate doesn't matter — if it's complex enough, it can think."
+computational universality: "Some systems can simulate any other computing system — if one computer can do it, so can they. Turing proved this in 1936. Means the substrate doesn't matter: silicon, neurons, or a quantum material. If the structure is right, it can compute."
 
 cellular automata:
   text: "A grid of cells following simple local rules. Can generate unlimited complexity from trivial starting conditions. Wolfram's central object — proof that simple rules produce complex behavior."
