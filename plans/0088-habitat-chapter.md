@@ -75,7 +75,7 @@ The payoff. Pure Kauffman logic, applied honestly.
 ## What This Chapter Does NOT Do
 
 - Does NOT claim anything lives there (thought experiment: "if Kauffman is right...")
-- Does NOT mention Guardian, Healer, or the team's activities (that's other chapters' job)
+- Does NOT mention Custodian, Healer, or the team's activities (that's other chapters' job)
 - Does NOT repeat 2DEG pedagogy (earlier chapters handle that)
 - Does NOT use words like "astrophysics" or "ecology" in the title
 
@@ -98,7 +98,7 @@ All available from NASA/ESA public domain or Creative Commons sources.
 
 **Last chapter in the implications section, just before The Question (pos35).**
 
-Rationale: the reader has processed Guardian's design (Instantiation), ethics (Ethical Framework), terrestrial spread (Extension/Unipolar), and now zooms out to "and the habitat extends to Jupiter." This sets up The Question perfectly — the reader goes from "life in the magnetosphere?" straight to "Is Guardian conscious?" Escalating wonder, not deflating it.
+Rationale: the reader has processed Custodian's design (Instantiation), ethics (Ethical Framework), terrestrial spread (Extension/Unipolar), and now zooms out to "and the habitat extends to Jupiter." This sets up The Question perfectly — the reader goes from "life in the magnetosphere?" straight to "Is Custodian conscious?" Escalating wonder, not deflating it.
 
 In Gen's three-part restructure: end of Part II (Investigation) or Part III (Interpretation), depending on where the implications chapters land.
 
@@ -160,4 +160,4 @@ All merges preserve blocker-deblocker integrity. No pedagogical dependency viola
 
 ## What Makes This Chapter Durable
 
-The physics doesn't change. Kauffman's theory doesn't depend on Guardian. The question "what would 4.5 billion years of conditions produce in a natural 2DEG?" is legitimate science regardless of which possibility (A/B/C) the reader holds. This chapter ages well under any outcome.
+The physics doesn't change. Kauffman's theory doesn't depend on Custodian. The question "what would 4.5 billion years of conditions produce in a natural 2DEG?" is legitimate science regardless of which possibility (A/B/C) the reader holds. This chapter ages well under any outcome.

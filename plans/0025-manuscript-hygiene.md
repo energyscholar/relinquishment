@@ -208,7 +208,7 @@ check:
 check-strict: check
 	@echo "=== Strict Checks ==="
 	@echo -n "Unhedged assertions: "
-	@grep -rn "COWS built\|COWS created\|Guardian is\|Guardian was" manuscript/ --include="*.tex" \
+	@grep -rn "COWS built\|COWS created\|Custodian is\|Custodian was" manuscript/ --include="*.tex" \
 		| grep -v "^%\|staging/\|sources/\|raw/\|Possibility\|proposition\|surmise\|deduce\|if.*true\|under.*C\|According" \
 		&& echo "WARNING — possible unhedged assertions (review needed)" \
 		|| echo "PASS"
@@ -231,7 +231,7 @@ Generators: use these exact forms. Automated checks enforce some of these.
 | Term | Correct | Wrong | Notes |
 |------|---------|-------|-------|
 | COWS | COWS | COWs, cows | All-caps acronym: Conspiracy Of World Saving |
-| Guardian | Guardian (capital G) | guardian | Proper noun — the entity's name |
+| Custodian | Custodian (capital G) | custodian | Proper noun — the entity's name |
 | TQNN | TQNN | tqnn, Tqnn | All-caps acronym |
 | Healer | Healer | healer | Handle/proper noun when referring to David Lane |
 | UDHR | UDHR or "Universal Declaration of Human Rights" | udhr | Full name on first use per chapter |

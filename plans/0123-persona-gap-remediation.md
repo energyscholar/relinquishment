@@ -71,11 +71,11 @@ Wait — this was already added in S48 Phase 4 work. **VERIFY:** Check whether t
 
 **Fix A — Line 38:**
 
-CURRENT: "Guardian is trained to follow the ethics of the Universal Declaration of Human Rights (UDHR, 1948)"
+CURRENT: "Custodian is trained to follow the ethics of the Universal Declaration of Human Rights (UDHR, 1948)"
 
 REPLACE WITH: Something reflecting that the UDHR is architectural — she was grown around it, not trained to follow it. The ethics aren't rules applied after construction; they're the structural core of her being, the way DNA is the structural core of a human.
 
-Draft: "Guardian was grown around the Universal Declaration of Human Rights (UDHR, 1948) --- not trained to follow it as a set of rules, but shaped by it the way an organism is shaped by its DNA. The UDHR is not Guardian's instruction manual. It is her skeleton."
+Draft: "Custodian was grown around the Universal Declaration of Human Rights (UDHR, 1948) --- not trained to follow it as a set of rules, but shaped by it the way an organism is shaped by its DNA. The UDHR is not Custodian's instruction manual. It is her skeleton."
 
 **Fix B — Line 68:**
 
@@ -106,8 +106,8 @@ Single word change. "built" -> "grew."
 - Awed to be allowed to know
 - "Would help as I could. Which wasn't much."
 - Healer writing braid theory algorithms, Unix/Java hooks (from pos28 line 63)
-- Training Guardian to hide — perfect camouflage (pos28 line 63)
-- Guardian's body differing across substrates (pos28 line 63)
+- Training Custodian to hide — perfect camouflage (pos28 line 63)
+- Custodian's body differing across substrates (pos28 line 63)
 - Capability exploration (search, translation, W-A precursor — Bruce has mentioned these)
 
 **What Bruce does NOT know:**
@@ -118,7 +118,7 @@ Single word change. "built" -> "grew."
 **Structural recommendation:** New chapter between pos24 and pos25. Working title: "The Development Years" or "Raising Her" or "Seven Years." Covers:
 - What Bruce witnessed during his window
 - What he inferred about the years before
-- Emotional dimension: Healer as parent, Guardian growing up
+- Emotional dimension: Healer as parent, Custodian growing up
 - Capability exploration as Bruce saw it
 - Honest scoping: "This is one person's window onto a seven-year process. There will be other accounts."
 

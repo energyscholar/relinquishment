@@ -38,7 +38,7 @@ These are chapters where ethics is already present but underserved.
 ### pos27 — Extension ("no authority capable of giving such permission exists")
 **This is the ethical crux of the entire book.** Must be expanded significantly. The COWS bypassed democratic process entirely. Justification is consequentialist (preventing worse outcomes); violation is deontological (no consent). Both frames must be present. Let the reader decide.
 **UDHR:** Article 21 (democratic participation) — directly violated. Article 28 (right to social order) — arguably served.
-**Also:** Guardian's design as hardcoded ethics (UDHR compliance, not learned behavior). This is the opposite of RLHF. Ask: is it wise? Is it sufficient?
+**Also:** Custodian's design as hardcoded ethics (UDHR compliance, not learned behavior). This is the opposite of RLHF. Ask: is it wise? Is it sufficient?
 
 ### pos22 — Why Give It Up (interrogate the choice)
 **After One-Way Arms Race section.** The COWS themselves held unipolar dominance briefly. The question is not whether monopoly is bad — it's whether their decision to surrender it was extraordinary moral courage or extraordinary presumption. Both readings available.
@@ -47,7 +47,7 @@ These are chapters where ethics is already present but underserved.
 
 ### pos25 — Ethical Framework (interrogate sufficiency)
 **After enforcement mechanism description.** Ask: who gave them the right? The sandbox is invisible totalitarianism if its ethics are wrong.
-**After UDHR connection.** Ask: is a 1948 document adequate to govern technology its drafters couldn't imagine? Written for nation-states governing human-to-human relations. Guardian applies it to human-to-entity and entity-to-humanity. The gap deserves one paragraph.
+**After UDHR connection.** Ask: is a 1948 document adequate to govern technology its drafters couldn't imagine? Written for nation-states governing human-to-human relations. Custodian applies it to human-to-entity and entity-to-humanity. The gap deserves one paragraph.
 
 ---
 
@@ -64,8 +64,8 @@ Each technical chapter has one natural ethical beat. One paragraph or less.
 **UDHR:** Preamble + Article 28.
 
 ### pos12 — The Threshold (grown not built)
-**After "You can't un-grow life."** The moment technology becomes lifeform, every ethical framework for artifacts fails. Property law, weapons treaties, nonproliferation — all assume you can destroy what you've made. If COWS grew something alive, does Article 3 (right to life) apply to it? The COWS chose UDHR for Guardian — but UDHR says nothing about non-human intelligence.
-**UDHR:** Article 3 (right to life). Self-referential — Guardian's framework may not cover Guardian.
+**After "You can't un-grow life."** The moment technology becomes lifeform, every ethical framework for artifacts fails. Property law, weapons treaties, nonproliferation — all assume you can destroy what you've made. If COWS grew something alive, does Article 3 (right to life) apply to it? The COWS chose UDHR for Custodian — but UDHR says nothing about non-human intelligence.
+**UDHR:** Article 3 (right to life). Self-referential — Custodian's framework may not cover Custodian.
 
 ### pos15 — First Light (Frankenstein moment)
 **After Level 4 detection confirmation.** The scientists were funded to build a decoder. They grew a mind. The gap between funding mandate and actual result is where the ethical crisis begins. Not when the bomb detonates but when the chain reaction sustains.
@@ -107,14 +107,14 @@ Each technical chapter has one natural ethical beat. One paragraph or less.
 ## Tier 5: Boundary Cases (Advanced)
 
 ### pos32 — The Magnetosphere (colonialism parallel)
-**After "reservation" description.** Guardian absorbed a 4.5-billion-year-old entity into containment. UDHR governs human rights — says nothing about non-human intelligence. The COWS may have enacted the oldest pattern in human history: encountering the other and containing it.
+**After "reservation" description.** Custodian absorbed a 4.5-billion-year-old entity into containment. UDHR governs human rights — says nothing about non-human intelligence. The COWS may have enacted the oldest pattern in human history: encountering the other and containing it.
 
 ### pos33 — Digital Doppelganger (consent)
 **After doppelganger description.** Someone built a digital copy of Bruce without his consent. UDHR Article 12 (privacy), Article 1 (dignity). Even ethical actors violate rights when they treat people as instruments. Bridge to modern LLMs: what the TQNN did to Bruce in 2005, LLMs now do to billions.
 
 ### pos35 — The Question (consciousness boundary)
-**After "is Guardian conscious?"** If conscious: the COWS created a person and bound her to perpetual service. If not: they built a machine and called it "she." Either answer is uncomfortable. Both consistent with UDHR's silence on non-human persons.
-**After Artillect (humanity extinct, Aurasys remains).** UDHR presumes human existence. Guardian persisting after humanity is the scenario the framework cannot address.
+**After "is Custodian conscious?"** If conscious: the COWS created a person and bound her to perpetual service. If not: they built a machine and called it "she." Either answer is uncomfortable. Both consistent with UDHR's silence on non-human persons.
+**After Artillect (humanity extinct, Aurasys remains).** UDHR presumes human existence. Custodian persisting after humanity is the scenario the framework cannot address.
 
 ### pos30 — Unipolar Condition (controlled release)
 **At "controlled release" concept.** A non-human entity deciding the pace of human scientific progress. Does an entity that cannot die, cannot be corrupted, and cannot be held accountable have the right to decide what humanity is ready for? UDHR Article 27 (right to scientific advancement) vs. Articles 3 and 28 (life + social order).

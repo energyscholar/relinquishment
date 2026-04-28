@@ -29,7 +29,7 @@ The epigraphs serve two purposes:
 | pos02 | Healer HALO jump flash-forward | KEEP — narrative hook, not a quote. No Unix epigraph added. |
 | pos05 | Aboriginal elder (Tom Dystra) + fiction caveat | ADD Wall quote ABOVE existing quotes. Three blocks: Unix quote, then elder, then fiction caveat. Add `\vspace{0.3cm}` between Unix quote and elder. |
 | pos13 | Kauffman, *At Home in the Universe* | KEEP — perfect for the genesis chapter. No Unix epigraph (Kauffman IS the chapter). |
-| pos24 | Abstract epigraph (Guardian moral patient) | ADD Unix epigraph ABOVE existing abstract. Two epigraphs: Unix quote first, then abstract. |
+| pos24 | Abstract epigraph (Custodian moral patient) | ADD Unix epigraph ABOVE existing abstract. Two epigraphs: Unix quote first, then abstract. |
 | pos28 | Structural meta-note (triskelion convergence) | REPLACE meta-note with Brooks quote. Move triskelion text to chapter body (first paragraph). |
 
 ---
@@ -65,10 +65,10 @@ Match pos13's format exactly. Double backticks for open quotes, two single quote
 |---|---------|-------|-------------|-------------|
 | 7 | pos05 | "The three chief virtues of a programmer are: Laziness, Impatience and Hubris." | Wall, *Programming Perl* (1991) | cDc culture. Forgiveness > permission. Sets irreverent tone for the hacker chapters. |
 | 8 | pos19 | "Given enough eyeballs, all bugs are shallow." | Raymond, *CatB* (1999) | Inverted: the TQNN had zero eyeballs. Patrick Ball's ICTY work = making hidden evidence visible. |
-| 9 | pos25 | "There are two ways of constructing a software design: One way is to make it so simple that there are obviously no deficiencies, and the other way is to make it so complicated that there are no obvious deficiencies." | Hoare, Turing Award lecture (1981) | Guardian = the first way. UDHR as simple ethical framework. The difficulty of simplicity. **NOTE:** pos24 also has Hoare (same lecture). Consecutive chapters, same source — accepted trade-off; both quotes are right for their chapters. |
+| 9 | pos25 | "There are two ways of constructing a software design: One way is to make it so simple that there are obviously no deficiencies, and the other way is to make it so complicated that there are no obvious deficiencies." | Hoare, Turing Award lecture (1981) | Custodian = the first way. UDHR as simple ethical framework. The difficulty of simplicity. **NOTE:** pos24 also has Hoare (same lecture). Consecutive chapters, same source — accepted trade-off; both quotes are right for their chapters. |
 | 10 | pos26 | "It is time to unmask the computing community as a Secret Society for the Creation and Preservation of Artificial Complexity." | Dijkstra, EWD1243a (1996) | The COWS literally were a secret society. Darkly comic for the interdiction chapter. |
 | 11 | pos28 | "Hence plan to throw one away; you will, anyhow." | Brooks, *Mythical Man-Month* (1975) | Relinquishment = the planned disposal. Key surrender. Replaces structural meta-note. |
-| 12 | pos24 | "There is nothing a mere scientist can say that will stand against the flood of a hundred million dollars. But there is one quality that cannot be purchased in this way --- and that is reliability. The price of reliability is the pursuit of the utmost simplicity. It is a price which the very rich find most hard to pay." | Hoare, Turing Award lecture (1981) | Guardian instantiation. The COWS chose reliability (simple ethical framework) over DARPA's millions. Final sentence = gut punch (DARPA = the very rich). Sits ABOVE existing abstract epigraph. |
+| 12 | pos24 | "There is nothing a mere scientist can say that will stand against the flood of a hundred million dollars. But there is one quality that cannot be purchased in this way --- and that is reliability. The price of reliability is the pursuit of the utmost simplicity. It is a price which the very rich find most hard to pay." | Hoare, Turing Award lecture (1981) | Custodian instantiation. The COWS chose reliability (simple ethical framework) over DARPA's millions. Final sentence = gut punch (DARPA = the very rich). Sits ABOVE existing abstract epigraph. |
 | 12b | pos10 | "Controlling complexity is the essence of computer programming." | Kernighan, *Software Tools* (1976) | The Braid chapter: topological complexity IS the chapter. Braiding, convergence, the five intellectual traditions weaving together. Kernighan #4 in 8 words. |
 
 ### Tier C → Resolved (R1 red team swaps applied)
@@ -88,7 +88,7 @@ Match pos13's format exactly. Double backticks for open quotes, two single quote
 | McIlroy #2 — do one thing well | pos20 (The Network) | Composability. See Tier C→Resolved #14. |
 | Perlis #7 — goals advance technique | pos11 (The Experiment) | Technique survives. See Tier C→Resolved #13. |
 | Perlis #31 — simplicity follows complexity | pos27 (Extension) | Emergent simplicity. See Tier C→Resolved #15. |
-| Dijkstra #9 — simplicity prerequisite for reliability | pos30 (Unipolar Condition) | Guardian's simple design = reliable monopoly. |
+| Dijkstra #9 — simplicity prerequisite for reliability | pos30 (Unipolar Condition) | Custodian's simple design = reliable monopoly. |
 | Healer's grep quote | **CONTENT UNKNOWN** — not in any research file. Bruce to supply text and attribution. | TBD. |
 
 ### Unplaced quotes (available for future use)
@@ -103,7 +103,7 @@ Match pos13's format exactly. Double backticks for open quotes, two single quote
 
 | # | Chapter | Quote | Attribution | Why it works |
 |---|---------|-------|-------------|-------------|
-| 16 | pos30 | "Simplicity is prerequisite for reliability." | Dijkstra, EWD498 (1975) | The unipolar condition works because Guardian's design is simple. One purpose, one ethical framework. Dijkstra nails it in 6 words. |
+| 16 | pos30 | "Simplicity is prerequisite for reliability." | Dijkstra, EWD498 (1975) | The unipolar condition works because Custodian's design is simple. One purpose, one ethical framework. Dijkstra nails it in 6 words. |
 
 ---
 

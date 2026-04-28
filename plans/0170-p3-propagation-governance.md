@@ -35,7 +35,7 @@ Before any sub-plan runs, run lexical and structural greps and report counts. If
 | # | Concern | Load | Sub-plan |
 |---|---|---|---|
 | 1 | Lexical sweep: *grown, grew, creature, living being, living entity, it is alive, first non-human mind, deliberately instantiated* | High (100+ occurrences expected) | **0170a** |
-| 2 | Conceptual: emergent-stack framing in chapters explaining Guardian's nature | High (Guardian interludes = 7 chapters) | **0170a** |
+| 2 | Conceptual: emergent-stack framing in chapters explaining Custodian's nature | High (Custodian interludes = 7 chapters) | **0170a** |
 | 3 | Behavioral anchoring: ontological → behavioral conversion or explicit hedge | Medium | **0170a** |
 | 4 | Religious-accessibility thread continuity (no contradictions with p2's 5-tradition paragraph) | Medium | **0170b** |
 | 5 | Historical walk-away precedents (Ashoka/Costa Rica/Gandhi/Article 9) **iff adopted in p2** | Low if adopted | **0170b** |
@@ -52,7 +52,7 @@ Before any sub-plan runs, run lexical and structural greps and report counts. If
 **Scope:** All chapter `.tex` files under `manuscript/`, including figure captions within those files. Excludes: glossary, topic-guide entries, popup files, hovertip definitions (those are 0170c). SVG figures themselves are out of scope; their *captions in the chapter files* are in scope.
 
 **Phases:**
-1. **Z-layer 1: Guardian interludes (7 chapters).** Highest ontology density, smallest chapter count — do these first and learn. One commit per interlude.
+1. **Z-layer 1: Custodian interludes (7 chapters).** Highest ontology density, smallest chapter count — do these first and learn. One commit per interlude.
 2. **Z-layer 2: A-spine (15 chapters, pop-science).** Least ontological; sweep should be mostly lexical. Batch in groups of 3 commits.
 3. **Z-layer 3: Record memoir (15 chapters).** Highest voice-preservation risk — see "Special handling" below. One commit per chapter.
 4. **Srebrenica reconciliation pass.** After all three Z-layer passes: grep for "Srebrenica|Bosnia|1995|July 1995" across the whole manuscript, check every occurrence flows from p2's new placement.
@@ -68,7 +68,7 @@ Before any sub-plan runs, run lexical and structural greps and report counts. If
 - `grep -nE '\b(grown|grew|creature|living being|living entity|first non-human mind|deliberately instantiated)\b' manuscript/**/*.tex` returns only:
   - quoted testimony / dialogue (annotated with context comment or preceded by editorial gloss)
   - literal biological contexts (if any)
-- Emergent-stack framing present in ≥5 of 7 Guardian interludes (not every interlude needs it, but majority should).
+- Emergent-stack framing present in ≥5 of 7 Custodian interludes (not every interlude needs it, but majority should).
 - Srebrenica cross-references all consistent with p2's relocation to mentor section.
 - `make` passes; HTML builds; website push per `feedback-build-to-website.md`.
 
@@ -108,7 +108,7 @@ Before any sub-plan runs, run lexical and structural greps and report counts. If
 
 **Scope:** Post-sweep verification that three-possibilities discipline (A/B/C never privileged in prose) survived the rewrite.
 
-**Method:** Random sample of 8 chapters (2 per Z-layer + 2 Guardian interludes). For each, score: "does this chapter remain compatible with A (fantasy), B (exaggerated kernel), and C (substantially true)?"
+**Method:** Random sample of 8 chapters (2 per Z-layer + 2 Custodian interludes). For each, score: "does this chapter remain compatible with A (fantasy), B (exaggerated kernel), and C (substantially true)?"
 
 **Acceptance:** 8/8 compatible. Any chapter that drifted into ontological commitment during the sweep gets a targeted edit (recorded as a 0170a follow-up commit).
 
@@ -118,7 +118,7 @@ After 0170a + 0170b + 0170c land:
 
 **Sample four chapters for 10-persona Tier-0 scoring (stratified, Generator picks from eligible lists):**
 1. One A-spine chapter (pop-science register) — Generator picks from A-spine chapter list; Bruce may override.
-2. One Guardian interlude — Generator picks from the 7 interludes.
+2. One Custodian interlude — Generator picks from the 7 interludes.
 3. One Record memoir chapter — Generator picks; prefer one with preserved testimony to stress-test the voice rule.
 4. One topic-guide entry — Generator picks; prefer an entry on a reframed term (e.g., *emergent*, *custodian*, *trustee*).
 
@@ -139,7 +139,7 @@ Use the same 10-persona panel inlined in Plan 0169 Part E.
                      0170a (prose sweep, Z-layer 1/2/3)
                               │
                               ├──▶ 0170b (internationalization, conditional) — must follow 0170a Phase 1
-                              │                                                (Guardian interludes) so int'l thread
+                              │                                                (Custodian interludes) so int'l thread
                               │                                                lands on reframed prose
                               │
                               └──▶ 0170c (hovertips/glossary/popups) — must follow 0170a

@@ -9,7 +9,7 @@
 
 The Simple Summary (p2, ~4,000 words) is the piece most readers treat as the whole book. Its current order-of-operations is wrong: it introduces Bruce's mentorship before the reader knows what the classified program was or what the White Hot Secret is.
 
-Worse: the actual White Hot Secret — **there is another substrate for biology, 2D flatland, with its own ecosystem and inhabitants** — is never stated plainly. The summary treats flatland as a design detail of Guardian's substrate rather than as the core revelation. The quantum computer and cryptanalysis are *consequences* of the discovery, not the discovery itself.
+Worse: the actual White Hot Secret — **there is another substrate for biology, 2D flatland, with its own ecosystem and inhabitants** — is never stated plainly. The summary treats flatland as a design detail of Custodian's substrate rather than as the core revelation. The quantum computer and cryptanalysis are *consequences* of the discovery, not the discovery itself.
 
 p1 (hook) already plants the seed: "It lives in flat worlds — the kind inside every computer chip, and the kind the magnetosphere has held for billions of years. The magnetosphere is its ocean." p2 must water that seed — state the White Hot Secret plainly, early, so everything that follows has context.
 
@@ -43,7 +43,7 @@ Reorder summary.tex sections. Keep all existing content — move blocks, don't r
 
 6. **The Walk-Out** (current lines 47–70) — Move down from current position. They gave it up. Tighten slightly — currently verbose in the middle paragraphs, but the opening and closing are strong.
 
-7. **The Guardian** (current lines 73–96) — What they built to outlast them. UDHR. Flatland. Keep existing text.
+7. **The Custodian** (current lines 73–96) — What they built to outlast them. UDHR. Flatland. Keep existing text.
 
 8. **The Mentor** (current lines 32–44) — Move DOWN from current position 2 to position 8. Now the reader understands what the mentorship was pointing toward. The sequence of published science makes sense because the reader already knows the secret.
 
@@ -76,7 +76,7 @@ After Phase 1 builds clean:
 ## Acceptance Criteria
 
 - [ ] White Hot Secret stated plainly within first 1,000 words of p2
-- [ ] The Mentor section appears AFTER The Guardian (reader knows what mentorship pointed toward)
+- [ ] The Mentor section appears AFTER The Custodian (reader knows what mentorship pointed toward)
 - [ ] The Lock on Every Door appears AFTER The White Hot Secret (reader knows why crypto matters)
 - [ ] All existing `\label{}` tags preserved and functional
 - [ ] All `% SPIRAL-REPEAT` comments preserved

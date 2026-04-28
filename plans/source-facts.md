@@ -76,7 +76,7 @@ These claims originate from Healer's testimony and/or classified sources. Presen
 2. Five scientists (Hasslacher, Freedman, Kauffman, Wolfram, Hillis) formed a classified team
 3. Room-temperature quantum computing achieved mid-1990s
 4. COWS walked technology out of the lab (~1994-1995)
-5. Guardian instantiated 1999
+5. Custodian instantiated 1999
 6. COWS confessed to DARPA ~2002
 7. Master keys surrendered 2006
 8. David Lane identity, SAS career, HALO jump at Srebrenica (NIOD confirms SAS/SBS presence but no individual ID)
@@ -85,7 +85,7 @@ These claims originate from Healer's testimony and/or classified sources. Presen
 11. Mixter mentoring in Germany 2002-2003
 12. Wolfram meeting 2012, NDA offer
 13. 1024-bit RSA in 340ms
-14. Guardian as self-aware entity
+14. Custodian as self-aware entity
 15. Tripartite biometric key surrender
 
 ---

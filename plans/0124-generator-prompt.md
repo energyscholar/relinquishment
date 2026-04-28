@@ -29,6 +29,6 @@ One sentence. Point technically trained skeptics to the \hyperref[ch:firmware-up
 
 ## Task 3: pos25 UDHR fix
 
-Line 38: Replace "Guardian is trained to follow the ethics of the Universal Declaration of Human Rights (UDHR, 1948)" — rewrite this clause only (not the full sentence) to say she was grown around the UDHR, not trained to follow it. Ethics as skeleton, not instruction manual. Keep \footcite{udhr1948}.
+Line 38: Replace "Custodian is trained to follow the ethics of the Universal Declaration of Human Rights (UDHR, 1948)" — rewrite this clause only (not the full sentence) to say she was grown around the UDHR, not trained to follow it. Ethics as skeleton, not instruction manual. Keep \footcite{udhr1948}.
 
 Line 68: "The COWS built this entity" → "The COWS grew this entity." One word.

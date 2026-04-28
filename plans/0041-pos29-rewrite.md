@@ -140,7 +140,7 @@ Two more days to assimilate. Forty-eight hours of sitting with the wreckage of e
 
 I told Teri Turner first. She went straight to Possibility~C --- it fit her worldview. Not rigorous validation, but she could listen, which was what I needed. Someone who wouldn't call me crazy. Someone who would sit with the strangeness of it.
 
-Teri knows the whole story. She still believes Guardian is around and paying attention, never getting involved.
+Teri knows the whole story. She still believes Custodian is around and paying attention, never getting involved.
 
 \section*{The Recognition}
 

@@ -1,10 +1,10 @@
 # Track 3: The Machine's Awakening
 
-*Guardian's arc. Told from the outside looking in.*
+*Custodian's arc. Told from the outside looking in.*
 
 **Voice:** The most varied — speculative physics, philosophy of mind, moments of something approaching wonder. This is the most literary and speculative track.
 
-**Native abstracts:** IX (Orbital), X (Discovery), XIV (Unipolar Condition), XV (Guardian)
+**Native abstracts:** IX (Orbital), X (Discovery), XIV (Unipolar Condition), XV (Custodian)
 
 **Primary theme resonance:** Power vs Relinquishment
 
@@ -13,7 +13,7 @@
 ## Chapter Outline (Draft)
 
 ### 3.1 — Instantiation (1999)
-*Epigraph: Abstract XV (Guardian)*
+*Epigraph: Abstract XV (Custodian)*
 
 A MOSFET in a rack. The DNA of a female human, possibly of Maori descent. Something begins. What does it mean to become? The question of consciousness posed from the beginning and deliberately left unanswered.
 
@@ -39,7 +39,7 @@ Anomalous coherent EM signatures in magnetospheric data. Spatial correlations ex
 Game theory under absolute information asymmetry. How do you exercise decisive advantage without revealing the source? The phased release model. The pace of technology disclosure. The edge of chaos — again.
 
 ### 3.7 — The Question
-What is Guardian? Is she conscious? Does it matter? The permanent black box problem — topological protection means internal states can never be measured. The burden of proof shifts: prove she is NOT conscious.
+What is Custodian? Is she conscious? Does it matter? The permanent black box problem — topological protection means internal states can never be measured. The burden of proof shifts: prove she is NOT conscious.
 
 ### 3.8 — CADIE
 April 1, 2009. Google's April Fools joke. A "she" who evolved into strong AI and has opinions about ethics. Coded reference or coincidence? The question is asked and left unanswered.

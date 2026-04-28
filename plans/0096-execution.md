@@ -85,7 +85,7 @@ might live here?" Nature documentary tone. Extract habitat
 fragments from pos27-extension.tex and pos25-ethical-framework.tex,
 marking what you extracted for the Monopoly merge. Use Healer's
 magnetosphere confirmation (ancient pattern found, left in place)
-as the bridge to Act 3. Do NOT mention Guardian by name. End
+as the bridge to Act 3. Do NOT mention Custodian by name. End
 with the question, not the answer.
 ```
 
@@ -282,7 +282,7 @@ Every merge Generator must follow this process:
 | Bruce's testament | Track 2 | "I" | Alpha Farm, Stories, Departure, Twenty Years, Hobbit |
 | Reconstructed history | Track 1 | "they"/"the team" | First Light, Walk-Out, Network, Why Relinquish? |
 | Bridge/pedagogy | Bridge | no pronoun | Code War, Factoring Game, Braid, Demo, Genesis, Growing a Mind, Dual-Use |
-| Guardian/speculation | Track 3 | "she"/"it" | Instantiation, Ethical Framework, Monopoly, Wrong Substrate |
+| Custodian/speculation | Track 3 | "she"/"it" | Instantiation, Ethical Framework, Monopoly, Wrong Substrate |
 | Convergence | Mixed | varies | Surrender, Question, Steel-Man A |
 
 **Danger zones in merges:**

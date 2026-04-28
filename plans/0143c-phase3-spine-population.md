@@ -122,7 +122,7 @@ This is how academic specialization works. It is not conspiracy. It is not a cov
 
 **Sources to draw from:** Plan 0142 Rewrite 2 spec, The Wrong Substrate Act 3 (pattern-formation gap), The Network's five-discipline map, the silence gap argument from `reader-preparation-requirements.md`.
 
-**Voice:** Expository, matter-of-fact, the book's analytical voice. Not Guardian's voice (she has her interlude before this chapter). Not Bruce's memoir voice.
+**Voice:** Expository, matter-of-fact, the book's analytical voice. Not Custodian's voice (she has her interlude before this chapter). Not Bruce's memoir voice.
 
 ### Capabilities (`spine/capabilities.tex`)
 
@@ -177,7 +177,7 @@ make dev
 1. Build succeeds — no LaTeX errors beyond expected warnings
 2. All spine chapters render with real content
 3. All record chapters render with real content
-4. Guardian interludes still render correctly between spine chapters
+4. Custodian interludes still render correctly between spine chapters
 5. Two new chapters (Silence Gap, Capabilities) render
 6. TOC is correct — spine chapters under "The Flat," record chapters under "The Record"
 7. Cross-references resolve (no ?? in output)

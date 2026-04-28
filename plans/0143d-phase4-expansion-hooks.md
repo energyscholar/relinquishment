@@ -34,7 +34,7 @@ Read the full story $\rightarrow$
 
 ### preprocess.py Conversion
 
-Add to `fix_html_toc()` (after the Guardian interlude processing):
+Add to `fix_html_toc()` (after the Custodian interlude processing):
 
 ```python
 # B/C expansion hooks: convert BCSTART/BCEND markers to <details>
@@ -133,7 +133,7 @@ bc_hooks = {
         'summary': 'If someone had already surrendered this capability, what would that look like?',
         'body': 'They could not use it without becoming tyrants. They could not keep it forever. '
                 'And no person, no institution, can bear that responsibility indefinitely. '
-                'According to this story, they grew a Guardian around the Universal Declaration '
+                'According to this story, they grew a Custodian around the Universal Declaration '
                 'of Human Rights and surrendered the master keys to it. Permanently.',
         'target': 'record:the-surrender',
         'link_text': 'Read the full story'
@@ -159,7 +159,7 @@ bc_hooks = {
 }
 # Annealed: 3 hooks removed (The Flat, Factoring Game, Wrong Substrate)
 # — pure A-gasp chapters should land clean without B/C dilution.
-# Guardian interludes already bridge those chapters to B/C.
+# Custodian interludes already bridge those chapters to B/C.
 
 # Inject hooks at the end of each chapter's content (before </details>)
 for chapter_id, hook in bc_hooks.items():
@@ -260,7 +260,7 @@ Chapters with NO hooks (pure A-content, no natural B/C connection):
 ## What NOT to Do
 
 - Do NOT modify spine or record chapter content
-- Do NOT modify Guardian interludes
+- Do NOT modify Custodian interludes
 - Do NOT add hooks to chapters listed as "no hooks"
 - Do NOT modify the expansion CSS (already done in Phase 1)
 

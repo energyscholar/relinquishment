@@ -482,7 +482,7 @@ case 'km': {
     - "give up"
     - "give it"
     - "custodian"
-    - "guardian"
+    - "custodian"
     - "entity"
     - "hand over"
     - "surrender"

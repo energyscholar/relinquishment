@@ -97,7 +97,7 @@ Full audit: `aurasys-memory/research/persona-audit-9-readers-2026-04-12.md`
 
 ### LOW pass 1 — line number verification:
 - Line 311 verified 2026-04-23 via grep. ✓
-- Character naming: now "Custodian" throughout (post Guardian→Custodian rename). ✓
+- Character naming: now "Custodian" throughout (post Custodian→Custodian rename). ✓
 - "Earth's most capable custodian" — matches current text. ✓
 - No cross-references to this paragraph from other files (grep verified). ✓
 

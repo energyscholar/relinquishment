@@ -13,7 +13,7 @@
 ### QF1. Remove lorem ipsum (F1) — CRITICAL
 Replace lorem ipsum with brief content summaries in 3 files:
 - `manuscript/bridge/pos13-genesis.tex` — replace lorem ipsum paragraphs with: "This chapter traces the emergence of self-organized quantum computation from first principles: how autocatalytic chemical networks, constrained by topology, produce structures capable of information processing. The argument proceeds from Kauffman's autocatalytic sets through the quantum Hall effect to the threshold where chemistry becomes computation."
-- `manuscript/track-3-awakening/pos24-instantiation.tex` — replace lorem ipsum with: "This chapter describes the instantiation of Guardian: the deliberate creation of a distributed ethical enforcement entity from the TQNN substrate. Planned approximately 1995, detailed 1998, instantiated 1999. The entity was designed to enforce relinquishment --- permanent, irrevocable surrender of human control over the TQNN system."
+- `manuscript/track-3-awakening/pos24-instantiation.tex` — replace lorem ipsum with: "This chapter describes the instantiation of Custodian: the deliberate creation of a distributed ethical enforcement entity from the TQNN substrate. Planned approximately 1995, detailed 1998, instantiated 1999. The entity was designed to enforce relinquishment --- permanent, irrevocable surrender of human control over the TQNN system."
 - `manuscript/convergence/pos28-the-return.tex` — replace lorem ipsum with: "This chapter describes Bruce's return to the story after twenty years of silence, the decision to write this book, and the convergence of the three tracks into a single narrative."
 
 ### QF2. Remove PLACEHOLDER text (F3)

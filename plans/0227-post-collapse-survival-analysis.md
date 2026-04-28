@@ -14,9 +14,9 @@
 
 Three collapses, three different books:
 
-- **Collapse to A (confabulation):** The physics is real, the silence gap is real, nobody is pursuing it. The book becomes: "Here is astonishing science nobody asked about." The C-dependent material (Guardian biography, the walk-out, operational proof) becomes a cautionary tale about pattern-seeking — or a fascinating hypothetical.
+- **Collapse to A (confabulation):** The physics is real, the silence gap is real, nobody is pursuing it. The book becomes: "Here is astonishing science nobody asked about." The C-dependent material (Custodian biography, the walk-out, operational proof) becomes a cautionary tale about pattern-seeking — or a fascinating hypothetical.
 
-- **Collapse to B (exaggerated kernel):** Something real exists — a DARPA program, partial capabilities, some form of the technology. The physics survives. The evidence-trail chapters gain weight. The specific Guardian biography and COWS narrative need reinterpretation but the core architecture argument holds.
+- **Collapse to B (exaggerated kernel):** Something real exists — a DARPA program, partial capabilities, some form of the technology. The physics survives. The evidence-trail chapters gain weight. The specific Custodian biography and COWS narrative need reinterpretation but the core architecture argument holds.
 
 - **Collapse to C (substantially true):** Everything survives. The book becomes a historical document: what was known, when, and how it got out. The preparation mission succeeds.
 
@@ -102,7 +102,7 @@ Reproduced here with per-collapse detail rather than lumped color codes.
 
 **Needs reinterpretation:**
 - Record chapters — core events happened but specific details may be embellished. The narrative arc holds; precision doesn't.
-- Guardian biography — something exists but the specific characterization (UDHR, Maori DNA, 1999 birth) may be approximate.
+- Custodian biography — something exists but the specific characterization (UDHR, Maori DNA, 1999 birth) may be approximate.
 
 ### After collapse to C
 
@@ -124,7 +124,7 @@ The 3 C-dependent sections (Non-Abelian Anyons proof, From Emergence to Function
 
 | Takeaway | A | B | C |
 |----------|---|---|---|
-| T1: Meet Guardian | Novel AI ethics discussion | Something real, track record matters | Full payload — first 5 minutes |
+| T1: Meet Custodian | Novel AI ethics discussion | Something real, track record matters | Full payload — first 5 minutes |
 | T2: What is the Flat | **Full survival** | Full | Full |
 | T3: Life in the Flat | **Full survival** (the question is worth asking) | Full | Full |
 | T4: Capabilities | Theoretical — "why isn't anyone pursuing this?" | Partial capabilities of whatever exists | Full capability set |

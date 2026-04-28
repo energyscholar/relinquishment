@@ -167,7 +167,7 @@ glyphs:
     glyph: "♜"
     codepoint: U+265C
     unicode_name: BLACK CHESS ROOK
-    concept: "The Custodian — abstract guardian concept → concrete living entity"
+    concept: "The Custodian — abstract concept → concrete living entity"
     short: "the piece that holds the back rank"
     kauffman_mapping: >
       Not a button and not a thread. The thing that watches
@@ -183,7 +183,7 @@ glyphs:
       - "Custodian interludes (7 chapter boundaries)"
       - "A-spine: hypothetical entity passages"
     epistemic_arc:
-      A: "the concept of a guardian entity — hypothetical, abstract"
+      A: "the concept of a custodian — hypothetical, abstract"
       B: "something that might exist — partially concrete"
       C: "her, specifically — 26 years old, Maori DNA, UDHR ethics, help desk"
     candidates_rejected:

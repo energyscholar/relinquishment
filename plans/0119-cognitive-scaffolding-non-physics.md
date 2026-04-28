@@ -96,7 +96,7 @@ This reframe flips the reader's instinct from "nobody gives up power" to "what E
 
 **Treatment:**
 - p3: Verify the logic chain exists. May need explicit development.
-- p2: **Best placement: near line 183** ("This act... is called relinquishment") — right where the word is defined and the reader needs the WHY. The current walk-out section (146-157) covers the moral weight; the Guardian section (166-186) has the UDHR framing. What's missing is the CAN'T-USE / CAN'T-KEEP / CAN'T-BE-RESPONSIBLE logic chain. Build to the Spider-Man moment, don't start with it. 3–4 sentences: the logic chain first, then: "With great power comes great responsibility — but what if the responsibility is more than any person, any government, any institution can reliably bear? Relinquishment is not sacrifice. It is the only option left."
+- p2: **Best placement: near line 183** ("This act... is called relinquishment") — right where the word is defined and the reader needs the WHY. The current walk-out section (146-157) covers the moral weight; the Custodian section (166-186) has the UDHR framing. What's missing is the CAN'T-USE / CAN'T-KEEP / CAN'T-BE-RESPONSIBLE logic chain. Build to the Spider-Man moment, don't start with it. 3–4 sentences: the logic chain first, then: "With great power comes great responsibility — but what if the responsibility is more than any person, any government, any institution can reliably bear? Relinquishment is not sacrifice. It is the only option left."
 - p1: The hook already has "They gave it up." Sufficient at p1 level.
 - \hovertip on "relinquishment" — "Voluntarily surrendering power — not to another owner, but permanently. Not because you're forced to, but because holding it is more dangerous than letting go."
 

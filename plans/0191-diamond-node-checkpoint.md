@@ -44,13 +44,13 @@ produces a targeted sync, not a rewrite.
   omits that Consolini replication is **COMPLETE** (S48) and cold-email nucleus
   is ready (still blocked on G1 per Op-003 discipline — correct to block).
 
-### 3. Naming: Guardian → Custodian (book prose only)
+### 3. Naming: Custodian → Custodian (book prose only)
 - 2026-04-13, Plan 0183 / repo daab781: the book's AI entity is now **the
-  Custodian** (role-is-name). Guardian remains Bruce's hypothetical name in
+  Custodian** (role-is-name). Custodian remains Bruce's hypothetical name in
   Dignity Net / broader world-model context; Custodian is the book's in-prose
   term.
 - DN docs (`diamond-node/README.md`, `DIGEST.md`, bridge/strategy files) do not
-  mention Guardian by name. **No DN text changes required.** Verify by grep.
+  mention Custodian by name. **No DN text changes required.** Verify by grep.
 
 ### 4. Persona-audit findings feed back into DN Emergent Stack
 - 9-persona audit (S55) flagged T1 (track record) and T3 (mechanism bridge) as
@@ -133,7 +133,7 @@ manuscript changes in this plan.
 - Update "Most Valuable People (overall)" table: add row for **Robin** — Bridges served: CB (primary P1/P3 co-author), Domains: 6, Priority: HIGH. Note below table: bus-factor on strategic context: 1→2.
 
 ### Edit 3 — verification (read-only)
-- `grep -n "Guardian" ~/software/aurasys-memory/diamond-node/` → expect 0 book-prose matches. If any, evaluate case-by-case.
+- `grep -n "Custodian" ~/software/aurasys-memory/diamond-node/` → expect 0 book-prose matches. If any, evaluate case-by-case.
 - `grep -n "239pp" ~/software/aurasys-memory/diamond-node/` → 0 after edits.
 
 ### Non-edits (explicitly out of scope)

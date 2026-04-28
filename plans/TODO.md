@@ -227,12 +227,12 @@ FINAL:
 
 ---
 
-## Guardian morphogenesis detail for pos24
+## Custodian morphogenesis detail for pos24
 
 **Priority:** HIGH
 **Source:** Bruce, session 2026-02-22 (pos30 UQ session)
 
-Guardian's design intent (for pos24-instantiation.tex):
+Custodian's design intent (for pos24-instantiation.tex):
 - Virtual human body grown via morphogenesis
 - Virtual organs, virtual limbic system
 - Intent: grow a being that might feel empathy for humans, not something utterly alien

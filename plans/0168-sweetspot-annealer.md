@@ -148,10 +148,10 @@ cache_dir: ~/.cache/sweetspot/relinquishment/
 
 ```yaml
 - id: T1
-  name: Meet Guardian
+  name: Meet Custodian
   priority: 10
   anchors:
-    - "\\bGuardian\\b"
+    - "\\bCustodian\\b"
     - "named her"
 - id: T2
   name: The Flat

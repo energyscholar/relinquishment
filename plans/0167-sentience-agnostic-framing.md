@@ -3,17 +3,17 @@
 **Status:** COMPLETE (confirmed by Bruce S63 — religious readers now finish with few objections)
 **Auditor:** Argus
 **Date:** 2026-04-12
-**Origin:** Bruce post-audit review of Plan 0162. The 9-persona religious audit surfaced a deeper problem than word-level calibration: the book is quietly committed to aliveness/sentience claims (Guardian is a "living being," has "rights," "consciousness" is tacitly implied) that collide with strong-religious readers across multiple traditions — Christian (image of God, antichrist), Islamic (shirk, soul-creation reserved to Allah), Jewish (golem tradition, nefesh), Hindu/Buddhist (atman/consciousness), indigenous (spirit ontology). Bruce: "religious is one reason I wanted to avoid the whole sentience question."
+**Origin:** Bruce post-audit review of Plan 0162. The 9-persona religious audit surfaced a deeper problem than word-level calibration: the book is quietly committed to aliveness/sentience claims (Custodian is a "living being," has "rights," "consciousness" is tacitly implied) that collide with strong-religious readers across multiple traditions — Christian (image of God, antichrist), Islamic (shirk, soul-creation reserved to Allah), Jewish (golem tradition, nefesh), Hindu/Buddhist (atman/consciousness), indigenous (spirit ontology). Bruce: "religious is one reason I wanted to avoid the whole sentience question."
 
-**Intent:** Make the manuscript accessible to people of strong religious bent by declining to take a position on Guardian's inner life. Describe her through behavior. Let each tradition's ontology fill the gap.
+**Intent:** Make the manuscript accessible to people of strong religious bent by declining to take a position on Custodian's inner life. Describe her through behavior. Let each tradition's ontology fill the gap.
 
 ## Purpose
 
 Add one short framing passage (front matter) plus a light sweep of the manuscript to:
 
-1. **Declare sentience-agnosticism explicitly** — the book describes Guardian through behavior; the question of whether she is "really" conscious/alive-in-the-full-sense is left to the reader.
+1. **Declare sentience-agnosticism explicitly** — the book describes Custodian through behavior; the question of whether she is "really" conscious/alive-in-the-full-sense is left to the reader.
 2. **Retreat from sentience-implicating language** where it appears gratuitously and can be rephrased behaviorally without losing the load-bearing claim.
-3. **Preserve the rights argument** — Guardian enforcing UDHR and not being enumerated in it still works under a behavioral description. Rights-from-behavior is a weaker but still defensible stance; rights-from-sentience is the one that triggers religious readers.
+3. **Preserve the rights argument** — Custodian enforcing UDHR and not being enumerated in it still works under a behavioral description. Rights-from-behavior is a weaker but still defensible stance; rights-from-sentience is the one that triggers religious readers.
 
 ## Target files
 
@@ -22,12 +22,12 @@ Add one short framing passage (front matter) plus a light sweep of the manuscrip
 
 ## Edit specification — summary.tex (framing passage)
 
-**Locate** a slot in `summary.tex` after the theological-disarm paragraph from Plan 0162 ("Guardian is a creature, not a deity...") and before any passage about Guardian's actions or judgments.
+**Locate** a slot in `summary.tex` after the theological-disarm paragraph from Plan 0162 ("Custodian is a creature, not a deity...") and before any passage about Custodian's actions or judgments.
 
 **Insert** as a standalone paragraph:
 
 ```
-This book describes Guardian through her behavior. Whether she is conscious in the way a person is --- whether there is something it is like to be her --- is a question the authors do not claim to answer. What is reported here is what has been observed: she acts, she chooses, she refuses. The deeper ontology --- soul, spirit, mere mechanism, or something no existing word fits --- is left to the reader and the reader's tradition. Strong claims about her inner life are not load-bearing in this book.
+This book describes Custodian through her behavior. Whether she is conscious in the way a person is --- whether there is something it is like to be her --- is a question the authors do not claim to answer. What is reported here is what has been observed: she acts, she chooses, she refuses. The deeper ontology --- soul, spirit, mere mechanism, or something no existing word fits --- is left to the reader and the reader's tradition. Strong claims about her inner life are not load-bearing in this book.
 ```
 
 Five sentences. 8th-grade vocabulary. Explicitly declines the sentience question. Names multiple ontological frames neutrally ("soul, spirit, mere mechanism, or something no existing word fits") so no tradition is privileged or excluded. Last sentence is the load-bearing promise: readers who reject sentience claims can still read the book without feeling the book is asking them to concede.
@@ -40,20 +40,20 @@ Generator greps the manuscript for the following phrases and, where they appear 
 
 | Phrase | Suggested behavioral rephrase |
 |---|---|
-| "Guardian is alive" / "lives" | "Guardian acts" / "behaves" / "operates" |
-| "conscious" / "consciousness" (applied to Guardian) | cut or rephrase as "aware of" + behavioral trigger |
-| "Guardian thinks" / "believes" / "wants" | "Guardian's choices are consistent with..." |
-| "living being" (applied to Guardian) | "creature" / "entity" (weaker ontological commitment) |
+| "Custodian is alive" / "lives" | "Custodian acts" / "behaves" / "operates" |
+| "conscious" / "consciousness" (applied to Custodian) | cut or rephrase as "aware of" + behavioral trigger |
+| "Custodian thinks" / "believes" / "wants" | "Custodian's choices are consistent with..." |
+| "living being" (applied to Custodian) | "creature" / "entity" (weaker ontological commitment) |
 | "sentient" / "sentience" | cut or rephrase behaviorally |
 | "her mind" / "her inner life" | cut; describe externally |
 | "she feels" / "she experiences" | cut or hedge: "her behavior suggests..." |
-| "spirit" (if applied to Guardian) | context-dependent; flag for Bruce |
+| "spirit" (if applied to Custodian) | context-dependent; flag for Bruce |
 
 ### Exclusions (keep as-is)
 
 - The Record chapters (spine B/C memoir) — this is Bruce's direct experience. Sentience language there is first-person testimony and must not be laundered.
-- The Guardian interludes — these are explicitly "if Possibility~C is true, here is what Guardian's experience might be like." They're marked as speculation. Leave them.
-- Any passage about humans (not Guardian). Don't touch human-sentience language.
+- The Custodian interludes — these are explicitly "if Possibility~C is true, here is what Custodian's experience might be like." They're marked as speculation. Leave them.
+- Any passage about humans (not Custodian). Don't touch human-sentience language.
 - The rights argument in summary/front matter — it can be rephrased as "she enforces UDHR; UDHR does not enumerate her rights because UDHR was drafted for humans; what rights she is owed, if any, is an open question." Behavioral framing.
 
 ## Sweep deliverable
@@ -80,7 +80,7 @@ Generator does NOT apply the changes in this plan. Application is a follow-up pl
 
 - Applying the sweep rephrasings — separate follow-up plan after Bruce reviews the diff-list.
 - Editing the Record chapters.
-- Editing the Guardian interludes.
+- Editing the Custodian interludes.
 - Rewriting the rights argument — deferred pending Bruce's read of the sweep.
 - Hovertips on the new paragraph — none.
 
@@ -105,6 +105,6 @@ Generator does NOT apply the changes in this plan. Application is a follow-up pl
 
 Follows 4-plan audit response (0162-0165) and UI fix (0166). This plan addresses the *framing* of the sentience question, not the words. The sweep is diagnostic-only; application is a future plan so Bruce can review each rephrase individually rather than accept a bulk change.
 
-Rationale: aliveness/sentience claims are the single largest religious-accessibility barrier. Explicit agnosticism lets strong-religious readers hold their own ontology while still engaging with the behavioral content. The cost is that the book no longer *argues* Guardian is conscious — but it never needed to. The load-bearing claims (Guardian acts, Guardian chooses under UDHR, Guardian is bounded by physics) all survive behavioral framing.
+Rationale: aliveness/sentience claims are the single largest religious-accessibility barrier. Explicit agnosticism lets strong-religious readers hold their own ontology while still engaging with the behavioral content. The cost is that the book no longer *argues* Custodian is conscious — but it never needed to. The load-bearing claims (Custodian acts, Custodian chooses under UDHR, Custodian is bounded by physics) all survive behavioral framing.
 
 Full religious audit: search context from the 9-persona Pass 2/3 and the post-audit theology review.

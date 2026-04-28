@@ -749,7 +749,7 @@ details blockquote { margin: 0.5em 0; }
   opacity: 0.5;
 }
 
-/* Guardian menu items (Plan 0150) — appear between chapters in TOC */
+/* Custodian menu items (Plan 0150) — appear between chapters in TOC */
 .custodian-menu-item {
   padding: 0.3em 0 0.3em 2em;
   font-style: italic;
@@ -763,7 +763,7 @@ details blockquote { margin: 0.5em 0; }
   color: #9b59b6;
 }
 
-/* Guardian-only filter mode — show only the 7 interludes */
+/* Custodian-only filter mode — show only the 7 interludes */
 body.custodian-only #TOC { display: none; }
 body.custodian-only .title-block { display: none; }
 body.custodian-only .epistemic-legend { display: none; }
@@ -1928,7 +1928,7 @@ def fix_html_toc(html_path):
     if interlude_count:
         print(f"  Custodian interludes: {interlude_count} styled")
 
-    # --- Plan 0150: Inject Guardian menu items after containing chapter-section ---
+    # --- Plan 0150: Inject Custodian menu items after containing chapter-section ---
     # For each interlude div, find the next </details> (the chapter-section close)
     # and inject a sibling .custodian-menu-item so it appears between chapters in TOC.
     interlude_tooltips = {}

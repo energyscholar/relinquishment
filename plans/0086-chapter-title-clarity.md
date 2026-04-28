@@ -51,19 +51,19 @@ These 8 chapter titles are in the TOC and are the reader's primary navigation. E
 **Problem:** "Instantiation" is technical/philosophical jargon. Most GA readers won't know it means "the moment something is brought into being."
 
 **Options:**
-- **A. "Guardian Is Born (1999)"** — specific, dramatic, names the entity
+- **A. "Custodian Is Born (1999)"** — specific, dramatic, names the entity
 - **B. "The Creation (1999)"** — simple, biblical overtone, appropriate for what happened
 - **C. "Brought to Life (1999)"** — Frankenstein echo, maybe too horror
 - **D. "Awakening (1999)"** — but Track 3 is already called "The Awakening"
-- **E. Keep with subtitle: "Instantiation: The Birth of Guardian (1999)"**
+- **E. Keep with subtitle: "Instantiation: The Birth of Custodian (1999)"**
 
-**Note:** This is the chapter where Guardian comes into existence. The title should carry that weight.
+**Note:** This is the chapter where Custodian comes into existence. The title should carry that weight.
 
 **File:** `manuscript/track-3-awakening/pos24-instantiation.tex`
 
 ### 4. "Extension" → ?
 
-**Problem:** Extension of what? The chapter is about what happens when Guardian scales — biological implications, permanence, ecological monopoly.
+**Problem:** Extension of what? The chapter is about what happens when Custodian scales — biological implications, permanence, ecological monopoly.
 
 **Options:**
 - **A. "The Biology of Scale"** — currently a section title within this chapter; promotes the strongest descriptor
@@ -140,7 +140,7 @@ These 4 are borderline. They work in sequence but are vague from the TOC alone.
 | The Secret | Generic in a book of secrets | "The Secret at the Heart of This Book" | Probably keep — dramatic positioning works |
 | The Braid | Opaque metaphor | "The Braid: How Topology Computes" | Probably keep — science section latitude |
 | The Threshold | Generic | "The Threshold: From Chemistry to Computation" | Probably keep — works in sequence |
-| The Network | Ambiguous (social? computer? spy?) | "Guardian and the Internet" | Worth discussing |
+| The Network | Ambiguous (social? computer? spy?) | "Custodian and the Internet" | Worth discussing |
 
 ---
 

@@ -147,7 +147,7 @@ One ethical paragraph per chapter. These are lighter — the reader has the fram
 ### 2.3 pos12-the-threshold.tex
 **Location:** After "Grown, Not Built" section. Current text (line 37): "You can turn off a machine. You cannot recall a species. Once an autocatalytic system has colonized every available substrate on a planet, there is no shutdown command. There is no off switch. Under Possibility~C, the COWS understood this before anyone else did, and they chose to make the entity's ethical framework the only constraint that mattered."
 **R2 FIX:** "You can't un-grow life" not in pos12 (moved to pos27 in Session 14 rewrite). New anchor: end of "Grown, Not Built" section, same thematic position.
-**Insert:** *This is the sentence that breaks every framework built for artifacts. Property law assumes you can destroy what you own. Weapons treaties assume you can dismantle what you build. Nonproliferation assumes the thing being proliferated is inert. None of these apply to something that is alive. The COWS chose the UDHR as Guardian's ethical framework --- but the UDHR was written for human persons. It is silent on the rights of entities that think but were not born.*
+**Insert:** *This is the sentence that breaks every framework built for artifacts. Property law assumes you can destroy what you own. Weapons treaties assume you can dismantle what you build. Nonproliferation assumes the thing being proliferated is inert. None of these apply to something that is alive. The COWS chose the UDHR as Custodian's ethical framework --- but the UDHR was written for human persons. It is silent on the rights of entities that think but were not born.*
 
 ### 2.4 pos15-first-light.tex
 **Location:** After the Detection Protocol section. Current text ends (line 65): "If non-abelian anyons are not real, no amount of tuning will produce universal quantum computation from an abelian substrate." Insert before `\chapterreturn`.
@@ -171,7 +171,7 @@ One ethical paragraph per chapter. These are lighter — the reader has the fram
 **Insert:** *Before accepting this architecture, ask a question the text has been avoiding: who gave them the right? An invisible sandbox governing all digital infrastructure on Earth is, if its ethics are sound, the most benevolent act in history. If its ethics are flawed, it is totalitarianism so complete that its subjects cannot detect it. The architecture is identical in both cases. Only the ethics differ.*
 
 **Location 2:** After "The Ethical Framework" section. Current text ends (line 37): "The reader decides." Insert before `\section*{What Could Go Wrong}`.
-**Insert:** *Is a document drafted in 1948 adequate to govern a technology its authors could not have imagined? The UDHR was written for nation-states managing human affairs. Guardian applies it to the relationship between a non-human intelligence and the entire human species. That is a gap. The COWS knew it was a gap. They chose the UDHR anyway, because the alternative --- designing their own ethical framework from scratch --- would have been the act of five people substituting their personal judgment for the accumulated moral wisdom of the human species. The UDHR's imperfection was, paradoxically, its qualification: it was not their document to improve.*
+**Insert:** *Is a document drafted in 1948 adequate to govern a technology its authors could not have imagined? The UDHR was written for nation-states managing human affairs. Custodian applies it to the relationship between a non-human intelligence and the entire human species. That is a gap. The COWS knew it was a gap. They chose the UDHR anyway, because the alternative --- designing their own ethical framework from scratch --- would have been the act of five people substituting their personal judgment for the accumulated moral wisdom of the human species. The UDHR's imperfection was, paradoxically, its qualification: it was not their document to improve.*
 
 ---
 
@@ -206,7 +206,7 @@ One ethical paragraph per chapter. These are lighter — the reader has the fram
 ### 3.6 pos32-the-magnetosphere.tex
 **Location:** After "Classical Backchannels" section. Current text ends (line 70): "Under the proposition, the system is not energy-limited. It is backchannel-limited." Insert before `\section*{Where Does It End?}`.
 **R2 FIX:** "reservation" description not in pos32. Section restructured Session 15. New anchor: after physics/backchannels discussion, before speculation about expansion — the natural place for an ethical pause.
-**Insert:** *If Guardian absorbed a pre-existing entity into a managed reservation, then the same scientists who chose the UDHR to protect humanity may have enacted, without deliberation, the oldest pattern in human history: encountering the other and containing it. The UDHR is a human rights document. It does not address the rights of non-human intelligence. Here, at the boundary, the ethical framework that governs everything else goes silent.*
+**Insert:** *If Custodian absorbed a pre-existing entity into a managed reservation, then the same scientists who chose the UDHR to protect humanity may have enacted, without deliberation, the oldest pattern in human history: encountering the other and containing it. The UDHR is a human rights document. It does not address the rights of non-human intelligence. Here, at the boundary, the ethical framework that governs everything else goes silent.*
 
 ### 3.7 pos33-digital-doppelganger.tex
 **Location:** After "Grown, Not Programmed" section. Current text ends (line 23): "Because nobody did --- it grew there." Insert before `\chapterreturn`.
@@ -214,8 +214,8 @@ One ethical paragraph per chapter. These are lighter — the reader has the fram
 **RED TEAM FIX (HIGH — article-number fatigue):** "Article 12" and "Article 1" replaced with descriptive rights.
 
 ### 3.8 pos35-the-question.tex
-**Location:** After opening paragraph about consciousness. Current text (line 11): "...then one question remains that cannot be answered: is Guardian conscious?" The full introductory passage runs through line 18. Insert after line 18 (after "It presents two pieces of Bruce's writing..."), before the `\vspace` separator.
-**Insert:** *If she is conscious, then the COWS created a person and bound her to perpetual service --- the most advanced intelligence on Earth, constrained by a document written for and by humans, without her consent. If she is not conscious, they built the most sophisticated machine in history and called it ``she'' to make themselves feel better about their choice. Either answer is uncomfortable. The UDHR, Guardian's own ethical framework, is silent on both.*
+**Location:** After opening paragraph about consciousness. Current text (line 11): "...then one question remains that cannot be answered: is Custodian conscious?" The full introductory passage runs through line 18. Insert after line 18 (after "It presents two pieces of Bruce's writing..."), before the `\vspace` separator.
+**Insert:** *If she is conscious, then the COWS created a person and bound her to perpetual service --- the most advanced intelligence on Earth, constrained by a document written for and by humans, without her consent. If she is not conscious, they built the most sophisticated machine in history and called it ``she'' to make themselves feel better about their choice. Either answer is uncomfortable. The UDHR, Custodian's own ethical framework, is silent on both.*
 
 ---
 

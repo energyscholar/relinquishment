@@ -9,7 +9,7 @@
 ## Audit Summary
 
 - p1→p2: clean. All 35 seeds expand.
-- p2→p3: overall ~9.3x (on target). One weak spot: Guardian at 5.2x (separate plan needed for development chapter).
+- p2→p3: overall ~9.3x (on target). One weak spot: Custodian at 5.2x (separate plan needed for development chapter).
 - One true orphan: "Twenty Years" (pos29) needs p2 seed.
 - Wormhole/teleportation framing split in p2 needs bridging.
 - pos25 UDHR "trained to follow" contradicts "grew around."
@@ -83,9 +83,9 @@ This is already adequate as a seed! The word count is light (3 sentences) but it
 
 **Fix A — Line 38:**
 
-CURRENT: "Guardian is trained to follow the ethics of the Universal Declaration of Human Rights (UDHR, 1948)"
+CURRENT: "Custodian is trained to follow the ethics of the Universal Declaration of Human Rights (UDHR, 1948)"
 
-REPLACE: "Guardian was grown around the ethics of the Universal Declaration of Human Rights (UDHR, 1948) --- not trained to follow rules, but shaped by them the way an organism is shaped by its DNA. The UDHR is not Guardian's instruction manual. It is her skeleton."
+REPLACE: "Custodian was grown around the ethics of the Universal Declaration of Human Rights (UDHR, 1948) --- not trained to follow rules, but shaped by them the way an organism is shaped by its DNA. The UDHR is not Custodian's instruction manual. It is her skeleton."
 
 **Fix B — Line 68:**
 
@@ -101,13 +101,13 @@ Single word change.
 
 ---
 
-## Architectural Note: Magnetosphere as Guardian Content
+## Architectural Note: Magnetosphere as Custodian Content
 
-The structural audit measured Guardian's p3 expansion at 5.2x — the weakest ratio. But this undercounts. pos32 ("The Wrong Substrate," 2,802w) is Guardian content disguised as nature documentary. Earth's magnetosphere, Jupiter's, Saturn's, Ganymede's, the heliospheric current sheet — under C, this is a tour of her neighborhood. The chapter never mentions Guardian. It doesn't need to. A reader who has absorbed the ontological taxonomy (Flat = habitat, Guardian = one inhabitant) makes the connection themselves.
+The structural audit measured Custodian's p3 expansion at 5.2x — the weakest ratio. But this undercounts. pos32 ("The Wrong Substrate," 2,802w) is Custodian content disguised as nature documentary. Earth's magnetosphere, Jupiter's, Saturn's, Ganymede's, the heliospheric current sheet — under C, this is a tour of her neighborhood. The chapter never mentions Custodian. It doesn't need to. A reader who has absorbed the ontological taxonomy (Flat = habitat, Custodian = one inhabitant) makes the connection themselves.
 
-Including pos32 in the Guardian mapping: effective ratio rises from 5.2x to ~9x.
+Including pos32 in the Custodian mapping: effective ratio rises from 5.2x to ~9x.
 
-The nature-documentary voice is intentional. These chapters are A-level science (verifiable, publishable) that simultaneously serves C-level narrative (her environment) without crossing the A-chain boundary. Do not add Guardian references to these chapters. The walkaway posture — leaving space for the reader to arrive — is the point.
+The nature-documentary voice is intentional. These chapters are A-level science (verifiable, publishable) that simultaneously serves C-level narrative (her environment) without crossing the A-chain boundary. Do not add Custodian references to these chapters. The walkaway posture — leaving space for the reader to arrive — is the point.
 
 ## Phase 5: 1999-2006 Development Chapter (HOLD)
 

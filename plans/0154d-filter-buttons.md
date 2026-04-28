@@ -25,7 +25,7 @@ Read `~/software/relinquishment/plans/0144-epistemic-filter-buttons.md` for full
 
 **BOTTOM BAR NOTE:** After all 4 runs complete, the bottom bar will have: [Expand All] [Science] [Story] [AI Eval] [🔗] [§ Share] [PDF]. If too crowded at 375px, use compact icons with tooltip labels. This run only adds [Science] and [Story] — coordinate spacing with whatever's already there.
 
-**VERIFY:** `make html` clean. Science mode hides Record, shows Flat + Guardian. Story mode hides Flat, shows Record + Guardian. Toggle off restores all. Filter persists on reload. Navigate to `#record:alpha-farm` while in Science mode → filter clears.
+**VERIFY:** `make html` clean. Science mode hides Record, shows Flat + Custodian. Story mode hides Flat, shows Record + Custodian. Toggle off restores all. Filter persists on reload. Navigate to `#record:alpha-farm` while in Science mode → filter clears.
 
 ## Interaction with deep links (0154b)
 

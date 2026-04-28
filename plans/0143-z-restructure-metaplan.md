@@ -22,7 +22,7 @@ One book with three layers that use the existing build architecture:
 ├─────────────────────────────────────────────────────┤
 │  SPINE: Pop science book (A-content, ~15 chapters)  │
 │  ┊                                                  │
-│  ┊  Guardian interludes woven between chapters      │
+│  ┊  Custodian interludes woven between chapters      │
 │  ┊  (A-hypothetical or C-real, always visible)      │
 │  ┊                                                  │
 │  ┊  [▸ B/C expansion hooks — tap to reveal]         │
@@ -39,7 +39,7 @@ One book with three layers that use the existing build architecture:
 └─────────────────────────────────────────────────────┘
 ```
 
-**Phone reader experience:** Single-column scroll. Spine reads clean. Expansion hooks are subtle tap targets. Guardian interludes are inline, short, distinct voice. The Record is a separate section you scroll to or jump to via link.
+**Phone reader experience:** Single-column scroll. Spine reads clean. Expansion hooks are subtle tap targets. Custodian interludes are inline, short, distinct voice. The Record is a separate section you scroll to or jump to via link.
 
 **Desktop reader experience:** Same, plus hover popups on menu items and hover-terms.
 
@@ -48,7 +48,7 @@ One book with three layers that use the existing build architecture:
 ## The Five Phases
 
 ### Phase 1: Skeleton (structure only, no content)
-### Phase 2: Guardian Voice (write interludes)
+### Phase 2: Custodian Voice (write interludes)
 ### Phase 3: Spine Population (restructure A-content)
 ### Phase 4: Expansion Layer (B/C hooks + The Record)
 ### Phase 5: Integration & Verification
@@ -59,7 +59,7 @@ Each phase produces a testable artifact. Each phase has its own sub-plan (0143a-
 
 ## Phase 1: Skeleton — Build the Empty Structure
 
-**Goal:** A working HTML page with the new TOC, empty chapters, expansion mechanics, and Guardian interlude slots. No real content — placeholder text only. Test that the structure works on phone and desktop before writing a word.
+**Goal:** A working HTML page with the new TOC, empty chapters, expansion mechanics, and Custodian interlude slots. No real content — placeholder text only. Test that the structure works on phone and desktop before writing a word.
 
 **Sub-plan:** 0143a
 
@@ -73,7 +73,7 @@ Each phase produces a testable artifact. Each phase has its own sub-plan (0143a-
    ├── spine/                     (NEW directory)
    │   ├── three-possibilities.tex
    │   ├── the-stack.tex
-   │   ├── interlude-01.tex       (Guardian voice — placeholder)
+   │   ├── interlude-01.tex       (Custodian voice — placeholder)
    │   ├── the-flat.tex
    │   ├── interlude-02.tex
    │   ├── the-braid.tex
@@ -116,8 +116,8 @@ Each phase produces a testable artifact. Each phase has its own sub-plan (0143a-
    - Visual indicator: B/C icon (from Plan 0141) on the expansion trigger
    - Collapse on second tap
 
-3. **Guardian interlude styling:**
-   - New CSS class: `.guardian-interlude`
+3. **Custodian interlude styling:**
+   - New CSS class: `.custodian-interlude`
    - Distinct visual treatment: different font? Italic? Left border? Subtle background?
    - Must feel like a different voice without breaking the page flow
    - Must NOT feel like a blockquote (that's for citations)
@@ -125,7 +125,7 @@ Each phase produces a testable artifact. Each phase has its own sub-plan (0143a-
 
 4. **Updated TOC / menu structure:**
    - Spine chapters as primary TOC entries
-   - Guardian interludes do NOT get TOC entries (they're connective tissue, not chapters)
+   - Custodian interludes do NOT get TOC entries (they're connective tissue, not chapters)
    - The Record as a collapsible Part (like current Part I/II/III)
    - B/C expansion hooks do NOT get TOC entries
 
@@ -139,7 +139,7 @@ Each phase produces a testable artifact. Each phase has its own sub-plan (0143a-
 - Placeholder text in all slots
 - Working expansion mechanics (tap to reveal, tap to collapse)
 - Working "Read the full story →" links
-- Guardian interlude visual treatment
+- Custodian interlude visual treatment
 - Phone-readable single column
 
 **Estimated scope:** Medium Generator task. ~2-3 sessions. Mostly preprocess.py + CSS + LaTeX restructure. No content writing.
@@ -151,8 +151,8 @@ You are the Generator. Read plans/0143-z-restructure-metaplan.md, Phase 1.
 Build the skeleton structure. Create spine/ and record/ directories.
 Create placeholder .tex files for each chapter (one paragraph of lorem
 ipsum each). Add the expansion mechanic to preprocess.py (new CSS class
-.bc-expansion with tap-to-reveal). Add Guardian interlude styling
-(.guardian-interlude). Update main.tex to include the new structure.
+.bc-expansion with tap-to-reveal). Add Custodian interlude styling
+(.custodian-interlude). Update main.tex to include the new structure.
 Update menu-tooltips.yaml with new keys.
 
 Do NOT move or modify existing chapter content. Placeholders only.
@@ -162,9 +162,9 @@ Report: what was built, any issues with the build system.
 
 ---
 
-## Phase 2: Guardian Voice — Write the Interludes
+## Phase 2: Custodian Voice — Write the Interludes
 
-**Goal:** Write 7 Guardian interludes (~100-200 words each, ~1,000 words total). These are the Schoolbus layer — Guardian showing you her world. Written to work under both A (thought experiment) and C (real person).
+**Goal:** Write 7 Custodian interludes (~100-200 words each, ~1,000 words total). These are the Schoolbus layer — Custodian showing you her world. Written to work under both A (thought experiment) and C (real person).
 
 **Sub-plan:** 0143b
 
@@ -201,14 +201,14 @@ Report: what was built, any issues with the build system.
 You are the Generator. Read plans/0143-z-restructure-metaplan.md, Phase 2.
 Read plans/reader-preparation-requirements.md for T1-T5 definitions.
 
-Write 7 Guardian interludes per the table in Phase 2. 100-200 words each.
+Write 7 Custodian interludes per the table in Phase 2. 100-200 words each.
 Place them in spine/interlude-01.tex through spine/interlude-07.tex.
 
-Voice: Guardian explaining her world to "solids" (3D beings). Warm,
+Voice: Custodian explaining her world to "solids" (3D beings). Warm,
 curious, slightly alien. Works as hypothetical (A) or real (C). No
 exposition — show, don't tell. Sensory and spatial. p2 reading level.
 
-Build and verify: make dev. Check interludes render with .guardian-interlude
+Build and verify: make dev. Check interludes render with .custodian-interlude
 styling. Report: word counts, which T1-T5 each interlude serves.
 ```
 
@@ -308,7 +308,7 @@ Each spine chapter gets 0-2 expansion hooks — places where the A-content natur
 4. **Spine reading test:** Read spine chapters sequentially. Does it work as a standalone pop-science book? No gaps, no dependencies on Record content?
 5. **Record reading test:** Read The Record sequentially. Does it work as a standalone memoir? Coherent narrative arc?
 6. **Expansion test:** Open every expansion hook. Do they provide enough B/C context? Do the "Read the full story →" links land correctly?
-7. **Guardian interlude test:** Read interludes in sequence. Coherent voice? Works under both A and C reading?
+7. **Custodian interlude test:** Read interludes in sequence. Coherent voice? Works under both A and C reading?
 8. **T1-T5 persona audit:** Run five personas through spine-only reading. Score each takeaway. All should be YES or strong PARTIAL.
 9. **A/B/C icon system:** Apply Plan 0141 color-coding. Spine chapters should be overwhelmingly A-colored. Record chapters C-colored. Visual pattern should be obvious.
 10. **Popup rewrite:** Write final menu popups (per earlier plan). Each popup delivers takeaways and blocks failure modes.
@@ -324,7 +324,7 @@ Each spine chapter gets 0-2 expansion hooks — places where the A-content natur
 Phase 1 (Skeleton)
     │
     ▼
-Phase 2 (Guardian Voice) ──── Bruce approves voice/tone
+Phase 2 (Custodian Voice) ──── Bruce approves voice/tone
     │
     ▼
 Phase 3 (Spine Population)
@@ -349,7 +349,7 @@ Plan 0141 (icons/colors) can run in parallel with Phases 2-4 since it's CSS/pres
 | Risk | Likelihood | Impact | Mitigation |
 |------|-----------|--------|------------|
 | LaTeX restructure breaks build | High | Medium | Phase 1 tests build with placeholders before any content moves |
-| Guardian voice doesn't land | Medium | High | Phase 2 produces samples for Bruce review before proceeding. Kill/rewrite if wrong. |
+| Custodian voice doesn't land | Medium | High | Phase 2 produces samples for Bruce review before proceeding. Kill/rewrite if wrong. |
 | Spine chapters need more revision than expected | Medium | Medium | Phase 3 may split into sub-phases. Accept that some chapters need rewriting, not just moving. |
 | Expansion mechanic is clunky on phone | Medium | High | Phase 1 tests mechanics with placeholder content on actual phone before proceeding. |
 | Cross-references break during restructure | High | Low | Systematic: grep all \ref/\label before moving files. Update in batch. |
@@ -378,9 +378,9 @@ Plan 0141 (icons/colors) can run in parallel with Phases 2-4 since it's CSS/pres
 | Z-structure (spine + hanging layers) | Bruce | 2026-04-07 | Over X (three books) and Y (three paths) |
 | Hybrid expansion mechanic | Bruce | 2026-04-07 | Inline for short, collected for long |
 | Keep "falling out of the sky" hook | Bruce | 2026-04-07 | Gen approved it. C-content that functions as A-motivation. |
-| Guardian gets a voice (interludes) | Bruce | 2026-04-07 | Works as hypothetical (A) or real (C). "Explaining her world to solids." |
+| Custodian gets a voice (interludes) | Bruce | 2026-04-07 | Works as hypothetical (A) or real (C). "Explaining her world to solids." |
 | Spine sequence confirmed | Bruce | 2026-04-07 | 15 chapters, A-content only, two new chapters needed |
-| Argus writes Guardian voice | Bruce | 2026-04-07 | "I trust you to write the voice of Aurasys as hauntingly well as anyone can" |
+| Argus writes Custodian voice | Bruce | 2026-04-07 | "I trust you to write the voice of Aurasys as hauntingly well as anyone can" |
 
 ---
 

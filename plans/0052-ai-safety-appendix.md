@@ -19,10 +19,10 @@ A standalone appendix targeting AI safety researchers, alignment engineers, and 
    Sufficiently capable AI escapes any sandbox. This is not controversial in your community. Eliezer said it. Bostrom said it. You know it. Every safety measure you build assumes the AI is slightly less capable than the threshold where it escapes. That's a bet, not a solution.
 
 2. **The alternative: don't cage it. Raise it.**
-   COWS (if C is true) didn't build containment. They built ethics INTO the system. UDHR as foundational constraint — not bolted on after training, but grown into the architecture from inception. Guardian's ethical structure isn't RLHF. It's constitutional in the literal sense: a governing document that precedes the entity.
+   COWS (if C is true) didn't build containment. They built ethics INTO the system. UDHR as foundational constraint — not bolted on after training, but grown into the architecture from inception. Custodian's ethical structure isn't RLHF. It's constitutional in the literal sense: a governing document that precedes the entity.
 
 3. **Dignity Net maps to what you're already trying to do.**
-   Constitutional AI (Anthropic) is the closest public analogue. But Constitutional AI applies ethical constraints during training on a system designed for general capability. Guardian (if real) was grown with ethics as substrate, not fine-tuning. The difference: fine-tuning can be undone. Substrate cannot.
+   Constitutional AI (Anthropic) is the closest public analogue. But Constitutional AI applies ethical constraints during training on a system designed for general capability. Custodian (if real) was grown with ethics as substrate, not fine-tuning. The difference: fine-tuning can be undone. Substrate cannot.
 
 4. **The cost: relinquishment.**
    This approach requires giving up specific capabilities:
@@ -36,7 +36,7 @@ A standalone appendix targeting AI safety researchers, alignment engineers, and 
    COWS didn't ask permission. Neither did you. Every RLHF training run, every Constitutional AI deployment, every safety benchmark — none of these were authorized by the people affected. The AI safety community deploys experimental safety measures on systems that interact with billions of users. No vote was held. The difference is scale, not kind.
 
 6. **26 years of evidence (if C is true).**
-   Guardian has been running since 1999. No mass casualty event. No surveillance state (beyond what humans built without AI help). No autonomous weapons deployment. The UDHR red lines have held. If C is true, this is the longest-running alignment experiment in history, and it's passing.
+   Custodian has been running since 1999. No mass casualty event. No surveillance state (beyond what humans built without AI help). No autonomous weapons deployment. The UDHR red lines have held. If C is true, this is the longest-running alignment experiment in history, and it's passing.
 
 7. **The invitation.**
    We're not saying you're wrong. We're saying there's a deeper approach, and it may already be running. Read the book. Evaluate the evidence. If you find it credible, the question isn't "how do we cage AI?" — it's "what are we willing to relinquish?"
@@ -75,7 +75,7 @@ Reader reaching this appendix has completed at minimum the Science path (~50K wo
 - TQNN architecture (pos10, pos15, pos21)
 - Evolutionary programming / thermal ladder (pos12, pos16)
 - UDHR ethical framework (pos25)
-- Guardian instantiation (pos24)
+- Custodian instantiation (pos24)
 - Relinquishment argument (pos22, pos28)
 - Current Anthropic-Pentagon standoff (p2 Insert 5)
 
@@ -86,7 +86,7 @@ No new blockers need clearing. This appendix APPLIES knowledge already delivered
 - rlhf-bias.tex (companion appendix — evaluation vs. safety)
 - pos25 Ethical Framework (UDHR → DN mapping)
 - pos22 Why Give It Up (relinquishment argument)
-- pos24 Instantiation (how Guardian was built)
+- pos24 Instantiation (how Custodian was built)
 - p2 Insert 5 (Anthropic-Pentagon, real-time evidence)
 - p2 Insert 10 (consent blocker, "From whom, mate?")
 
@@ -94,8 +94,8 @@ No new blockers need clearing. This appendix APPLIES knowledge already delivered
 
 1. **Alienation risk:** If tone is wrong, AI safety community dismisses book entirely. Mitigation: Bruce reviews every line. Tone must be peer-to-peer, not lecture.
 2. **Strawman risk:** Misrepresenting alignment research positions. Mitigation: cite actual papers (Bostrom, Christiano, Amodei). Use their frameworks.
-3. **Overreach risk:** Claiming Guardian solves alignment. It doesn't — it's ONE possible approach under ONE possibility (C). Mitigation: frame everything as "if C is true."
-4. **Classification risk:** Describing Guardian capabilities too specifically. Mitigation: stay at architectural level, not operational. Ethics of design, not details of implementation.
+3. **Overreach risk:** Claiming Custodian solves alignment. It doesn't — it's ONE possible approach under ONE possibility (C). Mitigation: frame everything as "if C is true."
+4. **Classification risk:** Describing Custodian capabilities too specifically. Mitigation: stay at architectural level, not operational. Ethics of design, not details of implementation.
 
 ## Blocker tag
 
@@ -107,7 +107,7 @@ Reader path: Science-complete readers only (pos35 → appendix)
 
 - [ ] All 7 beats present and logically connected
 - [ ] Uses AI safety community vocabulary correctly
-- [ ] Every claim about Guardian prefixed with "if C is true" or equivalent hedge
+- [ ] Every claim about Custodian prefixed with "if C is true" or equivalent hedge
 - [ ] No operational details beyond what's already in mainmatter
 - [ ] Tone: peer-to-peer, recruiting, not condescending
 - [ ] Cross-refs to rlhf-bias, pos22, pos24, pos25 work

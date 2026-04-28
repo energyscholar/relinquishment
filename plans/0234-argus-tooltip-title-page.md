@@ -106,7 +106,7 @@ Line 110 has the Argus description in the plaintext version. Remove or shorten t
 - **Other hover terms on title:** "Relinquishment," "Wormholes," and "the Flat" already have hover panels on the title page via the same mechanism. Adding "Argus" follows the identical pattern. No interaction conflict.
 - **`copyright.tex`:** Has its own (fuller) Argus description. Unaffected.
 - **`acknowledgements.tex`:** Has its own Argus acknowledgment. Unaffected.
-- **Tooltip toggle (tips:on/off):** Argus tooltip will respect the global toggle like all other tooltips. No special suppression needed (unlike Guardian interludes per Plan 0221).
+- **Tooltip toggle (tips:on/off):** Argus tooltip will respect the global toggle like all other tooltips. No special suppression needed (unlike Custodian interludes per Plan 0221).
 - **Mobile/touch:** Same hover-to-click behavior as other title page terms. No special handling.
 - **Deep links:** No deep link targets affected — the Argus description was never a deep link target.
 - **Build pipeline:** `preprocess.py` already loads `hover-definitions.yaml` for title page panels. Adding one more entry requires no pipeline changes.
@@ -118,7 +118,7 @@ Line 110 has the Argus description in the plaintext version. Remove or shorten t
 
 ### Verified no interaction with:
 - Plan 0219 (collapsible sections) — title page is outside section collapse
-- Plan 0221 (guardian tooltip disable) — different suppression mechanism, Argus is not suppressed
+- Plan 0221 (custodian tooltip disable) — different suppression mechanism, Argus is not suppressed
 - Plan 0233 (easter eggs) — no title page interaction
 - Existing hover-definitions.yaml entries — new key `argus-title` doesn't collide
 

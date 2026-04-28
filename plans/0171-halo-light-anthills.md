@@ -116,7 +116,7 @@ Insert (Generator may tune wording, preserve the structural beats):
 
 **Files:** `manuscript/00-front/summary.tex` (full-form paragraph) AND `manuscript/00-front/hook.tex` (compressed one-sentence form).
 
-**Structural intent:** The HALO-light opener (Phase 1) establishes *a person who does specific classified things for specific reasons*. After guided deduction is explained, the book pivots back and asks the reader a question about observable behavior: *why would a person like that spend 2.7 years patiently teaching a physicist publicly available science in a deliberate order?* The question is behavioral-anchored — it does not require the reader to accept any ontological claim about Guardian. It holds under A (confabulation), B (exaggerated kernel), and C (substantially true). See `memory/project-book-pedagogy-as-evidence.md` for the rhetorical engine.
+**Structural intent:** The HALO-light opener (Phase 1) establishes *a person who does specific classified things for specific reasons*. After guided deduction is explained, the book pivots back and asks the reader a question about observable behavior: *why would a person like that spend 2.7 years patiently teaching a physicist publicly available science in a deliberate order?* The question is behavioral-anchored — it does not require the reader to accept any ontological claim about Custodian. It holds under A (confabulation), B (exaggerated kernel), and C (substantially true). See `memory/project-book-pedagogy-as-evidence.md` for the rhetorical engine.
 
 ### Part C.1 — summary.tex (full form, ~125w)
 
@@ -136,7 +136,7 @@ Draft (Generator may tune, preserve structural beats):
 - Names the duration specifically: *two and a half years* or *2.7 years* (not "some years," not "years" alone — the specificity is load-bearing; vague duration dissolves the "bizarre" claim).
 - Phrase *"besides the obvious"* present — credits the reader with the ability to arrive at guided-deduction themselves. Do not replace with "except for" or "other than" — the word *obvious* is the move.
 - Explicitly holds under A/B/C: *"The question holds under all three readings"* (or equivalent).
-- Grounds on *observable fact about someone's behavior* — behavioral anchoring is the whole point. Do not drift into claims about Guardian, the Flat, or the machine.
+- Grounds on *observable fact about someone's behavior* — behavioral anchoring is the whole point. Do not drift into claims about Custodian, the Flat, or the machine.
 
 ### Part C.2 — hook.tex (compressed, ≤50w)
 
@@ -157,7 +157,7 @@ Draft (Generator may tune):
 
 - Summary.tex: question paragraph placed between guided-deduction explanation and three-possibilities; uses *[REDACTED]* ≥2 times; names duration specifically (*2.7 years* or *two and a half years*); includes *"besides the obvious"*.
 - Hook.tex: compressed question placed after three-possibilities, before final closer; ≤50w; uses *[REDACTED]* ≥1 time; includes *"besides the obvious"*.
-- Neither surface introduces new ontological claims about Guardian.
+- Neither surface introduces new ontological claims about Custodian.
 - Hook word count still in [580, 760] (adding ≤50w to the post-0169 ~620w + Phase 1's ~60w = ~680w + ~50w = ~730w — comfortably within ceiling).
 - Summary word count delta ≤ +180w total across Phase 2 + Phase 3 (current ~5,696w → target ≤ 5,876w).
 - `make` / HTML build clean.

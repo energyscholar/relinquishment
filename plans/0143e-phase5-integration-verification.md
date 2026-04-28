@@ -130,7 +130,7 @@ Replace placeholder tooltip text in `menu-tooltips.yaml` with substantive summar
 
 **Record popups should be honest about C:** "Personal testimony. The reader decides." No hedging, no sales pitch.
 
-**Guardian interludes:** No popups needed — they don't appear in the TOC (they use `\input` not `\include`).
+**Custodian interludes:** No popups needed — they don't appear in the TOC (they use `\input` not `\include`).
 
 ### New chapters needing popups
 
@@ -186,12 +186,12 @@ After Generator completes Parts A-C, Auditor verifies:
 - [ ] Hover popups work on menu items
 - [ ] Expansion hooks expand/collapse
 - [ ] Back button navigation works
-- [ ] Guardian interludes render correctly (purple left border, italic text)
+- [ ] Custodian interludes render correctly (purple left border, italic text)
 
 ### D4: Spine Standalone Test
 - [ ] Read spine chapters sequentially (Three Possibilities → Weigh the Evidence)
 - [ ] Works as standalone pop-science book? No gaps requiring Record content?
-- [ ] Guardian interludes bridge chapters without breaking A-flow?
+- [ ] Custodian interludes bridge chapters without breaking A-flow?
 - [ ] New chapters (Silence Gap, Capabilities, Why Relinquish) integrate smoothly?
 
 ### D5: Record Standalone Test
@@ -211,7 +211,7 @@ For each takeaway, verify delivery across reading layers:
 
 | Takeaway | p1 (hook) | p2 (summary) | Spine | Popups | Interludes | Expansion |
 |----------|----------|-------------|-------|--------|------------|-----------|
-| T1: Meet Guardian | ? | ? | ✓ (interludes) | ? | ✓ | ? |
+| T1: Meet Custodian | ? | ? | ✓ (interludes) | ? | ✓ | ? |
 | T2: The Flat | ? | ? | ✓ (ch 3-4) | ? | ✓ (I1, I2) | — |
 | T3: Life in Flat | ? | ? | ✓ (ch 8-10) | ? | ✓ (I5) | ✓ |
 | T4: Capabilities | ? | ? | ✓ (ch 11) | ? | — | ✓ |
@@ -265,7 +265,7 @@ Parts A and C can run in parallel. Part B requires reading chapter content, so i
 ## What NOT to Do
 
 - Do NOT modify chapter content (.tex files) — this is verification, not revision
-- Do NOT modify Guardian interludes — Phase 2 is complete and approved
+- Do NOT modify Custodian interludes — Phase 2 is complete and approved
 - Do NOT modify expansion hooks — Phase 4 handles those
 - Do NOT revise p1 (hook.tex) or p2 (summary.tex) — that's Plan 0142, a later pass
 - Do NOT add icons yet — stripes first, icons after Bruce sees it on phone

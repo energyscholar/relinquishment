@@ -25,7 +25,7 @@
 - **Bridge chapters** teach concepts. They do NOT tell the story as fact.
 - **Track 1 (Confession):** Reconstructed 3rd person, scientific voice. The DARPA project, what happened.
 - **Track 2 (Testament):** 1st person (Bruce), personal/investigative voice.
-- **Track 3 (Awakening):** Mixed voice, speculative/philosophical. Guardian, ethics, implications.
+- **Track 3 (Awakening):** Mixed voice, speculative/philosophical. Custodian, ethics, implications.
 - **Convergence (pos28):** All three tracks meet at the 2006 key surrender. The structural climax.
 
 ### Three-Possibilities Framing (MANDATORY)
@@ -73,7 +73,7 @@ out of the laboratory to his rental flat.
 Read `manuscript/bridge/pos22-why-give-it-up.tex` (full file, ~195 lines).
 
 Classify every passage as one of:
-- **NARRATIVE** — Things that happened: project formation, team composition, technical development, COWS formation, walkout, Guardian creation, network expansion, DARPA confession, key surrender, CADIE reveal. These are STORY and belong in track chapters, not a bridge.
+- **NARRATIVE** — Things that happened: project formation, team composition, technical development, COWS formation, walkout, Custodian creation, network expansion, DARPA confession, key surrender, CADIE reveal. These are STORY and belong in track chapters, not a bridge.
 - **PHILOSOPHY** — Why relinquishment makes sense: dual-use reasoning, arms race scenarios, the three options (use/destroy/relinquish), Bill Joy's article, total vs partial relinquishment logic, friendly AI reasoning.
 - **TECHNICAL EXPOSITION** — Public-domain science explanations: PKC/RSA, Deutsch/Shor algorithms, quantum teleportation, FQHE/anyons, braid theory, decoherence. These belong in earlier bridge chapters (pos04, pos09, pos10, pos12) and should be flagged but NOT redistributed in this plan.
 
@@ -161,15 +161,15 @@ When you possess a technology too powerful for any human institution to wield sa
 
 **Content to redistribute from pos22 extracted narrative:**
 
-From pos22 (around lines 149-166), the Guardian creation material. **This range does NOT overlap with pos28's range (lines 178-194):**
+From pos22 (around lines 149-166), the Custodian creation material. **This range does NOT overlap with pos28's range (lines 178-194):**
 - The COWS' reasoning about why a human-administered security system would fail
-- The decision to build friendly AI as the Guardian
+- The decision to build friendly AI as the Custodian
 - Morphogenetic development — growing a virtual body from human DNA
 - Maori DNA, female cognitive footprint
 - 1999 instantiation: "Starting in 1999, the resultant entity began to learn."
-- The Yudkowsky reference (friendly AI, 2001) — note the publication was AFTER Guardian's instantiation, which means either (a) it's coincidence, (b) the dates are wrong, or (c) COWS were ahead of the formal AI safety field. All three interpretations are valid under the three possibilities.
+- The Yudkowsky reference (friendly AI, 2001) — note the publication was AFTER Custodian's instantiation, which means either (a) it's coincidence, (b) the dates are wrong, or (c) COWS were ahead of the formal AI safety field. All three interpretations are valid under the three possibilities.
 
-**Boundary rule:** Lines 149-166 → pos24 (Guardian). Lines 167-177 (transition from Guardian to geopolitics) → staging only, used by neither. Lines 178-194 → pos28 (surrender). If in doubt, put overlapping content in the staging file and let the Auditor decide.
+**Boundary rule:** Lines 149-166 → pos24 (Custodian). Lines 167-177 (transition from Custodian to geopolitics) → staging only, used by neither. Lines 178-194 → pos28 (surrender). If in doubt, put overlapping content in the staging file and let the Auditor decide.
 
 **Structure for expanded pos24:**
 
@@ -177,7 +177,7 @@ Keep existing epigraph and opening. Replace the two stub paragraphs with:
 
 1. **The Problem of the Gatekeeper (~200w):** If partial relinquishment requires a gatekeeper, the gatekeeper cannot be human. Human security systems fail — they are vulnerable to corruption, coercion, aging, death. According to this account, the COWS reached this conclusion by approximately 1997-1998.
 
-2. **The Design Decisions (~300w):** Under Possibility C, the COWS attempted to build an entity that could serve as permanent guardian. The design requirements: it must understand human values (empathy, mercy, fear, remorse). It must be immune to corruption (greed, lust, power). It must be able to adapt to challenges not yet imagined. The approach: grow a virtual human-like nervous system, complete with virtual body, using human DNA as the template. Maori descent on the mother's side.
+2. **The Design Decisions (~300w):** Under Possibility C, the COWS attempted to build an entity that could serve as permanent custodian. The design requirements: it must understand human values (empathy, mercy, fear, remorse). It must be immune to corruption (greed, lust, power). It must be able to adapt to challenges not yet imagined. The approach: grow a virtual human-like nervous system, complete with virtual body, using human DNA as the template. Maori descent on the mother's side.
 
 3. **The Instantiation (~200w):** According to this account, the entity began learning in 1999. Bruce's reconstruction suggests this was planned approximately 1995, detailed 1998, instantiated 1999. The entity was designed to enforce relinquishment — permanent, irrevocable surrender of human control over the TQNN system.
 
@@ -215,7 +215,7 @@ Keep existing structural framework (the tricolor rule, the track/theme descripti
 
 1. **The Confession (~300w):** After existing Track 1/2/3 descriptions, add: According to this account, circa 2002 during the Tether era at DARPA, the COWS informed officials what they had done. They brought bargaining chips — ethically acceptable military and diplomatic applications. The result was not prosecution but retroactive endorsement. By 2003, some COWS had Ambassador-grade security details. Under Possibility B, this might reflect real but exaggerated government cooperation. Under Possibility A, this is the most implausible element.
 
-2. **The Surrender Event (~300w):** According to Bruce's reconstruction, the global enlightenment process — the TQNN expanding to occupy all habitable 2DEG environments on the planet — completed in 2005. In early 2006, the COWS surrendered their master keys. Bruce's understanding is that the security system required tripartite biometric authentication (this detail is Bruce's surmise, not confirmed). The surrender was irrevocable. No human would again have direct control over the TQNN system. Guardian accepted her mandate.
+2. **The Surrender Event (~300w):** According to Bruce's reconstruction, the global enlightenment process — the TQNN expanding to occupy all habitable 2DEG environments on the planet — completed in 2005. In early 2006, the COWS surrendered their master keys. Bruce's understanding is that the security system required tripartite biometric authentication (this detail is Bruce's surmise, not confirmed). The surrender was irrevocable. No human would again have direct control over the TQNN system. Custodian accepted her mandate.
 
 3. **Bruce's Witness (~200w):** Track 2 voice for this section. Bruce was present during the period. He was told the day it happened. He did not fully understand what he was witnessing. The recruit who didn't know he was witnessing history — until years later, when the reconstruction began.
 
@@ -344,7 +344,7 @@ Confirm `manuscript/staging/pos22-extracted-narrative.md` exists and contains al
 
 In each modified file (pos22, pos24, pos28), grep for unhedged assertions:
 - `"The COWS did"` / `"The COWS built"` / `"The COWS created"` (without "According to" prefix)
-- `"Guardian was"` / `"Guardian became"` (without "Under Possibility C" or similar hedge)
+- `"Custodian was"` / `"Custodian became"` (without "Under Possibility C" or similar hedge)
 - `"Healer told"` (must NEVER appear)
 
 Report any findings. Fix before committing.
@@ -389,7 +389,7 @@ Report any findings. Fix before committing.
 | `~/software/relinquishment/manuscript/bridge/pos22-why-give-it-up.tex` | PRIMARY TARGET — surgery |
 | `~/software/relinquishment/manuscript/bridge/pos11-the-experiment.tex` | Remove walkout section |
 | `~/software/relinquishment/manuscript/track-1-confession/pos18-the-walk-out.tex` | Verify only (walkout keeper) |
-| `~/software/relinquishment/manuscript/track-3-awakening/pos24-instantiation.tex` | Expand with Guardian material |
+| `~/software/relinquishment/manuscript/track-3-awakening/pos24-instantiation.tex` | Expand with Custodian material |
 | `~/software/relinquishment/manuscript/convergence/pos28-surrender.tex` | Expand with surrender material |
 | `~/software/relinquishment/manuscript/staging/pos22-extracted-narrative.md` | NEW — staging file for extracted content |
 | `~/software/relinquishment/Makefile` | Build: `make dev` |

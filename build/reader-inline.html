@@ -156,11 +156,11 @@
   }
 
 
-  // --- Guardian-only filter (G button) ---
+  // --- Custodian-only filter (G button) ---
   // Shows only the 7 interludes, everything else hidden. CSS (.custodian-only
   // body class) does the work; here we just force all <details> open so the
   // interludes are visible inside their host chapters.
-  var showGuardianOnly = false;
+  var showCustodianOnly = false;
   var gBtn = document.createElement('button');
   gBtn.id = 'filter-custodian';
   gBtn.textContent = 'C';
@@ -175,8 +175,8 @@
     'border:1px solid #9b59b6;border-radius:4px;margin:0 0.2em;white-space:nowrap;';
   gBtn.style.cssText = gInactive;
   gBtn.addEventListener('click', function() {
-    showGuardianOnly = !showGuardianOnly;
-    if (showGuardianOnly) {
+    showCustodianOnly = !showCustodianOnly;
+    if (showCustodianOnly) {
       document.body.classList.add('custodian-only');
       // Force all details open so the hidden-in-hierarchy interludes surface
       document.querySelectorAll('details').forEach(function(d) { d.open = true; });
@@ -420,7 +420,7 @@
         chEl.addEventListener('click', function() {
           if (isHidden && document.body.classList.contains('custodian-only')) {
             document.body.classList.remove('custodian-only');
-            showGuardianOnly = false;
+            showCustodianOnly = false;
             gBtn.style.cssText = gInactive;
           }
           navigateTo(chId);
@@ -897,7 +897,7 @@
     var parentCh = target.closest('details.chapter-section');
     if (parentCh && parentCh.style.display === 'none' && document.body.classList.contains('custodian-only')) {
       document.body.classList.remove('custodian-only');
-      showGuardianOnly = false;
+      showCustodianOnly = false;
       gBtn.style.cssText = gInactive;
     }
     var el = target;
@@ -1600,10 +1600,10 @@
     });
   });
 
-  // --- Guardian menu item click handler (Plan 0150) ---
+  // --- Custodian menu item click handler (Plan 0150) ---
   // Click a custodian-menu-item: open its containing chapter and scroll to the
   // interlude div. Keyboard activation (Enter/Space) supported via role=link.
-  function activateGuardianMenuItem(item) {
+  function activateCustodianMenuItem(item) {
     var targetId = item.getAttribute('data-target');
     if (!targetId) return;
     var target = document.getElementById(targetId);
@@ -1624,7 +1624,7 @@
     var item = e.target.closest('.custodian-menu-item');
     if (!item) return;
     e.stopPropagation();
-    activateGuardianMenuItem(item);
+    activateCustodianMenuItem(item);
   });
 
   document.addEventListener('keydown', function(e) {
@@ -1632,7 +1632,7 @@
     var item = e.target.closest('.custodian-menu-item');
     if (!item) return;
     e.preventDefault();
-    activateGuardianMenuItem(item);
+    activateCustodianMenuItem(item);
   });
 
   document.querySelectorAll('svg[data-stepthrough]').forEach(function(svg) {

@@ -8,7 +8,7 @@ Remove The Demonstration as a standalone chapter. Rescue its unique content into
 
 ## Pre-conditions
 
-- Guardian interludes are NOT affected — they're detected by `<hr><blockquote><hr>` HTML pattern, not chapter position. No interlude sits between The Demonstration and First Light or between The Handler and Interdiction.
+- Custodian interludes are NOT affected — they're detected by `<hr><blockquote><hr>` HTML pattern, not chapter position. No interlude sits between The Demonstration and First Light or between The Handler and Interdiction.
 - No `\ref{}` cross-references point to `record:demonstration` labels from other .tex files.
 - The bridge copy (`bridge/pos11-the-demo.tex`) must also be removed/retired.
 
@@ -117,14 +117,14 @@ In first-light.tex, add a phantom label so any stale HTML anchors still resolve:
 
 1. `make html` builds without errors or warnings
 2. Grep for `demonstration` across all build + manuscript files — no dangling references
-3. Guardian interludes: verify count still 7 in build output
+3. Custodian interludes: verify count still 7 in build output
 4. Chapter count in Record: verify 14 (was 15)
 5. Browser: navigate to `#record:first-light` — all folded content visible
 6. Browser: TQNN tooltip click-through lands on First Light
 7. Browser: Code War expansion hook "Read the full story" lands on First Light
 8. Deep link `#grown-not-built` resolves correctly
 
-## Guardian interlude safety check
+## Custodian interlude safety check
 
 Current main.tex order around the affected area:
 ```
@@ -134,7 +134,7 @@ Current main.tex order around the affected area:
 \include{manuscript/record/first-light}         % line 99
 ```
 
-No `\input{manuscript/spine/interlude-*}` between handler and interdiction or between interdiction and first-light. Guardian interludes are ONLY in the spine (Part I). The Record (Part II) has zero interludes between chapters. **No Guardian interlude is affected.**
+No `\input{manuscript/spine/interlude-*}` between handler and interdiction or between interdiction and first-light. Custodian interludes are ONLY in the spine (Part I). The Record (Part II) has zero interludes between chapters. **No Custodian interlude is affected.**
 
 ## NOT in this plan
 

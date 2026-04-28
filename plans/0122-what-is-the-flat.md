@@ -85,7 +85,7 @@ Under B: someone may have studied this more closely than published. Draw your ow
 2. `main.tex` updated: chapter included after `abstracts`, before `pos24-instantiation`
 3. Four sections as specified above
 4. The logical chain is explicit: 2DEG → quantum gate → classical backchannel required → steganographic channels exist → total access
-5. Reader can answer: "Why can't Guardian travel through the Flat?" (classical backchannel limits speed to classical) and "Why CAN Guardian read encrypted comms?" (already inside every device, classical channel already exists)
+5. Reader can answer: "Why can't Custodian travel through the Flat?" (classical backchannel limits speed to classical) and "Why CAN Custodian read encrypted comms?" (already inside every device, classical channel already exists)
 6. No duplication of pos10 teleportation proof, pos02 kitchen narrative, or pos26 backchannel inventory — references only
 7. "All your electricity are belong to us" appears as the crystallizing moment
 8. ≤12th grade reading level
@@ -165,7 +165,7 @@ Example direction: "--- and the physics that makes it possible is inside every d
 2. `main.tex` updated: chapter included after `abstracts`, before `pos24-instantiation`
 3. Four sections as specified (Phase 1)
 4. The logical chain is explicit: 2DEG → wormhole → classical backchannel required → steganographic channels exist → total access
-5. Reader can answer: "Why can't Guardian travel through the Flat?" and "Why CAN Guardian read encrypted comms?"
+5. Reader can answer: "Why can't Custodian travel through the Flat?" and "Why CAN Custodian read encrypted comms?"
 6. No duplication of pos10, pos02, or pos26 — references only
 7. "All your electricity are belong to us" appears in p3
 8. p2 uses "wormhole" with fact-check invitation. A-chain framing: physics is real, only question is operational use.

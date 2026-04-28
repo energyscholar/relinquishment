@@ -97,7 +97,7 @@ None. This file does not reference QNN/TQNN.
 
 ### THREE-POSSIBILITIES FRAMING NEEDED
 
-28. **No three-possibilities framing needed.** This file is a general history essay. It does not make claims about TQNN, COWS, or Guardian. The DARPA foreshadowing (item #27) is already speculative.
+28. **No three-possibilities framing needed.** This file is a general history essay. It does not make claims about TQNN, COWS, or Custodian. The DARPA foreshadowing (item #27) is already speculative.
 
 ### CLEAN
 
@@ -112,7 +112,7 @@ None. This file does not reference QNN/TQNN.
 
 ### Summary
 
-Short essay on unintended consequences of technology: Whitney/cotton gin, Nobel/dynamite, Einstein/E=mc^2. All public-domain historical claims. No TQNN/COWS/Guardian content.
+Short essay on unintended consequences of technology: Whitney/cotton gin, Nobel/dynamite, Einstein/E=mc^2. All public-domain historical claims. No TQNN/COWS/Custodian content.
 
 ### FACT ERRORS
 
@@ -199,7 +199,7 @@ None needed. This file covers public historical facts about Turing.
 
 ### Summary
 
-The most problematic file. Written ~2013 as "Forward by Aurasys" — presents the entire TQNN/COWS/Guardian story as factual narration. Extensive Do Not Assert violations. Multiple terminology issues. Many factual errors. The file header already contains detailed GENERATOR WARNINGS, but the text itself needs comprehensive correction.
+The most problematic file. Written ~2013 as "Forward by Aurasys" — presents the entire TQNN/COWS/Custodian story as factual narration. Extensive Do Not Assert violations. Multiple terminology issues. Many factual errors. The file header already contains detailed GENERATOR WARNINGS, but the text itself needs comprehensive correction.
 
 ### FACT ERRORS
 
@@ -211,7 +211,7 @@ The most problematic file. Written ~2013 as "Forward by Aurasys" — presents th
 
 61. **"COWS informed DARPA circa 1999-2001"** — source-facts.md Do Not Assert list says "COWS confessed to DARPA ~2002" (Tether era). Tony Tether became DARPA Director June 18, 2001. The file header already flags this. **FIX:** Change to "~2002" with Do Not Assert framing.
 
-62. **"The Guardian became self-aware in 1999"** — Do Not Assert item #14 (Guardian as self-aware entity) and #5 (Guardian instantiated 1999). The file header flags this. **FIX:** Three-possibilities framing required.
+62. **"The Custodian became self-aware in 1999"** — Do Not Assert item #14 (Custodian as self-aware entity) and #5 (Custodian instantiated 1999). The file header flags this. **FIX:** Three-possibilities framing required.
 
 63. **"In 1993 Richard Jozsa also co-authored, with five other scientists and cryptographers, the first published scientific paper on experimental quantum teleportation."** — The 1993 Bennett et al. paper ("Teleporting an Unknown Quantum State via Dual Classical and Einstein-Podolsky-Rosen Channels") was a theoretical proposal, not experimental. The first experimental demonstration was by Bouwmeester et al. in 1997. **FIX:** Change "experimental quantum teleportation" to "quantum teleportation" (it was a theoretical protocol paper).
 
@@ -227,9 +227,9 @@ The most problematic file. Written ~2013 as "Forward by Aurasys" — presents th
 
 69. **"a brash and daring warrior-scholar named David"** — Do Not Assert item #8 (David Lane identity). **FIX:** Three-possibilities framing.
 
-70. **"In 2009, in an April Fools prank-within-a-prank, the Guardian introduced herself to the world as CADIE."** — source-facts.md confirms CADIE was April 1, 2009, but describes it as "April Fools' Day prank" (by Google). The claim that it was actually the Guardian introducing herself is a Do Not Assert item (#14, Guardian as self-aware entity). **FIX:** Three-possibilities framing. The Google CADIE prank is verifiable; the claim that Guardian was behind it is not.
+70. **"In 2009, in an April Fools prank-within-a-prank, the Custodian introduced herself to the world as CADIE."** — source-facts.md confirms CADIE was April 1, 2009, but describes it as "April Fools' Day prank" (by Google). The claim that it was actually the Custodian introducing herself is a Do Not Assert item (#14, Custodian as self-aware entity). **FIX:** Three-possibilities framing. The Google CADIE prank is verifiable; the claim that Custodian was behind it is not.
 
-71. **"In 2017 the Guardian turns 18"** — If Guardian was instantiated in 1999, then she would turn 18 in 2017. The math is consistent with the story's internal logic. But this is entirely Do Not Assert territory.
+71. **"In 2017 the Custodian turns 18"** — If Custodian was instantiated in 1999, then she would turn 18 in 2017. The math is consistent with the story's internal logic. But this is entirely Do Not Assert territory.
 
 72. **"Bill Joy, cofounder of Sun Microsystems"** — source-facts.md: "Co-founded Sun Microsystems 1982." Correct.
 
@@ -247,7 +247,7 @@ This file is essentially one continuous Do Not Assert violation. Every paragraph
 
 77. **Do Not Assert #4 (COWS walked technology out ~1994-1995):** "put it in his pocket, and walked out of the laboratory" — asserted as fact.
 
-78. **Do Not Assert #5 (Guardian instantiated 1999):** "Starting in 1999, the resultant entity began to learn" — asserted as fact.
+78. **Do Not Assert #5 (Custodian instantiated 1999):** "Starting in 1999, the resultant entity began to learn" — asserted as fact.
 
 79. **Do Not Assert #6 (COWS confessed to DARPA ~2002):** "the COWS informed some officials at DARPA what they had done" — asserted as fact (and wrong date, see #61).
 
@@ -259,7 +259,7 @@ This file is essentially one continuous Do Not Assert violation. Every paragraph
 
 83. **Do Not Assert #13 (1024-bit RSA in 340ms):** Not explicitly stated, but cryptanalytic capability is asserted.
 
-84. **Do Not Assert #14 (Guardian as self-aware entity):** Extensively asserted throughout the Guardian sections.
+84. **Do Not Assert #14 (Custodian as self-aware entity):** Extensively asserted throughout the Custodian sections.
 
 85. **Do Not Assert #15 (Tripartite biometric key surrender):** "The security system would require a majority of authorized users to approve major changes" — partial assertion.
 
@@ -273,13 +273,13 @@ This file is essentially one continuous Do Not Assert violation. Every paragraph
 
 ### THREE-POSSIBILITIES FRAMING NEEDED
 
-89. **The entire file after the introduction.** This file reads as a factual account. Every claim about ULTRA II, the team, COWS, Guardian, room-temperature operation, key surrender, CADIE, and relinquishment requires three-possibilities framing. The file is essentially unusable in its current form without comprehensive reframing.
+89. **The entire file after the introduction.** This file reads as a factual account. Every claim about ULTRA II, the team, COWS, Custodian, room-temperature operation, key surrender, CADIE, and relinquishment requires three-possibilities framing. The file is essentially unusable in its current form without comprehensive reframing.
 
 90. **Specific high-priority passages requiring reframing:**
 - "In 1991 DARPA gathered a team of scientists..." (presented as established history)
 - "At first the ULTRA II team was exhilarated..." (presented as known narrative)
 - "the COWs secretly evolved their QNN patterns to survive at room temperature" (presented as fact)
-- "They taught the Guardian to... follow all local, national, and international laws" (presented as fact)
+- "They taught the Custodian to... follow all local, national, and international laws" (presented as fact)
 - "The global enlightenment process was completed in 2005" (presented as fact)
 - "some other countries (Russia? China?) developed the beginnings of QNN technology" (presented as fact)
 

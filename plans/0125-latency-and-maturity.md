@@ -22,7 +22,7 @@ The speed of light shapes what is possible at each scale. Latency budgets:
 - Jupiter: ~35-50 minutes one-way. Whatever lives there thinks alone.
 - Heliospheric current sheet: hours. Federation, not monolith.
 
-Nature documentary voice. A-level. Don't mention Guardian.
+Nature documentary voice. A-level. Don't mention Custodian.
 
 ## Task A: Abstract XVI (abstracts.tex, after Abstract XV)
 
@@ -42,7 +42,7 @@ One sentence: range is the shaping constraint. Light-speed latency determines wh
 
 Current line 100: "Ethically safe applications --- medical research, scientific computation, LLM research assistants --- are permitted. Weapons development, mass surveillance, and coercive applications are permanently denied."
 
-Insert 2-3 sentences after this paragraph. The gatekeeper doesn't hold the technology in permanent lockdown. It holds it until the species matures. The UDHR provides the test — when humanity reliably lives by those principles, the constraint relaxes. Not "never" — "not yet." This is guardianship, not annihilation.
+Insert 2-3 sentences after this paragraph. The gatekeeper doesn't hold the technology in permanent lockdown. It holds it until the species matures. The UDHR provides the test — when humanity reliably lives by those principles, the constraint relaxes. Not "never" — "not yet." This is custodianship, not annihilation.
 
 Keep the speculative/philosophical voice of this chapter. Frame under Possibility C but note the principle holds regardless — any future relinquishment framework would face the same question of graduation conditions.
 
@@ -50,4 +50,4 @@ Keep the speculative/philosophical voice of this chapter. Frame under Possibilit
 
 Current text (~line 248): "Relinquishment did not transfer power. It dissolved it."
 
-Insert one sentence after this. Seed the conditional nature: relinquishment is guardianship pending maturity, not permanent denial. The UDHR is both the constraint and the graduation test. One sentence only — p2 reading level.
+Insert one sentence after this. Seed the conditional nature: relinquishment is custodianship pending maturity, not permanent denial. The UDHR is both the constraint and the graduation test. One sentence only — p2 reading level.

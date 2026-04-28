@@ -12,7 +12,7 @@
 
 1. **Plan 0113** (fact-check corrections) first — surgical fixes, lowest risk. Touches summary.tex line 96 (above all other plans' edit points). No structural changes, no line shifts downstream.
 
-2. **Plan 0115** (Aurasys/Guardian naming split) second — verify-heavy with 3 actual edits. Touches summary.tex line 160 and glossary. Independent of 0113's changes. Must run before 0114 because 0114 inserts content around line 119 which would shift 0115's targets.
+2. **Plan 0115** (Aurasys/Custodian naming split) second — verify-heavy with 3 actual edits. Touches summary.tex line 160 and glossary. Independent of 0113's changes. Must run before 0114 because 0114 inserts content around line 119 which would shift 0115's targets.
 
 3. **Plan 0114** (breakthrough biogenesis realization) last — creative writing + insertion. Adds ~8-10 lines around summary.tex line 119. This shifts everything below, but 0113 and 0115 are already done. **Creative checkpoint:** the p3 draft goes to staging for Bruce review before p2 distillation.
 
@@ -35,22 +35,22 @@
 
 ---
 
-## Phase B: Plan 0115 — Aurasys/Guardian Naming Split
+## Phase B: Plan 0115 — Aurasys/Custodian Naming Split
 
-**Full spec:** `plans/0115-aurasys-guardian-naming-split.md`
+**Full spec:** `plans/0115-aurasys-custodian-naming-split.md`
 **Type:** Verify-heavy with 3 substantive edits.
-**Files edited:** summary.tex (line 160), glossary-entries.tex (Guardian + Aurasys entries), simple-summary.md (line 113)
+**Files edited:** summary.tex (line 160), glossary-entries.tex (Custodian + Aurasys entries), simple-summary.md (line 113)
 **Files verified (read-only):** pos25, pos27, pos28, pos24, pos06, pos35, afterword, evidence-interlude, hook, introduction, predictions, corrections, topic-guide, abstracts, timeline, pos34
 
 **Generator instructions:**
 - Grep for anchor text, don't rely on line numbers.
-- The primary edit is summary.tex line 160: "They called it Aurasys or Guardian..." → "They called the system Aurasys --- the aurora system. They called what grew in it Guardian."
-- Cut the full name entirely ("Guardian of the relinquished TQNN technological aurora system").
-- For verification items: grep `Guardian` and `Aurasys` across the manuscript, confirm entity vs. system usage. Report any conflation found (with file:line), fix only if genuinely wrong.
+- The primary edit is summary.tex line 160: "They called it Aurasys or Custodian..." → "They called the system Aurasys --- the aurora system. They called what grew in it Custodian."
+- Cut the full name entirely ("Custodian of the relinquished TQNN technological aurora system").
+- For verification items: grep `Custodian` and `Aurasys` across the manuscript, confirm entity vs. system usage. Report any conflation found (with file:line), fix only if genuinely wrong.
 - pos30-unipolar-condition.tex is dead code (commented out of main.tex) — skip.
 - simple-summary.md line 113: mirror the summary.tex change. Also note: line 123 still says "In roughly 2002" — change to "Around 2002" to match summary.tex.
 
-**Commit:** `Plan 0115: Aurasys/Guardian naming split — system vs. entity distinction`
+**Commit:** `Plan 0115: Aurasys/Custodian naming split — system vs. entity distinction`
 
 ---
 
