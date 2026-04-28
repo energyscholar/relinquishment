@@ -482,10 +482,12 @@ Bruce: "Maybe we won't implement."
 | 1D phase transition | 2 | MED — reinforces growing-a-mind | LOW — hover SVG exists | LIKELY |
 | 4A grid-sequence | 3 | MED — payoff visual for the-flat | MED — assembly work | MAYBE |
 | 3A ca-seashell | 3 | MED — original artwork needed | HIGH — new SVG design | MAYBE |
+| 5 filmstrip step-through | 1 | HIGH — 6x scroll → 1x, puzzle link | MED — refactor existing code | YES |
 
-**Recommended execution order:** Phase 1 (all four promotions) →
-Phase 2A (broken-bridges) → Phase 2B (guided-deduction) → Phase 4
-(grid-sequence) → Phase 3 (ca-seashell, if appetite remains).
+**Recommended execution order:** Phase 5 (filmstrip refactor) →
+Phase 1 (four promotions) → Phase 2A (broken-bridges) →
+Phase 2B (guided-deduction) → Phase 4 (grid-sequence) →
+Phase 3 (ca-seashell, if appetite remains).
 
 ---
 
@@ -588,7 +590,172 @@ source→preprocess.py, add chapter/figure_id/marker.
 
 ---
 
+## Phase 5 — Filmstrip Step-Through + Puzzle Link
+
+**Priority: Tier 1 (high impact, medium effort)**
+**Source:** Bruce (S63): "We have 6 Kauffman filmstrip images. We have
+a PUZZLE that does the same thing only better. Improve user experience
+and learning."
+
+### Problem
+
+The Genesis chapter's Kauffman filmstrip is 6 stacked SVGs
+(preprocess.py lines 2464-2673, SVG-008 through SVG-013). Each shows
+one stage of the buttons-and-threads process: scatter → tie → clusters
+→ net → almost → snap. Six panels × ~2KB = ~12KB, massive vertical
+scroll on phone, and the reader passively observes.
+
+Meanwhile, puzzle `pz-sim-t3-001` (build-puzzles.py, `sim_type:
+threads`) is an interactive version of the SAME process. The reader
+clicks "Pick Two" repeatedly, doesn't know when the phase transition
+will hit, and gets the teaching moment: "You didn't design this
+network. The structure organized itself." The puzzle teaches; the
+filmstrip only illustrates.
+
+### What Changes
+
+**5A: Step-through replaces stack.** Replace 6 stacked SVGs with ONE
+SVG containing 6 `<g>` layers (one per stage). Only one layer visible
+at a time. Prev/next controls advance through stages. Caption and
+counter ("0/30" → "24/30") change per step.
+
+All 6 stages already share the same 30 button x-positions (`bx[]`
+array, line 2469). Each stage differs only in: which threads exist,
+and which buttons are lifted (y-position). The Python code already
+computes these per stage — emit as layers, not separate SVGs.
+
+**Implementation:**
+
+```python
+def _stage_group(stage_id, threads, lifted, label, counter, caption):
+    """One <g> layer: threads + buttons at stage-specific positions."""
+    parts = []
+    for a, b in threads:
+        ya = lifted.get(a, floor_y[a])
+        yb = lifted.get(b, floor_y[b])
+        parts.append(_thread(bx[a], ya, bx[b], yb))
+    for i in range(30):
+        y = lifted.get(i, floor_y[i])
+        parts.append(_button(bx[i], y))
+    parts.append(_label(label))
+    parts.append(_counter(counter))
+    parts.append(_caption(caption))
+    vis = ' style="display:none"' if stage_id > 0 else ''
+    return f'<g class="step-stage" data-stage="{stage_id}"{vis}>\n' + '\n'.join(parts) + '\n</g>'
+```
+
+Single SVG wraps all 6 groups + shared defs + floor + controls.
+Uses `data-stepthrough` attribute so multiple instances coexist
+on the single-page book:
+
+```html
+<svg viewBox="0 0 500 310" data-stepthrough="kauffman">
+  <defs>...</defs>
+  <line ... /> <!-- floor (always visible) -->
+  <g class="step-stage" data-stage="0">...</g>  <!-- scatter -->
+  <g class="step-stage" data-stage="1" style="display:none">...</g>
+  ...
+  <g class="step-stage" data-stage="5" style="display:none">...</g>
+  <!-- step controls -->
+  <text class="step-prev" x="20" y="295" ...>◀</text>
+  <text class="step-next" x="480" y="295" ...>▶</text>
+</svg>
+```
+
+**JS handler (reader.js, ~20 lines) — discovers all instances:**
+
+```javascript
+document.querySelectorAll('svg[data-stepthrough]').forEach(function(svg) {
+  var stages = svg.querySelectorAll('.step-stage');
+  var cur = 0;
+  function show(n) {
+    stages.forEach(function(g, i) { g.style.display = i === n ? '' : 'none'; });
+    cur = n;
+  }
+  var prev = svg.querySelector('.step-prev');
+  var next = svg.querySelector('.step-next');
+  if (prev) prev.addEventListener('click', function() { if (cur > 0) show(cur - 1); });
+  if (next) next.addEventListener('click', function() { if (cur < stages.length - 1) show(cur + 1); });
+  if (prev) prev.style.cursor = 'pointer';
+  if (next) next.style.cursor = 'pointer';
+});
+```
+
+No global IDs. Any SVG with `data-stepthrough` gets step controls
+automatically. Works for filmstrip, grid-sequence, or any future
+step-through we add.
+
+**5B: Deep link to puzzle.** Below the step-through, add a link:
+
+```html
+<p style="font-size:0.9em;text-align:center;margin-top:0.5em;">
+  <a href="#pz-sim-t3-001" class="puzzle-link">Try it yourself →</a>
+</p>
+```
+
+If the puzzle is on puzzles.html (not inline), use the full URL with
+deep link. If the puzzle is embedded in the chapter (future Phase 5C),
+use an in-page anchor.
+
+### What Does NOT Change
+
+- The puzzle itself — untouched
+- The domain buttons diagram (SVG after filmstrip) — untouched
+- The 30 button positions (`bx[]`) — reused exactly
+- The stage data (thread lists, lifted positions) — reused exactly
+- The marker and insertion point — same `connected web.</p>`
+
+### Sizing
+
+| Metric | Before (6 stacked) | After (step-through) |
+|--------|--------------------|--------------------|
+| Vertical space | ~6× panel height | 1× panel height |
+| Bytes (est.) | ~12KB | ~5KB |
+| Phone scrolling | Massive | Minimal |
+| Reader engagement | Passive observation | Controlled stepping + puzzle link |
+
+### Acceptance Criteria
+
+- [ ] Single SVG with 6 `<g>` layers replaces 6 stacked SVGs
+- [ ] Prev/next controls work (click and touch)
+- [ ] Caption, label, and counter change per stage
+- [ ] Stage 0 visible by default; stage 5 shows red snap thread
+- [ ] "Try it yourself →" links to puzzle `pz-sim-t3-001`
+- [ ] `prefers-reduced-motion`: no animation (step-through is
+      click-driven, so already compliant)
+- [ ] Dark mode: controls visible
+- [ ] `make dev` clean
+- [ ] Phone test: fits in viewport, controls tappable
+- [ ] Gallery manifest: update SVG-008 through SVG-013 notes
+
+### Future: Phase 5C (not in scope)
+
+Embed the threads puzzle inline in the Genesis chapter, replacing the
+step-through entirely. Requires extracting `initThreads()` and its
+dependencies from build-puzzles.py into reader.js or a shared module.
+Highest engagement, highest plumbing effort. Gate: puzzle engagement
+data shows readers who reach the puzzle have meaningfully better
+retention of T3 (life in the Flat).
+
+### Generator Handoff — Phase 5
+
+```
+You are the Generator.
+
+Read Plan 0273 at ~/software/relinquishment/plans/0273-image-deployment-across-chapters.md
+— section "Phase 5 — Filmstrip Step-Through + Puzzle Link".
+
+Execute Phase 5A+5B. Refactor inject_button_sequence() in preprocess.py:
+emit 6 <g> layers in one SVG instead of 6 separate SVGs. Reuse existing
+bx[], thread lists, and lifted positions — same data, different structure.
+Add ~15-line step handler in reader.js. Add puzzle deep link below.
+Run make dev. Commit, push. Report: byte delta, panel count confirmed.
+```
+
+---
+
 *Plan 0273 written by Argus (Auditor), S63. Annealed MED LOW LOW LOW.
-Four phases: hover promotions (Phase 1), approved builds (Phase 2),
-new SVG (Phase 3), grid assembly (Phase 4). Each independently
-deployable. Priority-tiered for selective execution.*
+Five phases: hover promotions (Phase 1), approved builds (Phase 2),
+new SVG (Phase 3), grid assembly (Phase 4), filmstrip step-through
+(Phase 5). Each independently deployable. Priority-tiered for
+selective execution.*
