@@ -312,15 +312,20 @@ def build_json(puzzle):
     return d
 
 
-# --- Load tracker for approved status ---
+# --- Load tracker for approved/installed status ---
 TRACKER_PATH = os.path.join(os.path.dirname(__file__), 'puzzle-tracker.yaml')
 approved_ids = set()
+installed_ids = set()
+installed_chapters = {}
 if os.path.exists(TRACKER_PATH):
     with open(TRACKER_PATH) as tf:
         tracker = yaml.safe_load(tf)
     for p in tracker.get('chapter_puzzles', []):
         if p.get('approved'):
             approved_ids.add(p['id'])
+        if p.get('installed'):
+            installed_ids.add(p['id'])
+            installed_chapters[p['id']] = p.get('location', {}).get('chapter', '')
 
 # --- Process data ---
 chapter_puzzles = data['chapter_puzzles']
@@ -580,7 +585,13 @@ def wrap_collapsible(puzzle):
     title = esc(puzzle.get('title', ''))
     ptype = puzzle.get('type', puzzle.get('sub_type', ''))
     appr = puzzle['id'] in approved_ids if 'id' in puzzle else False
-    badge = ' <span class="collapse-badge approved-tag">APPROVED</span>' if appr else ''
+    inst = puzzle['id'] in installed_ids if 'id' in puzzle else False
+    badge = ''
+    if appr:
+        badge += ' <span class="collapse-badge approved-tag">APPROVED</span>'
+    if inst:
+        book_url = f'Relinquishment.html#{pid}'
+        badge += f' <a href="{book_url}" class="collapse-badge installed-tag" title="View in book">INSTALLED</a>'
     level = puzzle.get('level', '')
     level_tag = f' <span class="collapse-badge level-tag">{esc(level)}</span>' if level else ''
     type_tag = f' <span class="collapse-badge type-tag">{esc(ptype)}</span>'
@@ -802,6 +813,8 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .puzzle-collapse > .puzzle-container { border: none; margin: 0; border-radius: 0; }
 .collapse-badge { font-size: 0.65em; font-weight: normal; padding: 0.15em 0.5em; border-radius: 3px; vertical-align: middle; }
 .approved-tag { background: #e8f8f5; color: #1a8a6a; }
+.installed-tag { background: #e8f0fe; color: #1a5276; text-decoration: none; cursor: pointer; }
+.installed-tag:hover { background: #d0e2fc; }
 .level-tag { background: #eef3f8; color: #1a5276; }
 .type-tag { background: #f5f0fa; color: #7d5ba8; }
 .review-controls { display: flex; gap: 0.8em; justify-content: center; margin: 0.5em 0 1.5em; flex-wrap: wrap; }
@@ -889,6 +902,8 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
   .puzzle-collapse-summary::before { border-left-color: #6ba3f7; }
   .puzzle-collapse[open] > .puzzle-collapse-summary { background: #1e2a3a; border-bottom-color: #444; }
   .approved-tag { background: #1a2e2d; color: #2a9b9a; }
+  .installed-tag { background: #1a2a3d; color: #6ba3f7; }
+  .installed-tag:hover { background: #243a52; }
   .level-tag { background: #1e2a3a; color: #6ba3f7; }
   .type-tag { background: #2a1a3a; color: #b09ad0; }
   .review-controls button { background: #2a2a2a; border-color: #555; color: #ccc; }
@@ -2065,17 +2080,23 @@ def build_toc():
         topic = p.get('topic', 'br')
         level = p.get('level', '--')
         is_approved = pid in approved_ids
+        is_installed = pid in installed_ids
         a_mark = '&#10003;' if is_approved else '&middot;'
+        if is_installed:
+            book_link = f'Relinquishment.html#{esc(pid)}'
+            i_mark = f'<a href="{book_link}" title="View in book">&#128279;</a>'
+        else:
+            i_mark = '&middot;'
         a_cls = ' class="toc-approved"' if is_approved else ''
         rows.append(f'<tr{a_cls}><td><a href="#{esc(pid)}">{esc(title)}</a></td>'
                      f'<td>{esc(ptype)}</td><td>{esc(topic)}</td><td>{esc(level)}</td>'
-                     f'<td>{a_mark}</td></tr>')
+                     f'<td>{a_mark}</td><td>{i_mark}</td></tr>')
     return '\n'.join(rows)
 
 toc_html = f'''<details id="puzzle-toc" style="margin:1em 0 2em;">
 <summary style="cursor:pointer;font-weight:bold;color:#1a5276;font-size:1.05em;">Puzzle Index ({len(chapter_puzzles)} chapter + {len(bridge_puzzles)} bridge)</summary>
 <table class="toc-table">
-<tr><th>Title</th><th>Type</th><th>Topic</th><th>Lvl</th><th>OK</th></tr>
+<tr><th>Title</th><th>Type</th><th>Topic</th><th>Lvl</th><th>OK</th><th>Book</th></tr>
 {build_toc()}
 </table>
 <p style="text-align:center;margin:0.5em 0;"><a href="#" style="font-size:0.85em;color:#888;">&uarr; Back to top</a></p>
