@@ -164,7 +164,7 @@ chapter_puzzles:
     topic: t5
     level: p2
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: the-silence-gap
       rationale: "Direct chapter match — the surprise of finding nothing"
@@ -439,7 +439,7 @@ chapter_puzzles:
     topic: t5
     level: p1
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: the-silence-gap
       rationale: "Silence = no one asked, not 'asked and answered' — guided discovery"
