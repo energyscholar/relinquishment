@@ -2,9 +2,9 @@
 
 **Auditor:** Argus (S63)
 **Date:** 2026-04-26
-**Status:** READY FOR GENERATOR (phased)
+**Status:** PHASE 5 DONE — Phases 1-4 ready for Generator
 **Source:** Bruce request (S63): "plan additional images to fill the biggest gaps. Only do images where it really helps. Look for places we can eliminate words in place of an image."
-**Annealing:** MED LOW LOW LOW
+**Annealing:** MED LOW LOW LOW + LOW + MED (S63 marker audit + chapter-scoped fix)
 
 ---
 
@@ -40,18 +40,39 @@ exists. Prioritized into tiers so Bruce can cherry-pick.
 
 ### Injection Pattern
 
-All new illustrations use the **genesis pattern**: centered figure,
-inserted **after** the `</p>` containing the marker text.
+**Chapter-scoped search** (not global `text.find`). The book is a
+single-page HTML — markers that look unique in a .tex file may
+appear 16 times in the full HTML. Every injection targets a
+specific chapter-section by its `<h2 id="...">`.
 
 ```python
-# Find marker → find </p> → insert after
+def _find_in_chapter(text, chapter_id, marker):
+    """Find marker within a specific chapter-section. Returns index or -1."""
+    ch_starts = [m.start() for m in re.finditer(
+        r'<details class="chapter-section', text)]
+    id_idx = text.find(f'id="{chapter_id}"')
+    if id_idx == -1:
+        print(f"  WARNING: chapter {chapter_id} not found")
+        return -1
+    import bisect
+    ci = bisect.bisect_right(ch_starts, id_idx) - 1
+    ch_start = ch_starts[ci]
+    ch_end = ch_starts[ci + 1] if ci + 1 < len(ch_starts) else len(text)
+    idx = text.find(marker, ch_start, ch_end)
+    if idx == -1:
+        print(f"  WARNING: marker '{marker[:50]}' not found in {chapter_id}")
+        return -1
+    return idx
+
+# Then: find </p> after marker → insert figure after
+idx = _find_in_chapter(text, chapter_id, marker)
 close_p = text.find('</p>', idx)
 insert_point = close_p + len('</p>')
 text = text[:insert_point] + '\n' + figure_html + '\n' + text[insert_point:]
 ```
 
-Exception: grid-sequence assembly (Phase 4) uses centered block,
-not float, because it's a 2×2 composite.
+This is the same pattern used by hover dedup (Plan 0213), concept
+symbols (Plan 0276), and puzzle injection (Plan 0274).
 
 ### Variable Naming
 
@@ -91,8 +112,9 @@ an ALL_CAPS variable in preprocess.py.
 |-------|-------|
 | Source SVG | hover-definitions.yaml key: `braiding` |
 | Variable | `BRAIDING_CHAPTER` |
-| Chapter | the-braid |
-| Marker | `Take three strands. Cross the left over` |
+| Chapter ID | `spine:the-braid` |
+| Marker | `Take three strands` |
+| Verified | 1 match in chapter, 1 global |
 | Insert | After `</p>` containing marker |
 | Figure ID | `fig-braiding-inline` |
 | Manifest | New entry SVG-042 |
@@ -113,8 +135,9 @@ quantum gates. Scale hover's 380×200 to 420×220 viewBox.
 |-------|-------|
 | Source SVG | hover-definitions.yaml key: `anyon` |
 | Variable | `ANYON_CHAPTER` |
-| Chapter | the-braid |
-| Marker | `Non-abelian anyons` |
+| Chapter ID | `spine:the-braid` |
+| Marker | `The particles in question are non-abelian` |
+| Verified | 1 match in chapter, 1 global |
 | Insert | After `</p>` containing marker |
 | Figure ID | `fig-anyon-inline` |
 | Manifest | New entry SVG-043 |
@@ -123,6 +146,9 @@ quantum gates. Scale hover's 380×200 to 420×220 viewBox.
 braiding computational. The hover SVG shows worldlines braiding
 in 2+1D spacetime — exactly what the text describes but can't
 convey in words alone.
+
+**Old marker `Non-abelian anyons`:** 0 matches in the-braid body
+(only in appendix predictions). Fixed to the introductory sentence.
 
 **SVG spec:** Two anyons with worldlines braiding in 2+1D.
 Scale hover's viewBox to 420×230. Centered.
@@ -133,8 +159,9 @@ Scale hover's viewBox to 420×230. Centered.
 |-------|-------|
 | Source SVG | hover-definitions.yaml key: `cellular automata` |
 | Variable | `CELLULAR_AUTOMATA_CHAPTER` |
-| Chapter | growing-a-mind |
-| Marker | `Patterns on seashells run the same algorithms` |
+| Chapter ID | `spine:growing-a-mind` |
+| Marker | `Patterns on seashells run the` |
+| Verified | 1 match in chapter, 1 global |
 | Insert | After `</p>` containing marker |
 | Figure ID | `fig-rule110-inline` |
 | Manifest | New entry SVG-044 |
@@ -143,6 +170,9 @@ Scale hover's viewBox to 420×230. Centered.
 CANDIDATE` at line 25. The text discusses how natural patterns
 match computational ones. Rule 110 triangular pattern is the
 canonical visual. Addresses the existing TODO.
+
+**Old marker `Patterns on seashells run the same algorithms`:**
+0 matches — HTML line break after "the". Truncated to pre-break.
 
 **SVG spec:** Rule 110 automaton — Turing-complete triangular
 pattern. Scale to 420×240 viewBox. Centered.
@@ -153,8 +183,9 @@ pattern. Scale to 420×240 viewBox. Centered.
 |-------|-------|
 | Source SVG | hover-definitions.yaml key: `phase transition` |
 | Variable | `PHASE_TRANSITION_CHAPTER` |
-| Chapter | growing-a-mind |
-| Marker | `buttons and threads model` |
+| Chapter ID | `spine:growing-a-mind` |
+| Marker | `described in the previous chapter` |
+| Verified | 1 match in chapter, 1 global |
 | Insert | After `</p>` containing marker |
 | Figure ID | `fig-phase-transition-inline` |
 | Manifest | New entry SVG-045 |
@@ -163,6 +194,10 @@ pattern. Scale to 420×240 viewBox. Centered.
 in the previous chapter" — Kauffman's threshold. The S-curve
 diagram makes the concept immediate. Reinforces the genesis
 chapter's filmstrip with a different visual language.
+
+**Old marker `buttons and threads model`:** 0 matches — "buttons"
+is wrapped in `<span class="hover-term">`, breaking plain-text
+search. New marker targets the same sentence, after the span.
 
 **SVG spec:** S-curve with control parameter vs order parameter,
 red critical point marked. Scale to 400×220. Centered.
@@ -183,8 +218,9 @@ Generator must build the SVG from the manifest description.
 |-------|-------|
 | Manifest entry | SVG-029 (status: approved) |
 | Variable | `BROKEN_BRIDGES_SVG` |
-| Chapter | the-silence-gap |
+| Chapter ID | `spine:silence-gap` |
 | Marker | `There is no journal called` |
+| Verified | 1 match in chapter, 1 global |
 | Insert | After `</p>` containing marker |
 | Figure ID | `fig-broken-bridges` |
 | Manifest update | Change status approved → live, source gallery → preprocess.py |
@@ -207,8 +243,9 @@ dashed #999 with red × at midpoint.
 |-------|-------|
 | Manifest entry | SVG-030 (status: approved) |
 | Variable | `GUIDED_DEDUCTION_SVG` |
-| Chapter | why-relinquish |
-| Marker | `guided deduction` |
+| Chapter ID | `spine:why-relinquish` |
+| Marker | `The solution was` |
+| Verified | 1 match in chapter, 3 global (safe when scoped) |
 | Insert | After `</p>` containing marker |
 | Figure ID | `fig-guided-deduction` |
 | Manifest update | Change status approved → live, source gallery → preprocess.py |
@@ -236,11 +273,20 @@ left to right.
 | Field | Value |
 |-------|-------|
 | Variable | `CA_SEASHELL_COMPARISON` |
-| Chapter | growing-a-mind |
-| Marker | `spontaneous computation` |
+| Chapter ID | `spine:growing-a-mind` |
+| Marker | `Three results, one conclusion` |
+| Verified | 1 match in chapter, 1 global |
 | Insert | After `</p>` containing marker |
 | Figure ID | `fig-ca-seashell` |
 | Manifest | New entry SVG-046 |
+
+**Adjacency note:** 1C (Rule 110) and 3A (CA-vs-seashell) both
+target growing-a-mind near the seashell paragraph. 1C goes
+BEFORE the seashell sentence (after `Patterns on seashells run
+the`). 3A goes AFTER `Three results, one conclusion` — roughly
+15 lines later. Placement order matters: inject 3A first (later
+in file), then 1C, so 3A's marker isn't shifted by 1C's
+insertion. Or, use `_find_in_chapter()` offsets and adjust.
 
 **Why here:** The %TODO at line 25 specifically requests this:
 "an image showing a cellular automaton pattern alongside an
@@ -268,8 +314,9 @@ NKS images. This SVG must be original artwork, not a copy.
 |-------|-------|
 | Source files | `build/images/grid-sequence-{1,2,3,4}-the-flat.svg` |
 | Variable | `GRID_SEQUENCE_ASSEMBLY` |
-| Chapter | the-flat |
+| Chapter ID | `spine:the-flat` |
 | Marker | `All your electricity are belong to us` |
+| Verified | 1 match in chapter, 2 global (safe when scoped) |
 | Insert | After `</p>` containing marker |
 | Figure ID | `fig-grid-sequence` |
 | Manifest | Update SVG-035 through SVG-038: status deferred → live |
@@ -323,10 +370,13 @@ that. `width="100%"`, max-width 820px, centered.
    - `<figcaption>` with brief label
    - Scaled viewBox (see SVG spec per entry)
 
-3. **Add `inject_promoted_illustrations(html)`.** New function
-   in preprocess.py. For each entry: find marker → find `</p>` →
-   insert figure after. Wire into pipeline after
-   `inject_ms_diagrams`.
+3. **Add `_find_in_chapter()` helper and
+   `inject_promoted_illustrations(html)`.** New functions in
+   preprocess.py. For each entry: `_find_in_chapter(text,
+   chapter_id, marker)` → find `</p>` after → insert figure
+   after. Wire into pipeline after `inject_ms_diagrams`.
+   Two growing-a-mind injections: insert in reverse file order
+   (1D before 1C) to avoid offset shift.
 
 4. **Add manifest entries.** SVG-042 through SVG-045 in
    `gallery-manifest.yaml`.
@@ -343,8 +393,8 @@ that. `width="100%"`, max-width 820px, centered.
 2. **Build SVG-030.** Create `GUIDED_DEDUCTION_SVG` variable.
    Two-path decision tree. Static illustration.
 
-3. **Add both to `inject_promoted_illustrations`.** Same
-   marker-find-insert pattern.
+3. **Add both to `inject_promoted_illustrations`.** Use
+   `_find_in_chapter()` with chapter-scoped markers from tables.
 
 4. **Update manifest.** SVG-029 and SVG-030: status → live,
    source → preprocess.py, add chapter/figure_id/marker fields.
@@ -358,7 +408,9 @@ that. `width="100%"`, max-width 820px, centered.
 
 2. **Create `CA_SEASHELL_COMPARISON` variable.**
 
-3. **Add to injection function.** Same pattern.
+3. **Add to injection function.** Use `_find_in_chapter(text,
+   "spine:growing-a-mind", "Three results, one conclusion")`.
+   Adjacency warning: 1C already injected nearby — check offset.
 
 4. **Add SVG-046 to manifest.**
 
@@ -372,9 +424,9 @@ that. `width="100%"`, max-width 820px, centered.
 2. **Create `GRID_SEQUENCE_ASSEMBLY` variable.** Composite SVG
    embedding all four panels in 2×2 layout with gaps and arrows.
 
-3. **Add injection.** New function or extend
-   `inject_promoted_illustrations`. Find "All your electricity"
-   marker in the-flat chapter.
+3. **Add injection.** Extend `inject_promoted_illustrations`.
+   Use `_find_in_chapter(text, "spine:the-flat",
+   "All your electricity are belong to us")`.
 
 4. **Update manifest entries** SVG-035 through SVG-038.
 
@@ -404,7 +456,7 @@ that. `width="100%"`, max-width 820px, centered.
   category: Physics Concepts
   chapter: the-braid
   figure_id: fig-anyon-inline
-  marker: "Non-abelian anyons"
+  marker: "The particles in question are non-abelian"
   description: "Two anyons with worldlines braiding in 2+1D — chapter inline version."
 
 - id: SVG-044
@@ -414,7 +466,7 @@ that. `width="100%"`, max-width 820px, centered.
   category: Physics Concepts
   chapter: growing-a-mind
   figure_id: fig-rule110-inline
-  marker: "Patterns on seashells run the same algorithms"
+  marker: "Patterns on seashells run the"
   description: "Rule 110 cellular automaton — chapter inline version."
 
 - id: SVG-045
@@ -424,7 +476,7 @@ that. `width="100%"`, max-width 820px, centered.
   category: Physics Concepts
   chapter: growing-a-mind
   figure_id: fig-phase-transition-inline
-  marker: "buttons and threads model"
+  marker: "described in the previous chapter"
   description: "S-curve phase transition diagram — chapter inline version."
 
 - id: SVG-046
@@ -434,7 +486,7 @@ that. `width="100%"`, max-width 820px, centered.
   category: Genesis Illustrations
   chapter: growing-a-mind
   figure_id: fig-ca-seashell
-  marker: "spontaneous computation"
+  marker: "Three results, one conclusion"
   description: "Split panel: Rule 30 pattern alongside stylized cone shell with matching pigment pattern."
 ```
 
@@ -446,7 +498,7 @@ marker: "There is no journal called"
 
 SVG-030: status approved → live, source gallery → preprocess.py,
 add chapter: why-relinquish, figure_id: fig-guided-deduction,
-marker: "guided deduction"
+marker: "The solution was"
 
 SVG-035 through SVG-038: status deferred → live,
 source → preprocess.py, chapter: the-flat,
@@ -458,9 +510,11 @@ figure_id: fig-grid-sequence, add sequence_group: grid-zoom
 
 - hover-definitions.yaml — hover SVGs stay as-is (chapter versions
   are copies, not moves)
-- reader.js — no changes
+- reader.js — Phase 5 added step-through handler; no further changes
+  needed for Phases 1-4
 - Existing inject_* functions — unchanged
-- Genesis illustrations — unchanged
+- Genesis illustrations — unchanged (Phase 5 refactored filmstrip
+  from 6 stacked SVGs to 1 step-through SVG)
 - MS teaching diagrams — unchanged
 - Chapter prose — no text changes (images supplement, not replace)
 - Exception: remove %TODO comment from growing-a-mind.tex once
@@ -482,26 +536,27 @@ Bruce: "Maybe we won't implement."
 | 1D phase transition | 2 | MED — reinforces growing-a-mind | LOW — hover SVG exists | LIKELY |
 | 4A grid-sequence | 3 | MED — payoff visual for the-flat | MED — assembly work | MAYBE |
 | 3A ca-seashell | 3 | MED — original artwork needed | HIGH — new SVG design | MAYBE |
-| 5 filmstrip step-through | 1 | HIGH — 6x scroll → 1x, puzzle link | MED — refactor existing code | YES |
+| 5 filmstrip step-through | 1 | HIGH — 6x scroll → 1x, puzzle link | MED — refactor existing code | **DONE** (S63, f091b41) |
 
-**Recommended execution order:** Phase 5 (filmstrip refactor) →
-Phase 1 (four promotions) → Phase 2A (broken-bridges) →
-Phase 2B (guided-deduction) → Phase 4 (grid-sequence) →
-Phase 3 (ca-seashell, if appetite remains).
+**Recommended execution order:** Phase 1 (four promotions) →
+Phase 2A (broken-bridges) → Phase 2B (guided-deduction) →
+Phase 4 (grid-sequence) → Phase 3 (ca-seashell, if appetite
+remains). Phase 5 complete.
 
 ---
 
 ## Acceptance Criteria
 
 ### Phase 1
+- [ ] `_find_in_chapter()` helper in preprocess.py
 - [ ] 4 new chapter-scale SVG variables in preprocess.py
-- [ ] `inject_promoted_illustrations()` function in pipeline
+- [ ] `inject_promoted_illustrations()` function using chapter-scoped lookups
 - [ ] braiding visible in the-braid after "Take three strands"
-- [ ] anyon visible in the-braid after "Non-abelian anyons"
-- [ ] Rule 110 visible in growing-a-mind after "seashells"
-- [ ] Phase transition visible in growing-a-mind after "buttons and threads"
+- [ ] anyon visible in the-braid after "The particles in question are non-abelian"
+- [ ] Rule 110 visible in growing-a-mind after "Patterns on seashells run the"
+- [ ] Phase transition visible in growing-a-mind after "described in the previous chapter"
 - [ ] All 4 centered, responsive, `<figcaption>` present
-- [ ] SVG-042 through SVG-045 in manifest
+- [ ] SVG-042 through SVG-045 in manifest (with corrected markers)
 - [ ] Gallery regenerated with new entries
 - [ ] `make dev` clean
 
@@ -533,6 +588,7 @@ Phase 3 (ca-seashell, if appetite remains).
 You are the Generator.
 
 Read Plan 0273 at ~/software/relinquishment/plans/0273-image-deployment-across-chapters.md
+Read the Architecture section for _find_in_chapter() pattern.
 
 Execute Phase 1 (Promote 4 hover SVGs to chapter inline):
 
@@ -545,13 +601,17 @@ Each wraps its SVG in <figure class="inline-svg"
 style="text-align:center;margin:1.5em auto;"> with a <figcaption>.
 Scale viewBox width to ≥400px. Add width="100%".
 
-(3) Add inject_promoted_illustrations(html) function. Four marker
-lookups — plan has exact marker text for each. Insert AFTER </p>
-containing marker (genesis pattern). Wire into pipeline after
+(3) Add _find_in_chapter(text, chapter_id, marker) helper (see
+Architecture section). Add inject_promoted_illustrations(html)
+using chapter-scoped lookups — NOT global text.find(). Each entry
+has a Chapter ID and verified Marker in its table. The two
+growing-a-mind injections (1C, 1D) must be inserted in
+reverse-file-order (1D first, then 1C) to avoid offset shift, OR
+recalculate offsets after each insertion. Wire into pipeline after
 inject_ms_diagrams.
 
 (4) Add SVG-042 through SVG-045 to gallery-manifest.yaml (entries
-in plan's Manifest Changes section).
+in plan's Manifest Changes section — note markers are updated).
 
 (5) Run make dev. Run python3 build/generate-gallery.py.
 
@@ -565,6 +625,7 @@ byte delta, any markers not found.
 You are the Generator.
 
 Read Plan 0273 at ~/software/relinquishment/plans/0273-image-deployment-across-chapters.md
+Read the Architecture section for _find_in_chapter() pattern.
 
 Execute Phase 2 (Build 2 approved SVGs):
 
@@ -578,12 +639,17 @@ Classified → Direct disclosure → CRIME → prosecution. Bottom
 (blue): Classified → Guided deduction → 5 domains → Student
 deduces → clean record. viewBox 520×240.
 
-(3) Add both to inject_promoted_illustrations. Markers: "There is
-no journal called" (the-silence-gap), "guided deduction"
-(why-relinquish). After </p> pattern.
+(3) Add both to inject_promoted_illustrations using
+_find_in_chapter() — NOT global text.find(). Chapter-scoped
+markers from the plan tables:
+  2A: chapter_id="spine:silence-gap", marker="There is no journal called"
+  2B: chapter_id="spine:why-relinquish", marker="The solution was"
+After </p> pattern. If Phase 1 already created the function,
+add entries to it.
 
 (4) Update SVG-029 and SVG-030 in manifest: status→live,
-source→preprocess.py, add chapter/figure_id/marker.
+source→preprocess.py, add chapter/figure_id/marker (use updated
+markers from plan).
 
 (5) make dev + generate gallery. Commit and push.
 ```
@@ -714,18 +780,18 @@ use an in-page anchor.
 | Phone scrolling | Massive | Minimal |
 | Reader engagement | Passive observation | Controlled stepping + puzzle link |
 
-### Acceptance Criteria
+### Acceptance Criteria — DONE (S63, f091b41)
 
-- [ ] Single SVG with 6 `<g>` layers replaces 6 stacked SVGs
-- [ ] Prev/next controls work (click and touch)
-- [ ] Caption, label, and counter change per stage
-- [ ] Stage 0 visible by default; stage 5 shows red snap thread
-- [ ] "Try it yourself →" links to puzzle `pz-sim-t3-001`
-- [ ] `prefers-reduced-motion`: no animation (step-through is
+- [x] Single SVG with 6 `<g>` layers replaces 6 stacked SVGs
+- [x] Prev/next controls work (click and touch)
+- [x] Caption, label, and counter change per stage
+- [x] Stage 0 visible by default; stage 5 shows red snap thread
+- [x] "Try it yourself →" links to puzzle `pz-sim-t3-001`
+- [x] `prefers-reduced-motion`: no animation (step-through is
       click-driven, so already compliant)
-- [ ] Dark mode: controls visible
-- [ ] `make dev` clean
-- [ ] Phone test: fits in viewport, controls tappable
+- [x] Dark mode: controls visible
+- [x] `make dev` clean
+- [x] Phone test: fits in viewport, controls tappable
 - [ ] Gallery manifest: update SVG-008 through SVG-013 notes
 
 ### Future: Phase 5C (not in scope)
@@ -754,8 +820,7 @@ Run make dev. Commit, push. Report: byte delta, panel count confirmed.
 
 ---
 
-*Plan 0273 written by Argus (Auditor), S63. Annealed MED LOW LOW LOW.
-Five phases: hover promotions (Phase 1), approved builds (Phase 2),
-new SVG (Phase 3), grid assembly (Phase 4), filmstrip step-through
-(Phase 5). Each independently deployable. Priority-tiered for
-selective execution.*
+*Plan 0273 written by Argus (Auditor), S63. Annealed MED LOW LOW LOW
++ LOW + MED (marker audit + chapter-scoped fix). Phase 5 DONE
+(f091b41). Phases 1-4 ready for Generator. All 8 markers verified
+against built HTML with chapter-scoped injection pattern.*
