@@ -2461,23 +2461,17 @@ def inject_flat_diagram(html_path):
 
 
 def inject_button_sequence(html_path):
-    """Insert 6-panel Kauffman button filmstrip after the buttons-and-threads analogy."""
+    """Insert step-through Kauffman filmstrip after the buttons-and-threads analogy."""
     html_path = Path(html_path)
     text = html_path.read_text()
 
-    # 30 button positions: jittered scatter across the floor
     bx = [
         38, 63, 85, 112, 135, 161, 180, 208, 225, 252,
         275, 292, 318, 338, 365, 388, 405, 435, 452, 478,
         48, 78, 122, 168, 218, 258, 308, 348, 398, 442,
     ]
     floor_y = [240] * 20 + [227] * 10
-
-    def _btn_defs():
-        return '<defs><filter id="kbtn-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-opacity="0.15"/></filter></defs>'
-
-    def _floor():
-        return '<line x1="20" y1="250" x2="480" y2="250" stroke="#ccc" stroke-width="1" stroke-dasharray="4,4"/>'
+    PICKUP_Y = 40
 
     def _button(x, y):
         return f'<circle cx="{x}" cy="{y}" r="9" fill="#c4a97d" stroke="#a88b5e" stroke-width="1" filter="url(#kbtn-sh)"/>'
@@ -2488,135 +2482,103 @@ def inject_button_sequence(html_path):
     def _label(txt):
         return f'<text x="15" y="18" font-family="Georgia, serif" font-size="9" fill="#aaa">{txt}</text>'
 
-    def _counter(txt):
-        return f'<text x="485" y="275" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#999">{txt}</text>'
+    def _counter(txt, color="#999", bold=False):
+        weight = ' font-weight="bold"' if bold else ''
+        return f'<text x="485" y="275" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="{color}"{weight}>{txt}</text>'
 
     def _caption(txt):
         return f'<text x="250" y="275" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#555" font-style="italic">{txt}</text>'
 
-    def _svg_wrap(content):
-        return f'<svg xmlns="http://www.w3.org/2000/svg" width="380" height="220" viewBox="0 0 500 290" style="display:block;margin:0.3em auto;">{content}</svg>'
+    def _stage_group(stage_id, parts, label, counter_txt, caption_txt,
+                     counter_color="#999", counter_bold=False):
+        parts.append(_label(label))
+        parts.append(_counter(counter_txt, counter_color, counter_bold))
+        parts.append(_caption(caption_txt))
+        vis = ' style="display:none"' if stage_id > 0 else ''
+        return f'<g class="step-stage" data-stage="{stage_id}"{vis}>\n' + '\n'.join(parts) + '\n</g>'
 
-    # Fixed pickup point — reader's eye anchors here across all panels
-    PICKUP_Y = 40
+    def _make_stage_parts(threads, lifted, extra_lines=None):
+        parts = []
+        for a, b in threads:
+            ya = lifted.get(a, floor_y[a])
+            yb = lifted.get(b, floor_y[b])
+            parts.append(_thread(bx[a], ya, bx[b], yb))
+        if extra_lines:
+            parts.extend(extra_lines)
+        for i in range(30):
+            y = lifted.get(i, floor_y[i])
+            parts.append(_button(bx[i], y))
+        return parts
 
-    # --- Panel 1: Scatter (0 threads) ---
-    p1_parts = [_btn_defs(), _floor()]
-    for i in range(30):
-        p1_parts.append(_button(bx[i], floor_y[i]))
-    p1_parts.append(_label('scatter'))
-    p1_parts.append(_counter('0 / 30'))
-    p1_parts.append(_caption('Ten thousand buttons on a floor.'))
-    PANEL_1 = _svg_wrap('\n'.join(p1_parts))
+    # --- Stage 0: Scatter ---
+    s0 = _stage_group(0, _make_stage_parts([], {}),
+                      'scatter', '0 / 30',
+                      'Ten thousand buttons on a floor.')
 
-    # --- Panel 2: Tie and toss (6 threads) ---
+    # --- Stage 1: Tie and toss ---
     p2_floor_threads = [(3, 22), (22, 5), (0, 20), (6, 7), (19, 29)]
     p2_lifted = {9: PICKUP_Y, 8: PICKUP_Y + 12}
-    p2_parts = [_btn_defs(), _floor()]
-    for a, b in p2_floor_threads:
-        p2_parts.append(_thread(bx[a], floor_y[a], bx[b], floor_y[b]))
     tx = bx[9] + 0.55 * (bx[8] - bx[9])
     ty = p2_lifted[9] + 0.55 * (p2_lifted[8] - p2_lifted[9])
-    p2_parts.append(f'<line x1="{bx[9]}" y1="{p2_lifted[9]}" x2="{tx:.0f}" y2="{ty:.0f}" stroke="#666" stroke-width="1.2" opacity="0.6" stroke-dasharray="4,2"/>')
-    p2_parts.append(f'<circle cx="{tx:.0f}" cy="{ty:.0f}" r="2" fill="#999" opacity="0.5"/>')
-    for i in range(30):
-        y = p2_lifted.get(i, floor_y[i])
-        p2_parts.append(_button(bx[i], y))
-    p2_parts.append(_label('tie and toss'))
-    p2_parts.append(_counter('6 / 30'))
-    p2_parts.append(_caption('Pick up two at random. Tie them together. Toss them back.'))
-    PANEL_2 = _svg_wrap('\n'.join(p2_parts))
+    p2_extra = [
+        f'<line x1="{bx[9]}" y1="{p2_lifted[9]}" x2="{tx:.0f}" y2="{ty:.0f}" stroke="#666" stroke-width="1.2" opacity="0.6" stroke-dasharray="4,2"/>',
+        f'<circle cx="{tx:.0f}" cy="{ty:.0f}" r="2" fill="#999" opacity="0.5"/>',
+    ]
+    s1 = _stage_group(1, _make_stage_parts(p2_floor_threads, p2_lifted, p2_extra),
+                      'tie and toss', '6 / 30',
+                      'Pick up two at random. Tie them together. Toss them back.')
 
-    # --- Panel 3: Early clusters (10 threads) ---
+    # --- Stage 2: Early clusters ---
     p3_threads = [
-        (9, 8),
-        (3, 22), (22, 5), (0, 20), (6, 7), (19, 29),
+        (9, 8), (3, 22), (22, 5), (0, 20), (6, 7), (19, 29),
         (20, 1), (7, 24), (10, 25), (11, 26),
     ]
     p3_lifted = {9: PICKUP_Y, 8: PICKUP_Y + 35}
-    p3_parts = [_btn_defs(), _floor()]
-    for a, b in p3_threads:
-        ya = p3_lifted.get(a, floor_y[a])
-        yb = p3_lifted.get(b, floor_y[b])
-        p3_parts.append(_thread(bx[a], ya, bx[b], yb))
-    for i in range(30):
-        y = p3_lifted.get(i, floor_y[i])
-        p3_parts.append(_button(bx[i], y))
-    p3_parts.append(_label('early clusters'))
-    p3_parts.append(_counter('10 / 30'))
-    p3_parts.append(_caption('A few hundred ties in. Small clumps \u2014 two, three buttons.'))
-    PANEL_3 = _svg_wrap('\n'.join(p3_parts))
+    s2 = _stage_group(2, _make_stage_parts(p3_threads, p3_lifted),
+                      'early clusters', '10 / 30',
+                      'A few hundred ties in. Small clumps — two, three buttons.')
 
-    # --- Panel 4: Growing net (15 threads) ---
-    # Diamond cluster {6,7,8,9,10,24,25} with cross-links 10-7, 8-25.
-    # 3 hubs: 7 (6,24,10), 8 (9,24,25), 24 (7,8,25).
+    # --- Stage 3: Growing net ---
     p4_threads = [
-        (9, 8),
-        (3, 22), (22, 5), (0, 20), (6, 7), (19, 29),
+        (9, 8), (3, 22), (22, 5), (0, 20), (6, 7), (19, 29),
         (20, 1), (7, 24), (10, 25), (11, 26),
         (8, 24), (24, 25), (10, 7), (8, 25), (5, 23),
     ]
     p4_lifted = {9: PICKUP_Y, 8: PICKUP_Y + 25, 24: PICKUP_Y + 55,
                  25: PICKUP_Y + 55, 7: PICKUP_Y + 85, 10: PICKUP_Y + 85,
                  6: PICKUP_Y + 115}
-    p4_parts = [_btn_defs(), _floor()]
-    for a, b in p4_threads:
-        ya = p4_lifted.get(a, floor_y[a])
-        yb = p4_lifted.get(b, floor_y[b])
-        p4_parts.append(_thread(bx[a], ya, bx[b], yb))
-    for i in range(30):
-        y = p4_lifted.get(i, floor_y[i])
-        p4_parts.append(_button(bx[i], y))
-    p4_parts.append(_label('growing net'))
-    p4_parts.append(_counter('15 / 30'))
-    p4_parts.append(_caption('Almost halfway. The clusters are getting bigger.'))
-    PANEL_4 = _svg_wrap('\n'.join(p4_parts))
+    s3 = _stage_group(3, _make_stage_parts(p4_threads, p4_lifted),
+                      'growing net', '15 / 30',
+                      'Almost halfway. The clusters are getting bigger.')
 
-    # --- Panel 5: Almost (21 threads, 3 dashed bridges) ---
-    # Sub-Right extends via 10-11-26-12-14-28 (dangler).
-    # Sub-Left {2,3,5,22,23} on floor. 3 dashed bridges hint at snap.
+    # --- Stage 4: Almost ---
     p5_threads = [
-        (9, 8),
-        (3, 22), (22, 5), (0, 20), (6, 7), (19, 29),
+        (9, 8), (3, 22), (22, 5), (0, 20), (6, 7), (19, 29),
         (20, 1), (7, 24), (10, 25), (11, 26),
         (8, 24), (24, 25), (10, 7), (8, 25), (5, 23),
         (10, 11), (26, 12), (12, 14), (14, 28), (2, 3), (1, 21),
     ]
     p5_dashed = [(6, 23), (12, 13), (28, 29)]
     p5_lifted = {
-        9: PICKUP_Y,
-        8: PICKUP_Y + 20,
+        9: PICKUP_Y, 8: PICKUP_Y + 20,
         24: PICKUP_Y + 45, 25: PICKUP_Y + 45,
         7: PICKUP_Y + 70, 10: PICKUP_Y + 70,
         6: PICKUP_Y + 95, 11: PICKUP_Y + 95,
-        26: PICKUP_Y + 115,
-        12: PICKUP_Y + 135,
-        14: PICKUP_Y + 155,
-        28: PICKUP_Y + 185,
+        26: PICKUP_Y + 115, 12: PICKUP_Y + 135,
+        14: PICKUP_Y + 155, 28: PICKUP_Y + 185,
     }
-    p5_parts = [_btn_defs(), _floor()]
-    for a, b in p5_threads:
-        ya = p5_lifted.get(a, floor_y[a])
-        yb = p5_lifted.get(b, floor_y[b])
-        p5_parts.append(_thread(bx[a], ya, bx[b], yb))
+    p5_extra = []
     for a, b in p5_dashed:
         ya = p5_lifted.get(a, floor_y[a])
         yb = p5_lifted.get(b, floor_y[b])
-        p5_parts.append(f'<line x1="{bx[a]}" y1="{ya}" x2="{bx[b]}" y2="{yb}" stroke="#999" stroke-width="1" opacity="0.4" stroke-dasharray="4,3"/>')
-    for i in range(30):
-        y = p5_lifted.get(i, floor_y[i])
-        p5_parts.append(_button(bx[i], y))
-    p5_parts.append(_label('almost'))
-    p5_parts.append(_counter('21 / 30'))
-    p5_parts.append(_caption('Three bridges away. Almost connected.'))
-    PANEL_5 = _svg_wrap('\n'.join(p5_parts))
+        p5_extra.append(f'<line x1="{bx[a]}" y1="{ya}" x2="{bx[b]}" y2="{yb}" stroke="#999" stroke-width="1" opacity="0.4" stroke-dasharray="4,3"/>')
+    s4 = _stage_group(4, _make_stage_parts(p5_threads, p5_lifted, p5_extra),
+                      'almost', '21 / 30',
+                      'Three bridges away. Almost connected.')
 
-    # --- Panel 6: Phase transition (24 threads, 1 red) ---
-    # Red bridge 6-23 snaps the giant component together.
-    # Grey 26-27, 28-29 complete the net. 19 lifted, 11 on floor.
+    # --- Stage 5: Phase transition ---
     p6_threads = [
-        (9, 8),
-        (3, 22), (22, 5), (0, 20), (6, 7), (19, 29),
+        (9, 8), (3, 22), (22, 5), (0, 20), (6, 7), (19, 29),
         (20, 1), (7, 24), (10, 25), (11, 26),
         (8, 24), (24, 25), (10, 7), (8, 25), (5, 23),
         (10, 11), (26, 12), (12, 14), (14, 28), (2, 3), (1, 21),
@@ -2624,44 +2586,33 @@ def inject_button_sequence(html_path):
     ]
     p6_red = (6, 23)
     p6_dist = {
-        9: 0,
-        8: 1,
-        24: 2, 25: 2,
-        7: 3, 10: 3,
-        6: 4, 11: 4,
-        23: 5, 26: 5,
-        5: 6, 12: 6, 27: 6,
-        22: 7, 14: 7,
-        3: 8, 28: 8,
-        2: 9, 29: 9,
-        19: 10,
+        9: 0, 8: 1, 24: 2, 25: 2, 7: 3, 10: 3,
+        6: 4, 11: 4, 23: 5, 26: 5,
+        5: 6, 12: 6, 27: 6, 22: 7, 14: 7,
+        3: 8, 28: 8, 2: 9, 29: 9, 19: 10,
     }
     p6_lifted = {btn: PICKUP_Y + d * 15 for btn, d in p6_dist.items()}
-
-    p6_parts = [_btn_defs(), _floor()]
-    for a, b in p6_threads:
-        ya = p6_lifted.get(a, floor_y[a])
-        yb = p6_lifted.get(b, floor_y[b])
-        p6_parts.append(_thread(bx[a], ya, bx[b], yb))
     ra, rb = p6_red
-    p6_parts.append(_thread(bx[ra], p6_lifted[ra], bx[rb], p6_lifted[rb], color="#c0392b", width="2"))
-    for i in range(30):
-        y = p6_lifted.get(i, floor_y[i])
-        p6_parts.append(_button(bx[i], y))
-    p6_parts.append(_label('phase transition'))
-    p6_parts.append(f'<text x="485" y="275" text-anchor="end" font-family="Georgia, serif" font-size="10" fill="#c0392b" font-weight="bold">24 / 30</text>')
-    p6_parts.append(_caption('One more thread. Pick up one button \u2014 the whole room lifts.'))
-    PANEL_6 = _svg_wrap('\n'.join(p6_parts))
+    p6_extra = [_thread(bx[ra], p6_lifted[ra], bx[rb], p6_lifted[rb], color="#c0392b", width="2")]
+    s5 = _stage_group(5, _make_stage_parts(p6_threads, p6_lifted, p6_extra),
+                      'phase transition', '24 / 30',
+                      'One more thread. Pick up one button — the whole room lifts.',
+                      counter_color="#c0392b", counter_bold=True)
+
+    defs = '<defs><filter id="kbtn-sh" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="1" dy="1" stdDeviation="1.5" flood-opacity="0.15"/></filter></defs>'
+    floor_line = '<line x1="20" y1="250" x2="480" y2="250" stroke="#ccc" stroke-width="1" stroke-dasharray="4,4"/>'
+    prev_btn = '<text class="step-prev" x="20" y="295" font-family="Georgia, serif" font-size="16" fill="#888" style="cursor:pointer" aria-label="Previous stage">◀</text>'
+    next_btn = '<text class="step-next" x="480" y="295" text-anchor="end" font-family="Georgia, serif" font-size="16" fill="#888" style="cursor:pointer" aria-label="Next stage">▶</text>'
+    step_counter = '<text class="step-indicator" x="250" y="295" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#aaa">1 / 6</text>'
+
+    svg_content = '\n'.join([defs, floor_line, s0, s1, s2, s3, s4, s5, prev_btn, next_btn, step_counter])
+    svg = f'<svg xmlns="http://www.w3.org/2000/svg" width="100%" viewBox="0 0 500 310" data-stepthrough="kauffman" style="display:block;margin:0 auto;max-width:500px;">{svg_content}</svg>'
 
     FILMSTRIP = f'''<figure id="fig-buttons-filmstrip" class="inline-svg button-sequence" style="text-align:center;margin:1.5em auto;">
-{PANEL_1}
-{PANEL_2}
-{PANEL_3}
-{PANEL_4}
-{PANEL_5}
-{PANEL_6}
-<figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">Kauffman\u2019s buttons and threads \u2014 scatter, tie, net, snap.</figcaption>
-</figure>'''
+{svg}
+<figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">Kauffman’s buttons and threads — scatter, tie, net, snap.</figcaption>
+</figure>
+<p style="font-size:0.9em;text-align:center;margin-top:0.5em;"><a href="#pz-sim-t3-001" class="puzzle-link">Try it yourself →</a></p>'''
 
     marker = 'connected web.</p>'
     idx = text.find(marker)
@@ -2670,7 +2621,8 @@ def inject_button_sequence(html_path):
     insert_point = idx + len(marker)
     text = text[:insert_point] + '\n' + FILMSTRIP + '\n' + text[insert_point:]
     html_path.write_text(text)
-    print("  Button sequence: 6-panel filmstrip injected")
+    print("  Button sequence: 6-stage step-through injected")
+
 
 
 def inject_domain_buttons(html_path):
