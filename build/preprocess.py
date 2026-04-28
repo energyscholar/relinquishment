@@ -1009,7 +1009,7 @@ body.visual-plain [data-concept]::before { content: none; }
 
 /* Concept symbols — Plan 0276 Phase 2D */
 [data-concept="flat"]::before {
-  content: '\2B21 '; font-size: 0.85em; color: #b8860b;
+  content: '\\2B21 '; font-size: 0.85em; color: #b8860b;
 }
 [data-concept-phase="intro"]::before { opacity: 0.4; }
 [data-concept-phase="reinforce"]::before { opacity: 0.65; }
