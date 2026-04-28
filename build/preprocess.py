@@ -3280,6 +3280,144 @@ def inject_ms_diagrams(html_path):
             print(f"  MS teaching: {name} diagram injected")
 
 
+BRAIDING_CHAPTER = '''<figure id="fig-braiding-inline" class="inline-svg"
+  style="text-align:center;margin:1.5em auto;max-width:420px;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220" width="100%">
+  <title>Two anyons with worldlines braiding in spacetime. Each crossing is a quantum logic gate — the path is the computation.</title>
+  <rect width="420" height="220" fill="#fafafa" rx="4"/>
+  <g transform="translate(20, 10)">
+    <defs><marker id="bT-ch" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#999"/></marker></defs>
+    <line x1="24" y1="188" x2="24" y2="12" stroke="#999" stroke-width="1" marker-end="url(#bT-ch)"/>
+    <text x="28" y="18" font-size="10" fill="#888" font-family="sans-serif">Time</text>
+    <path d="M140,185 C140,135 240,125 240,100 C240,75 140,65 140,15" fill="none" stroke="#2471a3" stroke-width="2.5"/>
+    <path d="M240,185 C240,135 140,125 140,100 C140,75 240,65 240,15" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="6,3"/>
+    <circle cx="140" cy="185" r="5" fill="#2471a3"/>
+    <circle cx="240" cy="185" r="5" fill="#c0392b"/>
+    <circle cx="140" cy="15" r="5" fill="#2471a3"/>
+    <circle cx="240" cy="15" r="5" fill="#c0392b"/>
+    <text x="140" y="198" font-size="9" fill="#2471a3" font-family="sans-serif" text-anchor="middle">anyon A</text>
+    <text x="240" y="198" font-size="9" fill="#c0392b" font-family="sans-serif" text-anchor="middle">anyon B</text>
+    <text x="310" y="95" font-size="10" fill="#555" font-family="sans-serif">worldlines</text>
+    <text x="310" y="109" font-size="10" fill="#555" font-family="sans-serif">braid around</text>
+    <text x="310" y="123" font-size="10" fill="#555" font-family="sans-serif">each other</text>
+  </g>
+</svg>
+<figcaption style="font-size:0.75em;color:#888;margin-top:0.3em;font-style:italic;">Braiding — the path is the computation</figcaption>
+</figure>'''
+
+ANYON_CHAPTER = '''<figure id="fig-anyon-inline" class="inline-svg"
+  style="text-align:center;margin:1.5em auto;max-width:420px;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 230" width="100%">
+  <title>Two anyons with their worldlines braiding around each other as time flows upward. The winding is computation — topologically protected.</title>
+  <rect width="420" height="230" fill="#fafafa" rx="4"/>
+  <g transform="translate(20, 15)">
+    <defs><marker id="aT-ch" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto"><path d="M0,0 L8,3 L0,6" fill="#999"/></marker></defs>
+    <line x1="24" y1="188" x2="24" y2="12" stroke="#999" stroke-width="1" marker-end="url(#aT-ch)"/>
+    <text x="28" y="18" font-size="10" fill="#888" font-family="sans-serif">Time</text>
+    <path d="M140,185 C140,135 240,125 240,100 C240,75 140,65 140,15" fill="none" stroke="#2471a3" stroke-width="2.5"/>
+    <path d="M240,185 C240,135 140,125 140,100 C140,75 240,65 240,15" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="6,3"/>
+    <circle cx="140" cy="185" r="5" fill="#2471a3"/>
+    <circle cx="240" cy="185" r="5" fill="#c0392b"/>
+    <circle cx="140" cy="15" r="5" fill="#2471a3"/>
+    <circle cx="240" cy="15" r="5" fill="#c0392b"/>
+    <text x="140" y="198" font-size="9" fill="#2471a3" font-family="sans-serif" text-anchor="middle">anyon A</text>
+    <text x="240" y="198" font-size="9" fill="#c0392b" font-family="sans-serif" text-anchor="middle">anyon B</text>
+    <text x="310" y="95" font-size="10" fill="#555" font-family="sans-serif">worldlines</text>
+    <text x="310" y="109" font-size="10" fill="#555" font-family="sans-serif">braid around</text>
+    <text x="310" y="123" font-size="10" fill="#555" font-family="sans-serif">each other</text>
+  </g>
+</svg>
+<figcaption style="font-size:0.75em;color:#888;margin-top:0.3em;font-style:italic;">Anyons braiding in 2+1D spacetime</figcaption>
+</figure>'''
+
+CELLULAR_AUTOMATA_CHAPTER = '''<figure id="fig-rule110-inline" class="inline-svg"
+  style="text-align:center;margin:1.5em auto;max-width:420px;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 290" width="100%">
+  <title>Rule 110 cellular automaton — a triangular pattern growing from a single cell. Despite the trivial rule, the pattern is complex and never repeats. Proven Turing-complete.</title>
+  <rect width="420" height="290" fill="#f5f5f5" rx="4"/>
+  <g transform="translate(5, 10) scale(2.5)">
+    <path d="M80,0h4v4h-4zM76,4h8v4h-8zM72,8h12v4h-12zM68,12h8v4h-8zM80,12h4v4h-4zM64,16h20v4h-20zM60,20h8v4h-8zM80,20h4v4h-4zM56,24h12v4h-12zM76,24h8v4h-8zM52,28h8v4h-8zM64,28h4v4h-4zM72,28h12v4h-12zM48,32h28v4h-28zM80,32h4v4h-4zM44,36h8v4h-8zM72,36h12v4h-12zM40,40h12v4h-12zM68,40h8v4h-8zM80,40h4v4h-4zM36,44h8v4h-8zM48,44h4v4h-4zM64,44h20v4h-20zM32,48h20v4h-20zM60,48h8v4h-8zM80,48h4v4h-4zM28,52h8v4h-8zM48,52h4v4h-4zM56,52h12v4h-12zM76,52h8v4h-8zM24,56h12v4h-12zM44,56h16v4h-16zM64,56h4v4h-4zM72,56h12v4h-12zM20,60h8v4h-8zM32,60h4v4h-4zM40,60h8v4h-8zM56,60h20v4h-20zM80,60h4v4h-4zM16,64h32v4h-32zM52,64h8v4h-8zM72,64h12v4h-12zM12,68h8v4h-8zM44,68h16v4h-16zM68,68h8v4h-8zM80,68h4v4h-4zM8,72h12v4h-12zM40,72h8v4h-8zM56,72h4v4h-4zM64,72h20v4h-20zM4,76h8v4h-8zM16,76h4v4h-4zM36,76h12v4h-12zM52,76h16v4h-16zM80,76h4v4h-4zM0,80h20v4h-20zM32,80h8v4h-8zM44,80h12v4h-12zM64,80h4v4h-4zM76,80h8v4h-8zM0,84h4v4h-4zM16,84h4v4h-4zM28,84h20v4h-20zM52,84h4v4h-4zM60,84h8v4h-8zM72,84h12v4h-12zM160,84h4v4h-4zM0,88h4v4h-4zM12,88h8v4h-8zM24,88h8v4h-8zM44,88h32v4h-32zM80,88h4v4h-4zM156,88h8v4h-8zM0,92h4v4h-4zM8,92h24v4h-24zM40,92h8v4h-8zM72,92h12v4h-12zM152,92h8v4h-8zM0,96h12v4h-12zM28,96h4v4h-4zM36,96h12v4h-12zM68,96h8v4h-8zM80,96h4v4h-4zM148,96h16v4h-16z" fill="#2471a3"/>
+  </g>
+  <text x="210" y="278" text-anchor="middle" font-size="11" fill="#888" font-family="sans-serif" font-style="italic">Rule 110 — Turing-complete</text>
+</svg>
+<figcaption style="font-size:0.75em;color:#888;margin-top:0.3em;font-style:italic;">Cellular automaton — Rule 110</figcaption>
+</figure>'''
+
+PHASE_TRANSITION_CHAPTER = '''<figure id="fig-phase-transition-inline" class="inline-svg"
+  style="text-align:center;margin:1.5em auto;max-width:400px;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 220" width="100%">
+  <title>Phase transition diagram — control parameter vs order. A flat line rises gently, then jumps sharply through a red critical point, then continues flat at a higher level.</title>
+  <rect width="400" height="220" fill="#fafafa" rx="4"/>
+  <g transform="translate(10, 10)">
+    <line x1="40" y1="170" x2="360" y2="170" stroke="#555" stroke-width="1.5"/>
+    <line x1="40" y1="170" x2="40" y2="20" stroke="#555" stroke-width="1.5"/>
+    <text x="200" y="195" font-size="11" fill="#555" font-family="sans-serif" text-anchor="middle">Control parameter</text>
+    <text x="16" y="95" font-size="11" fill="#555" font-family="sans-serif" text-anchor="middle" transform="rotate(-90,16,95)">Order</text>
+    <path d="M50,155 L160,150 L170,148" fill="none" stroke="#2471a3" stroke-width="2.5"/>
+    <line x1="170" y1="148" x2="210" y2="50" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="4,3"/>
+    <path d="M210,50 L220,47 L340,40" fill="none" stroke="#2471a3" stroke-width="2.5"/>
+    <circle cx="190" cy="99" r="4" fill="#c0392b"/>
+    <text x="190" y="87" font-size="10" fill="#c0392b" font-family="sans-serif" text-anchor="middle" font-weight="bold">Phase transition</text>
+    <text x="100" y="140" font-size="10" fill="#888" font-family="sans-serif" text-anchor="middle" font-style="italic">Disordered</text>
+    <text x="290" y="35" font-size="10" fill="#888" font-family="sans-serif" text-anchor="middle" font-style="italic">Ordered</text>
+  </g>
+</svg>
+<figcaption style="font-size:0.75em;color:#888;margin-top:0.3em;font-style:italic;">Phase transition — gradual buildup, sudden shift</figcaption>
+</figure>'''
+
+
+def _find_in_chapter(text, chapter_id, marker):
+    """Find marker within a specific chapter-section. Returns index or -1."""
+    ch_starts = [m.start() for m in re.finditer(
+        r'<details class="chapter-section', text)]
+    id_idx = text.find(f'id="{chapter_id}"')
+    if id_idx == -1:
+        print(f"  WARNING: chapter {chapter_id} not found")
+        return -1
+    ci = bisect.bisect_right(ch_starts, id_idx) - 1
+    ch_start = ch_starts[ci]
+    ch_end = ch_starts[ci + 1] if ci + 1 < len(ch_starts) else len(text)
+    idx = text.find(marker, ch_start, ch_end)
+    if idx == -1:
+        print(f"  WARNING: marker '{marker[:50]}' not found in {chapter_id}")
+        return -1
+    return idx
+
+
+def inject_promoted_illustrations(html_path):
+    """Insert chapter-promoted SVG illustrations (Plan 0273 Phase 1)."""
+    html_path = Path(html_path)
+    text = html_path.read_text()
+
+    illustrations = [
+        ('spine:growing-a-mind', 'Patterns on seashells run the',
+         CELLULAR_AUTOMATA_CHAPTER, 'Rule 110'),
+        ('spine:growing-a-mind', 'described in the previous chapter',
+         PHASE_TRANSITION_CHAPTER, 'Phase transition'),
+        ('spine:the-braid', 'The particles in question are non-abelian',
+         ANYON_CHAPTER, 'Anyon'),
+        ('spine:the-braid', 'Take three strands',
+         BRAIDING_CHAPTER, 'Braiding'),
+    ]
+
+    injected = []
+    for chapter_id, marker, figure_html, name in illustrations:
+        idx = _find_in_chapter(text, chapter_id, marker)
+        if idx == -1:
+            continue
+        close_p = text.find('</p>', idx)
+        if close_p == -1:
+            print(f"  WARNING: no </p> after marker for {name}")
+            continue
+        insert_point = close_p + len('</p>')
+        text = text[:insert_point] + '\n' + figure_html + '\n' + text[insert_point:]
+        injected.append(name)
+
+    if injected:
+        html_path.write_text(text)
+        for name in injected:
+            print(f"  Promoted illustration: {name} injected")
+
 
 # Plan 0274a: chapter → target-id mapping for puzzle injection.
 # ORDER MATTERS: entries are in document order. Reverse iteration preserves positions.
@@ -4393,6 +4531,7 @@ if __name__ == "__main__":
         inject_domain_buttons(sys.argv[2])
         inject_genesis_illustrations(sys.argv[2])
         inject_ms_diagrams(sys.argv[2])
+        inject_promoted_illustrations(sys.argv[2])
         inject_chapter_puzzles(sys.argv[2])
         verify_puzzle_injection(sys.argv[2])
         inject_easter_eggs(sys.argv[2])

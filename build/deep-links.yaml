@@ -301,6 +301,22 @@
   question: "Saturn's magnetosphere — seven structural regions with hover tooltips"
   category: svg
 
+- id: fig-braiding-inline
+  question: "Braiding — worldlines crossing as quantum gates"
+  category: svg
+
+- id: fig-anyon-inline
+  question: "Anyons braiding in 2+1D spacetime"
+  category: svg
+
+- id: fig-rule110-inline
+  question: "Rule 110 cellular automaton — Turing-complete"
+  category: svg
+
+- id: fig-phase-transition-inline
+  question: "Phase transition — gradual buildup, sudden shift"
+  category: svg
+
 # --- Puzzles: chapter (22) — not yet in main HTML, anchors created on insertion ---
 # Category: puzzle — verify-deep-links.py skips this category.
 
