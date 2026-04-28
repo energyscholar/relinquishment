@@ -591,7 +591,9 @@ def wrap_collapsible(puzzle):
         badge += ' <span class="collapse-badge approved-tag">APPROVED</span>'
     if inst:
         book_url = f'Relinquishment.html#{pid}'
+        full_url = f'relinquishment.ai/downloads/Relinquishment.html#{pid}'
         badge += f' <a href="{book_url}" class="collapse-badge installed-tag" title="View in book">INSTALLED</a>'
+        badge += f' <span class="deep-link-url"><a href="{book_url}">{full_url}</a></span>'
     level = puzzle.get('level', '')
     level_tag = f' <span class="collapse-badge level-tag">{esc(level)}</span>' if level else ''
     type_tag = f' <span class="collapse-badge type-tag">{esc(ptype)}</span>'
@@ -815,6 +817,9 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .approved-tag { background: #e8f8f5; color: #1a8a6a; }
 .installed-tag { background: #e8f0fe; color: #1a5276; text-decoration: none; cursor: pointer; }
 .installed-tag:hover { background: #d0e2fc; }
+.deep-link-url { display: inline-block; margin-left: 0.5em; font-size: 0.75em; font-family: monospace; color: #888; word-break: break-all; }
+.deep-link-url a { color: #888; text-decoration: none; border-bottom: 1px dotted #ccc; }
+.deep-link-url a:hover { color: #1a5276; }
 .level-tag { background: #eef3f8; color: #1a5276; }
 .type-tag { background: #f5f0fa; color: #7d5ba8; }
 .review-controls { display: flex; gap: 0.8em; justify-content: center; margin: 0.5em 0 1.5em; flex-wrap: wrap; }
@@ -904,6 +909,7 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
   .approved-tag { background: #1a2e2d; color: #2a9b9a; }
   .installed-tag { background: #1a2a3d; color: #6ba3f7; }
   .installed-tag:hover { background: #243a52; }
+  .deep-link-url a { color: #6ba3f7; border-bottom-color: #3a5a7a; }
   .level-tag { background: #1e2a3a; color: #6ba3f7; }
   .type-tag { background: #2a1a3a; color: #b09ad0; }
   .review-controls button { background: #2a2a2a; border-color: #555; color: #ccc; }
