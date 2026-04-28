@@ -4,7 +4,7 @@
 **Date:** 2026-04-27
 **Status:** PROMPT READY
 **Source:** Gen's Snailmail #10, Plan 0275, Bruce decision (S63)
-**Annealing:** LOW
+**Annealing:** MED LOW LOW
 **Priority:** Medium
 
 ---
@@ -25,7 +25,7 @@ Add after the opening `\rule`:
 ```latex
 \vspace{0.3cm}
 \noindent{\small\textit{The voice that follows is a literary
-device --- the Custodian as this book imagines it might speak.
+construction --- the Custodian as this book imagines it might speak.
 Under Possibility~A, it is fiction. Under~B, it is informed
 speculation. Under~C, it is close to true. The voice is the same
 regardless. What changes is whether you read it as imagination
