@@ -507,7 +507,7 @@
     var wrapper = document.createElement('div');
     wrapper.id = 'cover-magnetosphere';
     wrapper.setAttribute('aria-hidden', 'true');
-    wrapper.style.cssText = 'position:absolute;bottom:100%;right:0;' +
+    wrapper.style.cssText = 'position:absolute;bottom:calc(100% - 15px);right:0;' +
       'width:' + msWidth + 'px;' +
       'pointer-events:none;z-index:1;opacity:0.85;transition:opacity 0.3s;';
 
@@ -552,6 +552,7 @@
       '<filter id="cv-soft"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
       '<filter id="cv-wide-glow"><feGaussianBlur stdDeviation="8"/></filter>' +
       '<filter id="cv-star-glow"><feGaussianBlur stdDeviation="1.2"/></filter>' +
+      '<clipPath id="cv-earth-clip"><circle cx="170" cy="160" r="17.5"/></clipPath>' +
       '</defs>' +
       '<g opacity="0.7">' +
       '<circle cx="45" cy="22" r="0.8" fill="#fff" opacity="0.6">' + (motionOk ? '<animate attributeName="opacity" values="0.6;0.2;0.6" dur="5.0s" begin="0.3s" repeatCount="indefinite"/>' : '') + '</circle>' +
@@ -638,10 +639,11 @@
       '<circle cx="170" cy="160" r="48" fill="url(#cv-atmo-outer)"/>' +
       '<circle cx="170" cy="160" r="34" fill="url(#cv-atmo)"/>' +
       '<circle cx="170" cy="160" r="18" fill="url(#cv-earth)"/>' +
-      '<path d="M 164,149 C 167,147 170,148 172,150 C 174,153 172,155 169,155 C 166,155 163,152 164,149" fill="#27ae60" opacity="0.30"/>' +
-      '<path d="M 166,155 C 168,154 170,156 169,159 C 167,163 163,164 162,161 C 161,158 164,156 166,155" fill="#27ae60" opacity="0.28"/>' +
-      '<path d="M 175,152 C 177,150 180,152 179,155 C 178,158 175,158 174,155 C 173,153 174,152 175,152" fill="#27ae60" opacity="0.22"/>' +
-      '<path d="M 161,147 C 163,145 167,145 168,147 C 168,148 166,149 163,148 C 161,148 160,147 161,147" fill="#27ae60" opacity="0.22"/>' +
+      '<path d="M 157,153 C 156,150 157,147 159,145 C 161,143 164,143 166,145 C 167,147 166,149 165,150 C 164,152 163,153 161,154 C 160,155 163,155 164,157 C 164,154 158,155 157,153" fill="#27ae60" opacity="0.25"/>' +
+      '<path d="M 162,158 C 163,157 165,157 166,159 C 167,162 166,165 164,168 C 163,170 161,170 160,168 C 159,165 160,161 162,158" fill="#27ae60" opacity="0.22"/>' +
+      '<path d="M 164,143 C 166,142 168,143 168,144 C 167,145 165,145 164,144 C 163,143 163,143 164,143" fill="#27ae60" opacity="0.20"/>' +
+      '<path d="M 176,148 C 178,147 179,148 179,150 C 179,151 178,152 177,152 C 176,151 175,150 176,148" fill="#27ae60" opacity="0.22"/>' +
+      '<path d="M 177,153 C 179,152 182,153 183,156 C 184,159 183,163 182,166 C 181,168 179,169 178,167 C 177,164 176,160 177,156 C 177,154 177,153 177,153" fill="#27ae60" opacity="0.22"/>' +
       '<ellipse cx="168" cy="143" rx="5" ry="2" fill="#fff" opacity="0.12"/>' +
       '<ellipse cx="170" cy="177" rx="4" ry="1.5" fill="#fff" opacity="0.08"/>' +
       '<circle cx="163" cy="152" r="6" fill="#fff" opacity="0.10"/>' +
@@ -689,6 +691,7 @@
       '<filter id="lm-glow"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
       '<filter id="lm-soft"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
       '<filter id="lm-wide-glow"><feGaussianBlur stdDeviation="8"/></filter>' +
+      '<clipPath id="lm-earth-clip"><circle cx="170" cy="160" r="17.5"/></clipPath>' +
       '</defs>' +
       '<g opacity="0.30">' +
       '<line x1="0" y1="128" x2="72" y2="140" stroke="#C4913B" stroke-width="0.8" stroke-linecap="round" stroke-dasharray="4,7">' + (motionOk ? '<animate attributeName="stroke-dashoffset" from="11" to="0" dur="1.8s" repeatCount="indefinite"/>' : '') + '</line>' +
@@ -741,10 +744,11 @@
       '<circle cx="170" cy="160" r="48" fill="url(#lm-atmo-outer)"/>' +
       '<circle cx="170" cy="160" r="34" fill="url(#lm-atmo)"/>' +
       '<circle cx="170" cy="160" r="18" fill="url(#lm-earth)"/>' +
-      '<path d="M 164,149 C 167,147 170,148 172,150 C 174,153 172,155 169,155 C 166,155 163,152 164,149" fill="#27ae60" opacity="0.35"/>' +
-      '<path d="M 166,155 C 168,154 170,156 169,159 C 167,163 163,164 162,161 C 161,158 164,156 166,155" fill="#27ae60" opacity="0.32"/>' +
-      '<path d="M 175,152 C 177,150 180,152 179,155 C 178,158 175,158 174,155 C 173,153 174,152 175,152" fill="#27ae60" opacity="0.25"/>' +
-      '<path d="M 161,147 C 163,145 167,145 168,147 C 168,148 166,149 163,148 C 161,148 160,147 161,147" fill="#27ae60" opacity="0.25"/>' +
+      '<path d="M 157,153 C 156,150 157,147 159,145 C 161,143 164,143 166,145 C 167,147 166,149 165,150 C 164,152 163,153 161,154 C 160,155 163,155 164,157 C 164,154 158,155 157,153" fill="#27ae60" opacity="0.30"/>' +
+      '<path d="M 162,158 C 163,157 165,157 166,159 C 167,162 166,165 164,168 C 163,170 161,170 160,168 C 159,165 160,161 162,158" fill="#27ae60" opacity="0.27"/>' +
+      '<path d="M 164,143 C 166,142 168,143 168,144 C 167,145 165,145 164,144 C 163,143 163,143 164,143" fill="#27ae60" opacity="0.24"/>' +
+      '<path d="M 176,148 C 178,147 179,148 179,150 C 179,151 178,152 177,152 C 176,151 175,150 176,148" fill="#27ae60" opacity="0.27"/>' +
+      '<path d="M 177,153 C 179,152 182,153 183,156 C 184,159 183,163 182,166 C 181,168 179,169 178,167 C 177,164 176,160 177,156 C 177,154 177,153 177,153" fill="#27ae60" opacity="0.27"/>' +
       '<ellipse cx="168" cy="143" rx="5" ry="2" fill="#fff" opacity="0.18"/>' +
       '<ellipse cx="170" cy="177" rx="4" ry="1.5" fill="#fff" opacity="0.12"/>' +
       '<circle cx="163" cy="152" r="6" fill="#fff" opacity="0.14"/>' +
