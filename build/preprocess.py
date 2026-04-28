@@ -1807,6 +1807,7 @@ def fix_html_toc(html_path):
         _FORBIDDEN_RE = re.compile(
             r'<(script|style)[\s\S]*?</\1>'
             r"|<span[^>]*class=[\"']hover-term[\"'][^>]*>.*?</span>"
+            r"|<h[1-6][^>]*>[\s\S]*?</h[1-6]>"
             r"|<(?:[^>\"']|\"[^\"]*\"|'[^']*')+>",
             re.DOTALL
         )
