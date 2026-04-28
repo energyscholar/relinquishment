@@ -912,7 +912,7 @@ chapter_puzzles:
     level: p1
     category: science
     title: "The Silence"
-    gateway_blurb: "Two questions. The answer to the first opens the second."
+    gateway_blurb: "Three questions. Each reveals a deeper layer of the same silence."
     stages:
       - question: "Has anyone studied whether life could exist in a quantum substrate?"
         options:
@@ -926,7 +926,21 @@ chapter_puzzles:
             text: "No — it was studied and ruled out decades ago"
         answer_key: c
         wrong_prompt: "Before you say 'ruled out' — by whom? In which journal? Can you name a single paper?"
-        right_prompt: "Nobody has asked. Not 'asked and answered no.' Not 'asked and classified.' Simply never asked. But surely someone must have thought of it?"
+        right_prompt: "Nobody has asked. Not 'asked and answered no.' Not 'asked and classified.' Simply never asked. But surely the published literature says SOMETHING?"
+
+      - question: "Five scientific fields each hold a piece of this hypothesis. What does the published literature contain?"
+        options:
+          - key: a
+            text: "A review article surveying the question and concluding the evidence is insufficient"
+          - key: b
+            text: "Several papers examining and rejecting the possibility"
+          - key: c
+            text: "A brief mention in a footnote, dismissed as speculation"
+          - key: d
+            text: "Nothing. No paper examines, proposes, or rejects the hypothesis."
+        answer_key: d
+        wrong_prompt: "You keep expecting to find a 'no.' What if there isn't even a 'no'?"
+        right_prompt: "The literature contains no examination, no rejection, no dismissal — because it contains no proposal. But why? Surely someone in one of these five fields would have thought of it?"
 
       - question: "Why has no one studied this question?"
         options:
@@ -940,7 +954,7 @@ chapter_puzzles:
             text: "The technology to study it doesn't exist"
         answer_key: a
         wrong_prompt: "Which field would own this question? Biology studies carbon life. Physics studies 2DEGs. Whose job is it to study life in a quantum substrate?"
-    abstract: "Five fields. Five empty searches. The silence isn't evidence of absence — it's evidence that the question falls between disciplines. The question lives in a gap that no one owns. The silence is the finding."
+    abstract: "Five fields. Five empty searches. The silence isn't evidence of absence — it's evidence that the question falls between disciplines. Topologists don't read autocatalysis journals. Condensed matter physicists don't attend nonlinear dynamics conferences. Each field is rigorous within its boundaries. No individual scientist is negligent. But the system of academic specialization structurally prevents the question from forming. The question lives in a gap that no one owns. The silence is the finding."
 
   - id: pz-gd-t6-001
     type: gd

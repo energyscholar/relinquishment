@@ -164,7 +164,7 @@ chapter_puzzles:
     topic: t5
     level: p2
     approved: true
-    installed: true
+    installed: false
     location:
       chapter: the-silence-gap
       rationale: "Direct chapter match — the surprise of finding nothing"
@@ -198,9 +198,11 @@ chapter_puzzles:
     title: "Capabilities"
     type: mc
     topic: t6
-    level: p2
+    level: p1
     approved: true
     installed: true
+    visibility: chapter
+    render: inline
     location:
       chapter: capabilities
       rationale: "UDHR applied to non-human intelligence — capabilities chapter"
@@ -235,6 +237,7 @@ chapter_puzzles:
     level: p1
     approved: true
     installed: true
+    visibility: chapter
     location:
       chapter: why-relinquish
       rationale: "Moral foundation for relinquishment — why concentrated power fails"
@@ -456,6 +459,7 @@ chapter_puzzles:
     level: p1
     approved: true
     installed: true
+    visibility: chapter
     location:
       chapter: capabilities
       rationale: "UDHR ethics grounding via guided deduction"
