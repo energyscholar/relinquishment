@@ -4084,11 +4084,29 @@ def deduplicate_svg_defs(html_path):
     p.write_text(text)
 
 
+def fix_latex_colors(html_path):
+    """Resolve LaTeX color names that pandoc passed through as literals."""
+    html_path = Path(html_path)
+    text = html_path.read_text()
+    COLOR_MAP = {
+        'missionbg': '#FBF5ED',
+        'tracktwo!8': 'rgba(196,145,59,0.08)',
+    }
+    changed = False
+    for latex_name, css_val in COLOR_MAP.items():
+        if latex_name in text:
+            text = text.replace(f'background-color: {latex_name}', f'background-color: {css_val}')
+            changed = True
+    if changed:
+        html_path.write_text(text)
+
+
 if __name__ == "__main__":
     import sys
     if len(sys.argv) > 1 and sys.argv[1] == '--fix-epub':
         fix_epub(sys.argv[2])
     elif len(sys.argv) > 1 and sys.argv[1] == '--fix-html':
+        fix_latex_colors(sys.argv[2])
         fix_html_toc(sys.argv[2])
         inject_flat_diagram(sys.argv[2])
         inject_button_sequence(sys.argv[2])
