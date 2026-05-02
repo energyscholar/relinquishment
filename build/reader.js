@@ -896,6 +896,9 @@
     if (!target) {
       try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch(e) {}
     }
+    if (!target) {
+      try { target = document.getElementById('dl:' + hash.slice(1)); } catch(e) {}
+    }
     if (!target) return;
     var parentCh = target.closest('details.chapter-section');
     if (parentCh && parentCh.style.display === 'none' && document.body.classList.contains('custodian-only')) {
