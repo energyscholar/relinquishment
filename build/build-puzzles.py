@@ -1744,6 +1744,26 @@ function initGD(el, d) {
   var n = stages.length;
   var current = 0;
 
+  var inter = el.querySelector(".interaction");
+  if (inter) {
+    var html = "";
+    for (var ri = 0; ri < n; ri++) {
+      var st = stages[ri];
+      var optsHtml = "";
+      for (var oi = 0; oi < st.options.length; oi++) {
+        var o = st.options[oi];
+        optsHtml += '<button class="option-btn gd-option" data-key="' + esc(o.key) + '" data-stage="' + ri + '">(' + esc(o.key) + ') ' + esc(o.text) + '</button>\n';
+      }
+      html += '<div class="gd-stage" id="gd-stage-' + pid + '-' + ri + '" style="' + (ri > 0 ? 'display:none' : '') + '">' +
+        '<p class="gd-stage-question">' + esc(st.question) + '</p>' +
+        '<div class="gd-stage-options">' + optsHtml + '</div>' +
+        '<div class="gd-wrong-prompt" id="gd-wrong-' + pid + '-' + ri + '"></div>' +
+        '<div class="gd-right-prompt" id="gd-right-' + pid + '-' + ri + '"></div>' +
+        '</div>\n';
+    }
+    inter.innerHTML = html;
+  }
+
   function setDot(i, cls) {
     var dot = document.getElementById("gd-dot-" + pid + "-" + i);
     if (dot) { dot.className = "gd-dot " + cls; }

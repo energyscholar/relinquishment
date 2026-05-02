@@ -119,7 +119,7 @@
 - **The framing:** "I've taken a deep dive into space physics, still learning the basics, but already found this convergence." Show him: magnetosphere = same math = thermohaline. He'll dig it.
 
 ## Open Questions
-- ~~Lawrence's wife's name?~~ ANSWERED: Janet Boeckh (different surname, lives in Montreal). Note: "Diana" in Lawrence's Moscow memoir ("my wife, Diana") — may be previous wife or memoir character's wife.
+- ~~Lawrence's wife's name?~~ ANSWERED: Janet Boeckh (different surname, lives in Montreal). Note: "Diana" in Lawrence's Moscow memoir ("my wife, Diana") — may be previous wife or memoir character's wife. YES Bruce says Diana is his previous wife.
 - Tour group was stacked with very accomplished, hyper-smart, hyper-literate types. Multiple doctors, a brain surgeon or two.
 - What specifically struck Bruce about Lawrence's top papers? (Partially answered: criticality signature, South Atlantic Current, thermohaline dynamics.)
 - Lawrence's perspective on the "key moment" — when Bruce came back having read the papers. How did that feel from his side?
@@ -132,3 +132,4 @@
 
 ## Human Connection Personal Interest Version 
 
+I remember one evening in having dinner in the shadow of the Arenal volcano.  Lawrence and I wanted to chat and knew we had only a few hours of possible time to speak together of math and science.  The meal was quite slow to arrive, we had a long wait for dinner, people started complaining a little, Lawrence's wife, Janet, was chatting with some other ladies. This gave Lawrence and I an opportunity for deep conversation that we both took advantage of. Wide ranging conversation.

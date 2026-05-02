@@ -1,12 +1,12 @@
-# Two Scientists Meet on a Bus
+Two Scientists Meet on a Bus
 
-*Bruce Stephenson and Lawrence Mysak*
+Bruce Stephenson and Lawrence Mysak
 
 ---
 
-In January 2024, my mother Linda and I joined a Road Scholar tour through Costa Rica. I expected retirees on a bus. The bus turned out to be full of doctors, a brain surgeon or two, and a flute-playing professor emeritus from McGill with a hundred and eighty published papers.
+In January 2024 my mother Linda and I joined a Road Scholar tour through Costa Rica. I expected retirees on a bus. The bus turned out to be full of doctors, a brain surgeon or two, and a flute-playing professor emeritus from McGill with a hundred and eighty published papers.
 
-Lawrence Mysak and his wife Janet made the group sing — that is not a metaphor. They had the whole bus doing sing-alongs as we traveled between stops, and on the last night of the tour Lawrence gave an impromptu flute concert. The performer was also a Fellow of the Royal Society of Canada and a Member of the Order of Canada.
+Lawrence Mysak and his wife,Janet, made the group sing — that is not a metaphor. They had the whole bus doing sing-alongs as we traveled between stops, and on the last night of the tour Lawrence gave an impromptu flute concert. The performer was also a Fellow of the Royal Society of Canada and a Member of the Order of Canada.
 
 I remember dinner in the shadow of the Arenal volcano. The meal was slow to arrive. Janet was chatting with ladies at the far end of the table. Lawrence and I seized the window and talked ocean dynamics and mathematics until the food came, and wished the kitchen had been slower. In ten days we found perhaps eight hours for real conversation, always stolen from the margins of the tour, never enough.
 
@@ -46,9 +46,9 @@ What Lawrence saw in a fifty-five-year-old farmer that made him say *go to gradu
 
 ---
 
-Preparing the paper for FACETS, I did a closer pass on Lawrence's thermohaline hysteresis work. I had missed, in 2024, what I could see by 2026: the mathematics in his lineage was the mathematics I had begun to use, independently, in another system.
+While preparing the paper for FACETS I did a closer pass on Lawrence's thermohaline hysteresis work. I had missed, in 2024, what I could see by 2026: the mathematics in his lineage was the mathematics I had begun to use, independently, in another system.
 
-Lawrence and Leon Glass ride the same bus at McGill — French horn and flute, thirty years together in the I Medici orchestra, retired at the same time. Their research, it turned out, was the same mathematics too.
+Lawrence and Leon Glass ride the same bus at McGill — French horn and flute, thirty years together in the I Medici orchestra, retired at the same time. Their research, it turned out, used the same mathematics too.
 
 I leave it to Lawrence to say what that was like from his side.
 
@@ -61,18 +61,3 @@ Lawrence said that memoirs are usually written by one person. This one has two a
 If Lawrence would like the last word, I'll step aside.
 
 [Lawrence — Would you like to close this? The door is open.]
-
----
-
-## For Lawrence — Where to Enter
-
-| Hook | Topic | What Bruce hopes you might add |
-|------|-------|-------------------------------|
-| H1 | **Music** | What music means to you — the flute, the orchestra, the sing-alongs |
-| H2 | **The key moment** | Your perspective when Bruce came back having read the papers |
-| H3 | **Mentorship** | What you saw in Bruce that made you say "go to graduate school" |
-| H4 | **The convergence** | What it was like to discover the mathematical connection |
-| H5 | **Leon Glass** | What it means to play music with someone for thirty years and find your science converged |
-| H6 | **Closing** | If you'd like the last word |
-
-Fill any, all, or none. This reads complete as-is — your additions make it better.
