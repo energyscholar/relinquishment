@@ -6115,6 +6115,25 @@ var pid=d.id;
 var stages=d.stages;
 var n=stages.length;
 var current=0;
+var inter=el.querySelector(".interaction");
+if(inter){
+var html="";
+for(var ri=0;ri<n;ri++){
+var st=stages[ri];
+var optsHtml="";
+for(var oi=0;oi<st.options.length;oi++){
+var o=st.options[oi];
+optsHtml+='<button class="option-btn gd-option" data-key="'+esc(o.key)+'" data-stage="'+ri+'">('+esc(o.key)+') '+esc(o.text)+'</button>\n';
+}
+html+='<div class="gd-stage" id="gd-stage-'+pid+'-'+ri+'" style="'+(ri>0?'display:none':'')+'">'+
+'<p class="gd-stage-question">'+esc(st.question)+'</p>'+
+'<div class="gd-stage-options">'+optsHtml+'</div>'+
+'<div class="gd-wrong-prompt" id="gd-wrong-'+pid+'-'+ri+'"></div>'+
+'<div class="gd-right-prompt" id="gd-right-'+pid+'-'+ri+'"></div>'+
+'</div>\n';
+}
+inter.innerHTML=html;
+}
 function setDot(i,cls){
 var dot=document.getElementById("gd-dot-"+pid+"-"+i);
 if(dot){dot.className="gd-dot "+cls;}
@@ -12779,8 +12798,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>adb711ba8efcae473acb3f48c8201c34f7d0964c</code> on 2026-04-28
-23:23:43 -0700.</p>
+<code>c030a42c2cae9b44d5dd756442bf6f8187b6b4a5</code> on 2026-04-29
+23:02:40 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -12848,7 +12867,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-04-29T08:05:06Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-05-02T22:47:31Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -12859,19 +12878,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>adb711b</code></p>
+<p><code>c030a42</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>adb711ba8efcae473acb3f48c8201c34f7d0964c</code></p>
+<p><code>c030a42c2cae9b44d5dd756442bf6f8187b6b4a5</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-04-28 23:23:43 -0700</p>
+<p>2026-04-29 23:02:40 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-04-29T08:05:06Z</p>
+<p>2026-05-02T22:47:31Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
