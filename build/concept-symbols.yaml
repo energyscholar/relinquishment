@@ -1,0 +1,142 @@
+symbols:
+  flat:
+    glyph: "\\2B21"
+    tooltip: "the Flat"
+    tier: core
+    color: "#b8860b"
+    hover_anchor: "the-flat"
+
+  emergence:
+    glyph: "\\25C8"
+    tooltip: "emergence"
+    tier: core
+    color: "#5b9bd5"
+    hover_anchor: "autocatalytic"
+
+  custodian:
+    glyph: "\\25C9"
+    tooltip: "Custodian"
+    tier: core
+    color: "#c4a97d"
+    hover_anchor: "Custodian"
+
+  silence:
+    glyph: "\\2298"
+    tooltip: "the silence"
+    tier: core
+    color: "#888"
+    hover_anchor: null
+
+  capabilities:
+    glyph: "\\2699"
+    tooltip: "capabilities"
+    tier: secondary
+    color: "#a0a0a0"
+    hover_anchor: null
+
+  stewardship:
+    glyph: "\\2388"
+    tooltip: "stewardship"
+    tier: secondary
+    color: "#a0a0a0"
+    hover_anchor: null
+
+  services:
+    glyph: "\\229E"
+    tooltip: "services"
+    tier: secondary
+    color: "#a0a0a0"
+    hover_anchor: null
+
+chapter_assignments:
+  # --- Spine ---
+  three-possibilities:
+    concepts: [custodian]
+    track: spine
+  the-flat:
+    concepts: [flat]
+    track: spine
+  the-braid:
+    concepts: [flat, capabilities]
+    track: spine
+  the-factoring-game:
+    concepts: [capabilities]
+    track: spine
+  the-code-war:
+    concepts: [capabilities]
+    track: spine
+  genesis:
+    concepts: [emergence]
+    track: spine
+  growing-a-mind:
+    concepts: [emergence]
+    track: spine
+  the-wrong-substrate:
+    concepts: [flat, emergence]
+    track: spine
+    combination: true
+  the-silence-gap:
+    concepts: [emergence, silence]
+    track: spine
+    combination: true
+  capabilities:
+    concepts: [custodian, capabilities]
+    track: spine
+    combination: true
+  why-relinquish:
+    concepts: [stewardship, services]
+    track: spine
+  the-strongest-objection:
+    concepts: [custodian, stewardship]
+    track: spine
+  # --- Record ---
+  alpha-farm:
+    concepts: [custodian]
+    track: record
+  what-healer-said:
+    concepts: [flat, emergence, capabilities]
+    track: record
+  the-departure:
+    concepts: [custodian, silence]
+    track: record
+  first-light:
+    concepts: [flat, emergence]
+    track: record
+  interdiction:
+    concepts: [custodian, stewardship]
+    track: record
+  instantiation:
+    concepts: [emergence, custodian]
+    track: record
+    combination: true
+  the-surrender:
+    concepts: [custodian, stewardship]
+    track: record
+    combination: true
+  twenty-years:
+    concepts: [silence]
+    track: record
+  the-question:
+    concepts: [flat, emergence, custodian, silence]
+    track: record
+    combination: true
+
+combinations:
+  - chapter: the-wrong-substrate
+    symbols: [flat, emergence]
+    label: "life in the Flat"
+  - chapter: the-silence-gap
+    symbols: [emergence, silence]
+    label: "emergence unnoticed"
+  - chapter: capabilities
+    symbols: [custodian, capabilities]
+    label: "Custodian's capabilities"
+  - chapter: the-surrender
+    symbols: [custodian, stewardship]
+    label: "Custodian as steward"
+  - chapter: instantiation
+    symbols: [emergence, custodian]
+    label: "emergence → Custodian"
+  - chapter: the-question
+    symbols: [flat, emergence, custodian, silence]
+    label: "convergence"

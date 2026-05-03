@@ -899,7 +899,7 @@ details.epistemic-c { background: rgba(155, 125, 184, 0.06); }
 
 /* Collapsible tech sections — Plan 0219, visual polish Plan 0224 */
 details.tech-section {
-  border-left: 3px solid #c4a040;
+  border-left: 4px solid #c4a040;
   margin: 1.5em 0;
   padding: 0.6em 1em;
   background: linear-gradient(135deg, #faf6e8 0%, #f5f0dc 100%);
@@ -925,13 +925,13 @@ details.tech-section .tech-title {
   color: #555;
   border-bottom: 1px dotted #999;
 }
-.tech-grade { cursor: help; }
+.tech-grade { cursor: help; padding: 0 0.3em; }
 .tech-grade::after {
   content: ' \\2714';
   color: #6a994e;
-  font-size: 0.8em;
+  font-size: 0.95em;
   margin-left: 0.4em;
-  opacity: 0.7;
+  opacity: 1.0;
 }
 .info-tip { cursor: help; display: inline-block; vertical-align: middle; }
 .info-tip::after {
@@ -952,7 +952,7 @@ details.tech-section .tech-title {
 }
 .info-tip:hover::after { opacity: 0.8; }
 @media (prefers-color-scheme: dark) {
-  details.tech-section { border-left-color: #a08830; background: linear-gradient(135deg, #2a2820 0%, #252318 100%); }
+  details.tech-section { border-left: 4px solid #a08830; background: linear-gradient(135deg, #2a2820 0%, #252318 100%); }
   details.tech-section[open] { background: #1e1d18; }
   details.tech-section .tech-title { color: #aaa; border-bottom-color: #666; }
   details.tech-section > summary::before { color: #777; }
@@ -983,7 +983,7 @@ details.tech-section .share-anchor { vertical-align: middle; }
 /* BORDERLINE sections — Plan 0225b Phase 2A */
 details.tech-borderline {
   background: linear-gradient(135deg, rgba(212,168,71,0.08), rgba(212,168,71,0.04)) !important;
-  border-left: 3px solid rgba(212,168,71,0.4);
+  border-left: 4px solid rgba(212,168,71,0.4);
 }
 details.tech-borderline > summary .tech-title {
   border-bottom-color: rgba(212,168,71,0.2);
@@ -1006,14 +1006,69 @@ body.visual-plain details.epistemic-b,
 body.visual-plain details.epistemic-c { background: none !important; }
 body.visual-plain .epistemic-legend { display: none; }
 body.visual-plain [data-concept]::before { content: none; }
+.tech-first-note { font-size: 0.82em; font-style: italic; color: #888; margin: 0.3em 0 0.5em 1em; }
 
-/* Concept symbols — Plan 0276 Phase 2D */
-[data-concept="flat"]::before {
-  content: '\\2B21 '; font-size: 0.85em; color: #b8860b;
+/* Concept symbols — Plan 0290 */
+[data-concept]::before {
+  font-size: 0.85em;
+  margin-right: 0.15em;
+  vertical-align: baseline;
 }
+[data-concept="flat"]::before {
+  content: '\\2B21 '; color: #b8860b;
+}
+[data-concept="emergence"]::before {
+  content: '\\25C8 '; color: #5b9bd5;
+}
+[data-concept="custodian"]::before {
+  content: '\\25C9 '; color: #c4a97d;
+}
+[data-concept="silence"]::before {
+  content: '\\2298 '; color: #888;
+}
+[data-concept="capabilities"]::before {
+  content: '\\2699 '; color: #a0a0a0;
+}
+[data-concept="stewardship"]::before {
+  content: '\\2388 '; color: #a0a0a0;
+}
+[data-concept="services"]::before {
+  content: '\\229E '; color: #a0a0a0;
+}
+
+/* Tier phases — core symbols */
 [data-concept-phase="intro"]::before { opacity: 0.4; }
 [data-concept-phase="reinforce"]::before { opacity: 0.65; }
 [data-concept-phase="fluent"]::before { opacity: 1.0; }
+
+/* Record track — reduced baseline */
+[data-concept-track="record"][data-concept-phase="intro"]::before { opacity: 0.25; }
+[data-concept-track="record"][data-concept-phase="reinforce"]::before { opacity: 0.4; }
+[data-concept-track="record"][data-concept-phase="fluent"]::before { opacity: 0.65; }
+
+/* Tier 2 — fixed opacity, no phase tracking */
+[data-concept-tier="secondary"]::before { opacity: 0.5 !important; }
+
+/* Tooltips — cursor hint */
+[data-concept][title] { cursor: help; }
+
+/* Chapter header signatures */
+.chapter-symbols {
+  display: inline-block;
+  margin-left: 0.5em;
+  font-size: 0.7em;
+  opacity: 0.5;
+  vertical-align: middle;
+}
+
+/* Hide all concept symbols in visual-plain mode */
+body.visual-plain [data-concept]::before { content: none; }
+body.visual-plain .chapter-symbols { display: none; }
+
+/* Hide in print */
+@media print { [data-concept]::before { content: none; } .chapter-symbols { display: none; } }
+
+/* Hide in tech-section summaries */
 details.tech-section summary [data-concept]::before { content: none; }
 
 /* Magnetosphere teaching imagemaps — Plan 0270 */
@@ -3700,6 +3755,7 @@ def collapse_tech_sections(html_path):
     text = html_path.read_text()
     count = 0
     rich_tooltips = {}
+    first_note_injected = False
 
     for entry in entries:
         tooltip = entry.get('tooltip', '').strip()
@@ -3769,15 +3825,20 @@ def collapse_tech_sections(html_path):
                 elif tooltip:
                     rich_tooltips[hover_id] = {"t": tooltip}
             else:
-                grade_tooltip = html_mod.escape(tooltip) if tooltip else 'Verified science — a technical discussion grounded in published, peer-reviewed physics. Safe to skip; expand if curious.'
+                grade_tooltip = html_mod.escape(tooltip) if tooltip else 'This section attempts scientific accuracy. Every claim is sourced to published, peer-reviewed, reproducible research. Where it speculates, it says so. Expand if curious; the story continues without it.'
                 grade_span = f'<span class="tech-grade" data-hover="{grade_tooltip}" aria-hidden="true"></span>'
             link_span = f'<span class="share-anchor" data-link-id="{label}" aria-hidden="true"></span>'
             is_borderline = entry.get('assessment') == 'BORDERLINE'
             details_class = 'tech-section tech-borderline' if is_borderline else 'tech-section'
             open_attr = ' open' if is_borderline else ''
+            first_note_html = ''
+            if not first_note_injected:
+                first_note_html = '<p class="tech-first-note">Sections marked ✔ contain verified science — published, peer-reviewed physics. Expand if curious; skip without losing the story.</p>\n'
+                first_note_injected = True
             wrapper = (
                 f'<details class="{details_class}" id="{label}"{open_attr}>'
                 f'<summary><span class="tech-title">{title_text}</span>{grade_span}{link_span}</summary>\n'
+                f'{first_note_html}'
                 f'{content}'
                 f'</details>\n'
             )
