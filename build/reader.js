@@ -504,12 +504,18 @@
     }
     if (msWidth < 40) return;
     var motionOk = !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    var isPhone = navW <= 500;
     var wrapper = document.createElement('div');
     wrapper.id = 'cover-magnetosphere';
     wrapper.setAttribute('aria-hidden', 'true');
-    wrapper.style.cssText = 'position:absolute;bottom:calc(100% - 15px);right:0;' +
-      'width:' + msWidth + 'px;' +
-      'pointer-events:none;z-index:1;opacity:0.85;transition:opacity 0.3s;';
+    if (isPhone) {
+      wrapper.style.cssText = 'width:' + msWidth + 'px;' +
+        'pointer-events:none;opacity:0.85;margin:0.5em auto;display:block;';
+    } else {
+      wrapper.style.cssText = 'position:absolute;bottom:calc(100% - 15px);right:0;' +
+        'width:' + msWidth + 'px;' +
+        'pointer-events:none;z-index:1;opacity:0.85;transition:opacity 0.3s;';
+    }
 
     var darkSvg =
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" id="cover-ms-dark" width="100%">' +
@@ -757,10 +763,13 @@
       '</svg>';
 
     wrapper.innerHTML = darkSvg + lightSvg;
-    nav.appendChild(wrapper);
-
     var titleExtra = document.querySelector('.title-page-extra');
-    if (titleExtra) titleExtra.style.paddingRight = (msWidth + 10) + 'px';
+    if (isPhone && titleExtra) {
+      titleExtra.appendChild(wrapper);
+    } else {
+      nav.appendChild(wrapper);
+      if (titleExtra) titleExtra.style.paddingRight = (msWidth + 10) + 'px';
+    }
 
     msToggle.addEventListener('click', function(e) {
       e.preventDefault();
@@ -780,20 +789,22 @@
       }
     } catch(e) {}
 
-    var scrollHidden = false;
-    window.addEventListener('scroll', function() {
-      var manuallyHidden = false;
-      try { manuallyHidden = localStorage.getItem('cover-ms-hidden') === 'true'; } catch(e) {}
-      if (manuallyHidden) return;
+    if (!isPhone) {
+      var scrollHidden = false;
+      window.addEventListener('scroll', function() {
+        var manuallyHidden = false;
+        try { manuallyHidden = localStorage.getItem('cover-ms-hidden') === 'true'; } catch(e) {}
+        if (manuallyHidden) return;
 
-      if (window.scrollY > 20 && !scrollHidden) {
-        wrapper.style.opacity = '0';
-        scrollHidden = true;
-      } else if (window.scrollY <= 20 && scrollHidden) {
-        wrapper.style.opacity = '0.85';
-        scrollHidden = false;
-      }
-    });
+        if (window.scrollY > 20 && !scrollHidden) {
+          wrapper.style.opacity = '0';
+          scrollHidden = true;
+        } else if (window.scrollY <= 20 && scrollHidden) {
+          wrapper.style.opacity = '0.85';
+          scrollHidden = false;
+        }
+      });
+    }
   })();
 
   // --- Breadcrumb update on scroll ---
