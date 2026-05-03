@@ -12926,8 +12926,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>bea6c9f00edeed832162e447d83419f7ca55a936</code> on 2026-05-03
-16:10:31 -0700.</p>
+<code>77667095626dd735bc5d65cb7be6bb35d95a1467</code> on 2026-05-03
+16:25:57 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -12995,7 +12995,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-05-03T23:25:19Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-05-03T23:57:46Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -13006,19 +13006,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>bea6c9f</code></p>
+<p><code>7766709</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>bea6c9f00edeed832162e447d83419f7ca55a936</code></p>
+<p><code>77667095626dd735bc5d65cb7be6bb35d95a1467</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-05-03 16:10:31 -0700</p>
+<p>2026-05-03 16:25:57 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-05-03T23:25:19Z</p>
+<p>2026-05-03T23:57:46Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -13822,18 +13822,12 @@ msWidth=Math.floor(navW*0.45);
 }
 if(msWidth<40) return;
 var motionOk=!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches);
-var isPhone=navW<=500;
 var wrapper=document.createElement('div');
 wrapper.id='cover-magnetosphere';
 wrapper.setAttribute('aria-hidden','true');
-if(isPhone){
-wrapper.style.cssText='width:'+msWidth+'px;'+
-'pointer-events:none;opacity:0.85;margin:0.5em auto;display:block;';
-} else{
 wrapper.style.cssText='position:absolute;bottom:calc(100% - 15px);right:0;'+
 'width:'+msWidth+'px;'+
 'pointer-events:none;z-index:1;opacity:0.85;transition:opacity 0.3s;';
-}
 var darkSvg=
 '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" id="cover-ms-dark" width="100%">'+
 '<title>Stylized magnetosphere. Earth at left-center with dipole field lines sweeping into the magnetotail. The plasma sheet — the Flat — glows copper-gold through the tail center. Deep space, stars, bow shock, solar wind.</title>'+
@@ -14080,7 +14074,7 @@ var lightSvg=
 wrapper.innerHTML=darkSvg+lightSvg;
 nav.appendChild(wrapper);
 var titleExtra=document.querySelector('.title-page-extra');
-if(!isPhone&&titleExtra) titleExtra.style.paddingRight=(msWidth+10)+'px';
+if(titleExtra) titleExtra.style.paddingRight=(msWidth+10)+'px';
 msToggle.addEventListener('click',function(e){
 e.preventDefault();
 var hidden=wrapper.style.display==='none';
@@ -14097,7 +14091,6 @@ wrapper.style.display='none';
 msToggle.style.opacity='0.4';
 }
 } catch(e){}
-if(!isPhone){
 var scrollHidden=false;
 window.addEventListener('scroll',function(){
 var manuallyHidden=false;
@@ -14111,7 +14104,6 @@ wrapper.style.opacity='0.85';
 scrollHidden=false;
 }
 });
-}
 })();
 function updateBreadcrumb(){
 var partName='';
