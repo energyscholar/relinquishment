@@ -52,6 +52,13 @@ main {
   margin-bottom: 0.3rem;
 }
 
+.title-block .book-subtitle {
+  font-size: 1.15rem;
+  color: #C9B06B;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.6rem;
+}
+
 .title-block .subtitle {
   font-style: italic;
   color: #8B949E;
@@ -77,6 +84,14 @@ h2 {
   margin-bottom: 2.5rem;
   font-size: 1.05rem;
   line-height: 1.7;
+}
+
+.hook .framing {
+  font-style: italic;
+  color: #C9B06B;
+  font-size: 1.0rem;
+  line-height: 1.6;
+  margin-bottom: 1.2rem;
 }
 
 /* Three possibilities */
