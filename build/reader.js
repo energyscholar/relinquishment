@@ -759,6 +759,9 @@
     wrapper.innerHTML = darkSvg + lightSvg;
     nav.appendChild(wrapper);
 
+    var titleExtra = document.querySelector('.title-page-extra');
+    if (titleExtra) titleExtra.style.paddingRight = (msWidth + 10) + 'px';
+
     msToggle.addEventListener('click', function(e) {
       e.preventDefault();
       var hidden = wrapper.style.display === 'none';
