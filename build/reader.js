@@ -763,13 +763,9 @@
       '</svg>';
 
     wrapper.innerHTML = darkSvg + lightSvg;
+    nav.appendChild(wrapper);
     var titleExtra = document.querySelector('.title-page-extra');
-    if (isPhone && titleExtra) {
-      titleExtra.appendChild(wrapper);
-    } else {
-      nav.appendChild(wrapper);
-      if (titleExtra) titleExtra.style.paddingRight = (msWidth + 10) + 'px';
-    }
+    if (!isPhone && titleExtra) titleExtra.style.paddingRight = (msWidth + 10) + 'px';
 
     msToggle.addEventListener('click', function(e) {
       e.preventDefault();
