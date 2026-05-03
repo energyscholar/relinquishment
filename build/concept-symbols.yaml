@@ -18,7 +18,7 @@ symbols:
     tooltip: "Custodian"
     tier: core
     color: "#c4a97d"
-    hover_anchor: "Custodian"
+    hover_anchor: "custodian"
 
   silence:
     glyph: "\\2298"
