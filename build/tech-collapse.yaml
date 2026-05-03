@@ -97,6 +97,13 @@ sections:
     conclusion: "'Hot' in a collisionless plasma doesn't mean 'thermally noisy.' The noise that destroys quantum states is orders of magnitude quieter than the kinetic temperature."
     status: approved
 
+  - title: "Theoretical Biology of the Flat"
+    spine_file: manuscript/spine/the-wrong-substrate.tex
+    spine_label: "spine:ws-flat-taxonomy"
+    assessment: BORDERLINE
+    tooltip: "Three categories of life that could theoretically exist in two-dimensional electron gases — magnetospheric primitives, engineered systems, and planetary ecologies. A framework from theoretical biology, applied to a novel substrate."
+    status: approved
+
   # ── THE FACTORING GAME ─────────────────────────────────────────────
 
   - title: "The State of Cryptography in 1990"
