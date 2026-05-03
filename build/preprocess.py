@@ -4070,43 +4070,60 @@ def minify_html_assets(html_path):
 
 
 def inject_concept_symbols(html_path):
-    """Inject ⬡ concept symbol before first 'the Flat' hover-term per chapter."""
+    """Inject concept symbols (⬡◈◉) before first matching hover-term per chapter."""
     html_path = Path(html_path)
     text = html_path.read_text()
 
-    chapter_starts = [m.start() for m in re.finditer(r'<details class="chapter-section', text)]
+    concepts = [
+        {"name": "flat", "anchor": "the-flat"},
+        {"name": "emergence", "anchor": "autocatalytic"},
+        {"name": "custodian", "anchor": "custodian"},
+    ]
+
     seen = defaultdict(set)
-    count = 0
 
-    def _chapter_of(pos):
-        idx = bisect.bisect_right(chapter_starts, pos) - 1
-        return idx if idx >= 0 else -1
+    for concept in concepts:
+        chapter_starts = [m.start() for m in re.finditer(r'<details class="chapter-section', text)]
 
-    def replace_first(m):
-        nonlocal count, text
-        ch = _chapter_of(m.start())
-        if 'flat' in seen[ch]:
-            return m.group(0)
-        preceding = text[max(0, m.start()-500):m.start()]
-        last_open = preceding.rfind('<summary')
-        last_close = preceding.rfind('</summary>')
-        if last_open > last_close:
-            return m.group(0)
-        seen[ch].add('flat')
-        count += 1
-        if ch < 8:
-            phase = 'intro'
-        elif ch < 18:
-            phase = 'reinforce'
-        else:
-            phase = 'fluent'
-        return (f'<span data-concept="flat" data-concept-phase="{phase}" '
-                f'aria-hidden="true"></span>{m.group(0)}')
+        def _chapter_of(pos):
+            idx = bisect.bisect_right(chapter_starts, pos) - 1
+            return idx if idx >= 0 else -1
 
-    pattern = r'<span[^>]*data-hover-id="the-flat"[^>]*>[^<]*</span>'
-    text = re.sub(pattern, replace_first, text)
-    if count:
-        print(f"  Concept symbols: {count} ⬡ placed across {len(chapter_starts)} chapters")
+        cname = concept["name"]
+        anchor = concept["anchor"]
+        count = 0
+
+        def make_replacer(cname_inner, anchor_inner):
+            nonlocal count
+            def replace_first(m):
+                nonlocal count
+                ch = _chapter_of(m.start())
+                if cname_inner in seen[ch]:
+                    return m.group(0)
+                preceding = text[max(0, m.start()-500):m.start()]
+                last_open = preceding.rfind('<summary')
+                last_close = preceding.rfind('</summary>')
+                if last_open > last_close:
+                    return m.group(0)
+                seen[ch].add(cname_inner)
+                count += 1
+                if ch < 8:
+                    phase = 'intro'
+                elif ch < 18:
+                    phase = 'reinforce'
+                else:
+                    phase = 'fluent'
+                return (f'<span data-concept="{cname_inner}" data-concept-phase="{phase}" '
+                        f'aria-hidden="true"></span>{m.group(0)}')
+            return replace_first
+
+        pattern = rf'<span[^>]*data-hover-id="{anchor}"[^>]*>[^<]*</span>'
+        text = re.sub(pattern, make_replacer(cname, anchor), text)
+        if count:
+            symbols = {"flat": "⬡", "emergence": "◈", "custodian": "◉"}
+            sym = symbols.get(cname, "?")
+            print(f"  Concept symbols: {count} {sym} ({cname}) placed across {len(chapter_starts)} chapters")
+
     html_path.write_text(text)
 
 
