@@ -12926,8 +12926,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>73b7588a3ab3d8477130065badd74b72efd36220</code> on 2026-05-03
-15:30:26 -0700.</p>
+<code>bea6c9f00edeed832162e447d83419f7ca55a936</code> on 2026-05-03
+16:10:31 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -12995,7 +12995,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-05-03T23:08:59Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-05-03T23:25:19Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -13006,19 +13006,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>73b7588</code></p>
+<p><code>bea6c9f</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>73b7588a3ab3d8477130065badd74b72efd36220</code></p>
+<p><code>bea6c9f00edeed832162e447d83419f7ca55a936</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-05-03 15:30:26 -0700</p>
+<p>2026-05-03 16:10:31 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-05-03T23:08:59Z</p>
+<p>2026-05-03T23:25:19Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -14078,13 +14078,9 @@ var lightSvg=
 '<text x="712" y="312" fill="#1a5276" font-size="6" font-family="sans-serif" text-anchor="end" opacity="0.12">Argus / S63</text>'+
 '</svg>';
 wrapper.innerHTML=darkSvg+lightSvg;
-var titleExtra=document.querySelector('.title-page-extra');
-if(isPhone&&titleExtra){
-titleExtra.appendChild(wrapper);
-} else{
 nav.appendChild(wrapper);
-if(titleExtra) titleExtra.style.paddingRight=(msWidth+10)+'px';
-}
+var titleExtra=document.querySelector('.title-page-extra');
+if(!isPhone&&titleExtra) titleExtra.style.paddingRight=(msWidth+10)+'px';
 msToggle.addEventListener('click',function(e){
 e.preventDefault();
 var hidden=wrapper.style.display==='none';
