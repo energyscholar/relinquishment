@@ -4070,22 +4070,131 @@ def minify_html_assets(html_path):
 
 
 def inject_concept_symbols(html_path):
-    """Inject concept symbols (⬡◈◉) before first matching hover-term per chapter."""
+    """Inject concept symbols (⬡◈◉) before first matching hover-term per chapter,
+    with adjacent placement for combination chapters and header signatures."""
+    import yaml as _yaml
     html_path = Path(html_path)
     text = html_path.read_text()
+
+    SYMBOL_GLYPHS = {
+        "flat": "⬡", "emergence": "◈", "custodian": "◉",
+        "silence": "⊘", "capabilities": "⚙", "stewardship": "⎈", "services": "⊞",
+    }
 
     concepts = [
         {"name": "flat", "anchor": "the-flat"},
         {"name": "emergence", "anchor": "autocatalytic"},
         {"name": "custodian", "anchor": "custodian"},
     ]
+    active_concepts = {c["name"]: c["anchor"] for c in concepts}
 
+    yaml_path = REPO / 'build' / 'concept-symbols.yaml'
+    with open(yaml_path) as f:
+        sym_cfg = _yaml.safe_load(f)
+    chapter_assignments = sym_cfg.get('chapter_assignments', {})
+    combinations_cfg = sym_cfg.get('combinations', [])
+
+    chapter_starts = [m.start() for m in re.finditer(r'<details class="chapter-section', text)]
+
+    def _chapter_of(pos):
+        idx = bisect.bisect_right(chapter_starts, pos) - 1
+        return idx if idx >= 0 else -1
+
+    def _match_yaml_key(html_id, yaml_keys):
+        for prefix in ('spine:', 'record:'):
+            if html_id.startswith(prefix):
+                suffix = html_id[len(prefix):]
+                break
+        else:
+            suffix = html_id
+        if suffix in yaml_keys:
+            return suffix
+        for p in ('the-', 'what-'):
+            if (p + suffix) in yaml_keys:
+                return p + suffix
+        return None
+
+    def _build_ch_map(txt, ch_starts):
+        """Build chapter index → h2 id mapping."""
+        result = {}
+        for i, start in enumerate(ch_starts):
+            m = re.search(r'<h2[^>]*id="([^"]*)"', txt[start:start+500])
+            if m:
+                result[i] = m.group(1)
+        return result
+
+    ch_id_map = _build_ch_map(text, chapter_starts)
+    ch_index_to_key = {}
+    for i, h2id in ch_id_map.items():
+        key = _match_yaml_key(h2id, chapter_assignments)
+        if key:
+            ch_index_to_key[i] = key
+
+    # seen keyed by h2 id (stable across text mutations), not positional index
     seen = defaultdict(set)
 
+    def _h2id_of(ch_idx, id_map):
+        return id_map.get(ch_idx, f'__ch_{ch_idx}')
+
+    # --- Combination pass: collocate symbols at first anchor for chapters with multiple concepts ---
+    active_combos = [c for c in combinations_cfg if all(s in active_concepts for s in c['symbols'])]
+
+    for combo in active_combos:
+        ch_key = combo['chapter']
+        combo_syms = combo['symbols']
+        ch_idx = None
+        for idx, key in ch_index_to_key.items():
+            if key == ch_key:
+                ch_idx = idx
+                break
+        if ch_idx is None:
+            continue
+        ch_start = chapter_starts[ch_idx]
+        ch_end = chapter_starts[ch_idx + 1] if ch_idx + 1 < len(chapter_starts) else len(text)
+        ch_text = text[ch_start:ch_end]
+
+        # Only inject spans for concepts that have hover-terms in this chapter
+        present = []
+        for s in combo_syms:
+            anchor = active_concepts[s]
+            if re.search(rf'data-hover-id="{re.escape(anchor)}"', ch_text):
+                present.append(s)
+        if not present:
+            continue
+
+        anchors = [active_concepts[s] for s in present]
+        anchor_pattern = '|'.join(re.escape(a) for a in anchors)
+        pattern = rf'<span[^>]*data-hover-id="(?:{anchor_pattern})"[^>]*>[^<]*</span>'
+        first_match = re.search(pattern, ch_text)
+        if not first_match:
+            continue
+        abs_pos = ch_start + first_match.start()
+        preceding = text[max(0, abs_pos - 500):abs_pos]
+        if preceding.rfind('<summary') > preceding.rfind('</summary>'):
+            continue
+        if ch_idx < 8:
+            phase = 'intro'
+        elif ch_idx < 18:
+            phase = 'reinforce'
+        else:
+            phase = 'fluent'
+        spans = ''.join(
+            f'<span data-concept="{s}" data-concept-phase="{phase}" aria-hidden="true"></span>'
+            for s in present
+        )
+        text = text[:abs_pos] + spans + text[abs_pos:]
+        h2id = _h2id_of(ch_idx, ch_id_map)
+        for s in present:
+            seen[h2id].add(s)
+        glyphs = ''.join(SYMBOL_GLYPHS.get(s, '?') for s in present)
+        print(f"  Concept combination: {glyphs} ({'+'.join(present)}) adjacent in {ch_key}")
+
+    # --- Individual concept passes (skip chapters handled by combinations) ---
     for concept in concepts:
         chapter_starts = [m.start() for m in re.finditer(r'<details class="chapter-section', text)]
+        ch_id_map = _build_ch_map(text, chapter_starts)
 
-        def _chapter_of(pos):
+        def _chapter_of_inner(pos):
             idx = bisect.bisect_right(chapter_starts, pos) - 1
             return idx if idx >= 0 else -1
 
@@ -4093,19 +4202,20 @@ def inject_concept_symbols(html_path):
         anchor = concept["anchor"]
         count = 0
 
-        def make_replacer(cname_inner, anchor_inner):
+        def make_replacer(cname_inner, _id_map):
             nonlocal count
             def replace_first(m):
                 nonlocal count
-                ch = _chapter_of(m.start())
-                if cname_inner in seen[ch]:
+                ch = _chapter_of_inner(m.start())
+                h2id = _h2id_of(ch, _id_map)
+                if cname_inner in seen[h2id]:
                     return m.group(0)
                 preceding = text[max(0, m.start()-500):m.start()]
                 last_open = preceding.rfind('<summary')
                 last_close = preceding.rfind('</summary>')
                 if last_open > last_close:
                     return m.group(0)
-                seen[ch].add(cname_inner)
+                seen[h2id].add(cname_inner)
                 count += 1
                 if ch < 8:
                     phase = 'intro'
@@ -4118,11 +4228,40 @@ def inject_concept_symbols(html_path):
             return replace_first
 
         pattern = rf'<span[^>]*data-hover-id="{anchor}"[^>]*>[^<]*</span>'
-        text = re.sub(pattern, make_replacer(cname, anchor), text)
+        text = re.sub(pattern, make_replacer(cname, ch_id_map), text)
         if count:
-            symbols = {"flat": "⬡", "emergence": "◈", "custodian": "◉"}
-            sym = symbols.get(cname, "?")
+            sym = SYMBOL_GLYPHS.get(cname, "?")
             print(f"  Concept symbols: {count} {sym} ({cname}) placed across {len(chapter_starts)} chapters")
+
+    # --- Chapter-header signatures ---
+    chapter_starts = [m.start() for m in re.finditer(r'<details class="chapter-section', text)]
+    ch_index_to_key = {}
+    for i, start in enumerate(chapter_starts):
+        m = re.search(r'<h2[^>]*id="([^"]*)"', text[start:start+500])
+        if m:
+            key = _match_yaml_key(m.group(1), chapter_assignments)
+            if key:
+                ch_index_to_key[i] = key
+
+    sig_count = 0
+    for i in sorted(ch_index_to_key.keys(), reverse=True):
+        key = ch_index_to_key[i]
+        assigned = chapter_assignments[key].get('concepts', [])
+        if not assigned:
+            continue
+        glyphs = ''.join(SYMBOL_GLYPHS.get(c, '') for c in assigned)
+        if not glyphs:
+            continue
+        start = chapter_starts[i]
+        summary_close = text.find('</summary>', start)
+        if summary_close == -1:
+            continue
+        sig_span = f'<span class="chapter-symbols" aria-hidden="true">{glyphs}</span>'
+        text = text[:summary_close] + sig_span + text[summary_close:]
+        sig_count += 1
+
+    if sig_count:
+        print(f"  Chapter signatures: {sig_count} headers annotated")
 
     html_path.write_text(text)
 
