@@ -220,7 +220,7 @@ chapters:
     filter-group: M
 
 parts:
-  "Front Matter": "Start here. The question, the technology stack, and three possible explanations. Ten minutes. Then you decide whether to keep going."
+  "Front Matter": "Start here. The question, the technology stack, and three possibilities. Ten minutes. Then you decide whether to keep going."
   "The Flat": "This book coins the Flat to mean 'any two-dimensional system embedded in three dimensions that can, under the right conditions, exhibit topological order.' Say that three times fast. Or say 'Flat.' Different physics apply. In particular, it supports topological wormholes. Thus, the Flat can be nonlocal in the technical physics sense. The Flat inside your computer chip is a 2DEG (two-dimensional electron gas). The Flat in Earth's magnetosphere is plasma confined to thin current sheets. We call the ocean floor the Deep and the emptiness between galaxies the Void. This book calls those thin worlds the Flat. It's unclear what temperature range and conditions permits Flat behavior."
   "The Record": "One man's account of meeting someone mythical. Capabilities observed. A secret kept for twenty years. Testimony, not proof. The reader decides."
   "Appendices": "A firmware upgrade for your AI: teach your AI the science it needs to competently evaluate the scientific claims in this book. Predictions with deadlines. A timeline back to 1873. What the author got wrong. How to verify everything yourself. A glossary, a topic guide, a colophon, and the acknowledgements nobody reads but everyone deserves."
