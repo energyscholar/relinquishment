@@ -66,7 +66,7 @@
   nav.style.cssText = 'position:sticky;bottom:0;left:0;right:0;' +
     'background:rgba(248,248,248,0.97);border-top:1px solid #ddd;' +
     'padding:0.3em 0.8em;display:flex;justify-content:space-between;' +
-    'align-items:center;font-size:0.8em;z-index:100;backdrop-filter:blur(4px);overflow:visible;';
+    'align-items:center;font-size:0.8em;z-index:100;backdrop-filter:blur(4px);';
 
   // Left: Breadcrumb
   var breadcrumb = document.createElement('span');
@@ -507,9 +507,9 @@
     var wrapper = document.createElement('div');
     wrapper.id = 'cover-magnetosphere';
     wrapper.setAttribute('aria-hidden', 'true');
-    wrapper.style.cssText = 'position:absolute;bottom:calc(100% - 15px);right:0;' +
+    wrapper.style.cssText = 'position:fixed;right:0;' +
       'width:' + msWidth + 'px;' +
-      'pointer-events:none;z-index:1;opacity:0.85;transition:opacity 0.3s;';
+      'pointer-events:none;z-index:99;opacity:0.85;transition:opacity 0.3s;';
 
     var darkSvg =
       '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" id="cover-ms-dark" width="100%">' +
@@ -757,9 +757,13 @@
       '</svg>';
 
     wrapper.innerHTML = darkSvg + lightSvg;
-    nav.appendChild(wrapper);
     var titleExtra = document.querySelector('.title-page-extra');
-    if (titleExtra) titleExtra.style.paddingRight = (msWidth + 10) + 'px';
+    if (titleExtra) {
+      var rect = titleExtra.getBoundingClientRect();
+      wrapper.style.top = rect.top + 'px';
+      titleExtra.style.paddingRight = (msWidth + 10) + 'px';
+    }
+    document.body.appendChild(wrapper);
 
     msToggle.addEventListener('click', function(e) {
       e.preventDefault();
@@ -793,6 +797,15 @@
         scrollHidden = false;
       }
     });
+
+    var bookSection = document.querySelector('details.book-section');
+    if (bookSection) {
+      bookSection.addEventListener('toggle', function() {
+        if (bookSection.open) {
+          wrapper.style.opacity = '0';
+        }
+      });
+    }
   })();
 
   // --- Breadcrumb update on scroll ---
