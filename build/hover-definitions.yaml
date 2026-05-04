@@ -586,6 +586,8 @@ topological insulator: "A material that is insulating inside but conducting on i
 graphene: "A single atom-thick layer of carbon arranged in a hexagonal lattice. A natural two-dimensional electron gas. The material where FQHE was demonstrated outside GaAs — proving substrate independence (Anchor 1)."
 
 # Reserved: only appears in appendix (firmware-update.tex). No body-chapter placement available.
+no ant in charge: "The queen produces pheromones that regulate reproduction, but she does not direct the colony's organized behavior. Foraging patterns, nest architecture, and defense all emerge from local worker-to-worker interactions. The queen is a reproductive specialist, not a manager. This is the defining feature of self-organization: global order from local rules."
+
 no-cloning theorem: "You cannot copy an unknown quantum state. Wootters & Zurek (1982). Fundamental limit — but it forbids copying unknowns, not fabricating known classical structures. Narrower than it sounds. Protects quantum cryptography."
 
 # --- The Handler chapter: Clancy / Rainbow Six ---
