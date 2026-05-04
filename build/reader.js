@@ -507,7 +507,9 @@
     var wrapper = document.createElement('div');
     wrapper.id = 'cover-magnetosphere';
     wrapper.setAttribute('aria-hidden', 'true');
-    wrapper.style.cssText = 'position:fixed;right:0;' +
+    var bodyRect = document.body.getBoundingClientRect();
+    var rightOffset = Math.max(0, window.innerWidth - bodyRect.right);
+    wrapper.style.cssText = 'position:fixed;right:' + rightOffset + 'px;' +
       'width:' + msWidth + 'px;' +
       'pointer-events:none;z-index:99;opacity:0.85;transition:opacity 0.3s;';
 
