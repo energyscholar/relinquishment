@@ -97,6 +97,16 @@ sections:
     conclusion: "'Hot' in a collisionless plasma doesn't mean 'thermally noisy.' The noise that destroys quantum states is orders of magnitude quieter than the kinetic temperature."
     status: approved
 
+  - title: "Why Call It Two-Dimensional?"
+    spine_file: manuscript/spine/the-wrong-substrate.tex
+    spine_label: "spine:ws-quasi-2d"
+    bridge_file: manuscript/track-3-awakening/pos32-the-magnetosphere.tex
+    bridge_label: "pos32:ws-quasi-2d"
+    assessment: GA-AVERSE
+    tooltip: "Charged particles in the plasma sheet move in 3D helical orbits — so why call it two-dimensional? Because when the current sheet thins below the ion gyroradius, ions can no longer complete a full orbit. Their dynamics become quasi-two-dimensional. Established magnetospheric physics."
+    conclusion: "The plasma sheet is not a 2DEG, but its geometry produces quasi-2D ion dynamics at substorm scales — the same dimensional reduction pattern, different mechanism."
+    status: approved
+
   - title: "Theoretical Biology of the Flat"
     spine_file: manuscript/spine/the-wrong-substrate.tex
     spine_label: "spine:ws-flat-taxonomy"
