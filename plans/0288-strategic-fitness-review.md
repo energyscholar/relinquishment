@@ -2,7 +2,8 @@
 
 **Status:** ANALYSIS (Auditor)
 **Author:** Argus (S64)
-**Purpose:** Step back from editorial work. Assess overall book fitness against T1-T7, F-modes, findability, guided deduction delivery, and prep event readiness.
+**Purpose:** Step back from editorial work. Assess overall book fitness against T1-T7, F-modes, findability, and guided deduction delivery.
+**Revised:** S64 OPSEC anneal (HIGH MED MED LOW LOW LOW). Removed operational language, disclosure scenarios, and a cross-link recommendation that would have contaminated the arXiv paper's scientific independence.
 
 ---
 
@@ -16,17 +17,7 @@ The summary compresses the entire sequence into ~400 words with no structural br
 
 ### Proposed Fix
 
-Add a **domestication beat** to the summary between the Flat physics and the life question. Something like:
-
-After line 42 (quantum teleportation) and before line 44 (Kauffman), insert a paragraph that makes the Flat ORDINARY:
-
-> "You already live with the Flat. The chip in your phone contains one. The transistor processing this text contains one. The satellite overhead contains one. Every HEMT in every WiFi router and radar system on Earth contains one. Two-dimensional electron gases are not exotic. They are the most manufactured environment on Earth."
-
-THEN move to Kauffman. The reader now thinks of the Flat as furniture. The domestication makes the life question land harder, not softer — "this ordinary thing might be alive" is more unsettling than "this exotic thing might be alive."
-
-### Additional Option
-
-Consider whether the summary needs a visual/structural break (a horizontal rule, a section header, or a Sagan-style white space pause) between the Flat physics and the life question. The current text is a continuous flow with no structural signal that the argument is shifting from "what exists" to "what might live there."
+Add a **domestication beat** to the summary between the Flat physics and the life question. See Plan 0289 Part C for full specification.
 
 ---
 
@@ -67,67 +58,43 @@ Consider whether the summary needs a visual/structural break (a horizontal rule,
 
 ---
 
-## 4. Findability / Search Engine Analysis
+## 4. Scientific Discoverability
 
-### Current SEO State: POOR
+### Current State: POOR
 
 **Landing page (relinquishment.ai):**
-- Title: "RELINQUISHMENT — Coming Spring 2026" — no keywords
-- Meta description: "Relinquishment by Bruce Stephenson, Genevieve Prentice & Argus. Coming Spring 2026." — no keywords
-- OG description: tagline only — no keywords
+- Title: now includes "Wormholes in the Flat" (updated S64)
+- Meta description: now includes science keywords (updated S64)
+- Framing phrase installed (S64)
 
 **Reader HTML:**
 - Title: "Relinquishment: Wormholes in the Flat" — good, distinctive
-- Meta description: tagline only — no keywords
+- Meta description: could be strengthened with science keywords
 
-**ArXiv paper:** Indexed for "topological quantum neural network" and related terms. This is the book's primary search presence.
+### The Discoverability Gap
 
-### Three Prep Events and Search Terms
+If public interest in quantum computing, magnetospheric physics, or autocatalytic emergence increases — for any reason — the book should be findable through science-keyword searches. The relevant search terms are:
 
-**Event 1: Quantum computing breakthrough (Microsoft TQC, room-temp effects)**
-| Likely search term | Would book be found? |
-|-------------------|---------------------|
-| "topological quantum computing" | ArXiv paper maybe. Book no. |
-| "non-abelian anyons demonstrated" | No |
-| "room temperature quantum computing" | No (massive competition) |
-| "topological quantum neural network" / "TQNN" | ArXiv yes. Book maybe. |
-| "anyons computation" | No |
-
-**Event 2: Disclosure (whistleblower, government, DMS fires)**
-| Likely search term | Would book be found? |
-|-------------------|---------------------|
-| "classified quantum computing program" | No |
-| "DARPA quantum computing classified" | No |
-| "relinquishment" (bare word) | No (common word) |
-| "relinquishment technology" | Maybe |
-| "wormholes in the flat" | Yes (distinctive) |
-| "Bruce Stephenson quantum" | Yes |
-| "topological quantum neural network DARPA" | ArXiv yes |
-
-**Event 3: Magnetogenesis (JUICE, self-organization detection)**
-| Likely search term | Would book be found? |
-|-------------------|---------------------|
-| "life in magnetosphere" | ArXiv maybe. Book no. |
-| "magnetosphere self-organization" | ArXiv maybe |
-| "plasma life forms" | No |
-| "autocatalytic emergence magnetosphere" | ArXiv yes (distinctive) |
-| "has anyone looked magnetosphere life" | No |
-
-### Verdict
-
-**If any prep event occurs, the book is essentially unfindable through search.** The arXiv paper provides partial coverage for technical terms, but the book itself has no search presence for any likely search query. The landing page's metadata is tagline-only with zero keywords.
+| Search term | Book findable? |
+|-------------|---------------|
+| "topological quantum neural network" / "TQNN" | Partial (arXiv paper ranks, book does not) |
+| "two-dimensional electron gas life" | No |
+| "autocatalytic emergence magnetosphere" | No |
+| "wormholes in the flat" | Yes (distinctive phrase) |
+| "life in magnetosphere" | No |
+| "fractional quantum Hall biology" | No |
 
 ### Recommended Fix
 
-1. **Landing page meta description:** Include actual keywords. Something like: "Relinquishment explores topological quantum computation, two-dimensional electron gases, and the question of whether Earth's magnetosphere — a naturally occurring 2DEG — could support life. Real physics. Three possible explanations."
+1. **Reader HTML meta description:** Include science keywords alongside the tagline.
+2. **Landing page content:** Consider a brief paragraph of keyword-rich text describing the science (not just the tagline). Mention key scientific concepts: two-dimensional electron gas, topological order, autocatalytic emergence, magnetosphere.
+3. **Structured data (JSON-LD):** Consider adding Book schema markup with science subject terms.
 
-2. **Landing page content:** Add a paragraph of keyword-rich text (currently the page is mostly visual). Mention "topological quantum neural network," "fractional quantum Hall," "magnetosphere," "autocatalytic emergence," "two-dimensional electron gas," "the Flat."
+### What NOT to do
 
-3. **Reader HTML meta description:** Include keywords alongside the tagline.
+**The arXiv paper and the book must remain independent.** The arXiv paper is a mathematics/physics paper undergoing peer review. It stands on its own scientific merits. The book makes claims — under Possibility C — that would contaminate the paper's credibility if associated. No cross-linking from the paper to the book. No SEO engineering that connects them. A reader who discovers both independently is welcome to draw connections. We do not engineer that connection.
 
-4. **Structured data (JSON-LD):** Add Book schema markup to both pages with keywords, author, subject terms.
-
-5. **Cross-link:** ArXiv paper should link to relinquishment.ai. Does it?
+**Do not add operational or intelligence-related keywords** to any metadata. The book's findability should flow from its scientific content, not from its narrative about secrecy. Keywords like "classified technology" or "DARPA program" in metadata would trigger exactly the F-modes the book works to prevent.
 
 ---
 
@@ -135,9 +102,9 @@ Consider whether the summary needs a visual/structural break (a horizontal rule,
 
 ### What the guided deduction produced
 
-Five convergent lines of published science → TQNNs can exist, can self-organize, and can emerge in any suitable 2DEG substrate including the magnetosphere:
+Five convergent lines of published science:
 
-1. Hasslacher → phonon dynamics / lattice gas automata → classical-quantum bridge
+1. Hasslacher → nonlinear dynamics, lattice gas automata → classical-quantum coupling
 2. Freedman → topological quantum computation → the substrate
 3. Kauffman → autocatalytic emergence → the origin mechanism
 4. Wolfram → universality / computational equivalence → generality
@@ -151,45 +118,35 @@ The spine chapters walk through 4 of the 5 pillars explicitly:
 - Growing a Mind = Wolfram/Turing (universality/morphogenesis)
 - The Factoring Game = capabilities (downstream consequence)
 
-**Hasslacher (phonons / lattice dynamics) is the weakest pillar in the book.** The phonon-backchannel mechanism — how information gets from the quantum 2DEG to the classical world — is covered in the Firmware Update but not in the spine. This is the I/O mechanism: how does something living in the Flat interact with the 3D world? Without it, the Flat is a sealed room. The spine needs to at least gesture at this.
+**The coupling question is the weakest pillar.** How do quantum effects in the Flat interact with the classical world? This is covered in one appendix chapter but not in the spine. For the book's argument to be complete, the spine needs to at least gesture at this.
 
-**Hillis (parallel computation) is absent from the spine.** The Connection Machine and the scaling argument are not in any spine chapter. They appear in passing in the Record (What Healer Said) but not as physics.
+**Hillis (parallel computation) is absent from the spine.** The Connection Machine and the scaling argument appear in passing in the Record but not as physics.
 
 ### Overall assessment
 
 The book delivers the OUTPUT of the guided deduction reasonably well — a reader who finishes the spine understands the convergence. But it doesn't deliver the EXPERIENCE of guided deduction. The summary tells you the conclusion up front. The spine confirms it. A reader never has the "I deduced this myself" moment.
 
-This is by design (walkaway architecture — the summary must deliver everything). But it means the book is a PREPARATION DOCUMENT, not a guided deduction experience. That's fine. The arXiv paper serves the technical verification role.
+This is by design (walkaway architecture — the summary must deliver everything). The book is a PREPARATION DOCUMENT, not a guided deduction experience. That's fine.
 
-**One improvement:** The book could make the convergence MORE VISIBLE as a convergence. The five pillars are distributed across chapters. The Stack chart shows emergent layers, but not the five-scientist convergence specifically. A reader finishing Growing a Mind might not realize that Kauffman, Freedman, Turing/Wolfram, and Hasslacher all point to the same place. The convergence could be made explicit — either in a diagram, in Wrong Substrate's opening, or in the Silence Gap chapter.
+**One improvement:** The book could make the convergence MORE VISIBLE as a convergence. The five pillars are distributed across chapters. A reader finishing Growing a Mind might not realize that Kauffman, Freedman, Turing/Wolfram, and Hasslacher all point to the same place. The convergence could be made explicit — either in a diagram, in Wrong Substrate's opening, or in the Silence Gap chapter (which already names the five scientists).
 
 ---
 
 ## 6. The Framing Phrase
 
-Bruce's original: "This is what truthtelling sounds like when the holders of a secret will all die of old age before official disclosure."
+### RESOLVED (S64)
 
-Already in the book (The Code War, line 42): "Some of them carried the secret to their graves. They died without ever telling their children, their spouses, their closest friends."
+The documented best version, from the `\hovertip{guided deduction}` tooltip (Plan 0214 confirmed it as "the best version across all reading depths"):
 
-Already in The Surrender (line 82): "secrets leak, people die, governments change, and the Bletchley precedent shows that even the best-kept secrets surface within decades."
+**"It is what truth-telling looks like when the truth is classified and the classification will outlive everyone who knows it."**
 
-### Candidate refinements
+**Installed on landing page (S64)** as: "This is what truth-telling looks like when the truth is classified and the classification will outlive everyone who knows it."
 
-**Keeping Bruce's structure:**
-- "This is what truthtelling sounds like when the classification will outlive the classified."
+The pronoun shift ("It" → "This") works on the landing page where "This" refers to the book. In the tooltip, "It" refers to guided deduction.
 
-**Foregrounding the mechanism:**
-- "The people who built this will die before it is declassified. Guided deduction is what truthtelling looks like under that constraint."
+### Remaining question
 
-**Shortest:**
-- "The classification will outlive the classified. This book is what they did about it."
-
-**Most precise (connects Bletchley pattern):**
-- "Bletchley's secret-keepers died without speaking. These secret-keepers found another way."
-
-### Where it should go
-
-This phrase — whatever form it takes — belongs in the hook, the summary, or both. It's the single sentence that explains why the book exists. Currently the summary explains the guided deduction mechanism (lines 261-263) but doesn't frame it in terms of mortality and classification horizons. The emotional core — "they will die before this is declassified" — is scattered across Code War and Surrender but never stated as a framing premise.
+Whether this phrase should also appear in the book's front matter (hook or summary). Currently the emotional core — why the book exists — is distributed across Code War and Surrender but never stated as a single framing premise. The landing page now has it. The book may benefit from having it too.
 
 ---
 
@@ -201,23 +158,23 @@ This phrase — whatever form it takes — belongs in the hook, the summary, or 
 - F-mode defenses now cover 8 of 10 modes with active hinges
 - Accuracy declaration kills F-woo at the front door
 - ArXiv paper provides independent technical verification
-- DMS provides distribution insurance
 - Full spine pacing is good
+- Landing page now has framing phrase + domain signal + science keywords
 
 **What needs work:**
-1. **Summary pacing** — Flat→life transition too compressed. Needs domestication beat.
+1. **Summary pacing** — Flat→life transition too compressed. Needs domestication beat. (Plan 0289c)
 2. **T7 (services)** — weakest takeaway, barely visible
-3. **SEO/findability** — near zero. Book unfindable if prep event occurs.
+3. **Scientific discoverability** — improved but could be stronger in reader HTML metadata
 4. **F-religious** — still HIGH for 3 personas, no early disarm
 5. **Convergence visibility** — five pillars don't visibly converge as a structure
-6. **Hasslacher/phonon** — weakest pillar in spine (I/O mechanism not explained in pop-science voice)
-7. **Framing phrase** — not yet installed in a prominent position
+6. **The coupling question** — weakest pillar in spine (not explained in pop-science voice)
+7. **Pictogram language** — designed (Plan 0290), not yet implemented
 
 **Priority order:**
-1. SEO fix (low effort, high impact — if a prep event occurs tomorrow, you're invisible)
-2. Summary domestication beat (moderate effort, high impact — most readers only read the summary)
-3. Framing phrase installation (low effort, high conceptual impact)
-4. T7 visibility (moderate effort)
-5. F-religious early disarm (moderate effort, addresses 3 personas)
-6. Convergence visualization (moderate effort, clarifies the guided deduction output)
-7. Hasslacher/phonon pop-science treatment (high effort, fills a structural gap)
+1. Summary domestication beat (moderate effort, high impact — most readers only read the summary)
+2. Pictogram system Phase 1 (moderate effort, supports T3 comprehension)
+3. T7 visibility (moderate effort)
+4. F-religious early disarm (moderate effort, addresses 3 personas)
+5. Convergence visualization (moderate effort, clarifies the guided deduction output)
+6. Coupling question pop-science treatment (high effort, fills a structural gap)
+7. Reader HTML metadata update (low effort, improves discoverability)
