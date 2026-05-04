@@ -12963,8 +12963,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>afccf49725dd6b56bdf9163fe41b190802e3ae69</code> on 2026-05-04
-00:26:25 -0700.</p>
+<code>0466b8d35fe1b018b3c02af789ec2b4a1866a44f</code> on 2026-05-04
+02:27:47 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -13032,7 +13032,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-05-04T09:26:19Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-05-04T11:49:05Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -13043,19 +13043,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>afccf49</code></p>
+<p><code>0466b8d</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>afccf49725dd6b56bdf9163fe41b190802e3ae69</code></p>
+<p><code>0466b8d35fe1b018b3c02af789ec2b4a1866a44f</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-05-04 00:26:25 -0700</p>
+<p>2026-05-04 02:27:47 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-05-04T09:26:19Z</p>
+<p>2026-05-04T11:49:05Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -13862,7 +13862,9 @@ var motionOk=!(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: re
 var wrapper=document.createElement('div');
 wrapper.id='cover-magnetosphere';
 wrapper.setAttribute('aria-hidden','true');
-wrapper.style.cssText='position:fixed;right:0;'+
+var bodyRect=document.body.getBoundingClientRect();
+var rightOffset=Math.max(0,window.innerWidth-bodyRect.right);
+wrapper.style.cssText='position:fixed;right:'+rightOffset+'px;'+
 'width:'+msWidth+'px;'+
 'pointer-events:none;z-index:99;opacity:0.85;transition:opacity 0.3s;';
 var darkSvg=
