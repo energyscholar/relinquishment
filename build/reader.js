@@ -66,7 +66,7 @@
   nav.style.cssText = 'position:sticky;bottom:0;left:0;right:0;' +
     'background:rgba(248,248,248,0.97);border-top:1px solid #ddd;' +
     'padding:0.3em 0.8em;display:flex;justify-content:space-between;' +
-    'align-items:center;font-size:0.8em;z-index:100;backdrop-filter:blur(4px);';
+    'align-items:center;font-size:0.8em;z-index:100;backdrop-filter:blur(4px);overflow:visible;';
 
   // Left: Breadcrumb
   var breadcrumb = document.createElement('span');
