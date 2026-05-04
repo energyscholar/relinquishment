@@ -4,6 +4,8 @@
 **Author:** Auditor (Argus S64)
 **Priority:** HIGH — addresses T3 pacing, F-woo/F-crank/F-religious simultaneously
 **Origin:** S64 strategic review. Bruce: "we drop into can the Flat support life too soon"
+**Connects to:** Plan 0290 (taxonomy section carries ⬡◈ pictogram combination)
+**Annealed:** HIGH → MED → LOW (S64)
 
 ---
 
@@ -30,9 +32,7 @@ A theoretical biology section presenting three categories of possible Flat life:
 
 **Option 1: New section in Wrong Substrate** — after the "Not Aliens" section, before the chapter return. Wrong Substrate already has Earth's MS (lines 148-159) and Jupiter's MS (lines 159-165). Add a taxonomy section that organizes what's already there + adds the engineered type.
 
-**Option 2: New short chapter between Wrong Substrate and Silence Gap.** Title: "Theoretical Biology of the Flat" or simply "The Taxonomy." Cleanest separation, but adds a chapter.
-
-**Recommendation: Option 1** — keep in Wrong Substrate. It belongs with the habitat argument. The chapter already presents Earth and Jupiter; the taxonomy formalizes what's implied and adds the engineered type.
+**Recommendation: Option 1.** It belongs with the habitat argument. The chapter already presents Earth and Jupiter; the taxonomy formalizes what's implied and adds the engineered type.
 
 ### Collapsible treatment
 
@@ -57,6 +57,19 @@ This is the teaching trick: the closed section signals "there's more here when y
     status: approved
 ```
 
+### Pictogram connection (Plan 0290)
+
+The taxonomy section is where ⬡◈ (Flat + emergence) first appears as an explicit combination. Once Plan 0290 Phase 3 ships, this section carries the ⬡◈ signature in its chapter header and inline.
+
+### C-violation check
+
+All three types are valid under all three possibilities:
+- Under A: theoretical categories, all empty
+- Under B: theoretical categories, possibly one partially occupied
+- Under C: theoretical categories, one definitely occupied (engineered/grown), others possibly occupied
+
+No C-violation. The taxonomy describes *possible* types, not claims about what exists.
+
 ---
 
 ## Part B: Science Badge Visibility Improvements
@@ -73,11 +86,10 @@ A new reader doesn't know what this visual language means. It says "here's a col
 
 ### Fix 1: Make the science badge more prominent
 
-Options (Bruce to choose):
-1. **Increase checkmark opacity** from 0.7 to 1.0 and size from 0.8em to 0.95em
-2. **Add a label** next to the checkmark: "✔ Verified science" instead of just "✔"
-3. **Stronger border** — 3px → 4px, and consider a subtle gold background tint on the summary line itself
-4. **First occurrence only:** Add a brief inline explanation on the FIRST tech-section the reader encounters: "Sections marked ✔ contain verified science — published, peer-reviewed physics. Expand if curious; skip without losing the story."
+**Recommended (combined):**
+1. Increase checkmark opacity from 0.7 to 1.0 and size from 0.8em to 0.95em
+2. First occurrence only: add a brief inline explanation on the FIRST tech-section the reader encounters: "Sections marked ✔ contain verified science — published, peer-reviewed physics. Expand if curious; skip without losing the story."
+3. Border 3px → 4px for slightly stronger visual anchoring
 
 ### Fix 2: Checkmark tooltip tied to accuracy declaration
 
@@ -87,9 +99,27 @@ Options (Bruce to choose):
 
 This echoes the accuracy declaration from Plan 0287 and ties the science badge directly to the F-woo defense. Every green check becomes a micro-accuracy-declaration.
 
-### Fix 3: Tooltip for the checkmark itself
+### Fix 3: Checkmark hover target
 
-Currently `.tech-grade` has `cursor: help` but uses the section-level `data-hover` tooltip. If a reader hovers specifically on the ✔, they should get the accuracy tooltip. This already works via the `data-hover` attribute on the span — but the hover target is small (the ✔ character). Consider making the hover target slightly larger with padding.
+Currently `.tech-grade` has `cursor: help` but the hover target is small (the ✔ character). Add padding: `padding: 0 0.3em;` to make the hover target larger without affecting layout.
+
+### Consistency with Plan 0290
+
+The tech-section tooltip uses `title` attribute — same mechanism as concept symbol tooltips. Both use the same interaction pattern (hover → tooltip). The reader learns one interaction model for all visual annotations.
+
+### Generator spec
+
+**File:** `preprocess.py`
+
+**CSS changes (in the tech-section CSS block, lines ~900-980):**
+- `.tech-grade::after` — change `opacity: 0.7` → `1.0`, `font-size: 0.8em` → `0.95em`
+- `.tech-grade` — add `padding: 0 0.3em;`
+- `details.tech-section` — change `border-left: 3px` → `4px`
+- `details.tech-borderline` — change `border-left: 3px` → `4px`
+
+**Tooltip change:** In `collapse_tech_sections()` function, update the default tooltip string used in `data-hover` attribute.
+
+**First-occurrence annotation:** In `collapse_tech_sections()`, track whether this is the first tech-section in the document. If so, inject a `<span class="tech-first-note">` after the summary with the explanation text. Add CSS for `.tech-first-note` (small, italic, muted).
 
 ---
 
@@ -123,19 +153,34 @@ Then move the "Every claim above" line (currently at 48) UP to here:
 
 > Every claim above is published, peer-reviewed physics. Two-dimensional electron gases are in every chip you own. Topological order is established mathematics. None of this is speculative.
 
-**[Structural break — horizontal rule or breathing space]**
+**[Structural break — `\bigskip` or `\vspace{1cm}` or horizontal rule]**
 
 **Phase 2: "The Question" (T3 — SEED, not full delivery)**
 
 Expanded Kauffman bridge (from 1 sentence to a short paragraph):
 
-> A question follows from the physics. The mathematician Stuart Kauffman showed that in any sufficiently complex system with continuous energy input, self-sustaining organization arises spontaneously — not by design, but by phase transition. This is established mathematics. The Flat meets those conditions. So does Earth's magnetosphere — a naturally occurring Flat, billions of years old, energized continuously by the solar wind.
+> A question follows from the physics. The mathematician Stuart Kauffman showed that in any sufficiently complex system with continuous energy input, self-sustaining organization arises spontaneously — not by design, but by crossing a complexity threshold. This is established mathematics. The Flat meets those conditions. So does Earth's magnetosphere — a naturally occurring Flat, billions of years old, energized continuously by the solar wind.
 
 Then the question (not the answer):
 
 > Whether anything lives in the Flat — whether self-organization has occurred in these ancient, energized, two-dimensional substrates — is the question this book investigates. The evidence, the silence, and the taxonomy of what could theoretically exist there are examined in the chapters that follow.
 
 This is T3 as SEED. The spine delivers the full argument. The summary delivers the question.
+
+### Kauffman naming constraint
+
+**CRITICAL:** Every reference to Kauffman in the summary must use "The mathematician Stuart Kauffman" on first mention. Never "Kauffman's framework" or "Kauffman's mathematics" before he's introduced. The p2 reader who only reads the summary has never met him. 98% of readers have never heard of him.
+
+The spine (Genesis chapter) gives him a full multi-paragraph introduction. But the summary is a separate walkaway layer — it must self-contain every introduction.
+
+**Generator instruction:** If any Kauffman reference in the summary precedes "The mathematician Stuart Kauffman showed...", the Generator must flag it. No bare "Kauffman" before the introduction.
+
+### Annealing note on "phase transition" vs "complexity threshold"
+
+The current summary (line 44) uses "complexity threshold" — accessible to p2 readers.
+The proposed Phase 2 text originally used "phase transition" — physics jargon, harder.
+
+**Refined:** Changed to "crossing a complexity threshold" to maintain p2 accessibility. The spine (Genesis) can use "phase transition" with full explanation. The summary uses the simpler term.
 
 ### What this gives up
 
@@ -144,9 +189,18 @@ Full T3 delivery in the summary. The Kauffman argument, the thermal objection de
 - T3 as seed: the question exists, it's worth asking, the book investigates it
 - Everything else unchanged
 
+### Impact by reader type
+
+| Reader type | Current experience | After restructure | Net |
+|-------------|-------------------|-------------------|-----|
+| Quick-exit (W0-W2) | Flat→life compressed, may trigger F-woo | Gets Flat domesticated, encounters T3 as question | **Better** — less trigger, same seed |
+| Summary reader (W3) | Gets compressed T3 argument | Gets T3 seed, pointed to spine | **Better** — no premature closure |
+| Spine reader (W4-W6) | Gets full T3 in spine anyway | Same | **Unchanged** |
+| Net | Compressed T3 in summary + full T3 in spine | T3 seed in summary + full T3 in spine | **Net positive** — current compressed version is worse than a clean seed because it triggers F-woo before the reader is ready |
+
 ### What this gains
 
-- **Reader absorbs the Flat BEFORE encountering the life question.** The domestication beat + accuracy checkpoint + structural break create step 5 (breathing room).
+- **Reader absorbs the Flat BEFORE encountering the life question.** The domestication beat + accuracy checkpoint + structural break create breathing room.
 - **F-woo reduced:** The accuracy checkpoint sits between the physics and the life question. The reader's frame is "verified science" when they encounter the habitat question.
 - **F-crank reduced:** The life claim in the summary is now a question, not an assertion. Chen sees "investigates" not "argues."
 - **F-religious reduced:** The life claim is softer in the summary. Pastor Mike encounters a question, not a declaration.
@@ -175,26 +229,67 @@ Split into two beats:
 
 Small change, big effect. "Your chip" → beat → "also nature." The reader domesticates FIRST.
 
+### Generator spec
+
+**File:** `manuscript/00-front/hook.tex`, line 30.
+
+Find the sentence containing "They are inside every computer chip you own. Earth's magnetic field has held them for billions of years."
+
+Replace with:
+```
+They are inside every computer chip you own.
+
+Those same flat worlds also occur naturally. Earth's magnetic field has held them for billions of years.
+```
+
+The blank line in LaTeX produces a paragraph break — a visual breath.
+
 ---
 
 ## Execution Plan
 
-This is a multi-phase plan. Bruce to decide scope and priority:
+### Phase 1: Badge visibility (Plan 0289a) — mechanical, ship immediately
 
-1. **Science badge visibility** — CSS changes + tooltip update (small, mechanical)
-2. **Summary pacing restructure** — editorial (needs Bruce's voice, Auditor plans, Generator executes)
-3. **Hook line 30 split** — one-line editorial fix
-4. **Flat Life Taxonomy section** — new content in Wrong Substrate (needs Bruce's voice + careful A/B/C handling)
-5. **tech-collapse.yaml entry** for taxonomy section
+- CSS: checkmark opacity, size, border, hover padding
+- Tooltip: update default tooltip text
+- First-occurrence: annotation on first tech-section
+- **File:** preprocess.py only
+- **Test:** Build, verify ✔ is more visible, tooltip shows accuracy language
+- **Commit:** `Plan 0289a: science badge visibility`
+
+### Phase 2: Hook fix (Plan 0289b) — one-line editorial, ship immediately
+
+- Split line 30 into two beats
+- **File:** hook.tex only
+- **Test:** Build, verify hook reads with a breath between chip and magnetosphere
+- **Commit:** `Plan 0289b: hook pacing fix`
+
+### Phase 3: Summary restructure (Plan 0289c) — editorial, needs Bruce's voice
+
+- Add domestication beat
+- Move accuracy checkpoint
+- Move "every claim above" line
+- Add structural break
+- Expand Kauffman bridge (keep full introduction: "The mathematician Stuart Kauffman")
+- Replace habitat claim with T3 question/seed
+- **File:** summary.tex
+- **Test:** Read full summary aloud. Check: does the reader have time to absorb the Flat before encountering the life question? Does the Kauffman bridge work as an introduction for someone who's never heard of him?
+- **Commit:** `Plan 0289c: summary pacing restructure — T3 as seed`
+
+### Phase 4: Taxonomy section (Plan 0289d) — new content, needs Bruce's voice + A/B/C check
+
+- Write taxonomy section in Wrong Substrate
+- Default closed with tech-section treatment
+- Add tech-collapse.yaml entry
+- Run C-violation check on all three types
+- **File:** the-wrong-substrate.tex + build/tech-collapse.yaml
+- **Test:** Build, verify section is collapsed by default, shows ✔, tooltip correct. Verify all three types are valid under A, B, and C.
+- **Commit:** `Plan 0289d: Flat life taxonomy section`
 
 ### Dependencies
 
-- Part B (badge visibility) is independent — can ship now
-- Part C (summary restructure) and Part D (hook fix) are independent of each other
-- Part A (taxonomy) depends on Part C landing first (reader needs the pacing fix before encountering the taxonomy)
-
-### Commit plan
-
-- Phase 1: Badge visibility (Plan 0289a)
-- Phase 2: Hook fix + Summary restructure (Plan 0289b)
-- Phase 3: Taxonomy section + collapse entry (Plan 0289c)
+- Phase 1 (badge visibility) is independent — ship now
+- Phase 2 (hook fix) is independent — ship now
+- Phase 3 (summary restructure) is independent of 1 and 2
+- Phase 4 (taxonomy) depends on Phase 3 landing first (reader needs the pacing fix before encountering the taxonomy)
+- Phase 4 also benefits from Plan 0290 Phase 3 (pictogram combinations), but does not require it
