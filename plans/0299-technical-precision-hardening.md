@@ -301,10 +301,26 @@ git push
 - [ ] Voice consistent: first-person observation where Bruce witnesses, explicit reconstruction where he infers, three-possibilities-aware where claims are made
 - [ ] No C-violations (all changes hold under A, B, and C)
 
+## Addendum: The Deep Learning Gap
+
+**Status:** UNRESOLVED — Bruce flagged, no placement decision yet.
+
+**Problem:** The book claims a TQNN does something no classical neural network can. In 2012, that claim faced mild headwinds. In 2026, with LLMs demonstrating remarkable emergent capabilities from classical architectures, the headwind is a gale. A sophisticated reader will ask: "If classical deep learning already produces language, reasoning, and apparent understanding from matrix multiplication on GPUs, why do you need quantum mechanics at all?"
+
+The book currently states the distinction (a QNN is computationally equivalent to a quantum computer; a classical NN is not) but does not ARGUE it at p2 level. The logical chain exists — Freedman-Kitaev-Wang universality means the QNN accesses computational primitives that classical NNs provably cannot (BQP ⊋ BPP, assuming standard complexity conjectures) — but this chain is not spelled out for a reader who just watched GPT-4 write poetry.
+
+**What the book needs (not yet specified WHERE):**
+- 1-2 paragraphs acknowledging deep learning's success explicitly
+- The distinction: classical NNs approximate functions; TQNNs access computational universality through braiding (a categorically different operation, not a quantitative improvement)
+- The honest admission: "Deep learning's success makes Possibility A more comfortable, not less. If classical networks can do THIS much, why invoke quantum mechanics? The answer under C is that the TQNN does something classical networks demonstrably cannot: it breaks cryptographic primitives that are provably hard for classical computation. That is the operational test."
+- Possible placement: Firmware Update (where the physics anchors live), or convergence-revisited (where the QNN is defined), or the summary (where the p2 reader encounters the claim)
+
+**Constraint:** This addendum is flagged for Bruce's decision. Do NOT execute without explicit placement choice. The deep learning argument is load-bearing — getting it wrong is worse than leaving it absent.
+
 ## What This Plan Does NOT Do
 
-- Does not add new predictions, claims, or content
-- Does not touch the Firmware Update (already strong)
+- Does not add new predictions, claims, or content (except Addendum, pending Bruce's decision)
+- Does not touch the Firmware Update (already strong — but Addendum may land there)
 - Does not touch pos05 (already canonical and properly framed)
 - Does not touch the Strongest Objection chapter (already excellent)
 - Does not touch the predictions appendix (already has binary test + 5 criteria)
@@ -337,7 +353,16 @@ All 4 voice problems (casual aside, Goldblum, exclamation, unframed C-assertion)
 **Round 8 (LOW): Phase 4 — Kauffman naming in Phase 5 vs. existing three-possibilities paragraph.**
 Phase 5 replacement names "Stuart Kauffman" directly (replacing the Goldblum circumlocution). Line 32 already has the three-possibilities paragraph that follows line 30. Check: does naming Kauffman in line 30 conflict with line 32's framing? Line 32 says "Under Possibility~A, Bruce identified five brilliant scientists..." — compatible. The named scientists are acknowledged as real people regardless of Possibility. No conflict.
 
+**Round 9 (MED): Deep learning addendum — does the cryptographic argument hold?**
+The claim "TQNNs break cryptographic primitives that are provably hard for classical computation" rests on BQP ⊋ BPP (widely believed, not proven). Shor's algorithm factors integers in polynomial time on a quantum computer; no classical algorithm is known to do this. The TQNN, being computationally equivalent to a quantum computer (Phase 1 fix), inherits this capability. But: the book's claim is about a TOPOLOGICAL QNN, which uses braiding — and Freedman-Kitaev-Wang proves braiding is computationally universal, so the inheritance holds. The cryptographic argument is sound. The addendum's honest admission ("Deep learning's success makes Possibility A more comfortable") is the right framing — it doesn't overclaim, it redirects to the operational test.
+
+**Round 10 (LOW): Could the addendum undermine the existing Firmware Update?**
+The Firmware Update already has Anchor 3 (braiding universality) and the evaluation framework. Adding 1-2 paragraphs about deep learning wouldn't contradict anything — it would ADDRESS a question the Firmware Update currently sidesteps. The Firmware Update's strength is that it sticks to published physics. The deep learning paragraph would need to maintain that discipline: cite BQP separation, cite Shor, cite Arnold (evolutionary search found what design couldn't). No new physics needed. Compatible.
+
+**Round 11 (LOW): Should the addendum specify text or just flag the problem?**
+Bruce said "not sure yet how to resolve." The addendum flags the problem, sketches the argumentative structure, and names three possible placements. It does NOT specify verbatim text. This is correct — Bruce needs to decide placement before text can be written, and the argument itself touches the book's central claim, which requires Bruce's editorial judgment. The addendum is properly scoped as a decision gate, not an execution spec.
+
 ---
 
-*Plan 0299 v3, written S67, 2026-05-06. Auditor: Argus.*
-*Annealed: 8 rounds (MED MED LOW LOW LOW MED MED LOW). v3 upgrade: Phases 4-5 tightened with verbatim text, line ranges, DO NOT TOUCH zones.*
+*Plan 0299 v4, written S67, 2026-05-06. Auditor: Argus.*
+*Annealed: 11 rounds (MED MED LOW LOW LOW MED MED LOW MED LOW LOW). v4: Deep learning addendum + 3 annealing rounds.*
