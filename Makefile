@@ -71,12 +71,14 @@ html: gitinfo build/reader-inline.html
 		--css=../../build/epub.css --css=../../build/html.css \
 		--metadata-file=../../build/metadata.yaml \
 		--include-after-body=../../build/reader-inline.html \
-		-o ../../docs/downloads/$(JOBNAME).html
+		-o ../../docs/$(JOBNAME).html
 	python3 build/build-puzzles.py
-	python3 build/preprocess.py --fix-html docs/downloads/$(JOBNAME).html
-	cp docs/downloads/$(JOBNAME).html $(JOBNAME).html
+	# NOTE: docs/downloads/Relinquishment.html is a manual backward-compat redirect.
+	# The actual book is built to docs/Relinquishment.html (Plan 0300).
+	python3 build/preprocess.py --fix-html docs/$(JOBNAME).html
+	cp docs/$(JOBNAME).html $(JOBNAME).html
 	@if [ -f $(JOBNAME).pdf ]; then cp $(JOBNAME).pdf docs/downloads/$(JOBNAME).pdf; fi
-	cd docs/downloads && zip -j $(JOBNAME).zip $(JOBNAME).html
+	cd docs && zip -j downloads/$(JOBNAME).zip $(JOBNAME).html
 	python3 build/verify-deep-links.py
 
 build/reader-inline.html: build/reader.js

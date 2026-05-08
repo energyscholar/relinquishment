@@ -13,7 +13,7 @@ from pathlib import Path
 
 repo = Path(__file__).parent.parent
 manifest = yaml.safe_load((repo / 'build/deep-links.yaml').read_text())
-html = (repo / 'docs/downloads/Relinquishment.html').read_text()
+html = (repo / 'docs/Relinquishment.html').read_text()
 
 # Categories not yet placed in main HTML — skip verification
 SKIP_CATEGORIES = {'puzzle'}
