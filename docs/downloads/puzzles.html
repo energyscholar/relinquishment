@@ -86,6 +86,8 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .log-table td:first-child { text-align: left; cursor: default; font-size: 0.85em; font-weight: normal; }
 .log-table td:hover:not(:first-child) { background: #f0f6fa; }
 .log-table td.wrong { background: #fdf2f2; border-color: #c0392b; }
+.log-table tr.row-correct td { background: #e8f5e9; }
+.log-table tr.row-correct td:hover:not(:first-child) { background: #c8e6c9; }
 
 .background-panel { margin-top: 0.8em; border-left: 3px solid #4a90d9; background: #f0f6fa; border-radius: 0 4px 4px 0; }
 .background-panel summary { padding: 0.5em 1em; cursor: pointer; font-weight: bold; color: #1a5276; font-size: 0.95em; }
@@ -252,6 +254,8 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
   .log-table th { background: #333; border-color: #555; color: #e0e0e0; }
   .log-table td { border-color: #555; color: #e0e0e0; }
   .log-table td:hover:not(:first-child) { background: #1e3a50; }
+  .log-table tr.row-correct td { background: #1a3a1a; }
+  .log-table tr.row-correct td:hover:not(:first-child) { background: #2a4a2a; }
   .cip-slot { border-color: #6ba3f7; color: #6ba3f7; }
   .cip-slot.filled { color: #2a9b9a; border-color: #2a9b9a; }
   .word-bank-item { background: #2a2a2a; border-color: #555; color: #e0e0e0; }
@@ -2342,6 +2346,14 @@ function initLOG(el, d) {
         else grid[r][c] = null;
         render();
       }); })(cells[j]);
+    }
+    var trs = inter.querySelectorAll("tbody tr");
+    for (var ri = 0; ri < d.rows.length; ri++) {
+      var rowOk = true;
+      for (var ci = 0; ci < d.columns.length; ci++) {
+        if (grid[ri][ci] !== d.correct[ri][ci]) { rowOk = false; break; }
+      }
+      if (trs[ri]) { if (rowOk) trs[ri].classList.add("row-correct"); else trs[ri].classList.remove("row-correct"); }
     }
     inter.querySelector(".log-submit").addEventListener("click", function() {
       var ok = true;
