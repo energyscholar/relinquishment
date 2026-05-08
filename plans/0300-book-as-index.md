@@ -1,7 +1,7 @@
 # Plan 0300: Book as Site Index
 
 **Status:** READY FOR GENERATOR
-**Priority:** HIGH — release architecture (~May 19)
+**Priority:** HIGH — release architecture
 **Source:** S67 discussion, Bruce's explicit design decision
 
 ## Problem
