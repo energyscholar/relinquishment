@@ -22,17 +22,17 @@ Each anchor is classified: **Established** (published, uncontroversial), **Quali
 
 ### Substrate and Emergence
 
-**Anchor 1 — Substrate Independence.** FQHE is not substrate-locked. Observed in graphene, ZnO, Si MOSFETs — not only GaAs. Conditions matter, not material. [Established — doi:10.1038/nphys1938]
+**Anchor 1 — Substrate Independence.** FQHE is not substrate-locked. Observed in graphene, ZnO, Si/SiGe heterostructures — not only GaAs. Conditions matter, not material. [Established — doi:10.1038/nphys2007]
 *Dean et al., Nature Physics 2011*
 
 **Anchor 2 — Anyon Emergence.** In FQHE systems, anyonic quasiparticles are collective excitations of the 2DEG — not externally injected. The substrate generates them under the right conditions. [Established — doi:10.1103/RevModPhys.80.1083]
 *Nayak et al., Rev. Mod. Phys. 2008*
 
-**Anchor 3 — Braiding Universality.** Freedman-Kitaev-Wang: specific non-Abelian anyon models provide a universal gate set through braiding. Not all non-Abelian anyons qualify; the right ones do. [Qualified — doi:10.1007/s00220-002-0698-z]
+**Anchor 3 — Braiding Universality.** Freedman-Kitaev-Wang: specific non-Abelian anyon models provide a universal gate set through braiding. Not all non-Abelian anyons qualify; the right ones do. [Qualified — doi:10.1007/s002200200635]
 *Freedman, Kitaev & Wang, Comm. Math. Phys. 2002*
 
-**Anchor 10 — Coherence Precedent.** Room-temperature quantum coherence is experimentally established. NV-diamond and SiC devices maintain coherent quantum states at 300K in commercial products. Not theoretical — deployed. [Established — doi:10.1038/nmat4145]
-*Christle et al., Nature Materials 2015*
+**Anchor 10 — Coherence Precedent.** Room-temperature quantum coherence is experimentally established. NV-diamond and SiC devices maintain coherent quantum states at 300K in commercial products. Not theoretical — deployed. [Established — doi:10.1038/nmat2420; doi:10.1126/sciadv.1501015]
+*Balasubramanian et al., Nature Materials 2009; Klimov et al., Science Advances 2015*
 
 ### Temperature and Evolution
 
@@ -54,7 +54,7 @@ Each anchor is classified: **Established** (published, uncontroversial), **Quali
 
 ### Magnetospheric Physics
 
-**Anchor 8 — Plasma Topology.** Topological band structures and edge modes have been demonstrated in magnetized plasmas. The topology lives in the classical wave operator (Maxwell's equations + fluid response), not in quantum wavefunctions — broken time-reversal symmetry from the background magnetic field provides the necessary ingredient. Magnetospheric topological order: not forbidden, not established. [Qualified — doi:10.1038/s41467-021-24189-3]
+**Anchor 8 — Plasma Topology.** Topological band structures and edge modes have been predicted theoretically in magnetized plasmas. The topology lives in the classical wave operator (Maxwell's equations + fluid response), not in quantum wavefunctions — broken time-reversal symmetry from the background magnetic field provides the necessary ingredient. Magnetospheric topological order: not forbidden, not established. [Qualified — doi:10.1038/s41467-021-24189-3]
 *Fu & Qin, Nature Comms. 2021*
 
 **Anchor 9 — Collisionless Decoupling.** The magnetosphere is a collisionless plasma. Mean free path >10^6 m; Coulomb collision frequency ~10^-4 Hz. In collisionless plasmas, particle kinetic temperature does not thermalize collective modes. Decoherence couples to the EM fluctuation spectrum, which is orders of magnitude cooler than particle kinetic energy. "Hot" is not "thermally coupled." [Established — doi:10.1029/2010GL044990]
@@ -100,9 +100,9 @@ If you want to verify your understanding before evaluating, consider these five 
 
 ## Bibliography
 
-1. Dean, C.R. et al. "Multicomponent fractional quantum Hall effect in graphene." Nature Physics 7, 693–696 (2011). doi:10.1038/nphys1938
+1. Dean, C.R. et al. "Multicomponent fractional quantum Hall effect in graphene." Nature Physics 7, 693–696 (2011). doi:10.1038/nphys2007
 2. Nayak, C. et al. "Non-Abelian anyons and topological quantum computation." Rev. Mod. Phys. 80, 1083 (2008). doi:10.1103/RevModPhys.80.1083
-3. Freedman, M., Kitaev, A. & Wang, Z. "Simulation of topological field theories by quantum computers." Comm. Math. Phys. 227, 587–603 (2002). doi:10.1007/s00220-002-0698-z
+3. Freedman, M., Kitaev, A. & Wang, Z. "Simulation of topological field theories by quantum computers." Comm. Math. Phys. 227, 587–603 (2002). doi:10.1007/s002200200635
 4. Hasan, M.Z. & Kane, C.L. "Colloquium: Topological insulators." Rev. Mod. Phys. 82, 3045 (2010). doi:10.1103/RevModPhys.82.3045
 5. Arnold, F.H. Nobel Lecture: "Innovation by Evolution" (2018). https://nobelprize.org/prizes/chemistry/2018/arnold/lecture/
 6. Wootters, W.K. & Zurek, W.H. "A single quantum cannot be cloned." Nature 299, 802–803 (1982). doi:10.1038/299802a0
@@ -112,7 +112,8 @@ If you want to verify your understanding before evaluating, consider these five 
 10. Thorne, R.M. "Radiation belt dynamics: The importance of wave-particle interactions." Geophysical Research Letters 37, L22107 (2010). doi:10.1029/2010GL044990
 11. Horne, R.B. et al. "Wave acceleration of electrons in the Van Allen radiation belts." Nature 437, 227–230 (2005). doi:10.1038/nature03939
 12. Abel, B. & Thorne, R.M. "Electron scattering loss in Earth's inner magnetosphere: 1. Dominant physical processes." Journal of Geophysical Research 103, 2385–2396 (1998). doi:10.1029/97JA02919
-13. Christle, D.J. et al. "Isolated electron spins in silicon carbide with millisecond coherence times." Nature Materials 14, 160–163 (2015). doi:10.1038/nmat4145
+13. Balasubramanian, G. et al. "Ultralong spin coherence time in isotopically engineered diamond." Nature Materials 8, 383–387 (2009). doi:10.1038/nmat2420
+14. Klimov, P.V. et al. "Quantum entanglement at ambient conditions in a macroscopic solid-state spin ensemble." Science Advances 1(10), e1501015 (2015). doi:10.1126/sciadv.1501015
 
 ---
 
