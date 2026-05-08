@@ -36,6 +36,7 @@ docs/downloads/Relinquishment.epub
 *.md.archive
 Relinquishment.html
 Relinquishment.md
+!docs/Relinquishment.html
 
 # Not book content — strategy/process docs belong in aurasys-memory
 .claude/
