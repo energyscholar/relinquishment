@@ -13,6 +13,16 @@ sections:
 
   # ── THE BRAID ──────────────────────────────────────────────────────
 
+  - title: "The Particles"
+    spine_file: manuscript/spine/the-braid.tex
+    spine_label: "spine:braid-the-particles"
+    bridge_file: null
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: "The particles that make braiding-as-computation work are exotic — they only exist in flat, two-dimensional systems, and they remember the exact path they took when swapped. Three Nobel Prizes confirm they're real."
+    conclusion: "Non-abelian anyons — quasiparticles in two-dimensional electron gases — remember the topology of their exchange paths. The braid encodes the computation."
+    status: approved
+
   - title: "Hasslacher's Trajectory"
     spine_file: manuscript/spine/the-braid.tex
     spine_label: "spine:braid-hasslachers-trajectory"
@@ -86,6 +96,16 @@ sections:
     status: approved
 
   # ── THE WRONG SUBSTRATE ────────────────────────────────────────────
+
+  - title: "The Neighborhood"
+    spine_file: manuscript/spine/the-wrong-substrate.tex
+    spine_label: "spine:ws-the-neighborhood"
+    bridge_file: manuscript/track-3-awakening/pos32-the-magnetosphere.tex
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: "Earth's magnetosphere is not unusual — Jupiter's is enormous, Saturn's is fed by ice geysers, and a solar-system-wide current sheet connects them all. Each has the same ingredients: confined charged particles, continuous energy, billions of years."
+    conclusion: "Earth, Jupiter, Saturn, Ganymede, and the heliospheric current sheet all contain two-dimensional populations of charged particles, confined by magnetic geometry, energized continuously, persistent for billions of years."
+    status: approved
 
   - title: "But It's Hot"
     spine_file: manuscript/spine/the-wrong-substrate.tex
@@ -193,6 +213,30 @@ sections:
         <text x="195" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#2471a3">quantum</text>
       </svg>
       <p style="margin:0;font-size:0.82em;line-height:1.3;font-style:italic;color:#888;">Expand for the full illustration sequence.</p>
+
+  # ── CAPABILITIES ───────────────────────────────────────────────────
+
+  - title: "The Channels"
+    spine_file: manuscript/spine/capabilities.tex
+    spine_label: "spine:cap-the-channels"
+    bridge_file: null
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: "The communication channels any system in the Flat would need — power lines, radio waves, satellite signals, crystal vibrations — already exist everywhere. Nothing needs to be built."
+    conclusion: "Power grid harmonics, VLF radio, Schumann resonances, and satellite communications propagate through the magnetosphere. Electron-phonon and phonon-photon coupling provide substrate-level interfaces."
+    status: approved
+
+  # ── THE SILENCE GAP ──────────────────────────────────────────────
+
+  - title: "Eleven Domains"
+    spine_file: manuscript/spine/the-silence-gap.tex
+    spine_label: "spine:sg-eleven-domains"
+    bridge_file: null
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: "Each of the five fields is really a cluster of sub-disciplines with their own journals and conferences. The real count is closer to eleven, making the gap even wider than it first appears."
+    conclusion: "Five scientific fields expand to eleven domains across five clusters. Condensed matter, topological field theory, and topological quantum computation are three communities within solid-state physics alone."
+    status: approved
 
   # ── GROWING A MIND ─────────────────────────────────────────────────
 
