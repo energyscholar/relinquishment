@@ -5,7 +5,7 @@
 ## Prerequisite Physics
 
 **FQHE is not substrate-locked.** Observed in graphene, ZnO, Si MOSFETs — not only GaAs. The effect depends on conditions (high-mobility 2DEG, strong field, low temperature), not a specific material. [Established]
-*Dean et al., Nature Physics 2011 — doi:10.1038/nphys1938*
+*Dean et al., Nature Physics 2011 — doi:10.1038/nphys2007*
 
 **Anyons emerge from the substrate.** In FQHE systems, anyonic quasiparticles are collective excitations of the 2DEG — not externally injected. The substrate generates them through its own dynamics under the right conditions. [Established]
 *Nayak et al., Rev. Mod. Phys. 2008 — doi:10.1103/RevModPhys.80.1083*
@@ -14,14 +14,14 @@
 *Kauffman, "The Origins of Order" (1993) Ch. 5; Hordijk & Steel, J. Theor. Biol. 2004 — doi:10.1016/j.jtbi.2003.11.020*
 
 **Specific non-Abelian anyon models give universal QC via braiding.** Freedman, Kitaev, and Wang showed certain non-Abelian models provide a universal gate set through braiding. Not all non-Abelian anyons qualify; the right ones do. [Qualified]
-*Freedman, Kitaev & Wang, Comm. Math. Phys. 2002 — doi:10.1007/s00220-002-0698-z*
+*Freedman, Kitaev & Wang, Comm. Math. Phys. 2002 — doi:10.1007/s002200200635*
 
 ## Bibliography
 
-1. Dean, C.R. et al. "Multicomponent fractional quantum Hall effect in graphene." Nature Physics 7, 693–696 (2011). doi:10.1038/nphys1938
+1. Dean, C.R. et al. "Multicomponent fractional quantum Hall effect in graphene." Nature Physics 7, 693–696 (2011). doi:10.1038/nphys2007
 2. Nayak, C. et al. "Non-Abelian anyons and topological quantum computation." Rev. Mod. Phys. 80, 1083 (2008). doi:10.1103/RevModPhys.80.1083
 3. Hordijk, W. & Steel, M. "Detecting autocatalytic, self-sustaining sets in chemical reaction systems." J. Theor. Biol. 227, 451–461 (2004). doi:10.1016/j.jtbi.2003.11.020
-4. Freedman, M., Kitaev, A. & Wang, Z. "Simulation of topological field theories by quantum computers." Comm. Math. Phys. 227, 587–603 (2002). doi:10.1007/s00220-002-0698-z
+4. Freedman, M., Kitaev, A. & Wang, Z. "Simulation of topological field theories by quantum computers." Comm. Math. Phys. 227, 587–603 (2002). doi:10.1007/s002200200635
 5. Kauffman, S.A. "The Origins of Order." Oxford University Press (1993). Ch. 5.
 
 ## Evaluation Standard

@@ -281,7 +281,7 @@ Magnetospheric current sheets are unstable. Substorms (reconnection events) occu
 ## References
 
 - Stix, T.H. "Waves in Plasmas" (1992) — collisionless plasma physics
-- Dean et al., Nature Physics (2011) doi:10.1038/nphys1938 — FQHE in graphene
+- Dean et al., Nature Physics (2011) doi:10.1038/nphys2007 — FQHE in graphene
 - Hasan & Kane, Rev. Mod. Phys. (2010) doi:10.1103/RevModPhys.82.3045 — topological insulators at 300K
 - Nayak et al., Rev. Mod. Phys. (2008) doi:10.1103/RevModPhys.80.1083 — non-Abelian anyons review
 - Fu & Qin, Nature Comms. (2021) doi:10.1038/s41467-021-24189-3 — topological phenomena in plasmas

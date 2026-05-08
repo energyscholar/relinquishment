@@ -8,12 +8,12 @@
 *Wootters & Zurek, Nature 1982 — doi:10.1038/299802a0*
 
 **FQHE is not substrate-locked.** Observed in graphene, ZnO, Si MOSFETs. Conditions matter, not material. If a TQNN configuration is defined by classical structure (dopant arrangement, geometry, interface properties), it can be reproduced in any compatible substrate. [Established]
-*Dean et al., Nature Physics 2011 — doi:10.1038/nphys1938*
+*Dean et al., Nature Physics 2011 — doi:10.1038/nphys2007*
 
 ## Bibliography
 
 1. Wootters, W.K. & Zurek, W.H. "A single quantum cannot be cloned." Nature 299, 802–803 (1982). doi:10.1038/299802a0
-2. Dean, C.R. et al. "Multicomponent fractional quantum Hall effect in graphene." Nature Physics 7, 693–696 (2011). doi:10.1038/nphys1938
+2. Dean, C.R. et al. "Multicomponent fractional quantum Hall effect in graphene." Nature Physics 7, 693–696 (2011). doi:10.1038/nphys2007
 
 ## Evaluation Standard
 

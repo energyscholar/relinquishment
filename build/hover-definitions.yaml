@@ -83,7 +83,7 @@ Possibility B: "Exaggerated kernel. A real person with real credentials, but the
 Possibility C: "Substantially true. The classified program existed, the Custodian was built, the master keys were surrendered in 2006. Absence of public evidence is what successful classification looks like."
 
 2DEG:
-  text: "A thin layer where electrons can only move in two directions — trapped on a sheet. Found inside every computer chip and in Earth's magnetic field. Substrate-independent: confirmed in graphene, ZnO, Si MOSFETs. [Dean et al., Nat. Phys. 7 (2011) 693, doi:10.1038/nphys1938]"
+  text: "A thin layer where electrons can only move in two directions — trapped on a sheet. Found inside every computer chip and in Earth's magnetic field. Substrate-independent: confirmed in graphene, ZnO, Si/SiGe heterostructures. [Dean et al., Nat. Phys. 7 (2011) 693, doi:10.1038/nphys2007]"
   hover_id: "two-dimensional-electron-gas"
 
 two-dimensional electron gas:
