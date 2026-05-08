@@ -295,6 +295,35 @@
   zipLink.style.cssText = 'flex:0 0 auto;font-size:0.85em;opacity:0.7;' +
     'text-decoration:none;margin-left:0.8em;color:' + (isDark ? '#aaa' : '#888') + ';';
 
+  // --- Opt-in feedback button (relinquishment.ai only, no tracking) ---
+  var fbBtn = null;
+  if (window.location.hostname === 'relinquishment.ai') {
+    fbBtn = document.createElement('a');
+    fbBtn.id = 'nav-feedback';
+    fbBtn.href = '#';
+    fbBtn.textContent = 'V2 Feedback';
+    fbBtn.setAttribute('data-hover', 'Help improve V2 — opens your email client with a pre-filled template. No data collected unless you choose to send.');
+    fbBtn.setAttribute('aria-label', 'Send feedback for V2');
+    fbBtn.classList.add('hover-nav');
+    fbBtn.style.cssText = 'text-decoration:none;color:' + (isDark ? '#aaa' : '#888') +
+      ';font-size:0.85em;margin-left:0.5em;cursor:pointer;flex:0 0 auto;';
+    fbBtn.addEventListener('mouseenter', function() { fbBtn.style.color = '#2471a3'; });
+    fbBtn.addEventListener('mouseleave', function() { fbBtn.style.color = isDark ? '#aaa' : '#888'; });
+    fbBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var chapter = currentChapterId || 'unknown';
+      var subject = encodeURIComponent('V2 Feedback: ' + chapter);
+      var body = encodeURIComponent(
+        'Chapter: ' + chapter + '\n' +
+        'Section: \n\n' +
+        'What worked:\n\n' +
+        'What was confusing:\n\n' +
+        'Suggestion:\n\n'
+      );
+      window.location.href = 'mailto:energyscholar+feedback@gmail.com?subject=' + subject + '&body=' + body;
+    });
+  }
+
   // --- Nav bar: 5 items + download links ---
   nav.appendChild(backBtn);
   nav.appendChild(breadcrumb);
@@ -303,6 +332,7 @@
   nav.appendChild(topBtn);
   nav.appendChild(pdfLink);
   nav.appendChild(zipLink);
+  if (fbBtn) nav.appendChild(fbBtn);
   document.body.appendChild(nav);
 
   // --- Navigation Popup (Plan 0268) ---
