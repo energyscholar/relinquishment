@@ -5,11 +5,11 @@
 ## Prerequisite Physics
 
 **Specific non-Abelian anyon models give universal QC via braiding.** Freedman-Kitaev-Wang: certain non-Abelian models provide a universal gate set through braiding. A universal quantum computer can in principle perform any quantum computation, including novel cryptanalytic approaches. [Qualified]
-*Freedman, Kitaev & Wang, Comm. Math. Phys. 2002 — doi:10.1007/s00220-002-0698-z*
+*Freedman, Kitaev & Wang, Comm. Math. Phys. 2002 — doi:10.1007/s002200200635*
 
 ## Bibliography
 
-1. Freedman, M., Kitaev, A. & Wang, Z. "Simulation of topological field theories by quantum computers." Comm. Math. Phys. 227, 587–603 (2002). doi:10.1007/s00220-002-0698-z
+1. Freedman, M., Kitaev, A. & Wang, Z. "Simulation of topological field theories by quantum computers." Comm. Math. Phys. 227, 587–603 (2002). doi:10.1007/s002200200635
 
 ## Evaluation Standard
 
