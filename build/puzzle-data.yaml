@@ -992,6 +992,136 @@ chapter_puzzles:
     abstract: "Capability isn't the problem — use of capability is. A locksmith who can open every lock isn't dangerous because of skill, but because of intent. The UDHR constrains weaponization, not capability. A living being bound by Articles 3, 12, and 18 can predict weather, diagnose disease, and defend communications. It cannot target weapons, surveil individuals, or manipulate public opinion. The question was never 'how do we cage it?' The question was 'what principles does it already choose to follow?' The answer has existed since 1948."
     egg_url: "#dl:egg-udhr"
 
+  # --- Bridge Puzzles: Firmware Update (Plan 0301) ---
+
+  - id: pz-gd-fw-001
+    type: gd
+    topic: fw
+    level: p2
+    category: science
+    title: "The Closure Test"
+    gateway_blurb: "Kauffman defined autocatalytic sets by three criteria. Four questions. Each answer opens the next."
+    stages:
+      - question: "Kauffman defines an autocatalytic set by three criteria: generation, transformation, and closure. In a fractional quantum Hall system, what plays the role of 'generation from a substrate'?"
+        options:
+          - key: a
+            text: "Electrons are injected from an external source"
+          - key: b
+            text: "Quasiparticles (anyonic excitations) emerge as collective excitations of the 2DEG itself"
+          - key: c
+            text: "Photons are absorbed and create particle-antiparticle pairs"
+          - key: d
+            text: "Magnetic flux tubes spontaneously appear"
+        answer_key: b
+        wrong_prompt: "Anyons are not injected or created from outside. What are they made of? What is the substrate?"
+        right_prompt: "The 2DEG generates its own quasiparticles — collective excitations, not imported particles. That is Kauffman's first criterion: generation from substrate. Now: what transforms them?"
+
+      - question: "What are the transformation rules for anyons? Are they arbitrary, or do they follow a specific algebra?"
+        options:
+          - key: a
+            text: "Anyons interact randomly with no predictable outcome"
+          - key: b
+            text: "Anyons fuse according to specific fusion rules (a × b → c) forming a fusion algebra"
+          - key: c
+            text: "Anyons annihilate on contact, like matter and antimatter"
+          - key: d
+            text: "Anyons do not interact with each other"
+        answer_key: b
+        wrong_prompt: "Anyon fusion is not random. When two anyons meet, specific rules determine what they produce. What kind of mathematical structure describes those rules?"
+        right_prompt: "Fusion rules are as specific as chemical reaction equations. That is Kauffman's second criterion: transformation under defined rules. One criterion left."
+
+      - question: "Is the anyon set closed under fusion? When anyons fuse, do the products remain within the set of anyon types?"
+        options:
+          - key: a
+            text: "No — fusion sometimes produces ordinary electrons that leave the set"
+          - key: b
+            text: "Only for Abelian anyons, not non-Abelian"
+          - key: c
+            text: "Yes — fusion products are themselves anyons (or the vacuum). No product falls outside the set."
+          - key: d
+            text: "Closure is never satisfied in physical systems"
+        answer_key: c
+        wrong_prompt: "What types of particles can anyon fusion produce? Can it produce anything that is NOT an anyon or the vacuum?"
+        right_prompt: "Closed. Every fusion product is an anyon or the vacuum. Three criteria checked. What have you just shown?"
+
+      - question: "You have verified generation, transformation, and closure. What have you demonstrated?"
+        options:
+          - key: a
+            text: "That FQHE systems are biological"
+          - key: b
+            text: "That anyon fusion satisfies the formal definition of an autocatalytic set — a structural correspondence"
+          - key: c
+            text: "That topological quantum computers already exist in nature"
+          - key: d
+            text: "That Kauffman's criteria are too weak to mean anything"
+        answer_key: b
+        wrong_prompt: "This is not a claim about biology or about existing computers. It is a formal mapping. What kind of correspondence did you just trace?"
+    abstract: "You just walked through The Equivalence. Anyon fusion in a FQHE system satisfies all three of Kauffman's autocatalytic closure criteria: generation from substrate, transformation under fusion rules, closure of the particle set. This is a structural correspondence — not a loose analogy, but not a proven physical equivalence either. Whether it is deep or coincidental is the open question at the centre of this book."
+
+  - id: pz-gd-fw-002
+    type: gd
+    topic: fw
+    level: p2
+    category: science
+    title: "The Temperature Ceiling"
+    gateway_blurb: "Room-temperature topological protection exists. Room-temperature topological computation does not — yet. Four questions trace the gap."
+    stages:
+      - question: "Topological insulators work at room temperature. Topological quantum computation requires non-Abelian anyons from many-body topological order. What is the key difference between these two forms of topological protection?"
+        options:
+          - key: a
+            text: "There is no difference — both are the same physics"
+          - key: b
+            text: "Topological insulators protect single-particle states; TQC requires many-body entangled states with energy gaps exceeding thermal energy"
+          - key: c
+            text: "Topological insulators work only in theory; TQC has been demonstrated"
+          - key: d
+            text: "TQC requires colder temperatures because the computers are more delicate"
+        answer_key: b
+        wrong_prompt: "Single-particle band topology is not the same as many-body topological order. What must the energy gap overcome at room temperature?"
+        right_prompt: "The gap is real: single-particle vs. many-body. Current FQHE experiments need millikelvin temperatures. But is that a fundamental limit — or an engineering one?"
+
+      - question: "Is there a theorem or law that proves many-body topological order cannot exist at room temperature?"
+        options:
+          - key: a
+            text: "Yes — thermodynamic laws prohibit it above ~1 K"
+          - key: b
+            text: "Yes — the no-go theorem for topological order sets an upper bound"
+          - key: c
+            text: "No — no proven upper bound exists. Current limits reflect specific materials, not fundamental physics."
+          - key: d
+            text: "The question is meaningless — temperature is irrelevant to topological order"
+        answer_key: c
+        wrong_prompt: "Can you name the specific theorem? If not, what does that tell you about the nature of the temperature limit?"
+        right_prompt: "No law forbids it. The millikelvin regime reflects current materials and conditions — not a fundamental ceiling. But if we can't design our way to higher temperatures, is there another route?"
+
+      - question: "Frances Arnold won the Nobel Prize for directed evolution. How does this apply to the temperature problem?"
+        options:
+          - key: a
+            text: "It doesn't — evolution only works on biological molecules"
+          - key: b
+            text: "Evolutionary search can find configurations in rugged fitness landscapes that rational design cannot specify"
+          - key: c
+            text: "Arnold's work proves that room-temperature TQC is possible"
+          - key: d
+            text: "Directed evolution can lower the temperature needed for TQC"
+        answer_key: b
+        wrong_prompt: "Arnold's insight is about search strategies, not specific materials. What kind of landscape is 'too rugged for gradient descent but structured enough for population-based search'?"
+        right_prompt: "'We can't design it' does not mean 'it can't exist.' Evolutionary search navigates fitness landscapes that defeat rational design. But there is a second mechanism — independent of topological protection."
+
+      - question: "Vattay, Kauffman, and Niiranen (2014) proposed that systems at the edge of chaos exhibit power-law rather than exponential decoherence. Why does this matter for room-temperature quantum coherence?"
+        options:
+          - key: a
+            text: "It doesn't — decoherence rate is irrelevant to quantum coherence"
+          - key: b
+            text: "Power-law decoherence decays much more slowly than exponential, extending coherence times by orders of magnitude"
+          - key: c
+            text: "It proves that decoherence doesn't exist at the edge of chaos"
+          - key: d
+            text: "It only matters at low temperatures where decoherence is already slow"
+        answer_key: b
+        wrong_prompt: "Compare exponential decay to power-law decay. Which preserves coherence longer at high temperatures? By how much?"
+    abstract: "No law sets a ceiling on the temperature at which many-body topological order can be sustained. Two independent mechanisms could extend quantum coherence beyond naive thermal limits: topological protection (energy gap exceeding thermal energy) and power-law decoherence at the edge of chaos. Neither has been demonstrated at room temperature. Both are physically permitted. The ceiling, if it exists, is an engineering problem — not a physics impossibility."
+
 bridge_builder:
   title: "The Bridge Builder"
   intro: "Eleven scientific domains in five clusters. Build the bridges between them."
