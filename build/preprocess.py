@@ -4042,6 +4042,22 @@ def _minify_css(css):
     return css.strip()
 
 
+def inject_og_meta(html_path):
+    """Inject Open Graph meta tags into the book HTML for social sharing."""
+    text = Path(html_path).read_text()
+    if 'og:title' in text:
+        return  # already present
+    og_block = '''  <meta property="og:title" content="RELINQUISHMENT — Wormholes in the Flat">
+  <meta property="og:description" content="Real physics. Not metaphor. A two-dimensional substrate, a question nobody asked, and three possible explanations. You decide.">
+  <meta property="og:image" content="https://relinquishment.ai/images/cover-triskellion.png">
+  <meta property="og:url" content="https://relinquishment.ai/Relinquishment.html">
+  <meta property="og:type" content="book">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://relinquishment.ai/Relinquishment.html">'''
+    text = text.replace('</head>', og_block + '\n</head>', 1)
+    Path(html_path).write_text(text)
+
+
 def minify_html_assets(html_path):
     """Minify inline JS and CSS in the built HTML."""
     import re as _re
@@ -4338,6 +4354,7 @@ if __name__ == "__main__":
         collapse_tech_sections(sys.argv[2])
         inject_concept_symbols(sys.argv[2])
         deduplicate_svg_defs(sys.argv[2])
+        inject_og_meta(sys.argv[2])
         minify_html_assets(sys.argv[2])
     else:
         main_tex = patch()

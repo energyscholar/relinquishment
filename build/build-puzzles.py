@@ -591,7 +591,7 @@ def wrap_collapsible(puzzle):
         badge += ' <span class="collapse-badge approved-tag">APPROVED</span>'
     if inst:
         book_url = f'Relinquishment.html#{pid}'
-        full_url = f'relinquishment.ai/downloads/Relinquishment.html#{pid}'
+        full_url = f'relinquishment.ai/Relinquishment.html#{pid}'
         badge += f' <a href="{book_url}" class="collapse-badge installed-tag" title="View in book">INSTALLED</a>'
         badge += f' <span class="deep-link-url"><a href="{book_url}">{full_url}</a></span>'
     level = puzzle.get('level', '')
