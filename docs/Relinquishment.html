@@ -769,6 +769,13 @@ details.tech-section summary [data-concept]::before { content: none; }
 }
 </style>
 <style>@media(prefers-reduced-motion:reduce){animate,animateMotion,animateTransform{display:none}}</style>
+  <meta property="og:title" content="RELINQUISHMENT — Wormholes in the Flat">
+  <meta property="og:description" content="Real physics. Not metaphor. A two-dimensional substrate, a question nobody asked, and three possible explanations. You decide.">
+  <meta property="og:image" content="https://relinquishment.ai/images/cover-triskellion.png">
+  <meta property="og:url" content="https://relinquishment.ai/Relinquishment.html">
+  <meta property="og:type" content="book">
+  <meta name="twitter:card" content="summary">
+  <link rel="canonical" href="https://relinquishment.ai/Relinquishment.html">
 </head>
 <body>
 <nav id="TOC" role="doc-toc">
@@ -12979,8 +12986,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>2a7f0050aea4231b88af8dbb7e561840ef3e8d48</code> on 2026-05-08
-02:00:56 -0700.</p>
+<code>505f82b68c247c8096bad20e8d2fb29c188e8329</code> on 2026-05-08
+02:05:28 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -13048,7 +13055,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-05-08T09:04:23Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-05-08T09:11:49Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -13059,19 +13066,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>2a7f005</code></p>
+<p><code>505f82b</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>2a7f0050aea4231b88af8dbb7e561840ef3e8d48</code></p>
+<p><code>505f82b68c247c8096bad20e8d2fb29c188e8329</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-05-08 02:00:56 -0700</p>
+<p>2026-05-08 02:05:28 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-05-08T09:04:23Z</p>
+<p>2026-05-08T09:11:49Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -13683,11 +13690,25 @@ toolsLink.textContent='·';
 toolsLink.style.cssText='flex:0 0 auto;font-size:0.7em;color:transparent;'+
 'text-decoration:none;padding:0.3em 0.2em;cursor:default;';
 toolsLink.setAttribute('aria-hidden','true');
+var pdfLink=document.createElement('a');
+pdfLink.href='downloads/Relinquishment.pdf';
+pdfLink.textContent='PDF';
+pdfLink.title='Download PDF';
+pdfLink.style.cssText='flex:0 0 auto;font-size:0.85em;opacity:0.7;'+
+'text-decoration:none;margin-left:0.8em;color:'+(isDark?'#aaa':'#888')+';';
+var zipLink=document.createElement('a');
+zipLink.href='downloads/Relinquishment.zip';
+zipLink.textContent='ZIP';
+zipLink.title='Download ZIP (email-friendly)';
+zipLink.style.cssText='flex:0 0 auto;font-size:0.85em;opacity:0.7;'+
+'text-decoration:none;margin-left:0.8em;color:'+(isDark?'#aaa':'#888')+';';
 nav.appendChild(backBtn);
 nav.appendChild(breadcrumb);
 nav.appendChild(shareBtn);
 nav.appendChild(evalBtn);
 nav.appendChild(topBtn);
+nav.appendChild(pdfLink);
+nav.appendChild(zipLink);
 document.body.appendChild(nav);
 var currentChapterId='';
 var popupOpen=false;

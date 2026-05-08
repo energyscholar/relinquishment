@@ -282,12 +282,28 @@
     'text-decoration:none;padding:0.3em 0.2em;cursor:default;';
   toolsLink.setAttribute('aria-hidden', 'true');
 
-  // --- Nav bar: 5 items only (Back, breadcrumb, §, AI Eval, ▲ Top) ---
+  var pdfLink = document.createElement('a');
+  pdfLink.href = 'downloads/Relinquishment.pdf';
+  pdfLink.textContent = 'PDF';
+  pdfLink.title = 'Download PDF';
+  pdfLink.style.cssText = 'flex:0 0 auto;font-size:0.85em;opacity:0.7;' +
+    'text-decoration:none;margin-left:0.8em;color:' + (isDark ? '#aaa' : '#888') + ';';
+
+  var zipLink = document.createElement('a');
+  zipLink.href = 'downloads/Relinquishment.zip';
+  zipLink.textContent = 'ZIP';
+  zipLink.title = 'Download ZIP (email-friendly)';
+  zipLink.style.cssText = 'flex:0 0 auto;font-size:0.85em;opacity:0.7;' +
+    'text-decoration:none;margin-left:0.8em;color:' + (isDark ? '#aaa' : '#888') + ';';
+
+  // --- Nav bar: 5 items + download links ---
   nav.appendChild(backBtn);
   nav.appendChild(breadcrumb);
   nav.appendChild(shareBtn);
   nav.appendChild(evalBtn);
   nav.appendChild(topBtn);
+  nav.appendChild(pdfLink);
+  nav.appendChild(zipLink);
   document.body.appendChild(nav);
 
   // --- Navigation Popup (Plan 0268) ---

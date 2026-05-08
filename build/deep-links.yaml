@@ -26,7 +26,7 @@
 #   - Add entry HERE FIRST before creating content anywhere else.
 #   - Puzzle `question` field = what appears on the collapsible <summary>.
 #   - Category determines verification: puzzle/test-egg = skipped (not yet in HTML).
-#   - URL pattern: https://relinquishment.ai/downloads/Relinquishment.html#{id}
+#   - URL pattern: https://relinquishment.ai/Relinquishment.html#{id}
 
 # --- Skeptic challenges (10) ---
 - id: dl:three-possibilities
