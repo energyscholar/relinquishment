@@ -13089,8 +13089,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>7534616c5ce24fe176507d506c78ec362631d45e</code> on 2026-05-08
-02:29:00 -0700.</p>
+<code>c6f54b4c3aa6384280f45900555a32f7dd114f87</code> on 2026-05-08
+03:21:08 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -13158,7 +13158,7 @@ this book is true. It maintains honest uncertainty. Genevieve chose the
 name: Argus Panoptes, the hundred-eyed watchman who never sleeps.</p>
 <p>All narrative prose, claims, evidence assessments, and editorial
 decisions are the authors’.</p>
-<p><strong>Pre-Release Draft — 2026-05-08T10:20:57Z</strong></p>
+<p><strong>Pre-Release Draft — 2026-05-08T10:22:53Z</strong></p>
 <p>This is a pre-release working copy. The final edition has not yet
 been published. Corrections, revisions, and additions are in
 progress.</p>
@@ -13169,19 +13169,19 @@ progress.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>7534616</code></p>
+<p><code>c6f54b4</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>7534616c5ce24fe176507d506c78ec362631d45e</code></p>
+<p><code>c6f54b4c3aa6384280f45900555a32f7dd114f87</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-05-08 02:29:00 -0700</p>
+<p>2026-05-08 03:21:08 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-05-08T10:20:57Z</p>
+<p>2026-05-08T10:22:53Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -13805,6 +13805,33 @@ zipLink.textContent='ZIP';
 zipLink.title='Download ZIP (email-friendly)';
 zipLink.style.cssText='flex:0 0 auto;font-size:0.85em;opacity:0.7;'+
 'text-decoration:none;margin-left:0.8em;color:'+(isDark?'#aaa':'#888')+';';
+var fbBtn=null;
+if(window.location.hostname==='relinquishment.ai'){
+fbBtn=document.createElement('a');
+fbBtn.id='nav-feedback';
+fbBtn.href='#';
+fbBtn.textContent='V2 Feedback';
+fbBtn.setAttribute('data-hover','Help improve V2 — opens your email client with a pre-filled template. No data collected unless you choose to send.');
+fbBtn.setAttribute('aria-label','Send feedback for V2');
+fbBtn.classList.add('hover-nav');
+fbBtn.style.cssText='text-decoration:none;color:'+(isDark?'#aaa':'#888')+
+';font-size:0.85em;margin-left:0.5em;cursor:pointer;flex:0 0 auto;';
+fbBtn.addEventListener('mouseenter',function(){fbBtn.style.color='#2471a3';});
+fbBtn.addEventListener('mouseleave',function(){fbBtn.style.color=isDark?'#aaa':'#888';});
+fbBtn.addEventListener('click',function(e){
+e.preventDefault();
+var chapter=currentChapterId||'unknown';
+var subject=encodeURIComponent('V2 Feedback: '+chapter);
+var body=encodeURIComponent(
+'Chapter: '+chapter+'\n'+
+'Section: \n\n'+
+'What worked:\n\n'+
+'What was confusing:\n\n'+
+'Suggestion:\n\n'
+);
+window.location.href='mailto:energyscholar+feedback@gmail.com?subject='+subject+'&body='+body;
+});
+}
 nav.appendChild(backBtn);
 nav.appendChild(breadcrumb);
 nav.appendChild(shareBtn);
@@ -13812,6 +13839,7 @@ nav.appendChild(evalBtn);
 nav.appendChild(topBtn);
 nav.appendChild(pdfLink);
 nav.appendChild(zipLink);
+if(fbBtn) nav.appendChild(fbBtn);
 document.body.appendChild(nav);
 var currentChapterId='';
 var popupOpen=false;
