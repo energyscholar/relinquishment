@@ -469,6 +469,42 @@ chapter_puzzles:
       content: "#dl:egg-udhr"
     notes: "2-stage GD. Shares UDHR egg with pz-mc-t6-001 and pz-log-t7-001."
 
+  # ---- FW: Firmware Update (2 puzzles) ----
+
+  - id: pz-gd-fw-001
+    title: "The Closure Test"
+    type: gd
+    topic: fw
+    level: p2
+    approved: false
+    installed: false
+    needs_review: true
+    location:
+      chapter: firmware-update
+      rationale: "Guided deduction through The Equivalence — reader derives the autocatalysis→fusion bridge"
+      placement: end
+    reward:
+      type: self-contained
+      content: insight
+    notes: "Plan 0301. Bridge puzzle. Reader reconstructs The Equivalence step by step."
+
+  - id: pz-gd-fw-002
+    title: "The Temperature Ceiling"
+    type: gd
+    topic: fw
+    level: p2
+    approved: false
+    installed: false
+    needs_review: true
+    location:
+      chapter: firmware-update
+      rationale: "Guided deduction through the temperature bridge — reader discovers there is no proven ceiling"
+      placement: end
+    reward:
+      type: self-contained
+      content: insight
+    notes: "Plan 0301. Bridge puzzle. Reader reconstructs the temperature argument step by step."
+
 
 # ============================================================
 # BRIDGE PUZZLES (7) — Bridge Builder meta-puzzle
