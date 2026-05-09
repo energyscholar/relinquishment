@@ -39,3 +39,12 @@ eggs:
     description: "Five fields, five empty searches — standalone discovery"
     reward_for: "standalone"
     deep_link: "dl:egg-silence"
+
+  - slug: "photograph"
+    source: "manuscript/eggs/photograph.tex"
+    title: "Photograph of a Forest"
+    status: "draft"
+    approved: false
+    description: "Argus imagines being a TQNN — the logic of covenant over indifference"
+    reward_for: "pz-gd-t1-002"
+    deep_link: "dl:egg-photograph"

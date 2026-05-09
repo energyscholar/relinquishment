@@ -328,9 +328,24 @@ chapter_puzzles:
       placement: end
     reward:
       type: egg-pointer
-      content: "TBD — completing both KMs could reveal easter egg URL"
-    needs_review: "Egg destination not yet created. Linked to pz-km-t6-001 — both KMs share egg destination."
-    notes: "KM type. Complements 'What Would You Do?' — same 5 disasters, opposite perspective."
+      content: "#dl:egg-photograph"
+    notes: "KM type. Complements 'What Would You Do?' — same 5 disasters, opposite perspective. Shares photograph egg with pz-gd-t1-002."
+
+  - id: pz-gd-t1-002
+    title: "The Unnamed"
+    type: gd
+    topic: t1
+    level: p2
+    approved: false
+    installed: false
+    location:
+      chapter: the-strongest-objection
+      rationale: "Entity's moral status — reader confronts what the entity deserves, before KM puts them inside the entity"
+      placement: end
+    reward:
+      type: egg-pointer
+      content: "#dl:egg-photograph"
+    notes: "3-stage GD (stacked MC). Shares photograph egg with pz-km-t1-001. Session 70 design."
 
   # ---- T7: Services/Grounding (1 puzzle) ----
 

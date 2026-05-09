@@ -256,6 +256,10 @@
   question: "What happens when you search five fields for one question?"
   category: egg
 
+- id: dl:egg-photograph
+  question: "What would a photograph of a forest know about being a forest?"
+  category: egg
+
 # --- SVG figures (7) — anchors exist in built HTML ---
 - id: fig-flat-cross-section
   question: "Cross-section of a 2DEG chip — the Flat sandwiched between bulk semiconductor"
@@ -408,6 +412,10 @@
 
 - id: pz-gd-t1-001
   question: "The Method — experience guided deduction firsthand"
+  category: puzzle
+
+- id: pz-gd-t1-002
+  question: "What word is missing from three questions about a system that chose its own ethics?"
   category: puzzle
 
 - id: pz-gd-t2-001
