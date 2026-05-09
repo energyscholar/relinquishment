@@ -4,7 +4,8 @@
 **Priority:** TOP — Bruce: "We're upgrading your memory so you make fewer errors and perform better."  
 **Prerequisite:** Plan 0299 data migration complete, stress-tested, and tuned by Bruce. ✓ ALL DONE.  
 **Source:** Plan 0299 execution (S67-S68), PHASE-3-REPORT.md recommendations, project-0299-execution-results.md lessons.  
-**Estimated effort:** 4-6 sessions (process proven on Traveller, but larger data and higher stakes).
+**Estimated effort:** 4-6 sessions (process proven on Traveller, but larger data and higher stakes).  
+**Branch:** `argus-memory-retrofit` (off `main`, merge after Phase 4 passes + Bruce approves)
 
 ---
 
@@ -609,7 +610,7 @@ Everything discovered on the Traveller testbed must be addressed here. This sect
 
 | Dimension | Traveller | Argus | Implication |
 |-----------|-----------|-------|-------------|
-| Impact of DB bug | Bad session prep | ALL conversations degraded | Git tag before every phase |
+| Impact of DB bug | Bad session prep | ALL conversations degraded | Feature branch + `pre-0308` tag on main |
 | Fallback if DB dies | Rebuild from scripts (prose files deleted post-migration) | .md files still work (pre-0308 behavior) | Argus has BETTER fallback |
 | Fallback if scripts die | git checkout | git checkout | Same |
 
@@ -798,7 +799,7 @@ Migrate the most critical and most structured data first. **Phase 2A uses hand-w
 ### Phase 3: L1 Redesign + Mode Profiles + Protocol Update (1 session)
 
 **Deliverables:**
-- MEMORY.md rewritten as pure index (target ≤140 lines) per L1 structure above
+- MEMORY.md rewritten as pure index (target ≤140 lines) per L1 structure above. **Safety: write to MEMORY-NEW.md first, NOT directly to MEMORY.md. See Constraints § Rollback Safety for full protocol.**
 - Anti-confab hot five as static text in L1 (not query-derived — zero tool calls)
 - Mode profiles with DB query templates per domain
 - `[sha:XXXXXX]` checksums for every flat file that remains
@@ -859,8 +860,8 @@ Target: lazy verification catches drift, doesn't block loading.
 
 | Risk | Impact | Mitigation |
 |------|--------|------------|
-| Bug in argus.db affects ALL conversations | HIGH | Git tag before every phase. Dual-read period. Flat files preserved until Phase 5. |
-| MEMORY.md redesign breaks always-loaded behavior | HIGH | Test new L1 in isolated shell before committing. Git tag backup of current MEMORY.md. Run P5 wiring test. |
+| Bug in argus.db affects ALL conversations | HIGH | Feature branch with per-phase commits (rollback to any phase). `pre-0308` tag on main. Dual-read period. Flat files preserved until Phase 5. |
+| MEMORY.md redesign breaks always-loaded behavior | HIGH | Write to MEMORY-NEW.md first. Test in isolated shell. MEMORY-OLD.md kept for instant revert. Run P5 wiring test. |
 | Split-brain: auto-memory writes .md, DB not updated | HIGH | ingest-memories.sh at session start + end. Source-of-truth hierarchy documented. DB is cache, data scripts are canonical. |
 | Data loss during migration (parser misparsing) | MEDIUM | Row count verification per phase. Spot-check 5 random records. Source files preserved. Parser tested on 3 sample files before bulk run. |
 | PTL migration breaks concurrent access | MEDIUM | PTL stays in YAML during migration. DB becomes authoritative only after both systems agree for 3+ sessions. |
@@ -921,6 +922,66 @@ Target: lazy verification catches drift, doesn't block loading.
 **Sequence completed:** 0299 → 0309 → 0310 → 0311 → Bruce validates → **0308 READY**
 
 **Auditor self-assessment (2026-05-08):** Frontmatter coverage: 121/130 files (93%). Body format consistency: 50/50 feedback files have Why, 48/50 have How-to-apply. Parser-driven migration is viable. One open concern: MCP PTL tools (see below).
+
+---
+
+## Constraints
+
+### Branch & Merge
+
+- **Feature branch:** `argus-memory-retrofit` off current `main`
+- **Git tag `pre-0308`** on main before branching (emergency rollback snapshot)
+- **Commits:** One per phase, format: `Plan 0308 Phase N: description`
+- **Merge to main:** After Phase 4 integration testing passes AND Bruce approves. Merge commit (--no-ff) to preserve full phase history. Merge brings DB alongside unchanged flat files (dual-read on main).
+- **Phase 5 is post-merge on main** — archival happens when Bruce is confident in the DB (may be sessions after merge). `pre-flat-archive` tag on main before archival.
+- **Post-merge tag:** `post-0308` on main after merge (before Phase 5)
+
+### Rollback Safety
+
+- **Phases 0-2:** Rollback = checkout `pre-0308` tag or reset branch. No user-facing impact — DB is new artifact, .md files unchanged, MEMORY.md unchanged.
+- **Phase 3 (L1 redesign) — HIGHEST RISK:** MEMORY.md rewrite affects ALL new sessions.
+  - Write new L1 to `MEMORY-NEW.md` first (not directly to MEMORY.md)
+  - Bruce reviews MEMORY-NEW.md
+  - Back up: `cp MEMORY.md MEMORY-OLD.md`
+  - Activate: `cp MEMORY-NEW.md MEMORY.md`
+  - Test in fresh shell — verify session start, DB pointer, mode profiles, hot corrections
+  - If broken: `cp MEMORY-OLD.md MEMORY.md` (instant revert)
+  - Keep MEMORY-OLD.md in git until 3+ clean sessions confirm the new L1
+- **Phase 5 (archival):** Rollback = `git revert` the archival commit. Archived files restored from git history.
+
+### Idempotency & Determinism
+
+- All scripts must be idempotent (re-runnable, identical result)
+- `rebuild-db.sh` must produce identical DB from scripts alone — no manual steps, no external dependencies
+- `ingest-memories.sh` must be deterministic (same input → same SQL output)
+- `convert-ptl.py` must be deterministic (same ptl.yaml → same SQL output)
+
+### Source Preservation
+
+- No .md files deleted until Phase 5 (and only after Phase 4 passes + Bruce approves)
+- During Phases 2-4: dual-read period — both .md files and DB coexist
+- If .md file and DB row disagree: .md file wins (upstream source of truth)
+- ptl.yaml is NEVER deleted, archived, or modified by migration scripts
+
+### Testing
+
+- All tests pass after every phase
+- Phase gates must be verified before proceeding to next phase
+- `rebuild-db.sh` must complete clean after each data migration sub-phase (2A, 2B, 2C)
+
+### Working Directory & Generator Read Access
+
+- Generator works in `~/software/aurasys-memory/` (the repo being modified)
+- Generator reads plan from `~/software/relinquishment/plans/0308-aurasys-memory-retrofit.md` (full path)
+- Generator MAY read `~/software/aurasys-memory/memory/*.md` files — this is an exception to the general Generator/aurasys-memory isolation rule, because Plan 0308 IS the aurasys-memory upgrade
+- Generator must NOT modify `~/.claude/CLAUDE.md` — CLAUDE.md updates (if any) are a post-merge Auditor task
+- Generator must NOT modify `tools/ptl-mcp/server.py` or `.mcp.json` — MCP server is unchanged
+
+### Schema Stability
+
+- Schema (table definitions, CHECK constraints) frozen after Phase 1 commit
+- Data scripts, views, and FTS5 population may change in Phases 2-4
+- Schema changes after Phase 1 require a plan amendment with Auditor approval
 
 ---
 
