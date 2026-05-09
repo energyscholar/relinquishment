@@ -277,9 +277,11 @@
   var toolsLink = document.createElement('a');
   toolsLink.href = 'https://relinquishment.ai/tools.html';
   toolsLink.textContent = '·';
-  toolsLink.style.cssText = 'flex:0 0 auto;font-size:0.7em;color:transparent;' +
-    'text-decoration:none;padding:0.3em 0.2em;cursor:default;';
-  toolsLink.setAttribute('aria-hidden', 'true');
+  var toolsIdle = isDark ? '#555' : '#ccc';
+  toolsLink.style.cssText = 'flex:0 0 auto;font-size:0.9em;color:' + toolsIdle + ';' +
+    'text-decoration:none;padding:0.2em 0.35em;cursor:pointer;';
+  toolsLink.addEventListener('mouseenter', function() { toolsLink.style.color = isDark ? '#888' : '#999'; });
+  toolsLink.addEventListener('mouseleave', function() { toolsLink.style.color = toolsIdle; });
 
   var pdfLink = document.createElement('a');
   pdfLink.href = 'downloads/Relinquishment.pdf';
@@ -333,6 +335,7 @@
   nav.appendChild(pdfLink);
   nav.appendChild(zipLink);
   if (fbBtn) nav.appendChild(fbBtn);
+  nav.appendChild(toolsLink);
   document.body.appendChild(nav);
 
   // --- Navigation Popup (Plan 0268) ---
@@ -416,7 +419,6 @@
   popupFooter.appendChild(zipBtn);
   popupFooter.appendChild(tipsBtn);
   popupFooter.appendChild(vlBtn);
-  popupFooter.appendChild(toolsLink);
   navPopup.appendChild(popupFooter);
 
   document.body.appendChild(navPopup);
