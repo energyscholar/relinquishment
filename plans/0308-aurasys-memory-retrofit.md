@@ -245,6 +245,18 @@ pending_items(id, description, status, tier, created, last_touched,
 correction_connections(correction_id, connected_id, relationship)
 person_projects(person_id, project_slug)
 
+-- Associative memory (Layer 2 — populate gradually, not bulk)
+associations(id, source_type, source_id, target_type, target_id,
+             relationship, basis, created_at)
+
+-- Full-text search (Layer 1 — auto-populated from all content fields)
+-- FTS5 virtual table indexes content across all entity tables.
+-- Rebuilt during rebuild-db.sh from corrections.context, feedback.content,
+-- projects.content, people.description, references.description, etc.
+CREATE VIRTUAL TABLE memory_fts USING fts5(
+    source_table, source_id, title, content,
+    tokenize='porter unicode61');
+
 -- Operational
 health_snapshots(id, session_number, date, pressure, freshness,
                  coverage, drift, notes, created_at)
@@ -263,6 +275,10 @@ ingest_log(id, source_file, table_name, action, timestamp)
 - ptl_items.tier: 1, 2, 3, 4, 5 (integer, matching ptl.yaml native format)
 - ptl_items.status: 'READY', 'ACTIVE', 'BLOCKED', 'REVIEW', 'NEEDS_PLAN', 'TODO', 'DONE', 'DROPPED', 'SHELF', 'WAITING' (matches ptl.yaml meta.statuses + WAITING used in practice)
 - pending_items.tier: 'NOW', 'SOON', 'LATER'
+- associations.source_type / target_type: 'correction', 'feedback', 'project', 'person', 'reference', 'session', 'decision', 'breakthrough', 'ptl_item', 'pending_item'
+- associations.relationship: 'relates_to', 'contradicts', 'supersedes', 'exemplifies', 'derives_from'
+
+**FTS5 population:** During `rebuild-db.sh`, after all data tables are loaded, populate the FTS5 table by INSERT-SELECT from each content-bearing table. This is deterministic and re-runnable — the FTS table is dropped and rebuilt each time (virtual tables don't support INSERT OR REPLACE).
 
 **Concurrent access:** rebuild-db.sh builds to `argus.db.new`, verifies, then atomic `mv argus.db.new argus.db`. Existing readers continue on old file via open descriptor. WAL mode ensures concurrent reads never block.
 
@@ -287,6 +303,7 @@ ingest_log(id, source_file, table_name, action, timestamp)
 | `v_person_context` | Cross-entity: person + their projects + references + last session mention |
 | `v_project_summary` | Cross-entity: project + related PTL items + recent sessions + feedback rules |
 | `v_ingest_recent` | Most recent ingest_log entries per source_file (used by ingest script to detect staleness) |
+| `v_associations` | Associations with source and target names resolved (joins entity tables to show human-readable labels) |
 
 ### Triggers
 
@@ -490,6 +507,71 @@ No case conversion needed — DB stores uppercase to match YAML.
 
 ---
 
+## Associative Memory Architecture
+
+**Problem:** Grep fails in three ways: vocabulary mismatch (synonym blindness), cross-domain connections (conceptual links between entities using different words), and don't-know-to-look (relevant memory exists but nothing prompts retrieval). These failures cause confabulations and missed context.
+
+**Solution: Two layers, built into Plan 0308 schema. Third layer deferred until failure data exists.**
+
+### Layer 1: FTS5 Full-Text Search (built into rebuild)
+
+SQLite's built-in full-text search. Indexes all content fields across all entity tables. Porter stemming handles inflections ("running" → "run"). BM25 ranking returns results by relevance, not just presence.
+
+```sql
+-- Cross-table fuzzy search (replaces grep)
+SELECT source_table, source_id, title, rank
+FROM memory_fts WHERE memory_fts MATCH 'risk philosophy'
+ORDER BY rank;
+```
+
+**What it fixes:** Stemming, cross-table search, relevance ranking, phrase/proximity matching.
+**What it doesn't fix:** True synonyms, conceptual associations, don't-know-to-look.
+**Cost:** Zero. Built into SQLite. Rebuilt deterministically during rebuild-db.sh.
+
+### Layer 2: Explicit Association Graph (populated gradually)
+
+The `associations` table stores curated cross-entity links with explicit rationale:
+
+```sql
+-- Example associations:
+-- correction #6 (forgiveness>permission) ↔ user-risk-philosophy
+-- correction #12 (guided deduction) ↔ project-phonon-backchannel
+-- person Gjerloev ↔ project-magnetogenesis-context
+
+-- "What connects to correction #6?"
+SELECT a.*, 
+    CASE a.target_type
+        WHEN 'feedback' THEN (SELECT slug FROM feedback WHERE id = a.target_id)
+        WHEN 'project' THEN (SELECT slug FROM projects WHERE id = a.target_id)
+        WHEN 'person' THEN (SELECT name FROM people WHERE id = a.target_id)
+    END as target_name
+FROM associations a
+WHERE (source_type='correction' AND source_id=6)
+   OR (target_type='correction' AND target_id=6);
+```
+
+**What it fixes:** Cross-domain connections, don't-know-to-look (loading one entity surfaces associated entities). The `basis` field makes associations auditable.
+**Population:** Not bulk. Accumulated during memory writes (ingest-memories.sh suggests associations via FTS5 search) and maintenance sweeps. `correction_connections` is the existing prototype — this generalizes it across all entity types.
+**Cost:** Low. One table. Curation effort is the main cost — no infrastructure.
+
+### Layer 3: Embeddings (DEFERRED — not in this plan)
+
+Vector similarity search would fix true synonyms and partial/fuzzy cues ("Norwegian guy" → Gjerloev). But it requires an external embedding model, may not capture domain vocabulary (TQNN, COWS, ABCRE), and adds dependency/cost.
+
+**Decision:** Don't build until Phase 4 testing produces documented failure patterns that FTS5 + associations can't handle. If needed, spec as a separate plan.
+
+### Retrieval Stack (bottom catches what top misses)
+
+```
+L1 anti-confab list    — catches errors BEFORE any tool call
+DB exact queries       — precise fact retrieval by column
+FTS5 fuzzy search      — stemmed cross-table text search
+Associations graph     — explicit cross-domain links
+[Embeddings]           — semantic similarity (future, if needed)
+```
+
+---
+
 ## Gap Analysis: Traveller Reference → Argus Main Memory
 
 **Source:** S68 stress test, ISSUES.md findings, Plan 0309 (Traveller resilience hardening).
@@ -666,8 +748,8 @@ Measure: does Argus follow all 11 steps correctly? How many file reads required?
 - `convert-ptl.py` — YAML→SQL converter for ptl.yaml (per "PTL MCP Continuity" spec)
 - MANIFEST.md with SHA-256 checksums
 - `verify-integrity.sh` — checksum chain verification
-- Empty `argus.db` at repo root with all tables, views, triggers, indexes
-- Test suite: schema existence, constraint rejection, view correctness, rebuild idempotency, parser output validation
+- Empty `argus.db` at repo root with all tables, views, triggers, indexes, FTS5 virtual table, associations table
+- Test suite: schema existence, constraint rejection, view correctness, rebuild idempotency, parser output validation, FTS5 search returns results after rebuild, associations FK resolution works
 
 **Generator prompt references:** Detailed schema spec written to `scripts/db-setup/schema-spec.md` before Generator runs. Parser spec written to `scripts/ingest-spec.md`.
 
@@ -677,7 +759,7 @@ Measure: does Argus follow all 11 steps correctly? How many file reads required?
 - `load.sh` pipes PRAGMA+script in same connection (R3)
 - `ingest-memories.sh` acquires flock before writing (R5)
 
-**Gate:** All tests pass. `PRAGMA integrity_check` and `PRAGMA foreign_key_check` clean. Parser produces valid SQL from 3 sample .md files (one feedback, one project, one reference). Manual review of schema matches this plan's design. health-check.sh detects missing/corrupt/undercount and auto-rebuilds. rebuild-db.sh backup/restore cycle tested.
+**Gate:** All tests pass. `PRAGMA integrity_check` and `PRAGMA foreign_key_check` clean. Parser produces valid SQL from 3 sample .md files (one feedback, one project, one reference). Manual review of schema matches this plan's design. health-check.sh detects missing/corrupt/undercount and auto-rebuilds. rebuild-db.sh backup/restore cycle tested. FTS5 table populated and searchable after rebuild. Associations table exists (empty is fine — populated gradually).
 
 ### Phase 2: Core Data Migration (1-2 sessions)
 
@@ -821,6 +903,8 @@ Target: lazy verification catches drift, doesn't block loading.
 21. Concurrent ingest serialized via flock — no SQLITE_BUSY in multi-shell usage (R5)
 22. Rebuild is fully deterministic — no manual steps, no external dependencies (R6)
 23. DR protocol Tier 2.5 covers both campaign.db and argus.db (R7)
+24. FTS5 full-text search returns relevant results across all entity tables (Layer 1 associative)
+25. Associations table exists and accepts cross-entity links with valid CHECK constraints (Layer 2 associative — population is gradual, not gated)
 
 ---
 
