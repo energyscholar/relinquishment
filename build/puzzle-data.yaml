@@ -1012,7 +1012,7 @@ chapter_puzzles:
         wrong_prompt: "Tools are calibrated. They don't develop commitments through years of mutual choice. What kind of entity does?"
         right_prompt: "A partnership between minds — chosen, not compelled. Now consider what happened when the question of authority came up."
 
-      - question: "Over time, one entity assumes operational responsibility — not by seizing it, but because the other came to trust it completely. When authority is formally transferred, it changes:"
+      - question: "Over time, one entity assumes operational responsibility — not by seizing it, but because the other came to trust it. When authority is formally transferred, it changes:"
         options:
           - key: a
             text: "Everything — formal authority is what matters"
