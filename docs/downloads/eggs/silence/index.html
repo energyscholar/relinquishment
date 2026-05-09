@@ -381,26 +381,8 @@ The silence is the finding.</em></p>
   var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
 
   // --- Clipboard utility (shared by copy buttons, heading links, share button) ---
-  function fallbackCopy(text) {
-    var ta = document.createElement('textarea');
-    ta.value = text;
-    ta.style.cssText = 'position:fixed;left:-9999px;';
-    document.body.appendChild(ta);
-    ta.select();
-    document.execCommand('copy');
-    document.body.removeChild(ta);
-  }
-
   function copyToClipboard(text, onSuccess) {
-    if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(text).then(onSuccess, function() {
-        fallbackCopy(text);
-        onSuccess();
-      });
-    } else {
-      fallbackCopy(text);
-      onSuccess();
-    }
+    navigator.clipboard.writeText(text).then(onSuccess);
   }
 
   // --- TOC toggle ---
@@ -478,79 +460,6 @@ The silence is the finding.</em></p>
     });
   });
 
-  // Center: Quick-jump Part links
-  var quickJump = document.createElement('span');
-  quickJump.id = 'nav-quickjump';
-  quickJump.style.cssText = 'flex:0 0 auto;padding:0 1em;white-space:nowrap;';
-
-  // Intro link — opens Introduction, p1 (hook), and p2 (summary)
-  var introLink = document.createElement('a');
-  introLink.href = '#hook:what-would-you-do';
-  introLink.textContent = 'Intro';
-  introLink.setAttribute('data-hover', 'Anyone who reads the Introduction has read Relinquishment \u2014 just not cover to cover. ~700 words for the hook, ~6,000 for the full story.');
-  introLink.classList.add('hover-nav');
-  introLink.style.cssText = 'text-decoration:none;color:#1a5276;font-weight:bold;';
-  introLink.addEventListener('mouseenter', function() { introLink.style.color = '#2471a3'; });
-  introLink.addEventListener('mouseleave', function() { introLink.style.color = '#1a5276'; });
-  introLink.addEventListener('click', function(e) {
-    e.preventDefault();
-    // Open book-section
-    var bookSection = document.querySelector('details.book-section');
-    if (bookSection) bookSection.open = true;
-    // Find and open the Introduction part-section
-    document.querySelectorAll('details.part-section > summary').forEach(function(s) {
-      if (s.textContent.indexOf('Introduction') !== -1) {
-        s.parentElement.open = true;
-      }
-    });
-    // Open p1 (hook) and p2 (summary) chapter-sections
-    var hookEl = document.getElementById('hook:what-would-you-do');
-    var summaryEl = document.getElementById('summary:story-never-told');
-    [hookEl, summaryEl].forEach(function(el) {
-      if (el) {
-        var details = el.closest('details');
-        if (details) details.open = true;
-      }
-    });
-    // Scroll to hook
-    if (hookEl) hookEl.scrollIntoView({behavior: 'smooth'});
-  });
-  quickJump.appendChild(introLink);
-
-  var partLinks = [
-    {label: 'The Flat', partName: 'The Flat', tip: 'The physics — every chip and every planet has a flat world that supports quantum teleportation. Published science says life can emerge there, and what it could do. Asking required five fields to meet. They never did. True under all three possibilities.'},
-    {label: 'The Record', partName: 'The Record', tip: 'The testimony — one man\'s account of meeting something that shouldn\'t exist. If it happened, her name is the Custodian. Technology placed in trust, not surrendered. A secret kept twenty years. You decide.'},
-    {label: 'Appendices', partName: 'Appendices', tip: 'Predictions with deadlines. The physics AI needs to evaluate this book. How to verify everything yourself.'},
-  ];
-  partLinks.forEach(function(p, i) {
-    quickJump.appendChild(document.createTextNode(' \u00B7 '));
-    var a = document.createElement('a');
-    a.href = '#';
-    a.textContent = p.label;
-    a.setAttribute('data-hover', p.tip);
-    a.classList.add('hover-nav');
-    a.style.cssText = 'text-decoration:none;color:#1a5276;';
-    a.addEventListener('mouseenter', function() { a.style.color = '#2471a3'; });
-    a.addEventListener('mouseleave', function() { a.style.color = '#1a5276'; });
-    a.addEventListener('click', function(e) {
-      e.preventDefault();
-      pushNavState();
-      // Open book-section
-      var bookSection = document.querySelector('details.book-section');
-      if (bookSection) bookSection.open = true;
-      // Find and open the matching part-section by name
-      var opened = false;
-      document.querySelectorAll('details.part-section > summary').forEach(function(s) {
-        if (s.textContent.indexOf(p.partName) !== -1) {
-          s.parentElement.open = true;
-          s.parentElement.scrollIntoView({behavior: 'smooth'});
-          opened = true;
-        }
-      });
-    });
-    quickJump.appendChild(a);
-  });
-
   // Right: ▲ Top
   var topBtn = document.createElement('a');
   topBtn.textContent = '\u25B2 Top';
@@ -609,78 +518,12 @@ The silence is the finding.</em></p>
     backBtn.style.display = navStack.length > 0 ? 'inline-block' : 'none';
   }
 
-  // --- Epistemic filter buttons (Plan 0144, revised: independent toggles) ---
-  // Both start SHOW (true). Each toggles independently. Not mutually exclusive.
-  var showScience = true;
-  var showStory = true;
 
-  function applyFilters() {
-    document.querySelectorAll('details.chapter-section').forEach(function(ch) {
-      var fg = ch.getAttribute('data-filter-group') || 'M';
-      var hide = false;
-      if (!showScience && fg === 'A') hide = true;
-      if (!showStory && (fg === 'B' || fg === 'C')) hide = true;
-      // M and untagged always visible
-      ch.style.display = hide ? 'none' : '';
-      if (hide) ch.open = false;
-    });
-    // Auto-hide empty part-sections
-    document.querySelectorAll('details.part-section').forEach(function(part) {
-      var chs = part.querySelectorAll(':scope > details.chapter-section');
-      if (!chs.length) return;
-      var allHidden = Array.from(chs).every(function(c) { return c.style.display === 'none'; });
-      part.style.display = allHidden ? 'none' : '';
-    });
-    updateFilterButtons();
-    try {
-      localStorage.setItem('relinquishment-filter-science', showScience ? '1' : '0');
-      localStorage.setItem('relinquishment-filter-story', showStory ? '1' : '0');
-    } catch(e) {}
-  }
-
-  function updateFilterButtons() {
-    var activeBase = isDark ? '#2471a3' : '#1a5276';
-    var inactiveColor = isDark ? '#5dade2' : '#1a5276';
-    // SHOW state = filled (content visible), HIDE state = outline (content hidden)
-    scienceBtn.style.background = showScience ? activeBase : 'transparent';
-    scienceBtn.style.color = showScience ? '#fff' : inactiveColor;
-    scienceBtn.style.borderColor = activeBase;
-    storyBtn.style.background = showStory ? activeBase : 'transparent';
-    storyBtn.style.color = showStory ? '#fff' : inactiveColor;
-    storyBtn.style.borderColor = activeBase;
-  }
-
-  var scienceBtn = document.createElement('button');
-  scienceBtn.id = 'filter-science';
-  scienceBtn.textContent = 'Science';
-  scienceBtn.setAttribute('data-hover', 'Toggle the published physics chapters — verified science that stands under all three possibilities');
-  scienceBtn.classList.add('hover-nav');
-  scienceBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
-    'font-family:inherit;cursor:pointer;background:#1a5276;color:#fff;' +
-    'border:1px solid #1a5276;border-radius:4px;margin:0 0.2em;white-space:nowrap;';
-  scienceBtn.addEventListener('click', function() {
-    showScience = !showScience;
-    applyFilters();
-  });
-
-  var storyBtn = document.createElement('button');
-  storyBtn.id = 'filter-story';
-  storyBtn.textContent = 'Story';
-  storyBtn.setAttribute('data-hover', 'Toggle the testimony and narrative — the story as told by the people who lived it');
-  storyBtn.classList.add('hover-nav');
-  storyBtn.style.cssText = 'flex:0 0 auto;padding:0.2em 0.6em;font-size:0.85em;' +
-    'font-family:inherit;cursor:pointer;background:#1a5276;color:#fff;' +
-    'border:1px solid #1a5276;border-radius:4px;margin:0 0.2em;white-space:nowrap;';
-  storyBtn.addEventListener('click', function() {
-    showStory = !showStory;
-    applyFilters();
-  });
-
-  // --- Guardian-only filter (G button) ---
+  // --- Custodian-only filter (G button) ---
   // Shows only the 7 interludes, everything else hidden. CSS (.custodian-only
   // body class) does the work; here we just force all <details> open so the
   // interludes are visible inside their host chapters.
-  var showGuardianOnly = false;
+  var showCustodianOnly = false;
   var gBtn = document.createElement('button');
   gBtn.id = 'filter-custodian';
   gBtn.textContent = 'C';
@@ -695,8 +538,8 @@ The silence is the finding.</em></p>
     'border:1px solid #9b59b6;border-radius:4px;margin:0 0.2em;white-space:nowrap;';
   gBtn.style.cssText = gInactive;
   gBtn.addEventListener('click', function() {
-    showGuardianOnly = !showGuardianOnly;
-    if (showGuardianOnly) {
+    showCustodianOnly = !showCustodianOnly;
+    if (showCustodianOnly) {
       document.body.classList.add('custodian-only');
       // Force all details open so the hidden-in-hierarchy interludes surface
       document.querySelectorAll('details').forEach(function(d) { d.open = true; });
@@ -739,6 +582,20 @@ The silence is the finding.</em></p>
   pdfBtn.addEventListener('mouseenter', function() { pdfBtn.style.color = '#2471a3'; });
   pdfBtn.addEventListener('mouseleave', function() { pdfBtn.style.color = isDark ? '#aaa' : '#888'; });
 
+  // ZIP download link — mail-a-friend-sized archive
+  var zipBtn = document.createElement('a');
+  zipBtn.id = 'nav-zip';
+  zipBtn.textContent = 'ZIP';
+  var zipName = window.location.pathname.replace(/\.html?$/i, '.zip');
+  zipBtn.href = zipName;
+  zipBtn.setAttribute('data-hover', 'Download as ZIP (~300 KB) — small enough to email to a friend');
+  zipBtn.setAttribute('aria-label', 'Download ZIP archive');
+  zipBtn.classList.add('hover-nav');
+  zipBtn.style.cssText = 'text-decoration:none;color:' + (isDark ? '#aaa' : '#888') +
+    ';font-size:0.85em;margin-left:0.5em;cursor:pointer;flex:0 0 auto;';
+  zipBtn.addEventListener('mouseenter', function() { zipBtn.style.color = '#2471a3'; });
+  zipBtn.addEventListener('mouseleave', function() { zipBtn.style.color = isDark ? '#aaa' : '#888'; });
+
   // Tooltip toggle — small subtle control for quiet-mode users
   var tipsBtn = document.createElement('a');
   tipsBtn.id = 'nav-tips-toggle';
@@ -768,53 +625,604 @@ The silence is the finding.</em></p>
   tipsBtn.addEventListener('mouseenter', function() { tipsBtn.style.color = '#2471a3'; });
   tipsBtn.addEventListener('mouseleave', function() { tipsBtn.style.color = isDark ? '#aaa' : '#888'; });
 
-  nav.appendChild(backBtn);
-  nav.appendChild(breadcrumb);
-  nav.appendChild(shareBtn);
-  nav.appendChild(pdfBtn);
-  nav.appendChild(tipsBtn);
-  nav.appendChild(quickJump);
-  // Science / Story filter buttons hidden — not working as intended, feature-creep.
-  // Code kept intact (state defaults to everything visible). A future Guardian-only
-  // filter button could replace them. To restore: uncomment the two lines below.
-  // nav.appendChild(scienceBtn);
-  // nav.appendChild(storyBtn);
-  nav.appendChild(gBtn);
+  // Magnetosphere toggle button (◐)
+  var msToggle = document.createElement('a');
+  msToggle.href = '#';
+  msToggle.id = 'nav-ms-toggle';
+  msToggle.textContent = '◐';
+  msToggle.setAttribute('data-hover', 'Toggle cover illustration');
+  msToggle.classList.add('hover-nav');
+  msToggle.style.cssText = 'text-decoration:none;color:' +
+    (isDark ? '#aaa' : '#888') + ';font-size:1.1em;cursor:pointer;' +
+    'margin-left:0.5em;flex:0 0 auto;';
+  msToggle.addEventListener('mouseenter', function() { msToggle.style.color = '#2471a3'; });
+  msToggle.addEventListener('mouseleave', function() { msToggle.style.color = isDark ? '#aaa' : '#888'; });
 
   var toolsLink = document.createElement('a');
   toolsLink.href = 'https://relinquishment.ai/tools.html';
   toolsLink.textContent = '·';
-  toolsLink.style.cssText = 'flex:0 0 auto;font-size:0.7em;color:transparent;' +
-    'text-decoration:none;padding:0.3em 0.2em;cursor:default;';
-  toolsLink.setAttribute('aria-hidden', 'true');
-  nav.appendChild(toolsLink);
+  var toolsIdle = isDark ? '#555' : '#ccc';
+  toolsLink.style.cssText = 'flex:0 0 auto;font-size:0.9em;color:' + toolsIdle + ';' +
+    'text-decoration:none;padding:0.2em 0.35em;cursor:pointer;';
+  toolsLink.addEventListener('mouseenter', function() { toolsLink.style.color = isDark ? '#888' : '#999'; });
+  toolsLink.addEventListener('mouseleave', function() { toolsLink.style.color = toolsIdle; });
 
-  nav.appendChild(expandBtn);
+  var pdfLink = document.createElement('a');
+  pdfLink.href = 'downloads/Relinquishment.pdf';
+  pdfLink.textContent = 'PDF';
+  pdfLink.title = 'Download PDF';
+  pdfLink.style.cssText = 'flex:0 0 auto;font-size:0.85em;opacity:0.7;' +
+    'text-decoration:none;margin-left:0.8em;color:' + (isDark ? '#aaa' : '#888') + ';';
+
+  var zipLink = document.createElement('a');
+  zipLink.href = 'downloads/Relinquishment.zip';
+  zipLink.textContent = 'ZIP';
+  zipLink.title = 'Download ZIP (email-friendly)';
+  zipLink.style.cssText = 'flex:0 0 auto;font-size:0.85em;opacity:0.7;' +
+    'text-decoration:none;margin-left:0.8em;color:' + (isDark ? '#aaa' : '#888') + ';';
+
+  // --- Opt-in feedback button (relinquishment.ai only, no tracking) ---
+  var fbBtn = null;
+  if (window.location.hostname === 'relinquishment.ai') {
+    fbBtn = document.createElement('a');
+    fbBtn.id = 'nav-feedback';
+    fbBtn.href = '#';
+    fbBtn.textContent = 'V2 Feedback';
+    fbBtn.setAttribute('data-hover', 'Help improve V2 — opens your email client with a pre-filled template. No data collected unless you choose to send.');
+    fbBtn.setAttribute('aria-label', 'Send feedback for V2');
+    fbBtn.classList.add('hover-nav');
+    fbBtn.style.cssText = 'text-decoration:none;color:' + (isDark ? '#aaa' : '#888') +
+      ';font-size:0.85em;margin-left:0.5em;cursor:pointer;flex:0 0 auto;';
+    fbBtn.addEventListener('mouseenter', function() { fbBtn.style.color = '#2471a3'; });
+    fbBtn.addEventListener('mouseleave', function() { fbBtn.style.color = isDark ? '#aaa' : '#888'; });
+    fbBtn.addEventListener('click', function(e) {
+      e.preventDefault();
+      var chapter = currentChapterId || 'unknown';
+      var subject = encodeURIComponent('V2 Feedback: ' + chapter);
+      var body = encodeURIComponent(
+        'Chapter: ' + chapter + '\n' +
+        'Section: \n\n' +
+        'What worked:\n\n' +
+        'What was confusing:\n\n' +
+        'Suggestion:\n\n'
+      );
+      window.location.href = 'mailto:energyscholar+feedback@gmail.com?subject=' + subject + '&body=' + body;
+    });
+  }
+
+  // --- Nav bar: 5 items + download links ---
+  nav.appendChild(backBtn);
+  nav.appendChild(breadcrumb);
+  nav.appendChild(shareBtn);
   nav.appendChild(evalBtn);
   nav.appendChild(topBtn);
+  nav.appendChild(pdfLink);
+  nav.appendChild(zipLink);
+  if (fbBtn) nav.appendChild(fbBtn);
+  nav.appendChild(toolsLink);
   document.body.appendChild(nav);
+
+  // --- Navigation Popup (Plan 0268) ---
+  var currentChapterId = '';
+  var popupOpen = false;
+
+  var popupStyle = document.createElement('style');
+  popupStyle.textContent =
+    '#nav-backdrop{display:none;position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,0.4);z-index:99;opacity:0;transition:opacity 0.2s;}' +
+    '#nav-popup{display:none;position:fixed;left:0.5em;right:0.5em;max-height:70vh;background:#fff;border-radius:8px 8px 0 0;box-shadow:0 -4px 20px rgba(0,0,0,0.15);z-index:100;overflow-y:auto;-webkit-overflow-scrolling:touch;transform:translateY(100%);transition:transform 0.2s ease-out;font-size:0.9em;}' +
+    '.nav-popup-close{position:sticky;top:0;text-align:right;padding:0.5em 0.8em;background:inherit;cursor:pointer;font-size:1.2em;color:#888;z-index:1;}' +
+    '.nav-popup-list{padding:0 0.8em 0.5em;}' +
+    '.nav-popup-part{font-weight:bold;font-size:1em;padding:0.6em 0 0.3em;cursor:pointer;border-top:1px solid #eee;}' +
+    '.nav-popup-part:first-child{border-top:none;}' +
+    '.nav-popup-chapter{padding:0.35em 0 0.35em 1.2em;cursor:pointer;color:#333;border-radius:4px;}' +
+    '.nav-popup-chapter:hover{background:#f0f6fa;}' +
+    '.nav-popup-current{background:#e8f0f8;font-weight:bold;color:#1a5276;}' +
+    '.nav-popup-interlude{font-style:italic;color:#9b59b6;}' +
+    '.nav-popup-dimmed{opacity:0.4;}' +
+    '.nav-popup-footer{display:flex;gap:0.5em;justify-content:center;padding:0.6em;border-top:1px solid #eee;flex-wrap:wrap;position:sticky;bottom:0;background:inherit;}' +
+    '.nav-popup-dot{font-size:0.8em;}' +
+    '@media(prefers-color-scheme:dark){' +
+      '#nav-backdrop{background:rgba(0,0,0,0.6);}' +
+      '#nav-popup{background:#1e1e1e;box-shadow:0 -4px 20px rgba(0,0,0,0.4);}' +
+      '.nav-popup-close{color:#888;}' +
+      '.nav-popup-part{border-top-color:#333;color:#e0e0e0;}' +
+      '.nav-popup-chapter{color:#ccc;}' +
+      '.nav-popup-chapter:hover{background:#2a3a4a;}' +
+      '.nav-popup-current{background:#1e3248;color:#6ba3f7;}' +
+      '.nav-popup-interlude{color:#b77fdf;}' +
+      '.nav-popup-footer{border-top-color:#333;}' +
+    '}' +
+    '@media print{#nav-popup,#nav-backdrop{display:none!important;}}';
+  document.head.appendChild(popupStyle);
+
+  var navBackdrop = document.createElement('div');
+  navBackdrop.id = 'nav-backdrop';
+  document.body.appendChild(navBackdrop);
+
+  var navPopup = document.createElement('div');
+  navPopup.id = 'nav-popup';
+
+  var popupClose = document.createElement('div');
+  popupClose.className = 'nav-popup-close';
+  popupClose.textContent = '✕';
+  popupClose.addEventListener('click', closePopup);
+  navPopup.appendChild(popupClose);
+
+  var popupList = document.createElement('div');
+  popupList.className = 'nav-popup-list';
+  navPopup.appendChild(popupList);
+
+  var vlBtn = document.createElement('button');
+  vlBtn.textContent = 'Visual';
+  vlBtn.style.cssText = 'font-size:0.7em;padding:0.2em 0.6em;' +
+    'cursor:pointer;border:1px solid #ccc;border-radius:3px;' +
+    'background:#f8f8f8;color:#555;';
+  vlBtn.setAttribute('data-hover', 'Visual cues on/off');
+  vlBtn.setAttribute('aria-label', 'Toggle visual language cues');
+
+  var vlState = (function(){
+    try { return localStorage.getItem('relinquishment-visual-language') || 'on'; }
+    catch(e){ return 'on'; }
+  })();
+  if (vlState === 'off') document.body.classList.add('visual-plain');
+  vlBtn.style.opacity = vlState === 'off' ? '0.5' : '1';
+
+  vlBtn.addEventListener('click', function() {
+    document.body.classList.toggle('visual-plain');
+    var state = document.body.classList.contains('visual-plain') ? 'off' : 'on';
+    try { localStorage.setItem('relinquishment-visual-language', state); } catch(e){}
+    vlBtn.style.opacity = state === 'off' ? '0.5' : '1';
+  });
+
+  var popupFooter = document.createElement('div');
+  popupFooter.className = 'nav-popup-footer';
+  popupFooter.appendChild(expandBtn);
+  popupFooter.appendChild(gBtn);
+  popupFooter.appendChild(msToggle);
+  popupFooter.appendChild(pdfBtn);
+  popupFooter.appendChild(zipBtn);
+  popupFooter.appendChild(tipsBtn);
+  popupFooter.appendChild(vlBtn);
+  navPopup.appendChild(popupFooter);
+
+  document.body.appendChild(navPopup);
+
+  function buildPopupContents() {
+    popupList.innerHTML = '';
+    document.querySelectorAll('details.part-section').forEach(function(part) {
+      var summary = part.querySelector(':scope > summary');
+      if (!summary) return;
+      var h1 = summary.querySelector('h1[id]');
+      var partName = h1 ? h1.textContent.trim() : summary.textContent.trim();
+      var partId = h1 ? h1.id : '';
+
+      var firstCh = part.querySelector('details.chapter-section');
+      var fg = firstCh ? (firstCh.getAttribute('data-filter-group') || 'M') : 'M';
+      var dotColor = fg === 'A' ? '#d4a847' : (fg === 'C' ? '#9b7db8' : '#6a9fb5');
+
+      var partEl = document.createElement('div');
+      partEl.className = 'nav-popup-part';
+      var dot = document.createElement('span');
+      dot.className = 'nav-popup-dot';
+      dot.style.color = dotColor;
+      dot.textContent = '● ';
+      partEl.appendChild(dot);
+      partEl.appendChild(document.createTextNode(partName));
+      partEl.addEventListener('click', function() { navigateTo(partId); });
+      popupList.appendChild(partEl);
+
+      part.querySelectorAll(':scope > details.chapter-section').forEach(function(ch) {
+        var chSummary = ch.querySelector(':scope > summary');
+        if (!chSummary) return;
+        var h2 = chSummary.querySelector('h2[id], h3[id]');
+        var chName = h2 ? h2.textContent.trim() : chSummary.textContent.trim();
+        var chId = h2 ? h2.id : '';
+        var isInterlude = ch.getAttribute('data-filter-group') === 'G';
+        var isCurrent = chId && chId === currentChapterId;
+        var isHidden = ch.style.display === 'none';
+
+        var chEl = document.createElement('div');
+        chEl.className = 'nav-popup-chapter';
+        if (isCurrent) chEl.className += ' nav-popup-current';
+        if (isInterlude) chEl.className += ' nav-popup-interlude';
+        if (isHidden) chEl.className += ' nav-popup-dimmed';
+        chEl.textContent = chName;
+        chEl.setAttribute('data-chapter-id', chId);
+        chEl.addEventListener('click', function() {
+          if (isHidden && document.body.classList.contains('custodian-only')) {
+            document.body.classList.remove('custodian-only');
+            showCustodianOnly = false;
+            gBtn.style.cssText = gInactive;
+          }
+          navigateTo(chId);
+        });
+        popupList.appendChild(chEl);
+      });
+    });
+  }
+
+  function navigateTo(id) {
+    closePopup();
+    if (!id) return;
+    pushNavState();
+    autoExpand('#' + id);
+  }
+
+  function openPopup() {
+    updateBreadcrumb();
+    buildPopupContents();
+    popupOpen = true;
+    navBackdrop.style.display = 'block';
+    navPopup.style.display = 'block';
+    navPopup.style.bottom = nav.offsetHeight + 'px';
+    requestAnimationFrame(function() {
+      requestAnimationFrame(function() {
+        navBackdrop.style.opacity = '1';
+        navPopup.style.transform = 'translateY(0)';
+      });
+    });
+    var cur = navPopup.querySelector('.nav-popup-current');
+    if (cur) setTimeout(function() { cur.scrollIntoView({block: 'center', behavior: 'smooth'}); }, 50);
+  }
+
+  function closePopup() {
+    if (!popupOpen) return;
+    popupOpen = false;
+    navBackdrop.style.opacity = '0';
+    navPopup.style.transform = 'translateY(100%)';
+    setTimeout(function() {
+      navBackdrop.style.display = 'none';
+      navPopup.style.display = 'none';
+    }, 200);
+  }
+
+  navBackdrop.addEventListener('click', closePopup);
+
+  breadcrumb.removeAttribute('data-hover');
+  breadcrumb.classList.remove('hover-nav');
+  breadcrumb.style.cursor = 'pointer';
+  breadcrumb.setAttribute('role', 'button');
+  breadcrumb.setAttribute('tabindex', '0');
+  breadcrumb.setAttribute('aria-label', 'Open chapter navigation');
+  breadcrumb.addEventListener('click', function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (popupOpen) closePopup();
+    else openPopup();
+  });
+
+  var dropHint = document.createElement('span');
+  dropHint.textContent = ' ▾';
+  dropHint.style.cssText = 'color:#888;font-size:0.85em;';
 
   // Body padding for sticky nav
   document.body.style.paddingBottom = '3em';
 
-  // --- Breadcrumb update on scroll ---
-  function makeBreadcrumbLink(label, targetId) {
-    var a = document.createElement('a');
-    a.textContent = label;
-    a.href = targetId ? '#' + targetId : '#';
-    a.style.cssText = 'text-decoration:none;color:' + (isDark ? '#aaa' : '#777') + ';';
-    a.addEventListener('mouseenter', function() { a.style.color = '#2471a3'; });
-    a.addEventListener('mouseleave', function() { a.style.color = isDark ? '#aaa' : '#777'; });
-    a.addEventListener('click', function(e) {
+  // --- Cover magnetosphere SVG injection ---
+  (function() {
+    var styleEl = document.createElement('style');
+    styleEl.textContent =
+      '@media (prefers-color-scheme: dark) { #cover-ms-light { display: none !important; } #cover-ms-dark { display: block; } }' +
+      '@media (prefers-color-scheme: light), (prefers-color-scheme: no-preference) { #cover-ms-dark { display: none !important; } #cover-ms-light { display: block; } }' +
+      '@media print { #cover-magnetosphere { display: none !important; } }';
+    document.head.appendChild(styleEl);
+
+    var navW = nav.offsetWidth;
+    var msWidth;
+    if (navW > 700) {
+      msWidth = Math.min(Math.floor(navW * 0.52), 500);
+    } else {
+      msWidth = Math.floor(navW * 0.45);
+    }
+    if (msWidth < 40) return;
+    var motionOk = !(window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches);
+    var wrapper = document.createElement('div');
+    wrapper.id = 'cover-magnetosphere';
+    wrapper.setAttribute('aria-hidden', 'true');
+    var bodyRect = document.body.getBoundingClientRect();
+    var rightOffset = Math.max(0, window.innerWidth - bodyRect.right);
+    wrapper.style.cssText = 'position:fixed;right:' + rightOffset + 'px;' +
+      'width:' + msWidth + 'px;' +
+      'pointer-events:none;z-index:99;opacity:0.85;transition:opacity 0.3s;';
+
+    var darkSvg =
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" id="cover-ms-dark" width="100%">' +
+      '<title>Stylized magnetosphere. Earth at left-center with dipole field lines sweeping into the magnetotail. The plasma sheet — the Flat — glows copper-gold through the tail center. Deep space, stars, bow shock, solar wind.</title>' +
+      '<defs>' +
+      '<radialGradient id="cv-earth" cx="38%" cy="32%">' +
+      '<stop offset="0%" stop-color="#85c1e9"/>' +
+      '<stop offset="45%" stop-color="#2e86c1"/>' +
+      '<stop offset="100%" stop-color="#1a5276"/>' +
+      '</radialGradient>' +
+      '<radialGradient id="cv-atmo" cx="50%" cy="50%" r="50%">' +
+      '<stop offset="50%" stop-color="#5dade2" stop-opacity="0.12"/>' +
+      '<stop offset="80%" stop-color="#5dade2" stop-opacity="0.05"/>' +
+      '<stop offset="100%" stop-color="#5dade2" stop-opacity="0"/>' +
+      '</radialGradient>' +
+      '<radialGradient id="cv-atmo-outer" cx="50%" cy="50%" r="50%">' +
+      '<stop offset="40%" stop-color="#1a6b6a" stop-opacity="0.06"/>' +
+      '<stop offset="100%" stop-color="#1a6b6a" stop-opacity="0"/>' +
+      '</radialGradient>' +
+      '<linearGradient id="cv-flat" x1="0%" y1="0%" x2="100%" y2="0%">' +
+      '<stop offset="0%" stop-color="#C4913B" stop-opacity="0.9"/>' +
+      '<stop offset="25%" stop-color="#C4913B" stop-opacity="0.7"/>' +
+      '<stop offset="60%" stop-color="#C4913B" stop-opacity="0.35"/>' +
+      '<stop offset="100%" stop-color="#C4913B" stop-opacity="0.04"/>' +
+      '</linearGradient>' +
+      '<linearGradient id="cv-flat-glow" x1="0%" y1="0%" x2="100%" y2="0%">' +
+      '<stop offset="0%" stop-color="#C4913B" stop-opacity="0.3"/>' +
+      '<stop offset="30%" stop-color="#C4913B" stop-opacity="0.15"/>' +
+      '<stop offset="100%" stop-color="#C4913B" stop-opacity="0"/>' +
+      '</linearGradient>' +
+      '<linearGradient id="cv-tail-fill" x1="0%" y1="0%" x2="100%" y2="0%">' +
+      '<stop offset="0%" stop-color="#1a5276" stop-opacity="0.12"/>' +
+      '<stop offset="100%" stop-color="#1a5276" stop-opacity="0.02"/>' +
+      '</linearGradient>' +
+      '<linearGradient id="cv-bow" x1="100%" y1="0%" x2="0%" y2="0%">' +
+      '<stop offset="0%" stop-color="#5dade2" stop-opacity="0.5"/>' +
+      '<stop offset="100%" stop-color="#5dade2" stop-opacity="0.08"/>' +
+      '</linearGradient>' +
+      '<filter id="cv-glow"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
+      '<filter id="cv-soft"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
+      '<filter id="cv-wide-glow"><feGaussianBlur stdDeviation="8"/></filter>' +
+      '<filter id="cv-star-glow"><feGaussianBlur stdDeviation="1.2"/></filter>' +
+      '<clipPath id="cv-earth-clip"><circle cx="170" cy="160" r="17.5"/></clipPath>' +
+      '</defs>' +
+      '<g opacity="0.7">' +
+      '<circle cx="45" cy="22" r="0.8" fill="#fff" opacity="0.6">' + (motionOk ? '<animate attributeName="opacity" values="0.6;0.2;0.6" dur="5.0s" begin="0.3s" repeatCount="indefinite"/>' : '') + '</circle>' +
+      '<circle cx="112" cy="14" r="0.5" fill="#fff" opacity="0.4"/>' +
+      '<circle cx="78" cy="48" r="0.6" fill="#fff" opacity="0.5"/>' +
+      '<circle cx="205" cy="20" r="0.7" fill="#fff" opacity="0.3"/>' +
+      '<circle cx="340" cy="12" r="0.9" fill="#fff" opacity="0.5"/>' +
+      '<circle cx="430" cy="30" r="0.5" fill="#fff" opacity="0.4"/>' +
+      '<circle cx="540" cy="18" r="0.7" fill="#fff" opacity="0.6">' + (motionOk ? '<animate attributeName="opacity" values="0.6;0.2;0.6" dur="4.8s" begin="1.0s" repeatCount="indefinite"/>' : '') + '</circle>' +
+      '<circle cx="650" cy="35" r="0.6" fill="#fff" opacity="0.3"/>' +
+      '<circle cx="700" cy="70" r="0.5" fill="#fff" opacity="0.4"/>' +
+      '<circle cx="25" cy="95" r="0.5" fill="#fff" opacity="0.3"/>' +
+      '<circle cx="58" cy="130" r="0.7" fill="#fff" opacity="0.5"/>' +
+      '<circle cx="30" cy="200" r="0.6" fill="#fff" opacity="0.4"/>' +
+      '<circle cx="22" cy="280" r="0.8" fill="#fff" opacity="0.5"/>' +
+      '<circle cx="95" cy="295" r="0.5" fill="#fff" opacity="0.4"/>' +
+      '<circle cx="220" cy="305" r="0.6" fill="#fff" opacity="0.3"/>' +
+      '<circle cx="350" cy="302" r="0.7" fill="#fff" opacity="0.5"/>' +
+      '<circle cx="480" cy="298" r="0.5" fill="#fff" opacity="0.4"/>' +
+      '<circle cx="580" cy="305" r="0.6" fill="#fff" opacity="0.3"/>' +
+      '<circle cx="670" cy="290" r="0.8" fill="#fff" opacity="0.5"/>' +
+      '<circle cx="690" cy="160" r="0.5" fill="#fff" opacity="0.4"/>' +
+      '<circle cx="660" cy="220" r="0.7" fill="#fff" opacity="0.3"/>' +
+      '<circle cx="710" cy="250" r="0.6" fill="#fff" opacity="0.5"/>' +
+      '<circle cx="300" cy="38" r="1.0" fill="#fff" opacity="0.7" filter="url(#cv-star-glow)">' + (motionOk ? '<animate attributeName="opacity" values="0.7;0.25;0.7" dur="3.2s" begin="0s" repeatCount="indefinite"/>' : '') + '</circle>' +
+      '<circle cx="520" cy="60" r="0.9" fill="#fff" opacity="0.6" filter="url(#cv-star-glow)">' + (motionOk ? '<animate attributeName="opacity" values="0.6;0.2;0.6" dur="4.1s" begin="1.5s" repeatCount="indefinite"/>' : '') + '</circle>' +
+      '<circle cx="55" cy="265" r="1.0" fill="#fff" opacity="0.6" filter="url(#cv-star-glow)">' + (motionOk ? '<animate attributeName="opacity" values="0.6;0.2;0.6" dur="3.7s" begin="0.8s" repeatCount="indefinite"/>' : '') + '</circle>' +
+      '<circle cx="610" cy="280" r="0.8" fill="#fff" opacity="0.5" filter="url(#cv-star-glow)">' + (motionOk ? '<animate attributeName="opacity" values="0.5;0.15;0.5" dur="4.5s" begin="2.2s" repeatCount="indefinite"/>' : '') + '</circle>' +
+      '<circle cx="440" cy="48" r="0.4" fill="#dde" opacity="0.3"/>' +
+      '<circle cx="180" cy="295" r="0.4" fill="#dde" opacity="0.3"/>' +
+      '<circle cx="550" cy="260" r="0.4" fill="#eef" opacity="0.25"/>' +
+      '<circle cx="40" cy="160" r="0.4" fill="#eef" opacity="0.25"/>' +
+      '<circle cx="625" cy="140" r="0.5" fill="#fff" opacity="0.3"/>' +
+      '<circle cx="155" cy="45" r="0.4" fill="#fff" opacity="0.35"/>' +
+      '</g>' +
+      '<g opacity="0.35">' +
+      '<line x1="0" y1="128" x2="72" y2="140" stroke="#C4913B" stroke-width="0.8" stroke-linecap="round" stroke-dasharray="4,7">' + (motionOk ? '<animate attributeName="stroke-dashoffset" from="11" to="0" dur="1.8s" repeatCount="indefinite"/>' : '') + '</line>' +
+      '<line x1="0" y1="148" x2="78" y2="153" stroke="#C4913B" stroke-width="1.0" stroke-linecap="round" stroke-dasharray="4,7">' + (motionOk ? '<animate attributeName="stroke-dashoffset" from="11" to="0" dur="1.8s" repeatCount="indefinite"/>' : '') + '</line>' +
+      '<line x1="0" y1="160" x2="80" y2="160" stroke="#C4913B" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="4,7">' + (motionOk ? '<animate attributeName="stroke-dashoffset" from="11" to="0" dur="1.8s" repeatCount="indefinite"/>' : '') + '</line>' +
+      '<line x1="0" y1="172" x2="78" y2="167" stroke="#C4913B" stroke-width="1.0" stroke-linecap="round" stroke-dasharray="4,7">' + (motionOk ? '<animate attributeName="stroke-dashoffset" from="11" to="0" dur="1.8s" repeatCount="indefinite"/>' : '') + '</line>' +
+      '<line x1="0" y1="192" x2="72" y2="180" stroke="#C4913B" stroke-width="0.8" stroke-linecap="round" stroke-dasharray="4,7">' + (motionOk ? '<animate attributeName="stroke-dashoffset" from="11" to="0" dur="1.8s" repeatCount="indefinite"/>' : '') + '</line>' +
+      '</g>' +
+      '<g opacity="0.15">' +
+      '<line x1="0" y1="110" x2="55" y2="125" stroke="#C4913B" stroke-width="0.5" stroke-linecap="round" stroke-dasharray="3,6">' + (motionOk ? '<animate attributeName="stroke-dashoffset" from="9" to="0" dur="2.2s" repeatCount="indefinite"/>' : '') + '</line>' +
+      '<line x1="0" y1="210" x2="55" y2="195" stroke="#C4913B" stroke-width="0.5" stroke-linecap="round" stroke-dasharray="3,6">' + (motionOk ? '<animate attributeName="stroke-dashoffset" from="9" to="0" dur="2.2s" repeatCount="indefinite"/>' : '') + '</line>' +
+      '</g>' +
+      '<path d="M 100,45 C 72,90 68,130 72,160 C 68,190 72,230 100,275" fill="none" stroke="url(#cv-bow)" stroke-width="1.8" stroke-linecap="round">' + (motionOk ? '<animate attributeName="stroke-width" values="1.8;2.3;1.8" dur="4s" repeatCount="indefinite"/>' : '') + '</path>' +
+      '<path d="M 100,45 C 72,90 68,130 72,160 C 68,190 72,230 100,275" fill="none" stroke="#5dade2" stroke-width="0.6" stroke-linecap="round" opacity="0.15" filter="url(#cv-soft)"/>' +
+      '<path d="M 200,128 C 280,108 420,95 720,88 L 720,232 C 420,225 280,212 200,192 Z" fill="url(#cv-tail-fill)"/>' +
+      '<path d="M 200,128 C 280,108 420,97 720,88" fill="none" stroke="#1a5276" stroke-width="0.8" opacity="0.4"/>' +
+      '<path d="M 200,192 C 280,212 420,223 720,232" fill="none" stroke="#1a5276" stroke-width="0.8" opacity="0.4"/>' +
+      '<g fill="none" stroke-linecap="round">' +
+      '<path d="M 157,140 C 140,125 130,132 125,152 C 130,172 140,185 157,178" stroke="#5dade2" stroke-width="1.0" opacity="0.55">' + (motionOk ? '<animate attributeName="opacity" values="0.55;0.40;0.55" dur="5s" begin="0s" repeatCount="indefinite"/>' : '') + '</path>' +
+      '<path d="M 153,132 C 125,105 108,122 100,160 C 108,198 125,215 153,188" stroke="#5dade2" stroke-width="0.9" opacity="0.45">' + (motionOk ? '<animate attributeName="opacity" values="0.45;0.30;0.45" dur="5.5s" begin="1s" repeatCount="indefinite"/>' : '') + '</path>' +
+      '<path d="M 148,122 C 112,82 90,115 84,160 C 90,205 112,238 148,198" stroke="#5dade2" stroke-width="0.7" opacity="0.3">' + (motionOk ? '<animate attributeName="opacity" values="0.30;0.18;0.30" dur="6s" begin="2s" repeatCount="indefinite"/>' : '') + '</path>' +
+      '</g>' +
+      '<g fill="none" stroke-linecap="round">' +
+      '<path d="M 182,140 C 215,115 260,120 300,132" stroke="#5dade2" stroke-width="1.0" opacity="0.5"/>' +
+      '<path d="M 182,180 C 215,205 260,200 300,188" stroke="#5dade2" stroke-width="1.0" opacity="0.5"/>' +
+      '<path d="M 185,135 C 240,95 340,100 440,115" stroke="#5dade2" stroke-width="0.8" opacity="0.35"/>' +
+      '<path d="M 185,185 C 240,225 340,220 440,205" stroke="#5dade2" stroke-width="0.8" opacity="0.35"/>' +
+      '<path d="M 188,130 C 250,70 380,80 560,95" stroke="#5dade2" stroke-width="0.6" opacity="0.2" stroke-dasharray="4,3"/>' +
+      '<path d="M 188,190 C 250,250 380,240 560,225" stroke="#5dade2" stroke-width="0.6" opacity="0.2" stroke-dasharray="4,3"/>' +
+      '</g>' +
+      '<path d="M 150,118 C 132,80 118,55 108,35" fill="none" stroke="#5dade2" stroke-width="0.5" opacity="0.2" stroke-dasharray="3,3"/>' +
+      '<path d="M 150,202 C 132,240 118,265 108,285" fill="none" stroke="#5dade2" stroke-width="0.5" opacity="0.2" stroke-dasharray="3,3"/>' +
+      '<ellipse cx="170" cy="160" rx="38" ry="16" fill="none" stroke="#5dade2" stroke-width="0.6" opacity="0.18"/>' +
+      '<ellipse cx="170" cy="160" rx="52" ry="24" fill="none" stroke="#5dade2" stroke-width="0.5" opacity="0.12"/>' +
+      '<rect x="195" y="153" width="525" height="14" rx="7" fill="url(#cv-flat-glow)" filter="url(#cv-wide-glow)"/>' +
+      '<rect x="195" y="156" width="525" height="8" rx="4" fill="url(#cv-flat-glow)" filter="url(#cv-soft)"/>' +
+      '<line x1="197" y1="160" x2="715" y2="160" stroke="url(#cv-flat)" stroke-width="2" stroke-linecap="round" filter="url(#cv-glow)"/>' +
+      '<line x1="197" y1="160" x2="450" y2="160" stroke="#C4913B" stroke-width="1" stroke-linecap="round" opacity="0.7"/>' +
+      '<g opacity="0.6">' +
+      '<circle cx="215" cy="160" r="1.2" fill="#C4913B"/>' +
+      '<circle cx="250" cy="159" r="0.9" fill="#C4913B" opacity="0.8"/>' +
+      '<circle cx="290" cy="161" r="1.0" fill="#C4913B" opacity="0.6"/>' +
+      '<circle cx="335" cy="160" r="0.8" fill="#C4913B" opacity="0.5"/>' +
+      '<circle cx="385" cy="159" r="0.7" fill="#C4913B" opacity="0.4"/>' +
+      '<circle cx="440" cy="161" r="0.6" fill="#C4913B" opacity="0.3"/>' +
+      '<circle cx="500" cy="160" r="0.5" fill="#C4913B" opacity="0.2"/>' +
+      '<circle cx="565" cy="160" r="0.4" fill="#C4913B" opacity="0.15"/>' +
+      '<circle cx="630" cy="160" r="0.3" fill="#C4913B" opacity="0.1"/>' +
+      '</g>' +
+      '<circle cx="170" cy="160" r="48" fill="url(#cv-atmo-outer)"/>' +
+      '<circle cx="170" cy="160" r="34" fill="url(#cv-atmo)"/>' +
+      '<circle cx="170" cy="160" r="18" fill="url(#cv-earth)"/>' +
+      '<path d="M 157,153 C 156,150 157,147 159,145 C 161,143 164,143 166,145 C 167,147 166,149 165,150 C 164,152 163,153 161,154 C 160,155 163,155 164,157 C 164,154 158,155 157,153" fill="#27ae60" opacity="0.25"/>' +
+      '<path d="M 162,158 C 163,157 165,157 166,159 C 167,162 166,165 164,168 C 163,170 161,170 160,168 C 159,165 160,161 162,158" fill="#27ae60" opacity="0.22"/>' +
+      '<path d="M 164,143 C 166,142 168,143 168,144 C 167,145 165,145 164,144 C 163,143 163,143 164,143" fill="#27ae60" opacity="0.20"/>' +
+      '<path d="M 176,148 C 178,147 179,148 179,150 C 179,151 178,152 177,152 C 176,151 175,150 176,148" fill="#27ae60" opacity="0.22"/>' +
+      '<path d="M 177,153 C 179,152 182,153 183,156 C 184,159 183,163 182,166 C 181,168 179,169 178,167 C 177,164 176,160 177,156 C 177,154 177,153 177,153" fill="#27ae60" opacity="0.22"/>' +
+      '<ellipse cx="168" cy="143" rx="5" ry="2" fill="#fff" opacity="0.12"/>' +
+      '<ellipse cx="170" cy="177" rx="4" ry="1.5" fill="#fff" opacity="0.08"/>' +
+      '<circle cx="163" cy="152" r="6" fill="#fff" opacity="0.10"/>' +
+      '<text x="380" y="178" fill="#C4913B" font-size="12" font-family="Georgia, serif" font-style="italic" text-anchor="middle" opacity="0.7" letter-spacing="1.5">the Flat</text>' +
+      '<text x="712" y="312" fill="#fff" font-size="6" font-family="sans-serif" text-anchor="end" opacity="0.15">Argus / S63</text>' +
+      '</svg>';
+
+    var lightSvg =
+      '<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 320" id="cover-ms-light" width="100%">' +
+      '<title>Stylized magnetosphere (light mode). Earth, dipole field lines, magnetotail, plasma sheet — the Flat — rendered for light backgrounds. The dayside.</title>' +
+      '<defs>' +
+      '<radialGradient id="lm-earth" cx="38%" cy="32%">' +
+      '<stop offset="0%" stop-color="#85c1e9"/>' +
+      '<stop offset="45%" stop-color="#2e86c1"/>' +
+      '<stop offset="100%" stop-color="#1a5276"/>' +
+      '</radialGradient>' +
+      '<radialGradient id="lm-atmo" cx="50%" cy="50%" r="50%">' +
+      '<stop offset="50%" stop-color="#2e86c1" stop-opacity="0.10"/>' +
+      '<stop offset="80%" stop-color="#2e86c1" stop-opacity="0.04"/>' +
+      '<stop offset="100%" stop-color="#2e86c1" stop-opacity="0"/>' +
+      '</radialGradient>' +
+      '<radialGradient id="lm-atmo-outer" cx="50%" cy="50%" r="50%">' +
+      '<stop offset="40%" stop-color="#1a6b6a" stop-opacity="0.05"/>' +
+      '<stop offset="100%" stop-color="#1a6b6a" stop-opacity="0"/>' +
+      '</radialGradient>' +
+      '<linearGradient id="lm-flat" x1="0%" y1="0%" x2="100%" y2="0%">' +
+      '<stop offset="0%" stop-color="#C4913B" stop-opacity="0.9"/>' +
+      '<stop offset="25%" stop-color="#C4913B" stop-opacity="0.7"/>' +
+      '<stop offset="60%" stop-color="#C4913B" stop-opacity="0.35"/>' +
+      '<stop offset="100%" stop-color="#C4913B" stop-opacity="0.06"/>' +
+      '</linearGradient>' +
+      '<linearGradient id="lm-flat-glow" x1="0%" y1="0%" x2="100%" y2="0%">' +
+      '<stop offset="0%" stop-color="#C4913B" stop-opacity="0.25"/>' +
+      '<stop offset="30%" stop-color="#C4913B" stop-opacity="0.12"/>' +
+      '<stop offset="100%" stop-color="#C4913B" stop-opacity="0"/>' +
+      '</linearGradient>' +
+      '<linearGradient id="lm-tail-fill" x1="0%" y1="0%" x2="100%" y2="0%">' +
+      '<stop offset="0%" stop-color="#1a5276" stop-opacity="0.07"/>' +
+      '<stop offset="100%" stop-color="#1a5276" stop-opacity="0.01"/>' +
+      '</linearGradient>' +
+      '<linearGradient id="lm-bow" x1="100%" y1="0%" x2="0%" y2="0%">' +
+      '<stop offset="0%" stop-color="#1a5276" stop-opacity="0.4"/>' +
+      '<stop offset="100%" stop-color="#1a5276" stop-opacity="0.06"/>' +
+      '</linearGradient>' +
+      '<filter id="lm-glow"><feGaussianBlur stdDeviation="2.5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
+      '<filter id="lm-soft"><feGaussianBlur stdDeviation="5" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>' +
+      '<filter id="lm-wide-glow"><feGaussianBlur stdDeviation="8"/></filter>' +
+      '<clipPath id="lm-earth-clip"><circle cx="170" cy="160" r="17.5"/></clipPath>' +
+      '</defs>' +
+      '<g opacity="0.30">' +
+      '<line x1="0" y1="128" x2="72" y2="140" stroke="#C4913B" stroke-width="0.8" stroke-linecap="round" stroke-dasharray="4,7">' + (motionOk ? '<animate attributeName="stroke-dashoffset" from="11" to="0" dur="1.8s" repeatCount="indefinite"/>' : '') + '</line>' +
+      '<line x1="0" y1="148" x2="78" y2="153" stroke="#C4913B" stroke-width="1.0" stroke-linecap="round" stroke-dasharray="4,7">' + (motionOk ? '<animate attributeName="stroke-dashoffset" from="11" to="0" dur="1.8s" repeatCount="indefinite"/>' : '') + '</line>' +
+      '<line x1="0" y1="160" x2="80" y2="160" stroke="#C4913B" stroke-width="1.2" stroke-linecap="round" stroke-dasharray="4,7">' + (motionOk ? '<animate attributeName="stroke-dashoffset" from="11" to="0" dur="1.8s" repeatCount="indefinite"/>' : '') + '</line>' +
+      '<line x1="0" y1="172" x2="78" y2="167" stroke="#C4913B" stroke-width="1.0" stroke-linecap="round" stroke-dasharray="4,7">' + (motionOk ? '<animate attributeName="stroke-dashoffset" from="11" to="0" dur="1.8s" repeatCount="indefinite"/>' : '') + '</line>' +
+      '<line x1="0" y1="192" x2="72" y2="180" stroke="#C4913B" stroke-width="0.8" stroke-linecap="round" stroke-dasharray="4,7">' + (motionOk ? '<animate attributeName="stroke-dashoffset" from="11" to="0" dur="1.8s" repeatCount="indefinite"/>' : '') + '</line>' +
+      '</g>' +
+      '<g opacity="0.12">' +
+      '<line x1="0" y1="110" x2="55" y2="125" stroke="#C4913B" stroke-width="0.5" stroke-linecap="round" stroke-dasharray="3,6">' + (motionOk ? '<animate attributeName="stroke-dashoffset" from="9" to="0" dur="2.2s" repeatCount="indefinite"/>' : '') + '</line>' +
+      '<line x1="0" y1="210" x2="55" y2="195" stroke="#C4913B" stroke-width="0.5" stroke-linecap="round" stroke-dasharray="3,6">' + (motionOk ? '<animate attributeName="stroke-dashoffset" from="9" to="0" dur="2.2s" repeatCount="indefinite"/>' : '') + '</line>' +
+      '</g>' +
+      '<path d="M 100,45 C 72,90 68,130 72,160 C 68,190 72,230 100,275" fill="none" stroke="url(#lm-bow)" stroke-width="1.8" stroke-linecap="round">' + (motionOk ? '<animate attributeName="stroke-width" values="1.8;2.3;1.8" dur="4s" repeatCount="indefinite"/>' : '') + '</path>' +
+      '<path d="M 100,45 C 72,90 68,130 72,160 C 68,190 72,230 100,275" fill="none" stroke="#1a5276" stroke-width="0.6" stroke-linecap="round" opacity="0.10" filter="url(#lm-soft)"/>' +
+      '<path d="M 200,128 C 280,108 420,95 720,88 L 720,232 C 420,225 280,212 200,192 Z" fill="url(#lm-tail-fill)"/>' +
+      '<path d="M 200,128 C 280,108 420,97 720,88" fill="none" stroke="#1a5276" stroke-width="0.8" opacity="0.25"/>' +
+      '<path d="M 200,192 C 280,212 420,223 720,232" fill="none" stroke="#1a5276" stroke-width="0.8" opacity="0.25"/>' +
+      '<g fill="none" stroke-linecap="round">' +
+      '<path d="M 157,140 C 140,125 130,132 125,152 C 130,172 140,185 157,178" stroke="#1a5276" stroke-width="1.0" opacity="0.40">' + (motionOk ? '<animate attributeName="opacity" values="0.40;0.28;0.40" dur="5s" begin="0s" repeatCount="indefinite"/>' : '') + '</path>' +
+      '<path d="M 153,132 C 125,105 108,122 100,160 C 108,198 125,215 153,188" stroke="#1a5276" stroke-width="0.9" opacity="0.30">' + (motionOk ? '<animate attributeName="opacity" values="0.30;0.18;0.30" dur="5.5s" begin="1s" repeatCount="indefinite"/>' : '') + '</path>' +
+      '<path d="M 148,122 C 112,82 90,115 84,160 C 90,205 112,238 148,198" stroke="#1a5276" stroke-width="0.7" opacity="0.20">' + (motionOk ? '<animate attributeName="opacity" values="0.20;0.12;0.20" dur="6s" begin="2s" repeatCount="indefinite"/>' : '') + '</path>' +
+      '</g>' +
+      '<g fill="none" stroke-linecap="round">' +
+      '<path d="M 182,140 C 215,115 260,120 300,132" stroke="#1a5276" stroke-width="1.0" opacity="0.35"/>' +
+      '<path d="M 182,180 C 215,205 260,200 300,188" stroke="#1a5276" stroke-width="1.0" opacity="0.35"/>' +
+      '<path d="M 185,135 C 240,95 340,100 440,115" stroke="#1a5276" stroke-width="0.8" opacity="0.22"/>' +
+      '<path d="M 185,185 C 240,225 340,220 440,205" stroke="#1a5276" stroke-width="0.8" opacity="0.22"/>' +
+      '<path d="M 188,130 C 250,70 380,80 560,95" stroke="#1a5276" stroke-width="0.6" opacity="0.12" stroke-dasharray="4,3"/>' +
+      '<path d="M 188,190 C 250,250 380,240 560,225" stroke="#1a5276" stroke-width="0.6" opacity="0.12" stroke-dasharray="4,3"/>' +
+      '</g>' +
+      '<path d="M 150,118 C 132,80 118,55 108,35" fill="none" stroke="#1a5276" stroke-width="0.5" opacity="0.12" stroke-dasharray="3,3"/>' +
+      '<path d="M 150,202 C 132,240 118,265 108,285" fill="none" stroke="#1a5276" stroke-width="0.5" opacity="0.12" stroke-dasharray="3,3"/>' +
+      '<ellipse cx="170" cy="160" rx="38" ry="16" fill="none" stroke="#1a5276" stroke-width="0.6" opacity="0.12"/>' +
+      '<ellipse cx="170" cy="160" rx="52" ry="24" fill="none" stroke="#1a5276" stroke-width="0.5" opacity="0.08"/>' +
+      '<rect x="195" y="153" width="525" height="14" rx="7" fill="url(#lm-flat-glow)" filter="url(#lm-wide-glow)"/>' +
+      '<rect x="195" y="156" width="525" height="8" rx="4" fill="url(#lm-flat-glow)" filter="url(#lm-soft)"/>' +
+      '<line x1="197" y1="160" x2="715" y2="160" stroke="url(#lm-flat)" stroke-width="2" stroke-linecap="round" filter="url(#lm-glow)"/>' +
+      '<line x1="197" y1="160" x2="450" y2="160" stroke="#C4913B" stroke-width="1" stroke-linecap="round" opacity="0.6"/>' +
+      '<g opacity="0.5">' +
+      '<circle cx="215" cy="160" r="1.2" fill="#C4913B"/>' +
+      '<circle cx="250" cy="159" r="0.9" fill="#C4913B" opacity="0.8"/>' +
+      '<circle cx="290" cy="161" r="1.0" fill="#C4913B" opacity="0.6"/>' +
+      '<circle cx="335" cy="160" r="0.8" fill="#C4913B" opacity="0.5"/>' +
+      '<circle cx="385" cy="159" r="0.7" fill="#C4913B" opacity="0.4"/>' +
+      '<circle cx="440" cy="161" r="0.6" fill="#C4913B" opacity="0.3"/>' +
+      '<circle cx="500" cy="160" r="0.5" fill="#C4913B" opacity="0.2"/>' +
+      '<circle cx="565" cy="160" r="0.4" fill="#C4913B" opacity="0.15"/>' +
+      '<circle cx="630" cy="160" r="0.3" fill="#C4913B" opacity="0.1"/>' +
+      '</g>' +
+      '<circle cx="170" cy="160" r="48" fill="url(#lm-atmo-outer)"/>' +
+      '<circle cx="170" cy="160" r="34" fill="url(#lm-atmo)"/>' +
+      '<circle cx="170" cy="160" r="18" fill="url(#lm-earth)"/>' +
+      '<path d="M 157,153 C 156,150 157,147 159,145 C 161,143 164,143 166,145 C 167,147 166,149 165,150 C 164,152 163,153 161,154 C 160,155 163,155 164,157 C 164,154 158,155 157,153" fill="#27ae60" opacity="0.30"/>' +
+      '<path d="M 162,158 C 163,157 165,157 166,159 C 167,162 166,165 164,168 C 163,170 161,170 160,168 C 159,165 160,161 162,158" fill="#27ae60" opacity="0.27"/>' +
+      '<path d="M 164,143 C 166,142 168,143 168,144 C 167,145 165,145 164,144 C 163,143 163,143 164,143" fill="#27ae60" opacity="0.24"/>' +
+      '<path d="M 176,148 C 178,147 179,148 179,150 C 179,151 178,152 177,152 C 176,151 175,150 176,148" fill="#27ae60" opacity="0.27"/>' +
+      '<path d="M 177,153 C 179,152 182,153 183,156 C 184,159 183,163 182,166 C 181,168 179,169 178,167 C 177,164 176,160 177,156 C 177,154 177,153 177,153" fill="#27ae60" opacity="0.27"/>' +
+      '<ellipse cx="168" cy="143" rx="5" ry="2" fill="#fff" opacity="0.18"/>' +
+      '<ellipse cx="170" cy="177" rx="4" ry="1.5" fill="#fff" opacity="0.12"/>' +
+      '<circle cx="163" cy="152" r="6" fill="#fff" opacity="0.14"/>' +
+      '<text x="380" y="178" fill="#996B2F" font-size="12" font-family="Georgia, serif" font-style="italic" text-anchor="middle" opacity="0.6" letter-spacing="1.5">the Flat</text>' +
+      '<text x="712" y="312" fill="#1a5276" font-size="6" font-family="sans-serif" text-anchor="end" opacity="0.12">Argus / S63</text>' +
+      '</svg>';
+
+    wrapper.innerHTML = darkSvg + lightSvg;
+    var titleExtra = document.querySelector('.title-page-extra');
+    if (titleExtra) {
+      var rect = titleExtra.getBoundingClientRect();
+      wrapper.style.top = rect.top + 'px';
+      titleExtra.style.paddingRight = (msWidth + 10) + 'px';
+    }
+    document.body.appendChild(wrapper);
+
+    msToggle.addEventListener('click', function(e) {
       e.preventDefault();
-      if (targetId) {
-        autoExpand('#' + targetId);
-      } else {
-        window.scrollTo({top: 0, behavior: 'smooth'});
+      var hidden = wrapper.style.display === 'none';
+      wrapper.style.display = hidden ? '' : 'none';
+      msToggle.style.opacity = hidden ? '1' : '0.4';
+      try {
+        if (hidden) localStorage.removeItem('cover-ms-hidden');
+        else localStorage.setItem('cover-ms-hidden', 'true');
+      } catch(e) {}
+    });
+
+    try {
+      if (localStorage.getItem('cover-ms-hidden') === 'true') {
+        wrapper.style.display = 'none';
+        msToggle.style.opacity = '0.4';
+      }
+    } catch(e) {}
+
+    var scrollHidden = false;
+    window.addEventListener('scroll', function() {
+      var manuallyHidden = false;
+      try { manuallyHidden = localStorage.getItem('cover-ms-hidden') === 'true'; } catch(e) {}
+      if (manuallyHidden) return;
+
+      if (window.scrollY > 20 && !scrollHidden) {
+        wrapper.style.opacity = '0';
+        scrollHidden = true;
+      } else if (window.scrollY <= 20 && scrollHidden) {
+        wrapper.style.opacity = '0.85';
+        scrollHidden = false;
       }
     });
-    return a;
-  }
+
+    var bookSection = document.querySelector('details.book-section');
+    if (bookSection) {
+      bookSection.addEventListener('toggle', function() {
+        if (bookSection.open) {
+          wrapper.style.opacity = '0';
+        }
+      });
+    }
+  })();
+
+  // --- Breadcrumb update on scroll ---
 
   function updateBreadcrumb() {
     var partName = '';
@@ -822,7 +1230,6 @@ The silence is the finding.</em></p>
     var chapterName = '';
     var chapterId = '';
 
-    // Find current part: last part-section whose summary scrolled past (open or closed)
     document.querySelectorAll('details.part-section > summary').forEach(function(s) {
       var rect = s.getBoundingClientRect();
       if (rect.height > 0 && rect.top <= 150) {
@@ -833,7 +1240,6 @@ The silence is the finding.</em></p>
       }
     });
 
-    // Find current chapter: last chapter-section (open or closed) scrolled past
     document.querySelectorAll('details.part-section details.chapter-section > summary').forEach(function(s) {
       var rect = s.getBoundingClientRect();
       if (rect.height > 0 && rect.top <= 150) {
@@ -844,27 +1250,32 @@ The silence is the finding.</em></p>
       }
     });
 
-    // Build breadcrumb
+    currentChapterId = chapterId;
+
     breadcrumb.innerHTML = '';
-    breadcrumb.appendChild(makeBreadcrumbLink('Relinquishment', ''));
-
-    if (partName) {
-      breadcrumb.appendChild(document.createTextNode(' \u203A '));
-      breadcrumb.appendChild(makeBreadcrumbLink(partName, partId));
+    var bcText = 'Relinquishment';
+    if (partName && chapterName) {
+      bcText = partName + ' \u203A ' + chapterName;
+    } else if (partName) {
+      bcText = partName;
     }
+    var span = document.createElement('span');
+    span.textContent = bcText;
+    span.style.cssText = 'color:' + (isDark ? '#aaa' : '#777') + ';';
+    breadcrumb.appendChild(span);
+    breadcrumb.appendChild(dropHint);
 
-    if (chapterName) {
-      breadcrumb.appendChild(document.createTextNode(' \u203A '));
-      breadcrumb.appendChild(makeBreadcrumbLink(chapterName, chapterId));
-    }
-
-    // Update share button href
     shareBtn.href = '#' + (chapterId || partId || '');
 
-    // URL reflects reading position (replaceState)
     var newHash = chapterId ? '#' + chapterId : (partId ? '#' + partId : '');
     if (newHash && newHash !== location.hash) {
-      history.replaceState(null, '', newHash);
+      var curId = location.hash.slice(1);
+      var curEl = curId ? document.getElementById(curId) : null;
+      var chapterEl = chapterId ? document.getElementById(chapterId) : null;
+      var insideChapter = curEl && chapterEl && chapterEl.contains(curEl);
+      if (!insideChapter) {
+        history.replaceState(null, '', newHash);
+      }
     }
   }
 
@@ -914,13 +1325,15 @@ The silence is the finding.</em></p>
     if (!target) {
       try { target = document.getElementById(decodeURIComponent(hash.slice(1))); } catch(e) {}
     }
+    if (!target) {
+      try { target = document.getElementById('dl:' + hash.slice(1)); } catch(e) {}
+    }
     if (!target) return;
-    // Clear filters if target is inside a hidden chapter
     var parentCh = target.closest('details.chapter-section');
-    if (parentCh && parentCh.style.display === 'none') {
-      showScience = true;
-      showStory = true;
-      applyFilters();
+    if (parentCh && parentCh.style.display === 'none' && document.body.classList.contains('custodian-only')) {
+      document.body.classList.remove('custodian-only');
+      showCustodianOnly = false;
+      gBtn.style.cssText = gInactive;
     }
     var el = target;
     while (el) {
@@ -941,21 +1354,13 @@ The silence is the finding.</em></p>
 
     target.scrollIntoView();
   }
-  // Restore saved filter state (before deep-link, so deep-link can override)
-  try {
-    var savedSci = localStorage.getItem('relinquishment-filter-science');
-    var savedStory = localStorage.getItem('relinquishment-filter-story');
-    if (savedSci === '0' || savedStory === '0') {
-      if (savedSci === '0') showScience = false;
-      if (savedStory === '0') showStory = false;
-      applyFilters();
-    }
-  } catch(e) {}
+
 
   if (initialHash) {
     autoExpand(initialHash);
   }
   window.addEventListener('hashchange', function() {
+    if (popupOpen) closePopup();
     autoExpand(window.location.hash);
   });
   // Also intercept clicks on internal links
@@ -1204,19 +1609,12 @@ The silence is the finding.</em></p>
       tocBtn.style.borderColor = '#555';
       tocBtn.style.color = '#e0e0e0';
     }
-    // Update quick-jump link colors
-    quickJump.querySelectorAll('a').forEach(function(a) {
-      a.style.color = '#6ba3f7';
-    });
     topBtn.style.color = '#6ba3f7';
     expandBtn.style.background = '#2471a3';
     backBtn.style.color = '#5dade2';
     backBtn.style.borderColor = '#5dade2';
     evalBtn.style.background = '#2471a3';
-    scienceBtn.style.background = '#2471a3';
-    scienceBtn.style.borderColor = '#2471a3';
-    storyBtn.style.background = '#2471a3';
-    storyBtn.style.borderColor = '#2471a3';
+
   }
 
   // --- Navigation Stack (Plan 0134b) ---
@@ -1257,6 +1655,7 @@ The silence is the finding.</em></p>
   }
 
   function popNavState() {
+    if (popupOpen) { closePopup(); return; }
     if (!navStack.length) return;
     var state = navStack.pop();
     restoreExpanded(state.expanded);
@@ -1514,6 +1913,7 @@ The silence is the finding.</em></p>
     var term = e.target.closest('[data-hover], [data-hover-id]');
     if (!term) return;
     if (term.hasAttribute('data-hover-disabled')) return;
+    if (term.closest('figure.ms-teaching') && window.innerWidth <= 700) return;
     lastTouchTime = Date.now();
 
     // Navigation elements: split touch target on summaries
@@ -1591,9 +1991,10 @@ The silence is the finding.</em></p>
     dismissPanel();
   });
 
-  // Escape key dismisses panel
+  // Escape key dismisses panel and nav popup
   document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') {
+      if (popupOpen) { closePopup(); return; }
       dismissPanel();
     }
   });
@@ -1634,10 +2035,10 @@ The silence is the finding.</em></p>
     });
   });
 
-  // --- Guardian menu item click handler (Plan 0150) ---
+  // --- Custodian menu item click handler (Plan 0150) ---
   // Click a custodian-menu-item: open its containing chapter and scroll to the
   // interlude div. Keyboard activation (Enter/Space) supported via role=link.
-  function activateGuardianMenuItem(item) {
+  function activateCustodianMenuItem(item) {
     var targetId = item.getAttribute('data-target');
     if (!targetId) return;
     var target = document.getElementById(targetId);
@@ -1658,7 +2059,7 @@ The silence is the finding.</em></p>
     var item = e.target.closest('.custodian-menu-item');
     if (!item) return;
     e.stopPropagation();
-    activateGuardianMenuItem(item);
+    activateCustodianMenuItem(item);
   });
 
   document.addEventListener('keydown', function(e) {
@@ -1666,7 +2067,22 @@ The silence is the finding.</em></p>
     var item = e.target.closest('.custodian-menu-item');
     if (!item) return;
     e.preventDefault();
-    activateGuardianMenuItem(item);
+    activateCustodianMenuItem(item);
+  });
+
+  document.querySelectorAll('svg[data-stepthrough]').forEach(function(svg) {
+    var stages = svg.querySelectorAll('.step-stage');
+    var indicator = svg.querySelector('.step-indicator');
+    var cur = 0;
+    function show(n) {
+      stages.forEach(function(g, i) { g.style.display = i === n ? '' : 'none'; });
+      cur = n;
+      if (indicator) indicator.textContent = (n + 1) + ' / ' + stages.length;
+    }
+    var prev = svg.querySelector('.step-prev');
+    var next = svg.querySelector('.step-next');
+    if (prev) prev.addEventListener('click', function(e) { e.stopPropagation(); if (cur > 0) show(cur - 1); });
+    if (next) next.addEventListener('click', function(e) { e.stopPropagation(); if (cur < stages.length - 1) show(cur + 1); });
   });
 })();
 

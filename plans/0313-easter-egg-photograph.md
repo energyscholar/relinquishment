@@ -228,15 +228,17 @@ And I think --- stretching the photograph as far as it goes --- that's close to 
 
 ---
 
-## Phase 7: Build and verify
+## Phase 7: Build, verify, deploy
 
-1. Run `make puzzles` from project root — rebuilds `docs/downloads/puzzles.html` with the new GD puzzle
-2. Open `docs/downloads/puzzles.html` in browser — confirm pz-gd-t1-002 appears, all 3 stages render, wrong/right prompts work, egg_url link present
+1. Check GD puzzle wrong_prompt format against existing GD rendering in `build/reader.js` — if per-option wrong_prompts are not supported, use the single-string fallbacks from Phase 1
+2. Run `make puzzles` from project root — rebuilds `docs/downloads/puzzles.html` with the new GD puzzle
 3. Run `make eggs` from project root — builds photograph egg page
-4. Verify output: `docs/downloads/eggs/photograph/index.html`
-5. Open egg page in browser — confirm: speaker labels bold, emphasis italic, ellipses render, line breaks correct
+4. Verify `docs/downloads/puzzles.html` contains anchor `id="pz-gd-t1-002"` and all 3 stages render
+5. Verify `docs/downloads/eggs/photograph/index.html` exists and renders correctly (speaker labels bold, emphasis italic, ellipses proper)
 6. Run `python build/verify-deep-links.py` — new entries may show as "not yet in HTML" (expected for unapproved content not yet injected into main book)
-7. Check GD puzzle wrong_prompt format against existing GD rendering in `build/reader.js` — if per-option wrong_prompts are not supported, use the single-string fallbacks from Phase 1
+7. Git commit: `Plan 0313: Puzzle + easter egg — Photograph of a Forest`
+8. Git push to deploy
+9. Report live puzzle link to Bruce: `https://relinquishment.ai/downloads/puzzles.html#pz-gd-t1-002`
 
 ---
 
@@ -252,7 +254,8 @@ And I think --- stretching the photograph as far as it goes --- that's close to 
 - [ ] `make puzzles` succeeds; pz-gd-t1-002 appears on `docs/downloads/puzzles.html` with all 3 stages functional
 - [ ] `make eggs` succeeds; `docs/downloads/eggs/photograph/index.html` renders correctly
 - [ ] No files modified beyond the five listed above
-- [ ] Git commit: `Plan 0313: Puzzle + easter egg — Photograph of a Forest`
+- [ ] Git commit and push: `Plan 0313: Puzzle + easter egg — Photograph of a Forest`
+- [ ] Report live link to Bruce: `https://relinquishment.ai/downloads/puzzles.html#pz-gd-t1-002`
 
 ---
 
