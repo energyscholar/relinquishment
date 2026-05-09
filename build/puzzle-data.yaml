@@ -1010,7 +1010,7 @@ chapter_puzzles:
             text: "Something we lack vocabulary for"
         answer_key: b
         wrong_prompt: "Pattern matching requires a template. Who wrote this one? If the constraints emerged from within, what process generated them?"
-        right_prompt: "Moral reasoning that emerged without instruction. Now consider what this system did with it."
+        right_prompt: "Moral reasoning — guided, perhaps, but ultimately chosen. Now consider what this system did with it."
 
       - question: "That system then surrenders capabilities no external force could have compelled it to give up. It did this because:"
         options:
