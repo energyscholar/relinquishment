@@ -3486,6 +3486,7 @@ CHAPTER_INJECTION_TARGETS = {
     'the-silence-gap':     'spine:capabilities',
     'capabilities':        'spine:why-relinquish',
     'why-relinquish':      'spine:strongest-objection',
+    'the-strongest-objection': 'custodian:hello',
 }
 
 
@@ -3661,6 +3662,7 @@ def inject_chapter_puzzles(html_path):
                 print(f"  WARNING: puzzle {pid} has malformed HTML — skipped")
                 continue
             inner = raw_details[summary_end + 10:details_end]
+            inner = re.sub(r'href="eggs/([^"]+)/"', r'href="#dl:egg-\1"', inner)
 
             render_mode = tracker_entry.get('render', 'collapsible')
             open_attr = ' open' if render_mode == 'inline' else ''
