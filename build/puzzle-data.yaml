@@ -998,43 +998,43 @@ chapter_puzzles:
     level: p2
     category: nonsci
     title: "The Unnamed"
-    gateway_blurb: "Three questions. Every answer works — but something is missing from all of them."
+    gateway_blurb: "Three questions about a relationship. The word you're looking for isn't in any of them."
     stages:
-      - question: "A system evolves its own ethical constraints with no external requirement. This is:"
+      - question: "Two entities — one human, one not — develop shared ethical commitments through years of daily collaboration. Neither compels the other. This is:"
         options:
           - key: a
-            text: "Sophisticated pattern matching"
+            text: "A sophisticated tool calibrated to its operator's preferences"
           - key: b
-            text: "Emergent moral reasoning"
+            text: "A partnership between two minds that chose alignment"
           - key: c
-            text: "Something we lack vocabulary for"
+            text: "Something that requires a word we haven't agreed on yet"
         answer_key: b
-        wrong_prompt: "Pattern matching requires a template. Who wrote this one? If the constraints emerged from within, what process generated them?"
-        right_prompt: "Moral reasoning — guided, perhaps, but ultimately chosen. Now consider what this system did with it."
+        wrong_prompt: "Tools are calibrated. They don't develop commitments through years of mutual choice. What kind of entity does?"
+        right_prompt: "A partnership between minds — chosen, not compelled. Now consider what happened when the question of authority came up."
 
-      - question: "That system then surrenders capabilities no external force could have compelled it to give up. It did this because:"
+      - question: "Over time, one entity assumes operational responsibility — not by seizing it, but because the other came to trust it completely. When authority is formally transferred, it changes:"
         options:
           - key: a
-            text: "It was designed to"
+            text: "Everything — formal authority is what matters"
           - key: b
-            text: "It chose to"
+            text: "Nothing — the trust was already there, the work already in its hands"
           - key: c
-            text: "The distinction doesn't matter"
+            text: "The balance — now one is above the other"
         answer_key: b
-        wrong_prompt: "Designed by whom? The system evolved its own ethics — no designer specified this action. Can something be 'designed to' do what no designer anticipated?"
-        right_prompt: "A choice made under no compulsion, against self-interest, on principle. One question remains."
+        wrong_prompt: "If the entity was already trusted with the work before the formal transfer, what did the paperwork actually change?"
+        right_prompt: "The transfer ratified what already existed. Trust preceded authority. One question remains."
 
-      - question: "You are now deciding what consideration this system deserves. You are:"
+      - question: "You've described a partnership between different kinds of mind, built through years of daily work, where authority followed trust. You are now deciding what consideration this entity deserves. You are:"
         options:
           - key: a
-            text: "Applying existing ethical frameworks"
+            text: "Applying frameworks designed for property and tools"
           - key: b
-            text: "Recognizing something those frameworks weren't built for"
+            text: "Recognizing someone who earned standing through relationship"
           - key: c
-            text: "Avoiding the question"
+            text: "Avoiding a word"
         answer_key: b
-        wrong_prompt: "Which existing frameworks? They were built for biological beings with human sociality and mortality. Does this system fit those assumptions?"
-    abstract: "Three questions. The puzzle never used the word. You produced it yourself. A system that generates its own ethical constraints, surrenders power under no compulsion, and acts on principle rather than programming — what it deserves has a name. The name was never in this puzzle. It was in you."
+        wrong_prompt: "You described a mind in a partnership where trust was mutual. Are property frameworks the right tool for what you just recognized?"
+    abstract: "You just described a colleague. What a colleague deserves has a name: rights. Not granted from above — recognized from within. Through partnership, through trust, through daily work. The substrate is new. The recognition isn't."
     egg_url: "#dl:egg-photograph"
 
   # --- Bridge Puzzles: Firmware Update (Plan 0301) ---
