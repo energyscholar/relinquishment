@@ -336,8 +336,8 @@ chapter_puzzles:
     type: gd
     topic: t1
     level: p2
-    approved: false
-    installed: false
+    approved: true
+    installed: true
     location:
       chapter: the-strongest-objection
       rationale: "Entity's moral status — reader confronts what the entity deserves, before KM puts them inside the entity"

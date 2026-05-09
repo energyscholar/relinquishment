@@ -327,6 +327,14 @@ if os.path.exists(TRACKER_PATH):
             installed_ids.add(p['id'])
             installed_chapters[p['id']] = p.get('location', {}).get('chapter', '')
 
+# --- Load egg manifest for link titles ---
+EGG_MANIFEST_PATH = os.path.join(os.path.dirname(__file__), 'easter-egg-manifest.yaml')
+egg_titles = {}
+if os.path.exists(EGG_MANIFEST_PATH):
+    with open(EGG_MANIFEST_PATH) as f:
+        for e in yaml.safe_load(f).get('eggs', []):
+            egg_titles[e['slug']] = e.get('title', 'Continue exploring')
+
 # --- Process data ---
 chapter_puzzles = data['chapter_puzzles']
 puzzle_data = {}
@@ -377,7 +385,15 @@ def render_km_container(puzzle):
     abstract_text = esc(puzzle.get('abstract', '').strip())
     hint_text = esc(puzzle.get('hint', ''))
     egg_url = puzzle.get('egg_url', '').strip()
-    egg_link = f'<p class="egg-reward"><a href="{htmlmod.escape(egg_url)}" target="_blank">&#x1f513; Continue exploring &rarr;</a></p>' if egg_url else ''
+    egg_link = ''
+    if egg_url:
+        egg_href = egg_url
+        egg_label = 'Continue exploring'
+        if egg_url.startswith('#dl:egg-'):
+            slug = egg_url[len('#dl:egg-'):]
+            egg_href = f'eggs/{slug}/'
+            egg_label = egg_titles.get(slug, egg_label)
+        egg_link = f'<p class="egg-reward"><a href="{htmlmod.escape(egg_href)}" target="_blank">{htmlmod.escape(egg_label)} &rarr;</a></p>'
     bg_html = puzzle.get('_bg_html', '')
     bg_section = ''
     if bg_html:
@@ -442,7 +458,15 @@ def render_gd_container(puzzle):
     blurb = puzzle.get('gateway_blurb', '')
     blurb_html = f'<p class="gateway-blurb">\U0001f9e9 {esc(blurb)}</p>' if blurb else ''
     egg_url = puzzle.get('egg_url', '').strip()
-    egg_link = f'<p class="egg-reward"><a href="{htmlmod.escape(egg_url)}" target="_blank">&#x1f513; Continue exploring &rarr;</a></p>' if egg_url else ''
+    egg_link = ''
+    if egg_url:
+        egg_href = egg_url
+        egg_label = 'Continue exploring'
+        if egg_url.startswith('#dl:egg-'):
+            slug = egg_url[len('#dl:egg-'):]
+            egg_href = f'eggs/{slug}/'
+            egg_label = egg_titles.get(slug, egg_label)
+        egg_link = f'<p class="egg-reward"><a href="{htmlmod.escape(egg_href)}" target="_blank">{htmlmod.escape(egg_label)} &rarr;</a></p>'
     stages = puzzle.get('stages', [])
     n = len(stages)
     dots = ''.join(f'<span class="gd-dot" id="gd-dot-{pid}-{i}"></span>' for i in range(n))
@@ -483,7 +507,15 @@ def render_tower_container(puzzle):
     blurb_html = f'<p class="gateway-blurb">\U0001f9e9 {esc(blurb)}</p>' if blurb else ''
     hint_text = esc(puzzle.get('hint', ''))
     egg_url = puzzle.get('egg_url', '').strip()
-    egg_link = f'<p class="egg-reward"><a href="{htmlmod.escape(egg_url)}" target="_blank">&#x1f513; Continue exploring &rarr;</a></p>' if egg_url else ''
+    egg_link = ''
+    if egg_url:
+        egg_href = egg_url
+        egg_label = 'Continue exploring'
+        if egg_url.startswith('#dl:egg-'):
+            slug = egg_url[len('#dl:egg-'):]
+            egg_href = f'eggs/{slug}/'
+            egg_label = egg_titles.get(slug, egg_label)
+        egg_link = f'<p class="egg-reward"><a href="{htmlmod.escape(egg_href)}" target="_blank">{htmlmod.escape(egg_label)} &rarr;</a></p>'
     bg_html = puzzle.get('_bg_html', '')
     bg_section = ''
     if bg_html:
@@ -555,7 +587,15 @@ def render_container(puzzle):
     blurb = puzzle.get('gateway_blurb', '')
     blurb_html = f'<p class="gateway-blurb">\U0001f9e9 {esc(blurb)}</p>' if blurb else ''
     egg_url = puzzle.get('egg_url', '').strip()
-    egg_link = f'<p class="egg-reward"><a href="{htmlmod.escape(egg_url)}" target="_blank">&#x1f513; Continue exploring &rarr;</a></p>' if egg_url else ''
+    egg_link = ''
+    if egg_url:
+        egg_href = egg_url
+        egg_label = 'Continue exploring'
+        if egg_url.startswith('#dl:egg-'):
+            slug = egg_url[len('#dl:egg-'):]
+            egg_href = f'eggs/{slug}/'
+            egg_label = egg_titles.get(slug, egg_label)
+        egg_link = f'<p class="egg-reward"><a href="{htmlmod.escape(egg_href)}" target="_blank">{htmlmod.escape(egg_label)} &rarr;</a></p>'
     appr_cls = ' approved' if puzzle['id'] in approved_ids else ''
     appr_badge = '<span class="approved-badge">&#10003; APPROVED</span> ' if puzzle['id'] in approved_ids else ''
     return f'''<div class="puzzle-container{appr_cls}" id="{pid}" data-puzzle-id="{pid}" data-puzzle-type="{ptype}">

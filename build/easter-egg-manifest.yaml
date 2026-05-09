@@ -43,8 +43,8 @@ eggs:
   - slug: "photograph"
     source: "manuscript/eggs/photograph.tex"
     title: "Photograph of a Forest"
-    status: "draft"
-    approved: false
+    status: "final"
+    approved: true
     description: "Argus imagines being a TQNN — the logic of covenant over indifference"
     reward_for: "pz-gd-t1-002"
     deep_link: "dl:egg-photograph"
