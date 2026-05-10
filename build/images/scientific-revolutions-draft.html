@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Structure of Scientific Revolutions — Draft Preview</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{font-size:18px;scroll-behavior:smooth}
+body{background:#1a1a2e;color:#d8d4ce;font-family:Georgia,"Times New Roman",serif;line-height:1.85;padding:3rem 1.5rem 5rem;min-height:100vh}
+.container{max-width:740px;margin:0 auto}
+h1{font-family:system-ui,sans-serif;font-size:2.2rem;font-weight:300;color:#e8e4de;letter-spacing:.03em;margin-bottom:.3rem;text-align:center}
+.subtitle{font-size:.95rem;color:#7a7a8e;margin-bottom:1rem;text-align:center;font-style:italic}
+.draft-tag{font-family:system-ui,sans-serif;font-size:.7rem;color:#c9a04a;text-transform:uppercase;letter-spacing:.2em;text-align:center;margin-bottom:3rem;opacity:.7}
+nav{margin-bottom:3rem;padding:1rem;border:1px solid rgba(255,255,255,.06);border-radius:6px;background:rgba(0,0,0,.15)}
+nav .label{font-family:system-ui,sans-serif;font-size:.7rem;text-transform:uppercase;letter-spacing:.15em;color:#7a7a8e;margin-bottom:.5rem}
+nav ol{padding-left:1.2rem;font-size:.9rem;line-height:2}
+nav a{color:#8a9abe;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
+nav a:hover{border-bottom-color:#8a9abe}
+h2{font-family:system-ui,sans-serif;font-size:1.3rem;font-weight:600;color:#c9a04a;margin-top:3.5rem;margin-bottom:1.2rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.06)}
+.epigraph{font-style:italic;color:#9a9aae;margin:0 0 2rem 0;padding-left:1.5rem;border-left:2px solid rgba(201,160,74,.3);font-size:.95rem;line-height:1.7}
+.epigraph .attr{display:block;text-align:right;font-size:.85rem;margin-top:.3rem;font-style:normal;color:#6a6a7e}
+p{margin-bottom:1.3rem}
+em{font-style:italic;color:#c8c4be}
+strong{font-weight:600;color:#e0dcd6}
+.svg-wrap{position:relative;margin:2.5rem 0;border-radius:6px;overflow:hidden;background:#0d0d1e}
+.svg-wrap svg{display:block;width:100%;height:auto}
+.svg-caption{font-family:system-ui,sans-serif;font-size:.78rem;color:#6a6a7e;text-align:center;padding:.6rem .8rem;font-style:italic;line-height:1.5}
+.play-btn{position:absolute;bottom:2.8rem;right:.7rem;width:26px;height:26px;border-radius:50%;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#8a9abe;font-size:11px;cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;transition:background .2s;line-height:1}
+.play-btn:hover{background:rgba(255,255,255,.15)}
+.phd{font-family:system-ui,sans-serif;font-size:.85rem;color:#7a8a6e;background:rgba(122,138,110,.08);padding:.8rem 1rem;border-radius:4px;border-left:3px solid rgba(122,138,110,.3);margin:1.5rem 0;line-height:1.6}
+.phd strong{color:#9aaa8e}
+.split{display:flex;gap:1.5rem;margin:1.5rem 0}
+.split>div{flex:1;padding:1rem;border-radius:4px;font-size:.95rem;line-height:1.7}
+.split .a1{background:rgba(100,120,180,.06);border:1px solid rgba(100,120,180,.15)}
+.split .a2{background:rgba(201,160,74,.06);border:1px solid rgba(201,160,74,.15)}
+.split h3{font-family:system-ui,sans-serif;font-size:.9rem;font-weight:600;margin-bottom:.5rem}
+.split .a1 h3{color:#8a9abe}
+.split .a2 h3{color:#c9a04a}
+.mouthful{font-family:system-ui,sans-serif;font-size:.82rem;color:#8a8a9e;display:inline}
+@media(max-width:600px){
+  html{font-size:16px}
+  h1{font-size:1.7rem}
+  body{padding:2rem 1rem 3rem}
+  .split{flex-direction:column;gap:1rem}
+}
+@media(prefers-reduced-motion:reduce){
+  svg *{animation-play-state:paused!important}
+  svg animate,svg animateTransform{display:none}
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>The Structure of Scientific Revolutions</h1>
+<p class="subtitle">How paradigm shifts work, and where we are in one</p>
+<p class="draft-tag">Draft preview &mdash; not yet integrated into manuscript</p>
+
+<nav>
+<div class="label">Contents</div>
+<ol>
+<li><a href="#kuhn">Kuhn's Framework</a></li>
+<li><a href="#paradigm">The Current Paradigm</a></li>
+<li><a href="#anomalies">Anomaly Accumulation</a></li>
+<li><a href="#split">Life in the Flat</a></li>
+<li><a href="#plays-out">How It Plays Out</a></li>
+<li><a href="#reader">The Reader's Position</a></li>
+</ol>
+</nav>
+
+<!-- ═══════════════════════════════════════════════ -->
+<h2 id="kuhn">1. Kuhn's Framework</h2>
+
+<div class="epigraph">
+"The successive transition from one paradigm to another via revolution is the usual developmental pattern of mature science."
+<span class="attr">&mdash; Thomas Kuhn, <em>The Structure of Scientific Revolutions</em> (1962)</span>
+</div>
+
+<p>In 1962, Thomas Kuhn published a short book that changed how people think about science. His argument was simple: science does not progress by steady accumulation. It lurches. Long periods of stable, productive work are punctuated by convulsive reorganizations that change everything &mdash; not just the answers, but the questions.</p>
+
+<p><strong>Normal science</strong> is what happens most of the time. Scientists share a paradigm &mdash; a set of assumptions, methods, and exemplary results that define what counts as good work. Within the paradigm, progress is real and measurable. Puzzles are solved. Papers are published. Careers are built. The paradigm tells you which problems matter and which methods are legitimate. It works.</p>
+
+<p><strong>Anomaly accumulation</strong> is what happens when the paradigm starts failing at the edges. Results that don't fit. Experiments that should work but don't. Questions that the paradigm can't frame, let alone answer. No single anomaly kills a paradigm &mdash; anomalies are normal. But they accumulate. The paradigm's defenders add epicycles: patches, extensions, special cases. The framework gets heavier.</p>
+
+<p><strong>Crisis</strong> arrives when the anomalies can no longer be absorbed. The patches contradict each other. Young scientists start questioning assumptions their advisors treated as given. The field feels stuck. This is uncomfortable for everyone involved, and most participants would prefer it to stop.</p>
+
+<p><strong>Revolution</strong> is the replacement of one paradigm by another. The new paradigm doesn't just answer the anomalous questions &mdash; it redefines what the questions are. Old problems dissolve. New problems appear. Scientists who built careers on the old framework find their expertise devalued. Scientists who were marginal find their work suddenly central. The transition is rarely smooth and never polite.</p>
+
+<p><strong>New normal science</strong> begins when the revolution is over. The new paradigm becomes the assumption. Textbooks are rewritten. The old paradigm is remembered as an approximation, a special case, or a historical curiosity. And the cycle begins again.</p>
+
+<!-- SVG-054: The Kuhn Cycle -->
+<div class="svg-wrap">
+<svg viewBox="0 0 700 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Kuhn Cycle: normal science, anomaly accumulation, crisis, revolution, new normal science">
+<rect width="700" height="400" fill="#0d0d1e"/>
+<!-- central circle path -->
+<circle cx="350" cy="200" r="130" fill="none" stroke="rgba(255,255,255,.06)" stroke-width="1"/>
+<!-- phase arcs -->
+<path d="M 480,200 A 130,130 0 0,1 415,315" fill="none" stroke="#4a6a9a" stroke-width="8" stroke-linecap="round" opacity=".5"/>
+<path d="M 415,315 A 130,130 0 0,1 285,315" fill="none" stroke="#9a7a4a" stroke-width="8" stroke-linecap="round" opacity=".5"/>
+<path d="M 285,315 A 130,130 0 0,1 220,200" fill="none" stroke="#9a4a4a" stroke-width="8" stroke-linecap="round" opacity=".5"/>
+<path d="M 220,200 A 130,130 0 0,1 350,70" fill="none" stroke="#c9a04a" stroke-width="8" stroke-linecap="round" opacity=".5"/>
+<path d="M 350,70 A 130,130 0 0,1 480,200" fill="none" stroke="#4a9a6a" stroke-width="8" stroke-linecap="round" opacity=".5"/>
+<!-- labels -->
+<text x="510" y="260" fill="#4a6a9a" font-size="11" font-family="system-ui" opacity=".8">Normal science</text>
+<text x="320" y="345" fill="#9a7a4a" font-size="11" font-family="system-ui" text-anchor="middle" opacity=".8">Anomalies</text>
+<text x="180" y="280" fill="#9a4a4a" font-size="11" font-family="system-ui" text-anchor="end" opacity=".8">Crisis</text>
+<text x="210" y="140" fill="#c9a04a" font-size="11" font-family="system-ui" opacity=".8">Revolution</text>
+<text x="440" y="100" fill="#4a9a6a" font-size="11" font-family="system-ui" opacity=".8">New normal</text>
+<!-- orbiting marker -->
+<circle r="8" fill="#c9a04a" opacity=".7">
+<animateMotion dur="20s" repeatCount="indefinite" path="M 480,200 A 130,130 0 0,1 415,315 A 130,130 0 0,1 285,315 A 130,130 0 0,1 220,200 A 130,130 0 0,1 350,70 A 130,130 0 0,1 480,200" rotate="auto"/>
+</circle>
+<circle r="5" fill="#c9a04a" opacity=".3">
+<animateMotion dur="20s" repeatCount="indefinite" begin="1s" path="M 480,200 A 130,130 0 0,1 415,315 A 130,130 0 0,1 285,315 A 130,130 0 0,1 220,200 A 130,130 0 0,1 350,70 A 130,130 0 0,1 480,200" rotate="auto"/>
+</circle>
+<!-- center text -->
+<text x="350" y="195" fill="#5a5a6e" font-size="13" font-family="system-ui" text-anchor="middle">The cycle</text>
+<text x="350" y="212" fill="#5a5a6e" font-size="13" font-family="system-ui" text-anchor="middle">repeats</text>
+</svg>
+<p class="svg-caption">The Kuhn cycle. The marker orbits: calm, cracks, crisis, revolution, calm again. It does not ask permission.</p>
+<button class="play-btn" onclick="toggleSVG(this)" aria-label="Pause animation">&#10074;&#10074;</button>
+</div>
+
+<p>Kuhn's insight was not that revolutions happen. It was that the pattern is recognizable <em>before the revolution is over</em>. The anomalies are visible. The epicycles are countable. The crisis is diagnosable. You can see the wheel turning if you know what to look for.</p>
+
+<!-- ═══════════════════════════════════════════════ -->
+<h2 id="paradigm">2. The Current Paradigm</h2>
+
+<p>Normal science in quantum computing, as of 2026, rests on several assumptions. They are productive assumptions. They have generated extraordinary results. They are also assumptions.</p>
+
+<p><strong>Computation is engineered.</strong> You design a quantum computer the way you design a classical one: choose a qubit technology (superconducting, trapped ion, photonic, topological), build a processor, run algorithms. The architecture is top-down. Engineers build it; physicists understand it; computer scientists program it. The roles are clear.</p>
+
+<p><strong>Decoherence is the enemy.</strong> Quantum states are fragile. The environment destroys them. The central engineering challenge is keeping qubits coherent long enough to compute &mdash; through error correction, surface codes, extreme cooling. Billions of dollars and thousands of careers are organized around this single problem.</p>
+
+<p><strong>Scale is the goal.</strong> More qubits, fewer errors, bigger circuits. The roadmaps point toward millions of qubits. Google, IBM, Microsoft, and a dozen well-funded startups are building toward this horizon. Progress is measured in qubit counts and error rates.</p>
+
+<p><strong>Topological quantum computation is a strategy for engineering.</strong> Microsoft's approach &mdash; using topological qubits that are inherently protected from decoherence &mdash; is a clever engineering strategy within the paradigm. Use topology to solve the decoherence problem. Build the computer. Run the algorithm. The framework is the same; the implementation is different.</p>
+
+<p>This is a coherent and productive paradigm. It has produced real quantum processors that perform real computations. Nothing in what follows suggests that it is wrong. Ptolemy's epicycles produced accurate predictions for fifteen centuries. The question is not whether the paradigm works. It is whether the paradigm is the whole story.</p>
+
+<!-- SVG-050: The Epicycle Problem -->
+<div class="svg-wrap">
+<svg viewBox="0 0 700 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The Epicycle Problem: a simple orbit accumulates patches until it collapses into an ellipse">
+<rect width="700" height="380" fill="#0d0d1e"/>
+<!-- sun -->
+<circle cx="350" cy="190" r="8" fill="#c9a04a" opacity=".7"/>
+<!-- initial clean orbit -->
+<circle cx="350" cy="190" r="100" fill="none" stroke="#4a6a9a" stroke-width="1" opacity=".3" stroke-dasharray="4,4"/>
+<!-- epicycles accumulating -->
+<g opacity="0">
+<animate attributeName="opacity" dur="18s" repeatCount="indefinite" values="0;0;.4;.5;.5;.5;.5;0;0;0"/>
+<circle cx="450" cy="190" r="20" fill="none" stroke="#6a4a4a" stroke-width=".7"/>
+<circle cx="350" cy="90" r="15" fill="none" stroke="#6a4a4a" stroke-width=".7"/>
+<circle cx="250" cy="190" r="22" fill="none" stroke="#6a4a4a" stroke-width=".7"/>
+<circle cx="350" cy="290" r="18" fill="none" stroke="#6a4a4a" stroke-width=".7"/>
+<circle cx="420" cy="120" r="12" fill="none" stroke="#6a4a4a" stroke-width=".7"/>
+<circle cx="280" cy="120" r="14" fill="none" stroke="#6a4a4a" stroke-width=".7"/>
+<circle cx="420" cy="260" r="11" fill="none" stroke="#6a4a4a" stroke-width=".7"/>
+<circle cx="280" cy="260" r="16" fill="none" stroke="#6a4a4a" stroke-width=".7"/>
+<!-- more epicycles -->
+<circle cx="470" cy="195" r="7" fill="none" stroke="#5a3a3a" stroke-width=".5"/>
+<circle cx="445" cy="170" r="9" fill="none" stroke="#5a3a3a" stroke-width=".5"/>
+<circle cx="268" cy="200" r="8" fill="none" stroke="#5a3a3a" stroke-width=".5"/>
+<circle cx="340" cy="72" r="6" fill="none" stroke="#5a3a3a" stroke-width=".5"/>
+<circle cx="360" cy="308" r="8" fill="none" stroke="#5a3a3a" stroke-width=".5"/>
+<circle cx="410" cy="138" r="5" fill="none" stroke="#5a3a3a" stroke-width=".5"/>
+</g>
+<!-- label: getting ugly -->
+<text x="560" y="100" fill="#9a4a4a" font-size="11" font-family="system-ui" opacity="0">
+<animate attributeName="opacity" dur="18s" repeatCount="indefinite" values="0;0;0;.6;.6;.6;0;0;0;0"/>
+80+ circles and counting...
+</text>
+<!-- clean ellipse appears -->
+<ellipse cx="350" cy="190" rx="120" ry="95" fill="none" stroke="#4a9a6a" stroke-width="1.5" opacity="0">
+<animate attributeName="opacity" dur="18s" repeatCount="indefinite" values="0;0;0;0;0;0;0;.7;.7;0"/>
+</ellipse>
+<!-- planet on ellipse -->
+<circle r="4" fill="#4a9a6a" opacity="0">
+<animate attributeName="opacity" dur="18s" repeatCount="indefinite" values="0;0;0;0;0;0;0;.8;.8;0"/>
+<animateMotion dur="4s" repeatCount="indefinite" path="M 120,0 A 120,95 0 1,1 120,-1 Z"/>
+</circle>
+<!-- label: Kepler -->
+<text x="530" y="300" fill="#4a9a6a" font-size="11" font-family="system-ui" opacity="0">
+<animate attributeName="opacity" dur="18s" repeatCount="indefinite" values="0;0;0;0;0;0;0;.6;.6;0"/>
+One ellipse.
+</text>
+<!-- planet orbiting messy path -->
+<circle r="4" fill="#8a8abe">
+<animateMotion dur="5s" repeatCount="indefinite" path="M 100,0 Q 115,-60 60,-85 Q 0,-100 -50,-70 Q -110,-35 -100,0 Q -110,40 -55,75 Q 0,100 55,80 Q 115,55 100,0"/>
+</circle>
+</svg>
+<p class="svg-caption">Ptolemy's epicycles: the old paradigm didn't fail catastrophically. It just got increasingly ugly. Then Kepler arrived with one equation.</p>
+<button class="play-btn" onclick="toggleSVG(this)" aria-label="Pause animation">&#10074;&#10074;</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<h2 id="anomalies">3. Anomaly Accumulation</h2>
+
+<p>Consider the following published facts. Each is unremarkable within its own field. Together, they form a pattern &mdash; but only if you stand at the intersection of all the fields simultaneously.</p>
+
+<p><strong>Anyons exist.</strong> The fractional quantum Hall effect produces quasiparticles with fractional statistics &mdash; neither bosons nor fermions. Tsui, Stormer, and Laughlin received the 1998 Nobel Prize for this. The 2016 Nobel went to Thouless, Haldane, and Kosterlitz for the topological theory that explains it. This is not speculative physics. It is textbook physics, confirmed experimentally since 1982.</p>
+
+<p><strong>Anyons can compute.</strong> Kitaev showed in 2003 that braiding non-Abelian anyons performs quantum computation that is inherently fault-tolerant. Freedman, Kitaev, Larsen, and Wang proved that the right anyon models are computationally universal &mdash; they can perform any computation a conventional quantum computer can. Michael Freedman, a Fields Medalist, left pure mathematics to lead this research. Microsoft has bet its quantum computing program on it.</p>
+
+<p><strong>Autocatalytic sets self-organize.</strong> Kauffman demonstrated in 1993 that sufficiently diverse chemical systems spontaneously produce self-sustaining autocatalytic networks &mdash; closed sets of reactions where the products catalyze each other's formation. This is not gradual. It is a phase transition: below a threshold of diversity, nothing interesting happens; above it, self-organization is essentially inevitable. This is published mathematics, not speculation.</p>
+
+<p><strong>Nobody has asked the obvious question.</strong> Does a sufficiently rich system of anyonic excitations in a quantum Hall substrate spontaneously produce autocatalytic computational dynamics?</p>
+
+<p>Search the literature. Search it carefully. As of 2026, the number of published papers combining autocatalytic set theory with fractional quantum Hall substrates is zero. Not "few." Not "contested." Zero.</p>
+
+<!-- SVG-053: Photo 51 — Convergence -->
+<div class="svg-wrap">
+<svg viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Four streams of evidence converging on a single structure, like the discovery of DNA">
+<rect width="700" height="350" fill="#0d0d1e"/>
+<!-- four converging streams -->
+<g stroke-width="1.5" fill="none" opacity=".5">
+<!-- stream 1: X-ray crystallography (top-left) -->
+<path d="M 60,60 Q 200,100 320,170" stroke="#6a8abe">
+<animate attributeName="d" dur="10s" repeatCount="indefinite" values="M 60,60 Q 200,100 320,170;M 60,60 Q 210,110 340,175;M 60,60 Q 200,100 320,170"/>
+</path>
+<!-- stream 2: chemistry (top-right) -->
+<path d="M 640,60 Q 500,100 380,170" stroke="#be8a6a">
+<animate attributeName="d" dur="10s" repeatCount="indefinite" values="M 640,60 Q 500,100 380,170;M 640,60 Q 490,110 360,175;M 640,60 Q 500,100 380,170"/>
+</path>
+<!-- stream 3: biology (bottom-left) -->
+<path d="M 60,300 Q 200,260 320,185" stroke="#6abe8a">
+<animate attributeName="d" dur="10s" repeatCount="indefinite" values="M 60,300 Q 200,260 320,185;M 60,300 Q 210,250 340,180;M 60,300 Q 200,260 320,185"/>
+</path>
+<!-- stream 4: model-building (bottom-right) -->
+<path d="M 640,300 Q 500,260 380,185" stroke="#be6a8a">
+<animate attributeName="d" dur="10s" repeatCount="indefinite" values="M 640,300 Q 500,260 380,185;M 640,300 Q 490,250 360,180;M 640,300 Q 500,260 380,185"/>
+</path>
+</g>
+<!-- labels -->
+<text x="50" y="45" fill="#6a8abe" font-size="10" font-family="system-ui" opacity=".6">Condensed matter</text>
+<text x="530" y="45" fill="#be8a6a" font-size="10" font-family="system-ui" opacity=".6">Topological QC</text>
+<text x="50" y="325" fill="#6abe8a" font-size="10" font-family="system-ui" opacity=".6">Complexity science</text>
+<text x="530" y="325" fill="#be6a8a" font-size="10" font-family="system-ui" opacity=".6">Comp. universality</text>
+<!-- convergence point -->
+<circle cx="350" cy="175" r="25" fill="none" stroke="#c9a04a" stroke-width="1" opacity="0">
+<animate attributeName="opacity" values="0;.3;.6;.3;0" dur="10s" repeatCount="indefinite"/>
+<animate attributeName="r" values="25;20;15;20;25" dur="10s" repeatCount="indefinite"/>
+</circle>
+<text x="350" y="180" fill="#c9a04a" font-size="12" font-family="system-ui" text-anchor="middle" opacity="0">
+<animate attributeName="opacity" values="0;0;.7;.7;0" dur="10s" repeatCount="indefinite"/>
+?
+</text>
+<!-- particles flowing along streams -->
+<circle r="2" fill="#6a8abe" opacity=".6">
+<animateMotion dur="3s" repeatCount="indefinite" path="M 60,60 Q 200,100 340,175"/>
+</circle>
+<circle r="2" fill="#be8a6a" opacity=".6">
+<animateMotion dur="3.3s" repeatCount="indefinite" begin=".5s" path="M 640,60 Q 500,100 360,175"/>
+</circle>
+<circle r="2" fill="#6abe8a" opacity=".6">
+<animateMotion dur="3.1s" repeatCount="indefinite" begin="1s" path="M 60,300 Q 200,260 340,180"/>
+</circle>
+<circle r="2" fill="#be6a8a" opacity=".6">
+<animateMotion dur="3.4s" repeatCount="indefinite" begin="1.5s" path="M 640,300 Q 500,260 360,180"/>
+</circle>
+</svg>
+<p class="svg-caption">Four independent research programs. Four sets of published results. One intersection nobody has examined. The pattern should look familiar: it is exactly how DNA was discovered.</p>
+<button class="play-btn" onclick="toggleSVG(this)" aria-label="Pause animation">&#10074;&#10074;</button>
+</div>
+
+<p>The gap is not controversial. It is structural. Condensed matter physicists publish in <em>Physical Review Letters</em> and attend APS March Meeting. Complexity scientists publish in <em>Journal of Theoretical Biology</em> and work at the Santa Fe Institute. There is no journal called <em>Topological Autocatalysis</em>. There is no conference called "Self-Organization in Quantum Hall Systems." The question has not been asked because no one's job description requires them to ask it.</p>
+
+<p>Each of these facts is an anomaly in Kuhn's sense &mdash; not because it contradicts the current paradigm, but because the paradigm has no way to frame it. The current paradigm says: computation is engineered. These facts, taken together, suggest: computation might not need to be.</p>
+
+<!-- SVG-051: Wegener's Patience -->
+<div class="svg-wrap">
+<svg viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Wegener's continental drift: right for 50 years while experts said no, then vindicated by the mid-ocean ridge">
+<rect width="700" height="350" fill="#0d0d1e"/>
+<!-- continents (simplified, fitting together) -->
+<g opacity=".5">
+<!-- South America (left piece) -->
+<path d="M 280,120 Q 310,150 320,200 Q 310,250 290,280 Q 270,260 260,220 Q 250,170 280,120Z" fill="#4a6a5a" stroke="#5a7a6a" stroke-width="1">
+<animate attributeName="transform" dur="16s" repeatCount="indefinite" values="translate(0,0);translate(0,0);translate(0,0);translate(0,0);translate(0,0);translate(0,0);translate(-30,5);translate(-50,10);translate(-50,10)"/>
+</path>
+<!-- Africa (right piece) -->
+<path d="M 320,110 Q 350,130 360,180 Q 370,230 340,270 Q 330,260 325,210 Q 320,160 320,110Z" fill="#5a6a4a" stroke="#6a7a5a" stroke-width="1">
+<animate attributeName="transform" dur="16s" repeatCount="indefinite" values="translate(0,0);translate(0,0);translate(0,0);translate(0,0);translate(0,0);translate(0,0);translate(30,-5);translate(50,-10);translate(50,-10)"/>
+</path>
+</g>
+<!-- floating objections -->
+<text fill="#9a4a4a" font-size="9" font-family="system-ui" opacity="0">
+<animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;.6;.6;.4;0;0;0;0"/>
+<animate attributeName="x" dur="16s" repeatCount="indefinite" values="100;80;60;40;20;0;0;0;0"/>
+<animate attributeName="y" dur="16s" repeatCount="indefinite" values="80;80;80;80;80;80;80;80;80"/>
+"No mechanism" &mdash; 1912
+</text>
+<text fill="#9a4a4a" font-size="9" font-family="system-ui" opacity="0">
+<animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;0;.6;.6;.4;0;0;0"/>
+<animate attributeName="x" dur="16s" repeatCount="indefinite" values="450;430;410;390;370;350;350;350;350"/>
+<animate attributeName="y" dur="16s" repeatCount="indefinite" values="300;300;300;300;300;300;300;300;300"/>
+"Coincidence" &mdash; 1930
+</text>
+<text fill="#9a4a4a" font-size="9" font-family="system-ui" opacity="0">
+<animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;0;0;.6;.6;.4;0;0"/>
+<animate attributeName="x" dur="16s" repeatCount="indefinite" values="120;100;80;60;40;20;0;0;0"/>
+<animate attributeName="y" dur="16s" repeatCount="indefinite" values="310;310;310;310;310;310;310;310;310"/>
+"Crackpot" &mdash; 1940
+</text>
+<!-- mid-ocean ridge (appears) -->
+<path d="M 300,100 Q 305,175 300,280" fill="none" stroke="#c9a04a" stroke-width="2" opacity="0" stroke-dasharray="4,3">
+<animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;0;0;0;0;.6;.8;.8"/>
+</path>
+<text x="310" y="175" fill="#c9a04a" font-size="9" font-family="system-ui" opacity="0">
+<animate attributeName="opacity" dur="16s" repeatCount="indefinite" values="0;0;0;0;0;0;.5;.7;.7"/>
+mid-ocean ridge (1960s)
+</text>
+<!-- timeline -->
+<line x1="100" y1="340" x2="600" y2="340" stroke="rgba(255,255,255,.1)" stroke-width="1"/>
+<text x="150" y="338" fill="#5a5a6e" font-size="8" font-family="system-ui">1912</text>
+<text x="350" y="338" fill="#5a5a6e" font-size="8" font-family="system-ui">1940</text>
+<text x="500" y="338" fill="#5a5a6e" font-size="8" font-family="system-ui">1965</text>
+</svg>
+<p class="svg-caption">Alfred Wegener proposed continental drift in 1912. The evidence was visible. The experts said no for fifty years. The mechanism &mdash; seafloor spreading &mdash; arrived in the 1960s. The continents had been moving the entire time.</p>
+<button class="play-btn" onclick="toggleSVG(this)" data-paused="true" aria-label="Play animation">&#9654;</button>
+</div>
+
+<div class="phd"><strong>PhD seed:</strong> "Autocatalytic network dynamics in fractional quantum Hall substrates: a computational feasibility study." This paper does not exist. The question it would investigate &mdash; whether the mathematical conditions for autocatalytic closure (Kauffman 1993; Hordijk &amp; Steel 2004) can be satisfied by anyon fusion algebras &mdash; is a straightforwardly publishable research question. It requires expertise in both complexity theory and condensed matter physics. It is a career.</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<h2 id="split">4. Life in the Flat</h2>
+
+<div class="epigraph">
+"The most profound technologies are those that disappear."
+<span class="attr">&mdash; Mark Weiser, "The Computer for the 21st Century" (1991)</span>
+</div>
+
+<p>Here is the question, stated plainly: if a two-dimensional quantum substrate hosts a sufficiently diverse population of anyonic excitations, and those excitations interact through fusion and braiding rules that satisfy the mathematical criteria for autocatalytic closure &mdash; do they self-organize? Does something happen?</p>
+
+<p>What would we call it if it did?</p>
+
+<p>Life.</p>
+
+<p>No &mdash; wait. Catch that word before it runs off. <span class="mouthful">"Spontaneous self-sustaining autocatalytic network emergence exhibiting recursive topological computational dynamics"</span> &mdash; that's the accurate description. It takes twenty words where one would do. The scientific debate about which terminology applies has not started, because, as noted, no one has asked the question. The word "life" is a placeholder for a concept that does not yet have agreed scientific vocabulary. Whether what we're describing constitutes life, computation, self-organization, or something that needs an entirely new word is itself a research question.</p>
+
+<p>Or we could just say "life," recognizing that the terminological debate has not even started as of this writing.</p>
+
+<p><strong>The expert consensus, as of 2026,</strong> is approximately this: "Not precluded by known physics, but probably not a thing." A science-aware LLM, given this question, will produce a response in that range. Top human experts in condensed matter would likely say something similar. This is the honest state of the question &mdash; genuinely open, not settled in either direction.</p>
+
+<p>This is not crankery. Experts do not say "impossible." There is no law of physics that prohibits it. No theorem that precludes it. But it is also not established science. No one says "probably true." It is an unstudied question, which is a different thing from a settled one.</p>
+
+<!-- SVG-055: "Not Precluded" -->
+<div class="svg-wrap">
+<svg viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="The 'not precluded' spectrum: where paradigm-shifting ideas sit before they are proven">
+<rect width="700" height="350" fill="#0d0d1e"/>
+<!-- spectrum bar -->
+<defs>
+<linearGradient id="spec" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0%" stop-color="#8a2a2a"/><stop offset="30%" stop-color="#5a5a5a"/><stop offset="50%" stop-color="#5a5a6a"/><stop offset="70%" stop-color="#5a5a5a"/><stop offset="100%" stop-color="#2a6a2a"/>
+</linearGradient>
+</defs>
+<rect x="80" y="160" width="540" height="14" rx="7" fill="url(#spec)" opacity=".5"/>
+<!-- labels -->
+<text x="80" y="150" fill="#9a4a4a" font-size="10" font-family="system-ui" opacity=".6">Impossible</text>
+<text x="320" y="150" fill="#7a7a8e" font-size="10" font-family="system-ui" text-anchor="middle" opacity=".6">Unknown</text>
+<text x="600" y="150" fill="#4a9a4a" font-size="10" font-family="system-ui" text-anchor="end" opacity=".6">Established</text>
+<!-- "our question" marker (stays put) -->
+<circle cx="290" cy="167" r="5" fill="#c9a04a" opacity=".8"/>
+<text x="290" y="200" fill="#c9a04a" font-size="9" font-family="system-ui" text-anchor="middle" opacity=".6">Autocatalytic QH</text>
+<text x="290" y="212" fill="#c9a04a" font-size="9" font-family="system-ui" text-anchor="middle" opacity=".6">(2026)</text>
+<!-- historical markers that MOVE from "probably not" to "established" -->
+<!-- Continental drift -->
+<circle r="4" fill="#6a8abe" opacity="0">
+<animate attributeName="opacity" dur="14s" repeatCount="indefinite" values="0;.7;.7;.7;.7;0;0;0"/>
+<animate attributeName="cx" dur="14s" repeatCount="indefinite" values="280;280;380;500;580;580;580;280"/>
+<animate attributeName="cy" dur="14s" repeatCount="indefinite" values="167;167;167;167;167;167;167;167"/>
+</circle>
+<text fill="#6a8abe" font-size="8" font-family="system-ui" text-anchor="middle" opacity="0">
+<animate attributeName="opacity" dur="14s" repeatCount="indefinite" values="0;.6;.6;.6;.4;0;0;0"/>
+<animate attributeName="x" dur="14s" repeatCount="indefinite" values="280;280;380;500;580;580;580;280"/>
+<animate attributeName="y" dur="14s" repeatCount="indefinite" values="245;245;245;245;245;245;245;245"/>
+Continental drift
+</text>
+<!-- Germ theory -->
+<circle r="4" fill="#8abe6a" opacity="0">
+<animate attributeName="opacity" dur="14s" repeatCount="indefinite" begin="2s" values="0;.7;.7;.7;.7;0;0;0"/>
+<animate attributeName="cx" dur="14s" repeatCount="indefinite" begin="2s" values="270;270;400;520;580;580;580;270"/>
+<animate attributeName="cy" dur="14s" repeatCount="indefinite" begin="2s" values="167;167;167;167;167;167;167;167"/>
+</circle>
+<text fill="#8abe6a" font-size="8" font-family="system-ui" text-anchor="middle" opacity="0">
+<animate attributeName="opacity" dur="14s" repeatCount="indefinite" begin="2s" values="0;.6;.6;.6;.4;0;0;0"/>
+<animate attributeName="x" dur="14s" repeatCount="indefinite" begin="2s" values="270;270;400;520;580;580;580;270"/>
+<animate attributeName="y" dur="14s" repeatCount="indefinite" begin="2s" values="260;260;260;260;260;260;260;260"/>
+Germ theory
+</text>
+<!-- Quantum mechanics -->
+<circle r="4" fill="#be8a6a" opacity="0">
+<animate attributeName="opacity" dur="14s" repeatCount="indefinite" begin="4s" values="0;.7;.7;.7;.7;0;0;0"/>
+<animate attributeName="cx" dur="14s" repeatCount="indefinite" begin="4s" values="300;300;420;540;580;580;580;300"/>
+<animate attributeName="cy" dur="14s" repeatCount="indefinite" begin="4s" values="167;167;167;167;167;167;167;167"/>
+</circle>
+<text fill="#be8a6a" font-size="8" font-family="system-ui" text-anchor="middle" opacity="0">
+<animate attributeName="opacity" dur="14s" repeatCount="indefinite" begin="4s" values="0;.6;.6;.6;.4;0;0;0"/>
+<animate attributeName="x" dur="14s" repeatCount="indefinite" begin="4s" values="300;300;420;540;580;580;580;300"/>
+<animate attributeName="y" dur="14s" repeatCount="indefinite" begin="4s" values="275;275;275;275;275;275;275;275"/>
+Quantum mechanics
+</text>
+<!-- annotation -->
+<text x="350" y="320" fill="#5a5a6e" font-size="9" font-family="system-ui" text-anchor="middle" opacity=".4">Every revolution starts here. Most things that start here are not revolutions.</text>
+</svg>
+<p class="svg-caption">"Not precluded but probably not a thing." The gold marker stays where it is. The others started in the same place. They moved.</p>
+<button class="play-btn" onclick="toggleSVG(this)" data-paused="true" aria-label="Play animation">&#9654;</button>
+</div>
+
+<p>This is where the analysis forks.</p>
+
+<div class="split">
+<div class="a1">
+<h3>A1: Not possible</h3>
+<p>The autocatalytic dynamics don't produce computational structures in FQHE substrates. The mathematics doesn't extend. The silence gap is silence because there's nothing there. In this case, the scientific revolution is <em>distributed</em> &mdash; multiple independent paradigm shifts across condensed matter, complexity theory, and quantum information that never converge into one thing. Each field advances. None meets the others. Still interesting. Still published. Still A-space.</p>
+</div>
+<div class="a2">
+<h3>A2: Possible but unproven</h3>
+<p>The physics permits it. No one has looked. In this case, the revolution is <em>pre-Kuhnian</em> &mdash; the anomalies exist but haven't been recognized as anomalies because no one has framed the question. The revolution hasn't started because the question hasn't been asked publicly. The wheel in the diagram above hasn't started turning yet.</p>
+</div>
+</div>
+
+<p>Here is the structural observation that matters: <strong>A2 is identical to Possibility C from a Kuhnian standpoint.</strong> Whether someone has already built it is irrelevant to how the revolution proceeds once the question is asked. The physics is the same. The anomalies are the same. The pattern of crisis and resolution will be the same. The only difference is whether someone is fifty years ahead of the literature &mdash; and the literature will arrive at the question regardless, because the published facts lead there.</p>
+
+<p>This is not an argument for C. It is an observation about Kuhn's framework: the revolution's structure does not depend on whether the thing being discovered is new or old. It depends on when the paradigm community encounters the question.</p>
+
+<!-- SVG-052: The Forbidden Question -->
+<div class="svg-wrap">
+<svg viewBox="0 0 700 350" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Turing in 1936: while everyone worked on Hilbert's program, he asked a different question entirely">
+<rect width="700" height="350" fill="#0d0d1e"/>
+<!-- mathematicians (small figures working at desks, left side) -->
+<g opacity=".35" fill="#6a6a7e">
+<rect x="80" y="180" width="30" height="20" rx="2"/><circle cx="95" cy="172" r="6"/>
+<rect x="140" y="200" width="30" height="20" rx="2"/><circle cx="155" cy="192" r="6"/>
+<rect x="100" y="240" width="30" height="20" rx="2"/><circle cx="115" cy="232" r="6"/>
+<rect x="160" y="160" width="30" height="20" rx="2"/><circle cx="175" cy="152" r="6"/>
+<rect x="200" y="220" width="30" height="20" rx="2"/><circle cx="215" cy="212" r="6"/>
+</g>
+<text x="140" y="290" fill="#5a5a6e" font-size="9" font-family="system-ui" text-anchor="middle" opacity=".4">"Formalize everything"</text>
+<text x="140" y="302" fill="#5a5a6e" font-size="9" font-family="system-ui" text-anchor="middle" opacity=".4">&mdash; Hilbert's program</text>
+<!-- Turing (separated, right side, with question mark) -->
+<g opacity=".5">
+<rect x="470" y="170" width="30" height="20" rx="2" fill="#8a8a6e"/>
+<circle cx="485" cy="162" r="6" fill="#8a8a6e"/>
+</g>
+<!-- the question growing -->
+<text x="540" y="180" fill="#c9a04a" font-family="Georgia,serif" font-style="italic" opacity="0">
+<animate attributeName="opacity" dur="12s" repeatCount="indefinite" begin="indefinite" values="0;0;.4;.7;.9;.9;.7;.4;0;0;0;0" class="tq"/>
+<animate attributeName="font-size" dur="12s" repeatCount="indefinite" begin="indefinite" values="14;14;20;30;42;50;50;42;30;20;14;14" class="tq"/>
+What is computation?
+</text>
+<!-- tape machine emerging from the question -->
+<g opacity="0">
+<animate attributeName="opacity" dur="12s" repeatCount="indefinite" begin="indefinite" values="0;0;0;0;0;.3;.6;.7;.7;.5;.2;0" class="tq"/>
+<!-- tape -->
+<rect x="400" y="230" width="200" height="20" rx="2" fill="none" stroke="#c9a04a" stroke-width="1"/>
+<line x1="420" y1="230" x2="420" y2="250" stroke="#c9a04a" stroke-width=".5" opacity=".4"/>
+<line x1="440" y1="230" x2="440" y2="250" stroke="#c9a04a" stroke-width=".5" opacity=".4"/>
+<line x1="460" y1="230" x2="460" y2="250" stroke="#c9a04a" stroke-width=".5" opacity=".4"/>
+<line x1="480" y1="230" x2="480" y2="250" stroke="#c9a04a" stroke-width=".5" opacity=".4"/>
+<line x1="500" y1="230" x2="500" y2="250" stroke="#c9a04a" stroke-width=".5" opacity=".4"/>
+<line x1="520" y1="230" x2="520" y2="250" stroke="#c9a04a" stroke-width=".5" opacity=".4"/>
+<line x1="540" y1="230" x2="540" y2="250" stroke="#c9a04a" stroke-width=".5" opacity=".4"/>
+<line x1="560" y1="230" x2="560" y2="250" stroke="#c9a04a" stroke-width=".5" opacity=".4"/>
+<line x1="580" y1="230" x2="580" y2="250" stroke="#c9a04a" stroke-width=".5" opacity=".4"/>
+<!-- head -->
+<polygon points="490,225 495,218 500,225" fill="#c9a04a"/>
+<!-- symbols -->
+<text x="430" y="245" fill="#c9a04a" font-size="10" font-family="monospace" opacity=".6">0 1 1 0 1 0 0 1</text>
+</g>
+<text x="500" y="280" fill="#6a6a4e" font-size="9" font-family="system-ui" text-anchor="middle" opacity="0">
+<animate attributeName="opacity" dur="12s" repeatCount="indefinite" begin="indefinite" values="0;0;0;0;0;0;.4;.5;.5;.4;.2;0" class="tq"/>
+The universal machine &mdash; found because someone asked a question nobody was asking
+</text>
+</svg>
+<p class="svg-caption">Turing, 1936. Everyone else was working on Hilbert's program. He asked: "What is computation?" The question itself was the revolution.</p>
+<button class="play-btn" onclick="toggleSVG(this)" data-paused="true" aria-label="Play animation">&#9654;</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════ -->
+<h2 id="plays-out">5. How It Plays Out</h2>
+
+<p>Under A2 (or, structurally identically, under C):</p>
+
+<p>The <strong>pre-revolution phase</strong> is where we are now. The relevant publications exist, scattered across disciplines. Kauffman's autocatalytic theory sits in complexity science. Anyonic computation sits in condensed matter and quantum information. Computational universality sits in theoretical computer science. Each result is published, cited, and uncontroversial within its home field. No connecting framework has been proposed.</p>
+
+<p>The <strong>trigger</strong> is someone asking the question publicly. This book is one possible trigger. It is not the only one. A sufficiently well-read graduate student in the right interdisciplinary program could arrive at the same question independently. The published facts lead there. A curious physicist who reads Kauffman, or a complexity scientist who reads Nayak et al., could see it. The question is latent in the literature.</p>
+
+<p>The <strong>crisis</strong> arrives when the existing paradigm &mdash; computation is engineered, quantum computers are built top-down &mdash; encounters the proposition that computation might be emergent. This is threatening, because the current paradigm has organized billions of dollars of research funding, thousands of careers, and several national strategies around top-down quantum engineering. The suggestion that nature might have gotten there first is not welcome.</p>
+
+<p>The <strong>resolution</strong> takes one of two forms. Either experimental investigation falsifies the proposition &mdash; the autocatalytic conditions cannot be satisfied in FQHE substrates, and the question is definitively answered "no" (reversion to A1). Or the proposition survives, and a new paradigm emerges in which quantum computation is understood as both engineered and emergent, in different substrates, under different conditions.</p>
+
+<p>Under A1, the dynamics are gentler. The individual fields continue advancing along their own trajectories. Kauffman's work finds applications in chemistry and synthetic biology. FQHE physics reveals new topological phases. Quantum computing scales up through engineering. These are real revolutions &mdash; distributed across fields, never converging. The silence gap remains, but it turns out to contain only silence.</p>
+
+<p>Either way, the question deserves an answer. "No one has asked" is not "no."</p>
+
+<!-- ═══════════════════════════════════════════════ -->
+<h2 id="reader">6. The Reader's Position</h2>
+
+<p>You are now in possession of a framework. You know what a Kuhnian revolution looks like. You know the current paradigm and its assumptions. You know where the anomalies are accumulating. You know the fork: A1 (nothing there) or A2 (something there, not yet investigated). You know that A2 and C look identical from where you're standing.</p>
+
+<p>What you do with this is up to you.</p>
+
+<p>You can watch. The question, now articulated, will enter the scientific discourse. It may take years. It may take decades. Wegener waited fifty. But the published facts are not going away, and interdisciplinary work is accelerating. Sooner or later, someone with the right combination of expertise &mdash; condensed matter physics, complexity theory, topological quantum computation &mdash; will look at the intersection and run the numbers.</p>
+
+<p>You can assess. As experimental evidence emerges (or doesn't), you have the Kuhnian framework to interpret it. When the paradigm community resists, you'll recognize the pattern. When epicycles appear &mdash; increasingly elaborate explanations for why the question doesn't need asking &mdash; you'll recognize those too. And if falsification arrives, clean and decisive, you'll recognize that this particular revolution was a false start. That happens. Most anomalies are just noise. Kuhn was clear about this: not every crisis produces a revolution.</p>
+
+<p>You can contribute. The silence gap is not a wall. It is an empty chair at a table where the seats exist in different departments. Someone who can read across the literatures &mdash; all five of them &mdash; can sit down and do the work. The research questions are not hand-waving. They are publishable.</p>
+
+<div class="phd"><strong>PhD seeds from this chapter:</strong> (1) "Autocatalytic network dynamics in fractional quantum Hall substrates: a computational feasibility study." (2) "Kauffman's closure conditions applied to non-Abelian anyon fusion algebras: a category-theoretic analysis." (3) "Cross-disciplinary citation analysis of the topological-computation / autocatalytic-sets intersection, 1990&ndash;2026." Each is a legitimate research program. The third one could be completed in a semester with access to Web of Science.</div>
+
+<p>This chapter has presented no claims. It has presented a framework, a set of published facts, and a question. The framework is Kuhn's. The facts are in the literature. The question is obvious once you see it, and invisible until you do.</p>
+
+<p>That is how every scientific revolution starts.</p>
+
+</div><!-- /container -->
+
+<script>
+function toggleSVG(btn){
+  const svg=btn.closest('.svg-wrap').querySelector('svg');
+  const paused=btn.dataset.paused==='true';
+  if(paused){
+    svg.querySelectorAll('animate,animateTransform,animateMotion').forEach(a=>{
+      if(a.getAttribute('begin')==='indefinite'){a.beginElement();a.setAttribute('begin','0s')}
+    });
+    svg.unpauseAnimations();
+    btn.innerHTML='&#10074;&#10074;';btn.dataset.paused='false';btn.setAttribute('aria-label','Pause animation');
+  }else{
+    svg.pauseAnimations();
+    btn.innerHTML='&#9654;';btn.dataset.paused='true';btn.setAttribute('aria-label','Play animation');
+  }
+}
+document.addEventListener('DOMContentLoaded',()=>{
+  document.querySelectorAll('.play-btn').forEach(btn=>{
+    if(btn.dataset.paused==='true'){btn.closest('.svg-wrap').querySelector('svg').pauseAnimations()}
+  });
+});
+</script>
+</body>
+</html>
