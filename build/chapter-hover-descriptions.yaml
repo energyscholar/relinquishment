@@ -55,6 +55,7 @@
 "conv:surrender": "The choice to relinquish, and what it cost"
 "pos35:the-question": "What would you do?"
 "pos36:steelman-a": "The strongest case that none of this is real"
+"scientific-revolutions": "Eight scientific revolutions mapped to Kuhn's framework, from Copernicus to DNA. One open question in quantum physics. A pattern the reader has seen before — if they've been watching."
 
 # Appendices (includes former Back Matter)
 # Record intro (pandoc generates the-record-1 to avoid ID collision with part heading)
