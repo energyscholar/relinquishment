@@ -838,6 +838,8 @@ chapter_puzzles:
           - key: d
             text: "Because the teacher doesn't fully understand it either"
         answer_key: b
+        wrong_prompts:
+          a: "Possibly true in this case but we're looking for the answer that helps the student learn best."
         wrong_prompt: "Is it really just avoidance or trickery? What happens when someone reads five different fields and sees the same pattern in all of them?"
         right_prompt: "The student reads real, published science. The synthesis belongs to THEM. Now — what does that mean for you, reading this book?"
 
