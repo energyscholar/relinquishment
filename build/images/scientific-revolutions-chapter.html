@@ -144,6 +144,40 @@
   }
   .gold-marker { animation: gold-pulse 2s ease-in-out infinite; }
 
+  /* Collapsible physicist detail */
+  .tech-section {
+    margin: 1rem 0;
+    border-left: 2px solid rgba(140, 140, 160, 0.25);
+    padding-left: 1rem;
+  }
+  .tech-section summary {
+    cursor: pointer;
+    color: #a09890;
+    font-style: italic;
+    font-size: 0.95rem;
+    margin-bottom: 0.5rem;
+  }
+  .tech-section summary:hover {
+    color: #c8b898;
+  }
+  .tech-section[open] summary {
+    margin-bottom: 1rem;
+  }
+
+  /* PhD seed accordions */
+  .phd-seed-section {
+    margin: 1rem 0;
+  }
+  .phd-seed-section summary {
+    cursor: pointer;
+    color: #5c7c9c;
+    font-style: italic;
+    font-size: 0.85rem;
+  }
+  .phd-seed-section summary:hover {
+    color: #7c9cbc;
+  }
+
   /* Footnotes */
   sup a {
     color: #8a9aaa;
@@ -270,6 +304,9 @@
 
 <p>The current paradigm in quantum computing has its own anomalies — not errors, but gaps. Four research programs, each well-established, converge on a question none of them has asked.</p>
 
+<details class="tech-section">
+  <summary>The four converging research programs</summary>
+
 <p><strong>Autocatalytic set theory.</strong> Stuart Kauffman's work on self-organizing networks demonstrated that sufficiently diverse chemical systems spontaneously generate self-sustaining catalytic cycles.<sup><a href="#fn2" id="ref2">2</a></sup> The result is mathematical, not chemical: above a threshold of component diversity and interaction density, closure into self-sustaining cycles is a statistical near-certainty. The theory is substrate-independent — it describes a property of networks, not a property of specific molecules. Kauffman's framework has been applied to organic chemistry, economics, and artificial life. It has not been applied to condensed matter systems exhibiting topological order.</p>
 
 <p><strong>Fractional quantum Hall anyons.</strong> The fractional quantum Hall effect produces quasiparticles — anyons — whose braiding statistics are neither bosonic nor fermionic. Their existence earned the 1998 Nobel Prize (Tsui, Störmer, Laughlin) and the 2016 Nobel Prize (Thouless, Haldane, Kosterlitz) for the theoretical framework describing the topological phases they inhabit. These are among the most studied quantum phenomena in physics. Dozens of anyon species have been characterized. Their individual braiding rules are known. The question of what they self-organize <em>into</em> — whether sufficiently diverse anyonic populations form higher-order structures through their mutual interactions — has not been investigated. The field studies their properties, not their collective dynamics.</p>
@@ -278,11 +315,16 @@
 
 <p><strong>The unstudied intersection.</strong> A literature search across five decades of publications in condensed matter physics, complexity theory, topological quantum field theory, autocatalytic set theory, and quantum information science reveals zero papers investigating autocatalytic dynamics in fractional quantum Hall substrates. Not one. Each field has thousands of publications. The intersection has none. The gap documented in <span class="deep-link">"The Silence Gap"</span> is not a gap in knowledge — each field has extensive literature. It is a gap in <em>connection</em>. Five mature research programs <span class="deep-link">(see "Five Fields, No Bridge")</span>, each internally productive, and the question that sits at their intersection <span class="deep-link">(see "The Gap")</span> has not been framed, let alone studied.</p>
 
+</details>
+
 <p>This is not unusual. Kuhn observed that anomalies often hide in disciplinary seams — places where each field's literature stops precisely where the next one begins. A condensed matter physicist reads the anyon literature. A complexity theorist reads Kauffman. Neither reads both, because no journal publishes at the intersection.</p>
 
 <p>In Kuhn's terminology, these are anomalies: published facts the current paradigm cannot integrate because the paradigm lacks the vocabulary to connect them.</p>
 
-<blockquote class="phd-seed"><em>"Autocatalytic dynamics in fractional quantum Hall substrates: a computational feasibility study"</em> — a paper title waiting for an author.</blockquote>
+<details class="phd-seed-section">
+  <summary>Research opportunity</summary>
+  <blockquote class="phd-seed"><em>"Autocatalytic dynamics in fractional quantum Hall substrates: a computational feasibility study"</em> — a paper title waiting for an author.</blockquote>
+</details>
 
 <!-- ================================================================ -->
 <!-- SECTION 4: LIFE IN THE FLAT -->
@@ -586,7 +628,10 @@
 })();
 </script>
 
-<blockquote class="phd-seed"><em>"Defining computational emergence in topologically ordered quantum substrates"</em> — the terminological paper the field will need before it can argue about anything else.</blockquote>
+<details class="phd-seed-section">
+  <summary>Research opportunity</summary>
+  <blockquote class="phd-seed"><em>"Defining computational emergence in topologically ordered quantum substrates"</em> — the terminological paper the field will need before it can argue about anything else.</blockquote>
+</details>
 
 <!-- ================================================================ -->
 <!-- SECTION 4b: BEYOND THE LABORATORY -->
@@ -614,7 +659,10 @@
 
 <p>The distinguishing feature of the two branches is not which is better but which is Kuhnian. A1 produces incremental progress within existing paradigms — Kuhn's normal science, the productive phase that generates the vast majority of scientific results. A2 produces a crisis that cannot be resolved within any single existing paradigm — Kuhn's revolution, the rare and disruptive phase that reorganizes entire fields. Both are science. Both advance human understanding. The structures are different, and the social consequences of each are different, which is why the next section exists.</p>
 
-<blockquote class="phd-seed"><em>"Citation analysis of the autocatalytic–FQHE publication gap: mapping an unstudied interdisciplinary intersection"</em> — a bibliometric study any graduate student could begin tomorrow.</blockquote>
+<details class="phd-seed-section">
+  <summary>Research opportunity</summary>
+  <blockquote class="phd-seed"><em>"Citation analysis of the autocatalytic–FQHE publication gap: mapping an unstudied interdisciplinary intersection"</em> — a bibliometric study any graduate student could begin tomorrow.</blockquote>
+</details>
 
 <!-- ================================================================ -->
 <!-- SECTION 6: THE SOCIAL PROCESS -->
