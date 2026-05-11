@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scientific Revolutions — Abstract Kuhn Cycle</title>
+<title>The Structure of Scientific Revolutions</title>
 <style>
   body { margin: 0; background: #1a1a2e; display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: Georgia, serif; }
   svg { max-width: 100vw; max-height: 100vh; }
@@ -34,10 +34,11 @@
 
     <!-- Title bar (segments 1+) -->
     <g id="title-bar" opacity="0">
+      <rect x="100" y="5" width="1000" height="75" rx="8" fill="rgba(26,26,46,0.85)"/>
       <text id="title-line1" x="600" y="22" text-anchor="middle" fill="#ffffff" font-size="18" font-family="Georgia, serif" font-weight="bold" letter-spacing="1"></text>
-      <text id="title-line2" x="600" y="50" text-anchor="middle" fill="#e8e0d0" font-size="26" font-family="Georgia, serif" font-weight="bold"></text>
-      <line id="title-strike" x1="300" y1="50" x2="300" y2="50" stroke="#c45c5c" stroke-width="2" opacity="0"/>
-      <text id="title-line3" x="600" y="78" text-anchor="middle" fill="#5c9c5c" font-size="24" font-family="Georgia, serif" font-weight="bold" opacity="0"></text>
+      <text id="title-line2" x="600" y="60" text-anchor="middle" fill="#e8e0d0" font-size="26" font-family="Georgia, serif" font-weight="bold"></text>
+      <line id="title-strike" x1="300" y1="60" x2="300" y2="60" stroke="#c45c5c" stroke-width="2" opacity="0"/>
+      <text id="title-line3" x="600" y="60" text-anchor="middle" fill="#5c9c5c" font-size="26" font-family="Georgia, serif" font-weight="bold" opacity="0"></text>
     </g>
 
     <!-- Year display (upper-right) -->
@@ -264,16 +265,17 @@
     titleLine2.setAttribute("font-size", "26");
     titleLine2.setAttribute("font-weight", "bold");
     titleLine2.setAttribute("opacity", "1");
-    titleLine2.setAttribute("y", "50");
+    titleLine2.setAttribute("y", "60");
     titleLine2.removeAttribute("font-style");
     titleLine2.setAttribute("transform", "");
     titleLine3.textContent = "";
     titleLine3.setAttribute("opacity", 0);
-    titleLine3.setAttribute("y", "78");
-    titleLine3.setAttribute("font-size", "24");
+    titleLine3.setAttribute("y", "60");
+    titleLine3.setAttribute("font-size", "26");
+    titleLine3.setAttribute("fill", "#5c9c5c");
     titleStrike.setAttribute("opacity", 0);
-    titleStrike.setAttribute("y1", "50");
-    titleStrike.setAttribute("y2", "50");
+    titleStrike.setAttribute("y1", "60");
+    titleStrike.setAttribute("y2", "60");
     yearDisplay.setAttribute("opacity", 0);
     yearDisplay.textContent = "";
     engine.resolved = false;
@@ -325,10 +327,10 @@
     kf.push({ t: 0, dur: 0.5, fn(p) {
       if (p < 0.02) {
         showLoopFrame();
-        titleLine1.textContent = "The Kuhn Cycle";
+        titleLine1.textContent = "The Structure of Scientific Revolutions";
         titleLine2.textContent = "The accepted theory explains everything we see.";
         titleLine2.setAttribute("x", "600");
-        titleLine2.setAttribute("y", "50");
+        titleLine2.setAttribute("y", "60");
         titleLine2.setAttribute("font-size", "26");
         titleLine2.setAttribute("font-weight", "bold");
         titleLine2.setAttribute("opacity", "1");
@@ -676,11 +678,12 @@
     const npAppearStart = silenceStart + 0.5;
     const holdStart = npAppearStart + 0.5;
     const holdEnd = holdStart + 3.5;
-    const techStart = holdEnd;
+    const colorStart = holdEnd;
+    const colorEnd = colorStart + 2;
+    const techStart = colorEnd;
     const techParkStart = techStart + 2;
     const techParkEnd = techParkStart + 0.5;
-    const transStart = techParkEnd;
-    const pauseFinal = transStart + 1;
+    const pauseFinal = techParkEnd;
     const TOTAL = pauseFinal + 1.5;
 
     const accumulatedEls = [];
@@ -743,17 +746,17 @@
         titleLine1.textContent = cfg.title1;
         titleLine2.textContent = cfg.title2;
         titleLine2.setAttribute("x", "600");
-        titleLine2.setAttribute("y", "50");
+        titleLine2.setAttribute("y", "60");
         titleLine2.setAttribute("font-size", "26");
         titleLine2.setAttribute("font-weight", "bold");
         titleLine2.setAttribute("opacity", "1");
         titleLine2.removeAttribute("font-style");
-        titleStrike.setAttribute("y1", "50");
-        titleStrike.setAttribute("y2", "50");
+        titleStrike.setAttribute("y1", "60");
+        titleStrike.setAttribute("y2", "60");
         titleStrike.setAttribute("opacity", "0");
-        titleLine3.setAttribute("y", "78");
+        titleLine3.setAttribute("y", "60");
         titleLine3.setAttribute("opacity", "0");
-        const oldLabel = createText("OLD PARADIGM", 600, 33, 10, "#e8e0d0", { opacity: 0.4 });
+        const oldLabel = createText("OLD PARADIGM", 600, 43, 10, "#e8e0d0", { opacity: 0.4 });
         oldLabel.setAttribute("letter-spacing", "2");
         titleBar.appendChild(oldLabel);
       }
@@ -1049,7 +1052,7 @@
     let deathEl = null;
     kf.push({ t: deathMoveStart, dur: 0.01, fn() {
       titleLine2.setAttribute("opacity", "0");
-      deathEl = createWrappedText(cfg.title2, CX, 50, 26, "#e8e0d0", 38);
+      deathEl = createWrappedText(cfg.title2, CX, 60, 26, "#e8e0d0", 38);
       deathEl.setAttribute("font-weight", "bold");
       deathEl.setAttribute("text-anchor", "middle");
       centerStage.appendChild(deathEl);
@@ -1058,7 +1061,7 @@
     kf.push({ t: deathMoveStart + 0.01, dur: 2, fn(p) {
       if (!deathEl) return;
       const t = easeInOutCubic(p);
-      deathEl.setAttribute("y", String(50 + (CY - 50) * t));
+      deathEl.setAttribute("y", String(60 + (CY - 60) * t));
       const ds = Math.round(26 + 6 * t);
       deathEl.setAttribute("font-size", String(ds));
       deathEl.querySelectorAll('tspan').forEach((ts, i) => { if (i > 0) ts.setAttribute('dy', String(Math.round(ds * 1.3))); });
@@ -1146,7 +1149,7 @@
       titleStrike.setAttribute("x1", String(left));
       titleStrike.setAttribute("x2", String(left + (right - left) * t));
       titleStrike.setAttribute("opacity", String(t));
-      titleLine2.setAttribute("opacity", String(1 - 0.75 * t));
+      titleLine2.setAttribute("opacity", String(1 - t));
       titleLine2.setAttribute("font-size", String(Math.round(26 - 10 * t)));
     }});
 
@@ -1157,14 +1160,38 @@
     kf.push({ t: npAppearStart, dur: 0.5, fn(p) {
       const t = easeOutBack(p);
       titleLine3.textContent = cfg.title3;
-      titleLine3.setAttribute("y", "78");
+      titleLine3.setAttribute("y", "60");
       titleLine3.setAttribute("fill", "#5c9c5c");
-      titleLine3.setAttribute("font-size", String(Math.round(28 * Math.max(0.1, t))));
+      titleLine3.setAttribute("font-size", String(Math.round(26 * Math.max(0.1, t))));
       titleLine3.setAttribute("opacity", String(easeOutCubic(p)));
     }});
 
-    // Hold: both visible (3.5s)
-    kf.push({ t: holdStart, dur: 3.5, fn() {} });
+    // Hold: both visible (3.5s) + concurrent transition years
+    let transYearsEl = null;
+    kf.push({ t: holdStart, dur: 0.5, fn(p) {
+      if (p < 0.02) setYear(cfg.years.newParadigm);
+      if (cfg.transitionYears && !transYearsEl) {
+        transYearsEl = createText(cfg.transitionYears, CX, CY + 100, 20, "#e8e0d0");
+        transYearsEl.setAttribute("opacity", "0");
+        centerStage.appendChild(transYearsEl);
+      }
+      if (transYearsEl) transYearsEl.setAttribute("opacity", String(easeOutCubic(p) * 0.7));
+    }});
+    kf.push({ t: holdStart + 0.5, dur: 3, fn() {} });
+
+    // Green → Blue color transition (2s)
+    kf.push({ t: colorStart, dur: 2, fn(p) {
+      const t = easeInOutCubic(p);
+      const r = Math.round(92 + (74 - 92) * t);
+      const g = Math.round(156 + (144 - 156) * t);
+      const b = Math.round(92 + (217 - 92) * t);
+      titleLine3.setAttribute("fill", `rgb(${r},${g},${b})`);
+    }});
+
+    kf.push({ t: colorEnd, dur: 0.01, fn() {
+      if (transYearsEl && transYearsEl.parentNode) transYearsEl.parentNode.removeChild(transYearsEl);
+      transYearsEl = null;
+    }});
 
     // Step 8: Technology/outcome
     let techEl = null;
@@ -1201,18 +1228,7 @@
       parkText(cfg.newParadigm.substring(0, 28) + "…", pos.x + off.x, pos.y + off.y, 9, "#5c9c5c", N * 2 + 6);
     }});
 
-    // Step 9: Transition note
-    kf.push({ t: transStart, dur: 0.5, fn(p) {
-      if (cfg.transitionYears) {
-        clearCenter();
-        const el = createText(cfg.transitionYears, CX, CY, 16, "#e8e0d088");
-        el.setAttribute("opacity", String(easeOutCubic(p) * 0.6));
-        centerStage.appendChild(el);
-      }
-      setYear(cfg.years.newParadigm);
-    }});
-
-    // Step 10: Final pause
+    // Final pause
     kf.push({ t: pauseFinal, dur: 1.5, fn(p) {
       if (p > 0.5) clearCenter();
     }});
@@ -1258,7 +1274,7 @@
         name: "Lavoisier, 1783"
       },
       newParadigm: "The periodic table. Conservation of mass. Modern chemistry.",
-      transitionYears: "~19 years"
+      transitionYears: "~17 years"
     });
   }
 
