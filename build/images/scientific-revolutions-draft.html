@@ -31,6 +31,17 @@
     <g id="center-stage"></g>
     <rect id="golden-flash" x="0" y="0" width="1200" height="700" fill="#d4a017" opacity="0" pointer-events="none"/>
     <g id="you-are-here" opacity="0"></g>
+
+    <!-- Title bar (segments 1+) -->
+    <g id="title-bar" opacity="0">
+      <text id="title-line1" x="600" y="22" text-anchor="middle" fill="#ffffff" font-size="20" font-family="Georgia, serif" font-weight="bold" letter-spacing="1"></text>
+      <text id="title-line2" x="600" y="45" text-anchor="middle" fill="#e8e0d0" font-size="15" font-family="Georgia, serif" font-style="italic" opacity="0.67"></text>
+      <line id="title-strike" x1="300" y1="45" x2="300" y2="45" stroke="#c45c5c" stroke-width="2" opacity="0"/>
+      <text id="title-line3" x="600" y="68" text-anchor="middle" fill="#d4a017" font-size="15" font-family="Georgia, serif" font-weight="bold" opacity="0"></text>
+    </g>
+
+    <!-- Year display (upper-right) -->
+    <text id="year-display" x="1150" y="30" text-anchor="end" fill="#e8e0d0" font-size="14" font-family="Georgia, serif" opacity="0"></text>
   </g>
 
   <!-- Scrubber bar -->
@@ -57,7 +68,7 @@
     { name: "NEW NORMAL",     color: "#5c9c5c", angle: 198 },
   ];
 
-  const CX = 600, CY = 300, CR = 180;
+  const CX = 600, CY = 310, CR = 270;
 
   function phasePos(i) {
     const a = phases[i].angle * Math.PI / 180;
@@ -86,6 +97,12 @@
   const playIcon = document.getElementById("play-icon");
   const playBtn = document.getElementById("play-btn");
   const scrubberDots = document.getElementById("scrubber-dots");
+  const titleBar = document.getElementById("title-bar");
+  const titleLine1 = document.getElementById("title-line1");
+  const titleLine2 = document.getElementById("title-line2");
+  const titleStrike = document.getElementById("title-strike");
+  const titleLine3 = document.getElementById("title-line3");
+  const yearDisplay = document.getElementById("year-display");
 
   // Easing
   function easeOutBack(t) {
@@ -150,7 +167,7 @@
     const x0 = 60, x1 = 1140, span = x1 - x0;
     for (let i = 0; i < 9; i++) {
       const x = x0 + (span * i / 8);
-      const active = (i === 0);
+      const active = (i <= 1);
       const g = document.createElementNS(SVG_NS, "g");
       g.setAttribute("cursor", active ? "pointer" : "default");
 
@@ -172,14 +189,15 @@
       t.textContent = segmentLabels[i];
       g.appendChild(t);
 
-      if (active) g.addEventListener("click", () => playSegment(0));
+      if (active) g.addEventListener("click", () => playSegment(i));
       scrubberDots.appendChild(g);
     }
     playIcon.textContent = "▶";
   }
 
   function updateProgress(fraction) {
-    const segWidth = (1140 - 60) / 8;
+    const x0 = 60, segWidth = (1140 - 60) / 8;
+    progressBar.setAttribute("x", x0 + engine.segment * segWidth);
     progressBar.setAttribute("width", Math.max(0, segWidth * fraction));
   }
 
@@ -192,6 +210,14 @@
     goldenFlash.setAttribute("opacity", 0);
     youAreHere.setAttribute("opacity", 0);
     while (youAreHere.firstChild) youAreHere.removeChild(youAreHere.firstChild);
+    titleBar.setAttribute("opacity", 0);
+    titleLine1.textContent = "";
+    titleLine2.textContent = "";
+    titleLine3.textContent = "";
+    titleLine3.setAttribute("opacity", 0);
+    titleStrike.setAttribute("opacity", 0);
+    yearDisplay.setAttribute("opacity", 0);
+    yearDisplay.textContent = "";
     engine.resolved = false;
   }
 
@@ -416,6 +442,356 @@
     return { keyframes: kf, duration: TOTAL };
   }
 
+  // --- Timeline for segment 1: Heliocentrism (20s) ---
+
+  function buildSegment1Timeline() {
+    const TOTAL = 20;
+    const accumulatedEls = [];
+    const years = ["~1400", "1543", "1543–1610", "1610", "1687"];
+
+    function setYear(yr) {
+      yearDisplay.textContent = yr;
+      yearDisplay.setAttribute("opacity", "0.55");
+    }
+
+    function showLoopFrame() {
+      cyclePath.setAttribute("d", fullCirclePath());
+      cyclePath.setAttribute("stroke-dasharray", "6,4");
+      cyclePath.removeAttribute("stroke-dashoffset");
+      cyclePath.setAttribute("opacity", "0.25");
+      for (let i = 0; i < 5; i++) {
+        const p = phasePos(i);
+        const el = createText(phases[i].name, p.x, p.y, 12, phases[i].color, { opacity: 0.25 });
+        el.setAttribute("font-size", "12");
+        loopLabels.appendChild(el);
+      }
+    }
+
+    function addLoopContent(idx, shortText, color) {
+      const p = phasePos(idx);
+      const el = createText(shortText, p.x, p.y + 18, 11, color);
+      el.setAttribute("font-weight", "normal");
+      el.setAttribute("letter-spacing", "0");
+      loopLabels.appendChild(el);
+      accumulatedEls.push(el);
+    }
+
+    function flyMainToLoop(el, startX, startY, idx, p) {
+      const t = easeInOutCubic(p);
+      const pos = phasePos(idx);
+      const dx = pos.x - startX, dy = (pos.y + 18) - startY;
+      const perpX = -dy, perpY = dx;
+      const len = Math.sqrt(dx*dx + dy*dy) || 1;
+      const arcBow = Math.sin(t * Math.PI) * 40 / len;
+      el.setAttribute("x", startX + dx * t + perpX * arcBow);
+      el.setAttribute("y", startY + dy * t);
+    }
+
+    const kf = [];
+
+    // === Setup: loop frame + title bar fade in (0-0.5s) ===
+    kf.push({ t: 0, dur: 0.5, fn(p) {
+      if (p < 0.02) {
+        showLoopFrame();
+        titleLine1.textContent = "The Copernican Revolution (1543–1687)";
+        titleLine2.textContent = "The earth is at the center. The sun, moon, and stars revolve around it.";
+      }
+      titleBar.setAttribute("opacity", easeOutCubic(p));
+      setYear(years[0]);
+    }});
+
+    // === NORMAL SCIENCE: 0.5-4s ===
+    let nMain = null, nSub = null, nIcon = null;
+
+    kf.push({ t: 0.5, dur: 0.5, fn(p) {
+      if (!nMain) {
+        nMain = createText("The sun rises east, crosses the sky, sets west.", CX, CY - 20, 32, "#4a90d9");
+        nMain.setAttribute("letter-spacing", "0");
+        centerStage.appendChild(nMain);
+      }
+      nMain.setAttribute("font-size", Math.round(32 * Math.max(0.1, easeOutBack(p))));
+      nMain.setAttribute("opacity", Math.min(1, p * 2.5));
+    }});
+
+    kf.push({ t: 1.5, dur: 0.4, fn(p) {
+      if (!nSub) {
+        nSub = createText("They built a model to explain this.", CX, CY + 25, 22, "#4a90d9");
+        nSub.setAttribute("font-weight", "normal");
+        nSub.setAttribute("letter-spacing", "0");
+        centerStage.appendChild(nSub);
+      }
+      nSub.setAttribute("opacity", easeOutCubic(p));
+    }});
+
+    kf.push({ t: 2, dur: 0.4, fn(p) {
+      if (!nIcon) {
+        nIcon = document.createElementNS(SVG_NS, "g");
+        const earth = document.createElementNS(SVG_NS, "circle");
+        earth.setAttribute("cx", CX); earth.setAttribute("cy", CY + 70);
+        earth.setAttribute("r", 6); earth.setAttribute("fill", "#4a90d9");
+        nIcon.appendChild(earth);
+        for (const r of [20, 35, 50]) {
+          const orbit = document.createElementNS(SVG_NS, "circle");
+          orbit.setAttribute("cx", CX); orbit.setAttribute("cy", CY + 70);
+          orbit.setAttribute("r", r); orbit.setAttribute("fill", "none");
+          orbit.setAttribute("stroke", "#4a90d944"); orbit.setAttribute("stroke-width", "1");
+          nIcon.appendChild(orbit);
+        }
+        const sun = document.createElementNS(SVG_NS, "circle");
+        sun.setAttribute("cx", CX + 35); sun.setAttribute("cy", CY + 70);
+        sun.setAttribute("r", 4); sun.setAttribute("fill", "#d4a574");
+        nIcon.appendChild(sun);
+        nIcon.setAttribute("opacity", "0");
+        centerStage.appendChild(nIcon);
+      }
+      nIcon.setAttribute("opacity", easeOutCubic(p));
+    }});
+
+    kf.push({ t: 2.4, dur: 1.1, fn() {} });
+
+    kf.push({ t: 3.5, dur: 0.5, fn(p) {
+      flyMainToLoop(nMain, CX, CY - 20, 0, p);
+      nMain.setAttribute("font-size", Math.round(32 - 21 * easeInOutCubic(p)));
+      if (nSub) nSub.setAttribute("opacity", 1 - easeOutCubic(p));
+      if (nIcon) nIcon.setAttribute("opacity", 1 - easeOutCubic(p));
+    }});
+
+    kf.push({ t: 4, dur: 0.01, fn() {
+      while (centerStage.firstChild) centerStage.removeChild(centerStage.firstChild);
+      nMain = null; nSub = null; nIcon = null;
+      addLoopContent(0, "Sun crosses the sky", "#4a90d9");
+    }});
+
+    // === ANOMALY: 4-8s ===
+    let aMain = null, aSub = null;
+
+    kf.push({ t: 4, dur: 0.01, fn() { setYear(years[1]); }});
+
+    kf.push({ t: 4.05, dur: 0.5, fn(p) {
+      if (!aMain) {
+        aMain = createText("Mars stops. Goes backward. Then forward again.", CX, CY - 15, 30, "#d4a574");
+        aMain.setAttribute("letter-spacing", "0");
+        centerStage.appendChild(aMain);
+      }
+      aMain.setAttribute("font-size", Math.round(30 * Math.max(0.1, easeOutBack(p))));
+      aMain.setAttribute("opacity", Math.min(1, p * 2.5));
+    }});
+
+    kf.push({ t: 5, dur: 2.5, fn(p) {
+      if (!aSub) {
+        aSub = createText("Epicycles needed: 12", CX, CY + 30, 20, "#d4a574");
+        aSub.setAttribute("font-weight", "normal");
+        aSub.setAttribute("letter-spacing", "0");
+        centerStage.appendChild(aSub);
+      }
+      const count = Math.round(12 + 67 * easeOutCubic(p));
+      aSub.textContent = "Epicycles needed: " + count;
+    }});
+
+    kf.push({ t: 7.5, dur: 0.5, fn(p) {
+      flyMainToLoop(aMain, CX, CY - 15, 1, p);
+      aMain.setAttribute("font-size", Math.round(30 - 19 * easeInOutCubic(p)));
+      if (aSub) aSub.setAttribute("opacity", 1 - easeOutCubic(p));
+    }});
+
+    kf.push({ t: 8, dur: 0.01, fn() {
+      while (centerStage.firstChild) centerStage.removeChild(centerStage.firstChild);
+      aMain = null; aSub = null;
+      addLoopContent(1, "Retrograde + 79 epicycles", "#d4a574");
+    }});
+
+    // === CRISIS: 8-12s ===
+    let crisisGroup = null;
+
+    kf.push({ t: 8, dur: 0.01, fn() { setYear(years[2]); }});
+
+    kf.push({ t: 8.05, dur: 0.5, fn(p) {
+      if (!crisisGroup) {
+        crisisGroup = document.createElementNS(SVG_NS, "g");
+        const bw = 520, bh = 80, bx = CX - bw/2, by = CY - 50;
+        const rect = document.createElementNS(SVG_NS, "rect");
+        rect.setAttribute("x", bx); rect.setAttribute("y", by);
+        rect.setAttribute("width", bw); rect.setAttribute("height", bh);
+        rect.setAttribute("rx", 12); rect.setAttribute("ry", 12);
+        rect.setAttribute("fill", "#c45c5c22"); rect.setAttribute("stroke", "#c45c5c");
+        rect.setAttribute("stroke-width", "1.5");
+        crisisGroup.appendChild(rect);
+        const tx = CX - 30, ty = by + bh;
+        const tri = document.createElementNS(SVG_NS, "polygon");
+        tri.setAttribute("points", tx+","+ty+" "+(tx+20)+","+ty+" "+(tx+10)+","+(ty+12));
+        tri.setAttribute("fill", "#c45c5c22"); tri.setAttribute("stroke", "#c45c5c");
+        tri.setAttribute("stroke-width", "1.5");
+        crisisGroup.appendChild(tri);
+        const quote = createText("“The Earth MOVES? Absurd. I can feel that it doesn’t.”", CX, CY - 15, 22, "#c45c5c");
+        quote.setAttribute("font-style", "italic");
+        quote.setAttribute("font-weight", "normal");
+        quote.setAttribute("letter-spacing", "0");
+        crisisGroup.appendChild(quote);
+        const sub = createText("De Revolutionibus — ignored for 70 years", CX, CY + 55, 16, "#c45c5c");
+        sub.setAttribute("font-weight", "normal");
+        sub.setAttribute("letter-spacing", "0");
+        sub.setAttribute("opacity", "0.6");
+        crisisGroup.appendChild(sub);
+        crisisGroup.setAttribute("opacity", "0");
+        centerStage.appendChild(crisisGroup);
+      }
+      crisisGroup.setAttribute("opacity", easeOutCubic(p));
+    }});
+
+    kf.push({ t: 8.55, dur: 2.95, fn() {} });
+
+    kf.push({ t: 11.5, dur: 0.5, fn(p) {
+      if (crisisGroup) crisisGroup.setAttribute("opacity", 1 - easeOutCubic(p));
+    }});
+
+    kf.push({ t: 12, dur: 0.01, fn() {
+      while (centerStage.firstChild) centerStage.removeChild(centerStage.firstChild);
+      crisisGroup = null;
+      addLoopContent(2, "“Absurd — I can feel it”", "#c45c5c");
+    }});
+
+    // === REVOLUTION: 12-16s ===
+
+    kf.push({ t: 12, dur: 0.4, fn(p) {
+      setYear(years[3]);
+      let flashOp;
+      if (p < 0.35) flashOp = easeOutCubic(p / 0.35) * 0.6;
+      else flashOp = 0.6 * (1 - easeOutCubic((p - 0.35) / 0.65));
+      goldenFlash.setAttribute("opacity", flashOp);
+      const fadeOut = 1 - easeOutCubic(Math.min(1, p * 2));
+      for (const el of accumulatedEls) el.setAttribute("opacity", fadeOut);
+    }});
+
+    kf.push({ t: 12.4, dur: 0.01, fn() {
+      goldenFlash.setAttribute("opacity", 0);
+      for (const el of accumulatedEls) { if (el.parentNode) el.parentNode.removeChild(el); }
+      accumulatedEls.length = 0;
+    }});
+
+    let rMain = null, rSub = null, rIcon = null, rName = null;
+
+    kf.push({ t: 12.5, dur: 0.5, fn(p) {
+      if (!rMain) {
+        rMain = createText("Galileo points his telescope at Jupiter.", CX, CY - 30, 32, "#d4a017", { filter: "url(#glow)" });
+        rMain.setAttribute("letter-spacing", "0");
+        centerStage.appendChild(rMain);
+      }
+      rMain.setAttribute("opacity", easeOutCubic(p));
+      rMain.setAttribute("font-size", Math.round(32 * Math.max(0.1, easeOutBack(p))));
+    }});
+
+    kf.push({ t: 13.2, dur: 0.4, fn(p) {
+      if (!rSub) {
+        rSub = createText("Four moons. Orbiting Jupiter. Not Earth.", CX, CY + 10, 24, "#d4a017");
+        rSub.setAttribute("font-weight", "normal");
+        rSub.setAttribute("letter-spacing", "1");
+        centerStage.appendChild(rSub);
+      }
+      rSub.setAttribute("opacity", easeOutCubic(p));
+    }});
+
+    kf.push({ t: 13.7, dur: 0.3, fn(p) {
+      if (!rIcon) {
+        rIcon = document.createElementNS(SVG_NS, "g");
+        const jup = document.createElementNS(SVG_NS, "circle");
+        jup.setAttribute("cx", CX); jup.setAttribute("cy", CY + 55);
+        jup.setAttribute("r", 14); jup.setAttribute("fill", "#d4a017");
+        jup.setAttribute("opacity", "0.8");
+        rIcon.appendChild(jup);
+        const moons = [[-30, -5], [-18, 10], [22, -3], [35, 6]];
+        for (const [mx, my] of moons) {
+          const m = document.createElementNS(SVG_NS, "circle");
+          m.setAttribute("cx", CX + mx); m.setAttribute("cy", CY + 55 + my);
+          m.setAttribute("r", 3); m.setAttribute("fill", "#e8e0d0");
+          rIcon.appendChild(m);
+        }
+        rIcon.setAttribute("opacity", "0");
+        centerStage.appendChild(rIcon);
+      }
+      rIcon.setAttribute("opacity", easeOutCubic(p));
+    }});
+
+    kf.push({ t: 14.1, dur: 0.3, fn(p) {
+      if (!rName) {
+        rName = createText("Galileo, 1610", CX, CY + 85, 14, "#d4a017");
+        rName.setAttribute("font-weight", "normal");
+        centerStage.appendChild(rName);
+      }
+      rName.setAttribute("opacity", easeOutCubic(p) * 0.7);
+    }});
+
+    kf.push({ t: 14.4, dur: 1.6, fn() {} });
+
+    // === NEW NORMAL: 16-20s ===
+    kf.push({ t: 16, dur: 0.4, fn(p) {
+      setYear(years[4]);
+      const fade = 1 - easeOutCubic(p);
+      if (rMain) rMain.setAttribute("opacity", fade);
+      if (rSub) rSub.setAttribute("opacity", fade);
+      if (rIcon) rIcon.setAttribute("opacity", fade);
+      if (rName) rName.setAttribute("opacity", fade);
+    }});
+
+    kf.push({ t: 16.4, dur: 0.01, fn() {
+      while (centerStage.firstChild) centerStage.removeChild(centerStage.firstChild);
+      rMain = null; rSub = null; rIcon = null; rName = null;
+    }});
+
+    let gMain = null, gIcon = null;
+
+    kf.push({ t: 16.5, dur: 0.5, fn(p) {
+      if (!gMain) {
+        gMain = createText("Navigation. Celestial mechanics. Space travel.", CX, CY - 10, 30, "#5c9c5c");
+        gMain.setAttribute("letter-spacing", "0");
+        centerStage.appendChild(gMain);
+      }
+      gMain.setAttribute("opacity", easeOutCubic(p));
+      gMain.setAttribute("font-size", Math.round(30 * Math.max(0.1, easeOutBack(p))));
+    }});
+
+    kf.push({ t: 17, dur: 0.4, fn(p) {
+      if (!gIcon) {
+        gIcon = document.createElementNS(SVG_NS, "g");
+        const sun = document.createElementNS(SVG_NS, "circle");
+        sun.setAttribute("cx", CX); sun.setAttribute("cy", CY + 50);
+        sun.setAttribute("r", 8); sun.setAttribute("fill", "#d4a574");
+        gIcon.appendChild(sun);
+        for (const r of [22, 36, 52]) {
+          const orbit = document.createElementNS(SVG_NS, "circle");
+          orbit.setAttribute("cx", CX); orbit.setAttribute("cy", CY + 50);
+          orbit.setAttribute("r", r); orbit.setAttribute("fill", "none");
+          orbit.setAttribute("stroke", "#5c9c5c44"); orbit.setAttribute("stroke-width", "1");
+          gIcon.appendChild(orbit);
+        }
+        const earth = document.createElementNS(SVG_NS, "circle");
+        earth.setAttribute("cx", CX + 36); earth.setAttribute("cy", CY + 50);
+        earth.setAttribute("r", 4); earth.setAttribute("fill", "#4a90d9");
+        gIcon.appendChild(earth);
+        gIcon.setAttribute("opacity", "0");
+        centerStage.appendChild(gIcon);
+      }
+      gIcon.setAttribute("opacity", easeOutCubic(p));
+    }});
+
+    // Title bar resolve: strikethrough old paradigm
+    kf.push({ t: 17.5, dur: 0.8, fn(p) {
+      const bbox = titleLine2.getBBox ? titleLine2.getBBox() : { x: 200, width: 800 };
+      titleStrike.setAttribute("x1", bbox.x);
+      titleStrike.setAttribute("x2", bbox.x + bbox.width * easeOutCubic(p));
+      titleStrike.setAttribute("opacity", easeOutCubic(p));
+    }});
+
+    // New paradigm in gold
+    kf.push({ t: 18.3, dur: 0.5, fn(p) {
+      titleLine3.textContent = "The earth moves around the sun. The solar system is vast.";
+      titleLine3.setAttribute("opacity", easeOutCubic(p));
+    }});
+
+    kf.push({ t: 18.8, dur: 1.2, fn() {} });
+
+    return { keyframes: kf, duration: TOTAL };
+  }
+
   // --- Playback ---
   let currentTimeline = null;
 
@@ -430,21 +806,28 @@
       engine.resolved = true;
       playIcon.textContent = "▶";
       updateProgress(1);
-      startYahPulse();
+      if (engine.segment === 0) startYahPulse();
       return;
     }
 
     updateProgress(elapsed / tl.duration);
 
-    // Run the highest-t keyframe whose time has arrived
+    // First: finalize any completed keyframes in forward order
+    // (fixes bug where point-events at same timestamp as later keyframes were skipped)
+    for (let i = 0; i < tl.keyframes.length; i++) {
+      const kf = tl.keyframes[i];
+      if (elapsed >= kf.t + kf.dur && !kf._done) {
+        kf.fn(1);
+        kf._done = true;
+      }
+    }
+
+    // Then: run the current active keyframe (last matching wins)
     for (let i = tl.keyframes.length - 1; i >= 0; i--) {
       const kf = tl.keyframes[i];
       if (elapsed >= kf.t && elapsed < kf.t + kf.dur) {
         kf.fn(Math.min(1, Math.max(0, (elapsed - kf.t) / kf.dur)));
         break;
-      } else if (elapsed >= kf.t + kf.dur && !kf._done) {
-        kf.fn(1);
-        kf._done = true;
       }
     }
 
@@ -476,14 +859,14 @@
 
   // Public API
   function playSegment(n) {
-    if (n !== 0) return;
+    if (n < 0 || n > 1) return;
     stopYahPulse();
     if (engine.rafId) cancelAnimationFrame(engine.rafId);
     clearStage();
 
-    const tl = buildSegment0Timeline();
+    const tl = (n === 0) ? buildSegment0Timeline() : buildSegment1Timeline();
     currentTimeline = tl;
-    engine.segment = 0;
+    engine.segment = n;
     engine.phase = 0;
     engine.playing = true;
     engine.pauseOffset = 0;
@@ -510,8 +893,8 @@
   }
 
   function seekTo(n, phaseFraction) {
-    if (n !== 0) return;
-    playSegment(0);
+    if (n < 0 || n > 1) return;
+    playSegment(n);
     const targetTime = phaseFraction * currentTimeline.duration;
     engine.timelineStart = performance.now() - targetTime * 1000;
   }
@@ -519,7 +902,7 @@
   // Events
   playBtn.addEventListener("click", () => {
     if (engine.playing) pause();
-    else if (engine.resolved || !currentTimeline) playSegment(0);
+    else if (engine.resolved || !currentTimeline) playSegment(engine.segment || 0);
     else resume();
   });
 
