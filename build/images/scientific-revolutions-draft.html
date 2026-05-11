@@ -70,8 +70,8 @@ ul.compact li{margin-bottom:.3rem;font-size:.95rem}
 
 <!-- ═══════ SVG-054: A MAP OF SCIENTIFIC REVOLUTIONS ═══════ -->
 <div class="svg-wrap">
-<svg id="svg054" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg">
-<rect width="1200" height="700" fill="#0d0d1e"/>
+<svg id="svg054" viewBox="0 0 1200 750" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="750" fill="#0d0d1e"/>
 
 <!-- Stars -->
 <circle cx="73" cy="42" r=".6" fill="#fff" opacity=".25"/><circle cx="380" cy="35" r=".5" fill="#fff" opacity=".2"/><circle cx="720" cy="28" r=".6" fill="#fff" opacity=".25"/><circle cx="1040" cy="48" r=".5" fill="#fff" opacity=".2"/><circle cx="1140" cy="95" r=".4" fill="#fff" opacity=".15"/><circle cx="160" cy="660" r=".5" fill="#fff" opacity=".2"/><circle cx="1060" cy="650" r=".5" fill="#fff" opacity=".18"/>
@@ -411,6 +411,22 @@ ul.compact li{margin-bottom:.3rem;font-size:.95rem}
 <text x="700" y="420" text-anchor="middle" fill="#5a5a6e" font-family="Georgia,serif" font-size="13" font-style="italic" opacity=".5">The pattern repeats.</text>
 </g>
 
+<!-- ═══ SCRUBBER BAR ═══ -->
+<g id="scrubber" style="opacity:0">
+<rect x="95" y="710" width="1010" height="30" fill="transparent" cursor="pointer" onclick="E.scrubClick(event)"/>
+<rect x="100" y="721" width="1000" height="4" rx="2" fill="#1a1a30"/>
+<rect id="scrubFill" x="100" y="721" width="0" height="4" rx="2" fill="#c9a04a" opacity=".35"/>
+<g onclick="E.seekTo(0)" cursor="pointer"><circle id="sbd0" cx="100" cy="723" r="5" fill="#0d0d1e" stroke="#3a3a5e" stroke-width="2"/><text x="100" y="743" text-anchor="middle" fill="#3a3a5e" font-family="system-ui" font-size="7">Helio</text></g>
+<g onclick="E.seekTo(1)" cursor="pointer"><circle id="sbd1" cx="243" cy="723" r="5" fill="#0d0d1e" stroke="#3a3a5e" stroke-width="2"/><text x="243" y="743" text-anchor="middle" fill="#3a3a5e" font-family="system-ui" font-size="7">O&#x2082;</text></g>
+<g onclick="E.seekTo(2)" cursor="pointer"><circle id="sbd2" cx="386" cy="723" r="5" fill="#0d0d1e" stroke="#3a3a5e" stroke-width="2"/><text x="386" y="743" text-anchor="middle" fill="#3a3a5e" font-family="system-ui" font-size="7">Evo</text></g>
+<g onclick="E.seekTo(3)" cursor="pointer" opacity=".3"><circle id="sbd3" cx="529" cy="723" r="5" fill="#0d0d1e" stroke="#2a2a3e" stroke-width="1.5"/><text x="529" y="743" text-anchor="middle" fill="#2a2a3e" font-family="system-ui" font-size="7">Germ</text></g>
+<g onclick="E.seekTo(4)" cursor="pointer" opacity=".3"><circle id="sbd4" cx="671" cy="723" r="5" fill="#0d0d1e" stroke="#2a2a3e" stroke-width="1.5"/><text x="671" y="743" text-anchor="middle" fill="#2a2a3e" font-family="system-ui" font-size="7">Rel</text></g>
+<g onclick="E.seekTo(5)" cursor="pointer" opacity=".3"><circle id="sbd5" cx="814" cy="723" r="5" fill="#0d0d1e" stroke="#2a2a3e" stroke-width="1.5"/><text x="814" y="743" text-anchor="middle" fill="#2a2a3e" font-family="system-ui" font-size="7">QM</text></g>
+<g onclick="E.seekTo(6)" cursor="pointer" opacity=".3"><circle id="sbd6" cx="957" cy="723" r="5" fill="#0d0d1e" stroke="#2a2a3e" stroke-width="1.5"/><text x="957" y="743" text-anchor="middle" fill="#2a2a3e" font-family="system-ui" font-size="7">Tect</text></g>
+<g onclick="E.seekTo(7)" cursor="pointer" opacity=".3"><circle id="sbd7" cx="1100" cy="723" r="5" fill="#0d0d1e" stroke="#2a2a3e" stroke-width="1.5"/><text x="1100" y="743" text-anchor="middle" fill="#2a2a3e" font-family="system-ui" font-size="7">DNA</text></g>
+<circle id="playhead" cx="100" cy="723" r="7" fill="#c9a04a" stroke="#f0c040" stroke-width="1.5" style="opacity:0"/>
+</g>
+
 <!-- ═══ PLAY BUTTON ═══ -->
 <g id="playBtn" cursor="pointer" onclick="E.start()">
 <rect x="220" y="0" width="980" height="700" fill="#0d0d1e" opacity=".2"/>
@@ -558,18 +574,30 @@ var $=function(id){return document.getElementById(id)};
 var COLORS=['#4a6aaa','#d4a030','#c04040','#f0c040','#40a060'];
 var LABELS=['NORMAL SCIENCE','ANOMALY','CRISIS','REVOLUTION','NEW NORMAL'];
 var REVS=[
-  {name:'HELIOCENTRISM • 1543 → 1687',years:['~1400','1543','1543–1610','1610','1687'],dur:[4500,3500,4000,4000,3000]},
-  {name:'THE OXYGEN REVOLUTION • 1770s',years:['~1700','1770s','1772','1774','1789'],dur:[3500,3500,4000,4000,3000]},
-  {name:'EVOLUTION • 1859',years:['~1800','1831–1859','1859–1870','1859','1953'],dur:[3500,3500,4000,4000,3000]}
+  {name:'HELIOCENTRISM • 1543 → 1687',years:['~1400','1543','1543–1610','1610','1687'],dur:[6000,5000,5500,5000,3500]},
+  {name:'THE OXYGEN REVOLUTION • 1770s',years:['~1700','1770s','1772','1774','1789'],dur:[5500,5000,5500,5000,4000]},
+  {name:'EVOLUTION • 1859',years:['~1800','1831–1859','1859–1870','1859','1953'],dur:[5500,5000,5500,5000,4000]}
 ];
+var NREVS=REVS.length,NSTOPS=8;
 var state='static',rev=-1,phase=-1,timer=null;
+var SCRUB_X0=100,SCRUB_XN=1100;
+var scrubX=[];
+for(var i=0;i<NSTOPS;i++) scrubX.push(SCRUB_X0+i*(SCRUB_XN-SCRUB_X0)/(NSTOPS-1));
 
 function hideAll(){
-  document.querySelectorAll('[data-phase]').forEach(function(g){g.style.opacity='0';
+  document.querySelectorAll('[data-phase]').forEach(function(g){
+    g.style.opacity='0';
     g.querySelectorAll('[data-delay]').forEach(function(d){d.style.opacity='0'});
   });
   $('abstract').style.opacity='0';
   $('endState').style.opacity='0';
+}
+
+function fadePhases(r,from,to){
+  for(var p=from;p<=to;p++){
+    var el=$('r'+r+'p'+p);
+    if(el) el.style.opacity='0';
+  }
 }
 
 function updateHUD(r,p){
@@ -582,11 +610,10 @@ function updateHUD(r,p){
   }else{
     pl.style.opacity='0';yr.style.opacity='0';rn.style.opacity='0';rc.style.opacity='0';
   }
-  // mini wheel
   $('miniWheel').style.opacity=r>=0?'.6':'0';
   for(var i=0;i<5;i++){
     var mw=$('mw'+i);
-    if(mw)mw.setAttribute('opacity',i===p?'1':i<p?'.4':'.12');
+    if(mw) mw.setAttribute('opacity',i===p?'1':i<p?'.4':'.12');
   }
 }
 
@@ -603,12 +630,37 @@ function highlightStop(idx){
 function completeStop(idx){
   var c=$('s'+idx+'c');
   if(c){c.setAttribute('stroke','#f0c040');c.setAttribute('fill','#3a2a10');c.dataset.done='1';}
-  var t=$('track'+(idx-1)+''+idx);if(idx===1)t=$('track01');if(idx===2)t=$('track12');
-  if(t)t.style.opacity='.3';
+  if(idx>=1){var t=$('track'+(idx-1)+idx);if(t)t.style.opacity='.3';}
 }
 
+function updateScrubber(r,p){
+  var sb=$('scrubber');if(!sb)return;
+  sb.style.opacity='1';
+  var ri=Math.max(0,Math.min(r,NSTOPS-1));
+  var baseX=scrubX[ri];
+  var nextX=scrubX[Math.min(ri+1,NSTOPS-1)];
+  var frac=(p>=0?p:0)/5;
+  var px=baseX+(nextX-baseX)*frac;
+  var ph=$('playhead');
+  if(ph){ph.setAttribute('cx',px);ph.style.opacity='1';}
+  var fill=$('scrubFill');
+  if(fill) fill.setAttribute('width',Math.max(0,px-SCRUB_X0));
+  for(var i=0;i<NSTOPS;i++){
+    var dot=$('sbd'+i);
+    if(dot){
+      if(i===r){dot.setAttribute('stroke','#f0c040');dot.setAttribute('fill','#3a2a10');dot.setAttribute('stroke-width','2.5');}
+      else if(i<r){dot.setAttribute('stroke','#c9a04a');dot.setAttribute('fill','#1a1a2e');dot.setAttribute('stroke-width','1.5');}
+      else{dot.setAttribute('stroke','#3a3a5e');dot.setAttribute('fill','#0d0d1e');dot.setAttribute('stroke-width','2');}
+    }
+  }
+}
+
+// ACCUMULATION: phases 0-2 pile up. Phase 3 flashes then clears mess. Phase 4 is clean.
 function showPhase(r,p){
-  hideAll();rev=r;phase=p;
+  rev=r;phase=p;
+  if(p===0) hideAll();
+  if(p===3) setTimeout(function(){fadePhases(r,0,2)},600);
+  if(p===4) fadePhases(r,3,3);
   var id='r'+r+'p'+p;
   var el=$(id);
   if(!el)return;
@@ -620,6 +672,7 @@ function showPhase(r,p){
   el.querySelectorAll('.pop-anim').forEach(function(a){if(a.beginElement)a.beginElement()});
   updateHUD(r,p);
   highlightStop(r);
+  updateScrubber(r,p);
 }
 
 function advance(){
@@ -627,7 +680,16 @@ function advance(){
   if(phase>=5){
     completeStop(rev);
     rev++;phase=0;
-    if(rev>=3){showEnd();return;}
+    if(rev>=NREVS){
+      timer=setTimeout(showEnd,2500);
+      return;
+    }
+    // Clean pause: phase 4 visible 2.5s, then next revolution starts clean
+    timer=setTimeout(function(){
+      showPhase(rev,0);
+      timer=setTimeout(advance,REVS[rev].dur[0]);
+    },2500);
+    return;
   }
   showPhase(rev,phase);
   timer=setTimeout(advance,REVS[rev].dur[phase]);
@@ -643,9 +705,9 @@ function showEnd(){
   state='end';hideAll();
   updateHUD(-1,-1);
   $('endState').style.opacity='1';
+  updateScrubber(NREVS-1,5);
 }
 
-// Abstract cycle
 var aPhase=0;
 function showAbstract(){
   $('abstract').style.opacity='1';
@@ -659,7 +721,7 @@ function stepAbstract(){
   if(state!=='abstract')return;
   for(var i=0;i<5;i++){
     var a=$('ap'+i);
-    if(a)a.style.opacity=i<=aPhase?'1':i===aPhase+1?'.15':'0';
+    if(a) a.style.opacity=i<=aPhase?'1':i===aPhase+1?'.15':'0';
   }
   if(aPhase>=4){
     $('apReturn').style.opacity='.4';$('apReturnHead').style.opacity='.4';$('apReturnText').style.opacity='.5';
@@ -670,7 +732,6 @@ function stepAbstract(){
   timer=setTimeout(stepAbstract,1800);
 }
 
-// Public API
 window.E={
   start:function(){
     $('playBtn').style.opacity='0';$('playBtn').style.pointerEvents='none';
@@ -679,12 +740,25 @@ window.E={
     showAbstract();
   },
   seekTo:function(idx){
-    if(idx>=3)return;
+    if(idx>=NREVS)return;
     clearTimeout(timer);
     $('playBtn').style.opacity='0';$('playBtn').style.pointerEvents='none';
     $('titleGroup').style.opacity='0';
     $('abstract').style.opacity='0';
+    state='playing';
     playRev(idx);
+  },
+  scrubClick:function(evt){
+    var svg=document.getElementById('svg054');
+    var pt=svg.createSVGPoint();
+    pt.x=evt.clientX;pt.y=evt.clientY;
+    var svgP=pt.matrixTransform(svg.getScreenCTM().inverse());
+    var best=0,bestD=Infinity;
+    for(var i=0;i<NREVS;i++){
+      var d=Math.abs(svgP.x-scrubX[i]);
+      if(d<bestD){bestD=d;best=i;}
+    }
+    E.seekTo(best);
   }
 };
 })();
@@ -695,6 +769,8 @@ window.E={
 #svg054 [data-delay]{transition:opacity .45s ease}
 #svg054 #phaseLabel,#svg054 #yearDisp,#svg054 #revName,#svg054 #revCount,#svg054 #miniWheel{transition:opacity .3s ease}
 #svg054 .pop-anim{pointer-events:none}
+#svg054 #playhead{transition:cx .3s ease,opacity .3s ease}
+#svg054 #scrubFill{transition:width .3s ease}
 </style>
 
 </body>
