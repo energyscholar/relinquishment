@@ -304,6 +304,7 @@ def build_json(puzzle):
                 'options': st['options'],
                 'hash': sha256(str(st['answer_key'])),
                 'wrong_prompt': st.get('wrong_prompt', ''),
+                'wrong_prompts': st.get('wrong_prompts', {}),
                 'right_prompt': st.get('right_prompt', ''),
             })
         d['stages'] = stages
@@ -1875,8 +1876,9 @@ function initGD(el, d) {
               } else {
                 btn.classList.add("wrong");
                 setTimeout(function() { btn.classList.remove("wrong"); }, 600);
-                if (wrongEl && stage.wrong_prompt) {
-                  wrongEl.textContent = stage.wrong_prompt;
+                var wp = (stage.wrong_prompts && stage.wrong_prompts[key]) || stage.wrong_prompt;
+                if (wrongEl && wp) {
+                  wrongEl.textContent = wp;
                   wrongEl.classList.add("visible");
                 }
               }
