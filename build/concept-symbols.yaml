@@ -89,6 +89,10 @@ chapter_assignments:
   the-strongest-objection:
     concepts: [custodian, stewardship]
     track: spine
+  scientific-revolutions:
+    concepts: [emergence, silence]
+    track: spine
+    combination: true
   # --- Record ---
   alpha-farm:
     concepts: [custodian]

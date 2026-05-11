@@ -126,6 +126,23 @@
   question: "If the magnetosphere is millions of degrees, how can quantum states survive?"
   category: science
 
+# --- Scientific Revolutions chapter ---
+- id: dl:kuhn-framework
+  question: "What is Kuhn's framework and why does it matter here?"
+  category: science
+
+- id: dl:anomaly-accumulation
+  question: "What are the anomalies in current quantum computing?"
+  category: science
+
+- id: dl:a1-a2-fork
+  question: "What is the difference between A1 and A2?"
+  category: science
+
+- id: dl:ninth-pattern
+  question: "Where does this open question sit in Kuhn's cycle?"
+  category: science
+
 # --- Verification (6) ---
 - id: dl:gchq-did-it-again
   question: "Has a government ever independently invented something and kept it secret?"

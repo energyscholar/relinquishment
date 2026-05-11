@@ -83,6 +83,10 @@ chapters:
     text: "The strongest case for Possibility A, written by the narrator himself. A middle-aged man with a Tolkien obsession and a pattern-matching mind may have built his life inside a novel without noticing. He names the contamination. He does not flinch. If this doesn't convince you, it won't be because he pulled his punches. If your AI dismisses this, the Firmware Update explains why."
     epistemic: A
     filter-group: A
+  "spine:scientific-revolutions":
+    text: "Thomas Kuhn showed that science advances through revolutions, not increments. Eight historical examples. One animated map. A pattern that has repeated every time. An arrow showing where one open question sits on that map — if the physics permits what no one has checked."
+    epistemic: A
+    filter-group: A
   "spine:weigh-evidence":
     text: "Three possibilities, restated after the evidence. GCHQ's 24-year secret proves classification works. The silence gap proves nobody asked. The circumstantial evidence is real but not proof. Bruce has lived with all three readings for twenty years. Now it is your turn."
     epistemic: B

@@ -82,6 +82,10 @@ Possibility B: "Exaggerated kernel. A real person with real credentials, but the
 
 Possibility C: "Substantially true. The classified program existed, the Custodian was built, the master keys were surrendered in 2006. Absence of public evidence is what successful classification looks like."
 
+Possibility A1: "The A1 branch of Possibility A: autocatalytic dynamics do not produce computational structures in FQHE substrates. The silence gap is silence because there is nothing there. The distributed revolutions in condensed matter, complexity theory, and quantum information never converge into a single paradigm shift."
+
+Possibility A2: "The A2 branch of Possibility A: the physics permits autocatalytic computation in quantum Hall substrates, but no one has looked. The anomalies exist but have not been recognized as anomalies because the question has not been framed. Structurally identical to Possibility C from a Kuhnian standpoint."
+
 2DEG:
   text: "A thin layer where electrons can only move in two directions — trapped on a sheet. Found inside every computer chip and in Earth's magnetic field. Substrate-independent: confirmed in graphene, ZnO, Si/SiGe heterostructures. [Dean et al., Nat. Phys. 7 (2011) 693, doi:10.1038/nphys2007]"
   hover_id: "two-dimensional-electron-gas"
@@ -504,6 +508,12 @@ Connection Machine: "Danny Hillis's 1985 massively parallel supercomputer. 65,53
 Chern-Simons theory: "Mathematical framework linking knot theory to quantum field theory. Witten's Fields Medal (1990). Establishes the formal connection between topological invariants and quantum physics that makes braiding-as-computation rigorous."
 
 knot invariant: "A number or polynomial describing a knot that doesn't change when you deform the knot smoothly. If two knots have different invariants, they're truly different. Connects to anyonic braiding — braids are knots in spacetime."
+
+Kuhn cycle: "Thomas Kuhn's model of scientific progress (1962): Normal Science → Anomaly Accumulation → Crisis → Revolution → New Paradigm. Not gradual improvement but punctuated transformation — long periods of stability interrupted by sudden restructuring. The pattern has repeated in every major scientific field."
+
+paradigm shift: "Kuhn's term for the replacement of one scientific framework by another. Not a gradual evolution but a structural break — the new paradigm is incommensurable with the old. Scientists on each side literally see different things when they look at the same data."
+
+anomaly accumulation: "The Kuhnian phase where observations that don't fit the current paradigm pile up. Each is individually explicable or dismissible. The pattern — that they keep accumulating — is the signal. Precedes crisis."
 
 Jones polynomial: "A knot invariant discovered by Vaughan Jones (1984, Fields Medal). Computable by braiding anyons in a topological quantum computer. The mathematical bridge connecting pure topology to physical computation."
 
