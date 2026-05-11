@@ -3548,6 +3548,63 @@ def find_chapter_end(text, chapter_section_id):
     return -1
 
 
+def inject_sr_animation(html_path):
+    """Inject SVG-054 Kuhn framework animation into Scientific Revolutions chapter (Plan 0321)."""
+    html_path = Path(html_path)
+    text = html_path.read_text()
+
+    if 'id="sr-full"' in text:
+        print("  SR animation: already present, skipping")
+        return
+
+    sr_path = REPO / 'build' / 'images' / 'scientific-revolutions-draft.html'
+    if not sr_path.exists():
+        print("  WARNING: scientific-revolutions-draft.html not found, skipping SR animation")
+        return
+
+    src = sr_path.read_text()
+
+    css = re.search(r'<style>(.*?)</style>', src, re.DOTALL)
+    css = css.group(1) if css else ''
+    css = re.sub(r'body\s*\{[^}]*\}', '', css)
+    css += '\n  .sr-full { max-width: 800px; margin: 0 auto; }\n'
+
+    body = re.search(r'<body>(.*?)<script>', src, re.DOTALL)
+    body = body.group(1).strip() if body else ''
+
+    js = re.search(r'<script>(.*?)</script>', src, re.DOTALL)
+    js = js.group(1) if js else ''
+
+    if not body:
+        print("  WARNING: could not extract SR animation body, skipping")
+        return
+
+    idx = _find_in_chapter(text, 'spine:scientific-revolutions', 'Watch the animation first')
+    if idx == -1:
+        return
+    close_p = text.find('</p>', idx)
+    if close_p == -1:
+        print("  WARNING: no </p> after SR animation marker")
+        return
+    insert_at = close_p + len('</p>')
+
+    figure = (
+        f'\n<style>{css}</style>\n'
+        f'<figure id="fig-kuhn-animation" class="inline-svg sr-animation"'
+        f' style="text-align:center;margin:1.5em auto;">\n'
+        f'{body}\n'
+        f'<figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">'
+        f'Eight scientific revolutions mapped to Kuhn’s framework. In the '
+        f'interactive edition, press play to watch each revolution unfold.'
+        f'</figcaption>\n</figure>\n'
+        f'<script>{js}</script>\n'
+    )
+
+    text = text[:insert_at] + figure + text[insert_at:]
+    html_path.write_text(text)
+    print("  SR animation: injected SVG-054 Kuhn framework animation")
+
+
 def inject_chapter_puzzles(html_path):
     """Insert approved puzzles into chapter HTML by extracting from puzzles.html (Plan 0274i)."""
     tracker_path = REPO / 'build' / 'puzzle-tracker.yaml'
@@ -4348,6 +4405,7 @@ if __name__ == "__main__":
         inject_genesis_illustrations(sys.argv[2])
         inject_ms_diagrams(sys.argv[2])
         inject_promoted_illustrations(sys.argv[2])
+        inject_sr_animation(sys.argv[2])
         inject_chapter_puzzles(sys.argv[2])
         verify_puzzle_injection(sys.argv[2])
         inject_easter_eggs(sys.argv[2])
