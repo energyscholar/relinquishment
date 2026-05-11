@@ -237,205 +237,288 @@
   // --- Timeline for segment 0: Abstract Kuhn Cycle (~16.5s) ---
 
   function buildSegment0Timeline() {
-    const TOTAL = 16.5;
-    const loopLabelEls = [];
-    let centerEl = null;
-
-    function showCenter(name, color, scale, opacity, glowing) {
-      if (!centerEl || centerEl.dataset.name !== name) {
-        if (centerEl && centerEl.parentNode) centerStage.removeChild(centerEl);
-        centerEl = createText(name, CX, CY, 48, color, glowing ? { filter: "url(#glow-strong)" } : {});
-        centerEl.dataset.name = name;
-        centerStage.appendChild(centerEl);
-      }
-      centerEl.setAttribute("fill", color);
-      centerEl.setAttribute("font-size", Math.round(48 * scale));
-      centerEl.setAttribute("opacity", opacity);
-      centerEl.setAttribute("x", CX);
-      centerEl.setAttribute("y", CY);
-      if (glowing) centerEl.setAttribute("filter", "url(#glow-strong)");
-      else centerEl.removeAttribute("filter");
-    }
-
-    function removeCenter() {
-      if (centerEl && centerEl.parentNode) centerStage.removeChild(centerEl);
-      centerEl = null;
-    }
-
-    function addLoopLabel(idx, opacity, scale) {
-      const p = phasePos(idx);
-      let el = loopLabelEls[idx];
-      if (!el) {
-        el = createText(phases[idx].name, p.x, p.y, 16, phases[idx].color);
-        loopLabels.appendChild(el);
-        loopLabelEls[idx] = el;
-      }
-      el.setAttribute("opacity", opacity);
-      el.setAttribute("font-size", Math.round(16 * scale));
-    }
-
-    function flyToLoop(idx, progress) {
-      const t = easeInOutCubic(progress);
-      const p = phasePos(idx);
-      const dx = p.x - CX, dy = p.y - CY;
-      const perpX = -dy, perpY = dx;
-      const arcBow = Math.sin(t * Math.PI) * 0.2;
-      const fx = CX + dx * t + perpX * arcBow;
-      const fy = CY + dy * t + perpY * arcBow;
-      const size = 48 - 32 * t;
-      if (centerEl) {
-        centerEl.setAttribute("x", fx);
-        centerEl.setAttribute("y", fy);
-        centerEl.setAttribute("font-size", Math.round(size));
-      }
-    }
-
-    function drawArcProgressTo(idx, progress) {
-      if (idx <= 0) return;
-      const startAngle = phases[0].angle;
-      let prevAngle = phases[idx - 1].angle;
-      let targetAngle = phases[idx].angle;
-      let delta = targetAngle - prevAngle;
-      if (delta < 0) delta += 360;
-      const currentEnd = prevAngle + delta * progress;
-      // Full arc from phase 0 to currentEnd
-      let totalEnd = currentEnd - startAngle;
-      if (totalEnd < 0) totalEnd += 360;
-      cyclePath.setAttribute("d", arcPathFromAngles(startAngle, startAngle + totalEnd));
-    }
-
-    function drawArcTo(idx) {
-      const startAngle = phases[0].angle;
-      let endAngle = phases[idx].angle;
-      let sweep = endAngle - startAngle;
-      if (sweep < 0) sweep += 360;
-      cyclePath.setAttribute("d", arcPathFromAngles(startAngle, startAngle + sweep));
-    }
-
-    // Build keyframes: [{ t, dur, fn(progress) }]
-    // fn called with progress 0..1 within the keyframe's duration
+    const TOTAL = 34;
+    const accumulatedEls = [];
     const kf = [];
 
-    // Phase 0: NORMAL SCIENCE — 0s to 3s display, then fly
-    kf.push({ t: 0, dur: 0.5, fn(p) {
-      showCenter("NORMAL SCIENCE", "#4a90d9", easeOutBack(p), 1, false);
-    }});
-    kf.push({ t: 0.5, dur: 2.5, fn() {
-      showCenter("NORMAL SCIENCE", "#4a90d9", 1, 1, false);
-    }});
-    kf.push({ t: 3, dur: 0.5, fn(p) {
-      flyToLoop(0, p);
-    }});
-    kf.push({ t: 3.5, dur: 0.01, fn() {
-      removeCenter();
-      addLoopLabel(0, 1, 1);
-    }});
+    function scatterOffset(index) {
+      return { x: Math.sin(index * 2.7) * 60, y: Math.cos(index * 1.9) * 40 };
+    }
 
-    // Phase 1: ANOMALY — 3.5s to 6s display, then fly
-    kf.push({ t: 3.5, dur: 0.5, fn(p) {
-      showCenter("ANOMALY", "#d4a574", easeOutBack(p), 1, false);
-    }});
-    kf.push({ t: 4, dur: 2, fn() {
-      showCenter("ANOMALY", "#d4a574", 1, 1, false);
-    }});
-    kf.push({ t: 6, dur: 0.5, fn(p) {
-      flyToLoop(1, p);
-      drawArcProgressTo(1, p);
-    }});
-    kf.push({ t: 6.5, dur: 0.01, fn() {
-      removeCenter();
-      addLoopLabel(1, 1, 1);
-      drawArcTo(1);
-    }});
-
-    // Phase 2: CRISIS — 6.5s to 9s display, then fly
-    kf.push({ t: 6.5, dur: 0.5, fn(p) {
-      showCenter("CRISIS", "#c45c5c", easeOutBack(p), 1, false);
-    }});
-    kf.push({ t: 7, dur: 2, fn() {
-      showCenter("CRISIS", "#c45c5c", 1, 1, false);
-    }});
-    kf.push({ t: 9, dur: 0.5, fn(p) {
-      flyToLoop(2, p);
-      drawArcProgressTo(2, p);
-    }});
-    kf.push({ t: 9.5, dur: 0.01, fn() {
-      removeCenter();
-      addLoopLabel(2, 1, 1);
-      drawArcTo(2);
-    }});
-
-    // Phase 3: REVOLUTION — 9.5s to 11s display
-    kf.push({ t: 9.5, dur: 0.5, fn(p) {
-      showCenter("REVOLUTION", "#d4a017", easeOutBack(p), 1, true);
-    }});
-    kf.push({ t: 10, dur: 1, fn() {
-      showCenter("REVOLUTION", "#d4a017", 1, 1, true);
-    }});
-
-    // 11s: GOLDEN FLASH — clears accumulated labels
-    kf.push({ t: 11, dur: 0.4, fn(p) {
-      let flashOp;
-      if (p < 0.35) flashOp = easeOutCubic(p / 0.35) * 0.6;
-      else flashOp = 0.6 * (1 - easeOutCubic((p - 0.35) / 0.65));
-      goldenFlash.setAttribute("opacity", flashOp);
-
-      const fadeOut = 1 - easeOutCubic(Math.min(1, p * 2));
-      for (let i = 0; i < loopLabelEls.length; i++) {
-        if (loopLabelEls[i]) loopLabelEls[i].setAttribute("opacity", fadeOut);
-      }
-      cyclePath.setAttribute("opacity", fadeOut);
-    }});
-    kf.push({ t: 11.4, dur: 0.01, fn() {
-      goldenFlash.setAttribute("opacity", 0);
-      while (loopLabels.firstChild) loopLabels.removeChild(loopLabels.firstChild);
-      loopLabelEls.length = 0;
-      cyclePath.setAttribute("d", "");
-      cyclePath.setAttribute("opacity", 1);
-      showCenter("REVOLUTION", "#d4a017", 1, 1, true);
-    }});
-
-    // 11.4-13s: Clean moment — REVOLUTION glowing center with gentle pulse
-    kf.push({ t: 11.41, dur: 1.59, fn(p) {
-      const pulse = 1 + 0.04 * Math.sin(p * Math.PI * 3);
-      showCenter("REVOLUTION", "#d4a017", pulse, 1, true);
-    }});
-
-    // 13-15s: Fade out center, redraw all 5 labels + full circle
-    kf.push({ t: 13, dur: 0.4, fn(p) {
-      showCenter("REVOLUTION", "#d4a017", 1, 1 - easeOutCubic(p), true);
-    }});
-    kf.push({ t: 13.4, dur: 0.01, fn() {
-      removeCenter();
-    }});
-    kf.push({ t: 13.41, dur: 1.59, fn(p) {
-      const t = easeOutCubic(p);
-      // Draw full circle
-      const fc = fullCirclePath();
-      cyclePath.setAttribute("d", fc);
-      const totalLen = 2 * Math.PI * CR;
-      cyclePath.setAttribute("stroke-dasharray", String(totalLen));
-      cyclePath.setAttribute("stroke-dashoffset", String(totalLen * (1 - t)));
-
-      // Stagger fade-in for labels
-      for (let i = 0; i < 5; i++) {
-        const stagger = i * 0.12;
-        const lp = Math.max(0, Math.min(1, (p - stagger) / (1 - stagger)));
-        addLoopLabel(i, easeOutCubic(lp), 0.6 + 0.4 * easeOutBack(Math.min(1, lp)));
-      }
-    }});
-
-    // 15-15.5s: Settle resolved state
-    kf.push({ t: 15, dur: 0.5, fn() {
-      cyclePath.setAttribute("stroke-dashoffset", "0");
+    function showLoopFrame() {
+      cyclePath.setAttribute("d", fullCirclePath());
       cyclePath.setAttribute("stroke-dasharray", "6,4");
-      for (let i = 0; i < 5; i++) addLoopLabel(i, 1, 1);
+      cyclePath.removeAttribute("stroke-dashoffset");
+      cyclePath.setAttribute("opacity", "0.25");
+      for (let i = 0; i < 5; i++) {
+        const pos = phasePos(i);
+        const el = createText(phases[i].name, pos.x, pos.y, 12, phases[i].color, { opacity: 0.25 });
+        el.setAttribute("font-size", "12");
+        loopLabels.appendChild(el);
+      }
+    }
+
+    function parkText(text, x, y, size, color, index) {
+      const el = createText(text, x, y, size, color);
+      el.setAttribute("font-weight", "normal");
+      el.setAttribute("letter-spacing", "0");
+      if (index !== undefined) {
+        el.setAttribute("transform", `rotate(${index % 2 ? 3 : -3}, ${x}, ${y})`);
+      }
+      loopLabels.appendChild(el);
+      accumulatedEls.push(el);
+    }
+
+    function clearCenter() {
+      while (centerStage.firstChild) centerStage.removeChild(centerStage.firstChild);
+    }
+
+    // === Setup: show loop frame ===
+    kf.push({ t: 0, dur: 0.01, fn() { showLoopFrame(); } });
+
+    // === Phase 1: Normal Science (0-4s, blue) ===
+    kf.push({ t: 0.1, dur: 0.5, fn(p) {
+      clearCenter();
+      const el = createText("The accepted theory explains everything we see.", CX, CY - 10, 36, "#4a90d9");
+      el.setAttribute("opacity", String(easeOutCubic(p)));
+      el.setAttribute("font-size", String(Math.round(36 * easeOutBack(p))));
+      centerStage.appendChild(el);
+    }});
+    kf.push({ t: 0.8, dur: 0.01, fn() {
+      clearCenter();
+      const el1 = createText("The accepted theory explains everything we see.", CX, CY - 10, 36, "#4a90d9");
+      centerStage.appendChild(el1);
+      const el2 = createText("Textbooks are written. Careers are built.", CX, CY + 30, 24, "#4a90d9");
+      el2.setAttribute("opacity", "0.7");
+      centerStage.appendChild(el2);
+    }});
+    kf.push({ t: 3.5, dur: 0.5, fn(p) {
+      const t = easeInOutCubic(p);
+      const pos = phasePos(0);
+      for (const el of [...centerStage.childNodes]) {
+        const startY = parseFloat(el.getAttribute("y"));
+        const dx = pos.x - CX, dy = pos.y - startY;
+        el.setAttribute("x", String(CX + dx * t));
+        el.setAttribute("y", String(startY + dy * t));
+        el.setAttribute("font-size", String(Math.round(parseFloat(el.getAttribute("font-size")) * (1 - t * 0.7))));
+        el.setAttribute("opacity", String(1 - t * 0.5));
+      }
+    }});
+    kf.push({ t: 4, dur: 0.01, fn() {
+      clearCenter();
+      const pos = phasePos(0);
+      parkText("theory explains all", pos.x, pos.y + 20, 10, "#4a90d9", 0);
     }});
 
-    // 15.5-16.5s: YOU ARE HERE at Anomaly
-    kf.push({ t: 15.5, dur: 1, fn(p) {
+    // === Phase 2: Anomaly Accumulation (4-16s, amber) ===
+    const anomalies = [
+      { a: "Something doesn't fit.", d: "It's probably measurement error." },
+      { a: "It happens again.", d: "Add a special case to the theory." },
+      { a: "A third anomaly.", d: "The theory is fine. The data is noisy." },
+      { a: "The special cases outnumber the rules.", d: "The theory works. Don't question it." },
+    ];
+
+    anomalies.forEach((pair, i) => {
+      const start = 4 + i * 3;
+      kf.push({ t: start, dur: 0.4, fn(p) {
+        clearCenter();
+        const el = createText(pair.a, CX, CY - 10, 36, "#d4a574");
+        el.setAttribute("opacity", String(easeOutCubic(p)));
+        el.setAttribute("font-size", String(Math.round(36 * easeOutBack(p))));
+        centerStage.appendChild(el);
+      }});
+      kf.push({ t: start + 0.5, dur: 0.01, fn() {
+        clearCenter();
+        const el = createText(pair.a, CX, CY - 10, 36, "#d4a574");
+        centerStage.appendChild(el);
+      }});
+      kf.push({ t: start + 1.2, dur: 0.3, fn(p) {
+        if (p < 0.1) {
+          const el2 = createText(pair.d, CX, CY + 30, 20, "#8a7a6a");
+          el2.setAttribute("opacity", "0");
+          centerStage.appendChild(el2);
+        }
+        for (const el of [...centerStage.childNodes]) {
+          if (el.getAttribute("fill") === "#8a7a6a") {
+            el.setAttribute("opacity", String(easeOutCubic(p)));
+          }
+        }
+      }});
+      kf.push({ t: start + 1.5, dur: 0.01, fn() {
+        clearCenter();
+        const el1 = createText(pair.a, CX, CY - 10, 36, "#d4a574");
+        centerStage.appendChild(el1);
+        const el2 = createText(pair.d, CX, CY + 30, 20, "#8a7a6a");
+        centerStage.appendChild(el2);
+      }});
+      kf.push({ t: start + 2.4, dur: 0.5, fn(p) {
+        const t = easeInOutCubic(p);
+        const pos = phasePos(1);
+        const off = scatterOffset(i);
+        const tx = pos.x + off.x, ty = pos.y + off.y;
+        for (const el of [...centerStage.childNodes]) {
+          const startY = parseFloat(el.getAttribute("y"));
+          el.setAttribute("x", String(CX + (tx - CX) * t));
+          el.setAttribute("y", String(startY + (ty - startY) * t));
+          el.setAttribute("font-size", String(Math.round(parseFloat(el.getAttribute("font-size")) * (1 - t * 0.75))));
+          el.setAttribute("opacity", String(1 - t * 0.3));
+        }
+      }});
+      kf.push({ t: start + 2.9, dur: 0.01, fn() {
+        clearCenter();
+        const pos = phasePos(1);
+        const off = scatterOffset(i);
+        parkText(pair.a.substring(0, 20), pos.x + off.x, pos.y + off.y, 9, "#d4a574", i);
+        parkText(pair.d.substring(0, 18), pos.x + off.x + 5, pos.y + off.y + 12, 8, "#8a7a6a", i + 4);
+      }});
+    });
+
+    // === Phase 3: Crisis (16-22s, red) ===
+    const crisisQuotes = [
+      "Anyone who questions the theory is not a serious scientist.",
+      "And yet — someone looks where no one has looked.",
+    ];
+
+    crisisQuotes.forEach((quote, i) => {
+      const start = 16 + i * 3;
+      kf.push({ t: start, dur: 0.4, fn(p) {
+        clearCenter();
+        const el = createText(quote, CX, CY, 30, "#c45c5c");
+        el.setAttribute("font-style", "italic");
+        el.setAttribute("opacity", String(easeOutCubic(p)));
+        centerStage.appendChild(el);
+      }});
+      kf.push({ t: start + 0.5, dur: 2, fn() {
+        clearCenter();
+        const el = createText(quote, CX, CY, 30, "#c45c5c");
+        el.setAttribute("font-style", "italic");
+        centerStage.appendChild(el);
+      }});
+      kf.push({ t: start + 2.5, dur: 0.4, fn(p) {
+        const t = easeInOutCubic(p);
+        const pos = phasePos(2);
+        const off = scatterOffset(i + 8);
+        for (const el of [...centerStage.childNodes]) {
+          el.setAttribute("x", String(CX + (pos.x + off.x - CX) * t));
+          el.setAttribute("y", String(CY + (pos.y + off.y - CY) * t));
+          el.setAttribute("font-size", String(Math.round(30 * (1 - t * 0.7))));
+          el.setAttribute("opacity", String(1 - t * 0.3));
+        }
+      }});
+      kf.push({ t: start + 2.9, dur: 0.01, fn() {
+        clearCenter();
+        const pos = phasePos(2);
+        const off = scatterOffset(i + 8);
+        parkText(quote.substring(0, 25), pos.x + off.x, pos.y + off.y, 9, "#c45c5c", i + 8);
+      }});
+    });
+
+    // === Phase 4: Crisis Moment (22-26s, gold) ===
+    kf.push({ t: 22, dur: 0.5, fn(p) {
+      clearCenter();
+      const el = createText("An observation the old theory cannot explain.", CX, CY, 36, "#d4a017");
+      el.setAttribute("opacity", String(easeOutCubic(p)));
+      el.setAttribute("font-size", String(Math.round(36 * easeOutBack(p))));
+      el.setAttribute("filter", "url(#glow)");
+      centerStage.appendChild(el);
+    }});
+    kf.push({ t: 22.5, dur: 3, fn() {
+      clearCenter();
+      const el = createText("An observation the old theory cannot explain.", CX, CY, 36, "#d4a017");
+      el.setAttribute("filter", "url(#glow)");
+      centerStage.appendChild(el);
+    }});
+    kf.push({ t: 25.5, dur: 0.4, fn(p) {
+      const t = easeInOutCubic(p);
+      const pos = phasePos(2);
+      const off = scatterOffset(10);
+      for (const el of [...centerStage.childNodes]) {
+        el.setAttribute("x", String(CX + (pos.x + off.x - CX) * t));
+        el.setAttribute("y", String(CY + (pos.y + off.y - CY) * t));
+        el.setAttribute("font-size", String(Math.round(36 * (1 - t * 0.75))));
+        el.setAttribute("opacity", String(1 - t * 0.2));
+      }
+    }});
+    kf.push({ t: 25.9, dur: 0.01, fn() {
+      clearCenter();
+      const pos = phasePos(2);
+      const off = scatterOffset(10);
+      parkText("cannot explain", pos.x + off.x, pos.y + off.y, 10, "#d4a017", 10);
+    }});
+
+    // === Phase 5: Paradigm Shake (26-28.5s) ===
+    let shakeEl = null;
+    kf.push({ t: 26, dur: 0.01, fn() {
+      shakeEl = createText("THE ACCEPTED THEORY", CX, 80, 28, "#e8e0d0");
+      shakeEl.setAttribute("font-weight", "bold");
+      shakeEl.setAttribute("text-anchor", "middle");
+      centerStage.appendChild(shakeEl);
+    }});
+    kf.push({ t: 26.01, dur: 2.5, fn(p) {
+      if (!shakeEl) return;
+      const amp = 3 + p * 5;
+      const freq = 15;
+      shakeEl.setAttribute("x", String(CX + amp * Math.sin(p * freq * Math.PI * 2)));
+      shakeEl.setAttribute("y", String(80 + amp * Math.cos(p * freq * Math.PI * 2 * 0.7)));
+      shakeEl.setAttribute("opacity", String(0.9 - p * 0.4));
+    }});
+
+    // === Phase 6: Resolution (28.5-32s) ===
+    kf.push({ t: 28.5, dur: 0.5, fn(p) {
+      if (shakeEl) shakeEl.setAttribute("opacity", String(0.5 * (1 - easeOutCubic(p))));
+    }});
+    kf.push({ t: 29, dur: 0.01, fn() {
+      if (shakeEl && shakeEl.parentNode) shakeEl.parentNode.removeChild(shakeEl);
+      shakeEl = null;
+    }});
+    kf.push({ t: 29, dur: 1, fn(p) {
+      const fade = 1 - easeOutCubic(p);
+      for (const el of accumulatedEls) {
+        el.setAttribute("opacity", String(parseFloat(el.getAttribute("opacity") || 1) * fade));
+      }
+    }});
+    kf.push({ t: 30, dur: 0.01, fn() {
+      for (const el of accumulatedEls) { if (el.parentNode) el.parentNode.removeChild(el); }
+      accumulatedEls.length = 0;
+      clearCenter();
+    }});
+    // Clean moment (30-31s) — just the loop at 0.25
+    kf.push({ t: 31, dur: 0.5, fn(p) {
+      clearCenter();
+      const el = createText("A new theory explains everything — including the anomalies.", CX, CY, 32, "#5c9c5c");
+      el.setAttribute("opacity", String(easeOutCubic(p)));
+      centerStage.appendChild(el);
+    }});
+    kf.push({ t: 31.5, dur: 0.01, fn() {
+      clearCenter();
+      const el = createText("A new theory explains everything — including the anomalies.", CX, CY, 32, "#5c9c5c");
+      centerStage.appendChild(el);
+    }});
+
+    // === Phase 7: You Are Here (32-34s) ===
+    kf.push({ t: 32, dur: 0.5, fn(p) {
+      const t = easeInOutCubic(p);
+      const pos = phasePos(4);
+      for (const el of [...centerStage.childNodes]) {
+        el.setAttribute("x", String(CX + (pos.x - CX) * t));
+        el.setAttribute("y", String(CY + (pos.y - CY) * t));
+        el.setAttribute("font-size", String(Math.round(32 * (1 - t * 0.65))));
+      }
+    }});
+    kf.push({ t: 32.5, dur: 0.01, fn() {
+      clearCenter();
+    }});
+    kf.push({ t: 32.5, dur: 1, fn(p) {
+      // Fade loop labels from 0.25 to 1.0
+      const opacity = 0.25 + 0.75 * easeOutCubic(p);
+      for (const el of [...loopLabels.childNodes]) {
+        el.setAttribute("opacity", String(opacity));
+      }
+      cyclePath.setAttribute("opacity", String(opacity));
+    }});
+    kf.push({ t: 33.5, dur: 0.5, fn(p) {
       const pos = phasePos(1);
-      youAreHere.setAttribute("opacity", easeOutCubic(p));
+      youAreHere.setAttribute("opacity", String(easeOutCubic(p)));
       if (!youAreHere.firstChild) {
         const arrow = createText("← YOU ARE HERE", pos.x + 55, pos.y, 14, "#d4a017", { filter: "url(#glow)" });
         arrow.setAttribute("text-anchor", "start");
