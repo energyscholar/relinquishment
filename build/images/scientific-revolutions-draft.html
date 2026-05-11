@@ -6,10 +6,87 @@
 <title>The Structure of Scientific Revolutions</title>
 <style>
   body { margin: 0; background: #1a1a2e; display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: Georgia, serif; }
-  svg { max-width: 100vw; max-height: 100vh; }
+
+  /* Desktop: inline playback */
+  .sr-full {
+    position: relative;
+    max-width: 100%;
+    aspect-ratio: 12 / 7;
+  }
+  .sr-full svg { width: 100%; height: 100%; max-width: 100vw; max-height: 100vh; }
+
+  /* Fullscreen button */
+  .sr-fs-btn {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    z-index: 10;
+    width: 32px;
+    height: 32px;
+    border: none;
+    border-radius: 6px;
+    background: rgba(0,0,0,0.5);
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0;
+  }
+  .sr-fs-btn:hover { background: rgba(0,0,0,0.8); }
+  .sr-fs-btn svg { width: 18px; height: 18px; fill: none; stroke: #fff; stroke-width: 2; stroke-linecap: round; }
+
+  /* Mobile teaser */
+  .sr-teaser { display: none; }
+  @media (max-width: 767px) {
+    .sr-full { display: none; }
+    .sr-teaser { display: block; text-align: center; margin: 1em 0; }
+    .sr-teaser-diagram { width: 100%; max-width: 400px; margin: 0 auto; }
+    .sr-teaser-btn {
+      display: block;
+      width: 100%;
+      max-width: 400px;
+      margin: 12px auto 0;
+      padding: 14px 24px;
+      min-height: 48px;
+      background: #4caf50;
+      color: #fff;
+      border: none;
+      border-radius: 8px;
+      font-size: 18px;
+      font-family: Georgia, serif;
+      cursor: pointer;
+    }
+    .sr-teaser-btn:active { background: #388e3c; }
+    .sr-teaser-hint {
+      color: #706858;
+      font-size: 12px;
+      margin-top: 6px;
+    }
+  }
+
+  /* Fullscreen overrides */
+  .sr-full:fullscreen,
+  .sr-full:-webkit-full-screen {
+    display: block !important;
+    width: 100vw;
+    height: 100vh;
+    background: #000;
+  }
+  .sr-full:fullscreen svg,
+  .sr-full:-webkit-full-screen svg {
+    width: 100vw;
+    height: 100vh;
+  }
 </style>
 </head>
 <body>
+<div class="sr-full" id="sr-full">
+<button class="sr-fs-btn" id="sr-fs-btn" title="Fullscreen" aria-label="Fullscreen">
+  <svg viewBox="0 0 20 20"><path d="M3 3h5M3 3v5M17 3h-5M17 3v5M3 17h5M3 17v-5M17 17h-5M17 17v-5"/></svg>
+</button>
 <svg id="main" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg">
   <defs>
     <filter id="glow">
@@ -56,6 +133,37 @@
     <g id="scrubber-dots"></g>
   </g>
 </svg>
+</div><!-- .sr-full -->
+
+<div class="sr-teaser" id="sr-teaser">
+  <svg class="sr-teaser-diagram" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+    <rect width="400" height="400" fill="#1a1a2e"/>
+    <circle cx="200" cy="200" r="150" fill="none" stroke="#e8e0d044" stroke-width="2" stroke-dasharray="6,4"/>
+    <g font-family="Georgia, serif" text-anchor="middle" font-size="11">
+      <text x="200" y="42" fill="#4a90d9" font-weight="bold">NORMAL SCIENCE</text>
+      <text x="343" y="155" fill="#d4a574" font-weight="bold">ANOMALY</text>
+      <text x="288" y="330" fill="#c45c5c" font-weight="bold">CRISIS</text>
+      <text x="112" y="330" fill="#d4a017" font-weight="bold">REVOLUTION</text>
+      <text x="57" y="155" fill="#5c9c5c" font-weight="bold">NEW PARADIGM</text>
+    </g>
+    <g fill="none" stroke="#e8e0d066" stroke-width="1.5">
+      <circle cx="200" cy="50" r="5"/>
+      <circle cx="343" cy="168" r="5"/>
+      <circle cx="288" cy="343" r="5"/>
+      <circle cx="112" cy="343" r="5"/>
+      <circle cx="57" cy="168" r="5"/>
+    </g>
+    <g>
+      <polygon points="228,57 243,50 228,43" fill="#d4a574" opacity="0.5"/>
+      <polygon points="346,200 353,185 339,185" fill="#c45c5c" opacity="0.5"/>
+      <polygon points="258,348 258,363 273,348" fill="#d4a017" opacity="0.5"/>
+      <polygon points="82,338 82,353 67,338" fill="#5c9c5c" opacity="0.5"/>
+      <polygon points="54,138 47,153 61,153" fill="#4a90d9" opacity="0.5"/>
+    </g>
+  </svg>
+  <button class="sr-teaser-btn" id="sr-teaser-btn">&#9654; Play Fullscreen</button>
+  <div class="sr-teaser-hint">Best experienced in landscape</div>
+</div>
 
 <script>
 (function() {
@@ -1781,6 +1889,46 @@
   setTimeout(() => playSegment(0), 500);
 
   window.kuhnEngine = { playSegment, seekTo, pause, resume };
+
+  // --- Fullscreen + Mobile Teaser ---
+  var srFull = document.getElementById("sr-full");
+  var srTeaser = document.getElementById("sr-teaser");
+  var fsBtn = document.getElementById("sr-fs-btn");
+  var teaserBtn = document.getElementById("sr-teaser-btn");
+
+  function goFullscreen(el) {
+    var req = el.requestFullscreen || el.webkitRequestFullscreen || el.msRequestFullscreen;
+    if (req) {
+      req.call(el).then(function() {
+        try { screen.orientation.lock("landscape"); } catch(e) {}
+      }).catch(function() {});
+    }
+  }
+
+  function onFsChange() {
+    var inFs = !!(document.fullscreenElement || document.webkitFullscreenElement);
+    if (!inFs) {
+      try { screen.orientation.unlock(); } catch(e) {}
+      if (window.matchMedia("(max-width: 767px)").matches) {
+        srFull.style.display = "none";
+        srTeaser.style.display = "block";
+      }
+    }
+  }
+
+  document.addEventListener("fullscreenchange", onFsChange);
+  document.addEventListener("webkitfullscreenchange", onFsChange);
+
+  if (fsBtn) {
+    fsBtn.addEventListener("click", function() { goFullscreen(srFull); });
+  }
+
+  if (teaserBtn) {
+    teaserBtn.addEventListener("click", function() {
+      srFull.style.display = "block";
+      setTimeout(function() { goFullscreen(srFull); }, 50);
+    });
+  }
 })();
 </script>
 </body>
