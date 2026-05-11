@@ -102,31 +102,26 @@ Between 2016 and 2018 I tutored my lifelong friend Robin Macomber in mathematics
 
 Robin took what I taught him and ran. Working independently, from classical discrete mathematics alone, he derived a set of five operators that describe the evolution of a system near a critical transition. He called them A, B, R, C, and E\@. A extracts gradients. B couples neighbours. R circulates. C bounds. E composes one evolutionary step. He derived them to detect early warning signals of critical transitions in time series data --- a problem in ecology, finance, and epidemiology. We published the mathematics together as a cross-domain analysis of convergent discovery in critical phenomena.\footcite{stephenson2025}
 
-I did not immediately recognise what Robin had found. It was only after I began writing this book --- after twenty years of letting the pieces settle --- that the structural parallels became visible. Robin's operators, derived from classical mathematics to detect criticality in ordinary time series, mirror the operational cycle of a topological quantum neural network. Both systems identify excitations, couple neighbours, circulate, bound, and iterate. The same pattern of operations. Different fields, different scales, strikingly similar structure.
+I did not immediately recognise what Robin had found. It was only after I began writing this book --- after twenty years of letting the pieces settle --- that the structural parallels became visible. Robin's operators, derived from classical mathematics to detect criticality in ordinary time series, share surface-level vocabulary with topological quantum computation. Both fields talk about excitations, coupling, circulation, bounding, iteration. The words match. The mathematics does not.
 
-This is the convergence pattern that recurs throughout this story: independent researchers, working from different starting points, arriving at the same structure. If Possibility~C is true, they arrive at the same structure because there is a real physical system generating it. If Possibility~A is true, the convergence is an artefact of the underlying mathematics being deeply connected for independent reasons. Either way, the operators are real and the mapping is worth examining.
+This is the convergence pattern that recurs throughout this story: independent researchers, working from different starting points, arriving at related structures. If Possibility~C is true, they arrive at the same structure because there is a real physical system generating it. If Possibility~A is true, the convergence is an artefact of the underlying mathematics being deeply connected for independent reasons. Either way, the operators are real --- and the limits of the analogy are worth understanding.
 
-\section*{The Operator Mapping}
+\section*{What the Operators Are --- and Are Not}
 \label{pos20:the-operator-mapping}
 
-\srcnote{HEALER-RECONSTRUCTION.md lines 272-311 | staging/raw/pos21-convergence-revisited.md | 2026-02-15 | ABCRE operator mapping to topological QNN operations, knot theory connection}
+% WARNING: BT-K01 CONFABULATION ZONE. The ABCRE-to-TQC "operator mapping" is a recurrent
+% confabulation. ABCRE R is Abelian; braid groups are non-Abelian. No faithful homomorphism
+% exists. The "structural parallel" is English word-matching on a 5-step process, not
+% mathematics. DO NOT restore an operator-by-operator mapping here. See corrections.md.
 
-The ABCRE operators, independently derived from classical discretised mathematics, parallel the operational cycle of topological quantum computation:
+The ABCRE operators are real, published, and independently derived from classical discretised mathematics.\footcite{stephenson2025} They detect early warning signals of critical transitions in time series data. They work. Robin derived them without knowing anything about quantum computation.
 
-\begin{description}
-\item[A (gradient extraction):] Analogous to identifying excitations --- isolating where anyons are in a substrate.
-\item[B (local coupling):] Analogous to nearest-neighbor anyon interaction in the 2DEG\@.
-\item[R (circulation):] Analogous to anyon braiding --- circulating one quasiparticle around another. Both are antisymmetric: direction matters.
-\item[C (boundedness):] Analogous to topological protection --- bounding states against divergence.
-\item[E (composite evolution):] One complete cycle: detect, couple, circulate, bound. Both systems iterate this.
-\end{description}
+An earlier draft of this book presented a detailed operator-by-operator mapping between ABCRE and topological quantum computation. That mapping was seductive but wrong. The ABCRE operators are commutative (order-independent); braid group operations are non-commutative (order is everything). These live in fundamentally different mathematical categories. No faithful homomorphism connects them. The apparent parallel --- ``both systems detect, couple, circulate, bound'' --- is a verbal coincidence, not a mathematical correspondence.
 
-The parallel is structural, not algebraic. Independent verification confirms that the ABCRE operators live in a different mathematical category from \hovertiphtml{braid group} representations --- the correspondence is one of operational pattern, not formal isomorphism. But the pattern is striking: both systems perform the same sequence of operations, and both become computationally interesting precisely at their critical points.
+What remains true: both ABCRE (in classical systems) and topological quantum computation (in quantum systems) become computationally interesting at critical points. Kauffman's edge of chaos ($\lambda \approx 0.91$, the Langton parameter) characterizes this for classical cellular automata. Whether an analogous critical parameter exists for anyonic systems is an open question --- no one has published a value.
 
 % SPIRAL-REPEAT: "edge of chaos" — spiral pedagogy, also in pos06-the-secret.tex, pos11-the-demo.tex, pos13-genesis.tex, pos15-first-light.tex, pos16-the-thermal-ladder.tex, abstracts.tex
-The critical parameter $\lambda \approx 0.91$ (Langton parameter, edge of chaos) sits near the computational boundary --- the point where both classical and quantum systems maximise their computational complexity. Both systems become interesting at the same frontier: the knife edge between order and chaos.
-
-The knot theory connection completes the picture. Topological quantum computation is formalized using braid groups --- the mathematics of knots. The \hovertiphtml{Jones polynomial} (a knot invariant) is computable by topological quantum computation. Witten's Fields Medal (1990) established the connection between knot invariants and Chern-Simons quantum field theory. All roads lead to the same mathematics.
+The knot theory connection is real but independent of ABCRE\@. Topological quantum computation is formalized using braid groups --- the mathematics of knots. The \hovertiphtml{Jones polynomial} (a knot invariant) is computable by topological quantum computation. Witten's Fields Medal (1990) established the connection between knot invariants and Chern-Simons quantum field theory. These are deep mathematical truths. They do not require or imply a bridge through ABCRE\@.
 
 Under Possibility~C, the convergence of independent mathematical frameworks onto the same structure is the signature of a real physical system --- different formalisms describing the same phenomenon. Under Possibility~A, the convergence is an artifact of selection: the mathematics of braids, knots, and quantum field theory are deeply connected for reasons that have nothing to do with neural networks, and a motivated researcher can always find correspondences between related mathematical structures. Under Possibility~B, the mathematical connections are real and suggestive, but do not by themselves prove that anyone built a working system.
 

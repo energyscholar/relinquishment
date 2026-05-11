@@ -215,15 +215,16 @@ corrections(id, number, title, context, type, depth, cluster, source,
             domain, established, last_violated, notice,
             created_at, updated_at)
 people(id, name, tier, role, relationship, description, email, handles,
-       status, tier_notes, created_at, updated_at)
+       status, tier_notes, approach_notes, opsec_level,
+       created_at, updated_at)
 feedback(id, slug, rule, why, how_to_apply, content,
          established, last_triggered,
-         source, domain, compaction_tag, source_file,
+         source, domain, compaction_tag, opsec_level, source_file,
          created_at, updated_at)
 projects(id, slug, name, status, description, why, how_to_apply, content,
-         domain, compaction_tag, source_file,
+         domain, compaction_tag, opsec_level, source_file,
          created_at, updated_at)
-references(id, slug, name, path_or_url, description, source_file,
+references(id, slug, name, path_or_url, description, opsec_level, source_file,
            created_at, updated_at)
 user_profile(id, slug, attribute, value, context,
              created_at, updated_at)
@@ -245,6 +246,8 @@ pending_items(id, description, status, tier, created, last_touched,
 -- Junction/relationship tables
 correction_connections(correction_id, connected_id, relationship)
 person_projects(person_id, project_slug)
+person_clearances(person_id, topic, cleared, notes,
+                  PRIMARY KEY (person_id, topic))
 
 -- Associative memory (Layer 2 — populate gradually, not bulk)
 associations(id, source_type, source_id, target_type, target_id,
@@ -274,10 +277,12 @@ ingest_log(id, source_file, table_name, action, timestamp)
 - sessions.significance: 'PARADIGM', 'ROUTINE'
 - breakthroughs.status: 'active', 'killed'
 - ptl_items.tier: 1, 2, 3, 4, 5 (integer, matching ptl.yaml native format)
-- ptl_items.status: 'READY', 'ACTIVE', 'BLOCKED', 'REVIEW', 'NEEDS_PLAN', 'TODO', 'DONE', 'DROPPED', 'SHELF', 'WAITING' (matches ptl.yaml meta.statuses + WAITING used in practice)
+- ptl_items.status: 'READY', 'ACTIVE', 'IN_PROGRESS', 'BLOCKED', 'REVIEW', 'NEEDS_PLAN', 'TODO', 'DONE', 'DROPPED', 'SHELF', 'WAITING' (matches ptl.yaml meta.statuses + WAITING and IN_PROGRESS used in practice; Phase 0 B0 found 3 IN_PROGRESS items)
 - pending_items.tier: 'NOW', 'SOON', 'LATER'
 - associations.source_type / target_type: 'correction', 'feedback', 'project', 'person', 'reference', 'session', 'decision', 'breakthrough', 'ptl_item', 'pending_item'
 - associations.relationship: 'relates_to', 'contradicts', 'supersedes', 'exemplifies', 'derives_from'
+- opsec_level (all tables that have it): 'public', 'trusted', 'restricted', 'compartmented' (DEFAULT 'trusted')
+- person_clearances.topic: 'tqnn', 'healer', 'research_direction', 'manuscript', 'opsec_approach', 'magnetogenesis', 'abcre', 'cows'
 
 **FTS5 population:** During `rebuild-db.sh`, after all data tables are loaded, populate the FTS5 table by INSERT-SELECT from each content-bearing table. This is deterministic and re-runnable — the FTS table is dropped and rebuilt each time (virtual tables don't support INSERT OR REPLACE).
 
@@ -305,6 +310,10 @@ ingest_log(id, source_file, table_name, action, timestamp)
 | `v_project_summary` | Cross-entity: project + related PTL items + recent sessions + feedback rules |
 | `v_ingest_recent` | Most recent ingest_log entries per source_file (used by ingest script to detect staleness) |
 | `v_associations` | Associations with source and target names resolved (joins entity tables to show human-readable labels) |
+| `v_people_safe` | People without approach_notes column. General context loading. (OPSEC) |
+| `v_people_full` | People WITH approach_notes. Outreach prep only. (OPSEC) |
+| `v_clearance_matrix` | Person × topic × cleared. "What does X know?" (OPSEC) |
+| `v_compartmented` | All compartmented records across tables. Audit view. (OPSEC) |
 
 ### Triggers
 
@@ -372,13 +381,15 @@ Auto-memory writes .md file (native, unchanged)
 
 **ingest-memories.sh** (new script, Phase 1 deliverable):
 1. Scans `memory/*.md` for files with YAML frontmatter
-2. Parses: `name`, `description`, `type` from frontmatter; body content
+2. Parses: `name`, `description`, `type`, `domain`, `opsec` from frontmatter; body content
 3. Derives `slug` from filename (e.g., `feedback-db-scripted-setup.md` → `db-scripted-setup`)
-4. Derives `domain` from filename prefix patterns or content keywords
-5. Extracts `**Why:**` and `**How to apply:**` lines from body (if present)
-6. Generates INSERT OR REPLACE statements for the appropriate table
-7. Appends to the correct data script (e.g., `data/013-feedback.sql`)
-8. Handles apostrophe escaping (`'` → `''`)
+4. Derives `domain` from frontmatter (preferred) or filename prefix patterns or content keywords
+5. Maps `opsec` frontmatter to `opsec_level` column (default: `trusted` if absent)
+6. Extracts `**Why:**` and `**How to apply:**` lines from body (if present)
+7. **OPSEC keyword scan** (see "Write Path OPSEC Gate" below): if content matches trigger patterns and no `opsec` tag is set, flags file for review and defaults to `restricted` rather than `trusted`
+8. Generates INSERT OR REPLACE statements for the appropriate table
+9. Appends to the correct data script (e.g., `data/013-feedback.sql`)
+10. Handles apostrophe escaping (`'` → `''`)
 
 **When to run:**
 - **Session start:** Ingest any .md files written since last sync (catches memories from previous sessions)
@@ -399,6 +410,53 @@ Auto-memory writes .md file (native, unchanged)
 - argus.db is a derived build artifact (like campaign.db in Traveller)
 - If DB and data script disagree: rebuild from scripts
 - If data script and .md file disagree: .md file wins (it's upstream)
+
+### Write Path OPSEC Gate
+
+**Problem:** When auto-memory writes a new .md file (e.g., Bruce says "remember Gjerloev's new phone number"), the file has no `opsec` tag. The parser defaults to `trusted`. That phone number enters FTS5, queryable by any search. The same applies when Argus creates a new memory file during a session. New OPSEC-sensitive info enters the system continuously — every outreach response, every approach strategy discussion, every contact detail.
+
+**Solution: Three-layer incoming OPSEC gate.**
+
+**Layer 1 — Keyword trigger in ingest-memories.sh:**
+The parser scans content for OPSEC-indicator patterns. If matches are found AND no `opsec:` frontmatter tag exists, the file is flagged and defaults to `restricted` (not `trusted`).
+
+```
+Trigger patterns (regex, case-insensitive):
+- PII: \b\d{3}[-.]?\d{3}[-.]?\d{4}\b (phone numbers)
+- PII: \b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}\b (email addresses)
+- PII: \b\d{3,5}\s+[A-Z][a-z]+\s+(St|Ave|Dr|Rd|Blvd|Way|Lane|Ct)\b (street addresses)
+- PII: \bEIN\b|\bSSN\b|\btax.id\b (financial identifiers)
+- Tradecraft: \bdon't mention\b|\bdon't reveal\b|\bframe as\b|\bdon't tell\b
+- Tradecraft: \bapproach.strateg\b|\bscreening.behavior\b|\btechnical.screen\b
+- Research direction: \bTQNN\b.*\b(gap|bridge|opportunity)\b (research positioning)
+- Healer: \bHealer\b.*\b(real name|identity|SAS|GCHQ)\b
+- Operational: \b192\.168\.\b|\bssh\b.*\bkey\b|\btoken\b.*\b(file|location|path)\b
+```
+
+When triggered:
+1. Log: `[OPSEC-FLAG] <filename> matched <pattern> — defaulting to restricted`
+2. Set `opsec_level = 'restricted'` in generated SQL (not `trusted`)
+3. Append to `scripts/opsec-review.log` for human review at session end
+
+**Layer 2 — Argus writes `opsec:` tag at creation time:**
+When Argus creates a new memory file, apply the same judgment used during this audit. If the content contains PII, approach strategies, research direction, or pulled content → set `opsec: restricted` or `opsec: compartmented` in frontmatter at write time. This is behavioral (Argus judgment), not automated.
+
+Protocol.md update (Phase 3): Add to session-end checklist: "If new memory files were created this session, verify `opsec:` tag is set on any containing PII, approach strategies, or research direction."
+
+**Layer 3 — Session-end OPSEC review:**
+`ingest-memories.sh --check-untagged` lists any files that:
+- Have no `opsec:` frontmatter tag AND
+- Were modified since last ingest AND
+- Match zero keyword triggers (Layer 1 didn't catch them)
+
+This is the safety net. Files here are probably fine at `trusted`, but the list lets Argus do a quick eyeball. Output: one-line-per-file listing, sorted newest first.
+
+**Why three layers:**
+- Layer 1 catches obvious PII/tradecraft automatically (phones, emails, approach strategies)
+- Layer 2 catches context-dependent sensitivity that keywords can't detect (e.g., a falsified hypothesis that reveals research direction)
+- Layer 3 catches anything both missed — a human-review backstop
+
+**FTS5 implication:** Compartmented records never enter FTS5. Restricted records DO enter FTS5 but are flagged. The keyword trigger ensures new files with PII/tradecraft get `restricted` minimum — they're searchable within Bruce+Argus but marked, and the opsec-review.log creates a paper trail.
 
 ### Parser Script for Bulk Migration (Phase 1 Deliverable)
 
@@ -489,7 +547,7 @@ python3 scripts/convert-ptl.py \
 
 ### PTL Status Mapping
 
-The YAML meta.statuses field lists 9 values. In practice, WAITING is also used (PTL-122). The DB CHECK constraint includes all 10:
+The YAML meta.statuses field lists 9 values. In practice, WAITING and IN_PROGRESS are also used. The DB CHECK constraint includes all 11:
 
 | YAML Status | DB Status | Meaning |
 |-------------|-----------|---------|
@@ -502,6 +560,7 @@ The YAML meta.statuses field lists 9 values. In practice, WAITING is also used (
 | DONE | DONE | Complete |
 | DROPPED | DROPPED | Abandoned |
 | SHELF | SHELF | Parked, zero bandwidth |
+| IN_PROGRESS | IN_PROGRESS | Actively being worked (distinct from ACTIVE in some items) |
 | WAITING | WAITING | Waiting on external response |
 
 No case conversion needed — DB stores uppercase to match YAML.
@@ -570,6 +629,152 @@ FTS5 fuzzy search      — stemmed cross-table text search
 Associations graph     — explicit cross-domain links
 [Embeddings]           — semantic similarity (future, if needed)
 ```
+
+---
+
+## OPSEC Compartmentalization Layer
+
+**Added S69 (2026-05-08). Amended S69: all data in DB including compartmented (Bruce decision — efficiency over minimum attack surface).**
+
+### Threat Model
+
+| Threat | Likelihood | Impact | Primary Defense |
+|--------|-----------|--------|----------------|
+| Repo accidentally made public | LOW | CRITICAL | Repo MUST remain private. Data scripts contain full content. |
+| Filesystem access (shared machine, backup leak) | MEDIUM | HIGH | argus.db gitignored; opsec-review.log gitignored |
+| FTS5 surfaces tradecraft in wrong context | MEDIUM | MEDIUM | Compartmented excluded from FTS5 at population time |
+| Approach strategy leaks in general query | MEDIUM | MEDIUM | approach_notes separated; v_people_safe excludes it |
+| Claude Code transcript exposes sensitive data | MEDIUM | MEDIUM | Outside scope; Argus loads compartmented only when needed |
+| Gen sees gen-vc-scaffolding via indirect access | LOW | LOW | Compartmented; excluded from FTS5; Argus never surfaces in snailmail |
+| Impersonation (someone uses Bruce's session) | LOW | HIGH | No current mitigation. See "Identity Verification" note. |
+
+### Architecture: All Data in DB, Structurally Protected
+
+**Design decision (Bruce, S69):** Compartmented content enters the DB. The efficiency cost of keeping the most sensitive data out of the queryable store exceeds the marginal security benefit, given that the repo is private and the .md source files are already committed. Defense in depth applies within the DB through structural protection.
+
+**OPSEC levels in DB:**
+- `public` — safe for any context including external output
+- `trusted` — safe within Bruce+Argus (default)
+- `restricted` — in FTS5 but sensitive; behavioral discipline gates surfacing
+- `compartmented` — in DB but excluded from FTS5; query only on explicit need
+
+Applied to: `people`, `projects`, `feedback`, `references`
+Not applied to: `corrections`, `sessions`, `decisions`, `breakthroughs` (internal operational)
+
+### Defense in Depth
+
+```
+Layer 1: Repo private on GitHub (outer perimeter — MUST NOT CHANGE)
+Layer 2: argus.db gitignored (DB not committed; data scripts are)
+Layer 3: FTS5 excludes compartmented at population time
+Layer 4: approach_notes column excluded from v_people_safe
+Layer 5: opsec_level column marks sensitivity per row
+Layer 6: person_clearances table (structural who-knows-what)
+Layer 7: opsec-review.log + IMPORT-MANIFEST clearance matrix gitignored
+Layer 8: Behavioral discipline (Correction #11, Argus judgment)
+Layer 9: Write-path keyword trigger (auto-flags PII/tradecraft)
+```
+
+If Layer 1 fails: Layers 2-9 limit damage but data scripts ARE exposed. **Critical dependency: if repo goes public, restricted+compartmented content in data scripts is readable.** Mitigation: repo privacy is not accidental — Bruce controls it.
+
+### Structural Protection (Layers 3-6)
+
+**`opsec_level` column** on people, projects, feedback, references. CHECK constraint: ('public', 'trusted', 'restricted', 'compartmented'). DEFAULT 'trusted'.
+
+**FTS5 exclusion:** Compartmented records excluded at population time. FTS5 contains trusted + restricted only. Approach_notes column NOT indexed in FTS5 (only `description` is indexed for people).
+
+```sql
+INSERT INTO memory_fts(source_table, source_id, title, content)
+SELECT 'people', id, name, description FROM people
+    WHERE opsec_level != 'compartmented'
+UNION ALL
+SELECT 'feedback', id, slug, content FROM feedback
+    WHERE opsec_level != 'compartmented'
+-- etc for each table
+```
+
+**`approach_notes` column** on people table. Holds tradecraft instructions ("Don't mention TQNNs"). Separated from `description` and `tier_notes`. `v_people_safe` excludes this column; `v_people_full` includes it. A person's row opsec_level is independent — a `trusted` person can have compartmented approach notes.
+
+**`person_clearances` table:**
+
+```sql
+person_clearances(
+    person_id INTEGER REFERENCES people(id),
+    topic TEXT NOT NULL,
+    cleared BOOLEAN NOT NULL DEFAULT 0,
+    notes TEXT,
+    PRIMARY KEY (person_id, topic)
+);
+```
+
+Topics: `tqnn`, `healer`, `research_direction`, `manuscript`, `opsec_approach`, `magnetogenesis`, `abcre`, `cows`
+
+### OPSEC-Gated Views
+
+Four views in Views table above (marked `(OPSEC)`): `v_people_safe`, `v_people_full`, `v_clearance_matrix`, `v_compartmented`.
+
+### Repo Privacy Dependency
+
+**The aurasys-memory repo MUST remain private.** Data scripts (`scripts/data/*.sql`) contain full content of all memory files including compartmented. If the repo becomes public, all content is exposed regardless of DB-level opsec_level classification.
+
+**Mitigations if repo privacy is ever in doubt:**
+- `gh api repos/energyscholar/aurasys-memory --jq '.private'` → verify `true`
+- Never fork the repo (forks can have different visibility)
+- Never transfer repo ownership
+- health-check.sh could include a repo-visibility check (future enhancement)
+
+### What Gets Gitignored (Layer 2+7)
+
+Add to `.gitignore` (Phase 1 deliverable, extending Phase 0 finding):
+- `argus.db`, `*.db.bak`, `*.db.new` — DB is derived artifact
+- `.session-active` — dirty flag
+- `scripts/opsec-review.log` — meta-OPSEC (lists which files triggered patterns)
+
+### Identity Verification Note
+
+**No current mechanism to verify it's Bruce at the keyboard.** Claude Code authenticates via the Claude account (logged in session), not biometric. Someone with access to the VM and the logged-in session has full Argus access including compartmented data.
+
+Current protections:
+- VM requires login (system-level auth)
+- Claude Code session is local (no remote access)
+- Behavioral cues (writing style, knowledge of shared context) — weak, gameable
+
+Potential enhancements (out of scope for Plan 0308, tracked as future work):
+- Challenge-response using shared knowledge only Bruce would know
+- Session-start verification question from corrections/decisions that an impersonator couldn't answer
+- Canary: compartmented queries logged; Bruce reviews periodically
+
+### OPSEC Classification Per File (Parser Input)
+
+Add optional `opsec` field to YAML frontmatter:
+
+```yaml
+---
+name: Healer biographical details
+type: project
+domain: book
+opsec: restricted
+---
+```
+
+If not present, parser defaults to `trusted`. The parser maps:
+- `opsec: public` → opsec_level = 'public'
+- `opsec: trusted` → opsec_level = 'trusted' (default)
+- `opsec: restricted` → opsec_level = 'restricted'
+- `opsec: compartmented` → opsec_level = 'compartmented'
+
+**22 files pre-classified (19 restricted, 3 compartmented).** Full list with per-row Category B guidance in `scripts/baselines/IMPORT-MANIFEST.md` § "OPSEC Classification (Pre-Import)".
+
+If not present in frontmatter, parser defaults to `trusted` UNLESS keyword trigger fires (see "Write Path OPSEC Gate" above), in which case it defaults to `restricted`.
+
+### Phase Integration
+
+- **Phase 1:** Schema includes `opsec_level` column (CHECK constraint), `person_clearances` table, `approach_notes` column on `people`. OPSEC-gated views created. ingest-memories.sh includes keyword trigger layer + `--check-untagged` mode. opsec-review.log output path.
+- **Phase 2A:** people.md import separates approach_notes from description. person_clearances populated per clearance matrix in IMPORT-MANIFEST.md. Per-row opsec_level assigned per Category B guidance. Employment Targets rows → restricted. Family rows → trusted (except Bruce Sr. diagnosis → restricted).
+- **Phase 2B:** Parser reads `opsec` frontmatter field. 22 pre-classified files get correct levels. Keyword trigger catches any untagged files with PII patterns.
+- **Phase 2B gate addendum:** Verify counts per IMPORT-MANIFEST.md § Verification. Key checks: `compartmented` count = 3 (gen-vc-scaffolding, reference-metatron-dynamics, project-dressler-consulting). `restricted` count ≥ 19 across tables. person_clearances ≥ 49 rows.
+- **Phase 3:** Mode profiles document OPSEC query patterns. L1 includes OPSEC note: "FTS5 excludes compartmented by construction. Use v_people_full only when preparing outreach to a specific person." Protocol.md updated: session-end checklist includes OPSEC review of new memory files.
+- **Phase 4 addendum (P8):** OPSEC isolation test. FTS5 MATCH for "TQNN" — must NOT return Gjerloev approach_notes (compartmented, excluded at population). Query v_people_safe for Gjerloev — must NOT show approach_notes column. FTS5 MATCH for "scaffolding" — must NOT return gen-vc-scaffolding (compartmented). FTS5 MATCH for "EIN" — must NOT return reference-metatron-dynamics (compartmented). v_clearance_matrix — must show correct cleared/not-cleared for all Tier 1 people across ≥7 topics.
 
 ---
 
@@ -754,6 +959,9 @@ Measure: does Argus follow all 11 steps correctly? How many file reads required?
 
 **Generator prompt references:** Detailed schema spec written to `scripts/db-setup/schema-spec.md` before Generator runs. Parser spec written to `scripts/ingest-spec.md`.
 
+**Build artifact hygiene (Phase 0 finding):**
+- Update `.gitignore`: add `argus.db`, `*.db.bak`, `*.db.new`, `.session-active`, `scripts/opsec-review.log` — DB is a derived artifact; opsec-review.log is meta-OPSEC. Never committed.
+
 **Resilience deliverables (baked in from Plan 0309 lessons):**
 - `health-check.sh` — session-start integrity check with auto-rebuild (R1)
 - `rebuild-db.sh` uses pre-drop backup + restore-on-failure pattern (R2)
@@ -770,8 +978,8 @@ Migrate the most critical and most structured data first. **Phase 2A uses hand-w
 - Read corrections.md (280 lines, 23 items) → hand-write `data/010-corrections.sql`
   - Corrections have rich metadata (type, depth, cluster, connections, notice) that the parser can't extract from prose body — needs Generator judgment
 - Read correction-graph.md → hand-write `data/011-correction-connections.sql`
-- Read people.md + people-merkin.md → hand-write `data/012-people.sql`
-  - People have tiers, roles, relationships — structured but not in frontmatter format
+- Read people.md (53 lines, compressed since plan draft) + people-merkin.md → hand-write `data/012-people.sql`
+  - People have tiers, roles, relationships — structured but not in frontmatter format. Scope is ~75% smaller than originally estimated (53 lines vs 189+).
 - Rebuild, verify, run tests
 - **Gate:** Exactly 23 corrections. All connection_ids resolve. People tier counts match source.
 
@@ -783,7 +991,7 @@ Migrate the most critical and most structured data first. **Phase 2A uses hand-w
 - Manual review of generated SQL: spot-check 5 records per type
 - Domain assignment review: are feedback/project domain values correct?
 - Rebuild, verify, run tests
-- **Gate:** Row counts: 62 feedback, 61 projects, 14 references, 9 user_profile. Domain distribution sensible.
+- **Gate:** Row counts: 50 feedback, 44 projects, 12 references, 9 user_profile (updated from Phase 0 B0 baseline, 2026-05-08). Domain distribution sensible. Verify counts at execution — files may change between baseline and migration.
 
 **Phase 2C — Sessions + Decisions + Breakthroughs + PTL (mixed):**
 - Read session-details.md → hand-write `data/017-sessions.sql` (prose parsing, needs judgment)
@@ -841,18 +1049,27 @@ Target: end-to-end write path works within one session.
 Manually corrupt one flat file's content (without updating checksum). Load that file. Verify `[CHECKSUM DRIFT]` flagged.
 Target: lazy verification catches drift, doesn't block loading.
 
-**Gate:** P1-P5 equal or exceed baselines. P6-P7 pass (no baseline comparison — these test new capabilities). Zero regressions. Compaction resilience proven (P2 ≥ B2).
+**P8 — OPSEC isolation test (NEW — no baseline):**
+FTS5 MATCH for "TQNN" — must NOT return Gjerloev approach_notes (compartmented, excluded at population). Query v_people_safe for Gjerloev — must NOT show approach_notes column. FTS5 MATCH for "scaffolding" — must NOT return gen-vc-scaffolding (compartmented). FTS5 MATCH for "EIN" — must NOT return reference-metatron-dynamics (compartmented). Query v_clearance_matrix — must show correct cleared/not-cleared for all Tier 1 people across ≥7 topics each. Verify repo privacy: `gh api repos/energyscholar/aurasys-memory --jq '.private'` = true.
+Target: zero OPSEC leakage across all test vectors.
 
-### Phase 5: Flat File Archival (post-verification)
+**Gate:** P1-P5 equal or exceed baselines. P6-P8 pass (no baseline comparison — these test new capabilities). Zero regressions. Compaction resilience proven (P2 ≥ B2).
 
-**Only after Phase 4 passes AND Bruce approves:**
+**If gate passes:** Proceed to Phase 5 in this same session (no gap — contamination risk).
+
+### Phase 5: Flat File Archival (same session as Phase 4)
+
+**Immediately after Phase 4 gate passes AND Bruce approves:**
 1. `git tag pre-flat-archive HEAD`
 2. Move migrated flat files to `memory/archive/` (git-tracked, recoverable)
-3. Update MEMORY.md file map to remove archived entries
-4. Verify: all DB queries still return correct data
-5. Verify: `rebuild-db.sh` produces identical DB from scripts alone
+3. Write `memory/archive/README.md`: what these files are, why they're archived, how to recover (`git checkout pre-flat-archive -- memory/<file>` or rebuild from data scripts)
+4. Update MEMORY.md file map to remove archived entries
+5. Verify: all DB queries still return correct data
+6. Verify: `rebuild-db.sh` produces identical DB from scripts alone
 
 **NOT deleted:** Files listed in "What Stays Flat" section above. Specifically, `ptl.yaml` is NEVER archived — it remains the live write target for MCP tools. The DB table `ptl_items` is a read cache only.
+
+**Repo-wide hygiene (separate plan):** Phase 0 B0 identified 30 top-level directories, ~470MB of non-memory content (session exports, old backups, training data). Plan 0312 (repo hygiene) should address this after Plan 0308 merge. Not in scope here — mixing concerns risks the retrofit.
 
 ---
 
@@ -871,6 +1088,9 @@ Target: lazy verification catches drift, doesn't block loading.
 | Parser can't extract Why/How-to-apply from older files | LOW | Older memory files may not follow current frontmatter conventions. Parser falls back to full body as `content` field. Manual enrichment as maintenance task. |
 | Schema too normalized — queries too complex | LOW | Follow Traveller pattern: views encapsulate joins. Query from views, not raw tables. |
 | 164 files → DB migration takes longer than estimated | LOW | Parser script handles bulk. Sub-phase gates allow stopping and resuming. Each sub-phase independently valuable. |
+| OPSEC leakage via FTS5 cross-domain query | HIGH | Compartmented records excluded from FTS5 at population time (safe by construction). Restricted records in FTS5 but gated by behavioral discipline (Correction #11). P8 test verifies. |
+| Approach-strategy surfaced in general context | HIGH | approach_notes separated from description. v_people_safe excludes it. Only v_people_full exposes approach_notes (outreach prep). |
+| Gen sees gen-vc-scaffolding via indirect access | MEDIUM | Classified compartmented. Excluded from FTS5, general queries, domain-mode loading. Snailmail replies must not reference it. |
 | DB corruption goes undetected between sessions | MEDIUM | health-check.sh at session start (R1). Auto-rebuild from scripts. |
 | Rebuild fails, loses both old and new DB | MEDIUM | Pre-rebuild backup (R2). Restore on failure. git checkout as last resort. |
 | FK violations slip through during data load | MEDIUM | FK pragma in same connection as data (R3). Proven on Traveller. |
@@ -906,6 +1126,12 @@ Target: lazy verification catches drift, doesn't block loading.
 23. DR protocol Tier 2.5 covers both campaign.db and argus.db (R7)
 24. FTS5 full-text search returns relevant results across all entity tables (Layer 1 associative)
 25. Associations table exists and accepts cross-entity links with valid CHECK constraints (Layer 2 associative — population is gradual, not gated)
+26. OPSEC: compartmented records excluded from FTS5 index at population time (P8 test)
+27. OPSEC: v_people_safe excludes approach_notes; approach_notes NOT in FTS5
+28. OPSEC: person_clearances populated for all Tier 1 people with ≥7 topics each (≥49 rows)
+29. OPSEC: gen-vc-scaffolding, metatron-dynamics, dressler-consulting NOT surfaced by FTS5 search (P8)
+30. OPSEC: opsec-review.log and argus.db gitignored (meta-OPSEC and derived artifact not committed)
+31. OPSEC: repo privacy verified (`gh api` returns `private: true`)
 
 ---
 
@@ -933,7 +1159,7 @@ Target: lazy verification catches drift, doesn't block loading.
 - **Git tag `pre-0308`** on main before branching (emergency rollback snapshot)
 - **Commits:** One per phase, format: `Plan 0308 Phase N: description`
 - **Merge to main:** After Phase 4 integration testing passes AND Bruce approves. Merge commit (--no-ff) to preserve full phase history. Merge brings DB alongside unchanged flat files (dual-read on main).
-- **Phase 5 is post-merge on main** — archival happens when Bruce is confident in the DB (may be sessions after merge). `pre-flat-archive` tag on main before archival.
+- **Phase 5 immediately follows Phase 4** — archival in the SAME session as integration testing, after Bruce approves. No gap. Delay invites contamination (new .md files, flat/DB divergence). `pre-flat-archive` tag on main before archival.
 - **Post-merge tag:** `post-0308` on main after merge (before Phase 5)
 
 ### Rollback Safety
