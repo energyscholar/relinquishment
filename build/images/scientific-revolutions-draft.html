@@ -76,7 +76,7 @@
   }
 
   const segmentLabels = ["Abstract", "1", "2", "3", "4", "5", "6", "7", "8"];
-  const scrubberYears = ["", "1543", "1770", "1859", "1847", "", "", "", ""];
+  const scrubberYears = ["", "1543", "1770", "1859", "1847", "1905", "1900", "1912", "1944"];
 
   const engine = {
     segment: 0,
@@ -168,7 +168,7 @@
     const x0 = 60, x1 = 1140, span = x1 - x0;
     for (let i = 0; i < 9; i++) {
       const x = x0 + (span * i / 8);
-      const active = (i <= 4);
+      const active = (i <= 8);
       const g = document.createElementNS(SVG_NS, "g");
       g.setAttribute("cursor", active ? "pointer" : "default");
 
@@ -1209,6 +1209,218 @@
     });
   }
 
+  // --- Segment 5: Relativity ---
+
+  function buildSegment5Timeline() {
+    return buildRevolutionTimeline({
+      title1: "The Relativistic Revolution (1887–1919)",
+      title2: "Space is absolute. Time is absolute. They do not interact.",
+      title3: "Space and time are one fabric. Mass curves it. Gravity is geometry.",
+      years: {
+        normal: "~1880",
+        anomalies: ["1887", "1895", "1905", "1905"],
+        crisis: "1905–1915",
+        revolution: "1919",
+        newParadigm: "1919"
+      },
+      normal: {
+        main: "Newton's clockwork universe. Space is a rigid stage. Time ticks the same for everyone.",
+        sub: "Isaac Newton's Principia. (1687)"
+      },
+      anomalies: [
+        { anomaly: "Mercury's orbit drifts 43 arcseconds per century. No explanation.",
+          dismissal: "“There must be an unseen planet. We'll call it Vulcan.”" },
+        { anomaly: "Michelson-Morley: the luminiferous ether does not exist.",
+          dismissal: "“The experiment must be flawed. Ether is required.”" },
+        { anomaly: "Moving clocks tick slower. Length contracts at high speed.",
+          dismissal: "“Mathematical convenience. Not physical reality.”" },
+        { anomaly: "E = mc². Mass and energy are the same thing.",
+          dismissal: "“Elegant, but surely just theoretical.”" },
+      ],
+      crisis: [
+        "“Relativity is Jewish physics. It contradicts common sense.”",
+        "“Most physicists resist for a decade.”"
+      ],
+      revolution: {
+        main: "A solar eclipse. Stars near the sun shift position exactly as predicted.",
+        sub: "Spacetime curves. Einstein confirmed by observation.",
+        name: "Einstein, 1919"
+      },
+      newParadigm: "GPS satellites. Gravitational waves. Black hole images.",
+      transitionYears: "~32 years"
+    });
+  }
+
+  // --- Segment 6: Quantum Mechanics ---
+
+  function buildSegment6Timeline() {
+    return buildRevolutionTimeline({
+      title1: "The Quantum Revolution (1900–1927)",
+      title2: "Light is a wave. Electrons are particles. This is settled.",
+      title3: "Everything is both. Nature is probabilistic. Certainty has limits.",
+      years: {
+        normal: "~1900",
+        anomalies: ["1900", "1905", "1913", "1923"],
+        crisis: "1925–1926",
+        revolution: "1927",
+        newParadigm: "1927"
+      },
+      normal: {
+        main: "Waves are waves. Particles are particles. Physics is nearly complete.",
+        sub: "Lord Kelvin: ‘Two small clouds remain on the horizon.’ (~1900)"
+      },
+      anomalies: [
+        { anomaly: "Hot objects glow the wrong color. Theory predicts infinite energy.",
+          dismissal: "“The ‘ultraviolet catastrophe’ is a mathematical artifact.”" },
+        { anomaly: "Light hits metal. Electrons fly off — only above a threshold.",
+          dismissal: "“We'll figure out the mechanism eventually.”" },
+        { anomaly: "Electrons emit only specific wavelengths. Never in between.",
+          dismissal: "“Atomic structure is complex. We need better models.”" },
+        { anomaly: "Light behaves as a wave AND a particle depending on how you look.",
+          dismissal: "“One must be the real nature. The other is an approximation.”" },
+      ],
+      crisis: [
+        "“I cannot seriously believe in it.” — Albert Einstein",
+        "“God does not play dice with the universe.”"
+      ],
+      revolution: {
+        main: "Heisenberg's uncertainty principle. You cannot know both position and momentum.",
+        sub: "Nature is fundamentally statistical. Certainty has limits.",
+        name: "Planck / Bohr / Heisenberg, 1927"
+      },
+      newParadigm: "Transistors. Lasers. Semiconductors. Your smartphone.",
+      transitionYears: "~27 years"
+    });
+  }
+
+  // --- Segment 7: Plate Tectonics ---
+
+  function buildSegment7Timeline() {
+    return buildRevolutionTimeline({
+      title1: "The Continental Drift Revolution (1912–1968)",
+      title2: "The continents are fixed. They have always been where they are.",
+      title3: "Continents ride on tectonic plates. The earth's surface is in constant motion.",
+      years: {
+        normal: "~1900",
+        anomalies: ["1912", "1920", "1930", "1940", "1912"],
+        crisis: "1920–1960",
+        revolution: "1963",
+        newParadigm: "1968"
+      },
+      normal: {
+        main: "The continents sit where they've always sat. The ocean floor is ancient.",
+        sub: "Standard geological consensus. (~1900)"
+      },
+      anomalies: [
+        { anomaly: "Africa and South America fit together like puzzle pieces.",
+          dismissal: "“Coincidence of coastline shape.”" },
+        { anomaly: "Identical fossils found on both sides of the Atlantic.",
+          dismissal: "“Land bridges, now sunk beneath the ocean.”" },
+        { anomaly: "Glacial scratches in Africa point toward South America.",
+          dismissal: "“Local ice patterns. Unrelated.”" },
+        { anomaly: "Mountain ranges in Scotland match Appalachians exactly.",
+          dismissal: "“Similar geological processes produce similar results.”" },
+        { anomaly: "Wegener publishes continental drift. Ridiculed for 50 years.",
+          dismissal: "“No known mechanism! Continents can't plow through ocean floor.”" },
+      ],
+      crisis: [
+        "“Wegener is not even a geologist. He's a meteorologist.”",
+        "“His theory is an impossible, footloose hypothesis.”"
+      ],
+      revolution: {
+        main: "The mid-ocean ridge. Magnetic stripes on the seafloor, symmetric.",
+        sub: "New crust forms at ridges. The floor is spreading.",
+        name: "Wegener / Hess / Vine-Matthews, 1963"
+      },
+      newParadigm: "Earthquake prediction. Resource geology. Volcanic monitoring.",
+      transitionYears: "~56 years"
+    });
+  }
+
+  // --- Segment 8: DNA ---
+
+  function buildSegment8Timeline() {
+    return buildRevolutionTimeline({
+      title1: "The DNA Revolution (1944–1953)",
+      title2: "Genes are made of protein. DNA is too simple to carry information.",
+      title3: "DNA is the molecule of heredity. Its structure explains copying.",
+      years: {
+        normal: "~1930",
+        anomalies: ["1944", "1950", "1952", "1952"],
+        crisis: "1950–1952",
+        revolution: "1953",
+        newParadigm: "1953"
+      },
+      normal: {
+        main: "Proteins are complex and versatile. DNA is boring and repetitive.",
+        sub: "Phoebus Levene's tetranucleotide hypothesis. (~1930)"
+      },
+      anomalies: [
+        { anomaly: "Avery's experiment: purified DNA alone transforms bacteria.",
+          dismissal: "“The sample must be contaminated with protein.”" },
+        { anomaly: "Chargaff: A always pairs with T. G always pairs with C.",
+          dismissal: "“Interesting chemistry. But DNA is still too simple.”" },
+        { anomaly: "Hershey-Chase: radioactive DNA enters cells. Protein stays outside.",
+          dismissal: "“The experiment is elegant but the conclusion is premature.”" },
+        { anomaly: "Franklin's X-ray: DNA has a regular, repeating helical structure.",
+          dismissal: "“Structure doesn't prove function.”" },
+      ],
+      crisis: [
+        "“If DNA carries heredity, why is it so monotonous?”",
+        "“Four bases cannot possibly encode the complexity of life.”"
+      ],
+      revolution: {
+        main: "Watson and Crick: “We have discovered the secret of life.”",
+        sub: "Base pairing explains copying. The structure IS the mechanism.",
+        name: "Franklin / Watson / Crick, 1953"
+      },
+      newParadigm: "The Human Genome Project. Gene therapy. CRISPR. Forensic DNA.",
+      transitionYears: "~9 years"
+    });
+  }
+
+  // --- Segment 9: Return to Map ---
+
+  function buildReturnTimeline() {
+    const TOTAL = 6;
+    const kf = [];
+
+    // Loop is already visible at 0.25 from the previous segment
+    // Fade loop labels + path from 0.25 to 1.0
+    kf.push({ t: 0, dur: 1, fn(p) {
+      const opacity = 0.25 + 0.75 * easeOutCubic(p);
+      cyclePath.setAttribute("opacity", String(opacity));
+      for (const el of [...loopLabels.childNodes]) {
+        el.setAttribute("opacity", String(opacity));
+      }
+    }});
+
+    // YOU ARE HERE arrow
+    kf.push({ t: 1.5, dur: 1, fn(p) {
+      const pos = phasePos(1);
+      youAreHere.setAttribute("opacity", String(easeOutCubic(p)));
+      if (!youAreHere.firstChild) {
+        const arrow = createText("← YOU ARE HERE", pos.x + 55, pos.y, 14, "#d4a017", { filter: "url(#glow)" });
+        arrow.setAttribute("text-anchor", "start");
+        youAreHere.appendChild(arrow);
+
+        const dot = document.createElementNS(SVG_NS, "circle");
+        dot.setAttribute("cx", pos.x);
+        dot.setAttribute("cy", pos.y);
+        dot.setAttribute("r", 6);
+        dot.setAttribute("fill", "#d4a017");
+        dot.setAttribute("filter", "url(#glow)");
+        dot.id = "yah-dot";
+        youAreHere.appendChild(dot);
+      }
+    }});
+
+    // Hold for pulsing to start
+    kf.push({ t: 2.5, dur: 3.5, fn() {} });
+
+    return { keyframes: kf, duration: TOTAL };
+  }
+
   // --- Playback ---
   let currentTimeline = null;
 
@@ -1224,6 +1436,27 @@
       playIcon.textContent = "▶";
       updateProgress(1);
       if (engine.segment === 0) startYahPulse();
+      // After segment 8 (DNA), auto-advance to return-to-map
+      if (engine.segment === 8) {
+        setTimeout(() => {
+          clearStage();
+          // Restore loop frame at 0.25 for the return sequence
+          cyclePath.setAttribute("d", fullCirclePath());
+          cyclePath.setAttribute("stroke-dasharray", "6,4");
+          cyclePath.removeAttribute("stroke-dashoffset");
+          cyclePath.setAttribute("opacity", "0.25");
+          for (let i = 0; i < 5; i++) {
+            const pos = phasePos(i);
+            const el = createText(phases[i].name, pos.x, pos.y, 12, phases[i].color, { opacity: 0.25 });
+            el.setAttribute("font-size", "12");
+            loopLabels.appendChild(el);
+          }
+          playSegment(9);
+        }, 2000);
+        return;
+      }
+      // After return segment, start YAH pulse
+      if (engine.segment === 9) startYahPulse();
       return;
     }
 
@@ -1277,7 +1510,9 @@
   // Public API
   const segmentBuilders = [
     buildSegment0Timeline, buildSegment1Timeline,
-    buildSegment2Timeline, buildSegment3Timeline, buildSegment4Timeline
+    buildSegment2Timeline, buildSegment3Timeline, buildSegment4Timeline,
+    buildSegment5Timeline, buildSegment6Timeline, buildSegment7Timeline,
+    buildSegment8Timeline, buildReturnTimeline
   ];
 
   function playSegment(n) {
