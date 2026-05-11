@@ -3,677 +3,533 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Structure of Scientific Revolutions — Draft Preview</title>
+<title>Scientific Revolutions — Abstract Kuhn Cycle</title>
 <style>
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{font-size:18px;scroll-behavior:smooth}
-body{background:#1a1a2e;color:#d8d4ce;font-family:Georgia,"Times New Roman",serif;line-height:1.85;padding:3rem 1.5rem 5rem;min-height:100vh}
-.container{max-width:740px;margin:0 auto}
-h1{font-family:system-ui,sans-serif;font-size:2.1rem;font-weight:300;color:#e8e4de;letter-spacing:.03em;margin-bottom:.3rem;text-align:center}
-.draft-tag{font-family:system-ui,sans-serif;font-size:.7rem;color:#c9a04a;text-transform:uppercase;letter-spacing:.2em;text-align:center;margin-bottom:3rem;opacity:.6}
-nav{margin-bottom:3rem;padding:.8rem 1rem;border:1px solid rgba(255,255,255,.05);border-radius:5px;background:rgba(0,0,0,.12)}
-nav .label{font-family:system-ui,sans-serif;font-size:.65rem;text-transform:uppercase;letter-spacing:.15em;color:#5a5a6e;margin-bottom:.4rem}
-nav ol{padding-left:1.2rem;font-size:.88rem;line-height:2.1}
-nav a{color:#8a9abe;text-decoration:none;border-bottom:1px solid transparent;transition:border-color .2s}
-nav a:hover{border-bottom-color:#8a9abe}
-h2{font-family:system-ui,sans-serif;font-size:1.25rem;font-weight:600;color:#c9a04a;margin-top:3.5rem;margin-bottom:1.1rem;padding-top:1rem;border-top:1px solid rgba(255,255,255,.05)}
-.epigraph{font-style:italic;color:#9a9aae;margin:0 0 2rem;padding-left:1.5rem;border-left:2px solid rgba(201,160,74,.25);font-size:.92rem;line-height:1.65}
-.epigraph .attr{display:block;text-align:right;font-size:.82rem;margin-top:.25rem;font-style:normal;color:#6a6a7e}
-p{margin-bottom:1.25rem}
-em{font-style:italic;color:#c8c4be}
-strong{font-weight:600;color:#e0dcd6}
-.svg-wrap{position:relative;margin:2.5rem -1.5rem;border-radius:6px;overflow:hidden;background:#0d0d1e}
-.svg-wrap svg{display:block;width:100%;height:auto;cursor:default}
-.aside{font-family:system-ui,sans-serif;font-size:.82rem;color:#8a8a9e;border-left:2px solid rgba(138,154,190,.2);padding:.6rem 1rem;margin:1rem 0 1.5rem;line-height:1.6;background:rgba(138,154,190,.03);border-radius:0 4px 4px 0}
-.phd{font-family:system-ui,sans-serif;font-size:.84rem;color:#7a8a6e;background:rgba(122,138,110,.06);padding:.7rem 1rem;border-radius:4px;border-left:3px solid rgba(122,138,110,.25);margin:1.5rem 0;line-height:1.55}
-.phd strong{color:#9aaa8e}
-.split{display:flex;gap:1.5rem;margin:1.5rem 0}
-.split>div{flex:1;padding:.9rem 1rem;border-radius:4px;font-size:.93rem;line-height:1.7}
-.split .a1{background:rgba(100,120,180,.05);border:1px solid rgba(100,120,180,.12)}
-.split .a2{background:rgba(201,160,74,.05);border:1px solid rgba(201,160,74,.12)}
-.split h3{font-family:system-ui,sans-serif;font-size:.88rem;font-weight:600;margin-bottom:.4rem}
-.split .a1 h3{color:#8a9abe}
-.split .a2 h3{color:#c9a04a}
-.mouthful{font-family:system-ui,sans-serif;font-size:.8rem;color:#8a8a9e;display:inline}
-ul.compact{padding-left:1.2rem;margin:.8rem 0 1.3rem}
-ul.compact li{margin-bottom:.3rem;font-size:.95rem}
-@media(max-width:600px){html{font-size:16px}h1{font-size:1.7rem}body{padding:2rem 1rem 3rem}.split{flex-direction:column;gap:1rem}.svg-wrap{margin:2rem -.8rem}}
+  body { margin: 0; background: #1a1a2e; display: flex; justify-content: center; align-items: center; min-height: 100vh; font-family: Georgia, serif; }
+  svg { max-width: 100vw; max-height: 100vh; }
 </style>
 </head>
 <body>
-<div class="container">
+<svg id="main" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="glow-strong">
+      <feGaussianBlur stdDeviation="10" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
 
-<h1>The Structure of Scientific Revolutions</h1>
-<p class="draft-tag">Draft preview &mdash; not yet integrated into manuscript</p>
+  <rect width="1200" height="700" fill="#1a1a2e"/>
 
-<nav>
-<div class="label">Contents</div>
-<ol>
-<li><a href="#pattern">The Pattern</a></li>
-<li><a href="#paradigm">The Current Paradigm</a></li>
-<li><a href="#anomalies">Anomaly Accumulation</a></li>
-<li><a href="#split">Life in the Flat</a></li>
-<li><a href="#plays-out">How It Plays Out</a></li>
-<li><a href="#reader">The Reader's Position</a></li>
-</ol>
-</nav>
+  <!-- Main stage area -->
+  <g id="stage">
+    <path id="cycle-path" d="" fill="none" stroke="#e8e0d044" stroke-width="2" stroke-dasharray="6,4"/>
+    <g id="loop-labels"></g>
+    <g id="center-stage"></g>
+    <rect id="golden-flash" x="0" y="0" width="1200" height="700" fill="#d4a017" opacity="0" pointer-events="none"/>
+    <g id="you-are-here" opacity="0"></g>
+  </g>
 
-<!-- ═══════════════════════════════════════ -->
-<h2 id="pattern">1. The Pattern</h2>
-
-<div class="epigraph">
-"The successive transition from one paradigm to another via revolution is the usual developmental pattern of mature science."
-<span class="attr">&mdash; Thomas Kuhn, <em>The Structure of Scientific Revolutions</em> (1962)</span>
-</div>
-
-<p>In 1962, Thomas Kuhn published a slim book that changed how people think about how science changes. His argument: science doesn't progress by steady accumulation. It lurches. Long stretches of productive work are punctuated by reorganizations that change not just the answers but the questions. He identified a pattern &mdash; and the pattern is worth seeing before we continue.</p>
-
-<!-- ═══════ SVG-054: A MAP OF SCIENTIFIC REVOLUTIONS ═══════ -->
-<div class="svg-wrap">
-<svg id="svg054" viewBox="0 0 1200 750" xmlns="http://www.w3.org/2000/svg">
-<rect width="1200" height="750" fill="#0d0d1e"/>
-
-<!-- Stars -->
-<circle cx="73" cy="42" r=".6" fill="#fff" opacity=".25"/><circle cx="380" cy="25" r=".5" fill="#fff" opacity=".2"/><circle cx="920" cy="38" r=".6" fill="#fff" opacity=".25"/><circle cx="1140" cy="95" r=".4" fill="#fff" opacity=".15"/><circle cx="50" cy="400" r=".5" fill="#fff" opacity=".2"/><circle cx="1160" cy="500" r=".5" fill="#fff" opacity=".18"/>
-
-<!-- ═══ KUHN CYCLE LOOP (pentagon) ═══ -->
-<g id="loopFrame">
-<path d="M600,75 L1060,250 L920,570 L280,570 L140,250 Z" fill="none" stroke="#1e1e38" stroke-width="2.5" stroke-dasharray="8,6"/>
-
-<!-- Lit segments (appear when phases complete) -->
-<line id="seg01" x1="600" y1="75" x2="1060" y2="250" stroke="#c9a04a" stroke-width="2" opacity="0"/>
-<line id="seg12" x1="1060" y1="250" x2="920" y2="570" stroke="#c9a04a" stroke-width="2" opacity="0"/>
-<line id="seg23" x1="920" y1="570" x2="280" y2="570" stroke="#c9a04a" stroke-width="2" opacity="0"/>
-<line id="seg34" x1="280" y1="570" x2="140" y2="250" stroke="#c9a04a" stroke-width="2" opacity="0"/>
-<line id="seg40" x1="140" y1="250" x2="600" y2="75" stroke="#c9a04a" stroke-width="2" opacity="0"/>
-
-<!-- 5 position labels -->
-<g id="loopLabel0">
-<circle cx="600" cy="75" r="8" fill="#0d0d1e" stroke="#2a3a5e" stroke-width="2" id="ll0c"/>
-<text x="600" y="55" text-anchor="middle" fill="#3a4a6e" font-family="system-ui" font-size="10" font-weight="600" letter-spacing=".06em" id="ll0t">NORMAL SCIENCE</text>
-</g>
-<g id="loopLabel1">
-<circle cx="1060" cy="250" r="8" fill="#0d0d1e" stroke="#4a3a20" stroke-width="2" id="ll1c"/>
-<text x="1100" y="248" fill="#5a4a30" font-family="system-ui" font-size="10" font-weight="600" id="ll1t">ANOMALY</text>
-</g>
-<g id="loopLabel2">
-<circle cx="920" cy="570" r="8" fill="#0d0d1e" stroke="#4a2020" stroke-width="2" id="ll2c"/>
-<text x="965" y="575" fill="#5a3030" font-family="system-ui" font-size="10" font-weight="600" id="ll2t">CRISIS</text>
-</g>
-<g id="loopLabel3">
-<circle cx="280" cy="570" r="8" fill="#0d0d1e" stroke="#4a3a10" stroke-width="2" id="ll3c"/>
-<text x="230" y="575" text-anchor="end" fill="#5a4a20" font-family="system-ui" font-size="10" font-weight="600" id="ll3t">REVOLUTION</text>
-</g>
-<g id="loopLabel4">
-<circle cx="140" cy="250" r="8" fill="#0d0d1e" stroke="#204a20" stroke-width="2" id="ll4c"/>
-<text x="95" y="248" text-anchor="end" fill="#305a30" font-family="system-ui" font-size="10" font-weight="600" id="ll4t">NEW NORMAL</text>
-</g>
-</g>
-
-<!-- ═══ TITLE BAR (persistent per revolution) ═══ -->
-<g id="titleBar" style="opacity:0">
-<text id="revTitle" x="600" y="128" text-anchor="middle" fill="#c9a04a" font-family="system-ui" font-size="16" font-weight="600" letter-spacing=".04em"></text>
-<text id="revSubtitle" x="600" y="150" text-anchor="middle" fill="#6a7a9e" font-family="Georgia,serif" font-size="12.5" font-style="italic"></text>
-<text id="revSubNew" x="600" y="150" text-anchor="middle" fill="#c9a04a" font-family="Georgia,serif" font-size="12.5" font-style="italic" style="opacity:0"></text>
-</g>
-
-<!-- Phase label + Year display -->
-<text id="phaseLabel" x="600" y="185" text-anchor="middle" fill="#4a6aaa" font-family="system-ui" font-size="11" font-weight="700" letter-spacing=".12em" opacity="0">NORMAL SCIENCE</text>
-<text id="yearDisp" x="1140" y="128" text-anchor="end" fill="#5a5a6e" font-family="system-ui" font-size="22" font-weight="200" opacity="0"></text>
-<text id="revCount" x="1140" y="150" text-anchor="end" fill="#3a3a4e" font-family="system-ui" font-size="10" opacity="0"></text>
-
-<!-- Mini Kuhn wheel (upper right) -->
-<g id="miniWheel" transform="translate(1135,200)" opacity="0">
-<path d="M0,-22 A22,22 0 0,1 20.9,-6.8" fill="none" stroke="#4a6aaa" stroke-width="4" stroke-linecap="round" id="mw0" opacity=".15"/>
-<path d="M20.9,-6.8 A22,22 0 0,1 13,17.8" fill="none" stroke="#d4a030" stroke-width="4" stroke-linecap="round" id="mw1" opacity=".15"/>
-<path d="M13,17.8 A22,22 0 0,1 -13,17.8" fill="none" stroke="#c04040" stroke-width="4" stroke-linecap="round" id="mw2" opacity=".15"/>
-<path d="M-13,17.8 A22,22 0 0,1 -20.9,-6.8" fill="none" stroke="#f0c040" stroke-width="4" stroke-linecap="round" id="mw3" opacity=".15"/>
-<path d="M-20.9,-6.8 A22,22 0 0,1 0,-22" fill="none" stroke="#40a060" stroke-width="4" stroke-linecap="round" id="mw4" opacity=".15"/>
-</g>
-
-<!-- ═══ TITLE GROUP (opening/static state) ═══ -->
-<g id="titleGroup">
-<text x="600" y="330" text-anchor="middle" fill="#c9a04a" font-family="system-ui" font-size="28" font-weight="200" letter-spacing=".05em" opacity=".8">A MAP OF SCIENTIFIC REVOLUTIONS</text>
-<text x="600" y="370" text-anchor="middle" fill="#5a5a6e" font-family="system-ui" font-size="13" font-weight="300">The pattern repeats. Press play to see it.</text>
-</g>
-
-<!-- "YOU ARE HERE" at Anomaly position -->
-<g id="youAreHere">
-<line x1="1060" y1="268" x2="1060" y2="295" stroke="#f0c040" stroke-width="2" stroke-dasharray="4,4" opacity=".3"/>
-<polygon points="1048,295 1060,313 1072,295" fill="#f0c040"><animate attributeName="opacity" values=".3;.8;.3" dur="2.5s" repeatCount="indefinite"/></polygon>
-<text x="1060" y="330" text-anchor="middle" fill="#f0c040" font-family="system-ui" font-size="8.5" font-weight="700" letter-spacing=".08em"><animate attributeName="opacity" values=".4;1;.4" dur="2.5s" repeatCount="indefinite"/>YOU ARE HERE</text>
-</g>
-
-<!-- ═══ ABSTRACT KUHN CYCLE (center text per loop position) ═══ -->
-<g id="abstract" style="opacity:0">
-<g id="ap0" style="opacity:0"><text x="600" y="370" text-anchor="middle" fill="#7a9abe" font-family="system-ui" font-size="20" font-weight="300">Productive. Stable. Assumed.</text></g>
-<g id="ap1" style="opacity:0"><text x="600" y="370" text-anchor="middle" fill="#d4a030" font-family="system-ui" font-size="20" font-weight="300">Something doesn't fit.</text></g>
-<g id="ap2" style="opacity:0"><text x="600" y="370" text-anchor="middle" fill="#c05050" font-family="system-ui" font-size="20" font-weight="300">The paradigm strains.</text></g>
-<g id="ap3" style="opacity:0"><text x="600" y="370" text-anchor="middle" fill="#f0c040" font-family="system-ui" font-size="20" font-weight="300">Everything changes.</text></g>
-<g id="ap4" style="opacity:0"><text x="600" y="370" text-anchor="middle" fill="#50a060" font-family="system-ui" font-size="20" font-weight="300">Until the next time.</text></g>
-<text id="apReturnText" x="600" y="420" text-anchor="middle" fill="#5a5a6e" font-family="system-ui" font-size="12" font-style="italic" opacity="0">The cycle repeats.</text>
-</g>
-
-<!-- ═══ LOOP POSITION SUMMARIES (land when phase completes) ═══ -->
-<g id="lp0p0" style="opacity:0">
-<text x="600" y="97" text-anchor="middle" fill="#7a9abe" font-family="system-ui" font-size="9.5" font-weight="600">Sun rises, crosses, sets</text>
-<text x="600" y="111" text-anchor="middle" fill="#5a6a8e" font-family="system-ui" font-size="8.5">Crystal spheres &middot; Earth at center</text>
-</g>
-<g id="lp0p1" style="opacity:0">
-<text x="1060" y="272" text-anchor="middle" fill="#d4a030" font-family="system-ui" font-size="9.5" font-weight="600">Mars goes backward</text>
-<text x="1060" y="286" text-anchor="middle" fill="#a08030" font-family="system-ui" font-size="8.5">79 epicycles</text>
-</g>
-<g id="lp0p2" style="opacity:0">
-<text x="920" y="555" text-anchor="middle" fill="#c05050" font-family="system-ui" font-size="9.5" font-weight="600">"The Earth MOVES?"</text>
-<text x="920" y="540" text-anchor="middle" fill="#904040" font-family="system-ui" font-size="8.5">Ignored 70 years</text>
-</g>
-<g id="lp0p3" style="opacity:0">
-<text x="280" y="555" text-anchor="middle" fill="#f0c040" font-family="system-ui" font-size="9.5" font-weight="600">Galileo's telescope</text>
-<text x="280" y="540" text-anchor="middle" fill="#c0a040" font-family="system-ui" font-size="8.5">Jupiter's moons</text>
-</g>
-<g id="lp0p4" style="opacity:0">
-<text x="140" y="272" text-anchor="middle" fill="#50a060" font-family="system-ui" font-size="9.5" font-weight="600">Sun at center</text>
-<text x="140" y="286" text-anchor="middle" fill="#408050" font-family="system-ui" font-size="8.5">Space navigation</text>
-</g>
-
-<!-- ═══ REVOLUTION 1: HELIOCENTRISM — CENTER STAGE ═══ -->
-
-<!-- Phase 0: Normal Science -->
-<g id="r0p0" data-phase style="opacity:0">
-<text x="600" y="290" text-anchor="middle" fill="#c8d8f0" font-family="Georgia,serif" font-size="22">The sun rises in the east, crosses the sky,</text>
-<text x="600" y="325" text-anchor="middle" fill="#c8d8f0" font-family="Georgia,serif" font-size="22">and sets in the west.</text>
-<text x="600" y="380" text-anchor="middle" fill="#8a9abe" font-family="Georgia,serif" font-size="17">Stars wheel overhead. Earth feels still.</text>
-<circle cx="600" cy="430" r="14" fill="#f0a030" opacity=".4"><animate attributeName="opacity" values=".3;.5;.3" dur="4s" repeatCount="indefinite"/></circle>
-<g data-delay="2800" style="opacity:0;transition:opacity 1s">
-<text x="600" y="485" text-anchor="middle" fill="#5a6a8a" font-family="system-ui" font-size="13">They built a model: crystal spheres, Earth at center.</text>
-<text x="600" y="505" text-anchor="middle" fill="#4a5a7a" font-family="system-ui" font-size="12">It worked. Mostly.</text>
-</g>
-</g>
-
-<!-- Phase 1: Anomaly -->
-<g id="r0p1" data-phase style="opacity:0">
-<text x="600" y="280" text-anchor="middle" fill="#e8c860" font-family="Georgia,serif" font-size="22">Mars stops. Goes backward.</text>
-<text x="600" y="315" text-anchor="middle" fill="#e8c860" font-family="Georgia,serif" font-size="22">Then forward again.</text>
-<text x="600" y="370" text-anchor="middle" fill="#c0a040" font-family="Georgia,serif" font-size="16">The model needs a patch: an epicycle.</text>
-<text x="600" y="420" text-anchor="middle" fill="#d4a030" font-family="system-ui" font-size="18" font-weight="600" opacity=".5">37 epicycles...</text>
-<g data-delay="1500" style="opacity:0;transition:opacity .5s">
-<text x="600" y="450" text-anchor="middle" fill="#d4a030" font-family="system-ui" font-size="20" font-weight="700" opacity=".65">52...</text>
-</g>
-<g data-delay="3000" style="opacity:0;transition:opacity .5s">
-<text x="600" y="480" text-anchor="middle" fill="#c04040" font-family="system-ui" font-size="22" font-weight="700" opacity=".8">79...</text>
-</g>
-</g>
-
-<!-- Phase 2: Crisis -->
-<g id="r0p2" data-phase style="opacity:0">
-<g transform="translate(600,310)">
-<path d="M-230,-50 Q-230,-70 -210,-70 L210,-70 Q230,-70 230,-50 L230,10 Q230,30 210,30 L20,30 0,55 -20,30 -210,30 Q-230,30 -230,10 Z" fill="#1a1020" stroke="#c04040" stroke-width="2.5"/>
-<text x="0" y="-22" text-anchor="middle" fill="#e05050" font-family="system-ui" font-size="22" font-weight="700">The Earth MOVES? Absurd.</text>
-<text x="0" y="8" text-anchor="middle" fill="#c06060" font-family="system-ui" font-size="15" font-style="italic">I can feel that it doesn't.</text>
-</g>
-<text x="600" y="440" text-anchor="middle" fill="#8a4040" font-family="system-ui" font-size="14" font-weight="600" letter-spacing=".08em">DE REVOLUTIONIBUS</text>
-<text x="600" y="465" text-anchor="middle" fill="#6a3a3a" font-family="system-ui" font-size="12">Published 1543. Ignored 70 years.</text>
-</g>
-
-<!-- Phase 3: Revolution -->
-<g id="r0p3" data-phase style="opacity:0">
-<text x="600" y="260" text-anchor="middle" fill="#f0d060" font-family="Georgia,serif" font-size="22">Galileo points a telescope at Jupiter.</text>
-<text x="600" y="310" text-anchor="middle" fill="#f0c040" font-family="Georgia,serif" font-size="24" font-weight="600">He sees moons &mdash; orbiting Jupiter, not Earth.</text>
-<!-- Telescope -->
-<g transform="translate(500,420)">
-<polygon points="0,10 20,-30 40,10" fill="#4a3a2a" stroke="#8a7a5a" stroke-width="1.5"/>
-<rect x="22" y="-50" width="6" height="22" fill="#5a4a3a"/>
-<circle cx="25" cy="-58" r="6" fill="none" stroke="#8a7a5a" stroke-width="1.5"/>
-</g>
-<!-- Jupiter + moons -->
-<g transform="translate(720,420)">
-<circle cx="0" cy="0" r="22" fill="#8a6a3a" stroke="#aa8a4a" stroke-width="1.5" opacity=".7"/>
-<circle cx="-28" cy="-5" r="2.5" fill="#d0d0d8" opacity=".7"><animate attributeName="cx" values="-28;-32;-28;-24;-28" dur="3s" repeatCount="indefinite"/><animate attributeName="cy" values="-5;0;5;0;-5" dur="3s" repeatCount="indefinite"/></circle>
-<circle cx="30" cy="3" r="2" fill="#d0d0d8" opacity=".6"><animate attributeName="cx" values="30;26;30;34;30" dur="4s" repeatCount="indefinite"/><animate attributeName="cy" values="3;-3;-6;-3;3" dur="4s" repeatCount="indefinite"/></circle>
-<circle cx="5" cy="-28" r="1.5" fill="#d0d0d8" opacity=".5"><animate attributeName="cx" values="5;10;5;0;5" dur="3.5s" repeatCount="indefinite"/><animate attributeName="cy" values="-28;-25;-22;-25;-28" dur="3.5s" repeatCount="indefinite"/></circle>
-</g>
-<!-- Golden flash -->
-<circle cx="600" cy="350" r="0" fill="#f0c040" opacity="0"><animate attributeName="r" values="0;250;250" dur=".7s" begin="indefinite" fill="freeze" class="pop-anim"/><animate attributeName="opacity" values="0;.12;0" dur=".7s" begin="indefinite" fill="freeze" class="pop-anim"/></circle>
-</g>
-
-<!-- Phase 4: New Normal -->
-<g id="r0p4" data-phase style="opacity:0">
-<text x="600" y="285" text-anchor="middle" fill="#60b070" font-family="Georgia,serif" font-size="21">Sun at center. Planets in orbits.</text>
-<text x="600" y="340" text-anchor="middle" fill="#50a060" font-family="system-ui" font-size="14" opacity=".7">&rarr; Celestial mechanics</text>
-<text x="600" y="365" text-anchor="middle" fill="#50a060" font-family="system-ui" font-size="14" opacity=".7">&rarr; Space navigation</text>
-<text x="600" y="390" text-anchor="middle" fill="#50a060" font-family="system-ui" font-size="14" opacity=".7">&rarr; James Webb Space Telescope</text>
-<text x="600" y="460" text-anchor="middle" fill="#6a6a7e" font-family="system-ui" font-size="12" font-weight="300">Copernicus (1543) &middot; Galileo (1610) &middot; Kepler &middot; Newton (1687)</text>
-</g>
-
-<!-- ═══ END STATE ═══ -->
-<g id="endState" style="opacity:0">
-<text x="600" y="320" text-anchor="middle" fill="#5a5a6e" font-family="system-ui" font-size="18" font-weight="200" letter-spacing=".08em">7 more revolutions to come...</text>
-<text x="600" y="360" text-anchor="middle" fill="#3a3a4e" font-family="system-ui" font-size="11">Chemistry &bull; Evolution &bull; Germ theory &bull; Relativity &bull; Quantum &bull; Tectonics &bull; DNA</text>
-<text x="600" y="430" text-anchor="middle" fill="#5a5a6e" font-family="Georgia,serif" font-size="13" font-style="italic" opacity=".5">The pattern repeats.</text>
-</g>
-
-<!-- ═══ SCRUBBER BAR ═══ -->
-<g id="scrubber" style="opacity:0">
-<rect x="95" y="710" width="1010" height="30" fill="transparent" cursor="pointer" onclick="E.scrubClick(event)"/>
-<rect x="100" y="721" width="1000" height="4" rx="2" fill="#1a1a30"/>
-<rect id="scrubFill" x="100" y="721" width="0" height="4" rx="2" fill="#c9a04a" opacity=".35"/>
-<g onclick="E.seekTo(0)" cursor="pointer"><circle id="sbd0" cx="100" cy="723" r="5" fill="#0d0d1e" stroke="#3a3a5e" stroke-width="2"/><text x="100" y="743" text-anchor="middle" fill="#3a3a5e" font-family="system-ui" font-size="7">Helio</text></g>
-<g onclick="E.seekTo(1)" cursor="pointer" opacity=".3"><circle id="sbd1" cx="243" cy="723" r="5" fill="#0d0d1e" stroke="#2a2a3e" stroke-width="1.5"/><text x="243" y="743" text-anchor="middle" fill="#2a2a3e" font-family="system-ui" font-size="7">O&#x2082;</text></g>
-<g onclick="E.seekTo(2)" cursor="pointer" opacity=".3"><circle id="sbd2" cx="386" cy="723" r="5" fill="#0d0d1e" stroke="#2a2a3e" stroke-width="1.5"/><text x="386" y="743" text-anchor="middle" fill="#2a2a3e" font-family="system-ui" font-size="7">Evo</text></g>
-<g onclick="E.seekTo(3)" cursor="pointer" opacity=".3"><circle id="sbd3" cx="529" cy="723" r="5" fill="#0d0d1e" stroke="#2a2a3e" stroke-width="1.5"/><text x="529" y="743" text-anchor="middle" fill="#2a2a3e" font-family="system-ui" font-size="7">Germ</text></g>
-<g onclick="E.seekTo(4)" cursor="pointer" opacity=".3"><circle id="sbd4" cx="671" cy="723" r="5" fill="#0d0d1e" stroke="#2a2a3e" stroke-width="1.5"/><text x="671" y="743" text-anchor="middle" fill="#2a2a3e" font-family="system-ui" font-size="7">Rel</text></g>
-<g onclick="E.seekTo(5)" cursor="pointer" opacity=".3"><circle id="sbd5" cx="814" cy="723" r="5" fill="#0d0d1e" stroke="#2a2a3e" stroke-width="1.5"/><text x="814" y="743" text-anchor="middle" fill="#2a2a3e" font-family="system-ui" font-size="7">QM</text></g>
-<g onclick="E.seekTo(6)" cursor="pointer" opacity=".3"><circle id="sbd6" cx="957" cy="723" r="5" fill="#0d0d1e" stroke="#2a2a3e" stroke-width="1.5"/><text x="957" y="743" text-anchor="middle" fill="#2a2a3e" font-family="system-ui" font-size="7">Tect</text></g>
-<g onclick="E.seekTo(7)" cursor="pointer" opacity=".3"><circle id="sbd7" cx="1100" cy="723" r="5" fill="#0d0d1e" stroke="#2a2a3e" stroke-width="1.5"/><text x="1100" y="743" text-anchor="middle" fill="#2a2a3e" font-family="system-ui" font-size="7">DNA</text></g>
-<circle id="playhead" cx="100" cy="723" r="7" fill="#c9a04a" stroke="#f0c040" stroke-width="1.5" style="opacity:0"/>
-</g>
-
-<!-- ═══ PLAY BUTTON ═══ -->
-<g id="playBtn" cursor="pointer" onclick="E.start()">
-<rect x="250" y="200" width="700" height="400" fill="#0d0d1e" opacity=".15" rx="8"/>
-<circle cx="600" cy="420" r="44" fill="rgba(201,160,74,.06)" stroke="#c9a04a" stroke-width="2"><animate attributeName="r" values="44;48;44" dur="3s" repeatCount="indefinite"/></circle>
-<polygon points="590,398 590,442 618,420" fill="#c9a04a" opacity=".8"/>
-<text x="600" y="480" text-anchor="middle" fill="#5a5a6e" font-family="system-ui" font-size="10" letter-spacing=".12em">PRESS PLAY</text>
-</g>
-
+  <!-- Scrubber bar -->
+  <g id="scrubber">
+    <rect x="60" y="660" width="1080" height="2" fill="#e8e0d033" rx="1"/>
+    <rect id="progress-bar" x="60" y="660" width="0" height="2" fill="#d4a017" rx="1"/>
+    <g id="play-btn" cursor="pointer">
+      <circle cx="30" cy="661" r="14" fill="none" stroke="#e8e0d066" stroke-width="1.5"/>
+      <text id="play-icon" x="30" y="667" text-anchor="middle" fill="#e8e0d0" font-size="16" font-family="Georgia, serif"></text>
+    </g>
+    <g id="scrubber-dots"></g>
+  </g>
 </svg>
-</div>
-
-<p>The vocabulary &mdash; normal science, anomaly, crisis, revolution &mdash; is less important than the rhythm. Watch the cycle fill up as each phase plays. Click any stop on the timeline to jump.</p>
-
-<!-- ═══════════════════════════════════════ -->
-<h2 id="paradigm">2. The Current Paradigm</h2>
-
-<p>Normal science in quantum computing, as of 2026, rests on four assumptions. They are productive assumptions &mdash; they have produced real quantum processors performing real computations. They are also assumptions.</p>
-
-<ul class="compact">
-<li><strong>Computation is engineered.</strong> You design a quantum computer top-down: choose a qubit technology, build a processor, run algorithms.</li>
-<li><strong>Decoherence is the enemy.</strong> Quantum states are fragile. The central challenge is keeping them coherent long enough to compute.</li>
-<li><strong>Scale is the goal.</strong> More qubits, fewer errors. Roadmaps point toward millions.</li>
-<li><strong>Topology is a strategy.</strong> Microsoft's topological qubits use topology to solve the decoherence problem &mdash; a clever engineering approach within the same framework.</li>
-</ul>
-
-<p>This paradigm works. Ptolemy's epicycles predicted planetary positions accurately for fifteen hundred years. The question is not whether the paradigm works. It is whether the paradigm is the whole story.</p>
-
-<!-- ═══════════════════════════════════════ -->
-<h2 id="anomalies">3. Anomaly Accumulation</h2>
-
-<p>Consider four published facts. Each is unremarkable within its own field.</p>
-
-<p><strong>Anyons exist.</strong> The fractional quantum Hall effect produces quasiparticles with fractional statistics &mdash; neither bosons nor fermions. Nobel Prize 1998 (Laughlin, Stormer, Tsui). Nobel Prize 2016 (Thouless, Haldane, Kosterlitz). Textbook physics, confirmed experimentally since 1982.</p>
-
-<p><strong>Anyons can compute.</strong> Kitaev showed in 2003 that braiding non-Abelian anyons performs inherently fault-tolerant quantum computation. Freedman, Kitaev, Larsen, and Wang proved certain anyon models are computationally universal. Michael Freedman &mdash; Fields Medalist &mdash; left pure mathematics to lead this research. Microsoft bet its quantum computing program on it.</p>
-
-<div class="aside">Non-Abelian anyons exchange statistics depend on the order of braiding operations. The computational power comes from this non-commutativity: different braid sequences produce different unitary transformations on the ground-state degeneracy. Freedman-Kitaev-Wang (2002) proved that specific anyon models (e.g., Fibonacci anyons) provide a universal gate set through braiding alone.</div>
-
-<p><strong>Autocatalytic sets self-organize.</strong> Kauffman demonstrated in 1993 that sufficiently diverse chemical systems spontaneously produce self-sustaining autocatalytic networks &mdash; closed sets of reactions where the products catalyze each other's formation. Not gradually: as a phase transition. Below a threshold, nothing interesting. Above it, self-organization is essentially inevitable. Published mathematics.</p>
-
-<div class="aside">Kauffman's three criteria for autocatalytic closure &mdash; generation, transformation, and closure &mdash; were later formalized by Hordijk and Steel (2004) as RAF (reflexively autocatalytic and food-generated) sets. The existence of RAF sets in random catalytic reaction networks undergoes a sharp phase transition as a function of network diversity.</div>
-
-<p><strong>Nobody has combined them.</strong> Search the literature. The number of published papers combining autocatalytic set theory with fractional quantum Hall substrates is zero. Not "few." Not "contested." Zero.</p>
-
-<div class="phd"><strong>PhD seed:</strong> "Autocatalytic network dynamics in fractional quantum Hall substrates: a computational feasibility study." This paper does not exist. The question it would investigate &mdash; whether Kauffman's RAF closure conditions can be satisfied by anyon fusion algebras &mdash; is straightforwardly publishable. It requires expertise in complexity theory <em>and</em> condensed matter physics. It is a career.</div>
-
-<p>The gap is structural. Condensed matter physicists publish in <em>Physical Review Letters</em> and attend APS March Meeting. Complexity scientists publish in <em>Journal of Theoretical Biology</em> and work at the Santa Fe Institute. There is no journal called <em>Topological Autocatalysis</em>. There is no conference called "Self-Organization in Quantum Hall Systems." The question has not been asked because no one's job description requires them to ask it.</p>
-
-<p>Each of these facts is an anomaly in Kuhn's sense &mdash; not because it contradicts the current paradigm, but because the paradigm has no way to frame it.</p>
-
-<!-- ═══════════════════════════════════════ -->
-<h2 id="split">4. Life in the Flat</h2>
-
-<div class="epigraph">
-"The most profound technologies are those that disappear."
-<span class="attr">&mdash; Mark Weiser, "The Computer for the 21st Century" (1991)</span>
-</div>
-
-<p>Here is the question, stated plainly: if a two-dimensional quantum substrate hosts a sufficiently diverse population of anyonic excitations, and those excitations interact through fusion and braiding rules that satisfy the mathematical criteria for autocatalytic closure &mdash; do they self-organize?</p>
-
-<p>What would we call it if they did?</p>
-
-<p>Life.</p>
-
-<p>No &mdash; catch that word. <span class="mouthful">"Spontaneous self-sustaining autocatalytic network emergence exhibiting recursive topological computational dynamics."</span> That is the accurate description. It takes twenty words where one would do. The scientific debate about which terminology applies has not started, because &mdash; as noted &mdash; no one has asked the question. The word "life" is a placeholder for a concept that does not yet have agreed scientific vocabulary.</p>
-
-<p>Or we could just say "life," recognizing that the terminological debate has not even begun as of this writing.</p>
-
-<div class="phd"><strong>PhD seed:</strong> "Toward a taxonomy of emergent computation in topological substrates: definitional frameworks for autocatalytic quantum dynamics." The field cannot even argue about what to call this until someone proposes a vocabulary. This is a philosophy-of-science paper dressed as physics.</div>
-
-<p><strong>The expert consensus, as of 2026,</strong> is approximately this: <em>not precluded by known physics, but probably not a thing.</em> A science-aware AI, given this question, produces a response in that range. Top human experts would likely say something similar. This is the honest state of the question &mdash; genuinely open, not settled in either direction.</p>
-
-<p>This is not crankery. Experts do not say "impossible." But it is also not established science. No one says "probably true." It is an unstudied question, which is a different thing from a settled one.</p>
-
-<!-- ═══════ SVG-055: NOT PRECLUDED ═══════ -->
-<div class="svg-wrap">
-<svg viewBox="0 0 700 320" xmlns="http://www.w3.org/2000/svg">
-<rect width="700" height="320" fill="#0d0d1e"/>
-<defs><linearGradient id="spec" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#6a2020"/><stop offset="35%" stop-color="#4a4a5a"/><stop offset="50%" stop-color="#4a4a6a"/><stop offset="65%" stop-color="#4a4a5a"/><stop offset="100%" stop-color="#206a20"/></linearGradient></defs>
-<rect x="60" y="130" width="580" height="12" rx="6" fill="url(#spec)" opacity=".45"/>
-<text x="60" y="120" fill="#8a4040" font-size="9.5" font-family="system-ui" opacity=".5">Impossible</text>
-<text x="330" y="120" fill="#6a6a7e" font-size="9.5" font-family="system-ui" text-anchor="middle" opacity=".5">Unknown</text>
-<text x="620" y="120" fill="#408a40" font-size="9.5" font-family="system-ui" text-anchor="end" opacity=".5">Established</text>
-<!-- Our marker (stays put) -->
-<circle cx="260" cy="136" r="5" fill="#c9a04a" opacity=".8"><animate attributeName="opacity" values=".6;1;.6" dur="3s" repeatCount="indefinite"/></circle>
-<text x="260" y="165" fill="#c9a04a" font-size="8.5" font-family="system-ui" text-anchor="middle" opacity=".55">Autocatalytic QH</text>
-<text x="260" y="177" fill="#c9a04a" font-size="8" font-family="system-ui" text-anchor="middle" opacity=".45">(2026)</text>
-<!-- Historical markers that MIGRATE -->
-<circle r="4" fill="#6a8abe" opacity="0"><animate attributeName="opacity" values="0;.7;.7;.7;.7;.3;0;0" dur="12s" repeatCount="indefinite"/><animate attributeName="cx" values="250;250;350;480;560;560;560;250" dur="12s" repeatCount="indefinite"/><animate attributeName="cy" values="136;136;136;136;136;136;136;136" dur="12s" repeatCount="indefinite"/></circle>
-<text fill="#6a8abe" font-size="8" font-family="system-ui" text-anchor="middle" opacity="0"><animate attributeName="opacity" values="0;.5;.5;.5;.4;.2;0;0" dur="12s" repeatCount="indefinite"/><animate attributeName="x" values="250;250;350;480;560;560;560;250" dur="12s" repeatCount="indefinite"/><animate attributeName="y" values="208;208;208;208;208;208;208;208" dur="12s" repeatCount="indefinite"/>Continental drift (50 yrs)</text>
-<circle r="4" fill="#8abe6a" opacity="0"><animate attributeName="opacity" values="0;.7;.7;.7;.7;.3;0;0" dur="12s" repeatCount="indefinite" begin="2s"/><animate attributeName="cx" values="240;240;380;500;560;560;560;240" dur="12s" repeatCount="indefinite" begin="2s"/><animate attributeName="cy" values="136;136;136;136;136;136;136;136" dur="12s" repeatCount="indefinite" begin="2s"/></circle>
-<text fill="#8abe6a" font-size="8" font-family="system-ui" text-anchor="middle" opacity="0"><animate attributeName="opacity" values="0;.5;.5;.5;.4;.2;0;0" dur="12s" repeatCount="indefinite" begin="2s"/><animate attributeName="x" values="240;240;380;500;560;560;560;240" dur="12s" repeatCount="indefinite" begin="2s"/><animate attributeName="y" values="222;222;222;222;222;222;222;222" dur="12s" repeatCount="indefinite" begin="2s"/>Germ theory (25 yrs)</text>
-<circle r="4" fill="#be8a6a" opacity="0"><animate attributeName="opacity" values="0;.7;.7;.7;.7;.3;0;0" dur="12s" repeatCount="indefinite" begin="4s"/><animate attributeName="cx" values="270;270;400;520;560;560;560;270" dur="12s" repeatCount="indefinite" begin="4s"/><animate attributeName="cy" values="136;136;136;136;136;136;136;136" dur="12s" repeatCount="indefinite" begin="4s"/></circle>
-<text fill="#be8a6a" font-size="8" font-family="system-ui" text-anchor="middle" opacity="0"><animate attributeName="opacity" values="0;.5;.5;.5;.4;.2;0;0" dur="12s" repeatCount="indefinite" begin="4s"/><animate attributeName="x" values="270;270;400;520;560;560;560;270" dur="12s" repeatCount="indefinite" begin="4s"/><animate attributeName="y" values="236;236;236;236;236;236;236;236" dur="12s" repeatCount="indefinite" begin="4s"/>Quantum mechanics (27 yrs)</text>
-<!-- Bottom annotation -->
-<text x="350" y="290" text-anchor="middle" fill="#4a4a5e" font-family="system-ui" font-size="9" font-style="italic" opacity=".4">Every revolution starts here. Most things that start here are not revolutions.</text>
-</svg>
-<p style="font-size:.78rem;color:#5a6a84;text-align:center;padding:.4rem;font-style:italic">The gold marker stays where it is. The others started in the same place. They moved.</p>
-</div>
-
-<p>This is where the analysis forks.</p>
-
-<div class="split">
-<div class="a1">
-<h3>A1: Not possible</h3>
-<p>Autocatalytic dynamics don't produce computational structures in FQHE substrates. The silence gap is silence because there's nothing there. The scientific revolution is <em>distributed</em> &mdash; multiple independent paradigm shifts across condensed matter, complexity theory, and quantum information that never converge. Each field advances. None meets the others.</p>
-</div>
-<div class="a2">
-<h3>A2: Possible but unproven</h3>
-<p>The physics permits it. No one has looked. The anomalies exist but haven't been recognized as anomalies because no one has framed the question. The wheel has not started turning because the question has not been asked.</p>
-</div>
-</div>
-
-<p>A2 is structurally identical to Possibility C from a Kuhnian standpoint. Whether someone has already done it is irrelevant to how the paradigm community encounters the question. The physics is the same. The anomalies are the same. The pattern of crisis and resolution will follow the same structure.</p>
-
-<p>This is not an argument for C. It is an observation about paradigm change.</p>
-
-<!-- ═══════════════════════════════════════ -->
-<h2 id="plays-out">5. How It Plays Out</h2>
-
-<p>Under A2, the Kuhnian dynamics follow the pattern the reader has now seen three times &mdash; and will see five more.</p>
-
-<p>The <strong>pre-revolution phase</strong> is where the literature currently sits. Publications scattered across disciplines. No connecting framework. Kauffman in complexity science. Kitaev in quantum information. Freedman in topology. Each result published, cited, uncontroversial within its home field.</p>
-
-<p>The <strong>trigger</strong> is someone asking the question publicly. This book is one possible trigger. It is not the only one. A sufficiently well-read graduate student could arrive at the same question independently. The published facts lead there.</p>
-
-<p>The <strong>crisis</strong> emerges when the existing paradigm encounters the proposition that computation might be emergent. Paradigms resist replacement &mdash; not through conspiracy, but through the ordinary mechanics of careers, funding structures, and textbooks organized around current assumptions. Kuhn was clear about this: resistance to paradigm change is structural, not pathological. It is how science works. The fact that most proposed revolutions turn out to be wrong is precisely why the community is conservative.</p>
-
-<p>The <strong>resolution</strong> takes one of two forms. Either experimental investigation falsifies the proposition &mdash; the autocatalytic conditions cannot be satisfied in FQHE substrates, and the question is answered decisively &mdash; or the proposition survives, and a new paradigm emerges.</p>
-
-<div class="phd"><strong>PhD seed:</strong> "Cross-disciplinary citation analysis of the topological-computation / autocatalytic-sets intersection, 1990&ndash;2026." This could be completed in a semester with access to Web of Science. It would document the silence gap quantitatively &mdash; a meta-scientific result that is publishable regardless of whether the underlying proposition is true.</div>
-
-<p>Under A1, the dynamics are gentler. Each field advances along its own trajectory. The silence gap remains, but it turns out to contain only silence. This is the less dramatic outcome, and it is the one most scientists would currently predict.</p>
-
-<!-- ═══════════════════════════════════════ -->
-<h2 id="reader">6. The Reader's Position</h2>
-
-<p>You have the framework now &mdash; Kuhn's pattern, applied to the current state of the literature. You have the facts: published, peer-reviewed, scattered across five fields that do not often talk to each other. The question they collectively point toward is obvious once you see it, and invisible until you do. Whether the answer is "yes," "no," or "nobody has checked" &mdash; each would be a publishable result, and as of this writing, none of the three has been published.</p>
-
-</div><!-- /container -->
 
 <script>
-(function(){
-var $=function(id){return document.getElementById(id)};
-var COLORS=['#4a6aaa','#d4a030','#c04040','#f0c040','#40a060'];
-var LABELS=['NORMAL SCIENCE','ANOMALY','CRISIS','REVOLUTION','NEW NORMAL'];
-var DIM_STROKES=['#2a3a5e','#4a3a20','#4a2020','#4a3a10','#204a20'];
-var DIM_FILLS=['#3a4a6e','#5a4a30','#5a3030','#5a4a20','#305a30'];
-var SEGS=['seg01','seg12','seg23','seg34','seg40'];
+(function() {
+  const SVG_NS = "http://www.w3.org/2000/svg";
 
-var REVS=[{
-  name:'HELIOCENTRISM',
-  title:'The Copernican Revolution (1543–1687)',
-  subtitle:'The earth is at the center. The sun, moon, and stars revolve around it.',
-  newParadigm:'The sun is at the center. The earth orbits.',
-  years:['∼1400','1543','1543–1610','1610','1687'],
-  dur:[5500,5000,5500,5000,4000]
-}];
+  const phases = [
+    { name: "NORMAL SCIENCE", color: "#4a90d9", angle: -90 },
+    { name: "ANOMALY",        color: "#d4a574", angle: -18 },
+    { name: "CRISIS",         color: "#c45c5c", angle: 54  },
+    { name: "REVOLUTION",     color: "#d4a017", angle: 126 },
+    { name: "NEW NORMAL",     color: "#5c9c5c", angle: 198 },
+  ];
 
-var NREVS=REVS.length,NSTOPS=8;
-var state='static',rev=-1,phase=-1,timer=null;
-var SCRUB_X0=100,SCRUB_XN=1100;
-var scrubX=[];
-for(var i=0;i<NSTOPS;i++) scrubX.push(SCRUB_X0+i*(SCRUB_XN-SCRUB_X0)/(NSTOPS-1));
+  const CX = 600, CY = 300, CR = 180;
 
-function hideAll(){
-  document.querySelectorAll('[data-phase]').forEach(function(g){
-    g.style.opacity='0';
-    g.querySelectorAll('[data-delay]').forEach(function(d){d.style.opacity='0'});
-  });
-  for(var r=0;r<NREVS;r++)for(var p=0;p<5;p++){
-    var lp=$('lp'+r+'p'+p);if(lp)lp.style.opacity='0';
+  function phasePos(i) {
+    const a = phases[i].angle * Math.PI / 180;
+    return { x: CX + CR * Math.cos(a), y: CY + CR * Math.sin(a) };
   }
-  for(var i=0;i<5;i++){var s=$(SEGS[i]);if(s)s.style.opacity='0';}
-  $('abstract').style.opacity='0';
-  $('endState').style.opacity='0';
-  $('titleBar').style.opacity='0';
-  resetLoop();
-}
 
-function resetLoop(){
-  for(var i=0;i<5;i++){
-    var c=$('ll'+i+'c'),t=$('ll'+i+'t');
-    if(c){c.setAttribute('stroke',DIM_STROKES[i]);c.setAttribute('fill','#0d0d1e');}
-    if(t)t.setAttribute('fill',DIM_FILLS[i]);
+  const segmentLabels = ["Abstract", "1", "2", "3", "4", "5", "6", "7", "8"];
+
+  const engine = {
+    segment: 0,
+    phase: 0,
+    playing: false,
+    timelineStart: 0,
+    timelinePaused: 0,
+    pauseOffset: 0,
+    rafId: null,
+    resolved: false,
+  };
+
+  const centerStage = document.getElementById("center-stage");
+  const loopLabels = document.getElementById("loop-labels");
+  const cyclePath = document.getElementById("cycle-path");
+  const goldenFlash = document.getElementById("golden-flash");
+  const youAreHere = document.getElementById("you-are-here");
+  const progressBar = document.getElementById("progress-bar");
+  const playIcon = document.getElementById("play-icon");
+  const playBtn = document.getElementById("play-btn");
+  const scrubberDots = document.getElementById("scrubber-dots");
+
+  // Easing
+  function easeOutBack(t) {
+    const c = 1.7;
+    return 1 + (t - 1) * (t - 1) * ((c + 1) * (t - 1) + c);
   }
-}
-
-function lightLoop(p,color){
-  var c=$('ll'+p+'c'),t=$('ll'+p+'t');
-  if(c){c.setAttribute('stroke',color);c.setAttribute('fill',color);c.setAttribute('fill-opacity','.15');}
-  if(t)t.setAttribute('fill',color);
-}
-
-function lightSeg(p){
-  var s=$(SEGS[p]);if(s)s.style.opacity='.25';
-}
-
-function updateHUD(r,p){
-  var pl=$('phaseLabel'),yr=$('yearDisp'),rc=$('revCount');
-  if(r>=0&&p>=0){
-    pl.textContent=LABELS[p];pl.setAttribute('fill',COLORS[p]);pl.style.opacity='1';
-    yr.textContent=REVS[r].years[p];yr.setAttribute('fill',COLORS[p]);yr.style.opacity='1';
-    rc.textContent=(r+1)+'/8';rc.style.opacity='.3';
-  }else{
-    pl.style.opacity='0';yr.style.opacity='0';rc.style.opacity='0';
+  function easeInOutCubic(t) {
+    return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t + 2, 3) / 2;
   }
-  $('miniWheel').style.opacity=r>=0?'.6':'0';
-  for(var i=0;i<5;i++){
-    var mw=$('mw'+i);
-    if(mw)mw.setAttribute('opacity',i===p?'1':i<p?'.4':'.12');
+  function easeOutCubic(t) {
+    return 1 - Math.pow(1 - t, 3);
   }
-}
 
-function updateScrubber(r,p){
-  var sb=$('scrubber');if(!sb)return;
-  sb.style.opacity='1';
-  var ri=Math.max(0,Math.min(r,NSTOPS-1));
-  var baseX=scrubX[ri],nextX=scrubX[Math.min(ri+1,NSTOPS-1)];
-  var frac=(p>=0?p:0)/5;
-  var px=baseX+(nextX-baseX)*frac;
-  var ph=$('playhead');
-  if(ph){ph.setAttribute('cx',px);ph.style.opacity='1';}
-  var fill=$('scrubFill');
-  if(fill)fill.setAttribute('width',Math.max(0,px-SCRUB_X0));
-  for(var i=0;i<NSTOPS;i++){
-    var dot=$('sbd'+i);
-    if(dot){
-      if(i===r){dot.setAttribute('stroke','#f0c040');dot.setAttribute('fill','#3a2a10');dot.setAttribute('stroke-width','2.5');}
-      else if(i<r){dot.setAttribute('stroke','#c9a04a');dot.setAttribute('fill','#1a1a2e');dot.setAttribute('stroke-width','1.5');}
-      else{dot.setAttribute('stroke','#3a3a5e');dot.setAttribute('fill','#0d0d1e');dot.setAttribute('stroke-width','2');}
+  // SVG helpers
+  function createText(text, x, y, size, color, opts = {}) {
+    const el = document.createElementNS(SVG_NS, "text");
+    el.setAttribute("x", x);
+    el.setAttribute("y", y);
+    el.setAttribute("text-anchor", "middle");
+    el.setAttribute("dominant-baseline", "central");
+    el.setAttribute("fill", color);
+    el.setAttribute("font-size", size);
+    el.setAttribute("font-family", "Georgia, serif");
+    el.setAttribute("font-weight", "bold");
+    el.setAttribute("letter-spacing", "2");
+    if (opts.filter) el.setAttribute("filter", opts.filter);
+    if (opts.opacity !== undefined) el.setAttribute("opacity", opts.opacity);
+    el.textContent = text;
+    return el;
+  }
+
+  function arcPathFromAngles(startDeg, endDeg) {
+    let sweep = endDeg - startDeg;
+    if (sweep < 0) sweep += 360;
+    const steps = Math.max(2, Math.ceil(sweep / 30));
+    let d = "";
+    for (let i = 0; i <= steps; i++) {
+      const frac = i / steps;
+      const aDeg = startDeg + sweep * frac;
+      const a = aDeg * Math.PI / 180;
+      const x = CX + CR * Math.cos(a);
+      const y = CY + CR * Math.sin(a);
+      d += (i === 0 ? `M ${x} ${y}` : ` L ${x} ${y}`);
     }
+    return d;
   }
-}
 
-function showTitleBar(r){
-  $('revTitle').textContent=REVS[r].title;
-  $('revSubtitle').textContent=REVS[r].subtitle;
-  $('revSubtitle').style.opacity='1';
-  $('revSubNew').style.opacity='0';
-  $('titleBar').style.opacity='1';
-}
+  function fullCirclePath() {
+    const steps = 72;
+    let d = "";
+    for (let i = 0; i <= steps; i++) {
+      const a = (i / steps) * 2 * Math.PI - Math.PI / 2;
+      const x = CX + CR * Math.cos(a);
+      const y = CY + CR * Math.sin(a);
+      d += (i === 0 ? `M ${x} ${y}` : ` L ${x} ${y}`);
+    }
+    return d + " Z";
+  }
 
-function landOnLoop(r,p){
-  var lp=$('lp'+r+'p'+p);
-  if(lp)lp.style.opacity='1';
-  lightLoop(p,COLORS[p]);
-  if(p>0)lightSeg(p-1);
-}
+  // Scrubber
+  function buildScrubber() {
+    const x0 = 60, x1 = 1140, span = x1 - x0;
+    for (let i = 0; i < 9; i++) {
+      const x = x0 + (span * i / 8);
+      const active = (i === 0);
+      const g = document.createElementNS(SVG_NS, "g");
+      g.setAttribute("cursor", active ? "pointer" : "default");
 
-function showPhase(r,p){
-  rev=r;phase=p;
-  if(p===0){
-    hideAll();
-    showTitleBar(r);
-    $('youAreHere').style.opacity='0';
-  }
-  if(p>0){
-    var prev=$('r'+r+'p'+(p-1));
-    if(prev)prev.style.opacity='0';
-    landOnLoop(r,p-1);
-  }
-  if(p===3){
-    setTimeout(function(){
-      $('revSubtitle').style.opacity='.25';
-    },800);
-  }
-  if(p===4){
-    $('revSubtitle').style.opacity='0';
-    $('revSubNew').textContent=REVS[r].newParadigm;
-    $('revSubNew').style.opacity='1';
-  }
-  var el=$('r'+r+'p'+p);
-  if(!el)return;
-  el.style.opacity='1';
-  el.querySelectorAll('[data-delay]').forEach(function(d){
-    var ms=parseInt(d.dataset.delay);
-    setTimeout(function(){d.style.opacity='1'},ms);
-  });
-  el.querySelectorAll('.pop-anim').forEach(function(a){if(a.beginElement)a.beginElement()});
-  updateHUD(r,p);
-  lightLoop(p,COLORS[p]);
-  updateScrubber(r,p);
-}
+      const c = document.createElementNS(SVG_NS, "circle");
+      c.setAttribute("cx", x);
+      c.setAttribute("cy", 661);
+      c.setAttribute("r", active ? 7 : 5);
+      c.setAttribute("fill", active ? "#d4a017" : "#e8e0d044");
+      if (active) { c.setAttribute("stroke", "#d4a017"); c.setAttribute("stroke-width", "2"); }
+      g.appendChild(c);
 
-function advance(){
-  phase++;
-  if(phase>=5){
-    var prev=$('r'+rev+'p4');
-    if(prev)prev.style.opacity='0';
-    landOnLoop(rev,4);
-    lightSeg(4);
-    rev++;phase=0;
-    if(rev>=NREVS){
-      timer=setTimeout(showEnd,2500);
+      const t = document.createElementNS(SVG_NS, "text");
+      t.setAttribute("x", x);
+      t.setAttribute("y", 685);
+      t.setAttribute("text-anchor", "middle");
+      t.setAttribute("fill", active ? "#d4a017" : "#e8e0d066");
+      t.setAttribute("font-size", "11");
+      t.setAttribute("font-family", "Georgia, serif");
+      t.textContent = segmentLabels[i];
+      g.appendChild(t);
+
+      if (active) g.addEventListener("click", () => playSegment(0));
+      scrubberDots.appendChild(g);
+    }
+    playIcon.textContent = "▶";
+  }
+
+  function updateProgress(fraction) {
+    const segWidth = (1140 - 60) / 8;
+    progressBar.setAttribute("width", Math.max(0, segWidth * fraction));
+  }
+
+  function clearStage() {
+    while (centerStage.firstChild) centerStage.removeChild(centerStage.firstChild);
+    while (loopLabels.firstChild) loopLabels.removeChild(loopLabels.firstChild);
+    cyclePath.setAttribute("d", "");
+    cyclePath.setAttribute("opacity", 1);
+    cyclePath.removeAttribute("stroke-dashoffset");
+    goldenFlash.setAttribute("opacity", 0);
+    youAreHere.setAttribute("opacity", 0);
+    while (youAreHere.firstChild) youAreHere.removeChild(youAreHere.firstChild);
+    engine.resolved = false;
+  }
+
+  // --- Timeline for segment 0: Abstract Kuhn Cycle (~16.5s) ---
+
+  function buildSegment0Timeline() {
+    const TOTAL = 16.5;
+    const loopLabelEls = [];
+    let centerEl = null;
+
+    function showCenter(name, color, scale, opacity, glowing) {
+      if (!centerEl || centerEl.dataset.name !== name) {
+        if (centerEl && centerEl.parentNode) centerStage.removeChild(centerEl);
+        centerEl = createText(name, CX, CY, 48, color, glowing ? { filter: "url(#glow-strong)" } : {});
+        centerEl.dataset.name = name;
+        centerStage.appendChild(centerEl);
+      }
+      centerEl.setAttribute("fill", color);
+      centerEl.setAttribute("font-size", Math.round(48 * scale));
+      centerEl.setAttribute("opacity", opacity);
+      centerEl.setAttribute("x", CX);
+      centerEl.setAttribute("y", CY);
+      if (glowing) centerEl.setAttribute("filter", "url(#glow-strong)");
+      else centerEl.removeAttribute("filter");
+    }
+
+    function removeCenter() {
+      if (centerEl && centerEl.parentNode) centerStage.removeChild(centerEl);
+      centerEl = null;
+    }
+
+    function addLoopLabel(idx, opacity, scale) {
+      const p = phasePos(idx);
+      let el = loopLabelEls[idx];
+      if (!el) {
+        el = createText(phases[idx].name, p.x, p.y, 16, phases[idx].color);
+        loopLabels.appendChild(el);
+        loopLabelEls[idx] = el;
+      }
+      el.setAttribute("opacity", opacity);
+      el.setAttribute("font-size", Math.round(16 * scale));
+    }
+
+    function flyToLoop(idx, progress) {
+      const t = easeInOutCubic(progress);
+      const p = phasePos(idx);
+      const dx = p.x - CX, dy = p.y - CY;
+      const perpX = -dy, perpY = dx;
+      const arcBow = Math.sin(t * Math.PI) * 0.2;
+      const fx = CX + dx * t + perpX * arcBow;
+      const fy = CY + dy * t + perpY * arcBow;
+      const size = 48 - 32 * t;
+      if (centerEl) {
+        centerEl.setAttribute("x", fx);
+        centerEl.setAttribute("y", fy);
+        centerEl.setAttribute("font-size", Math.round(size));
+      }
+    }
+
+    function drawArcProgressTo(idx, progress) {
+      if (idx <= 0) return;
+      const startAngle = phases[0].angle;
+      let prevAngle = phases[idx - 1].angle;
+      let targetAngle = phases[idx].angle;
+      let delta = targetAngle - prevAngle;
+      if (delta < 0) delta += 360;
+      const currentEnd = prevAngle + delta * progress;
+      // Full arc from phase 0 to currentEnd
+      let totalEnd = currentEnd - startAngle;
+      if (totalEnd < 0) totalEnd += 360;
+      cyclePath.setAttribute("d", arcPathFromAngles(startAngle, startAngle + totalEnd));
+    }
+
+    function drawArcTo(idx) {
+      const startAngle = phases[0].angle;
+      let endAngle = phases[idx].angle;
+      let sweep = endAngle - startAngle;
+      if (sweep < 0) sweep += 360;
+      cyclePath.setAttribute("d", arcPathFromAngles(startAngle, startAngle + sweep));
+    }
+
+    // Build keyframes: [{ t, dur, fn(progress) }]
+    // fn called with progress 0..1 within the keyframe's duration
+    const kf = [];
+
+    // Phase 0: NORMAL SCIENCE — 0s to 3s display, then fly
+    kf.push({ t: 0, dur: 0.5, fn(p) {
+      showCenter("NORMAL SCIENCE", "#4a90d9", easeOutBack(p), 1, false);
+    }});
+    kf.push({ t: 0.5, dur: 2.5, fn() {
+      showCenter("NORMAL SCIENCE", "#4a90d9", 1, 1, false);
+    }});
+    kf.push({ t: 3, dur: 0.5, fn(p) {
+      flyToLoop(0, p);
+    }});
+    kf.push({ t: 3.5, dur: 0.01, fn() {
+      removeCenter();
+      addLoopLabel(0, 1, 1);
+    }});
+
+    // Phase 1: ANOMALY — 3.5s to 6s display, then fly
+    kf.push({ t: 3.5, dur: 0.5, fn(p) {
+      showCenter("ANOMALY", "#d4a574", easeOutBack(p), 1, false);
+    }});
+    kf.push({ t: 4, dur: 2, fn() {
+      showCenter("ANOMALY", "#d4a574", 1, 1, false);
+    }});
+    kf.push({ t: 6, dur: 0.5, fn(p) {
+      flyToLoop(1, p);
+      drawArcProgressTo(1, p);
+    }});
+    kf.push({ t: 6.5, dur: 0.01, fn() {
+      removeCenter();
+      addLoopLabel(1, 1, 1);
+      drawArcTo(1);
+    }});
+
+    // Phase 2: CRISIS — 6.5s to 9s display, then fly
+    kf.push({ t: 6.5, dur: 0.5, fn(p) {
+      showCenter("CRISIS", "#c45c5c", easeOutBack(p), 1, false);
+    }});
+    kf.push({ t: 7, dur: 2, fn() {
+      showCenter("CRISIS", "#c45c5c", 1, 1, false);
+    }});
+    kf.push({ t: 9, dur: 0.5, fn(p) {
+      flyToLoop(2, p);
+      drawArcProgressTo(2, p);
+    }});
+    kf.push({ t: 9.5, dur: 0.01, fn() {
+      removeCenter();
+      addLoopLabel(2, 1, 1);
+      drawArcTo(2);
+    }});
+
+    // Phase 3: REVOLUTION — 9.5s to 11s display
+    kf.push({ t: 9.5, dur: 0.5, fn(p) {
+      showCenter("REVOLUTION", "#d4a017", easeOutBack(p), 1, true);
+    }});
+    kf.push({ t: 10, dur: 1, fn() {
+      showCenter("REVOLUTION", "#d4a017", 1, 1, true);
+    }});
+
+    // 11s: GOLDEN FLASH — clears accumulated labels
+    kf.push({ t: 11, dur: 0.4, fn(p) {
+      let flashOp;
+      if (p < 0.35) flashOp = easeOutCubic(p / 0.35) * 0.6;
+      else flashOp = 0.6 * (1 - easeOutCubic((p - 0.35) / 0.65));
+      goldenFlash.setAttribute("opacity", flashOp);
+
+      const fadeOut = 1 - easeOutCubic(Math.min(1, p * 2));
+      for (let i = 0; i < loopLabelEls.length; i++) {
+        if (loopLabelEls[i]) loopLabelEls[i].setAttribute("opacity", fadeOut);
+      }
+      cyclePath.setAttribute("opacity", fadeOut);
+    }});
+    kf.push({ t: 11.4, dur: 0.01, fn() {
+      goldenFlash.setAttribute("opacity", 0);
+      while (loopLabels.firstChild) loopLabels.removeChild(loopLabels.firstChild);
+      loopLabelEls.length = 0;
+      cyclePath.setAttribute("d", "");
+      cyclePath.setAttribute("opacity", 1);
+      showCenter("REVOLUTION", "#d4a017", 1, 1, true);
+    }});
+
+    // 11.4-13s: Clean moment — REVOLUTION glowing center with gentle pulse
+    kf.push({ t: 11.41, dur: 1.59, fn(p) {
+      const pulse = 1 + 0.04 * Math.sin(p * Math.PI * 3);
+      showCenter("REVOLUTION", "#d4a017", pulse, 1, true);
+    }});
+
+    // 13-15s: Fade out center, redraw all 5 labels + full circle
+    kf.push({ t: 13, dur: 0.4, fn(p) {
+      showCenter("REVOLUTION", "#d4a017", 1, 1 - easeOutCubic(p), true);
+    }});
+    kf.push({ t: 13.4, dur: 0.01, fn() {
+      removeCenter();
+    }});
+    kf.push({ t: 13.41, dur: 1.59, fn(p) {
+      const t = easeOutCubic(p);
+      // Draw full circle
+      const fc = fullCirclePath();
+      cyclePath.setAttribute("d", fc);
+      const totalLen = 2 * Math.PI * CR;
+      cyclePath.setAttribute("stroke-dasharray", String(totalLen));
+      cyclePath.setAttribute("stroke-dashoffset", String(totalLen * (1 - t)));
+
+      // Stagger fade-in for labels
+      for (let i = 0; i < 5; i++) {
+        const stagger = i * 0.12;
+        const lp = Math.max(0, Math.min(1, (p - stagger) / (1 - stagger)));
+        addLoopLabel(i, easeOutCubic(lp), 0.6 + 0.4 * easeOutBack(Math.min(1, lp)));
+      }
+    }});
+
+    // 15-15.5s: Settle resolved state
+    kf.push({ t: 15, dur: 0.5, fn() {
+      cyclePath.setAttribute("stroke-dashoffset", "0");
+      cyclePath.setAttribute("stroke-dasharray", "6,4");
+      for (let i = 0; i < 5; i++) addLoopLabel(i, 1, 1);
+    }});
+
+    // 15.5-16.5s: YOU ARE HERE at Anomaly
+    kf.push({ t: 15.5, dur: 1, fn(p) {
+      const pos = phasePos(1);
+      youAreHere.setAttribute("opacity", easeOutCubic(p));
+      if (!youAreHere.firstChild) {
+        const arrow = createText("← YOU ARE HERE", pos.x + 55, pos.y, 14, "#d4a017", { filter: "url(#glow)" });
+        arrow.setAttribute("text-anchor", "start");
+        youAreHere.appendChild(arrow);
+
+        const dot = document.createElementNS(SVG_NS, "circle");
+        dot.setAttribute("cx", pos.x);
+        dot.setAttribute("cy", pos.y);
+        dot.setAttribute("r", 6);
+        dot.setAttribute("fill", "#d4a017");
+        dot.setAttribute("filter", "url(#glow)");
+        dot.id = "yah-dot";
+        youAreHere.appendChild(dot);
+      }
+    }});
+
+    return { keyframes: kf, duration: TOTAL };
+  }
+
+  // --- Playback ---
+  let currentTimeline = null;
+
+  function tick(timestamp) {
+    if (!engine.playing) return;
+
+    const elapsed = (timestamp - engine.timelineStart - engine.pauseOffset) / 1000;
+    const tl = currentTimeline;
+
+    if (elapsed >= tl.duration) {
+      engine.playing = false;
+      engine.resolved = true;
+      playIcon.textContent = "▶";
+      updateProgress(1);
+      startYahPulse();
       return;
     }
-    timer=setTimeout(function(){
-      showPhase(rev,0);
-      timer=setTimeout(advance,REVS[rev].dur[0]);
-    },2500);
-    return;
-  }
-  showPhase(rev,phase);
-  timer=setTimeout(advance,REVS[rev].dur[phase]);
-}
 
-function playRev(r){
-  state='playing';rev=r;phase=0;
-  showPhase(r,0);
-  timer=setTimeout(advance,REVS[r].dur[0]);
-}
+    updateProgress(elapsed / tl.duration);
 
-function showEnd(){
-  state='end';
-  document.querySelectorAll('[data-phase]').forEach(function(g){g.style.opacity='0'});
-  $('titleBar').style.opacity='0';
-  updateHUD(-1,-1);
-  $('endState').style.opacity='1';
-  updateScrubber(NREVS-1,5);
-}
-
-var aPhase=0;
-function showAbstract(){
-  $('abstract').style.opacity='1';
-  updateHUD(-1,-1);
-  $('phaseLabel').textContent='THE KUHN CYCLE';
-  $('phaseLabel').setAttribute('fill','#8a8a9e');
-  $('phaseLabel').style.opacity='.6';
-  aPhase=0;
-  stepAbstract();
-}
-function stepAbstract(){
-  if(state!=='abstract')return;
-  for(var i=0;i<5;i++){
-    var a=$('ap'+i);
-    if(i<aPhase){
-      if(a)a.style.opacity='0';
-      lightLoop(i,COLORS[i]);
-      if(i>0)lightSeg(i-1);
-    }else if(i===aPhase){
-      if(a)a.style.opacity='1';
-      lightLoop(i,COLORS[i]);
-      if(i>0)lightSeg(i-1);
-    }else{
-      if(a)a.style.opacity='0';
+    // Run the highest-t keyframe whose time has arrived
+    for (let i = tl.keyframes.length - 1; i >= 0; i--) {
+      const kf = tl.keyframes[i];
+      if (elapsed >= kf.t && elapsed < kf.t + kf.dur) {
+        kf.fn(Math.min(1, Math.max(0, (elapsed - kf.t) / kf.dur)));
+        break;
+      } else if (elapsed >= kf.t + kf.dur && !kf._done) {
+        kf.fn(1);
+        kf._done = true;
+      }
     }
-  }
-  if(aPhase>=5){
-    lightSeg(4);
-    $('apReturnText').style.opacity='.5';
-    timer=setTimeout(function(){
-      hideAll();
-      playRev(0);
-    },2000);
-    return;
-  }
-  aPhase++;
-  timer=setTimeout(stepAbstract,1800);
-}
 
-window.E={
-  start:function(){
-    $('playBtn').style.opacity='0';$('playBtn').style.pointerEvents='none';
-    $('titleGroup').style.opacity='0';
-    $('youAreHere').style.opacity='0';
-    state='abstract';
-    showAbstract();
-  },
-  seekTo:function(idx){
-    if(idx>=NREVS)return;
-    clearTimeout(timer);
-    $('playBtn').style.opacity='0';$('playBtn').style.pointerEvents='none';
-    $('titleGroup').style.opacity='0';
-    $('youAreHere').style.opacity='0';
-    $('abstract').style.opacity='0';
-    state='playing';
-    playRev(idx);
-  },
-  scrubClick:function(evt){
-    var svg=document.getElementById('svg054');
-    var pt=svg.createSVGPoint();
-    pt.x=evt.clientX;pt.y=evt.clientY;
-    var svgP=pt.matrixTransform(svg.getScreenCTM().inverse());
-    var best=0,bestD=Infinity;
-    for(var i=0;i<NREVS;i++){
-      var d=Math.abs(svgP.x-scrubX[i]);
-      if(d<bestD){bestD=d;best=i;}
-    }
-    E.seekTo(best);
+    engine.rafId = requestAnimationFrame(tick);
   }
-};
+
+  // YOU ARE HERE pulse
+  let yahPulseId = null;
+  function startYahPulse() {
+    if (yahPulseId) return;
+    let start = null;
+    function pulse(ts) {
+      if (!engine.resolved) { yahPulseId = null; return; }
+      if (!start) start = ts;
+      const t = (ts - start) / 1000;
+      const dot = document.getElementById("yah-dot");
+      if (dot) {
+        dot.setAttribute("r", String(6 + 2 * Math.sin(t * 2.5)));
+        dot.setAttribute("opacity", String(0.7 + 0.3 * Math.sin(t * 2.5)));
+      }
+      yahPulseId = requestAnimationFrame(pulse);
+    }
+    yahPulseId = requestAnimationFrame(pulse);
+  }
+
+  function stopYahPulse() {
+    if (yahPulseId) { cancelAnimationFrame(yahPulseId); yahPulseId = null; }
+  }
+
+  // Public API
+  function playSegment(n) {
+    if (n !== 0) return;
+    stopYahPulse();
+    if (engine.rafId) cancelAnimationFrame(engine.rafId);
+    clearStage();
+
+    const tl = buildSegment0Timeline();
+    currentTimeline = tl;
+    engine.segment = 0;
+    engine.phase = 0;
+    engine.playing = true;
+    engine.pauseOffset = 0;
+    engine.timelineStart = performance.now();
+    playIcon.textContent = "⏸";
+    engine.rafId = requestAnimationFrame(tick);
+  }
+
+  function pause() {
+    if (!engine.playing) return;
+    engine.playing = false;
+    engine.timelinePaused = performance.now();
+    playIcon.textContent = "▶";
+    if (engine.rafId) cancelAnimationFrame(engine.rafId);
+  }
+
+  function resume() {
+    if (engine.playing) return;
+    if (!currentTimeline) { playSegment(0); return; }
+    engine.playing = true;
+    engine.pauseOffset += performance.now() - engine.timelinePaused;
+    playIcon.textContent = "⏸";
+    engine.rafId = requestAnimationFrame(tick);
+  }
+
+  function seekTo(n, phaseFraction) {
+    if (n !== 0) return;
+    playSegment(0);
+    const targetTime = phaseFraction * currentTimeline.duration;
+    engine.timelineStart = performance.now() - targetTime * 1000;
+  }
+
+  // Events
+  playBtn.addEventListener("click", () => {
+    if (engine.playing) pause();
+    else if (engine.resolved || !currentTimeline) playSegment(0);
+    else resume();
+  });
+
+  // Init
+  buildScrubber();
+  playIcon.textContent = "▶";
+  setTimeout(() => playSegment(0), 500);
+
+  window.kuhnEngine = { playSegment, seekTo, pause, resume };
 })();
 </script>
-
-<style>
-#svg054 [data-phase],#svg054 #abstract,#svg054 #endState,#svg054 #titleGroup,#svg054 #playBtn,
-#svg054 [data-delay],#svg054 #youAreHere{transition:opacity .45s ease}
-#svg054 #phaseLabel,#svg054 #yearDisp,#svg054 #revCount,#svg054 #miniWheel,
-#svg054 #titleBar,#svg054 #revSubtitle,#svg054 #revSubNew{transition:opacity .3s ease}
-#svg054 .pop-anim{pointer-events:none}
-#svg054 #playhead{transition:cx .3s ease,opacity .3s ease}
-#svg054 #scrubFill{transition:width .3s ease}
-#svg054 [id^="lp"]{transition:opacity .6s ease}
-#svg054 [id^="seg"]{transition:opacity .5s ease}
-</style>
-
 </body>
 </html>
