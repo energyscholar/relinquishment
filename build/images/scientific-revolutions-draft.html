@@ -76,8 +76,19 @@
     return { x: CX + CR * Math.cos(a), y: CY + CR * Math.sin(a) };
   }
 
-  const segmentLabels = ["Abstract", "1", "2", "3", "4", "5", "6", "7", "8"];
+  const segmentLabels = ["Abstract", "Copernicus", "Oxygen", "Darwin", "Germs", "Einstein", "Quantum", "Tectonics", "DNA"];
   const scrubberYears = ["", "1543", "1770", "1859", "1847", "1905", "1900", "1912", "1944"];
+  const fullNames = [
+    "Abstract Kuhn Cycle",
+    "The Copernican Revolution (1543–1687)",
+    "The Chemical Revolution (1770–1789)",
+    "The Darwinian Revolution (1831–1953)",
+    "The Germ Theory Revolution (1847–1885)",
+    "The Relativistic Revolution (1887–1919)",
+    "The Quantum Revolution (1900–1927)",
+    "The Continental Drift Revolution (1912–1968)",
+    "The DNA Revolution (1944–1953)"
+  ];
 
   const engine = {
     segment: 0,
@@ -198,28 +209,34 @@
   }
 
   // Scrubber
+  const dotCircles = [];
+
   function buildScrubber() {
     const x0 = 60, x1 = 1140, span = x1 - x0;
     for (let i = 0; i < 9; i++) {
       const x = x0 + (span * i / 8);
-      const active = (i <= 8);
       const g = document.createElementNS(SVG_NS, "g");
-      g.setAttribute("cursor", active ? "pointer" : "default");
+      g.setAttribute("cursor", "pointer");
+
+      const tip = document.createElementNS(SVG_NS, "title");
+      tip.textContent = fullNames[i];
+      g.appendChild(tip);
 
       const c = document.createElementNS(SVG_NS, "circle");
       c.setAttribute("cx", x);
       c.setAttribute("cy", 661);
-      c.setAttribute("r", active ? 7 : 5);
-      c.setAttribute("fill", active ? "#d4a017" : "#e8e0d044");
-      if (active) { c.setAttribute("stroke", "#d4a017"); c.setAttribute("stroke-width", "2"); }
+      c.setAttribute("r", "6");
+      c.setAttribute("fill", "#d4a01766");
+      c.setAttribute("stroke", "none");
       g.appendChild(c);
+      dotCircles.push(c);
 
       const t = document.createElementNS(SVG_NS, "text");
       t.setAttribute("x", x);
       t.setAttribute("y", 685);
       t.setAttribute("text-anchor", "middle");
-      t.setAttribute("fill", active ? "#d4a017" : "#e8e0d066");
-      t.setAttribute("font-size", "11");
+      t.setAttribute("fill", "#d4a017");
+      t.setAttribute("font-size", "10");
       t.setAttribute("font-family", "Georgia, serif");
       t.textContent = segmentLabels[i];
       g.appendChild(t);
@@ -236,10 +253,25 @@
         g.appendChild(yt);
       }
 
-      if (active) g.addEventListener("click", () => playSegment(i));
+      g.addEventListener("click", () => playSegment(i));
       scrubberDots.appendChild(g);
     }
     playIcon.textContent = "▶";
+  }
+
+  function updateActiveDot(n) {
+    dotCircles.forEach((c, i) => {
+      if (i === n) {
+        c.setAttribute("r", "9");
+        c.setAttribute("fill", "#d4a017");
+        c.setAttribute("stroke", "#fff");
+        c.setAttribute("stroke-width", "2");
+      } else {
+        c.setAttribute("r", "6");
+        c.setAttribute("fill", "#d4a01766");
+        c.setAttribute("stroke", "none");
+      }
+    });
   }
 
   function updateProgress(fraction) {
@@ -1672,6 +1704,7 @@
 
   function playSegment(n) {
     if (n < 0 || n >= segmentBuilders.length) return;
+    updateActiveDot(n);
     stopYahPulse();
     if (engine.rafId) cancelAnimationFrame(engine.rafId);
     clearStage();
