@@ -593,27 +593,28 @@
 
   function buildRevolutionTimeline(cfg) {
     const N = cfg.anomalies.length;
+    const NC = cfg.crisis.length;
+    const crisisPerQuote = 5;
     const normalEnd = 6.5;
     const anomalyEnd = normalEnd + N * 6;
     const pauseEnd = anomalyEnd + 1;
-    const crisisQ1Start = pauseEnd;
-    const crisisQ2Start = pauseEnd + 4;
-    const crisisParkStart = pauseEnd + 8;
-    const crisisParkEnd = pauseEnd + 9.5;
-    const momentStart = crisisParkEnd;
+    const crisisEnd = pauseEnd + NC * crisisPerQuote;
+    const momentStart = crisisEnd;
     const momentEnd = momentStart + 6.5;
     const momentParkEnd = momentEnd;
-    const deathMoveStart = momentParkEnd;
-    const deathMoveEnd = deathMoveStart + 1.5;
-    const shakeStart = deathMoveEnd;
-    const shakeEnd = shakeStart + 2.5;
-    const shakeOutEnd = shakeEnd + 0.5;
-    const junkFadeEnd = shakeOutEnd + 1;
-    const cleanEnd = junkFadeEnd + 1;
-    const npCenterStart = cleanEnd;
-    const npParkStart = npCenterStart + 2;
-    const npParkEnd = npParkStart + 0.5;
-    const techStart = npParkEnd;
+    const npCenterStart = momentParkEnd;
+    const npParkStart = npCenterStart + 2.5;
+    const npParkEnd = npParkStart + 1.5;
+    const deathMoveStart = npParkEnd;
+    const deathMoveEnd = deathMoveStart + 2;
+    const fadeStart = deathMoveEnd;
+    const fadeEnd = fadeStart + 1.5;
+    const cleanEnd = fadeEnd + 1;
+    const riseStart = cleanEnd;
+    const riseEnd = riseStart + 1.5;
+    const toTitleStart = riseEnd;
+    const toTitleEnd = toTitleStart + 1.2;
+    const techStart = toTitleEnd;
     const techParkStart = techStart + 2;
     const techParkEnd = techParkStart + 0.5;
     const transStart = techParkEnd;
@@ -809,85 +810,65 @@
     // === Pause: accumulated mess visible (1s) ===
     kf.push({ t: anomalyEnd, dur: 1, fn() {} });
 
-    // === Crisis Quotes (4s each, 2 quotes) ===
-    let crisisEls = [];
+    // === Crisis Quotes (one-at-a-time, 5s each) ===
+    for (let ci = 0; ci < NC; ci++) {
+      const cStart = pauseEnd + ci * crisisPerQuote;
+      let cGroup = null;
 
-    kf.push({ t: crisisQ1Start, dur: 0.01, fn() {
-      clearCenter();
-      setYear(cfg.years.crisis);
-    }});
+      kf.push({ t: cStart, dur: 0.01, fn() {
+        clearCenter();
+        if (ci === 0) setYear(cfg.years.crisis);
+      }});
 
-    kf.push({ t: crisisQ1Start + 0.05, dur: 0.45, fn(p) {
-      if (crisisEls.length === 0) {
-        const g = document.createElementNS(SVG_NS, "g");
-        const yPos = CY - 20;
-        const bw = 520, bh = 45, bx = CX - bw/2, by = yPos - 25;
-        const rect = document.createElementNS(SVG_NS, "rect");
-        rect.setAttribute("x", bx); rect.setAttribute("y", by);
-        rect.setAttribute("width", bw); rect.setAttribute("height", bh);
-        rect.setAttribute("rx", 10); rect.setAttribute("ry", 10);
-        rect.setAttribute("fill", "#c45c5c22"); rect.setAttribute("stroke", "#c45c5c");
-        rect.setAttribute("stroke-width", "1");
-        g.appendChild(rect);
-        const q = createText(cfg.crisis[0], CX, yPos, 18, "#c45c5c");
-        q.setAttribute("font-style", "italic"); q.setAttribute("font-weight", "normal");
-        q.setAttribute("letter-spacing", "0");
-        g.appendChild(q);
-        g.setAttribute("opacity", "0");
-        centerStage.appendChild(g);
-        crisisEls.push(g);
-      }
-      crisisEls[0].setAttribute("opacity", easeOutCubic(p));
-    }});
-
-    kf.push({ t: crisisQ1Start + 0.5, dur: 3.5, fn() {} });
-
-    if (cfg.crisis.length > 1) {
-      kf.push({ t: crisisQ2Start + 0.05, dur: 0.45, fn(p) {
-        if (crisisEls.length < 2) {
-          const g = document.createElementNS(SVG_NS, "g");
-          const yPos = CY + 30;
-          const bw = 520, bh = 45, bx = CX - bw/2, by = yPos - 25;
+      kf.push({ t: cStart + 0.05, dur: 0.45, fn(p) {
+        if (!cGroup) {
+          cGroup = document.createElementNS(SVG_NS, "g");
+          const bw = 520, bh = 45, bx = CX - bw/2, by = CY - 45;
           const rect = document.createElementNS(SVG_NS, "rect");
           rect.setAttribute("x", bx); rect.setAttribute("y", by);
           rect.setAttribute("width", bw); rect.setAttribute("height", bh);
           rect.setAttribute("rx", 10); rect.setAttribute("ry", 10);
           rect.setAttribute("fill", "#c45c5c22"); rect.setAttribute("stroke", "#c45c5c");
           rect.setAttribute("stroke-width", "1");
-          g.appendChild(rect);
-          const q = createText(cfg.crisis[1], CX, yPos, 18, "#c45c5c");
+          cGroup.appendChild(rect);
+          const q = createText(cfg.crisis[ci], CX, CY - 20, 18, "#c45c5c");
           q.setAttribute("font-style", "italic"); q.setAttribute("font-weight", "normal");
           q.setAttribute("letter-spacing", "0");
-          g.appendChild(q);
-          g.setAttribute("opacity", "0");
-          centerStage.appendChild(g);
-          crisisEls.push(g);
+          cGroup.appendChild(q);
+          cGroup.setAttribute("opacity", "0");
+          centerStage.appendChild(cGroup);
         }
-        crisisEls[1].setAttribute("opacity", easeOutCubic(p));
+        cGroup.setAttribute("opacity", String(easeOutCubic(p)));
       }});
 
-      kf.push({ t: crisisQ2Start + 0.5, dur: 3.5, fn() {} });
+      kf.push({ t: cStart + 0.5, dur: 2, fn() {} });
+
+      // Shrink + fly to Crisis position
+      kf.push({ t: cStart + 2.5, dur: 1.5, fn(p) {
+        if (!cGroup) return;
+        const t = easeInOutCubic(p);
+        const pos = phasePos(2);
+        const off = scatterOffset(N + ci + 2);
+        const tx = pos.x + off.x, ty = pos.y + off.y;
+        cGroup.setAttribute("opacity", String(1 - t * 0.4));
+        const scale = 1 - t * 0.6;
+        cGroup.setAttribute("transform", `translate(${(tx - CX) * t}, ${(ty - CY) * t}) scale(${scale})`);
+      }});
+
+      kf.push({ t: cStart + 4, dur: 0.01, fn() {
+        if (cGroup && cGroup.parentNode) cGroup.parentNode.removeChild(cGroup);
+        cGroup = null;
+        const pos = phasePos(2);
+        const off = scatterOffset(N + ci + 2);
+        parkText(cfg.crisis[ci].substring(0, 32) + "…", pos.x + off.x, pos.y + off.y, 9, "#c45c5c88", N + ci + 2);
+      }});
     }
 
-    // Park crisis quotes at Crisis position
-    kf.push({ t: crisisParkStart, dur: 1.5, fn(p) {
-      for (const el of crisisEls) el.setAttribute("opacity", 1 - easeOutCubic(p));
-    }});
-
-    kf.push({ t: crisisParkEnd, dur: 0.01, fn() {
-      clearCenter();
-      crisisEls = [];
-      for (let i = 0; i < cfg.crisis.length; i++) {
-        const pos = phasePos(2);
-        const off = scatterOffset(N + i + 2);
-        parkText(cfg.crisis[i].substring(0, 32) + "…", pos.x + off.x, pos.y + off.y, 9, "#c45c5c88", N + i + 2);
-      }
-    }});
-
-    // === Crisis Moment: dramatic revelation (5.5s center) ===
+    // === Crisis Moment: dramatic revelation (5s center + 1.5s park) ===
     let mMain = null, mName = null;
 
     kf.push({ t: momentStart, dur: 0.01, fn() {
+      clearCenter();
       setYear(cfg.years.revolution);
     }});
 
@@ -916,7 +897,7 @@
     kf.push({ t: momentStart + 5, dur: 1.5, fn(p) {
       const t = easeInOutCubic(p);
       const pos = phasePos(3);
-      const off = scatterOffset(N + cfg.crisis.length + 3);
+      const off = scatterOffset(N + NC + 3);
       const tx = pos.x + off.x, ty = pos.y + off.y;
       if (mMain) {
         mMain.setAttribute("x", CX + (tx - CX) * t);
@@ -930,14 +911,50 @@
     kf.push({ t: momentEnd, dur: 0.01, fn() {
       clearCenter();
       const pos = phasePos(3);
-      const off = scatterOffset(N + cfg.crisis.length + 3);
-      parkText(cfg.revolution.main.substring(0, 32) + "…", pos.x + off.x, pos.y + off.y, 10, "#d4a01788", N + cfg.crisis.length + 3);
+      const off = scatterOffset(N + NC + 3);
+      parkText(cfg.revolution.main.substring(0, 32) + "…", pos.x + off.x, pos.y + off.y, 10, "#d4a01788", N + NC + 3);
       mMain = null; mName = null;
     }});
 
-    // === Paradigm Death Sequence ===
+    // === Death Sequence (reordered) ===
 
-    // Step 1: Old paradigm moves from title bar to center (1.5s)
+    // Step 1: New Paradigm appears center (2.5s)
+    let npEl = null;
+
+    kf.push({ t: npCenterStart, dur: 0.5, fn(p) {
+      if (!npEl) {
+        npEl = createText(cfg.title3, CX, CY, 42, "#5c9c5c");
+        npEl.setAttribute("font-weight", "bold");
+        npEl.setAttribute("letter-spacing", "0");
+        centerStage.appendChild(npEl);
+      }
+      npEl.setAttribute("font-size", String(Math.round(42 * easeOutBack(p))));
+      npEl.setAttribute("opacity", String(easeOutCubic(p)));
+    }});
+
+    kf.push({ t: npCenterStart + 0.5, dur: 2, fn() {} });
+
+    // Step 2: New Paradigm parks at phasePos(4) (1.5s)
+    kf.push({ t: npParkStart, dur: 1.5, fn(p) {
+      if (!npEl) return;
+      const t = easeInOutCubic(p);
+      const pos = phasePos(4);
+      const off = scatterOffset(N * 2 + 5);
+      npEl.setAttribute("x", String(CX + (pos.x + off.x - CX) * t));
+      npEl.setAttribute("y", String(CY + (pos.y + off.y - CY) * t));
+      npEl.setAttribute("font-size", String(Math.round(42 - 31 * t)));
+      npEl.setAttribute("opacity", String(1 - t * 0.3));
+    }});
+
+    kf.push({ t: npParkEnd, dur: 0.01, fn() {
+      clearCenter();
+      npEl = null;
+      const pos = phasePos(4);
+      const off = scatterOffset(N * 2 + 5);
+      parkText(cfg.title3.substring(0, 32) + "…", pos.x + off.x, pos.y + off.y, 11, "#5c9c5c", N * 2 + 5);
+    }});
+
+    // Step 3: Old Paradigm moves to center (2s)
     let deathEl = null;
     kf.push({ t: deathMoveStart, dur: 0.01, fn() {
       titleLine2.setAttribute("opacity", "0");
@@ -947,7 +964,7 @@
       centerStage.appendChild(deathEl);
     }});
 
-    kf.push({ t: deathMoveStart + 0.01, dur: 1.5, fn(p) {
+    kf.push({ t: deathMoveStart + 0.01, dur: 2, fn(p) {
       if (!deathEl) return;
       const t = easeInOutCubic(p);
       deathEl.setAttribute("y", String(45 + (CY - 45) * t));
@@ -955,87 +972,71 @@
       deathEl.setAttribute("opacity", String(0.8 + 0.2 * t));
     }});
 
-    // Step 2: Old paradigm shakes (2.5s)
-    kf.push({ t: shakeStart, dur: 2.5, fn(p) {
-      if (!deathEl) return;
-      const amp = 3 + p * 7;
-      const freq = 15;
-      deathEl.setAttribute("x", String(CX + amp * Math.sin(p * freq * Math.PI * 2)));
-      deathEl.setAttribute("y", String(CY + amp * Math.cos(p * freq * Math.PI * 2 * 0.7)));
-      deathEl.setAttribute("opacity", String(1.0 - p * 0.7));
-    }});
-
-    // Step 3: Final fade out (0.5s)
-    kf.push({ t: shakeEnd, dur: 0.5, fn(p) {
-      if (!deathEl) return;
-      deathEl.setAttribute("opacity", String(0.3 * (1 - easeOutCubic(p))));
-    }});
-
-    kf.push({ t: shakeOutEnd, dur: 0.01, fn() {
-      if (deathEl && deathEl.parentNode) deathEl.parentNode.removeChild(deathEl);
-      deathEl = null;
-    }});
-
-    // Step 4: All accumulated junk fades out (1s)
-    kf.push({ t: shakeOutEnd + 0.01, dur: 1, fn(p) {
+    // Step 4: Old + all accumulated fades (1.5s)
+    kf.push({ t: fadeStart, dur: 1.5, fn(p) {
       const fade = 1 - easeOutCubic(p);
+      if (deathEl) deathEl.setAttribute("opacity", String(fade));
       for (const el of accumulatedEls) {
         el.setAttribute("opacity", String(parseFloat(el.getAttribute("opacity") || 1) * fade));
       }
     }});
 
-    kf.push({ t: junkFadeEnd, dur: 0.01, fn() {
+    kf.push({ t: fadeEnd, dur: 0.01, fn() {
+      if (deathEl && deathEl.parentNode) deathEl.parentNode.removeChild(deathEl);
+      deathEl = null;
       for (const el of accumulatedEls) { if (el.parentNode) el.parentNode.removeChild(el); }
       accumulatedEls.length = 0;
       clearCenter();
     }});
 
-    // Step 5: Clean moment (1s) — just the loop
-    kf.push({ t: junkFadeEnd + 0.01, dur: 0.99, fn() {} });
+    // Step 5: Clean moment (1s)
+    kf.push({ t: fadeEnd + 0.01, dur: 0.99, fn() {} });
 
-    // Step 5+6: New paradigm enters center + title bar updates
-    let npEl = null;
-
-    kf.push({ t: npCenterStart, dur: 0.5, fn(p) {
-      if (!npEl) {
-        npEl = createText(cfg.title3, CX, CY, 48, "#5c9c5c");
-        npEl.setAttribute("font-weight", "bold");
-        npEl.setAttribute("letter-spacing", "0");
-        centerStage.appendChild(npEl);
-      }
-      npEl.setAttribute("font-size", String(Math.round(48 * easeOutBack(p))));
-      npEl.setAttribute("opacity", String(easeOutCubic(p)));
-      // Title bar: strikethrough + new paradigm
-      const bbox = titleLine2.getBBox ? titleLine2.getBBox() : { x: 200, width: 800 };
-      titleStrike.setAttribute("x1", bbox.x || 200);
-      titleStrike.setAttribute("x2", (bbox.x || 200) + (bbox.width || 800) * easeOutCubic(p));
-      titleStrike.setAttribute("opacity", easeOutCubic(p));
-      titleLine2.setAttribute("opacity", String(0.4 * easeOutCubic(p)));
-      titleLine2.setAttribute("font-size", "12");
-      titleLine3.textContent = cfg.title3;
-      titleLine3.setAttribute("opacity", String(easeOutCubic(p)));
+    // Step 6: New Paradigm rises from loop position to center (1.5s)
+    let riseEl = null;
+    kf.push({ t: riseStart, dur: 0.01, fn() {
+      const pos = phasePos(4);
+      const off = scatterOffset(N * 2 + 5);
+      riseEl = createText(cfg.title3, pos.x + off.x, pos.y + off.y, 11, "#5c9c5c");
+      riseEl.setAttribute("font-weight", "bold");
+      riseEl.setAttribute("letter-spacing", "0");
+      centerStage.appendChild(riseEl);
     }});
 
-    kf.push({ t: npCenterStart + 0.5, dur: 1.5, fn() {} });
-
-    // Step 7: New paradigm parks at New Paradigm position
-    kf.push({ t: npParkStart, dur: 0.5, fn(p) {
-      if (!npEl) return;
+    kf.push({ t: riseStart + 0.01, dur: 1.5, fn(p) {
+      if (!riseEl) return;
       const t = easeInOutCubic(p);
       const pos = phasePos(4);
       const off = scatterOffset(N * 2 + 5);
-      npEl.setAttribute("x", String(CX + (pos.x + off.x - CX) * t));
-      npEl.setAttribute("y", String(CY + (pos.y + off.y - CY) * t));
-      npEl.setAttribute("font-size", String(Math.round(48 - 37 * t)));
-      npEl.setAttribute("opacity", String(1 - t * 0.3));
+      const startX = pos.x + off.x, startY = pos.y + off.y;
+      riseEl.setAttribute("x", String(startX + (CX - startX) * t));
+      riseEl.setAttribute("y", String(startY + (CY - startY) * t));
+      riseEl.setAttribute("font-size", String(Math.round(11 + 31 * t)));
     }});
 
-    kf.push({ t: npParkEnd, dur: 0.01, fn() {
+    // Step 7: New Paradigm moves to title bar (1.2s)
+    kf.push({ t: toTitleStart, dur: 1.2, fn(p) {
+      if (!riseEl) return;
+      const t = easeInOutCubic(p);
+      riseEl.setAttribute("x", String(CX + (600 - CX) * t));
+      riseEl.setAttribute("y", String(CY + (60 - CY) * t));
+      riseEl.setAttribute("font-size", String(Math.round(42 - 28 * t)));
+      riseEl.setAttribute("opacity", String(1 - t * 0.3));
+    }});
+
+    kf.push({ t: toTitleEnd, dur: 0.01, fn() {
+      if (riseEl && riseEl.parentNode) riseEl.parentNode.removeChild(riseEl);
+      riseEl = null;
       clearCenter();
-      npEl = null;
-      const pos = phasePos(4);
-      const off = scatterOffset(N * 2 + 5);
-      parkText(cfg.title3.substring(0, 32) + "…", pos.x + off.x, pos.y + off.y, 10, "#5c9c5c", N * 2 + 5);
+      // Update title bar
+      titleLine2.setAttribute("opacity", "0.3");
+      titleLine2.setAttribute("font-size", "12");
+      const bbox = titleLine2.getBBox ? titleLine2.getBBox() : { x: 200, width: 800 };
+      titleStrike.setAttribute("x1", bbox.x || 200);
+      titleStrike.setAttribute("x2", (bbox.x || 200) + (bbox.width || 800));
+      titleStrike.setAttribute("opacity", "1");
+      titleLine3.textContent = cfg.title3;
+      titleLine3.setAttribute("opacity", "1");
     }});
 
     // Step 8: Technology/outcome
@@ -1053,7 +1054,7 @@
 
     kf.push({ t: techStart + 0.5, dur: 1.5, fn() {} });
 
-    // Park tech at New Paradigm position too
+    // Park tech at New Paradigm position
     kf.push({ t: techParkStart, dur: 0.5, fn(p) {
       if (!techEl) return;
       const t = easeInOutCubic(p);
