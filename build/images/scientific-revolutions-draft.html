@@ -74,341 +74,182 @@ ul.compact li{margin-bottom:.3rem;font-size:.95rem}
 <rect width="1200" height="750" fill="#0d0d1e"/>
 
 <!-- Stars -->
-<circle cx="73" cy="42" r=".6" fill="#fff" opacity=".25"/><circle cx="380" cy="35" r=".5" fill="#fff" opacity=".2"/><circle cx="720" cy="28" r=".6" fill="#fff" opacity=".25"/><circle cx="1040" cy="48" r=".5" fill="#fff" opacity=".2"/><circle cx="1140" cy="95" r=".4" fill="#fff" opacity=".15"/><circle cx="160" cy="660" r=".5" fill="#fff" opacity=".2"/><circle cx="1060" cy="650" r=".5" fill="#fff" opacity=".18"/>
+<circle cx="73" cy="42" r=".6" fill="#fff" opacity=".25"/><circle cx="380" cy="25" r=".5" fill="#fff" opacity=".2"/><circle cx="920" cy="38" r=".6" fill="#fff" opacity=".25"/><circle cx="1140" cy="95" r=".4" fill="#fff" opacity=".15"/><circle cx="50" cy="400" r=".5" fill="#fff" opacity=".2"/><circle cx="1160" cy="500" r=".5" fill="#fff" opacity=".18"/>
 
-<!-- ═══ LEFT TIMELINE STRIP ═══ -->
-<rect x="0" y="0" width="210" height="700" fill="rgba(0,0,0,.15)"/>
-<line x1="100" y1="55" x2="100" y2="575" stroke="#1e1e38" stroke-width="4" stroke-linecap="round"/>
+<!-- ═══ KUHN CYCLE LOOP (pentagon) ═══ -->
+<g id="loopFrame">
+<path d="M600,75 L1060,250 L920,570 L280,570 L140,250 Z" fill="none" stroke="#1e1e38" stroke-width="2.5" stroke-dasharray="8,6"/>
 
-<!-- 8 stops -->
-<g id="stop0" onclick="E.seekTo(0)" cursor="pointer"><circle id="s0c" cx="100" cy="70" r="10" fill="#0d0d1e" stroke="#2a2a48" stroke-width="2.5"/><text x="125" y="67" fill="#3a3a5e" font-family="system-ui" font-size="9" font-weight="600">Heliocentrism</text><text x="125" y="80" fill="#2a2a3e" font-family="system-ui" font-size="7.5">1543 → 1687</text></g>
-<g id="stop1" onclick="E.seekTo(1)" cursor="pointer"><circle id="s1c" cx="100" cy="140" r="10" fill="#0d0d1e" stroke="#2a2a48" stroke-width="2.5"/><text x="125" y="137" fill="#3a3a5e" font-family="system-ui" font-size="9" font-weight="600">Chemistry</text><text x="125" y="150" fill="#2a2a3e" font-family="system-ui" font-size="7.5">1770s</text></g>
-<g id="stop2" onclick="E.seekTo(2)" cursor="pointer"><circle id="s2c" cx="100" cy="210" r="10" fill="#0d0d1e" stroke="#2a2a48" stroke-width="2.5"/><text x="125" y="207" fill="#3a3a5e" font-family="system-ui" font-size="9" font-weight="600">Evolution</text><text x="125" y="220" fill="#2a2a3e" font-family="system-ui" font-size="7.5">1859</text></g>
-<g id="stop3" onclick="E.seekTo(3)" cursor="pointer" opacity=".3"><circle cx="100" cy="280" r="10" fill="#0d0d1e" stroke="#1e1e38" stroke-width="2"/><text x="125" y="277" fill="#2a2a3e" font-family="system-ui" font-size="9">Germ Theory</text><text x="125" y="290" fill="#1e1e30" font-family="system-ui" font-size="7.5">1860s</text></g>
-<g id="stop4" onclick="E.seekTo(4)" cursor="pointer" opacity=".3"><circle cx="100" cy="350" r="10" fill="#0d0d1e" stroke="#1e1e38" stroke-width="2"/><text x="125" y="347" fill="#2a2a3e" font-family="system-ui" font-size="9">Relativity</text><text x="125" y="360" fill="#1e1e30" font-family="system-ui" font-size="7.5">1905</text></g>
-<g id="stop5" onclick="E.seekTo(5)" cursor="pointer" opacity=".3"><circle cx="100" cy="420" r="10" fill="#0d0d1e" stroke="#1e1e38" stroke-width="2"/><text x="125" y="417" fill="#2a2a3e" font-family="system-ui" font-size="9">Quantum</text><text x="125" y="430" fill="#1e1e30" font-family="system-ui" font-size="7.5">1927</text></g>
-<g id="stop6" onclick="E.seekTo(6)" cursor="pointer" opacity=".3"><circle cx="100" cy="490" r="10" fill="#0d0d1e" stroke="#1e1e38" stroke-width="2"/><text x="125" y="487" fill="#2a2a3e" font-family="system-ui" font-size="9">Tectonics</text><text x="125" y="500" fill="#1e1e30" font-family="system-ui" font-size="7.5">1965</text></g>
-<g id="stop7" onclick="E.seekTo(7)" cursor="pointer" opacity=".3"><circle cx="100" cy="560" r="10" fill="#0d0d1e" stroke="#1e1e38" stroke-width="2"/><text x="125" y="557" fill="#2a2a3e" font-family="system-ui" font-size="9">DNA</text><text x="125" y="570" fill="#1e1e30" font-family="system-ui" font-size="7.5">1953</text></g>
+<!-- Lit segments (appear when phases complete) -->
+<line id="seg01" x1="600" y1="75" x2="1060" y2="250" stroke="#c9a04a" stroke-width="2" opacity="0"/>
+<line id="seg12" x1="1060" y1="250" x2="920" y2="570" stroke="#c9a04a" stroke-width="2" opacity="0"/>
+<line id="seg23" x1="920" y1="570" x2="280" y2="570" stroke="#c9a04a" stroke-width="2" opacity="0"/>
+<line id="seg34" x1="280" y1="570" x2="140" y2="250" stroke="#c9a04a" stroke-width="2" opacity="0"/>
+<line id="seg40" x1="140" y1="250" x2="600" y2="75" stroke="#c9a04a" stroke-width="2" opacity="0"/>
 
-<!-- YOU ARE HERE -->
-<g id="youAreHere">
-<line x1="100" y1="580" x2="100" y2="620" stroke="#f0c040" stroke-width="2" stroke-dasharray="4,4" opacity=".4"/>
-<polygon points="88,620 100,638 112,620" fill="#f0c040"><animate attributeName="opacity" values=".4;.9;.4" dur="2.5s" repeatCount="indefinite"/></polygon>
-<text x="100" y="660" text-anchor="middle" fill="#f0c040" font-family="system-ui" font-size="8.5" font-weight="700" letter-spacing=".08em"><animate attributeName="opacity" values=".5;1;.5" dur="2.5s" repeatCount="indefinite"/>YOU ARE HERE</text>
+<!-- 5 position labels -->
+<g id="loopLabel0">
+<circle cx="600" cy="75" r="8" fill="#0d0d1e" stroke="#2a3a5e" stroke-width="2" id="ll0c"/>
+<text x="600" y="55" text-anchor="middle" fill="#3a4a6e" font-family="system-ui" font-size="10" font-weight="600" letter-spacing=".06em" id="ll0t">NORMAL SCIENCE</text>
+</g>
+<g id="loopLabel1">
+<circle cx="1060" cy="250" r="8" fill="#0d0d1e" stroke="#4a3a20" stroke-width="2" id="ll1c"/>
+<text x="1100" y="248" fill="#5a4a30" font-family="system-ui" font-size="10" font-weight="600" id="ll1t">ANOMALY</text>
+</g>
+<g id="loopLabel2">
+<circle cx="920" cy="570" r="8" fill="#0d0d1e" stroke="#4a2020" stroke-width="2" id="ll2c"/>
+<text x="965" y="575" fill="#5a3030" font-family="system-ui" font-size="10" font-weight="600" id="ll2t">CRISIS</text>
+</g>
+<g id="loopLabel3">
+<circle cx="280" cy="570" r="8" fill="#0d0d1e" stroke="#4a3a10" stroke-width="2" id="ll3c"/>
+<text x="230" y="575" text-anchor="end" fill="#5a4a20" font-family="system-ui" font-size="10" font-weight="600" id="ll3t">REVOLUTION</text>
+</g>
+<g id="loopLabel4">
+<circle cx="140" cy="250" r="8" fill="#0d0d1e" stroke="#204a20" stroke-width="2" id="ll4c"/>
+<text x="95" y="248" text-anchor="end" fill="#305a30" font-family="system-ui" font-size="10" font-weight="600" id="ll4t">NEW NORMAL</text>
+</g>
 </g>
 
-<!-- Lit track segments (appear on completion) -->
-<line id="track01" x1="100" y1="80" x2="100" y2="130" stroke="#f0c040" stroke-width="3" opacity="0"/>
-<line id="track12" x1="100" y1="150" x2="100" y2="200" stroke="#f0c040" stroke-width="3" opacity="0"/>
-
-<!-- ═══ STAGE AREA ═══ -->
-<g id="stageFrame">
-<rect x="225" y="10" width="965" height="680" rx="6" fill="none" stroke="rgba(255,255,255,.03)" stroke-width="1"/>
+<!-- ═══ TITLE BAR (persistent per revolution) ═══ -->
+<g id="titleBar" style="opacity:0">
+<text id="revTitle" x="600" y="128" text-anchor="middle" fill="#c9a04a" font-family="system-ui" font-size="16" font-weight="600" letter-spacing=".04em"></text>
+<text id="revSubtitle" x="600" y="150" text-anchor="middle" fill="#6a7a9e" font-family="Georgia,serif" font-size="12.5" font-style="italic"></text>
+<text id="revSubNew" x="600" y="150" text-anchor="middle" fill="#c9a04a" font-family="Georgia,serif" font-size="12.5" font-style="italic" style="opacity:0"></text>
 </g>
 
-<!-- Stage HUD -->
-<text id="phaseLabel" x="250" y="45" fill="#4a6aaa" font-family="system-ui" font-size="13" font-weight="700" letter-spacing=".15em" opacity="0">NORMAL SCIENCE</text>
-<text id="revName" x="250" y="65" fill="#5a5a6e" font-family="system-ui" font-size="10" opacity="0"></text>
-<text id="yearDisp" x="1170" y="45" text-anchor="end" fill="#5a5a6e" font-family="system-ui" font-size="22" font-weight="200" opacity="0"></text>
-<text id="revCount" x="1170" y="68" text-anchor="end" fill="#3a3a4e" font-family="system-ui" font-size="11" opacity="0"></text>
+<!-- Phase label + Year display -->
+<text id="phaseLabel" x="600" y="185" text-anchor="middle" fill="#4a6aaa" font-family="system-ui" font-size="11" font-weight="700" letter-spacing=".12em" opacity="0">NORMAL SCIENCE</text>
+<text id="yearDisp" x="1140" y="128" text-anchor="end" fill="#5a5a6e" font-family="system-ui" font-size="22" font-weight="200" opacity="0"></text>
+<text id="revCount" x="1140" y="150" text-anchor="end" fill="#3a3a4e" font-family="system-ui" font-size="10" opacity="0"></text>
 
-<!-- Mini Kuhn wheel (upper right corner) -->
-<g id="miniWheel" transform="translate(1135,120)" opacity="0">
-<path d="M0,-28 A28,28 0 0,1 26.6,-8.7" fill="none" stroke="#4a6aaa" stroke-width="5" stroke-linecap="round" id="mw0" opacity=".15"/>
-<path d="M26.6,-8.7 A28,28 0 0,1 16.5,22.7" fill="none" stroke="#d4a030" stroke-width="5" stroke-linecap="round" id="mw1" opacity=".15"/>
-<path d="M16.5,22.7 A28,28 0 0,1 -16.5,22.7" fill="none" stroke="#c04040" stroke-width="5" stroke-linecap="round" id="mw2" opacity=".15"/>
-<path d="M-16.5,22.7 A28,28 0 0,1 -26.6,-8.7" fill="none" stroke="#f0c040" stroke-width="5" stroke-linecap="round" id="mw3" opacity=".15"/>
-<path d="M-26.6,-8.7 A28,28 0 0,1 0,-28" fill="none" stroke="#40a060" stroke-width="5" stroke-linecap="round" id="mw4" opacity=".15"/>
+<!-- Mini Kuhn wheel (upper right) -->
+<g id="miniWheel" transform="translate(1135,200)" opacity="0">
+<path d="M0,-22 A22,22 0 0,1 20.9,-6.8" fill="none" stroke="#4a6aaa" stroke-width="4" stroke-linecap="round" id="mw0" opacity=".15"/>
+<path d="M20.9,-6.8 A22,22 0 0,1 13,17.8" fill="none" stroke="#d4a030" stroke-width="4" stroke-linecap="round" id="mw1" opacity=".15"/>
+<path d="M13,17.8 A22,22 0 0,1 -13,17.8" fill="none" stroke="#c04040" stroke-width="4" stroke-linecap="round" id="mw2" opacity=".15"/>
+<path d="M-13,17.8 A22,22 0 0,1 -20.9,-6.8" fill="none" stroke="#f0c040" stroke-width="4" stroke-linecap="round" id="mw3" opacity=".15"/>
+<path d="M-20.9,-6.8 A22,22 0 0,1 0,-22" fill="none" stroke="#40a060" stroke-width="4" stroke-linecap="round" id="mw4" opacity=".15"/>
 </g>
 
-<!-- ═══ TITLE GROUP (static state) ═══ -->
+<!-- ═══ TITLE GROUP (opening/static state) ═══ -->
 <g id="titleGroup">
-<text x="700" y="300" text-anchor="middle" fill="#c9a04a" font-family="system-ui" font-size="30" font-weight="200" letter-spacing=".05em" opacity=".8">A MAP OF SCIENTIFIC REVOLUTIONS</text>
-<text x="700" y="340" text-anchor="middle" fill="#5a5a6e" font-family="system-ui" font-size="13" font-weight="300">The pattern repeats. Press play to see it.</text>
+<text x="600" y="330" text-anchor="middle" fill="#c9a04a" font-family="system-ui" font-size="28" font-weight="200" letter-spacing=".05em" opacity=".8">A MAP OF SCIENTIFIC REVOLUTIONS</text>
+<text x="600" y="370" text-anchor="middle" fill="#5a5a6e" font-family="system-ui" font-size="13" font-weight="300">The pattern repeats. Press play to see it.</text>
 </g>
 
-<!-- ═══ ABSTRACT KUHN CYCLE ═══ -->
+<!-- "YOU ARE HERE" at Anomaly position -->
+<g id="youAreHere">
+<line x1="1060" y1="268" x2="1060" y2="295" stroke="#f0c040" stroke-width="2" stroke-dasharray="4,4" opacity=".3"/>
+<polygon points="1048,295 1060,313 1072,295" fill="#f0c040"><animate attributeName="opacity" values=".3;.8;.3" dur="2.5s" repeatCount="indefinite"/></polygon>
+<text x="1060" y="330" text-anchor="middle" fill="#f0c040" font-family="system-ui" font-size="8.5" font-weight="700" letter-spacing=".08em"><animate attributeName="opacity" values=".4;1;.4" dur="2.5s" repeatCount="indefinite"/>YOU ARE HERE</text>
+</g>
+
+<!-- ═══ ABSTRACT KUHN CYCLE (center text per loop position) ═══ -->
 <g id="abstract" style="opacity:0">
-<!-- 5 phase panels -->
-<g id="ap0" style="opacity:0"><rect x="270" y="260" width="145" height="90" rx="8" fill="#4a6aaa" opacity=".7"/><text x="342" y="298" text-anchor="middle" fill="#d0d8f0" font-family="system-ui" font-size="13" font-weight="700">NORMAL</text><text x="342" y="316" text-anchor="middle" fill="#d0d8f0" font-family="system-ui" font-size="13" font-weight="700">SCIENCE</text><text x="342" y="368" text-anchor="middle" fill="#7a8aae" font-family="system-ui" font-size="9">Productive. Stable. Assumed.</text></g>
-<text x="430" y="305" fill="#3a3a4e" font-family="system-ui" font-size="22" font-weight="200">&rarr;</text>
-<g id="ap1" style="opacity:0"><rect x="450" y="260" width="145" height="90" rx="8" fill="#d4a030" opacity=".7"/><text x="522" y="308" text-anchor="middle" fill="#fef0d0" font-family="system-ui" font-size="13" font-weight="700">ANOMALY</text><text x="522" y="368" text-anchor="middle" fill="#c0a050" font-family="system-ui" font-size="9">Something doesn't fit.</text></g>
-<text x="610" y="305" fill="#3a3a4e" font-family="system-ui" font-size="22" font-weight="200">&rarr;</text>
-<g id="ap2" style="opacity:0"><rect x="630" y="260" width="145" height="90" rx="8" fill="#c04040" opacity=".7"/><text x="702" y="308" text-anchor="middle" fill="#f0d0d0" font-family="system-ui" font-size="13" font-weight="700">CRISIS</text><text x="702" y="368" text-anchor="middle" fill="#c07070" font-family="system-ui" font-size="9">The paradigm strains.</text></g>
-<text x="790" y="305" fill="#3a3a4e" font-family="system-ui" font-size="22" font-weight="200">&rarr;</text>
-<g id="ap3" style="opacity:0"><rect x="810" y="260" width="145" height="90" rx="8" fill="#f0c040" opacity=".7"/><text x="882" y="308" text-anchor="middle" fill="#3a2a10" font-family="system-ui" font-size="13" font-weight="700">REVOLUTION</text><text x="882" y="368" text-anchor="middle" fill="#8a6a20" font-family="system-ui" font-size="9">Everything changes.</text></g>
-<text x="970" y="305" fill="#3a3a4e" font-family="system-ui" font-size="22" font-weight="200">&rarr;</text>
-<g id="ap4" style="opacity:0"><rect x="990" y="260" width="145" height="90" rx="8" fill="#40a060" opacity=".7"/><text x="1062" y="298" text-anchor="middle" fill="#d0f0d8" font-family="system-ui" font-size="13" font-weight="700">NEW</text><text x="1062" y="316" text-anchor="middle" fill="#d0f0d8" font-family="system-ui" font-size="13" font-weight="700">NORMAL</text><text x="1062" y="368" text-anchor="middle" fill="#60a070" font-family="system-ui" font-size="9">Until the next time.</text></g>
-<!-- Return arrow -->
-<path id="apReturn" d="M1062,360 Q1080,440 700,460 Q320,440 342,365" fill="none" stroke="#5a5a6e" stroke-width="1.5" stroke-dasharray="6,4" opacity="0"/>
-<polygon id="apReturnHead" points="338,372 342,358 350,374" fill="#5a5a6e" opacity="0"/>
-<text id="apReturnText" x="700" y="490" text-anchor="middle" fill="#5a5a6e" font-family="system-ui" font-size="11" font-style="italic" opacity="0">The cycle repeats.</text>
+<g id="ap0" style="opacity:0"><text x="600" y="370" text-anchor="middle" fill="#7a9abe" font-family="system-ui" font-size="20" font-weight="300">Productive. Stable. Assumed.</text></g>
+<g id="ap1" style="opacity:0"><text x="600" y="370" text-anchor="middle" fill="#d4a030" font-family="system-ui" font-size="20" font-weight="300">Something doesn't fit.</text></g>
+<g id="ap2" style="opacity:0"><text x="600" y="370" text-anchor="middle" fill="#c05050" font-family="system-ui" font-size="20" font-weight="300">The paradigm strains.</text></g>
+<g id="ap3" style="opacity:0"><text x="600" y="370" text-anchor="middle" fill="#f0c040" font-family="system-ui" font-size="20" font-weight="300">Everything changes.</text></g>
+<g id="ap4" style="opacity:0"><text x="600" y="370" text-anchor="middle" fill="#50a060" font-family="system-ui" font-size="20" font-weight="300">Until the next time.</text></g>
+<text id="apReturnText" x="600" y="420" text-anchor="middle" fill="#5a5a6e" font-family="system-ui" font-size="12" font-style="italic" opacity="0">The cycle repeats.</text>
 </g>
 
-<!-- ═══ REVOLUTION 1: HELIOCENTRISM ═══ -->
+<!-- ═══ LOOP POSITION SUMMARIES (land when phase completes) ═══ -->
+<g id="lp0p0" style="opacity:0">
+<text x="600" y="97" text-anchor="middle" fill="#7a9abe" font-family="system-ui" font-size="9.5" font-weight="600">Sun rises, crosses, sets</text>
+<text x="600" y="111" text-anchor="middle" fill="#5a6a8e" font-family="system-ui" font-size="8.5">Crystal spheres &middot; Earth at center</text>
+</g>
+<g id="lp0p1" style="opacity:0">
+<text x="1060" y="272" text-anchor="middle" fill="#d4a030" font-family="system-ui" font-size="9.5" font-weight="600">Mars goes backward</text>
+<text x="1060" y="286" text-anchor="middle" fill="#a08030" font-family="system-ui" font-size="8.5">79 epicycles</text>
+</g>
+<g id="lp0p2" style="opacity:0">
+<text x="920" y="555" text-anchor="middle" fill="#c05050" font-family="system-ui" font-size="9.5" font-weight="600">"The Earth MOVES?"</text>
+<text x="920" y="540" text-anchor="middle" fill="#904040" font-family="system-ui" font-size="8.5">Ignored 70 years</text>
+</g>
+<g id="lp0p3" style="opacity:0">
+<text x="280" y="555" text-anchor="middle" fill="#f0c040" font-family="system-ui" font-size="9.5" font-weight="600">Galileo's telescope</text>
+<text x="280" y="540" text-anchor="middle" fill="#c0a040" font-family="system-ui" font-size="8.5">Jupiter's moons</text>
+</g>
+<g id="lp0p4" style="opacity:0">
+<text x="140" y="272" text-anchor="middle" fill="#50a060" font-family="system-ui" font-size="9.5" font-weight="600">Sun at center</text>
+<text x="140" y="286" text-anchor="middle" fill="#408050" font-family="system-ui" font-size="8.5">Space navigation</text>
+</g>
 
-<!-- Phase 0: Normal Science — what people SAW -->
+<!-- ═══ REVOLUTION 1: HELIOCENTRISM — CENTER STAGE ═══ -->
+
+<!-- Phase 0: Normal Science -->
 <g id="r0p0" data-phase style="opacity:0">
-<!-- Sun arc -->
-<circle cx="500" cy="280" r="28" fill="#f0a030" opacity=".7"><animate attributeName="opacity" values=".5;.8;.5" dur="4s" repeatCount="indefinite"/></circle>
-<path d="M350,420 Q450,250 650,200 Q800,250 950,420" fill="none" stroke="#f0a030" stroke-width="1" stroke-dasharray="5,5" opacity=".2"/>
-<!-- Horizon -->
-<line x1="300" y1="420" x2="1050" y2="420" stroke="#3a5a3a" stroke-width="2" opacity=".5"/>
-<rect x="300" y="420" width="750" height="80" fill="#1a2a1a" opacity=".15" rx="2"/>
-<!-- Text -->
-<text x="700" y="160" text-anchor="middle" fill="#c8d4e0" font-family="Georgia,serif" font-size="16" font-style="italic">The sun rises in the east, crosses the sky, and sets in the west.</text>
-<text x="700" y="185" text-anchor="middle" fill="#8a9aae" font-family="Georgia,serif" font-size="14">The earth feels still beneath your feet.</text>
-<!-- Crystal spheres (delayed) -->
-<g data-delay="2500" style="opacity:0;transition:opacity .8s">
-<text x="700" y="520" text-anchor="middle" fill="#5a6a8a" font-family="system-ui" font-size="11">They built a model to explain this: crystal spheres, Earth at center.</text>
-<circle cx="700" cy="360" r="50" fill="none" stroke="#4a6aaa" stroke-width="1" stroke-dasharray="4,4" opacity=".3"/>
-<circle cx="700" cy="360" r="85" fill="none" stroke="#4a6aaa" stroke-width="1" stroke-dasharray="4,4" opacity=".25"/>
-<circle cx="700" cy="360" r="120" fill="none" stroke="#4a6aaa" stroke-width="1" stroke-dasharray="4,4" opacity=".2"/>
-<circle cx="700" cy="360" r="12" fill="#3a5a8a" opacity=".5"/>
-<text x="700" y="365" text-anchor="middle" fill="#6a8abe" font-family="system-ui" font-size="7">EARTH</text>
+<text x="600" y="290" text-anchor="middle" fill="#c8d8f0" font-family="Georgia,serif" font-size="22">The sun rises in the east, crosses the sky,</text>
+<text x="600" y="325" text-anchor="middle" fill="#c8d8f0" font-family="Georgia,serif" font-size="22">and sets in the west.</text>
+<text x="600" y="380" text-anchor="middle" fill="#8a9abe" font-family="Georgia,serif" font-size="17">Stars wheel overhead. Earth feels still.</text>
+<circle cx="600" cy="430" r="14" fill="#f0a030" opacity=".4"><animate attributeName="opacity" values=".3;.5;.3" dur="4s" repeatCount="indefinite"/></circle>
+<g data-delay="2800" style="opacity:0;transition:opacity 1s">
+<text x="600" y="485" text-anchor="middle" fill="#5a6a8a" font-family="system-ui" font-size="13">They built a model: crystal spheres, Earth at center.</text>
+<text x="600" y="505" text-anchor="middle" fill="#4a5a7a" font-family="system-ui" font-size="12">It worked. Mostly.</text>
 </g>
 </g>
 
-<!-- Phase 1: Anomaly — Mars goes backward -->
+<!-- Phase 1: Anomaly -->
 <g id="r0p1" data-phase style="opacity:0">
-<!-- Ptolemaic model -->
-<circle cx="650" cy="340" r="16" fill="#3a5a8a" opacity=".5"/>
-<text x="650" y="345" text-anchor="middle" fill="#6a8abe" font-family="system-ui" font-size="7">EARTH</text>
-<circle cx="650" cy="340" r="60" fill="none" stroke="#d4a030" stroke-width="1" stroke-dasharray="4,4" opacity=".4"/>
-<circle cx="650" cy="340" r="100" fill="none" stroke="#d4a030" stroke-width="1" stroke-dasharray="4,4" opacity=".35"/>
-<circle cx="650" cy="340" r="140" fill="none" stroke="#d4a030" stroke-width="1" stroke-dasharray="4,4" opacity=".3"/>
-<!-- Mars with retrograde loop -->
-<circle cx="790" cy="340" r="6" fill="#c04030" opacity=".7"/>
-<path d="M770,320 Q800,300 810,320 Q820,350 800,360 Q780,350 790,330" fill="none" stroke="#c04030" stroke-width="1.5" stroke-dasharray="3,2" opacity=".5"/>
-<text x="810" y="310" fill="#c04030" font-family="system-ui" font-size="9" opacity=".6">Mars goes backward?</text>
-<!-- Epicycles accumulating -->
-<circle cx="710" cy="340" r="14" fill="none" stroke="#d4a030" stroke-width="1.2" opacity=".5"/>
-<circle cx="650" cy="240" r="12" fill="none" stroke="#d4a030" stroke-width="1.2" opacity=".5"/>
-<circle cx="550" cy="340" r="16" fill="none" stroke="#d4a030" stroke-width="1.2" opacity=".5"/>
-<circle cx="650" cy="440" r="11" fill="none" stroke="#d4a030" stroke-width="1.2" opacity=".5"/>
-<circle cx="740" cy="280" r="9" fill="none" stroke="#d4a030" stroke-width="1" opacity=".4"/>
-<circle cx="560" cy="280" r="10" fill="none" stroke="#d4a030" stroke-width="1" opacity=".4"/>
-<circle cx="730" cy="410" r="8" fill="none" stroke="#d4a030" stroke-width="1" opacity=".35"/>
-<!-- Counter -->
-<text x="900" y="200" fill="#d4a030" font-family="system-ui" font-size="16" font-weight="700" opacity=".6">37 epicycles...</text>
-<g data-delay="1500" style="opacity:0;transition:opacity .4s">
-<text x="900" y="225" fill="#d4a030" font-family="system-ui" font-size="18" font-weight="700" opacity=".7">52...</text>
+<text x="600" y="280" text-anchor="middle" fill="#e8c860" font-family="Georgia,serif" font-size="22">Mars stops. Goes backward.</text>
+<text x="600" y="315" text-anchor="middle" fill="#e8c860" font-family="Georgia,serif" font-size="22">Then forward again.</text>
+<text x="600" y="370" text-anchor="middle" fill="#c0a040" font-family="Georgia,serif" font-size="16">The model needs a patch: an epicycle.</text>
+<text x="600" y="420" text-anchor="middle" fill="#d4a030" font-family="system-ui" font-size="18" font-weight="600" opacity=".5">37 epicycles...</text>
+<g data-delay="1500" style="opacity:0;transition:opacity .5s">
+<text x="600" y="450" text-anchor="middle" fill="#d4a030" font-family="system-ui" font-size="20" font-weight="700" opacity=".65">52...</text>
 </g>
-<g data-delay="2500" style="opacity:0;transition:opacity .4s">
-<text x="900" y="250" fill="#c04040" font-family="system-ui" font-size="20" font-weight="700" opacity=".8">79...</text>
+<g data-delay="3000" style="opacity:0;transition:opacity .5s">
+<text x="600" y="480" text-anchor="middle" fill="#c04040" font-family="system-ui" font-size="22" font-weight="700" opacity=".8">79...</text>
 </g>
 </g>
 
-<!-- Phase 2: Crisis — "Absurd!" -->
+<!-- Phase 2: Crisis -->
 <g id="r0p2" data-phase style="opacity:0">
-<!-- Book -->
-<rect x="600" y="250" width="80" height="110" rx="4" fill="#2a1a1a" stroke="#c04040" stroke-width="2"/>
-<text x="640" y="290" text-anchor="middle" fill="#a06060" font-family="Georgia,serif" font-size="8" font-style="italic">De</text>
-<text x="640" y="302" text-anchor="middle" fill="#a06060" font-family="Georgia,serif" font-size="8" font-style="italic">Revolutionibus</text>
-<text x="640" y="320" text-anchor="middle" fill="#c04040" font-family="system-ui" font-size="7" font-weight="700">1543</text>
-<!-- "IGNORED 70 YEARS" -->
-<text x="640" y="400" text-anchor="middle" fill="#c04040" font-family="system-ui" font-size="13" font-weight="700" letter-spacing=".1em" opacity=".6">IGNORED 70 YEARS</text>
-<!-- Word bubble -->
-<g transform="translate(850,220)">
-<path d="M-155,-28 Q-155,-42 -142,-42 L142,-42 Q155,-42 155,-28 L155,6 Q155,18 142,18 L14,18 0,35 -14,18 -142,18 Q-155,18 -155,6 Z" fill="#1a1020" stroke="#c04040" stroke-width="2.5"/>
-<text x="0" y="-8" text-anchor="middle" fill="#e05050" font-family="system-ui" font-size="14" font-weight="700">The Earth MOVES? Absurd.</text>
-<text x="0" y="10" text-anchor="middle" fill="#a05050" font-family="system-ui" font-size="11" font-style="italic">I can feel that it doesn't.</text>
+<g transform="translate(600,310)">
+<path d="M-230,-50 Q-230,-70 -210,-70 L210,-70 Q230,-70 230,-50 L230,10 Q230,30 210,30 L20,30 0,55 -20,30 -210,30 Q-230,30 -230,10 Z" fill="#1a1020" stroke="#c04040" stroke-width="2.5"/>
+<text x="0" y="-22" text-anchor="middle" fill="#e05050" font-family="system-ui" font-size="22" font-weight="700">The Earth MOVES? Absurd.</text>
+<text x="0" y="8" text-anchor="middle" fill="#c06060" font-family="system-ui" font-size="15" font-style="italic">I can feel that it doesn't.</text>
 </g>
+<text x="600" y="440" text-anchor="middle" fill="#8a4040" font-family="system-ui" font-size="14" font-weight="600" letter-spacing=".08em">DE REVOLUTIONIBUS</text>
+<text x="600" y="465" text-anchor="middle" fill="#6a3a3a" font-family="system-ui" font-size="12">Published 1543. Ignored 70 years.</text>
 </g>
 
-<!-- Phase 3: Revolution — Galileo's telescope -->
+<!-- Phase 3: Revolution -->
 <g id="r0p3" data-phase style="opacity:0">
+<text x="600" y="260" text-anchor="middle" fill="#f0d060" font-family="Georgia,serif" font-size="22">Galileo points a telescope at Jupiter.</text>
+<text x="600" y="310" text-anchor="middle" fill="#f0c040" font-family="Georgia,serif" font-size="24" font-weight="600">He sees moons &mdash; orbiting Jupiter, not Earth.</text>
 <!-- Telescope -->
-<polygon points="500,320 520,280 540,320" fill="#4a3a2a" stroke="#8a7a5a" stroke-width="1.5"/>
-<rect x="524" y="260" width="8" height="25" fill="#5a4a3a"/>
-<circle cx="528" cy="252" r="8" fill="none" stroke="#8a7a5a" stroke-width="1.5"/>
-<!-- Jupiter -->
-<circle cx="820" cy="280" r="30" fill="#8a6a3a" stroke="#aa8a4a" stroke-width="1.5" opacity=".8"/>
-<text x="820" y="285" text-anchor="middle" fill="#c0a060" font-family="system-ui" font-size="9">Jupiter</text>
-<!-- Moons orbiting -->
-<circle cx="780" cy="268" r="3" fill="#c8c8d0" opacity=".7"><animate attributeName="cx" values="780;770;780;790;780" dur="3s" repeatCount="indefinite"/><animate attributeName="cy" values="268;280;292;280;268" dur="3s" repeatCount="indefinite"/></circle>
-<circle cx="860" cy="280" r="2.5" fill="#c8c8d0" opacity=".6"><animate attributeName="cx" values="860;855;860;865;860" dur="4s" repeatCount="indefinite"/><animate attributeName="cy" values="280;265;260;275;280" dur="4s" repeatCount="indefinite"/></circle>
-<circle cx="835" cy="310" r="2" fill="#c8c8d0" opacity=".5"><animate attributeName="cx" values="835;850;835;820;835" dur="3.5s" repeatCount="indefinite"/><animate attributeName="cy" values="310;305;300;305;310" dur="3.5s" repeatCount="indefinite"/></circle>
-<circle cx="800" cy="250" r="2" fill="#c8c8d0" opacity=".5"><animate attributeName="cx" values="800;810;800;790;800" dur="4.5s" repeatCount="indefinite"/><animate attributeName="cy" values="250;260;270;260;250" dur="4.5s" repeatCount="indefinite"/></circle>
-<!-- Insight text -->
-<text x="700" y="400" text-anchor="middle" fill="#f0c040" font-family="Georgia,serif" font-size="15" font-style="italic">Things orbit Jupiter. Not everything orbits Earth.</text>
-<!-- Gold starburst -->
-<circle cx="700" cy="300" r="0" fill="#f0c040" opacity="0"><animate attributeName="r" values="0;200;200" dur=".7s" begin="indefinite" fill="freeze" class="pop-anim"/><animate attributeName="opacity" values="0;.15;0" dur=".7s" begin="indefinite" fill="freeze" class="pop-anim"/></circle>
+<g transform="translate(500,420)">
+<polygon points="0,10 20,-30 40,10" fill="#4a3a2a" stroke="#8a7a5a" stroke-width="1.5"/>
+<rect x="22" y="-50" width="6" height="22" fill="#5a4a3a"/>
+<circle cx="25" cy="-58" r="6" fill="none" stroke="#8a7a5a" stroke-width="1.5"/>
+</g>
+<!-- Jupiter + moons -->
+<g transform="translate(720,420)">
+<circle cx="0" cy="0" r="22" fill="#8a6a3a" stroke="#aa8a4a" stroke-width="1.5" opacity=".7"/>
+<circle cx="-28" cy="-5" r="2.5" fill="#d0d0d8" opacity=".7"><animate attributeName="cx" values="-28;-32;-28;-24;-28" dur="3s" repeatCount="indefinite"/><animate attributeName="cy" values="-5;0;5;0;-5" dur="3s" repeatCount="indefinite"/></circle>
+<circle cx="30" cy="3" r="2" fill="#d0d0d8" opacity=".6"><animate attributeName="cx" values="30;26;30;34;30" dur="4s" repeatCount="indefinite"/><animate attributeName="cy" values="3;-3;-6;-3;3" dur="4s" repeatCount="indefinite"/></circle>
+<circle cx="5" cy="-28" r="1.5" fill="#d0d0d8" opacity=".5"><animate attributeName="cx" values="5;10;5;0;5" dur="3.5s" repeatCount="indefinite"/><animate attributeName="cy" values="-28;-25;-22;-25;-28" dur="3.5s" repeatCount="indefinite"/></circle>
+</g>
+<!-- Golden flash -->
+<circle cx="600" cy="350" r="0" fill="#f0c040" opacity="0"><animate attributeName="r" values="0;250;250" dur=".7s" begin="indefinite" fill="freeze" class="pop-anim"/><animate attributeName="opacity" values="0;.12;0" dur=".7s" begin="indefinite" fill="freeze" class="pop-anim"/></circle>
 </g>
 
-<!-- Phase 4: Tech — what it gave us -->
+<!-- Phase 4: New Normal -->
 <g id="r0p4" data-phase style="opacity:0">
-<!-- Clean solar system -->
-<circle cx="650" cy="320" r="18" fill="#f0c040" opacity=".5"/>
-<ellipse cx="650" cy="320" rx="60" ry="35" fill="none" stroke="#4a6aaa" stroke-width="1" opacity=".3"/>
-<ellipse cx="650" cy="320" rx="100" ry="55" fill="none" stroke="#4a6aaa" stroke-width="1" opacity=".25"/>
-<ellipse cx="650" cy="320" rx="140" ry="75" fill="none" stroke="#4a6aaa" stroke-width="1" opacity=".2"/>
-<circle cx="710" cy="305" r="3" fill="#6a8abe" opacity=".5"/>
-<circle cx="750" cy="330" r="4" fill="#aa8a5a" opacity=".5"/>
-<!-- Arrow to tech -->
-<text x="850" y="280" fill="#40a060" font-family="system-ui" font-size="11" opacity=".6">&rarr; Telescope</text>
-<text x="850" y="300" fill="#40a060" font-family="system-ui" font-size="11" opacity=".6">&rarr; Celestial mechanics</text>
-<text x="850" y="320" fill="#40a060" font-family="system-ui" font-size="11" opacity=".6">&rarr; Space navigation</text>
-<text x="850" y="340" fill="#40a060" font-family="system-ui" font-size="11" opacity=".6">&rarr; James Webb</text>
-<!-- Names -->
-<text x="700" y="460" text-anchor="middle" fill="#6a6a7e" font-family="system-ui" font-size="11" font-weight="300">Copernicus (1543) &bull; Galileo (1610) &bull; Kepler &bull; Newton (1687)</text>
-</g>
-
-<!-- ═══ REVOLUTION 2: OXYGEN ═══ -->
-
-<g id="r1p0" data-phase style="opacity:0">
-<!-- Candle -->
-<rect x="640" y="310" width="28" height="75" rx="3" fill="#c8b090" stroke="#a09070" stroke-width="1.5"/>
-<rect x="652" y="300" width="4" height="14" fill="#5a5a5a"/>
-<path d="M654,300 Q644,270 654,250 Q664,270 654,300" fill="#f0a030" opacity=".7"><animate attributeName="d" values="M654,300 Q644,270 654,250 Q664,270 654,300;M654,300 Q641,275 654,245 Q667,275 654,300;M654,300 Q644,270 654,250 Q664,270 654,300" dur="1s" repeatCount="indefinite"/></path>
-<path d="M654,295 Q649,275 654,265 Q659,275 654,295" fill="#f0d060" opacity=".5"><animate attributeName="d" values="M654,295 Q649,275 654,265 Q659,275 654,295;M654,295 Q647,278 654,260 Q661,278 654,295;M654,295 Q649,275 654,265 Q659,275 654,295" dur=".8s" repeatCount="indefinite"/></path>
-<!-- Upward arrows -->
-<text x="640" y="240" fill="#d4a030" font-family="system-ui" font-size="16" opacity=".5">&uarr;</text>
-<text x="660" y="230" fill="#d4a030" font-family="system-ui" font-size="14" opacity=".4">&uarr;</text>
-<text x="650" y="215" fill="#d4a030" font-family="system-ui" font-size="12" opacity=".3">&uarr;</text>
-<!-- phi -->
-<text x="654" y="200" text-anchor="middle" fill="#d4a030" font-family="Georgia,serif" font-size="24" opacity=".35">&phi;</text>
-<!-- Text -->
-<text x="700" y="160" text-anchor="middle" fill="#c8d4e0" font-family="Georgia,serif" font-size="16" font-style="italic">Fire releases an invisible substance: phlogiston.</text>
-<text x="700" y="185" text-anchor="middle" fill="#8a9aae" font-family="Georgia,serif" font-size="13">Burn something, phlogiston escapes. Simple.</text>
-<text x="700" y="450" text-anchor="middle" fill="#5a6a8a" font-family="system-ui" font-size="10">This explained combustion for a century.</text>
-</g>
-
-<g id="r1p1" data-phase style="opacity:0">
-<!-- Balance scale -->
-<g transform="translate(650,340)">
-<polygon points="0,50 -14,68 14,68" fill="#5a5a6e" stroke="#6a6a7e" stroke-width="1"/>
-<g><animateTransform attributeName="transform" type="rotate" values="0;0;-15" keyTimes="0;0.3;1" dur="3s" repeatCount="1" fill="freeze"/>
-<line x1="-80" y1="50" x2="80" y2="50" stroke="#8a8a9e" stroke-width="3" stroke-linecap="round"/>
-<rect x="-75" y="28" width="30" height="18" rx="2" fill="#7a7a8e" stroke="#8a8a9e" stroke-width="1"/>
-<text x="-60" y="22" text-anchor="middle" fill="#6a6a7e" font-family="system-ui" font-size="8">metal</text>
-<rect x="45" y="22" width="35" height="24" rx="2" fill="#aa6a4a" stroke="#c08060" stroke-width="1.5"/>
-<text x="62" y="17" text-anchor="middle" fill="#c08060" font-family="system-ui" font-size="8" font-weight="600">calx</text>
-</g></g>
-<text x="700" y="160" text-anchor="middle" fill="#d4a030" font-family="Georgia,serif" font-size="16" font-style="italic">Burn a metal. Weigh the result.</text>
-<text x="700" y="185" text-anchor="middle" fill="#d4a030" font-family="Georgia,serif" font-size="15" font-weight="600">It's heavier.</text>
-<text x="700" y="480" text-anchor="middle" fill="#8a7a5a" font-family="system-ui" font-size="11">If phlogiston escapes, why does the mass go UP?</text>
-</g>
-
-<g id="r1p2" data-phase style="opacity:0">
-<!-- Bubble -->
-<g transform="translate(700,250)">
-<path d="M-140,-28 Q-140,-42 -127,-42 L127,-42 Q140,-42 140,-28 L140,6 Q140,18 127,18 L14,18 0,35 -14,18 -127,18 Q-140,18 -140,6 Z" fill="#1a1020" stroke="#c04040" stroke-width="2.5"/>
-<text x="0" y="-5" text-anchor="middle" fill="#e05050" font-family="system-ui" font-size="16" font-weight="700">But the mass INCREASES!</text>
-</g>
-<!-- confused equations -->
-<text x="700" y="370" text-anchor="middle" fill="#c04040" font-family="system-ui" font-size="13" opacity=".5">The books don't balance.</text>
-<text x="700" y="400" text-anchor="middle" fill="#8a4a4a" font-family="system-ui" font-size="11" opacity=".4">Phlogiston has... negative weight?</text>
-<text x="700" y="440" text-anchor="middle" fill="#6a3a3a" font-family="system-ui" font-size="10" font-style="italic" opacity=".3">Increasingly desperate patches.</text>
-</g>
-
-<g id="r1p3" data-phase style="opacity:0">
-<!-- Lavoisier's balance (level) -->
-<g transform="translate(550,340)">
-<polygon points="0,50 -14,68 14,68" fill="#5a5a6e" stroke="#6a6a7e" stroke-width="1"/>
-<line x1="-70" y1="50" x2="70" y2="50" stroke="#c9a04a" stroke-width="3" stroke-linecap="round"/>
-<rect x="-65" y="30" width="28" height="16" rx="2" fill="#7a7a8e"/>
-<rect x="38" y="30" width="28" height="16" rx="2" fill="#7a7a8e"/>
-<text x="0" y="25" text-anchor="middle" fill="#f0c040" font-family="system-ui" font-size="14" font-weight="700">=</text>
-</g>
-<!-- O2 -->
-<text x="850" y="330" text-anchor="middle" fill="#f0c040" font-family="Georgia,serif" font-size="52" font-weight="700" opacity=".7">O<tspan font-size="32" dy="8">2</tspan></text>
-<text x="700" y="200" text-anchor="middle" fill="#f0c040" font-family="Georgia,serif" font-size="16" font-style="italic">Mass is conserved. Something is being added: oxygen.</text>
-<!-- Flash -->
-<circle cx="700" cy="320" r="0" fill="#f0c040" opacity="0"><animate attributeName="r" values="0;220;220" dur=".6s" begin="indefinite" fill="freeze" class="pop-anim"/><animate attributeName="opacity" values="0;.15;0" dur=".6s" begin="indefinite" fill="freeze" class="pop-anim"/></circle>
-</g>
-
-<g id="r1p4" data-phase style="opacity:0">
-<text x="700" y="200" text-anchor="middle" fill="#40a060" font-family="system-ui" font-size="14">What the oxygen revolution gave us:</text>
-<text x="700" y="280" fill="#40a060" font-family="system-ui" font-size="12" opacity=".6">&rarr; The periodic table</text>
-<text x="700" y="305" fill="#40a060" font-family="system-ui" font-size="12" opacity=".6">&rarr; Quantitative chemistry</text>
-<text x="700" y="330" fill="#40a060" font-family="system-ui" font-size="12" opacity=".6">&rarr; Pharmaceuticals</text>
-<text x="700" y="355" fill="#40a060" font-family="system-ui" font-size="12" opacity=".6">&rarr; Materials science</text>
-<text x="700" y="460" text-anchor="middle" fill="#6a6a7e" font-family="system-ui" font-size="11" font-weight="300">Lavoisier</text>
-</g>
-
-<!-- ═══ REVOLUTION 3: EVOLUTION ═══ -->
-
-<g id="r2p0" data-phase style="opacity:0">
-<!-- Great Chain of Being -->
-<line x1="600" y1="140" x2="600" y2="480" stroke="#4a4a6e" stroke-width="3" stroke-dasharray="8,6"/>
-<rect x="582" y="430" width="36" height="22" rx="3" fill="#5a5a6e" stroke="#6a6a7e" stroke-width="1.5"/>
-<text x="640" y="445" fill="#5a5a6e" font-family="system-ui" font-size="9">Mineral</text>
-<polygon points="600,370 588,392 612,392" fill="#3a6a3a" stroke="#4a8a4a" stroke-width="1.5"/>
-<text x="640" y="385" fill="#4a8a4a" font-family="system-ui" font-size="9">Plant</text>
-<circle cx="600" cy="320" r="12" fill="#6a5a3a" stroke="#8a7a4a" stroke-width="1.5"/>
-<text x="640" y="325" fill="#8a7a4a" font-family="system-ui" font-size="9">Animal</text>
-<circle cx="600" cy="250" r="10" fill="#a08a6a" stroke="#c0a07a" stroke-width="1.5"/><circle cx="600" cy="238" r="6" fill="#a08a6a" stroke="#c0a07a" stroke-width="1"/>
-<text x="640" y="250" fill="#c0a07a" font-family="system-ui" font-size="9">Human</text>
-<polygon points="600,170 590,190 610,190" fill="#c9a04a"/><circle cx="600" cy="165" r="5" fill="#c9a04a"/>
-<text x="640" y="180" fill="#c9a04a" font-family="system-ui" font-size="9">Angel</text>
-<text x="600" y="130" text-anchor="middle" fill="#5a5a6e" font-family="system-ui" font-size="10" font-weight="600" letter-spacing=".08em">GREAT CHAIN OF BEING</text>
-<text x="600" y="510" text-anchor="middle" fill="#4a4a5e" font-family="Georgia,serif" font-size="12" font-style="italic">Species are fixed. God designed each one for its place.</text>
-</g>
-
-<g id="r2p1" data-phase style="opacity:0">
-<text x="700" y="150" text-anchor="middle" fill="#d4a030" font-family="Georgia,serif" font-size="15" font-style="italic">Fossils of the same species, on different continents.</text>
-<text x="700" y="175" text-anchor="middle" fill="#d4a030" font-family="Georgia,serif" font-size="13">Island species that look like mainland species &mdash; but different.</text>
-<!-- Simplified world outline with matching fossils -->
-<ellipse cx="550" cy="340" rx="100" ry="70" fill="none" stroke="#3a3a5e" stroke-width="1" opacity=".4"/>
-<text x="550" y="335" text-anchor="middle" fill="#3a3a5e" font-family="system-ui" font-size="9">South America</text>
-<ellipse cx="850" cy="340" rx="90" ry="70" fill="none" stroke="#3a3a5e" stroke-width="1" opacity=".4"/>
-<text x="850" y="335" text-anchor="middle" fill="#3a3a5e" font-family="system-ui" font-size="9">Africa</text>
-<!-- Matching fossils -->
-<text x="620" y="360" fill="#d4a030" font-family="system-ui" font-size="16">&#x1f9b4;</text>
-<text x="780" y="360" fill="#d4a030" font-family="system-ui" font-size="16">&#x1f9b4;</text>
-<path d="M640,355 L775,355" fill="none" stroke="#d4a030" stroke-width="1.5" stroke-dasharray="4,3" opacity=".5"/>
-<text x="700" y="350" text-anchor="middle" fill="#d4a030" font-family="system-ui" font-size="10" font-weight="700">same species?</text>
-</g>
-
-<g id="r2p2" data-phase style="opacity:0">
-<g transform="translate(700,220)">
-<path d="M-180,-28 Q-180,-42 -167,-42 L167,-42 Q180,-42 180,-28 L180,6 Q180,18 167,18 L14,18 0,35 -14,18 -167,18 Q-180,18 -180,6 Z" fill="#1a1020" stroke="#c04040" stroke-width="2.5"/>
-<text x="0" y="-5" text-anchor="middle" fill="#e05050" font-family="system-ui" font-size="14" font-weight="700">Why do the fossils match across oceans?</text>
-</g>
-<text x="700" y="350" text-anchor="middle" fill="#c04040" font-family="system-ui" font-size="12" opacity=".5">"This theory is a piece of cruelty."</text>
-<text x="700" y="380" text-anchor="middle" fill="#8a4a4a" font-family="system-ui" font-size="11" opacity=".4">"Species are fixed. This is settled science."</text>
-<text x="700" y="420" text-anchor="middle" fill="#6a3a3a" font-family="system-ui" font-size="10" font-style="italic" opacity=".35">Darwin delayed publication 20 years.</text>
-</g>
-
-<g id="r2p3" data-phase style="opacity:0">
-<!-- Tree of Life (growing) -->
-<g transform="translate(700,400)">
-<line x1="0" y1="80" x2="0" y2="0" stroke="#40a060" stroke-width="3" stroke-linecap="round"/>
-<path d="M0,20 Q-40,-20 -80,-50" fill="none" stroke="#40a060" stroke-width="2.5" stroke-linecap="round"/>
-<path d="M0,20 Q40,-20 80,-50" fill="none" stroke="#40a060" stroke-width="2.5" stroke-linecap="round"/>
-<path d="M0,0 Q-30,-30 -50,-70" fill="none" stroke="#5ab870" stroke-width="2" stroke-linecap="round"/>
-<path d="M0,0 Q30,-30 50,-70" fill="none" stroke="#5ab870" stroke-width="2" stroke-linecap="round"/>
-<path d="M-80,-50 Q-100,-70 -120,-80" fill="none" stroke="#5ab870" stroke-width="1.5" stroke-linecap="round"/>
-<path d="M-80,-50 Q-70,-75 -60,-90" fill="none" stroke="#5ab870" stroke-width="1.5" stroke-linecap="round"/>
-<path d="M80,-50 Q100,-70 120,-80" fill="none" stroke="#5ab870" stroke-width="1.5" stroke-linecap="round"/>
-<path d="M80,-50 Q70,-75 60,-90" fill="none" stroke="#5ab870" stroke-width="1.5" stroke-linecap="round"/>
-<circle cx="-120" cy="-82" r="4" fill="#5ab870" opacity=".6"/>
-<circle cx="-60" cy="-92" r="4" fill="#5ab870" opacity=".6"/>
-<circle cx="-50" cy="-72" r="4" fill="#5ab870" opacity=".6"/>
-<circle cx="50" cy="-72" r="4" fill="#5ab870" opacity=".6"/>
-<circle cx="60" cy="-92" r="4" fill="#5ab870" opacity=".6"/>
-<circle cx="120" cy="-82" r="4" fill="#5ab870" opacity=".6"/>
-</g>
-<text x="700" y="175" text-anchor="middle" fill="#f0c040" font-family="Georgia,serif" font-size="15" font-style="italic">All life shares common descent.</text>
-<text x="700" y="520" text-anchor="middle" fill="#5a5a6e" font-family="system-ui" font-size="10">Darwin's "I think" sketch &mdash; the first tree of life</text>
-</g>
-
-<g id="r2p4" data-phase style="opacity:0">
-<text x="700" y="200" text-anchor="middle" fill="#40a060" font-family="system-ui" font-size="14">What evolution gave us:</text>
-<text x="700" y="280" fill="#40a060" font-family="system-ui" font-size="12" opacity=".6">&rarr; Genetics (Mendel, 1866)</text>
-<text x="700" y="305" fill="#40a060" font-family="system-ui" font-size="12" opacity=".6">&rarr; DNA structure (Franklin/Watson/Crick, 1953)</text>
-<text x="700" y="330" fill="#40a060" font-family="system-ui" font-size="12" opacity=".6">&rarr; Genomics</text>
-<text x="700" y="355" fill="#40a060" font-family="system-ui" font-size="12" opacity=".6">&rarr; CRISPR gene editing</text>
-<text x="700" y="385" fill="#40a060" font-family="system-ui" font-size="10" opacity=".4">The mechanism arrived 100 years after the theory.</text>
-<text x="700" y="460" text-anchor="middle" fill="#6a6a7e" font-family="system-ui" font-size="11" font-weight="300">Darwin &bull; Wallace</text>
+<text x="600" y="285" text-anchor="middle" fill="#60b070" font-family="Georgia,serif" font-size="21">Sun at center. Planets in orbits.</text>
+<text x="600" y="340" text-anchor="middle" fill="#50a060" font-family="system-ui" font-size="14" opacity=".7">&rarr; Celestial mechanics</text>
+<text x="600" y="365" text-anchor="middle" fill="#50a060" font-family="system-ui" font-size="14" opacity=".7">&rarr; Space navigation</text>
+<text x="600" y="390" text-anchor="middle" fill="#50a060" font-family="system-ui" font-size="14" opacity=".7">&rarr; James Webb Space Telescope</text>
+<text x="600" y="460" text-anchor="middle" fill="#6a6a7e" font-family="system-ui" font-size="12" font-weight="300">Copernicus (1543) &middot; Galileo (1610) &middot; Kepler &middot; Newton (1687)</text>
 </g>
 
 <!-- ═══ END STATE ═══ -->
 <g id="endState" style="opacity:0">
-<text x="700" y="300" text-anchor="middle" fill="#5a5a6e" font-family="system-ui" font-size="18" font-weight="200" letter-spacing=".08em">5 more revolutions to come...</text>
-<text x="700" y="340" text-anchor="middle" fill="#3a3a4e" font-family="system-ui" font-size="11">Germ theory &bull; Relativity &bull; Quantum mechanics &bull; Plate tectonics &bull; DNA</text>
-<text x="700" y="420" text-anchor="middle" fill="#5a5a6e" font-family="Georgia,serif" font-size="13" font-style="italic" opacity=".5">The pattern repeats.</text>
+<text x="600" y="320" text-anchor="middle" fill="#5a5a6e" font-family="system-ui" font-size="18" font-weight="200" letter-spacing=".08em">7 more revolutions to come...</text>
+<text x="600" y="360" text-anchor="middle" fill="#3a3a4e" font-family="system-ui" font-size="11">Chemistry &bull; Evolution &bull; Germ theory &bull; Relativity &bull; Quantum &bull; Tectonics &bull; DNA</text>
+<text x="600" y="430" text-anchor="middle" fill="#5a5a6e" font-family="Georgia,serif" font-size="13" font-style="italic" opacity=".5">The pattern repeats.</text>
 </g>
 
 <!-- ═══ SCRUBBER BAR ═══ -->
@@ -417,8 +258,8 @@ ul.compact li{margin-bottom:.3rem;font-size:.95rem}
 <rect x="100" y="721" width="1000" height="4" rx="2" fill="#1a1a30"/>
 <rect id="scrubFill" x="100" y="721" width="0" height="4" rx="2" fill="#c9a04a" opacity=".35"/>
 <g onclick="E.seekTo(0)" cursor="pointer"><circle id="sbd0" cx="100" cy="723" r="5" fill="#0d0d1e" stroke="#3a3a5e" stroke-width="2"/><text x="100" y="743" text-anchor="middle" fill="#3a3a5e" font-family="system-ui" font-size="7">Helio</text></g>
-<g onclick="E.seekTo(1)" cursor="pointer"><circle id="sbd1" cx="243" cy="723" r="5" fill="#0d0d1e" stroke="#3a3a5e" stroke-width="2"/><text x="243" y="743" text-anchor="middle" fill="#3a3a5e" font-family="system-ui" font-size="7">O&#x2082;</text></g>
-<g onclick="E.seekTo(2)" cursor="pointer"><circle id="sbd2" cx="386" cy="723" r="5" fill="#0d0d1e" stroke="#3a3a5e" stroke-width="2"/><text x="386" y="743" text-anchor="middle" fill="#3a3a5e" font-family="system-ui" font-size="7">Evo</text></g>
+<g onclick="E.seekTo(1)" cursor="pointer" opacity=".3"><circle id="sbd1" cx="243" cy="723" r="5" fill="#0d0d1e" stroke="#2a2a3e" stroke-width="1.5"/><text x="243" y="743" text-anchor="middle" fill="#2a2a3e" font-family="system-ui" font-size="7">O&#x2082;</text></g>
+<g onclick="E.seekTo(2)" cursor="pointer" opacity=".3"><circle id="sbd2" cx="386" cy="723" r="5" fill="#0d0d1e" stroke="#2a2a3e" stroke-width="1.5"/><text x="386" y="743" text-anchor="middle" fill="#2a2a3e" font-family="system-ui" font-size="7">Evo</text></g>
 <g onclick="E.seekTo(3)" cursor="pointer" opacity=".3"><circle id="sbd3" cx="529" cy="723" r="5" fill="#0d0d1e" stroke="#2a2a3e" stroke-width="1.5"/><text x="529" y="743" text-anchor="middle" fill="#2a2a3e" font-family="system-ui" font-size="7">Germ</text></g>
 <g onclick="E.seekTo(4)" cursor="pointer" opacity=".3"><circle id="sbd4" cx="671" cy="723" r="5" fill="#0d0d1e" stroke="#2a2a3e" stroke-width="1.5"/><text x="671" y="743" text-anchor="middle" fill="#2a2a3e" font-family="system-ui" font-size="7">Rel</text></g>
 <g onclick="E.seekTo(5)" cursor="pointer" opacity=".3"><circle id="sbd5" cx="814" cy="723" r="5" fill="#0d0d1e" stroke="#2a2a3e" stroke-width="1.5"/><text x="814" y="743" text-anchor="middle" fill="#2a2a3e" font-family="system-ui" font-size="7">QM</text></g>
@@ -429,16 +270,16 @@ ul.compact li{margin-bottom:.3rem;font-size:.95rem}
 
 <!-- ═══ PLAY BUTTON ═══ -->
 <g id="playBtn" cursor="pointer" onclick="E.start()">
-<rect x="220" y="0" width="980" height="700" fill="#0d0d1e" opacity=".2"/>
-<circle cx="700" cy="400" r="44" fill="rgba(201,160,74,.06)" stroke="#c9a04a" stroke-width="2"><animate attributeName="r" values="44;48;44" dur="3s" repeatCount="indefinite"/></circle>
-<polygon points="690,378 690,422 718,400" fill="#c9a04a" opacity=".8"/>
-<text x="700" y="460" text-anchor="middle" fill="#5a5a6e" font-family="system-ui" font-size="10" letter-spacing=".12em">PRESS PLAY</text>
+<rect x="250" y="200" width="700" height="400" fill="#0d0d1e" opacity=".15" rx="8"/>
+<circle cx="600" cy="420" r="44" fill="rgba(201,160,74,.06)" stroke="#c9a04a" stroke-width="2"><animate attributeName="r" values="44;48;44" dur="3s" repeatCount="indefinite"/></circle>
+<polygon points="590,398 590,442 618,420" fill="#c9a04a" opacity=".8"/>
+<text x="600" y="480" text-anchor="middle" fill="#5a5a6e" font-family="system-ui" font-size="10" letter-spacing=".12em">PRESS PLAY</text>
 </g>
 
 </svg>
 </div>
 
-<p>The vocabulary &mdash; normal science, anomaly, crisis, revolution &mdash; is less important than the rhythm. By the third example, the pattern is obvious. Click any stop on the left to jump to that revolution.</p>
+<p>The vocabulary &mdash; normal science, anomaly, crisis, revolution &mdash; is less important than the rhythm. Watch the cycle fill up as each phase plays. Click any stop on the timeline to jump.</p>
 
 <!-- ═══════════════════════════════════════ -->
 <h2 id="paradigm">2. The Current Paradigm</h2>
@@ -573,11 +414,19 @@ ul.compact li{margin-bottom:.3rem;font-size:.95rem}
 var $=function(id){return document.getElementById(id)};
 var COLORS=['#4a6aaa','#d4a030','#c04040','#f0c040','#40a060'];
 var LABELS=['NORMAL SCIENCE','ANOMALY','CRISIS','REVOLUTION','NEW NORMAL'];
-var REVS=[
-  {name:'HELIOCENTRISM • 1543 → 1687',years:['~1400','1543','1543–1610','1610','1687'],dur:[6000,5000,5500,5000,3500]},
-  {name:'THE OXYGEN REVOLUTION • 1770s',years:['~1700','1770s','1772','1774','1789'],dur:[5500,5000,5500,5000,4000]},
-  {name:'EVOLUTION • 1859',years:['~1800','1831–1859','1859–1870','1859','1953'],dur:[5500,5000,5500,5000,4000]}
-];
+var DIM_STROKES=['#2a3a5e','#4a3a20','#4a2020','#4a3a10','#204a20'];
+var DIM_FILLS=['#3a4a6e','#5a4a30','#5a3030','#5a4a20','#305a30'];
+var SEGS=['seg01','seg12','seg23','seg34','seg40'];
+
+var REVS=[{
+  name:'HELIOCENTRISM',
+  title:'The Copernican Revolution (1543–1687)',
+  subtitle:'The earth is at the center. The sun, moon, and stars revolve around it.',
+  newParadigm:'The sun is at the center. The earth orbits.',
+  years:['∼1400','1543','1543–1610','1610','1687'],
+  dur:[5500,5000,5500,5000,4000]
+}];
+
 var NREVS=REVS.length,NSTOPS=8;
 var state='static',rev=-1,phase=-1,timer=null;
 var SCRUB_X0=100,SCRUB_XN=1100;
@@ -589,62 +438,61 @@ function hideAll(){
     g.style.opacity='0';
     g.querySelectorAll('[data-delay]').forEach(function(d){d.style.opacity='0'});
   });
+  for(var r=0;r<NREVS;r++)for(var p=0;p<5;p++){
+    var lp=$('lp'+r+'p'+p);if(lp)lp.style.opacity='0';
+  }
+  for(var i=0;i<5;i++){var s=$(SEGS[i]);if(s)s.style.opacity='0';}
   $('abstract').style.opacity='0';
   $('endState').style.opacity='0';
+  $('titleBar').style.opacity='0';
+  resetLoop();
 }
 
-function fadePhases(r,from,to){
-  for(var p=from;p<=to;p++){
-    var el=$('r'+r+'p'+p);
-    if(el) el.style.opacity='0';
+function resetLoop(){
+  for(var i=0;i<5;i++){
+    var c=$('ll'+i+'c'),t=$('ll'+i+'t');
+    if(c){c.setAttribute('stroke',DIM_STROKES[i]);c.setAttribute('fill','#0d0d1e');}
+    if(t)t.setAttribute('fill',DIM_FILLS[i]);
   }
 }
 
+function lightLoop(p,color){
+  var c=$('ll'+p+'c'),t=$('ll'+p+'t');
+  if(c){c.setAttribute('stroke',color);c.setAttribute('fill',color);c.setAttribute('fill-opacity','.15');}
+  if(t)t.setAttribute('fill',color);
+}
+
+function lightSeg(p){
+  var s=$(SEGS[p]);if(s)s.style.opacity='.25';
+}
+
 function updateHUD(r,p){
-  var pl=$('phaseLabel'),yr=$('yearDisp'),rn=$('revName'),rc=$('revCount');
+  var pl=$('phaseLabel'),yr=$('yearDisp'),rc=$('revCount');
   if(r>=0&&p>=0){
     pl.textContent=LABELS[p];pl.setAttribute('fill',COLORS[p]);pl.style.opacity='1';
     yr.textContent=REVS[r].years[p];yr.setAttribute('fill',COLORS[p]);yr.style.opacity='1';
-    rn.textContent=REVS[r].name;rn.style.opacity='.5';
     rc.textContent=(r+1)+'/8';rc.style.opacity='.3';
   }else{
-    pl.style.opacity='0';yr.style.opacity='0';rn.style.opacity='0';rc.style.opacity='0';
+    pl.style.opacity='0';yr.style.opacity='0';rc.style.opacity='0';
   }
   $('miniWheel').style.opacity=r>=0?'.6':'0';
   for(var i=0;i<5;i++){
     var mw=$('mw'+i);
-    if(mw) mw.setAttribute('opacity',i===p?'1':i<p?'.4':'.12');
+    if(mw)mw.setAttribute('opacity',i===p?'1':i<p?'.4':'.12');
   }
-}
-
-function highlightStop(idx){
-  for(var i=0;i<3;i++){
-    var c=$('s'+i+'c');
-    if(c){
-      if(i===idx){c.setAttribute('stroke',COLORS[phase]||'#c9a04a');c.setAttribute('stroke-width','3.5');}
-      else if(i<idx||c.dataset.done){c.setAttribute('stroke','#f0c040');c.setAttribute('fill','#3a2a10');c.setAttribute('stroke-width','2.5');}
-    }
-  }
-}
-
-function completeStop(idx){
-  var c=$('s'+idx+'c');
-  if(c){c.setAttribute('stroke','#f0c040');c.setAttribute('fill','#3a2a10');c.dataset.done='1';}
-  if(idx>=1){var t=$('track'+(idx-1)+idx);if(t)t.style.opacity='.3';}
 }
 
 function updateScrubber(r,p){
   var sb=$('scrubber');if(!sb)return;
   sb.style.opacity='1';
   var ri=Math.max(0,Math.min(r,NSTOPS-1));
-  var baseX=scrubX[ri];
-  var nextX=scrubX[Math.min(ri+1,NSTOPS-1)];
+  var baseX=scrubX[ri],nextX=scrubX[Math.min(ri+1,NSTOPS-1)];
   var frac=(p>=0?p:0)/5;
   var px=baseX+(nextX-baseX)*frac;
   var ph=$('playhead');
   if(ph){ph.setAttribute('cx',px);ph.style.opacity='1';}
   var fill=$('scrubFill');
-  if(fill) fill.setAttribute('width',Math.max(0,px-SCRUB_X0));
+  if(fill)fill.setAttribute('width',Math.max(0,px-SCRUB_X0));
   for(var i=0;i<NSTOPS;i++){
     var dot=$('sbd'+i);
     if(dot){
@@ -655,14 +503,44 @@ function updateScrubber(r,p){
   }
 }
 
-// ACCUMULATION: phases 0-2 pile up. Phase 3 flashes then clears mess. Phase 4 is clean.
+function showTitleBar(r){
+  $('revTitle').textContent=REVS[r].title;
+  $('revSubtitle').textContent=REVS[r].subtitle;
+  $('revSubtitle').style.opacity='1';
+  $('revSubNew').style.opacity='0';
+  $('titleBar').style.opacity='1';
+}
+
+function landOnLoop(r,p){
+  var lp=$('lp'+r+'p'+p);
+  if(lp)lp.style.opacity='1';
+  lightLoop(p,COLORS[p]);
+  if(p>0)lightSeg(p-1);
+}
+
 function showPhase(r,p){
   rev=r;phase=p;
-  if(p===0) hideAll();
-  if(p===3) setTimeout(function(){fadePhases(r,0,2)},600);
-  if(p===4) fadePhases(r,3,3);
-  var id='r'+r+'p'+p;
-  var el=$(id);
+  if(p===0){
+    hideAll();
+    showTitleBar(r);
+    $('youAreHere').style.opacity='0';
+  }
+  if(p>0){
+    var prev=$('r'+r+'p'+(p-1));
+    if(prev)prev.style.opacity='0';
+    landOnLoop(r,p-1);
+  }
+  if(p===3){
+    setTimeout(function(){
+      $('revSubtitle').style.opacity='.25';
+    },800);
+  }
+  if(p===4){
+    $('revSubtitle').style.opacity='0';
+    $('revSubNew').textContent=REVS[r].newParadigm;
+    $('revSubNew').style.opacity='1';
+  }
+  var el=$('r'+r+'p'+p);
   if(!el)return;
   el.style.opacity='1';
   el.querySelectorAll('[data-delay]').forEach(function(d){
@@ -671,20 +549,22 @@ function showPhase(r,p){
   });
   el.querySelectorAll('.pop-anim').forEach(function(a){if(a.beginElement)a.beginElement()});
   updateHUD(r,p);
-  highlightStop(r);
+  lightLoop(p,COLORS[p]);
   updateScrubber(r,p);
 }
 
 function advance(){
   phase++;
   if(phase>=5){
-    completeStop(rev);
+    var prev=$('r'+rev+'p4');
+    if(prev)prev.style.opacity='0';
+    landOnLoop(rev,4);
+    lightSeg(4);
     rev++;phase=0;
     if(rev>=NREVS){
       timer=setTimeout(showEnd,2500);
       return;
     }
-    // Clean pause: phase 4 visible 2.5s, then next revolution starts clean
     timer=setTimeout(function(){
       showPhase(rev,0);
       timer=setTimeout(advance,REVS[rev].dur[0]);
@@ -702,7 +582,9 @@ function playRev(r){
 }
 
 function showEnd(){
-  state='end';hideAll();
+  state='end';
+  document.querySelectorAll('[data-phase]').forEach(function(g){g.style.opacity='0'});
+  $('titleBar').style.opacity='0';
   updateHUD(-1,-1);
   $('endState').style.opacity='1';
   updateScrubber(NREVS-1,5);
@@ -712,8 +594,9 @@ var aPhase=0;
 function showAbstract(){
   $('abstract').style.opacity='1';
   updateHUD(-1,-1);
-  $('phaseLabel').textContent='THE KUHN CYCLE';$('phaseLabel').setAttribute('fill','#8a8a9e');$('phaseLabel').style.opacity='.6';
-  $('revName').textContent='How paradigms change';$('revName').style.opacity='.4';
+  $('phaseLabel').textContent='THE KUHN CYCLE';
+  $('phaseLabel').setAttribute('fill','#8a8a9e');
+  $('phaseLabel').style.opacity='.6';
   aPhase=0;
   stepAbstract();
 }
@@ -721,11 +604,25 @@ function stepAbstract(){
   if(state!=='abstract')return;
   for(var i=0;i<5;i++){
     var a=$('ap'+i);
-    if(a) a.style.opacity=i<=aPhase?'1':i===aPhase+1?'.15':'0';
+    if(i<aPhase){
+      if(a)a.style.opacity='0';
+      lightLoop(i,COLORS[i]);
+      if(i>0)lightSeg(i-1);
+    }else if(i===aPhase){
+      if(a)a.style.opacity='1';
+      lightLoop(i,COLORS[i]);
+      if(i>0)lightSeg(i-1);
+    }else{
+      if(a)a.style.opacity='0';
+    }
   }
-  if(aPhase>=4){
-    $('apReturn').style.opacity='.4';$('apReturnHead').style.opacity='.4';$('apReturnText').style.opacity='.5';
-    timer=setTimeout(function(){hideAll();playRev(0)},2500);
+  if(aPhase>=5){
+    lightSeg(4);
+    $('apReturnText').style.opacity='.5';
+    timer=setTimeout(function(){
+      hideAll();
+      playRev(0);
+    },2000);
     return;
   }
   aPhase++;
@@ -736,6 +633,7 @@ window.E={
   start:function(){
     $('playBtn').style.opacity='0';$('playBtn').style.pointerEvents='none';
     $('titleGroup').style.opacity='0';
+    $('youAreHere').style.opacity='0';
     state='abstract';
     showAbstract();
   },
@@ -744,6 +642,7 @@ window.E={
     clearTimeout(timer);
     $('playBtn').style.opacity='0';$('playBtn').style.pointerEvents='none';
     $('titleGroup').style.opacity='0';
+    $('youAreHere').style.opacity='0';
     $('abstract').style.opacity='0';
     state='playing';
     playRev(idx);
@@ -766,11 +665,14 @@ window.E={
 
 <style>
 #svg054 [data-phase],#svg054 #abstract,#svg054 #endState,#svg054 #titleGroup,#svg054 #playBtn,
-#svg054 [data-delay]{transition:opacity .45s ease}
-#svg054 #phaseLabel,#svg054 #yearDisp,#svg054 #revName,#svg054 #revCount,#svg054 #miniWheel{transition:opacity .3s ease}
+#svg054 [data-delay],#svg054 #youAreHere{transition:opacity .45s ease}
+#svg054 #phaseLabel,#svg054 #yearDisp,#svg054 #revCount,#svg054 #miniWheel,
+#svg054 #titleBar,#svg054 #revSubtitle,#svg054 #revSubNew{transition:opacity .3s ease}
 #svg054 .pop-anim{pointer-events:none}
 #svg054 #playhead{transition:cx .3s ease,opacity .3s ease}
 #svg054 #scrubFill{transition:width .3s ease}
+#svg054 [id^="lp"]{transition:opacity .6s ease}
+#svg054 [id^="seg"]{transition:opacity .5s ease}
 </style>
 
 </body>
