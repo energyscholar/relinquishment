@@ -120,6 +120,30 @@
     font-style: italic;
   }
 
+  /* SVG-055 Expert Consensus Spectrum */
+  .svg-panel {
+    margin: 1.5rem 0;
+    background: #12122a;
+    border-radius: 8px;
+    padding: 1rem 1rem 0.5rem;
+  }
+  .svg-panel summary {
+    cursor: pointer;
+    font-variant: small-caps;
+    letter-spacing: 0.04em;
+    color: #c8b898;
+    font-size: 0.95rem;
+    margin-bottom: 0.8rem;
+  }
+  .svg-panel .caption {
+    margin: 0.3rem 0 0.5rem;
+  }
+  @keyframes gold-pulse {
+    0%, 100% { filter: drop-shadow(0 0 3px rgba(212,160,23,0.3)); }
+    50% { filter: drop-shadow(0 0 8px rgba(212,160,23,0.7)); }
+  }
+  .gold-marker { animation: gold-pulse 2s ease-in-out infinite; }
+
   /* Footnotes */
   sup a {
     color: #8a9aaa;
@@ -274,7 +298,7 @@
 
 <p>The humor is the point. There is no agreed terminology because no one has framed the question. The conceptual vocabulary does not exist. "Life" is the nearest word in ordinary language, and it carries a thousand unearned connotations — metabolism, reproduction, evolution, intent. The twenty-word scientific mouthful is more accurate and communicates nothing to anyone outside three overlapping specialties. A biologist hears "life" and thinks cells. A physicist hears it and thinks thermodynamic dissipation. A complexity theorist hears it and thinks self-replication. None of these framings quite fits an autocatalytic anyonic network, because the concept has never needed a name. This is what a pre-paradigmatic question looks like from the inside.</p>
 
-<p>The honest expert assessment, as of 2026: <em>not precluded by known physics, but probably not a thing.</em> No serious condensed matter physicist would call it impossible — the theoretical ingredients are individually well-established, each backed by Nobel-caliber experimental confirmation. No serious physicist would call it likely — the ingredients have never been combined, and nobody has proposed a mechanism by which they would combine spontaneously. It is an open question that has not been asked. The gap between "not impossible" and "demonstrated" is where most of science lives.</p>
+<p>The honest expert assessment, as of 2026: <em>not precluded by known physics, but probably not a thing.</em> No serious condensed matter physicist would call it impossible — the theoretical ingredients are individually well-established, each backed by Nobel-level experimental confirmation. No serious physicist would call it likely — the ingredients have never been combined, and nobody has proposed a mechanism by which they would combine spontaneously. It is an open question that has not been asked. The gap between "not impossible" and "demonstrated" is where most of science lives.</p>
 
 <p>Here the path forks.</p>
 
@@ -283,6 +307,144 @@
 <p><strong>A2:</strong> The physics permits it. No one has looked. The topological protection that prevents decoherence also stabilizes intermediate computational states, and the diversity of anyon species in a sufficiently complex FQHE system exceeds Kauffman's closure threshold. In this case, the silence reflects not absence but pre-recognition — the anomalies exist in the published record but have not been identified as anomalies because the connecting question has not been asked. Under A2, the situation is structurally identical to Possibility C <span class="deep-link">(see "Possibility C")</span> from a Kuhnian standpoint — whether someone has already looked is irrelevant to how the science proceeds once the question enters public discourse.</p>
 
 <p>Both branches are scientifically productive. A1 still advances five fields. A2 opens a sixth. Neither is a consolation prize.</p>
+
+<details open class="svg-panel">
+  <summary>Expert Consensus Spectrum — Where Are We?</summary>
+  <svg id="svg055" viewBox="0 0 900 210" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Expert consensus spectrum showing historical scientific revolutions migrating from impossible to established, with autocatalytic QH computation stationary at not precluded">
+    <defs>
+      <linearGradient id="spectrumGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#c45c5c"/>
+        <stop offset="25%" stop-color="#c47c4c"/>
+        <stop offset="50%" stop-color="#d4a017"/>
+        <stop offset="75%" stop-color="#8c9c4c"/>
+        <stop offset="100%" stop-color="#5c9c5c"/>
+      </linearGradient>
+    </defs>
+
+    <!-- Spectrum bar -->
+    <rect x="60" y="50" width="780" height="8" rx="4" fill="url(#spectrumGrad)" opacity="0.85"/>
+
+    <!-- Tick marks and labels -->
+    <line x1="60" y1="46" x2="60" y2="62" stroke="#e8e0d0" stroke-width="1" opacity="0.5"/>
+    <text x="60" y="40" text-anchor="middle" fill="#e8e0d0" font-family="Georgia, serif" font-size="11" opacity="0.7">Impossible</text>
+
+    <line x1="255" y1="46" x2="255" y2="62" stroke="#e8e0d0" stroke-width="1" opacity="0.5"/>
+    <text x="255" y="40" text-anchor="middle" fill="#e8e0d0" font-family="Georgia, serif" font-size="11" opacity="0.7">Probably Not</text>
+
+    <line x1="450" y1="46" x2="450" y2="62" stroke="#e8e0d0" stroke-width="1" opacity="0.5"/>
+    <text x="450" y="40" text-anchor="middle" fill="#e8e0d0" font-family="Georgia, serif" font-size="11" opacity="0.7">Not Precluded</text>
+
+    <line x1="645" y1="46" x2="645" y2="62" stroke="#e8e0d0" stroke-width="1" opacity="0.5"/>
+    <text x="645" y="40" text-anchor="middle" fill="#e8e0d0" font-family="Georgia, serif" font-size="11" opacity="0.7">Likely</text>
+
+    <line x1="840" y1="46" x2="840" y2="62" stroke="#e8e0d0" stroke-width="1" opacity="0.5"/>
+    <text x="840" y="40" text-anchor="middle" fill="#e8e0d0" font-family="Georgia, serif" font-size="11" opacity="0.7">Established</text>
+
+    <!-- Historical markers (start positions, animated to end) -->
+    <!-- Continental drift: "absurd" (x=60) → "established" (x=840), 53 years -->
+    <g class="hist-marker" data-start="60" data-end="840" data-delay="0">
+      <circle cx="60" cy="90" r="5" fill="#5c9c5c" stroke="#fff" stroke-width="1.5" opacity="0"/>
+      <text x="60" y="108" text-anchor="middle" fill="#aaa" font-family="Georgia, serif" font-size="10" opacity="0">Continental drift (1912–1965)</text>
+    </g>
+
+    <!-- Germ theory: "probably not" (x=255) → "established" (x=840), 33 years -->
+    <g class="hist-marker" data-start="255" data-end="840" data-delay="500">
+      <circle cx="255" cy="125" r="5" fill="#5c9c5c" stroke="#fff" stroke-width="1.5" opacity="0"/>
+      <text x="255" y="143" text-anchor="middle" fill="#aaa" font-family="Georgia, serif" font-size="10" opacity="0">Germ theory (1847–1880)</text>
+    </g>
+
+    <!-- Heliocentrism: "absurd" (x=60) → "established" (x=840), 144 years -->
+    <g class="hist-marker" data-start="60" data-end="840" data-delay="1000">
+      <circle cx="60" cy="160" r="5" fill="#5c9c5c" stroke="#fff" stroke-width="1.5" opacity="0"/>
+      <text x="60" y="178" text-anchor="middle" fill="#aaa" font-family="Georgia, serif" font-size="10" opacity="0">Heliocentrism (1543–1687)</text>
+    </g>
+
+    <!-- Gold marker: "not precluded" (x=450), fades in after historical markers settle -->
+    <g id="goldMarker" class="gold-marker" style="animation-play-state: paused;">
+      <circle cx="450" cy="90" r="7" fill="#d4a017" stroke="#fff" stroke-width="2" opacity="0"/>
+      <text x="450" y="108" text-anchor="middle" fill="#d4a017" font-family="Georgia, serif" font-size="12" font-weight="bold" opacity="0">Autocatalytic QH, 2026</text>
+    </g>
+  </svg>
+  <p class="caption"><em>"Every revolution starts here. Most things that start here are not revolutions."</em></p>
+</details>
+
+<script>
+(function() {
+  var svg = document.getElementById('svg055');
+  if (!svg) return;
+  var played = false;
+
+  function animate() {
+    if (played) return;
+    played = true;
+
+    var markers = svg.querySelectorAll('.hist-marker');
+    markers.forEach(function(g) {
+      var start = parseFloat(g.dataset.start);
+      var end = parseFloat(g.dataset.end);
+      var delay = parseFloat(g.dataset.delay);
+      var circle = g.querySelector('circle');
+      var label = g.querySelector('text');
+
+      circle.setAttribute('cx', start);
+      label.setAttribute('x', start);
+
+      setTimeout(function() {
+        circle.style.transition = 'opacity 0.3s ease';
+        circle.style.opacity = '1';
+        label.style.transition = 'opacity 0.3s ease';
+        label.style.opacity = '1';
+
+        setTimeout(function() {
+          circle.style.transition = 'cx 1.5s ease-in-out, opacity 0.3s ease';
+          label.style.transition = 'x 1.5s ease-in-out, opacity 0.3s ease';
+
+          var animCircle = circle.animate(
+            [{ cx: start }, { cx: end }],
+            { duration: 1500, fill: 'forwards', easing: 'ease-in-out' }
+          );
+          var animLabel = label.animate(
+            [{ x: start }, { x: end }],
+            { duration: 1500, fill: 'forwards', easing: 'ease-in-out' }
+          );
+          animCircle.onfinish = function() {
+            circle.setAttribute('cx', end);
+            label.setAttribute('x', end);
+          };
+        }, 100);
+      }, delay);
+    });
+
+    var totalDelay = 1000 + 1500 + 1000;
+    setTimeout(function() {
+      var goldG = document.getElementById('goldMarker');
+      var goldCircle = goldG.querySelector('circle');
+      var goldLabel = goldG.querySelector('text');
+
+      goldCircle.style.transition = 'opacity 0.8s ease';
+      goldCircle.style.opacity = '1';
+      goldLabel.style.transition = 'opacity 0.8s ease';
+      goldLabel.style.opacity = '1';
+
+      goldG.style.animationPlayState = 'running';
+    }, totalDelay);
+  }
+
+  if ('IntersectionObserver' in window) {
+    var observer = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          animate();
+          observer.disconnect();
+        }
+      });
+    }, { threshold: 0.3 });
+    observer.observe(svg);
+  } else {
+    window.addEventListener('load', animate);
+  }
+})();
+</script>
 
 <blockquote class="phd-seed"><em>"Defining computational emergence in topologically ordered quantum substrates"</em> — the terminological paper the field will need before it can argue about anything else.</blockquote>
 
