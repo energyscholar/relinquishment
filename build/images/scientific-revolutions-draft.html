@@ -876,7 +876,7 @@
 
       kf.push({ t: base + 2.5, dur: 0.4, fn(p) {
         if (!dText) {
-          dText = createText(pair.dismissal, CX, CY + 25, 18, "#c45c5c");
+          dText = createText(pair.dismissal, CX, CY + 55, 18, "#c45c5c");
           dText.setAttribute("font-weight", "normal");
           dText.setAttribute("font-style", "italic");
           dText.setAttribute("letter-spacing", "0");
@@ -905,7 +905,7 @@
         }
         if (dText) {
           dText.setAttribute("x", CX + (tx - CX) * t);
-          dText.setAttribute("y", (CY + 25) + (ty + 12 - (CY + 25)) * t);
+          dText.setAttribute("y", (CY + 55) + (ty + 12 - (CY + 55)) * t);
           dText.setAttribute("font-size", Math.round(18 - 9 * t));
           dText.setAttribute("opacity", String(0.6 - t * 0.2));
         }
