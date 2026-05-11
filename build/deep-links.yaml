@@ -430,6 +430,10 @@
   question: "The Ethics — how do you make an AI permanently ethical?"
   category: puzzle
 
+- id: pz-gd-sr-001
+  question: "You've seen the pattern eight times. Here it is again."
+  category: puzzle
+
 # --- Puzzles: bridge (7) — puzzle-page-only, never in main HTML ---
 
 - id: pz-bridge-all-001a
