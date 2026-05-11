@@ -135,6 +135,39 @@
     return el;
   }
 
+  function createWrappedText(text, x, y, size, color, maxChars) {
+    maxChars = maxChars || 38;
+    const words = text.split(' ');
+    const lines = [];
+    let current = '';
+    for (const w of words) {
+      if (current && (current + ' ' + w).length > maxChars) {
+        lines.push(current);
+        current = w;
+      } else {
+        current = current ? current + ' ' + w : w;
+      }
+    }
+    if (current) lines.push(current);
+    const el = document.createElementNS(SVG_NS, "text");
+    el.setAttribute("x", x);
+    el.setAttribute("y", y);
+    el.setAttribute("text-anchor", "middle");
+    el.setAttribute("dominant-baseline", "central");
+    el.setAttribute("fill", color);
+    el.setAttribute("font-size", size);
+    el.setAttribute("font-family", "Georgia, serif");
+    el.setAttribute("font-weight", "bold");
+    for (let i = 0; i < lines.length; i++) {
+      const tspan = document.createElementNS(SVG_NS, "tspan");
+      tspan.setAttribute("x", String(x));
+      tspan.setAttribute("dy", i === 0 ? "0" : String(Math.round(size * 1.3)));
+      tspan.textContent = lines[i];
+      el.appendChild(tspan);
+    }
+    return el;
+  }
+
   function arcPathFromAngles(startDeg, endDeg) {
     let sweep = endDeg - startDeg;
     if (sweep < 0) sweep += 360;
@@ -626,8 +659,8 @@
 
     function scatterOffset(index) {
       return {
-        x: Math.sin(index * 2.7) * 60,
-        y: Math.cos(index * 1.9) * 50
+        x: Math.sin(index * 2.7) * 40,
+        y: Math.cos(index * 1.9) * 30
       };
     }
 
@@ -696,11 +729,13 @@
 
     kf.push({ t: 0.5, dur: 0.5, fn(p) {
       if (!nMain) {
-        nMain = createText(cfg.normal.main, CX, CY - 15, 36, "#4a90d9");
+        nMain = createWrappedText(cfg.normal.main, CX, CY - 15, 36, "#4a90d9");
         nMain.setAttribute("letter-spacing", "0");
         centerStage.appendChild(nMain);
       }
-      nMain.setAttribute("font-size", Math.round(36 * Math.max(0.1, easeOutBack(p))));
+      const ns = Math.round(36 * Math.max(0.1, easeOutBack(p)));
+      nMain.setAttribute("font-size", ns);
+      nMain.querySelectorAll('tspan').forEach((ts, i) => { if (i > 0) ts.setAttribute('dy', String(Math.round(ns * 1.3))); });
       nMain.setAttribute("opacity", Math.min(1, p * 2.5));
     }});
 
@@ -722,9 +757,12 @@
       const pos = phasePos(0);
       const off = scatterOffset(0);
       if (nMain) {
-        nMain.setAttribute("x", CX + (pos.x + off.x - CX) * t);
+        const nx = CX + (pos.x + off.x - CX) * t;
+        nMain.setAttribute("x", nx);
         nMain.setAttribute("y", (CY - 15) + (pos.y + off.y - (CY - 15)) * t);
-        nMain.setAttribute("font-size", Math.round(36 - 26 * t));
+        const ns = Math.round(36 - 26 * t);
+        nMain.setAttribute("font-size", ns);
+        nMain.querySelectorAll('tspan').forEach((ts, i) => { ts.setAttribute('x', String(nx)); if (i > 0) ts.setAttribute('dy', String(Math.round(ns * 1.3))); });
         nMain.setAttribute("opacity", String(1 - t * 0.3));
       }
       if (nSub) nSub.setAttribute("opacity", String(1 - easeOutCubic(p)));
@@ -752,11 +790,13 @@
 
       kf.push({ t: base + 0.05, dur: 0.45, fn(p) {
         if (!aText) {
-          aText = createText(pair.anomaly, CX, CY - 15, 28, "#d4a574");
+          aText = createWrappedText(pair.anomaly, CX, CY - 15, 28, "#d4a574");
           aText.setAttribute("letter-spacing", "0");
           centerStage.appendChild(aText);
         }
-        aText.setAttribute("font-size", Math.round(28 * Math.max(0.1, easeOutBack(p))));
+        const as = Math.round(28 * Math.max(0.1, easeOutBack(p)));
+        aText.setAttribute("font-size", as);
+        aText.querySelectorAll('tspan').forEach((ts, i) => { if (i > 0) ts.setAttribute('dy', String(Math.round(as * 1.3))); });
         aText.setAttribute("opacity", Math.min(1, p * 2.5));
       }});
 
@@ -783,9 +823,12 @@
         const off = scatterOffset(i + 1);
         const tx = pos.x + off.x, ty = pos.y + off.y;
         if (aText) {
-          aText.setAttribute("x", CX + (tx - CX) * t);
+          const ax = CX + (tx - CX) * t;
+          aText.setAttribute("x", ax);
           aText.setAttribute("y", (CY - 15) + (ty - (CY - 15)) * t);
-          aText.setAttribute("font-size", Math.round(28 - 18 * t));
+          const as = Math.round(28 - 18 * t);
+          aText.setAttribute("font-size", as);
+          aText.querySelectorAll('tspan').forEach((ts, i) => { ts.setAttribute('x', String(ax)); if (i > 0) ts.setAttribute('dy', String(Math.round(as * 1.3))); });
           aText.setAttribute("opacity", String(1 - t * 0.3));
         }
         if (dText) {
@@ -831,7 +874,7 @@
           rect.setAttribute("fill", "#c45c5c22"); rect.setAttribute("stroke", "#c45c5c");
           rect.setAttribute("stroke-width", "1");
           cGroup.appendChild(rect);
-          const q = createText(cfg.crisis[ci], CX, CY - 20, 18, "#c45c5c");
+          const q = createWrappedText(cfg.crisis[ci], CX, CY - 20, 18, "#c45c5c");
           q.setAttribute("font-style", "italic"); q.setAttribute("font-weight", "normal");
           q.setAttribute("letter-spacing", "0");
           cGroup.appendChild(q);
@@ -874,12 +917,15 @@
 
     kf.push({ t: momentStart + 0.05, dur: 0.5, fn(p) {
       if (!mMain) {
-        mMain = createText(cfg.revolution.main, CX, CY - 15, 28, "#d4a017", { filter: "url(#glow)" });
+        mMain = createWrappedText(cfg.revolution.main, CX, CY - 15, 28, "#d4a017");
+        mMain.setAttribute("filter", "url(#glow)");
         mMain.setAttribute("letter-spacing", "0");
         centerStage.appendChild(mMain);
       }
       mMain.setAttribute("opacity", easeOutCubic(p));
-      mMain.setAttribute("font-size", Math.round(28 * Math.max(0.1, easeOutBack(p))));
+      const ms = Math.round(28 * Math.max(0.1, easeOutBack(p)));
+      mMain.setAttribute("font-size", ms);
+      mMain.querySelectorAll('tspan').forEach((ts, i) => { if (i > 0) ts.setAttribute('dy', String(Math.round(ms * 1.3))); });
     }});
 
     kf.push({ t: momentStart + 0.8, dur: 0.3, fn(p) {
@@ -900,9 +946,12 @@
       const off = scatterOffset(N + NC + 3);
       const tx = pos.x + off.x, ty = pos.y + off.y;
       if (mMain) {
-        mMain.setAttribute("x", CX + (tx - CX) * t);
+        const mx = CX + (tx - CX) * t;
+        mMain.setAttribute("x", mx);
         mMain.setAttribute("y", (CY - 15) + (ty - (CY - 15)) * t);
-        mMain.setAttribute("font-size", Math.round(28 - 18 * t));
+        const ms = Math.round(28 - 18 * t);
+        mMain.setAttribute("font-size", ms);
+        mMain.querySelectorAll('tspan').forEach((ts, i) => { ts.setAttribute('x', String(mx)); if (i > 0) ts.setAttribute('dy', String(Math.round(ms * 1.3))); });
         mMain.setAttribute("opacity", String(1 - t * 0.3));
       }
       if (mName) mName.setAttribute("opacity", String(0.7 * (1 - easeOutCubic(p))));
@@ -923,12 +972,14 @@
 
     kf.push({ t: npCenterStart, dur: 0.5, fn(p) {
       if (!npEl) {
-        npEl = createText(cfg.title3, CX, CY, 42, "#5c9c5c");
+        npEl = createWrappedText(cfg.title3, CX, CY, 34, "#5c9c5c", 38);
         npEl.setAttribute("font-weight", "bold");
         npEl.setAttribute("letter-spacing", "0");
         centerStage.appendChild(npEl);
       }
-      npEl.setAttribute("font-size", String(Math.round(42 * easeOutBack(p))));
+      const nps = Math.round(34 * easeOutBack(p));
+      npEl.setAttribute("font-size", String(nps));
+      npEl.querySelectorAll('tspan').forEach((ts, i) => { if (i > 0) ts.setAttribute('dy', String(Math.round(nps * 1.3))); });
       npEl.setAttribute("opacity", String(easeOutCubic(p)));
     }});
 
@@ -940,9 +991,12 @@
       const t = easeInOutCubic(p);
       const pos = phasePos(4);
       const off = scatterOffset(N * 2 + 5);
-      npEl.setAttribute("x", String(CX + (pos.x + off.x - CX) * t));
+      const npx = CX + (pos.x + off.x - CX) * t;
+      npEl.setAttribute("x", String(npx));
       npEl.setAttribute("y", String(CY + (pos.y + off.y - CY) * t));
-      npEl.setAttribute("font-size", String(Math.round(42 - 31 * t)));
+      const nps = Math.round(34 - 23 * t);
+      npEl.setAttribute("font-size", String(nps));
+      npEl.querySelectorAll('tspan').forEach((ts, i) => { ts.setAttribute('x', String(npx)); if (i > 0) ts.setAttribute('dy', String(Math.round(nps * 1.3))); });
       npEl.setAttribute("opacity", String(1 - t * 0.3));
     }});
 
@@ -958,7 +1012,7 @@
     let deathEl = null;
     kf.push({ t: deathMoveStart, dur: 0.01, fn() {
       titleLine2.setAttribute("opacity", "0");
-      deathEl = createText(cfg.title2, CX, 45, 15, "#e8e0d0");
+      deathEl = createWrappedText(cfg.title2, CX, 45, 15, "#e8e0d0", 38);
       deathEl.setAttribute("font-style", "italic");
       deathEl.setAttribute("text-anchor", "middle");
       centerStage.appendChild(deathEl);
@@ -968,7 +1022,9 @@
       if (!deathEl) return;
       const t = easeInOutCubic(p);
       deathEl.setAttribute("y", String(45 + (CY - 45) * t));
-      deathEl.setAttribute("font-size", String(Math.round(15 + 25 * t)));
+      const ds = Math.round(15 + 17 * t);
+      deathEl.setAttribute("font-size", String(ds));
+      deathEl.querySelectorAll('tspan').forEach((ts, i) => { if (i > 0) ts.setAttribute('dy', String(Math.round(ds * 1.3))); });
       deathEl.setAttribute("opacity", String(0.8 + 0.2 * t));
     }});
 
@@ -997,7 +1053,7 @@
     kf.push({ t: riseStart, dur: 0.01, fn() {
       const pos = phasePos(4);
       const off = scatterOffset(N * 2 + 5);
-      riseEl = createText(cfg.title3, pos.x + off.x, pos.y + off.y, 11, "#5c9c5c");
+      riseEl = createWrappedText(cfg.title3, pos.x + off.x, pos.y + off.y, 11, "#5c9c5c", 38);
       riseEl.setAttribute("font-weight", "bold");
       riseEl.setAttribute("letter-spacing", "0");
       centerStage.appendChild(riseEl);
@@ -1009,18 +1065,24 @@
       const pos = phasePos(4);
       const off = scatterOffset(N * 2 + 5);
       const startX = pos.x + off.x, startY = pos.y + off.y;
-      riseEl.setAttribute("x", String(startX + (CX - startX) * t));
+      const rx = startX + (CX - startX) * t;
+      riseEl.setAttribute("x", String(rx));
       riseEl.setAttribute("y", String(startY + (CY - startY) * t));
-      riseEl.setAttribute("font-size", String(Math.round(11 + 31 * t)));
+      const rs = Math.round(11 + 23 * t);
+      riseEl.setAttribute("font-size", String(rs));
+      riseEl.querySelectorAll('tspan').forEach((ts, j) => { ts.setAttribute('x', String(rx)); if (j > 0) ts.setAttribute('dy', String(Math.round(rs * 1.3))); });
     }});
 
     // Step 7: New Paradigm moves to title bar (1.2s)
     kf.push({ t: toTitleStart, dur: 1.2, fn(p) {
       if (!riseEl) return;
       const t = easeInOutCubic(p);
-      riseEl.setAttribute("x", String(CX + (600 - CX) * t));
+      const rx = CX + (600 - CX) * t;
+      riseEl.setAttribute("x", String(rx));
       riseEl.setAttribute("y", String(CY + (60 - CY) * t));
-      riseEl.setAttribute("font-size", String(Math.round(42 - 28 * t)));
+      const rs = Math.round(34 - 20 * t);
+      riseEl.setAttribute("font-size", String(rs));
+      riseEl.querySelectorAll('tspan').forEach((ts, j) => { ts.setAttribute('x', String(rx)); if (j > 0) ts.setAttribute('dy', String(Math.round(rs * 1.3))); });
       riseEl.setAttribute("opacity", String(1 - t * 0.3));
     }});
 
