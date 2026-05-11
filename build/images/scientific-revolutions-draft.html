@@ -65,7 +65,7 @@
     { name: "ANOMALY",        color: "#d4a574", angle: -18 },
     { name: "CRISIS",         color: "#c45c5c", angle: 54  },
     { name: "REVOLUTION",     color: "#d4a017", angle: 126 },
-    { name: "NEW NORMAL",     color: "#5c9c5c", angle: 198 },
+    { name: "NEW PARADIGM",   color: "#5c9c5c", angle: 198 },
   ];
 
   const CX = 600, CY = 310, CR = 270;
@@ -76,6 +76,7 @@
   }
 
   const segmentLabels = ["Abstract", "1", "2", "3", "4", "5", "6", "7", "8"];
+  const scrubberYears = ["", "1543", "1770", "1859", "1847", "", "", "", ""];
 
   const engine = {
     segment: 0,
@@ -167,7 +168,7 @@
     const x0 = 60, x1 = 1140, span = x1 - x0;
     for (let i = 0; i < 9; i++) {
       const x = x0 + (span * i / 8);
-      const active = (i <= 1);
+      const active = (i <= 4);
       const g = document.createElementNS(SVG_NS, "g");
       g.setAttribute("cursor", active ? "pointer" : "default");
 
@@ -188,6 +189,18 @@
       t.setAttribute("font-family", "Georgia, serif");
       t.textContent = segmentLabels[i];
       g.appendChild(t);
+
+      if (scrubberYears[i]) {
+        const yt = document.createElementNS(SVG_NS, "text");
+        yt.setAttribute("x", x);
+        yt.setAttribute("y", 697);
+        yt.setAttribute("text-anchor", "middle");
+        yt.setAttribute("fill", "#e8e0d044");
+        yt.setAttribute("font-size", "9");
+        yt.setAttribute("font-family", "Georgia, serif");
+        yt.textContent = scrubberYears[i];
+        g.appendChild(yt);
+      }
 
       if (active) g.addEventListener("click", () => playSegment(i));
       scrubberDots.appendChild(g);
@@ -722,7 +735,7 @@
 
     kf.push({ t: 14.4, dur: 1.6, fn() {} });
 
-    // === NEW NORMAL: 16-20s ===
+    // === NEW PARADIGM: 16-20s ===
     kf.push({ t: 16, dur: 0.4, fn(p) {
       setYear(years[4]);
       const fade = 1 - easeOutCubic(p);
@@ -792,6 +805,475 @@
     return { keyframes: kf, duration: TOTAL };
   }
 
+  // --- Revolution factory (segments 2+): anomaly-accumulation pattern ---
+
+  function buildRevolutionTimeline(cfg) {
+    const N = cfg.anomalies.length;
+    const anomalyStart = 5.5;
+    const pauseStart = anomalyStart + N * 4;
+    const crisisStart = pauseStart + 1;
+    const revStart = crisisStart + 4;
+    const npStart = revStart + 4;
+    const TOTAL = npStart + 4;
+    const accumulatedEls = [];
+    const kf = [];
+
+    const anomalyCluster = [
+      { x: -55, y: -20 }, { x: 40, y: -35 }, { x: -30, y: 15 },
+      { x: 55, y: 5 }, { x: -15, y: 35 },
+    ];
+    const crisisCluster = [
+      { x: -40, y: -20 }, { x: 35, y: 15 },
+    ];
+
+    function setYear(yr) {
+      yearDisplay.textContent = yr;
+      yearDisplay.setAttribute("opacity", "0.55");
+    }
+
+    function showLoopFrame() {
+      cyclePath.setAttribute("d", fullCirclePath());
+      cyclePath.setAttribute("stroke-dasharray", "6,4");
+      cyclePath.removeAttribute("stroke-dashoffset");
+      cyclePath.setAttribute("opacity", "0.25");
+      for (let i = 0; i < 5; i++) {
+        const pos = phasePos(i);
+        const el = createText(phases[i].name, pos.x, pos.y, 12, phases[i].color, { opacity: 0.25 });
+        el.setAttribute("font-size", "12");
+        loopLabels.appendChild(el);
+      }
+    }
+
+    function parkText(text, x, y, size, color) {
+      const el = createText(text, x, y, size, color);
+      el.setAttribute("font-weight", "normal");
+      el.setAttribute("letter-spacing", "0");
+      loopLabels.appendChild(el);
+      accumulatedEls.push(el);
+    }
+
+    function clearCenter() {
+      while (centerStage.firstChild) centerStage.removeChild(centerStage.firstChild);
+    }
+
+    // === Setup: 0-0.5s ===
+    kf.push({ t: 0, dur: 0.5, fn(p) {
+      if (p < 0.02) {
+        showLoopFrame();
+        titleLine1.textContent = cfg.title1;
+        titleLine2.textContent = cfg.title2;
+      }
+      titleBar.setAttribute("opacity", easeOutCubic(p));
+      setYear(cfg.years.normal);
+    }});
+
+    // === Normal Science: 0.5-5s ===
+    let nMain = null, nSub = null;
+
+    kf.push({ t: 0.5, dur: 0.5, fn(p) {
+      if (!nMain) {
+        nMain = createText(cfg.normal.main, CX, CY - 15, 30, "#4a90d9");
+        nMain.setAttribute("letter-spacing", "0");
+        centerStage.appendChild(nMain);
+      }
+      nMain.setAttribute("font-size", Math.round(30 * Math.max(0.1, easeOutBack(p))));
+      nMain.setAttribute("opacity", Math.min(1, p * 2.5));
+    }});
+
+    kf.push({ t: 1.5, dur: 0.4, fn(p) {
+      if (!nSub) {
+        nSub = createText(cfg.normal.sub, CX, CY + 25, 17, "#4a90d9");
+        nSub.setAttribute("font-weight", "normal");
+        nSub.setAttribute("letter-spacing", "0");
+        centerStage.appendChild(nSub);
+      }
+      nSub.setAttribute("opacity", easeOutCubic(p));
+    }});
+
+    kf.push({ t: 1.9, dur: 3.1, fn() {} });
+
+    kf.push({ t: 5, dur: 0.5, fn(p) {
+      const t = easeInOutCubic(p);
+      const pos = phasePos(0);
+      if (nMain) {
+        const dx = pos.x - CX, dy = (pos.y + 18) - (CY - 15);
+        const perpX = -dy, perpY = dx;
+        const len = Math.sqrt(dx*dx + dy*dy) || 1;
+        const bow = Math.sin(t * Math.PI) * 40 / len;
+        nMain.setAttribute("x", CX + dx * t + perpX * bow);
+        nMain.setAttribute("y", (CY - 15) + dy * t);
+        nMain.setAttribute("font-size", Math.round(30 - 20 * t));
+      }
+      if (nSub) nSub.setAttribute("opacity", 1 - easeOutCubic(p));
+    }});
+
+    kf.push({ t: 5.5, dur: 0.01, fn() {
+      clearCenter();
+      nMain = null; nSub = null;
+      const pos = phasePos(0);
+      parkText(cfg.normal.main.substring(0, 28) + "…", pos.x, pos.y + 18, 10, "#4a90d9");
+    }});
+
+    // === Anomaly-Dismissal Pairs ===
+    for (let i = 0; i < N; i++) {
+      const base = anomalyStart + i * 4;
+      const pair = cfg.anomalies[i];
+      const yr = cfg.years.anomalies[i] || cfg.years.anomalies[0];
+      let aText = null, dText = null;
+
+      kf.push({ t: base, dur: 0.01, fn() {
+        clearCenter();
+        setYear(yr);
+      }});
+
+      kf.push({ t: base + 0.05, dur: 0.45, fn(p) {
+        if (!aText) {
+          aText = createText(pair.anomaly, CX, CY - 15, 28, "#d4a574");
+          aText.setAttribute("letter-spacing", "0");
+          centerStage.appendChild(aText);
+        }
+        aText.setAttribute("font-size", Math.round(28 * Math.max(0.1, easeOutBack(p))));
+        aText.setAttribute("opacity", Math.min(1, p * 2.5));
+      }});
+
+      kf.push({ t: base + 0.5, dur: 1.5, fn() {} });
+
+      kf.push({ t: base + 2, dur: 0.4, fn(p) {
+        if (!dText) {
+          dText = createText(pair.dismissal, CX, CY + 25, 18, "#c45c5c");
+          dText.setAttribute("font-weight", "normal");
+          dText.setAttribute("font-style", "italic");
+          dText.setAttribute("letter-spacing", "0");
+          dText.setAttribute("opacity", "0");
+          centerStage.appendChild(dText);
+        }
+        dText.setAttribute("opacity", String(easeOutCubic(p) * 0.6));
+      }});
+
+      kf.push({ t: base + 2.4, dur: 1.1, fn() {} });
+
+      kf.push({ t: base + 3.5, dur: 0.5, fn(p) {
+        const t = easeInOutCubic(p);
+        const pos = phasePos(1);
+        const off = anomalyCluster[i] || { x: 0, y: 0 };
+        const tx = pos.x + off.x, ty = pos.y + off.y;
+        if (aText) {
+          aText.setAttribute("x", CX + (tx - CX) * t);
+          aText.setAttribute("y", (CY - 15) + (ty - (CY - 15)) * t);
+          aText.setAttribute("font-size", Math.round(28 - 18 * t));
+          aText.setAttribute("opacity", String(1 - t * 0.3));
+        }
+        if (dText) {
+          dText.setAttribute("x", CX + (tx - CX) * t);
+          dText.setAttribute("y", (CY + 25) + (ty + 12 - (CY + 25)) * t);
+          dText.setAttribute("font-size", Math.round(18 - 9 * t));
+          dText.setAttribute("opacity", String(0.6 - t * 0.2));
+        }
+      }});
+
+      kf.push({ t: base + 4, dur: 0.01, fn() {
+        clearCenter();
+        aText = null; dText = null;
+        const pos = phasePos(1);
+        const off = anomalyCluster[i] || { x: 0, y: 0 };
+        parkText(pair.anomaly.substring(0, 32) + "…", pos.x + off.x, pos.y + off.y, 10, "#d4a574");
+        parkText(pair.dismissal.substring(0, 28) + "…", pos.x + off.x, pos.y + off.y + 12, 9, "#c45c5c66");
+      }});
+    }
+
+    // === Pause: mess visible (1s) ===
+    kf.push({ t: pauseStart, dur: 1, fn() {} });
+
+    // === Crisis (4s) ===
+    let crisisEls = [];
+
+    kf.push({ t: crisisStart, dur: 0.01, fn() {
+      clearCenter();
+      setYear(cfg.years.crisis);
+    }});
+
+    kf.push({ t: crisisStart + 0.05, dur: 0.45, fn(p) {
+      if (crisisEls.length === 0) {
+        const g = document.createElementNS(SVG_NS, "g");
+        const yPos = CY - 20;
+        const bw = 520, bh = 45, bx = CX - bw/2, by = yPos - 25;
+        const rect = document.createElementNS(SVG_NS, "rect");
+        rect.setAttribute("x", bx); rect.setAttribute("y", by);
+        rect.setAttribute("width", bw); rect.setAttribute("height", bh);
+        rect.setAttribute("rx", 10); rect.setAttribute("ry", 10);
+        rect.setAttribute("fill", "#c45c5c22"); rect.setAttribute("stroke", "#c45c5c");
+        rect.setAttribute("stroke-width", "1");
+        g.appendChild(rect);
+        const q = createText(cfg.crisis[0], CX, yPos, 18, "#c45c5c");
+        q.setAttribute("font-style", "italic"); q.setAttribute("font-weight", "normal");
+        q.setAttribute("letter-spacing", "0");
+        g.appendChild(q);
+        g.setAttribute("opacity", "0");
+        centerStage.appendChild(g);
+        crisisEls.push(g);
+      }
+      crisisEls[0].setAttribute("opacity", easeOutCubic(p));
+    }});
+
+    if (cfg.crisis.length > 1) {
+      kf.push({ t: crisisStart + 1, dur: 0.45, fn(p) {
+        if (crisisEls.length < 2) {
+          const g = document.createElementNS(SVG_NS, "g");
+          const yPos = CY + 30;
+          const bw = 520, bh = 45, bx = CX - bw/2, by = yPos - 25;
+          const rect = document.createElementNS(SVG_NS, "rect");
+          rect.setAttribute("x", bx); rect.setAttribute("y", by);
+          rect.setAttribute("width", bw); rect.setAttribute("height", bh);
+          rect.setAttribute("rx", 10); rect.setAttribute("ry", 10);
+          rect.setAttribute("fill", "#c45c5c22"); rect.setAttribute("stroke", "#c45c5c");
+          rect.setAttribute("stroke-width", "1");
+          g.appendChild(rect);
+          const q = createText(cfg.crisis[1], CX, yPos, 18, "#c45c5c");
+          q.setAttribute("font-style", "italic"); q.setAttribute("font-weight", "normal");
+          q.setAttribute("letter-spacing", "0");
+          g.appendChild(q);
+          g.setAttribute("opacity", "0");
+          centerStage.appendChild(g);
+          crisisEls.push(g);
+        }
+        crisisEls[1].setAttribute("opacity", easeOutCubic(p));
+      }});
+    }
+
+    kf.push({ t: crisisStart + 1.5, dur: 2, fn() {} });
+
+    kf.push({ t: crisisStart + 3.5, dur: 0.5, fn(p) {
+      for (const el of crisisEls) el.setAttribute("opacity", 1 - easeOutCubic(p));
+    }});
+
+    kf.push({ t: revStart, dur: 0.01, fn() {
+      clearCenter();
+      crisisEls = [];
+      for (let i = 0; i < cfg.crisis.length; i++) {
+        const pos = phasePos(2);
+        const off = crisisCluster[i] || { x: 0, y: 0 };
+        parkText(cfg.crisis[i].substring(0, 32) + "…", pos.x + off.x, pos.y + off.y, 9, "#c45c5c88");
+      }
+    }});
+
+    // === Revolution (4s): golden flash + dramatic moment ===
+    kf.push({ t: revStart + 0.01, dur: 0.4, fn(p) {
+      setYear(cfg.years.revolution);
+      let flashOp;
+      if (p < 0.35) flashOp = easeOutCubic(p / 0.35) * 0.3;
+      else flashOp = 0.3 * (1 - easeOutCubic((p - 0.35) / 0.65));
+      goldenFlash.setAttribute("opacity", flashOp);
+      const fadeOut = 1 - easeOutCubic(Math.min(1, p * 2));
+      for (const el of accumulatedEls) el.setAttribute("opacity", fadeOut);
+    }});
+
+    kf.push({ t: revStart + 0.41, dur: 0.01, fn() {
+      goldenFlash.setAttribute("opacity", 0);
+      for (const el of accumulatedEls) { if (el.parentNode) el.parentNode.removeChild(el); }
+      accumulatedEls.length = 0;
+    }});
+
+    let rMain = null, rSub = null, rName = null;
+
+    kf.push({ t: revStart + 0.5, dur: 0.5, fn(p) {
+      if (!rMain) {
+        rMain = createText(cfg.revolution.main, CX, CY - 25, 28, "#d4a017", { filter: "url(#glow)" });
+        rMain.setAttribute("letter-spacing", "0");
+        centerStage.appendChild(rMain);
+      }
+      rMain.setAttribute("opacity", easeOutCubic(p));
+      rMain.setAttribute("font-size", Math.round(28 * Math.max(0.1, easeOutBack(p))));
+    }});
+
+    kf.push({ t: revStart + 1.2, dur: 0.4, fn(p) {
+      if (!rSub) {
+        rSub = createText(cfg.revolution.sub, CX, CY + 15, 20, "#d4a017");
+        rSub.setAttribute("font-weight", "normal");
+        rSub.setAttribute("letter-spacing", "0");
+        centerStage.appendChild(rSub);
+      }
+      rSub.setAttribute("opacity", easeOutCubic(p));
+    }});
+
+    kf.push({ t: revStart + 1.8, dur: 0.3, fn(p) {
+      if (!rName) {
+        rName = createText(cfg.revolution.name, CX, CY + 45, 14, "#d4a017");
+        rName.setAttribute("font-weight", "normal");
+        centerStage.appendChild(rName);
+      }
+      rName.setAttribute("opacity", easeOutCubic(p) * 0.7);
+    }});
+
+    kf.push({ t: revStart + 2.1, dur: 1.9, fn() {} });
+
+    // === New Paradigm (4s) ===
+    kf.push({ t: npStart, dur: 0.4, fn(p) {
+      setYear(cfg.years.newParadigm);
+      const fade = 1 - easeOutCubic(p);
+      if (rMain) rMain.setAttribute("opacity", fade);
+      if (rSub) rSub.setAttribute("opacity", fade);
+      if (rName) rName.setAttribute("opacity", fade);
+    }});
+
+    kf.push({ t: npStart + 0.4, dur: 0.01, fn() {
+      clearCenter();
+      rMain = null; rSub = null; rName = null;
+    }});
+
+    let gMain = null;
+
+    kf.push({ t: npStart + 0.5, dur: 0.5, fn(p) {
+      if (!gMain) {
+        gMain = createText(cfg.newParadigm, CX, CY - 10, 26, "#5c9c5c");
+        gMain.setAttribute("letter-spacing", "0");
+        centerStage.appendChild(gMain);
+      }
+      gMain.setAttribute("opacity", easeOutCubic(p));
+      gMain.setAttribute("font-size", Math.round(26 * Math.max(0.1, easeOutBack(p))));
+    }});
+
+    kf.push({ t: npStart + 1.5, dur: 0.8, fn(p) {
+      const bbox = titleLine2.getBBox ? titleLine2.getBBox() : { x: 200, width: 800 };
+      titleStrike.setAttribute("x1", bbox.x);
+      titleStrike.setAttribute("x2", bbox.x + bbox.width * easeOutCubic(p));
+      titleStrike.setAttribute("opacity", easeOutCubic(p));
+    }});
+
+    kf.push({ t: npStart + 2.3, dur: 0.5, fn(p) {
+      titleLine3.textContent = cfg.title3;
+      titleLine3.setAttribute("opacity", easeOutCubic(p));
+    }});
+
+    kf.push({ t: npStart + 2.8, dur: 1.2, fn() {} });
+
+    return { keyframes: kf, duration: TOTAL };
+  }
+
+  // --- Segment 2: Oxygen / Chemical Revolution (34.5s) ---
+
+  function buildSegment2Timeline() {
+    return buildRevolutionTimeline({
+      title1: "The Chemical Revolution (1770–1789)",
+      title2: "When things burn, they release phlogiston — an invisible fire element.",
+      title3: "Combustion consumes oxygen. Mass is conserved.",
+      years: {
+        normal: "~1700",
+        anomalies: ["1772", "1774", "1775", "1777"],
+        crisis: "1780",
+        revolution: "1783",
+        newParadigm: "1789"
+      },
+      normal: {
+        main: "Things burn. The flame rises. Something escapes into the air.",
+        sub: "Georg Stahl’s phlogiston theory (~1703)"
+      },
+      anomalies: [
+        { anomaly: "Burn a piece of metal. Weigh the ash. It got HEAVIER.",
+          dismissal: "“Phlogiston has negative weight.”" },
+        { anomaly: "Seal a flask. Burn something inside. Total weight unchanged.",
+          dismissal: "“The phlogiston is still in the flask.”" },
+        { anomaly: "Some metals gain weight. Others lose it. No consistency.",
+          dismissal: "“Different substances have different amounts of phlogiston.”" },
+        { anomaly: "Priestley isolates a gas that makes things burn MORE vigorously.",
+          dismissal: "“He calls it ‘dephlogisticated air.’ Problem solved.”" },
+      ],
+      crisis: [
+        "“The theory explains everything — and therefore nothing.”",
+        "“Every anomaly gets a special exception.”"
+      ],
+      revolution: {
+        main: "Lavoisier seals a flask. Burns metal. Weighs everything.",
+        sub: "Mass conserved. A new element: oxygen. Combustion is combination, not release.",
+        name: "Lavoisier, 1783"
+      },
+      newParadigm: "The periodic table. Conservation of mass. Modern chemistry."
+    });
+  }
+
+  // --- Segment 3: Evolution / Darwinian Revolution (38.5s) ---
+
+  function buildSegment3Timeline() {
+    return buildRevolutionTimeline({
+      title1: "The Darwinian Revolution (1831–1953)",
+      title2: "Each species was created in its present form. Species do not change.",
+      title3: "Species descend from common ancestors through natural selection.",
+      years: {
+        normal: "~1800",
+        anomalies: ["1811", "1822", "1835", "1838", "1844"],
+        crisis: "1844–1858",
+        revolution: "1859",
+        newParadigm: "1953"
+      },
+      normal: {
+        main: "Every living thing in its place. The Great Chain of Being.",
+        sub: "Linnaeus’s fixed classification (~1735)"
+      },
+      anomalies: [
+        { anomaly: "Fossils of creatures that no longer exist.",
+          dismissal: "“God created them and then un-created them.”" },
+        { anomaly: "A whale’s flipper has the same bones as a human hand.",
+          dismissal: "“The Creator reused a good design.”" },
+        { anomaly: "Same fossils found in South America AND Africa.",
+          dismissal: "“They were placed there independently.”" },
+        { anomaly: "Selective breeding changes animals dramatically in generations.",
+          dismissal: "“That’s artificial, not natural. Different thing entirely.”" },
+        { anomaly: "Galápagos finches: different beaks on different islands.",
+          dismissal: "“Each island received its own creation.”" },
+      ],
+      crisis: [
+        "“To suggest we descend from apes is an insult to our Creator.”",
+        "“Darwin delays publication twenty years, dreading the response.”"
+      ],
+      revolution: {
+        main: "On the Origin of Species. Descent with modification.",
+        sub: "Natural selection. Variation. Inheritance. Competition. Time.",
+        name: "Darwin, 1859"
+      },
+      newParadigm: "DNA. Genetics. Gene therapy. CRISPR."
+    });
+  }
+
+  // --- Segment 4: Germ Theory (34.5s) ---
+
+  function buildSegment4Timeline() {
+    return buildRevolutionTimeline({
+      title1: "The Germ Theory Revolution (1847–1885)",
+      title2: "Disease arises from miasma — foul vapors from rotting matter.",
+      title3: "Disease is caused by microorganisms. Hygiene saves lives.",
+      years: {
+        normal: "~1840",
+        anomalies: ["1847", "1854", "1856", "1858"],
+        crisis: "1850–1861",
+        revolution: "1861",
+        newParadigm: "1885"
+      },
+      normal: {
+        main: "The air smells bad near the sick. Open the windows.",
+        sub: "Miasma theory, ancient tradition. Galen, ~200 AD"
+      },
+      anomalies: [
+        { anomaly: "Semmelweis: wash hands between patients. Deaths drop 18% → 1%.",
+          dismissal: "“A gentleman’s hands are always clean.”" },
+        { anomaly: "Cholera follows water supply lines, not wind patterns.",
+          dismissal: "“Coincidence. Bad air follows bad water.”" },
+        { anomaly: "Wounds fester less when kept clean, even in fresh air.",
+          dismissal: "“The miasma was already present in the wound.”" },
+        { anomaly: "Semmelweis committed to an asylum. Dies there, age 47.",
+          dismissal: "“He was clearly unstable. His ideas were offensive.”" },
+      ],
+      crisis: [
+        "“Are you suggesting that WE are killing our own patients?”",
+        "“Preposterous. Invisible creatures causing disease?”"
+      ],
+      revolution: {
+        main: "Pasteur’s swan-neck flask. Broth stays clear for years.",
+        sub: "No spontaneous generation. Germs are real. They can be killed.",
+        name: "Semmelweis / Pasteur"
+      },
+      newParadigm: "Antibiotics. Vaccines. Sterile surgery. Modern medicine."
+    });
+  }
+
   // --- Playback ---
   let currentTimeline = null;
 
@@ -858,13 +1340,18 @@
   }
 
   // Public API
+  const segmentBuilders = [
+    buildSegment0Timeline, buildSegment1Timeline,
+    buildSegment2Timeline, buildSegment3Timeline, buildSegment4Timeline
+  ];
+
   function playSegment(n) {
-    if (n < 0 || n > 1) return;
+    if (n < 0 || n >= segmentBuilders.length) return;
     stopYahPulse();
     if (engine.rafId) cancelAnimationFrame(engine.rafId);
     clearStage();
 
-    const tl = (n === 0) ? buildSegment0Timeline() : buildSegment1Timeline();
+    const tl = segmentBuilders[n]();
     currentTimeline = tl;
     engine.segment = n;
     engine.phase = 0;
@@ -893,7 +1380,7 @@
   }
 
   function seekTo(n, phaseFraction) {
-    if (n < 0 || n > 1) return;
+    if (n < 0 || n >= segmentBuilders.length) return;
     playSegment(n);
     const targetTime = phaseFraction * currentTimeline.duration;
     engine.timelineStart = performance.now() - targetTime * 1000;
