@@ -805,26 +805,36 @@
     return { keyframes: kf, duration: TOTAL };
   }
 
-  // --- Revolution factory (segments 2+): anomaly-accumulation pattern ---
+  // --- Revolution factory (segments 2+): paradigm-shake pattern ---
 
   function buildRevolutionTimeline(cfg) {
     const N = cfg.anomalies.length;
-    const anomalyStart = 5.5;
-    const pauseStart = anomalyStart + N * 4;
-    const crisisStart = pauseStart + 1;
-    const revStart = crisisStart + 4;
-    const npStart = revStart + 4;
-    const TOTAL = npStart + 4;
+    const normalEnd = 5.5;
+    const anomalyEnd = normalEnd + N * 5;
+    const pauseEnd = anomalyEnd + 1;
+    const crisisQ1Start = pauseEnd;
+    const crisisQ2Start = pauseEnd + 4;
+    const crisisParkStart = pauseEnd + 8;
+    const crisisParkEnd = pauseEnd + 8.5;
+    const momentStart = crisisParkEnd;
+    const momentEnd = momentStart + 5.5;
+    const shakeStart = momentEnd;
+    const shakeEnd = shakeStart + 2.5;
+    const fadeStart = shakeEnd;
+    const fadeEnd = fadeStart + 1;
+    const cleanEnd = fadeEnd + 1;
+    const npStart = cleanEnd;
+    const TOTAL = npStart + 3.5;
+
     const accumulatedEls = [];
     const kf = [];
 
-    const anomalyCluster = [
-      { x: -55, y: -20 }, { x: 40, y: -35 }, { x: -30, y: 15 },
-      { x: 55, y: 5 }, { x: -15, y: 35 },
-    ];
-    const crisisCluster = [
-      { x: -40, y: -20 }, { x: 35, y: 15 },
-    ];
+    function scatterOffset(index) {
+      return {
+        x: Math.sin(index * 2.7) * 60,
+        y: Math.cos(index * 1.9) * 40
+      };
+    }
 
     function setYear(yr) {
       yearDisplay.textContent = yr;
@@ -844,10 +854,13 @@
       }
     }
 
-    function parkText(text, x, y, size, color) {
+    function parkText(text, x, y, size, color, index) {
       const el = createText(text, x, y, size, color);
       el.setAttribute("font-weight", "normal");
       el.setAttribute("letter-spacing", "0");
+      if (index !== undefined) {
+        el.setAttribute("transform", `rotate(${index % 2 ? 3 : -3}, ${x}, ${y})`);
+      }
       loopLabels.appendChild(el);
       accumulatedEls.push(el);
     }
@@ -867,7 +880,7 @@
       setYear(cfg.years.normal);
     }});
 
-    // === Normal Science: 0.5-5s ===
+    // === Normal Science: 0.5-5.5s ===
     let nMain = null, nSub = null;
 
     kf.push({ t: 0.5, dur: 0.5, fn(p) {
@@ -911,12 +924,12 @@
       clearCenter();
       nMain = null; nSub = null;
       const pos = phasePos(0);
-      parkText(cfg.normal.main.substring(0, 28) + "…", pos.x, pos.y + 18, 10, "#4a90d9");
+      parkText(cfg.normal.main.substring(0, 28) + "…", pos.x, pos.y + 18, 10, "#4a90d9", 0);
     }});
 
-    // === Anomaly-Dismissal Pairs ===
+    // === Anomaly-Dismissal Pairs (5s each) ===
     for (let i = 0; i < N; i++) {
-      const base = anomalyStart + i * 4;
+      const base = normalEnd + i * 5;
       const pair = cfg.anomalies[i];
       const yr = cfg.years.anomalies[i] || cfg.years.anomalies[0];
       let aText = null, dText = null;
@@ -936,9 +949,9 @@
         aText.setAttribute("opacity", Math.min(1, p * 2.5));
       }});
 
-      kf.push({ t: base + 0.5, dur: 1.5, fn() {} });
+      kf.push({ t: base + 0.5, dur: 2, fn() {} });
 
-      kf.push({ t: base + 2, dur: 0.4, fn(p) {
+      kf.push({ t: base + 2.5, dur: 0.4, fn(p) {
         if (!dText) {
           dText = createText(pair.dismissal, CX, CY + 25, 18, "#c45c5c");
           dText.setAttribute("font-weight", "normal");
@@ -950,12 +963,12 @@
         dText.setAttribute("opacity", String(easeOutCubic(p) * 0.6));
       }});
 
-      kf.push({ t: base + 2.4, dur: 1.1, fn() {} });
+      kf.push({ t: base + 2.9, dur: 1.6, fn() {} });
 
-      kf.push({ t: base + 3.5, dur: 0.5, fn(p) {
+      kf.push({ t: base + 4.5, dur: 0.5, fn(p) {
         const t = easeInOutCubic(p);
         const pos = phasePos(1);
-        const off = anomalyCluster[i] || { x: 0, y: 0 };
+        const off = scatterOffset(i + 1);
         const tx = pos.x + off.x, ty = pos.y + off.y;
         if (aText) {
           aText.setAttribute("x", CX + (tx - CX) * t);
@@ -971,28 +984,29 @@
         }
       }});
 
-      kf.push({ t: base + 4, dur: 0.01, fn() {
+      kf.push({ t: base + 5, dur: 0.01, fn() {
         clearCenter();
         aText = null; dText = null;
         const pos = phasePos(1);
-        const off = anomalyCluster[i] || { x: 0, y: 0 };
-        parkText(pair.anomaly.substring(0, 32) + "…", pos.x + off.x, pos.y + off.y, 10, "#d4a574");
-        parkText(pair.dismissal.substring(0, 28) + "…", pos.x + off.x, pos.y + off.y + 12, 9, "#c45c5c66");
+        const off = scatterOffset(i + 1);
+        const px = pos.x + off.x, py = pos.y + off.y;
+        parkText(pair.anomaly.substring(0, 32) + "…", px, py, 10, "#d4a574", i * 2 + 1);
+        parkText(pair.dismissal.substring(0, 28) + "…", px, py + 12, 9, "#c45c5c66", i * 2 + 2);
       }});
     }
 
-    // === Pause: mess visible (1s) ===
-    kf.push({ t: pauseStart, dur: 1, fn() {} });
+    // === Pause: accumulated mess visible (1s) ===
+    kf.push({ t: anomalyEnd, dur: 1, fn() {} });
 
-    // === Crisis (4s) ===
+    // === Crisis Quotes (4s each, 2 quotes) ===
     let crisisEls = [];
 
-    kf.push({ t: crisisStart, dur: 0.01, fn() {
+    kf.push({ t: crisisQ1Start, dur: 0.01, fn() {
       clearCenter();
       setYear(cfg.years.crisis);
     }});
 
-    kf.push({ t: crisisStart + 0.05, dur: 0.45, fn(p) {
+    kf.push({ t: crisisQ1Start + 0.05, dur: 0.45, fn(p) {
       if (crisisEls.length === 0) {
         const g = document.createElementNS(SVG_NS, "g");
         const yPos = CY - 20;
@@ -1015,8 +1029,10 @@
       crisisEls[0].setAttribute("opacity", easeOutCubic(p));
     }});
 
+    kf.push({ t: crisisQ1Start + 0.5, dur: 3.5, fn() {} });
+
     if (cfg.crisis.length > 1) {
-      kf.push({ t: crisisStart + 1, dur: 0.45, fn(p) {
+      kf.push({ t: crisisQ2Start + 0.05, dur: 0.45, fn(p) {
         if (crisisEls.length < 2) {
           const g = document.createElementNS(SVG_NS, "g");
           const yPos = CY + 30;
@@ -1038,89 +1054,114 @@
         }
         crisisEls[1].setAttribute("opacity", easeOutCubic(p));
       }});
+
+      kf.push({ t: crisisQ2Start + 0.5, dur: 3.5, fn() {} });
     }
 
-    kf.push({ t: crisisStart + 1.5, dur: 2, fn() {} });
-
-    kf.push({ t: crisisStart + 3.5, dur: 0.5, fn(p) {
+    // Park crisis quotes at Crisis position
+    kf.push({ t: crisisParkStart, dur: 0.5, fn(p) {
       for (const el of crisisEls) el.setAttribute("opacity", 1 - easeOutCubic(p));
     }});
 
-    kf.push({ t: revStart, dur: 0.01, fn() {
+    kf.push({ t: crisisParkEnd, dur: 0.01, fn() {
       clearCenter();
       crisisEls = [];
       for (let i = 0; i < cfg.crisis.length; i++) {
         const pos = phasePos(2);
-        const off = crisisCluster[i] || { x: 0, y: 0 };
-        parkText(cfg.crisis[i].substring(0, 32) + "…", pos.x + off.x, pos.y + off.y, 9, "#c45c5c88");
+        const off = scatterOffset(N + i + 2);
+        parkText(cfg.crisis[i].substring(0, 32) + "…", pos.x + off.x, pos.y + off.y, 9, "#c45c5c88", N + i + 2);
       }
     }});
 
-    // === Revolution (4s): golden flash + dramatic moment ===
-    kf.push({ t: revStart + 0.01, dur: 0.4, fn(p) {
+    // === Crisis Moment: dramatic revelation (5.5s) ===
+    let mMain = null, mName = null;
+
+    kf.push({ t: momentStart, dur: 0.01, fn() {
       setYear(cfg.years.revolution);
-      let flashOp;
-      if (p < 0.35) flashOp = easeOutCubic(p / 0.35) * 0.3;
-      else flashOp = 0.3 * (1 - easeOutCubic((p - 0.35) / 0.65));
-      goldenFlash.setAttribute("opacity", flashOp);
-      const fadeOut = 1 - easeOutCubic(Math.min(1, p * 2));
-      for (const el of accumulatedEls) el.setAttribute("opacity", fadeOut);
     }});
 
-    kf.push({ t: revStart + 0.41, dur: 0.01, fn() {
-      goldenFlash.setAttribute("opacity", 0);
+    kf.push({ t: momentStart + 0.05, dur: 0.5, fn(p) {
+      if (!mMain) {
+        mMain = createText(cfg.revolution.main, CX, CY - 15, 28, "#d4a017", { filter: "url(#glow)" });
+        mMain.setAttribute("letter-spacing", "0");
+        centerStage.appendChild(mMain);
+      }
+      mMain.setAttribute("opacity", easeOutCubic(p));
+      mMain.setAttribute("font-size", Math.round(28 * Math.max(0.1, easeOutBack(p))));
+    }});
+
+    kf.push({ t: momentStart + 0.8, dur: 0.3, fn(p) {
+      if (!mName) {
+        mName = createText(cfg.revolution.name, CX, CY + 20, 14, "#d4a017");
+        mName.setAttribute("font-weight", "normal");
+        centerStage.appendChild(mName);
+      }
+      mName.setAttribute("opacity", easeOutCubic(p) * 0.7);
+    }});
+
+    kf.push({ t: momentStart + 1.1, dur: 3.9, fn() {} });
+
+    // Park crisis moment at Crisis position
+    kf.push({ t: momentStart + 5, dur: 0.5, fn(p) {
+      const t = easeInOutCubic(p);
+      const pos = phasePos(2);
+      const off = scatterOffset(N + cfg.crisis.length + 3);
+      const tx = pos.x + off.x, ty = pos.y + off.y;
+      if (mMain) {
+        mMain.setAttribute("x", CX + (tx - CX) * t);
+        mMain.setAttribute("y", (CY - 15) + (ty - (CY - 15)) * t);
+        mMain.setAttribute("font-size", Math.round(28 - 18 * t));
+        mMain.setAttribute("opacity", String(1 - t * 0.3));
+      }
+      if (mName) mName.setAttribute("opacity", String(0.7 * (1 - easeOutCubic(p))));
+    }});
+
+    kf.push({ t: momentEnd, dur: 0.01, fn() {
+      clearCenter();
+      const pos = phasePos(2);
+      const off = scatterOffset(N + cfg.crisis.length + 3);
+      parkText(cfg.revolution.main.substring(0, 32) + "…", pos.x + off.x, pos.y + off.y, 10, "#d4a01788", N + cfg.crisis.length + 3);
+      mMain = null; mName = null;
+    }});
+
+    // === Paradigm Shake (2.5s) ===
+    kf.push({ t: shakeStart, dur: 2.5, fn(p) {
+      const amp = 3 + p * 5;
+      const freq = 15;
+      const baseX = 600, baseY = 45;
+      titleLine2.setAttribute("x", baseX + amp * Math.sin(p * freq * Math.PI * 2));
+      titleLine2.setAttribute("y", baseY + amp * Math.cos(p * freq * Math.PI * 2 * 0.7));
+      titleLine2.setAttribute("opacity", String(0.67 - p * 0.3));
+    }});
+
+    // === Resolution: fade accumulated + old paradigm (1s) ===
+    kf.push({ t: fadeStart, dur: 1, fn(p) {
+      const fade = 1 - easeOutCubic(p);
+      for (const el of accumulatedEls) el.setAttribute("opacity", String(parseFloat(el.getAttribute("opacity") || 1) * fade));
+      titleLine2.setAttribute("opacity", String((0.37) * (1 - easeOutCubic(p))));
+      titleLine2.setAttribute("x", "600");
+      titleLine2.setAttribute("y", "45");
+    }});
+
+    kf.push({ t: fadeEnd, dur: 0.01, fn() {
       for (const el of accumulatedEls) { if (el.parentNode) el.parentNode.removeChild(el); }
       accumulatedEls.length = 0;
+      titleLine2.setAttribute("opacity", "0");
+      titleLine2.setAttribute("x", "600");
+      titleLine2.setAttribute("y", "45");
     }});
 
-    let rMain = null, rSub = null, rName = null;
+    // === Clean moment (1s) ===
+    kf.push({ t: fadeEnd + 0.01, dur: 0.99, fn() {} });
 
-    kf.push({ t: revStart + 0.5, dur: 0.5, fn(p) {
-      if (!rMain) {
-        rMain = createText(cfg.revolution.main, CX, CY - 25, 28, "#d4a017", { filter: "url(#glow)" });
-        rMain.setAttribute("letter-spacing", "0");
-        centerStage.appendChild(rMain);
-      }
-      rMain.setAttribute("opacity", easeOutCubic(p));
-      rMain.setAttribute("font-size", Math.round(28 * Math.max(0.1, easeOutBack(p))));
-    }});
-
-    kf.push({ t: revStart + 1.2, dur: 0.4, fn(p) {
-      if (!rSub) {
-        rSub = createText(cfg.revolution.sub, CX, CY + 15, 20, "#d4a017");
-        rSub.setAttribute("font-weight", "normal");
-        rSub.setAttribute("letter-spacing", "0");
-        centerStage.appendChild(rSub);
-      }
-      rSub.setAttribute("opacity", easeOutCubic(p));
-    }});
-
-    kf.push({ t: revStart + 1.8, dur: 0.3, fn(p) {
-      if (!rName) {
-        rName = createText(cfg.revolution.name, CX, CY + 45, 14, "#d4a017");
-        rName.setAttribute("font-weight", "normal");
-        centerStage.appendChild(rName);
-      }
-      rName.setAttribute("opacity", easeOutCubic(p) * 0.7);
-    }});
-
-    kf.push({ t: revStart + 2.1, dur: 1.9, fn() {} });
-
-    // === New Paradigm (4s) ===
-    kf.push({ t: npStart, dur: 0.4, fn(p) {
-      setYear(cfg.years.newParadigm);
-      const fade = 1 - easeOutCubic(p);
-      if (rMain) rMain.setAttribute("opacity", fade);
-      if (rSub) rSub.setAttribute("opacity", fade);
-      if (rName) rName.setAttribute("opacity", fade);
-    }});
-
-    kf.push({ t: npStart + 0.4, dur: 0.01, fn() {
-      clearCenter();
-      rMain = null; rSub = null; rName = null;
-    }});
-
+    // === New Paradigm (3.5s) ===
     let gMain = null;
+
+    kf.push({ t: npStart, dur: 0.5, fn(p) {
+      setYear(cfg.years.newParadigm);
+      titleLine3.textContent = cfg.title3;
+      titleLine3.setAttribute("opacity", easeOutCubic(p));
+    }});
 
     kf.push({ t: npStart + 0.5, dur: 0.5, fn(p) {
       if (!gMain) {
@@ -1132,19 +1173,7 @@
       gMain.setAttribute("font-size", Math.round(26 * Math.max(0.1, easeOutBack(p))));
     }});
 
-    kf.push({ t: npStart + 1.5, dur: 0.8, fn(p) {
-      const bbox = titleLine2.getBBox ? titleLine2.getBBox() : { x: 200, width: 800 };
-      titleStrike.setAttribute("x1", bbox.x);
-      titleStrike.setAttribute("x2", bbox.x + bbox.width * easeOutCubic(p));
-      titleStrike.setAttribute("opacity", easeOutCubic(p));
-    }});
-
-    kf.push({ t: npStart + 2.3, dur: 0.5, fn(p) {
-      titleLine3.textContent = cfg.title3;
-      titleLine3.setAttribute("opacity", easeOutCubic(p));
-    }});
-
-    kf.push({ t: npStart + 2.8, dur: 1.2, fn() {} });
+    kf.push({ t: npStart + 1, dur: 2.5, fn() {} });
 
     return { keyframes: kf, duration: TOTAL };
   }
