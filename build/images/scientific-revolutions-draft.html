@@ -216,10 +216,12 @@
 
   function clearStage() {
     while (centerStage.firstChild) centerStage.removeChild(centerStage.firstChild);
-    while (loopLabels.firstChild) loopLabels.removeChild(loopLabels.firstChild);
-    cyclePath.setAttribute("d", "");
-    cyclePath.setAttribute("opacity", 1);
-    cyclePath.removeAttribute("stroke-dashoffset");
+    [...loopLabels.children].forEach(ch => { if (!ch.dataset.persist) loopLabels.removeChild(ch); });
+    if (!cyclePath.dataset.persist) {
+      cyclePath.setAttribute("d", "");
+      cyclePath.setAttribute("opacity", 1);
+      cyclePath.removeAttribute("stroke-dashoffset");
+    }
     goldenFlash.setAttribute("opacity", 0);
     youAreHere.setAttribute("opacity", 0);
     while (youAreHere.firstChild) youAreHere.removeChild(youAreHere.firstChild);
@@ -246,14 +248,17 @@
     }
 
     function showLoopFrame() {
+      if (cyclePath.dataset.persist) return;
       cyclePath.setAttribute("d", fullCirclePath());
       cyclePath.setAttribute("stroke-dasharray", "6,4");
       cyclePath.removeAttribute("stroke-dashoffset");
       cyclePath.setAttribute("opacity", "0.25");
+      cyclePath.dataset.persist = "1";
       for (let i = 0; i < 5; i++) {
         const pos = phasePos(i);
         const el = createText(phases[i].name, pos.x, pos.y, 12, phases[i].color, { opacity: 0.25 });
         el.setAttribute("font-size", "12");
+        el.dataset.persist = "1";
         loopLabels.appendChild(el);
       }
     }
@@ -588,16 +593,16 @@
 
   function buildRevolutionTimeline(cfg) {
     const N = cfg.anomalies.length;
-    const normalEnd = 5.5;
-    const anomalyEnd = normalEnd + N * 5;
+    const normalEnd = 6.5;
+    const anomalyEnd = normalEnd + N * 6;
     const pauseEnd = anomalyEnd + 1;
     const crisisQ1Start = pauseEnd;
     const crisisQ2Start = pauseEnd + 4;
     const crisisParkStart = pauseEnd + 8;
-    const crisisParkEnd = pauseEnd + 8.5;
+    const crisisParkEnd = pauseEnd + 9.5;
     const momentStart = crisisParkEnd;
-    const momentEnd = momentStart + 5.5;
-    const momentParkEnd = momentEnd + 0.5;
+    const momentEnd = momentStart + 6.5;
+    const momentParkEnd = momentEnd;
     const deathMoveStart = momentParkEnd;
     const deathMoveEnd = deathMoveStart + 1.5;
     const shakeStart = deathMoveEnd;
@@ -635,14 +640,17 @@
     }
 
     function showLoopFrame() {
+      if (cyclePath.dataset.persist) return;
       cyclePath.setAttribute("d", fullCirclePath());
       cyclePath.setAttribute("stroke-dasharray", "6,4");
       cyclePath.removeAttribute("stroke-dashoffset");
       cyclePath.setAttribute("opacity", "0.25");
+      cyclePath.dataset.persist = "1";
       for (let i = 0; i < 5; i++) {
         const pos = phasePos(i);
         const el = createText(phases[i].name, pos.x, pos.y, 12, phases[i].color, { opacity: 0.25 });
         el.setAttribute("font-size", "12");
+        el.dataset.persist = "1";
         loopLabels.appendChild(el);
       }
     }
@@ -674,6 +682,9 @@
         titleLine2.setAttribute("x", "600");
         titleLine2.setAttribute("y", "45");
         titleLine2.setAttribute("opacity", "1");
+        const oldLabel = createText("OLD PARADIGM", 600, 28, 10, "#e8e0d0", { opacity: 0.4 });
+        oldLabel.setAttribute("letter-spacing", "2");
+        titleBar.appendChild(oldLabel);
       }
       titleBar.setAttribute("opacity", easeOutCubic(p));
       setYear(cfg.years.normal);
@@ -684,11 +695,11 @@
 
     kf.push({ t: 0.5, dur: 0.5, fn(p) {
       if (!nMain) {
-        nMain = createText(cfg.normal.main, CX, CY - 15, 30, "#4a90d9");
+        nMain = createText(cfg.normal.main, CX, CY - 15, 36, "#4a90d9");
         nMain.setAttribute("letter-spacing", "0");
         centerStage.appendChild(nMain);
       }
-      nMain.setAttribute("font-size", Math.round(30 * Math.max(0.1, easeOutBack(p))));
+      nMain.setAttribute("font-size", Math.round(36 * Math.max(0.1, easeOutBack(p))));
       nMain.setAttribute("opacity", Math.min(1, p * 2.5));
     }});
 
@@ -705,20 +716,20 @@
     kf.push({ t: 1.9, dur: 3.1, fn() {} });
 
     // Park normal text at Normal Science position
-    kf.push({ t: 5, dur: 0.5, fn(p) {
+    kf.push({ t: 5, dur: 1.5, fn(p) {
       const t = easeInOutCubic(p);
       const pos = phasePos(0);
       const off = scatterOffset(0);
       if (nMain) {
         nMain.setAttribute("x", CX + (pos.x + off.x - CX) * t);
         nMain.setAttribute("y", (CY - 15) + (pos.y + off.y - (CY - 15)) * t);
-        nMain.setAttribute("font-size", Math.round(30 - 20 * t));
+        nMain.setAttribute("font-size", Math.round(36 - 26 * t));
         nMain.setAttribute("opacity", String(1 - t * 0.3));
       }
       if (nSub) nSub.setAttribute("opacity", String(1 - easeOutCubic(p)));
     }});
 
-    kf.push({ t: 5.5, dur: 0.01, fn() {
+    kf.push({ t: 6.5, dur: 0.01, fn() {
       clearCenter();
       nMain = null; nSub = null;
       const pos = phasePos(0);
@@ -726,9 +737,9 @@
       parkText(cfg.normal.main.substring(0, 28) + "…", pos.x + off.x, pos.y + off.y, 10, "#4a90d9", 0);
     }});
 
-    // === Anomaly-Dismissal Pairs (5s each) ===
+    // === Anomaly-Dismissal Pairs (6s each) ===
     for (let i = 0; i < N; i++) {
-      const base = normalEnd + i * 5;
+      const base = normalEnd + i * 6;
       const pair = cfg.anomalies[i];
       const yr = cfg.years.anomalies[i] || cfg.years.anomalies[0];
       let aText = null, dText = null;
@@ -765,7 +776,7 @@
       kf.push({ t: base + 2.9, dur: 1.6, fn() {} });
 
       // Park at Anomaly position (messy scatter)
-      kf.push({ t: base + 4.5, dur: 0.5, fn(p) {
+      kf.push({ t: base + 4.5, dur: 1.5, fn(p) {
         const t = easeInOutCubic(p);
         const pos = phasePos(1);
         const off = scatterOffset(i + 1);
@@ -784,7 +795,7 @@
         }
       }});
 
-      kf.push({ t: base + 5, dur: 0.01, fn() {
+      kf.push({ t: base + 6, dur: 0.01, fn() {
         clearCenter();
         aText = null; dText = null;
         const pos = phasePos(1);
@@ -859,7 +870,7 @@
     }
 
     // Park crisis quotes at Crisis position
-    kf.push({ t: crisisParkStart, dur: 0.5, fn(p) {
+    kf.push({ t: crisisParkStart, dur: 1.5, fn(p) {
       for (const el of crisisEls) el.setAttribute("opacity", 1 - easeOutCubic(p));
     }});
 
@@ -902,7 +913,7 @@
     kf.push({ t: momentStart + 1.1, dur: 3.9, fn() {} });
 
     // Park crisis moment at Revolution position
-    kf.push({ t: momentStart + 5, dur: 0.5, fn(p) {
+    kf.push({ t: momentStart + 5, dur: 1.5, fn(p) {
       const t = easeInOutCubic(p);
       const pos = phasePos(3);
       const off = scatterOffset(N + cfg.crisis.length + 3);
