@@ -227,11 +227,13 @@ Dimensions: 760×280. Full width. Bold enough to be cover art.
 
 Pop-sci energy, hard specifics. No multiplier claims.
 
-"Every AI conversation starts from zero. Your 500th session knows exactly as much about you as your first. Corrections you made in February? Gone. Preferences you stated? Forgotten. That detailed architectural decision from three weeks ago? Explain it again.
+"Your AI remembers you now. ChatGPT stores facts. Claude has Projects. Claude Code saves corrections automatically. Real progress — a year ago, every session started cold.
 
-This guide shows you how to build an AI system that actually learns from its mistakes, remembers what you've told it, and protects sensitive information from leaking into the wrong context.
+But try this: use the same AI for two competing clients. Ask what color palettes you've been working with. Watch it mention Client A's rebrand in Client B's context. Or correct the same mistake a third time and find the correction was saved but filed so generically it never fires. The problem is no longer amnesia. It's that memory without architecture is a liability.
 
-The system that produced this document has been in continuous operation since early 2026 — accumulating corrections, domain expertise, and behavioral governance across 65+ sessions over five months. Every tutorial linked below was produced by the same system. The document itself is the evidence.
+This guide shows you how to build the missing layers: context-siloed memory, self-monitoring health metrics, anti-sycophancy governance, and role separation that scales to sustained multi-month projects.
+
+The system that produced this document has been in continuous operation since early 2026 — 70+ sessions over five months. Every tutorial linked below was produced by the same system. The document is the evidence.
 
 You can replicate the whole thing or take whichever parts solve your problems."
 
