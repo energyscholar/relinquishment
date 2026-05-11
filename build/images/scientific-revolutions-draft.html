@@ -491,7 +491,7 @@
     }});
     kf.push({ t: 25.5, dur: 0.4, fn(p) {
       const t = easeInOutCubic(p);
-      const pos = phasePos(2);
+      const pos = phasePos(3);
       const off = scatterOffset(10);
       for (const el of [...centerStage.childNodes]) {
         el.setAttribute("x", String(CX + (pos.x + off.x - CX) * t));
@@ -502,7 +502,7 @@
     }});
     kf.push({ t: 25.9, dur: 0.01, fn() {
       clearCenter();
-      const pos = phasePos(2);
+      const pos = phasePos(3);
       const off = scatterOffset(10);
       parkText("cannot explain", pos.x + off.x, pos.y + off.y, 10, "#d4a017", 10);
     }});
@@ -778,7 +778,7 @@
 
     kf.push({ t: 1.5, dur: 0.4, fn(p) {
       if (!nSub) {
-        nSub = createText(cfg.normal.sub, CX, CY + 25, 17, "#4a90d9");
+        nSub = createText(cfg.normal.sub, CX, CY + 55, 17, "#4a90d9");
         nSub.setAttribute("font-weight", "normal");
         nSub.setAttribute("letter-spacing", "0");
         centerStage.appendChild(nSub);
