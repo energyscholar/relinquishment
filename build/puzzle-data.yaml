@@ -1169,6 +1169,38 @@ chapter_puzzles:
         wrong_prompt: "Compare exponential decay to power-law decay. Which preserves coherence longer at high temperatures? By how much?"
     abstract: "No law sets a ceiling on the temperature at which many-body topological order can be sustained. Two independent mechanisms could extend quantum coherence beyond naive thermal limits: topological protection (energy gap exceeding thermal energy) and power-law decoherence at the edge of chaos. Neither has been demonstrated at room temperature. Both are physically permitted. The ceiling, if it exists, is an engineering problem — not a physics impossibility."
 
+  - id: pz-gd-sr-001
+    type: gd
+    topic: sr
+    level: p2
+    category: science
+    title: "The Ninth Pattern"
+    gateway_blurb: "You've seen the pattern eight times. Here it is again."
+    stages:
+      - question: |
+          Five research programs develop independently over three decades.
+          Each produces significant results. None cites the others. No one
+          has proposed a framework connecting them. A question that would
+          unify all five has not been asked in any published paper.
+
+          You have just watched this pattern eight times. Which Kuhnian
+          phase is this?
+        options:
+          - key: a
+            text: "Normal Science — the paradigm is working fine"
+          - key: b
+            text: "Anomaly Accumulation — the pieces exist but the pattern hasn't been recognized"
+          - key: c
+            text: "Crisis — the old paradigm is actively failing"
+          - key: d
+            text: "Revolution — a new paradigm is displacing the old"
+        answer_key: b
+        wrong_prompts:
+          a: "Normal science is comfortable. Does this sound comfortable — five fields, no bridge, an unasked question?"
+          c: "Crisis requires active failure of the existing paradigm. Here the paradigm isn't failing — it's ignoring something. What comes before crisis?"
+          d: "Revolution requires a new paradigm to exist. Here no one has even framed the question yet. What phase precedes the crisis that precedes the revolution?"
+        right_prompt: "Anomaly accumulation. The pieces are published. The connection is unstudied. The question hasn't been asked. You've seen this eight times now. You know what comes next."
+
 bridge_builder:
   title: "The Bridge Builder"
   intro: "Eleven scientific domains in five clusters. Build the bridges between them."

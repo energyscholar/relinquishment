@@ -520,6 +520,24 @@ chapter_puzzles:
       content: insight
     notes: "Plan 0301. Bridge puzzle. Reader reconstructs the temperature argument step by step."
 
+  # ---- SR: Scientific Revolutions (1 puzzle) ----
+
+  - id: pz-gd-sr-001
+    title: "The Ninth Pattern"
+    type: gd
+    topic: sr
+    level: p2
+    approved: false
+    installed: false
+    location:
+      chapter: scientific-revolutions
+      rationale: "Guided deduction payoff — reader completes the syllogism the text never states"
+      placement: end
+    reward:
+      type: self-contained
+      content: insight
+    notes: "Constraint #7 compliance: the text never says 'this is a revolution.' The reader does, by choosing the answer. Most important puzzle in the book."
+
 
 # ============================================================
 # BRIDGE PUZZLES (7) — Bridge Builder meta-puzzle
