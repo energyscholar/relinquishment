@@ -459,3 +459,39 @@
   figure_id: fig-phase-transition-inline
   marker: "described in the previous chapter"
   description: "S-curve phase transition diagram — chapter inline version."
+
+# ============================================================
+# CONVERGENCE CHAPTER (pos21) — S74 batch
+# ============================================================
+
+- id: SVG-046
+  name: five-thread-convergence
+  status: draft
+  source: build/images/five-thread-convergence.svg
+  category: The Stack / Convergence
+  chapter: convergence-revisited
+  figure_id: fig-five-thread-convergence
+  marker: "These are the scientific disciplines of the scientists"
+  animated: true
+  animation: "Particles flow along five curved threads from pentagon nodes toward a breathing central nexus. Staggered timing per discipline."
+  description: "Five disciplines arranged in a pentagon converge on a central TQNN nexus. Each thread colored per discipline, with flowing particles showing the convergence of ideas."
+  notes: "Hero diagram for Ch21. Three Possibilities framing in subtitle. Positions approximate a regular pentagon."
+
+# SVG-047 and SVG-048 DELETED — ABCRE-TQC confabulation (see BT-K01, corrections.md)
+# DO NOT RECREATE. The "operator parallel" and "critical point meeting" diagrams
+# reified a killed claim (S34). ABCRE is Abelian; braids are non-Abelian.
+# No faithful homomorphism exists. The λ=0.91 TQC claim has no source.
+# See also: Correction #12 (guided deduction), archive/breakthroughs.md BT-K01.
+
+- id: SVG-049
+  name: spaces-between-fields
+  status: draft
+  source: build/images/spaces-between-fields.svg
+  category: The Stack / Convergence
+  chapter: convergence-revisited
+  figure_id: fig-spaces-between
+  marker: "the spaces between fields"
+  animated: true
+  animation: "Five discipline circles breathe at different rates. Central golden convergence point pulses."
+  description: "Five overlapping translucent circles (one per discipline). Intersections glow softly. Central golden point pulses — the synthesis visible only from between fields. Bletchley Park parallel."
+  notes: "Conceptual diagram. The visual argument: no single discipline sees the whole; the picture emerges from the spaces between. Quote from chapter text."

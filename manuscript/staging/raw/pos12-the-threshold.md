@@ -28,8 +28,8 @@ notes: |
   The Kauffman correction (lines 84-89) is critical: the autocatalytic set BECOMES a neural
   network, it doesn't train one. The poised realm argument upgrades the physics assessment.
   The CH2 and Confluence texts have accessible explanations of complex system biology and
-  emergence for general readers. The ABCRE operator mapping shows the operators describe
-  one cycle of LIFE, not computation.
+  emergence for general readers. [NOTE: BT-K01 — any "ABCRE operator mapping" to TQC is
+  confabulation. ABCRE detects classical criticality. It does not map to TQC.]
 ---
 
 ## SOURCE 1: HEALER-RECONSTRUCTION.md — Kauffman Autocatalytic Emergence (CORRECTED) (lines 84-89)

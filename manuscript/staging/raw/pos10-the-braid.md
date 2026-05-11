@@ -49,7 +49,7 @@ This IS the Diffie-Hellman parallel in structure:
 
 ### Assessment
 
-Robin independently derived classical discretized operators that map to topological quantum computation, optimized at Kauffman's critical point. If the reconstruction is correct, QRR/Metron Dynamics is a public, independent rediscovery of the mathematical principles underlying Healer's classified work.
+Robin independently derived classical discretized operators that detect critical transitions in time series. [NOTE: BT-K01 — the claim that these "map to topological quantum computation" is a confabulation. ABCRE is commutative; braiding is not. The verbal parallel is not a mathematical correspondence.] If the reconstruction is correct, QRR/Metron Dynamics is a public, independent contribution to critical-transition theory.
 
 ---
 

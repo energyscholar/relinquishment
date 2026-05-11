@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="500" height="420" viewBox="0 0 500 420">
+  <title>Five overlapping translucent circles representing five scientific disciplines. Each circle is labeled at its outer edge. Where circles overlap in pairs, the intersection zones glow softly. At the center where all five overlap, a bright golden point pulses — the synthesis visible only from the spaces between fields. Like Bletchley Park: no one person holds the full picture.</title>
+  <defs>
+    <style>@media(prefers-reduced-motion:reduce){animate,animateMotion,animateTransform{display:none}}</style>
+    <radialGradient id="sb-center" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f4d03f" stop-opacity="0.7"/>
+      <stop offset="50%" stop-color="#d4a017" stop-opacity="0.3"/>
+      <stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="sb-blur" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="4"/>
+    </filter>
+  </defs>
+
+  <!-- Field circles — overlapping, translucent -->
+  <!-- Arranged in a rough pentagon centered at (250, 200) -->
+
+  <!-- 1. Solid State Physics — blue, top center -->
+  <circle cx="250" cy="145" r="95" fill="#2471a3" opacity="0.08" stroke="#2471a3" stroke-width="1" stroke-opacity="0.3">
+    <animate attributeName="r" values="93;97;93" dur="12s" repeatCount="indefinite"/>
+  </circle>
+  <text x="250" y="62" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#5dade2" opacity="0.8">Solid State Physics</text>
+
+  <!-- 2. Quantum Computation — purple, upper right -->
+  <circle cx="330" cy="180" r="95" fill="#7d3c98" opacity="0.08" stroke="#7d3c98" stroke-width="1" stroke-opacity="0.3">
+    <animate attributeName="r" values="93;97;93" dur="14s" repeatCount="indefinite" begin="2s"/>
+  </circle>
+  <text x="420" y="130" text-anchor="start" font-family="Georgia, serif" font-size="11" fill="#a569bd" opacity="0.8">Quantum</text>
+  <text x="420" y="143" text-anchor="start" font-family="Georgia, serif" font-size="11" fill="#a569bd" opacity="0.8">Computation</text>
+
+  <!-- 3. Neural Networks — green, lower right -->
+  <circle cx="300" cy="260" r="95" fill="#27ae60" opacity="0.08" stroke="#27ae60" stroke-width="1" stroke-opacity="0.3">
+    <animate attributeName="r" values="93;97;93" dur="11s" repeatCount="indefinite" begin="4s"/>
+  </circle>
+  <text x="385" y="330" text-anchor="start" font-family="Georgia, serif" font-size="11" fill="#52be80" opacity="0.8">Neural Networks</text>
+
+  <!-- 4. Complex System Biology — gold, lower left -->
+  <circle cx="200" cy="260" r="95" fill="#d4a017" opacity="0.08" stroke="#d4a017" stroke-width="1" stroke-opacity="0.3">
+    <animate attributeName="r" values="93;97;93" dur="13s" repeatCount="indefinite" begin="1s"/>
+  </circle>
+  <text x="115" y="330" text-anchor="end" font-family="Georgia, serif" font-size="11" fill="#d4a017" opacity="0.8">Complex Systems</text>
+  <text x="115" y="343" text-anchor="end" font-family="Georgia, serif" font-size="11" fill="#d4a017" opacity="0.8">Biology</text>
+
+  <!-- 5. NKS — red, upper left -->
+  <circle cx="170" cy="180" r="95" fill="#c0392b" opacity="0.08" stroke="#c0392b" stroke-width="1" stroke-opacity="0.3">
+    <animate attributeName="r" values="93;97;93" dur="15s" repeatCount="indefinite" begin="3s"/>
+  </circle>
+  <text x="80" y="130" text-anchor="end" font-family="Georgia, serif" font-size="11" fill="#e74c3c" opacity="0.8">NKS</text>
+
+  <!-- Intersection glows — pair overlaps -->
+  <!-- These small circles highlight where pairs of fields meet -->
+  <circle cx="290" cy="158" r="15" fill="#5dade2" opacity="0.06" filter="url(#sb-blur)"/>
+  <circle cx="320" cy="220" r="15" fill="#52be80" opacity="0.06" filter="url(#sb-blur)"/>
+  <circle cx="250" cy="265" r="15" fill="#d4a017" opacity="0.06" filter="url(#sb-blur)"/>
+  <circle cx="182" cy="220" r="15" fill="#c0392b" opacity="0.06" filter="url(#sb-blur)"/>
+  <circle cx="210" cy="158" r="15" fill="#a569bd" opacity="0.06" filter="url(#sb-blur)"/>
+
+  <!-- Central convergence point — layered glow where all five overlap -->
+  <circle cx="250" cy="205" r="40" fill="url(#sb-center)" opacity="0.5">
+    <animate attributeName="r" values="36;44;36" dur="7s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="250" cy="205" r="25" fill="url(#sb-center)">
+    <animate attributeName="r" values="22;28;22" dur="5s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;1;0.6" dur="5s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="250" cy="205" r="8" fill="#f4d03f" opacity="0.85">
+    <animate attributeName="r" values="7;10;7" dur="5s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Tiny particles drifting in the intersections -->
+  <circle cx="290" cy="165" r="1.5" fill="#5dade2" opacity="0.5">
+    <animateTransform attributeName="transform" type="translate" values="0,0;3,-2;-1,3;0,0" dur="9s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.6;0.3" dur="9s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="310" cy="225" r="1.5" fill="#52be80" opacity="0.5">
+    <animateTransform attributeName="transform" type="translate" values="0,0;-2,3;3,-1;0,0" dur="11s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.6;0.3" dur="11s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="250" cy="255" r="1.5" fill="#d4a017" opacity="0.5">
+    <animateTransform attributeName="transform" type="translate" values="0,0;2,2;-3,-1;0,0" dur="10s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.6;0.3" dur="10s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="190" cy="225" r="1.5" fill="#e74c3c" opacity="0.5">
+    <animateTransform attributeName="transform" type="translate" values="0,0;-3,-2;2,3;0,0" dur="12s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.6;0.3" dur="12s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="215" cy="170" r="1.5" fill="#a569bd" opacity="0.5">
+    <animateTransform attributeName="transform" type="translate" values="0,0;1,-3;-2,2;0,0" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.3;0.6;0.3" dur="8s" repeatCount="indefinite"/>
+  </circle>
+
+  <!-- Center label -->
+  <text x="250" y="245" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#c4a97d" font-style="italic">the synthesis</text>
+
+  <!-- Bletchley quote -->
+  <text x="250" y="380" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#888" font-style="italic">"The biggest patterns are visible only</text>
+  <text x="250" y="394" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#888" font-style="italic">from the spaces between fields."</text>
+  <text x="250" y="410" text-anchor="middle" font-family="Georgia, serif" font-size="8.5" fill="#666">cf. Bletchley Park: Turing + Welchman + Flowers + the chess players</text>
+</svg>
