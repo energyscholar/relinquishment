@@ -540,355 +540,51 @@
 
   // --- Timeline for segment 1: Heliocentrism (20s) ---
 
+  // --- Segment 1: Heliocentrism (factory-built) ---
+
   function buildSegment1Timeline() {
-    const TOTAL = 20;
-    const accumulatedEls = [];
-    const years = ["~1400", "1543", "1543–1610", "1610", "1687"];
-
-    function setYear(yr) {
-      yearDisplay.textContent = yr;
-      yearDisplay.setAttribute("opacity", "0.55");
-    }
-
-    function showLoopFrame() {
-      cyclePath.setAttribute("d", fullCirclePath());
-      cyclePath.setAttribute("stroke-dasharray", "6,4");
-      cyclePath.removeAttribute("stroke-dashoffset");
-      cyclePath.setAttribute("opacity", "0.25");
-      for (let i = 0; i < 5; i++) {
-        const p = phasePos(i);
-        const el = createText(phases[i].name, p.x, p.y, 12, phases[i].color, { opacity: 0.25 });
-        el.setAttribute("font-size", "12");
-        loopLabels.appendChild(el);
-      }
-    }
-
-    function addLoopContent(idx, shortText, color) {
-      const p = phasePos(idx);
-      const el = createText(shortText, p.x, p.y + 18, 11, color);
-      el.setAttribute("font-weight", "normal");
-      el.setAttribute("letter-spacing", "0");
-      loopLabels.appendChild(el);
-      accumulatedEls.push(el);
-    }
-
-    function flyMainToLoop(el, startX, startY, idx, p) {
-      const t = easeInOutCubic(p);
-      const pos = phasePos(idx);
-      const dx = pos.x - startX, dy = (pos.y + 18) - startY;
-      const perpX = -dy, perpY = dx;
-      const len = Math.sqrt(dx*dx + dy*dy) || 1;
-      const arcBow = Math.sin(t * Math.PI) * 40 / len;
-      el.setAttribute("x", startX + dx * t + perpX * arcBow);
-      el.setAttribute("y", startY + dy * t);
-    }
-
-    const kf = [];
-
-    // === Setup: loop frame + title bar fade in (0-0.5s) ===
-    kf.push({ t: 0, dur: 0.5, fn(p) {
-      if (p < 0.02) {
-        showLoopFrame();
-        titleLine1.textContent = "The Copernican Revolution (1543–1687)";
-        titleLine2.textContent = "The earth is at the center. The sun, moon, and stars revolve around it.";
-      }
-      titleBar.setAttribute("opacity", easeOutCubic(p));
-      setYear(years[0]);
-    }});
-
-    // === NORMAL SCIENCE: 0.5-4s ===
-    let nMain = null, nSub = null, nIcon = null;
-
-    kf.push({ t: 0.5, dur: 0.5, fn(p) {
-      if (!nMain) {
-        nMain = createText("The sun rises east, crosses the sky, sets west.", CX, CY - 20, 32, "#4a90d9");
-        nMain.setAttribute("letter-spacing", "0");
-        centerStage.appendChild(nMain);
-      }
-      nMain.setAttribute("font-size", Math.round(32 * Math.max(0.1, easeOutBack(p))));
-      nMain.setAttribute("opacity", Math.min(1, p * 2.5));
-    }});
-
-    kf.push({ t: 1.5, dur: 0.4, fn(p) {
-      if (!nSub) {
-        nSub = createText("They built a model to explain this.", CX, CY + 25, 22, "#4a90d9");
-        nSub.setAttribute("font-weight", "normal");
-        nSub.setAttribute("letter-spacing", "0");
-        centerStage.appendChild(nSub);
-      }
-      nSub.setAttribute("opacity", easeOutCubic(p));
-    }});
-
-    kf.push({ t: 2, dur: 0.4, fn(p) {
-      if (!nIcon) {
-        nIcon = document.createElementNS(SVG_NS, "g");
-        const earth = document.createElementNS(SVG_NS, "circle");
-        earth.setAttribute("cx", CX); earth.setAttribute("cy", CY + 70);
-        earth.setAttribute("r", 6); earth.setAttribute("fill", "#4a90d9");
-        nIcon.appendChild(earth);
-        for (const r of [20, 35, 50]) {
-          const orbit = document.createElementNS(SVG_NS, "circle");
-          orbit.setAttribute("cx", CX); orbit.setAttribute("cy", CY + 70);
-          orbit.setAttribute("r", r); orbit.setAttribute("fill", "none");
-          orbit.setAttribute("stroke", "#4a90d944"); orbit.setAttribute("stroke-width", "1");
-          nIcon.appendChild(orbit);
-        }
-        const sun = document.createElementNS(SVG_NS, "circle");
-        sun.setAttribute("cx", CX + 35); sun.setAttribute("cy", CY + 70);
-        sun.setAttribute("r", 4); sun.setAttribute("fill", "#d4a574");
-        nIcon.appendChild(sun);
-        nIcon.setAttribute("opacity", "0");
-        centerStage.appendChild(nIcon);
-      }
-      nIcon.setAttribute("opacity", easeOutCubic(p));
-    }});
-
-    kf.push({ t: 2.4, dur: 1.1, fn() {} });
-
-    kf.push({ t: 3.5, dur: 0.5, fn(p) {
-      flyMainToLoop(nMain, CX, CY - 20, 0, p);
-      nMain.setAttribute("font-size", Math.round(32 - 21 * easeInOutCubic(p)));
-      if (nSub) nSub.setAttribute("opacity", 1 - easeOutCubic(p));
-      if (nIcon) nIcon.setAttribute("opacity", 1 - easeOutCubic(p));
-    }});
-
-    kf.push({ t: 4, dur: 0.01, fn() {
-      while (centerStage.firstChild) centerStage.removeChild(centerStage.firstChild);
-      nMain = null; nSub = null; nIcon = null;
-      addLoopContent(0, "Sun crosses the sky", "#4a90d9");
-    }});
-
-    // === ANOMALY: 4-8s ===
-    let aMain = null, aSub = null;
-
-    kf.push({ t: 4, dur: 0.01, fn() { setYear(years[1]); }});
-
-    kf.push({ t: 4.05, dur: 0.5, fn(p) {
-      if (!aMain) {
-        aMain = createText("Mars stops. Goes backward. Then forward again.", CX, CY - 15, 30, "#d4a574");
-        aMain.setAttribute("letter-spacing", "0");
-        centerStage.appendChild(aMain);
-      }
-      aMain.setAttribute("font-size", Math.round(30 * Math.max(0.1, easeOutBack(p))));
-      aMain.setAttribute("opacity", Math.min(1, p * 2.5));
-    }});
-
-    kf.push({ t: 5, dur: 2.5, fn(p) {
-      if (!aSub) {
-        aSub = createText("Epicycles needed: 12", CX, CY + 30, 20, "#d4a574");
-        aSub.setAttribute("font-weight", "normal");
-        aSub.setAttribute("letter-spacing", "0");
-        centerStage.appendChild(aSub);
-      }
-      const count = Math.round(12 + 67 * easeOutCubic(p));
-      aSub.textContent = "Epicycles needed: " + count;
-    }});
-
-    kf.push({ t: 7.5, dur: 0.5, fn(p) {
-      flyMainToLoop(aMain, CX, CY - 15, 1, p);
-      aMain.setAttribute("font-size", Math.round(30 - 19 * easeInOutCubic(p)));
-      if (aSub) aSub.setAttribute("opacity", 1 - easeOutCubic(p));
-    }});
-
-    kf.push({ t: 8, dur: 0.01, fn() {
-      while (centerStage.firstChild) centerStage.removeChild(centerStage.firstChild);
-      aMain = null; aSub = null;
-      addLoopContent(1, "Retrograde + 79 epicycles", "#d4a574");
-    }});
-
-    // === CRISIS: 8-12s ===
-    let crisisGroup = null;
-
-    kf.push({ t: 8, dur: 0.01, fn() { setYear(years[2]); }});
-
-    kf.push({ t: 8.05, dur: 0.5, fn(p) {
-      if (!crisisGroup) {
-        crisisGroup = document.createElementNS(SVG_NS, "g");
-        const bw = 520, bh = 80, bx = CX - bw/2, by = CY - 50;
-        const rect = document.createElementNS(SVG_NS, "rect");
-        rect.setAttribute("x", bx); rect.setAttribute("y", by);
-        rect.setAttribute("width", bw); rect.setAttribute("height", bh);
-        rect.setAttribute("rx", 12); rect.setAttribute("ry", 12);
-        rect.setAttribute("fill", "#c45c5c22"); rect.setAttribute("stroke", "#c45c5c");
-        rect.setAttribute("stroke-width", "1.5");
-        crisisGroup.appendChild(rect);
-        const tx = CX - 30, ty = by + bh;
-        const tri = document.createElementNS(SVG_NS, "polygon");
-        tri.setAttribute("points", tx+","+ty+" "+(tx+20)+","+ty+" "+(tx+10)+","+(ty+12));
-        tri.setAttribute("fill", "#c45c5c22"); tri.setAttribute("stroke", "#c45c5c");
-        tri.setAttribute("stroke-width", "1.5");
-        crisisGroup.appendChild(tri);
-        const quote = createText("“The Earth MOVES? Absurd. I can feel that it doesn’t.”", CX, CY - 15, 22, "#c45c5c");
-        quote.setAttribute("font-style", "italic");
-        quote.setAttribute("font-weight", "normal");
-        quote.setAttribute("letter-spacing", "0");
-        crisisGroup.appendChild(quote);
-        const sub = createText("De Revolutionibus — ignored for 70 years", CX, CY + 55, 16, "#c45c5c");
-        sub.setAttribute("font-weight", "normal");
-        sub.setAttribute("letter-spacing", "0");
-        sub.setAttribute("opacity", "0.6");
-        crisisGroup.appendChild(sub);
-        crisisGroup.setAttribute("opacity", "0");
-        centerStage.appendChild(crisisGroup);
-      }
-      crisisGroup.setAttribute("opacity", easeOutCubic(p));
-    }});
-
-    kf.push({ t: 8.55, dur: 2.95, fn() {} });
-
-    kf.push({ t: 11.5, dur: 0.5, fn(p) {
-      if (crisisGroup) crisisGroup.setAttribute("opacity", 1 - easeOutCubic(p));
-    }});
-
-    kf.push({ t: 12, dur: 0.01, fn() {
-      while (centerStage.firstChild) centerStage.removeChild(centerStage.firstChild);
-      crisisGroup = null;
-      addLoopContent(2, "“Absurd — I can feel it”", "#c45c5c");
-    }});
-
-    // === REVOLUTION: 12-16s ===
-
-    kf.push({ t: 12, dur: 0.4, fn(p) {
-      setYear(years[3]);
-      let flashOp;
-      if (p < 0.35) flashOp = easeOutCubic(p / 0.35) * 0.6;
-      else flashOp = 0.6 * (1 - easeOutCubic((p - 0.35) / 0.65));
-      goldenFlash.setAttribute("opacity", flashOp);
-      const fadeOut = 1 - easeOutCubic(Math.min(1, p * 2));
-      for (const el of accumulatedEls) el.setAttribute("opacity", fadeOut);
-    }});
-
-    kf.push({ t: 12.4, dur: 0.01, fn() {
-      goldenFlash.setAttribute("opacity", 0);
-      for (const el of accumulatedEls) { if (el.parentNode) el.parentNode.removeChild(el); }
-      accumulatedEls.length = 0;
-    }});
-
-    let rMain = null, rSub = null, rIcon = null, rName = null;
-
-    kf.push({ t: 12.5, dur: 0.5, fn(p) {
-      if (!rMain) {
-        rMain = createText("Galileo points his telescope at Jupiter.", CX, CY - 30, 32, "#d4a017", { filter: "url(#glow)" });
-        rMain.setAttribute("letter-spacing", "0");
-        centerStage.appendChild(rMain);
-      }
-      rMain.setAttribute("opacity", easeOutCubic(p));
-      rMain.setAttribute("font-size", Math.round(32 * Math.max(0.1, easeOutBack(p))));
-    }});
-
-    kf.push({ t: 13.2, dur: 0.4, fn(p) {
-      if (!rSub) {
-        rSub = createText("Four moons. Orbiting Jupiter. Not Earth.", CX, CY + 10, 24, "#d4a017");
-        rSub.setAttribute("font-weight", "normal");
-        rSub.setAttribute("letter-spacing", "1");
-        centerStage.appendChild(rSub);
-      }
-      rSub.setAttribute("opacity", easeOutCubic(p));
-    }});
-
-    kf.push({ t: 13.7, dur: 0.3, fn(p) {
-      if (!rIcon) {
-        rIcon = document.createElementNS(SVG_NS, "g");
-        const jup = document.createElementNS(SVG_NS, "circle");
-        jup.setAttribute("cx", CX); jup.setAttribute("cy", CY + 55);
-        jup.setAttribute("r", 14); jup.setAttribute("fill", "#d4a017");
-        jup.setAttribute("opacity", "0.8");
-        rIcon.appendChild(jup);
-        const moons = [[-30, -5], [-18, 10], [22, -3], [35, 6]];
-        for (const [mx, my] of moons) {
-          const m = document.createElementNS(SVG_NS, "circle");
-          m.setAttribute("cx", CX + mx); m.setAttribute("cy", CY + 55 + my);
-          m.setAttribute("r", 3); m.setAttribute("fill", "#e8e0d0");
-          rIcon.appendChild(m);
-        }
-        rIcon.setAttribute("opacity", "0");
-        centerStage.appendChild(rIcon);
-      }
-      rIcon.setAttribute("opacity", easeOutCubic(p));
-    }});
-
-    kf.push({ t: 14.1, dur: 0.3, fn(p) {
-      if (!rName) {
-        rName = createText("Galileo, 1610", CX, CY + 85, 14, "#d4a017");
-        rName.setAttribute("font-weight", "normal");
-        centerStage.appendChild(rName);
-      }
-      rName.setAttribute("opacity", easeOutCubic(p) * 0.7);
-    }});
-
-    kf.push({ t: 14.4, dur: 1.6, fn() {} });
-
-    // === NEW PARADIGM: 16-20s ===
-    kf.push({ t: 16, dur: 0.4, fn(p) {
-      setYear(years[4]);
-      const fade = 1 - easeOutCubic(p);
-      if (rMain) rMain.setAttribute("opacity", fade);
-      if (rSub) rSub.setAttribute("opacity", fade);
-      if (rIcon) rIcon.setAttribute("opacity", fade);
-      if (rName) rName.setAttribute("opacity", fade);
-    }});
-
-    kf.push({ t: 16.4, dur: 0.01, fn() {
-      while (centerStage.firstChild) centerStage.removeChild(centerStage.firstChild);
-      rMain = null; rSub = null; rIcon = null; rName = null;
-    }});
-
-    let gMain = null, gIcon = null;
-
-    kf.push({ t: 16.5, dur: 0.5, fn(p) {
-      if (!gMain) {
-        gMain = createText("Navigation. Celestial mechanics. Space travel.", CX, CY - 10, 30, "#5c9c5c");
-        gMain.setAttribute("letter-spacing", "0");
-        centerStage.appendChild(gMain);
-      }
-      gMain.setAttribute("opacity", easeOutCubic(p));
-      gMain.setAttribute("font-size", Math.round(30 * Math.max(0.1, easeOutBack(p))));
-    }});
-
-    kf.push({ t: 17, dur: 0.4, fn(p) {
-      if (!gIcon) {
-        gIcon = document.createElementNS(SVG_NS, "g");
-        const sun = document.createElementNS(SVG_NS, "circle");
-        sun.setAttribute("cx", CX); sun.setAttribute("cy", CY + 50);
-        sun.setAttribute("r", 8); sun.setAttribute("fill", "#d4a574");
-        gIcon.appendChild(sun);
-        for (const r of [22, 36, 52]) {
-          const orbit = document.createElementNS(SVG_NS, "circle");
-          orbit.setAttribute("cx", CX); orbit.setAttribute("cy", CY + 50);
-          orbit.setAttribute("r", r); orbit.setAttribute("fill", "none");
-          orbit.setAttribute("stroke", "#5c9c5c44"); orbit.setAttribute("stroke-width", "1");
-          gIcon.appendChild(orbit);
-        }
-        const earth = document.createElementNS(SVG_NS, "circle");
-        earth.setAttribute("cx", CX + 36); earth.setAttribute("cy", CY + 50);
-        earth.setAttribute("r", 4); earth.setAttribute("fill", "#4a90d9");
-        gIcon.appendChild(earth);
-        gIcon.setAttribute("opacity", "0");
-        centerStage.appendChild(gIcon);
-      }
-      gIcon.setAttribute("opacity", easeOutCubic(p));
-    }});
-
-    // Title bar resolve: strikethrough old paradigm
-    kf.push({ t: 17.5, dur: 0.8, fn(p) {
-      const bbox = titleLine2.getBBox ? titleLine2.getBBox() : { x: 200, width: 800 };
-      titleStrike.setAttribute("x1", bbox.x);
-      titleStrike.setAttribute("x2", bbox.x + bbox.width * easeOutCubic(p));
-      titleStrike.setAttribute("opacity", easeOutCubic(p));
-    }});
-
-    // New paradigm in gold
-    kf.push({ t: 18.3, dur: 0.5, fn(p) {
-      titleLine3.textContent = "The earth moves around the sun. The solar system is vast.";
-      titleLine3.setAttribute("opacity", easeOutCubic(p));
-    }});
-
-    kf.push({ t: 18.8, dur: 1.2, fn() {} });
-
-    return { keyframes: kf, duration: TOTAL };
+    return buildRevolutionTimeline({
+      title1: "The Copernican Revolution (1543–1687)",
+      title2: "The earth is at the center. The sun, moon, and stars revolve around it.",
+      title3: "The earth moves around the sun. The solar system is vast.",
+      years: {
+        normal: "~1400",
+        anomalies: ["1543", "1550", "1580", "1600", "1543"],
+        crisis: "1543–1610",
+        revolution: "1610",
+        newParadigm: "1687"
+      },
+      normal: {
+        main: "The sun rises east, crosses the sky, sets west. Earth feels still.",
+        sub: "Ptolemy’s geocentric model. (~150 AD)"
+      },
+      anomalies: [
+        { anomaly: "Mars stops. Reverses direction. Then moves forward again.",
+          dismissal: "“Add an epicycle.”" },
+        { anomaly: "Jupiter wobbles off its predicted path.",
+          dismissal: "“Another epicycle.”" },
+        { anomaly: "Planets get brighter and dimmer throughout the year.",
+          dismissal: "“The sphere is slightly off-center.”" },
+        { anomaly: "Epicycles needed: 40... 52... 79...",
+          dismissal: "“The math works. Don’t question the model.”" },
+        { anomaly: "Copernicus: what if the Earth moves around the Sun?",
+          dismissal: "“Interesting mathematics. But obviously the Earth doesn’t move.”" },
+      ],
+      crisis: [
+        "“The Earth MOVES? Absurd. I can feel that it doesn’t.”",
+        "“De Revolutionibus — ignored for 70 years.”",
+      ],
+      revolution: {
+        main: "Galileo points his telescope at Jupiter. Four moons — orbiting Jupiter, not Earth.",
+        sub: "",
+        name: "Galileo, 1610"
+      },
+      newParadigm: "Navigation. Celestial mechanics. Space travel.",
+      transitionYears: "~150 years"
+    });
   }
 
-  // --- Revolution factory (segments 2+): paradigm-shake pattern ---
+  // --- Revolution factory: paradigm death pattern ---
 
   function buildRevolutionTimeline(cfg) {
     const N = cfg.anomalies.length;
@@ -901,13 +597,23 @@
     const crisisParkEnd = pauseEnd + 8.5;
     const momentStart = crisisParkEnd;
     const momentEnd = momentStart + 5.5;
-    const shakeStart = momentEnd;
+    const momentParkEnd = momentEnd + 0.5;
+    const deathMoveStart = momentParkEnd;
+    const deathMoveEnd = deathMoveStart + 1.5;
+    const shakeStart = deathMoveEnd;
     const shakeEnd = shakeStart + 2.5;
-    const fadeStart = shakeEnd;
-    const fadeEnd = fadeStart + 1;
-    const cleanEnd = fadeEnd + 1;
-    const npStart = cleanEnd;
-    const TOTAL = npStart + 3.5;
+    const shakeOutEnd = shakeEnd + 0.5;
+    const junkFadeEnd = shakeOutEnd + 1;
+    const cleanEnd = junkFadeEnd + 1;
+    const npCenterStart = cleanEnd;
+    const npParkStart = npCenterStart + 2;
+    const npParkEnd = npParkStart + 0.5;
+    const techStart = npParkEnd;
+    const techParkStart = techStart + 2;
+    const techParkEnd = techParkStart + 0.5;
+    const transStart = techParkEnd;
+    const pauseFinal = transStart + 1;
+    const TOTAL = pauseFinal + 1.5;
 
     const accumulatedEls = [];
     const kf = [];
@@ -915,8 +621,12 @@
     function scatterOffset(index) {
       return {
         x: Math.sin(index * 2.7) * 60,
-        y: Math.cos(index * 1.9) * 40
+        y: Math.cos(index * 1.9) * 50
       };
+    }
+
+    function leanAngle(index) {
+      return Math.sin(index * 3.1) * 8;
     }
 
     function setYear(yr) {
@@ -941,9 +651,12 @@
       const el = createText(text, x, y, size, color);
       el.setAttribute("font-weight", "normal");
       el.setAttribute("letter-spacing", "0");
+      const angle = leanAngle(index !== undefined ? index : 0);
       if (index !== undefined) {
-        el.setAttribute("transform", `rotate(${index % 2 ? 3 : -3}, ${x}, ${y})`);
+        el.setAttribute("transform", `rotate(${angle}, ${x}, ${y})`);
       }
+      const opacity = 0.6 + Math.abs(Math.sin(index * 1.3)) * 0.2;
+      el.setAttribute("opacity", String(opacity));
       loopLabels.appendChild(el);
       accumulatedEls.push(el);
     }
@@ -958,6 +671,9 @@
         showLoopFrame();
         titleLine1.textContent = cfg.title1;
         titleLine2.textContent = cfg.title2;
+        titleLine2.setAttribute("x", "600");
+        titleLine2.setAttribute("y", "45");
+        titleLine2.setAttribute("opacity", "1");
       }
       titleBar.setAttribute("opacity", easeOutCubic(p));
       setYear(cfg.years.normal);
@@ -988,26 +704,26 @@
 
     kf.push({ t: 1.9, dur: 3.1, fn() {} });
 
+    // Park normal text at Normal Science position
     kf.push({ t: 5, dur: 0.5, fn(p) {
       const t = easeInOutCubic(p);
       const pos = phasePos(0);
+      const off = scatterOffset(0);
       if (nMain) {
-        const dx = pos.x - CX, dy = (pos.y + 18) - (CY - 15);
-        const perpX = -dy, perpY = dx;
-        const len = Math.sqrt(dx*dx + dy*dy) || 1;
-        const bow = Math.sin(t * Math.PI) * 40 / len;
-        nMain.setAttribute("x", CX + dx * t + perpX * bow);
-        nMain.setAttribute("y", (CY - 15) + dy * t);
+        nMain.setAttribute("x", CX + (pos.x + off.x - CX) * t);
+        nMain.setAttribute("y", (CY - 15) + (pos.y + off.y - (CY - 15)) * t);
         nMain.setAttribute("font-size", Math.round(30 - 20 * t));
+        nMain.setAttribute("opacity", String(1 - t * 0.3));
       }
-      if (nSub) nSub.setAttribute("opacity", 1 - easeOutCubic(p));
+      if (nSub) nSub.setAttribute("opacity", String(1 - easeOutCubic(p)));
     }});
 
     kf.push({ t: 5.5, dur: 0.01, fn() {
       clearCenter();
       nMain = null; nSub = null;
       const pos = phasePos(0);
-      parkText(cfg.normal.main.substring(0, 28) + "…", pos.x, pos.y + 18, 10, "#4a90d9", 0);
+      const off = scatterOffset(0);
+      parkText(cfg.normal.main.substring(0, 28) + "…", pos.x + off.x, pos.y + off.y, 10, "#4a90d9", 0);
     }});
 
     // === Anomaly-Dismissal Pairs (5s each) ===
@@ -1048,6 +764,7 @@
 
       kf.push({ t: base + 2.9, dur: 1.6, fn() {} });
 
+      // Park at Anomaly position (messy scatter)
       kf.push({ t: base + 4.5, dur: 0.5, fn(p) {
         const t = easeInOutCubic(p);
         const pos = phasePos(1);
@@ -1074,7 +791,7 @@
         const off = scatterOffset(i + 1);
         const px = pos.x + off.x, py = pos.y + off.y;
         parkText(pair.anomaly.substring(0, 32) + "…", px, py, 10, "#d4a574", i * 2 + 1);
-        parkText(pair.dismissal.substring(0, 28) + "…", px, py + 12, 9, "#c45c5c66", i * 2 + 2);
+        parkText(pair.dismissal.substring(0, 28) + "…", px, py + 12, 9, "#c45c5c88", i * 2 + 2);
       }});
     }
 
@@ -1156,7 +873,7 @@
       }
     }});
 
-    // === Crisis Moment: dramatic revelation (5.5s) ===
+    // === Crisis Moment: dramatic revelation (5.5s center) ===
     let mMain = null, mName = null;
 
     kf.push({ t: momentStart, dur: 0.01, fn() {
@@ -1184,10 +901,10 @@
 
     kf.push({ t: momentStart + 1.1, dur: 3.9, fn() {} });
 
-    // Park crisis moment at Crisis position
+    // Park crisis moment at Revolution position
     kf.push({ t: momentStart + 5, dur: 0.5, fn(p) {
       const t = easeInOutCubic(p);
-      const pos = phasePos(2);
+      const pos = phasePos(3);
       const off = scatterOffset(N + cfg.crisis.length + 3);
       const tx = pos.x + off.x, ty = pos.y + off.y;
       if (mMain) {
@@ -1201,62 +918,165 @@
 
     kf.push({ t: momentEnd, dur: 0.01, fn() {
       clearCenter();
-      const pos = phasePos(2);
+      const pos = phasePos(3);
       const off = scatterOffset(N + cfg.crisis.length + 3);
       parkText(cfg.revolution.main.substring(0, 32) + "…", pos.x + off.x, pos.y + off.y, 10, "#d4a01788", N + cfg.crisis.length + 3);
       mMain = null; mName = null;
     }});
 
-    // === Paradigm Shake (2.5s) ===
+    // === Paradigm Death Sequence ===
+
+    // Step 1: Old paradigm moves from title bar to center (1.5s)
+    let deathEl = null;
+    kf.push({ t: deathMoveStart, dur: 0.01, fn() {
+      titleLine2.setAttribute("opacity", "0");
+      deathEl = createText(cfg.title2, CX, 45, 15, "#e8e0d0");
+      deathEl.setAttribute("font-style", "italic");
+      deathEl.setAttribute("text-anchor", "middle");
+      centerStage.appendChild(deathEl);
+    }});
+
+    kf.push({ t: deathMoveStart + 0.01, dur: 1.5, fn(p) {
+      if (!deathEl) return;
+      const t = easeInOutCubic(p);
+      deathEl.setAttribute("y", String(45 + (CY - 45) * t));
+      deathEl.setAttribute("font-size", String(Math.round(15 + 25 * t)));
+      deathEl.setAttribute("opacity", String(0.8 + 0.2 * t));
+    }});
+
+    // Step 2: Old paradigm shakes (2.5s)
     kf.push({ t: shakeStart, dur: 2.5, fn(p) {
-      const amp = 3 + p * 5;
+      if (!deathEl) return;
+      const amp = 3 + p * 7;
       const freq = 15;
-      const baseX = 600, baseY = 45;
-      titleLine2.setAttribute("x", baseX + amp * Math.sin(p * freq * Math.PI * 2));
-      titleLine2.setAttribute("y", baseY + amp * Math.cos(p * freq * Math.PI * 2 * 0.7));
-      titleLine2.setAttribute("opacity", String(0.67 - p * 0.3));
+      deathEl.setAttribute("x", String(CX + amp * Math.sin(p * freq * Math.PI * 2)));
+      deathEl.setAttribute("y", String(CY + amp * Math.cos(p * freq * Math.PI * 2 * 0.7)));
+      deathEl.setAttribute("opacity", String(1.0 - p * 0.7));
     }});
 
-    // === Resolution: fade accumulated + old paradigm (1s) ===
-    kf.push({ t: fadeStart, dur: 1, fn(p) {
+    // Step 3: Final fade out (0.5s)
+    kf.push({ t: shakeEnd, dur: 0.5, fn(p) {
+      if (!deathEl) return;
+      deathEl.setAttribute("opacity", String(0.3 * (1 - easeOutCubic(p))));
+    }});
+
+    kf.push({ t: shakeOutEnd, dur: 0.01, fn() {
+      if (deathEl && deathEl.parentNode) deathEl.parentNode.removeChild(deathEl);
+      deathEl = null;
+    }});
+
+    // Step 4: All accumulated junk fades out (1s)
+    kf.push({ t: shakeOutEnd + 0.01, dur: 1, fn(p) {
       const fade = 1 - easeOutCubic(p);
-      for (const el of accumulatedEls) el.setAttribute("opacity", String(parseFloat(el.getAttribute("opacity") || 1) * fade));
-      titleLine2.setAttribute("opacity", String((0.37) * (1 - easeOutCubic(p))));
-      titleLine2.setAttribute("x", "600");
-      titleLine2.setAttribute("y", "45");
+      for (const el of accumulatedEls) {
+        el.setAttribute("opacity", String(parseFloat(el.getAttribute("opacity") || 1) * fade));
+      }
     }});
 
-    kf.push({ t: fadeEnd, dur: 0.01, fn() {
+    kf.push({ t: junkFadeEnd, dur: 0.01, fn() {
       for (const el of accumulatedEls) { if (el.parentNode) el.parentNode.removeChild(el); }
       accumulatedEls.length = 0;
-      titleLine2.setAttribute("opacity", "0");
-      titleLine2.setAttribute("x", "600");
-      titleLine2.setAttribute("y", "45");
+      clearCenter();
     }});
 
-    // === Clean moment (1s) ===
-    kf.push({ t: fadeEnd + 0.01, dur: 0.99, fn() {} });
+    // Step 5: Clean moment (1s) — just the loop
+    kf.push({ t: junkFadeEnd + 0.01, dur: 0.99, fn() {} });
 
-    // === New Paradigm (3.5s) ===
-    let gMain = null;
+    // Step 5+6: New paradigm enters center + title bar updates
+    let npEl = null;
 
-    kf.push({ t: npStart, dur: 0.5, fn(p) {
-      setYear(cfg.years.newParadigm);
-      titleLine3.textContent = cfg.title3;
-      titleLine3.setAttribute("opacity", easeOutCubic(p));
-    }});
-
-    kf.push({ t: npStart + 0.5, dur: 0.5, fn(p) {
-      if (!gMain) {
-        gMain = createText(cfg.newParadigm, CX, CY - 10, 26, "#5c9c5c");
-        gMain.setAttribute("letter-spacing", "0");
-        centerStage.appendChild(gMain);
+    kf.push({ t: npCenterStart, dur: 0.5, fn(p) {
+      if (!npEl) {
+        npEl = createText(cfg.title3, CX, CY, 48, "#5c9c5c");
+        npEl.setAttribute("font-weight", "bold");
+        npEl.setAttribute("letter-spacing", "0");
+        centerStage.appendChild(npEl);
       }
-      gMain.setAttribute("opacity", easeOutCubic(p));
-      gMain.setAttribute("font-size", Math.round(26 * Math.max(0.1, easeOutBack(p))));
+      npEl.setAttribute("font-size", String(Math.round(48 * easeOutBack(p))));
+      npEl.setAttribute("opacity", String(easeOutCubic(p)));
+      // Title bar: strikethrough + new paradigm
+      const bbox = titleLine2.getBBox ? titleLine2.getBBox() : { x: 200, width: 800 };
+      titleStrike.setAttribute("x1", bbox.x || 200);
+      titleStrike.setAttribute("x2", (bbox.x || 200) + (bbox.width || 800) * easeOutCubic(p));
+      titleStrike.setAttribute("opacity", easeOutCubic(p));
+      titleLine2.setAttribute("opacity", String(0.4 * easeOutCubic(p)));
+      titleLine2.setAttribute("font-size", "12");
+      titleLine3.textContent = cfg.title3;
+      titleLine3.setAttribute("opacity", String(easeOutCubic(p)));
     }});
 
-    kf.push({ t: npStart + 1, dur: 2.5, fn() {} });
+    kf.push({ t: npCenterStart + 0.5, dur: 1.5, fn() {} });
+
+    // Step 7: New paradigm parks at New Paradigm position
+    kf.push({ t: npParkStart, dur: 0.5, fn(p) {
+      if (!npEl) return;
+      const t = easeInOutCubic(p);
+      const pos = phasePos(4);
+      const off = scatterOffset(N * 2 + 5);
+      npEl.setAttribute("x", String(CX + (pos.x + off.x - CX) * t));
+      npEl.setAttribute("y", String(CY + (pos.y + off.y - CY) * t));
+      npEl.setAttribute("font-size", String(Math.round(48 - 37 * t)));
+      npEl.setAttribute("opacity", String(1 - t * 0.3));
+    }});
+
+    kf.push({ t: npParkEnd, dur: 0.01, fn() {
+      clearCenter();
+      npEl = null;
+      const pos = phasePos(4);
+      const off = scatterOffset(N * 2 + 5);
+      parkText(cfg.title3.substring(0, 32) + "…", pos.x + off.x, pos.y + off.y, 10, "#5c9c5c", N * 2 + 5);
+    }});
+
+    // Step 8: Technology/outcome
+    let techEl = null;
+
+    kf.push({ t: techStart, dur: 0.5, fn(p) {
+      if (!techEl) {
+        techEl = createText(cfg.newParadigm, CX, CY, 26, "#5c9c5c");
+        techEl.setAttribute("letter-spacing", "0");
+        centerStage.appendChild(techEl);
+      }
+      techEl.setAttribute("opacity", String(easeOutCubic(p)));
+      techEl.setAttribute("font-size", String(Math.round(26 * easeOutBack(p))));
+    }});
+
+    kf.push({ t: techStart + 0.5, dur: 1.5, fn() {} });
+
+    // Park tech at New Paradigm position too
+    kf.push({ t: techParkStart, dur: 0.5, fn(p) {
+      if (!techEl) return;
+      const t = easeInOutCubic(p);
+      const pos = phasePos(4);
+      const off = scatterOffset(N * 2 + 6);
+      techEl.setAttribute("x", String(CX + (pos.x + off.x - CX) * t));
+      techEl.setAttribute("y", String(CY + (pos.y + off.y - CY) * t));
+      techEl.setAttribute("font-size", String(Math.round(26 - 16 * t)));
+      techEl.setAttribute("opacity", String(1 - t * 0.3));
+    }});
+
+    kf.push({ t: techParkEnd, dur: 0.01, fn() {
+      clearCenter();
+      techEl = null;
+      const pos = phasePos(4);
+      const off = scatterOffset(N * 2 + 6);
+      parkText(cfg.newParadigm.substring(0, 28) + "…", pos.x + off.x, pos.y + off.y, 9, "#5c9c5c", N * 2 + 6);
+    }});
+
+    // Step 9: Transition note
+    kf.push({ t: transStart, dur: 0.5, fn(p) {
+      if (cfg.transitionYears) {
+        clearCenter();
+        const el = createText(cfg.transitionYears, CX, CY, 16, "#e8e0d088");
+        el.setAttribute("opacity", String(easeOutCubic(p) * 0.6));
+        centerStage.appendChild(el);
+      }
+      setYear(cfg.years.newParadigm);
+    }});
+
+    // Step 10: Final pause
+    kf.push({ t: pauseFinal, dur: 1.5, fn(p) {
+      if (p > 0.5) clearCenter();
+    }});
 
     return { keyframes: kf, duration: TOTAL };
   }
@@ -1298,7 +1118,8 @@
         sub: "Mass conserved. A new element: oxygen. Combustion is combination, not release.",
         name: "Lavoisier, 1783"
       },
-      newParadigm: "The periodic table. Conservation of mass. Modern chemistry."
+      newParadigm: "The periodic table. Conservation of mass. Modern chemistry.",
+      transitionYears: "~19 years"
     });
   }
 
@@ -1341,7 +1162,8 @@
         sub: "Natural selection. Variation. Inheritance. Competition. Time.",
         name: "Darwin, 1859"
       },
-      newParadigm: "DNA. Genetics. Gene therapy. CRISPR."
+      newParadigm: "DNA. Genetics. Gene therapy. CRISPR.",
+      transitionYears: "~122 years"
     });
   }
 
@@ -1382,7 +1204,8 @@
         sub: "No spontaneous generation. Germs are real. They can be killed.",
         name: "Semmelweis / Pasteur"
       },
-      newParadigm: "Antibiotics. Vaccines. Sterile surgery. Modern medicine."
+      newParadigm: "Antibiotics. Vaccines. Sterile surgery. Modern medicine.",
+      transitionYears: "~38 years"
     });
   }
 
