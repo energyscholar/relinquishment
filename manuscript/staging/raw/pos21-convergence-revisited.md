@@ -156,21 +156,16 @@ Assessment: This is exactly the team you'd assemble for a topological QNN projec
 
 ## SOURCE 4: HEALER-RECONSTRUCTION.md — Connection to QRR, Operator Mapping, Knot Theory, Transmission Chain (lines 272-311)
 
-### The Operator Mapping
+### The Operator Mapping — CONFABULATION (BT-K01, killed S34)
 
-Robin's ABCRE operators map to topological QNN operations:
+> **WARNING:** The table below is a CONFABULATION preserved only as a cautionary record.
+> ABCRE R is Abelian (commutative); braid groups are non-Abelian. No faithful homomorphism
+> exists. The "mapping" is English word-matching, not mathematics. The λ≈0.91 value applies
+> to Langton's cellular automata, NOT to TQC or FQHE systems. DO NOT USE THIS TABLE.
 
-| Robin's Operator | Topological QNN Equivalent |
-|---|---|
-| A (gradient extraction) | Identifying excitations — where anyons ARE |
-| B (local coupling) | Nearest-neighbor anyon interaction in 2DEG |
-| R (circulation) | **Anyon braiding** — the core computational operation |
-| C (boundedness) | Topological protection of states |
-| E (composite evolution) | One step of QNN evolution |
+~~Robin's ABCRE operators map to topological QNN operations~~ (STRUCK — false claim)
 
-The R operator (antisymmetric circulation) IS anyon braiding: circulating one quasiparticle around another.
-
-lambda approx 0.91 (Langton parameter / edge of chaos) = Kauffman's critical point = where the system was evolved to operate.
+lambda approx 0.91 (Langton parameter / edge of chaos) = Kauffman's critical point for CLASSICAL systems. No published source connects this value to TQC.
 
 ### The Knot Theory Connection
 
@@ -191,4 +186,4 @@ This IS the Diffie-Hellman parallel in structure:
 
 ### Assessment
 
-Robin independently derived classical discretized operators that map to topological quantum computation, optimized at Kauffman's critical point. If the reconstruction is correct, QRR/Metron Dynamics is a public, independent rediscovery of the mathematical principles underlying Healer's classified work.
+Robin independently derived classical discretized operators that detect critical transitions in time series. [NOTE: BT-K01 — the claim that these "map to topological quantum computation" is a confabulation. ABCRE is commutative; braiding is not.] QRR/Metron Dynamics is a public, independent contribution to critical-transition theory.

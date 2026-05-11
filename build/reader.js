@@ -14,7 +14,8 @@
   } catch (e) { /* tooltips degrade silently */ }
 
   // --- Dark mode detection (used by copy button, nav, heading links) ---
-  var isDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+  var darkMQ = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)');
+  var isDark = darkMQ && darkMQ.matches;
 
   // --- Clipboard utility (shared by copy buttons, heading links, share button) ---
   function copyToClipboard(text, onSuccess) {
@@ -63,8 +64,12 @@
   // --- Bottom navigation bar: Breadcrumb + Quick-jump + Top ---
   var nav = document.createElement('div');
   nav.id = 'reader-nav';
+  function navColors() {
+    return 'background:' + (isDark ? 'rgba(30,30,30,0.97)' : 'rgba(248,248,248,0.97)') +
+      ';border-top:1px solid ' + (isDark ? '#444' : '#ddd') + ';';
+  }
   nav.style.cssText = 'position:sticky;bottom:0;left:0;right:0;' +
-    'background:rgba(248,248,248,0.97);border-top:1px solid #ddd;' +
+    navColors() +
     'padding:0.3em 0.8em;display:flex;justify-content:space-between;' +
     'align-items:center;font-size:0.8em;z-index:100;backdrop-filter:blur(4px);';
 
@@ -1705,6 +1710,19 @@
     e.preventDefault();
     activateCustodianMenuItem(item);
   });
+
+  // --- Live dark/light mode switch for nav bar + buttons ---
+  if (darkMQ) {
+    darkMQ.addEventListener('change', function(e) {
+      isDark = e.matches;
+      var btnColor = isDark ? '#aaa' : '#888';
+      nav.style.background = isDark ? 'rgba(30,30,30,0.97)' : 'rgba(248,248,248,0.97)';
+      nav.style.borderTopColor = isDark ? '#444' : '#ddd';
+      [shareBtn, pdfBtn, zipBtn, tipsBtn, msToggle].forEach(function(btn) {
+        if (btn) btn.style.color = btnColor;
+      });
+    });
+  }
 
   document.querySelectorAll('svg[data-stepthrough]').forEach(function(svg) {
     var stages = svg.querySelectorAll('.step-stage');
