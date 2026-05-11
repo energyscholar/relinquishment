@@ -34,11 +34,11 @@
 
     <!-- Title bar (segments 1+) -->
     <g id="title-bar" opacity="0">
-      <rect x="100" y="5" width="1000" height="75" rx="8" fill="rgba(26,26,46,0.85)"/>
+      <rect x="100" y="5" width="1000" height="95" rx="8" fill="rgba(26,26,46,0.85)"/>
       <text id="title-line1" x="600" y="22" text-anchor="middle" fill="#ffffff" font-size="18" font-family="Georgia, serif" font-weight="bold" letter-spacing="1"></text>
-      <text id="title-line2" x="600" y="60" text-anchor="middle" fill="#e8e0d0" font-size="26" font-family="Georgia, serif" font-weight="bold"></text>
-      <line id="title-strike" x1="300" y1="60" x2="300" y2="60" stroke="#c45c5c" stroke-width="2" opacity="0"/>
-      <text id="title-line3" x="600" y="60" text-anchor="middle" fill="#5c9c5c" font-size="26" font-family="Georgia, serif" font-weight="bold" opacity="0"></text>
+      <text id="title-line2" x="600" y="72" text-anchor="middle" fill="#e8e0d0" font-size="30" font-family="Georgia, serif" font-weight="bold"></text>
+      <line id="title-strike" x1="300" y1="72" x2="300" y2="72" stroke="#c45c5c" stroke-width="2" opacity="0"/>
+      <text id="title-line3" x="600" y="72" text-anchor="middle" fill="#5c9c5c" font-size="30" font-family="Georgia, serif" font-weight="bold" opacity="0"></text>
     </g>
 
     <!-- Year display (upper-right) -->
@@ -294,20 +294,20 @@
     titleBar.setAttribute("opacity", 0);
     titleLine1.textContent = "";
     titleLine2.textContent = "";
-    titleLine2.setAttribute("font-size", "26");
+    titleLine2.setAttribute("font-size", "30");
     titleLine2.setAttribute("font-weight", "bold");
     titleLine2.setAttribute("opacity", "1");
-    titleLine2.setAttribute("y", "60");
+    titleLine2.setAttribute("y", "72");
     titleLine2.removeAttribute("font-style");
     titleLine2.setAttribute("transform", "");
     titleLine3.textContent = "";
     titleLine3.setAttribute("opacity", 0);
-    titleLine3.setAttribute("y", "60");
-    titleLine3.setAttribute("font-size", "26");
+    titleLine3.setAttribute("y", "72");
+    titleLine3.setAttribute("font-size", "30");
     titleLine3.setAttribute("fill", "#5c9c5c");
     titleStrike.setAttribute("opacity", 0);
-    titleStrike.setAttribute("y1", "60");
-    titleStrike.setAttribute("y2", "60");
+    titleStrike.setAttribute("y1", "72");
+    titleStrike.setAttribute("y2", "72");
     yearDisplay.setAttribute("opacity", 0);
     yearDisplay.textContent = "";
     engine.resolved = false;
@@ -325,7 +325,13 @@
     }
 
     function showLoopFrame() {
-      if (cyclePath.dataset.persist) return;
+      if (cyclePath.dataset.persist) {
+        cyclePath.setAttribute("opacity", "0.25");
+        [...loopLabels.children].forEach(el => {
+          if (el.dataset.persist) el.setAttribute("opacity", "0.25");
+        });
+        return;
+      }
       cyclePath.setAttribute("d", fullCirclePath());
       cyclePath.setAttribute("stroke-dasharray", "6,4");
       cyclePath.removeAttribute("stroke-dashoffset");
@@ -362,8 +368,8 @@
         titleLine1.textContent = "The Structure of Scientific Revolutions";
         titleLine2.textContent = "The accepted theory explains everything we see.";
         titleLine2.setAttribute("x", "600");
-        titleLine2.setAttribute("y", "60");
-        titleLine2.setAttribute("font-size", "26");
+        titleLine2.setAttribute("y", "72");
+        titleLine2.setAttribute("font-size", "30");
         titleLine2.setAttribute("font-weight", "bold");
         titleLine2.setAttribute("opacity", "1");
         titleLine2.removeAttribute("font-style");
@@ -738,7 +744,13 @@
     }
 
     function showLoopFrame() {
-      if (cyclePath.dataset.persist) return;
+      if (cyclePath.dataset.persist) {
+        cyclePath.setAttribute("opacity", "0.25");
+        [...loopLabels.children].forEach(el => {
+          if (el.dataset.persist) el.setAttribute("opacity", "0.25");
+        });
+        return;
+      }
       cyclePath.setAttribute("d", fullCirclePath());
       cyclePath.setAttribute("stroke-dasharray", "6,4");
       cyclePath.removeAttribute("stroke-dashoffset");
@@ -778,17 +790,17 @@
         titleLine1.textContent = cfg.title1;
         titleLine2.textContent = cfg.title2;
         titleLine2.setAttribute("x", "600");
-        titleLine2.setAttribute("y", "60");
-        titleLine2.setAttribute("font-size", "26");
+        titleLine2.setAttribute("y", "72");
+        titleLine2.setAttribute("font-size", "30");
         titleLine2.setAttribute("font-weight", "bold");
         titleLine2.setAttribute("opacity", "1");
         titleLine2.removeAttribute("font-style");
-        titleStrike.setAttribute("y1", "60");
-        titleStrike.setAttribute("y2", "60");
+        titleStrike.setAttribute("y1", "72");
+        titleStrike.setAttribute("y2", "72");
         titleStrike.setAttribute("opacity", "0");
-        titleLine3.setAttribute("y", "60");
+        titleLine3.setAttribute("y", "72");
         titleLine3.setAttribute("opacity", "0");
-        const oldLabel = createText("OLD PARADIGM", 600, 43, 10, "#e8e0d0", { opacity: 0.4 });
+        const oldLabel = createText("OLD PARADIGM", 600, 55, 10, "#e8e0d0", { opacity: 0.4 });
         oldLabel.setAttribute("letter-spacing", "2");
         titleBar.appendChild(oldLabel);
       }
@@ -1096,7 +1108,7 @@
     let deathEl = null;
     kf.push({ t: deathMoveStart, dur: 0.01, fn() {
       titleLine2.setAttribute("opacity", "0");
-      deathEl = createWrappedText(cfg.title2, CX, 60, 26, "#e8e0d0", 38);
+      deathEl = createWrappedText(cfg.title2, CX, 72, 30, "#e8e0d0", 38);
       deathEl.setAttribute("font-weight", "bold");
       deathEl.setAttribute("text-anchor", "middle");
       centerStage.appendChild(deathEl);
@@ -1105,8 +1117,8 @@
     kf.push({ t: deathMoveStart + 0.01, dur: 2, fn(p) {
       if (!deathEl) return;
       const t = easeInOutCubic(p);
-      deathEl.setAttribute("y", String(60 + (CY - 60) * t));
-      const ds = Math.round(26 + 6 * t);
+      deathEl.setAttribute("y", String(72 + (CY - 72) * t));
+      const ds = Math.round(30 + 2 * t);
       deathEl.setAttribute("font-size", String(ds));
       deathEl.querySelectorAll('tspan').forEach((ts, i) => { if (i > 0) ts.setAttribute('dy', String(Math.round(ds * 1.3))); });
       deathEl.setAttribute("opacity", String(0.8 + 0.2 * t));
@@ -1194,7 +1206,7 @@
       titleStrike.setAttribute("x2", String(left + (right - left) * t));
       titleStrike.setAttribute("opacity", String(t));
       titleLine2.setAttribute("opacity", String(1 - t));
-      titleLine2.setAttribute("font-size", String(Math.round(26 - 10 * t)));
+      titleLine2.setAttribute("font-size", String(Math.round(30 - 14 * t)));
     }});
 
     // Brief silence (0.5s)
@@ -1204,9 +1216,9 @@
     kf.push({ t: npAppearStart, dur: 0.5, fn(p) {
       const t = easeOutBack(p);
       titleLine3.textContent = cfg.title3;
-      titleLine3.setAttribute("y", "60");
+      titleLine3.setAttribute("y", "72");
       titleLine3.setAttribute("fill", "#5c9c5c");
-      titleLine3.setAttribute("font-size", String(Math.round(26 * Math.max(0.1, t))));
+      titleLine3.setAttribute("font-size", String(Math.round(30 * Math.max(0.1, t))));
       titleLine3.setAttribute("opacity", String(easeOutCubic(p)));
     }});
 
