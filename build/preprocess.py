@@ -3605,6 +3605,146 @@ def inject_sr_animation(html_path):
     print("  SR animation: injected SVG-054 Kuhn framework animation")
 
 
+SR_ILLUST_CSS = """
+/* SVG-055/056 styles (Plan 0321) */
+@keyframes gold-pulse {
+  0%, 100% { filter: drop-shadow(0 0 3px rgba(212,160,23,0.3)); }
+  50% { filter: drop-shadow(0 0 8px rgba(212,160,23,0.7)); }
+}
+.gold-marker { animation: gold-pulse 2s ease-in-out infinite; }
+.svg-panel { margin: 1rem 0; border-left: 2px solid rgba(212,160,23,0.2); padding-left: 1rem; }
+.svg-panel summary { cursor: pointer; color: #c8b898; font-style: italic; font-size: 0.95rem; margin-bottom: 0.5rem; }
+.svg-panel .caption { font-size: 0.85em; color: #908878; margin: 0.3rem 0 0.5rem; }
+.phd-seed-section { margin: 1rem 0; }
+.phd-seed-section summary { cursor: pointer; color: #5c7c9c; font-style: italic; font-size: 0.85rem; }
+.phd-seed-section summary:hover { color: #7c9cbc; }
+"""
+
+
+def inject_sr_illustrations(html_path):
+    """Inject SVG-055/056, Section 3 accordion, and PhD seed accordions into SR chapter (Plan 0321)."""
+    html_path = Path(html_path)
+    text = html_path.read_text()
+
+    src_path = REPO / 'build' / 'images' / 'scientific-revolutions-chapter.html'
+    if not src_path.exists():
+        print("  WARNING: scientific-revolutions-chapter.html not found, skipping SR illustrations")
+        return
+    src = src_path.read_text()
+
+    changed = False
+
+    # 1. CSS injection
+    if 'gold-pulse' not in text:
+        head_end = text.find('</head>')
+        if head_end != -1:
+            last_style_close = text.rfind('</style>', 0, head_end)
+            if last_style_close != -1:
+                text = text[:last_style_close] + SR_ILLUST_CSS + text[last_style_close:]
+                print("  SR illustrations: CSS injected")
+                changed = True
+
+    # 2. PhD seed wrapping (reverse order to preserve positions)
+    phd_markers = [
+        ('bibliometric study', 3),
+        ('terminological paper', 2),
+        ('feasibility study', 1),
+    ]
+    for marker, num in phd_markers:
+        idx = _find_in_chapter(text, 'spine:scientific-revolutions', marker)
+        if idx == -1:
+            continue
+        bq_start = text.rfind('<blockquote', 0, idx)
+        if bq_start == -1:
+            continue
+        if 'phd-seed-section' in text[max(0, bq_start - 80):bq_start]:
+            continue
+        bq_end = text.find('</blockquote>', bq_start)
+        if bq_end == -1:
+            continue
+        bq_end += len('</blockquote>')
+        original_bq = text[bq_start:bq_end]
+        wrapped = (
+            '<details class="phd-seed-section">\n'
+            '<summary>Research opportunity</summary>\n'
+            f'{original_bq}\n'
+            '</details>'
+        )
+        text = text[:bq_start] + wrapped + text[bq_end:]
+        print(f"  SR illustrations: PhD seed {num}/3 wrapped")
+        changed = True
+
+    # 3. Section 3 accordion (four converging research programs)
+    if 'four converging research programs' not in text:
+        start_idx = _find_in_chapter(text, 'spine:scientific-revolutions', 'set theory.</strong>')
+        end_idx = _find_in_chapter(text, 'spine:scientific-revolutions', 'let alone studied')
+        if start_idx != -1 and end_idx != -1:
+            para_start = text.rfind('<p', 0, start_idx)
+            para_end = text.find('</p>', end_idx)
+            if para_start != -1 and para_end != -1:
+                para_end += len('</p>')
+                content = text[para_start:para_end]
+                wrapped = (
+                    '<details class="tech-section">\n'
+                    '<summary>The four converging research programs</summary>\n'
+                    f'{content}\n'
+                    '</details>'
+                )
+                text = text[:para_start] + wrapped + text[para_end:]
+                print("  SR illustrations: Section 3 accordion applied")
+                changed = True
+
+    # 4. SVG-056 + SVG-055 insertion
+    if 'id="svg056"' not in text:
+        m056 = re.search(r'(<!-- SVG-056.*?</svg>)', src, re.DOTALL)
+        if m056:
+            svg056_html = (
+                '<figure id="fig-consequence-fork" class="inline-svg" style="text-align:center;margin:1.5em auto;">\n'
+                f'{m056.group(1)}\n'
+                '<figcaption style="font-size:0.85em;color:#908878;margin-top:0.3em;font-style:italic;">'
+                'Same evidence. Same silence. Different futures.</figcaption>\n'
+                '</figure>'
+            )
+            idx = _find_in_chapter(text, 'spine:scientific-revolutions', 'Neither is a consolation')
+            if idx != -1:
+                close_p = text.find('</p>', idx)
+                if close_p != -1:
+                    insert_at = close_p + len('</p>')
+                    text = text[:insert_at] + '\n' + svg056_html + '\n' + text[insert_at:]
+                    print("  SR illustrations: SVG-056 fork diagram injected")
+                    changed = True
+
+    if 'id="svg055"' not in text:
+        det_start = src.find('<details open class="svg-panel">')
+        if det_start != -1:
+            det_end = src.find('</details>', det_start)
+            if det_end != -1:
+                det_end += len('</details>')
+                script_start = src.find('<script>', det_end)
+                if script_start != -1:
+                    script_end = src.find('</script>', script_start)
+                    if script_end != -1:
+                        script_end += len('</script>')
+                        svg055_block = src[det_start:script_end]
+                        idx = _find_in_chapter(text, 'spine:scientific-revolutions', 'id="svg056"')
+                        if idx == -1:
+                            idx = _find_in_chapter(text, 'spine:scientific-revolutions', 'Neither is a consolation')
+                        if idx != -1:
+                            fig_end = text.find('</figure>', idx)
+                            if fig_end != -1:
+                                insert_at = fig_end + len('</figure>')
+                            else:
+                                close_p = text.find('</p>', idx)
+                                insert_at = close_p + len('</p>') if close_p != -1 else -1
+                            if insert_at != -1:
+                                text = text[:insert_at] + '\n' + svg055_block + '\n' + text[insert_at:]
+                                print("  SR illustrations: SVG-055 spectrum + click-to-play injected")
+                                changed = True
+
+    if changed:
+        html_path.write_text(text)
+
+
 def inject_chapter_puzzles(html_path):
     """Insert approved puzzles into chapter HTML by extracting from puzzles.html (Plan 0274i)."""
     tracker_path = REPO / 'build' / 'puzzle-tracker.yaml'
@@ -4406,6 +4546,7 @@ if __name__ == "__main__":
         inject_ms_diagrams(sys.argv[2])
         inject_promoted_illustrations(sys.argv[2])
         inject_sr_animation(sys.argv[2])
+        inject_sr_illustrations(sys.argv[2])
         inject_chapter_puzzles(sys.argv[2])
         verify_puzzle_injection(sys.argv[2])
         inject_easter_eggs(sys.argv[2])

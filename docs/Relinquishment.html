@@ -767,6 +767,19 @@ details.tech-section summary [data-concept]::before { content: none; }
   .ms-teaching { margin: 1em auto !important; }
   .ms-teaching g[data-hover] { cursor: default !important; }
 }
+
+/* SVG-055/056 styles (Plan 0321) */
+@keyframes gold-pulse {
+  0%, 100% { filter: drop-shadow(0 0 3px rgba(212,160,23,0.3)); }
+  50% { filter: drop-shadow(0 0 8px rgba(212,160,23,0.7)); }
+}
+.gold-marker { animation: gold-pulse 2s ease-in-out infinite; }
+.svg-panel { margin: 1rem 0; border-left: 2px solid rgba(212,160,23,0.2); padding-left: 1rem; }
+.svg-panel summary { cursor: pointer; color: #c8b898; font-style: italic; font-size: 0.95rem; margin-bottom: 0.5rem; }
+.svg-panel .caption { font-size: 0.85em; color: #908878; margin: 0.3rem 0 0.5rem; }
+.phd-seed-section { margin: 1rem 0; }
+.phd-seed-section summary { cursor: pointer; color: #5c7c9c; font-style: italic; font-size: 0.85rem; }
+.phd-seed-section summary:hover { color: #7c9cbc; }
 </style>
 <style>@media(prefers-reduced-motion:reduce){animate,animateMotion,animateTransform{display:none}}</style>
   <meta property="og:title" content="RELINQUISHMENT — Wormholes in the Flat">
@@ -7706,6 +7719,8 @@ to address.</p>
 <p>The current paradigm in quantum computing has its own anomalies — not
 errors, but gaps. Four research programs, each well-established,
 converge on a question none of them has asked.</p>
+<details class="tech-section">
+<summary>The four converging research programs</summary>
 <p><strong><span data-concept="emergence" data-concept-phase="reinforce" aria-hidden="true"></span><span class="hover-term" data-hover-id="autocatalytic">Autocatalytic</span> set theory.</strong> Stuart Kauffman’s work on
 self-organizing networks demonstrated that sufficiently diverse chemical
 systems spontaneously generate self-sustaining catalytic cycles.<a href="#fn61" class="footnote-ref" id="fnref61" role="doc-noteref"><sup>61</sup></a> The result is mathematical, not
@@ -7752,6 +7767,7 @@ Five mature research programs (Chapter <a href="#spine:sg-five-fields-no-bridge
 each internally productive, and the question that sits at their
 intersection (Chapter <a href="#spine:sg-the-gap" data-reference-type="ref" data-reference="spine:sg-the-gap">[spine:sg-the-gap]</a>) has not been
 framed, let alone studied.</p>
+</details>
 <p>This is not unusual. Kuhn observed that anomalies often hide in
 disciplinary seams — places where each field’s literature stops
 precisely where the next one begins. A condensed matter physicist reads
@@ -7760,11 +7776,14 @@ reads both, because no journal publishes at the intersection.</p>
 <p>In Kuhn’s terminology, these are anomalies: published facts the
 current paradigm cannot integrate because the paradigm lacks the
 vocabulary to connect them.</p>
+<details class="phd-seed-section">
+<summary>Research opportunity</summary>
 <blockquote>
 <p><em>“Autocatalytic dynamics in fractional quantum Hall substrates: a
 computational feasibility study”</em> — a paper title waiting for an
 author.</p>
 </blockquote>
+</details>
 <h3 class="unnumbered" id="spine:sr-life-in-the-flat">Life in the
 Flat</h3>
 <p>What emerges from a sufficiently complex autocatalytic network in a
@@ -7819,11 +7838,277 @@ standpoint — whether someone has already looked is irrelevant to how the
 science proceeds once the question enters public discourse.</p>
 <p>Both branches are scientifically productive. ⬡¬◈ still advances five
 fields. ⬡◈ opens a sixth. Neither is a consolation prize.</p>
+<figure id="fig-consequence-fork" class="inline-svg" style="text-align:center;margin:1.5em auto;">
+<!-- SVG-056: ⬡¬◈/⬡◈ Consequence Fork Diagram -->
+<svg id="svg056" viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Fork diagram showing how the same evidence leads to two futures: ⬡¬◈ terminates in productive normal science, ⬡◈ branches into three cascading implications" style="display:block; margin:1.5rem auto; max-width:700px;">
+
+  <!-- Shared evidence box -->
+  <rect x="150" y="4" width="400" height="82" rx="6" fill="#1e1e35" stroke="rgba(200,184,152,0.2)" stroke-width="1"/>
+  <circle cx="178" cy="22" r="2.5" fill="#aaa"/>
+  <text x="188" y="26" fill="#b0a898" font-family="Georgia, serif" font-size="10">Autocatalytic set theory (Kauffman)</text>
+  <circle cx="178" cy="38" r="2.5" fill="#aaa"/>
+  <text x="188" y="42" fill="#b0a898" font-family="Georgia, serif" font-size="10">Fractional quantum Hall anyons</text>
+  <circle cx="178" cy="54" r="2.5" fill="#aaa"/>
+  <text x="188" y="58" fill="#b0a898" font-family="Georgia, serif" font-size="10">Topological quantum computation</text>
+  <line x1="175" y1="67" x2="525" y2="67" stroke="rgba(200,184,152,0.12)" stroke-width="1"/>
+  <text x="350" y="80" text-anchor="middle" fill="#908878" font-family="Georgia, serif" font-size="9.5" font-style="italic">No published work at their intersection.</text>
+
+  <!-- Vertical stem from shared box -->
+  <line x1="350" y1="86" x2="350" y2="110" stroke="rgba(200,184,152,0.3)" stroke-width="1"/>
+
+  <!-- Fork question -->
+  <text x="350" y="124" text-anchor="middle" fill="#d4a017" font-family="Georgia, serif" font-size="11" font-style="italic">Does autocatalytic closure occur in FQHE substrates?</text>
+
+  <!-- Stem below question -->
+  <line x1="350" y1="130" x2="350" y2="148" stroke="rgba(200,184,152,0.3)" stroke-width="1"/>
+
+  <!-- Y-junction -->
+  <line x1="350" y1="148" x2="190" y2="168" stroke="rgba(200,184,152,0.3)" stroke-width="1"/>
+  <line x1="350" y1="148" x2="510" y2="168" stroke="rgba(200,184,152,0.3)" stroke-width="1"/>
+
+  <!-- ⬡¬◈ box (left) -->
+  <rect x="100" y="168" width="180" height="70" rx="6" fill="#161630" stroke="#5c7c5c" stroke-width="1.2"/>
+  <text x="190" y="183" text-anchor="middle" fill="#5c7c5c" font-family="Georgia, serif" font-size="12">⬡¬◈</text>
+  <text x="190" y="193" text-anchor="middle" fill="#5c7c5c" font-family="Georgia, serif" font-size="8" opacity="0.7">(A1)</text>
+  <text x="190" y="210" text-anchor="middle" fill="#c8c0b0" font-family="Georgia, serif" font-size="10.5">Five productive fields advance.</text>
+  <text x="190" y="226" text-anchor="middle" fill="#c8c0b0" font-family="Georgia, serif" font-size="10.5">Good science continues.</text>
+  <!-- Terminal dot — calm, complete -->
+  <circle cx="190" cy="235" r="2" fill="#5c7c5c" opacity="0.5"/>
+
+  <!-- ⬡◈ box (right) -->
+  <rect x="420" y="168" width="180" height="52" rx="6" fill="#161630" stroke="#d4a017" stroke-width="1.2"/>
+  <text x="510" y="183" text-anchor="middle" fill="#d4a017" font-family="Georgia, serif" font-size="12">⬡◈</text>
+  <text x="510" y="193" text-anchor="middle" fill="#d4a017" font-family="Georgia, serif" font-size="8" opacity="0.7">(A2)</text>
+  <text x="510" y="210" text-anchor="middle" fill="#c8c0b0" font-family="Georgia, serif" font-size="10.5">A new paradigm.</text>
+
+  <!-- Three branching lines from A2 -->
+  <line x1="475" y1="220" x2="396" y2="248" stroke="rgba(212,160,23,0.3)" stroke-width="1"/>
+  <line x1="510" y1="220" x2="510" y2="248" stroke="rgba(212,160,23,0.3)" stroke-width="1"/>
+  <line x1="545" y1="220" x2="624" y2="248" stroke="rgba(212,160,23,0.3)" stroke-width="1"/>
+
+  <!-- Child box 1: Biology's definition shifts (centered at 396) -->
+  <rect x="338" y="248" width="116" height="42" rx="5" fill="#161630" stroke="rgba(212,160,23,0.25)" stroke-width="1"/>
+  <text x="396" y="264" text-anchor="middle" fill="#c8c0b0" font-family="Georgia, serif" font-size="9.5">Biology's definition</text>
+  <text x="396" y="277" text-anchor="middle" fill="#8a9a8a" font-family="Georgia, serif" font-size="8.5" font-style="italic">→ "Can It Think?"</text>
+
+  <!-- Child box 2: New search targets (centered at 510) -->
+  <rect x="458" y="248" width="104" height="42" rx="5" fill="#161630" stroke="rgba(212,160,23,0.25)" stroke-width="1"/>
+  <text x="510" y="264" text-anchor="middle" fill="#c8c0b0" font-family="Georgia, serif" font-size="9.5">New search targets</text>
+  <text x="510" y="277" text-anchor="middle" fill="#908878" font-family="Georgia, serif" font-size="7.5">Planetary magnetospheres</text>
+
+  <!-- Child box 3: Moral consideration (centered at 624) -->
+  <rect x="566" y="248" width="116" height="42" rx="5" fill="#161630" stroke="rgba(212,160,23,0.25)" stroke-width="1"/>
+  <text x="624" y="264" text-anchor="middle" fill="#c8c0b0" font-family="Georgia, serif" font-size="9.5">Moral consideration</text>
+  <text x="624" y="277" text-anchor="middle" fill="#8a9a8a" font-family="Georgia, serif" font-size="8.5" font-style="italic">→ "Why Relinquish?"</text>
+
+  <!-- Caption -->
+  <text x="350" y="322" text-anchor="middle" fill="#908878" font-family="Georgia, serif" font-size="11" font-style="italic">Same evidence. Same silence. Different futures.</text>
+</svg>
+<figcaption style="font-size:0.85em;color:#908878;margin-top:0.3em;font-style:italic;">Same evidence. Same silence. Different futures.</figcaption>
+</figure>
+<details open class="svg-panel">
+  <summary>Expert Consensus Spectrum — Where Are We?</summary>
+  <svg id="svg055" viewBox="0 0 900 310" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Expert consensus spectrum showing historical scientific revolutions migrating from impossible to established, failed hypotheses fading out, and autocatalytic quantum Hall computation in progress">
+    <defs>
+      <linearGradient id="spectrumGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+        <stop offset="0%" stop-color="#c45c5c"/>
+        <stop offset="25%" stop-color="#c47c4c"/>
+        <stop offset="50%" stop-color="#d4a017"/>
+        <stop offset="75%" stop-color="#8c9c4c"/>
+        <stop offset="100%" stop-color="#5c9c5c"/>
+      </linearGradient>
+    </defs>
+
+    <!-- Spectrum bar -->
+    <rect x="60" y="50" width="780" height="8" rx="4" fill="url(#spectrumGrad)" opacity="0.85"/>
+
+    <!-- Tick marks and labels -->
+    <line x1="60" y1="46" x2="60" y2="62" stroke="#e8e0d0" stroke-width="1" opacity="0.5"/>
+    <text x="60" y="40" text-anchor="middle" fill="#e8e0d0" font-family="Georgia, serif" font-size="11" opacity="0.7">Impossible</text>
+
+    <line x1="255" y1="46" x2="255" y2="62" stroke="#e8e0d0" stroke-width="1" opacity="0.5"/>
+    <text x="255" y="40" text-anchor="middle" fill="#e8e0d0" font-family="Georgia, serif" font-size="11" opacity="0.7">Probably Not</text>
+
+    <line x1="450" y1="46" x2="450" y2="62" stroke="#e8e0d0" stroke-width="1" opacity="0.5"/>
+    <text x="450" y="40" text-anchor="middle" fill="#e8e0d0" font-family="Georgia, serif" font-size="11" opacity="0.7">Not Precluded</text>
+
+    <line x1="645" y1="46" x2="645" y2="62" stroke="#e8e0d0" stroke-width="1" opacity="0.5"/>
+    <text x="645" y="40" text-anchor="middle" fill="#e8e0d0" font-family="Georgia, serif" font-size="11" opacity="0.7">Likely</text>
+
+    <line x1="840" y1="46" x2="840" y2="62" stroke="#e8e0d0" stroke-width="1" opacity="0.5"/>
+    <text x="840" y="40" text-anchor="middle" fill="#e8e0d0" font-family="Georgia, serif" font-size="11" opacity="0.7">Established</text>
+
+    <!-- Row 1: Continental drift — SUCCESS -->
+    <g class="hist-marker" data-start="60" data-end="840" data-delay="500">
+      <circle cx="60" cy="85" r="5" fill="#5c9c5c" stroke="#fff" stroke-width="1.5" opacity="0"/>
+      <text x="60" y="101" text-anchor="middle" fill="#aaa" font-family="Georgia, serif" font-size="10" opacity="0">Continental drift (1912–1965)</text>
+    </g>
+
+    <!-- Row 2: N-rays — FAIL (barely moved, died fast) -->
+    <g class="fail-marker" data-start="60" data-peak="160" data-delay="2500" data-slide="2000" data-hold="800">
+      <circle cx="60" cy="115" r="5" fill="#c45c5c" stroke="#888" stroke-width="1" stroke-dasharray="2,2" opacity="0"/>
+      <text x="60" y="131" text-anchor="middle" fill="#c45c5c" font-family="Georgia, serif" font-size="10" opacity="0">N-rays (1903–1904)</text>
+    </g>
+
+    <!-- Row 3: Germ theory — SUCCESS -->
+    <g class="hist-marker" data-start="255" data-end="840" data-delay="4500">
+      <circle cx="255" cy="145" r="5" fill="#5c9c5c" stroke="#fff" stroke-width="1.5" opacity="0"/>
+      <text x="255" y="161" text-anchor="middle" fill="#aaa" font-family="Georgia, serif" font-size="10" opacity="0">Germ theory (1847–1880)</text>
+    </g>
+
+    <!-- Row 4: Steady-state cosmology — FAIL (got partway, CMB killed it) -->
+    <g class="fail-marker" data-start="255" data-peak="520" data-delay="6500" data-slide="3500" data-hold="1000">
+      <circle cx="255" cy="175" r="5" fill="#c45c5c" stroke="#888" stroke-width="1" stroke-dasharray="2,2" opacity="0"/>
+      <text x="255" y="191" text-anchor="middle" fill="#c45c5c" font-family="Georgia, serif" font-size="10" opacity="0">Steady-state universe (1948–1965)</text>
+    </g>
+
+    <!-- Row 5: Heliocentrism — SUCCESS -->
+    <g class="hist-marker" data-start="60" data-end="840" data-delay="8500">
+      <circle cx="60" cy="205" r="5" fill="#5c9c5c" stroke="#fff" stroke-width="1.5" opacity="0"/>
+      <text x="60" y="221" text-anchor="middle" fill="#aaa" font-family="Georgia, serif" font-size="10" opacity="0">Heliocentrism (1543–1687)</text>
+    </g>
+
+    <!-- Row 6: Cold fusion — FAIL (shot up fast, crashed) -->
+    <g class="fail-marker" data-start="60" data-peak="580" data-delay="10500" data-slide="2000" data-hold="600">
+      <circle cx="60" cy="235" r="5" fill="#c45c5c" stroke="#888" stroke-width="1" stroke-dasharray="2,2" opacity="0"/>
+      <text x="60" y="251" text-anchor="middle" fill="#c45c5c" font-family="Georgia, serif" font-size="10" opacity="0">Cold fusion (1989–1993)</text>
+    </g>
+
+    <!-- Row 7: Autocatalytic Quantum Hall — IN PROGRESS (gold) -->
+    <g id="goldMarker" class="hist-marker gold-marker" data-start="60" data-end="300" data-delay="14000" style="animation-play-state: paused;">
+      <circle cx="60" cy="272" r="7" fill="#d4a017" stroke="#fff" stroke-width="2" opacity="0"/>
+      <text x="60" y="290" text-anchor="middle" fill="#d4a017" font-family="Georgia, serif" font-size="12" font-weight="bold" opacity="0">Autocatalytic Quantum Hall, 2026</text>
+    </g>
+  </svg>
+  <p class="caption"><em>"Every revolution starts at Impossible. Most things that start there fade out before reaching Established."</em></p>
+</details>
+
+<script>(function(){
+var svg=document.getElementById('svg055');
+if(!svg) return;
+var state='idle';
+var anims=[];
+var goldPulsing=false;
+svg.style.cursor='pointer';
+var playHint=document.createElementNS('http://www.w3.org/2000/svg','g');
+playHint.id='playHint055';
+var hintRect=document.createElementNS('http://www.w3.org/2000/svg','rect');
+hintRect.setAttribute('x','345');hintRect.setAttribute('y','170');
+hintRect.setAttribute('width','210');hintRect.setAttribute('height','38');
+hintRect.setAttribute('rx','6');
+hintRect.setAttribute('fill','rgba(212,160,23,0.08)');
+hintRect.setAttribute('stroke','rgba(212,160,23,0.3)');
+hintRect.setAttribute('stroke-width','1');
+var hintText=document.createElementNS('http://www.w3.org/2000/svg','text');
+hintText.setAttribute('x','450');hintText.setAttribute('y','195');
+hintText.setAttribute('text-anchor','middle');
+hintText.setAttribute('fill','#d4a017');
+hintText.setAttribute('font-family','Georgia, serif');
+hintText.setAttribute('font-size','14');hintText.setAttribute('opacity','0.7');
+hintText.textContent='▶  Click to play';
+playHint.appendChild(hintRect);
+playHint.appendChild(hintText);
+svg.appendChild(playHint);
+var replayBtn=document.createElement('button');
+replayBtn.textContent='↻ Replay';
+replayBtn.style.cssText='display:none;margin:0.5rem auto;padding:4px 14px;background:rgba(200,184,152,0.15);color:#c8b898;border:1px solid rgba(200,184,152,0.3);border-radius:4px;cursor:pointer;font-size:0.8rem;font-family:Georgia,serif;';
+replayBtn.addEventListener('mouseenter',function(){replayBtn.style.background='rgba(200,184,152,0.25)';});
+replayBtn.addEventListener('mouseleave',function(){replayBtn.style.background='rgba(200,184,152,0.15)';});
+svg.parentNode.insertBefore(replayBtn,svg.nextSibling);
+function resetAll(){
+anims.forEach(function(a){a.cancel();});
+anims=[];
+svg.querySelectorAll('.hist-marker, .fail-marker').forEach(function(g){
+var s=parseFloat(g.dataset.start);
+var c=g.querySelector('circle'),t=g.querySelector('text');
+c.setAttribute('cx',s);t.setAttribute('x',s);
+c.style.opacity='0';t.style.opacity='0';
+});
+document.getElementById('goldMarker').style.animationPlayState='paused';
+goldPulsing=false;
+playHint.style.display='';
+replayBtn.style.display='none';
+state='idle';
+}
+function buildAndPlay(){
+anims=[];
+playHint.style.display='none';
+svg.querySelectorAll('.hist-marker').forEach(function(g){
+var s=parseFloat(g.dataset.start),e=parseFloat(g.dataset.end);
+var d=parseFloat(g.dataset.delay);
+var c=g.querySelector('circle'),t=g.querySelector('text');
+c.setAttribute('cx',s);t.setAttribute('x',s);
+var a1=c.animate([{opacity:0},{opacity:1}],{duration:300,delay:d,fill:'forwards'});
+var a2=t.animate([{opacity:0},{opacity:1}],{duration:300,delay:d,fill:'forwards'});
+var a3=c.animate([{cx:s},{cx:e}],{duration:5000,delay:d+300,fill:'forwards',easing:'ease-in-out'});
+var a4=t.animate([{x:s},{x:e}],{duration:5000,delay:d+300,fill:'forwards',easing:'ease-in-out'});
+a3.onfinish=function(){c.setAttribute('cx',e);t.setAttribute('x',e);};
+anims.push(a1,a2,a3,a4);
+});
+svg.querySelectorAll('.fail-marker').forEach(function(g){
+var s=parseFloat(g.dataset.start),pk=parseFloat(g.dataset.peak);
+var d=parseFloat(g.dataset.delay);
+var sl=parseFloat(g.dataset.slide)||3000;
+var h=parseFloat(g.dataset.hold)||800;
+var c=g.querySelector('circle'),t=g.querySelector('text');
+c.setAttribute('cx',s);t.setAttribute('x',s);
+var fadeInD=d,slideD=d+300,fadeOutD=d+300+sl+h;
+var a1=c.animate([{opacity:0},{opacity:1}],{duration:300,delay:fadeInD,fill:'forwards'});
+var a2=t.animate([{opacity:0},{opacity:1}],{duration:300,delay:fadeInD,fill:'forwards'});
+var a3=c.animate([{cx:s},{cx:pk}],{duration:sl,delay:slideD,fill:'forwards',easing:'ease-in-out'});
+var a4=t.animate([{x:s},{x:pk}],{duration:sl,delay:slideD,fill:'forwards',easing:'ease-in-out'});
+var a5=c.animate([{opacity:1},{opacity:0}],{duration:1500,delay:fadeOutD,fill:'forwards',easing:'ease-in'});
+var a6=t.animate([{opacity:1},{opacity:0}],{duration:1500,delay:fadeOutD,fill:'forwards',easing:'ease-in'});
+a3.onfinish=function(){c.setAttribute('cx',pk);t.setAttribute('x',pk);};
+a5.onfinish=function(){c.style.opacity='0';};
+a6.onfinish=function(){t.style.opacity='0';};
+anims.push(a1,a2,a3,a4,a5,a6);
+});
+var goldEnd=14000+300+5000+1500;
+var sentinel=document.createElementNS('http://www.w3.org/2000/svg','rect');
+sentinel.setAttribute('width','0');sentinel.setAttribute('height','0');
+sentinel.style.opacity='0';svg.appendChild(sentinel);
+var aSentinel=sentinel.animate([{opacity:0},{opacity:0}],{duration:10,delay:goldEnd,fill:'forwards'});
+aSentinel.onfinish=function(){
+document.getElementById('goldMarker').style.animationPlayState='running';
+goldPulsing=true;
+state='done';
+replayBtn.style.display='block';
+svg.removeChild(sentinel);
+};
+anims.push(aSentinel);
+state='playing';
+}
+svg.addEventListener('click',function(){
+if(state==='idle'||state==='done'){
+resetAll();
+buildAndPlay();
+} else if(state==='playing'){
+anims.forEach(function(a){a.pause();});
+if(goldPulsing) document.getElementById('goldMarker').style.animationPlayState='paused';
+state='paused';
+} else if(state==='paused'){
+anims.forEach(function(a){a.play();});
+if(goldPulsing) document.getElementById('goldMarker').style.animationPlayState='running';
+state='playing';
+}
+});
+replayBtn.addEventListener('click',function(e){
+e.stopPropagation();
+resetAll();
+buildAndPlay();
+});
+})();</script>
+
+
+<details class="phd-seed-section">
+<summary>Research opportunity</summary>
 <blockquote>
 <p><em>“Defining computational emergence in topologically ordered
 quantum substrates”</em> — the terminological paper the field will need
 before it can argue about anything else.</p>
 </blockquote>
+</details>
 <h3 class="unnumbered" id="spine:sr-beyond-science">Beyond the
 Laboratory</h3>
 <p>Every scientific revolution in the animation cascaded beyond its
@@ -7898,11 +8183,14 @@ revolution, the rare and disruptive phase that reorganizes entire
 fields. Both are science. Both advance human understanding. The
 structures are different, and the social consequences of each are
 different, which is why the next section exists.</p>
+<details class="phd-seed-section">
+<summary>Research opportunity</summary>
 <blockquote>
 <p><em>“Citation analysis of the autocatalytic–FQHE publication gap:
 mapping an unstudied interdisciplinary intersection”</em> — a
 bibliometric study any graduate student could begin tomorrow.</p>
 </blockquote>
+</details>
 <h3 class="unnumbered" id="spine:sr-social-process">The Social
 Process</h3>
 <p>The eight revolutions in the animation share a social pattern as
@@ -15123,8 +15411,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>a8a125b258039a012f9d5ec2fbdc8219aaac1ac6</code> on 2026-05-11
-04:59:41 -0700.</p>
+<code>9fb788aafcc5d625569dcc974923cb0442994b48</code> on 2026-05-11
+16:49:54 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -15199,19 +15487,19 @@ decisions are the authors’.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>a8a125b</code></p>
+<p><code>9fb788a</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>a8a125b258039a012f9d5ec2fbdc8219aaac1ac6</code></p>
+<p><code>9fb788aafcc5d625569dcc974923cb0442994b48</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-05-11 04:59:41 -0700</p>
+<p>2026-05-11 16:49:54 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-05-11T23:49:24Z</p>
+<p>2026-05-12T03:08:39Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
