@@ -334,6 +334,10 @@
   question: "Phase transition — gradual buildup, sudden shift"
   category: svg
 
+- id: dl:ms-opening
+  question: "Earth's magnetosphere — animated solar wind and field structure"
+  category: svg
+
 # --- Puzzles: chapter (22) — not yet in main HTML, anchors created on insertion ---
 # Category: puzzle — verify-deep-links.py skips this category.
 

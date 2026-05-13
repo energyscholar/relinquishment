@@ -3334,6 +3334,307 @@ def inject_ms_diagrams(html_path):
             print(f"  MS teaching: {name} diagram injected")
 
 
+# --- Plan 0326: Animated magnetosphere opening ---
+
+MS_ANIM_OPENING = '''<figure id="dl:ms-opening" style="margin:1.5em auto;">
+<div class="ms-anim-teaser" id="mso-teaser">
+  <svg class="ms-anim-teaser-img" viewBox="0 0 400 225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Earth's magnetosphere — static preview">
+    <rect width="400" height="225" fill="#0a0a1a" rx="4"/>
+    <circle cx="220" cy="112" r="12" fill="#5588dd"/>
+    <circle cx="220" cy="112" r="10" fill="#3366aa"/>
+    <path d="M220,112 Q195,80 200,45" fill="none" stroke="rgba(102,255,136,0.3)" stroke-width="1"/>
+    <path d="M220,112 Q245,80 240,45" fill="none" stroke="rgba(102,255,136,0.3)" stroke-width="1"/>
+    <path d="M220,112 Q195,145 200,180" fill="none" stroke="rgba(102,255,136,0.3)" stroke-width="1"/>
+    <path d="M220,112 Q245,145 240,180" fill="none" stroke="rgba(102,255,136,0.3)" stroke-width="1"/>
+    <path d="M220,112 Q175,65 185,20" fill="none" stroke="rgba(102,255,136,0.2)" stroke-width="1"/>
+    <path d="M220,112 Q265,65 255,20" fill="none" stroke="rgba(102,255,136,0.2)" stroke-width="1"/>
+    <path d="M220,112 Q175,160 185,205" fill="none" stroke="rgba(102,255,136,0.2)" stroke-width="1"/>
+    <path d="M220,112 Q265,160 255,205" fill="none" stroke="rgba(102,255,136,0.2)" stroke-width="1"/>
+    <path d="M160,15 Q140,112 160,210" fill="none" stroke="rgba(74,158,255,0.5)" stroke-width="1.5"/>
+    <path d="M130,10 Q108,112 130,215" fill="none" stroke="#886600" stroke-width="1" stroke-dasharray="4,4" opacity="0.6"/>
+    <path d="M160,15 L380,5" fill="none" stroke="rgba(74,158,255,0.2)" stroke-width="1"/>
+    <path d="M160,210 L380,220" fill="none" stroke="rgba(74,158,255,0.2)" stroke-width="1"/>
+    <g opacity="0.4">
+      <line x1="20" y1="80" x2="100" y2="88" stroke="#ffb347" stroke-width="1"/>
+      <line x1="15" y1="112" x2="95" y2="114" stroke="#ffb347" stroke-width="1"/>
+      <line x1="20" y1="145" x2="100" y2="140" stroke="#ffb347" stroke-width="1"/>
+    </g>
+    <text x="300" y="100" text-anchor="middle" fill="rgba(102,255,136,0.4)" font-size="11" font-family="system-ui">Magnetosphere</text>
+  </svg>
+  <button class="ms-anim-teaser-btn" id="mso-teaser-btn">&#9654; Play Fullscreen</button>
+  <div class="ms-anim-teaser-hint">Best experienced in landscape</div>
+</div>
+<div class="ms-anim-container" id="mso-container" tabindex="0" role="group" aria-label="Animated magnetosphere visualization">
+  <svg id="mso-svg" viewBox="1000 100 600 700" preserveAspectRatio="xMidYMid slice" role="img" aria-label="Animated: solar wind approaching Earth&#39;s magnetosphere" xmlns="http://www.w3.org/2000/svg">
+    <rect x="-500" y="-500" width="3000" height="2000" fill="#0a0a1a"/>
+    <defs>
+      <radialGradient id="mso-sun-core" cx="0.5" cy="0.5" r="0.5">
+        <stop offset="0" stop-color="#fffbe8"/><stop offset="0.2" stop-color="#ffdd66"/><stop offset="0.55" stop-color="#ff9922"/><stop offset="1" stop-color="#cc6600" stop-opacity="0"/>
+      </radialGradient>
+      <radialGradient id="mso-sun-corona" cx="0.5" cy="0.5" r="0.5">
+        <stop offset="0" stop-color="rgba(255,200,80,0.4)"/><stop offset="0.4" stop-color="rgba(255,160,40,0.2)"/><stop offset="1" stop-color="rgba(255,120,20,0)"/>
+      </radialGradient>
+      <radialGradient id="mso-earth-grad" cx="0.4" cy="0.35" r="0.55">
+        <stop offset="0" stop-color="#5588dd"/><stop offset="0.6" stop-color="#3366aa"/><stop offset="1" stop-color="#1a3366"/>
+      </radialGradient>
+      <radialGradient id="mso-front-grad" cx="0.5" cy="0.5" r="0.5">
+        <stop offset="0" stop-color="rgba(74,158,255,0.12)"/><stop offset="0.8" stop-color="rgba(74,158,255,0.06)"/><stop offset="1" stop-color="rgba(74,158,255,0)"/>
+      </radialGradient>
+      <filter id="mso-glow"><feGaussianBlur stdDeviation="3" result="blur"/><feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+      <clipPath id="mso-clip"><rect x="-9999" y="130" width="99999" height="99999"/></clipPath>
+    </defs>
+    <g id="mso-sun-group">
+      <circle id="mso-corona" cx="200" cy="450" r="200" fill="url(#mso-sun-corona)"/>
+      <circle cx="200" cy="450" r="75" fill="url(#mso-sun-core)" filter="url(#mso-glow)"/>
+      <circle cx="200" cy="450" r="32" fill="#ffee99"/>
+      <g opacity="0.35">
+        <line x1="200" y1="450" x2="200" y2="200" stroke="#ffcc44" stroke-width="1.5" opacity="0.3"/>
+        <line x1="200" y1="450" x2="200" y2="700" stroke="#ffcc44" stroke-width="1.5" opacity="0.3"/>
+        <line x1="200" y1="450" x2="440" y2="340" stroke="#ffcc44" stroke-width="1.2" opacity="0.25"/>
+        <line x1="200" y1="450" x2="440" y2="560" stroke="#ffcc44" stroke-width="1.2" opacity="0.25"/>
+      </g>
+    </g>
+    <text id="mso-sun-label" x="200" y="360" text-anchor="middle" fill="#ffdd88" font-size="14" font-family="system-ui" opacity="0">The Sun</text>
+    <g id="mso-wind-particles"></g>
+    <g id="mso-front-ms" opacity="0">
+      <circle cx="1400" cy="450" r="130" fill="url(#mso-front-grad)" stroke="rgba(74,158,255,0.3)" stroke-width="1.5"/>
+      <circle cx="1400" cy="450" r="175" fill="none" stroke="rgba(85,51,0,0.2)" stroke-width="1" stroke-dasharray="4,4"/>
+    </g>
+    <g id="mso-side-ms" opacity="0" clip-path="url(#mso-clip)">
+      <path id="mso-mp" fill="none" stroke="rgba(74,158,255,0.5)" stroke-width="2"/>
+      <path id="mso-bs" fill="none" stroke="#553300" stroke-width="1.5" stroke-dasharray="5,5"/>
+      <path id="mso-ps" fill="none" stroke="rgba(255,136,68,0.3)" stroke-width="3"/>
+      <g id="mso-fieldlines" clip-path="url(#mso-clip)"></g>
+    </g>
+    <circle id="mso-earth" cx="1400" cy="450" r="14" fill="url(#mso-earth-grad)" filter="url(#mso-glow)"/>
+    <g id="mso-moon-group" opacity="0">
+      <circle cx="1400" cy="450" r="420" fill="none" stroke="#444" stroke-width="0.5" stroke-dasharray="5,8"/>
+      <circle id="mso-moon" cx="1820" cy="450" r="4" fill="#ccc"/>
+      <text id="mso-moon-label" x="1820" y="438" text-anchor="middle" fill="#aaa" font-size="10" font-family="system-ui" opacity="0">Moon</text>
+    </g>
+    <text id="mso-wind-label" x="700" y="410" fill="#ffb347" font-size="11" font-family="system-ui" opacity="0">Solar wind &#x2192;</text>
+    <g id="mso-ms-labels" opacity="0" clip-path="url(#mso-clip)">
+      <text id="mso-lbl-bs" x="0" y="0" fill="#886600" font-size="11" font-family="system-ui" text-anchor="middle">Bow shock</text>
+      <text id="mso-lbl-mp" x="0" y="0" fill="#4a9eff" font-size="11" font-family="system-ui" text-anchor="middle">Magnetopause</text>
+      <text id="mso-lbl-ps" x="0" y="0" fill="#ff8844" font-size="11" font-family="system-ui" text-anchor="middle">Plasma sheet</text>
+      <text id="mso-lbl-cusp-n" x="0" y="0" fill="#888" font-size="10" font-family="system-ui" text-anchor="middle">Cusp</text>
+      <text id="mso-lbl-cusp-s" x="0" y="0" fill="#888" font-size="10" font-family="system-ui" text-anchor="middle">Cusp</text>
+      <text id="mso-lbl-orbit" x="0" y="0" fill="#666" font-size="9" font-family="system-ui" text-anchor="start">lunar orbit</text>
+    </g>
+    <g id="mso-poster-wind" opacity="0.4">
+      <line x1="1010" y1="320" x2="1060" y2="330" stroke="#ffb347" stroke-width="1"/>
+      <line x1="1005" y1="400" x2="1055" y2="405" stroke="#ffb347" stroke-width="1"/>
+      <line x1="1010" y1="480" x2="1060" y2="478" stroke="#ffb347" stroke-width="1"/>
+      <line x1="1005" y1="560" x2="1055" y2="555" stroke="#ffb347" stroke-width="1"/>
+    </g>
+    <text id="mso-poster-title" x="1300" y="180" text-anchor="middle" fill="rgba(102,255,136,0.5)" font-size="18" font-family="system-ui" letter-spacing="2">Magnetosphere</text>
+  </svg>
+  <button class="ms-anim-play-btn" id="mso-play-btn" role="button" aria-pressed="false" aria-label="Play animation">&#9654;</button>
+  <button class="ms-anim-fs-btn" id="mso-fs-btn" role="button" aria-label="Enter fullscreen">&#x26F6;</button>
+  <div class="ms-anim-progress" id="mso-progress"></div>
+  <div class="ms-anim-fs-hint">Best in fullscreen</div>
+</div>
+<figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">Earth&#39;s magnetosphere &#8212; solar wind meets magnetic shield. Click to play.</figcaption>
+<style>
+.ms-anim-container{position:relative;max-width:800px;margin:1.5em auto;background:#0a0a1a;border-radius:4px;overflow:hidden;cursor:pointer;aspect-ratio:16/9}
+.ms-anim-container svg{width:100%;height:100%;display:block}
+.ms-anim-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:2.5rem;color:rgba(255,255,255,0.8);background:rgba(0,0,0,0.4);border:none;border-radius:50%;width:3.5rem;height:3.5rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:opacity 0.3s}
+.ms-anim-container.ms-playing .ms-anim-play-btn{opacity:0;pointer-events:none}
+.ms-anim-fs-btn{position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.5);color:#ccc;border:1px solid rgba(255,255,255,0.2);border-radius:4px;padding:4px 8px;cursor:pointer;font-size:1rem;z-index:10}
+.ms-anim-progress{position:absolute;bottom:0;left:0;height:2px;background:#66ff88;width:0%;transition:none}
+.ms-anim-fs-hint{position:absolute;bottom:8px;right:8px;color:rgba(255,255,255,0.5);font-size:0.7rem;font-family:sans-serif;animation:ms-fade-hint 3s ease-out forwards}
+@keyframes ms-fade-hint{0%,70%{opacity:1}100%{opacity:0}}
+.ms-anim-teaser{display:none}
+@media(max-width:767px){.ms-anim-container{display:none}.ms-anim-teaser{display:block;text-align:center;margin:1em 0}.ms-anim-teaser-img{width:100%;max-width:400px;margin:0 auto;display:block}.ms-anim-teaser-btn{display:block;width:100%;max-width:400px;margin:12px auto 0;padding:14px 24px;min-height:48px;background:#4caf50;color:#fff;border:none;border-radius:8px;font-size:18px;font-family:Georgia,serif;cursor:pointer}.ms-anim-teaser-hint{color:#706858;font-size:12px;margin-top:6px}}
+.ms-anim-container:fullscreen,.ms-anim-container:-webkit-full-screen{display:block!important;width:100vw;height:100vh;background:#000;max-width:none;border-radius:0}
+.ms-anim-container:fullscreen svg,.ms-anim-container:-webkit-full-screen svg{width:100vw;height:100vh}
+.ms-anim-container.ms-pseudo-fs{position:fixed!important;inset:0;z-index:9999;width:100vw;height:100vh;max-width:none;border-radius:0;background:#000}
+@media print{.ms-anim-play-btn,.ms-anim-fs-btn,.ms-anim-fs-hint,.ms-anim-progress,.ms-anim-teaser-btn{display:none!important}.ms-anim-container{display:block!important}}
+</style>
+</figure>
+<script>(function(){
+var SVG_NS='http://www.w3.org/2000/svg';
+function svgEl(tag,attrs,parent){var el=document.createElementNS(SVG_NS,tag);for(var k in attrs)el.setAttribute(k,attrs[k]);if(parent)parent.appendChild(el);return el;}
+function clamp(v,lo,hi){return Math.max(lo,Math.min(hi,v));}
+function boundaryPts(r0,alpha,nPts,tailLen){
+  var pts=[],thetaMax=Math.PI*0.85;
+  for(var i=0;i<=nPts;i++){var theta=-thetaMax+(2*thetaMax)*(i/nPts);var r=r0*Math.pow(2/(1+Math.cos(theta)),alpha);pts.push([-r*Math.cos(theta),r*Math.sin(theta)]);}
+  if(tailLen){pts.push([tailLen,pts[pts.length-1][1]]);pts.unshift([tailLen,pts[0][1]]);}
+  return pts;
+}
+function ptsToPath(pts,cx,cy,scale){return 'M'+pts.map(function(p){return(cx+p[0]*scale)+','+(cy-p[1]*scale);}).join('L');}
+function dipoleLine(L,nPts){
+  var pts=[];for(var i=0;i<=nPts;i++){var lam=(-Math.PI/2.2)+(Math.PI/1.1)*(i/nPts);var r=L*Math.cos(lam)*Math.cos(lam);pts.push([-r*Math.cos(lam),r*Math.sin(lam)]);}
+  return pts;
+}
+var svg=document.getElementById('mso-svg');
+if(!svg)return;
+var container=document.getElementById('mso-container');
+var playBtn=document.getElementById('mso-play-btn');
+var fsBtn=document.getElementById('mso-fs-btn');
+var progressBar=document.getElementById('mso-progress');
+var teaser=document.getElementById('mso-teaser');
+var teaserBtn=document.getElementById('mso-teaser-btn');
+var EX=1400,EY=450,SX=200,MS_SCALE=7,DURATION=25000;
+var POSTER_VB='1000 100 600 700';
+var windG=document.getElementById('mso-wind-particles');
+var windParts=[];
+for(var i=0;i<60;i++){
+  var isE=i>=40,r=isE?(0.6+Math.random()*0.4):(1.4+Math.random()*0.6);
+  var el=svgEl('circle',{r:r.toFixed(1),fill:isE?'#aaccff':'#ffb347',opacity:isE?'0.4':'0.5'},windG);
+  var wy=200+Math.random()*500;
+  windParts.push({el:el,x:SX+80+Math.random()*1100,y:wy,vx:isE?(1.8+Math.random()):(1.2+Math.random()*0.8),baseY:wy});
+}
+var mpPts=boundaryPts(10,0.5,60,50),bsPts=boundaryPts(14.5,0.6,60);
+document.getElementById('mso-mp').setAttribute('d',ptsToPath(mpPts,EX,EY,MS_SCALE));
+document.getElementById('mso-bs').setAttribute('d',ptsToPath(bsPts,EX,EY,MS_SCALE));
+var psH=1.5,psL=45;
+document.getElementById('mso-ps').setAttribute('d','M'+(EX+8*MS_SCALE)+','+(EY-psH*MS_SCALE)+' L'+(EX+psL*MS_SCALE)+','+(EY-psH*MS_SCALE*1.3)+' M'+(EX+8*MS_SCALE)+','+(EY+psH*MS_SCALE)+' L'+(EX+psL*MS_SCALE)+','+(EY+psH*MS_SCALE*1.3));
+var flG=document.getElementById('mso-fieldlines');
+[3,5,7,9].forEach(function(L){svgEl('path',{d:ptsToPath(dipoleLine(L,40),EX,EY,MS_SCALE),fill:'none',stroke:'rgba(102,255,136,0.3)','stroke-width':'1'},flG);});
+document.getElementById('mso-lbl-bs').setAttribute('x',EX-14.5*MS_SCALE);document.getElementById('mso-lbl-bs').setAttribute('y',EY+6);
+document.getElementById('mso-lbl-mp').setAttribute('x',EX-11*MS_SCALE);document.getElementById('mso-lbl-mp').setAttribute('y',EY+3*MS_SCALE);
+document.getElementById('mso-lbl-ps').setAttribute('x',EX+28*MS_SCALE);document.getElementById('mso-lbl-ps').setAttribute('y',EY+2*MS_SCALE);
+document.getElementById('mso-lbl-cusp-n').setAttribute('x',EX-3*MS_SCALE);document.getElementById('mso-lbl-cusp-n').setAttribute('y',EY-8*MS_SCALE);
+document.getElementById('mso-lbl-cusp-s').setAttribute('x',EX-3*MS_SCALE);document.getElementById('mso-lbl-cusp-s').setAttribute('y',EY+9*MS_SCALE);
+document.getElementById('mso-lbl-orbit').setAttribute('x',EX+423);document.getElementById('mso-lbl-orbit').setAttribute('y',EY-2);
+var frontWindEls=[];
+for(var i=0;i<20;i++){frontWindEls.push({el:svgEl('circle',{r:'1.5',fill:'#ffb347',opacity:'0'},windG),x:EX-250+Math.random()*100,y:EY-200+Math.random()*400,vx:1.0+Math.random()*0.5});}
+var heroG=svgEl('g',{},windG.parentNode);
+var heroParticles=[];
+for(var i=0;i<6;i++){
+  var hel=svgEl('circle',{r:'4',fill:'#ffcc55',opacity:'0',filter:'url(#mso-glow)'},heroG);
+  var laneY=EY+(i-2.5)*70;
+  heroParticles.push({el:hel,laneY:laneY,x:EX-400-i*80,y:laneY,phase:'approach',arcAngle:0,speed:1.8+i*0.15});
+}
+var KF=[
+  [0.00,1000,100,600,700],[0.06,1000,100,600,700],
+  [0.14,0,0,1600,900],[0.22,0,0,1600,900],
+  [0.28,0,80,1200,675],[0.33,50,150,1000,563],
+  [0.40,400,150,1100,619],[0.47,900,190,750,422],
+  [0.53,1100,200,600,338],[0.59,1100,200,600,338],
+  [0.64,1000,160,900,506],[0.74,1000,160,900,506],
+  [0.82,700,50,1400,788],[0.90,700,50,1400,788],
+  [0.95,1000,160,900,506],[1.00,1000,160,900,506]
+];
+function interpKF(t){
+  var n=KF.length,idx=n-2;
+  for(var i=0;i<n-1;i++){if(t<=KF[i+1][0]){idx=i;break;}}
+  var tSpan=KF[idx+1][0]-KF[idx][0],u=tSpan>0?(t-KF[idx][0])/tSpan:0;
+  var u2=u*u,u3=u2*u,i0=Math.max(0,idx-1),i1=idx,i2=Math.min(n-1,idx+1),i3=Math.min(n-1,idx+2);
+  var res=[];
+  for(var d=1;d<=4;d++){var p0=KF[i0][d],p1=KF[i1][d],p2=KF[i2][d],p3=KF[i3][d];res.push(0.5*((-p0+3*p1-3*p2+p3)*u3+(2*p0-5*p1+4*p2-p3)*u2+(-p0+p2)*u+2*p1));}
+  return res;
+}
+var running=false,animStart=null,pausedElapsed=0;
+function resetState(){
+  svg.setAttribute('viewBox',POSTER_VB);
+  document.getElementById('mso-sun-group').setAttribute('opacity','1');
+  document.getElementById('mso-front-ms').setAttribute('opacity','0');
+  document.getElementById('mso-side-ms').setAttribute('opacity','1');
+  document.getElementById('mso-moon-group').setAttribute('opacity','0');
+  document.getElementById('mso-ms-labels').setAttribute('opacity','0.6');
+  document.getElementById('mso-wind-label').setAttribute('opacity','0');
+  document.getElementById('mso-poster-title').setAttribute('opacity','0.5');
+  document.getElementById('mso-poster-wind').setAttribute('opacity','0.4');
+  progressBar.style.width='0%';
+  for(var i=0;i<heroParticles.length;i++){heroParticles[i].el.setAttribute('opacity','0');heroParticles[i].phase='approach';heroParticles[i].x=EX-400-i*80;heroParticles[i].y=heroParticles[i].laneY;}
+  for(var i=0;i<frontWindEls.length;i++)frontWindEls[i].el.setAttribute('opacity','0');
+}
+function msUpdate(ts){
+  if(!running)return;
+  if(!animStart)animStart=ts-pausedElapsed;
+  var elapsed=ts-animStart,t=Math.min(elapsed/DURATION,1.0);
+  progressBar.style.width=(t*100).toFixed(1)+'%';
+  var vb=interpKF(t),vx=vb[0],vy=vb[1],vw=vb[2],vh=vb[3];
+  svg.setAttribute('viewBox',vx.toFixed(1)+' '+vy.toFixed(1)+' '+vw.toFixed(1)+' '+vh.toFixed(1));
+  var posterOp=t<0.06?0.5:clamp(0.5-(t-0.06)/0.08*0.5,0,0.5);
+  document.getElementById('mso-poster-title').setAttribute('opacity',posterOp.toFixed(2));
+  document.getElementById('mso-poster-wind').setAttribute('opacity',(posterOp*0.8).toFixed(2));
+  var coronaPulse=200+8*Math.sin(ts*0.002);
+  document.getElementById('mso-corona').setAttribute('r',coronaPulse.toFixed(0));
+  var sunGroupOp=vx<SX+200?1:clamp(1-(vx-SX-200)/200,0,1);
+  document.getElementById('mso-sun-group').setAttribute('opacity',sunGroupOp.toFixed(2));
+  var sunLblBase=(t>0.14&&t<0.35)?clamp((t-0.16)/0.03,0,1)*clamp((0.33-t)/0.03,0,1):0;
+  document.getElementById('mso-sun-label').setAttribute('opacity',(sunLblBase*sunGroupOp).toFixed(2));
+  var frontOp=(t>0.45&&t<0.63)?Math.min(clamp((t-0.45)/0.04,0,1),clamp((0.63-t)/0.04,0,1)):0;
+  document.getElementById('mso-front-ms').setAttribute('opacity',frontOp.toFixed(2));
+  if(frontOp>0.1){for(var fi=0;fi<frontWindEls.length;fi++){var fw=frontWindEls[fi];fw.x+=fw.vx;var dx=fw.x-EX,dy=fw.y-EY,dist=Math.sqrt(dx*dx+dy*dy);if(dist<140){fw.y+=Math.sin(Math.atan2(dy,dx))*2;fw.x-=0.5;}if(fw.x>EX+300||Math.abs(fw.y-EY)>350){fw.x=EX-250+Math.random()*50;fw.y=EY-200+Math.random()*400;}fw.el.setAttribute('cx',fw.x.toFixed(0));fw.el.setAttribute('cy',fw.y.toFixed(0));fw.el.setAttribute('opacity',(frontOp*0.5).toFixed(2));}}
+  else{for(var fi=0;fi<frontWindEls.length;fi++)frontWindEls[fi].el.setAttribute('opacity','0');}
+  var heroActive=t>0.45&&t<0.74;
+  var heroOp=heroActive?Math.min(clamp((t-0.45)/0.03,0,1),clamp((0.74-t)/0.03,0,1)):0;
+  if(heroActive){var isFront=t<0.60,shieldR=isFront?165:14.5*MS_SCALE;
+    for(var hi=0;hi<heroParticles.length;hi++){var hp=heroParticles[hi],hdx=hp.x-EX,hdy=hp.y-EY,hdist=Math.sqrt(hdx*hdx+hdy*hdy);
+      if(hp.phase==='approach'){hp.x+=hp.speed*2.2;hp.y=hp.laneY;if(hdist<shieldR+20){hp.phase='arc';hp.arcAngle=Math.atan2(hdy,hdx);}}
+      else if(hp.phase==='arc'){var dir=hp.laneY<EY?-1:1;hp.arcAngle+=dir*hp.speed*0.025;hp.x=EX+(shieldR+8)*Math.cos(hp.arcAngle);hp.y=EY+(shieldR+8)*Math.sin(hp.arcAngle);if(Math.abs(hp.arcAngle-Math.atan2(hp.laneY-EY,-shieldR))>Math.PI*0.55)hp.phase='depart';}
+      else{hp.x+=hp.speed*1.5;hp.y+=(hp.y<EY?-hp.speed*0.8:hp.speed*0.8);if(hp.x>EX+500||Math.abs(hp.y-EY)>500){hp.phase='approach';hp.x=EX-350-Math.random()*100;hp.y=hp.laneY;}}
+      hp.el.setAttribute('cx',hp.x.toFixed(0));hp.el.setAttribute('cy',hp.y.toFixed(0));hp.el.setAttribute('opacity',(heroOp*0.85).toFixed(2));}}
+  else{for(var hi=0;hi<heroParticles.length;hi++){heroParticles[hi].el.setAttribute('opacity','0');if(t<0.43){heroParticles[hi].phase='approach';heroParticles[hi].x=EX-350-hi*80;heroParticles[hi].y=heroParticles[hi].laneY;}}}
+  var sideOp=clamp((1100-vw)/200,0,1);
+  document.getElementById('mso-side-ms').setAttribute('opacity',sideOp.toFixed(2));
+  if(sideOp>0){var breathAmp=0.6+0.6*Math.sin(ts*0.002);document.getElementById('mso-mp').setAttribute('d',ptsToPath(boundaryPts(9.5+breathAmp,0.5,60,50),EX,EY,MS_SCALE));}
+  var moonOp=clamp((vw-1100)/200,0,0.7);
+  document.getElementById('mso-moon-group').setAttribute('opacity',moonOp.toFixed(2));
+  if(moonOp>0){var ma=ts*0.0004,mr=420,mx=EX+mr*Math.cos(ma),my=EY+mr*Math.sin(ma);document.getElementById('mso-moon').setAttribute('cx',mx.toFixed(0));document.getElementById('mso-moon').setAttribute('cy',my.toFixed(0));var inR=t>0.82&&t<0.90;document.getElementById('mso-moon-label').setAttribute('opacity',(inR?0.9:Math.pow(Math.max(0,Math.sin(ma*Math.PI*2)),8)*0.8).toFixed(2));document.getElementById('mso-moon-label').setAttribute('x',mx.toFixed(0));document.getElementById('mso-moon-label').setAttribute('y',(my-8).toFixed(0));}
+  document.getElementById('mso-ms-labels').setAttribute('opacity',(sideOp*0.8).toFixed(2));
+  var pScale=vw/1600;
+  for(var wi=0;wi<windParts.length;wi++){var p=windParts[wi];p.x+=p.vx*pScale*2.5;
+    if(sideOp>0.3){var wx=(p.x-EX)/MS_SCALE,wpy=(EY-p.y)/MS_SCALE,mpR=10*Math.pow(2/(1+Math.max(Math.cos(Math.atan2(wpy,-wx)),0.1)),0.5);if(Math.sqrt(wx*wx+wpy*wpy)<mpR+1.5&&wx<0){p.y+=(p.y<EY?-1.8:1.8);p.x-=0.5;}}
+    if(p.x>EX+400||p.y<100||p.y>800){p.x=Math.max(vx-50,SX+80);p.y=200+Math.random()*500;}
+    p.el.setAttribute('cx',p.x.toFixed(0));p.el.setAttribute('cy',(p.baseY+Math.sin(p.x*0.008)*6).toFixed(0));p.el.setAttribute('r',(1.2*pScale+0.3).toFixed(1));}
+  var windLabelOp=(t>0.20&&t<0.42)?Math.min(clamp((t-0.22)/0.03,0,1),clamp((0.42-t)/0.03,0,1)):0;
+  document.getElementById('mso-wind-label').setAttribute('opacity',windLabelOp.toFixed(2));
+  if(t>=1.0){running=false;container.classList.remove('ms-playing');playBtn.innerHTML='&#9654;';playBtn.setAttribute('aria-pressed','false');pausedElapsed=0;animStart=null;resetState();return;}
+  requestAnimationFrame(msUpdate);
+}
+function msPlay(){if(running)return;running=true;container.classList.add('ms-playing');playBtn.innerHTML='&#9208;';playBtn.setAttribute('aria-pressed','true');animStart=null;requestAnimationFrame(msUpdate);}
+function msPause(){if(!running)return;running=false;pausedElapsed=performance.now()-animStart;container.classList.remove('ms-playing');playBtn.innerHTML='&#9654;';playBtn.setAttribute('aria-pressed','false');}
+function msToggle(){if(running)msPause();else msPlay();}
+playBtn.addEventListener('click',function(e){e.stopPropagation();msToggle();});
+container.addEventListener('click',msToggle);
+container.addEventListener('keydown',function(e){if(e.key===' '||e.key==='Spacebar'){e.preventDefault();msToggle();}if(e.key==='Escape')msExitFs();});
+function msGoFs(el){
+  var req=el.requestFullscreen||el.webkitRequestFullscreen||el.msRequestFullscreen;
+  if(req){req.call(el).then(function(){try{screen.orientation.lock('landscape');}catch(e){}}).catch(function(){});}
+  else{el.classList.add('ms-pseudo-fs');if(!document.getElementById('mso-close-btn')){var cb=document.createElement('button');cb.id='mso-close-btn';cb.textContent='✕';cb.style.cssText='position:fixed;top:12px;right:12px;z-index:10000;background:rgba(0,0,0,0.6);color:#fff;border:1px solid rgba(255,255,255,0.3);border-radius:50%;width:36px;height:36px;font-size:18px;cursor:pointer;';cb.addEventListener('click',function(){msExitFs();});el.appendChild(cb);}}
+}
+function msExitFs(){
+  if(document.fullscreenElement||document.webkitFullscreenElement){(document.exitFullscreen||document.webkitExitFullscreen).call(document);}
+  container.classList.remove('ms-pseudo-fs');var cb=document.getElementById('mso-close-btn');if(cb)cb.remove();try{screen.orientation.unlock();}catch(e){}
+  if(window.matchMedia('(max-width:767px)').matches){container.style.display='none';if(teaser)teaser.style.display='block';}
+}
+document.addEventListener('fullscreenchange',function(){if(!document.fullscreenElement&&!document.webkitFullscreenElement)msExitFs();});
+document.addEventListener('webkitfullscreenchange',function(){if(!document.fullscreenElement&&!document.webkitFullscreenElement)msExitFs();});
+fsBtn.addEventListener('click',function(e){e.stopPropagation();msGoFs(container);});
+if(teaserBtn){teaserBtn.addEventListener('click',function(){container.style.display='block';setTimeout(function(){msGoFs(container);},50);if(!running)msPlay();});}
+resetState();
+})();</script>'''
+
+
+def inject_ms_animated_opening(html_path):
+    """Insert animated magnetosphere opening into The Wrong Substrate (Plan 0326)."""
+    html_path = Path(html_path)
+    text = html_path.read_text()
+
+    if 'id="dl:ms-opening"' in text:
+        print("  MS animated opening: already present, skipping")
+        return
+
+    marker = 'Between the two lobes of the magnetotail'
+    idx = text.find(marker)
+    if idx == -1:
+        print("  WARNING: MS animated opening marker not found")
+        return
+    open_p = text.rfind('<p', 0, idx)
+    if open_p == -1:
+        print("  WARNING: no <p before MS animated opening marker")
+        return
+
+    text = text[:open_p] + '\n' + MS_ANIM_OPENING + '\n' + text[open_p:]
+    html_path.write_text(text)
+    print("  MS animated opening: injected with deep link dl:ms-opening")
+
+
 BRAIDING_CHAPTER = '''<figure id="fig-braiding-inline" class="inline-svg"
   style="text-align:center;margin:1.5em auto;max-width:420px;">
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 220" width="100%">
@@ -4544,6 +4845,7 @@ if __name__ == "__main__":
         inject_domain_buttons(sys.argv[2])
         inject_genesis_illustrations(sys.argv[2])
         inject_ms_diagrams(sys.argv[2])
+        inject_ms_animated_opening(sys.argv[2])
         inject_promoted_illustrations(sys.argv[2])
         inject_sr_animation(sys.argv[2])
         inject_sr_illustrations(sys.argv[2])
