@@ -338,6 +338,14 @@
   question: "Earth's magnetosphere — animated solar wind and field structure"
   category: svg
 
+- id: fig-kuhn-animation
+  question: "Eight scientific revolutions mapped to Kuhn's framework — animated cycle"
+  category: svg
+
+- id: fig-consequence-fork
+  question: "A1/A2 consequence fork — same evidence, different futures"
+  category: svg
+
 # --- Puzzles: chapter (22) — not yet in main HTML, anchors created on insertion ---
 # Category: puzzle — verify-deep-links.py skips this category.
 
