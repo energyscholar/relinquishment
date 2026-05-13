@@ -1,3 +1,16 @@
+Mail to:
+
+Professor Louis H. Kauffman
+Department of Mathematics, Statistics, and Computer Science
+SEO 322
+851 S. Morgan Street
+University of Illinois at Chicago
+Chicago, IL 60607-7045
+
+Enclose: printed arXiv 2601.22389 + SASE
+
+---
+
 Dear Professor Kauffman,
 
 I wrote to you by email on April 9th about eigenforms and autocatalytic closure. My cross-domain paper is enclosed.
