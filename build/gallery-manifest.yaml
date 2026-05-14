@@ -466,8 +466,8 @@
 
 - id: SVG-046
   name: five-thread-convergence
-  status: draft
-  source: build/images/five-thread-convergence.svg
+  status: live
+  source: preprocess.py
   category: The Stack / Convergence
   chapter: convergence-revisited
   figure_id: fig-five-thread-convergence
@@ -495,3 +495,16 @@
   animation: "Five discipline circles breathe at different rates. Central golden convergence point pulses."
   description: "Five overlapping translucent circles (one per discipline). Intersections glow softly. Central golden point pulses — the synthesis visible only from between fields. Bletchley Park parallel."
   notes: "Conceptual diagram. The visual argument: no single discipline sees the whole; the picture emerges from the spaces between. Quote from chapter text."
+
+- id: SVG-050
+  name: raf-substrate-trinity
+  status: live
+  source: preprocess.py
+  category: The Stack / Genesis
+  chapter: genesis
+  figure_id: fig-substrate-trinity
+  marker: "the same process in different substrates"
+  animated: true
+  animation: "Synchronized cycling dots on three A→B→C loops — chemistry, intellect, ethics — all on identical 2.4s timing."
+  description: "Three-panel figure showing the same autocatalytic loop structure operating in three different substrates."
+  notes: "Visual proof of substrate independence. Synchronized timing IS the argument."
