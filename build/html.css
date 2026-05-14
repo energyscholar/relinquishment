@@ -48,6 +48,9 @@
   details summary { padding: 0.6em 0; min-height: 44px; }
 }
 
+/* Responsive inline SVG figures — constrain to container width */
+.inline-svg svg { max-width: 100%; height: auto; }
+
 /* TOC — part-grouped with chapters visible */
 nav#TOC {
   padding: 0.5em; margin-bottom: 2em;
