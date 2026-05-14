@@ -4519,7 +4519,9 @@ var narrations=[
 [0.59,0.75,'mso-narr-5'],
 [0.77,0.94,'mso-narr-6']
 ];
-var running=false,animStart=null,pausedElapsed=0;
+var running=false,animStart=null,pausedElapsed=0,openDone=false;
+var substormStart=0,substormCycleCount=0,lastSubstormPh=0;
+var SUBSTORM_CYCLE=22000;
 function resetState(){
 svg.setAttribute('viewBox',POSTER_VB);
 document.getElementById('mso-sun-group').setAttribute('opacity','1');
@@ -4529,6 +4531,9 @@ document.getElementById('mso-moon-group').setAttribute('opacity','0');
 document.getElementById('mso-ms-labels').setAttribute('opacity','0.8');
 document.getElementById('mso-wind-label').setAttribute('opacity','0');
 document.getElementById('mso-substorm').setAttribute('opacity','0');
+document.getElementById('mso-wind-label').setAttribute('x','700');
+document.getElementById('mso-aurora-label').setAttribute('opacity','0');
+substormStart=0;substormCycleCount=0;lastSubstormPh=0;openDone=false;
 document.getElementById('mso-poster-title').setAttribute('opacity','0.5');
 document.getElementById('mso-poster-wind').setAttribute('opacity','0.4');
 progressBar.style.width='0%';
@@ -4543,7 +4548,7 @@ function msUpdate(ts){
 if(!running)return;
 if(!animStart)animStart=ts-pausedElapsed;
 var elapsed=ts-animStart,t=Math.min(elapsed/DURATION,1.0);
-progressBar.style.width=(t*100).toFixed(1)+'%';
+progressBar.style.width=(t*68.57).toFixed(1)+'%';
 var vb=interpKF(t),vx=vb[0],vy=vb[1],vw=vb[2],vh=vb[3];
 svg.setAttribute('viewBox',vx.toFixed(1)+' '+vy.toFixed(1)+' '+vw.toFixed(1)+' '+vh.toFixed(1));
 var zoom=1600/vw;
@@ -4641,10 +4646,84 @@ var my2=parseFloat(document.getElementById('mso-moon').getAttribute('cy'));
 document.getElementById('mso-moon-label').setAttribute('x',mx2.toFixed(0));
 document.getElementById('mso-moon-label').setAttribute('y',(my2-8).toFixed(0));
 }
-if(t>=1.0){running=false;container.classList.remove('ms-playing');playBtn.innerHTML='&#9654;';playBtn.setAttribute('aria-pressed','false');pausedElapsed=0;animStart=null;resetState();return;}
-requestAnimationFrame(msUpdate);
+if(t>=1.0&&!openDone){openDone=true;playBtn.innerHTML='&#9654;';for(var i=0;i<heroParticles.length;i++)heroParticles[i].el.setAttribute('opacity','0');document.getElementById('mso-wind-label').setAttribute('opacity','0');}
+if(t<1.0&&running){requestAnimationFrame(msUpdate);}else if(openDone&&running){substormStart=0;requestAnimationFrame(substormLoop);}
 }
-function msPlay(){if(running)return;running=true;container.classList.add('ms-playing');playBtn.innerHTML='&#9208;';playBtn.setAttribute('aria-pressed','true');document.getElementById('mso-poster-title').setAttribute('opacity','0');document.getElementById('mso-poster-wind').setAttribute('opacity','0');animStart=null;requestAnimationFrame(msUpdate);}
+function substormLoop(ts2){
+if(!running)return;
+if(!substormStart)substormStart=ts2;
+var elapsed=(ts2-substormStart)%SUBSTORM_CYCLE;
+var ph=elapsed/SUBSTORM_CYCLE;
+var prevPh=lastSubstormPh||0;
+if(ph<prevPh)substormCycleCount++;
+lastSubstormPh=ph;
+if(substormCycleCount>=1){running=false;container.classList.remove('ms-playing');playBtn.innerHTML='&#9654;';playBtn.setAttribute('aria-pressed','false');pausedElapsed=0;animStart=null;resetState();return;}
+progressBar.style.width=(68.57+ph*31.43).toFixed(1)+'%';
+document.getElementById('mso-substorm').setAttribute('opacity','1');
+var breathAmp=ph<0.36?0.4+1.2*(ph/0.36):ph<0.55?1.6:1.6-1.2*((ph-0.55)/0.45);
+var ba=breathAmp*Math.sin(ts2*0.003);
+var tailLen=ph<0.36?50+20*(ph/0.36):ph<0.41?70:ph<0.55?70-20*((ph-0.41)/0.14):50;
+var mpB=boundaryPts(9.5+ba*0.5,0.5,60,tailLen);
+document.getElementById('mso-mp').setAttribute('d',ptsToPath(mpB,EX,EY,MS_SCALE));
+var bsB=boundaryPts(14+ba*0.3,0.6,60,tailLen+5);
+document.getElementById('mso-bs').setAttribute('d',ptsToPath(bsB,EX,EY,MS_SCALE));
+var psGap=ph<0.36?1.5-0.8*(ph/0.36):ph<0.55?0.7+0.8*((ph-0.36)/0.19):1.5;
+document.getElementById('mso-ps').setAttribute('d','M'+(EX+8*MS_SCALE)+','+(EY-psGap*MS_SCALE)+' L'+(EX+tailLen*MS_SCALE)+','+(EY-psGap*MS_SCALE*1.3)+' M'+(EX+8*MS_SCALE)+','+(EY+psGap*MS_SCALE)+' L'+(EX+tailLen*MS_SCALE)+','+(EY+psGap*MS_SCALE*1.3));
+var nenlOp=(ph>0.36&&ph<0.45)?Math.sin((ph-0.36)/0.09*Math.PI):0;
+document.getElementById('mso-nenl').setAttribute('opacity',nenlOp.toFixed(2));
+for(var fi=0;fi<flowParts.length;fi++){
+var fp=flowParts[fi];
+if(ph<0.36){
+var arriveT=fi*0.03;
+if(ph>arriveT){var loadP=(ph-arriveT)/(0.36-arriveT);fp.x=fp.startX-loadP*30;fp.el.setAttribute('cx',fp.x.toFixed(0));fp.el.setAttribute('cy',(fp.y+Math.sin(ts2*0.006+fp.seed)*2).toFixed(0));fp.el.setAttribute('opacity',(0.3+loadP*0.5).toFixed(2));fp.el.setAttribute('fill','#ff8844');}
+else{fp.el.setAttribute('opacity','0');}
+}else{
+var flowT=clamp((ph-fp.delay)/0.20,0,1);
+if(flowT>0&&flowT<1){fp.x=fp.startX+(fp.endX-fp.startX)*flowT;fp.el.setAttribute('cx',fp.x.toFixed(0));fp.el.setAttribute('cy',(fp.y+Math.sin(ts2*0.01+fp.seed)*3).toFixed(0));fp.el.setAttribute('opacity','0.8');fp.el.setAttribute('fill','#ffcc44');}
+else{fp.el.setAttribute('opacity','0');}
+}
+}
+var psGlow=ph<0.36?0.3+0.5*(ph/0.36):ph<0.55?0.8-0.4*((ph-0.36)/0.19):0.4;
+document.getElementById('mso-ps').setAttribute('stroke','rgba(255,136,68,'+psGlow.toFixed(2)+')');
+document.getElementById('mso-ps').setAttribute('stroke-width',(2+psGlow*3).toFixed(1));
+var auroraOp=(ph>0.52&&ph<0.82)?(ph<0.60?(ph-0.52)/0.08:ph<0.70?1.0:1.0-(ph-0.70)/0.12):0;
+document.getElementById('mso-aurora-n').setAttribute('opacity',(auroraOp*0.7).toFixed(2));
+document.getElementById('mso-aurora-s').setAttribute('opacity',(auroraOp*0.7).toFixed(2));
+document.getElementById('mso-aurora-n').setAttribute('rx',(8+6*auroraOp).toFixed(0));
+document.getElementById('mso-aurora-s').setAttribute('rx',(8+6*auroraOp).toFixed(0));
+document.getElementById('mso-aurora-label').setAttribute('opacity',(auroraOp*0.6).toFixed(2));
+var labelEl=document.getElementById('mso-phase-label');
+var pName=ph<0.36?'Growth':ph<0.41?'Onset':ph<0.55?'Expansion':ph<0.73?'Recovery':'Quiet';
+labelEl.textContent=pName;labelEl.setAttribute('opacity','0.6');
+var substormLblOp=ph>=0.41&&ph<0.55?clamp((ph-0.41)/0.04,0,0.9):ph>=0.55&&ph<0.65?0.9*clamp((0.65-ph)/0.10,0,1):0;
+document.getElementById('mso-substorm-label').setAttribute('opacity',substormLblOp.toFixed(2));
+var energyNoteOp=ph<0.30?clamp((ph-0.08)/0.06,0,0.8):ph<0.41?0.8*clamp((0.41-ph)/0.06,0,1):0;
+var dischargeNoteOp=ph>=0.41&&ph<0.55?clamp((ph-0.43)/0.04,0,0.8):ph>=0.55&&ph<0.65?0.8*clamp((0.65-ph)/0.06,0,1):0;
+document.getElementById('mso-energy-note').setAttribute('opacity',energyNoteOp.toFixed(2));
+document.getElementById('mso-discharge-note').setAttribute('opacity',dischargeNoteOp.toFixed(2));
+var ma=ts2*0.0004;
+var moonX=EX+420*Math.cos(ma),moonY=EY+420*Math.sin(ma);
+document.getElementById('mso-moon').setAttribute('cx',moonX.toFixed(0));document.getElementById('mso-moon').setAttribute('cy',moonY.toFixed(0));
+var moonLblPulse=Math.pow(Math.max(0,Math.sin(ma)),8);
+document.getElementById('mso-moon-label').setAttribute('opacity',(moonLblPulse*0.8).toFixed(2));
+document.getElementById('mso-moon-label').setAttribute('x',moonX.toFixed(0));document.getElementById('mso-moon-label').setAttribute('y',(moonY-8).toFixed(0));
+for(var wi=0;wi<windParts.length;wi++){
+var p=windParts[wi];p.x+=p.vx*(900/1600)*2.5;
+var wx=(p.x-EX)/MS_SCALE,wy=(EY-p.y)/MS_SCALE;
+var mpR=(9.5+ba*0.5)*Math.pow(2/(1+Math.max(Math.cos(Math.atan2(wy,-wx)),0.1)),0.5);
+if(Math.sqrt(wx*wx+wy*wy)<mpR+1.5&&wx<0){p.y+=(p.y<EY?-1.8:1.8);p.x-=0.5;}
+if(p.x>EX+400||p.y<100||p.y>800){p.x=1220;p.y=200+Math.random()*500;}
+p.el.setAttribute('cx',p.x.toFixed(0));p.el.setAttribute('cy',(p.baseY+Math.sin(p.x*0.008)*6).toFixed(0));
+}
+document.getElementById('mso-time-text').textContent='Time: 245×';
+document.getElementById('mso-scale-text').textContent='127k km';
+var windLbl=document.getElementById('mso-wind-label');
+windLbl.setAttribute('x','1030');windLbl.setAttribute('y','350');
+var windLblPulse=0.3+0.2*Math.sin(ts2*0.001);
+windLbl.setAttribute('opacity',windLblPulse.toFixed(2));
+requestAnimationFrame(substormLoop);
+}
+function msPlay(){if(running)return;running=true;container.classList.add('ms-playing');playBtn.innerHTML='&#9208;';playBtn.setAttribute('aria-pressed','true');document.getElementById('mso-poster-title').setAttribute('opacity','0');document.getElementById('mso-poster-wind').setAttribute('opacity','0');animStart=null;if(openDone){requestAnimationFrame(substormLoop);}else{requestAnimationFrame(msUpdate);}}
 function msPause(){if(!running)return;running=false;pausedElapsed=performance.now()-animStart;container.classList.remove('ms-playing');playBtn.innerHTML='&#9654;';playBtn.setAttribute('aria-pressed','false');}
 function msToggle(){if(running)msPause();else msPlay();}
 playBtn.addEventListener('click',function(e){e.stopPropagation();msToggle();});
@@ -15806,8 +15885,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>02b5f3e532e176955d53748344dfedf2168c93cb</code> on 2026-05-13
-13:47:51 -0700.</p>
+<code>79fb18bc80de7d4e3059eb27d011690f721e7794</code> on 2026-05-13
+21:08:31 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -15882,19 +15961,19 @@ decisions are the authors’.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>02b5f3e</code></p>
+<p><code>79fb18b</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>02b5f3e532e176955d53748344dfedf2168c93cb</code></p>
+<p><code>79fb18bc80de7d4e3059eb27d011690f721e7794</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-05-13 13:47:51 -0700</p>
+<p>2026-05-13 21:08:31 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-05-14T04:07:09Z</p>
+<p>2026-05-14T07:05:31Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
