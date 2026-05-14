@@ -296,7 +296,7 @@ convergence:
   text: "Independent lines of research pointing to the same conclusion from different directions. Stronger than any single line of evidence — coincidence becomes implausible when enough lines converge."
   target: "#ch:firmware-update"
 
-soliton: "A wave that holds its shape — doesn't spread out or break apart. Self-reinforcing. Found in oceans, fiber optics, and plasma. One of the first physics concepts in the mentorship sequence. Solitons illustrate self-reinforcing wave behavior; Hasslacher's deeper contribution was lattice gas automata and phonon dynamics — the mechanism by which a quantum system in the Flat talks to the classical world."
+soliton: "A wave that holds its shape — doesn't spread out or break apart. Self-reinforcing. Found in oceans, fiber optics, and plasma. One of the first physics concepts in the mentorship sequence."
 
 phonon: "A quantized vibration in a crystal lattice — sound in a solid. Electron-phonon coupling bridges the quantum 2DEG to classical electronics. Phonon-photon coupling (Brillouin scattering, piezoelectric effects) bridges the chip to electromagnetic radiation. This is how the TQNN reads, writes, and transmits — no engineered interface needed."
 
@@ -499,7 +499,7 @@ decoherence:
 
 quantum coherence: "A quantum system maintaining its wave-like behavior — superposition and entanglement intact. Required for quantum computation. Typically fragile, but topological protection and certain substrates can extend it dramatically."
 
-lattice dynamics: "Correction: until 2026, this line read 'Hasslacher to solitons.' The author spent twenty years thinking solitons were Hasslacher's key contribution. They weren't. Hasslacher's lattice gas automata — how discrete crystal structures produce collective wave behavior — led to phonon physics: the mechanism by which a quantum system in the Flat talks to the classical world. Solitons were a twenty-year wild goose chase. The real trail was phonons all along."
+lattice dynamics: "How discrete crystal structures produce collective wave behavior. Hasslacher's lattice gas automata led to phonon physics — the mechanism by which a quantum system in the Flat talks to the classical world. See Corrections #8 for the twenty-year soliton detour."
 
 # --- Tier 2 MEDIUM PRIORITY: p3 chapters (popup = peer-reviewed definition) ---
 
