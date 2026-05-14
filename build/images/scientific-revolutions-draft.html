@@ -98,9 +98,99 @@
       <feGaussianBlur stdDeviation="10" result="blur"/>
       <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
     </filter>
+    <!-- Splash screen defs -->
+    <polygon id="splash-diamond" points="0,-6 4,0 0,6 -4,0" fill="#d4a017"/>
+    <g id="splash-corner">
+      <circle cx="0" cy="0" r="3" fill="#d4a017"/>
+      <ellipse cx="-5" cy="-5" rx="2" ry="4" fill="#d4a017" transform="rotate(45)"/>
+      <ellipse cx="5" cy="-5" rx="2" ry="4" fill="#d4a017" transform="rotate(-45)"/>
+      <ellipse cx="0" cy="-7" rx="1.5" ry="3.5" fill="#d4a017"/>
+      <animate attributeName="opacity" values="0.12;0.18;0.12" dur="4s" repeatCount="indefinite"/>
+    </g>
   </defs>
 
   <rect width="1200" height="700" fill="#1a1a2e"/>
+
+  <!-- Splash / poster screen -->
+  <g id="splash-screen">
+    <!-- Decorative border -->
+    <rect x="20" y="20" width="1160" height="660" fill="none" stroke="#d4a017" stroke-width="0.5" opacity="0.15"/>
+    <rect x="40" y="40" width="1120" height="620" fill="none" stroke="#d4a017" stroke-width="0.5" opacity="0.15"/>
+
+    <!-- Corner ornaments -->
+    <use href="#splash-corner" x="40" y="40" opacity="0.15">
+      <animate attributeName="opacity" values="0.12;0.18;0.12" dur="4s" repeatCount="indefinite"/>
+    </use>
+    <use href="#splash-corner" x="1160" y="40" opacity="0.15" transform="translate(1160,40) scale(-1,1) translate(-1160,-40)">
+      <animate attributeName="opacity" values="0.12;0.18;0.12" dur="4s" begin="1s" repeatCount="indefinite"/>
+    </use>
+    <use href="#splash-corner" x="40" y="660" opacity="0.15" transform="translate(40,660) scale(1,-1) translate(-40,-660)">
+      <animate attributeName="opacity" values="0.12;0.18;0.12" dur="4s" begin="2s" repeatCount="indefinite"/>
+    </use>
+    <use href="#splash-corner" x="1160" y="660" opacity="0.15" transform="translate(1160,660) scale(-1,-1) translate(-1160,-660)">
+      <animate attributeName="opacity" values="0.12;0.18;0.12" dur="4s" begin="3s" repeatCount="indefinite"/>
+    </use>
+
+    <!-- Armillary sphere -->
+    <g transform="translate(600, 350)">
+      <ellipse cx="0" cy="0" rx="220" ry="220" fill="none" stroke="#d4a017" stroke-width="0.6" opacity="0.08"/>
+      <ellipse cx="0" cy="0" rx="220" ry="80" fill="none" stroke="#d4a017" stroke-width="0.5" opacity="0.07" transform="rotate(-23)"/>
+      <ellipse cx="0" cy="0" rx="80" ry="220" fill="none" stroke="#d4a017" stroke-width="0.5" opacity="0.07" transform="rotate(12)"/>
+      <ellipse cx="0" cy="0" rx="180" ry="60" fill="none" stroke="#d4a017" stroke-width="0.5" opacity="0.06" transform="rotate(15)"/>
+      <ellipse cx="0" cy="0" rx="140" ry="190" fill="none" stroke="#d4a017" stroke-width="0.4" opacity="0.06" transform="rotate(-35)"/>
+      <ellipse cx="0" cy="0" rx="30" ry="30" fill="none" stroke="#d4a017" stroke-width="0.4" opacity="0.10"/>
+      <g opacity="0.05">
+        <path d="M 0,0 C 5,-3 8,-10 6,-18 C 4,-26 -5,-34 -16,-32 C -27,-30 -38,-18 -36,-4 C -34,10 -20,28 -2,30 C 16,32 38,20 42,0 C 46,-20 30,-48 6,-52 C -18,-56 -50,-38 -56,-12 C -62,14 -42,52 -10,62 C 22,72 62,50 72,16 C 82,-18 56,-68 18,-78 C -20,-88 -72,-60 -82,-22 C -92,16 -66,78 -22,92 C 22,106 82,76 96,30 C 110,-16 80,-92 30,-108 C -20,-124 -98,-86 -112,-36 C -126,14 -94,108 -38,128" fill="none" stroke="#d4a017" stroke-width="0.8">
+          <animateTransform attributeName="transform" type="rotate" from="0" to="360" dur="120s" repeatCount="indefinite"/>
+        </path>
+      </g>
+    </g>
+
+    <!-- Star dots -->
+    <circle cx="150" cy="120" r="1" fill="#d4a017" opacity="0.15"/>
+    <circle cx="980" cy="90" r="1.2" fill="#d4a017" opacity="0.12"/>
+    <circle cx="1050" cy="200" r="0.8" fill="#d4a017" opacity="0.14"/>
+    <circle cx="200" cy="580" r="1" fill="#d4a017" opacity="0.13"/>
+    <circle cx="1020" cy="550" r="1.1" fill="#d4a017" opacity="0.12"/>
+    <circle cx="350" cy="100" r="0.7" fill="#d4a017" opacity="0.10"/>
+    <circle cx="850" cy="620" r="0.9" fill="#d4a017" opacity="0.11"/>
+    <circle cx="130" cy="350" r="1" fill="#d4a017" opacity="0.13"/>
+    <circle cx="1080" cy="380" r="0.8" fill="#d4a017" opacity="0.12"/>
+    <circle cx="500" cy="80" r="0.7" fill="#d4a017" opacity="0.10"/>
+    <circle cx="720" cy="630" r="1" fill="#d4a017" opacity="0.11"/>
+    <circle cx="90" cy="480" r="0.9" fill="#d4a017" opacity="0.12"/>
+    <circle cx="880" cy="130" r="1.3" fill="#d4a017">
+      <animate attributeName="opacity" values="0.06;0.20;0.06" dur="5s" repeatCount="indefinite"/>
+    </circle>
+    <circle cx="300" cy="530" r="1.1" fill="#d4a017">
+      <animate attributeName="opacity" values="0.08;0.18;0.08" dur="7s" begin="2.5s" repeatCount="indefinite"/>
+    </circle>
+
+    <!-- Central text block -->
+    <line x1="490" y1="240" x2="590" y2="240" stroke="#d4a017" stroke-width="0.7" opacity="0.4"/>
+    <line x1="610" y1="240" x2="710" y2="240" stroke="#d4a017" stroke-width="0.7" opacity="0.4"/>
+    <use href="#splash-diamond" x="600" y="240" opacity="0.4"/>
+
+    <text x="600" y="285" text-anchor="middle" fill="#908878" font-family="Georgia, 'Times New Roman', serif" font-size="12" letter-spacing="4" font-variant="small-caps">A MAP OF</text>
+    <text x="600" y="335" text-anchor="middle" fill="#d4a017" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="normal" letter-spacing="3">SCIENTIFIC</text>
+    <text x="600" y="385" text-anchor="middle" fill="#d4a017" font-family="Georgia, 'Times New Roman', serif" font-size="42" font-weight="normal" letter-spacing="3">REVOLUTIONS</text>
+
+    <line x1="490" y1="415" x2="590" y2="415" stroke="#d4a017" stroke-width="0.7" opacity="0.4"/>
+    <line x1="610" y1="415" x2="710" y2="415" stroke="#d4a017" stroke-width="0.7" opacity="0.4"/>
+    <use href="#splash-diamond" x="600" y="415" opacity="0.4"/>
+
+    <text x="600" y="452" text-anchor="middle" fill="#908878" font-family="Georgia, 'Times New Roman', serif" font-size="14" font-style="italic">500 years · 8 revolutions · one pattern</text>
+
+    <line x1="490" y1="478" x2="590" y2="478" stroke="#d4a017" stroke-width="0.7" opacity="0.4"/>
+    <line x1="610" y1="478" x2="710" y2="478" stroke="#d4a017" stroke-width="0.7" opacity="0.4"/>
+    <use href="#splash-diamond" x="600" y="478" opacity="0.4"/>
+
+    <text x="600" y="520" text-anchor="middle" fill="#706858" font-family="system-ui, -apple-system, sans-serif" font-size="12">
+      <tspan>&#9654;  Play</tspan>
+      <tspan dx="16">·</tspan>
+      <tspan dx="16">&#9974;  Fullscreen</tspan>
+    </text>
+  </g>
 
   <!-- Main stage area -->
   <g id="stage">
@@ -1747,7 +1837,7 @@
   function tick(timestamp) {
     if (!engine.playing) return;
 
-    const elapsed = (timestamp - engine.timelineStart - engine.pauseOffset) / 1000;
+    const elapsed = (timestamp - engine.timelineStart - engine.pauseOffset) / 1500;
     const tl = currentTimeline;
 
     if (elapsed >= tl.duration) {
@@ -1877,25 +1967,47 @@
     engine.timelineStart = performance.now() - targetTime * 1000;
   }
 
-  // Events
-  playBtn.addEventListener("click", () => {
+  // Splash screen
+  const splashScreen = document.getElementById("splash-screen");
+  let splashDismissed = false;
+
+  function dismissSplash(callback) {
+    if (splashDismissed) { if (callback) callback(); return; }
+    splashDismissed = true;
+    let op = 1;
+    function fadeOut() {
+      op -= 0.05;
+      if (op <= 0) {
+        splashScreen.setAttribute("opacity", "0");
+        splashScreen.style.display = "none";
+        if (callback) callback();
+        return;
+      }
+      splashScreen.setAttribute("opacity", String(op));
+      requestAnimationFrame(fadeOut);
+    }
+    requestAnimationFrame(fadeOut);
+  }
+
+  function handlePlay() {
+    if (!splashDismissed) { dismissSplash(() => playSegment(0)); return; }
     if (engine.playing) pause();
     else if (engine.resolved || !currentTimeline) playSegment(engine.segment || 0);
     else resume();
-  });
+  }
+
+  // Events
+  playBtn.addEventListener("click", handlePlay);
 
   document.getElementById("main").addEventListener("click", (e) => {
     if (e.target.closest(".scrubber-dot") || e.target.closest("#scrubber")) return;
-    if (engine.playing) pause();
-    else if (engine.resolved || !currentTimeline) playSegment(engine.segment || 0);
-    else resume();
+    handlePlay();
   });
   document.getElementById("main").style.cursor = "pointer";
 
   // Init
   buildScrubber();
   playIcon.textContent = "▶";
-  setTimeout(() => playSegment(0), 500);
 
   window.kuhnEngine = { playSegment, seekTo, pause, resume };
 
