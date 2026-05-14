@@ -1,8 +1,9 @@
 ---
 Plan-UID: 0325-PR
-Status: STAGED — 3 draft PRs live, awaiting Bruce review
+Status: ARMED — PRs ready-for-review, payload staged, gate active
 Parent: 0325 (Boettiger dossier + outreach plan)
 Owner: Argus (implement), Bruce (review + submit)
+Gate: START-OPERATION-BOETTIGER — no write action visible to Boettiger without this trigger
 ---
 
 # Boettiger PR Staging — Work Log
@@ -107,8 +108,51 @@ Add test: spy on console.warn, verify warning for missing assets and no warning 
 - [x] Letter updated: "geo-agent repo" (was "geo-agent and mcp-data-server repos")
 - [x] Payload drafted: `0325-payload-boettiger.md` — governance pitch for AFTER PR acknowledgment
 
-### Next steps (gated on Bruce)
-1. Bruce reviews PR descriptions, code diffs, and payload draft
-2. Decide: keep as drafts until Friday, or mark ready-for-review now?
-3. Mail letter Tuesday May 13
-4. Convert drafts to ready-for-review ~Friday May 15 to coordinate with letter arrival
+### S79 continued (2026-05-14) — Ready-for-review + Root Cause
+
+**PRs converted to ready-for-review** — Bruce approved, letter mailed Mon May 12, in transit to Berkeley.
+
+**Root-cause sections added to all 3 PR descriptions:**
+- [x] PR #210: "Missing structural enforcement at trust boundary" — behavioral vs structural controls
+- [x] PR #211: "False positive feedback to the agent" — agent can't detect its own failure
+- [x] PR #212: "Silent configuration drift" — declared vs actual state divergence
+
+Three governance failure categories, using language natural to engineering root-cause analysis. No white paper link, no pitch — just good practice that primes the vocabulary.
+
+### Current State (2026-05-14)
+
+| Asset | Status | Boettiger-visible? |
+|-------|--------|-------------------|
+| Friendly greeting letter (no QR, no links) | Mailed Tue May 13, in transit | Yes (physical mail) |
+| PR #210 (XSS) | Ready-for-review, root cause added | Yes |
+| PR #211 (success masking) | Ready-for-review, root cause added | Yes |
+| PR #212 (asset warnings) | Ready-for-review, root cause added | Yes |
+| Payload comment (0325-payload-boettiger.md) | Drafted, NOT posted | No |
+| Bury warm-intro | Not drafted | No |
+| Paper letter (escalation) | Not drafted | No |
+
+### Gate Protocol: START-OPERATION-BOETTIGER
+
+**No further write action visible to Boettiger without Bruce's explicit trigger.**
+
+This applies to:
+1. Payload comment on issue #161 or any PR
+2. Any GitHub comment, review, or discussion post
+3. Bury warm-intro request
+4. Any follow-up communication
+
+The PRs and letter are already in play (approved by Bruce this session). The gate governs everything AFTER.
+
+**Trigger sequence when gate opens:**
+1. Wait for Boettiger to engage (merge, comment, or review any PR)
+2. Post payload comment (short version if PR reply, full version if issue #161)
+3. If no engagement by May 19: consider Bury warm-intro (requires separate Bruce approval)
+4. If no engagement by June 2: consider paper letter (requires separate Bruce approval)
+
+### Payload Refinement
+
+The root-cause sections in the PRs now prime three governance failure categories. The payload comment can reference them directly:
+
+> These three bugs map to distinct failure categories — trust boundary enforcement (#210), feedback integrity (#211), configuration drift (#212). I've been working on a systematic taxonomy of these patterns in AI agent systems. Architecture and failure matrix documented at [link]. Happy to discuss if any of this is useful for your agent work.
+
+This version is tighter than the original and connects directly to what he's already read in the PR descriptions. One paragraph, one link.
