@@ -4403,8 +4403,6 @@ def inject_sr_illustrations(html_path):
             svg056_html = (
                 '<figure id="fig-consequence-fork" class="inline-svg" style="text-align:center;margin:1.5em auto;">\n'
                 f'{m056.group(1)}\n'
-                '<figcaption style="font-size:0.85em;color:#908878;margin-top:0.3em;font-style:italic;">'
-                'Same evidence. Same silence. Different futures.</figcaption>\n'
                 '</figure>'
             )
             idx = _find_in_chapter(text, 'spine:scientific-revolutions', 'Neither is a consolation')
