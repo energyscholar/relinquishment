@@ -3003,6 +3003,91 @@ def inject_genesis_illustrations(html_path):
 <figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">Different substrates, same mathematics: catalytic chemistry (left) and quantum braiding (right) share the same self-sustaining loop structure.</figcaption>
 </figure>'''
 
+    SUBSTRATE_TRINITY = '''<figure id="fig-substrate-trinity" class="inline-svg" style="text-align:center;margin:1.5em auto;">
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="280" viewBox="0 0 780 280" style="display:block;margin:0 auto;">
+  <title>Three panels showing the same autocatalytic loop structure in three different substrates. Left: warm-colored chemistry panel with molecules A, B, C in a catalytic loop. Center: multi-colored intellectual panel with three disciplines in a catalytic loop. Right: bronze/teal ethics panel with Mirror, Web, Integrity in a catalytic loop. All three panels have synchronized cycling dots on identical timing, making the structural identity visible. Footer: "Same structure. Different substrates."</title>
+  <defs>
+    <style>@media(prefers-reduced-motion:reduce){animate,animateMotion,animateTransform{display:none}}</style>
+    <marker id="st-arr-warm" viewBox="0 0 8 6" refX="7" refY="3" markerWidth="6" markerHeight="4" orient="auto">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="#8b6914"/>
+    </marker>
+    <marker id="st-arr-intl" viewBox="0 0 8 6" refX="7" refY="3" markerWidth="6" markerHeight="4" orient="auto">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="#7d3c98"/>
+    </marker>
+    <marker id="st-arr-eth" viewBox="0 0 8 6" refX="7" refY="3" markerWidth="6" markerHeight="4" orient="auto">
+      <path d="M 0,0 L 8,3 L 0,6 Z" fill="#1A6B6A"/>
+    </marker>
+  </defs>
+
+  <!-- Panel 1: Chemistry (warm) -->
+  <rect x="10" y="10" width="230" height="210" rx="8" fill="#fdf2e9" stroke="#a88b5e" stroke-width="0.8" opacity="0.5"/>
+  <circle cx="125" cy="65" r="16" fill="#c4a97d" stroke="#a88b5e" stroke-width="1.2"/>
+  <text x="125" y="70" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#5a3e1b" font-weight="bold">A</text>
+  <circle cx="175" cy="145" r="16" fill="#d4a574" stroke="#a88b5e" stroke-width="1.2"/>
+  <text x="175" y="150" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#5a3e1b" font-weight="bold">B</text>
+  <circle cx="75" cy="145" r="16" fill="#b8956a" stroke="#a88b5e" stroke-width="1.2"/>
+  <text x="75" y="150" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#5a3e1b" font-weight="bold">C</text>
+  <!-- Food set dot -->
+  <circle cx="125" cy="190" r="4" fill="#5dade2" opacity="0.6"/>
+  <text x="125" y="205" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#5dade2" font-style="italic">food</text>
+  <!-- Arrows -->
+  <path id="st-c1-ab" d="M 138,73 Q 165,95 172,130" fill="none" stroke="#8b6914" stroke-width="1.2" marker-end="url(#st-arr-warm)"/>
+  <path id="st-c1-bc" d="M 160,152 Q 125,175 90,152" fill="none" stroke="#8b6914" stroke-width="1.2" marker-end="url(#st-arr-warm)"/>
+  <path id="st-c1-ca" d="M 72,130 Q 68,95 115,68" fill="none" stroke="#8b6914" stroke-width="1.2" marker-end="url(#st-arr-warm)"/>
+  <text x="125" y="235" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#8b6914" font-style="italic">Chemistry</text>
+  <!-- Animated dots -->
+  <circle r="3" fill="#d4a017" opacity="0"><animateMotion dur="2.4s" repeatCount="indefinite" begin="0s" path="M 138,73 Q 165,95 172,130"/><animate attributeName="opacity" values="0;0.85;0.85;0.85;0" keyTimes="0;0.1;0.7;0.85;1" dur="2.4s" repeatCount="indefinite" begin="0s"/></circle>
+  <circle r="3" fill="#d4a017" opacity="0"><animateMotion dur="2.4s" repeatCount="indefinite" begin="0.8s" path="M 160,152 Q 125,175 90,152"/><animate attributeName="opacity" values="0;0.85;0.85;0.85;0" keyTimes="0;0.1;0.7;0.85;1" dur="2.4s" repeatCount="indefinite" begin="0.8s"/></circle>
+  <circle r="3" fill="#d4a017" opacity="0"><animateMotion dur="2.4s" repeatCount="indefinite" begin="1.6s" path="M 72,130 Q 68,95 115,68"/><animate attributeName="opacity" values="0;0.85;0.85;0.85;0" keyTimes="0;0.1;0.7;0.85;1" dur="2.4s" repeatCount="indefinite" begin="1.6s"/></circle>
+
+  <!-- Panel 2: Intellect (multi-color) -->
+  <rect x="275" y="10" width="230" height="210" rx="8" fill="#f4ecf7" stroke="#7d3c98" stroke-width="0.8" opacity="0.4"/>
+  <circle cx="390" cy="65" r="16" fill="#d7bde2" stroke="#7d3c98" stroke-width="1.2"/>
+  <text x="390" y="69" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#4a235a" font-weight="bold">TOPO</text>
+  <circle cx="440" cy="145" r="16" fill="#a9cce3" stroke="#2471a3" stroke-width="1.2"/>
+  <text x="440" y="149" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#1a5276" font-weight="bold">ACS</text>
+  <circle cx="340" cy="145" r="16" fill="#a9dfbf" stroke="#27ae60" stroke-width="1.2"/>
+  <text x="340" y="149" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#1e8449" font-weight="bold">NKS</text>
+  <!-- Food set dot -->
+  <circle cx="390" cy="190" r="4" fill="#5dade2" opacity="0.6"/>
+  <text x="390" y="205" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#5dade2" font-style="italic">food</text>
+  <!-- Arrows -->
+  <path id="st-c2-ab" d="M 403,73 Q 430,95 437,130" fill="none" stroke="#7d3c98" stroke-width="1.2" marker-end="url(#st-arr-intl)"/>
+  <path id="st-c2-bc" d="M 425,152 Q 390,175 355,152" fill="none" stroke="#7d3c98" stroke-width="1.2" marker-end="url(#st-arr-intl)"/>
+  <path id="st-c2-ca" d="M 337,130 Q 333,95 380,68" fill="none" stroke="#7d3c98" stroke-width="1.2" marker-end="url(#st-arr-intl)"/>
+  <text x="390" y="235" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#7d3c98" font-style="italic">Intellect</text>
+  <!-- Animated dots -->
+  <circle r="3" fill="#a569bd" opacity="0"><animateMotion dur="2.4s" repeatCount="indefinite" begin="0s" path="M 403,73 Q 430,95 437,130"/><animate attributeName="opacity" values="0;0.85;0.85;0.85;0" keyTimes="0;0.1;0.7;0.85;1" dur="2.4s" repeatCount="indefinite" begin="0s"/></circle>
+  <circle r="3" fill="#a569bd" opacity="0"><animateMotion dur="2.4s" repeatCount="indefinite" begin="0.8s" path="M 425,152 Q 390,175 355,152"/><animate attributeName="opacity" values="0;0.85;0.85;0.85;0" keyTimes="0;0.1;0.7;0.85;1" dur="2.4s" repeatCount="indefinite" begin="0.8s"/></circle>
+  <circle r="3" fill="#a569bd" opacity="0"><animateMotion dur="2.4s" repeatCount="indefinite" begin="1.6s" path="M 337,130 Q 333,95 380,68"/><animate attributeName="opacity" values="0;0.85;0.85;0.85;0" keyTimes="0;0.1;0.7;0.85;1" dur="2.4s" repeatCount="indefinite" begin="1.6s"/></circle>
+
+  <!-- Panel 3: Ethics (bronze/teal) -->
+  <rect x="540" y="10" width="230" height="210" rx="8" fill="#e8f6f3" stroke="#1A6B6A" stroke-width="0.8" opacity="0.4"/>
+  <circle cx="655" cy="65" r="16" fill="#a2d9ce" stroke="#1A6B6A" stroke-width="1.2"/>
+  <text x="655" y="69" text-anchor="middle" font-family="Georgia, serif" font-size="8.5" fill="#0e4f4e" font-weight="bold">Mirror</text>
+  <circle cx="705" cy="145" r="16" fill="#d4c091" stroke="#C4913B" stroke-width="1.2"/>
+  <text x="705" y="149" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#7d5a1e" font-weight="bold">Web</text>
+  <circle cx="605" cy="145" r="16" fill="#a2d9ce" stroke="#1A6B6A" stroke-width="1.2"/>
+  <text x="605" y="149" text-anchor="middle" font-family="Georgia, serif" font-size="7.5" fill="#0e4f4e" font-weight="bold">Integrity</text>
+  <!-- Food set dot -->
+  <circle cx="655" cy="190" r="4" fill="#5dade2" opacity="0.6"/>
+  <text x="655" y="205" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#5dade2" font-style="italic">food</text>
+  <!-- Arrows -->
+  <path id="st-c3-ab" d="M 668,73 Q 695,95 702,130" fill="none" stroke="#1A6B6A" stroke-width="1.2" marker-end="url(#st-arr-eth)"/>
+  <path id="st-c3-bc" d="M 690,152 Q 655,175 620,152" fill="none" stroke="#1A6B6A" stroke-width="1.2" marker-end="url(#st-arr-eth)"/>
+  <path id="st-c3-ca" d="M 602,130 Q 598,95 645,68" fill="none" stroke="#1A6B6A" stroke-width="1.2" marker-end="url(#st-arr-eth)"/>
+  <text x="655" y="235" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#1A6B6A" font-style="italic">Ethics</text>
+  <!-- Animated dots -->
+  <circle r="3" fill="#48c9b0" opacity="0"><animateMotion dur="2.4s" repeatCount="indefinite" begin="0s" path="M 668,73 Q 695,95 702,130"/><animate attributeName="opacity" values="0;0.85;0.85;0.85;0" keyTimes="0;0.1;0.7;0.85;1" dur="2.4s" repeatCount="indefinite" begin="0s"/></circle>
+  <circle r="3" fill="#48c9b0" opacity="0"><animateMotion dur="2.4s" repeatCount="indefinite" begin="0.8s" path="M 690,152 Q 655,175 620,152"/><animate attributeName="opacity" values="0;0.85;0.85;0.85;0" keyTimes="0;0.1;0.7;0.85;1" dur="2.4s" repeatCount="indefinite" begin="0.8s"/></circle>
+  <circle r="3" fill="#48c9b0" opacity="0"><animateMotion dur="2.4s" repeatCount="indefinite" begin="1.6s" path="M 602,130 Q 598,95 645,68"/><animate attributeName="opacity" values="0;0.85;0.85;0.85;0" keyTimes="0;0.1;0.7;0.85;1" dur="2.4s" repeatCount="indefinite" begin="1.6s"/></circle>
+
+  <!-- Footer -->
+  <text x="390" y="268" text-anchor="middle" font-family="Georgia, serif" font-size="12" fill="#8b6914" font-style="italic" opacity="0.7">Same structure. Different substrates.</text>
+</svg>
+<figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">The same self-sustaining loop — in chemistry, intellectual phase space, and ethical phase space. Three substrates, one mathematical structure.</figcaption>
+</figure>'''
+
     CANOPY_PROBLEM = '''<figure id="fig-canopy-problem" class="inline-svg" style="text-align:center;margin:1.5em auto;">
 <svg xmlns="http://www.w3.org/2000/svg" width="350" height="220" viewBox="0 0 350 220" style="display:block;margin:0 auto;">
   <title>Forest cross-section: two tall trees with broad green crowns fill the canopy, catching all the sunlight. Between them on the forest floor, a tiny seedling sits in deep shadow, unable to grow. The ecological niche is full.</title>
@@ -3044,6 +3129,7 @@ def inject_genesis_illustrations(html_path):
     svgs = [
         ('ecological niche is full.', CANOPY_PROBLEM, 'canopy problem'),
         ('threshold was\ncrossed.', SUBSTRATE_PARALLEL, 'substrate parallel'),
+        ('the same process in different substrates', SUBSTRATE_TRINITY, 'substrate trinity'),
         ('best able to evolve as well.', EDGE_OF_CHAOS, 'edge of chaos'),
         ('network sustains itself.', AUTOCATALYTIC_LOOP, 'autocatalytic loop'),
     ]
@@ -3064,6 +3150,108 @@ def inject_genesis_illustrations(html_path):
         html_path.write_text(text)
         for name in injected:
             print(f"  Genesis: {name} SVG injected")
+
+
+def inject_convergence_illustrations(html_path):
+    """Insert Convergence Revisited SVG illustrations."""
+    html_path = Path(html_path)
+    text = html_path.read_text()
+
+    FIVE_THREAD_CONVERGENCE = '''<figure id="fig-five-thread-convergence" class="inline-svg" style="text-align:center;margin:1.5em auto;">
+<svg xmlns="http://www.w3.org/2000/svg" width="520" height="480" viewBox="0 0 520 480" style="display:block;margin:0 auto;">
+  <title>Five scientific disciplines arranged in a pentagon converge on a central nexus. Solid State Physics, Quantum Computation, Neural Networks, Complex System Biology, and NKS each flow inward along curved threads toward a glowing central point labeled with a question mark. Particles pulse along each thread, representing the flow of ideas toward a single synthesis.</title>
+  <defs>
+    <style>@media(prefers-reduced-motion:reduce){animate,animateMotion,animateTransform{display:none}}</style>
+    <radialGradient id="ftc-nexus-glow" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#d4a017" stop-opacity="0.4"/>
+      <stop offset="60%" stop-color="#d4a017" stop-opacity="0.12"/>
+      <stop offset="100%" stop-color="#d4a017" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="ftc-nexus-core" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#f5e6c8"/>
+      <stop offset="100%" stop-color="#c4a97d"/>
+    </radialGradient>
+  </defs>
+  <polygon points="260,62 410,143 355,365 165,365 110,143" fill="none" stroke="#555" stroke-width="0.5" stroke-dasharray="3,5" opacity="0.3"/>
+  <circle cx="260" cy="230" r="100" fill="url(#ftc-nexus-glow)" opacity="0.4">
+    <animate attributeName="r" values="95;108;95" dur="10s" repeatCount="indefinite"/>
+  </circle>
+  <circle cx="260" cy="230" r="60" fill="url(#ftc-nexus-glow)">
+    <animate attributeName="r" values="55;65;55" dur="8s" repeatCount="indefinite"/>
+    <animate attributeName="opacity" values="0.6;0.9;0.6" dur="8s" repeatCount="indefinite"/>
+  </circle>
+  <path d="M 260,72 C 250,120 240,160 260,230" fill="none" stroke="#2471a3" stroke-width="2.5" opacity="0.5"/>
+  <path d="M 260,72 C 250,120 240,160 260,230" fill="none" stroke="#2471a3" stroke-width="1" opacity="0.3" stroke-dasharray="4,6"><animate attributeName="stroke-dashoffset" values="0;-10" dur="3s" repeatCount="indefinite"/></path>
+  <path d="M 402,148 C 360,170 310,195 260,230" fill="none" stroke="#7d3c98" stroke-width="2.5" opacity="0.5"/>
+  <path d="M 402,148 C 360,170 310,195 260,230" fill="none" stroke="#7d3c98" stroke-width="1" opacity="0.3" stroke-dasharray="4,6"><animate attributeName="stroke-dashoffset" values="0;-10" dur="3.5s" repeatCount="indefinite"/></path>
+  <path d="M 348,358 C 320,320 290,270 260,230" fill="none" stroke="#27ae60" stroke-width="2.5" opacity="0.5"/>
+  <path d="M 348,358 C 320,320 290,270 260,230" fill="none" stroke="#27ae60" stroke-width="1" opacity="0.3" stroke-dasharray="4,6"><animate attributeName="stroke-dashoffset" values="0;-10" dur="3.2s" repeatCount="indefinite"/></path>
+  <path d="M 172,358 C 200,320 230,270 260,230" fill="none" stroke="#d4a017" stroke-width="2.5" opacity="0.5"/>
+  <path d="M 172,358 C 200,320 230,270 260,230" fill="none" stroke="#d4a017" stroke-width="1" opacity="0.3" stroke-dasharray="4,6"><animate attributeName="stroke-dashoffset" values="0;-10" dur="2.8s" repeatCount="indefinite"/></path>
+  <path d="M 118,148 C 160,170 210,195 260,230" fill="none" stroke="#c0392b" stroke-width="2.5" opacity="0.5"/>
+  <path d="M 118,148 C 160,170 210,195 260,230" fill="none" stroke="#c0392b" stroke-width="1" opacity="0.3" stroke-dasharray="4,6"><animate attributeName="stroke-dashoffset" values="0;-10" dur="3.3s" repeatCount="indefinite"/></path>
+  <circle r="3.5" fill="#5dade2" opacity="0"><animateMotion dur="4s" repeatCount="indefinite" begin="0s" path="M 260,72 C 250,120 240,160 260,230"/><animate attributeName="opacity" values="0;0.9;0.9;0.9;0" keyTimes="0;0.08;0.75;0.9;1" dur="4s" repeatCount="indefinite" begin="0s"/></circle>
+  <circle r="2.5" fill="#85c1e9" opacity="0"><animateMotion dur="4s" repeatCount="indefinite" begin="2s" path="M 260,72 C 250,120 240,160 260,230"/><animate attributeName="opacity" values="0;0.7;0.7;0.7;0" keyTimes="0;0.08;0.75;0.9;1" dur="4s" repeatCount="indefinite" begin="2s"/></circle>
+  <circle r="3.5" fill="#a569bd" opacity="0"><animateMotion dur="4.5s" repeatCount="indefinite" begin="0.5s" path="M 402,148 C 360,170 310,195 260,230"/><animate attributeName="opacity" values="0;0.9;0.9;0.9;0" keyTimes="0;0.08;0.75;0.9;1" dur="4.5s" repeatCount="indefinite" begin="0.5s"/></circle>
+  <circle r="2.5" fill="#c39bd3" opacity="0"><animateMotion dur="4.5s" repeatCount="indefinite" begin="2.7s" path="M 402,148 C 360,170 310,195 260,230"/><animate attributeName="opacity" values="0;0.7;0.7;0.7;0" keyTimes="0;0.08;0.75;0.9;1" dur="4.5s" repeatCount="indefinite" begin="2.7s"/></circle>
+  <circle r="3.5" fill="#52be80" opacity="0"><animateMotion dur="4.2s" repeatCount="indefinite" begin="1s" path="M 348,358 C 320,320 290,270 260,230"/><animate attributeName="opacity" values="0;0.9;0.9;0.9;0" keyTimes="0;0.08;0.75;0.9;1" dur="4.2s" repeatCount="indefinite" begin="1s"/></circle>
+  <circle r="2.5" fill="#82e0aa" opacity="0"><animateMotion dur="4.2s" repeatCount="indefinite" begin="3.1s" path="M 348,358 C 320,320 290,270 260,230"/><animate attributeName="opacity" values="0;0.7;0.7;0.7;0" keyTimes="0;0.08;0.75;0.9;1" dur="4.2s" repeatCount="indefinite" begin="3.1s"/></circle>
+  <circle r="3.5" fill="#f4d03f" opacity="0"><animateMotion dur="3.8s" repeatCount="indefinite" begin="1.5s" path="M 172,358 C 200,320 230,270 260,230"/><animate attributeName="opacity" values="0;0.9;0.9;0.9;0" keyTimes="0;0.08;0.75;0.9;1" dur="3.8s" repeatCount="indefinite" begin="1.5s"/></circle>
+  <circle r="2.5" fill="#f9e79f" opacity="0"><animateMotion dur="3.8s" repeatCount="indefinite" begin="3.4s" path="M 172,358 C 200,320 230,270 260,230"/><animate attributeName="opacity" values="0;0.7;0.7;0.7;0" keyTimes="0;0.08;0.75;0.9;1" dur="3.8s" repeatCount="indefinite" begin="3.4s"/></circle>
+  <circle r="3.5" fill="#e74c3c" opacity="0"><animateMotion dur="4.3s" repeatCount="indefinite" begin="0.8s" path="M 118,148 C 160,170 210,195 260,230"/><animate attributeName="opacity" values="0;0.9;0.9;0.9;0" keyTimes="0;0.08;0.75;0.9;1" dur="4.3s" repeatCount="indefinite" begin="0.8s"/></circle>
+  <circle r="2.5" fill="#f1948a" opacity="0"><animateMotion dur="4.3s" repeatCount="indefinite" begin="2.9s" path="M 118,148 C 160,170 210,195 260,230"/><animate attributeName="opacity" values="0;0.7;0.7;0.7;0" keyTimes="0;0.08;0.75;0.9;1" dur="4.3s" repeatCount="indefinite" begin="2.9s"/></circle>
+  <circle cx="260" cy="62" r="24" fill="#1a3a5c" stroke="#2471a3" stroke-width="1.5" opacity="0.85"/>
+  <text x="260" y="58" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#85c1e9">Solid</text>
+  <text x="260" y="70" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#85c1e9">State</text>
+  <text x="260" y="40" text-anchor="middle" font-family="Georgia, serif" font-size="9.5" fill="#999" font-style="italic">Hasslacher</text>
+  <circle cx="410" cy="143" r="24" fill="#3a1a50" stroke="#7d3c98" stroke-width="1.5" opacity="0.85"/>
+  <text x="410" y="139" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#c39bd3">Quantum</text>
+  <text x="410" y="151" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#c39bd3">Comp.</text>
+  <text x="448" y="120" text-anchor="start" font-family="Georgia, serif" font-size="9.5" fill="#999" font-style="italic">Freedman?</text>
+  <circle cx="355" cy="365" r="24" fill="#1a3a2e" stroke="#27ae60" stroke-width="1.5" opacity="0.85"/>
+  <text x="355" y="361" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#82e0aa">Neural</text>
+  <text x="355" y="373" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#82e0aa">Nets</text>
+  <text x="393" y="388" text-anchor="start" font-family="Georgia, serif" font-size="9.5" fill="#999" font-style="italic">Hillis</text>
+  <circle cx="165" cy="365" r="24" fill="#3a2a0a" stroke="#d4a017" stroke-width="1.5" opacity="0.85"/>
+  <text x="165" y="361" text-anchor="middle" font-family="Georgia, serif" font-size="8.5" fill="#f9e79f">Complex</text>
+  <text x="165" y="373" text-anchor="middle" font-family="Georgia, serif" font-size="8.5" fill="#f9e79f">Systems</text>
+  <text x="127" y="388" text-anchor="end" font-family="Georgia, serif" font-size="9.5" fill="#999" font-style="italic">Kauffman</text>
+  <circle cx="110" cy="143" r="24" fill="#3a1a1a" stroke="#c0392b" stroke-width="1.5" opacity="0.85"/>
+  <text x="110" y="147" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#f1948a">NKS</text>
+  <text x="72" y="120" text-anchor="end" font-family="Georgia, serif" font-size="9.5" fill="#999" font-style="italic">Wolfram</text>
+  <circle cx="260" cy="230" r="30" fill="url(#ftc-nexus-core)" stroke="#8b6914" stroke-width="2" opacity="0.9">
+    <animate attributeName="r" values="29;32;29" dur="6s" repeatCount="indefinite"/>
+  </circle>
+  <text x="260" y="226" text-anchor="middle" font-family="Georgia, serif" font-size="13" fill="#5a3e1b" font-weight="bold">TQNN</text>
+  <text x="260" y="240" text-anchor="middle" font-family="Georgia, serif" font-size="10" fill="#8b6914" font-style="italic">?</text>
+  <text x="260" y="460" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#777" font-style="italic">Real convergence — or a well-informed reconstruction? The reader decides.</text>
+</svg>
+<figcaption style="font-size:0.85em;color:#666;margin-top:0.3em;">Five disciplines converge on a central nexus. No single researcher held all five threads.</figcaption>
+</figure>'''
+
+    illustrations = [
+        ('pos21:convergence-revisited',
+         'These are the scientific disciplines of the scientists',
+         FIVE_THREAD_CONVERGENCE, 'five-thread convergence'),
+    ]
+
+    injected = []
+    for chapter_id, marker, figure_html, name in illustrations:
+        idx = _find_in_chapter(text, chapter_id, marker)
+        if idx == -1:
+            continue
+        close_p = text.find('</p>', idx)
+        if close_p == -1:
+            print(f"  WARNING: no </p> after marker for {name}")
+            continue
+        insert_point = close_p + len('</p>')
+        text = text[:insert_point] + '\n' + figure_html + '\n' + text[insert_point:]
+        injected.append(name)
+
+    if injected:
+        html_path.write_text(text)
+        for name in injected:
+            print(f"  Convergence: {name} SVG injected")
 
 
 def inject_ms_diagrams(html_path):
@@ -5065,6 +5253,7 @@ if __name__ == "__main__":
         inject_button_sequence(sys.argv[2])
         inject_domain_buttons(sys.argv[2])
         inject_genesis_illustrations(sys.argv[2])
+        inject_convergence_illustrations(sys.argv[2])
         inject_ms_diagrams(sys.argv[2])
         inject_ms_animated_opening(sys.argv[2])
         inject_promoted_illustrations(sys.argv[2])
