@@ -29,7 +29,6 @@ main.pdf
 texput.pdf
 Relinquishment.pdf
 docs/downloads/Relinquishment.pdf
-docs/downloads/Relinquishment.epub
 !docs/downloads/Relinquishment.html
 *.epub
 *.upa
@@ -70,3 +69,7 @@ __pycache__/
 /Relinquishment*.html
 # Large binary images (use git-lfs or external hosting)
 images/*.pdf
+
+# Download exceptions (must come after globs that would ignore them)
+!docs/downloads/Relinquishment.epub
+!docs/downloads/checksums.sha256
