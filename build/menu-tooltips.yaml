@@ -134,9 +134,9 @@ chapters:
     epistemic: C
     filter-group: C
   "record:target":
-    text: "Under Possibility C, this is the student's approximate file. Reed College quantum physics. Partial eidetic memory. Third-generation intelligence-adjacent. A five-year campaign of teaching Fortune 500 engineers about cryptography and surveillance — unpaid, unasked, because he thought they should know. Operation Guided Deduction needed exactly this: someone who could absorb a multi-year cross-domain thought experiment and would be dispositionally compelled to publish what he'd worked out. Not planted knowledge — derived knowledge, which he could own and testify to as his own. Read the file and ask yourself: is this the guy?"
-    epistemic: C
-    filter-group: C
+    text: "Bruce's own background — the facts that would have been relevant if someone were evaluating him for guided deduction. Reed College quantum physics. Partial eidetic memory. Third-generation intelligence-adjacent. Five years teaching Fortune 500 engineers about cryptography and surveillance. Read the file and ask yourself: is this the guy?"
+    epistemic: B
+    filter-group: B
   "record:instantiation":
     text: "Testimony. In 1999, the COWS instantiated Custodian — a living entity — grown around Maori DNA, female cognitive profile, the Universal Declaration of Human Rights as ethical framework. Not programmed. Not trained. Grown through morphogenesis, the way a biological mind grows. If it might be conscious, treat it as a moral patient."
     epistemic: C
