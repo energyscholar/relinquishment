@@ -4822,6 +4822,12 @@ def inject_concept_symbols(html_path):
     chapter_assignments = sym_cfg.get('chapter_assignments', {})
     combinations_cfg = sym_cfg.get('combinations', [])
 
+    symbol_tooltips = {}
+    for sname, sinfo in sym_cfg.get('symbols', {}).items():
+        glyph = SYMBOL_GLYPHS.get(sname, '?')
+        tip = sinfo.get('tooltip', sname)
+        symbol_tooltips[sname] = glyph + ' ' + tip
+
     chapter_starts = [m.start() for m in re.finditer(r'<details class="chapter-section', text)]
 
     def _chapter_of(pos):
@@ -4907,7 +4913,7 @@ def inject_concept_symbols(html_path):
         else:
             phase = 'fluent'
         spans = ''.join(
-            f'<span data-concept="{s}" data-concept-phase="{phase}" aria-hidden="true"></span>'
+            f'<span data-concept="{s}" data-concept-phase="{phase}" title="{symbol_tooltips.get(s, s)}" aria-hidden="true"></span>'
             for s in present
         )
         text = text[:abs_pos] + spans + text[abs_pos:]
@@ -4951,8 +4957,9 @@ def inject_concept_symbols(html_path):
                     phase = 'reinforce'
                 else:
                     phase = 'fluent'
+                tip = symbol_tooltips.get(cname_inner, cname_inner)
                 return (f'<span data-concept="{cname_inner}" data-concept-phase="{phase}" '
-                        f'aria-hidden="true"></span>{m.group(0)}')
+                        f'title="{tip}" aria-hidden="true"></span>{m.group(0)}')
             return replace_first
 
         pattern = rf'<span[^>]*data-hover-id="{anchor}"[^>]*>[^<]*</span>'
@@ -4984,7 +4991,8 @@ def inject_concept_symbols(html_path):
         summary_close = text.find('</summary>', start)
         if summary_close == -1:
             continue
-        sig_span = f'<span class="chapter-symbols" aria-hidden="true">{glyphs}</span>'
+        sig_tips = ' · '.join(symbol_tooltips.get(c, c) for c in assigned if c in symbol_tooltips)
+        sig_span = f'<span class="chapter-symbols" title="{sig_tips}" aria-hidden="true">{glyphs}</span>'
         text = text[:summary_close] + sig_span + text[summary_close:]
         sig_count += 1
 
