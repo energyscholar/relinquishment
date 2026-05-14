@@ -560,9 +560,7 @@
     var wrapper = document.createElement('div');
     wrapper.id = 'cover-magnetosphere';
     wrapper.setAttribute('aria-hidden', 'true');
-    var bodyRect = document.body.getBoundingClientRect();
-    var rightOffset = Math.max(0, window.innerWidth - bodyRect.right);
-    wrapper.style.cssText = 'position:fixed;right:' + rightOffset + 'px;' +
+    wrapper.style.cssText = 'position:absolute;right:0;top:0;' +
       'width:' + msWidth + 'px;' +
       'pointer-events:none;z-index:99;opacity:0.85;transition:opacity 0.3s;';
 
@@ -813,12 +811,13 @@
 
     wrapper.innerHTML = darkSvg + lightSvg;
     var titleExtra = document.querySelector('.title-page-extra');
-    if (titleExtra) {
-      var rect = titleExtra.getBoundingClientRect();
-      wrapper.style.top = rect.top + 'px';
+    var bookSummary = document.querySelector('details.book-section > summary');
+    if (titleExtra && bookSummary) {
       titleExtra.style.paddingRight = (msWidth + 10) + 'px';
+      bookSummary.appendChild(wrapper);
+    } else {
+      document.body.appendChild(wrapper);
     }
-    document.body.appendChild(wrapper);
 
     msToggle.addEventListener('click', function(e) {
       e.preventDefault();
