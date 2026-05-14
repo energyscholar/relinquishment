@@ -596,6 +596,7 @@ details.book-section > summary {
   font-size: 1.4em;
   font-weight: bold;
   padding: 0.2em 0;
+  position: relative;
 }
 .book-subtitle-inline {
   font-size: 0.65em;
