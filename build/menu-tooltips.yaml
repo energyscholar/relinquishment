@@ -117,9 +117,9 @@ chapters:
     epistemic: C
     filter-group: C
   "record:handler":
-    text: "Under Possibility C, this is the operator's approximate file. SAS. Intelligence Corps. Deep mathematics. Partial eidetic memory. On K2 in 1996 he chose to use his abilities for something other than killing. The COWS had a problem: the physics they'd built could not be published through any official channel, and could not be planted in an outsider without leaving fingerprints. The solution was Operation Guided Deduction — 2.7 years of calibrated conversation across five scientific fields, no paper trail, the student reaching every conclusion himself. This book exists because that worked."
-    epistemic: C
-    filter-group: C
+    text: "Portrait of the man who conducted 2.7 years of guided deduction. Assembled from two sources: Tom Clancy's character Timothy Hanley in Rainbow Six (1998), and direct observation during 2003–2006. What Clancy wrote, what he left out, what I observed. The gap between the military career and the mathematics is the question this book asks."
+    epistemic: B
+    filter-group: B
   # record:demonstration removed — Plan 0152, folded into First Light
   "record:interdiction":
     text: "Testimony. After Ultra II: the COWS come clean to DARPA, the secret holds, and a 2005 cyber wargame tests whether the system can be disrupted. It can — briefly. Classical backchannels: VLF transmitters, power grid harmonics, Schumann resonances. A creature, not a deity."
