@@ -111,16 +111,6 @@ sections:
     conclusion: "The plasma sheet is not a 2DEG, but its geometry produces quasi-2D ion dynamics at substorm scales — the same dimensional reduction pattern, different mechanism."
     status: approved
 
-  - title: "The Neighborhood"
-    spine_file: manuscript/spine/the-wrong-substrate.tex
-    spine_label: "spine:ws-the-neighborhood"
-    bridge_file: manuscript/track-3-awakening/pos32-the-magnetosphere.tex
-    bridge_label: null
-    assessment: GA-AVERSE
-    tooltip: "Earth's magnetosphere is not unusual — Jupiter's is enormous, Saturn's is fed by ice geysers, and a solar-system-wide current sheet connects them all. Each has the same ingredients: confined charged particles, continuous energy, billions of years."
-    conclusion: "Earth, Jupiter, Saturn, Ganymede, and the heliospheric current sheet all contain two-dimensional populations of charged particles, confined by magnetic geometry, energized continuously, persistent for billions of years."
-    status: approved
-
   - title: "But It's Hot"
     spine_file: manuscript/spine/the-wrong-substrate.tex
     spine_label: "spine:ws-but-its-hot"
@@ -129,6 +119,16 @@ sections:
     assessment: GA-AVERSE
     tooltip: "'Hot' doesn't mean 'noisy.' The kind of noise that destroys quantum states is far quieter than the temperature suggests. The thermal objection doesn't hold."
     conclusion: "'Hot' in a collisionless plasma doesn't mean 'thermally noisy.' The noise that destroys quantum states is orders of magnitude quieter than the kinetic temperature."
+    status: approved
+
+  - title: "The Neighborhood"
+    spine_file: manuscript/spine/the-wrong-substrate.tex
+    spine_label: "spine:ws-the-neighborhood"
+    bridge_file: manuscript/track-3-awakening/pos32-the-magnetosphere.tex
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: "Earth's magnetosphere is not unusual — Jupiter's is enormous, Saturn's is fed by ice geysers, and a solar-system-wide current sheet connects them all. Each has the same ingredients: confined charged particles, continuous energy, billions of years."
+    conclusion: "Earth, Jupiter, Saturn, Ganymede, and the heliospheric current sheet all contain two-dimensional populations of charged particles, confined by magnetic geometry, energized continuously, persistent for billions of years."
     status: approved
 
   - title: "Theoretical Biology of the Flat"
