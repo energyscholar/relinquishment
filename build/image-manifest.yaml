@@ -1,0 +1,178 @@
+# Image Manifest — Plan 0340
+# Authority for all visual assets in HTML output.
+# Inline SVGs (in preprocess.py) and file SVGs (build/images/).
+# Updated: 2026-05-16
+
+inline_svgs:
+  # Format: id, function, chapter, description, location (inside/outside collapse)
+
+  - id: fig-flat-cross-section
+    function: inject_flat_diagram
+    chapter: the-flat
+    description: "Cross-section of 2DEG — electron gas between semiconductor layers"
+    location: outside-collapse
+
+  - id: fig-buttons-filmstrip
+    function: inject_button_sequence
+    chapter: genesis
+    description: "Kauffman buttons-and-threads — 6-step animated filmstrip"
+    location: outside-collapse
+
+  - id: fig-domain-buttons
+    function: inject_domain_buttons
+    chapter: genesis
+    description: "Domain-specific button clusters (chemistry, biology, physics, CS, ethics)"
+    location: outside-collapse
+
+  - id: fig-autocatalytic-loop
+    function: inject_genesis_illustrations
+    chapter: genesis
+    description: "Three-node autocatalytic cycle with arrows"
+    location: outside-collapse
+
+  - id: fig-edge-of-chaos
+    function: inject_genesis_illustrations
+    chapter: genesis
+    description: "Order-chaos-edge spectrum with highlight at critical region"
+    location: outside-collapse
+
+  - id: fig-substrate-parallel
+    function: inject_genesis_illustrations
+    chapter: genesis
+    description: "Chemistry ↔ quantum substrate comparison (twin circles)"
+    location: outside-collapse
+
+  - id: fig-substrate-trinity
+    function: inject_genesis_illustrations
+    chapter: genesis
+    description: "RAF / substrate / intelligence trinity diagram"
+    location: outside-collapse
+
+  - id: fig-canopy-problem
+    function: inject_genesis_illustrations
+    chapter: growing-a-mind
+    description: "Canopy triptych — competition for light analogy"
+    location: outside-collapse
+
+  - id: fig-five-thread-convergence
+    function: inject_convergence_illustrations
+    chapter: convergence
+    description: "Five threads (Hasslacher, Freedman, Kauffman, Wolfram, Hillis) meeting at center"
+    location: outside-collapse
+
+  - id: fig-ms-earth
+    function: inject_ms_diagrams
+    chapter: the-wrong-substrate
+    description: "Earth magnetosphere — bow shock, tail, field lines"
+    location: outside-collapse
+
+  - id: fig-ms-jupiter
+    function: inject_ms_diagrams
+    chapter: the-wrong-substrate
+    description: "Jupiter magnetosphere — Io torus, scale"
+    location: outside-collapse
+
+  - id: fig-ms-saturn
+    function: inject_ms_diagrams
+    chapter: the-wrong-substrate
+    description: "Saturn magnetosphere — ring current"
+    location: outside-collapse
+
+  - id: fig-braiding-inline
+    function: inject_promoted_illustrations
+    chapter: the-braid
+    description: "Anyon braiding — worldlines crossing in 2+1D"
+    location: outside-collapse
+
+  - id: fig-anyon-inline
+    function: inject_promoted_illustrations
+    chapter: the-braid
+    description: "Non-abelian anyon exchange"
+    location: outside-collapse
+
+  - id: fig-rule110-inline
+    function: inject_promoted_illustrations
+    chapter: the-braid
+    description: "Rule 110 cellular automaton — universality"
+    location: outside-collapse
+
+  - id: fig-phase-transition-inline
+    function: inject_promoted_illustrations
+    chapter: the-braid
+    description: "Phase transition threshold"
+    location: outside-collapse
+
+  - id: fig-kuhn-animation
+    function: inject_sr_animation
+    chapter: scientific-revolutions
+    description: "Kuhn paradigm cycle — normal science → anomaly → crisis → revolution"
+    location: outside-collapse
+
+file_svgs:
+  - file: build/images/cover-triskellion.svg
+    usage: cover-image
+    description: "Book cover — triple spiral"
+
+  - file: build/images/five-thread-convergence.svg
+    usage: source-for-inline
+    description: "Five-thread convergence (source; inline version in preprocess.py)"
+
+  - file: build/images/grid-sequence-1-regional.svg
+    usage: standalone
+    description: "Scale sequence 1 — regional magnetometer grid"
+
+  - file: build/images/grid-sequence-2-global.svg
+    usage: standalone
+    description: "Scale sequence 2 — global coverage"
+
+  - file: build/images/grid-sequence-3-magnetosphere.svg
+    usage: standalone
+    description: "Scale sequence 3 — magnetospheric context"
+
+  - file: build/images/grid-sequence-4-the-flat.svg
+    usage: standalone
+    description: "Scale sequence 4 — the Flat as substrate"
+
+  - file: build/images/magnetosphere-test.svg
+    usage: development
+    description: "Dev artifact — delete before ship"
+
+  - file: build/images/raf-substrate-trinity.svg
+    usage: source-for-inline
+    description: "RAF/substrate/intelligence trinity (source)"
+
+  - file: build/images/spaces-between-fields.svg
+    usage: not-yet-inline
+    description: "Silence gap — five fields with empty spaces between"
+
+placeholders:
+  # % IMAGE: comments in .tex files — not yet rendered
+  - file: manuscript/spine/the-wrong-substrate.tex
+    line: 29
+    description: "Earth magnetosphere (bow shock, compressed dayside, extended tail, field lines)"
+    status: "IMPLEMENTED — fig-ms-earth"
+
+  - file: manuscript/spine/the-wrong-substrate.tex
+    line: 52
+    description: "Aurora borealis from ISS — plasma dynamics made visible"
+    status: "NOT YET RENDERED"
+
+  - file: manuscript/spine/the-wrong-substrate.tex
+    line: 58
+    description: "Plasma sheet cross-section — 2D confinement between magnetic lobes"
+    status: "NOT YET RENDERED"
+
+  - file: manuscript/spine/the-wrong-substrate.tex
+    line: 75
+    description: "Jupiter magnetosphere (Io torus, scale)"
+    status: "IMPLEMENTED — fig-ms-jupiter"
+
+  - file: manuscript/spine/the-wrong-substrate.tex
+    line: 87
+    description: "Solar system magnetosphere comparison — all planets to scale"
+    status: "NOT YET RENDERED"
+
+  - file: manuscript/spine/the-wrong-substrate.tex
+    line: 93
+    description: "Heliospheric current sheet — ballerina skirt"
+    status: "NOT YET RENDERED"
