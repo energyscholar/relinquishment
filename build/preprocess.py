@@ -1061,6 +1061,7 @@ body.visual-plain [data-concept]::before { content: none; }
   opacity: 0.5;
   vertical-align: middle;
 }
+.chapter-symbol { cursor: help; }
 
 /* Hide all concept symbols in visual-plain mode */
 body.visual-plain [data-concept]::before { content: none; }
@@ -3646,6 +3647,7 @@ MS_ANIM_OPENING = '''<figure id="dl:ms-opening" style="margin:1.5em auto;">
   </div>
   <button class="ms-anim-play-btn" id="mso-play-btn" role="button" aria-pressed="false" aria-label="Play animation">&#9654;</button>
   <button class="ms-anim-fs-btn" id="mso-fs-btn" role="button" aria-label="Enter fullscreen">&#x26F6;</button>
+  <button class="ms-anim-loop-btn" id="mso-loop-btn" role="button" aria-pressed="false" aria-label="Toggle loop">&#x1F501;</button>
   <div class="ms-anim-progress" id="mso-progress"></div>
   <div class="ms-anim-fs-hint">Best in fullscreen</div>
 </div>
@@ -3656,6 +3658,8 @@ MS_ANIM_OPENING = '''<figure id="dl:ms-opening" style="margin:1.5em auto;">
 .ms-anim-play-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-size:2.5rem;color:rgba(255,255,255,0.8);background:rgba(0,0,0,0.4);border:none;border-radius:50%;width:3.5rem;height:3.5rem;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:opacity 0.3s}
 .ms-anim-container.ms-playing .ms-anim-play-btn{opacity:0;pointer-events:none}
 .ms-anim-fs-btn{position:absolute;top:8px;right:8px;background:rgba(0,0,0,0.5);color:#ccc;border:1px solid rgba(255,255,255,0.2);border-radius:4px;padding:4px 8px;cursor:pointer;font-size:1rem;z-index:10}
+.ms-anim-loop-btn{position:absolute;top:8px;right:48px;background:rgba(0,0,0,0.5);color:#666;border:1px solid rgba(255,255,255,0.2);border-radius:4px;padding:4px 8px;cursor:pointer;font-size:0.85rem;z-index:10;transition:color 0.2s}
+.ms-anim-loop-btn[aria-pressed="true"]{color:#66ff88}
 .ms-anim-progress{position:absolute;bottom:0;left:0;height:2px;background:#66ff88;width:0%;transition:none}
 .ms-anim-fs-hint{position:absolute;bottom:8px;right:8px;color:rgba(255,255,255,0.5);font-size:0.7rem;font-family:sans-serif;animation:ms-fade-hint 3s ease-out forwards}
 @keyframes ms-fade-hint{0%,70%{opacity:1}100%{opacity:0}}
@@ -3702,6 +3706,8 @@ var container=document.getElementById('mso-container');
 var playBtn=document.getElementById('mso-play-btn');
 var fsBtn=document.getElementById('mso-fs-btn');
 var progressBar=document.getElementById('mso-progress');
+var loopBtn=document.getElementById('mso-loop-btn');
+var msLoop=false;
 var teaser=document.getElementById('mso-teaser');
 var teaserBtn=document.getElementById('mso-teaser-btn');
 var EX=1400,EY=450,SX=200,SY=450,MS_SCALE=7;
@@ -3921,7 +3927,7 @@ function substormLoop(ts2){
   var prevPh=lastSubstormPh||0;
   if(ph<prevPh)substormCycleCount++;
   lastSubstormPh=ph;
-  if(substormCycleCount>=1){running=false;container.classList.remove('ms-playing');playBtn.innerHTML='&#9654;';playBtn.setAttribute('aria-pressed','false');pausedElapsed=0;animStart=null;resetState();return;}
+  if(substormCycleCount>=1){if(msLoop){substormCycleCount=0;substormStart=ts2;}else{running=false;container.classList.remove('ms-playing');playBtn.innerHTML='&#9654;';playBtn.setAttribute('aria-pressed','false');pausedElapsed=0;animStart=null;resetState();return;}}
   progressBar.style.width=(68.57+ph*31.43).toFixed(1)+'%';
   document.getElementById('mso-substorm').setAttribute('opacity','1');
   var breathAmp=ph<0.36?0.4+1.2*(ph/0.36):ph<0.55?1.6:1.6-1.2*((ph-0.55)/0.45);
@@ -4007,6 +4013,7 @@ document.addEventListener('fullscreenchange',function(){if(!document.fullscreenE
 document.addEventListener('webkitfullscreenchange',function(){if(!document.fullscreenElement&&!document.webkitFullscreenElement)msExitFs();});
 fsBtn.addEventListener('click',function(e){e.stopPropagation();msGoFs(container);});
 if(teaserBtn){teaserBtn.addEventListener('click',function(){container.style.display='block';setTimeout(function(){msGoFs(container);},50);if(!running)msPlay();});}
+loopBtn.addEventListener('click',function(e){e.stopPropagation();msLoop=!msLoop;loopBtn.setAttribute('aria-pressed',msLoop?'true':'false');});
 if(reducedMotion){svg.setAttribute('viewBox',POSTER_VB);document.getElementById('mso-side-ms').setAttribute('opacity','1');document.getElementById('mso-ms-labels').setAttribute('opacity','0.8');}
 resetState();
 })();</script>'''
@@ -5177,8 +5184,11 @@ def inject_concept_symbols(html_path):
         summary_close = text.find('</summary>', start)
         if summary_close == -1:
             continue
-        sig_tips = ' · '.join(symbol_tooltips.get(c, c) for c in assigned if c in symbol_tooltips)
-        sig_span = f'<span class="chapter-symbols" title="{sig_tips}" aria-hidden="true">{glyphs}</span>'
+        sig_spans = ''.join(
+            f'<span class="chapter-symbol" data-concept="{c}" title="{symbol_tooltips.get(c, c)}" aria-hidden="true">{SYMBOL_GLYPHS.get(c, "?")}</span>'
+            for c in assigned if c in SYMBOL_GLYPHS
+        )
+        sig_span = f'<span class="chapter-symbols" aria-hidden="true">{sig_spans}</span>'
         text = text[:summary_close] + sig_span + text[summary_close:]
         sig_count += 1
 
