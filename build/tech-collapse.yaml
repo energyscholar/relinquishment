@@ -110,6 +110,32 @@ sections:
     tooltip: "Charged particles in the plasma sheet move in 3D helical orbits — so why call it two-dimensional? Because when the current sheet thins below the ion gyroradius, ions can no longer complete a full orbit. Their dynamics become quasi-two-dimensional. Established magnetospheric physics."
     conclusion: "The plasma sheet is not a 2DEG, but its geometry produces quasi-2D ion dynamics at substorm scales — the same dimensional reduction pattern, different mechanism."
     status: approved
+    hover_id: "collapse-ws-quasi-2d"
+    html: |
+      <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;"><strong>⬡ Why Call It Two-Dimensional?</strong></p>
+      <p style="margin:0 0 0.4em;font-size:0.88em;line-height:1.4;">When the current sheet thins, ions can't complete full orbits. Their dynamics become quasi-two-dimensional — the same reduction that makes the Flat possible.</p>
+      <svg xmlns="http://www.w3.org/2000/svg" width="260" height="80" viewBox="0 0 260 80" style="display:block;margin:0.4em auto 0.2em;">
+        <title>Aurora borealis: colored arcs of light descending from the magnetosphere to Earth's poles — plasma dynamics made visible</title>
+        <!-- Dark sky background -->
+        <rect x="0" y="0" width="260" height="80" rx="4" fill="#0a1628"/>
+        <!-- Ground/horizon -->
+        <rect x="0" y="65" width="260" height="15" rx="0" fill="#1a2a1a"/>
+        <!-- Aurora curtains -->
+        <path d="M 40,15 Q 50,35 45,65" fill="none" stroke="#44ff88" stroke-width="3" opacity="0.6"/>
+        <path d="M 60,10 Q 70,30 65,65" fill="none" stroke="#44ff88" stroke-width="4" opacity="0.5"/>
+        <path d="M 85,12 Q 95,35 90,65" fill="none" stroke="#88ffaa" stroke-width="3" opacity="0.55"/>
+        <path d="M 110,8 Q 120,32 115,65" fill="none" stroke="#44dd88" stroke-width="3.5" opacity="0.5"/>
+        <path d="M 135,10 Q 145,30 140,65" fill="none" stroke="#66ffcc" stroke-width="3" opacity="0.45"/>
+        <path d="M 155,12 Q 165,35 160,65" fill="none" stroke="#44ff88" stroke-width="2.5" opacity="0.5"/>
+        <path d="M 180,14 Q 190,33 185,65" fill="none" stroke="#88ffaa" stroke-width="3" opacity="0.4"/>
+        <path d="M 200,10 Q 210,30 205,65" fill="none" stroke="#44dd88" stroke-width="2" opacity="0.45"/>
+        <path d="M 220,13 Q 230,35 225,65" fill="none" stroke="#66ffcc" stroke-width="2.5" opacity="0.4"/>
+        <!-- Glow effect -->
+        <ellipse cx="130" cy="40" rx="100" ry="30" fill="#44ff88" opacity="0.05"/>
+        <!-- Caption -->
+        <text x="130" y="76" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#88aa88">plasma dynamics, made visible</text>
+      </svg>
+      <p style="margin:0;font-size:0.82em;line-height:1.3;font-style:italic;color:#888;">Expand for the physics of dimensional reduction.</p>
 
   - title: "But It's Hot"
     spine_file: manuscript/spine/the-wrong-substrate.tex
@@ -140,6 +166,24 @@ sections:
     tooltip: "Earth's magnetosphere is not unusual — Jupiter's is enormous, Saturn's is fed by ice geysers, and a solar-system-wide current sheet connects them all. Each has the same ingredients: confined charged particles, continuous energy, billions of years."
     conclusion: "Earth, Jupiter, Saturn, Ganymede, and the heliospheric current sheet all contain two-dimensional populations of charged particles, confined by magnetic geometry, energized continuously, persistent for billions of years."
     status: approved
+    hover_id: "collapse-ws-neighborhood"
+    html: |
+      <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;"><strong>⬡ The Neighborhood</strong></p>
+      <p style="margin:0 0 0.4em;font-size:0.88em;line-height:1.4;">Earth is not alone. Jupiter, Saturn, Ganymede, and the heliospheric current sheet all contain the same ingredients: confined charged particles, continuous energy, billions of years.</p>
+      <svg xmlns="http://www.w3.org/2000/svg" width="280" height="80" viewBox="0 0 280 80" style="display:block;margin:0.4em auto 0.2em;">
+        <title>Heliospheric current sheet: a wavy surface extending from the Sun through the solar system — the ballerina skirt</title>
+        <circle cx="20" cy="40" r="10" fill="#ffdd66" stroke="#cc9900" stroke-width="1"/>
+        <path d="M 35,40 C 60,20 80,60 105,40 C 130,20 150,60 175,40 C 200,20 220,60 245,40 C 255,30 265,50 275,40" fill="none" stroke="#6a9fba" stroke-width="2" opacity="0.7"/>
+        <path d="M 35,40 C 60,55 80,25 105,40 C 130,55 150,25 175,40 C 200,55 220,25 245,40 C 255,48 265,32 275,40" fill="none" stroke="#6a9fba" stroke-width="1.2" opacity="0.4" stroke-dasharray="4,3"/>
+        <circle cx="105" cy="40" r="3" fill="#5588dd" stroke="#3366aa" stroke-width="0.8"/>
+        <circle cx="175" cy="40" r="5" fill="#d4a06a" stroke="#a0784a" stroke-width="0.8"/>
+        <circle cx="220" cy="40" r="4" fill="#c4a97d" stroke="#8b7355" stroke-width="0.8"/>
+        <text x="105" y="60" text-anchor="middle" font-family="Georgia, serif" font-size="6" fill="#555">Earth</text>
+        <text x="175" y="60" text-anchor="middle" font-family="Georgia, serif" font-size="6" fill="#555">Jupiter</text>
+        <text x="220" y="60" text-anchor="middle" font-family="Georgia, serif" font-size="6" fill="#555">Saturn</text>
+        <text x="155" y="14" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#6a9fba" font-style="italic">heliospheric current sheet</text>
+      </svg>
+      <p style="margin:0;font-size:0.82em;line-height:1.3;font-style:italic;color:#888;">Expand for the full planetary survey.</p>
 
   - title: "The Oldest Niche"
     spine_file: manuscript/spine/the-wrong-substrate.tex

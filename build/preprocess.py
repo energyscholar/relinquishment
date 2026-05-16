@@ -4479,6 +4479,165 @@ def inject_silence_gap_illustration(html_path):
     html_path.write_text(text)
 
 
+def inject_factoring_illustration(html_path):
+    """Inject multiply-vs-factor diagram into The Factoring Game intro (Plan 0341)."""
+    html_path = Path(html_path)
+    text = html_path.read_text()
+    target = 'id="spine:factoring-game"'
+    pos = text.find(target)
+    if pos == -1:
+        return
+    bq_close = text.find('</blockquote>', pos)
+    if bq_close == -1:
+        return
+    insert_point = text.find('>', bq_close) + 1
+    while insert_point < len(text) and text[insert_point] in ' \n\r\t':
+        insert_point += 1
+
+    FACTOR_SVG = '''<figure id="fig-factor-vs-multiply" class="inline-svg" style="text-align:center;margin:1.5em auto;">
+<svg xmlns="http://www.w3.org/2000/svg" width="380" height="120" viewBox="0 0 380 120" style="display:block;margin:0 auto;">
+  <title>The asymmetry of multiplication vs factoring: 13 times 7 equals 91 is easy; 91 equals what times what is hard.</title>
+  <!-- LEFT: Easy multiplication -->
+  <rect x="10" y="15" width="160" height="90" rx="8" fill="#f0f8f0" stroke="#2e7d32" stroke-width="1" opacity="0.6"/>
+  <text x="90" y="50" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#333">13 × 7 = 91</text>
+  <text x="90" y="75" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#2e7d32">instant</text>
+  <text x="90" y="95" text-anchor="middle" font-family="Georgia, serif" font-size="18" fill="#2e7d32">✓</text>
+
+  <!-- Arrow -->
+  <text x="190" y="62" text-anchor="middle" font-family="Georgia, serif" font-size="16" fill="#888">vs</text>
+
+  <!-- RIGHT: Hard factoring -->
+  <rect x="210" y="15" width="160" height="90" rx="8" fill="#fdf0f0" stroke="#c62828" stroke-width="1" opacity="0.6"/>
+  <text x="290" y="50" text-anchor="middle" font-family="Georgia, serif" font-size="22" fill="#333">91 = ? × ?</text>
+  <text x="290" y="75" text-anchor="middle" font-family="Georgia, serif" font-size="11" fill="#c62828">try every option</text>
+  <text x="290" y="95" text-anchor="middle" font-family="Georgia, serif" font-size="14" fill="#c62828">⏱ exponential</text>
+</svg>
+<figcaption style="font-size:0.78em;color:#888;margin-top:0.3em;font-style:italic;">All internet encryption relies on this asymmetry.</figcaption>
+</figure>
+'''
+    text = text[:insert_point] + '\n' + FACTOR_SVG + '\n' + text[insert_point:]
+    html_path.write_text(text)
+    print("  Factoring Game: multiply-vs-factor diagram injected")
+
+
+def inject_network_resilience(html_path):
+    """Inject distributed network diagram into Capabilities 'Can It Be Killed?' (Plan 0341)."""
+    html_path = Path(html_path)
+    text = html_path.read_text()
+    target = 'id="spine:cap-killed"'
+    pos = text.find(target)
+    if pos == -1:
+        return
+    first_p_end = text.find('</p>', pos + 100)
+    if first_p_end == -1:
+        return
+    insert_point = first_p_end + 4
+
+    NETWORK_SVG = '''<figure id="fig-network-resilience" class="inline-svg" style="text-align:center;margin:1.5em auto;">
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="180" viewBox="0 0 320 180" style="display:block;margin:0 auto;">
+  <title>A distributed network: one node destroyed (red X) but all others remain connected. No single point of failure.</title>
+  <!-- Connections (drawn first, behind nodes) -->
+  <line x1="80" y1="50" x2="160" y2="30" stroke="#ccc" stroke-width="1.2"/>
+  <line x1="80" y1="50" x2="60" y2="110" stroke="#ccc" stroke-width="1.2"/>
+  <line x1="80" y1="50" x2="160" y2="90" stroke="#ccc" stroke-width="1.2"/>
+  <line x1="160" y1="30" x2="240" y2="50" stroke="#ccc" stroke-width="1.2"/>
+  <line x1="160" y1="30" x2="160" y2="90" stroke="#ccc" stroke-width="1.2"/>
+  <line x1="240" y1="50" x2="260" y2="110" stroke="#ccc" stroke-width="1.2"/>
+  <line x1="240" y1="50" x2="160" y2="90" stroke="#ccc" stroke-width="1.2"/>
+  <line x1="60" y1="110" x2="120" y2="150" stroke="#ccc" stroke-width="1.2"/>
+  <line x1="60" y1="110" x2="160" y2="90" stroke="#ccc" stroke-width="1.2"/>
+  <line x1="160" y1="90" x2="120" y2="150" stroke="#ccc" stroke-width="1.2"/>
+  <line x1="160" y1="90" x2="200" y2="150" stroke="#ccc" stroke-width="1.2"/>
+  <line x1="160" y1="90" x2="260" y2="110" stroke="#ccc" stroke-width="1.2"/>
+  <line x1="260" y1="110" x2="200" y2="150" stroke="#ccc" stroke-width="1.2"/>
+  <line x1="120" y1="150" x2="200" y2="150" stroke="#ccc" stroke-width="1.2"/>
+  <!-- Destroyed connections (dashed, faded) -->
+  <line x1="160" y1="90" x2="160" y2="30" stroke="#c62828" stroke-width="1" stroke-dasharray="3,3" opacity="0.4"/>
+  <line x1="80" y1="50" x2="160" y2="30" stroke="#c62828" stroke-width="1" stroke-dasharray="3,3" opacity="0.4"/>
+  <line x1="240" y1="50" x2="160" y2="30" stroke="#c62828" stroke-width="1" stroke-dasharray="3,3" opacity="0.4"/>
+  <!-- Healthy nodes -->
+  <circle cx="80" cy="50" r="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <circle cx="60" cy="110" r="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <circle cx="160" cy="90" r="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <circle cx="240" cy="50" r="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <circle cx="260" cy="110" r="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <circle cx="120" cy="150" r="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <circle cx="200" cy="150" r="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.5"/>
+  <!-- Destroyed node -->
+  <circle cx="160" cy="30" r="8" fill="#ffebee" stroke="#c62828" stroke-width="1.5"/>
+  <line x1="154" y1="24" x2="166" y2="36" stroke="#c62828" stroke-width="2.5"/>
+  <line x1="166" y1="24" x2="154" y2="36" stroke="#c62828" stroke-width="2.5"/>
+  <!-- Label -->
+  <text x="160" y="175" text-anchor="middle" font-family="Georgia, serif" font-size="9" fill="#888" font-style="italic">network persists</text>
+</svg>
+<figcaption style="font-size:0.78em;color:#888;margin-top:0.3em;font-style:italic;">Destroy one node. The rest remain connected.</figcaption>
+</figure>
+'''
+    text = text[:insert_point] + '\n' + NETWORK_SVG + '\n' + text[insert_point:]
+    html_path.write_text(text)
+    print("  Capabilities: network resilience diagram injected")
+
+
+def inject_power_pattern(html_path):
+    """Inject historical power-abuse pattern into Why Relinquish intro (Plan 0341)."""
+    html_path = Path(html_path)
+    text = html_path.read_text()
+    target = 'id="spine:why-relinquish"'
+    pos = text.find(target)
+    if pos == -1:
+        return
+    heading_end = text.find('</h', pos)
+    heading_end = text.find('>', heading_end) + 1
+    next_h = text.find('<h', heading_end + 1)
+    if next_h == -1:
+        return
+    insert_point = next_h
+
+    PATTERN_SVG = '''<figure id="fig-power-pattern" class="inline-svg" style="text-align:center;margin:1.5em auto;">
+<svg xmlns="http://www.w3.org/2000/svg" width="360" height="100" viewBox="0 0 360 100" style="display:block;margin:0 auto;">
+  <title>The pattern repeats: concentrated power leads to abuse, across three historical periods shown as identical cycles.</title>
+  <!-- Cycle 1 -->
+  <circle cx="50" cy="40" r="20" fill="#fdf0f0" stroke="#c62828" stroke-width="1" opacity="0.6"/>
+  <text x="50" y="44" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#c62828">power</text>
+  <path d="M 70,40 Q 85,25 95,40" fill="none" stroke="#888" stroke-width="1" marker-end="url(#patt-arrow)"/>
+  <text x="95" y="55" text-anchor="start" font-family="Georgia, serif" font-size="7" fill="#888">abuse</text>
+
+  <!-- Cycle 2 -->
+  <circle cx="170" cy="40" r="20" fill="#fdf0f0" stroke="#c62828" stroke-width="1" opacity="0.6"/>
+  <text x="170" y="44" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#c62828">power</text>
+  <path d="M 190,40 Q 205,25 215,40" fill="none" stroke="#888" stroke-width="1" marker-end="url(#patt-arrow)"/>
+  <text x="215" y="55" text-anchor="start" font-family="Georgia, serif" font-size="7" fill="#888">abuse</text>
+
+  <!-- Cycle 3 -->
+  <circle cx="290" cy="40" r="20" fill="#fdf0f0" stroke="#c62828" stroke-width="1" opacity="0.6"/>
+  <text x="290" y="44" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#c62828">power</text>
+  <path d="M 310,40 Q 325,25 335,40" fill="none" stroke="#888" stroke-width="1" marker-end="url(#patt-arrow)"/>
+  <text x="335" y="55" text-anchor="start" font-family="Georgia, serif" font-size="7" fill="#888">abuse</text>
+
+  <!-- Connecting "repeats" arrows -->
+  <path d="M 115,40 L 145,40" fill="none" stroke="#aaa" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <path d="M 235,40 L 265,40" fill="none" stroke="#aaa" stroke-width="0.8" stroke-dasharray="3,2"/>
+
+  <!-- Marker def -->
+  <defs>
+    <marker id="patt-arrow" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#888"/>
+    </marker>
+  </defs>
+
+  <!-- Timeline labels -->
+  <text x="50" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#aaa">Rome</text>
+  <text x="170" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#aaa">Empire</text>
+  <text x="290" y="80" text-anchor="middle" font-family="Georgia, serif" font-size="7" fill="#aaa">Nuclear</text>
+  <text x="170" y="95" text-anchor="middle" font-family="Georgia, serif" font-size="8" fill="#888" font-style="italic">the pattern repeats</text>
+</svg>
+</figure>
+'''
+    text = text[:insert_point] + '\n' + PATTERN_SVG + '\n' + text[insert_point:]
+    html_path.write_text(text)
+    print("  Why Relinquish: power-pattern diagram injected")
+
+
 def inject_chapter_puzzles(html_path):
     """Insert approved puzzles into chapter HTML by extracting from puzzles.html (Plan 0274i)."""
     tracker_path = REPO / 'build' / 'puzzle-tracker.yaml'
@@ -5295,6 +5454,9 @@ if __name__ == "__main__":
         inject_sr_animation(sys.argv[2])
         inject_sr_illustrations(sys.argv[2])
         inject_silence_gap_illustration(sys.argv[2])
+        inject_factoring_illustration(sys.argv[2])
+        inject_network_resilience(sys.argv[2])
+        inject_power_pattern(sys.argv[2])
         inject_chapter_puzzles(sys.argv[2])
         verify_puzzle_injection(sys.argv[2])
         inject_easter_eggs(sys.argv[2])
