@@ -181,7 +181,7 @@
   question: "Could you shut it down if you needed to?"
   category: ethics
 
-- id: dl:udhr-as-cage
+- id: dl:udhr-as-container
   question: "The UDHR as an AI ethics framework — isn't that too simple?"
   category: ethics
 
