@@ -354,6 +354,10 @@
   question: "Five fields with empty spaces between them — the silence gap"
   category: svg
 
+- id: fig-five-thread-convergence
+  question: "Five research threads converging — Hasslacher, Freedman, Kauffman, Wolfram, Hillis"
+  category: svg
+
 - id: fig-factor-vs-multiply
   question: "Multiplication is instant; factoring is exponential — the asymmetry behind all encryption"
   category: svg

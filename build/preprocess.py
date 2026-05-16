@@ -2354,7 +2354,7 @@ def fix_html_toc(html_path):
             # Generate Sources bibliography
             sources_html = _generate_sources_html(bib_entries)
             # Find the empty Sources <details> and inject content after </summary>
-            sources_pattern = r'(<details[^>]*>(?:<summary[^>]*>)?[^<]*<h2[^>]*id="app:sources"[^>]*>[^<]*</h2>(?:</summary>)?)(\s*</details>)'
+            sources_pattern = r'(<details[^>]*>\s*<summary[^>]*>.*?id="app:sources".*?</summary>)(\s*</details>)'
             sources_match = re.search(sources_pattern, text)
             if sources_match:
                 text = text[:sources_match.end(1)] + '\n' + sources_html + '\n' + text[sources_match.start(2):]
@@ -3232,8 +3232,8 @@ def inject_convergence_illustrations(html_path):
 </figure>'''
 
     illustrations = [
-        ('pos21:convergence-revisited',
-         'These are the scientific disciplines of the scientists',
+        ('spine:genesis',
+         'five published research streams had independently matured',
          FIVE_THREAD_CONVERGENCE, 'five-thread convergence'),
     ]
 
@@ -4191,6 +4191,8 @@ CHAPTER_INJECTION_TARGETS = {
     'the-flat':            'custodian:dance',
     'the-braid':           'custodian:locksmith',
     'the-code-war':        'custodian:grown',
+    'firmware-update':     'app:predictions',
+    'genesis':             'spine:growing-a-mind',
     'growing-a-mind':      'custodian:ocean',
     'wrong-substrate':     'custodian:quiet',
     'the-silence-gap':     'spine:capabilities',
