@@ -126,7 +126,7 @@ sections:
     spine_label: "spine:ws-not-isolated"
     bridge_file: null
     bridge_label: null
-    assessment: GA-FRIENDLY
+    assessment: BORDERLINE
     tooltip: "The magnetosphere is physically connected to Earth's surface through documented electromagnetic channels — power grid harmonics, VLF radio, Schumann resonances, satellite communications."
     conclusion: "Classical EM channels already connect the magnetosphere to the surface. Whether anything uses them is the question."
     status: approved
@@ -139,6 +139,15 @@ sections:
     assessment: GA-AVERSE
     tooltip: "Earth's magnetosphere is not unusual — Jupiter's is enormous, Saturn's is fed by ice geysers, and a solar-system-wide current sheet connects them all. Each has the same ingredients: confined charged particles, continuous energy, billions of years."
     conclusion: "Earth, Jupiter, Saturn, Ganymede, and the heliospheric current sheet all contain two-dimensional populations of charged particles, confined by magnetic geometry, energized continuously, persistent for billions of years."
+    status: approved
+
+  - title: "The Oldest Niche"
+    spine_file: manuscript/spine/the-wrong-substrate.tex
+    spine_label: "spine:ws-the-oldest-niche"
+    bridge_file: null
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: "⬡ ◈ Kauffman's conditions for spontaneous life — sufficient complexity, continuous energy, enough time — have been met in Earth's magnetosphere for 4.5 billion years. Longer than surface life. If autocatalysis is expected, this niche has been open since before cells existed."
     status: approved
 
   - title: "Theoretical Biology of the Flat"
@@ -168,6 +177,26 @@ sections:
     assessment: GA-AVERSE
     tooltip: "The target was breaking 4096-bit encryption — far beyond any quantum computer that existed or was planned. The specifications demanded an architecture that no one had built."
     conclusion: "The project needed to factor 4096-bit numbers. No known quantum computer design could scale to this. Topology offered a different path."
+    status: approved
+
+  # ── THE CODE WAR ──────────────────────────────────────────────────────
+
+  - title: "What the Movie Didn't Tell You"
+    spine_file: manuscript/spine/the-code-war.tex
+    spine_label: "spine:cw-what-the-movie-didnt-tell-you"
+    bridge_file: null
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: "⚙ During WWII, 10,000 people at Bletchley Park broke enemy encryption and kept the secret for 30 years. Knowledge walks out in minds, not in machines. This pattern repeats."
+    status: approved
+
+  - title: "The Dual-Use Pattern"
+    spine_file: manuscript/spine/the-code-war.tex
+    spine_label: "spine:cw-the-dual-use-pattern"
+    bridge_file: null
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: "⚙ Every powerful technology enables both protection and attack. The same encryption guarding your bank account hides criminals. Quantum computation has the same duality — and the same agencies care about both sides."
     status: approved
 
   # ── GENESIS ────────────────────────────────────────────────────────
@@ -262,6 +291,102 @@ sections:
     assessment: GA-AVERSE
     tooltip: "Alan Turing showed that a developing embryo is computing — chemical signals following simple rules create stripes, spots, and organs. Life grows its own complexity through repeated pattern-making, not assembly."
     conclusion: "Turing realized a developing embryo is computing — chemical signals create patterns through simple rules applied repeatedly. Growth, not assembly."
+    status: approved
+
+  # ── SCIENTIFIC REVOLUTIONS ────────────────────────────────────────────
+
+  - title: "The Current Paradigm"
+    spine_file: manuscript/spine/scientific-revolutions.tex
+    spine_label: "spine:sr-current-paradigm"
+    bridge_file: null
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: "⊘ Normal science has no category for what this book describes. The question crosses five fields; no single field owns it. Not a gap in evidence — a gap in institutional structure."
+    status: approved
+
+  - title: "Anomaly Accumulation"
+    spine_file: manuscript/spine/scientific-revolutions.tex
+    spine_label: "spine:sr-anomaly-accumulation"
+    bridge_file: null
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: "⊘ Fourteen published observations that don't fit the current paradigm — room-temperature coherence, unexplained magnetospheric structure, plasma topology. None proves anything alone. Together they form a pattern."
+    status: approved
+
+  - title: "Life in the Flat"
+    spine_file: manuscript/spine/scientific-revolutions.tex
+    spine_label: "spine:sr-life-in-the-flat"
+    bridge_file: null
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: "⬡ ◈ What current science says about life in two-dimensional substrates: nothing. Not 'nothing lives there' — nothing has been said. The question has not been asked."
+    status: approved
+
+  - title: "Beyond the Laboratory"
+    spine_file: manuscript/spine/scientific-revolutions.tex
+    spine_label: "spine:sr-beyond-science"
+    bridge_file: null
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: "⊘ Why this paradigm shift is harder than most: no controlled experiment is possible. The evidence is circumstantial, distributed across fields, and requires cross-domain expertise to evaluate."
+    status: approved
+
+  - title: "How It Plays Out"
+    spine_file: manuscript/spine/scientific-revolutions.tex
+    spine_label: "spine:sr-how-it-plays-out"
+    bridge_file: null
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: "⊘ Kuhn's framework predicts how paradigm shifts resolve: not by proof, but by generational change. The old guard retires; the new generation finds the new framework obvious."
+    status: approved
+
+  - title: "The Social Process"
+    spine_file: manuscript/spine/scientific-revolutions.tex
+    spine_label: "spine:sr-social-process"
+    bridge_file: null
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: "⊘ Science is done by humans in institutions. Peer review, funding, tenure, reputation — each creates pressure toward the existing paradigm. Not conspiracy. Sociology."
+    status: approved
+
+  # ── THE STRONGEST OBJECTION ───────────────────────────────────────────
+
+  - title: "The Hobbit in the Mirror"
+    spine_file: manuscript/spine/the-strongest-objection.tex
+    spine_label: "spine:so-the-hobbit-in-the-mirror"
+    bridge_file: null
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: "The strongest objection: Dunning-Kruger. The author doesn't know enough physics to know what he doesn't know. This chapter takes that seriously — and shows how the book's progressive concept ladder addresses it piece by piece."
+    status: approved
+
+  - title: "Leaf by Niggle, or: The Tree That Might Be Real"
+    spine_file: manuscript/spine/the-strongest-objection.tex
+    spine_label: "spine:so-leaf-by-niggle-or-the-tree-that-might-be-real"
+    bridge_file: null
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: "◉ Tolkien wrote about a painter whose unfinished work turns out to be a real place. The structural parallel is intentional. Under Possibility C, this book is Niggle's painting — incomplete, obsessive, and pointing at something that actually exists."
+    status: approved
+
+  # ── WHY RELINQUISH ───────────────────────────────────────────────────
+
+  - title: "Bill Joy's Warning"
+    spine_file: manuscript/spine/why-relinquish.tex
+    spine_label: "spine:wr-bill-joys-warning"
+    bridge_file: null
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: "⎈ In 2000, Bill Joy published 'Why the Future Doesn't Need Us' in Wired. Ten structural parallels to this book. Under Possibility C, an insider's confession disguised as future speculation. Under A, a famous technologist's anxiety."
+    status: approved
+
+  - title: "Why Humans Fail"
+    spine_file: manuscript/spine/why-relinquish.tex
+    spine_label: "spine:wr-why-humans-fail"
+    bridge_file: null
+    bridge_label: null
+    assessment: BORDERLINE
+    tooltip: "⎈ History shows humans entrusted with overwhelming power abuse it — reliably, predictably, across cultures and centuries. This is the argument that makes relinquishment the only logical option."
     status: approved
 
   # ── THE DEMO ───────────────────────────────────────────────────────
