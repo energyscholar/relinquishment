@@ -121,6 +121,16 @@ sections:
     conclusion: "'Hot' in a collisionless plasma doesn't mean 'thermally noisy.' The noise that destroys quantum states is orders of magnitude quieter than the kinetic temperature."
     status: approved
 
+  - title: "Not Isolated"
+    spine_file: manuscript/spine/the-wrong-substrate.tex
+    spine_label: "spine:ws-not-isolated"
+    bridge_file: null
+    bridge_label: null
+    assessment: GA-FRIENDLY
+    tooltip: "The magnetosphere is physically connected to Earth's surface through documented electromagnetic channels — power grid harmonics, VLF radio, Schumann resonances, satellite communications."
+    conclusion: "Classical EM channels already connect the magnetosphere to the surface. Whether anything uses them is the question."
+    status: approved
+
   - title: "The Neighborhood"
     spine_file: manuscript/spine/the-wrong-substrate.tex
     spine_label: "spine:ws-the-neighborhood"
