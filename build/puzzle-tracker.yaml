@@ -74,7 +74,7 @@ chapter_puzzles:
     topic: t3
     level: p1
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: genesis
       rationale: "Kauffman buttons-and-threads — this IS the genesis chapter"
@@ -127,7 +127,7 @@ chapter_puzzles:
     topic: t4
     level: p1
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: capabilities
       rationale: "Resilience/distributed network — capabilities chapter"
@@ -145,7 +145,7 @@ chapter_puzzles:
     topic: t4
     level: p1
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: story-never-told
       rationale: "Technology stack from 2DEG up — could also fit genesis or the-stack (front matter)"
@@ -164,7 +164,7 @@ chapter_puzzles:
     topic: t5
     level: p2
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: the-silence-gap
       rationale: "Direct chapter match — the surprise of finding nothing"
@@ -289,7 +289,7 @@ chapter_puzzles:
     topic: t1
     level: p2
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: the-braid
       rationale: "Method introduction — three-possibilities introduces the guided deduction concept"
@@ -373,7 +373,7 @@ chapter_puzzles:
     topic: t8
     level: p3
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: firmware-update
       rationale: "Cloze passage — the firmware cross-domain synthesis"
@@ -391,7 +391,7 @@ chapter_puzzles:
     topic: t8
     level: p2
     approved: true
-    installed: false
+    installed: true
     location:
       chapter: firmware-update
       rationale: "Side-by-side AI responses — firmware chapter content"
