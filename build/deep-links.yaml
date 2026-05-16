@@ -350,6 +350,10 @@
   question: "A1/A2 consequence fork — same evidence, different futures"
   category: svg
 
+- id: fig-silence-gap
+  question: "Five fields with empty spaces between them — the silence gap"
+  category: svg
+
 # --- Puzzles: chapter (22) — not yet in main HTML, anchors created on insertion ---
 # Category: puzzle — verify-deep-links.py skips this category.
 

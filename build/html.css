@@ -197,6 +197,14 @@ h3:hover .heading-link { opacity: 0.5; }
   to { opacity: 1; transform: translateY(0); }
 }
 
+.hover-panel svg {
+  max-width: 100%;
+  height: auto;
+}
+.hover-panel p {
+  margin: 0 0 0.4em;
+}
+
 .hover-term {
   font-style: italic;
   border-bottom: 1px dotted #888;
