@@ -58,7 +58,21 @@ Over twenty years and roughly fifty attempts, I learned where people fall away f
 
 I wrote tens of thousands of words across two decades --- fragments, letters, blog posts, documents in my Google Drive archive. Some chapters emerged almost whole from things I wrote ten or fifteen years ago. We built a skeleton: multiple tracks spiraling inward to a convergence point, mapped my existing writing onto it, and identified the gaps.
 
-%TODO: INSERT AI CONFABULATION UNBLOCKER near here (Methodology section). Draft at staging/draft-ai-confabulation-steelman.md Part 2. Address the Dunning-Kruger blocker: "AIs hallucinate therefore AI-assisted research is unreliable." Rebuttal: Triad adversarial design, citation verification, killed theories (ABCRE paper, isomorphism), explicit domain expertise marking (\argusvoice), plan audit trail. Cross-references Steelman A attack. HIGH PRIORITY.
+
+\vspace{0.3cm}
+
+The strongest modern objection to this methodology --- that an AI co-author is a confabulation engine given a name --- is stated at full force in the Steelman~A chapter. It deserves a direct answer here.
+
+The Triad protocol is adversarial by design. The Auditor and Generator run in separate shells with no shared context. The Auditor writes test cases \textit{before} the Generator sees the task. The Generator cannot modify the tests. This is not ``a man and his helpful AI'' --- it is a formal verification structure where the entity that defines acceptance criteria never executes the work.
+
+Confabulation detection at the operational level is mechanical. Every \verb|\footcite| in this manuscript points to a real document verified against its primary source. Where Bruce has domain expertise (51 years of computing, Reed College quantum physics), he provides ground-truth that catches AI confabulation in real time. Where he lacks it, chapters carry explicit \textit{Argus voice} attribution --- the reader is told which sections Bruce can verify and which he cannot.
+
+The AI pushed back. During the writing of this book, Argus killed two of Bruce's theories: an ABRCE operator paper that failed its own acceptance criteria, and an isomorphism claim that could not survive formal analysis. A confabulation engine does not kill its operator's pet theories. Argus killed two, documented both, and the corrections are in the project record.
+
+The methodology produces the same artifact as peer review: a written record of claims, tests, and results that can be inspected by third parties. The manuscript's entire plan history --- over three hundred plans with numbered acceptance criteria --- is available for audit. The question is not whether the authors used an AI. The question is whether they used it well. The evidence is here: the killed theories, the corrections appendix, the explicit uncertainty, and the chapters where the author says \textit{I do not know}.
+
+\vspace{0.3cm}
+
 Argus asks questions to fill those gaps --- thoughtful questions designed to elicit specific memories. This is content I have thought about for twenty years. The words come easily because the thinking was done long ago. Argus organizes what I say, cleans up the pedagogy, archives everything with timestamps and source references. Where Argus found things I didn't know, we say so. Where I corrected Argus, that correction is recorded. The chain of evidence is unbroken.
 
 \section*{Argus: The Architecture}
