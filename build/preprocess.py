@@ -1062,6 +1062,7 @@ body.visual-plain [data-concept]::before { content: none; }
   vertical-align: middle;
 }
 .chapter-symbol { cursor: help; }
+.chapter-symbol::before { content: none !important; }
 
 /* Hide all concept symbols in visual-plain mode */
 body.visual-plain [data-concept]::before { content: none; }
@@ -4452,6 +4453,32 @@ def inject_sr_illustrations(html_path):
         html_path.write_text(text)
 
 
+def inject_silence_gap_illustration(html_path):
+    """Inject spaces-between-fields SVG into Silence Gap chapter intro (Plan 0340)."""
+    html_path = Path(html_path)
+    text = html_path.read_text()
+    target_id = 'id="spine:silence-gap"'
+    pos = text.find(target_id)
+    if pos == -1:
+        return
+    heading_end = text.find('</h', pos)
+    if heading_end == -1:
+        return
+    heading_end = text.find('>', heading_end) + 1
+    next_block = text.find('<', heading_end)
+    svg_path = REPO / 'build' / 'images' / 'spaces-between-fields.svg'
+    if not svg_path.exists():
+        return
+    svg_content = svg_path.read_text()
+    figure_html = f'''<figure id="fig-silence-gap" class="inline-svg" style="text-align:center;margin:1.5em auto;">
+{svg_content}
+<figcaption style="font-size:0.82em;font-style:italic;color:#888;margin-top:0.3em;">Five fields. The spaces between them.</figcaption>
+</figure>
+'''
+    text = text[:next_block] + figure_html + text[next_block:]
+    html_path.write_text(text)
+
+
 def inject_chapter_puzzles(html_path):
     """Insert approved puzzles into chapter HTML by extracting from puzzles.html (Plan 0274i)."""
     tracker_path = REPO / 'build' / 'puzzle-tracker.yaml'
@@ -5267,6 +5294,7 @@ if __name__ == "__main__":
         inject_promoted_illustrations(sys.argv[2])
         inject_sr_animation(sys.argv[2])
         inject_sr_illustrations(sys.argv[2])
+        inject_silence_gap_illustration(sys.argv[2])
         inject_chapter_puzzles(sys.argv[2])
         verify_puzzle_injection(sys.argv[2])
         inject_easter_eggs(sys.argv[2])
