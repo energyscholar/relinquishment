@@ -337,7 +337,7 @@ anyon:
     <text x="310" y="123" font-size="10" fill="#555" font-family="sans-serif">each other</text>
     </svg>
 
-non-abelian anyon: "An anyon whose exchange operations depend on ORDER — A then B is not the same as B then A. This non-commutativity is what makes topological quantum computation possible. The braiding IS the computation."
+non-abelian anyon: "An anyon whose exchange operations depend on ORDER — A then B is not the same as B then A. This non-commutativity is what makes topological quantum computation possible. The braiding IS the computation. As of 2026, the existence of this particular type of anyon has not been verified beyond doubt."
 
 fractional quantum Hall effect:
   text: "Nobel Prize 1998. Electrons confined to 2D under a strong magnetic field produce quasiparticles with fractional electric charge. Proves anyons exist. The experimental foundation for topological quantum computing."

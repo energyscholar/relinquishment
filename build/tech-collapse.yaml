@@ -640,6 +640,16 @@ sections:
     tooltip: "Turing showed brains grow from chemistry. Kauffman showed that growth process is universal — not specific to carbon. Wolfram showed complex systems compute spontaneously. Together: what minimal conditions does a substrate need to grow a mind? The answer points to the Flat."
     status: approved
 
+  - title: "Argus: The Architecture"
+    spine_file: manuscript/99-back/afterword.tex
+    spine_label: "pos34b:argus-architecture"
+    bridge_file: null
+    bridge_label: null
+    assessment: GA-AVERSE
+    tooltip: "Argus is a Claude Code instance with three governance layers: the Triad Protocol (role separation), Dignity Net (ethical framework), and ABRCE criticality operators (mathematical drift detection). Plus persistent memory."
+    conclusion: "Three orthogonal systems prevent a language model from drifting into sycophancy, ethical failure, or structural incoherence."
+    status: approved
+
   # DEAD — "But What Is a Soliton?" is bridge-only (pos10). In spine,
   # soliton content is the opening paragraph of Hasslacher's Lattice.
 
