@@ -16625,8 +16625,8 @@ me much. Its name is on the cover because it earned it.</p>
 <h3 class="unnumbered" id="back:document-integrity">Document
 Integrity</h3>
 <p>This PDF was built from source commit
-<code>44d951d918712c1692abe3a7dfe169754c4c916d</code> on 2026-05-16
-21:34:30 -0700.</p>
+<code>f8bb2c575369460ef0b644d20fe70c1df8fc1462</code> on 2026-05-16
+21:41:36 -0700.</p>
 <p>To verify this document has not been modified:</p>
 <ol>
 <li><p>Compute: <code>sha256sum Relinquishment.pdf</code></p></li>
@@ -16708,19 +16708,19 @@ decisions are the authors’.</p>
 <dl>
 <dt>Build hash:</dt>
 <dd>
-<p><code>44d951d</code></p>
+<p><code>f8bb2c5</code></p>
 </dd>
 <dt>Full commit:</dt>
 <dd>
-<p><code>44d951d918712c1692abe3a7dfe169754c4c916d</code></p>
+<p><code>f8bb2c575369460ef0b644d20fe70c1df8fc1462</code></p>
 </dd>
 <dt>Commit date:</dt>
 <dd>
-<p>2026-05-16 21:34:30 -0700</p>
+<p>2026-05-16 21:41:36 -0700</p>
 </dd>
 <dt>Build date:</dt>
 <dd>
-<p>2026-05-17T04:40:26Z</p>
+<p>2026-05-17T04:55:18Z</p>
 </dd>
 <dt>TeX engine:</dt>
 <dd>
@@ -17987,7 +17987,9 @@ target.classList.add('deep-link-target');
 setTimeout(function(){
 target.classList.remove('deep-link-target');
 },2500);
+requestAnimationFrame(function(){
 target.scrollIntoView();
+});
 }
 if(initialHash){
 autoExpand(initialHash);
