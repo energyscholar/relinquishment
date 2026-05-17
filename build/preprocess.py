@@ -4463,11 +4463,10 @@ def inject_silence_gap_illustration(html_path):
     pos = text.find(target_id)
     if pos == -1:
         return
-    heading_end = text.find('</h', pos)
-    if heading_end == -1:
+    summary_end = text.find('</summary>', pos)
+    if summary_end == -1:
         return
-    heading_end = text.find('>', heading_end) + 1
-    next_block = text.find('<', heading_end)
+    next_block = summary_end + len('</summary>')
     svg_path = REPO / 'build' / 'images' / 'spaces-between-fields.svg'
     if not svg_path.exists():
         return
