@@ -73,6 +73,10 @@
   question: "How do you know the AI isn't just telling you what you want to hear?"
   category: verification
 
+- id: dl:sources-bibliography
+  question: "Where are all the citations? Can I check them?"
+  category: verification
+
 # --- Science (14) ---
 - id: dl:what-is-the-flat
   question: "What is the Flat? What's in my phone?"
