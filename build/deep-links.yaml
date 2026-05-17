@@ -65,6 +65,14 @@
   question: "Why not just destroy the technology or keep it secret?"
   category: skeptic
 
+- id: dl:ai-confabulation-attack
+  question: "Isn't the AI co-author just a confabulation engine with a name?"
+  category: skeptic
+
+- id: dl:ai-confabulation-rebuttal
+  question: "How do you know the AI isn't just telling you what you want to hear?"
+  category: verification
+
 # --- Science (14) ---
 - id: dl:what-is-the-flat
   question: "What is the Flat? What's in my phone?"
