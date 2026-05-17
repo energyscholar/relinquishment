@@ -2354,10 +2354,10 @@ def fix_html_toc(html_path):
             # Generate Sources bibliography
             sources_html = _generate_sources_html(bib_entries)
             # Find the empty Sources <details> and inject content after </summary>
-            sources_pattern = r'(<details[^>]*>\s*<summary[^>]*>.*?id="app:sources".*?</summary>)(\s*</details>)'
+            sources_pattern = r'(<details[^>]*>\s*<summary[^>]*>.*?id="app:sources".*?</summary>)([\s\S]*?)(</details>)'
             sources_match = re.search(sources_pattern, text)
             if sources_match:
-                text = text[:sources_match.end(1)] + '\n' + sources_html + '\n' + text[sources_match.start(2):]
+                text = text[:sources_match.end(2)] + '\n' + sources_html + '\n' + text[sources_match.start(3):]
                 print(f"  Sources bibliography: {len(bib_entries)} entries injected")
             else:
                 print("  WARNING: Could not find Sources section to inject bibliography")
