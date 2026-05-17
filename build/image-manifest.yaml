@@ -108,6 +108,31 @@ inline_svgs:
     description: "Kuhn paradigm cycle — normal science → anomaly → crisis → revolution"
     location: outside-collapse
 
+  - id: fig-consequence-fork
+    inject_function: inject_consequence_fork
+    chapter: why-relinquish
+    status: live
+
+  - id: fig-silence-gap
+    inject_function: inject_silence_gap_illustration
+    chapter: the-silence-gap
+    status: live
+
+  - id: fig-factor-vs-multiply
+    inject_function: inject_factoring_illustration
+    chapter: the-factoring-game
+    status: live
+
+  - id: fig-network-resilience
+    inject_function: inject_network_resilience
+    chapter: capabilities
+    status: live
+
+  - id: fig-power-pattern
+    inject_function: inject_power_pattern
+    chapter: why-relinquish
+    status: live
+
 file_svgs:
   - file: build/images/cover-triskellion.svg
     usage: cover-image
@@ -133,16 +158,13 @@ file_svgs:
     usage: standalone
     description: "Scale sequence 4 — the Flat as substrate"
 
-  - file: build/images/magnetosphere-test.svg
-    usage: development
-    description: "Dev artifact — delete before ship"
-
   - file: build/images/raf-substrate-trinity.svg
     usage: source-for-inline
     description: "RAF/substrate/intelligence trinity (source)"
 
   - file: build/images/spaces-between-fields.svg
-    usage: not-yet-inline
+    usage: source-for-inline
+    status: live
     description: "Silence gap — five fields with empty spaces between"
 
 placeholders:
