@@ -222,13 +222,6 @@
   category: Standalone Files
   description: "Cover triskellion — three interlocking arcs."
 
-- id: SVG-024
-  name: magnetosphere-test
-  status: live
-  source: build/images/magnetosphere-test.svg
-  category: Standalone Files
-  description: "Full magnetosphere with plasma sheet labeled 'The Flat'. Dark background."
-
 - id: SVG-034
   name: cover-magnetosphere
   status: live
@@ -279,7 +272,7 @@
 
 - id: SVG-029
   name: broken-bridges
-  status: approved
+  status: live
   source: gallery
   category: Argument / Silence Gap
   display: BOTH
@@ -290,7 +283,7 @@
 
 - id: SVG-030
   name: guided-deduction-two-paths
-  status: approved
+  status: live
   source: gallery
   category: Argument / Tradecraft
   display: BOTH
@@ -312,7 +305,7 @@
 
 - id: SVG-033
   name: convergence-spotlights
-  status: approved
+  status: live
   source: gallery
   category: Argument / Convergence
   display: BOTH
@@ -485,7 +478,7 @@
 
 - id: SVG-049
   name: spaces-between-fields
-  status: draft
+  status: live
   source: build/images/spaces-between-fields.svg
   category: The Stack / Convergence
   chapter: convergence-revisited
