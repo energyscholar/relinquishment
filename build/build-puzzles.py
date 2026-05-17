@@ -631,7 +631,7 @@ def wrap_collapsible(puzzle):
     if appr:
         badge += ' <span class="collapse-badge approved-tag">APPROVED</span>'
     if inst:
-        book_url = f'Relinquishment.html#{pid}'
+        book_url = f'https://relinquishment.ai/Relinquishment.html#{pid}'
         full_url = f'relinquishment.ai/Relinquishment.html#{pid}'
         badge += f' <a href="{book_url}" class="collapse-badge installed-tag" title="View in book">INSTALLED</a>'
         badge += f' <span class="deep-link-url"><a href="{book_url}">{full_url}</a></span>'
@@ -2163,7 +2163,7 @@ def build_toc():
         is_installed = pid in installed_ids
         a_mark = '&#10003;' if is_approved else '&middot;'
         if is_installed:
-            book_link = f'Relinquishment.html#{esc(pid)}'
+            book_link = f'https://relinquishment.ai/Relinquishment.html#{esc(pid)}'
             i_mark = f'<a href="{book_link}" title="View in book">&#128279;</a>'
         else:
             i_mark = '&middot;'

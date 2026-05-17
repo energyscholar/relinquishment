@@ -992,7 +992,9 @@
       target.classList.remove('deep-link-target');
     }, 2500);
 
-    target.scrollIntoView();
+    requestAnimationFrame(function() {
+      target.scrollIntoView();
+    });
   }
 
 
