@@ -4773,7 +4773,9 @@ def inject_chapter_puzzles(html_path):
             puzzle_html = f'\n{js_block}<details class="puzzle-section"{open_attr}>\n{new_summary}\n{css_block}{inner}\n</details>\n'
 
             visibility = tracker_entry.get('visibility', 'title')
-            inject_pos = pos
+            inject_pos = find_injection_point(text, target_id)
+            if inject_pos == -1:
+                continue
             if visibility == 'chapter' and chapter in CHAPTER_SECTION_IDS:
                 chapter_end = find_chapter_end(text, CHAPTER_SECTION_IDS[chapter])
                 if chapter_end != -1:
