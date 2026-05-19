@@ -573,6 +573,7 @@ def render_container(puzzle):
     pid = esc(puzzle['id'])
     title = esc(puzzle.get('title', ''))
     question = apply_hover_tooltips(esc(puzzle.get('question', '')))
+    preamble_html = text_to_html(puzzle['preamble']) if puzzle.get('preamble') else ''
     abstract_text = esc(puzzle.get('abstract', '').strip())
     hint_text = esc(puzzle.get('hint', ''))
     ptype = puzzle.get('type', puzzle.get('sub_type', ''))
@@ -603,6 +604,7 @@ def render_container(puzzle):
   <h2>{appr_badge}{title} <a class="anchor-link" href="#{pid}" title="{pid}">#</a></h2>
   {blurb_html}
   {illus_html}
+  {preamble_html}
   <p class="question">{question}</p>
   <div class="interaction"></div>
   {bg_section}
