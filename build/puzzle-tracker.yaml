@@ -350,7 +350,7 @@ chapter_puzzles:
   # ---- T7: Services/Grounding (1 puzzle) ----
 
   - id: pz-log-t7-001
-    title: "UDHR Service Compatibility"
+    title: "What Must a Caretaker Notice?"
     type: log
     topic: t7
     level: p3
