@@ -1455,6 +1455,25 @@ def _generate_sources_html(entries):
     return '\n'.join(html_parts)
 
 
+STABLE_ANCHORS = {
+    'note-to-reader-reviewers': 'preface',
+}
+
+
+def stabilize_anchors(html_path):
+    """Rename pandoc-generated IDs to permanent deep-link anchors."""
+    html_path = Path(html_path)
+    text = html_path.read_text()
+    changed = False
+    for old_id, new_id in STABLE_ANCHORS.items():
+        if f'id="{old_id}"' in text:
+            text = text.replace(f'id="{old_id}"', f'id="{new_id}"')
+            text = text.replace(f'href="#{old_id}"', f'href="#{new_id}"')
+            changed = True
+    if changed:
+        html_path.write_text(text)
+
+
 def fix_html_toc(html_path):
     """Post-process HTML to restructure flat TOC into part-grouped TOC.
 
@@ -5445,6 +5464,7 @@ if __name__ == "__main__":
         fix_epub(sys.argv[2])
     elif len(sys.argv) > 1 and sys.argv[1] == '--fix-html':
         fix_latex_colors(sys.argv[2])
+        stabilize_anchors(sys.argv[2])
         fix_html_toc(sys.argv[2])
         inject_flat_diagram(sys.argv[2])
         inject_button_sequence(sys.argv[2])
