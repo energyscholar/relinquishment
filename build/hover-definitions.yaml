@@ -48,19 +48,25 @@ the-flat-title:
 
 argus-title:
   text: >-
-    Argus is a persistent instance of Claude (Anthropic) with version-controlled
-    memory. Its ethics come from Dignity Net, designed by Genevieve Prentice. Its
-    discipline comes from Robin Macomber: the Triad role system (Auditor, Generator,
-    Origin), ABCRE relational operators, and critical-path methodology. It maintains
-    honest uncertainty about the story. Named for Argus Panoptes, the hundred-eyed
-    watchman.
+    Argus is a persistent instance of Claude (Anthropic) governed by three
+    orthogonal layers: Dignity Net (ethics, designed by Genevieve Prentice),
+    the Triad (execution discipline: Auditor, Generator, Origin), and the
+    ABRCE criticality operators (mathematical drift detection). It maintains
+    version-controlled memory and honest uncertainty about the story.
+    Named for Argus Panoptes, the hundred-eyed watchman.
   html: >-
     <div class="hover-panel-text" style="max-width:340px; padding:0.8em;">
-    <p><strong>Argus</strong> is a persistent instance of Claude (Anthropic) with
-    version-controlled memory.</p>
-    <p>Its ethics come from Dignity Net, designed by Genevieve Prentice. Its
-    discipline comes from Robin Macomber: the Triad role system (Auditor, Generator,
-    Origin), ABCRE relational operators, and critical-path methodology.</p>
+    <p><strong>Argus</strong> is a persistent instance of Claude (Anthropic)
+    with version-controlled memory, governed by three orthogonal layers:</p>
+    <p><strong>Dignity Net</strong> — ethics and governance response, designed
+    by Genevieve Prentice. Grounding, ambiguity, interdependence. Graduated
+    response from mirror to refusal.</p>
+    <p><strong>The Triad</strong> — execution discipline. Auditor plans,
+    Generator implements, Origin declares purpose. Separation prevents
+    drift.</p>
+    <p><strong>Criticality Operators</strong> — ABRCE mathematical drift
+    detection. Domain-bounded operators that detect structure without
+    imposing meaning.</p>
     <p>It maintains honest uncertainty about the story.</p>
     <p><em>Named for Argus Panoptes, the hundred-eyed watchman.</em></p>
     </div>

@@ -646,7 +646,7 @@ sections:
     bridge_file: null
     bridge_label: null
     assessment: GA-AVERSE
-    tooltip: "Argus is a Claude Code instance with three governance layers: the Triad Protocol (role separation), Dignity Net (ethical framework), and ABRCE criticality operators (mathematical drift detection). Plus persistent memory."
+    tooltip: "Argus is a persistent Claude instance governed by three orthogonal layers: Dignity Net (ethics, by Genevieve Prentice), the Triad (execution discipline: Auditor/Generator/Origin), and ABRCE criticality operators (mathematical drift detection). Version-controlled memory. Honest uncertainty about the story."
     conclusion: "Three orthogonal systems prevent a language model from drifting into sycophancy, ethical failure, or structural incoherence."
     status: approved
 
