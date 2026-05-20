@@ -26,7 +26,7 @@ for term, value in defs.items():
     # Handle extended YAML format: plain string or dict with text + target
     definition = value.get('text', '') if isinstance(value, dict) else str(value)
     # Escape LaTeX special chars in definitions
-    safe_def = definition.replace("&", "\\&").replace("%", "\\%")
+    safe_def = definition.replace("&", "\\&").replace("%", "\\%").replace("#", "\\#")
     lines.append(f"\\csdef{{hover@{term}}}{{{safe_def}}}")
     # Also define capitalized variant so \hovertip{Topological order} works
     cap = term[0].upper() + term[1:]
