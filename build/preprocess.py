@@ -4205,7 +4205,7 @@ def inject_promoted_illustrations(html_path):
 # Plan 0274a: chapter → target-id mapping for puzzle injection.
 # ORDER MATTERS: entries are in document order. Reverse iteration preserves positions.
 CHAPTER_INJECTION_TARGETS = {
-    'story-never-told':    'preface',
+    'story-never-told':    'spine:three-possibilities',
     'three-possibilities': 'custodian:flat',
     'the-flat':            'custodian:dance',
     'the-braid':           'custodian:locksmith',
