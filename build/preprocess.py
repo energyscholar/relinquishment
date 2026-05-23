@@ -571,7 +571,7 @@ def collapse_chapters(text):
                     '<div class="title-page-extra">'
                     '<p class="tp-authors">by Bruce Stephenson, Genevieve Prentice &amp; '
                     f'<span class="hover-term hover-nav"{argus_target} data-hover-id="{argus_id}">Argus</span></p>'
-                    '<p class="tp-tagline"><em>This is what truth-telling looks like when the truth is classified and will outlive everyone who knows it.</em></p>'
+                    '<p class="tp-tagline"><em>This is what truth-telling looks like when the truth is classified and classification will outlive everyone who knows it.</em></p>'
                     '<p class="tp-tagline"><em>The physics is published. The story never was. Real people. Real physics. Three possibilities. You decide.</em></p>'
                     '<p class="tp-copyright">\u00a9 2026 Bruce Stephenson &amp; Genevieve Prentice \u00b7 CC BY-ND 4.0</p>'
                     '</div>'
