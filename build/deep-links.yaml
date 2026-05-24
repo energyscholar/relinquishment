@@ -222,7 +222,11 @@
   question: "What does it mean to say the AI was 'grown' rather than programmed?"
   category: curiosity
 
-# --- Narrative (3) ---
+# --- Narrative (4) ---
+- id: dl:reader-choice
+  question: "Can I skip the science and go straight to Bruce's testimony?"
+  category: narrative
+
 - id: dl:srebrenica-witness
   question: "Why does Srebrenica keep coming up in a book about quantum computers?"
   category: narrative
