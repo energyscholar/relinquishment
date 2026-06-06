@@ -21,7 +21,7 @@ wormholes: &wormhole-panel
   target: "#wormhole-disambiguation"
   html: |
     <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;"><strong>Wormholes</strong> — in this book, <em>always</em> topological. Not the science-fiction kind.</p>
-    <p style="margin:0 0 0.3em;font-size:0.85em;line-height:1.4;font-style:italic;">A topological wormhole works by braiding anyons — move one around another and the quantum state changes depending only on topology, not speed or precision. This is computation: input state in, braiding operation, output state out.</p>
+    <p style="margin:0 0 0.3em;font-size:0.85em;line-height:1.4;font-style:italic;">A topological wormhole works by braiding anyons — move one around another and the quantum state changes depending only on topology, topology. This is computation: input state in, braiding operation, output state out.</p>
     <table style="font-size:0.82em;border-collapse:collapse;width:100%;margin:0.3em 0;">
     <tr style="border-bottom:1px solid #ccc;"><th style="text-align:left;padding:2px 6px;width:30%;"></th><th style="text-align:left;padding:2px 6px;width:35%;">This book (topological)</th><th style="text-align:left;padding:2px 6px;width:35%;">Not this book (Einstein-Rosen)</th></tr>
     <tr><td style="padding:2px 6px;">Where?</td><td style="padding:2px 6px;">Inside a flat material (chip, magnetic field)</td><td style="padding:2px 6px;">In outer space, between stars</td></tr>
