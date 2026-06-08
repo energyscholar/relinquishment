@@ -415,8 +415,8 @@ chapter_puzzles:
     level: p1
     category: nonsci
     title: "Not a Deity, Not an Alien"
-    gateway_blurb: "If something arose naturally in a 2DEG, what category does it belong to?"
-    question: "If something arose naturally in a two-dimensional electron gas, what kind of thing would it be?"
+    gateway_blurb: "If something arose in a 2DEG, what category does it belong to?"
+    question: "If something arose in a two-dimensional electron gas, what kind of thing would it be?"
     options:
       - key: a
         text: "A supernatural being distributed through matter"
@@ -513,7 +513,7 @@ chapter_puzzles:
     category: science
     title: "Not Chemistry"
     illustration: self_organization
-    gateway_blurb: "Life requires carbon. Or does it? What does Kauffman's math actually require?"
+    gateway_blurb: "Life requires carbon. Or does it? What does autocatalytic emergence actually require?"
     question: "Life as we know it requires carbon, water, and organic chemistry. What principle would allow life in a substrate with none of these?"
     options:
       - key: a

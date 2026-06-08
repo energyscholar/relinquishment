@@ -1849,7 +1849,10 @@ def fix_html_toc(html_path):
                     raw_def = str(value)
                     target_attr = ''
                     rich_html = None
-                hover_id = re.sub(r'[^a-z0-9]+', '-', lookup).strip('-')
+                if isinstance(value, dict) and value.get('hover_id'):
+                    hover_id = value['hover_id']
+                else:
+                    hover_id = re.sub(r'[^a-z0-9]+', '-', lookup).strip('-')
                 _register_hover(hover_id, text=raw_def or None, html=rich_html)
                 return f'<span class="hover-term"{target_attr} data-hover-id="{hover_id}">{term}</span>'
             elif lookup in hover_lower:

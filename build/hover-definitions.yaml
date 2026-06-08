@@ -96,6 +96,14 @@ A1: "⬡¬◈ (A1): The Flat exists; emergence does not occur. The silence refle
 
 A2: "⬡◈ (A2): The Flat exists; the physics permits emergence, but no one has looked. The anomalies exist but have not been recognized because the question has not been framed. Contrast with ⬡¬◈ (A1): the silence reflects absence in nature. As of 2026, no experiment distinguishes them. Same evidence, same silence — different futures."
 
+"⬡◈":
+  text: "⬡ Flat + ◈ emergence (A2): The physics permits autocatalytic emergence in the Flat; no one has looked. Same evidence as A1, different future."
+  hover_id: "flat-emergence-a2"
+
+"⬡¬◈":
+  text: "⬡ Flat + ¬◈ no emergence (A1): The Flat exists but emergence does not occur there. The silence reflects absence in nature."
+  hover_id: "flat-no-emergence-a1"
+
 2DEG:
   text: "A thin layer where electrons can only move in two directions — trapped on a sheet. Found inside every computer chip and in Earth's magnetic field. Substrate-independent: confirmed in graphene, ZnO, Si/SiGe heterostructures. [Dean et al., Nat. Phys. 7 (2011) 693, doi:10.1038/nphys2007]"
   hover_id: "two-dimensional-electron-gas"
