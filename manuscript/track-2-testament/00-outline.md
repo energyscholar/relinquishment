@@ -34,7 +34,7 @@ Years of trying to understand. The slow pattern recognition. What do you do with
 The meeting. The NDA offered and refused. The legally decisive moment.
 
 ### 2.8 — The Research
-Building the case. The Substack. Finding the GCHQ/Cocks precedent. Hasslacher's trajectory. Freedman's 1988 insight. Kauffman's edge of chaos. The pieces falling into place — or being forced into place by a pattern-matching mind.
+Building the case. The Substack. Finding the GCHQ/Cocks precedent. Hasslacher's trajectory. Wilczek's anyonic physics. Kauffman's edge of chaos. The pieces falling into place — or being forced into place by a pattern-matching mind.
 
 ### 2.9 — The Reconstruction
 This book. The sessions with Claude. The three possibilities. The honest admission: I don't know which one is true.

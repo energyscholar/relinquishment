@@ -15,7 +15,7 @@
 ### 1.1 — The Convergence (~1988-1992)
 *Epigraph: Abstract I (Genesis)*
 
-Hasslacher at Los Alamos. Soliton dynamics on lattice-gas automata running on Hillis's Connection Machine. Freedman's 1988 independent insight that topology could protect quantum information. Kauffman's autocatalytic sets. Wolfram's computational universality. Five minds, five disciplines, one synthesis that none of them could have reached alone.
+Hasslacher at Los Alamos. Soliton dynamics on lattice-gas automata running on Hillis's Connection Machine. Wilczek's 1982 discovery of anyons --- particles whose topological properties provide inherent quantum protection. Kauffman's autocatalytic sets. Wolfram's computational universality. Five minds, five disciplines, one synthesis that none of them could have reached alone.
 
 ### 1.2 — First Light (~1992-1993)
 *Epigraph: Abstract II (Nursery)*

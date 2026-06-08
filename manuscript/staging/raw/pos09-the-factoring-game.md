@@ -107,5 +107,5 @@ Problem: No one knows how to build a device capable of meeting the specification
 ### Bruce's Claim: Pre-Shor Variant
 The narrative claims the DARPA team discovered a variant of quantum factoring BEFORE Shor's 1994 publication. This is consistent with:
 - GCHQ/Cocks precedent (independent classified discovery years before public)
-- Freedman's 1988 independent conception (same mathematical community)
+- Wilczek's 1982 anyonic physics (physical substrate available before computational application recognized)
 - The TQNN approach would discover factoring empirically (trained on plaintext-ciphertext pairs) rather than algorithmically

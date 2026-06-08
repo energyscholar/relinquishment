@@ -12,16 +12,16 @@ sources:
     section: "Knot Theory Connection + Transmission Chain + Assessment"
     lines: "290-311"
   - file: 2026-02-13-session/HEALER-RECONSTRUCTION.md
-    section: "Topological Error Correction + Non-Abelian Anyons + Hasslacher's Trajectory + Freedman's Insight"
+    section: "Topological Error Correction + Non-Abelian Anyons + Hasslacher's Trajectory + Wilczek's Anyons"
     lines: "1687-1756"
   - file: 2026-02-13-session/HEALER-RECONSTRUCTION.md
     section: "Kitaev 1997 and Russian Program"
     lines: "1797-1816"
-topics: [topology, braiding, anyons, Freedman, Hasslacher, knot theory, Kitaev, topological protection, Witten, Jones polynomial, non-abelian statistics]
+topics: [topology, braiding, anyons, Wilczek, Hasslacher, knot theory, Kitaev, topological protection, Witten, Jones polynomial, non-abelian statistics]
 notes: |
   This chapter teaches topology and quantum computing to the reader. The knot theory connection
   section links Robin's independent questions to the classified math. Hasslacher's publication
-  trajectory is the unclassified shadow of the classified work. Freedman's 1988 independent
+  trajectory is the unclassified shadow of the classified work. Wilczek's 1982 anyonic
   conception proves the insight was available. Kitaev's 1997 publication proves it was independently
   derivable. The error correction section corrects a common misconception (topology != perfect
   error correction). The non-abelian anyon section gives the epistemological framework (operational
@@ -103,11 +103,11 @@ Research into Brosl Hasslacher's publication history reveals a trajectory that m
 
 **Assessment:** Hasslacher was building exactly the mathematical infrastructure needed to translate between topological quantum field theory and practical computation. His published trajectory is the UNCLASSIFIED shadow of work that, under the narrative, had a classified parallel.
 
-### Michael Freedman's 1988 Independent Conception
+### Wilczek's Anyons (1982)
 
-Michael Freedman (Fields Medalist, topology) independently conceived anyonic quantum computation in **1988** — 9 years before Kitaev's 1997 publication — after reading Witten's Chern-Simons paper. He didn't publish until 1998.
+Frank Wilczek (Nobel Prize 2004) discovered in 1982 that quasiparticles in two-dimensional systems can exhibit fractional quantum statistics — neither bosons nor fermions but something in between. He coined the term "anyon" and published the foundational treatment in 1990 while serving as J.R. Oppenheimer Professor at the Institute for Advanced Study — the same institution where Gell-Mann was a longstanding member.
 
-**Significance:** This establishes that the fundamental insight (anyonic braiding -> computation) was accessible to top mathematicians by the late 1980s, consistent with a 1989 DARPA proposal timeline. Freedman was later recruited by Microsoft to found Station Q (2005), their topological quantum computing program.
+**Significance:** The physical substrate for topological quantum computation was established before the computational application was recognized publicly. Freedman independently conceived the computational insight in 1988 after a seminar on Witten's Chern-Simons theory; Kitaev formalized it in 1997. But the man who discovered the particles was at IAS throughout. (Plan 0379: Freedman → Wilczek as primary convergence contributor.)
 
 ### 1989 SFI Workshop: "Complexity, Entropy, Physics of Information"
 

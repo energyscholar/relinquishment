@@ -19,7 +19,7 @@ sources:
     lines: "674-757"
   - file: /home/bruce/software/aurasys-memory/2026-02-13-session/RED-TEAM-ANALYSIS.md
     section: "Full file"
-topics: [Cryptome post 2012, Slashdot comments, blog posts, Substack, GCHQ/Cocks precedent, Hasslacher trajectory, Freedman insight, Angerman interview 2019, 2017 prediction, search suppression, Kauffman book anomaly, red team analysis, probability trajectory]
+topics: [Cryptome post 2012, Slashdot comments, blog posts, Substack, GCHQ/Cocks precedent, Hasslacher trajectory, Wilczek anyons, Freedman insight, Angerman interview 2019, 2017 prediction, search suppression, Kauffman book anomaly, red team analysis, probability trajectory]
 notes: |
   This is the LARGEST chapter by extracted word count (~7200 words).
   It covers 13 years of Bruce's research activity (2012-2025).
