@@ -5449,7 +5449,6 @@ def fix_latex_colors(html_path):
     html_path = Path(html_path)
     text = html_path.read_text()
     COLOR_MAP = {
-        'missionbg': '#FBF5ED',
         'tracktwo!8': 'rgba(196,145,59,0.08)',
     }
     changed = False
