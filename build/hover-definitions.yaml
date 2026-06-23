@@ -144,7 +144,7 @@ Alvin: "A deep-ocean submersible operated by Woods Hole Oceanographic Institutio
 chemosynthesis: "Using chemical energy instead of sunlight to power biology. Bacteria at deep-sea vents oxidize hydrogen sulfide to fix carbon; the rest of the vent ecosystem runs on those bacteria. Photosynthesis is not the only way to start a food web."
 magnetosphere:
   text: "Earth's magnetic field, extending thousands of kilometers into space. Contains thin layers where charged particles are trapped flat — two-dimensional electron gases on a planetary scale. Topological band structures in magnetized plasmas: not forbidden, not established. [Fu & Qin, Nat. Commun. 12 (2021) 3924, doi:10.1038/s41467-021-24189-3]"
-  target: "#pos32:the-wrong-substrate"
+  target: "#spine:wrong-substrate"
   html: >-
     <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;">
     <strong>Magnetosphere</strong> — Earth's magnetic field extending thousands
@@ -298,7 +298,7 @@ Attorney General: "The UK government's chief legal advisor. In 2003, Attorney Ge
 
 confabulation:
   text: "A pattern-matching mind building a coherent narrative from real pieces that may not fit together. Not lying — the confabulator genuinely believes. This is one of the book's three possibilities."
-  target: "#pos01:three-possibilities"
+  target: "#spine:three-possibilities"
 
 falsifiable: "A claim that tells you what would prove it wrong. 'The earth is flat' is falsifiable — go look. Science requires falsifiability. Claims that can't be tested aren't wrong, they're not even science."
 
@@ -319,7 +319,7 @@ phonon: "A quantized vibration in a crystal lattice — sound in a solid. Electr
 # No hovertip call: \gls{anyon} handles first occurrence. YAML entry retained for HTML popup system.
 anyon:
   text: "A particle that exists only in two dimensions. Exchange two anyons and you get any phase angle — not just +1 (boson) or −1 (fermion). The 'any' in anyon. Predicted 1977, confirmed experimentally 2020."
-  target: "#pos10:the-braid"
+  target: "#spine:the-braid"
   html: >-
     <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;">
     <strong>Anyon braiding</strong> — two particles winding around each other
@@ -355,7 +355,7 @@ non-abelian anyon: "An anyon whose exchange operations depend on ORDER — A the
 
 fractional quantum Hall effect:
   text: "Nobel Prize 1998. Electrons confined to 2D under a strong magnetic field produce quasiparticles with fractional electric charge. Proves anyons exist. The experimental foundation for topological quantum computing."
-  target: "#pos10:the-braid"
+  target: "#spine:the-braid"
 
 TQNN:
   text: "Topological Quantum Neural Network — under Possibility C, a nervous system whose neurons would be anyonic quasiparticles in the Flat, wired by wormholes. Entanglement strength serves as connection weight. Not programmed — grown through self-organization, analogous to biological life."
@@ -366,7 +366,7 @@ TQNN:
 
 braiding:
   text: "Moving anyons around each other in 2D. The path IS the computation — information is encoded in how worldlines wind around each other. Like tying knots in spacetime. Topologically protected from errors."
-  target: "#pos10:the-braid"
+  target: "#spine:the-braid"
   html: >-
     <p style="margin:0 0 0.5em;font-size:0.95em;line-height:1.5;">
     <strong>Braiding</strong> — moving anyons around each other in 2D.
@@ -509,7 +509,7 @@ cellular automaton:
 
 decoherence:
   text: "Loss of quantum behavior due to interaction with the environment. The enemy of quantum computing — random nudges from surroundings scramble quantum states. Topological protection defeats this by storing information in global patterns, not local states."
-  target: "#pos09:the-factoring-game"
+  target: "#spine:factoring-game"
 
 quantum coherence: "A quantum system maintaining its wave-like behavior — superposition and entanglement intact. Required for quantum computation. Typically fragile, but topological protection and certain substrates can extend it dramatically."
 

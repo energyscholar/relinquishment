@@ -20,7 +20,7 @@
 
 
 # Guided Deduction (Part I)
-"pos01:three-possibilities": "Confabulation, exaggerated kernel, or substantially true — the reader decides"
+"spine:three-possibilities": "Confabulation, exaggerated kernel, or substantially true — the reader decides"
 "record:hobbit-mirror": "A Tolkien parallel that deliberately undermines the narrator's own credibility"
 "t2:ch01:alpha-farm": "Three years of mentorship on an Australian cattle station"
 "ch:t2-stories": "What Healer told Bruce — guided deduction, not disclosure"
@@ -29,7 +29,7 @@
 "pos07:the-departure": "Healer leaves. The mentorship ends. The questions don't."
 "the-teacher": "Portrait of the man who conducted 2.7 years of guided deduction. What Clancy wrote, what he left out, what I observed."
 "pos04:the-code-war": "GCHQ, NSA, and the cryptographic arms race"
-"pos09:the-factoring-game": "Breaking public-key cryptography — the first application"
+"spine:factoring-game": "Breaking public-key cryptography — the first application"
 "spine:the-braid": "How quantum particles moving in a flat sheet can perform computation — the physics behind braiding"
 
 # The Evidence Trail (Part II)
@@ -49,7 +49,7 @@
 "spine:the-flat": "The subtitle payoff — real topological wormholes (not space-time — quantum), real backchannels, real architecture. The Flat explained."
 "t3:ch01:instantiation": "What a topological quantum neural network would be"
 "pos25:ethical-framework": "The Universal Declaration of Human Rights as machine governance"
-"pos32:the-wrong-substrate": "Earth's magnetic shield as habitat — flat worlds"
+"spine:wrong-substrate": "Earth's magnetic shield as habitat — flat worlds"
 "pos27:organisms-and-artifacts": "Is the Custodian an organism or an artifact? The answer determines whether relinquishment is permanent."
 "pos29:twenty-years": "Two decades of aftermath — and what the Custodian does with the technology she holds"
 "conv:surrender": "The choice to relinquish, and what it cost"
