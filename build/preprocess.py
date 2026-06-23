@@ -1098,7 +1098,7 @@ details.tech-section summary [data-concept]::before { content: none; }
 def inject_cold_landing(text):
     """Inject cold-landing primers and firmware footer links at build time (Plan 0134c)."""
 
-    body_part_names = ['The Flat', 'The Record']
+    body_part_names = ['The Record', 'The Flat']
     front_matter_names = ['Title Page', 'Introduction']
     exempt_chapter_ids = {'ch:firmware-update'}
     exempt_footer_ids = {'ch:firmware-update', 'app:abstracts'}
