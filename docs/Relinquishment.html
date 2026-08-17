@@ -17506,6 +17506,21 @@ popupFooter.appendChild(pdfBtn);
 popupFooter.appendChild(zipBtn);
 popupFooter.appendChild(tipsBtn);
 popupFooter.appendChild(vlBtn);
+var kofiBtn=document.createElement('a');
+kofiBtn.id='nav-kofi';
+kofiBtn.textContent='☕';
+kofiBtn.href='https://ko-fi.com/brucestephenson0303';
+kofiBtn.target='_blank';
+kofiBtn.rel='noopener';
+kofiBtn.setAttribute('data-hover','This work is free. Buy the author a coffee if it changed how you think.');
+kofiBtn.setAttribute('data-hover-always','true');
+kofiBtn.setAttribute('aria-label','Support on Ko-fi');
+kofiBtn.classList.add('hover-nav');
+kofiBtn.style.cssText='text-decoration:none;color:'+(isDark?'#aaa':'#888')+
+';font-size:1.1em;margin-left:0.5em;cursor:pointer;flex:0 0 auto;';
+kofiBtn.addEventListener('mouseenter',function(){kofiBtn.style.color='#2471a3';});
+kofiBtn.addEventListener('mouseleave',function(){kofiBtn.style.color=isDark?'#aaa':'#888';});
+popupFooter.appendChild(kofiBtn);
 navPopup.appendChild(popupFooter);
 document.body.appendChild(navPopup);
 function buildPopupContents(){
@@ -18585,7 +18600,7 @@ isDark=e.matches;
 var btnColor=isDark?'#aaa':'#888';
 nav.style.background=isDark?'rgba(30,30,30,0.97)':'rgba(248,248,248,0.97)';
 nav.style.borderTopColor=isDark?'#444':'#ddd';
-[shareBtn,pdfBtn,zipBtn,tipsBtn,msToggle].forEach(function(btn){
+[shareBtn,pdfBtn,zipBtn,tipsBtn,msToggle,kofiBtn].forEach(function(btn){
 if(btn) btn.style.color=btnColor;
 });
 });
