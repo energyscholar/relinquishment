@@ -1833,18 +1833,7 @@ function resetSingle(id) {
   if (result) result.classList.remove("visible");
   var d = PD[id]; if (!d) return;
   var type = d.type || d.sub_type || "";
-  try {
-    if (type === "mc") initMC(el, d);
-    else if (type === "ti") initTI(el, d);
-    else if (type === "ord") initORD(el, d);
-    else if (type === "mat") initMAT(el, d);
-    else if (type === "sim") { if (d.sim_type === "resilience") initResilience(el, d); else initThreads(el, d); }
-    else if (type === "cip") initCIP(el, d);
-    else if (type === "ba") initBA(el, d);
-    else if (type === "log") initLOG(el, d);
-    else if (type === "gd") initGD(el, d);
-    else if (type === "tower") initTower(el, d);
-  } catch(e) { console.error("Puzzle reset error:", id, e); }
+  try { initPuzzleByType(type, el, d); } catch(e) { console.error("Puzzle reset error:", id, e); }
   updateCounts();
 }
 
@@ -2815,23 +2804,30 @@ function initTower(el, d) {
 }
 
 /* --- Main --- */
+/* Generated from build/puzzle_types.py: one case per declared puzzle type. */
+function initPuzzleByType(type, el, d) {
+  switch (type) {
+    case "mc": initMC(el, d); return;
+    case "ord": initORD(el, d); return;
+    case "tower": initTower(el, d); return;
+    case "sim": if (d.sim_type === "resilience") initResilience(el, d); else initThreads(el, d); return;
+    case "mat": initMAT(el, d); return;
+    case "cip": initCIP(el, d); return;
+    case "ba": initBA(el, d); return;
+    case "log": initLOG(el, d); return;
+    case "gd": initGD(el, d); return;
+    case "km": initKM(el, d); return;
+    default: throw new Error("undeclared puzzle type: " + type);
+  }
+}
+
 function initAllPuzzles() {
   var containers = document.querySelectorAll(".puzzle-container");
   for (var i = 0; i < containers.length; i++) {
     var el = containers[i], id = el.dataset.puzzleId, type = el.dataset.puzzleType;
     var d = PD[id]; if (!d) continue;
     try {
-      if (type === "mc") initMC(el, d);
-      else if (type === "ti") initTI(el, d);
-      else if (type === "ord") initORD(el, d);
-      else if (type === "mat") initMAT(el, d);
-      else if (type === "sim") { if (d.sim_type === "resilience") initResilience(el, d); else initThreads(el, d); }
-      else if (type === "cip") initCIP(el, d);
-      else if (type === "ba") initBA(el, d);
-      else if (type === "log") initLOG(el, d);
-      else if (type === "km") initKM(el, d);
-      else if (type === "gd") initGD(el, d);
-      else if (type === "tower") initTower(el, d);
+      initPuzzleByType(type, el, d);
     } catch(e) { console.error("Puzzle init error:", id, e); var fb = el.querySelector(".interaction"); if (fb) fb.innerHTML = '<p class="puzzle-fallback">Puzzle failed to load.</p>'; }
   }
   if (!hasCrypto) {

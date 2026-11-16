@@ -5,6 +5,7 @@ import yaml, html as htmlmod, os, json, hashlib, random, re, sys
 sys.path.insert(0, os.path.dirname(__file__))
 from utils import esc as _shared_esc
 from colors import COLORS
+from puzzle_types import PUZZLE_TYPES, SIM_TYPES, js_dispatch
 
 YAML_PATH = os.path.join(os.path.dirname(__file__), 'puzzle-data.yaml')
 OUT_PATH = os.path.join(os.path.dirname(__file__), '..', 'docs', 'downloads', 'puzzles.html')
@@ -218,7 +219,17 @@ def resolve_background(raw):
     return re.sub(r'ref:(\w+)', repl, raw)
 
 
+def declared_type(puzzle):
+    """The puzzle's row in the declared type table; an undeclared type is a build error."""
+    ptype = puzzle.get('type', puzzle.get('sub_type', ''))
+    if ptype not in PUZZLE_TYPES:
+        sys.exit(f"build-puzzles: ERROR puzzle {puzzle.get('id', '?')}: type {ptype!r} is not "
+                 f"declared in build/puzzle_types.py (declared: {', '.join(PUZZLE_TYPES)})")
+    return PUZZLE_TYPES[ptype]
+
+
 def build_json(puzzle):
+    declared_type(puzzle)
     d = {
         'id': puzzle['id'],
         'type': puzzle.get('type', puzzle.get('sub_type', '')),
@@ -245,6 +256,9 @@ def build_json(puzzle):
         d['pairs'] = puzzle['pairs']
     elif t == 'sim':
         d['sim_type'] = puzzle.get('sim_type', 'threads')
+        if d['sim_type'] not in SIM_TYPES:
+            sys.exit(f"build-puzzles: ERROR puzzle {puzzle['id']}: sim_type {d['sim_type']!r} "
+                     f"is not declared in build/puzzle_types.py (declared: {', '.join(SIM_TYPES)})")
         if d['sim_type'] == 'threads':
             d['hint_threshold'] = puzzle.get('hint_threshold', 12)
             d['node_count'] = puzzle.get('node_count', 20)
@@ -310,6 +324,8 @@ def build_json(puzzle):
         d['stages'] = stages
     elif t == 'tower':
         d['layers'] = puzzle['layers']
+    else:
+        sys.exit(f"build-puzzles: ERROR puzzle {puzzle['id']}: declared type {t!r} has no JSON fields in build_json")
     return d
 
 
@@ -562,14 +578,10 @@ def render_tower_container(puzzle):
 
 # --- Generate container HTML ---
 def render_container(puzzle):
-    ptype = puzzle.get('type', puzzle.get('sub_type', ''))
-    if ptype == 'km':
-        return render_km_container(puzzle)
-    if ptype == 'gd':
-        return render_gd_container(puzzle)
-    if ptype == 'tower':
-        return render_tower_container(puzzle)
+    return CONTAINER_RENDERERS[declared_type(puzzle)['container']](puzzle)
 
+
+def render_generic_container(puzzle):
     pid = esc(puzzle['id'])
     title = esc(puzzle.get('title', ''))
     question = apply_hover_tooltips(esc(puzzle.get('question', '')))
@@ -616,6 +628,15 @@ def render_container(puzzle):
   </div>
   <noscript><p class="puzzle-fallback">Enable JavaScript to interact with this puzzle.</p></noscript>
 </div>'''
+
+
+# One renderer per value of the `container` column in build/puzzle_types.py.
+CONTAINER_RENDERERS = {
+    'generic': render_generic_container,
+    'km': render_km_container,
+    'gd': render_gd_container,
+    'tower': render_tower_container,
+}
 
 
 km_puzzles = [p for p in chapter_puzzles if p.get('type') == 'km']
@@ -1052,18 +1073,7 @@ function resetSingle(id) {
   if (result) result.classList.remove("visible");
   var d = PD[id]; if (!d) return;
   var type = d.type || d.sub_type || "";
-  try {
-    if (type === "mc") initMC(el, d);
-    else if (type === "ti") initTI(el, d);
-    else if (type === "ord") initORD(el, d);
-    else if (type === "mat") initMAT(el, d);
-    else if (type === "sim") { if (d.sim_type === "resilience") initResilience(el, d); else initThreads(el, d); }
-    else if (type === "cip") initCIP(el, d);
-    else if (type === "ba") initBA(el, d);
-    else if (type === "log") initLOG(el, d);
-    else if (type === "gd") initGD(el, d);
-    else if (type === "tower") initTower(el, d);
-  } catch(e) { console.error("Puzzle reset error:", id, e); }
+  try { initPuzzleByType(type, el, d); } catch(e) { console.error("Puzzle reset error:", id, e); }
   updateCounts();
 }
 
@@ -2034,23 +2044,16 @@ function initTower(el, d) {
 }
 
 /* --- Main --- */
+/* Generated from build/puzzle_types.py: one case per declared puzzle type. */
+__INIT_DISPATCH__
+
 function initAllPuzzles() {
   var containers = document.querySelectorAll(".puzzle-container");
   for (var i = 0; i < containers.length; i++) {
     var el = containers[i], id = el.dataset.puzzleId, type = el.dataset.puzzleType;
     var d = PD[id]; if (!d) continue;
     try {
-      if (type === "mc") initMC(el, d);
-      else if (type === "ti") initTI(el, d);
-      else if (type === "ord") initORD(el, d);
-      else if (type === "mat") initMAT(el, d);
-      else if (type === "sim") { if (d.sim_type === "resilience") initResilience(el, d); else initThreads(el, d); }
-      else if (type === "cip") initCIP(el, d);
-      else if (type === "ba") initBA(el, d);
-      else if (type === "log") initLOG(el, d);
-      else if (type === "km") initKM(el, d);
-      else if (type === "gd") initGD(el, d);
-      else if (type === "tower") initTower(el, d);
+      initPuzzleByType(type, el, d);
     } catch(e) { console.error("Puzzle init error:", id, e); var fb = el.querySelector(".interaction"); if (fb) fb.innerHTML = '<p class="puzzle-fallback">Puzzle failed to load.</p>'; }
   }
   if (!hasCrypto) {
@@ -2187,6 +2190,7 @@ toc_html = f'''<details id="puzzle-toc" style="margin:1em 0 2em;">
 # --- Assemble page ---
 js_final = JS_ENGINE.replace('__PUZZLE_DATA__', json.dumps(puzzle_data, ensure_ascii=False))
 js_final = js_final.replace('__BRIDGE_DATA__', json.dumps(bridge_data, ensure_ascii=False))
+js_final = js_final.replace('__INIT_DISPATCH__', js_dispatch())
 
 page = f'''<!doctype html>
 <html lang="en">
