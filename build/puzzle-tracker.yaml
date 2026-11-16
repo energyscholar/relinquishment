@@ -75,6 +75,8 @@ chapter_puzzles:
     level: p1
     approved: true
     installed: true
+    interaction: >-
+      The reader presses "Pick Two"; each press joins two random buttons with a thread and the buttons that are already connected lift together. The puzzle finishes on the press that picks two buttons already in one cluster holding at least half of them: the authored teaching text shows, then the abstract.
     location:
       chapter: genesis
       rationale: "Kauffman buttons-and-threads — this IS the genesis chapter"
@@ -128,6 +130,8 @@ chapter_puzzles:
     level: p1
     approved: true
     installed: true
+    interaction: >-
+      A grid of nodes joined by local links and long-range backchannels. The reader removes nodes one at a time; the status line counts removals and reports the network operational while any node remains. The hint shows after the set number of removals. The puzzle finishes when every node is removed, then the abstract shows.
     location:
       chapter: capabilities
       rationale: "Resilience/distributed network — capabilities chapter"
@@ -146,6 +150,8 @@ chapter_puzzles:
     level: p1
     approved: true
     installed: true
+    interaction: >-
+      Six hidden layers stacked bottom to top. The reader reveals them in order from the bottom; a layer out of order is refused with a prompt naming the next layer. Each reveal shows the layer's name and description. The puzzle finishes when the top layer is revealed, then the abstract shows.
     location:
       chapter: story-never-told
       rationale: "Technology stack from 2DEG up — could also fit genesis or the-stack (front matter)"
@@ -183,6 +189,8 @@ chapter_puzzles:
     level: p3
     approved: false
     installed: false
+    status: built-unapproved
+    status_reason: "not approved"
     location:
       chapter: the-silence-gap
       rationale: "Five fields that don't talk — exact chapter content"
@@ -271,6 +279,8 @@ chapter_puzzles:
     level: p3
     approved: false
     installed: false
+    status: built-unapproved
+    status_reason: "not approved"
     location:
       chapter: weigh-the-evidence
       rationale: "Culmination — reader has absorbed the full argument, now faces the decision"
@@ -290,6 +300,8 @@ chapter_puzzles:
     level: p2
     approved: true
     installed: true
+    interaction: >-
+      The method's steps appear in a fixed shuffled order. The reader moves each step up or down, then checks the order. Steps out of place are marked and the hint shows. The puzzle finishes when the order matches the authored sequence, then the abstract shows.
     location:
       chapter: the-braid
       rationale: "Method introduction — three-possibilities introduces the guided deduction concept"
@@ -322,6 +334,8 @@ chapter_puzzles:
     level: p3
     approved: false
     installed: false
+    status: built-unapproved
+    status_reason: "not approved"
     location:
       chapter: the-strongest-objection
       rationale: "Entity's perspective — strongest objection asks 'what about the entity?'"
@@ -374,6 +388,8 @@ chapter_puzzles:
     level: p3
     approved: true
     installed: true
+    interaction: >-
+      A passage with five numbered gaps and a word bank of the five answers plus distractors. The reader selects a gap, then a term. A correct term fills the gap; a wrong one is refused and the hint shows. The puzzle finishes when all five gaps are filled, then the abstract shows.
     location:
       chapter: firmware-update
       rationale: "Cloze passage — the firmware cross-domain synthesis"
@@ -392,6 +408,8 @@ chapter_puzzles:
     level: p2
     approved: true
     installed: true
+    interaction: >-
+      Two responses to the same prompt shown side by side, followed by four choices about how they differ. A wrong choice is refused and the hint shows. The puzzle finishes on the authored answer, then the abstract shows.
     location:
       chapter: firmware-update
       rationale: "Side-by-side AI responses — firmware chapter content"

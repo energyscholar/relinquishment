@@ -143,6 +143,7 @@ svg-sheet: html
 
 # --- Puzzle preview page (standalone, Plan 0245) ---
 puzzles:
+	python3 build/puzzle-status.py
 	python3 build/build-puzzles.py
 	@echo "Open docs/downloads/puzzles.html or push to website."
 
