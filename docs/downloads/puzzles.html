@@ -30,7 +30,7 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
 .text-input-wrap input:focus { outline: none; border-color: #1a5276; }
 .submit-btn { font-family: Georgia, "Times New Roman", serif; font-size: 1em; padding: 0.6em 1.2em; border: 1px solid #1a5276; border-radius: 4px; background: #1a5276; color: #fff; cursor: pointer; }
 .submit-btn:hover { background: #154360; }
-.submit-btn:disabled { opacity: 0.5; cursor: default; }
+.submit-btn:disabled, .submit-btn[aria-disabled="true"] { opacity: 0.5; cursor: default; }
 
 .hint { display: none; color: #856404; background: #fff9e6; border-left: 3px solid #d4a14b; padding: 0.6em 1em; margin-top: 0.5em; font-style: italic; }
 .hint.visible { display: block; }
@@ -313,6 +313,12 @@ hr { border: none; border-top: 1px solid #ccc; margin: 3em 0 2em; }
   .log-table th, .log-table td:first-child { font-size: 0.75em; }
   .cip-slot { min-width: 6em; font-size: 0.85em; }
   .word-bank-item { font-size: 0.8em; }
+}
+
+/* Simulations: no CSS motion for readers who ask for reduced motion. */
+@media (prefers-reduced-motion: reduce) {
+  .transition-flash { animation: none; }
+  .node-circle { transition: none; }
 }
 
 </style>
@@ -2176,7 +2182,8 @@ function addThread(id) {
   sim.animating = true;
 
   var btn = document.getElementById("add-" + id);
-  if (btn) btn.disabled = true;
+  /* aria-disabled, not disabled: a disabled button drops keyboard focus. addThread ignores presses while animating. */
+  if (btn) btn.setAttribute("aria-disabled", "true");
 
   var pair = sim.q[sim.qi];
   var selA = pair[0], selB = pair[1];
@@ -2225,7 +2232,7 @@ function addThread(id) {
         renderTSvg(sim);
         var fl = document.getElementById("flash-" + id);
         if (fl) { fl.textContent = sim.teachingText; fl.classList.add("visible"); }
-        if (btn) btn.disabled = true;
+        if (btn) btn.setAttribute("aria-disabled", "true");
 
         /* Keep lifted for 5 seconds, then settle */
         setTimeout(function() {
@@ -2270,7 +2277,7 @@ function addThread(id) {
           sim.highlightPair = null;
           renderTSvg(sim);
           sim.animating = false;
-          if (btn) btn.disabled = false;
+          if (btn) btn.removeAttribute("aria-disabled");
 
           /* Show hint if enough threads but not yet at transition */
           if (sim.tc >= sim.ht && !sim.solved) showHint(id);
@@ -2314,7 +2321,7 @@ function initResilience(el, d) {
     '<div class="sim-controls"><span class="sim-status" id="st-' + d.id + '">Destroyed: 0/' + N + ' — Network: OPERATIONAL</span></div>' +
     '<div class="transition-flash" id="flash-' + d.id + '" style="color:#c0392b">Network: FAILED</div>';
 
-  function render() {
+  function render(focusFrom) {
     var svg = document.getElementById("svg-" + d.id); if (!svg) return;
     var p = [];
     var localEdges = [], longEdges = [];
@@ -2333,16 +2340,18 @@ function initResilience(el, d) {
       p.push('<line x1="'+nodes[e[0]].x+'" y1="'+nodes[e[0]].y+'" x2="'+nodes[e[1]].x+'" y2="'+nodes[e[1]].y+'" stroke="#e67e22" stroke-width="1" stroke-opacity="0.3" stroke-dasharray="4,3"/>');
     });
     nodes.forEach(function(n, i) {
-      if (alive[i]) p.push('<circle cx="'+n.x+'" cy="'+n.y+'" r="11" fill="#2a9b9a" stroke="#fff" stroke-width="1.5" class="node-circle" data-n="'+i+'" style="cursor:pointer"/>');
+      if (alive[i]) p.push('<circle cx="'+n.x+'" cy="'+n.y+'" r="11" fill="#2a9b9a" stroke="#fff" stroke-width="1.5" class="node-circle" data-n="'+i+'" tabindex="0" role="button" aria-label="Node '+(i+1)+'" style="cursor:pointer"/>');
       else p.push('<circle cx="'+n.x+'" cy="'+n.y+'" r="11" fill="#555" stroke="#888" stroke-width="1" opacity="0.25"/>');
     });
     svg.innerHTML = p.join("\n");
     var circles = svg.querySelectorAll("circle[data-n]");
     for (var j = 0; j < circles.length; j++) {
+      keyActivate(circles[j]);
       (function(c) { c.addEventListener("click", function() {
         if (solved) return;
-        alive[parseInt(c.dataset.n)] = false; destroyed++;
-        render();
+        var n = parseInt(c.dataset.n);
+        alive[n] = false; destroyed++;
+        render(document.activeElement === c ? n : -1);
         var aliveCount = 0; for (var k = 0; k < N; k++) if (alive[k]) aliveCount++;
         if (destroyed >= hintAt && aliveCount > 0) showHint(d.id);
         if (aliveCount === 0) {
@@ -2355,8 +2364,14 @@ function initResilience(el, d) {
         }
       }); })(circles[j]);
     }
+    /* Re-rendering replaces the nodes; keep keyboard focus on the next live node. */
+    if (focusFrom >= 0 && circles.length) {
+      var next = circles[0];
+      for (var k = 0; k < circles.length; k++) if (parseInt(circles[k].dataset.n) > focusFrom) { next = circles[k]; break; }
+      next.focus();
+    }
   }
-  render();
+  render(-1);
 }
 
 /* --- CIP --- */
