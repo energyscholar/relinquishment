@@ -6,6 +6,16 @@ Output repository. Manuscript content and build artifacts only.
 
 Root contains ONLY: `README.md`, `*.tex`, `*.pdf`, `.gitignore`.
 
+Named exceptions (tracked, kept at the root on purpose):
+
+- `Makefile` — build entry point.
+- `package.json`, `package-lock.json` — build and test tool dependencies.
+- `RELEASE-CHECKLIST.md` — the release gate, kept where the release step expects it.
+- `science-primer-for-llms.md`, `spiral-abstracts-for-copy.md` — build inputs read by `build/preprocess.py`.
+- `test-hover-system.mjs` — reader test harness, run from the root.
+- `Relinquishment-draft.html`, `Relinquishment-plaintext.txt` — tracked drafts, already public.
+- `thermal-ladder-analysis.md` — tracked working note, already public.
+
 ## Structure
 
 ```

@@ -20,5 +20,5 @@ What each registry in `build/` describes, when it was last regenerated, and whet
 ## Notes
 
 - `docs/Relinquishment.html` (1.76 MB) is the live reader. `docs/index.html` and `docs/downloads/Relinquishment.html` redirect to it; the book is the website.
-- The repository root holds generated outputs (`abstracts-standalone-v*.txt`, `Relinquishment.{aux,bbl,...}`, `node_modules`) that the README's Root Policy does not list; nine `abstracts-standalone-v*.txt` files are tracked.
+- The nine tracked abstracts versions live in `manuscript/versions/`. The other tracked root files are listed as named exceptions in the README's Root Policy; untracked build outputs at the root (`Relinquishment.{aux,bbl,...}`, `node_modules`) are gitignored.
 - Last content commit: 2026-08-16 (nav support button); last literary revision: 2026-06-22.
