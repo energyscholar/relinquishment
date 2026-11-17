@@ -6,3 +6,10 @@ review_artifacts:
     created_by: "Plan 0245"
     status: "active"
     cleanup_plan: "Plan 0245 cleanup phase"
+  - slug: "non-live-svgs"
+    path: "build/review/non-live-svgs.html"
+    make_target: null
+    purpose: "Owner chooses keep / approve for injection / retire for the five non-live gallery SVGs (SVG-031, SVG-035 to SVG-038)"
+    created_by: "Plan 1537"
+    status: "active"
+    cleanup_plan: "Remove once each entry has a decision"

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Non-live SVGs — review</title>
+<style>
+  body { font-family: Georgia, "Times New Roman", serif; max-width: 860px; margin: 0 auto; padding: 1em 16px 3em; color: #222; background: #fafafa; line-height: 1.5; }
+  h1 { font-size: 1.4em; color: #1a5276; }
+  .entry { background: #fff; border: 1px solid #e0e0e0; border-left: 3px solid #ccc; border-radius: 4px; padding: 1em; margin: 1.2em 0; }
+  .entry.draft { border-left-color: #d4ac0d; }
+  .entry h2 { font-size: 1.05em; margin: 0 0 0.4em; }
+  .meta { font-size: 0.85em; color: #555; margin-bottom: 0.8em; }
+  .art { text-align: center; }
+  .art img { max-width: 100%; height: auto; border: 1px solid #eee; }
+  .none { padding: 2em; color: #777; font-style: italic; border: 2px dashed #ddd; border-radius: 8px; text-align: center; }
+  .choice { font-size: 0.9em; margin-top: 0.8em; color: #333; }
+</style>
+</head>
+<body>
+<h1>Non-live SVGs — review</h1>
+<p>The five entries in <code>build/gallery-manifest.yaml</code> that are not live: SVG-035 to SVG-038 (<code>deferred</code>) and SVG-031 (<code>draft</code>). Each image below is the tracked file itself, loaded live from <code>build/images/</code>. Nothing here is injected into the book. For each entry the choice is: keep as it is, approve for injection (a later plan), or retire.</p>
+
+<div class="entry">
+  <h2>SVG-035 · grid-sequence-regional</h2>
+  <div class="meta">deferred · <code>build/images/grid-sequence-1-regional.svg</code> · listed in the manifests only; no build script or page uses it</div>
+  <div class="art"><img src="../images/grid-sequence-1-regional.svg" alt="Grid sequence panel 1: regional view"></div>
+  <div class="choice">Choice: keep deferred / approve for injection / retire</div>
+</div>
+
+<div class="entry">
+  <h2>SVG-036 · grid-sequence-global</h2>
+  <div class="meta">deferred · <code>build/images/grid-sequence-2-global.svg</code> · listed in the manifests only; no build script or page uses it</div>
+  <div class="art"><img src="../images/grid-sequence-2-global.svg" alt="Grid sequence panel 2: global view"></div>
+  <div class="choice">Choice: keep deferred / approve for injection / retire</div>
+</div>
+
+<div class="entry">
+  <h2>SVG-037 · grid-sequence-magnetosphere</h2>
+  <div class="meta">deferred · <code>build/images/grid-sequence-3-magnetosphere.svg</code> · listed in the manifests only; no build script or page uses it</div>
+  <div class="art"><img src="../images/grid-sequence-3-magnetosphere.svg" alt="Grid sequence panel 3: magnetosphere view"></div>
+  <div class="choice">Choice: keep deferred / approve for injection / retire</div>
+</div>
+
+<div class="entry">
+  <h2>SVG-038 · grid-sequence-the-flat</h2>
+  <div class="meta">deferred · <code>build/images/grid-sequence-4-the-flat.svg</code> · listed in the manifests only; no build script or page uses it</div>
+  <div class="art"><img src="../images/grid-sequence-4-the-flat.svg" alt="Grid sequence panel 4: the Flat view"></div>
+  <div class="choice">Choice: keep deferred / approve for injection / retire</div>
+</div>
+
+<div class="entry draft">
+  <h2>SVG-031 · convergence-flowchart</h2>
+  <div class="meta">draft · source: gallery · targets T6</div>
+  <div class="none">No artwork exists in the repository for this entry. The gallery shows a placeholder ("Designed — awaiting SVG build"). There is nothing to review until it is drawn.</div>
+  <div class="choice">Choice: commission the drawing / retire the entry</div>
+</div>
+</body>
+</html>
