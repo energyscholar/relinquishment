@@ -550,7 +550,7 @@ def render_tower_container(puzzle):
         desc = esc(layer['description'])
         symbol = esc(layer.get('symbol', ''))
         symbol_span = f'<span class="tower-symbol">{symbol}</span> ' if symbol else ''
-        layers_html += f'''<div class="tower-layer" data-index="{i}" data-color="{color}">
+        layers_html += f'''<div class="tower-layer" data-index="{i}" data-color="{color}" tabindex="0" role="button" aria-label="Layer {i + 1} from the bottom">
       <div class="tower-label">?</div>
       <div class="tower-reveal">{symbol_span}<strong>{name}</strong><br><span class="tower-desc">{desc}</span></div>
     </div>\n'''
@@ -1079,6 +1079,15 @@ function resetSingle(id) {
 
 function esc(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
 
+/* Keyboard: Enter or Space on a control that is not a <button> acts as a click. */
+function keyActivate(node) {
+  node.addEventListener("keydown", function(e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    e.preventDefault();
+    node.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  });
+}
+
 async function sha256(msg) {
   var buf = new TextEncoder().encode(msg);
   var hash = await crypto.subtle.digest("SHA-256", buf);
@@ -1153,7 +1162,7 @@ async function checkTI(id) {
 function initORD(el, d) {
   var inter = el.querySelector(".interaction");
   var order = d.shuffle.slice();
-  function render() {
+  function render(focusPos, focusDir) {
     var html = "";
     for (var i = 0; i < order.length; i++) {
       html += '<div class="ord-item" data-pos="' + i + '"><div class="ord-arrows">' +
@@ -1168,9 +1177,10 @@ function initORD(el, d) {
       (function(btn) {
         btn.addEventListener("click", function() {
           var p = parseInt(btn.dataset.pos), dir = btn.dataset.dir;
-          if (dir === "up" && p > 0) { var t = order[p]; order[p] = order[p-1]; order[p-1] = t; }
-          if (dir === "down" && p < order.length-1) { var t = order[p]; order[p] = order[p+1]; order[p+1] = t; }
-          render();
+          var to = p;
+          if (dir === "up" && p > 0) { var t = order[p]; order[p] = order[p-1]; order[p-1] = t; to = p - 1; }
+          if (dir === "down" && p < order.length-1) { var t = order[p]; order[p] = order[p+1]; order[p+1] = t; to = p + 1; }
+          render(to, dir);
         });
       })(arrows[j]);
     }
@@ -1183,6 +1193,11 @@ function initORD(el, d) {
       setTimeout(function() { var its = inter.querySelectorAll(".ord-item.wrong"); for (var k = 0; k < its.length; k++) its[k].classList.remove("wrong"); }, 800);
       showHint(d.id);
     });
+    /* Re-rendering replaces the buttons; keep keyboard focus on the item that moved. */
+    if (focusDir) {
+      var f = inter.querySelector('.ord-arrows button[data-dir="' + focusDir + '"][data-pos="' + focusPos + '"]');
+      if (f) f.focus();
+    }
   }
   render();
 }
@@ -1591,17 +1606,18 @@ function initCIP(el, d) {
   var passHtml = esc(d.passage);
   for (var i = 0; i < d.slots.length; i++) {
     var s = d.slots[i], tag = "[REDACTED-" + s.id + "]";
-    passHtml = passHtml.replace(tag, '<span class="cip-slot" data-slot="' + s.id + '">[' + s.id + ']</span>');
+    passHtml = passHtml.replace(tag, '<span class="cip-slot" data-slot="' + s.id + '" tabindex="0" role="button">[' + s.id + ']</span>');
   }
   var allTerms = d.slots.map(function(s) { return s.answer; }).concat(d.distractors);
   for (var i = allTerms.length-1; i > 0; i--) { var j = Math.floor(Math.random()*(i+1)); var t = allTerms[i]; allTerms[i] = allTerms[j]; allTerms[j] = t; }
   var bankHtml = '<div class="word-bank">';
-  allTerms.forEach(function(term) { bankHtml += '<span class="word-bank-item" data-term="' + esc(term) + '">' + esc(term) + "</span>"; });
+  allTerms.forEach(function(term) { bankHtml += '<span class="word-bank-item" data-term="' + esc(term) + '" tabindex="0" role="button">' + esc(term) + "</span>"; });
   bankHtml += "</div>";
   inter.innerHTML = '<div class="cip-passage">' + passHtml + "</div>" + bankHtml;
 
   var slots = inter.querySelectorAll(".cip-slot");
   for (var j = 0; j < slots.length; j++) {
+    keyActivate(slots[j]);
     (function(sl) { sl.addEventListener("click", function() {
       for (var k = 0; k < slots.length; k++) slots[k].classList.remove("active");
       if (filled[sl.dataset.slot]) return;
@@ -1610,6 +1626,7 @@ function initCIP(el, d) {
   }
   var bankItems = inter.querySelectorAll(".word-bank-item");
   for (var j = 0; j < bankItems.length; j++) {
+    keyActivate(bankItems[j]);
     (function(item) { item.addEventListener("click", function() {
       if (!activeSlot || item.classList.contains("used")) return;
       var term = item.dataset.term;
@@ -2019,6 +2036,7 @@ function initTower(el, d) {
   var total = d.layers.length;
 
   for (var i = 0; i < layers.length; i++) {
+    keyActivate(layers[i]);
     (function(layer) {
       layer.addEventListener("click", function() {
         if (layer.classList.contains("revealed")) return;

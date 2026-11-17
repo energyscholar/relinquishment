@@ -1005,27 +1005,27 @@ Try it yourself: the AI Eval button in the navigation bar walks you through the 
   <p class="gateway-blurb">🧩 Six layers from raw physics to communication. Tap each one to explore.</p>
   <p class="tower-instruction">Tap each layer from the bottom up to reveal the stack.</p>
   <div class="tower-stack">
-    <div class="tower-layer" data-index="5" data-color="purple">
+    <div class="tower-layer" data-index="5" data-color="purple" tabindex="0" role="button" aria-label="Layer 6 from the bottom">
       <div class="tower-label">?</div>
       <div class="tower-reveal"><strong>Communication</strong><br><span class="tower-desc">Vibrations bridge the quantum world and ours. The only way in or out.</span></div>
     </div>
-<div class="tower-layer" data-index="4" data-color="purple">
+<div class="tower-layer" data-index="4" data-color="purple" tabindex="0" role="button" aria-label="Layer 5 from the bottom">
       <div class="tower-label">?</div>
       <div class="tower-reveal"><span class="tower-symbol">❊</span> <strong>Self-Organization</strong><br><span class="tower-desc">Above a complexity threshold, systems organize themselves. No designer needed.</span></div>
     </div>
-<div class="tower-layer" data-index="3" data-color="gold">
+<div class="tower-layer" data-index="3" data-color="gold" tabindex="0" role="button" aria-label="Layer 4 from the bottom">
       <div class="tower-label">?</div>
       <div class="tower-reveal"><strong>Braiding</strong><br><span class="tower-desc">Moving anyons around each other performs computation. Proven mathematics.</span></div>
     </div>
-<div class="tower-layer" data-index="2" data-color="gold">
+<div class="tower-layer" data-index="2" data-color="gold" tabindex="0" role="button" aria-label="Layer 3 from the bottom">
       <div class="tower-label">?</div>
       <div class="tower-reveal"><strong>Anyons</strong><br><span class="tower-desc">Collective ripples that remember every path they&#x27;ve taken. Nature&#x27;s building blocks.</span></div>
     </div>
-<div class="tower-layer" data-index="1" data-color="gold">
+<div class="tower-layer" data-index="1" data-color="gold" tabindex="0" role="button" aria-label="Layer 2 from the bottom">
       <div class="tower-label">?</div>
       <div class="tower-reveal"><strong>Topological Order</strong><br><span class="tower-desc">Electrons organize into exotic patterns that resist disruption. Nobel Prize, 2016.</span></div>
     </div>
-<div class="tower-layer" data-index="0" data-color="gold">
+<div class="tower-layer" data-index="0" data-color="gold" tabindex="0" role="button" aria-label="Layer 1 from the bottom">
       <div class="tower-label">?</div>
       <div class="tower-reveal"><strong>The Flat</strong><br><span class="tower-desc">A two-dimensional world inside a semiconductor. Already in your phone.</span></div>
     </div>
@@ -1839,6 +1839,15 @@ function resetSingle(id) {
 
 function esc(s) { var d = document.createElement("div"); d.textContent = s; return d.innerHTML; }
 
+/* Keyboard: Enter or Space on a control that is not a <button> acts as a click. */
+function keyActivate(node) {
+  node.addEventListener("keydown", function(e) {
+    if (e.key !== "Enter" && e.key !== " ") return;
+    e.preventDefault();
+    node.dispatchEvent(new MouseEvent("click", { bubbles: true }));
+  });
+}
+
 async function sha256(msg) {
   var buf = new TextEncoder().encode(msg);
   var hash = await crypto.subtle.digest("SHA-256", buf);
@@ -1913,7 +1922,7 @@ async function checkTI(id) {
 function initORD(el, d) {
   var inter = el.querySelector(".interaction");
   var order = d.shuffle.slice();
-  function render() {
+  function render(focusPos, focusDir) {
     var html = "";
     for (var i = 0; i < order.length; i++) {
       html += '<div class="ord-item" data-pos="' + i + '"><div class="ord-arrows">' +
@@ -1928,9 +1937,10 @@ function initORD(el, d) {
       (function(btn) {
         btn.addEventListener("click", function() {
           var p = parseInt(btn.dataset.pos), dir = btn.dataset.dir;
-          if (dir === "up" && p > 0) { var t = order[p]; order[p] = order[p-1]; order[p-1] = t; }
-          if (dir === "down" && p < order.length-1) { var t = order[p]; order[p] = order[p+1]; order[p+1] = t; }
-          render();
+          var to = p;
+          if (dir === "up" && p > 0) { var t = order[p]; order[p] = order[p-1]; order[p-1] = t; to = p - 1; }
+          if (dir === "down" && p < order.length-1) { var t = order[p]; order[p] = order[p+1]; order[p+1] = t; to = p + 1; }
+          render(to, dir);
         });
       })(arrows[j]);
     }
@@ -1943,6 +1953,11 @@ function initORD(el, d) {
       setTimeout(function() { var its = inter.querySelectorAll(".ord-item.wrong"); for (var k = 0; k < its.length; k++) its[k].classList.remove("wrong"); }, 800);
       showHint(d.id);
     });
+    /* Re-rendering replaces the buttons; keep keyboard focus on the item that moved. */
+    if (focusDir) {
+      var f = inter.querySelector('.ord-arrows button[data-dir="' + focusDir + '"][data-pos="' + focusPos + '"]');
+      if (f) f.focus();
+    }
   }
   render();
 }
@@ -2351,17 +2366,18 @@ function initCIP(el, d) {
   var passHtml = esc(d.passage);
   for (var i = 0; i < d.slots.length; i++) {
     var s = d.slots[i], tag = "[REDACTED-" + s.id + "]";
-    passHtml = passHtml.replace(tag, '<span class="cip-slot" data-slot="' + s.id + '">[' + s.id + ']</span>');
+    passHtml = passHtml.replace(tag, '<span class="cip-slot" data-slot="' + s.id + '" tabindex="0" role="button">[' + s.id + ']</span>');
   }
   var allTerms = d.slots.map(function(s) { return s.answer; }).concat(d.distractors);
   for (var i = allTerms.length-1; i > 0; i--) { var j = Math.floor(Math.random()*(i+1)); var t = allTerms[i]; allTerms[i] = allTerms[j]; allTerms[j] = t; }
   var bankHtml = '<div class="word-bank">';
-  allTerms.forEach(function(term) { bankHtml += '<span class="word-bank-item" data-term="' + esc(term) + '">' + esc(term) + "</span>"; });
+  allTerms.forEach(function(term) { bankHtml += '<span class="word-bank-item" data-term="' + esc(term) + '" tabindex="0" role="button">' + esc(term) + "</span>"; });
   bankHtml += "</div>";
   inter.innerHTML = '<div class="cip-passage">' + passHtml + "</div>" + bankHtml;
 
   var slots = inter.querySelectorAll(".cip-slot");
   for (var j = 0; j < slots.length; j++) {
+    keyActivate(slots[j]);
     (function(sl) { sl.addEventListener("click", function() {
       for (var k = 0; k < slots.length; k++) slots[k].classList.remove("active");
       if (filled[sl.dataset.slot]) return;
@@ -2370,6 +2386,7 @@ function initCIP(el, d) {
   }
   var bankItems = inter.querySelectorAll(".word-bank-item");
   for (var j = 0; j < bankItems.length; j++) {
+    keyActivate(bankItems[j]);
     (function(item) { item.addEventListener("click", function() {
       if (!activeSlot || item.classList.contains("used")) return;
       var term = item.dataset.term;
@@ -2779,6 +2796,7 @@ function initTower(el, d) {
   var total = d.layers.length;
 
   for (var i = 0; i < layers.length; i++) {
+    keyActivate(layers[i]);
     (function(layer) {
       layer.addEventListener("click", function() {
         if (layer.classList.contains("revealed")) return;
