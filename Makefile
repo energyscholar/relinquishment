@@ -10,7 +10,7 @@ JOBNAME := Relinquishment
 TIKZ_SRCS := $(filter-out build/images/standalone-header.tex, $(wildcard build/images/*.tex))
 TIKZ_PDFS := $(TIKZ_SRCS:.tex=.pdf)
 
-.PHONY: dev final screen print images validate clean clean-cache manifest size-report gitinfo check check-strict epub html markdown svg-sheet puzzles tooltips eggs
+.PHONY: check-tracked dev final screen print images validate clean clean-cache manifest size-report gitinfo check check-strict epub html markdown svg-sheet puzzles tooltips eggs
 
 # --- Dev build (public release — no DMS appendix, no working draft notice) ---
 dev: gitinfo images
@@ -126,15 +126,11 @@ clean-cache:
 
 # --- Generate manifest ---
 manifest:
-	@echo '{' > build/manifest.json
-	@echo '  "generated": "'$$(date -u +%Y-%m-%dT%H:%M:%SZ)'",' >> build/manifest.json
-	@echo '  "files": [' >> build/manifest.json
-	@find manuscript/ build/ -type f \( -name '*.tex' -o -name '*.sty' -o -name '*.cls' \) | sort | while read f; do \
-		echo "    \"$$f\"," ; \
-	done | sed '$$ s/,$$//' >> build/manifest.json
-	@echo '  ]' >> build/manifest.json
-	@echo '}' >> build/manifest.json
-	@echo "Manifest written to build/manifest.json"
+	@bash scripts/gen-manifest.sh
+	@bash scripts/check-tracked-paths.sh
+
+check-tracked:
+	@bash scripts/check-tracked-paths.sh
 
 # --- SVG sheet (visual review of all SVGs from built HTML) ---
 svg-sheet: html
