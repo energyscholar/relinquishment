@@ -1803,11 +1803,14 @@ function revealPuzzle(id) {
   if (!el) return;
   el.classList.add("solved");
   var inter = el.querySelector(".interaction");
+  /* Hiding the controls would drop keyboard focus to <body>; if focus was in the puzzle, move it to the result. */
+  var hadFocus = el.contains(document.activeElement);
   if (inter) inter.style.display = "none";
   var hint = document.getElementById("hint-" + id);
   if (hint) hint.classList.remove("visible");
   var result = document.getElementById("result-" + id);
   if (result) result.classList.add("visible");
+  if (result && hadFocus) { result.setAttribute("tabindex", "-1"); result.focus(); }
   setSolved(id);
   if (id.indexOf("bridge") !== -1) {
     addBridgeSolved(id);
@@ -1931,9 +1934,10 @@ function initORD(el, d) {
   function render(focusPos, focusDir) {
     var html = "";
     for (var i = 0; i < order.length; i++) {
+      var label = esc(d.items[order[i]]).split('"').join("&quot;"); /* no regex literal here: the build minifier reads a quote in one as a string */
       html += '<div class="ord-item" data-pos="' + i + '"><div class="ord-arrows">' +
-        '<button data-dir="up" data-pos="' + i + '">▲</button>' +
-        '<button data-dir="down" data-pos="' + i + '">▼</button></div>' +
+        '<button data-dir="up" data-pos="' + i + '" aria-label="Move up: ' + label + '">▲</button>' +
+        '<button data-dir="down" data-pos="' + i + '" aria-label="Move down: ' + label + '">▼</button></div>' +
         '<span class="ord-text">' + esc(d.items[order[i]]) + "</span></div>";
     }
     html += '<button class="submit-btn ord-submit">Check Order</button>';
@@ -2369,6 +2373,10 @@ function initResilience(el, d) {
       var next = circles[0];
       for (var k = 0; k < circles.length; k++) if (parseInt(circles[k].dataset.n) > focusFrom) { next = circles[k]; break; }
       next.focus();
+    } else if (focusFrom >= 0) {
+      /* The last node is gone: hold focus on the status line until the result is revealed. */
+      var st = document.getElementById("st-" + d.id);
+      if (st) { st.setAttribute("tabindex", "-1"); st.focus(); }
     }
   }
   render(-1);
